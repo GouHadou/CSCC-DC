@@ -1689,34 +1689,34 @@ IsSelected PharmaSMG
 	DrawBar "BARAMMO6", "BAREMPTY", Ammo1, vertical, 16, 8;
 }*/
 
-IsSelected PillGrenadeLauncherWep
+IsSelected PillgunWep
 {
-DrawBar "BARAMMO1", "BAREMPTY", PillGrenadeClip, vertical, 32, 8;
+DrawBar "BARAMMO1", "BAREMPTY", PillShotAmmo, vertical, 16, 8;
 
 }
 
 //=====PillCharges
 InInventory QuickFixCharge
 {
-DrawBar "BARAMMO1", "BAREMPTY", QuickFixCharge, vertical, 32, 8;
+DrawBar "BARAMMO1", "BAREMPTY", QuickFixCharge, vertical, 16, 8;
 DrawImage "PILLICON5", 32, 64;
 }
 
 InInventory UppenAtemCharge
 {
-DrawBar "BARAMM46", "BAREMPTY", UppenAtemCharge, vertical, 32, 8;
+DrawBar "BARAMM46", "BAREMPTY", UppenAtemCharge, vertical, 16, 8;
 DrawImage "PILLICON9", 32, 64;
 }
 
 InInventory VigorizerCharge
 {
-DrawBar "BARAMM13", "BAREMPTY", VigorizerCharge, vertical, 32, 8;
+DrawBar "BARAMM13", "BAREMPTY", VigorizerCharge, vertical, 16, 8;
 DrawImage "PILLICON2", 32, 64;
 }
 
 InInventory BlokkitalCharge
 {
-DrawBar "BARAMM16", "BAREMPTY", BlokkitalCharge, vertical, 32, 8;
+DrawBar "BARAMM16", "BAREMPTY", BlokkitalCharge, vertical, 16, 8;
 DrawImage "PILLICON2", 32, 64;
 }
 /*

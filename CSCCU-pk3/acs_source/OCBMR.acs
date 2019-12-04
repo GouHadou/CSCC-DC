@@ -778,7 +778,7 @@ int OverHealth;
 
 	if(GetActorProperty(TargTID,APROP_HEALTH)<=0){PlayerCurrentHealth = 1; }
 		Else{PlayerCurrentHealth = GetActorProperty(TargTID,APROP_Health);}
-	if(GetActorProperty(TargTID,APROP_SpawnHealth)<=0){PlayerMaxHealth = 1; }
+	if(GetActorProperty(TargTID,APROP_SpawnHealth)<=0){PlayerMaxHealth = 100; }
 		Else{PlayerMaxHealth = GetActorProperty(TargTID,APROP_SpawnHealth);}
 		
 HealthPercent = ((PlayerCurrentHealth*100)/PlayerMaxHealth);
@@ -793,6 +793,19 @@ HealthPercent =  HealthPercent + OverHealth;
 if(HealthPercent > 20){HealthPercent = 20;}
 if(HealthPercent < 0){HealthPercent = 0;}
 return (TinyBarSprite[HealthPercent]);
+}
+
+Script "HealRamp" (Int HealMin, Int HealMax)
+{
+int timeMax = 175;
+int rampPerc = (GetActorPowerupTics(0,"HealStall_A")*100)/timeMax;
+//log(i:GetActorPowerupTics(0,"HealStall_A"));
+//log(i:rampPerc);
+int output = (HealMax*(100 - rampPerc))/100;
+//log(i:output);
+
+if (output < HealMin){output = HealMin;}
+SetResultValue(output);
 }
 
 /*

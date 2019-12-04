@@ -1725,9 +1725,9 @@ IsSelected PharmaSMG
 	DrawBar "VARAMMO6", "VAREMPTY", Ammo1, horizontal, 130, 192;
 }*/
 
-IsSelected PillGrenadeLauncherWep
+IsSelected PillgunWep
 {
-DrawBar "VARAMMO1", "VAREMPTY", PillGrenadeClip, horizontal, 130, 168;
+DrawBar "VARAMMO1", "VAREMPTY", PillShotAmmo, horizontal, 130, 168;
 
 }
 //=====PillCharges

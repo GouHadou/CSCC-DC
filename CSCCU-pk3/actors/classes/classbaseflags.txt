@@ -1,3 +1,6 @@
+actor HealStall_A : powerup{powerup.duration 350}
+actor HealStall_B : powerup{powerup.duration 525}
+
 actor ClassDeathPickup : CustomInventory
 {
 States

@@ -86,6 +86,7 @@ Fire.After:
 "####" B 1 A_RearrangePointers(AAPTR_DEFAULT, AAPTR_NULL, AAPTR_NULL)
 "####" B 0 A_TakeInventory("IsHealer",999)
 "####" B 0 A_GiveInventory("BeamDisconnect")
+"####" B 0 A_TakeInventory("TargHolder")
 Goto Ready
 //------[]
 
@@ -125,7 +126,7 @@ actor MedicatorAmmo : ammo {inventory.amount 3 inventory.maxamount 3}
 actor IsHealer : inventory {inventory.amount 1 inventory.maxamount 2}
 actor HealTarget : inventory {inventory.amount 1 inventory.maxamount 2}
 
-Actor HealDelay : powerup{inventory.amount 1 Powerup.duration 12}
+Actor HealDelay : powerup{inventory.amount 1 Powerup.duration 7}
 Actor PillDrainDelay : powerup{inventory.amount 1 Powerup.duration 3}
 
 Actor BeamDisconnect : powerup //makes all active beam particles die when the use has this
