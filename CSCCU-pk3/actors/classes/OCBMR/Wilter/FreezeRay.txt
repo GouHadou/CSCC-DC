@@ -8,7 +8,7 @@
 
 actor FreezerayWep : Weapon
 {
-Weapon.AmmoUse1 2
+Weapon.AmmoUse1 100
 Weapon.AmmoGive1 1000
 Weapon.AmmoUse2 80
 Weapon.AmmoGive2 1000
@@ -41,21 +41,30 @@ TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
 MSNH A 1 A_Raise
 Loop
 Fire:
-BLTR B 0 A_Jumpifnoammo("WeakFire")
+BLTR B 0 A_Jumpifnoammo("NoAmmo")
+TNT1 A 0 A_JumpIfInventory("ChillPower",150,"RegularFire")
+Goto WeakFire
+Fire.Check:
 BLTR B 0 A_GiveInventory("YetiFreezerayActive")
-//Goto WeakFire
+TNT1 A 0 A_JumpIfInventory("ChillPower",150,"RegularFire")
+TNT1 A 0 A_JumpIfInventory("ChillPower",1,"WeakFire")
+Goto NoAmmo
+RegularFire:
 BLTR B 0 A_PlaySoundEx("weapon/minchrgshot","Weapon")
-BLTR C 0 A_FireCustomMissile("FreezeRayBeam_S",0,1,0,0)
-BLTR C 0 A_FireCustomMissile("FreezeRayBeamDamager",0,1,0,0)
-BLTR C 0 A_Takeinventory("ChillPower",1)
+BLTR C 0 A_FireCustomMissile("FreezeRayBeam_S",0,0,0,0)
+BLTR C 0 A_FireCustomMissile("FreezeRayBeamDamager",0,0,0,0)
+BLTR C 0 A_Takeinventory("ChillPower",5)
 BLTR B 1
+BLTR C 0 A_Refire("Fire.Check")
 Goto Ready+2
 WeakFire:
 BLTR B 0 A_GiveInventory("YetiFreezerayActive")
 BLTR B 0 A_PlaySoundEx("weapon/minchrgshot","Weapon")
-BLTR C 0 A_FireCustomMissile("WeakFreezeRayBeam_S",0,1,0,0)
-BLTR C 0 A_FireCustomMissile("FreezeRayBeamWeakDamager",0,1,0,0)
+BLTR C 0 A_FireCustomMissile("WeakFreezeRayBeam_S",0,0,0,0)
+BLTR C 0 A_FireCustomMissile("FreezeRayBeamWeakDamager",0,0,0,0)
+BLTR C 0 A_Takeinventory("ChillPower",5)
 BLTR B 1
+BLTR C 0 A_Refire("Fire.Check")
 Goto Ready+2
 AltFire:
 BLTR B 0 A_Jumpifnoammo("NoAmmo")
@@ -95,8 +104,8 @@ TNT1 A 0 A_TakeInventory("ChillPower",1)
 TNT1 A 3
 loop
 NoAmmo:
-TNT1 A 1
-TNT1 A 1 //ACS_Execute(979,0)
+BLTR B 1
+BLTR B 1 A_Refire("NoAmmo")//ACS_Execute(979,0)
 Goto Ready+2
 }
 }
@@ -584,6 +593,26 @@ stop
 }
 }
 
+Actor IcePillarHealer : CustomInventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+Pickup:
+TNT1 A 1 A_jumpIf(Mass > 99,"Pickup.Heal")
+Stop
+
+Pickup.Chill:
+TNT1 A 1 HealThing(25)
+stop
+}
+}
+
 Actor IceFloorItem : CustomInventory
 {
 Inventory.Amount 1
@@ -610,6 +639,7 @@ TNT1 A 0 A_PlaySoundEx("weapon/OilSlider","SoundSlot5")
 stop
 }
 }
+
 actor FreezeWave
 {
 +NOINTERACTION
