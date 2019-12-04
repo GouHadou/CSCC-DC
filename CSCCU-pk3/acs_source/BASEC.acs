@@ -1,5 +1,5 @@
 #include "zcommon.acs"
-#include "8BDMLIB.acs"
+#include "8bdmlib.acs"
 
 #DEFINE CSACS_PICKUPENTER 143
 #DEFINE CSACS_PICKUPRESPAWN 144
@@ -93,7 +93,6 @@ function int round(int fixedNumber)
 	return (fixedNumber + 0.5) >> 16;
 }*/
 
-
 Script "CSACS_HealthSet" (void) CLIENTSIDE
 {
 int StateSet = 0;
@@ -103,7 +102,6 @@ If(CheckActorClass(consolePlayerNumber()+1000,"RedEyes")){SetActorState(0,"Boneh
 If(CheckActorClass(consolePlayerNumber()+1000,"Missingno.class")){SetActorState(0,"Bonehead"); StateSet=1;}
 If(StateSet==0){SetActorState(0,"DefaultState");}
 }
-
 
 //Scripts for weapon / item transparency 
 int CLASSFLAG = 0;

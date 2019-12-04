@@ -1,4 +1,4 @@
-actor Missingno.class : ClassBaseCSCC 
+actor Missingno : ClassBaseCSCC 
 {
 player.displayname "Missingno."
 player.soundclass "Missingno.class" 
@@ -76,7 +76,7 @@ stop
 }
 }
 
-actor MissingnoMorph : Missingno.class
+actor MissingnoMorph : Missingno
 {
 +NOSKIN
 player.morphweapon "Glitchfield" 

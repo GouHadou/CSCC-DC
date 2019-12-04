@@ -54,7 +54,7 @@ addplayerclass "ProtomanCSCC" nomenu
 addplayerclass "Clayton" nomenu
 addplayerclass "Fyone" nomenu 
 addplayerclass "Smash" nomenu 
-addplayerclass "Missingno.class" nomenu 
+addplayerclass "Missingno" nomenu 
 addplayerclass "ToastMan" nomenu 
 addplayerclass "ChaosFantasy" nomenu 
 addplayerclass "Hilman170499" nomenu 

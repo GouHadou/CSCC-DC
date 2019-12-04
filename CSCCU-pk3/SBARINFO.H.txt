@@ -38,7 +38,8 @@ InInventory not NoHealthBar2, 1
 	InInventory HealthNumberFlag, 1
 	{
 	//DrawNumber 5,CMBHPFONT,Untranslated,Health,/*interpolate(10),*/alignment(left),150,177;
-	DrawNumber 3, "8BDMAFONT", Untranslated, Health, alignment(left), 152, 177;
+	InInventory not BoneheadSpeed{DrawNumber 3, "8BDMAFONT", Untranslated, Health, alignment(left), 152, 177;}
+	else{DrawNumber 3, "8BDMAFONT", Untranslated, BoneheadFakeHP, alignment(left), 152, 177;}
 }
 
 

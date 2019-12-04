@@ -4,6 +4,7 @@ player.displayname "Bonehead"
 player.soundclass "bonehead"
 player.forwardmove 0.6
 player.sidemove 0.58
+player.jumpz 12
 player.startitem "MissedMemoBoss"
 player.startitem "MissedMemoAmmo", 56
 player.startitem "BoneheadAmmo", 105
