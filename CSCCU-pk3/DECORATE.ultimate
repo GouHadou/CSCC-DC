@@ -1,1 +1,7 @@
-#include "actors/classes/Ultimate/Bonehead.txt"
+//Bonehead
+#include "actors/classes/Ultimate/Bonehead/BoneheadClass.txt"
+#include "actors/classes/Ultimate/Bonehead/BoneheadWep.txt"
+
+//Gee
+#include "actors/classes/Ultimate/Gee/GeeClass.txt"
+#include "actors/classes/Ultimate/Gee/GeeWep.txt"

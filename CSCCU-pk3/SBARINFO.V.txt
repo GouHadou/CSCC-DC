@@ -1222,6 +1222,33 @@ Drawbar "BONEBAR1", "BONEMPTY", MissedMemoAmmo, vertical, 8, 8;
 Drawbar "BNEHPBAR", "NOBAR", BoneheadRegen, vertical, 24, 8;
 }
 
+//Gee
+IsSelected GeeBurstBoss1
+{
+InInventory GeeHealingAmmo, 132{Drawbar "GEEAMMO1", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+DrawImage "GEEGRPH1", 6, 65;
+DrawNumber 2, "GEEFONT1", Untranslated, Ammo1, alignment(center), 26, 73;
+}
+IsSelected GeeBurstBoss2
+{
+InInventory not GeeDMPackage, 1
+{
+InInventory GeeHealingAmmo, 132{Drawbar "GEEAMMO1", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+}
+else
+{
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
+}
+DrawImage "GEEGRPH2", 6, 65;
+DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 26, 73;
+}
 	
 //[+]=================|OCBMR|======================[+]
 //[+]=================|+++++|======================[+]

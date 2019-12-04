@@ -13,6 +13,7 @@ Tag "Missed Memo"
 weapon.ammotype "BoneheadAmmo"
 weapon.ammotype2 "MissedMemoAmmo"
 inventory.icon "NULLICON"
+dropitem ""
 States
 {
 Spawn:

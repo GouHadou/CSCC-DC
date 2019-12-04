@@ -18,3 +18,27 @@ actor/boneexplode bonexpld
 actor/bonesummon bonesumm
 actor/boneregen bonergen
 actor/boneshoot boneshot
+
+$playersound	gee	male	*death		MEGADEAT
+$playersound	gee	male	*xdeath		MEGADEAT
+$playersound	gee	male	*gibbed		MEGADEAT
+$playersound	gee	male	*pain100	MEGAPAIN
+$playersound	gee	male	*pain75		MEGAPAIN
+$playersound	gee	male	*pain50		MEGAPAIN
+$playersound	gee	male	*pain25		MEGAPAIN
+$playersound	gee	male	*grunt		LAND
+$playersound	gee	male	*land		LAND
+$playersound	gee	male	*jump		dsnone
+$playersound	gee	male	*fist		dsnone
+$playersound	gee	male	*usefail	LAND
+$playersound	gee	male	*taunt		GEETAUNT
+
+weapon/geefire1 GEEFIRE1
+weapon/geefire2 GEEFIRE2
+weapon/geeheal1 GEEHEAL1
+weapon/geeheal2 GEEHEAL2
+weapon/geeheal3 GEEHEAL3
+weapon/geedamg1 GEEDAMG1
+weapon/geedamg2 GEEDAMG2
+weapon/geedamg3 GEEDAMG3
+weapon/geecharge GEECHRGE

@@ -1,0 +1,744 @@
+const int GEE_HEAL = 25;
+const int GEE_DMG = 20;
+
+actor GeeBurstBoss1 : BaseMM8BDMWep
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 15
+Weapon.SlotNumber 1
+Inventory.Pickupmessage "Gee, how come you get to have two weapons?"
+Obituary "%o was smacked by %k's staff."
+Tag "Healing Burst"
+weapon.ammotype "GeeAmmo"
+inventory.icon "NULLICON"
+dropitem ""
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Ready:
+GEE1 A 0 ACS_ExecuteAlways(998,0,439)
+GEE1 A 0 A_TakeInventory("GeeFire2",999)
+GEE1 A 0 A_JumpIfInventory("GeeAmmo",1,"Ready2")
+goto Ready3
+Ready2:
+GEE1 A 1 A_WeaponReady
+GEE1 A 0 A_GiveInventory("GeeAmmoGiver",1)
+goto Ready2
+Ready3:
+GEE1 A 1 A_WeaponReady(WRF_NOFIRE)
+GEE1 A 0 A_GiveInventory("GeeAmmoGiver",1)
+GEE1 A 0 A_JumpIfInventory("GeeAmmo",1,"Ready2")
+goto Ready3
+loop
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+GEE1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+GEE1 A 1 A_Raise
+Loop
+Fire:
+GEE1 A 0 A_JumpIfInventory("GeeHealingAmmo",0,"FireHeal")
+GEE1 A 0 A_JumpIfInventory("GeeDamagingAmmo",0,"FireDamaged")
+goto NoAmmo
+FireHeal:
+GEE1 A 0 A_JumpIfInventory("GeeDamagingAmmo",0,"FireBoth")
+GEE1 A 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 A 0 A_PlaySoundEx("weapon/geefire1","Weapon")
+GEE1 A 0 A_GiveInventory("GeeMainfire2",1)
+goto FireAnim
+FireDamaged:
+GEE1 A 0 A_JumpIfInventory("GeeHealingAmmo",0,"FireBoth")
+GEE1 A 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 A 0 A_PlaySoundEx("weapon/geefire1","Weapon")
+GEE1 A 0 A_GiveInventory("GeeMainfire3",1)
+goto FireAnim
+FireBoth:
+GEE1 A 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 A 0 A_PlaySoundEx("weapon/geefire1","Weapon")
+GEE1 A 0 A_GiveInventory("GeeMainfire1",1)
+goto FireAnim
+FireAnim:
+GEE1 BCBCBCBCBCBCBA 2
+GEE1 A 0 A_JumpIfNoAmmo("Ready3")
+Goto Ready2
+Altfire:
+GEE1 A 0 A_JumpIfInventory("GeeHealingAmmo",0,1)
+goto NoAmmo
+GEE1 A 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 A 0 A_PlaySoundEx("weapon/geefire2","Weapon")
+GEE1 A 0 A_GiveInventory("GeeAltfire1",1)
+GEE1 A 0 A_TakeInventory("GeeHealingAmmo",999,TIF_NOTAKEINFINITE)
+GEE1 A 0 A_TakeInventory("GeeAmmo",3,TIF_NOTAKEINFINITE)
+GEE1 BCBCBCBCBA 2
+GEE1 A 0 A_JumpIfNoAmmo("Ready3")
+Goto Ready2
+NoAmmo:
+GEE1 A 1
+GEE1 A 0 A_GiveInventory("GeeAmmoGiver",1)
+goto Ready2
+}
+}
+
+actor GeeBurstBoss2 : GeeBurstBoss1
+{
+Weapon.SlotNumber 2
+Tag "Damaging Burst"
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Ready:
+GEE1 D 0 ACS_ExecuteAlways(998,0,439)
+GEE1 A 0 A_GiveInventory("GeeFire2",1)
+GEE1 D 0 A_JumpIfInventory("GeeAmmo",1,"Ready2")
+goto Ready3
+Ready2:
+GEE1 D 1 A_WeaponReady
+GEE1 D 0 A_GiveInventory("GeeAmmoGiver",1)
+goto Ready2
+Ready3:
+GEE1 D 1 A_WeaponReady(WRF_NOFIRE)
+GEE1 D 0 A_GiveInventory("GeeAmmoGiver",1)
+GEE1 D 0 A_JumpIfInventory("GeeAmmo",1,"Ready2")
+goto Ready3
+loop
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+GEE1 D 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+GEE1 D 1 A_Raise
+Loop
+Fire:
+GEE1 D 0 A_JumpIfInventory("GeeHealingAmmo",0,"FireHeal")
+GEE1 D 0 A_JumpIfInventory("GeeDamagingAmmo",0,"FireDamaged")
+goto NoAmmo
+FireHeal:
+GEE1 D 0 A_JumpIfInventory("GeeDamagingAmmo",0,"FireBoth")
+GEE1 D 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 D 0 A_PlaySoundEx("weapon/geefire1","Weapon")
+GEE1 D 0 A_GiveInventory("GeeMainfire2",1)
+goto FireAnim
+FireDamaged:
+GEE1 D 0 A_JumpIfInventory("GeeHealingAmmo",0,"FireBoth")
+GEE1 D 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 D 0 A_PlaySoundEx("weapon/geefire1","Weapon")
+GEE1 D 0 A_GiveInventory("GeeMainfire3",1)
+goto FireAnim
+FireBoth:
+GEE1 D 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 D 0 A_PlaySoundEx("weapon/geefire1","Weapon")
+GEE1 D 0 A_GiveInventory("GeeMainfire1",1)
+goto FireAnim
+FireAnim:
+GEE1 EFEFEFEFEFEFED 2
+GEE1 D 0 A_JumpIfNoAmmo("Ready3")
+Goto Ready2
+Altfire:
+GEE1 D 0 A_JumpIfInventory("GeeDamagingAmmo",0,1)
+goto NoAmmo
+GEE1 D 0 A_TakeInventory("GeeReloadCounter",999)
+GEE1 D 0 A_PlaySoundEx("weapon/geefire2","Weapon")
+GEE1 D 0 A_GiveInventory("GeeAltfire2",1)
+GEE1 D 0 A_TakeInventory("GeeDamagingAmmo",999,TIF_NOTAKEINFINITE)
+GEE1 D 0 A_TakeInventory("GeeAmmo",3,TIF_NOTAKEINFINITE)
+GEE1 EFEFEFEFED 2
+GEE1 D 0 A_JumpIfNoAmmo("Ready3")
+Goto Ready2
+NoAmmo:
+GEE1 D 1
+GEE1 D 0 A_GiveInventory("GeeAmmoGiver",1)
+goto Ready2
+}
+}
+actor GeeFire2 : Once {}
+
+actor GeeAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 10
+}
+
+actor GeeHealingAmmo : Inventory
+{
+inventory.amount 1
+inventory.maxamount 132
+}
+
+actor GeeDamagingAmmo : Inventory
+{
+inventory.amount 1
+inventory.maxamount 132
+}
+
+actor GeeReloadCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 10
+}
+
+actor GeeAmmoGiver : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 
+TNT1 A 0 A_JumpIfInventory("GeeAmmo",0,"Nope")
+TNT1 A 0 A_JumpIfInventory("GeeReloadCounter",0,"Success")
+TNT1 A 0 A_GiveInventory("GeeReloadCounter",1)
+stop
+Success:
+TNT1 A 0 A_TakeInventory("GeeReloadCounter",999)
+TNT1 A 0 A_GiveInventory("GeeAmmo",1)
+TNT1 A 0 A_PlaySoundEx("weapon/geecharge","Weapon")
+stop
+Nope:
+TNT1 A 0
+stop
+}
+}
+
+actor GeeAmmoActivate : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 1 A_SpawnItemEX("GeeAmmoWatcher",0,0,20)
+stop
+}
+}
+
+actor GeeAmmoWatcher
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
++DONTBLAST
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,1)==1,"TeamGame")
+SpawnLoop:
+TNT1 A 1 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("GeeDamagingAmmo",0,2)
+TNT1 A 0 A_GiveToTarget("GeeDamagingAmmo",1)
+TNT1 A 0
+loop
+Teamgame:
+TNT1 A 1 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("GeeHealingAmmo",0,2)
+TNT1 A 0 A_GiveToTarget("GeeHealingAmmo",1)
+TNT1 A 0 A_JumpIfInTargetInventory("GeeDamagingAmmo",0,2)
+TNT1 A 0 A_GiveToTarget("GeeDamagingAmmo",1)
+TNT1 A 0
+loop
+
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor GeeDamageFX1
+{
++NOINTERACTION
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
+-SOLID
++NOGRAVITY
+RenderStyle "translucent"
+Alpha 1.0
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+GEE2 ABC 3 A_FadeOut
+stop
+}
+}
+actor GeeDamageFX2 : GeeDamageFX1
+{
+States
+{
+Spawn:
+TNT1 A 0
+GEE2 DEF 3 A_FadeOut
+stop
+}
+}
+actor GeeDamageFX3 : GeeDamageFX1
+{
+States
+{
+Spawn:
+TNT1 A 0
+GEE2 GHI 3 A_FadeOut
+stop
+}
+}
+actor GeeHealthFX1 : GeeDamageFX1
+{
+renderstyle add
+States
+{
+Spawn:
+TNT1 A 0
+GEE2 JKL 3 A_FadeOut
+stop
+}
+}
+actor GeeHealthFX2 : GeeDamageFX1
+{
+renderstyle add
+States
+{
+Spawn:
+TNT1 A 0
+GEE2 MNO 3 A_FadeOut
+stop
+}
+}
+actor GeeHealthFX3 : GeeDamageFX1
+{
+renderstyle add
+States
+{
+Spawn:
+TNT1 A 0
+GEE2 PQR 3 A_FadeOut
+stop
+}
+}
+
+actor GeeBurst : FastProjectile
+{
+PROJECTILE
++HITTRACER
+renderstyle none
+damagetype "GeeBurst"
+translation "195:195=243:243", "249:249=76:76", "199:199=70:70", "198:198=220:220", "192:192=229:229", "250:250=215:215"
+Obituary "%o was bursted down by %k's magic burst."
+Speed 80
+Damage (0)
+radius 15
+height 15
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-20,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,20,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,0.7*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,20,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-20,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+loop
+Crash:
+XDeath:
+TNT1 A 1 A_Stop
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,2,AAPTR_TRACER)
+TNT1 A 0 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)==CallACS("CSACS_GetTeamPointer",AAPTR_TRACER),"DeathHeal")
+TNT1 A 1 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)!=CallACS("CSACS_GetTeamPointer",AAPTR_TRACER),"DeathExplode")
+goto TrueDeath
+DeathExplode:
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geedamg1","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 A_Explode(GEE_DMG,15,0,0,15)
+goto TrueDeath
+DeathHeal:
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geeheal1","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 ACS_NamedExecuteAlways("CSACS_GeeHeal",0,GEE_HEAL)
+goto TrueDeath
+Death:
+TrueDeath:
+TNT1 A 5
+stop
+}
+}
+actor GeeBurstB : GeeBurst {translation "195:195=244:244", "249:249=199:199", "199:199=74:74", "198:198=74:74", "192:192=205:205", "250:250=196:196"}
+actor GeeBurstR : GeeBurst {translation "195:195=191:191", "249:249=45:45", "199:199=41:41", "198:198=41:41", "192:192=171:171", "250:250=170:170"}
+actor GeeBurstG : GeeBurst {translation "195:195=135:135", "249:249=131:131", "199:199=128:128", "198:198=128:128", "192:192=104:104", "250:250=138:138"}
+actor GeeBurstY : GeeBurst {translation "195:195=234:234", "249:249=223:223", "199:199=232:232", "198:198=232:232", "192:192=229:229", "250:250=214:214"}
+
+actor GeeBurstDamage : GeeBurst
+{
+States
+{
+Spawn:
+TNT1 A 0
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,20,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-20,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+loop
+Crash:
+XDeath:
+TNT1 A 1 A_Stop
+TNT1 A 0 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)==4,"DeathExplode")
+TNT1 A 1 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)!=CallACS("CSACS_GetTeamPointer",AAPTR_TRACER),"DeathExplode")
+goto TrueDeath
+DeathExplode:
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geedamg1","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 A_Explode(GEE_DMG,15,0,0,15)
+Death:
+TrueDeath:
+TNT1 A 5
+stop
+}
+}
+actor GeeBurstDamageB : GeeBurstDamage {translation "195:195=244:244", "249:249=199:199", "199:199=74:74", "198:198=74:74", "192:192=205:205", "250:250=196:196"}
+actor GeeBurstDamageR : GeeBurstDamage {translation "195:195=191:191", "249:249=45:45", "199:199=41:41", "198:198=41:41", "192:192=171:171", "250:250=170:170"}
+actor GeeBurstDamageG : GeeBurstDamage {translation "195:195=135:135", "249:249=131:131", "199:199=128:128", "198:198=128:128", "192:192=104:104", "250:250=138:138"}
+actor GeeBurstDamageY : GeeBurstDamage {translation "195:195=234:234", "249:249=223:223", "199:199=232:232", "198:198=232:232", "192:192=229:229", "250:250=214:214"}
+
+
+actor GeeBurstDamage2 : GeeBurst
+{
+States
+{
+Spawn:
+TNT1 A 0
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0,-20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.85*20,0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,-0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0,20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,-0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.85*20,0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0,20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0,-20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0.85*20,0.5*20,0,0,0,0,1)
+loop
+Crash:
+XDeath:
+TNT1 A 1 A_Stop
+TNT1 A 0 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)==4,"DeathExplode")
+TNT1 A 1 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)!=CallACS("CSACS_GetTeamPointer",AAPTR_TRACER),"DeathExplode")
+goto TrueDeath
+DeathExplode:
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geedamg1","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 A_Explode(GEE_DMG,15,0,0,15)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geedamg2","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 A_Explode(GEE_DMG,15,0,0,15)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geedamg3","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeDamageFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 A_Explode(GEE_DMG,15,0,0,15)
+Death:
+TrueDeath:
+TNT1 A 5
+stop
+}
+}
+actor GeeBurstDamage2B : GeeBurstDamage2 {translation "195:195=244:244", "249:249=199:199", "199:199=74:74", "198:198=74:74", "192:192=205:205", "250:250=196:196"}
+actor GeeBurstDamage2R : GeeBurstDamage2 {translation "195:195=191:191", "249:249=45:45", "199:199=41:41", "198:198=41:41", "192:192=171:171", "250:250=170:170"}
+actor GeeBurstDamage2G : GeeBurstDamage2 {translation "195:195=135:135", "249:249=131:131", "199:199=128:128", "198:198=128:128", "192:192=104:104", "250:250=138:138"}
+actor GeeBurstDamage2Y : GeeBurstDamage2 {translation "195:195=234:234", "249:249=223:223", "199:199=232:232", "198:198=232:232", "192:192=229:229", "250:250=214:214"}
+
+actor GeeBurstHeal : GeeBurst
+{
+States
+{
+Spawn:
+TNT1 A 0
+BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,-20,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,20,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
+loop
+Crash:
+XDeath:
+TNT1 A 1 A_Stop
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,2,AAPTR_TRACER)
+TNT1 A 0 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)==CallACS("CSACS_GetTeamPointer",AAPTR_TRACER),"DeathHeal")
+TNT1 A 1
+goto TrueDeath
+DeathHeal:
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,"TrueDeath",AAPTR_TRACER)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geeheal1","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 ACS_NamedExecuteAlways("CSACS_GeeHeal",0,GEE_HEAL)
+goto TrueDeath
+Death:
+TrueDeath:
+TNT1 A 5
+stop
+}
+}
+actor GeeBurstHealB : GeeBurstHeal {translation "195:195=244:244", "249:249=199:199", "199:199=74:74", "198:198=74:74", "192:192=205:205", "250:250=196:196"}
+actor GeeBurstHealR : GeeBurstHeal {translation "195:195=191:191", "249:249=45:45", "199:199=41:41", "198:198=41:41", "192:192=171:171", "250:250=170:170"}
+actor GeeBurstHealG : GeeBurstHeal {translation "195:195=135:135", "249:249=131:131", "199:199=128:128", "198:198=128:128", "192:192=104:104", "250:250=138:138"}
+actor GeeBurstHealY : GeeBurstHeal {translation "195:195=234:234", "249:249=223:223", "199:199=232:232", "198:198=232:232", "192:192=229:229", "250:250=214:214"}
+
+actor GeeBurstHeal2 : GeeBurst
+{
+States
+{
+Spawn:
+TNT1 A 0
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0,-20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.85*20,0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,-0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0,20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,-0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.85*20,0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0,20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0.85*20,-0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0,-20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0.85*20,0.5*20,0,0,0,0,1)
+loop
+Crash:
+XDeath:
+TNT1 A 1 A_Stop
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,2,AAPTR_TRACER)
+TNT1 A 0 A_JumpIf(CallACS("CSACS_GetTeamPointer",AAPTR_TARGET)==CallACS("CSACS_GetTeamPointer",AAPTR_TRACER),"DeathHeal")
+TNT1 A 1
+goto TrueDeath
+DeathHeal:
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,"TrueDeath",AAPTR_TRACER)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geeheal1","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 ACS_NamedExecuteAlways("CSACS_GeeHeal",0,GEE_HEAL)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geeheal2","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 ACS_NamedExecuteAlways("CSACS_GeeHeal",0,GEE_HEAL)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"TrueDeath")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_PlaySoundEX("weapon/geeheal3","Voice")
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX1",32,0,-28,0,0,random(5,10),random(0,119),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX2",32,0,-28,0,0,random(5,10),random(120,239),1)
+TNT1 AAA 0 A_SpawnItemEX("GeeHealthFX3",32,0,-28,0,0,random(5,10),random(240,359),1)
+TNT1 A 10 ACS_NamedExecuteAlways("CSACS_GeeHeal",0,GEE_HEAL)
+goto TrueDeath
+Death:
+TrueDeath:
+TNT1 A 5
+stop
+}
+}
+actor GeeBurstHeal2B : GeeBurstHeal2 {translation "195:195=244:244", "249:249=199:199", "199:199=74:74", "198:198=74:74", "192:192=205:205", "250:250=196:196"}
+actor GeeBurstHeal2R : GeeBurstHeal2 {translation "195:195=191:191", "249:249=45:45", "199:199=41:41", "198:198=41:41", "192:192=171:171", "250:250=170:170"}
+actor GeeBurstHeal2G : GeeBurstHeal2 {translation "195:195=135:135", "249:249=131:131", "199:199=128:128", "198:198=128:128", "192:192=104:104", "250:250=138:138"}
+actor GeeBurstHeal2Y : GeeBurstHeal2 {translation "195:195=234:234", "249:249=223:223", "199:199=232:232", "198:198=232:232", "192:192=229:229", "250:250=214:214"}
+
+actor GeeMainfire1 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("GeeBurst",0,1,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("GeeBurstB",0,1,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("GeeBurstR",0,1,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("GeeBurstG",0,1,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("GeeBurstY",0,1,8,0)
+stop
+}
+}
+
+actor GeeMainfire2 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("GeeBurstHeal",0,1,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("GeeBurstHealB",0,1,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("GeeBurstHealR",0,1,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("GeeBurstHealG",0,1,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("GeeBurstHealY",0,1,8,0)
+stop
+}
+}
+
+actor GeeMainfire3 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("GeeBurstDamage",0,1,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamageB",0,1,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamageR",0,1,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamageG",0,1,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamageY",0,1,8,0)
+stop
+}
+}
+
+actor GeeAltfire1 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("GeeBurstHeal2",0,0,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("GeeBurstHeal2B",0,0,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("GeeBurstHeal2R",0,0,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("GeeBurstHeal2G",0,0,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("GeeBurstHeal2Y",0,0,8,0)
+stop
+}
+}
+
+actor GeeAltfire2 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("GeeBurstDamage2",0,0,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamage2B",0,0,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamage2R",0,0,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamage2G",0,0,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("GeeBurstDamage2Y",0,0,8,0)
+stop
+}
+}
