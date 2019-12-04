@@ -129,21 +129,10 @@ IsSelected MessatsuWep
 	{
 	DrawBar "MESSVFUL", "MESSVEMT", Health, vertical, 24, 8;
 	DrawBar "MESSBAR", "MESSVSPE", Ammo1, vertical, 16, 8;
+	DrawBar "MESSVSPS", "MESSVSPE", MessSuperFlag, vertical, 16, 8;
 	InInventory MessatsuCharge, 4
 	{
-	DrawBar "BARFLS8", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
-	}
-	InInventory MessatsuCharge, 15
-	{
-	DrawBar "BARFLS6", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
-	}
-	InInventory MessatsuCharge, 25
-	{
-	DrawBar "BARFLS4", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
-	}
-	InInventory MessatsuCharge, 35
-	{
-	DrawBar "BARFLS2", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
+	DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 24, 8;
 	}
 	InInventory MessatsuAmmo, 56
 	{
@@ -164,19 +153,7 @@ IsSelected GouhadouWepCS
 	DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory MessatsuCharge, 4
 	{
-	DrawBar "BARFLS8", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
-	}
-	InInventory MessatsuCharge, 15
-	{
-	DrawBar "BARFLS6", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
-	}
-	InInventory MessatsuCharge, 25
-	{
-	DrawBar "BARFLS4", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
-	}
-	InInventory MessatsuCharge, 35
-	{
-	DrawBar "BARFLS2", "BAREMPTY", MessatsuCharge, vertical, 8, 8;
+	DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 16, 8;
 	}
 	}
 //Old Ukiyama

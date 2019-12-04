@@ -141,21 +141,10 @@ IsSelected MessatsuWep
 	{
 	Drawbar "MESSHFUL", "MESSHEMT", Health, horizontal, 130, 184;
 	Drawbar"VMESSBAR", "MESSHSPE", Ammo1, horizontal, 58, 184;
+	DrawBar "MESSHSPS", "MESSHSPE", MessSuperFlag, horizontal, 58, 184;
 	InInventory MessatsuCharge, 4
 	{
-	DrawBar "VARFLS8", "VAREMPTY", MessatsuCharge, horizontal, 58, 176;
-	}
-	InInventory MessatsuCharge, 15
-	{
-	DrawBar "VARFLS6", "BAREMPTY", MessatsuCharge, horizontal, 58, 176;
-	}
-	InInventory MessatsuCharge, 25
-	{
-	DrawBar "VARFLS4", "BAREMPTY", MessatsuCharge, horizontal, 58, 176;
-	}
-	InInventory MessatsuCharge, 35
-	{
-	DrawBar "VARFLS2", "BAREMPTY", MessatsuCharge, horizontal, 58, 176;
+	DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 130, 184;
 	}
 	InInventory MessatsuAmmo, 56
 	{
@@ -880,10 +869,8 @@ IsSelected LightningWaveWepCS{DrawBar "SPARKBR2", "VAREMPTY", LightningWaveAmmo,
 IsSelected MissileBarrageWepCS{Drawbar"VARAMM50", "VAREMPTY", Ammo1, vertical, 58, 184;}
 IsSelected SpectralWaveWepCS{Drawbar"VARAMM21", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected GouhadouWepCS{Drawbar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
-	InInventory MessatsuCharge, 4{DrawBar "VARFLS8", "VAREMPTY", MessatsuCharge, horizontal, 58, 176;}
-	InInventory MessatsuCharge, 15{DrawBar "VARFLS6", "BAREMPTY", MessatsuCharge, horizontal, 58, 176;}
-	InInventory MessatsuCharge, 25{DrawBar "VARFLS4", "BAREMPTY", MessatsuCharge, horizontal, 58, 176;}
-	InInventory MessatsuCharge, 35{DrawBar "VARFLS2", "BAREMPTY", MessatsuCharge, horizontal, 58, 176;}}
+	InInventory MessatsuCharge, 4
+	{DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 58, 184;}}
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected PurpleAuraFlameWep{DrawBar "M712BAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected StickyBombWep{DrawBar "LEGOVAR1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
