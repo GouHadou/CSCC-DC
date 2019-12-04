@@ -2,3 +2,4 @@
 dist/*.pk3
 csccu-pk3/acs/*.o
 /archive.properties
+**/.DS_Store
