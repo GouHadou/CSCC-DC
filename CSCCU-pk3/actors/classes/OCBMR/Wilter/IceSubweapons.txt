@@ -707,7 +707,7 @@ actor PodFlag : Inventory
 inventory.amount 1
 inventory.maxamount 3
 }
-
+/*
 actor BlizzardMaker   
 {
 +Missile
@@ -751,7 +751,7 @@ TNT1 A 0
 stop
 }
 }
-
+*/
 actor BlizzSnowA
 {
 +Missile

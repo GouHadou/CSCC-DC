@@ -907,12 +907,16 @@ graphic YUKKI0, 30, 30{XScale 2.0 YScale 2.0 Patch YUKKI0, 0, 0}
 graphic RJUMPI, 30, 30{XScale 2.0 YScale 2.0 Patch RJMDA0, 0, 0}
 //Protoman
 graphic PROTOSI, 32, 32{XScale 2.0 YScale 2.0 Patch WEAPU0, 0, 0}
+
+//Smash
+/*
 graphic SPIRII, 175, 50
 {
    XScale 2.0
    YScale 2.0
    Patch SPIRE0, 0, 0
 }
+*/
 //Hilman
 graphic HILLIGH, 32, 32
 {
@@ -1422,14 +1426,15 @@ Graphic "PROTOSI", 32, 32
 	YScale 2.000
 	Patch "WEAPU0", 0, 0
 }
-
+/*
 Graphic "PROTOHOK", 32, 32
 {
 	XScale 2.000
 	YScale 2.000
 	Patch "PHOKA0", 0, 0
 }
-
+*/
+/*
 Graphic "PRTGA0", 32, 32
 {
 	XScale 2.000
@@ -1443,7 +1448,7 @@ Graphic "PRTGB0", 32, 32
 	YScale 2.000
 	Patch "PRTGB0", 0, 0
 }
-
+*/
 Graphic "DRKMSSLE", 32, 32
 {
 	XScale 2.000
@@ -1660,7 +1665,7 @@ Graphic "MINISPT", 32, 32
 	YScale 2.000
 	Patch "OCBPJ0", 0, 0
 }
-
+/*
 Graphic "BLAZEROD", 32, 32
 {
 	XScale 2.000
@@ -1674,7 +1679,7 @@ Graphic "FROSTSTF", 32, 32
 	YScale 2.000
 	Patch "FSTSA0", 0, 0
 }
-
+*/
 Graphic "RAGNAROK", 32, 32
 {
 	XScale 2.000
@@ -2620,7 +2625,7 @@ Graphic "WARPICO", 32, 32
 	YScale 2.000
 	Patch "WARPA0", 0, 0
 }
-
+/*
 Graphic "RVSBRSK", 32, 32
 {
 	XScale 2.000
@@ -2648,7 +2653,7 @@ Graphic "RVSRAGEA", 32, 32
 	YScale 2.000
 	Patch "RAGEB0", 0, 0
 }
-
+*/
 Graphic "PILICON1", 32, 32
 {
 	XScale 2.000
@@ -2763,6 +2768,7 @@ Graphic "PILICN16", 32, 32
 
 
 //InsanePharaohman
+/*
 Graphic "TECHHUD", 69, 74{Patch "TECHHUD", 0, 0}
 Graphic "TECHHUD1", 69, 74{Patch "TECHHUD1", 0, 0}
 Graphic "TECHHUD2", 69, 74{Patch "TECHHUD2", 0, 0}
@@ -2774,9 +2780,10 @@ Graphic "TECHHU5Y", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=160:160",
 Graphic "TECHHU5R", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=172:172", "198:198=176:176"}}
 Graphic "TECHHU5G", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=109:109", "198:198=111:111"}}
 Graphic "TECHHU5P", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=58:58", "198:198=62:62"}}
-
+*/
 
 //Aegis
+/*
 Sprite "LTSCI", 30, 30
 {
 	XScale 2.000
@@ -2790,7 +2797,9 @@ Sprite "BARRI", 30, 30
 	YScale 2.000
 	Patch "NPSIB0", 0, 0
 }
+*/
 //Voxleator
+/*
 Sprite "VOXAI", 30, 30
 {
 	XScale 2.000
@@ -2804,7 +2813,9 @@ Sprite "VOXBI", 30, 30
 	YScale 2.000
 	Patch "VXHDB0", 0, 0
 }
+*/
 //Zaffre
+/*
 Sprite "TPGNI", 30, 30
 {
 	XScale 2.000
@@ -2818,6 +2829,7 @@ Sprite "VOXCI", 30, 30
 	YScale 2.000
 	Patch "VXHDC0", 0, 0
 }
+*/
 //LordDamager
 graphic LOSICA0, 30, 30
 {
@@ -2853,7 +2865,7 @@ graphic STPUNCH, 30, 30
    YScale 2.0
    Patch LDSPI0, 0, 0
 }
-
+/*
 //Ankhzirus
 graphic ANSTAFF, 30, 30
 {
@@ -2861,8 +2873,9 @@ graphic ANSTAFF, 30, 30
    YScale 2.0
    Patch ANKST0, 0, 0
 }
-
+*/
 //Hikari
+/*
 Graphic PFKO, 128, 56
 {
  XScale 2.0
@@ -2890,8 +2903,9 @@ graphic PERFHUD2, 333, 120
    YScale 2.0
    Patch PERFHUD2, 0, 0
 }
-
+*/
 //EdgeLord
+/*
 graphic ItemUse, 30, 30
 {
    XScale 2.0
@@ -2922,8 +2936,9 @@ graphic EdgeBrsI, 30, 30
    YScale 2.0
    Patch EDGAC0, 0, 0
 }
-
+*/
 //Akane
+/*
 graphic DARSPLT, 30, 30
 {
    XScale 2.0
@@ -2951,6 +2966,7 @@ graphic SHASPH, 30, 30
    YScale 2.0
    Patch SHSPI0, 0, 0
 }
+*/
 //corporal
 Graphic TOMMYI, 30, 30//Blazko's Tommy Gun
 {
@@ -2986,13 +3002,15 @@ Graphic COW1I, 30, 30//Grand Dad semiautomatic rifle
    Patch COW1A0, 0, 0
 }
 //SuperShinobi
+/*
 graphic NINFAN, 30, 30
 {
    XScale 2.0
    YScale 2.0
    Patch NIWEP0, 0, 0
 }
-
+*/
+/*
 //Flameryn
 graphic FDECOY, 30, 30
 {
@@ -3000,8 +3018,9 @@ graphic FDECOY, 30, 30
    YScale 2.0
    Patch FLDCI0, 0, 0
 }
-
+*/
 //TankOpp
+/*
 graphic TANKACTI, 30, 30
 {
    XScale 2.0
@@ -3015,8 +3034,9 @@ graphic TANKDACT, 30, 30
    YScale 2.0
    Patch FOOTICON, 0, 0
 }
-
+*/
 //Vocalwoman
+/*
 graphic VOCAL1, 30, 30
 {
    XScale 2.0
@@ -3044,8 +3064,9 @@ graphic MUNOZ0, 30, 30
    YScale 2.0
    Patch MUNOZ0, 0, 0
 }
-
+*/
 //Snail Breeder
+/*
 graphic SNELICO1, 30, 30
 {
    XScale 2.0
@@ -3066,8 +3087,9 @@ graphic SNELICO3, 30, 30
    YScale 2.0
    Patch SNSHX0, 0, 0
 }
-
+*/
 //Yang 
+/*
 graphic YANGRLD, 30, 30 //Yang reload Sprite
 {
    XScale 2.0
@@ -3075,7 +3097,15 @@ graphic YANGRLD, 30, 30 //Yang reload Sprite
    Patch YNGRA0, 0, 0
 }
 
+graphic EMBCEL, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EMCEX0, 0, 0
+}
+*/
 //Fume
+/*
 graphic FICON1, 30, 30
 {
    XScale 2.0
@@ -3089,48 +3119,41 @@ graphic FICON2, 30, 30
    YScale 2.0
    Patch FUICB0, 0, 0
 }
-
+*/
 // Zen Trainer
+/*
 graphic ClouIcon,30,30{XScale 2.0 YScale 2.0 Patch ZNITA0,0,0}
+*/
 
-//Yang 
-graphic EMBCEL, 30, 30 //Yang reload Sprite
-{
-   XScale 2.0
-   YScale 2.0
-   Patch EMCEX0, 0, 0
-}
+
 
 //========================
 //______|CopyWeps|________
 //========================
 
+/*
 graphic ORBMSL, 30, 30
 {
    XScale 2.0
    YScale 2.0
    Patch ORBDX0, 0, 0
 }
-
+*/
+/*
 graphic PISTRE, 30, 30
 {
    XScale 2.0
    YScale 2.0
    Patch PTREA0, 0, 0
 }
+*/
 
-graphic NINFAN, 30, 30
-{
-   XScale 2.0
-   YScale 2.0
-   Patch NIWEP0, 0, 0
-}
-
+/*
 graphic INSAR0, 30, 30
 {
    XScale 2.0
    YScale 2.0
    Patch INASA0, 0, 0
 }
-
+*/
 // End of texture definitions

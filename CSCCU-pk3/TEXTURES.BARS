@@ -497,7 +497,7 @@ graphic BLL3_BAR,8,56{patch BARENERG,0,0{Translation "192:192=215:215","198:198=
 graphic BLL3_VAR,56,8{patch BLL3_BAR,0,0{rotate 90}}
 
 //Hikari
-texture HIKSBAR1,8,56{patch B_3BARSB,0,0{Translation"192:192=42:42","198:198=46:46","202:202=42:42","199:199=46:46","204:204=42:42","195:195=46:46"}}
+/*texture HIKSBAR1,8,56{patch B_3BARSB,0,0{Translation"192:192=42:42","198:198=46:46","202:202=42:42","199:199=46:46","204:204=42:42","195:195=46:46"}}
 texture HIKSVAR1,56,8{patch HIKSBAR1,0,0{rotate 90}}
 
 texture HIKSBAR2,8,56{patch B_3BARSB,0,0{Translation"192:192=4:4","198:198=211:211","202:202=4:4","199:199=211:211","204:204=4:4","195:195=211:211"}}
@@ -516,9 +516,9 @@ graphic HIKOBARC,8,56{patch B_BLACK1,0,0{Translation"0:255=41:41"}}
 graphic HIKOVARC,56,8{patch HIKOBARC,0,0{rotate 90}}
 
 texture PERFECT,333,120{patch TNT1A0,0,0}
-
+*/
 //Insane Pharaohman
-
+/*
 texture VG_B_BAR,8,56{patch B_BAR01A,0,0{Translation"192:192=228:228","198:198=166:166"}}
 texture VG_B_VAR,56,8{patch VG_B_BAR,0,0{rotate 90}}
 texture VG_C_BAR,8,56{patch B_BAR01B,0,0{Translation"192:192=228:228","198:198=166:166"}}
@@ -601,9 +601,10 @@ graphic E3_K_VAR,56,8{patch E3_K_BAR,0,0{rotate 90}}
 
 graphic E3_A_BAR,8,56{patch TNT1A0,0,0}
 graphic E3_A_VAR,56,8{patch TNT1A0,0,0}
-
+*/
 
 //PistonMan
+/*
 texture PISTNVAR, 56, 8{patch PISTNBAR, 0, 0 {rotate 90}}
 
 texture PISTNBA1, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
@@ -620,8 +621,9 @@ texture PISTNVA4, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=104:104", "19
 
 texture PISTNBA5, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 texture PISTNVA5, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
-
+*/
 //Akane
+/*
 graphic AKABAR,8,56{patch B_BAR00H,0,0{Translation "192:192=4:4", "198:198=59:59", "199:199=62:62"}}
 graphic AKAVAR,56,8{patch AKABAR,0,0{rotate 90}}
 
@@ -641,20 +643,22 @@ graphic AKAVLANK,56,8{patch AKABLANK,0,0{rotate 90}}
 
 texture AKADBAR,8,56{patch TNT1A0,0,0}
 texture AKADVAR,56,8{patch TNT1A0,0,0}
-
+*/
 //Ankhzirus
+/*
 graphic ANKHBAR,8,56{patch BARENERG,0,0{Translation "192:192=229:229","198:198=230:230"}}
 graphic ANKHVAR,56,8{patch ANKHBAR,0,0{rotate 90}}
 
 graphic ANKCBAR,8,56{patch BARENERG,0,0{Translation "192:192=229:229"}}
 graphic ANKCVAR,56,8{patch ANKHBAR,0,0{rotate 90}}
-
+*/
 //EdgeLord
+/*
 texture EDGEBAR1, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=[136,20,0]:[136,20,0]"}}
 texture EDGEBAR2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=[252,228,160]:[252,228,160]", "198:198=[68,68,68]:[68,68,68]"}}
 texture EDGEVAR1, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=[136,20,0]:[136,20,0]"}}
 texture EDGEVAR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=[252,228,160]:[252,228,160]", "198:198=[68,68,68]:[68,68,68]"}}
-
+*/
 //LordDamager
 graphic LDMBAR,8,56{patch BARENERG,0,0{Translation "192:192=194:194","198:198=241:241"}}
 graphic LDMVAR,56,8{patch LDMBAR,0,0{rotate 90}}
@@ -665,17 +669,20 @@ texture LDBAR,8,56{patch TNT1A0,0,0}
 texture LDVAR,56,8{patch TNT1A0,0,0}
 
 //Flameryn
+/*
 graphic FLRYBAR,8,56{patch BARENERG,0,0{Translation "192:192=42:42", "198:198=46:46"}}
 graphic FLRYVAR,56,8{patch FLRYBAR,0,0{rotate 90}}
 texture OISPBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=77:77", "198:198=78:78"}}
 texture OISPVAR, 56, 8{patch OISPBAR, 0, 0 {rotate 90}}
-
+*/
 
 //Tank Operator
+/*
 graphic TANK_BAR,8,56{patch BARENERG,0,0{Translation "192:192=4:4", "198:198=218:218"}}
 graphic TANK_VAR,56,8{patch TANK_BAR,0,0{rotate 90}}
-
+*/
 //Vocalwoman
+/*
 texture VALTBAR1, 8, 56{patch B_BAR01C, 0, 0 {Translation "192:192=35:35", "198:198=39:39"}}
 texture VALTVAR1, 56, 8{patch VALTBAR1, 0, 0 {rotate 90}}
 
@@ -692,15 +699,17 @@ texture VALTVAR,56,8{patch TNT1A0,0,0}
 
 graphic IWAVEBAR,8,56{patch BARENERG,0,0{Translation "192:192=239:239", "198:198=44:44"}}
 graphic IWAVEVAR,56,8{patch IWAVEBAR,0,0{rotate 90}}
-
+*/
 //Snails
+/*
 texture SNAILBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 texture SNAILBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 texture SHELLBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=220:220"}}
 texture SHELLBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=220:220"}}
-
+*/
 
 //Yang
+/*
 texture AURABAR, 8, 56{patch AURBAR, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
 texture AURABAR2, 56, 8{patch AURBAR2, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
 
@@ -709,14 +718,16 @@ texture YANGBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=232:232", "198
 texture YANGSEM, 8, 56{patch YANG1, 0, 0}
 texture YANGBARH, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
 texture YANGSEMH, 56, 8{patch YANG2, 0, 0}
-
+*/
 //Fume
+/*
 graphic FUMEBAR,8,56{patch BARENERG,0,0{Translation "192:192=228:228","198:198=61:61"}}
 graphic FUMEVAR,56,8{patch FUMEBAR,0,0{rotate 90}}
-
+*/
 
 //Zen Trainer
 //NoammoBAR
+/*
 Texture BZNTRA00, 8, 56{Patch BARENERG, 0, 0{Translation "192:192=95:95", "198:198=3:3"}}
 Texture VZNTRA00, 56, 8{Patch BZNTRA00, 0, 0{Rotate 90}}
 //Shealing
@@ -734,7 +745,7 @@ Texture VZNTRA04, 56, 8{Patch BZNTRA04, 0, 0{Rotate 90}}
 //A N G E R Y
 Texture BZNTRA05, 8, 56{Patch BARENERG, 0, 0{Translation "192:192=216:216", "198:198=220:220"}}
 Texture VZNTRA05, 56, 8{Patch BZNTRA05, 0, 0{Rotate 90}}
-
+*/
 
 //========================
 //______|CopyWeps|________
