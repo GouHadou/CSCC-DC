@@ -201,8 +201,9 @@ const int ChargeLimit = 18;
 //CSCCV4
 
 //===|jaxof7
-#include "actors/classes/CSCC/jaxof7.txt"
-
+#include "actors/classes/CSCC/jaxof07/JaxIG.txt"
+#include "actors/classes/CSCC/jaxof07/JaxClass.txt"
+#include "actors/classes/CSCC/jaxof07/JaxWeapon.txt"
 
 //===|cutmanmike
 #include "actors/classes/CSCC/cutmanmike/cmmclass.txt"
