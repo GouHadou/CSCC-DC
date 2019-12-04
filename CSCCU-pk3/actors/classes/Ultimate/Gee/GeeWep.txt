@@ -205,17 +205,6 @@ stop
 }
 }
 
-actor GeeAmmoActivate : CustomInventory
-{
-States
-{
-Pickup:
-TNT1 A 0
-TNT1 A 1 A_SpawnItemEX("GeeAmmoWatcher",0,0,20)
-stop
-}
-}
-
 actor GeeAmmoWatcher
 {
 Height 0

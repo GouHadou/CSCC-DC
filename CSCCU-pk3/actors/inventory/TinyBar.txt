@@ -35,7 +35,7 @@ actor TinyBar
 +NOCLIP
 +CLIENTSIDEONLY
 +FORCEXYBILLBOARD
-visibletoplayerclass Pharma //, Healer2 , Healer3
+visibletoplayerclass Pharma, GeeCSCC// , Healer3
 Speed 0
 radius 5
 height 5
