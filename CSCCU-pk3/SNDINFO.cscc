@@ -137,6 +137,7 @@ weapon/warp	DSITMBK
 
 //Messatsu
 weapon/supermove SUPACT
+weapon/parry PARRY
 
 $playersound	MessClass	male	*death		MEGADEAT
 $playersound	MessClass	male	*xdeath		MEGADEAT

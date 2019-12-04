@@ -1,9 +1,6 @@
-//#include "zcommon.acs"
-
-#include "wepacs.acs"
 
 #library "8BDMLIB"
-
+#include "wepacs.acs"
 
 
 #DEFINE CSACS_COPYCOPYWEP 137
@@ -1912,3 +1909,169 @@ if(GetCvar("lastmanstanding")==1||GetCvar("teamlms")==1||GetCvar("invasion")==1)
 }
 terminate;
 }
+
+//Messatsu Scripts
+Script "MessParryCheck" (void)
+{
+int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
+int InputOldButtons = InputButtons;
+while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
+	{
+	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1 )
+		{
+		If(!CheckInventory("NoParry")){GiveInventory("MessParryFlag", 1);}
+		}
+	Delay(1);
+	InputOldButtons = InputButtons;
+	}
+
+}
+Script "DemonFlipCheck" (void)
+{
+int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
+int InputOldButtons = InputButtons;
+while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("DemonFlipActive"))
+	{
+	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_ATTACK) == 1 )
+		{
+		GiveInventory("MessPalm", 1);
+		terminate;
+		}
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_ALTATTACK) == 1 )
+		{
+		GiveInventory("MessKick", 1);
+		terminate;
+		}
+	Delay(1);
+	InputOldButtons = InputButtons;
+	}
+
+}
+
+
+Script "MessParryHealth" (int CurrentHealth)
+{
+int PlayerTID = ActivatorTID();
+
+Do
+	{
+	If(CurrentHealth < GetActorProperty(PlayerTID, APROP_HEALTH)){CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);}
+	If(CurrentHealth > GetActorProperty(PlayerTID, APROP_HEALTH))
+		{
+		GiveInventory("MessParrySuccess", 1);
+		HealThing(CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH));
+		}
+	Delay(1);
+	}
+While(CheckInventory("MessParry") || CheckInventory("ParryBlock"));
+}
+
+Script "EnemyProximity" (int distance)
+{
+int ReturnValue = 0;
+int PlayerTID = ActivatorTID();
+int CurrentTeam = GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM);
+For(int i = 0; i < 64; i++)
+	{
+	If(PlayerInGame(i))
+		{
+		If(i==PlayerNumber()){continue;}
+		Switch(ACS_ExecuteWithResult(975, 1))
+			{
+			Case 0:
+			If(XYZDistance(PlayerTID, i+1000) < distance)
+				{
+				If(CheckSight(PlayerTID, i+1000, 0))
+					{
+					ReturnValue=1; 
+					i=64;
+					GiveInventory("MessMeterOkay", 1);
+					}
+				Else
+					{
+					If(CheckInventory("MessMeterOkay"))
+						{
+						ReturnValue=1; 
+						i=64;
+						}
+					}
+				}
+			break;
+			Case 1:
+			If(CurrentTeam == GetPlayerInfo(i, PLAYERINFO_TEAM)){continue;}
+			If(XYZDistance(PlayerTID, i+1000) < distance)
+				{
+				If(CheckSight(PlayerTID, i+1000, 0))
+					{
+					ReturnValue=1; 
+					i=64;
+					GiveInventory("MessMeterOkay", 1);
+					}
+				Else
+					{
+					If(CheckInventory("MessMeterOkay"))
+						{
+						ReturnValue=1; 
+						i=64;
+						}
+					}
+				}
+			break;
+			}
+		}
+	}
+SetResultValue(ReturnValue);
+}
+
+Script "MessDamageAmmo" (void)
+{
+Delay(1);
+int PlayerTID = ActivatorTID();
+int CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+
+while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckInventory("MessatsuWep"))
+	{
+	While(CurrentHealth <= GetActorProperty(PlayerTID, APROP_HEALTH))
+		{
+		Delay(1);
+		If(GetActorProperty(PlayerTID, APROP_HEALTH) > CurrentHealth)
+			{
+			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+			}
+		}
+	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
+		{
+		GiveActorInventory(PlayerTID, "MessatsuAmmo", (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH))/3);
+		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+		}
+	}
+}
+//End Messatsu Scripts
+
+//Common ACS Scripts
+script "HitKnockBack" (int force)
+{
+int pusher = ACS_NamedExecuteWithResult("GetTarget", AAPTR_TARGET);
+int Vang = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActorY(pusher)) >> 8;
+ThrustThing(Vang, force, 1, 0);
+}
+
+Script "GetTarget" (int Target)
+{
+SetActivator(0, Target);
+int ReturnTID = ActivatorTID();
+SetResultValue(ReturnTID);
+}
+
+Function int CSCCButtonCheck (int NewButtons, int OldButtons, int Which)
+{
+	int ButtonNow = NewButtons & Which;
+	int ButtonOld = OldButtons & Which;
+	If(ButtonNow > ButtonOld){Return 1;}
+	If(ButtonNow < ButtonOld){Return 2;}
+	If(ButtonNow > 0 &&  ButtonOld > 0){Return 3;}
+	Return 0;
+}
+//End Common Scripts

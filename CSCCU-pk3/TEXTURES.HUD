@@ -47,21 +47,23 @@ sprite HADOA0, 320, 200
 {  XScale 1.0 YScale 1.0 Offset 0,0
    Patch BUSTB0, 184, 94 {Translation "192:192=93:93", "198:198=189:189"} 
 }
-
 sprite HADOB0, 320, 200
 {  XScale 1.0 YScale 1.0 Offset 0,0
    Patch BUSTC0, 184, 98 {Translation "192:192=93:93", "198:198=189:189"} 
 }
-
 sprite HADOC0, 320, 200
 {  XScale 1.0 YScale 1.0 Offset 0,0
    Patch BUSTD0, 188, 102 {Translation "192:192=93:93", "198:198=189:189"} 
 }
-
 sprite HADOD0, 320, 200
 {  XScale 1.0 YScale 1.0 Offset 0,0
    Patch BUSTB0, 184, 94 {Translation "192:192=93:93", "198:198=189:189", "244:247=42:42"} 
 }
+sprite HADOE0, 320, 200
+{  XScale 1.0 YScale 1.0 Offset 0,0
+   Patch BUSTB0, 184, 94 {Translation "192:192=93:93", "198:198=189:189", "244:247=4:4"} 
+}
+
 
 //JaxOf
 sprite JAX7A0, 148, 80 {Offset 30, -103 Patch HSPRE0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
