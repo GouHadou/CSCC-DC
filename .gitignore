@@ -1,5 +1,5 @@
 # Compiled pk3 files and anything in the distribution folder.
 dist/*.pk3
 csccu-pk3/acs/*.o
-/archive.properties
+archive.properties
 **/.DS_Store
