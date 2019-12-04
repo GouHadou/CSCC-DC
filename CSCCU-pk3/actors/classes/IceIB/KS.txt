@@ -17,10 +17,10 @@ player.startitem "IceMagicX"
 player.startitem "IceMageItem"
 player.forwardmove 0.45, 0.45
 player.sidemove 0.4, 0.4 
-player.jumpz 15
-player.maxhealth 200
-health 200
-player.startitem "HardHealthBar"
+player.jumpz 10
+player.maxhealth 125
+health 125
+//player.startitem "HardHealthBar"
 States
 {
 Spawn:
@@ -209,6 +209,15 @@ IMHA AAAAAAAA 5
 TNT1 A 0 A_Refire
 Goto Ready+1
 }
+}
+
+
+Actor IceMageMagicProtect : PowerProtection
+{
+inventory.amount 1
+powerup.duration 7
+DamageFactor "IceFreezeWave", 0
+DamageFactor "Icicle", 0
 }
 
 actor IceMagicX : IceMagic
