@@ -1748,10 +1748,6 @@ script 775 (int weap)
 	}
 }
 
-
-#library "BUTTONS"
-
-
 int buttons[64];
 script 667 (void)
 {
