@@ -236,6 +236,7 @@ Sprite CGHUD0, 320, 200
 }
 
 //Insane Pharaohman
+/*
 graphic EXECB0, 30, 30
 {
    XScale 2.0
@@ -284,8 +285,9 @@ graphic SNCIT0, 30, 30
    YScale 2.0
    Patch SNCIA0, 0, 0
 }
-
+*/
 //Hikari
+/*
 graphic HIPUNCH, 30, 30
 {
    XScale 2.0
@@ -305,8 +307,9 @@ sprite HICHC0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:19
 sprite HICHD0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:192=76:76", "198:198=241:241"}}
 sprite HICHE0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=76:76", "198:198=241:241", "0:2=175:175", "5:8=175:175", "243:247=175:175"}}
 sprite HICHF0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=76:76", "198:198=241:241", "0:2=4:4", "5:8=4:4", "243:247=4:4"}}
-
+*/
 // =[BullGator]=
+/*
 sprite B1GAA0,120,100{Offset -184,-94 Patch B_HNA0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=218:218", "202:202=215:215", "119:119=130:130", "248:248=130:130", "195:195=218:218"}}
 sprite B1GAB0,140,116{Offset -184,-98 Patch B_HNB0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=218:218", "202:202=215:215", "119:119=130:130", "248:248=130:130", "195:195=218:218"}}
 sprite B1GAC0,144,112{Offset -187,-102 Patch B_HNC0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=218:218", "202:202=215:215", "119:119=130:130", "248:248=130:130", "195:195=218:218"}}
@@ -335,10 +338,11 @@ graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL2,0,0}
 graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL4,0,0}
 graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL6,0,0}
 // =[=========]=
-
+*/
 //Pistonman
 
 //Default
+/*
 Sprite PST1A0, 136, 116 {Offset -190, -94  Patch PSTNA0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
 Sprite PST1B0, 136, 116 {Offset -180, -85  Patch PSTNB0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
 Sprite PST1C0, 136, 116 {Offset -170, -76  Patch PSTNC0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
@@ -387,10 +391,11 @@ Sprite PST5E0, 132, 112 {Offset 6, -98  Patch PSTNE0, 0, 0 {Translation "192:192
 Sprite PST5F0, 132, 112 {Offset -5, -89  Patch PSTNF0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 Sprite PST5G0, 132, 112 {Offset -14, -80  Patch PSTNG0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 Sprite PST5H0, 132, 112 {Offset -14, -80  Patch PSTNH0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
-
+*/
 
 
 //[+]==========|Aegis|==========[+]
+/*
 //base
 Sprite "SHLDD0", 120, 100{Offset -184, -94 Patch "SHLBD0", 0, 0{Translation "198:198=103:103", "193:193=196:196"}}
 Sprite "SHLDE0", 140, 116{Offset -184, -96 Patch "SHLBE0", 0, 0{Translation "198:198=103:103", "193:193=196:196"}}
@@ -422,19 +427,23 @@ Sprite "SHLOF0", 144, 112{Offset -187, -102 Patch "SHLBF0", 0, 0{Translation "19
 Sprite "SHLOJ0", 270, 150 {Offset 14, -44 Patch "SHLBJ0", 0, 0{Translation "193:193=229:229", "198:198=232:232"}}
 Sprite "SHLOK0", 340, 132{Offset 60, -48 Patch "SHLBK0", 0, 0{Translation "193:193=229:229", "198:198=232:232"}}
 Sprite "SHLOL0", 416, 100 {Offset 110, -88 Patch "SHLBL0", 0, -1 {Translation "193:193=229:229", "198:198=232:232"}}
+*/
 
 //Dark Splitter
+/*
 Sprite DSCWE0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=236:236", "198:198=62:62"}}
 Sprite DSCWF0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=236:236", "198:198=62:62"}}
 Sprite DSCWG0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=236:236", "198:198=62:62"}}
 Sprite DSCWH0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=236:236", "198:198=62:62", "0:2=4:4", "5:8=4:4", "243:247=4:4"}}
-
+*/
 //Tank opp
+/*
 sprite T1BSA0,120,100{Offset -184,-94 Patch B_HNA0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
 sprite T1BSB0,140,116{Offset -184,-98 Patch B_HNB0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
 sprite T1BSC0,144,112{Offset -187,-102 Patch B_HNC0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
-
+*/
 //Snail Breeder
+/*
 sprite SNLBA0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 //throw
 sprite SNLBB0, 308, 204 {Offset -272, 46 Patch HSPRF0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
@@ -451,10 +460,11 @@ sprite SNLBK0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:1
 sprite BLMUA0, 320, 200 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 sprite BLMUB0, 320, 200 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 sprite BLMUC0, 320, 200 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
-
+*/
 
 
 //ZenTrainer HUD
+/*
 Sprite ZNTNA0, 148, 80 {OffSet -202, -103 Patch ZNTRA0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
 Sprite ZNTNB0, 115, 96 {OffSet -210, -96 Patch ZNTRB0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
 Sprite ZNTNC0, 115, 96 {OffSet -190, -82 Patch ZNTRC0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
@@ -480,8 +490,9 @@ Graphic "ZTBF04",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF04",0,0}
 Graphic "ZTBF05",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF05",0,0}
 Graphic "ZTBF06",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF06",0,0}
 Graphic "ZTBF07",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF07",0,0}
-
+*/
 //Orbital Missile copywep (secretly wave burner bass colors)
+/*
 sprite ORBDA0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}
 sprite ORBDB0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}
 sprite ORBDC0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}
@@ -537,3 +548,4 @@ sprite EMCEC0, 320, 200
 {  XScale 1.0 YScale 1.0 Offset 0,0
    Patch BUSTD0, 188, 102 {Translation "192:192=232:232", "198:198=228:228"} 
 }
+*/
