@@ -1,6 +1,3 @@
-#library "wepacs"
-
-// [Mike] Scripts file for changing colors based on your weapon
 #include "zcommon.acs"// [Lego] Always include this before 8bdmlib
 #include "8bdmlib.acs"// included with MM8BDM under acs_source.
 					  // See 8bdmlib.acs for details.
