@@ -1,0 +1,117 @@
+actor Freon : ClassBaseCSCC
+{
++NOSKIN
+player.displayname "Freon"
+player.soundclass "megaman"
+player.startitem "FreonWeapon"
+player.startitem "FreonWeapon2"
+player.startitem "InvisTrigger"
+player.startitem "IceShotAmmo", 28
+player.startitem "IceTrapCount", 60
+player.forwardmove 0.6, 0.6
+player.sidemove 0.57, 0.57
+player.jumpz 14
+//player.startitem "CanPickAmmo"
+//player.startitem "CanCopyWeapons"
+//player.startitem "CanUseItems"
+player.maxhealth 110
+health 110
+damagefactor "Normal", 0.9
+//player.startitem "DuoHealthBar"
+States
+{
+Spawn:
+FREO A 0
+FREO B 1
+FREO A 0 A_JumpIfInventory("InvisFlag",1,"Invis")
+FREO A 1
+Goto Spawn+2
+See:
+FREO B 0 A_JumpIfInventory("IceShotFlag",1,"IceShot")
+FREO B 0 A_JumpIfInventory("IceTrapFlag",1,"IceTrap")
+FREO BCDE 5
+Goto Spawn+1
+Missile:
+FREO A 1
+FREO F 0 A_JumpIfInventory("IceShotFlag",1,"IceShot")
+FREO F 0 A_JumpIfInventory("IceTrapFlag",1,"IceTrap")
+continue:
+FREO F 5 
+FREO G 4 
+goto Spawn+2
+IceShot:
+FREO JKK 3
+goto Spawn+2
+IceTrap:
+FREO LLLLLLMNNNLL 2
+goto Spawn+2
+Invis:
+FREO L 9
+goto Spawn+2
+Pain.CopyAlt:
+Pain.CopyMain:
+FREO H 0 A_SpawnItemEx("FreonCopyHitMain",1)
+goto pain+1
+}
+}
+
+
+actor FreonCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("FreonMorphItem",1)
+stop
+}
+}
+
+actor FreonCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("FreonCopyPickupMain",1)
+stop
+}
+}
+
+
+actor FreonMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 40)
+stop
+}
+}
+
+actor FreonMorph : Freon
+{
++NOSKIN
+player.morphweapon "FreonWeapon"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

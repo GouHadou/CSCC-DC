@@ -1,0 +1,95 @@
+[IntroStrings]
+"Hello all."
+"Afternoon, server."
+"Mornin' gents."
+"Sup?"
+"Finally able to connect."
+"Hey."
+
+[FragStrings]
+"Ohhh yeah!"
+"Take this! Take that!"
+"Die, you SOB! Die!"
+"Tango down!"
+"Another one bites the dust!"
+"Take this, over-weaning rogue!"
+"Boom, baby!"
+
+[KilledStrings]
+"Oh, you think so, do you?"
+"Hold your fire!"
+"Aiyeee carumbia!"
+"Ooh that smarts..."
+"Hilfe, Medic!"
+"What did I ever do to you?"
+"Blast it!"
+"Damn crits..."
+
+[RoamingStrings]
+"lol"
+"This server needs more players."
+"Crap I think I got lost again."
+"Can we play my map after this?"
+"You should try out my mod."
+"Soo many MegaMans..."
+"I have to brb."
+"I kinda like this music."
+"Doodee doodee doo..."
+"What is this?"
+"I'm getting hungry."
+"What?"
+"I'm not bored. I have plenty I could be doing."
+"I hope I'm not stuck on a ledge like those stupid bots."
+
+[RareRoamingStrings]
+"/me is afk"
+
+[DemoralizedStrings]
+"This was not in my plans!"
+"Stupid! Stupid! Stupid! Why did I do that?"
+"Bummer! That's bogus!"
+"No way!"
+"Failure..."
+
+[LosingRoamingStrings]
+"I'm just a big ol losing loser."
+"Mr. Losy Losington."
+"Loserville. Yep, that's me!"
+"I'm a loser, baby... So why don't you kill me? Oh, wait, you did."
+"Why is everyone ignoring me?"
+"nextmap"
+"Grrr this sucks"
+"Winning fail"
+"My health is dangerously low!"
+"oooook..."
+
+[EnragedStrings]
+"Why can't you just be a good little boy and die?"
+"Double you tee eff, mate?"
+"Ok, now I'm pissed off!"
+"Rrrrrg!"
+"What the fuck, man?"
+"Hello. My name is TheBladeRoden. You killed my extra lives. Prepare to die."
+"You son of a biscuit-eating bulldog!"
+
+[WinStrings]
+"Hey I actually won."
+"Victory!"
+"I'm the winner!"
+"A winner is me!"
+"Victory is mine!"
+"Success!"
+"Yipeeee! I did it!"
+"Duh, winning!"
+
+[LoseStrings]
+"That's BS."
+"I blame the lag."
+"Mission failure..."
+"Game...over..."
+"I wasn't powerful enough! I just wasn't powerful enough!"
+"That...is why I fail"
+"YOU... CURSE YOU $player_random_notself,... CURSE YOU $player_random_notself... CURSE YOU $player_inlead!"
+
+[RollComment]
+"/me says nothing to TheBladeRoden"

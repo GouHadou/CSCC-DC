@@ -1,0 +1,167 @@
+actor HumanDestroyer : ClassBaseCSCC 
+{
+player.displayname "Human Destroyer"
+player.soundclass "megaman"
+player.forwardmove 0.7, 0.7
+player.sidemove 0.68, 0.68
+player.jumpz 0
+//+FLOORHUGGER
+player.startitem "HDClassWep1"
+player.startitem "HDAmmo1"
+player.startitem "HDClassWep2"
+player.startitem "HDAmmo2", 14
+//player.startitem "DuoHealthBar"
+player.maxhealth 110
+health 110
+//damagefactor "Normal", 0.9
+MaxStepHeight 9999
+MaxDropOffHeight 9999
+Gravity 0.8
+States
+{
+Spawn:
+SKUL A 0
+SKUL B 1 
+SKUL A 1
+Goto Spawn+2
+See:
+SKUL BCDE 5
+Goto Spawn
+Missile:
+SKUL F 5
+SKUL G 4
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+SKUL H 0 A_SpawnItemEx("HumanDestroyerCopyHitMain",1)
+goto pain+1
+Pain.Wind:
+Pain.GravThrow:
+SKUL H 0
+goto Pain
+PainFix:
+SKUL H 0
+goto PainFrames
+DeathFix:
+SKUL H 0
+goto DeathFrames
+Death.Drowning:
+SKUL H 0
+Goto Death.Falling
+IceDeathFix:
+BREV H 0
+goto IceDeathFrames
+Pain.WilyIce:
+SKUL H 0
+goto WilyIceFrames
+TheEnd:
+SKUL G 4
+loop
+CreditWalk:
+SKUL BCDE 8
+loop
+CreditRun:
+SKUL BCDE 5
+loop
+Death.WindStorm:
+Death.GravityHold:
+SKUL H 0 SetPlayerProperty(0, 0, 4)
+SKUL H 0 A_ChangeFlag("NOINTERACTION", 1)
+SKUL H 0 A_TakeInventory("WeaponCharge",999)
+SKUL H 0 A_NoBlocking
+SKUL H 0 A_TakeInventory("CutterFlag",999)
+SKUL H 0 A_GiveInventory("IsDead",1)
+SKUL H 0 A_Stop
+SKUL H 0 A_GiveToTarget("KilledMeStock",1)
+SKUL H 1 A_GiveToTarget("KilledMe",1)
+SKUL H 0 ACS_ExecuteAlways(999,0,0)
+SKUL H 0 SetPlayerProperty(0, 0, 4)
+RiseMyMegaman:
+SKUL H 1 ThrustThingZ(0,10,0,1)
+SKUL H 0 A_JumpIf(ceilingz-z<64, "ExplodeNow")
+SKUL H 0 A_GiveInventory("Cutterflag", 1)
+SKUL H 0 A_JumpIfInventory("CutterFlag", 35, "ExplodeNow")
+Goto RiseMyMegaman
+ExplodeNow:
+SKUL H 0 A_Stop
+SKUL H 0 A_PlayerScream
+SKUL H 0 A_GiveInventory("CutterFlag",999)
+SKUL H 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 0)
+SKUL Z 1 A_CheckPlayerDone
+wait
+Death.Backstab:
+SKUL H 0 SetPlayerProperty(0, 0, 4)
+SKUL H 0 A_TakeInventory("PharaohCharge",999)   
+SKUL H 0 A_NoBlocking
+SKUL H 0 A_GiveInventory("CutterFlag",999)
+SKUL H 0 A_GiveInventory("IsDead",1)
+SKUL H 0 A_Stop
+SKUL H 0 A_GiveToTarget("KilledMeStock",1)
+SKUL H 1 A_GiveToTarget("KilledMe",1)
+SKUL H 1 A_GiveToTarget("ClearDisguise",1)
+SKUL H 0 A_GiveToTarget("DisguiseOn",1)
+SKUL H 0 A_GiveToTarget("HDDisguise",1)
+SKUL H 0 ACS_ExecuteAlways(775,0,29)
+goto BackstabFrames
+}
+}
+
+actor HumanDestroyerCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("HumanDestroyerMorphItem",1)
+stop
+}
+}
+
+actor HumanDestroyerCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("HumanDestroyerCopyPickupMain",1)
+stop
+}
+}
+
+
+actor HumanDestroyerMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 31)
+stop
+}
+}
+
+actor HumanDestroyerMorph : HumanDestroyer
+{
++NOSKIN
+player.morphweapon "HDClassWep1"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

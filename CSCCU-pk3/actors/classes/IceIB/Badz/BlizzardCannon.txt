@@ -1,0 +1,59 @@
+actor BlizzardWaveWep : MegaBuster
+{
+Weapon.AmmoUse 2
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o couldn't stop %k's Blizzard Wave."
+Inventory.Pickupmessage "Power up! Blizzard Wave!"
+weapon.ammotype "BlizzardWaveAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
+inventory.icon "BWAVI"
+Scale 2.0
+States
+{
+Spawn:
+BWAV K 1
+loop
+Ready:
+BWAV H 0 ACS_ExecuteAlways(998,0,281)
+BWAV H 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+BWAV H 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BWAV H 1 A_Raise
+Loop
+Fire:
+BWAV H 0 A_JumpIfNoAmmo("NoAmmo")
+BWAV H 0 A_PlaySoundEx("weapon/mirrordeflect2","Weapon")
+BWAV H 0 A_FireCustomMissile("CopyBlizzardWave",0,1,8,0)
+BWAV JIH 5
+BWAV H 0 A_Refire
+Goto Ready+1
+NoAmmo:
+BWAV H 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor BlizzardWaveAmmo : Ammo 
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+
+Actor CopyBlizzardWave : BlizzardWaveProjectile
+{
+Damage (7)
+States
+{
+Spawn:
+FCRA D 3
+FCRA D 0 A_SpawnItemEx("BlizzardBit",random(-100,100),random(-100,100),random(-30,30),momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+loop
+}
+}

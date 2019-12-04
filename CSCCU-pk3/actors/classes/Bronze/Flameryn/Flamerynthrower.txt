@@ -1,0 +1,846 @@
+actor FlamerynthrowerBoss : MegaBuster
+{
+weapon.ammotype1 "FlamerynAmmo"
+Weapon.AmmoUse1 1
+Weapon.AmmoGive1 50
+
+weapon.ammotype2 "OilSpillAmmo"
+Weapon.AmmoUse2 1
+Weapon.AmmoGive2 25
+
+Weapon.SlotNumber 1
+Inventory.Pickupmessage "Pineapple doesn't go on pizza!"
+Obituary "%o was killed by %k."
+Tag "Flame Thrower"
+//Dropitem ""
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Ready:
+FMHU X 0 ACS_ExecuteAlways(998,0,993)
+FMHU X 2 A_WeaponReady
+FMHU X 0 A_GiveInventory("OilSpillAmmo",1)
+FMHU X 3 A_WeaponReady
+FMHU X 0 A_GiveInventory("FlamerynAmmo",1)
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+FMHU X 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+FMHU X 1 A_Raise
+Loop
+
+Fire:
+FMHU X 0 A_JumpIfNoAmmo("NoAmmo")
+FMHU Y 2 
+Fire2:
+FMHU X 0 A_JumpIfNoAmmo("NoAmmo")
+FMHU X 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+FMHU Z 2 A_GiveInventory("HeatSprayColors")
+FMHU X 0 A_Refire("Fire2")
+FMHU ZZYX 2
+Goto Ready+1
+
+Altfire:
+FMHU X 0 A_JumpIfInventory("OilSpillAmmo",1,"OilSpill")
+goto NoAmmo
+OilSpill:
+FMHU X 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+FMHU X 0 A_TakeInventory("OilSpillAmmo",1)
+FMHU X 0 A_GiveInventory("OilSpillColors")
+FMHU ZY 3
+FMHU X 0 A_Refire
+Goto Ready+1
+
+NoAmmo:
+FMHU X 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+//Inventory and Flags
+actor FlamerynAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 50
++INVENTORY.IGNORESKILL
+}
+
+actor OilSpillAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 25
++INVENTORY.IGNORESKILL
+}
+
+//Mainfire
+actor HeatSprayColors : FlamerynColorBase
+{
+States
+{
+Default:
+TNT1 A 0 A_FireCustomMissile("HeatSpray",0,1,8,0)
+stop
+LightFire:
+TNT1 A 0 A_FireCustomMissile("HeatSprayB",0,1,8,0)
+stop
+WilyFire:
+TNT1 A 0 A_FireCustomMissile("HeatSprayR",0,1,8,0)
+stop
+CossackFire:
+TNT1 A 0 A_FireCustomMissile("HeatSprayG",0,1,8,0)
+stop
+KingFire:
+TNT1 A 0 A_FireCustomMissile("HeatSprayY",0,1,8,0)
+stop
+}
+}
+
+actor HeatSpray : FastProjectile
+{
+PROJECTILE
+Obituary "%o was scorched by %k's \cgHeat Spray\c-."
+damagetype "Burner"  //Ignition
++NOINTERACTION
++BLOODSPLATTER
++THRUGHOST
++DONTBLAST
++DONTREFLECT
++MTHRUSPECIES
+//+FORCEPAIN
+RenderStyle "add"
+Radius 10
+Height 12
+damage (5)
+speed 74
+scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 0 A_SpawnItemEx("HeatSprayFX",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION) 
+TNT1 A 0 A_SpawnItemEx("HeatSpray2",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+}
+}
+
+actor HeatSprayB : HeatSpray
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 0 A_SpawnItemEx("HeatSprayFXB",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION) 
+TNT1 A 0 A_SpawnItemEx("HeatSpray2",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+}
+}
+
+actor HeatSprayR : HeatSpray
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 0 A_SpawnItemEx("HeatSprayFXR",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION) 
+TNT1 A 0 A_SpawnItemEx("HeatSpray2",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+}
+}
+
+actor HeatSprayG : HeatSpray
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 0 A_SpawnItemEx("HeatSprayFXG",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION) 
+TNT1 A 0 A_SpawnItemEx("HeatSpray2",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+}
+}
+
+actor HeatSprayY : HeatSpray
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 0 A_SpawnItemEx("HeatSprayFXY",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION) 
+TNT1 A 0 A_SpawnItemEx("HeatSpray2",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+}
+}
+
+actor HeatSpray2 : HeatSpray
+{
+Radius 16
+Height 12
+damage (4)
+speed 176
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("HeatSpray3",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION) 
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+}
+}
+
+actor HeatSpray3 : HeatSpray
+{
+Radius 28
+Height 12
+damage (3)
+speed 285
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+}
+}
+
+actor HeatSprayFX
+{
+PROJECTILE
+damage (0)
+RenderStyle "add"
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
+reactiontime 1
+height 2
+Radius 2
+scale 2
+Alpha 0.2
+States
+{
+Spawn:
+TNT1 A 0
+BRNF ABCDEFGH 1 A_Fadein(0.1)
+stop
+}
+}
+
+actor HeatSprayFXB : HeatSprayFX{translation "228:248=205:205", "227:227=74:74"}
+actor HeatSprayFXR : HeatSprayFX{translation "228:248=171:171", "227:227=41:41"}
+actor HeatSprayFXG : HeatSprayFX{translation "228:248=104:104", "227:227=128:128"}
+actor HeatSprayFXY : HeatSprayFX{translation "228:248=229:229", "227:227=232:232"}
+
+/*actor Flamerynthrower
+{
+PROJECTILE
+damagetype "Flameryn"
+Obituary "%o was burnt by %k's Flamethrower."
+Speed 25
+Damage (5)
+Radius 22
+Height 5
+scale 0.75
+reactiontime 10
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,8,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,16,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,-8,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,-16,0)
+FIRE A 1 A_Countdown
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,8,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,16,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,-8,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,-16,0)
+FIRE B 1 A_Countdown
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,8,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,16,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,-8,0)
+TNT1 A 0 A_SpawnItemEx("FlamerynthrowerFX",0,-16,0)
+FIRE C 1 A_Countdown
+loop
+Death:
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+stop
+}
+}
+
+actor FlamerynthrowerFX : GeminiTrail
+{
+alpha 0.75
+scale 0.5
+States
+{
+Spawn:
+TNT1 A 0
+FIRE ABC 1 A_Fadeout
+stop
+}
+}*/
+
+//Altfire
+actor OilSpillColors : FlamerynColorBase
+{
+States
+{
+Default:
+TNT1 A 0 A_FireCustomMissile("OilSpill",0,0,8,0)
+stop
+LightFire:
+TNT1 A 0 A_FireCustomMissile("OilSpillB",0,0,8,0)
+stop
+WilyFire:
+TNT1 A 0 A_FireCustomMissile("OilSpillR",0,0,8,0)
+stop
+CossackFire:
+TNT1 A 0 A_FireCustomMissile("OilSpillG",0,0,8,0)
+stop
+KingFire:
+TNT1 A 0 A_FireCustomMissile("OilSpillY",0,0,8,0)
+stop
+}
+}
+
+actor OilSpill
+{
+PROJECTILE
+translation "200:207=78:78", "199:199=0:0"
+Obituary "%o slipped on %k's Oil Spill."
+damagetype "OilSpill"
+Gravity 2.0
+Damage (10)
+speed 70
+Height 10
+Radius 10
+Scale 2
+States
+{
+Spawn:
+TNT1 A 0
+OLSP LL 1 A_CheckFloor("Death")
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 0 A_ScaleVelocity(0.5)
+OLSP L 1 A_CheckFloor("Death")
+goto Spawn+5
+Crash:
+XDeath:
+OLSP L 1
+stop
+Death:
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 0 A_JumpIf(z-floorz<=0,"Death2")
+OLSP L 1 A_GiveInventory("CutterFlag", 1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag", 175, "XDeath")
+loop
+Death2:
+TNT1 A 0 A_Explode(1,25,0)
+OLSP L 1 A_SpawnItemEx("OilSpillBlob",0,0,0)
+stop
+}
+}
+
+actor OilSpillB : OilSpill
+{
+translation "200:207=74:74", "199:199=0:0"
+States
+{
+Death2:
+TNT1 A 0 A_Explode(1,25,0)
+OLSP L 1 A_SpawnItemEx("OilSpillBlobB",0,0,0)
+stop
+}
+}
+
+actor OilSpillR : OilSpill
+{
+translation "200:207=41:41", "199:199=0:0"
+States
+{
+Death2:
+TNT1 A 0 A_Explode(1,25,0)
+OLSP L 1 A_SpawnItemEx("OilSpillBlobR",0,0,0)
+stop
+}
+}
+
+actor OilSpillG : OilSpill
+{
+translation "200:207=128:128", "199:199=0:0"
+States
+{
+Death2:
+TNT1 A 0 A_Explode(1,25,0)
+OLSP L 1 A_SpawnItemEx("OilSpillBlobG",0,0,0)
+stop
+}
+}
+
+actor OilSpillY : OilSpill
+{
+translation "200:207=232:232", "199:199=0:0"
+States
+{
+Death2:
+TNT1 A 0 A_Explode(1,25,0)
+OLSP L 1 A_SpawnItemEx("OilSpillBlobY",0,0,0)
+stop
+}
+}
+
+Actor OilSpillBlob
+{
+translation "200:207=78:78", "199:199=0:0"
++MISSILE
+//+THRUACTORS
++NODAMAGETHRUST
++NOBLOOD
++DONTSPLASH
++FLOORHUGGER
++NOTARGETSWITCH
++MTHRUSPECIES
+species "OilSpill"
+damagetype "OilSpill"
+Damage (0)
+Height 10
+Radius 8
+scale 2.5
+mass 99999
+reactiontime 175//250
+painchance 256
+damagefactor "Normal", 0
+damagefactor "OilSpill", 1.0
+damagefactor "Burner", 1.0
+damagefactor "Ignition", 1.0
+states
+{
+Spawn:
+TNT1 A 0
+OLSP M 1
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
+Spawn2:
+OLSP M 1 A_Stop
+TNT1 A 0 A_Countdown
+loop
+Death:
+TNT1 A 0
+stop
+
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP MMM 1 A_SpawnItemEx("OilSpillFire",random(-10,10),random(-10,10),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",35,"IgniteEnd")
+loop
+IgniteEnd:
+TNT1 A 0 A_Jump(256,"Death")
+stop
+
+Pain.OilSpill:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_ChangeFlag("NOCLIP",1)
+TNT1 A 0 A_SpawnItemEx("OilSpillBlob2",0,0,0,0,0,0,0)
+TNT1 A 1 A_PlaySoundEx("misc/aciddrip2","Weapon")
+goto Death
+}
+}
+
+Actor OilSpillBlobB : OilSpillBlob
+{
+translation "200:207=74:74", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP MMM 1 A_SpawnItemEx("OilSpillFireB",random(-10,10),random(-10,10),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",35,"IgniteEnd")
+loop
+IgniteEnd:
+TNT1 A 0 A_Jump(256,"Death")
+stop
+Pain.OilSpill:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_ChangeFlag("NOCLIP",1)
+TNT1 A 0 A_SpawnItemEx("OilSpillBlob2B",0,0,0,0,0,0,0)
+TNT1 A 1 A_PlaySoundEx("misc/aciddrip2","Weapon")
+goto Death
+}
+}
+
+Actor OilSpillBlobR : OilSpillBlob
+{
+translation "200:207=41:41", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP MMM 1 A_SpawnItemEx("OilSpillFireR",random(-10,10),random(-10,10),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",35,"IgniteEnd")
+loop
+IgniteEnd:
+TNT1 A 0 A_Jump(256,"Death")
+stop
+Pain.OilSpill:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_ChangeFlag("NOCLIP",1)
+TNT1 A 0 A_SpawnItemEx("OilSpillBlob2R",0,0,0,0,0,0,0)
+TNT1 A 1 A_PlaySoundEx("misc/aciddrip2","Weapon")
+goto Death
+}
+}
+
+Actor OilSpillBlobG : OilSpillBlob
+{
+translation "200:207=128:128", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP MMM 1 A_SpawnItemEx("OilSpillFireG",random(-10,10),random(-10,10),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",35,"IgniteEnd")
+loop
+IgniteEnd:
+TNT1 A 0 A_Jump(256,"Death")
+stop
+Pain.OilSpill:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_ChangeFlag("NOCLIP",1)
+TNT1 A 0 A_SpawnItemEx("OilSpillBlob2G",0,0,0,0,0,0,0)
+TNT1 A 1 A_PlaySoundEx("misc/aciddrip2","Weapon")
+goto Death
+}
+}
+
+Actor OilSpillBlobY : OilSpillBlob
+{
+translation "200:207=232:232", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP MMM 1 A_SpawnItemEx("OilSpillFireY",random(-10,10),random(-10,10),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",35,"IgniteEnd")
+loop
+IgniteEnd:
+TNT1 A 0 A_Jump(256,"Death")
+stop
+Pain.OilSpill:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_ChangeFlag("NOCLIP",1)
+TNT1 A 0 A_SpawnItemEx("OilSpillBlob2Y",0,0,0,0,0,0,0)
+TNT1 A 1 A_PlaySoundEx("misc/aciddrip2","Weapon")
+goto Death
+}
+}
+
+Actor OilSpillBlob2 : OilSpillBlob
+{
++SHOOTABLE
++THRUSPECIES
+Height 10
+Radius 10
+damagefactor "OilSpill", 0.0
+states
+{
+Spawn:
+TNT1 A 0
+OLSP N 1
+TNT1 A 0 A_Countdown
+loop
+
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP N 1 A_SpawnItemEx("OilSpillFire",random(-20,20),random(-20,20),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",140,"IgniteEnd")
+loop
+}
+}
+
+Actor OilSpillBlob2B : OilSpillBlob2
+{
+translation "200:207=74:74", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP N 1 A_SpawnItemEx("OilSpillFireB",random(-20,20),random(-20,20),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",140,"IgniteEnd")
+loop
+}
+}
+
+Actor OilSpillBlob2R : OilSpillBlob2
+{
+translation "200:207=41:41", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP N 1 A_SpawnItemEx("OilSpillFireR",random(-20,20),random(-20,20),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",140,"IgniteEnd")
+loop
+}
+}
+
+Actor OilSpillBlob2G : OilSpillBlob2
+{
+translation "200:207=128:128", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP N 1 A_SpawnItemEx("OilSpillFireG",random(-20,20),random(-20,20),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",140,"IgniteEnd")
+loop
+}
+}
+
+Actor OilSpillBlob2Y : OilSpillBlob2
+{
+translation "200:207=232:232", "199:199=0:0"
+states
+{
+Pain.Ignition:
+Pain.Burner:
+TNT1 A 0 A_ChangeFlag("NOPAIN", true)
+TNT1 A 0 A_PlaySoundEx("weapon/waveburner","SoundSlot7")
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+IgniteLoop:
+OLSP N 1 A_SpawnItemEx("OilSpillFireY",random(-20,20),random(-20,20),10,0,0,random(1,15),random(-256,256))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",140,"IgniteEnd")
+loop
+}
+}
+
+actor OilSpillFire
+{
+PROJECTILE
+translation "209:255=229:229", "176:191=42:42"
+renderstyle "add"
++THRUGHOST
++THRUACTORS
+damagetype "Burner"
+Obituary "%o was burnt by %k's Oil Spill."
+Speed 0
+Damage (0)
+radius 1
+height 1
+scale 1.5
+States
+{
+Spawn:
+TNT1 A 0
+CWFT A 2 //A_Explode(2,50,0,0)
+TNT1 A 0 A_Fadeout(0.09)
+CWFT B 2 A_Explode(2,50,0,0)
+TNT1 A 0 A_Fadeout(0.09)
+CWFT C 2 //A_Explode(2,50,0,0)
+TNT1 A 0 A_Fadeout(0.09)
+loop
+}
+}
+
+actor OilSpillFireB : OilSpillFire{translation "209:255=205:205", "176:191=74:74"}
+actor OilSpillFireR : OilSpillFire{translation "209:255=171:171", "176:191=41:41"}
+actor OilSpillFireG : OilSpillFire{translation "209:255=104:104", "176:191=128:128"}
+actor OilSpillFireY : OilSpillFire{translation "209:255=229:229", "176:191=232:232"}
+
+//Item
+actor FlamerynDecoyItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "FDECOY"
+scale 2.0
+Tag "Flameryn Decoy"
++INVBAR
+states
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_JumpIfInventory("FlamerynDecoyCooldown",1,"Deny")
+TNT1 A 0 A_JumpIfInventory("FlamerynDecoyDeny",1,"KillDecoy")
+TNT1 A 0 A_PlaySoundEx("item/ItemUseMM9","SoundSlot6")
+TNT1 A 0 A_SpawnItemEx("FlamerynDecoy", 0, 0, 0, velx, vely, velz, 0, SXF_ABSOLUTEVELOCITY|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_GiveInventory("FlamerynDecoyDeny",1)
+fail
+KillDecoy:
+TNT1 A 0 A_PlaySoundEx("item/ItemUseMM9","SoundSlot6")
+TNT1 A 0 A_GiveInventory("FlamerynDecoyKill",1)
+fail
+Deny:
+TNT1 A 0 A_PlaySoundEx("weapon/noammo","SoundSlot6")
+fail
+}
+}
+
+Actor FlamerynDecoyDeny : Inventory{}
+Actor FlamerynDecoyKill : Inventory{}
+
+Actor FlamerynDecoyCooldown : PowerUp
+{
+PowerUp.Duration -2
+}
+
+actor FlamerynDecoy
+{
+PROJECTILE
+Obituary "%o fell for %k's decoy."
+damagetype "Flameryn"
++MISSILE
++MTHRUSPECIES
++BOUNCEONWALLS
++NODAMAGETHRUST
++NOBLOOD
+-NOBLOCKMAP
+-NOGRAVITY
++NOEXPLODEFLOOR
++DONTBLAST
++STEPMISSILE
++DONTREFLECT
++DONTSPLASH
++SKYEXPLODE
+damagefactor "Normal", 1.0
+damagefactor "OilSpill", 0.0
+damagefactor "Burner", 0.0
+damagefactor "Ignition", 0.0
+damagefactor "Flameryn", 0.0
+damagefactor "QuickBeam", 0.0
+painchance 256
+health 1000
+bouncecount 2
+wallbouncefactor 0.0
+Speed 1
+Damage (1)
+Height 56
+Radius 16
+scale 2.5
+reactiontime 125
+states
+{
+Spawn:
+TNT1 A 0
+FLAM B 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM B 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM B 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM B 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM B 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM C 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM C 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM C 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM C 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM C 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM D 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM D 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM D 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM D 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM D 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM E 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM E 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM E 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM E 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM E 1 A_JumpIf(ACS_NamedExecuteWithResult("CSCC_GetSpeed") < 1, "Stand")
+TNT1 A 0 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+TNT1 A 0 A_CountDown
+loop
+Stand:
+FLAM AA 1 A_JumpIfInTargetInventory("FlamerynDecoyKill",1,"Death")
+FLAM A 0 A_CountDown
+loop
+Pain:
+FLAM H 1
+goto Death
+Death:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_GiveToTarget("FlamerynDecoyCooldown",1)
+TNT1 A 0 A_TakeFromTarget("FlamerynDecoyKill",1)
+TNT1 A 0 A_TakeFromTarget("FlamerynDecoyDeny",1)
+TNT1 A 0 A_PlaySoundEx("misc/devildeath","SoundSlot8")
+TNT1 A 0 A_Explode(25,128,0,0,0)
+TNT1 A 1 A_SpawnItemEX("FakeDeathFX", 0, 0, 16)
+stop
+}
+}

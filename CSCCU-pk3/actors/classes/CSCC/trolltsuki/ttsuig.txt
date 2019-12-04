@@ -1,0 +1,158 @@
+actor HaxMonitor : Weapon
+{
+Inventory.PickupMessage "HAAAAAAAAAAAAAAAAAAAAAAX!"
+Obituary "%o just got pwn3d by %k's Flying Monitor"
+Weapon.SlotNumber 1
++WEAPON.DONTBOB
++WEAPON.NOAUTOAIM
++INVENTORY.UNDROPPABLE
++WEAPON.CHEATNOTWEAPON
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Ready:
+DHAX E 1 A_WeaponReady(WRF_NOSWITCH)
+loop
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+DHAX E 1 A_Lower
+loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+DHAX E 1 A_Raise
+loop
+Fire:
+DHAX E 0 A_JumpIfInventory("ScoutFlag",1,"OhShi")
+DHAX E 0 A_TakeInventory("ScoutFlag",1)
+DHAX F 0 A_PlaySoundEx("weapon/thehax","weapon")
+DHAX FGFGFG 1
+DHAX F 0 A_FireCustomMissile("Pwner",0,0)
+DHAX FGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFG 1
+goto Ready
+OhShi:
+DHAX E 0 A_TakeInventory("ScoutFlag",1)
+DHAX F 0 A_PlaySoundEx("weapon/thehax","weapon")
+DHAX F 0 A_FireCustomMissile("MegaPwner",0,0)
+DHAX FGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFGFG 1
+goto Ready
+AltFire:
+DHAX E 0 A_JumpIfInventory("ScoutFlag",1,"Ready")
+DHAX E 0 A_PlaySoundEx("weapon/coilstart","Weapon")
+DHAX FGFGFGFGFGFGFGFGFGFGFGFGF 1 A_GiveInventory("ScoutFlag",1)
+goto Ready
+}
+}
+
+actor ScoutFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor PwnerCountdown : Inventory
+{
+inventory.amount 1
+inventory.maxamount 70
+}
+
+actor Pwner
+{
++HEXENBOUNCE
++BOUNCEONACTORS
++CANBOUNCEWATER
+PROJECTILE
++SKYEXPLODE
++SHOOTABLE
++NOGRAVITY
++CANPASS
+Damage (900)
+Height 20
+Radius 20
++DONTBLAST
+Damagetype "Instagib"
+Scale 5
+speed 100
+bouncefactor 0.75
+mass 200
+seesound "weapon/coilbounce2"
+States
+{
+Spawn:
+DHAX A 0 A_JumpIfInventory("PwnerCountdown",50,"Derp")
+DHAX A 1 A_GiveInventory("PwnerCountdown",1)
+DHAX A 1 A_GiveInventory("PwnerCountdown",1)
+DHAX B 0 A_JumpIfInventory("PwnerCountdown",50,"Derp")
+DHAX B 1 A_GiveInventory("PwnerCountdown",1)
+DHAX B 1 A_GiveInventory("PwnerCountdown",1)
+DHAX B 0 A_ChangeFlag("NOGRAVITY",0)
+DHAX C 0 A_JumpIfInventory("PwnerCountdown",50,"Derp")
+DHAX C 1 A_GiveInventory("PwnerCountdown",1)
+DHAX C 1 A_GiveInventory("PwnerCountdown",1)
+DHAX D 0 A_JumpIfInventory("PwnerCountdown",50,"Derp")
+DHAX D 1 A_GiveInventory("PwnerCountdown",1)
+DHAX D 1 A_GiveInventory("PwnerCountdown",1)
+loop
+Derp:
+Death:
+MMFX BCDE 2
+stop
+}
+}
+
+/*actor Derped
+{
++HEXENBOUNCE
++CANBOUNCEWATER
++BOUNCEONACTORS
+PROJECTILE
++SOLID
++SKYEXPLODE
+-NOGRAVITY
++SHOOTABLE
++CANPASS
++PUSHABLE
+Radius 20
+Height 20
+scale 5
+speed 80
+bouncefactor 0.75
+mass 200
+seesound "weapon/coilbounce2"
+States
+{
+Spawn:
+DHAX AB 1
+DHAX BCDD 2
+DHAX AA 8
+goto Death
+Death:
+MMFX BCDE 2
+stop
+}
+}*/
+
+actor MegaPwner
+{
+PROJECTILE
++RIPPER
+Damage (900)
+Height 30
+Radius 30
++DONTBLAST
+Damagetype "Instagib"
+Scale 10
+speed 125
+States
+{
+Spawn:
+DHAX ABCD 2 A_PlaySoundEX("weapon/magnetmissile", "Weapon")
+loop
+Death:
+XDeath:
+Crash:
+DHAX X 1
+stop
+}
+}

@@ -1,0 +1,526 @@
+actor AnkhzirusStaffBoss : BaseMM8BDMWep
+{
+Inventory.Pickupmessage "*insert pocket sand joke*"
+Obituary "$OB_ANKHGRAPPLE"
+weapon.ammotype "AnkhzirusAmmo"
+weapon.ammotype2 "AnkhzirusCharge"
+inventory.pickupsound "weapon/weaponup"
+inventory.icon "ANSTAFF"
+Weapon.SlotNumber 1
+Tag "Sand Staff"
+Dropitem "CursedStrikeWepCDropped"
++WEAPON.AMMO_OPTIONAL
+Scale 2.0
+States
+{
+Ready:
+PHAN A 0 ACS_ExecuteAlways(998,0,DYE_ANKHZIRUS)
+PHAN A 0 A_GiveInventory("AnkhzirusAmmo",1)
+PHAN A 0 A_JumpIfInventory("AnkhzirusAnkhFlag",1,"Ankh")
+PHAN A 0 A_JumpIfInventory("AnkhzirusAnkhFlag2",1,"AnkhShot")
+PHAN A 1 A_WeaponReady
+Goto Ready+1
+Fire:
+PHAN ABCDE 1
+Hold:
+TNT1 A 2 A_GiveInventory("AnkhMainTeamcolor")
+TNT1 A 0 A_GiveInventory("AnkhzirusAmmo",1)
+TNT1 A 1 A_Refire
+PHAN EDCBA 2
+Goto Ready+1
+AltFire:
+PHAN A 1 A_JumpIfInventory("AnkhzirusAmmo",70,1)
+goto NoAmmo
+PHAN B 0 A_PlaySoundEx("weapon/pharaoh1","Weapon")
+PHAN ABCDE 4 A_TakeInventory("AnkhzirusAmmo",18)
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"TeamAltFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"TeamAltFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"TeamAltFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"TeamAltFire")
+TNT1 A 4 A_SpawnItemEx("SandGolemShot",64,0,0,0)
+TNT1 A 4 A_SpawnItemEx("SandGolemShot",64,64,0,0,0,0,-10)
+TNT1 A 0 A_SpawnItemEx("SandGolemShot",64,-64,0,0,0,0,10)
+AltFireEnd:
+TNT1 A 40
+PHAN EDCBA 2
+Goto Ready+1
+TeamAltFire:
+TNT1 A 4 A_SpawnItemEx("SandGolemShot",64,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 4 A_SpawnItemEx("SandGolemShot",64,64,0,0,0,0,-10,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SandGolemShot",64,-64,0,0,0,0,10,SXF_TRANSFERTRANSLATION)
+goto AltFireEnd
+Ankh:
+PHAN A 0 A_TakeInventory("AnkhzirusAnkhFlag")
+PHAN A 0 A_PlaySoundEx("weapon/mirrorabsorb", "Weapon")
+PHAN A 0 A_GiveInventory("Shocked",1)
+PHAN A 0 A_SpawnItemEx("AnkhzirusChargeWatcher")
+PHAN AABBCCDDEE 1 A_SpawnItemEx("AnkhzirusBlocker",38,0,0)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("AnkhzirusBlocker",38,0,0)
+PHAN EDCBA 3
+Goto Ready+1
+AnkhShot:
+PHAN A 0 A_SpawnItemEx("AnkhzirusChargeWatcher")
+PHAN A 0 A_PlaySoundEx("weapon/cfire","Weapon")
+PHAN A 0 A_GiveInventory("AnkhItemTeamcolor")
+PHAN EDCBA 2 A_TakeInventory("AnkhzirusAnkhFlag2")
+goto Ready+1
+Flash:
+TNT1 A 0 A_TakeInventory("AnkhzirusItem",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInventory("AnkhzirusCharge",70,"ChargeSuccess")
+TNT1 A 50
+TNT1 A 0 A_GiveInventory("AnkhzirusItem",1)
+stop
+ChargeSuccess:
+TNT1 A 0 A_GiveInventory("AnkhzirusBlastItem",1)
+TNT1 A 0 A_PlaySoundEx("weapon/timestopper","Weapon")
+TNT1 A 0 ACS_ExecuteAlways(976,0)
+stop
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+PHAN A 1 A_Lower
+PHAN A 0 A_SelectWeapon("AnkhzirusBandageBoss")
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+PHAN A 1 A_Raise
+Loop
+NoAmmo:
+PHAN A 0 
+goto Ready+1
+}}
+
+actor AnkhMainTeamcolor : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+TNT1 A 0 A_Jump(256,"Default")
+goto Default
+Default:
+TNT1 A 0 A_FireCustomMissile("DesertBlazeShot",random(-16,16),0,8,0,0,random(-8,8))
+stop
+LightFire:
+TNT1 A 0 A_FireCustomMissile("DesertBlazeShotL",random(-16,16),0,8,0,0,random(-8,8))
+stop
+WilyFire:
+TNT1 A 0 A_FireCustomMissile("DesertBlazeShotW",random(-16,16),0,8,0,0,random(-8,8))
+stop
+CossackFire:
+TNT1 A 0 A_FireCustomMissile("DesertBlazeShotC",random(-16,16),0,8,0,0,random(-8,8))
+stop
+KingFire:
+TNT1 A 0 A_FireCustomMissile("DesertBlazeShotK",random(-16,16),0,8,0,0,random(-8,8))
+stop
+}
+}
+
+actor AnkhItemTeamcolor : AnkhMainTeamcolor
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Default:
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotCore",0,0,8,0)
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShot",0,0,8,0)
+stop
+LightFire:
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotCoreL",0,0,8,0)
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotL",0,0,8,0)
+stop
+WilyFire:
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotCoreW",0,0,8,0)
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotW",0,0,8,0)
+stop
+CossackFire:
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotCoreC",0,0,8,0)
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotC",0,0,8,0)
+stop
+KingFire:
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotCoreK",0,0,8,0)
+PHAN A 0 A_FireCustomMissile("AnkhzirusChargeShotK",0,0,8,0)
+stop
+}
+}
+
+
+actor AnkhzirusItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "Support Item! Useless flag-giver!"
+inventory.icon "MIRRSI"
+Inventory.PickupSound "item/1up"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Spawn:
+WEA3 N 1
+loop
+Use:
+WEA3 N 0 A_GiveInventory("AnkhzirusAnkhFlag",1)
+fail
+}
+}
+
+actor AnkhzirusChargeWatcher : WatcherBase {
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_TakeFromTarget("AnkhzirusItem",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("AnkhzirusCharge",70,"ChargeSuccess")
+TNT1 A 50
+TNT1 A 0 A_GiveToTarget("AnkhzirusItem",1)
+stop
+ChargeSuccess:
+TNT1 A 0 A_GiveToTarget("AnkhzirusChargeSuccess",1)
+stop
+}
+}
+
+actor AnkhzirusChargeSuccess : CustomInventory
+{
++INVENTORY.AUTOACTIVATE
++INVENTORY.IGNORESKILL
+Inventory.Amount 1
+Inventory.MaxAmount 1
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("AnkhzirusBlastItem",1)
+TNT1 A 0 A_PlaySoundEx("weapon/timestopper","Weapon")
+TNT1 A 0 ACS_ExecuteAlways(976,0)
+stop
+}
+}
+
+actor AnkhzirusBlastItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "the DORKNESS beginbs........."
+inventory.icon "PHASSI"
+Inventory.PickupSound "item/1up"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Spawn:
+WEA3 N 1
+loop
+Use:
+WEA3 N 0 A_TakeInventory("AnkhzirusCharge",70)
+WEA3 N 0 A_GiveInventory("AnkhzirusAnkhFlag2")
+WEA3 N 0 A_GiveInventory("AnkhzirusItem",1)
+WEA3 N 0 A_TakeInventory("AnkhzirusBlastItem",1)
+fail
+}
+}
+
+actor AnkhzirusAnkhFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor AnkhzirusAnkhFlag2 : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor AnkhzirusBlocker
+{
++MISSILE
+//+RIPPER
++DONTSPLASH
++SHOOTABLE
++GHOST
++NOBLOOD
++NOTARGETSWITCH
++DONTRIP
++DONTBLAST
+Damage 0
+Height 48
+Radius 32
+speed 0
+health 100
+painchance 256
+scale 2.5
+DamageFactor "DesertBlazeFloor", 0.0
+States
+{
+Spawn:
+MIRR A 2
+stop
+Pain:
+TNT1 A 0 
+TNT1 A 0 A_GiveToTarget("AnkhzirusCharge",100-health)
+stop
+}
+}
+
+actor AnkhzirusAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 70
+}
+
+actor AnkhzirusCharge : Ammo
+{
+inventory.amount 1
+inventory.maxamount 70
+}
+
+actor AnkhzirusChargeShot
+{
+PROJECTILE
+damagetype "AnkhAbsorber"
+Obituary "$OB_ANKHABSORBER"
+Translation "192:192=214:214"
++RIPPER
++MTHRUSPECIES
+Speed 25
+Damage (19)
+Radius 18
+Height 18
+scale 3.5
+RenderStyle Subtract
+States
+{
+Spawn:
+PHAS JJJJJJJJJJJ 0 A_SpawnItemEx("DesertBlazeTrail3",random(-41,41),random(-41,41),random(-41,41),momx*0.3,momy*0.3,momz*0.3,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+PHAS J 2 
+PHAS KKKKKKKKKKK 0 A_SpawnItemEx("DesertBlazeTrail3",random(-41,41),random(-41,41),random(-41,41),momx*0.3,momy*0.3,momz*0.3,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+PHAS K 2 
+loop
+}
+}
+actor AnkhzirusChargeShotL : AnkhzirusChargeShot {Translation "211:211=229:229", "225:225=232:232", "192:192=229:229"}
+actor AnkhzirusChargeShotW : AnkhzirusChargeShot {Translation "211:211=192:192", "225:225=128:128", "192:192=192:192"}
+actor AnkhzirusChargeShotC : AnkhzirusChargeShot {Translation "211:211=174:174", "225:225=41:41", "192:192=174:174"}
+actor AnkhzirusChargeShotK : AnkhzirusChargeShot {Translation "211:211=205:205", "225:225=74:74", "192:192=205:205"}
+
+actor AnkhzirusChargeShotCore : AnkhzirusChargeShot{
+Renderstyle add
+Scale 1.5
+Damage (0)
+States
+{
+Spawn:
+PHAS KJ 2
+loop
+}}
+
+actor AnkhzirusChargeShotCoreL : AnkhzirusChargeShotCore {Translation "211:211=205:205", "225:225=74:74"}
+actor AnkhzirusChargeShotCoreW : AnkhzirusChargeShotCore {Translation "211:211=171:171", "225:225=41:41"}
+actor AnkhzirusChargeShotCoreC : AnkhzirusChargeShotCore {Translation "211:211=104:104", "225:225=128:128"}
+actor AnkhzirusChargeShotCoreK : AnkhzirusChargeShotCore {Translation "211:211=229:229", "225:225=232:232"}
+
+actor DesertBlazeShot
+{
+PROJECTILE
++MTHRUSPECIES
+damagetype "DesertBlaze"
+Obituary "$OB_DESERTBLAZE"
+Translation "192:192=214:214", "198:198=219:219"
+ReactionTime 5
+Speed 20
+Damage (6)
+radius 5
+height 5
+scale 1.0
+RenderStyle Add
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AAAAAAAAA 0 A_SpawnItemEx("DesertBlazeTrail",random(-21,21),random(-21,21),random(-21,21),momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+TNT1 AAAAAAAAA 0 A_SpawnItemEx("DesertBlazeTrail2",random(-21,21),random(-21,21),random(-21,21),momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+Sandy:
+FIRE F 4 A_CountDown
+loop
+Death:
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 A 1 A_JumpIf(z-floorz<8,"DeathFloor")
+TNT1 A 1
+stop
+DeathFloor:
+TNT1 A 0 A_SpawnItemEx("DesertBlazeFloor",0,0,5,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor DesertBlazeFloor : DesertBlazeShot
+{
+DamageType "DesertBlazeFloor"
+States
+{
+Spawn:
+FIRE F 0
+FIRE F 70
+Rise:
+FIRE F 0 A_FadeOut(0.1)
+FIRE F 1 A_ChangeVelocity(0,0,0.2)
+loop
+Death:
+TNT1 A 1
+stop
+}
+}
+
+actor DesertBlazeTrail
+{
+PROJECTILE
++CLIENTSIDEONLY
++DONTSPLASH
++MTHRUSPECIES
+Height 1
+Radius 1
+Damage (0)
+Alpha 0.0
+Scale 2.0
+States
+{
+Spawn:
+DESB D 0
+DESB DDDD 1 A_FadeIn(0.25)
+DESB D 8
+DESB D 1 A_FadeOut(0.25)
+stop
+Death:
+TNT1 A 1 A_JumpIf(z-floorz<8,"DeathFloor")
+TNT1 A 1
+stop
+DeathFloor:
+DESB D 70 A_FadeIn(1.0)
+Rise:
+DESB D 1 A_FadeOut(0.1)
+loop
+}
+}
+
+actor DesertBlazeTrail2 : DesertBlazeTrail{
+Renderstyle add
+States
+{
+Spawn:
+DESB E 0
+DESB EEEE 1 A_FadeIn(0.25)
+DESB E 8
+DESB E 1 A_FadeOut(0.25)
+stop
+DeathFloor:
+DESB E 70 A_FadeIn(1.0)
+Rise:
+DESB E 1 A_FadeOut(0.1)
+loop
+}
+}
+
+actor DesertBlazeShotL : DesertBlazeShot {Translation "227:227=74:74", "229:229=204:204", "192:192=205:205", "198:198=74:74"}
+actor DesertBlazeShotW : DesertBlazeShot {Translation "227:227=40:40", "229:229=171:171", "192:192=175:175", "198:198=41:41"}
+actor DesertBlazeShotC : DesertBlazeShot {Translation "229:229=108:108", "227:227=128:128", "192:192=104:104", "198:198=128:128"}
+actor DesertBlazeShotK : DesertBlazeShot {Translation "227:227=232:232", "192:192=229:229", "198:198=232:232"}
+
+actor DesertBlazeTrail3 : DesertBlazeTrail2{
+Renderstyle subtract
+}
+
+actor SandGolemShot 
+{
+var int user_sandheight;
+-SOLID
++MISSILE
++SEEKERMISSILE
++FLOORHUGGER
++MTHRUSPECIES
+Radius 18
+Height 40
+scale 2.5
+speed 15
+damage (30)
+damagetype "SandGolem"
+Obituary "$OB_SANDGOLEM"
+Translation "192:192=215:215", "198:198=216:216"
+maxstepheight 33
++STEPMISSILE
+-NOGRAVITY
++NOBLOOD
+painchance 0
+reactiontime 10
+alpha 0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+AppearLoop:
+STOM AAAAAAAAAA 0 A_SpawnItemEx("SandGolemSand",random(-32,32),random(-32,32),user_sandheight+random(-5,5),0,0,2,0,SXF_TRANSFERTRANSLATION)
+STOM A 0 A_SetUserVar("user_sandheight",user_sandheight+10)
+STOM A 0 A_FadeIn(0.1)
+STOM A 1 A_GiveInventory("CutterFlag",1)
+STOM A 1 A_JumpIfInventory("CutterFlag",10,1)
+loop
+STOM A 10 A_GiveInventory("KnightFlag",1)
+TNT1 A 0 A_ChangeVelocity(15,0,0,CVF_REPLACE|CVF_RELATIVE)
+TNT1 A 0 A_ChangeFlag("FLOORHUGGER",false)
+Walk:
+STOM BCDE 4 A_SeekerMissile(1,2,SMF_LOOK,256,10)
+loop
+Death:
+STOM A 2 A_JumpIf(z-floorz==0,"Continue")
+Crash:
+STOM A 0 A_TakeInventory("CutterFlag",100)
+STOM B 0 A_SetUserVar("user_sandheight",100)
+DeathLoop:
+STOM AAAAAAAAAAAAAAA 0 A_SpawnItemEx("SandGolemSand",random(-32,32),random(-32,32),user_sandheight+random(-10,10),0,0,-4,0,SXF_TRANSFERTRANSLATION)
+STOM A 0 A_SetUserVar("user_sandheight",user_sandheight-20)
+STOM H 0 A_FadeOut(0.2)
+STOM H 1 A_GiveInventory("CutterFlag",1)
+STOM H 1 A_JumpIfInventory("CutterFlag",10,1)
+loop
+TNT1 A 0
+stop
+Continue:
+STOM A 1 A_JumpIfInventory("KnightFlag",1,1)
+goto Death+1
+STOM A 0 A_SpawnItemEx("SandGolemContinue",0,0,0,15,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor SandGolemContinue : SandGolemShot
+{
+alpha 1
+-FLOORHUGGER
+States
+{
+Spawn:
+STOM B 4
+STOM B 0 A_GiveInventory("KnightFlag",1)
+goto Walk+1
+}
+}
+
+actor SandGolemSand : DesertBlazeTrail2
+{
+RenderStyle Translucent
+}

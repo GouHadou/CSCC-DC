@@ -1,0 +1,137 @@
+actor Ukiyama : ClassBaseCSCC
+{
+player.displayname "Ukiyama"
+player.soundclass "Ukiyamac"
+player.damagescreencolor "yellow"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+player.jumpz 10
+player.colorrange 0 0
+player.startitem "UkiyamaClassWep"
+player.startitem "UkiHud"
+player.startitem "NoHealthBar2"
+player.startitem "UkiAmmo", 28
+States
+{
+Spawn:
+UKIS A 0
+UKIS B 1 
+UKIS A 1 
+Goto Spawn+2
+See:
+UKIS BCDE 5 
+Goto Spawn
+Missile:
+UKIS F 3 
+UKIS G 2 
+UKIS G 0 A_JumpIfInventory("CutterFlag",1,"Missile")
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+CFSK H 0 A_SpawnItemEx("UkiCopyHitMain",1)
+goto pain+1
+}
+}
+
+actor UkiCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("UkiyamaMorphItem",1)
+Goto Level1Flags
+Level1Flags:
+TNT1 A 0 A_JumpIfInventory("SnipeFlag", 1, "GiveSnipe")
+TNT1 A 0 A_JumpIfInventory("RapidFlag", 1, "GiveRapid")
+TNT1 A 0 A_JumpIfInventory("ShotgunFlag", 1, "GiveShotgun")
+stop
+GiveSnipe:
+TNT1 A 0 A_GiveToTarget("SnipeFlag",1)
+Goto Level2Flags
+GiveRapid:
+TNT1 A 0 A_GiveToTarget("RapidFlag",1)
+Goto Level2Flags
+GiveShotgun:
+TNT1 A 0 A_GiveToTarget("ShotgunFlag",1)
+Goto Level2Flags
+Level2Flags:
+TNT1 A 0 A_JumpIfInventory("HomingFlag", 1, "GiveHoming")
+TNT1 A 0 A_JumpIfInventory("VelocityFlag", 1, "GiveVelocity")
+TNT1 A 0 A_JumpIfInventory("ArcingFlag", 1, "GiveArcing")
+stop
+GiveHoming:
+TNT1 A 0 A_GiveToTarget("HomingFlag",1)
+Goto Level3Flags
+GiveVelocity:
+TNT1 A 0 A_GiveToTarget("VelocityFlag",1)
+Goto Level3Flags
+GiveArcing:
+TNT1 A 0 A_GiveToTarget("ArcingFlag",1)
+Goto Level3Flags
+Level3Flags:
+TNT1 A 0 A_JumpIfInventory("BouncingFlag", 1, "GiveBouncing")
+TNT1 A 0 A_JumpIfInventory("NerfFlag", 1, "GiveNerf")
+TNT1 A 0 A_JumpIfInventory("ExplodingFlag", 1, "GiveExploding")
+stop
+GiveBouncing:
+TNT1 A 0 A_GiveToTarget("BouncingFlag",1)
+stop
+GiveNerf:
+TNT1 A 0 A_GiveToTarget("NerfFlag",1)
+stop
+GiveExploding:
+TNT1 A 0 A_GiveToTarget("ExplodingFlag",1)
+stop
+}
+}
+
+
+actor UkiCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("UkiCopyPickupMain",1)
+stop
+}
+}
+
+
+actor UkiyamaMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 21)
+stop
+}
+}
+
+actor UkiyamaMorph : Ukiyama
+{
++NOSKIN
+player.morphweapon "UkiyamaClassWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

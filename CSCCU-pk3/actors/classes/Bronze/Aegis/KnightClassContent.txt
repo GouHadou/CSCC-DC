@@ -1,0 +1,6 @@
+#include "actors/Classes/Bronze/Aegis/KnightClass.txt"
+#include "actors/Classes/Bronze/Aegis/KnightMainWep.txt"
+#include "actors/Classes/Bronze/Aegis/Knight_Protection.txt"
+#include "actors/Classes/Bronze/Aegis/Knight_ShieldWave.txt"
+#include "actors/Classes/Bronze/Aegis/Knight_LightScreen.txt"
+#include "actors/Classes/Bronze/Aegis/LightScreenContent.txt"

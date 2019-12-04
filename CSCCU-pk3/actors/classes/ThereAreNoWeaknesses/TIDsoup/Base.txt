@@ -1,0 +1,112 @@
+actor TIDHit
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("TIDHitPickup",1)
+stop
+}
+}
+
+actor TIDHitPickup : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+states
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_JumpIf((TID>=1000 && TID<1064), "Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_JumpIf((TID-1000==0), "ID0")
+TNT1 A 0 A_JumpIf((TID-1000==1), "ID1")
+TNT1 A 0 A_JumpIf((TID-1000==2), "ID2")
+TNT1 A 0 A_JumpIf((TID-1000==3), "ID3")
+TNT1 A 0 A_JumpIf((TID-1000==4), "ID4")
+TNT1 A 0 A_JumpIf((TID-1000==5), "ID5")
+TNT1 A 0 A_JumpIf((TID-1000==6), "ID6")
+TNT1 A 0 A_JumpIf((TID-1000==7), "ID7")
+TNT1 A 0 A_JumpIf((TID-1000==8), "ID8")
+TNT1 A 0 A_JumpIf((TID-1000==9), "ID9")
+TNT1 A 0 A_JumpIf((TID-1000==10), "ID10")
+TNT1 A 0 A_JumpIf((TID-1000==11), "ID11")
+TNT1 A 0 A_JumpIf((TID-1000==12), "ID12")
+TNT1 A 0 A_JumpIf((TID-1000==13), "ID13")
+TNT1 A 0 A_JumpIf((TID-1000==14), "ID14")
+TNT1 A 0 A_JumpIf((TID-1000==15), "ID15")
+TNT1 A 0 A_JumpIf((TID-1000==16), "ID16")
+TNT1 A 0 A_JumpIf((TID-1000==17), "ID17")
+TNT1 A 0 A_JumpIf((TID-1000==18), "ID18")
+TNT1 A 0 A_JumpIf((TID-1000==19), "ID19")
+TNT1 A 0 A_JumpIf((TID-1000==20), "ID20")
+TNT1 A 0 A_JumpIf((TID-1000==21), "ID21")
+TNT1 A 0 A_JumpIf((TID-1000==22), "ID22")
+TNT1 A 0 A_JumpIf((TID-1000==23), "ID23")
+TNT1 A 0 A_JumpIf((TID-1000==24), "ID24")
+TNT1 A 0 A_JumpIf((TID-1000==25), "ID25")
+TNT1 A 0 A_JumpIf((TID-1000==26), "ID26")
+TNT1 A 0 A_JumpIf((TID-1000==27), "ID27")
+TNT1 A 0 A_JumpIf((TID-1000==28), "ID28")
+TNT1 A 0 A_JumpIf((TID-1000==29), "ID29")
+TNT1 A 0 A_JumpIf((TID-1000==30), "ID30")
+TNT1 A 0 A_JumpIf((TID-1000==31), "ID31")
+TNT1 A 0 A_JumpIf((TID-1000==32), "ID32")
+TNT1 A 0 A_JumpIf((TID-1000==33), "ID33")
+TNT1 A 0 A_JumpIf((TID-1000==34), "ID34")
+TNT1 A 0 A_JumpIf((TID-1000==35), "ID35")
+TNT1 A 0 A_JumpIf((TID-1000==36), "ID36")
+TNT1 A 0 A_JumpIf((TID-1000==37), "ID37")
+TNT1 A 0 A_JumpIf((TID-1000==38), "ID38")
+TNT1 A 0 A_JumpIf((TID-1000==39), "ID39")
+TNT1 A 0 A_JumpIf((TID-1000==40), "ID40")
+TNT1 A 0 A_JumpIf((TID-1000==41), "ID41")
+TNT1 A 0 A_JumpIf((TID-1000==42), "ID42")
+TNT1 A 0 A_JumpIf((TID-1000==43), "ID43")
+TNT1 A 0 A_JumpIf((TID-1000==44), "ID44")
+TNT1 A 0 A_JumpIf((TID-1000==45), "ID45")
+TNT1 A 0 A_JumpIf((TID-1000==46), "ID46")
+TNT1 A 0 A_JumpIf((TID-1000==47), "ID47")
+TNT1 A 0 A_JumpIf((TID-1000==48), "ID48")
+TNT1 A 0 A_JumpIf((TID-1000==49), "ID49")
+TNT1 A 0 A_JumpIf((TID-1000==50), "ID50")
+TNT1 A 0 A_JumpIf((TID-1000==51), "ID51")
+TNT1 A 0 A_JumpIf((TID-1000==52), "ID52")
+TNT1 A 0 A_JumpIf((TID-1000==53), "ID53")
+TNT1 A 0 A_JumpIf((TID-1000==54), "ID54")
+TNT1 A 0 A_JumpIf((TID-1000==55), "ID55")
+TNT1 A 0 A_JumpIf((TID-1000==56), "ID56")
+TNT1 A 0 A_JumpIf((TID-1000==57), "ID57")
+TNT1 A 0 A_JumpIf((TID-1000==58), "ID58")
+TNT1 A 0 A_JumpIf((TID-1000==59), "ID59")
+TNT1 A 0 A_JumpIf((TID-1000==60), "ID60")
+TNT1 A 0 A_JumpIf((TID-1000==61), "ID61")
+TNT1 A 0 A_JumpIf((TID-1000==62), "ID62")
+TNT1 A 0 A_JumpIf((TID-1000==63), "ID63")
+stop
+}
+}
+
+actor TIDHitPickupID : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+states
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(999,0)
+stop
+}
+}

@@ -1,0 +1,142 @@
+Actor GummyIGWep : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o got distracted by %k's Gem Cannon."
+Inventory.Pickupmessage "You got Gummy's Gem Cannon! ...Wait, what?"
+weapon.ammotype "GummyAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
++WEAPON.NOAUTOAIM
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Ready:
+RABS A 1 ACS_ExecuteAlways(998,0,357)
+Goto Ready2
+Ready2:
+RABS A 1 A_WeaponReady
+RABS A 0 A_JumpIfInventory("GummyAmmo", 1, "Ready2")
+Goto NoAmmo2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+RABS A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+RABS A 1 A_Raise
+Loop
+Fire:
+RABS A 0 A_JumpIfNoAmmo("NoAmmo")
+RABS A 0 A_PlaySoundEx("weapon/timestopper","Weapon")
+RABS A 0 A_TakeInventory("GummyAmmo", 1)
+RABS A 0 A_SpawnItemEx("GemExplode1",20,0,0,0,0,0,0)
+RABS BC 2 
+RABS A 15
+Goto Ready2
+AltFire:
+RABS A 0 A_JumpIfInventory("GummyAmmo", 7, "Needle")
+RABS A 1
+RABS A 1 A_Refire
+Goto NoAmmo2
+Needle:
+RABS A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+RABS A 0 A_TakeInventory("GummyAmmo", 7)
+RABS A 0 A_FireCustomMissile("DiscordNeedle",0,0,8,0)
+RABS BC 2
+RABS A 0 A_Refire
+Goto Ready2
+NoAmmo:
+RABS A 5
+Goto Ready2
+NoAmmo2:
+RABS A 1 ACS_Execute(979,0)
+RABS A 20 A_GiveInventory("GummyAmmo", 28)
+Goto Ready2
+}
+}
+
+actor GummyAmmo : Ammo
+{
+Inventory.Amount 1
+Inventory.MaxAmount 28
+}
+
+actor DiscordNeedle
+{
+PROJECTILE
+Radius 6
+Height 7
++DOOMBOUNCE
+reactiontime 8
+bouncefactor 1.0
+damagetype "Instagib"
+Obituary "%o was thrown into discord by %k's Discord Needle."
+scale 2.5
+damage (100)
+speed 50
+States
+{
+Spawn:
+NEDC A 0 A_CountDown
+NEDC AAAA 1 A_BishopMissileWeave
+loop
+Death:
+NEDC A 1
+stop
+}
+}
+
+actor GemExplode1
+{
+PROJECTILE
+Radius 15
+Height 8
+-NOGRAVITY
+scale 2.5
+damagetype "Instagib"
+speed 10
+damage (100)
+reactiontime 7
++RIPPER
++DONTBLAST
+States
+{
+Spawn:
+CRFL ABCD 2
+CRFL ABCD 0 A_Countdown
+loop
+Death:
+TNT1 A 0 A_SpawnItemEx("GemExplode2",0,0,0,70,0,0,0)
+stop
+}
+}
+
+actor GemExplode2
+{
+PROJECTILE
+Damagetype "Instagib"
++NOGRAVITY
+Radius 10
+Height 5
+scale 2.5
+damage (100)
+speed 28 
+States
+{
+Spawn:
+CRFL ABCD 3
+loop
+Death:
+CRFL ABCD 0 A_Stop
+CRFL ABCD 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+DOMP IJKLMN 1 
+stop
+}
+}

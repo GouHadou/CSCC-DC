@@ -1,0 +1,439 @@
+actor HilMediPack : CustomInventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "Support Item! Super Aid Kit!"
+inventory.icon "HMEDI"
+Inventory.PickupSound "item/1up"
++INVBAR
++COUNTITEM
+scale 2.0
+States
+{
+Spawn:
+HMED X 1 A_SpawnItemEx("HilMediGive")
+stop
+Use:
+HMED X 0 A_JumpIfHealthLower(100,"Success")
+fail
+Success:
+HMED X 0 A_PlaySound("item/energyup")
+HMED X 0 A_PlaySoundEx("item/refill","Voice")
+HMED X 0 HealThing(100)
+HMED X 0 A_TakeInventory("HilMediPack",1)
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor HilBooster : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 3
+inventory.pickupmessage "Support Item! Booster Leap!"
+inventory.icon "HJUMI"
+Inventory.PickupSound "item/1up"
++INVBAR
++COUNTITEM
+scale 2.0
+States
+{
+Spawn:
+HJUM X 1 A_SpawnItemEx("HilBoostGive")
+stop
+Use:
+HJUM X 0 A_JumpIf(z-floorz>0,"NoUse")
+HJUM X 0 A_PlaySoundEx("item/refill","Voice")
+HJUM X 0 A_PlaySoundEx("weapon/superboost","Voice")
+HJUM X 1 ThrustThingZ(0, 95, 0, 0)
+HJUM X 1 A_TakeInventory("JumpCancler",1)
+stop
+NoUse:
+HJUM X 0
+fail
+}
+}
+
+actor HilTeleOut
+{
+PROJECTILE
++RIPPER
++DONTBLAST
++BLOODLESSIMPACT
++CLIENTSIDEONLY
+scale 2.5
+Damage 0
+Speed 30
+Radius 4
+reactiontime 35
+Height 60
+States
+{
+Spawn:
+HTEL CB 2
+HTEL A 0 ThrustThingZ(0, 40, 0, 1)
+HTEL A 1 A_CountDown
+Goto Spawn+3
+Death:
+HTEL A 0
+stop
+}
+}
+
+actor BeamBallSummon : CustomInventory
+{
+Inventory.RespawnTics 350
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "Support Item! Beam Ball!"
+inventory.icon "LABLI"
+Inventory.PickupSound "item/1up"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Spawn:
+LABL X 1 A_SpawnItemEx("BeamBallGive")
+stop
+Use:
+LABL X 0 A_PlaySoundEx("item/refill","Voice")
+LABL X 0 A_SpawnItemEx("BeamBallIn", 40, 0, 256, 0, 0, -24, 0, SXF_NOCHECKPOSITION, 0)
+stop
+}
+}
+
+actor BeamBallIn
+{
+Radius 12
+Height 32
+scale 2.5
++NOINTERACTION
++DONTBLAST
+PROJECTILE
+states
+{
+Spawn:
+HTEL A 0
+HTEL A 7
+HTEL A 0 A_SpawnItemEx("BeamBall",0,0,0,0,0,momz,0,SXF_ABSOLUTEMOMENTUM,0)
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor BeamBall
+{
++DONTBLAST
+- SOLID
++NOGRAVITY
++MISSILE
++NOCLIP
++SKYEXPLODE
++CANBOUNCEWATER
+speed 0
+scale 2.5
+Radius 12
+Height 32
+reactiontime 250
+meleerange 80
+states
+{
+Spawn:
+HTEL A 0 A_Jump(256,"Death")
+HTEL A 1 A_ChangeFlag("MISSILE",0)
+HTEL A 1 A_JumpIf(z-floorz<=0, "Look")
+Goto Spawn+2
+Look:
+HTEL B 0 A_ChangeFlag("NOCLIP",0)
+HTEL BC 2
+LABL AA 4
+LABL A 0 A_PlaySoundEx("weapon/megaball","Voice")
+LABL A 0 A_SpawnItemEx("BeamBallAttack",0,0,0,30,0,9)
+stop
+Death:
+LABL A 0 A_SpawnItemEx("HilTeleOut",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor BeamBallAttack : MegaBallKicked
+{
+Damage (20)
+speed 30
+obituary "%o did not dodge %k's Beam Ball."
+States
+{
+Spawn:
+LABL ABCD 3
+loop
+Death:
+LABL A 0 A_Stop
+LABL A 0 A_ChangeFlag("NOGRAVITY",1)
+LABL A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+LABL A 0 A_SpawnItemEX("BallBeam",0,0,15,24,0,0,0)
+LABL A 0 A_SpawnItemEX("BallBeam",0,0,15,24,0,0,90)
+LABL A 0 A_SpawnItemEX("BallBeam",0,0,15,24,0,0,180)
+LABL A 0 A_SpawnItemEX("BallBeam",0,0,15,24,0,0,270)
+HRAY HIJKL 1
+stop
+}
+}
+
+actor BallBeam
+{
+PROJECTILE
+Radius 6
+Height 6
+scale 2.5
+damagetype "GeminiLaser"
+obituary "%o was shot by energy from %k's Beam Ball."
+damage (10)
+speed 24
+States
+{
+Spawn:
+LABL E 1
+loop
+}
+}
+
+actor HilSaver : PowerProtection 
+{
+powerup.duration 0x7FFFFFFF
+damagefactor "FALLING", 0.08
+damagefactor "FIRE", 0.08
+damagefactor "DROWNING", 0.08
+damagefactor "SLIME", 0.08
+}
+
+actor HilSaverTele : ExitUnit
+{
++INVENTORY.AUTOACTIVATE
+inventory.pickupmessage "Life Saver, ACTIVATE!"
+}
+
+actor HilBoxSummon : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 2
+inventory.pickupmessage "Support Item! HilCrate!"
+inventory.icon "HBOXI"
+Inventory.PickupSound "item/1up"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Spawn:
+HBOX X 1
+HBOX X 1 A_SpawnItemEx("HilBoxGive")
+stop
+Use:
+HBOX X 0 A_PlaySoundEx("item/refill","Voice")
+HBOX X 0 A_SpawnItemEx("BoxTeleIn", 80, 0, 256, 0, 0, -24, 0, SXF_NOCHECKPOSITION, 0)
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor BoxTeleIn
+{
+Radius 12
+Height 32
+scale 2.5
++NOINTERACTION
+PROJECTILE
++DONTBLAST
+states
+{
+Spawn:
+HTEL A 0
+HTEL A 7
+HTEL A 0 A_SpawnItemEx("HilBox",0,0,0,0,0,momz,0,SXF_ABSOLUTEMOMENTUM,0)
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor HilBox
+{
++DONTBLAST
+- SOLID
++NOGRAVITY
++MISSILE
++NOCLIP
++SKYEXPLODE
++CANBOUNCEWATER
+speed 0
+scale 2.5
+Radius 12
+Height 32
+reactiontime 250
+states
+{
+Spawn:
+HTEL A 0 A_Jump(256,"Death")
+HTEL A 1 A_ChangeFlag("MISSILE",0)
+HTEL A 1 A_JumpIf(z-floorz<=0, "Look")
+Goto Spawn+2
+Look:
+HTEL B 0 A_ChangeFlag("NOCLIP",0)
+HTEL BC 2
+HBOX AA 4
+HBOX A 0 A_SpawnItemEx("HilRandomiser")
+HRAY HIJKL 1
+stop
+Death:
+TNT1 A 0 A_SpawnItemEx("HilTeleOut",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor HilRandomiser
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Jump(256,"RegItem","RegItem","RegItem","RegItem","LessCommon","LessCommon","LessCommon","Upgrade")
+stop
+RegItem:
+TNT1 A 1 A_Jump(256,"Booster","Ball")
+stop
+Booster:
+TNT1 A 0 A_SpawnItemEx("HilBoostGive")
+stop
+Ball:
+TNT1 A 0 A_SpawnItemEx("BeamBallGive")
+stop
+LessCommon:
+TNT1 A 1 A_Jump(256,"MedicPack","Ejection")
+stop
+MedicPack:
+TNT1 A 0 A_SpawnItemEx("HilMediGive")
+stop
+Ejection:
+TNT1 A 0 A_SpawnItemEx("HilSaverGive")
+stop
+Upgrade:
+TNT1 A 1 A_Jump(256,"Power","Armour","Mobile")
+stop
+Power:
+TNT1 A 0 A_SpawnItemEx("HilAttackGive")
+stop
+Armour:
+TNT1 A 0 A_SpawnItemEx("HilDefendGive")
+stop
+Mobile:
+TNT1 A 0 A_SpawnItemEx("HilSpeedGive")
+stop
+}
+}
+
+actor HilAttack : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "Support Item! Power Upgrade!"
+inventory.icon "HATKI"
+Inventory.PickupSound "item/1up"
++INVBAR
++COUNTITEM
+scale 2.0
+States
+{
+Spawn:
+HATK X 1
+HATK X 1 A_SpawnItemEx("HilAttackGive")
+stop
+Use:
+HATK X 0 A_JumpIfInventory("HilPowerFlag",1,"NoUse")
+HATK X 0 A_PlaySoundEx("item/refill","Voice")
+HATK X 0 ACS_ExecuteAlways(304,0,0)
+stop
+NoUse:
+HATK X 1
+fail
+}
+}
+
+actor HilDefend : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "Support Item! Armour Upgrade!"
+inventory.icon "HDEFI"
+Inventory.PickupSound "item/1up"
++INVBAR
++COUNTITEM
+scale 2.0
+States
+{
+Spawn:
+HDEF X 1
+HDEF X 1 A_SpawnItemEx("HilDefendGive")
+stop
+Use:
+HDEF X 0 A_JumpIfInventory("HilArmourFlag",1,"NoUse")
+HDEF X 0 A_PlaySoundEx("item/refill","Voice")
+HDEF X 0 ACS_ExecuteAlways(305,0,0)
+stop
+NoUse:
+HDEF X 1
+fail
+}
+}
+
+actor HilSpeed : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "Support Item! Mobility Upgrade!"
+inventory.icon "HSPDI"
+Inventory.PickupSound "item/1up"
++INVBAR
++COUNTITEM
+scale 2.0
+States
+{
+Spawn:
+HSPD X 1
+HSPD X 1 A_SpawnItemEx("HilSpeedGive")
+stop
+Use:
+HSPD X 0 A_JumpIfInventory("HilMobileFlag",1,"NoUse")
+HSPD X 0 A_PlaySoundEx("item/refill","Voice")
+HSPD X 0 ACS_ExecuteAlways(306,0,0)
+stop
+NoUse:
+HSPD X 1
+fail
+}
+}
+
+actor HilPowerFlag : PowerDamage
+{
+damagefactor "normal", 2.0
+powerup.duration 245
+}
+
+actor HilArmourFlag : PowerProtection
+{
+damagefactor "normal", 0.5
+powerup.duration 245
+}
+
+actor HilMobileFlag : PowerSpeed
+{
+powerup.duration 245
+Speed 2.0
+}

@@ -1,0 +1,4 @@
+#include "actors/classes/CSCC/michael712/M712Class.txt"
+#include "actors/classes/CSCC/michael712/M712Wep1.txt"
+#include "actors/classes/CSCC/michael712/M712Wep2.txt"
+#include "actors/classes/CSCC/michael712/M712Wep5.txt"

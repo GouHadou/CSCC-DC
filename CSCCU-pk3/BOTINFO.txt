@@ -1,0 +1,1421 @@
+//clearbots
+{
+	name = "\cvxCold\c-x\ciFusionx"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "FusionBombWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "gyroman"
+	class = "ColdFusion"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTXCFX"
+	chatfrequency = 50
+}
+
+{
+   name = "\cnSinkman"
+   accuracy = 4
+   intellect = 3
+   evade = 2
+   anticipation = 1
+   reactiontime = 2
+   perception = 1
+   favoriteweapon = "SinkSprayWep"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Sinkman"
+   class = "Sinkman"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTSINK"
+   chatfrequency = 50
+}
+
+{
+   name = "\cgKing Yamato"
+   accuracy = 3
+   intellect = 2
+   evade = 0
+   anticipation = 2
+   reactiontime = 2
+   perception = 1
+   favoriteweapon = "YamatoSpearWep"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Yamatoman"
+   class = "King Yamato"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTKYAM"
+   chatfrequency = 50
+}
+
+{
+	name = "\cmFiniteZero"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "GeminiLaserWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Timeman"
+	class = "FiniteZero"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTFNZR"
+	chatfrequency = 50
+}
+
+{
+	name = "\ctJ\cmack \ciC\cmorvus"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "FireStormWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Heatman"
+	class = "JackCorvus"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTJKCV"
+	chatfrequency = 50
+}
+
+{
+	name = "\ckY\ccellow \ckD\ccevil2"
+	accuracy = 3
+	intellect = 2
+	evade = 0
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ThunderBeamWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "YellowDevil"
+	class = "Yellow Devil Old"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTYLDV"
+	chatfrequency = 50
+}
+
+{
+	name = "\ckY\ccellow \ckD\ccevil"
+	accuracy = 3
+	intellect = 2
+	evade = 0
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ThunderBeamWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "YellowDevil"
+	class = "Yellow Devil"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTYLDV"
+	chatfrequency = 50
+}
+
+{
+	name = "\ciGummy\cvwormz"
+	accuracy = 3
+	intellect = 2
+	evade = 0
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "Gummywep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Bass"
+	class = "Gummywormz"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTGMYW"
+	chatfrequency = 50
+}
+
+{
+	name = "\ciChimera Man"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "CrystalEyeWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "ChimeraMan"
+	class = "ChimeraMan"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTCHIM"
+	chatfrequency = 50
+}
+
+{
+	name = "\cmC\ccutman\cmM\ccike"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "RollingCutterWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "cutman"
+	class = "CutmanMike"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTCMMC"
+	chatfrequency = 50
+}
+
+{
+	name = "\cqCorporal"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "NapalmBombWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Blazko"
+	class = "Corporal"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTLGBZ"
+	chatfrequency = 50
+}
+
+{
+	name = "\cqBreve"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "StaveCannonWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "breve"
+	class = "Breve"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTBREV"
+	chatfrequency = 50
+}
+
+{
+	name = "\cvIce \c-/ \cfSparky"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "plantman"
+	class = "Ice/Sparky"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "Jodar5"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Jodar5"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTJODR"
+	chatfrequency = 50
+}
+
+{
+	name = "\cmB\cue\cced\cu2\cm8"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "Beed28Weapon1"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Beed28"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTBEED"
+	chatfrequency = 50
+}
+
+{
+	name = "\cgB\cilaze"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "CombatRifle"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Blaze"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTBLZE"
+	chatfrequency = 50
+}
+
+{
+	name = "\cfT\cmsukiyomaru \cfZ\cmero"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "TsukiClassWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Tsukiyomaru Zero"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTTSU0"
+	chatfrequency = 50
+}
+
+
+{
+	name = "\crFenga \cmPapit"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "BalladeCrackerWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Fenga Papit"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTFNGA"
+	chatfrequency = 50
+}
+
+{
+	name = "\ccTroll\cmyomaru \cfZero"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "TsukiTrollWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "TrollyomaruZero"
+	revealed = true
+	script = "sausgbot"
+	chatlump = "botchats/BOTTRLT"
+	chatfrequency = 50
+}
+
+{
+	name = "\cgMessatsu"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MessatsuWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Messatsu"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTMESS"
+	chatfrequency = 50
+}
+
+{
+   name = "\crThe\cuBlade\crRoden"
+   accuracy = 3
+   intellect = 3
+   evade = 2
+   anticipation = 2
+   reactiontime = 1
+   perception = 1
+   favoriteweapon = "DualBladesWep"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Base"
+   class = "TheBladeRoden"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTTBR"
+   chatfrequency = 50
+}
+
+
+{
+	name = "\ceUkiyama Old"
+	accuracy = 2
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "Crystal Hunter... I mean RainFlushWep" //huehuehue
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Ukiyama Old"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTUKIY"
+	chatfrequency = 50
+}
+
+{
+	name = "\ceUkiyama"
+	accuracy = 2
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "Crystal Hunter... I mean RainFlushWep" //huehuehue
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Ukiyama"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTUKIY"
+	chatfrequency = 50
+}
+
+{
+	name = "\cvTravis"
+	accuracy = 3
+	intellect = 3
+	evade = 2
+	anticipation = 2
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "KnightCrushWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Travis"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTTRAV"
+	chatfrequency = 50
+}
+
+{
+	name = "\ctMichael712"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "PurpleAuraFlameWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Michael712"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTM712"
+	chatfrequency = 50
+}
+
+{
+	name = "\cvUnix"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ShadowBladeWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Unix"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTBKDK"
+	chatfrequency = 50
+}
+
+{
+	name = "\cuBikdark"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ShadowBladeWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Bikdark"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTBKDK"
+	chatfrequency = 50
+}
+
+{
+	name = "\cdJaxOf7"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "CentaurFlashWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "JaxClass"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTJAXF"
+	chatfrequency = 50
+}
+
+{
+	name = "\cgL\che\ckg\cdo"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "StickyBombWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Lego"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTLEGO"
+	chatfrequency = 30
+}
+
+{
+	name = "\cdSaviorSword"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ThunderBeamWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "SaviorSword"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTSVSW"
+	chatfrequency = 50
+}
+
+{
+	name = "\cpDaveris"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "BlizzardAttackWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "Daveris"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTDAVE"
+	chatfrequency = 50
+}
+
+{
+	name = "\cgGizmo the Cat"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "AtomicFireWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "Gizmo"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTHGIZs"
+	chatfrequency = 50
+}
+
+{
+	name = "\cgHuman \cfDestroyer"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "PowerStoneWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "Human Destroyer"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTHMDS"
+	chatfrequency = 50
+}
+
+{
+    name = "\ceStonefunk"
+    accuracy = 2
+    intellect = 4
+    evade = 2
+    anticipation = 2
+    reactiontime = 2
+    perception = 2
+    favoriteweapon = "PowerStoneWep"
+    color = "00 00 00"
+    gender = "male"
+    skin = "base"
+    class = "StoneFunk"
+    revealed = true
+    script = "humanbot"
+    chatlump = ""
+    chatfrequency = 50
+}
+
+{
+	name = "\crC\cno\cvp\cry"
+	accuracy = 3
+	intellect = 4
+	evade = 1
+	anticipation = 1
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "TimeStopperWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "CopyRobot"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/COPYBOT"
+	chatfrequency = 50
+}
+
+
+{
+    name = "\cqK\cto\cqr\ctb\cqy"
+    accuracy = 1
+    intellect = 4
+    evade = 1
+    anticipation = 1
+    reactiontime = 1
+    perception = 1
+    favoriteweapon = "PharaohShotWep"
+    color = "00 00 00"
+    gender = "male"
+    skin = "base"
+    class = "Korby"
+    revealed = true
+    script = "humanbot"
+    chatlump = "botchats/KORBOT"
+    chatfrequency = 50
+}
+
+{
+    name = "\crRed Eyes"
+    accuracy = 2
+    intellect = 4
+    evade = 2
+    anticipation = 2
+    reactiontime = 2
+    perception = 2
+    favoriteweapon = "PharaohShotWep"
+    color = "00 00 00"
+    gender = "male"
+    skin = "base"
+    class = "Red Eyes"
+    revealed = true
+    script = "humanbot"
+    chatlump = ""
+    chatfrequency = 50
+}
+
+{
+    name = "Sergio"
+    accuracy = 2
+    intellect = 4
+    evade = 2
+    anticipation = 2
+    reactiontime = 2
+    perception = 2
+    favoriteweapon = "PharaohShotWep"
+    color = "00 00 00"
+    gender = "male"
+    skin = "base"
+    class = "Sergio"
+    revealed = true
+    script = "humanbot"
+    chatlump = ""
+    chatfrequency = 50
+}
+
+{
+   name = "\ctR\cjozar\ctk \ctK\cjyouk\cto"
+   accuracy = 4
+   intellect = 3
+   evade = 2
+   anticipation = 1
+   reactiontime = 2
+   perception = 1
+   favoriteweapon = "OblivionWingsClass" 
+   color = "00 00 00"
+   gender = "male"
+   skin = "Rozark"
+   class = "Rozark"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTRZRK"
+   chatfrequency = 50
+}
+
+{
+	name = "\chK\cnn\cvu\cjx"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "BubbleArrowBoss"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Knux"
+	revealed = true
+	script = "humanbot"
+	chatlump = ""
+	chatfrequency = 50
+}
+
+{
+	name = "\crMutant\cqYoshi"
+	accuracy = 3
+	intellect = 4
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MutantYoshiTongue"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "MutantYoshi"
+	revealed = true
+	script = "humanbot"
+	chatlump = ""
+	chatfrequency = 50
+}
+
+{
+	name = "\cpAdaraMozes"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "BlizzardAttackWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "AdaraMozes"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTDAVE"
+	chatfrequency = 50
+}
+
+{
+	name = "\cpFreon"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "BlizzardAttackWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Freon"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTDAVE"
+	chatfrequency = 50
+}
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
+{
+	name = "\cnZard\cf1084"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Zard1084"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\ctQueen Prinny"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Queen Prinny"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\cdAlice the ice fairy"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Alice the ice fairy"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\ctGiantmega.exe"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Giantmega.exe"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\cfLight"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Light"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\chProtoman\cv01"
+	accuracy = 1
+	intellect = 3
+	evade = 0
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	skin = "protoman"
+	class = "Protoman01"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\csClayton"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Clayton"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\cuFyone"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Fyone"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\chSmash the Echidna"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Smash"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\cjMissingno."
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Missingno."
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\ciToastMan"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "ToastMan"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\ctChaosLordRoll"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "ChaosLordRoll"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\chHilman\cf170499"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "HilGunWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Hilman170499"
+	class = "Hilman170499"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTHILS"
+	chatfrequency = 50
+}
+
+{
+	name = "\cgJake"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Jake"
+	revealed = true
+	script = "humanbot"
+	//chatlump = "botchats/BOTICSP"
+	chatfrequency = 50
+}
+
+{
+	name = "\chLordDamager"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "LordDamager"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+   name = "\cmWeavile"
+   accuracy = 5
+   intellect = 5
+   evade = 5
+   anticipation = 5
+   reactiontime = 5
+   perception = 5
+   favoriteweapon = "IceShardWep"
+   color = "00 00 00"
+   gender = "male"
+   class = "Weavile"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTWEAV"
+   chatfrequency = 20
+}
+
+{
+   name = "\cnBlizzard Knight"
+   accuracy = 5
+   intellect = 5
+   evade = 5
+   anticipation = 5
+   reactiontime = 5
+   perception = 5
+   favoriteweapon = "BlizzardSwordBoss"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Megaman"
+   class = "BlizzardKnight"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTBLIKN"
+   chatfrequency = 50
+}
+
+{
+   name = "\cnDiamond IceMan"
+   accuracy = 5
+   intellect = 5
+   evade = 5
+   anticipation = 5
+   reactiontime = 5
+   perception = 5
+   favoriteweapon = "Ice Cream"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Megaman"
+   class = "Diamond IceMan"
+   revealed = true
+   script = "humanbot"
+   chatfrequency = 50
+}
+
+{
+	name = "\cnFrostWalrus"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "FrostWalrus"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+   name = "\cnI\cvce \cnM\cvage"
+   accuracy = 3
+   intellect = 6
+   evade = 5
+   anticipation = 5
+   reactiontime = 5
+   perception = 5
+   favoriteweapon = "SupreIcacleStoreima"
+   color = "00 00 00"
+   gender = "other"
+   skin = "IceMan"
+   class = "IceMage"
+   revealed = true
+   script = "humanbot"
+   chatlump = ""
+   chatfrequency = 50
+}
+
+{
+	name = "\cnNegaSwordman"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "NegaSwordman"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+   name = "\cnWeo Weo Class"
+   accuracy = 5
+   intellect = 5
+   evade = 5
+   anticipation = 5
+   reactiontime = 5
+   perception = 5
+   favoriteweapon = "CoolerClassWeapon"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Megaman"
+   class = "Weo Weo Ice"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTCOOL"
+   chatfrequency = 50
+}
+
+{
+	name = "\cnBozu"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Bozu"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+   name = "\cmM\cuech \cmU\cunit \cc'\cgB\cc'"
+   accuracy = 5
+   intellect = 3
+   evade = 4
+   anticipation = 4
+   reactiontime = 2
+   perception = 3
+   favoriteweapon = "BoltPistol"
+   color = "00 00 00"
+   gender = "female"
+   skin = "Megaman"
+   class = "Mech Unit 'B'"
+   revealed = true
+   script = "humanbot"
+   chatlump = ""
+   chatfrequency = 50
+}
+
+{
+	name = "Treo"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Treo"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+
+{
+   name = "\ciTank \cdSnail"
+   accuracy = 5
+   intellect = 5
+   evade = 5
+   anticipation = 5
+   reactiontime = 5
+   perception = 5
+   favoriteweapon = "SnailTankWeapon"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Megaman"
+   class = "TankSnail"
+   revealed = true
+   script = "humanbot"
+   chatlump = "botchats/BOTTSNA"
+   chatfrequency = 50
+}
+
+{
+	name = "Awadphec"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Awadphec"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "Viz"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Viz"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+   name = "\cfTsuyoi"
+   accuracy = 5
+   intellect = 5
+   evade = 3
+   anticipation = 5
+   reactiontime = 3
+   perception = 5
+   favoriteweapon = "StormPunchBotWep"
+   color = "00 00 00"
+   gender = "male"
+   skin = "Megaman"
+   class = "Tsuyoi"
+   revealed = true
+   script = "humanbot"
+}
+
+{
+   name = "\ctJuri Kitai"
+   accuracy = 5
+   intellect = 5
+   evade = 5
+   anticipation = 5
+   reactiontime = 5
+   perception = 5
+   favoriteweapon = "JuriClassWeapon"
+   color = "00 00 00"
+   gender = "female"
+   skin = "Megaman"
+   class = "Juri Kitai"
+   revealed = true
+   script = "humanbot"
+   //chatlump = "botchats/BOTJURI"
+   //chatfrequency = 50
+}
+
+{
+	name = "\csNatures Wonder"
+	accuracy = 2
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 2
+	favoriteweapon = "LELEARTHQUAKE" 
+	color = "00 00 00"
+	gender = "male"
+	skin = "DEER"
+	class = "Natures Wonder"
+	revealed = true
+	script = "humanbot"
+	chatlump = ""
+	chatfrequency = 50
+}
+
+{
+	name = "Zangief"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Zangief"
+	class = "Zangief"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "Bonehead"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Bonehead"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}

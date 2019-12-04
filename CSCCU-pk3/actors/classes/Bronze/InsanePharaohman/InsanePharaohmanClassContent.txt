@@ -1,0 +1,13 @@
+#include "actors/Classes/Bronze/InsanePharaohman/InsanePharaohman.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/BulletTracer.txt"
+//#include "actors/Classes/Bronze/InsanePharaohman/InsanityOverload.txt"
+
+#include "actors/Classes/Bronze/InsanePharaohman/CrazyWaveBoss.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/CrazyWaveBossUp.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/FireBolt.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/ExecuteLv1.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/ExecuteLv2.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/ExecuteLv3.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/SetsWatch.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/Ascension.txt"
+#include "actors/Classes/Bronze/InsanePharaohman/Sanctuary.txt"

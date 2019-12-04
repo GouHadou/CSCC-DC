@@ -1,0 +1,2 @@
+#include "actors/classes/Ultimate/Bonehead/BoneheadClass.txt"
+#include "actors/classes/Ultimate/Bonehead/BoneheadWep.txt"

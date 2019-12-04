@@ -1,0 +1,3 @@
+#include "actors/classes/CSCC/korby/KORBCLASS.txt"
+#include "actors/classes/CSCC/korby/KORBWEP.txt"
+#include "actors/classes/CSCC/korby/KorbyCopy.txt"

@@ -1,0 +1,1192 @@
+actor WeavileWep : MegaBuster 18001
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 56
+Weapon.SlotNumber 2
+Obituary "%o was slashed by %k's \cmNight Slash."
+weapon.ammotype "ShadowAmmo"
+weapon.ammotype2 "KillStreakAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
+//inventory.icon "ICSHI" No icon because it creates confusion between the item use.
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 1
+stop
+
+Ready:
+WEHU A 0 ACS_ExecuteAlways(998,0,504)
+WEHU A 2 A_WeaponReady
+CLHU A 0 A_JumpIf(z-floorz==0,1)
+Goto Ready+1
+CLHU A 0 A_GiveInventory("WeavileWallAmmo",8)
+Goto Ready+1 
+Shiny:
+WEHU A 0 ACS_ExecuteAlways(998,0,505)
+WEHU A 1 A_SpawnItemEx("WeavileShinyEffect")
+WEHU A 2 A_WeaponReady
+WEHU A 10
+WEHU A 0 A_PlaySoundEx("weavile/shinyeffect","Weapon")
+Goto Ready+1 
+Deselect:
+TNT1 A 0 A_SelectWeapon("WeavileWep")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+WEHU A 1 A_Lower
+Loop
+
+Select:
+WEHU A 0 A_Jump(2,"LowerTheChancesEvenMore")
+WEHU A 0 A_GunFlash
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+WEHU A 1 A_Raise
+Loop
+
+LowerTheChancesEvenMore:
+WEHU A 0 A_Jump(2,"Shiny")
+Goto Ready
+
+Fire:
+//WEHU A 0 A_JumpIfInventory("FuryFlag",1,"LeftHold")
+
+Hold:
+//WEHU A 0 A_JumpIfInventory("FuryFlag",1,"LeftHold")
+WEHU A 0 A_JumpIfInventory("ShadowAmmo",56,"Hold2")
+WEHU N 2
+WEHU A 0 A_GiveInventory("ShadowAmmo",2)
+WEHU A 0 A_ReFire
+Goto FurySwipe
+
+LeftHold:
+WEHU A 0 A_JumpIfInventory("ShadowAmmo",56,"LeftHold2")
+WEHU N 2
+WEHU A 0 A_GiveInventory("ShadowAmmo",2)
+WEHU A 0 A_ReFire
+Goto FurySwipe
+
+Hold2:
+WEHU N 2
+COOW B 0 A_ReFire
+Goto NightSlash
+
+LeftHold2:
+WEHU N 2
+COOW B 0 A_ReFire
+Goto NightSlash
+
+FurySwipe:
+TNT1 A 0 A_GiveInventory("WeavileWallRun",1)
+COOW C 0 A_JumpIfInventory("FuryFlag",1,"FurySwipe2")
+COOW C 0 A_JumpIfInventory("WeavileSwordsDance",1,"FurySwipeSD")
+WEHU B 1 A_PlaySoundEx("weapon/slashclaw","Weapon")
+WEHU C 1 A_FireCustomMissile("FurySwipe",0,1,16,0)
+WEHU D 1 A_TakeInventory("ShadowAmmo",56)
+WEHU E 1 A_GiveInventory("FuryFlag",1)
+WEHU F 1
+TNT1 A 2
+TNT1 A 0 A_TakeInventory("WeavileWallRun",1)
+TNT1 A 0 A_TakeInventory("WeavileOnWall2",1)
+COOW B 0 A_ReFire
+Goto Ready+1
+
+FurySwipeSD:
+TNT1 A 0 A_GiveInventory("WeavileWallRun",1)
+WEHU B 1 A_PlaySoundEx("weapon/slashclaw","Weapon")
+WEHU C 1 A_FireCustomMissile("FurySwipeSD",0,1,16,0)
+WEHU D 1 A_TakeInventory("ShadowAmmo",56)
+WEHU E 1 A_GiveInventory("FuryFlag",1)
+WEHU F 1
+TNT1 A 2
+TNT1 A 0 A_TakeInventory("WeavileWallRun",1)
+TNT1 A 0 A_TakeInventory("WeavileOnWall2",1)
+COOW B 0 A_ReFire
+Goto Ready+1
+
+FurySwipe2:
+TNT1 A 0 A_GiveInventory("WeavileWallRun",1)
+COOW C 0 A_JumpIfInventory("WeavileSwordsDance",1,"FurySwipe2SD")
+WEHU H 1 A_PlaySoundEx("weapon/slashclaw","Weapon")
+WEHU I 1 A_FireCustomMissile("FurySwipe",0,1,-16,0)
+WEHU J 1 A_TakeInventory("ShadowAmmo",56)
+WEHU N 1 A_TakeInventory("FuryFlag",1)
+WEHU M 1
+TNT1 A 2
+TNT1 A 0 A_TakeInventory("WeavileWallRun",1)
+TNT1 A 0 A_TakeInventory("WeavileOnWall2",1)
+
+COOW B 0 A_ReFire
+Goto Ready+1
+
+FurySwipe2SD:
+TNT1 A 0 A_GiveInventory("WeavileWallRun",1)
+WEHU H 1 A_PlaySoundEx("weapon/slashclaw","Weapon")
+WEHU I 1 A_FireCustomMissile("FurySwipeSD",0,1,-16,0)
+WEHU J 1 A_TakeInventory("ShadowAmmo",56)
+WEHU N 1 A_TakeInventory("FuryFlag",1)
+WEHU M 1
+TNT1 A 2
+TNT1 A 0 A_TakeInventory("WeavileWallRun",1)
+TNT1 A 0 A_TakeInventory("WeavileOnWall2",1)
+COOW B 0 A_ReFire
+Goto Ready+1
+
+NightSlash:
+COOW C 0 A_JumpIfInventory("WeavileSwordsDance",1,"NightSlashSD")
+SCLA A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+SCLA A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+COOW B 0 A_FireCustomMissile("NightSlash",0,1,8,0)
+COOW B 0 A_TakeInventory("ShadowAmmo",56)
+WEHU IHQRS 2
+TNT1 A 2
+COOW B 0 A_ReFire
+Goto Ready+1
+
+NightSlashSD:
+SCLA A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+SCLA A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+COOW B 0 A_FireCustomMissile("NightSlashSD",0,1,8,0)
+COOW B 0 A_TakeInventory("ShadowAmmo",56)
+WEHU IHQRS 2
+TNT1 A 2
+COOW B 0 A_ReFire
+Goto Ready+1
+
+AltFire:
+COOW C 0 A_JumpIfInventory("WeavileSwordsDance",1,"AltFireSD")
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX2",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX2",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,-8,28,0)
+COOW B 0 A_PlaySoundEx("weapon/freezecrackerhit","Weapon")
+WEHU J 1 A_FireCustomMissile("IceShardW",-10,0,8,0)
+COOW B 0 A_FireCustomMissile("IceShardW",1,0,8,0)
+COOW B 0 A_FireCustomMissile("IceShardW",11,0,8,0)
+WEHU IHQRS 2
+TNT1 A 13
+goto Ready+1
+
+AltFireSD:
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX2",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,-8,28,0)
+WEHU J 1 A_SpawnItemEx("IceShardWFX2",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,-8,28,0)
+COOW B 0 A_PlaySoundEx("weapon/freezecrackerhit","Weapon")
+COOW B 0 A_FireCustomMissile("IceShardWSD",0,0,8,0)
+WEHU IHQRS 2
+TNT1 A 13
+goto Ready+1
+
+Flash:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("WeavileSwordsDance",1,"Swords")
+TNT1 A 1 A_JumpIfInventory("WeavileAgility",1,"Agilitys")
+TNT1 A 0 A_JumpIfInventory("WeavileWallRun",1,"WallRun")
+Goto Flash
+WallRun:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("WeavileWallContact",10)
+TNT1 A 0 A_SpawnItemEx("WeavileWallContact2",0,0,32,28,0,0,180)
+TNT1 A 0 A_SpawnItemEx("WeavileWallContact2",0,0,32,28,0,0,-180)
+//TNT1 A 0 A_JumpIfInventory("WeavileOnWall2",1,"WallRunSide")
+TNT1 A 0 A_JumpIfInventory("WeavileOnWall",1,2)
+TNT1 A 0 A_JumpIfInventory("WeavileOnWall2",1,1)
+Goto Flash
+TNT1 A 0 A_JumpIfInventory("WeavileWallAmmo",50,"WallUp5")
+TNT1 A 0 A_JumpIfInventory("WeavileWallAmmo",40,"WallUp4")
+TNT1 A 0 A_JumpIfInventory("WeavileWallAmmo",30,"WallUp3")
+TNT1 A 0 A_JumpIfInventory("WeavileWallAmmo",20,"WallUp2")
+TNT1 A 0 A_JumpIfInventory("WeavileWallAmmo",10,"WallUp1")
+TNT1 A 0 A_JumpIfInventory("WeavileWallAmmo",1,1)
+Goto Flash
+TNT1 A 1 ThrustThingZ(0,5,0,0)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",3)
+TNT1 A 0 A_TakeInventory("WeavileOnWall",1)
+Goto Flash
+WallUp1:
+TNT1 A 0 A_JumpIfInventory("WeavileOnWall2",1,"WallRunSide")
+TNT1 A 1 ThrustThingZ(0,10,0,0)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",3)
+TNT1 A 0 A_TakeInventory("WeavileOnWall",1)
+Goto Flash
+WallUp2:
+TNT1 A 0 A_JumpIfInventory("WeavileOnWall2",1,"WallRunSide2")
+TNT1 A 1 ThrustThingZ(0,20,0,0)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",3)
+TNT1 A 0 A_TakeInventory("WeavileOnWall",1)
+Goto Flash
+WallUp3:
+TNT1 A 0 A_JumpIfInventory("WeavileOnWall2",1,"WallRunSide3")
+TNT1 A 1 ThrustThingZ(0,30,0,0)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",3)
+TNT1 A 0 A_TakeInventory("WeavileOnWall",1)
+Goto Flash
+WallUp4:
+TNT1 A 0 A_JumpIfInventory("WeavileOnWall2",1,"WallRunSide4")
+TNT1 A 1 ThrustThingZ(0,40,0,0)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",3)
+TNT1 A 0 A_TakeInventory("WeavileOnWall",1)
+Goto Flash
+WallUp5:
+TNT1 A 0 A_JumpIfInventory("WeavileOnWall2",1,"WallRunSide5")
+TNT1 A 1 ThrustThingZ(0,40,0,0)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",3)
+TNT1 A 0 A_TakeInventory("WeavileOnWall",1)
+Goto Flash
+WallRunSide:
+TNT1 A 1
+TNT1 A 0 A_Recoil(-1)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",2)
+Goto Flash
+WallRunSide2:
+TNT1 A 1 ThrustThingZ(0,10,0,0)
+TNT1 A 0 A_Recoil(-3)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",2)
+Goto Flash
+WallRunSide3:
+TNT1 A 1 ThrustThingZ(0,10,0,0)
+TNT1 A 0 A_Recoil(-5)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",2)
+Goto Flash
+WallRunSide4:
+TNT1 A 1 ThrustThingZ(0,13,0,0)
+TNT1 A 0 A_Recoil(-6)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",2)
+Goto Flash
+WallRunSide5:
+TNT1 A 1 ThrustThingZ(0,15,0,0)
+TNT1 A 0 A_Recoil(-7)
+TNT1 A 0 A_TakeInventory("WeavileWallAmmo",2)
+Goto Flash
+POOF:
+TNT1 A 0 A_JumpIfInventory("WeavileAgilityItem",1,1)
+Goto Ready+2
+TNT1 A 0 A_JumpIfInventory("WeavileSwordsDanceItem",1,1)
+Goto Ready+2
+TNT1 A 0 A_JumpIfInventory("WeavileAgility",1,1)
+Goto Ready+2
+TNT1 A 0 A_JumpIfInventory("WeavileSwordsDance",1,1)
+Goto Ready+2
+TNT1 A 0 A_TakeInventory("KillStreakAmmo",999)
+TNT1 A 0 A_Jump(128,"SwordsDance")
+Agility:
+TNT1 A 0 A_GiveInventory("WeavileAgilityItem")
+Goto Ready+2
+
+SwordsDance:
+TNT1 A 0 A_GiveInventory("WeavileSwordsDanceItem")
+Goto Ready+2
+
+Swords:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,0,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,180,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,9,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,189,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,18,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,198,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,27,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,207,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,36,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,216,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,45,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,225,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,54,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,234,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,63,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,243,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,72,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,252,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,81,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,261,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,90,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,270,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,99,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,279,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,108,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,288,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,117,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,297,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,126,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,306,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,135,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,315,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,144,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,324,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,153,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,333,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,162,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,342,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,171,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,351,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,0,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,180,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,9,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,189,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,18,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,198,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,27,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,207,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,36,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,216,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,45,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,225,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,54,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,234,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,63,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,243,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,72,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,252,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,81,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,261,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,90,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,270,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,99,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,279,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,108,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,288,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,117,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,297,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,126,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,306,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,135,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,315,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,144,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,324,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,153,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,333,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,162,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,342,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,171,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SwordFX",32,0,38,momx,momy,momz,351,SXF_ABSOLUTEANGLE|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_TakeInventory("KillStreakAmmo",1)
+TNT1 A 0 A_JumpIfInventory("KillStreakAmmo",1,"Swords")
+TNT1 A 0 A_TakeInventory("WeavileSwordsDance",1)
+//COOW B 0 A_GiveInventory("WeavileAmmo",50)
+Goto Flash
+Agilitys:
+TNT1 A 0 A_JumpIfInventory("WeavileWallRun",1,"WallRun")
+TNT1 A 20
+TNT1 A 0 A_TakeInventory("KillStreakAmmo",1)
+TNT1 A 0 A_JumpIfInventory("KillStreakAmmo",1,"Agilitys")
+TNT1 A 0 A_TakeInventory("WeavileSwordsDance",1)
+//COOW B 0 A_GiveInventory("WeavileAmmo",50)
+Goto Flash
+NoFlash:
+TNT1 A 1
+TNT1 A 1 //A_JumpIfInventory("WeavileSwordsDance",1,"Swords")
+Stop
+}
+}
+
+actor ShadowAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 56
+}
+
+actor WeavileWallContact
+{
+PROJECTILE
+Radius 10
+Height 1
+Damage(0)
++DONTBLAST
++NOTARGETSWITCH
+speed 0
+states
+{
+Spawn:
+TNT1 A 2
+stop
+
+Death:
+TNT1 A 0 A_JumpIfInTargetInventory("WeavileOnWall2",1,"XDeath")
+TNT1 A 0 A_GiveToTarget("WeavileOnWall",1)
+stop
+Crash:
+XDeath:
+TNT1 A 0
+Stop
+}
+}
+
+actor WeavileWallContact2
+{
+PROJECTILE
+Radius 30
+Height 1
+Damage(0)
++DONTBLAST
++NOTARGETSWITCH
+states
+{
+Spawn:
+TNT1 A 2
+stop
+
+Death:
+TNT1 A 0 A_GiveToTarget("WeavileOnWall2",1)
+stop
+Crash:
+XDeath:
+TNT1 A 0
+Stop
+}
+}
+
+actor FurySwipe
+{
+PROJECTILE
+Obituary "%o got furiously swiped by %k's \cjFury Swipes."
+Translation "210:211=4:4"
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++RIPPER
+damagetype "Weavile"
+radius 20
+height 15
+scale 2.5 
+damage (7)
++FORCEXYBILLBOARD 
+speed 34
+States
+{
+Spawn:
+SCLA IJ 2
+stop
+}
+}
+
+actor FurySwipeSD : FurySwipe
+{
+scale 8.0  
+damage (12)
+speed 45
+States
+{
+Spawn:
+SCLA IJ 2
+stop
+}
+}
+
+actor NightSlash
+{
+Obituary "%o was slashed by %k's \cmNight Slash."
+PROJECTILE
+Translation "210:211=1:1"
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++RIPPER
+damagetype "NightSlash"
+radius 20
+height 15
+scale 2.5 
+damage (12)
++FORCEXYBILLBOARD 
+speed 45
+States
+{
+Spawn:
+SCLA IJIJ 2 A_SpawnItemEx("NightSlashTrail")
+stop
+}
+}
+
+actor NightSlashSD : NightSlash
+{
+scale 8.0 
+damage (18)
+States
+{
+Spawn:
+SCLA IJIJ 2 A_SpawnItemEx("NightSlashTrail")
+loop
+}
+}
+
+actor NightSlashTrail : NightSlash 
+{
+PROJECTILE
+damagetype "NightSlash"
+damage (5)
+Speed 20
+States
+{
+Spawn:
+SCLA I 2 A_SetTranslucent (0.8, 0)
+SCLA I 2 A_SetTranslucent (0.6, 0)
+SCLA J 2 A_SetTranslucent (0.4, 0)
+SCLA J 2 A_SetTranslucent (0.2, 0)
+stop
+}
+}
+
+actor NightSlashProtect : PowerProtection
+{
+Powerup.Duration 3
+damagefactor "NightSlash", 0.0
+}
+
+actor IceShardWFX
+{
++DONTBLAST
++RIPPER
++DONTSPLASH
++SHOOTABLE
++NOBLOOD
+-SOLID
+painchance 256
+bloodtype ""
++DONTRIP
++GHOST
++NORADIUSDMG
+health 9999
+damagefactor "Weavile", 0.0
+Radius 20
+Height 20
+scale 2.5 
+damage (0)
+speed 0
+States
+{
+Spawn:
+MRFP CC 1
+stop
+Pain:
+TNT1 A 0
+TNT1 A 2 A_PlaySound("item/protoreflect")
+stop
+}
+}
+
+actor WeavileShinyEffect
+{
+//+NOINTERACTION
++RIPPER
+Radius 1
+Height 1
+scale 2.5 
+damage (0)
+speed 0
++DOOMBOUNCE
+States
+{
+Spawn:
+TNT1 A 1 A_PlaySoundEx("Weavile/shinyeffect","Weapon")
+SHIN ABCD 5 
+stop
+}
+}
+
+actor IceShardWFX2
+{
++DONTBLAST
++RIPPER
+//+DONTSPLASH
+//+SHOOTABLE
+//+NOBLOOD
+//-SOLID
+//+PIERCEARMOR
+//+MISSILE
+//painchance 256
+//bloodtype ""
+//+DONTRIP
+//+GHOST
+//+NORADIUSDMG
+//health 9999
+Radius 20
+Height 20
+scale 2.5 
+damage (0)
+speed 0
+States
+{
+Spawn:
+MRFP CDEF 1
+stop
+}
+}
+
+actor IceShardW
+{
+PROJECTILE
+Obituary "%o wasn't fast enough for %k's \cnIce Shard."
++SKYEXPLODE
++DONTBLAST
+damagetype "Weavile"
+radius 6
+height 6
+scale 2.5 
+damage (8)
++FORCEXYBILLBOARD 
+speed 85
+States
+{
+Spawn:
+MRFP C 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+MRFP D 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+MRFP E 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+MRFP F 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+loop
+}
+}
+
+actor IceShardWSD : FreezeCracker
+{
+Obituary "%o was peirced and frozen in %k's \cnIcicle Crash."
+scale 3.5 
+speed 60
+damage (15)
+States
+{
+Spawn:
+MRFP A 1 A_SpawnItemEx("IceShardTrailSD",0,0,0,0,0,0,0)
+loop
+Death:
+FCRA F 0 A_JumpIf(z-floorz<5, "Floor")
+FCRA F 0 A_JumpIf(z-ceilingz==0-10, "Ceiling")
+TNT1 A 0 A_SpawnItemEx("IceShardW",0,0,0,32,0,0,0)
+TNT1 A 0 A_SpawnItemEx("IceShardW",0,0,0,32,0,0,45)
+TNT1 A 0 A_SpawnItemEx("IceShardW",0,0,0,32,0,0,135)
+TNT1 A 0 A_SpawnItemEx("IceShardW",0,0,0,32,0,0,180)
+TNT1 A 0 A_SpawnItemEx("IceShardW",0,0,0,32,0,0,225)
+TNT1 A 0 A_SpawnItemEx("IceShardW",0,0,0,32,0,0,315)
+stop
+Floor:
+TNT1 A 0 A_SpawnItemEx("CeilingSpikeGeneratorW",0,0,0,0,0,0,0)
+stop
+Ceiling:
+TNT1 A 0 A_SpawnItemEx("CeilingSpikeGeneratorW",0,0,0,0,0,0,0)
+stop
+}
+}
+
+actor IceShardBitW
+{
+PROJECTILE
++RIPPER
++FLOORHUGGER
++DONTREFLECT
+Damagetype "Weavile"
+Damage (0)
+Speed 20
+Height 48
+Radius 10
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 2 A_SpawnItemEx("IceWaveIcicle")
+Loop
+}
+}
+
+
+actor IceShardBitTrailW : IceShardBitW
+{
++DONTBLAST
+-RIPPER
+Damage (8)
+Scale 2.5
+States
+{
+Spawn:
+ICEW B 0
+ICEW B 0 A_PlaySoundEx("weapon/icewavespawn","weapon")
+ICEW B 0 A_Jump(80, "Icicle2")
+ICEW B 0 A_Jump(64, "Icicle4")
+ICEW BCDEE 2
+Goto Death
+Icicle2:
+ICEW L 0
+ICEW L 0 A_Jump(80, "Icicle3")
+ICEW LMMNN 2
+Goto Death
+Icicle3:
+ICEW LMNOO 2
+Goto Death
+Icicle4:
+ICEW BCCDD 2
+Goto Death
+Death: 
+ICEW B 0 
+ICEW B 0 A_SpawnItemEx("IceWaveBreak",0,0,0,0,0,0,0)
+stop
+}
+}
+
+actor FloorFrostW
+{
++DONTBLAST
++DONTSPLASH
++SHOOTABLE
++NOBLOOD
+-SOLID
++PIERCEARMOR
++MISSILE
+painchance 256
+bloodtype ""
+damagefactor "Weavile", 0.0
+damagetype "Weavile"
++DONTRIP
++GHOST
++NORADIUSDMG
+health 9999
+Radius 20
+Height 20
+scale 2.5 
+damage (10)
+speed 0
+ReactionTime 30
+States
+{
+Spawn:
+ICEW BCDE 2 A_Stop
+Continue:
+ICEW E 1 A_CountDown
+loop
+Death:
+ICEW FGH 2
+stop
+}
+}
+
+actor CeilingFreezeW : FreezeBit
+{
++CEILINGHUGGER
+speed 15
+ReactionTime 2
+states
+{
+Spawn:
+MRFP H 4
+stop
+}
+}
+
+actor FloorFreezeW : FreezeBit
+{
++FLOORHUGGER
+speed 15
+ReactionTime 100
+states
+{
+Spawn:
+MRFP H 1
+loop
+}
+}
+
+actor CeilingSpikeGeneratorW
+{
+PROJECTILE
++DONTBLAST
++RIPPER
++CEILINGHUGGER
+Radius 1
+Height 8
+scale 2.5
+damage (0)
+speed 0
+ReactionTime 1
+States
+{
+Spawn:
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,0)
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,45)
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,90)
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,135)
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,180)
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,225)
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,270)
+TNT1 A 0 A_SpawnItemEx("CeilingFreezeW",0,0,0,16,0,0,315)
+TNT1 A 4 A_SpawnItemEx("CeilingSpikeW2",random(50,-50),random(70,-70),0,0,0,0) 
+TNT1 A 4 A_SpawnItemEx("CeilingSpikeW2",random(100,-100),random(125,-125),0,0,0,0)
+TNT1 A 4 A_SpawnItemEx("CeilingSpikeW2",random(100,-100),random(125,-125),0,0,0,0)
+TNT1 A 4 A_SpawnItemEx("CeilingSpikeW2",random(50,-50),random(70,-70),0,0,0,0) 
+TNT1 A 1
+Stop
+}
+}
+
+actor CeilingSpikeW
+{
+PROJECTILE
+Obituary "%o was peirced and frozen in %k's \cnIcicle Crash."
++NOGRAVITY
++CEILINGHUGGER
+-FLOORHUGGER
+Radius 6
+Height 8
+scale 2.5
+damage (10)
+damagetype "Weavile"
+States
+{
+Spawn:
+MRFC ABC 2
+MRFC C 0 ThrustThingZ(0,-30,0,1)
+MRFC C 0 A_ChangeFlag("CEILINGHUGGER",0)
+MRFC C 1
+Goto Spawn+2
+Death:
+MMFX B 0 A_Explode(25, 150, 0)
+MMFX B 0 A_SpawnItemEx("IceShardW",0,0,0,28,0,0,60)
+MMFX B 0 A_SpawnItemEx("IceShardW",0,0,0,28,0,0,180)
+MMFX B 0 A_SpawnItemEx("IceShardW",0,0,0,28,0,0,0)
+stop
+}
+}
+
+actor CeilingSpikeW2 : CeilingSpikeW
+{
+States
+{
+Spawn:
+MRFC ABC 2
+MRFC C 0 ThrustThingZ(0,-30,0,1)
+MRFC C 0 A_ChangeFlag("CEILINGHUGGER",0)
+MRFC C 1
+Goto Spawn+2
+Death:
+MMFX B 0 A_Explode(15, 150, 0)
+MMFX B 0 A_SpawnItemEx("IceShardW",0,0,0,28,0,0,60)
+MMFX B 0 A_SpawnItemEx("IceShardW",0,0,0,28,0,0,180)
+MMFX B 0 A_SpawnItemEx("IceShardW",0,0,0,28,0,0,0)
+stop
+}
+}
+
+
+actor IceShardTrail : IceShardW
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+scale 1.5
+height 0
+radius 0
+States
+{
+Spawn:
+MRFP CDEF 1
+stop
+}
+}
+
+actor IceShardTrailSD : IceShardW
+{
+PROJECTILE
+damagetype "Weavile"
+damage (0)
+Speed 20
+scale 3.5 
+States
+{
+Spawn:
+MRFP A 2 A_SetTranslucent (0.8, 0)
+MRFP A 2 A_SetTranslucent (0.6, 0)
+MRFP A 1 A_SetTranslucent (0.4, 0)
+MRFP A 1 A_SetTranslucent (0.2, 0)
+stop
+}
+}
+
+actor SwordFX
+{
+PROJECTILE
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+scale 2.5
+height 0
+radius 0
+damage (0)
+States
+{
+Spawn:
+WSWO AA 1
+stop
+}
+}
+
+actor FuryFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor WeavileWallRun : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor WeavileOnWall : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor WeavileOnWall2 : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+
+actor KillStreakAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 10
+}
+
+actor WeavileAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 50
+}
+
+actor WeavileWallAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 56
+}
+
+actor WeavileAgility : PowerSpeed
+{
+Speed 1.7
+Powerup.Duration 200
+}
+
+actor WeavileSwordsDance : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor WeavileAgilityItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "WAgiIcon"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Use:
+QUIK N 0 A_PlaySoundEx("item/refill","Weapon")
+TNT1 A 0 A_GiveInventory("WeavileAgility",1)
+TNT1 A 0 A_TakeInventory("WeavileAgilityItem",1)
+fail
+}
+}
+
+actor WeavileSwordsDanceItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "WSwoIcon"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Use:
+QUIK N 0 A_PlaySoundEx("item/refill","Weapon")
+TNT1 A 0 A_GiveInventory("WeavileSwordsDance",1)
+TNT1 A 0 A_TakeInventory("WeavileSwordsDanceItem",1)
+fail
+}
+}
+
+actor IceShardWepCS : MegaBuster
+{
+Weapon.AmmoUse 2
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o wasn't fast enough for %k's Ice Shard."
+Inventory.Pickupmessage "Power up! Ice Shard!"
+weapon.ammotype "IceShardAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
+inventory.icon "ICSHI"
+Scale 2.0
+States
+{
+Spawn:
+ICSH A 1
+loop
+Ready:
+COOW B 0 ACS_ExecuteAlways(998,0,506)
+ICSH B 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+ICSH B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+ICSH B 1 A_Raise
+Loop
+Fire:
+COOW B 0 A_JumpIfNoAmmo("NoAmmo")
+//COOW B 0 A_PlaySoundEx("weapon/coolattack","Weapon")
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+ICSH C 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+ICSH C 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+ICSH C 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+ICSH C 1 A_SpawnItemEx("IceShardWFX",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX",50,-8,28,0)
+ICSH C 1 A_SpawnItemEx("IceShardWFX2",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,-8,28,0)
+ICSH C 1 A_SpawnItemEx("IceShardWFX2",50,8,28,0)
+FCRA F 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,0,28,0)
+COOW B 0 A_SpawnItemEx("IceShardWFX2",50,-8,28,0)
+COOW B 0 A_PlaySoundEx("weapon/freezecrackerhit","Weapon")
+ICSH C 1 A_FireCustomMissile("IceShardWM",-4,1,8,0)
+COOW B 0 A_FireCustomMissile("IceShardWM",1,0,8,0)
+COOW B 0 A_FireCustomMissile("IceShardWM",5,0,8,0)
+ICSH D 1
+ICSH B 14
+COOW B 0 A_Refire
+Goto Ready+1
+NoAmmo:
+FCRA F 1
+Goto Ready+1
+}
+}
+
+actor IceShardAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor IceShardWM
+{
+PROJECTILE
+Obituary "%o wasn't fast enough for %k's Ice Shard."
++SKYEXPLODE
++DONTBLAST
+damagetype "IceShard"
+radius 6
+height 6
+scale 2.5 
+damage (8)
++FORCEXYBILLBOARD 
+speed 85
+States
+{
+Spawn:
+MRFP C 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+MRFP D 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+MRFP E 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+MRFP F 1 A_SpawnItemEx("IceShardTrail",0,0,0,0,0,0,0)
+loop
+}
+}

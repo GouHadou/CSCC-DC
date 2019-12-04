@@ -1,0 +1,6 @@
+#include "actors/classes/TeaParty/Zard/Zard1084class.txt"
+#include "actors/classes/TeaParty/Zard/ZardGunWep.txt"
+#include "actors/classes/TeaParty/Zard/YukkuriReimuSummon.txt"
+#include "actors/classes/TeaParty/Zard/DanmakuBoomerangWep.txt"
+#include "actors/classes/TeaParty/Zard/ZardSword.txt"
+#include "actors/classes/TeaParty/Zard/ZardGunCopyWep.txt"

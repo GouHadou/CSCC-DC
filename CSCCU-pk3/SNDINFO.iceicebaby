@@ -1,0 +1,119 @@
+$playersound	weavcls	male	*death		MEGADEAT
+$playersound	weavcls	male	*xdeath		MEGADEAT
+$playersound	weavcls	male	*gibbed		MEGADEAT
+$playersound	weavcls	male	*pain100	MEGAPAIN
+$playersound	weavcls	male	*pain75		MEGAPAIN
+$playersound	weavcls	male	*pain50		MEGAPAIN
+$playersound	weavcls	male	*pain25		MEGAPAIN
+$playersound	weavcls	male	*grunt		LAND
+$playersound	weavcls	male	*land		LAND
+$playersound	weavcls	male	*fist		dsnone
+$playersound	weavcls	male	*usefail	LAND
+$playersound	weavcls	male	*taunt		WEATAUN
+
+
+$playersound	blizkni	male	*death		MEGADEAT
+$playersound	blizkni	male	*xdeath		MEGADEAT
+$playersound	blizkni	male	*gibbed		MEGADEAT
+$playersound	blizkni	male	*pain100	MM2PAIN
+$playersound	blizkni	male	*pain75		MM2PAIN
+$playersound	blizkni	male	*pain50		MM2PAIN
+$playersound	blizkni	male	*pain25		MM2PAIN
+$playersound    blizkni	male	*grunt		FATLAND
+$playersound	blizkni	male	*land		FATLAND
+$playersound	blizkni	male	*jump		dsnone
+$playersound	blizkni	male	*fist		dsnone
+$playersound	blizkni	male	*usefail	FATLAND
+
+$playersound	ukiice	male	*death		MEGADEAT
+$playersound	ukiice	male	*xdeath		MEGADEAT
+$playersound	ukiice	male	*gibbed		MEGADEAT
+$playersound	ukiice	male	*pain100	MEGAPAIN
+$playersound	ukiice	male	*pain75		MEGAPAIN
+$playersound	ukiice	male	*pain50		MEGAPAIN
+$playersound	ukiice	male	*pain25		MEGAPAIN
+$playersound	ukiice	male	*grunt		LAND
+$playersound	ukiice	male	*land		LAND
+$playersound	ukiice	male	*fist		dsnone
+$playersound	ukiice	male	*usefail	LAND
+$playeralias ukiice male *taunt VNIC/taunt//Custom taunt, check sounds/coolclass
+
+$playersound	frostwalrusc	male	*death		MEGADEAT
+$playersound	frostwalrusc	male	*xdeath		MEGADEAT
+$playersound	frostwalrusc	male	*gibbed		MEGADEAT
+$playersound	frostwalrusc	male	*pain100	MM3PAIN
+$playersound	frostwalrusc	male	*pain75		MM3PAIN
+$playersound	frostwalrusc	male	*pain50		MM3PAIN
+$playersound	frostwalrusc	male	*pain25		MM3PAIN
+$playersound	frostwalrusc	male	*grunt		dsnone //FATLAND
+$playersound	frostwalrusc	male	*land		FATLAND
+$playersound	frostwalrusc	male	*jump		dsnone
+$playersound	frostwalrusc	male	*fist		dsnone
+$playersound	frostwalrusc	male	*usefail	FATLAND
+$playersound	frostwalrusc	male	*taunt		WALTAU
+
+$playersound	Sowrd	male	*death		MEGADEAT
+$playersound	Sowrd	male	*xdeath		MEGADEAT
+$playersound	Sowrd	male	*gibbed		MEGADEAT
+$playersound	Sowrd	male	*pain100	BOSSPAIN
+$playersound	Sowrd	male	*pain75		BOSSPAIN
+$playersound	Sowrd	male	*pain50		BOSSPAIN
+$playersound	Sowrd	male	*pain25		BOSSPAIN
+$playersound	Sowrd	male	*grunt		FATLAND
+$playersound	Sowrd	male	*land		LAND
+$playersound	Sowrd	male	*jump		dsnone
+$playersound	Sowrd	male	*fist		dsnone
+$playersound	Sowrd	male	*usefail	LAND
+$playersound	Sowrd	male	*taunt		dsnone
+
+$playersound	weoweoicecls	male	*death		MEGADEAT
+$playersound	weoweoicecls	male	*xdeath		MEGADEAT
+$playersound	weoweoicecls	male	*gibbed		MEGADEAT
+$playersound	weoweoicecls	male	*pain100	MEGAPAIN
+$playersound	weoweoicecls	male	*pain75		MEGAPAIN
+$playersound	weoweoicecls	male	*pain50		MEGAPAIN
+$playersound	weoweoicecls	male	*pain25		MEGAPAIN
+$playersound	weoweoicecls	male	*grunt		LAND
+$playersound	weoweoicecls	male	*land		LAND
+$playersound	weoweoicecls	male	*fist		dsnone
+$playersound	weoweoicecls	male	*usefail	LAND
+$playersound	weoweoicecls	male	*taunt		WWICT
+
+$playersound	robutto	female	*death		ROKKDEAT
+$playersound	robutto	female	*xdeath		ROKKDEAT
+$playersound	robutto	female	*gibbed		ROKKDEAT
+$playersound	robutto	female	*pain100	GUAHIT
+$playersound	robutto	female	*pain75		GUAHIT
+$playersound	robutto	female	*pain50		GUAHIT
+$playersound	robutto	female	*pain25		GUAHIT
+$playersound	robutto	female	*grunt		ROKKLAND
+$playersound	robutto	female	*land		ROKKLAND
+$playersound	robutto	female	*fist		dsnone
+$playersound	robutto	female	*usefail	ROKKLAND
+$playersound	robutto	female	*taunt		RONALDFX //best taunt ever oLo
+
+NINRAP1	NINRAP1
+NINRAP2	NINRAP2
+
+$random VNIC/Taunt { NINRAP1 NINRAP2 }
+
+weavile/shinyeffect	shinefx
+
+misc/teleport2 DSTELEP2
+weapon/reversepowerstone TSREWOP
+
+
+//Wengar
+weoweoice/mainfire1	ICEWLOOP
+weoweoice/mainfire2	ICEWSTA
+weoweoice/altfire	ICEWBRAK
+
+//Lego
+bozuclass/waveform BOZWAV
+bozuclass/wavebreak SMASH
+bozuclass/bozuball bozbal
+
+//that Smash kid
+RoboDrone/basicshot		boltshot
+RoboDrone/reload		emptclip
+RoboDrone/bombthud		setusbom

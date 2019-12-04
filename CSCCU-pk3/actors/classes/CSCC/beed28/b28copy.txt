@@ -1,0 +1,87 @@
+actor MissileBarrageWep : MegaBuster 19011
+{
+	Weapon.AmmoUse 4
+	Weapon.AmmoGive 28
+	Weapon.SlotNumber 2
+	Obituary "%o was locked on by %k's Missile Barrage."
+	Inventory.Pickupmessage "Power up! Missile Barrage!"
+	weapon.ammotype "MissileBarrageAmmo"
+	inventory.pickupsound "weapon/weaponup"
+	+WEAPON.AMMO_OPTIONAL
+	inventory.icon "MIBAAI"
+	Scale 2.0
+	States
+	{
+	Spawn:
+	MIBA Z 1
+	loop
+		Ready:
+			MIBA C 0 ACS_ExecuteAlways(998,0,48)
+			MIBA C 1 A_WeaponReady
+			Goto Ready+1
+		Deselect:
+			TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+			MIBA C 1 A_Lower
+			Loop
+		Select:
+			TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+			MIBA C 1 A_Raise
+			Loop
+		Fire:
+			MIBA C 0 A_JumpIfNoAmmo("NoAmmo")
+			MIBA C 0 A_JumpIfInventory("BarrageCount",1,"Right")
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",-8,1,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",-4,0,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",0,0,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",4,0,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",8,0,8,0)
+			MIBA DEC 1
+			MIBA C 23
+			MIBA C 0 A_GiveInventory("BarrageCount",1)
+			MIBA C 0 A_Refire
+			Goto Ready+1
+		Right:
+			MIBA C 0 A_TakeInventory("BarrageCount",1)
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",8,1,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",4,0,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",0,0,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",-4,0,8,0)
+			MIBA DEC 1
+			MIBA C 0 A_PlaySoundEx("weapon/beedmissile","Weapon")
+			MIBA C 0 A_FireCustomMissile("BarrageMissile",-8,0,8,0)
+			MIBA DEC 1
+			MIBA C 23
+			MIBA C 0 A_Refire
+			Goto Ready+1
+		NoAmmo:
+			MIBA C 1 ACS_Execute(979,0)
+			Goto Ready+1
+	}
+}
+
+actor MissileBarrageAmmo : Ammo
+{
+	inventory.amount 1
+	inventory.maxamount 28
+}
+
+actor MissileBarrageWepCS :  MissileBarrageWep
+{
+}
+

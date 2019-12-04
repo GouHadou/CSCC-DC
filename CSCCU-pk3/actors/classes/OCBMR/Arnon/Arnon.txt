@@ -1,0 +1,146 @@
+actor Arnon : ClassBaseCSCC
+{
+player.displayname "Arnon" 
+player.soundclass "Arnon" 
+player.damagescreencolor "gray" 
+player.forwardmove 0.8, 0.8 
+player.sidemove 0.78, 0.78
+player.jumpz 12 
+Health 75
+Player.MaxHealth 75
+player.startitem "NotSoWeakClass"
+player.startitem "ATBSubMachineGun"
+player.startitem "ATBSemiAutoRifle"
+player.startitem "ATBSniper" 
+player.startitem "ATBAmmo", 28
+player.startitem "WireAmmo", 120 //70
+player.startitem "CanUseItems"
+player.startitem "LightWireAdaptor"
+player.startitem "LightBendingSuit"
+//Player.StartItem "SubWeaponCount", 2
+Player.StartItem "CanUseBuffs"
+//Player.StartItem "SubWeaponEddie", 1
+damagefactor "Dummy", 0.0 
+//damagefactor "Normal", 1.25
+//Player.StartItem "GhostTypeTag"
+//Type
+States
+{
+Spawn:
+PHAR A 0
+PHAR B 1
+PHAR A 1 A_JumpIfInventory("ArnonInvis",1,2)
+Goto Spawn+2
+PHAR A 0
+PHAR A 0 A_JumpIfInventory("ReachedFullInvis",1,39) //39
+PHAR A 5
+PHAR A 1 bright A_SetTranslucent(0.9, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.9, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.9, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.8, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.8, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.8, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.7, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.7, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.7, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.6, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.6, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.5, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.5, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.4, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.4, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.3, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.2, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 1 bright A_SetTranslucent(0.1, 0)
+PHAR A 0 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 0 bright A_SetTranslucent(0.0, 0)
+PHAR AAA 1 A_JumpIfInventory("IsVisible",1,"NowVisible")
+PHAR A 0 A_GiveInventory("ReachedFullInvis",1)
+goto Spawn+2
+See:
+PHAR B 0 A_JumpIfInventory("ReachedFullInvis",1,6) //6
+PHAR BCDE 5 bright A_SetTranslucent(1.0, 0)
+PHAR B 0 //A_GiveInventory("cantbeseen",1) //
+Goto Spawn+1
+PHAR B 0
+PHAR BCDE 5
+Goto Spawn+1
+Missile:
+PHAR G 0 A_TakeInventory("ReachedFullInvis",1)
+PHAR G 0 //A_TakeInventory("cantbeseen",1) //
+PHAR G 5 bright A_SetTranslucent(1.0, 0)
+PHAR G 4 bright A_SetTranslucent(1.0, 0)
+goto Spawn+2
+NowVisible:
+PHAR A 0 //bright A_SetTranslucent(1.0, 0)
+PHAR A 0 SetPlayerProperty(0,1,1)
+PHAR A 1 bright A_SetTranslucent(0.25, 0)
+PHAR A 1 bright A_SetTranslucent(0.5, 0)
+PHAR A 1 bright A_SetTranslucent(0.75, 0)
+PHAR A 1 bright A_SetTranslucent(1.0, 0)
+PHAR A 0 SetPlayerProperty(0,0,1)
+PHAR A 0 A_TakeInventory("IsVisible",1)
+goto Spawn
+Pain:
+PHAR H 0
+PHAR H 0 A_Recoil(1)
+PHAR H 0 
+PHAR H 0 A_Pain
+PHAR H 0 //A_GiveInventory("TempInvince",1)
+PHAR H 0 //SetPlayerProperty(0, 1, 4)
+PHAR H 0 A_Jump(256, "PainFix")
+goto PainFix
+PainFix:
+PHAR H 0
+goto PainFrames
+PainFrames:
+PHAR H 0 //A_GiveInventory("IveBeenHit",1)
+PHAR H 0 SetPlayerProperty(0,0,4)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 1 A_SpawnItem("PainFX",0,3)
+PHAR H 1 //A_Recoil(1)
+PHAR H 0 SetPlayerProperty(0,0,1)
+PHAR H 0 A_Jump(256, "Spawn")
+Goto Spawn+2
+TheEnd:
+PHAR G 4
+loop
+CreditWalk:
+PHAR BCDE 8
+loop
+}
+}

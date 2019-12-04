@@ -1,0 +1,1549 @@
+actor TsukiClassWeapon2 : Weapon
+{
+Weapon.SlotNumber 1
+scale 2.0
+Inventory.Pickupmessage "Power Up! Sentinel Wisps!"
++WEAPON.AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+inventory.icon "TNT1A0"
+States
+{
+Ready:
+TSU0 A 1 ACS_ExecuteAlways(998,0,0,1)
+TSU0 A 1 A_GunFlash
+goto Ready2
+Ready2:
+TSU0 A 1 A_WeaponReady
+TSU0 A 0 A_GiveInventory("CometAmmoCounter",1)
+TSU0 A 0 A_GiveInventory("NociAmmoCounter",1)
+TSU0 A 0 A_GiveInventory("TerrorAmmoCounter",1)
+TSU0 A 0 A_GiveInventory("NilAmmoCounter",1)
+loop
+Deselect:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"TrueDeselect")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+TrueDeselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 A 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+TSU0 A 1 A_Raise
+Loop
+Fire:
+TSU0 A 0 A_JumpIfInventory("IsBot", 1, "BotFire")
+TSU0 A 0 A_JumpIfInventory("TsuRapidFlag",1,"Rapid")
+TSU0 A 0 A_JumpIfInventory("TsuCometFlag",1,"Comet0")
+TSU0 A 0 A_JumpIfInventory("TsuDevourFlag",1,"Devour")
+TSU0 A 0 A_JumpIfInventory("TsuCannonFlag",1,"CannonCharge")
+TSU0 A 0 A_JumpIfInventory("TsuNociFlag",1,"Noci0")
+TSU0 A 0 A_JumpIfInventory("TsuTerrorFlag",1,"Terror0")
+TSU0 A 0 A_JumpIfInventory("TsuNilFlag",1,"Nil0")
+TSU0 A 1 A_GiveInventory("SentinelWispsCounter",1)
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_Refire
+Release:
+TSU0 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"Fire3")
+TSU0 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"Fire2")
+TSU0 A 0 A_JumpIfInventory("SentinelWispsCounter",16,"Fire1")
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 B 2
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 B 2
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 B 2
+TSU0 B 2
+TSU0 A 12
+goto Ready2
+BotFire:
+TSU0 A 0 A_JumpIfInventory("TsuRapidFlag",1,"Rapid")
+TSU0 A 0 A_JumpIfInventory("TsuCometFlag",1,"Comet0")
+TSU0 A 0 A_JumpIfInventory("TsuDevourFlag",1,"Devour")
+TSU0 A 0 A_JumpIfInventory("TsuCannonFlag",1,"CannonCharge")
+TSU0 A 0 A_JumpIfInventory("TsuNociFlag",1,"Noci0")
+TSU0 A 0 A_JumpIfInventory("TsuTerrorFlag",1,"Terror0")
+TSU0 A 0 A_JumpIfInventory("TsuNilFlag",1,"Nil0")
+TSU0 A 1 A_GiveInventory("SentinelWispsCounter",1)
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_Jump(7, "Release")
+TSU0 A 0 A_Refire
+goto Release
+Fire1:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 A 0 A_GiveInventory("ForceSentinelCount",99)
+TSU0 B 2
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",-15,0)
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",15,0)
+TSU0 B 2
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",-30,0)
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",30,0)
+TSU0 B 2
+TSU0 A 12
+goto Ready2
+Fire2:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh1","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritHarvest",0,0)
+TSU0 B 0 A_FireCustomMissile("SpiritHarvest",-15,0)
+TSU0 B 0 A_FireCustomMissile("SpiritHarvest",15,0)
+TSU0 A 0 A_GiveInventory("ForceSentinelCount",1)
+TSU0 B 2
+TSU0 A 12
+goto Ready2
+Fire3:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_GiveInventory("ForceSentinelCount",1)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh1","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritBlast1",0,0)
+TSU0 B 2
+TSU0 A 12
+goto Ready2
+Rapid:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 B 3
+TSU0 A 3
+goto Ready2
+AltFire:
+TSU0 A 0 A_PlaySoundEx("weapon/tsukimiss","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritRadarSpawner",0,0)
+TSU0 B 3 
+TSU0 A 20
+goto Ready2
+Flash:
+TNT1 A 0 A_TakeInventory("ForceSentinelCount",99)
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"TwoSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",16,"OneSentinel")
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("TsukiClassWeapon2",1,"Flash") 
+Stop
+OneSentinel:
+TNT1 A 1 A_SpawnItemEx("SentinelWispC",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"TwoSentinel")
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispC",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"TwoSentinel")
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispD",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"TwoSentinel")
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispD",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"TwoSentinel")
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispE",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"TwoSentinel")
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispE",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",32,"TwoSentinel")
+Goto Flash
+TwoSentinel:
+TNT1 A 1 A_SpawnItemEx("SentinelWispC",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispC",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 1 A_SpawnItemEx("SentinelWispC",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispC",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 1 A_SpawnItemEx("SentinelWispD",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispD",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 1 A_SpawnItemEx("SentinelWispD",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispD",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 1 A_SpawnItemEx("SentinelWispC",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispC",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+TNT1 A 1 A_SpawnItemEx("SentinelWispE",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispE",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"ThreeSentinel")
+Goto Flash
+ThreeSentinel:
+TNT1 A 1 A_SpawnItemEx("SentinelWispC",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispC",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispC",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispC",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispC",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispC",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispD",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispD",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispD",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispD",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispD",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispD",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispE",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispE",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispE",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_TakeInventory("TsukiCooldownShort",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownMedium",1)
+TNT1 A 0 A_TakeInventory("TsukiCooldownLong",1)
+TNT1 A 0 A_JumpIfInventory("ForceSentinelCount",1,"Flash")
+TNT1 A 1 A_SpawnItemEx("SentinelWispE",-16,0,32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispE",-16,16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SentinelWispE",-16,-16,28,0,0,0,0,SXF_NOCHECKPOSITION)
+Goto Flash
+EndFlash:
+TNT1 A 0
+Stop
+//More Interesting Stuff Starts Here
+CannonCharge:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 1 A_GiveInventory("CannonChargeCounter",1)
+TSU0 A 0 A_Refire
+TSU0 A 0 A_JumpIfInventory("CannonChargeCounter",480,"CannonFire2")
+TSU0 A 0 A_JumpIfInventory("CannonChargeCounter",360,"CannonFire1")
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("EnergyCannonSlow",0,0)
+TSU0 B 4
+TSU0 A 18
+goto Ready2
+CannonFire1:
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_GiveInventory("ForceSentinelCount",1)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("EnergyCannon",0,0)
+TSU0 B 4
+TSU0 A 18
+goto Ready2
+CannonFire2:
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_GiveInventory("ForceSentinelCount",1)
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("EnergyCannonFast",0,0)
+TSU0 B 4
+TSU0 A 18
+goto Ready2
+Devour:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",99)
+TSU0 A 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+TSU0 B 1 A_SpawnItemEx ("SoulDevour1",cos(-pitch)*40,-2,20+(sin(-pitch)*40),0,0,0,0,SXF_NOCHECKPOSITION)
+TSU0 B 1 A_SpawnItemEx ("SoulDevour2",cos(-pitch)*40,-2,20+(sin(-pitch)*40),0,0,0,0,SXF_NOCHECKPOSITION)
+TSU0 B 1 A_SpawnItemEx ("SoulDevour3",cos(-pitch)*40,-2,20+(sin(-pitch)*40),0,0,0,0,SXF_NOCHECKPOSITION)
+TSU0 A 1 A_SpawnItemEx ("SoulDevour4",cos(-pitch)*40,-2,20+(sin(-pitch)*40),0,0,0,0,SXF_NOCHECKPOSITION)
+TSU0 A 12
+goto Ready2
+Comet0:
+TSU0 A 0 A_JumpIfInventory("CometAmmoCounter",32,"Comet1")
+TSU0 B 3
+TSU0 A 8
+goto Ready2
+Comet1:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_TakeInventory("CometAmmoCounter",32)
+TSU0 A 0 A_PlaySoundEx("weapon/mirroractivate","Weapon")
+TSU0 B 0 A_SpawnItemEx ("LightComet0",0,0,20,0,0,2,0,SXF_NOCHECKPOSITION)
+TSU0 B 3
+TSU0 A 12
+goto Ready2
+Noci0:
+TSU0 A 0 A_JumpIfInventory("NociAmmoCounter",64,"Noci1")
+TSU0 B 3
+TSU0 A 8
+goto Ready2
+Noci1:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_TakeInventory("NociAmmoCounter",64)
+TSU0 A 0 A_PlaySoundEx("weapon/tsukisentinel","Weapon")
+TSU0 B 0 A_SpawnItemEx ("NisFoNoci0",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+TSU0 B 3
+TSU0 A 16
+goto Ready2
+Terror0:
+TSU0 A 0 A_JumpIfInventory("TerrorAmmoCounter",32,"Terror1")
+TSU0 B 3
+TSU0 A 8
+goto Ready2
+Terror1:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",999)
+TSU0 A 0 A_TakeInventory("TerrorAmmoCounter",32)
+TSU0 A 0 A_PlaySoundEx("weapon/tsukiterror","Weapon")
+TSU0 B 0 A_FireCustomMissile("TerrorStopper0",0,0)
+TSU0 B 3
+TSU0 A 20
+goto Ready2
+Nil0:
+TSU0 A 0 A_JumpIfInventory("NilAmmoCounter",1050,"Nil1")
+goto Rapid
+Nil1:
+TSU0 A 0 A_TakeInventory("SentinelWispsCounter",99)
+TSU0 A 0 A_TakeInventory("CannonChargeCounter",99)
+TSU0 A 0 A_ChangeFlag("SHOOTABLE",0)
+TSU0 A 0 A_ChangeFlag("NOTARGET",1)
+TSU0 A 0 A_ChangeFlag("CANTSEEK",1)
+TSU0 A 0 A_SetTranslucent(0,0)
+TSU0 A 1 A_SpawnItemEx("NilExistance",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+TSU0 A 0 A_GiveInventory("NilExistanceFlag",1)
+TSU0 A 0 A_TakeInventory("NilAmmoCounter",6)
+TSU0 A 0 A_JumpIfInventory("NilAmmoCounter",1,"Nil1")
+TSU0 A 0 A_TakeInventory("NilExistanceFlag",1)
+TSU0 A 0 A_SetTranslucent(1,0)
+TSU0 A 0 A_ChangeFlag("SHOOTABLE",1)
+TSU0 A 0 A_ChangeFlag("NOTARGET",0)
+TSU0 A 0 A_ChangeFlag("CANTSEEK",0)
+goto Ready2
+}
+}
+
+//Counters starts here. They behave as ammo, but not affected by skill
+
+actor SentinelWispsCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 48
+}
+
+actor CannonChargeCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 480
+}
+
+actor CometAmmoCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 256
+}
+
+actor NociAmmoCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 256
+}
+
+actor TerrorAmmoCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 128
+}
+
+actor NilAmmoCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1050
+}
+
+//Counters ends here.
+
+actor ForceSentinelCount : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor TsukiCooldownShort : Inventory
+{
+inventory.amount 1
+inventory.maxamount 105
+}
+
+actor TsukiCooldownMedium : Inventory
+{
+inventory.amount 1
+inventory.maxamount 175
+}
+
+actor TsukiCooldownLong : Inventory
+{
+inventory.amount 1
+inventory.maxamount 350
+}
+
+//Mode Changer Section begins here
+
+/*actor TsuFlagBase : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor TsuChangerBase : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "TZCharge"
+scale 2.0
++INVENTORY.UNDROPPABLE
++COUNTITEM
++INVBAR
+states
+{
+Spawn:
+TNT1 A 0
+stop
+Use:
+TNT1 A 0
+stop
+NoChange:
+TNT1 A 0
+fail
+}
+}*/
+
+actor TsuChargeFlag : TsuFlagBase
+{
+}
+
+actor TsuChargeChanger : TsuChangerBase
+{
+inventory.icon "TZCHARGE"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuChargeFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCometFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNilFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownShort",105)
+fail
+}
+}
+
+actor TsuRapidFlag : TsuFlagBase
+{
+}
+
+actor TsuRapidChanger : TsuChangerBase
+{
+inventory.icon "TZRAPID"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuRapidFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCometFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNilFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownShort",105)
+fail
+}
+}
+
+actor TsuCannonFlag : TsuFlagBase
+{
+}
+
+actor TsuCannonChanger : TsuChangerBase
+{
+inventory.icon "TZCANNON"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuCannonFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCometFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNilFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownMedium",175)
+fail
+}
+}
+
+actor TsuDevourFlag : TsuFlagBase
+{
+}
+
+actor TsuDevourChanger : TsuChangerBase
+{
+inventory.icon "TZDEVOUR"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuDevourFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCometFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNilFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownShort",105)
+fail
+}
+}
+
+actor TsuCometFlag : TsuFlagBase
+{
+}
+
+actor TsuCometChanger : TsuChangerBase
+{
+inventory.icon "TZCOMET"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuCometFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuCometFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNilFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownMedium",175)
+fail
+}
+}
+
+actor TsuNociFlag : TsuFlagBase
+{
+}
+
+actor TsuNociChanger : TsuChangerBase
+{
+inventory.icon "TZNOCI"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuNociFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCometFlag",1)
+TNT1 A 0 A_TakeInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNilFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownMedium",175)
+fail
+}
+}
+
+actor TsuTerrorFlag : TsuFlagBase
+{
+}
+
+actor TsuTerrorChanger : TsuChangerBase
+{
+inventory.icon "TZTERROR"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuTerrorFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCometFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNilFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownLong",350)
+fail
+}
+}
+
+actor TsuNilFlag : TsuFlagBase
+{
+}
+
+actor TsuNilChanger : TsuChangerBase
+{
+inventory.icon "TZNIL"
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownShort",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownMedium",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsukiCooldownLong",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("NilExistanceFlag",1,"NoChange")
+TNT1 A 0 A_JumpIfInventory("TsuNilFlag",1,"NoChange")
+TNT1 A 0 A_PlaySoundEx("item/refill","Voice")
+TNT1 A 0 A_GiveInventory("ForceSentinelCount",1)
+TNT1 A 0 A_GiveInventory("TsuNilFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCannonFlag",1)
+TNT1 A 0 A_TakeInventory("TsuChargeFlag",1)
+TNT1 A 0 A_TakeInventory("TsuRapidFlag",1)
+TNT1 A 0 A_TakeInventory("TsuDevourFlag",1)
+TNT1 A 0 A_TakeInventory("TsuNociFlag",1)
+TNT1 A 0 A_TakeInventory("TsuTerrorFlag",1)
+TNT1 A 0 A_TakeInventory("TsuCometFlag",1)
+TNT1 A 0 A_GiveInventory("TsukiCooldownLong",350)
+fail
+}
+}
+
+//Mode Changer Section ends here
+
+/*actor TsuDetect : Inventory
+{
+inventory.amount 1
+inventory.maxamount 35
+}
+
+
+actor TsuAlert : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++INVENTORY.UNDROPPABLE
++INVENTORY.AUTOACTIVATE
+states
+{
+Spawn:
+TNT1 A 0
+stop
+Use:
+TNT1 A 0 A_PlaySoundEx("weapon/tsukigotcha","Weapon")
+TNT1 A 0 A_SpawnItemEx("TsuAlertSign",0,0,72,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor TsuAlertSilent : TsuAlert
+{
+states
+{
+Use:
+TNT1 A 0 A_SpawnItemEx("TsuAlertSign",0,0,72,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+actor TsuConfuse : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++INVENTORY.UNDROPPABLE
++INVENTORY.AUTOACTIVATE
+states
+{
+Spawn:
+TNT1 A 0
+stop
+Use:
+TNT1 A 0 A_PlaySoundEx("weapon/tsukimiss","Weapon")
+stop
+}
+}*/
+
+actor SpiritEcho : FastProjectile
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++FORCEXYBILLBOARD //NEVER leave this flag out of the projectiles.
++DONTBLAST //Removing this decreases the chance of fighting against leaf shield and the like.
+Radius 5
+Height 5
+Obituary "%o had his mind blown by %k's Spirit Echo."
+scale 2.5
+damage (5)
+damagetype "Skull"
+speed 80
+States
+{
+Spawn:
+TSU0 QPO 2
+loop
+Death:
+TNT1 A 1
+TSU0 IJKLMN 2
+stop
+}
+}
+
+//Wisps effects
+
+actor SentinelWispC
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
++NONETID
++CLIENTSIDEONLY
++NOTIMEFREEZE
+Radius 0
+Height 0
+scale 2.5 
+damage (0)
+speed 0
+States
+{
+Spawn:
+TSU0 C 2
+Stop
+}
+}
+
+actor SentinelWispD : SentinelWispC
+{
+States
+{
+Spawn:
+TSU0 D 2
+Stop
+}
+}
+
+actor SentinelWispE : SentinelWispC
+{
+States
+{
+Spawn:
+TSU0 E 2
+stop
+}
+}
+
+//Charge LV 2 Part
+
+actor SpiritHarvest : MageStaffFX2
+{
+PROJECTILE
++FORCEXYBILLBOARD
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
+-EXTREMEDEATH
+Speed 5
+Damage (5)
+radius 7
+height 7
+Obituary "%o was harvested by %k's Spirit Harvest."
+damagetype "Skull"
+scale 2.5
+States
+{
+Spawn:
+TSU0 CDECDECDECDECDE 2
+TSU0 EEEEEEEEEEEEEEEEEEEE 0 A_MStaffTrack
+TSU0 E 0 A_PlaySoundEx("weapon/pharaoh2","Voice")
+TSU0 E 0 A_SpawnItemEx("SpiritEcho2",0,0,0,momx*32,momy*32,momz*32,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+TSU0 E 0 A_Stop
+TSU0 FGH 2
+stop
+Death:
+TSU0 FGH 2
+stop
+}
+}
+
+actor SpiritEcho2 : SpiritEcho
+{
+-DONTBLAST
+Obituary "%o was harvested by %k's Spirit Harvest."
+damage (5)
+}
+
+//Charge LV 3 Part
+
+actor SBReverseCount : Inventory
+{
+inventory.amount 1
+inventory.maxamount 5
+}
+
+actor SpiritBlast1
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++RIPPER
++NOINTERACTION
+Speed 1
+Damage (0)
+radius 0
+height 0
+States
+{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_PlaySoundEx("weapon/atomicfire","Voice")
+TNT1 A 0 A_SpawnItemEx("SpiritEcho3",0,0,0,momx*80,momy*80,momz*80,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_GiveInventory("SBReverseCount",1)
+TNT1 A 0 A_JumpIfInventory("SBReverseCount",4,"ReverseIt")
+loop
+ReverseIt:
+TNT1 A 0 A_SpawnItemEx("SpiritBlast2",0,0,0,-momx,-momy,-momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor SpiritBlast2 : SpiritBlast1
+{
+States
+{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_PlaySoundEx("weapon/atomicfire","Voice")
+TNT1 A 0 A_SpawnItemEx("SpiritEcho3",0,0,0,-momx*80,-momy*80,-momz*80,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_GiveInventory("SBReverseCount",1)
+TNT1 A 0 A_JumpIfInventory("SBReverseCount",4,"EndIt")
+loop
+EndIt:
+TNT1 A 0
+stop
+}
+}
+
+actor SpiritEcho3 : SpiritEcho
+{
+-DONTBLAST
+Obituary "%o was caught in %k's Spirit Blast."
+damage (6)
+}
+
+//ALT Projectiles Begins
+/*
+actor SpiritRadarSpawner
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
++NOTIMEFREEZE
+Radius 0
+Height 0
+damage (0)
+speed 0
+States
+{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("SpiritRadar1",0,0,-16,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SpiritRadar2",0,0,-32,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SpiritRadar3",0,0,-64,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("SpiritRadar4",0,0,-128,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor SpiritRadar1
+{
+PROJECTILE
++FORCEXYBILLBOARD
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++NOTIMEFREEZE
+Speed 0
+Damage (0)
+radius 32
+height 32
+States
+{
+Spawn:
+TNT1 A 1
+stop
+Death:
+TNT1 A 0
+Stop
+XDeath:
+TNT1 A 0 A_GiveToTarget("TsuDetect",35)
+TNT1 A 0 A_GiveToTarget("TsuAlert",1)
+stop
+}
+}
+
+actor SpiritRadar2 : SpiritRadar1
+{
+radius 64
+height 64
+}
+
+actor SpiritRadar3 : SpiritRadar1
+{
+radius 128
+height 128
+}
+
+actor SpiritRadar4 : SpiritRadar1
+{
+radius 256
+height 256
+}
+
+actor TsuAlertSign
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
+//+NONETID //Not sure if should... Or not...
+//+CLIENTSIDEONLY //Not sure if should... Or not...
++NOTIMEFREEZE //You are going to thank me for this!
+Radius 0
+Height 0
+scale 2.5 
+damage (0)
+speed 0
+States
+{
+Spawn:
+TSU0 TT 1 A_Stop
+TSU0 T 0 A_JumpIfInTargetInventory("TsuDetect",1,"GiveAlert")
+Stop
+GiveAlert:
+TSU0 T 0 A_TakeFromTarget("TsuDetect",1)
+TSU0 T 0 A_GiveToTarget("TsuAlertSilent",1)
+stop
+}
+}*/
+
+//Energy Cannon Data
+
+actor EnergyCannon
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++FORCEXYBILLBOARD
+Radius 8
+Height 8
+Obituary "%o was cannowned by %k's Energy Cannon."
+scale 2.5
+damage (40)
+damagetype "Skull"
+speed 40
+States
+{
+Spawn:
+TSU1 A 1
+TRN0 F 0 A_SpawnItemEx("EnergyCannonT",-momx,-momy,-momz,0,0,0,0,SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TRN0 F 0 A_SpawnItemEx("EnergyCannonT",(-momx/3)*2,(-momy/3)*2,(-momz/3)*2,0,0,0,0,SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TRN0 F 0 A_SpawnItemEx("EnergyCannonT",-momx/3,-momy/3,-momz/3,0,0,0,0,SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TRN0 F 0 A_SpawnItemEx("EnergyCannonT",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+loop
+Death:
+TSU1 A 0 A_SpawnItemEx("EnergyCannonT",0,0,0,0,0,0,0,SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TSU1 A 0 A_PlaySoundEx("weapon/mirrordeflect2","Voice")
+TSU1 A 0 A_SpawnItemEx("EnergyCannonD",0,0,-20,0,0,0,0,SXF_NOCHECKPOSITION)
+TSU1 EFGHI 2
+stop
+}
+}
+
+actor EnergyCannonSlow : EnergyCannon
+{
++DONTBLAST
+speed 20
+}
+
+actor EnergyCannonFast : EnergyCannon
+{
+speed 80
+}
+
+actor EnergyCannonT
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
++NONETID
++CLIENTSIDEONLY
+Radius 0
+Height 0
+scale 2.5 
+damage (0)
+speed 0
+States
+{
+Spawn:
+TSU1 ABCD 2
+stop
+}
+}
+
+actor EnergyCannonD
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++FORCEXYBILLBOARD
++RIPPER
+Speed 0
+damagetype "Skull"
+Obituary "%o was caught in the blast of %k's Energy Cannon."
+Damage (20)
+Height 40
+Radius 40
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+}
+}
+
+//Soul Devour Data
+
+actor SoulDevour1
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
++NONETID
++CLIENTSIDEONLY
++NOTIMEFREEZE
+Radius 0
+Height 0
+scale 2.5 
+damage (0)
+speed 0
+States
+{
+Spawn:
+TSU2 A 2
+stop
+}
+}
+
+actor SoulDevour2 : SoulDevour1
+{
+States
+{
+Spawn:
+TSU2 B 2
+stop
+}
+}
+
+actor SoulDevour3 : SoulDevour1
+{
+States
+{
+Spawn:
+TSU2 C 2
+stop
+}
+}
+
+actor SoulDevour4 : SoulDevour1
+{
+-NONETID
+-CLIENTSIDEONLY
+States
+{
+Spawn:
+TSU2 D 1
+TSU2 D 0 A_SpawnItemEx("SoulDevourD",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+TSU2 D 0 A_SpawnItemEx("SoulDevourC",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+TSU2 D 1
+stop
+}
+}
+
+actor SoulDevourD
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++FORCEXYBILLBOARD
++RIPPER
+Speed 0
+damagetype "Skull"
+Obituary "%o had his soul devoured by %k's Soul Devour."
+Damage (40)
+Height 20
+Radius 20
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+}
+}
+
+actor SoulDevourC : SoulDevourD
+{
+-RIPPER
+Speed 0
+Damage (0)
+Height 20
+Radius 20
+States
+{
+XDeath:
+TNT1 A 0 A_GiveToTarget("SoulDevourH",1)
+Stop
+}
+}
+
+actor SoulDevourH : Health
+{
+inventory.amount 40
+inventory.maxamount 100
+}
+
+//Light Comet Data
+
+actor LightComet0 : MageStaffFX2
+{
+PROJECTILE
++FORCEXYBILLBOARD
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++RIPPER
+-EXTREMEDEATH
+Speed 1
+Damage (0)
+radius 5
+height 5
+damagetype "Skull"
+scale 2.5
+States
+{
+Spawn:
+TSU3 ABCDABCDABCDABCD 2
+TSU3 D 1 A_Stop
+TSU3 DDDDDDDDDDDDDDDDDDDD 0 A_MStaffTrack
+TSU3 D 0 A_JumpIf(momz < 0,"ZIsNegative")
+goto NoZSet
+ZIsNegative:
+TSU3 D 0 A_PlaySoundEx("weapon/napalm","Voice")
+TSU3 D 0 A_SpawnItemEx("LightComet1",momx*32,momy*32,momz*32,momx*160,momy*160,momz*160,0,SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TSU3 D 0 A_SpawnItemEx("LightComet2",momx*24,momy*24,momz*24,momx*160,momy*160,momz*160,0,SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TSU3 D 0 A_SpawnItemEx("LightComet3",momx*16,momy*16,momz*16,momx*160,momy*160,momz*160,0,SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TSU3 D 0 A_SpawnItemEx("LightComet4",0,0,0,momx*160,momy*160,momz*160,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+TSU3 DDCCBBAA 1 A_Stop
+stop
+NoZSet:
+TSU3 D 0 A_PlaySoundEx("weapon/napalm","Voice")
+TSU3 D 0 A_SpawnItemEx("LightComet1",1*32,0,-0.02*32,1*160,0,-0.02*160,0,SXF_NOCHECKPOSITION)
+TSU3 D 0 A_SpawnItemEx("LightComet2",1*24,0,-0.02*24,1*160,0,-0.02*160,0,SXF_NOCHECKPOSITION)
+TSU3 D 0 A_SpawnItemEx("LightComet3",1*16,0,-0.02*16,1*160,0,-0.02*160,0,SXF_NOCHECKPOSITION)
+TSU3 D 0 A_SpawnItemEx("LightComet4",0,0,0,1*160,0,-0.02*160,0,SXF_NOCHECKPOSITION)
+TSU3 DDCCBBAA 1 A_Stop
+stop
+Death:
+TSU3 DDDDDDDDDDDDDDDDDDDD 0 A_MStaffTrack
+TSU3 D 0 A_JumpIf(momz < 0,"ZIsNegative")
+goto NoZSet
+}
+}
+
+actor LightComet1 : FastProjectile
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++FORCEXYBILLBOARD
++DONTBLAST
+Radius 5
+Height 5
+Obituary "%o saw the light of %k's LightComet."
+scale 2.5
+damage (5)
+damagetype "Skull"
+speed 160
+States
+{
+Spawn:
+TSU3 A 1
+loop
+Death:
+TSU3 A 0 A_PlaySoundEx("weapon/superboost","Voice")
+TSU3 ABCDCBA 2
+stop
+}
+}
+
+actor LightComet2 : LightComet1
+{
+States
+{
+Spawn:
+TSU3 B 1
+loop
+Death:
+TSU3 ABCDCBA 2
+stop
+}
+}
+
+actor LightComet3 : LightComet1
+{
+States
+{
+Spawn:
+TSU3 C 1
+loop
+Death:
+TSU3 ABCDCBA 2
+stop
+}
+}
+
+actor LightComet4 : LightComet1
+{
+States
+{
+Spawn:
+TSU3 D 1
+loop
+Death:
+TSU3 ABCDCBA 2
+stop
+}
+}
+
+//Nis Fo Noci Data
+
+actor NisFoNociCount : Inventory
+{
+inventory.amount 1
+inventory.maxamount 350
+}
+
+actor NisFoNoci0 : MageStaffFX2
+{
+PROJECTILE
++FORCEXYBILLBOARD
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++RIPPER
++NOINTERACTION
+Speed 1
+Damage (0)
+radius 0
+height 0
+damagetype "Skull"
+scale 2.5
+States
+{
+Spawn:
+TSU4 A 1
+TSU4 A 28
+TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_MStaffTrack
+TNT1 A 0 A_JumpIf(momz!=0||momx!=0||momy!=0,"Attack")
+TNT1 A 0 A_GiveInventory("NisFoNociCount",1)
+TNT1 A 0 A_JumpIfInventory("NisFoNociCount",350,"FailToDetect")
+Goto Spawn+1
+Attack:
+TNT1 A 0 A_PlaySoundEx("weapon/pharaoh1","Voice")
+TNT1 A 0 A_SpawnItemEx("SpiritBlast1",-momx,-momy,20-momz,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("NisFoNoci1",-momx,-momy,-momz,0,0,0,0,SXF_ABSOLUTEPOSITION|SXF_NOCHECKPOSITION)
+Stop
+FailToDetect:
+TNT1 A 0 A_PlaySoundEx("weapon/pharaoh1","Voice")
+TNT1 A 0 A_SpawnItemEx("SpiritBlast1",0,0,20,1,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("NisFoNoci1",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+Stop
+}
+}
+
+actor NisFoNoci1
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
++NONETID
++CLIENTSIDEONLY
+Radius 0
+Height 0
+scale 2.5 
+damage (0)
+speed 1
+States
+{
+Spawn:
+TSU4 B 7
+TSU4 AXAXAXAXAXAXAXAXAXAX 1
+stop
+}
+}
+
+//Terror Stopper Data
+
+actor TerrorStopper0
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
++NOTIMEFREEZE
+Radius 0
+Height 0
+damage (0)
+speed 0
+States
+{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("TerrorStopper1",0,0,-128,0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("TerrorStopper2",0,0,-128,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor TerrorStopper1
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++FORCEXYBILLBOARD
++RIPPER
+Speed 0
+damagetype "Flashstopper"
+Obituary "%o shat brix thanks to %k's Terror Stopper."
+Damage (5)
+Height 256
+Radius 256
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+}
+}
+
+actor TerrorStopper2 : TerrorStopper1
+{
+damagetype "SparkShock"
+}
+
+//Nil Existance Data
+
+actor NilExistanceFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor NilExistance
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
+Radius 0
+Height 0
+scale 2.5 
+damage (0)
+speed 0
+States
+{
+Spawn:
+TSU4 XAXAXAXA 1
+stop
+}
+}
+
+
+//BotWeapon tuning information: The bot should stick to "Rapid Mode".
+//If it should be able to use "charge", just give him a random chance.
+//Rather than having it charge by itself.
+actor TsukiBotWeapon : TsukiClassWeapon
+{
+States
+{
+Ready2:
+TSU0 A 1 A_WeaponReady(2)
+loop
+Deselect:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"TrueDeselect")
+TNT1 A 0 A_SelectWeapon("TsukiBotWeapon")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Fire:
+TNT1 A 0 A_JumpIfInventory("SentinelWispsCounter",16,"Rapid")
+TSU0 A 0 A_Jump(8,"Fire3")
+TSU0 A 0 A_Jump(16,"Fire2")
+TSU0 A 0 A_Jump(32,"Fire1")
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 B 0 A_GiveInventory("SentinelWispsCounter",1)
+TSU0 B 3
+TSU0 A 3
+goto Ready2
+Fire1:
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 B 2
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",-15,0)
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",15,0)
+TSU0 B 2
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",-30,0)
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",30,0)
+TSU0 B 2
+TSU0 A 26
+goto Ready2
+Fire2:
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh1","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritHarvest",0,0)
+TSU0 B 0 A_FireCustomMissile("SpiritHarvest",-15,0)
+TSU0 B 0 A_FireCustomMissile("SpiritHarvest",15,0)
+TSU0 B 2
+TSU0 A 26
+goto Ready2
+Fire3:
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh1","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritBlast1",0,0)
+TSU0 B 2
+TSU0 A 26
+goto Ready2
+Rapid:
+TSU0 A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+TSU0 B 0 A_FireCustomMissile("SpiritEcho",0,0)
+TSU0 B 0 A_GiveInventory("SentinelWispsCounter",1)
+TSU0 B 3
+TSU0 A 3
+TSU0 A 0 A_JumpIfInventory("SentinelWispsCounter",48,"Clear")
+goto Ready2
+Clear:
+TSU0 A 1 A_TakeInventory("SentinelWispsCounter",99)
+goto Ready2
+}
+}

@@ -1,0 +1,2 @@
+#include "actors/Classes/Bronze/Flameryn/Flameryn.txt"
+#include "actors/Classes/Bronze/Flameryn/Flamerynthrower.txt"

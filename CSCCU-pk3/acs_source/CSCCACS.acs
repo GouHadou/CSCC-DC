@@ -1,0 +1,1914 @@
+//#include "zcommon.acs"
+
+#include "wepacs.acs"
+
+#library "8BDMLIB"
+
+
+
+#DEFINE CSACS_COPYCOPYWEP 137
+#DEFINE CSACS_COPYBOTFIX 138
+#DEFINE CSACS_COPYCOLORS 139
+#DEFINE CSACS_COPYMORPH 140
+#DEFINE CSACS_COPYSPEED 141
+
+#DEFINE CSACS_ICESPARKSWAP 142
+#DEFINE CSACS_UKIREMOTEAIM 146
+#DEFINE CSACS_UKIREMOTE 147
+#DEFINE CSACS_UKIDAMAGE 148
+#DEFINE CSACS_ROZPOISON 149
+#DEFINE CSACS_ROZPOISONVIS 150
+#DEFINE CSACS_SETHEALTH 151
+#DEFINE CSACS_TAKEWEAPON 152
+#DEFINE CSACS_BLAZKORELOAD 770
+
+#DEFINE CSACS_FZDASH 302
+#DEFINE CSACS_JCSPEED 790
+#DEFINE CSACS_SPEEDMODS 777
+#DEFINE CSACS_BEEDBOTWEP 654
+#DEFINE CSACS_SAVIORGRAVITY 778
+#DEFINE CSACS_BIKHEALTH 774
+#DEFINE CSACS_REDEYESHEALTH 666
+#DEFINE CSACS_SHOVER 779
+
+
+
+
+//Script for giving Copy Weps to Copy robot
+Script CSACS_COPYCOPYWEP (void)
+{
+Delay(1);
+If(!CheckInventory("CopyWeapon")){terminate;}
+Int CRPlayer = ActivatorTID();
+Int MegaPlayer = CheckInventory("WeaponCopyFlag");
+TakeInventory("WeaponCopyFlag", 9999);
+
+int WeaponCopied = -1;
+If(MegaPlayer >= 1000)
+	{
+	SetActivator(MegaPlayer);
+	WeaponCopied = WhichWeapon();
+	}
+
+
+SetActivator(CRPlayer);
+
+SetHudSize(600,380,0);
+If(WeaponCopied < 0)
+	{
+	HudMessage(s:"\ccUnable to copy weapon from ", n:MegaPlayer - 999, s:"!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	terminate;
+	}
+	
+HudMessage(s:"\cgYou \cicopied \ck", s:weapons_ammo[WeaponCopied][2], s:"\cd from \ch", n:MegaPlayer - 999, s:"\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+
+If(CheckInventory(weapons_ammo[WeaponCopied][0]))
+	{
+	GiveInventory(weapons_ammo[WeaponCopied][1], 255);
+	SetWeapon(weapons_ammo[WeaponCopied][0]);
+	}
+Else
+	{
+	GiveInventory(weapons_ammo[WeaponCopied][0], 1);
+	SetWeapon(weapons_ammo[WeaponCopied][0]);
+	}
+}
+
+//Script to fix crashing with ZDR with bots
+Script CSACS_COPYBOTFIX UNLOADING
+{
+SetPlayerProperty(1,1,4);
+}
+
+//Best colors ever
+Script CSACS_COPYCOLORS (void)
+{
+
+Delay(1);
+Int CopyColor = 402;
+If(ACS_ExecuteWithResult(975, 1)==1){terminate;}
+While(GetActorProperty(0,APROP_HEALTH)>0 && !CheckInventory("IsDead"))
+	{
+	If(!CheckInventory("NoColorFlag")){Thing_SetTranslation(0, CopyColor);}
+	CopyColor++;
+	If(CopyColor>407){CopyColor = 401;}
+	Delay(4);
+	}
+
+}
+
+#DEFINE COPY_MORPHTIME 1050
+
+//Script to handle Copy's morph ability
+Script CSACS_COPYMORPH (int MorphWho)
+{
+If(!CheckInventory("CopyWeapon")){Terminate;}
+Int HealthBefore = GetActorProperty(0, APROP_HEALTH);
+Int PlayerPitch = GetActorPitch(0);
+int KilledMeStockNum = CheckInventory("KilledMeStock");
+int FusionStockNum = CheckInventory("FusionStock");
+int WhichClass;
+int WhichClassB;
+int CopyTimeLeft = 0;
+int XVel = GetActorVelX(0);
+int YVel = GetActorVelY(0);
+
+bool UnderwaterFlag = CheckInventory("IsUnderWater");
+If(HealthBefore <= 0){terminate;}
+If(CheckInventory("Morphflag") && (MorphWho != 0 && MorphWho != 999)){Terminate;} 
+If(CheckInventory("PowerInvulnerable")){TakeInventory("PowerInvulnerable", 1);} 
+TakeInventory("CopyRemover", 1);
+SetPlayerProperty(0,1,4);
+
+SetFont("SMALLFONT");
+Switch(MorphWho)
+	{
+	Case 999: //Manual unmorph
+	UnmorphActor(ActivatorTID(), 0);
+	Case 0: 
+	ClearInventory();
+	GiveInventory("CanCopyWeapons", 1);
+	//GiveInventory("ResetPlayerStats", 1);
+	GiveInventory("LightHealthBar", 1);
+	TakeInventory("TsuPowerChanger",1);
+	TakeInventory("TsuSpeedChanger",1);
+	TakeInventory("TsuSpreadChanger",1);
+	TakeInventory("LDRamActivator", 1);
+	TakeInventory("SentinelTriggerItem",1);
+	TakeInventory("OilBoat",999);
+	SetPlayerProperty(0, 0, 16);
+	SetPlayerProperty(0, 0, 3);
+	SetPlayerProperty(0, 0, 4);
+	SetPlayerProperty(0, 0, 0);
+	SetHudSize(600,380,0);
+	HudMessage(s:"\ccCopy ability expired!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	GiveInventory("CopyWeapon", 1);
+	SetWeapon("CopyWeapon");
+	GiveInventory("CopyAmmo", 14);
+	break;
+	
+	Case 1: // ColdFusion
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdColdFusion \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "ColdFusionMorph", "", 0, 258, "", "");
+	GiveInventory("FusionShieldStarter", 1);
+	//GiveInventory("ProtoHealthBar", 1);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 2: // Sinkman
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdSinkman \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "SinkManMorph", "", 0, 258, "", "");
+	//GiveInventory("ProtoHealthBar", 1);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 3: //KingYamatoClass
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdKing Yamato \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "KingYamatoMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("HeavyHealthBar",1);
+	GiveInventory("YamatoMeleeSteal",1);
+	break;
+	
+	Case 4: //Finite Zero
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdFinite Zero \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "FiniteZeroMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("GlassHealthBar",1);
+	break;
+	
+	Case 5: //Jack Corvus
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdJack Corvus \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "JackCorvusMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("JcAmmo", 56);
+	GiveInventory("GlassHealthBar",1);
+	break;
+	
+	Case 6: //Yellow Devil
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdYellow Devil (Electro Constructs) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "YellowDevilMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdYellow Devil (Electro Kinesis) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "YellowDevilMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("YellowDevilHUD", 1);
+	GiveInventory("NoHealthBar", 1);
+	GiveInventory("ElectrokinesisAmmo", 28);
+	break;
+	
+	Case 7: //Gummywormz
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdGummywormz \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "GummywormzMorph", "", 0, 258, "", "");
+	GiveInventory("AirTileAmmo",50);
+	GiveInventory("DocToadHealthBar", 1);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 8: //Chimera Man
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdChimera Man \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "ChimeraManMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("ChimeraAmmo", 28);
+	GiveInventory("ChimeraDiceThrow", 3);
+	break;
+	
+	Case 9: //Cut Man Mike
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdCut Man Mike \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "CutManMikeMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("HellfireAmmo", 27);
+	GiveInventory("ProtoHealthBar", 1);
+	break;
+	
+	Case 10: //Laggy Blazko
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdLaggy Blazko \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LaggyBlazkoMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdLaggy Blazko \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LaggyBlazkoMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("FatBullets", 90);
+	GiveInventory("NoMagTommy", 1);
+	GiveInventory("NadeAmmoClass", 16);
+	GiveInventory("CanPickAmmo", 1);
+	GiveInventory("LaggyHUD", 1);
+	GiveInventory("CorpReload", 1);
+	GiveInventory("CorpGrenade", 1);
+	GiveInventory("CorpArsenal", 1);
+	break;
+	
+	Case 11: //Breve
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdBreve \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "BreveMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("StaveAmmo", 28);
+	GiveInventory("BreveItem1", 3);
+	GiveInventory("SturdyHealthBar", 1);
+	break;
+	
+	Case 12: //Ice
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdIce \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "IceMorph", "", 0, 258, "", "");
+	GiveInventory("IsIce", 1);
+	GiveInventory("IceArmor",1);
+	GiveInventory("DocToadHealthBar", 1);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 13: //Sparky
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdSparky \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "SparkyMorph", "", 0, 258, "", "");
+	GiveInventory("IsSparky", 1);
+	GiveInventory("GlassHealthBar",1);
+	ACS_ExecuteAlways(CSACS_ICESPARKSWAP,0,1);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 14: //Beed28
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdBeed28 \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "Beed28Morph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdBeed28 \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "Beed28Morph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("Beed28Ammo", 28);
+	GiveInventory("CanPickAmmo", 1);
+	GiveInventory("Beed28HUD", 1);
+	GiveInventory("NoHealthBar", 1);
+	break;
+	
+	Case 15: //Blaze
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdBlaze \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "BlazeMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("BlazeCrateWeapon", 28);
+	GiveInventory("BlazeArmorPickup", 1);
+	GiveInventory("CanPickAmmo", 1);
+	break;
+	
+	Case 16: //TsukiyomaruZero
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdTsukiyomaruZero \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "TsukiMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("TsuPowerFlag",1);
+	GiveInventory("TsuPowerChanger",1);
+	GiveInventory("TsuSpeedChanger",1);
+	GiveInventory("TsuSpreadChanger",1);
+	GiveInventory("TsukiHUD",1);
+	GiveInventory("NoHealthBar",1);
+	break;
+	
+	Case 17: //FengaPapit
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdFengaPapit \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "FengaPapitMorph", "", 0, 258, "", "");
+	TakeInventory("TrollAmmo", 28);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 18: //TrollyomaruZero
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdTrollyomaruZero \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "TsukiTrollMorph", "", 0, 258, "", "");
+	TakeInventory("TsukiTrollClassAmmo", 28);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+
+	Case 19: //Messatsu
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdMessatsu \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "MessatsuMorph", "", 0, 258, "", "");
+	GiveInventory("RagingDemonInv", 1);
+	GiveInventory("MisogiInv", 1);
+	GiveInventory("TemaInv", 1);
+	TakeInventory("MessatsuAmmo", 56);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 20: //TheBladeRoden
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdTheBladeRoden (Auto Cannon) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "TheBladeRodenMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdTheBladeRoden (Dual Blades) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "TheBladeRodenMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("AutoCannonAmmo", 28);
+	GiveInventory("DuoHealthBar", 1);
+	GiveInventory("DualBladesAmmo", 28);
+	break;
+	
+	Case 21: //Ukiyama
+	//ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdUkiyama \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "UkiyamaMorph", "", 0, 258, "", "");
+	GiveInventory("UpgradeTimer", 200);
+	GiveInventory("UkiHud", 1);
+	GiveInventory("NoHealthBar", 1);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 22: //Travis
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdTravis \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "TravisMorph", "", 0, 258, "", "");
+	TakeInventory("SolarEnergy", 48);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 23: //Michael712
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdMichael712 (Fire Balls) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "M712Morph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdMichael712 (Fire Shot) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "M712Morph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("M712Wep1Ammo", 14);
+	GiveInventory("M712Wep2Ammo", 14);
+	break;
+	
+	//unix
+	
+	Case 25: //Bikdark
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 2);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdBikdark (Sin) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "BikdarkMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdBikdark (Cosin) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "BikdarkMorph2", "", 0, 258, "", "");
+		break;
+		Case 2:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdBikdark (Tan) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "BikdarkMorph3", "", 0, 258, "", "");
+		break;
+		}
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 26: //Jax
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdJaxOf \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "JaxMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdJaxOf \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "JaxMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("JaxPsychoAmmo", 13);
+	break;
+	
+	Case 27: //Lego
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdLego (Missiles) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LegoMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdLego (Stickies) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LegoMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("LegoHUD", 1);
+	GiveInventory("NoHealthBar", 1);
+	GiveInventory("LegoWeaponAmmo", 10);
+	GiveInventory("LegoStickyAmmo", 10);
+	break;
+	
+	/*Case 28: //Old Yellow Devil
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdYellow Devil \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "YDOldMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("ArmAmmo", 56);
+	GiveInventory("EyeAmmo", 28);
+	GiveInventory("HeavyHealthBar",1);
+	break;*/
+	
+	Case 29: //SaviorSword
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdSaviorSword (Thunder Blade) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "SaviorSwordMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdSaviorSword (Thunder Beam) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "SaviorSwordMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("SturdyHealthBar", 1);
+	GiveInventory("BusterAmmo", 3);
+	GiveInventory("SavGravitySwitchItem", 1);
+	GiveInventory("SavGroundFlag", 1);
+	GiveInventory("SaviorClassAmmo",28);
+	break;
+
+Case 30: //Daveris
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdDaveris \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "DaverisMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("SturdyHealthBar", 1);
+	GiveInventory("DaverisAmmo", 28);
+	break;
+
+Case 31: //Gizmo
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdGizmo (Hand Cannon) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "GizmoMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdGizmo (Claw Gloves) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "GizmoMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("BusterAmmo", 3);
+	GiveInventory("HandCannonAmmo", 3);
+	break;
+
+Case 32: //HumanDestroyer
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdHumanDestroyer \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "HumanDestroyerMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("HDAmmo1", 1);
+	GiveInventory("DuoHealthBar",1);
+	break;
+
+Case 33: //Stonefunk
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdStonefunk \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "StonefunkMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+
+	Case 34: //RedEyes
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdRedEyes (Drain Ball) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "RedEyesMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdRedEyes (Blood Spear) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "RedEyesMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("DocToadHealthBar", 1);
+	GiveInventory("BusterAmmo", 3);
+	break;
+	
+	Case 35: //Sergio
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdSergio \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "SergioMorph", "", 0, 258, "", "");
+	GiveInventory("PsychicAmmo", 28);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 36: //Rozark
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdRozark \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "RozarkMorph", "", 0, 258, "", "");
+	Giveinventory("NoHealthBar", 1);
+	GiveInventory("RozarkHealthBar", 1);
+	GiveInventory("RozarkAmmoRegen", 1);
+	GiveInventory("IsRozark", 1);
+	GiveInventory("OblivionWingsAmmo", 30);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 37: //Knux
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdKnux \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "KnuxMorph", "", 0, 258, "", "");
+	GiveInventory("SturdyHealthBar", 1);
+	GiveInventory("KnuxMineItem", 3);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 38: //Mutant Yoshi
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdMutant Yoshi \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "MutantYoshiMorph", "", 0, 258, "", "");
+	GiveInventory("DuoHealthBar", 1);
+	Giveinventory("EggTossInv", 1);
+	GiveInventory("EggFlag", 3);
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 39: //Adara Mozes
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdAdara Mozes \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "AdaraMorph", "", 0, 258, "", "");
+	GiveInventory("AdagioTrigger", 1);
+
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 40: //Freon
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdFreon\chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "FreonMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("InvisTrigger", 1);
+	GiveInventory("IceShotAmmo", 28);
+	GiveInventory("IceTrapCount", 60);
+	break;
+	
+	Case 41: //Zard1084
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 2);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdZard (Gun) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "ZardMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdZard (Sword) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "ZardMorph2", "", 0, 258, "", "");
+		break;
+		Case 2:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdZard (Boomerang) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "ZardMorph3", "", 0, 258, "", "");
+		break;
+		}
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("IsZardFlag", 1);
+	GiveInventory("ZardAmmo", 60 );
+	break;
+	
+	Case 42: //PrinnyQueen
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdQueen Prinny \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "PrinnyMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	Case 43: //Alicetheicefairy
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdAlice \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "AliceMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 44: //Giantmega.exe
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdGiantmega.exe \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "GiantmegaMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 45: //Lightclass
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdLight (Holy Buster) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LightMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdRedEyes (Holy Sword) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LightMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("BombJump", 3);
+	GiveInventory("LightEnergy", 14);
+	break;
+	
+	Case 46: //Protoman01
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdProtoman (Buster) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "ProtoMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdProtoman (Boomerang) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "ProtoMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("BusterAmmo", 3);
+	GiveInventory("Chakra", 105);
+	GiveInventory("ShieldActivator", 1);
+	break;
+	
+	Case 47: //Clayton
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdClayton \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "ClaytonMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("ClayAmmo", 52);
+	break;
+	
+	Case 48: //Fyone
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdFyone \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "FyoneMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("PhotonCannonWepAmmo", 28);
+	break;
+	
+	Case 49: //Smash
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdSmash \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "SmashMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
+	Case 50: //Missingno
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe......... \n\cg!!!ERROR!!!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "MissingnoMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("GlitchfieldAmmo", 28 );
+	GiveInventory("WaterLiftUse", 3);
+	break;
+	
+	Case 51: //ToastMan
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdToastManh \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "ToastManMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("ToastAmmo", 56);
+	break;
+	
+	Case 52: //ChaosFantasy
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdChaos Lord Roll (Sword) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "ChaosLordMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdChaos Lord Roll (Magic) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "ChaosLordMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("ChaosStamina", 45);
+	break;
+	
+	Case 53: //Hilman170499
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdHilman (Gun) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "HilMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdHilman (Flash) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "HilMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("HilRayAmmo", 28);
+	GiveInventory("HilItem", 1);
+	GiveInventory("NoHealthBar", 1);
+	break;
+	
+	Case 54: //LordDamager
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdLord Damager (Missile Punch) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LDMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdLord Damager (Laser Cannon) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "LDMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("IsLordDamager", 1);
+	GiveInventory("MissilePunchAmmo", 4);
+	GiveInventory("SmogCannonAmmo", 50);
+	GiveInventory("LDRamActivator", 1);
+	break;
+	
+	Case 55: //Jake
+	ClearInventory();
+	SetHudSize(600,380,0);
+	WhichClass = Random(0, 1);
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdJake (Pyrokinesis) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "JakeMorph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdJake (Nova Bomber) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "JakeMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("AutoFlameAmmo", 112);
+	break;
+	
+	Case 999: //Bonehead
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdBonehead \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "BoneheadMorph", "", 0, 258, "", "");
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("MissedMemoAmmo", 56);
+	GiveInventory("BoneheadAmmo", 105);
+	GiveInventory("BoneheadScriptActivate", 1);
+	GiveInventory("CannotUseHealth", 1);
+	break;
+
+	
+	}
+
+
+If(ClassifyActor(0) & ACTOR_BOT)
+	{
+	GiveInventory("Monsterblock", 1);
+	GiveInventory("IsBot", 1);
+	}
+	
+SetActorVelocity(0, XVel/4, YVel/4, GetActorVelZ(0), 0, 0);
+SetActorProperty(0, APROP_HEALTH, HealthBefore);
+TakeInventory("NoColorFlag", 1);
+GiveInventory("KilledMeStock", KilledMeStockNum);
+If(FusionStockNum <= KilledMeStockNum){FusionStockNum++;}
+GiveInventory("FusionStock", FusionStockNum);
+GiveInventory("CopyRemover", 1);
+If(UnderWaterFlag == TRUE){GiveInventory("LowGravity", 1);}
+Else{GiveInventory("NormalGravity", 1);}
+SetActorPitch(0, PlayerPitch);
+Delay(5);
+
+If((XVel == 0.0 && YVel == 0.0) && GetActorVelZ(0) < 0.0){ThrustThing(GetActorAngle(0) >> 8, 1, 0, 0);} //Protects against getting stuck in walls
+
+SetPlayerProperty(0,0,4);
+
+CopyTimeLeft = COPY_MORPHTIME + 35;
+While(CheckInventory("MorphFlag") && GetActorProperty(0, APROP_HEALTH) > 0)
+	{
+	If(CopyTimeLeft == 0 || GetGamemodeState() == 3)
+		{
+		If(GetGamemodeState() == 3){Delay(35);}
+		MorphWho = 999;
+		restart;
+		}
+	SetFont("BIGFONT");
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgTime \ciLeft \ck: \cd", i:(CopyTimeLeft/35)%35;HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.5);
+	CopyTimeLeft--;
+	Delay(1);
+	}
+HudMessage(s:"";HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.0);
+
+}
+
+//Script to handle Copy's speed modifications when morphed
+Script CSACS_COPYSPEED (int weapon)
+{
+int AlreadyShocked = CheckInventory("PowerShock") || CheckInventory("PowerChill");
+int AlreadySlowed = CheckInventory("PowerSlow") || CheckInventory("AdagioSlow");
+
+int SpeedBefore = GetActorProperty(0, APROP_Speed);
+
+Switch(Weapon)
+	{
+	Case 1:
+	GiveInventory("Slowed", 1);
+	If(AlreadySlowed > 0){Terminate;}
+	SetActorProperty(0, APROP_Speed, FixedMul(SpeedBefore,0.67));
+	While(CheckInventory("PowerSlow")){Delay(1);}
+	break;
+	
+	Case 2:
+	GiveInventory("Shocked", 1);
+	If(AlreadyShocked > 0){Terminate;}
+	SetActorProperty(0, APROP_Speed, 0.0);
+	While(CheckInventory("PowerShock")){Delay(1);}
+	break;
+	
+	Case 3:
+	GiveInventory("ChillingCaesuraShocked", 1);
+	If(AlreadyShocked > 0){Terminate;}
+	SetActorProperty(0, APROP_Speed, 0.0);
+	While(CheckInventory("PowerChill")){Delay(1);}
+	break;
+	
+	Case 4:
+	GiveInventory("AdagioSlow", 1);
+	If(AlreadySlowed > 0){Terminate;}
+	SetActorProperty(0, APROP_Speed, FixedMul(SpeedBefore,0.5));
+	While(CheckInventory("AdagioSlow")){Delay(1);}
+	break;
+	}
+If(CheckInventory("MorphFlag"))
+	{
+	SetActorProperty(0, APROP_Speed, SpeedBefore);
+	}
+}
+
+//Ice / Sparky speed / jump changing
+
+script CSACS_ICESPARKSWAP (int speed)
+{
+
+Switch(speed)
+	{
+	Case 0:
+	SetActorProperty(0,APROP_SPEED,1.0);
+	SetActorProperty(0,APROP_JUMPZ,10.0);
+	break;
+	
+	Case 1:
+	SetActorProperty(0,APROP_SPEED,1.6);
+	SetActorProperty(0,APROP_JUMPZ,15.0);
+	break;
+	}
+
+}
+
+//Script to handle aiming of Uki's vision
+Script CSACS_UKIREMOTE (void)
+{
+int UkiVisionTID = ActivatorTID() - 100;
+If(ThingCount(T_NONE, UkiVisionTID))
+	{
+	ACS_ExecuteAlways(976,0);
+	//SetActorState(UkiVisionTID, "RemoteControl");
+	SetPlayerProperty(0, 1, 0);
+	ChangeCamera(UkiVisionTID, 0, 0);
+	Spawnspot("RemoteSFX", UkiVisionTID);
+	While(CheckInventory("UkiRemoteFlag"))
+		{
+		If(GetPlayerInput(-1 , INPUT_BUTTONS) & BT_ATTACK)
+			{
+			//GiveActorInventory(UkiVisionTID, "UkiAttackFlag", 1);
+			GiveInventory("UkiAttackFlag", 1);
+			}
+		Delay(1);
+		}
+	}
+TakeInventory("UkiRemoteFlag", 1);
+SetPlayerProperty(0, 0, 0);
+ACS_ExecuteAlways(976,0);
+ChangeCamera(0, 0, 0);
+Spawnspot("RemoteSFX", 0);
+}
+
+//Script for Uki's weapon damage
+Script CSACS_UKIDAMAGE (int IsExplosion)
+{
+int x = GetActorX(0);
+int y = GetActorY(0);
+int z = GetActorZ(0);
+int ThePlayer = ACS_ExecuteWithResult(257);
+//SetActivatorToTarget(0);
+If(ThePlayer < 1000){SetResultValue(10);terminate;}
+int TotalDamage = 15;
+If(IsExplosion == 0)
+	{
+	If(CheckActorInventory(ThePlayer, "ExplodingFlag") && !CheckActorInventory(ThePlayer, "VelocityFlag")){SetResultValue(0);terminate;}
+	}
+
+If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage = 35;}
+If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
+If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 2;}
+
+If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
+If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
+If(IsExplosion == 0)
+	{
+	If(CheckActorInventory(ThePlayer, "ExplodingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+	}
+//printbold(i:TotalDamage);
+
+If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 5;}
+SetResultValue(TotalDamage);
+}
+
+//Script for the camera for Uki's vision
+Script CSACS_UKIREMOTEAIM (void) CLIENTSIDE
+{
+int TargetPlayer=ActivatorTID() + 100;//ACS_ExecuteWithResult(257);
+int PlayerPitch = GetActorPitch(TargetPlayer);
+int PlayerAngle = GetActorAngle(TargetPlayer);
+SetActorPitch(0, PlayerPitch);
+SetActorAngle(0, PlayerAngle);
+}
+
+script CSACS_ROZPOISON (int BleedingTarget)
+{
+while(CheckActorInventory(BleedingTarget, "BleedingFlag")>0)
+	{
+	Thing_Move(0,BleedingTarget,1);
+	Delay(1);
+	}
+GiveInventory("CollideFlag",1);
+}
+
+//Handles Rozark's DoT
+Script CSACS_ROZPOISONVIS (void) 
+{
+{
+int BleedingFlagCount;
+FadeTo(150,0,0,0.5,0.05);
+Delay(10);
+While(CheckInventory("BleedingFlag")>0)
+	{
+	BleedingFlagCount=CheckInventory("BleedingFlag");
+	if(BleedingFlagCount>100){BleedingFlagCount=100;}
+	FadeTo(150,0,0,FixedDiv(BleedingFlagCount,100),0.0);
+	TakeInventory("BleedingFlag",1);
+	Delay(1);
+	}
+	FadeTo(150,0,0,0.0,0.0);
+	}
+}
+
+//Sets player health since A_SetHealth doesn't exist yet
+Script CSACS_SETHEALTH (int HealthToValue)
+{
+SetActorProperty(0, APROP_HEALTH, HealthToValue);
+}
+
+//removes all CopyWep inventory.
+Script CSACS_TAKEWEAPON (void)
+{
+int wp = 0;
+For(wp = 0; wp < MAX_WEAPONS_GLOBAL; wp++)
+	{
+	If(CheckInventory(weapons_ammo[wp][0])){/*printbold(s:weapons_ammo[wp][0]);*/TakeInventory(weapons_ammo[wp][0], 1);}
+	}
+}
+
+/////////////////////Finite Zero//////////////////////////////////////////////////////
+script CSACS_FZDASH (void)
+{
+int buttonsFZ = GetPlayerInput(PlayerNumber(), INPUT_BUTTONS);
+//int buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+if (buttonsFZ & BT_FORWARD)
+{
+	SetResultValue(1);
+	//Print(s:"FORWARD");
+	ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, 35, 1, 0);
+	terminate;
+}
+if (buttonsFZ & BT_BACK)
+{
+	SetResultValue(2);
+	//Print(s:"BACK");
+	ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -35, 1, 0);
+	terminate;
+}
+if (buttonsFZ & BT_MOVELEFT)
+{
+	SetResultValue(3);
+	//Print(s:"LEFT");
+	ThrustThing((GetActorAngle(ActivatorTID())*255)+64.0>>16, 35, 1, 0);
+	terminate;
+}
+if (buttonsFZ & BT_MOVERIGHT)
+{
+	SetResultValue(4);
+	ThrustThing((GetActorAngle(ActivatorTID())*255)+192.0>>16, 35, 1, 0);
+	terminate;
+}
+SetResultValue(0);
+//ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, 35, 1, 0);
+}
+///////////////////////////////////////////////////
+
+
+script CSACS_JCSPEED (void) //Jack Corvus momentum system
+{
+switch(CheckInventory("JcMomentum"))
+	{
+	case 0:
+		SetActorProperty(0,APROP_SPEED,1.0);
+		break;
+	case 1:
+		SetActorProperty(0,APROP_SPEED,1.1);
+		break;
+	case 2:
+		SetActorProperty(0,APROP_SPEED,1.2);
+		break;
+	case 3:
+		SetActorProperty(0,APROP_SPEED,1.3);
+		break;
+	case 4:
+		SetActorProperty(0,APROP_SPEED,1.4);
+		break;
+	case 5:
+		SetActorProperty(0,APROP_SPEED,1.5);
+		break;
+	case 6:
+		SetActorProperty(0,APROP_SPEED,1.6);
+		break;
+	default:
+		SetActorProperty(0,APROP_SPEED,1.0);
+		break;
+	}
+}
+
+script CSACS_SPEEDMODS (int jump)
+{
+switch (jump) {
+	//Troll's slowdown (Half Speed)
+		case 5:
+		  SetActorProperty(0,APROP_SPEED,0.5);
+		  break;
+	//No Jump
+		case 4:
+		  SetActorProperty(0,APROP_JumpZ,0.0);
+		  break;
+	//No Jump, Normal Speed, Have Actor Make Firing Pose
+		case 3:
+		  SetActorState (0, "CeilingMissile2");
+		  SetActorProperty(0,APROP_JumpZ,0.0);
+		  SetActorProperty(0,APROP_SPEED,1.0);
+		  break;
+	//Double Speed
+		case 2:
+		  //SetActorProperty(0,APROP_JumpZ,0.0);
+		  SetActorProperty(0,APROP_SPEED,2.0);
+		  break;
+	//Normal Speed
+		case 1:
+		  //SetActorProperty(0,APROP_JumpZ,0.0);
+		  SetActorProperty(0,APROP_SPEED,1.0);
+		  break;
+	//Normal Jump, Normal Speed
+		case 0:
+		default:
+		  SetActorProperty(0,APROP_JumpZ,10.0);
+		  SetActorProperty(0,APROP_SPEED,1.0);
+		  break;
+	}
+}
+
+Script CSACS_BLAZKORELOAD (int ctrl) NET //Reload crap ("ctrl" can be used to add more new controls)
+{
+switch(ctrl){
+CASE 1:
+if (checkInventory("LegoWeaponAmmo")==5) terminate;
+GiveInventory("ForceReload",1);
+delay(1);
+TakeInventory("ForceReload",1);
+break;
+}
+}
+
+////////////////////////////////////LaggyCorperal stuff
+script "ReloadWeapon" (int ammoTypes, int maxAmmo)  //Reload script.
+{
+	
+	//Ammo types inside and outside the weapon.
+	int in, out;
+	str inAmmo, outAmmo;
+	
+	int magSize;//Max ammo inside.
+	
+	switch(ammoTypes)
+	{
+		case 1: //Tommy gun	
+		inAmmo = "TommyAmmo";
+		outAmmo = "FatBullets";
+		magSize = 30;
+		break;
+		Case 2: //Grand Ammo
+		inAmmo = "GrandAmmo";
+		outAmmo = "ShelbyvilleRound";
+		magSize = 8;
+		break;
+		default:
+		print(s:"Specify ammotype ya dork");
+		break;
+	}
+	
+	
+	in = CheckInventory(inAmmo);
+	out = CheckInventory(outAmmo);
+	
+	//print(s:inAmmo, d:in, s:outAmmo, d:out);
+	
+	//If maxAmmo is defined, do not reload more than that.
+	if (maxAmmo != 0 && magSize > (maxAmmo + in))
+	{
+		magSize = (maxAmmo + in);
+	}
+	
+	if (out < (magSize-in)) //Can't reload the full weapon
+			{
+				TakeInventory(outAmmo,out);
+				GiveInventory(inAmmo,out);
+			}
+			else
+			{
+				TakeInventory(outAmmo, magSize-in);
+				GiveInventory(inAmmo, magSize-in);
+			}		
+	
+	
+}
+
+
+Script "ForceReload"(void) NET //Reload using an item instead of +RELOAD
+{
+GiveInventory("ForceReload",1);
+delay(1);
+TakeInventory("ForceReload",1);
+}
+
+Script "CorpWeaponPickup" (int wep, int dropped)
+{
+//print(d:wep, s: " ", d: dropped); 
+
+
+str giveWep; //Weapon's name
+int coolDown;//Time before picking a weapon from map pickups again.
+int coolDownActor; //Time before picking a weapon from map pickups again.
+str wepTag; //Weapon's tag
+str pickupMessage; //Something iunno
+bool isGrenade; //Whenever it uses the grenade slot or the secondary weapon slot.
+
+switch (wep)
+{
+	case 1:
+		giveWep = "CorpFragGrenade";
+		coolDown = 60;
+		coolDownActor = "FragGrenadeCooldown";
+		wepTag = "Fragmentation Grenade";
+		pickupMessage = "You got the Fragmentation Grenade!\nNow with more fragmentation.\nDon't blow it up in front of your own face.";
+		isGrenade = false;
+		break;
+	case 2:
+		giveWep = "CorpGrandDad";
+		coolDown = 60;
+		coolDownActor = "GrandDadCooldown";
+		wepTag = "Grand Dad";
+		pickupMessage = "You got the Grand Dad semiautomatic rifle!\nReloading before firing all rounds is not recommended.";
+		isGrenade = true;
+		break;
+	default:
+		print(s:"no");
+		break;
+}
+
+
+
+
+//if (!dropped) //cooldown check (temorarily removed)
+//{
+	if (CheckInventory(cooldownActor))
+	{
+		SetHudSize(256,224,0);
+		setFont("SMALLFONT");
+		HudMessage(s:wepTag, s:" cooldown: ",d:CheckInventory(cooldownActor);
+		HUDMSG_FADEOUT, 1, CR_DARKGREEN, 128.0, 32.0, 1.0, 0.5);
+		terminate;
+	}
+	else
+	{
+		giveInventory(cooldownActor, coolDown);
+	}
+//}
+
+//Take any other weapon in the same slot.
+//Not the same weapon because the player might be using it
+//and that would deselect it?
+if (isGrenade)
+{
+	takeUnlessItsThis("CorpFragGrenade",giveWep);
+}
+else
+{
+	takeUnlessItsThis("GrandDad",giveWep);
+}
+
+
+//Finally gibe weapon
+GiveInventory(giveWep, 1);
+Print(s:pickupMessage);
+SetMugshotState("Grin");
+localAmbientSound("Weapon/TommyLoad",127);//Might have different sounds for each weapon, eventually.
+}
+
+//This function takes items unless it's the right one.
+function void takeUnlessItsThis (str takeThis, str unless)
+{
+	if (takeThis != unless)
+	{
+		takeInventory("takeThis",1);
+	}
+}
+
+Script "CorpWeaponCooldown" ENTER
+{
+If (!CheckInventory("CorpArsenal"))
+{
+	//print(s:"ur not corperel");
+	terminate;
+}
+While (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
+{
+	//print(s:"tictoc");
+	TakeInventory("FragGrenadeCooldown",1);
+	TakeInventory("GrandDadCooldown",1);
+	delay(35);
+}
+}
+
+Script "CorpWeaponCooldownRespawn" RESPAWN
+{
+ACS_NamedExecuteAlways("CorpWeaponCooldown",0);
+}
+
+//View recoil script
+Script "CorpRecoil" (int horiz, int vert, int duration) CLIENTSIDE
+//Horizontal angle, vertical angle and duration in tics
+//(not counting 1 pause tic and comeback)
+//MUST BE CLIENTSIDE IF ALL IT DOES IS MOVE PLAYER VIEW!
+{
+int i, theHecc, oldMove, moveGen, moveAngle, movePitch; //bullcrap
+//Note to self: define behavior for 0 duration
+moveGen = 0;
+for (i = 1; i <= duration; i++)
+{
+	oldMove = moveGen;
+	//What is trigonometry iunno
+	theHecc = sin(((i*0.5)/duration) - 0.25);
+	//log(f:theHecc);
+	//More math bullcrap
+	moveGen = ((theHecc) + 1.0)/2;
+	//log(f:moveGen, s:" ", f:theHecc, s:" ", f:oldMove);
+	moveAngle = fixedmul(horiz, moveGen - oldMove);
+	movePitch = fixedmul(vert, moveGen - oldMove);
+	
+	setActorAngle(0, getActorAngle(0) + moveAngle);
+	setActorPitch(0, getActorPitch(0) + moveAngle);
+	delay(1);
+}
+if (getCVAR("CSCCB_CL_RecoilReset") == false) terminate;
+//view reset
+//print(s:"lol");
+delay(1);
+moveGen = 0;
+horiz = horiz*(-1);
+vert = vert*(-1);
+for (i = 1; i <= duration; i++)
+{
+	oldMove = moveGen;
+	theHecc = sin(((i*0.5)/duration) - 0.25);
+	moveGen = ((theHecc) + 1.0)/2;
+	
+	moveAngle = fixedmul(horiz, moveGen - oldMove);
+	movePitch = fixedmul(vert, moveGen - oldMove);
+	
+	setActorAngle(0, getActorAngle(0) + moveAngle);
+	setActorPitch(0, getActorPitch(0) + moveAngle);
+	delay(1);
+}
+
+}
+
+//////////////////////////////////////Corporal Over and out//////////////////////////////////
+
+script CSACS_BEEDBOTWEP (int which)
+{
+if(PlayerIsBot(PlayerNumber()))
+	{
+	if(which==0)
+		{
+		GiveInventory("Beed28Ammo",28);
+		GiveInventory("BeedBotAttack",1);
+		}
+	if(which==1)
+		{
+		GiveInventory("Beed28Ammo",28);
+		SetWeapon("Beed28Weapon1");
+		}
+	if(which==2)
+		{
+		GiveInventory("Beed28Ammo",28);
+		SetWeapon("Beed28Weapon2");
+		}
+	if(which==3)
+		{
+		If(random(0,2)==0){GiveInventory("BeedBotAttack",1);}
+		}
+	}
+}
+
+//////////////////////////////////////Jax/////////////////////////////
+
+function int distanceVal2 (int tid1x, int tid1y, int tid1z, int tid2x, int tid2y, int tid2z)
+{
+	int x, y, z, d;
+	x = tid1x - tid2x >> 16; // Convert fixed point to integer
+	y = tid1y - tid2y >> 16;
+	z = tid1z - tid2z >> 16;
+	d = sqrt( x*x + y*y + z*z );
+	return d;
+}
+
+function bool kinesisPush (int pusher, int pushee, int force, int range)
+{	
+	bool pushvalid = (range == 0 || distanceVal2(GetActorX(pusher), GetActorY(pusher),
+	GetActorZ(pusher), GetActorX(pushee), GetActorY(pushee), GetActorZ(pushee)) < range);
+	
+	if (pushvalid) {
+		if (force!=0) {
+			//ThrustThing(VectorAngle(x2 - x, y2 - y) >> 8, force, 1, pushee);
+			ThrustThing(GetActorAngle(pusher) >> 8, force, 1, pushee);
+		}
+	}
+	return pushvalid;
+}
+
+script CSACS_SHOVER (int j, int pushee)
+{
+	pushee += 999;
+	switch (j) {
+	//Savior thunder rush push
+	case 1:
+		if(kinesisPush(ActivatorTID(), pushee, 5, 0)) {
+			if(!PlayerIsBot(pushee-1000)){
+				GiveActorInventory(pushee,"TempPitProtect",1);
+			}
+		}
+	break;
+	//Jax Throw
+	case 0:
+	bool inRange = kinesisPush(ActivatorTID(), pushee, 0, 500);
+	while(checkInventory("TelekinesisActive")&&inRange) {
+		//printBold(s:"Giving levitator");
+		giveActorInventory(pushee,"Levitator",1);
+		delay(1);
+		inRange = kinesisPush(ActivatorTID(), pushee, 0, 500);
+	}
+	if(inRange&&checkInventory("JaxThrow")) {
+		if(kinesisPush(ActivatorTID(), pushee, 40, 0)) {
+			if(!PlayerIsBot(pushee-1000)){
+				GiveActorInventory(pushee,"TempPitProtect",1);
+			}
+		}
+	}
+	break;
+	default:
+	break;
+	}
+}
+	
+script CSACS_SAVIORGRAVITY ENTER
+{
+if(PlayerIsBot(PlayerNumber())){terminate;}
+  while (TRUE)
+  {
+  
+    /*buttons2[PlayerNumber()] = GetPlayerInput(-1, INPUT_BUTTONS);
+	
+	fallingplayer[ActivatorTID()] = GetActorZ (0);*/
+
+	if(CheckInventory("SavOnCeilingFlag")==1){
+    if (GetPlayerInput(-1, INPUT_OLDBUTTONS) == GetPlayerInput(-1, INPUT_BUTTONS) - BT_JUMP )
+    {
+	GiveInventory("SavReverseJump",1);
+	}
+	}
+    delay(1);
+		
+  }
+}
+
+
+
+script 630 (void)//Tiny script that returns team number, used for sticky bombs
+{
+If(PlayerTeam()==0){SetResultValue(1);}
+If(PlayerTeam()==1){SetResultValue(2);}
+If(PlayerTeam()==2){SetResultValue(3);}
+If(PlayerTeam()==3){SetResultValue(4);}
+}
+
+Script CSACS_REDEYESHEALTH (int DamageAmt) //For Red Eyes Health stuff
+{
+int SetHealth = GetActorProperty(0, APROP_HEALTH) - DamageAmt;
+If(SetHealth <= 0){SetActorProperty(0, APROP_HEALTH,1);terminate;}
+SetActorProperty(0, APROP_HEALTH,SetHealth);
+}
+
+
+script CSACS_BIKHEALTH (void) //Biks Health loss script?
+{
+if(GetActorProperty(0,APROP_Health)>5)
+{
+SetActorProperty(0,APROP_Health,GetActorProperty(0,APROP_Health)-5);
+}
+}
+
+script 191 (int speed)
+{
+if(speed==1){
+SetActorProperty(0,APROP_SPEED,1.45);
+}
+if(speed==0){
+SetActorProperty(0,APROP_SPEED,1.0);
+}
+}
+
+//Hacky stuff for Unix
+
+function bool backCheck (int x1, int y1, int z1, int angle, int pushee, int range)
+{
+	bool backvalid = 0;
+	int x2 = GetActorX (pushee);
+	int y2 = GetActorY (pushee);
+	int z2 = GetActorZ (pushee);
+	if(distanceVal2(x1,y1,z1,x2,y2,z2) < range) {
+		int angleOwner = angle>>8;
+		int angleDifference = abs(angleOwner-(GetActorAngle(pushee)>>8));
+		int angleToTargetDifference = abs((VectorAngle(x2 - x1, y2 - y1)>>8)-angleOwner);
+		backvalid = (angleDifference < 64 || angleDifference > 192) && (angleToTargetDifference < 64 || angleToTargetDifference > 192);
+	}
+	return backvalid;
+}
+
+#DEFINE MAX_PLAYERS 64
+script 776 (void)
+{
+	bool backsuccess = 0;
+	int backStabber = ActivatorTID();
+	int x = GetActorX(0);
+	int y = GetActorY(0);
+	int z = GetActorZ(0);
+	int angle = GetActorAngle(0);
+	//int team = ACS_ExecuteWithResult(143, 0);
+	int team = GetPlayerInfo(backstabber-1000, PLAYERINFO_TEAM);
+	int i;
+	//if (team == 5) {
+	if (team == 4) {
+		for(i=0; i<MAX_PLAYERS; i++) {
+			if (backStabber != 1000+i && PlayerInGame(i)) {
+				if(backCheck(x,y,z,angle, 1000 +i, 200)) {
+					GiveActorInventory(1000 + i, "BackStabForce", 1);
+					backsuccess = 1;
+				}
+			}
+		}
+	} else {
+		for(i=0; i<MAX_PLAYERS; i++) {
+			if (backStabber != 1000+i && PlayerInGame(i) && team != GetPlayerInfo(i, PLAYERINFO_TEAM)) {
+				if(backCheck(x,y,z,angle, 1000 +i, 200)) {
+					GiveActorInventory(1000 + i, "BackStabForce", 1);
+					backsuccess = 1;
+				}
+			}
+		}	
+	}
+	
+	
+	SetResultValue(backsuccess);
+}
+
+script 775 (int weap)
+{
+	//int killedClass = GetPlayerInfo(PlayerNumber(), PLAYERINFO_PLAYERCLASS);
+	int killedTeam = ACS_ExecuteWithResult(143, 0);
+	if (weap == 377 && (CheckWeapon("IceWep")>0||CheckWeapon("IceBot")>0)) {
+		weap = 376;
+	}
+	SetActivatorToTarget(0);
+	
+	Thing_SetTranslation(0, weap);
+	
+	switch (killedTeam) {
+		case 0:
+		  Thing_SetTranslation(0, 0);
+		  break;
+	    case 1:
+		  Thing_SetTranslation(0, 48);
+		  break;
+	    case 2:
+		  Thing_SetTranslation(0, 43);
+		  break;
+		case 3:
+		  Thing_SetTranslation(0, 47);
+		  break;
+	    default:
+		  break;
+	}
+}
+
+
+#library "BUTTONS"
+
+
+int buttons[64];
+script 667 (void)
+{
+buttons[PlayerNumber()] = GetPlayerInput(PlayerNumber(), INPUT_BUTTONS);
+if (buttons[PlayerNumber()] & BT_FORWARD)
+{
+	SetResultValue(1);
+	//Print(s:"FORWARD");
+	terminate;
+}
+if (buttons[PlayerNumber()] & BT_BACK)
+{
+	SetResultValue(2);
+	//Print(s:"BACK");
+	terminate;
+}
+if (buttons[PlayerNumber()] & BT_MOVELEFT)
+{
+	SetResultValue(3);
+	//Print(s:"LEFT");
+	terminate;
+}
+if (buttons[PlayerNumber()] & BT_MOVERIGHT)
+{
+	SetResultValue(4);
+	//Print(s:"RIGHT");
+	terminate;
+}
+if (buttons[PlayerNumber()] & BT_JUMP)
+{
+	SetResultValue(5);
+	//Print(s:"JUMP");
+	terminate;
+}
+if (buttons[PlayerNumber()] & BT_ATTACK)
+{
+	SetResultValue(6);
+	terminate;
+}
+if (buttons[PlayerNumber()] & BT_ALTATTACK)
+{
+	SetResultValue(7);
+	terminate;
+}
+SetResultValue(0);
+}
+
+script "zardlms" (void)
+{
+// Check if the game is actually LMS
+if(GetCvar("lastmanstanding")==1||GetCvar("teamlms")==1||GetCvar("invasion")==1){
+	// Ignore if game is set to instagib
+	if(GetCvar("instagib")==1){terminate;}
+	Delay(5);
+	//GiveInventory(ItemStart[ItemStartRandom],5);
+	Delay(1);
+	TakeInventory("FlashFreezespellUseItem",4);
+	TakeInventory("SummonYukkuriUseItem",4);
+	TakeInventory("RecoveryTea",4);
+	TakeInventory("LifeTea",4);
+	GiveInventory("AirJump",3);
+	GiveInventory("TornadoJump",1);
+	}
+terminate;	
+}
+
+script "SmashHealth" (void)
+{
+if(CheckInventory("SmashHealthChecker")==0){terminate;}
+HealThing(1);
+TakeInventory("SmashHealthChecker",1);
+Delay(1);
+restart;
+}
+
+script 516 (void)
+{
+if(CheckInventory("HealthCountFlag")==0){terminate;}
+HealThing(1);
+TakeInventory("HealthCountFlag",1);
+Delay(7);
+restart;
+}
+
+script 481 (void)
+{
+// Check if the game is actually LMS
+if(GetCvar("lastmanstanding")==1||GetCvar("teamlms")==1||GetCvar("invasion")==1){
+	// Ignore if game is set to instagib
+	if(GetCvar("instagib")==1){terminate;}
+	Delay(5);
+	//GiveInventory(ItemStart2[ItemStart2Random],3);
+	TakeInventory("HotDog",1);
+	TakeInventory("Pizza",2);
+	Delay(1);
+	}
+terminate;	
+}
+
+script "Hillms" (void)
+{
+if(GetCvar("lastmanstanding")==1||GetCvar("teamlms")==1){
+	if(GetCvar("instagib")==1){terminate;}
+	Delay(5);
+	GiveInventory("HilMediGive",1);
+	GiveInventory("HilBoxGive",1);
+	Delay(1);
+}
+}
+
+script "Hilcolors" (int tid)
+{
+	if(GetActorProperty (TID, APROP_HEALTH) <= 65){GiveInventory("HilYellow",1); TakeInventory("HilOrange",255); TakeInventory("HilRed",255);}
+	if(GetActorProperty (TID, APROP_HEALTH) <= 45){GiveInventory("HilOrange",1); TakeInventory("HilYellow",255); TakeInventory("HilRed",255);}
+	if(GetActorProperty (TID, APROP_HEALTH) <= 20){GiveInventory("HilRed",1); TakeInventory("HilOrange",255); TakeInventory("HilYellow",255);}
+	if(GetActorProperty (TID, APROP_HEALTH) > 20){TakeInventory("HilRed",255);}
+	if(GetActorProperty (TID, APROP_HEALTH) > 45){TakeInventory("HilOrange",255); TakeInventory("HilRed",255);}
+	if(GetActorProperty (TID, APROP_HEALTH) > 65){TakeInventory("HilYellow",255); TakeInventory("HilOrange",255); TakeInventory("HilRed",255);}
+}
+
+script 304 (void)
+{
+TakeInventory("HilArmourFlag",999);
+TakeInventory("HilMobileFlag",999);
+GiveInventory("HilPowerFlag",1);
+terminate;
+}
+
+script 305 (void)
+{
+GiveInventory("HilArmourFlag",1);
+TakeInventory("HilMobileFlag",999);
+TakeInventory("HilPowerFlag",999);
+terminate;
+}
+
+script 306 (void)
+{
+TakeInventory("HilArmourFlag",999);
+GiveInventory("HilMobileFlag",1);
+TakeInventory("HilPowerFlag",999);
+terminate;
+}
+
+script 330 (void)
+{
+if(GetCvar("lastmanstanding")==1||GetCvar("teamlms")==1||GetCvar("invasion")==1){
+	if(GetCvar("instagib")==1){terminate;}
+	Delay(5);
+	GiveInventory("HilMediGive",1);
+	GiveInventory("HilBoxGive",1);
+	Delay(1);
+}
+terminate;
+}

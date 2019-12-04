@@ -1,0 +1,101 @@
+actor FrostWalrus : ClassBaseCSCC
+{
+//Radius 16
+//Height 56
+//Player.AttackZOffset 8
+//Player.ViewHeight 41
+//scale 2.5
+
+//Radius 24
+//Height 84
+//Player.AttackZOffset 12
+//Player.ViewHeight 62
+//scale 4.0
+
+Radius 32
+Height 112
+Player.AttackZOffset 16
+Player.ViewHeight 82
+MaxStepHeight 48
+scale 5.0
+
+player.displayname "FrostWalrus"
+player.soundclass  "FrostWalrusC"
+
+player.startitem "BigSpawnFlag"
+player.startitem "FrostTowerBoss"
+
+player.forwardmove 0.6, 0.6
+player.sidemove 0.58, 0.58
+player.jumpz 12
+
+player.maxhealth 155
+health 155
+
+player.startitem "ToadHealthBar"
+states
+{
+Spawn:
+AFRO A 0 
+AFRO B 1
+AFRO A 1
+Goto Spawn+2
+See:
+AFRO BCDE 5
+Goto Spawn
+Missile:
+AFRO F 5
+AFRO G 4
+goto Spawn
+Pain:
+AFRO H 0 A_GiveInventory("WalrusInvinc",1)
+AFRO H 0 A_ScaleVelocity(0.75)
+AFRO H 0
+AFRO H 0 A_JumpIfInventory("MorphFlag", 1, "CopyPainSnd")
+goto SuperClassPain
+}
+}
+
+actor FrostWalrusSlide : FrostWalrus
+{
+Radius 16
+Height 56
+Player.AttackZOffset 8
+Player.ViewHeight 41
+MaxStepHeight 24
+
+Scale 3.75
+
+player.forwardmove 0.45, 0.45
+player.sidemove 0.40, 0.40
+
+player.morphweapon "FrostTowerBossSlide"
+
+states
+{
+Spawn:
+TNT1 A 0 
+AFRO G 1
+AFRO G 1
+Goto Spawn+2
+See:
+AFRO GGGG 5
+Goto Spawn
+Missile:
+AFRO G 5
+AFRO G 4
+goto Spawn
+ClassPain:
+AFRO H 0 //A_GiveInventory("WalrusInvinc",1)
+goto "Super::MegamanPain"
+
+}
+}
+
+actor WalrusInvinc : BigTempInvinc
+{
+//powerup.duration 2
+powerup.duration 3
+//powerup.duration 4
+damagefactor "MirrorBuster2", 0.5
+}

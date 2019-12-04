@@ -1,0 +1,935 @@
+actor ToastCannonWep : MegaBuster 31356
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 56
+Weapon.AmmoUse 2
+Weapon.AmmoGive2 56
+Weapon.SlotNumber 4
+Inventory.Pickupmessage "Power up! Toast Cannon!"
+weapon.ammotype "ToastAmmo"
+weapon.ammotype2 "ToastAmmo"
+inventory.pickupsound "weapon/weaponup"
+Obituary "%o was destroyed by %k's power of a nutritious breakfast."
++WEAPON.AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.CHEATNOTWEAPON
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Ready:
+NEDC B 0 ACS_ExecuteAlways(998,0,10)
+NEDC B 0 A_JumpIfInventory("OilCheck",1,"SlideBegin")
+NEDC B 30 A_WeaponReady
+NEDC B 0 A_JumpIfInventory("OilCheck",1,"SlideBegin")
+NEDC B 2 A_WeaponReady
+NEDC B 0 A_GiveInventory("ToastAmmo", 1)
+Goto Ready+3
+Deselect:
+NEDC B 0 A_TakeInventory("OilCheck", 999)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+NEDC B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+NEDC B 1 A_Raise
+Loop
+Fire:
+NEDC B 0 A_JumpIfNoAmmo("NoAmmo")
+NEDC B 0 A_JumpIfInventory("OilCheck",1,"SlideBegin")
+NEDC B 1
+goto Hold
+Hold:
+NEDC B 0 A_JumpIfNoAmmo("NoAmmo")
+NEDC B 0 A_JumpIfInventory("WeaponCharge",1,"Hold2")
+NEDC B 2 A_GiveInventory("WeaponCharge",1)
+NEDC B 0 
+NEDC B 0 A_Refire
+Goto Fire1
+Hold2:
+NEDC C 0 A_StopSoundEx ("Weapon") 
+NEDC C 0 
+NEDC C 0 A_JumpIfInventory("WeaponCharge",14,"Hold3")
+NEDC C 1 
+NEDC C 0 
+NEDC C 1 A_GiveInventory("WeaponCharge",1)
+NEDC C 0 A_Refire
+Goto Fire1
+Hold3:
+NEDC C 0 A_StopSoundEx ("Weapon") 
+NEDC C 0 
+NEDC C 1 A_JumpIfInventory("WeaponCharge",20,"BotCheck") 
+NEDC C 1 
+NEDC C 0 A_GiveInventory("WeaponCharge",1)
+NEDC C 0 A_Refire
+Goto Fire2
+BotCheck:
+NEDC C 0 
+Goto Hold4
+Hold4:
+NEDC D 0 A_StopSoundEx ("Weapon")
+NEDC D 0 
+NEDC D 1 
+NEDC D 1 
+NEDC D 0 A_Refire
+Goto Fire3
+Fire1:
+NEDC B 0 A_StopSoundEx ("Weapon") 
+NEDC B 0 A_TakeInventory("WeaponCharge",500)
+NEDC B 0 A_ClearRefire
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 2 A_FireCustomMissile("ButterSlickShot",0,1,8,0)
+NEDC CD 2
+NEDC B 2
+Goto Ready+1
+Fire2:
+NEDC B 0 A_StopSoundEx ("Weapon") 
+NEDC B 0 A_TakeInventory("WeaponCharge",500)
+NEDC B 0 A_ClearRefire
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 2 A_FireCustomMissile("ButteredToast",0,1,8,0)
+NEDC CD 3
+NEDC B 2
+Goto Ready+1
+Fire3:
+NEDC B 0 A_StopSoundEx ("Weapon") 
+NEDC B 0 A_TakeInventory("WeaponCharge",500)
+NEDC B 0 A_ClearRefire
+NEDC B 0 A_JumpIfInventory("ToastAmmo", 40, "Fire3r")
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 3 A_FireCustomMissile("ButteredToast",0,1,8,0)
+NEDC CD 2
+NEDC B 3
+Goto Ready+1
+Fire3r:
+NEDC B 0 A_TakeInventory("ToastAmmo", 40)
+NEDC B 0 A_Jump(256,"FireShot","BombShot","IceShot","ElecShot","TimeShot","BladeShot")
+NEDC B 1 
+Goto Ready+1
+FireShot:
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 0 A_FireCustomMissile("FireToast",2,0,-12,0)
+NEDC B 0 A_FireCustomMissile("FireToast",-2,0,12,0)
+NEDC B 0 A_FireCustomMissile("FireToast",180,0,0,0)
+NEDC CD 5
+NEDC B 10
+Goto Ready+1
+BombShot:
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 0 A_FireCustomMissile("BombToast",1,0,-12,0)
+NEDC B 0 A_FireCustomMissile("BombToast",-1,0,12,0)
+NEDC B 0 A_FireCustomMissile("BombToast",180,0,0,0)
+NEDC CD 5
+NEDC B 10
+Goto Ready+1
+IceShot:
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 0 A_FireCustomMissile("IceToast",1,0,-12,0)
+NEDC B 0 A_FireCustomMissile("IceToast",-1,0,12,0)
+NEDC B 0 A_FireCustomMissile("IceToast",180,0,0,0)
+NEDC CD 5
+NEDC B 10
+Goto Ready+1
+ElecShot:
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 0 A_FireCustomMissile("ElecToast",2,0,-12,0)
+NEDC B 0 A_FireCustomMissile("ElecToast",-2,0,12,0)
+NEDC B 0 A_FireCustomMissile("ElecToast",180,0,0,0)
+NEDC CD 5
+NEDC B 5
+Goto Ready+1
+TimeShot:
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 0 A_FireCustomMissile("TimeSlow",0,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",0,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",6,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",12,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",18,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",24,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",30,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",36,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",42,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",48,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",54,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",60,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",66,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",72,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",78,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",84,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",90,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",96,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",102,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",108,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",114,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",120,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",126,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",132,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",138,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",144,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",150,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",156,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",162,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",168,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",174,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",180,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",186,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",192,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",198,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",204,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",210,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",216,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",222,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",228,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",234,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",240,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",246,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",252,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",258,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",264,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",270,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",276,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",282,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",288,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",294,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",300,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",306,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",312,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",318,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",324,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastH",330,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",336,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",342,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",348,0,0,0)
+NEDC B 0 A_FireCustomMissile("TimeToastM",354,0,0,0)
+NEDC CD 5
+NEDC B 5
+Goto Ready+1
+BladeShot:
+NEDC B 0 A_PlaySoundEx("weapon/oilshot","Weapon")
+NEDC B 0 A_TakeInventory("CutterFlag",999)
+NEDC B 0 A_FireCustomMissile("CutToast",5,0,0,0)
+NEDC B 0 A_FireCustomMissile("CutToast",-5,0,0,0)
+NEDC B 0 A_FireCustomMissile("CutToast",180,0,0,0)
+NEDC CD 5
+NEDC B 5
+Goto Ready+1
+SlideBegin:
+NEDC B 0 A_JumpIfInventory("OilJump",1,"OilPogo")
+NEDC B 0 A_GiveInventory("OilSliderFlag",30)
+NEDC B 0 A_TakeInventory("ToastAmmo",7)
+NEDC B 0 A_GiveInventory("OilJump", 1)
+NEDC B 0 A_GiveInventory("OilBoat", 1)
+NEDC B 0 A_GunFlash
+NEDC B 0 A_JumpIfInventory("OilCheck",1,"AmmoCheck")
+Goto SlideEnd
+AmmoCheck:
+NEDC B 0 
+NEDC B 0 A_JumpIfInventory("OilSliderFlag",1,"Slide")
+Goto SlideEnd
+Slide:
+NEDC B 0 A_TakeInventory ("OilSliderFlag",1)
+NEDC B 0 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)//A_Recoil (-10)
+NEDC B 0 A_JumpIf(z-floorz>32,"SlideAir")
+NEDC B 0 SetPlayerProperty(0,0,3)
+Goto SlideContinue
+SlideAir:
+NEDC B 0 SetPlayerProperty(0,1,3)
+NEDC B 0 A_JumpIf(ACS_ExecuteWithResult(250)==1, "UnderWater")
+NEDC B 0 SetPlayerProperty(0,0,3)
+Goto SlideContinue
+UnderWater:
+NEDC B 0
+NEDC B 0 A_JumpIf(momz<=0,4)
+NEDC B 0 SetPlayerProperty(0,0,3)
+NEDC B 0 ThrustThingZ(0, 5, 0, 1)
+NEDC B 0 A_Jump(256,"SlideContinue")
+NEDC B 0 ThrustThingZ(0, 5, 0, 0)
+NEDC B 0
+goto SlideContinue
+SlideContinue:
+NEDC B 0 A_JumpIf(ACS_ExecuteWithResult(254)==1,"BotSlide") //If Player is Bot, change
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC B 1 A_WeaponReady (WRF_NOSWITCH)
+NEDC B 0 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 1 A_WeaponReady (WRF_NOSWITCH)
+NEDC B 0 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 1 A_WeaponReady (WRF_NOSWITCH)
+NEDC B 0 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 1 A_WeaponReady (WRF_NOSWITCH)
+NEDC B 0 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 1 A_WeaponReady (WRF_NOSWITCH)
+NEDC B 0 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_JumpIfInventory("OilCheck",1,"AmmoCheck")
+Goto SlideEnd
+BotSlide:
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_PlaySoundEx("weapon/OilSlider","Weapon")
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_PlaySoundEx("weapon/OilSlider","Weapon")
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_PlaySoundEx("weapon/OilSlider","Weapon")
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_PlaySoundEx("weapon/OilSlider","Weapon")
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_PlaySoundEx("weapon/OilSlider","Weapon")
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_PlaySoundEx("weapon/OilSlider","Weapon")
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+NEDC B 0 A_PlaySoundEx("weapon/OilSlider","Weapon")
+NEDC B 0 A_SpawnItemEx("ButterSlider", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+NEDC BBBB 1 A_ChangeVelocity(28,0,momz,CVF_RELATIVE|CVF_REPLACE)
+Goto SlideEnd
+OilPogo:
+NEDC B 0
+NEDC B 0 A_Recoil(5)
+NEDC B 0 ThrustThingZ(0, 30, 0, 0)
+NEDC B 0 A_Jump(256,"SlideEnd")
+Goto SlideEnd
+SlideEnd:
+NEDC B 0 SetPlayerProperty(0,0,0)
+NEDC B 0 SetPlayerProperty(0,0,3)
+NEDC B 0 A_StopSound(CHAN_WEAPON)
+NEDC B 0 A_TakeInventory("OilSliderFlag",32)
+NEDC B 0 A_TakeInventory("OilCheck", 999)
+NEDC B 0 A_TakeInventory("OilBoat",999)
+NEDC B 0 A_TakeInventory("OilJump",999)
+NEDC B 10
+goto Ready+2
+Flash:
+TNT1 A 6 A_PlaySoundEx("weapon/OilSlider","Weapon")
+TNT1 A 0 A_JumpIfInventory("OilCheck", 1, "Flash")
+TNT1 A 1
+stop
+AltFire:
+TNT1 A 0 A_JumpIfInventory("ToastAmmo", 4, "AltFire2")
+NEDC D 3
+goto Ready+2
+AltFire2:
+NEDC B 0
+NEDC B 1 A_Jump(256,"RMF1","RMF2","RMF3","RMF4","RMF5","RMF6","RMF7","RMF8","RM1FEX")
+goto Ready+2
+RMF1:
+NEDC B 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NEDC B 3 A_FireCustomMissile("FireStorm",0,1,8,0)
+NEDC C 4
+NEDC D 3
+Goto Ready+2
+RMF2:
+NEDC B 0 A_TakeInventory("ToastAmmo",4)
+NEDC B 0 A_FireCustomMissile("LeafShieldT",20,1,0,0)
+NEDC B 3 A_FireCustomMissile("LeafShieldT",-20,0,0,0)
+NEDC CD 4
+NEDC B 3
+goto Ready+2
+RMF3:
+NEDC B 0 A_TakeInventory("ToastAmmo",6)
+NEDC B 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+NEDC B 2 A_SpawnItemEx("HardKnuckleFX",-1,8,32,0,0,0)
+NEDC CC 2 
+NEDC D 0 SetPlayerProperty(0,1,0)
+NEDC DDD 2 
+NEDC D 0 A_FireCustomMissile("HardKnuckle",0,1,10,-2)
+NEDC D 0 A_ChangeVelocity(-9, 0, 0, CVF_RELATIVE)
+NEDC DDD 2
+NEDC D 2 SetPlayerProperty(0,0,0)
+NEDC CC 2 
+NEDC B 2 
+NEDC B 0 A_Refire
+Goto Ready+2
+RMF4:
+NEDC B 0 A_PlaySoundEx("weapon/ringboomerang","Weapon")
+NEDC B 0 A_FireCustomMissile("RingBoomerang",0,1,8,0)
+NEDC BC 4
+NEDC D 10
+NEDC BC 4
+NEDC B 0 A_Refire
+Goto Ready+2
+RMF5:
+NEDC B 0 A_TakeInventory("ToastAmmo",2)
+NEDC B 0 A_PlaySoundEx("weapon/chargekick","Weapon")
+NEDC B 0 SetPlayerProperty(0,1,0)
+NEDC B 3 A_Recoil(-20)
+NEDC C 3 A_FireCustomMissile("ChargeKick",0,1,0,0)
+NEDC D 8 SetPlayerProperty(0,0,0)
+NEDC CB 4
+NEDC C 0 A_Refire
+Goto Ready+2
+RMF6:
+NEDC B 0 A_TakeInventory("ToastAmmo",3)
+NEDC B 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+NEDC B 4 A_FireCustomMissile("KnightCrush",0,1,8,0)
+NEDC CCDDD 4
+NEDC B 4 A_Refire
+goto Ready+2
+RMF7:
+NEDC B 0 A_TakeInventory("ToastAmmo",1)
+NEDC B 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+NEDC B 0 A_SpawnItemEx("FreezeFX",-1,8,32,0,0,0)
+NEDC B 0 A_FireCustomMissile("FreezeCracker",0,1,8,0)
+NEDC CDC 5
+NEDC B 0 A_Refire
+Goto Ready+1
+RMF8:
+FHUD A 0 A_TakeInventory("ToastAmmo",5)
+FHUD A 0 A_PlaySoundEx("weapon/flamesword","Weapon")
+FHUD C 0 A_SpawnItemEx("FSSParkSpawner",32,0,8,0,0,0,0,0,0)
+FHUD C 2 A_FireCustomMissile("FlameSword",50,1,-16,0,0,-10)
+FHUD D 2 A_FireCustomMissile("FlameSword",25,0,-8,0,0,-5)
+FHUD E 2 A_FireCustomMissile("FlameSword",0,0,0,0,0,0)
+FHUD F 2 A_FireCustomMissile("FlameSword",-25,0,8,0,0,10)
+FHUD G 2 A_FireCustomMissile("FlameSword",-50,0,16,0,0,20)
+TNT1 A 2 
+Goto Ready+2
+RM1FEX:
+NEDC B 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NEDC B 0 A_FireCustomMissile("FireStorm",0,1,8,0)
+NEDC B 0 A_FireCustomMissile("IceSlasher",0,0,8,0)
+NEDC B 3 A_FireCustomMissile("ThunderBeam",0,0,8,0)
+NEDC C 4
+NEDC D 3
+Goto Ready+2
+NoAmmo:
+NEDC B 1 ACS_Execute(979,0)
+NEDC B 3 
+NEDC B 1 A_Refire
+goto Ready+2
+}
+}
+
+actor ToastCharge : Inventory
+{
+inventory.amount 1
+inventory.maxamount 52
+}
+
+
+actor ToastAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 56
+}
+
+
+actor ButterSlickShot
+{
+PROJECTILE
+Obituary "%o slipped out of the universe due to %k's Butter Slick Shot."
+Translation "247:247=229:229", "47:47=136:136"
+Radius 10
+Height 10
+scale 2.5
+-NOGRAVITY
+damagetype "OilSlider"
+speed 30
+damage (5)
+States
+{
+Spawn:
+OILL D 3
+loop
+Crash:
+XDeath:
+OILL D 1
+stop
+Death:
+OILL D 0 
+OILL D 0 A_JumpIf(z-floorz<=0,"Death2")
+OILL D 1 A_GiveInventory("CutterFlag", 1)
+OILL D 0 A_JumpIfInventory("CutterFlag", 175, "Xdeath")
+loop
+Death2:
+OILL D 1 A_SpawnItemEx("ButterSlick",0,0,0)
+stop
+}
+}
+
+actor ButterSlick
+{
++MISSILE
++NODAMAGETHRUST
++NOBLOOD
++DONTSPLASH
++THRUGHOST
++DONTBLAST
++DONTREFLECT
++NOEXPLODEFLOOR
++NOTARGETSWITCH
+Translation "247:247=229:229", "47:47=136:136"
+Damage (15)
+damagetype "Butter"
+Height 10
+Radius 8
+scale 2.5
+mass 99999
+reactiontime 176
+painchance 256
+states
+{
+Spawn:
+OILL G 0
+OILL G 1 
+OILL G 0 A_ChangeFlag("SHOOTABLE",1)
+Spawn2:
+OILL G 1 A_Stop
+Goto SlideWait
+SlideWait:
+OILL E 1 A_JumpIfCloser(40, "Slide")
+OILL E 0 A_GiveInventory("CutterFlag", 1)
+OILL E 0 A_JumpIf(z-floorz>0,"NewShot")
+OILL E 0 A_JumpIfInventory("CutterFlag", 175, "Death")
+loop
+Spawn3:
+OILL G 0
+OILL G 1 A_GiveToTarget("OilSliderFlag",16)
+stop
+Slide:
+OILL E 0
+OILL E 0 A_JumpIfInTargetInventory("OilCheck", 1,"Spawn3")
+TNT1 A 2 A_GiveToTarget("OilCheck",1)
+stop
+NewShot:
+OILL E 0 A_SpawnItemEx("ButterSlickShot", 0, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM)
+Goto Death 
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor ButteredToast
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
+damagetype "FireStorm"
+//seesound "weapon/mbuster"
+Speed 40
+Damage (21)
+radius 16
+height 16
+scale 2.5
+States
+{
+Spawn:
+PROC ABC 2
+goto DropShot
+DropShot:
+PROC A 6 A_SpawnItemEx("ButterSlickShot", 0,0,0,0,0,0,0,0)
+loop
+}
+}
+
+actor ButterSlider
+{
+PROJECTILE
++RIPPER
++DONTBLAST
++NOCLIP
++NOINTERACTION
+Radius 8
+Height 16
+scale 2.5
+damage (0)
+damagetype "OilSlider"
+speed 20
+States
+{
+Spawn:
+OILL F 0 
+OILL F 0 A_SpawnItemEx("SliderDamager", 0, 0, 8)
+OILL F 4 
+stop
+}
+}
+
+actor FireToast
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++RIPPER
+damagetype "FireStorm"
+//seesound "weapon/mbuster"
+Translation "87:87=229:229", "42:42=176:176"
+Speed 48
+Damage (8)
+radius 16
+height 16
+scale 2.5
+States
+{
+Spawn:
+PROC A 1 A_CustomMissile("FlameBlast2",8)
+PROC B 1 A_PlaySoundEx("weapon/firestorm","Weapon")
+PROC C 1 A_CustomMissile("FlameBlast2",8)
+PROC A 1 A_PlaySoundEx("weapon/firestorm","Weapon")
+PROC B 1 A_CustomMissile("FlameBlast2",8)
+PROC C 1 A_PlaySoundEx("weapon/firestorm","Weapon")
+PROC C 0 
+loop
+Death:
+TNT1 A 0
+TNT1 A 0 A_Explode(16,96,0)
+stop
+}
+}
+
+actor FlameBlast2 // : MaceFX1
+{
+PROJECTILE
+Damage (4)
+Height 8
+Radius 8
+damagetype "FlameBlast"
++DONTBLAST
+-NOGRAVITY
+Scale 2.5
+speed 28
+States
+{
+Spawn:
+FLMB H 4
+Goto Spawn
+XDeath:
+Crash:
+FLMB H 0 A_Explode(4,64,0)
+stop
+Death:
+FLMB H 0 A_JumpIf(CeilingZ - FloorZ <=48 , "FireCheckOnly")
+FLMB H 0 A_SpawnItemEx("FlamePillar2",0,0,0)
+stop
+FireCheckOnly:
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,-16)
+stop
+}
+}
+
+
+
+actor FlamePillar2
+{
+PROJECTILE
+-MISSILE
++DONTBLAST
+Scale 2.5
+-NOGRAVITY
++NOEXPLODEFLOOR
+Height 48
+damagetype "FlameBlast"
+Speed 0
+Radius 8
+Damage (9)
+reactiontime 15
+States
+{
+Spawn:
+FLMB A 0 
+FLMB H 1 A_JumpIf(z-floorz==0,"Flame")
+FLMB A 0 A_ChangeFlag("MISSILE",1)
+loop
+Flame:
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+FLMB A 0 A_ChangeFlag("FLOORHUGGER",1)
+FLMB A 0 A_ChangeFlag("MISSILE",1)
+FLMB A 0 A_CountDown
+FLMB ABCDEFGFGFGFGFG 1 
+Goto Flame+1
+Death:
+FLMB A 0 
+stop
+}
+}
+
+actor BombToast
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
+damagetype "HyperBomb"
+Translation "87:87=3:3", "42:42=5:5"
+//seesound "weapon/mbuster"
+Speed 28
+Damage (0)
+radius 16
+height 16
+scale 2.5
+States
+{
+Spawn:
+PROC A 2
+PROC B 2 
+PROC C 2
+PROC C 0 A_CustomMissile("NapalmBomb",0,0,random(-5,5))
+loop
+Death:
+TNT1 A 0
+TNT1 A 0 A_Explode(32,96,0)
+stop
+}
+}
+
+actor IceToast
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
+damagetype "FreezeCracker"
+//seesound "weapon/mbuster"
+Translation "87:87=4:4", "42:42=198:198"
+Speed 32
+Damage (22)
+radius 20
+height 20
+scale 2.5
+States
+{
+Spawn:
+PROC A 2
+PROC B 2 
+PROC C 2
+PROC C 0 A_SpawnItemEx("FreezeCracker",0,0,0,0,0,-16,0,0)
+loop
+}
+}
+
+actor ElecToast
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
+damagetype "ThunderBeam"
+//seesound "weapon/mbuster"
+Translation "87:87=228:228", "42:42=215:215"
+Speed 32
+Damage (15)
+radius 16
+height 16
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0 A_PlaySoundEx("weapon/thunderbeam","Weapon")
+PROC A 2
+PROC B 2 
+PROC C 2 A_SpawnItemEx("ThunderShock",0,0,64,0,0,-32,0,0)
+loop
+Death:
+TNT1 A 0 
+TNT1 A 0 A_SpawnItemEx("ThunderShockDeath",0,0,16)
+stop
+}
+}
+
+actor ThunderShock
+{
+PROJECTILE
++RIPPER
++NOINTERACTION
++DONTBLAST
++PIERCEARMOR
+Radius 16
+Height 16
+Damage (0)
+Damagetype "ThunderBolt"
+scale 2.0
+States
+{
+Spawn:
+CLOD A 0 A_PlaySoundEx("weapon/thunderbolt","Weapon")
+CLOD A 0 A_ChangeVelocity(0,0,momz,CVF_RELATIVE|CVF_REPLACE)
+CLOD ABCDEF 1 A_JumpIf(ceilingz-z>16, "Spawn2")
+CLOD F 0 A_JumpIf(momz==0,"Death")
+Goto Spawn+2
+Spawn2:
+CLOD A 0 A_ChangeFlag("RIPPER",0)
+CLOD A 0 A_ChangeFlag("NOINTERACTION",0)
+CLOD A 0 A_ChangeVelocity(0,0,momz,CVF_RELATIVE|CVF_REPLACE)
+CLOD ABCDEF 1 A_JumpIf(momz==0,"Death")
+CLOD F 0
+goto Spawn2+2
+Death:
+TNT1 A 0 A_Explode(16, 96,0)
+TNT1 A 0 A_SpawnItemEx("ThunderShockDeath",0,0,8)
+stop
+}
+}
+
+actor ThunderShockDeath
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++RIPPER
+radius 16
+height 16
+Damage (1)
+damagetype "SparkShock"
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+WCPJ PKLMNOLMNO 2
+Stop
+}
+}
+
+actor TimeToastH
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++RIPPER
+damagetype "TimeSlow"
+//seesound "weapon/mbuster"
+Translation "87:87=59:59", "42:42=63:63"
+Speed 60
+Damage (12)
+radius 12
+height 12
+scale 2.5
+States
+{
+Spawn:
+PROC A 0 
+PROC ABCABCABCABC 2
+stop
+}
+}
+
+actor TimeToastM
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
+damagetype "TimeSlow"
+//seesound "weapon/mbuster"
+Translation "87:87=59:59", "42:42=63:63"
+Speed 60
+Damage (6)
+radius 8
+height 8
+scale 1.5
+States
+{
+Spawn:
+PROC A 0 
+PROC ABCABCABCABC 2
+stop
+}
+}
+
+actor CutToast
+{
+PROJECTILE
+Radius 8
+Height 8
+scale 2.5
+damage (0)
++DONTSPLASH
++DOOMBOUNCE
++RIPPER
++DONTBLAST
++NOTARGETSWITCH
++SKYEXPLODE
+meleerange 12
+reactiontime 48
+//+FLOAT
+damagetype "RollingCutter"
+speed 36
+FloatSpeed 16
+bouncefactor 1.0
+wallbouncefactor 1.0
+States
+{
+Spawn:
+RCUT A 0
+RCUT A 0 A_PlaySound("weapon/rollingcutter")
+RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",999,"Death")
+RCUT AA 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT BB 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT CC 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT DD 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT A 0 A_PlaySound("weapon/rollingcutter")
+RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",999,"Death")
+RCUT AA 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT BB 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT CC 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT DD 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT A 0 A_CustomMissile("ReturningCutter",0,0,0,0)
+stop
+Death:
+RCUT A 0 A_GiveToTarget("CutterFlag",999)
+stop
+}
+}
+
+actor ReturningCutterToast : CutToast
+{
+radius 0
+height 0
+damage 0
+damagetype "RollingCutter"
+speed 36
++DONTSPLASH
++NOINTERACTION
+States
+{
+Spawn:
+RCUT A 0
+RCUT A 0 A_FaceTarget
+RCUT A 0 A_JumpIfCloser(24,"Death")
+RCUT AA 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",999,"Death")
+RCUT A 0 A_FaceTarget
+RCUT A 0 A_JumpIfCloser(24,"Death")
+RCUT BB 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT A 0 A_Countdown
+RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",999,"Death")
+RCUT A 0 A_FaceTarget
+RCUT A 0 A_JumpIfCloser(24,"Death")
+RCUT A 0 A_PlaySound("weapon/rollingcutter")
+RCUT CC 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",999,"Death")
+RCUT A 0 A_FaceTarget
+RCUT A 0 A_JumpIfCloser(24,"Death")
+RCUT DD 1 A_SpawnItemEx("RollingCutterDamager",0,0,0,2,0,0)
+RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",999,"Death")
+RCUT A 0 A_CustomMissile("ReturningCutter",0,0,0,0)
+stop
+}
+}
+
+actor LeafShieldT
+{
+PROJECTILE
+Damage (22)
+damagetype "LeafShield"
++DONTBLAST
+Speed 20
+Radius 44
+Height 44
+scale 2.5
+States
+{
+Spawn:
+WOOD EFGH 2
+loop
+}
+}
+
+actor SlickCheck : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+}

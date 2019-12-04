@@ -1,0 +1,5 @@
+#include "actors/classes/CSCC/sinkman/sinkclass.txt"
+#include "actors/classes/CSCC/sinkman/sinkwep.txt"
+#include "actors/classes/CSCC/sinkman/sinkig.txt"
+
+#include "actors/classes/CSCC/sinkman/sinkcopy.txt"

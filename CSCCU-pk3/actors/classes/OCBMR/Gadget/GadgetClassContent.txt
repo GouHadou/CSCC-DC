@@ -1,0 +1,9 @@
+#include "actors/classes/OCBMR/Gadget/Gadget.txt"
+#include "actors/classes/OCBMR/Gadget/Sentry_Basic.txt"
+#include "actors/classes/OCBMR/Gadget/Sentry_Dispenser.txt"
+#include "actors/classes/OCBMR/Gadget/Sentry_Tower.txt"
+#include "actors/classes/OCBMR/Gadget/Sentry_Fence.txt"
+//#include "actors/classes/OCBMR/Gadget/SentryTurrets.txt"
+#include "actors/classes/OCBMR/Gadget/SentryMonitor.txt"
+#include "actors/classes/OCBMR/Gadget/DynaShockGun.txt"
+

@@ -1,0 +1,16 @@
+#include "actors/Inventory/Powerups.txt"
+#include "actors/Inventory/Targeter.txt"
+#include "actors/Inventory/TinyBar.txt"
+
+#include "actors/classes/OCBMR/Neo/NeoClassContent.txt"
+
+#include "actors/classes/OCBMR/AuronApp/AuronClassContent.txt"
+#include "actors/classes/OCBMR/OfficerMagnum/OfficerMagnumClassContent.txt"
+#include "actors/classes/OCBMR/Arnon/ArnonClassContent.txt"
+#include "actors/classes/OCBMR/Gaol97/Gaol97ClassContent.txt"
+#include "actors/classes/OCBMR/Mason/MasonClassContent.txt"
+#include "actors/classes/OCBMR/Itolos/ItolosClassContent.txt"
+#include "actors/classes/OCBMR/Pharma/PharmaClassContent.txt"
+#include "actors/classes/OCBMR/Gadget/GadgetClassContent.txt"
+#include "actors/classes/OCBMR/Wilter/WilterClassContent.txt"
+#include "actors/classes/OCBMR/CaptainMorgan/CaptainMorganClassContent.txt"

@@ -1,0 +1,21 @@
+const int DYE_LORDDAMAGERCOL = 437;
+
+
+
+#include "actors/classes/TeaParty/Zard.txt"
+#include "actors/classes/TeaParty/QueenPrinny.txt"
+#include "actors/classes/TeaParty/Alice.txt"
+#include "actors/classes/TeaParty/GiantMega.txt"
+#include "actors/classes/TeaParty/Light.txt"
+#include "actors/classes/TeaParty/Protoman.txt"
+#include "actors/classes/TeaParty/Clayton.txt"
+#include "actors/classes/TeaParty/Fyone.txt"
+#include "actors/classes/TeaParty/Missingno.txt"
+#include "actors/classes/TeaParty/Smash.txt"
+#include "actors/classes/TeaParty/Toastman.txt"
+#include "actors/classes/TeaParty/ChaosLordRoll.txt"
+#include "actors/classes/TeaParty/Hilman.txt"
+#include "actors/classes/TeaParty/LordDamager.txt"
+#include "actors/classes/TeaParty/Jake.txt"
+//Dakutatoru
+//Neo

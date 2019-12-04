@@ -1,0 +1,12 @@
+actor ClassBaseU : ClassBase8 
+{
+States
+{
+Pain.Bonehead:
+"----" H 0 A_GiveInventory("BoneheadProtect",1)
+goto Pain+1
+
+}
+}
+
+

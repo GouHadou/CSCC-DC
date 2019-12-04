@@ -1,0 +1,38 @@
+
+#include "actors/classes/ThereAreNoWeaknesses/Treo/TreoWep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Treo/Treo.txt"
+//unused??
+#include "actors/classes/ThereAreNoWeaknesses/Ninja/NinjaWep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Ninja/Ninja.txt"
+
+#include "actors/classes/ThereAreNoWeaknesses/SnailClass/snailwep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/SnailClass/snailclass.txt"
+
+#include "actors/classes/ThereAreNoWeaknesses/CERIDRAN/enblwep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/CERIDRAN/enblwep2.txt"
+#include "actors/classes/ThereAreNoWeaknesses/CERIDRAN/ceridranclass.txt"
+
+#include "actors/classes/ThereAreNoWeaknesses/Viz/VizWep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Viz/VizClass.txt"
+
+#include "actors/classes/ThereAreNoWeaknesses/Tsuyoi/StormPunch.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Tsuyoi/FlyKickMega.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Tsuyoi/BOTWEP.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Tsuyoi/tsuyoiclass.txt"
+
+#include "actors/classes/ThereAreNoWeaknesses/juri/juriwep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/juri/juricopy.txt"
+#include "actors/classes/ThereAreNoWeaknesses/juri/juriclass.txt"
+
+#include "actors/classes/ThereAreNoWeaknesses/Zangief/AntiInvincible.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Zangief/AtomicSuplexBoss.txt"
+#include "actors/classes/ThereAreNoWeaknesses/Zangief/ZangiefClass.txt"
+
+//#include "actors/classes/ThereAreNoWeaknesses/TIDSoup/Base.txt"
+//#include "actors/classes/ThereAreNoWeaknesses/TIDSoup/Guide.txt"
+//#include "actors/classes/ThereAreNoWeaknesses/TIDSoup/ZangiefPush.txt"
+//#include "actors/classes/ThereAreNoWeaknesses/TIDSoup/ZangiefSuplex.txt"
+
+#include "actors/classes/ThereAreNoWeaknesses/UkiSubmissionClass/UkiyamaClassWep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/UkiSubmissionClass/CrystalWallWep.txt"
+#include "actors/classes/ThereAreNoWeaknesses/UkiSubmissionClass/UkiyamaClass.txt"

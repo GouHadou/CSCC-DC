@@ -1,0 +1,861 @@
+actor BugTypeWepITLS : Weapon
+{
+Weapon.AmmoUse1 8
+Weapon.AmmoGive1 256
+Weapon.AmmoUse2 12
+Weapon.AmmoGive2 256
+Weapon.SlotNumber 1
+Obituary "%o was swarmed by %k."
+weapon.ammotype1 "BugAttackPP"
+weapon.ammotype2 "FlyingAttackPP"
+inventory.icon "NULLICON"
+
++WEAPON.DONTBOB
++WEAPON.NOAUTOAIM
++WEAPON.AMMO_OPTIONAL
++WEAPON.ALT_AMMO_OPTIONAL
+scale 2.0
+States
+{
+Spawn:
+WEAP X 1
+stop
+Ready:
+NJSK A 0 //A_GunFlash
+NJSK A 0 A_GiveInventory("YesFlightFlag",1)
+NJSK A 0 A_JumpIfInventory("Once",1,"Ready2")
+NJSK A 0 SetPlayerProperty(0,1,16)
+NJSK A 0 A_GiveInventory("Once",1)
+goto Ready2
+Ready2:
+NJSK A 0 A_GunFlash
+NJSK A 0 A_JumpIfInventory("PraiseTheSun",1,"Taiyho")
+NJSK A 0 A_JumpIfInventory("Ready2Counter",35,"Ready3")
+NJSK A 0 A_JumpIfInventory("Ready3Item",1,"Ready3")
+NJSK AAAAA 1 A_WeaponReady
+NJSK A 0 A_GiveInventory("BugAttackPP",1)
+NJSK A 0 //A_GiveInventory("HolyAttackPP",1)
+NJSK A 0 A_GiveInventory("FlyingAttackPP",1)
+NJSK A 0 A_GiveInventory("Ready2Counter",1)
+NJSK A 0 A_TakeInventory("Burninator",999)
+goto Ready2+1
+Ready3:
+NJSK A 0 A_TakeInventory("Ready2Counter",999)
+NJSK A 0 A_TakeInventory("FuryCounter",999)
+NJSK A 0 A_GiveInventory("Ready3Item",1)
+NJSK A 0
+NJSK A 0 A_JumpIfInventory("PraiseTheSun",1,"Taiyho")
+NJSK A 1 A_WeaponReady
+NJSK A 0 A_GiveInventory("BugAttackPP",1)
+NJSK A 0 //A_GiveInventory("HolyAttackPP",1)
+NJSK A 0 A_GiveInventory("FlyingAttackPP",1)
+NJSK A 0 A_TakeInventory("Burninator",999)
+goto Ready3+3
+Taiyho:
+NJSK C 0 A_TakeInventory("Ready2Counter",999)
+NJSK C 0 A_TakeInventory("Ready3Item",999)
+NJSK C 0 A_TakeInventory("PraiseTheSun",999)
+NJSK C 0 SetPlayerProperty(0,1,0)
+NJSK C 0 A_PlaySoundEx("weapon/adaptercharge","Weapon")
+NJSK CCCCC 3 A_FireCustomMissile("SolarBeamChargeFX1",random(-180,180),0,-32,0,0,random(-90,90))
+NJSK C 0 A_PlaySoundEx("weapon/adapterchargeloop","Weapon")
+NJSK CCCCC 2 A_FireCustomMissile("SolarBeamChargeFX2",random(-180,180),0,-32,0,0,random(-90,90))
+NJSK C 0 A_PlaySoundEx("weapon/adapterchargeloop","Weapon")
+NJSK CCCCC 1 A_FireCustomMissile("SolarBeamChargeFX3",random(-180,180),0,-32,0,0,random(-90,90))
+NJSK C 5
+NJSK D 3
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin1",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin3",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin1",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin3",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin1",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin3",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin1",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin3",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin1",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin3",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin1",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/lshot","Weapon")
+NJSK D 1 A_FireCustomMissile("SolarBeamOfRuin3",0,0,0,0)
+NJSK DDDD 1 A_FireCustomMissile("SolarBeamOfRuin2",0,0,0,0)
+NJSK D 35
+NJSK A 0 SetPlayerProperty(0,0,0)
+NJSK A 5
+goto Ready2+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+NJSK A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+NJSK A 1 A_Raise
+Loop
+Fire:
+NJSK E 0 A_JumpIfHealthLower(2,"Pause")
+NJSK E 0 A_JumpIfNoAmmo("NoAmmo")
+NJSK E 0 A_TakeInventory("Ready2Counter",999)
+NJSK E 0 A_TakeInventory("Ready3Item",999)
+NJSK E 0 A_JumpIfInventory("FuryCounter",20,"AltSwipe4")
+NJSK E 0 A_JumpIfInventory("FuryCounter",15,"AltSwipe3")
+NJSK E 0 A_JumpIfInventory("FuryCounter",10,"AltSwipe2")
+NJSK E 0 A_JumpIfInventory("FuryCounter",5,"AltSwipe1")
+NJSK E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
+NJSK E 3
+NJSK F 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+NJSK F 0 A_FireCustomMissile("FuryStinger1X",0,0,-12,0)
+NJSK F 0 A_FireCustomMissile("FSHitChecker1",0,1,0,0)
+NJSK F 0 A_FireCustomMissile("FuryStinger1Y",0,0,12,0)
+NJSK F 0 A_GiveInventory("FuryCounter",1)
+NJSK F 4
+NJSK G 5
+NJSK A 0 
+goto Ready2+1
+AltSwipe1:
+NJSK E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
+NJSK E 3
+NJSK F 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+NJSK F 0 A_FireCustomMissile("FuryStinger2X",0,0,-12,0)
+NJSK F 0 A_FireCustomMissile("FSHitChecker2",0,1,0,0)
+NJSK F 0 A_FireCustomMissile("FuryStinger2Y",0,0,12,0)
+NJSK F 0 A_GiveInventory("FuryCounter",1)
+NJSK F 4
+NJSK G 5
+NJSK A 0 
+goto Ready2+1
+AltSwipe2:
+NJSK E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
+NJSK E 3
+NJSK F 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+NJSK F 0 A_FireCustomMissile("FuryStinger3X",0,0,-12,0)
+NJSK F 0 A_FireCustomMissile("FSHitChecker3",0,1,0,0)
+NJSK F 0 A_FireCustomMissile("FuryStinger3Y",0,0,12,0)
+NJSK F 0 A_GiveInventory("FuryCounter",1)
+NJSK F 4
+NJSK G 5
+NJSK A 0 
+goto Ready2+1
+AltSwipe3:
+NJSK E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
+NJSK E 3
+NJSK F 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+NJSK F 0 A_FireCustomMissile("FuryStinger4X",0,0,-12,0)
+NJSK F 0 A_FireCustomMissile("FSHitChecker4",0,1,0,0)
+NJSK F 0 A_FireCustomMissile("FuryStinger4Y",0,0,12,0)
+NJSK F 0 A_GiveInventory("FuryCounter",1)
+NJSK F 4
+NJSK G 5
+NJSK A 0 
+goto Ready2+1
+AltSwipe4:
+NJSK E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
+NJSK E 5
+NJSK F 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+NJSK F 0 A_FireCustomMissile("FuryStinger5X",0,0,-12,0)
+NJSK F 0 A_FireCustomMissile("FSHitChecker5",0,1,0,0)
+NJSK F 0 A_FireCustomMissile("FuryStinger5Y",0,0,12,0)
+NJSK F 0 A_GiveInventory("FuryCounter",1)
+NJSK F 4
+NJSK G 5
+NJSK A 0 
+goto Ready2+1
+AltFire:
+NJSK A 0 A_JumpIfHealthLower(2,"Pause")
+NJSK A 0 A_JumpIfNoAmmo("NoAmmo")
+NJSK A 0 A_JumpIfInventory("Burninator",1,3)
+NJSK B 4
+NJSK C 5 A_GiveInventory("Burninator",1)
+NJSK D 0
+NJSK D 0 A_GiveInventory("PowerGustSpeed",1)
+NJSK D 0 A_FireCustomMissile("GustFireChecker",0,1,0,0)
+NJSK D 0 A_PlaySoundEx("weapon/tornadohold","Weapon")
+NJSK D 2 A_SpawnItemEx("GustWhirlWindSpawner",0,0,24)
+NJSK D 0 A_GiveInventory("Repulsion",1)
+NJSK D 0 A_PlaySoundEx("weapon/tornadohold","Weapon")
+NJSK D 2 A_SpawnItemEx("GustWhirlWindSpawner",0,0,24)
+NJSK D 0 A_GiveInventory("Repulsion",1)
+NJSK D 0 A_PlaySoundEx("weapon/tornadohold","Weapon")
+NJSK D 2 A_SpawnItemEx("GustWhirlWindSpawner",0,0,24)
+NJSK D 0 A_GiveInventory("Repulsion",1)
+NJSK D 0 A_PlaySoundEx("weapon/tornadohold","Weapon")
+NJSK D 2 A_SpawnItemEx("GustWhirlWindSpawner",0,0,24)
+NJSK D 0 A_GiveInventory("Repulsion",1)
+NJSK D 0 A_PlaySoundEx("weapon/tornadohold","Weapon")
+NJSK D 2 A_SpawnItemEx("GustWhirlWindSpawner",0,0,24)
+NJSK D 0 A_Refire
+Goto Ready2+1
+NoAmmo:
+NJSK A 1 A_JumpIfHealthLower(2,"Pause")
+NJSK A 1 A_TakeInventory("FuryCounter",999)
+Goto Ready2+1
+Pause:
+NJSK A 0 SetPlayerProperty(0,1,4)
+NJSK A 24
+NJSK A 0 SetPlayerProperty(0,0,4)
+goto Ready2+1
+Flash:
+TNT1 A 0 
+TNT1 A 0 //A_JumpIfInventory("OnBoard",1,5)
+TNT1 A 0 A_JumpIfInventory("FlightDisableFlag",1,"NoFlight")
+TNT1 A 0 A_JumpIfInventory("YesFlightFlag",1,"Flight")
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 0 SetPlayerProperty(0,0,3)
+TNT1 A 1
+loop
+Flight:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(107,0)==1,"NoFlight")
+TNT1 A 1
+goto YesFlight
+YesFlight:
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 1 SetPlayerProperty(0,1,3)
+goto Flash
+NoFlight:
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 1 SetPlayerProperty(0,0,3)
+goto Flash
+NoFlash:
+TNT1 A 0
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 1 SetPlayerProperty(0,0,3) 
+goto Flash
+}
+}
+
+Actor HolyAttackPP : Ammo //Will be used later
+{
+inventory.amount 1
+inventory.maxamount 256
++INVENTORY.IGNORESKILL
+}
+
+Actor FlyingAttackPP : Ammo
+{
+inventory.amount 1
+inventory.maxamount 256
++INVENTORY.IGNORESKILL
+}
+
+Actor FuryCounter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 25
+}
+
+Actor Ready2Counter : Inventory
+{
+inventory.amount 1
+inventory.maxamount 35
+}
+
+Actor Ready3Item : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor FSHitChecker1
+{
+PROJECTILE
++DONTBLAST
++NOTARGETSWITCH
+damage (0)
+damagetype "BugType2"
+Radius 60
+Height 48
+speed 32
+scale 2.0
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 AAAAA 1
+stop
+Crash:
+XDeath:
+LLFN A 0
+LLFN A 0 A_GiveToTarget("LifeAmmo",5)
+stop
+}
+}
+
+actor FSHitChecker2 : FSHitChecker1
+{speed 34}
+
+actor FSHitChecker3 : FSHitChecker1
+{speed 36}
+
+actor FSHitChecker4 : FSHitChecker1
+{speed 38}
+
+actor FSHitChecker5 : FSHitChecker1
+{speed 40}
+
+actor FuryStinger1X
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 32
+damage (2)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.0
+States
+{
+Spawn:
+SCLA L 0
+SCLA LKJIH 1
+stop
+}
+}
+
+actor FuryStinger1Y
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 32
+damage (2)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.0
+States
+{
+Spawn:
+SCL2 L 0
+SCL2 LKJIH 1
+stop
+}
+}
+
+actor FuryStinger2X
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 34
+damage (4)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.0
+States
+{
+Spawn:
+SCLA L 0
+SCLA LKJIH 1
+stop
+}
+}
+
+actor FuryStinger2Y
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 34
+damage (4)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.0
+States
+{
+Spawn:
+SCL2 L 0
+SCL2 LKJIH 1
+stop
+}
+}
+
+actor FuryStinger3X
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 36
+damage (6)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.0
+States
+{
+Spawn:
+SCLA L 0
+SCLA LKJIH 1
+stop
+}
+}
+
+actor FuryStinger3Y
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 36
+damage (6)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.5
+States
+{
+Spawn:
+SCL2 L 0
+SCL2 LKJIH 1
+stop
+}
+}
+
+actor FuryStinger4X
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 38
+damage (8)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.5
+States
+{
+Spawn:
+SCLA L 0
+SCLA LKJIH 1
+stop
+}
+}
+
+actor FuryStinger4Y
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 38
+damage (8)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 2.5
+States
+{
+Spawn:
+SCL2 L 0
+SCL2 LKJIH 1
+stop
+}
+}
+
+actor FuryStinger5X
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 40
+damage (10)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 3.0
+States
+{
+Spawn:
+SCLA L 0
+SCLA LKJIH 1
+stop
+}
+}
+
+actor FuryStinger5Y
+{
+PROJECTILE
++RIPPER
+Radius 24
+Height 48
+speed 40
+damage (10)
+damagetype "BugType3"
+Obituary "%o was hacked apart by %k."
+scale 3.0
+States
+{
+Spawn:
+SCL2 L 0
+SCL2 LKJIH 1
+stop
+}
+}
+
+actor SolarBeamItem : CustomInventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "New Move! Solar Beam of Ruin!"
+inventory.icon "SOLARBI"
+Inventory.PickupSound "item/1up"
++INVBAR
+scale 2.0
+states
+{
+Spawn:
+WADP A 1
+loop
+Use:
+WADP A 0
+WADP A 0 A_JumpIfInventory("ConfuseFlag", 1, "TooSoon")
+WADP A 0 A_JumpIfInventory("LifeAmmo", 128, "Ready2Use")
+WADP A 0
+fail
+Ready2Use:
+WADP A 0 A_GiveInventory("ConfuseFlag",1)
+WADP A 0 A_TakeInventory("LifeAmmo",128)
+WADP A 0 A_GiveInventory("PraiseTheSun",1)
+WADP A 0
+fail
+TooSoon:
+WADP A 0
+fail
+}
+}
+
+Actor PraiseTheSun : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor SolarBeamChargeFX1
+{
+PROJECTILE
++NOINTERACTION
+Radius 4
+Height 8
+Damage (0)
+speed 64
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+TNT1 A 0 A_FaceTarget
+TNT1 A 0 A_CustomMissile("SolarBeamChargeFX1actual")
+stop
+}
+}
+
+actor SolarBeamChargeFX2
+{
+PROJECTILE
++NOINTERACTION
+Radius 4
+Height 8
+Damage (0)
+speed 64
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+TNT1 A 0 A_FaceTarget
+TNT1 A 0 A_CustomMissile("SolarBeamChargeFX2actual")
+stop
+}
+}
+
+actor SolarBeamChargeFX3
+{
+PROJECTILE
++NOINTERACTION
+Radius 4
+Height 8
+Damage (0)
+speed 64
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+TNT1 A 0 A_FaceTarget
+TNT1 A 0 A_CustomMissile("SolarBeamChargeFX3actual")
+stop
+}
+}
+
+actor SolarBeamChargeFX1actual
+{
+PROJECTILE
++CLIENTSIDEONLY
++NOINTERACTION
+Radius 4
+Height 8
+Damage (0)
+speed 8
+scale 1.5
+States
+{
+Spawn:
+TNT1 A 0
+SBEM ABCDCDCD 2
+stop
+}
+}
+
+actor SolarBeamChargeFX2actual
+{
+PROJECTILE
++CLIENTSIDEONLY
++NOINTERACTION
+Radius 4
+Height 8
+Damage (0)
+speed 16
+scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+SBEM ABCDCDCD 1
+stop
+}
+}
+
+actor SolarBeamChargeFX3actual
+{
+PROJECTILE
++CLIENTSIDEONLY
++NOINTERACTION
+Radius 4
+Height 8
+Damage (0)
+speed 32
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+SBEM ABCD 1
+stop
+}
+}
+
+actor SolarBeamOfRuin1
+{
+PROJECTILE
++BRIGHT
++BLOODSPLATTER
++RIPPER
++DONTBLAST
++THRUGHOST
+height 36
+radius 24
+Speed 96
+damage (8)
+damagetype "SolarBeam"
+Obituary "%o didnt \ckpraise the sun\c-."
+scale 3.5
+states
+{
+Spawn:
+PTSB C 0
+PTSB C 0 A_SpawnItemEx("SolarBeamOfRuinFX1")
+PTSB C 0 A_SpawnItemEx("SBORHB")
+PTSB C 1 Radius_Quake(7,5,0,16,0)
+PTSB C 0 A_SpawnItemEx("SBORHB")
+PTSB C 1 Radius_Quake(7,5,0,16,0)
+loop
+}
+}
+
+actor SolarBeamOfRuin2
+{
+PROJECTILE
++BRIGHT
++BLOODSPLATTER
++RIPPER
++DONTBLAST
++THRUGHOST
+height 36
+radius 24
+Speed 96
+damage (8)
+damagetype "SolarBeam"
+Obituary "%o didnt \ckpraise the sun\c-."
+scale 3.5
+states
+{
+Spawn:
+PTSB C 0 
+PTSB C 0 A_PlaySoundEx("weapon/lshot","Voice")
+PTSB C 1 Radius_Quake(7,5,0,16,0)
+PTSB C 0 A_PlaySoundEx("weapon/lshot","Voice")
+PTSB C 1 Radius_Quake(7,5,0,16,0)
+loop
+}
+}
+
+actor SolarBeamOfRuin3
+{
+PROJECTILE
++BRIGHT
++BLOODSPLATTER
++RIPPER
++DONTBLAST
++THRUGHOST
+height 36
+radius 24
+Speed 96
+damage (8)
+damagetype "SolarBeam"
+Obituary "%o didnt \ckpraise the sun\c-."
+scale 3.5
+states
+{
+Spawn:
+PTSB C 0
+PTSB C 0 A_SpawnItemEx("SolarBeamOfRuinFX2")
+PTSB C 0 A_PlaySoundEx("weapon/lshot","Voice")
+PTSB C 1 Radius_Quake(7,5,0,16,0)
+PTSB C 0 A_PlaySoundEx("weapon/lshot","Voice")
+PTSB C 1 Radius_Quake(7,5,0,16,0)
+loop
+}
+}
+
+actor SBORHB
+{
+PROJECTILE
++BRIGHT
++BLOODSPLATTER
++DONTBLAST
++RIPPER
++THRUGHOST
+height 1
+radius 1
+damage (0)
+damagetype "SolarBeam"
+Obituary "%o didnt \ckpraise the sun\c-."
+scale 2.5
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 2 A_Explode(28,160,0)
+TNT1 A 2 A_Explode(28,160,0)
+TNT1 A 2 A_Explode(28,160,0)
+TNT1 A 2 A_Explode(28,160,0)
+TNT1 A 2 A_Explode(28,160,0)
+stop
+}
+}
+
+actor GustFireChecker
+{
+PROJECTILE
+Radius 1
+Height 1
+speed 1
+damage (0)
+damagetype "AirType"
+scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+}
+}
+
+actor GustWhirlWindSpawner
+{
+PROJECTILE
++BLOODSPLATTER
++DONTBLAST
++RIPPER
++THRUGHOST
+height 1
+radius 1
+damage (0)
+damagetype "AirType"
+Obituary "%o was blown away by %k."
+scale 2.5
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("GustWhirlA",random(-8,8),random(-8,8),32)
+TNT1 A 0 A_SpawnItemEx("GustWhirl",random(-8,8),random(-8,8),16)
+TNT1 A 0 A_SpawnItemEx("GustWhirl",random(-8,8),random(-8,8),0)
+TNT1 A 0 A_SpawnItemEx("GustWhirl",random(-8,8),random(-8,8),-16)
+TNT1 A 0 A_SpawnItemEx("GustWhirl",random(-8,8),random(-8,8),-32)
+TNT1 A 2 A_Explode(20,192,0)
+stop
+}
+}
+
+actor GustWhirlA
+{
++CLIENTSIDEONLY
++NOINTERACTION
+PROJECTILE
+scale 2.5
+States
+{
+Spawn:
+ARSP A 0 
+ARSP D 1 A_PlaySoundEx("weapon/airshooter","Voice")
+ARSP EF 1 A_FadeOut(0.33)
+stop
+}
+}
+
+actor GustWhirl
+{
++CLIENTSIDEONLY
++NOINTERACTION
+PROJECTILE
+scale 2.5
+States
+{
+Spawn:
+ARSP A 0 
+ARSP A 1 A_PlaySoundEx("weapon/airshooter","Voice")
+ARSP BC 1 A_FadeOut(0.33)
+stop
+}
+}
+
+actor PowerGustSpeed : PowerSpeed
+{
+Powerup.Duration 10
+Speed 0.25
+}

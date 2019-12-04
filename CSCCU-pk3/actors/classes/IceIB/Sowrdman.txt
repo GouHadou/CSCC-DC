@@ -1,0 +1,3 @@
+#include "actors/classes/IceIB/Badz/Sowrdman.txt"
+#include "actors/classes/IceIB/Badz/BlizzardWave.txt"
+#include "actors/classes/IceIB/Badz/BlizzardCannon.txt"

@@ -1,0 +1,56 @@
+actor SentinelTriggerItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "SENTRIG"
+scale 2.0
++COUNTITEM
++INVBAR
++INVENTORY.UNDROPPABLE
+states
+{
+Spawn:
+TNT1 A 0
+stop
+Use:
+TNT1 A 0 A_JumpIfInventory("SentinelReady4",1,"Confirm")
+TNT1 A 0 A_JumpIfInventory("SentinelReady3",1,"Confirm")
+TNT1 A 0 A_JumpIfInventory("SentinelReady2",1,"Confirm")
+TNT1 A 0 A_JumpIfInventory("SentinelReady1",1,"Confirm")
+Goto Confirm+1
+Confirm:
+TNT1 A 0 A_GiveInventory("SentinelTrigger",1)
+TNT1 A 0
+Fail
+}
+}
+
+actor IsTsukiAndIsAlive : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor SentinelTrigger : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor SentinelReady1 : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor SentinelReady2 : SentinelReady1
+{
+}
+
+actor SentinelReady3 : SentinelReady1
+{
+}
+
+actor SentinelReady4 : SentinelReady1
+{
+}

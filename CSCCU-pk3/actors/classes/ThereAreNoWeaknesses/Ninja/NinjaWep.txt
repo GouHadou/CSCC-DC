@@ -1,0 +1,386 @@
+actor NinjaWep : MegaBuster 18000
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o was cut up by %k's \cuninja stars."
+Inventory.Pickupmessage "Power up! You suck!"
+weapon.ammotype "NinjaAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
+//inventory.icon "COOWI" nah son
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 //A_SpawnItemEX("NinjaWepDropped")
+stop
+Ready:
+COOW B 0 ACS_ExecuteAlways(998,0,100)
+COOW B 3 A_WeaponReady
+COOW B 0 A_GiveInventory("NinjaAmmo",1)
+Goto Ready+1
+Deselect:
+TNT1 A 0 A_SelectWeapon("NinjaWep")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+COOW B 1 A_Lower
+Loop
+Select:
+COOW B 0 A_GunFlash
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+COOW B 1 A_Raise
+Loop
+Fire:
+COOW B 1 A_JumpIfInventory("NinjaAmmo",1,1)
+Goto Ninja
+Hold:
+COOW B 0 A_JumpIfInventory("WeaponCharge",10,"YoMovingTho")
+COOW B 1 A_GiveInventory("WeaponCharge",1)
+COOW B 0 A_ReFire
+Goto Ninja
+YoMovingTho:
+COOW B 0 A_JumpIfInventory("NinjaAmmo",1,1)
+Goto SupaNinja
+COOW B 0 A_TakeInventory("NinjaAmmo",1)
+COOW B 0 ThrustThingZ(0, 0, 0, 0)
+COOW B 1 A_ChangeVelocity(25,0,momz,CVF_RELATIVE|CVF_REPLACE)
+COOW B 0 A_ReFire
+Goto SupaNinja
+Ninja:
+COOW B 0 A_PlaySoundEx("weapon/megabuster","Weapon")
+COOW B 0 A_FireCustomMissile("NinjaStarP",0,0,8,0)
+COOW CD 3 A_TakeInventory("WeaponCharge",999)
+COOW B 5
+COOW B 0 A_Refire
+Goto Ready+1
+SupaNinja:
+COOW B 0 A_PlaySoundEx("weapon/megabuster","Weapon")
+COOW B 0 A_FireCustomMissile("NinjaSwipe",0,0,8,0)
+COOW CD 3 A_TakeInventory("WeaponCharge",999)
+COOW B 10
+COOW B 0 A_Refire
+Goto Ready+1
+AltFire:
+COOW B 0 A_JumpIfInventory("NinjaAmmo",8,1)
+Goto Ready+1
+DualSwipe:
+COOW B 0 A_FireCustomMissile("DualSwipe2",16,0,0,0)
+COOW B 0 A_FireCustomMissile("DualSwipe",-16,0,0,0)
+COOW B 0 A_TakeInventory("NinjaAmmo",8)
+COOW CD 2
+COOW D 30
+goto Ready+1
+Flash:
+TNT1 A 0 A_JumpIfInventory("InstantAmmo",28,"YouGotMail")
+TNT1 A 3 A_GiveInventory("InstantAmmo",1)
+Goto Flash
+YouGotMail:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("InstantTransmission",1,"YouWaitNow")
+TNT1 A 0 A_GiveInventory("InstantTransmission")
+Goto YouWaitNow
+YouWaitNow:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("InstantTransmission",1,"YouWaitNow")
+Goto Flash
+NoAmmo:
+COOW B 1
+COOW B 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor NinjadFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor NinjaAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor InstantAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor NinjaStarP
+{
+PROJECTILE
++RIPPER
+Radius 7
+Height 7
+scale 2.5
+damage (10)
+//damagetype "CoolWeapon"
++FORCEXYBILLBOARD
+speed 60
+ReactionTime 10
+States
+{
+Spawn:
+SBLA ABAB 3
+loop
+Death:
+SBLA A 0 A_ChangeFlag("RIPPER",0)
+SBLA A 1 A_Stop
+SBLA A 30
+stop
+}
+}
+
+actor NinjaSwipe
+{
+PROJECTILE
+Radius 25
+Height 25
+scale 2.5
+damage (50)
+damagetype "Ninjad"
++FORCEXYBILLBOARD
+speed 40
+States
+{
+Spawn:
+SCLA HIJKL 2
+stop
+XDeath:
+TNT1 A 1 A_GiveToTarget("NinjadFlag")
+stop
+}
+}
+
+actor DualSwipe
+{
+PROJECTILE
++RIPPER
+Radius 10
+Height 10
+scale 2.5
+damage (12)
+//damagetype "CoolWeapon"
++FORCEXYBILLBOARD
+speed 40
+States
+{
+Spawn:
+TOMA AB 0 A_Changevelocity(0,4,0,CVF_RELATIVE)
+TOMA AB 0 A_Changevelocity(0,1,0,CVF_RELATIVE)
+TOMA AB 1 ThrustThingZ(0, 4, 0, 1)
+Goto Spawn+1
+}
+}
+
+actor DualSwipe2 : DualSwipe
+{
+PROJECTILE
+States
+{
+Spawn:
+TOMA AB 0 A_Changevelocity(0,-4,0,CVF_RELATIVE)
+TOMA AB 0 A_Changevelocity(0,-1,0,CVF_RELATIVE)
+TOMA AB 1 ThrustThingZ(0, 4, 0, 1)
+Goto Spawn+1
+}
+}
+
+actor InstantTransmission : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "COOWI"
+scale 2.0
++COUNTITEM
++INVBAR
+States
+{
+Failure:
+TNT1 A 0
+fail
+Use:
+TNT1 A 0 A_JumpIfInventory("InstantAmmo",28,1)
+Goto Failure
+TNT1 A 0 A_TakeInventory("InstantAmmo",28)
+TNT1 A 0 A_SpawnItemEx("TeleportationMark")
+stop
+}
+}
+
+actor TeleportationMark
+{
+PROJECTILE
++RIPPER
++DONTBLAST
++NOINTERACTION
+radius 1
+height 1
+Damage (0)
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 3 A_GiveToTarget("TeleportStart",1)
+TNT1 A 0 A_GiveToTarget("TeleportFinish",1)
+stop
+}
+}
+
+actor TeleportStart : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 0
+States
+{
+Pickup:
+//TNT1 A 0 A_SpawnItemEx("TeleportationFX",0,0,0,0)
+TNT1 A 0 A_ChangeVelocity(180,0,0,CVF_RELATIVE|CVF_REPLACE)
+TNT1 A 0 A_ChangeFlag("SOLID",0)
+TNT1 A 0 A_SetTranslucent(0,0)
+stop
+}
+}
+
+actor TeleportFinish : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 0
+States
+{
+Pickup:
+TNT1 A 0 A_Stop
+//TNT1 A 0 A_SpawnItemEx("TeleportationFX",0,0,0,0)
+DRIA A 0 A_SpawnItemEx("ReSolidifier")
+TNT1 A 0 A_SetTranslucent(1,0)
+stop
+}
+}
+
+actor UnSolid : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor ReSolidifier
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("UnSolid",1)
+Spawn2:
+TNT1 A 0 A_GiveToTarget("ReSolidifierCheckPickup",1)
+TNT1 A 1
+TNT1 A 0 A_JumpIfInTargetInventory("UnSolid",1,"Spawn2")
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor ReSolidifierCheckPickup : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("ReSolidifierCheck", 0, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+stop
+}
+}
+
+actor ReSolidifierCheck
+{
+PROJECTILE
++DONTSPLASH
++SKYEXPLODE
+//+NOINTERACTION
+//+NOCLIP
+Damage (0)
+//radius 160
+//height 160
+//radius 16
+//height 56
+radius 24
+height 84
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+TNT1 A 0 A_GiveToTarget("ReSolidify",1)
+stop
+Death:
+XDeath:
+TNT1 A 0
+stop
+}
+}
+
+actor ReSolidify : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("UnSolid",1,"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_ChangeFlag("SOLID",1)
+TNT1 A 0 A_TakeInventory("UnSolid",1)
+stop
+}
+}
+
+actor NinjaStarWep : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o was cut up by %k's \cuninja stars."
+Inventory.Pickupmessage "Power up! Ninja Star!"
+weapon.ammotype "NinjaAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
+//inventory.icon "COOWI"
+Scale 2.0
+States
+{
+Spawn:
+COOW A 1
+loop
+Ready:
+COOW B 0 ACS_ExecuteAlways(998,0,100)
+COOW B 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+COOW B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+COOW B 1 A_Raise
+Loop
+Fire:
+COOW B 0 A_JumpIfNoAmmo("NoAmmo")
+COOW B 0 A_PlaySoundEx("weapon/shadowblade","Weapon")
+COOW B 0 A_FireCustomMissile("NinjaStarP",0,1,8,0)
+COOW CD 3
+COOW B 10
+COOW B 0 A_Refire
+Goto Ready+1
+NoAmmo:
+COOW B 1 
+Goto Ready+1
+}
+}

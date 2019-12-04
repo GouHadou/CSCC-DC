@@ -1,0 +1,1183 @@
+
+actor MessatsuWep : BaseMM8BDMWep
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 1
+Obituary "%o didn't block %k's Gou Hadouken."
+Inventory.Pickupmessage "You got Messatsu's memory chip! ...Useless!"
+Tag "Messatsu"
+weapon.ammotype "MessatsuAmmo"
+inventory.icon "NULLICON"
+dropitem "GouhadouWepCDropped"
++WEAPON.WIMPY_WEAPON
++WEAPON.ALLOW_WITH_RESPAWN_INVUL
+States
+{
+Spawn:
+WEAP X 1
+loop
+Ready:
+GHAD A 0 ACS_ExecuteAlways(998,0,WCCS_MESSATSU)
+GHAD A 0 A_JumpIfInventory("RagingDemonFlag", 1, "RagingDemon")
+GHAD A 0 A_JumpIfInventory("TemaFlag", 1, "Tema")
+GHAD A 0 A_JumpIfInventory("MisogiFlag", 1, "GroundSlam")
+GHAD A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+GHAD A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+GHAD A 1 A_Raise
+Loop
+
+Fire:
+GHAD D 0 
+GHAD D 0 A_JumpIfInventory("MessatsuCharge", 1, "RealFire")
+GHAD A 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
+Goto RealFire
+RealFire:
+GHAD A 0 ACS_ExecuteAlways(991,0,WCCS_MESSATSU)
+GHAD A 0 A_TakeInventory("MessatsuCharge",999)
+GHAD A 0 A_JumpIfInventory("MessChargeLimit", ChargeLimit, 2)
+GHAD A 0 A_GiveInventory("MessatsuAmmo", 1)
+GHAD A 0 A_GiveInventory("MessChargeLimit", 1)
+GHAD A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+GHAD A 0 A_FireCustomMissile("Gouhadou",0,0,8,0)
+GHAD BC 1
+GHAD D 8
+GHAD C 4 
+GHAD B 0 A_Refire
+goto Ready+1
+
+ReleaseCharge:
+GHAD A 0 ACS_ExecuteAlways(991,0,WCCS_MESSATSU)
+GHAD A 0 A_TakeInventory("MessatsuFlag", 50)
+GHAD A 0 A_StopSound(CHAN_WEAPON)
+GHAD A 0 A_JumpIfInventory("MessatsuCharge", 35, "Fire4")
+GHAD A 0 A_JumpIfInventory("MessatsuCharge", 25, "Fire3")
+GHAD A 0 A_JumpIfInventory("MessatsuCharge", 15, "Fire2")
+Goto Fire
+
+Fire2:
+GHAD A 0 A_TakeInventory("MessatsuCharge",35)
+GHAD A 0 A_GiveInventory("MessatsuFlag", 2)
+GHAD A 0 A_FireCustomMissile("Shakunetsu",0,0,8,0)
+GHAD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+GHAD A 0 A_JumpIfInventory("MessChargeLimit", ChargeLimit, 2)
+GHAD A 0 A_GiveInventory("MessatsuAmmo", 2)
+
+GHAD BCD 1
+goto Cooldown
+
+Fire3:
+GHAD A 0 A_TakeInventory("MessatsuCharge",35)
+GHAD A 0 A_GiveInventory("MessatsuFlag", 4)
+GHAD A 0 A_FireCustomMissile("Shakunetsu2",0,0,8,0)
+GHAD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+GHAD A 0 A_JumpIfInventory("MessChargeLimit", ChargeLimit, 2)
+GHAD A 0 A_GiveInventory("MessatsuAmmo", 2)
+GHAD BCD 1
+goto Cooldown
+
+Fire4:
+GHAD A 0 A_TakeInventory("MessatsuCharge",35)
+GHAD A 0 A_GiveInventory("MessatsuFlag", 6)
+GHAD A 0 A_FireCustomMissile("Shakunetsu3",0,0,8,0)
+GHAD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+GHAD A 0 A_JumpIfInventory("MessChargeLimit", ChargeLimit, 2)
+GHAD A 0 A_GiveInventory("MessatsuAmmo", 2)
+GHAD BCD 1
+goto Cooldown
+
+
+CoolDown:
+//GHAD A 0 A_TakeInventory("MessatsuCharge",35)
+GHAD D 5 A_TakeInventory("MessatsuFlag", 1)
+GHAD A 0 A_JumpIfInventory("MessatsuFlag", 1, "CoolDown")
+GHAD C 5 A_GiveInventory("MessChargeLimit", 2)
+GHAD A 0 A_Refire
+goto Ready+1
+
+Hold:
+GHAD A 0 A_JumpIfInventory("MessatsuCharge",1,"RealHold")
+GHAD A 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
+Goto RealHold
+RealHold:
+GHAD A 0 A_JumpIfInventory("MessatsuCharge",18,"Charge")
+GHAD A 1 A_GiveInventory("MessatsuCharge",1)
+GHAD A 0 A_Refire
+Goto Fire
+Charge:
+GHAD A 0 A_JumpIfInventory("MessatsuCharge",19,"Charge1")
+GHAD A 0 A_PlaySoundEx("weapon/coilstart","Weapon")
+Goto Charge1
+Charge1:
+GHAD A 0 A_JumpIfInventory("MessatsuCharge",35,"Charge2Start")
+GHAD F 1 ACS_ExecuteAlways(991,0,WCCS_MESSCHARGE)
+GHAD A 0 A_Refire("Charge1.a")
+Goto ReleaseCharge
+Charge1.a:
+GHAD A 1 ACS_ExecuteAlways(991,0,WCCS_MESSATSU)
+GHAD A 0 A_GiveInventory("MessatsuCharge",1)
+GHAD A 0 A_Refire("Charge")
+Goto ReleaseCharge
+BotFire:
+GHAD A 0 A_Jump(16, "ReleaseCharge")
+GHAD A 0 A_Refire
+Goto ReleaseCharge
+Charge2Start:
+GHAD A 0 A_GunFlash("Sound.BusterCharge", GFF_NOEXTCHANGE)
+Charge2:
+GHAD S 1 ACS_ExecuteAlways(991,0,WCCS_MESSCHARGE2)
+GHAD A 0 A_Refire("Charge2.a")
+Goto ReleaseCharge
+Charge2.a:
+GHAD A 1 ACS_ExecuteAlways(991,0,WCCS_MESSATSU)
+GHAD A 0 A_JumpIfInventory("IsBot", 1, "BotFire")
+GHAD A 0 A_Refire("Charge2")
+GHAD A 0 A_JumpIfInventory("MessatsuCharge", 35, 2)
+GHAD A 0 A_GiveInventory("MessatsuCharge",1)
+GHAD A 0 A_Refire
+Goto ReleaseCharge
+
+AltFire:
+GHAD A 0 A_JumpIfInventory("MessChargeLimit", ChargeLimit, 2)
+GSHR A 0 A_GiveInventory("MessatsuAmmo", 2)
+GSHR A 0 A_GiveInventory("MessChargeLimit", 2)
+GSHR A 0 A_CheckFloor("Shoryu")
+Goto Tatsumaki
+Shoryu:
+GHAD A 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
+GSHR A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
+GSHR A 3 A_SpawnItemEx("GouShoryu1", 32,8+Random(-8, 8),16, 0,0,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR B 3 A_SpawnItemEx("GouShoryu1", 48,8+Random(-8, 8),24, 0,0,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR C 0 A_SpawnItemEx("GouShoryu1", 48,8+Random(-8, 8),32, 0,0,0,0, SXF_ABSOLUTEMOMENTUM)
+//GSHR C 0 SetPlayerProperty(0,1,0)
+GSHR C 3 A_ScaleVelocity(0.50)
+GSHR C 0 A_SetArg(4, 15)
+GSHR C 0 A_ChangeVelocity(10, 0, 30, CVF_RELATIVE)
+Goto AltHold
+AltHold:
+GSHR D 1 A_SpawnItemEx("GouShoryu2", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR D 0 A_SetArg(4, Args[4] - 1)
+GSHR D 0 A_JumpIf(ceilingz - z < 64 || Args[4] <= 0, "EndShoryu2")
+GSHR D 0 A_JumpIf(momz <= 0, "EndShoryu")
+GSHR D 0 A_Refire
+Goto EndShoryu
+EndShoryu:
+GSHR D 0 A_ClearRefire
+GSHR D 2 A_ScaleVelocity(0.5)
+GSHR D 2 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+GSHR C 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR CC 1 //A_SetAngle(angle+30)
+GSHR B 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR BB 1 //A_SetAngle(angle+30)
+GSHR A 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR AA 1 //A_SetAngle(angle+30)
+InAir:
+GSHR A 0 ThrustThingZ(0, 7, 1, 1)
+//GSHR A 0 A_ChangeVelocity(momx, momy, -35, CVF_REPLACE|CVF_RELATIVE)
+GSHR A 0 A_GiveInventory("MessatsuFlag", 1)
+GSHR A 1 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR A 0 A_JumpIf(z-floorz<16 || momz == 0, "Landing")
+GSHR A 0 A_JumpIfInventory("MessatsuFlag", 35, "Landing")
+Goto InAir
+Landing:
+GHAD B 0 A_TakeInventory("MessatsuFlag", 999)
+GHAD B 6 A_ScaleVelocity(0.75)
+//GHAD BBBBBB 1 A_SetAngle(angle+30)
+GHAD B 0 SetPlayerProperty(0,0,1)
+Goto Ready+1
+EndShoryu2:
+GSHR D 0 A_ClearRefire
+GSHR D 0 A_ScaleVelocity(0.5)
+GSHR D 2 Offset(32, 0)
+GSHR D 2 Offset(64, 32)
+GSHR D 0 A_WeaponReady(WRF_NOFIRE| WRF_NOSWITCH)
+GSHR D 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+GSHR D 0 A_SpawnItemEx("GouShoryuSpike") 
+GSHR J 0 Offset(0, 64)
+Goto InAir2
+InAir2:
+GHAD J 0 ThrustThingZ(0, 7, 1, 1)
+GHAD J 0 A_GiveInventory("MessatsuFlag", 1)
+GHAD J 1 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GHAD J 0 A_JumpIf(z-floorz<16 || momz == 0, "Landing2")
+GHAD J 0 A_JumpIfInventory("MessatsuFlag", 35, "Landing2")
+Goto InAir2
+Landing2:
+GHAD B 0 A_WeaponReady(WRF_NOFIRE| WRF_NOSWITCH)
+GHAD B 0 SetPlayerProperty(0,1,0)
+GHAD B 0 A_ScaleVelocity(0.5)
+GHAD K 0 A_SpawnItemEx("GouShoryuSlam", 32) 
+GHAD KLMN 1
+TNT1 A 5 A_TakeInventory("MessatsuFlag", 999)
+GHAD NML 2
+GHAD B 0 SetPlayerProperty(0,0,0)
+Goto Ready+1
+Tatsumaki:
+GHAD O 0 A_JumpIfInventory("SpinTime",1,"SpinEnd")
+GHAD O 0 A_TakeInventory("JumpCancler", 1)
+GHAD O 0 A_PlaySoundEx("weapon/topspin","Weapon")
+GHAD O 0 A_GiveInventory("SpinTime",1)
+GHAD O 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
+GHAD O 0 SetPlayerProperty(0,1,4)
+GHAD O 0 A_ChangeVelocity(momx*2, momy*2, (momz/5)+5, CVF_REPLACE)
+GHAD O 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD O 0 A_SetAngle(angle-20.0) 
+GHAD O 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD O 1 A_CheckFloor("SpinEnd")
+GHAD O 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD O 0 A_SetAngle(angle-20.0) 
+GHAD O 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD O 1 A_CheckFloor("SpinEnd")
+GHAD O 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD O 0 A_SetAngle(angle-20.0) 
+GHAD O 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD P 1 A_CheckFloor("SpinEnd")
+GHAD P 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD P 0 A_SetAngle(angle-20.0) 
+GHAD P 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD P 1 A_CheckFloor("SpinEnd")
+GHAD P 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD P 0 A_SetAngle(angle-20.0) 
+GHAD P 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD Q 1 A_CheckFloor("SpinEnd")
+GHAD Q 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD Q 0 A_SetAngle(angle-20.0) 
+GHAD Q 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD Q 1 A_CheckFloor("SpinEnd")
+GHAD Q 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD Q 0 A_SetAngle(angle-20.0) 
+GHAD Q 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD R 1 A_CheckFloor("SpinEnd")
+GHAD R 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD R 0 A_SetAngle(angle-20.0) 
+GHAD R 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD R 1 A_CheckFloor("SpinEnd")
+GHAD R 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+Spin:
+GHAD R 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD R 0 A_SetAngle(angle-20.0) 
+GHAD R 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD R 1 A_CheckFloor("SpinEnd")
+GHAD R 0 A_SpawnItemEx("HurricaneKick",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
+GHAD R 0 A_SetAngle(angle-20.0) 
+GHAD R 0 A_JumpIfInventory("IsDead",1,"Ready")
+GHAD R 1 A_CheckFloor("SpinEnd")
+GHAD R 0 A_GiveInventory("MessatsuFlag", 1)
+GHAD R 0 A_JumpIfInventory("MessatsuFlag", 10, "MomentumCheck")
+Loop
+MomentumCheck:
+GHAD R 0 A_TakeInventory("MessatsuFlag", 10)
+GHAD R 0 A_JumpIf(momz>=0, "SpinEnd")
+Goto Spin
+SpinEnd:
+//GSHR R 0 A_ClearRefire
+GHAD R 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+GHAD O 0 SetPlayerProperty(0,0,4)
+GHAD R 0 A_TakeInventory("SpinTime",1)
+GHAD R 0 A_StopSound(CHAN_WEAPON)
+GHAD R 0 A_Stop
+GHAD O 0 A_TakeInventory("MessatsuFlag", 10)
+GHAD QP 2 
+//GHAD O 0 A_Refire
+Goto Ready+1
+
+RagingDemon:
+GHAD A 0 A_TakeInventory("RagingDemonFlag", 1)
+GHAD A 0 A_TakeInventory("MessatsuCharge", 35)
+GHAD A 0 A_TakeInventory("MessatsuFlag", 999)
+GHAD A 0 A_PlaySoundEx("weapon/supermove","Auto")
+GHAD A 0 A_Stop
+GHAD A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
+GHAD A 0 SetPlayerProperty(0,1,0)
+//GHAD A 0 ThrustThingZ(0,10,0,0)
+GHAD C 0 A_GiveInventory("MessatsuFlag", 18)
+GHAD B 0 A_SpawnItemEx("MessShadow", 0, 0, 0, 0, -4)
+GHAD B 0 A_SpawnItemEx("MessShadow", 0, 0, 0, 0, 4)
+GHAD B 10 A_PlaySoundEx("weapon/superboost","Weapon")
+//GHAD B 0 A_TakeInventory("UnSolid",1)
+//GHAD B 0 A_ChangeFlag("SOLID",0)
+//GHAD B 0 A_GiveInventory("Nudge",1)
+Goto RagingDemonBegin
+RagingDemonBegin:
+GHAD G 0 A_ChangeVelocity(40, 0, 0, CVF_RELATIVE|CVF_REPLACE)
+GHAD G 0 A_PlaySoundEx("weapon/superboost","Weapon")
+GHAD G 1 A_SpawnItemEx("MessShadow", -8)
+GHAD G 0 A_JumpIfInventory("NoSGS", 1, "DemonEnd")
+GHAD G 0 A_TakeInventory("MessatsuFlag", 1)
+GHAD G 0 A_SpawnItemEx("ShunGokuSatsu", 32,0,16, momx,momy,momz,0, SXF_ABSOLUTEMOMENTUM)
+
+GHAD G 0 A_PlaySoundEx("weapon/superboost","Weapon")
+GHAD G 1 A_SpawnItemEx("MessShadow", -8)
+GHAD G 0 A_JumpIfInventory("NoSGS", 1, "DemonEnd")
+GHAD G 0 A_TakeInventory("MessatsuFlag", 1)
+
+GHAD G 0 A_JumpIfInventory("MessatsuFlag", 1, "RagingDemonBegin")
+DemonEnd:
+GHAD G 0 A_Stop
+GHAD G 0 A_TakeInventory("MessatsuFlag", 18)
+//GHAD G 0 A_ScaleVelocity(0.3)
+GHAD G 5 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+GHAD G 0 A_StopSound(CHAN_WEAPON)
+DemonWait:
+GHAD G 1
+GHAD G 0 A_JumpIfInventory("NoSGS", 1, "DemonWait")
+GHAD A 0 SetPlayerProperty(0,0,0)
+//GHAD G 0 A_SpawnItemEx("ReSolidifier")
+Goto Ready+1
+
+Tema:
+GHAD G 0 A_Stop
+GHAD G 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
+GHAD G 0 SetPlayerProperty(0,1,4)
+GHAD G 0 A_PlaySoundEx("weapon/supermove","Auto")
+GHAD G 0 A_SpawnItemEx("MessShadow", -8)
+GHAD G 2 A_TakeInventory("MessatsuFlag", 999)
+GHAD G 0 A_Stop
+GHAD G 3 A_TakeInventory("TemaFlag")
+GHAD G 0 A_JumpIf(z-floorz==0,"Messatsu")
+GHAD G 0 A_GiveInventory("MessatsuFlag", 56)
+Tema2:
+GHAD H 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+GHAD H 1 A_FireCustomMissile("GouZankuu",random(-7, 7),0,Random(-8, -32),Random(-32, 32))
+GHAD H 1 A_FireCustomMissile("GouZankuu",random(-7, 7),0,Random(8, 32),Random(-8, 8))
+GHAD H 0 A_TakeInventory("MessatsuFlag", 4)
+GHAD H 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+GHAD H 1 A_FireCustomMissile("GouZankuu",random(-7, 7),0,Random(8, 32),Random(-32, 32))
+GHAD H 1 A_FireCustomMissile("GouZankuu",random(-7, 7),0,Random(-8, -32),Random(-8, 8))
+GHAD H 0 A_TakeInventory("MessatsuFlag", 4)
+GHAD G 0 A_SpawnItemEx("MessShadow", -8, 0, 0, -2, Random(-1, 1))
+GHAD H 0 A_JumpIfInventory("MessatsuFlag", 1, "Tema2")
+GHAD H 0 A_Stop
+GHAD H 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+GHAD H 0 SetPlayerProperty(0,0,4)
+Goto Ready+1
+Messatsu:
+GHAD H 0 A_PlaySoundEx("weapon/cfire","Weapon")
+GHAD H 0 A_FireCustomMissile("MessatsuGouHadou",0,0,0,0)
+GHAD H 0 A_Stop
+GHAD H 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+GHAD HHHHHHHHHHHHHHHHH 2 A_SpawnItemEx("MessShadow", -8, 0, 0, -2, Random(-1, 1))
+GHAD A 0 SetPlayerProperty(0,0,4)
+Goto Ready+1
+
+
+GroundSlam:
+GHAD A 0 A_TakeInventory("MisogiFlag",1)
+GHAD A 0 A_ScaleVelocity(0.2)
+GHAD A 0 SetPlayerProperty(0,1,4)
+GHAD A 0 A_PlaySoundEx("weapon/supermove","Auto")
+GHAD A 1 A_CheckFloor(1)
+Goto AirSlam
+GHAD A 0 ThrustThingZ(0,150,0,0)
+GHAD A 0 A_Recoil(-15)
+Goto AirSlam
+AirSlam:
+GHAD A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
+GHAD NMLKJI 1 A_SpawnItemEx("MessShadow", -8)
+GHAD I 0 A_ScaleVelocity(0.75)
+GroundSlam2:
+TNT1 A 0 ThrustThingZ(0,0,0,0)
+TNT1 A 0 A_PlaySoundEx("weapon/mirrorabsorb","Auto")
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("MessShadow", -8, 0, 8, 0, 0, 8)
+TNT1 A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+TNT1 A 0 ThrustThingZ(0,50,1,1)
+GroundSlam3:
+TNT1 A 1 A_GiveInventory("MessatsuFlag", 1)
+TNT1 A 0 A_SpawnItemEx("MessShadow", -8)
+TNT1 A 0 A_JumpIfInventory("MessatsuFlag", 35, "GroundAttack")
+TNT1 A 0 A_JumpIf(momz >= 0, "GroundAttack")
+TNT1 A 0 ThrustThingZ(0,20,1,1)
+loop
+GroundAttack:
+TNT1 A 0 A_PlaySound("misc/hugequake2")
+TNT1 A 0 Radius_Quake(1,15,0,64,0)
+TNT1 A 0 A_SpawnItemEx("Misogi")
+TNT1 A 0 A_TakeInventory("MessatsuFlag", 999)
+GHAD IJKLMN 1
+TNT1 A 4
+GHAD NML 4 
+GHAD N 0 SetPlayerProperty(0,0,4)
+Goto Ready+1
+
+NoAmmo:
+GHAD A 1
+Goto Ready+1
+Flash:
+TNT1 A 1
+stop
+NoFlash:
+TNT1 A 1
+stop
+Sound.BusterCharge:
+TNT1 A 5 A_PlaySoundEx("weapon/adapterchargeloop","Weapon",0)
+TNT1 A 1 A_JumpIfInventory("MessatsuCharge",1,"Sound.BusterCharge")
+stop
+
+BotCheck:
+GHAD A 0 A_JumpIfInventory("MessatsuCharge",35,"Fire4")
+GHAD A 0 A_JumpIfInventory("MessatsuCharge",19,"Charge1")
+GHAD A 0 A_Jump(16, "BotAbility")
+GHAD A 0 A_JumpIfCloser(96, "AltFire")
+GHAD A 0 A_JumpIfCloser(256, "BotTatsumaki")
+GHAD A 0 A_Jump(128, "BotHold")
+Goto RealFire
+BotHold:
+GHAD A 0 A_GiveInventory("MessatsuCharge", 1)
+GHAD A 0 A_Refire
+Goto RealFire
+BotAbility:
+GHAD A 0 A_JumpIfInventory("MessatsuAmmo", 56, "BotRagingDemon")
+GHAD A 0 A_JumpIfInventory("MessatsuAmmo", 28, "BotMisogi")
+GHAD A 0 A_JumpIfInventory("MessatsuAmmo", 14, "BotTema")
+Goto Fire
+BotTema:
+GHAD A 0 A_TakeInventory("MessatsuAmmo", 14)
+Goto Tema
+BotMisogi:
+GHAD A 0 A_TakeInventory("MessatsuAmmo", 28)
+Goto GroundSlam
+BotRagingDemon: //Dear god
+GHAD A 0 A_TakeInventory("MessatsuAmmo", 56)
+Goto RagingDemon
+BotTatsumaki:
+GHAD A 0 A_Jump(64, "RealFire") // Really loves to spawn the hurricane apparently
+GHAD A 0 A_FaceTarget
+GHAD A 1 ThrustThingZ(0,30,0,0)
+GHAD A 6 A_Recoil(-10)
+GHAD A 0 A_ChangeVelocity(momx, momy, momz/4, CVF_REPLACE)
+Goto Tatsumaki
+Sound.BusterCharge:
+TNT1 A 9 A_PlaySoundEx("weapon/adapterchargeloop","Weapon",0)
+TNT1 A 1 A_JumpIfInventory("MessatsuCharge",1,"Sound.BusterCharge")
+stop
+}
+}
+
+Actor RagingDemonFlag : Inventory{}
+Actor TemaFlag : Inventory{}
+Actor MisogiFlag : Inventory{}
+
+actor MessatsuFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor MessatsuCharge : Inventory
+{
+inventory.amount 1
+inventory.maxamount 35
+}
+
+actor MessatsuAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 56
+}
+
+actor MisogiProtect : PowerProtection
+{
+Powerup.Duration 10
+DamageFactor "Misogi", 0.10
+}
+
+
+actor TatsumakiProtect : PowerProtection
+{
+Powerup.Duration 35
+DamageFactor "Tatsumaki", 0.23
+}
+
+actor TatsumakiFullProtect : PowerProtection
+{
+Powerup.Duration 20
+DamageFactor "Tatsumaki", 0.00
+}
+
+
+actor GouShoryuFullProtect : PowerProtection
+{
+Powerup.Duration 20
+DamageFactor "GouShoryuPush", 0.00
+}
+
+
+actor MessHitFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor MessChargeLimit : Inventory
+{
+inventory.amount 1
+inventory.maxamount 18
+}
+
+
+actor Gouhadou
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++MTHRUSPECIES
+Translation "192:192=59:59", "198:198=61:61"
+Obituary "%o didn't block %k's Gou Hadouken."
+damagetype "GouHadou"
+Damage (18)
+RenderStyle "translucent"
+Alpha 0.90
+Speed 40
+radius 12
+height 8
+scale 4.0
+States
+{
+Spawn:
+TNT1 A 2
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
+Goto LoopJump
+BFire:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto LoopJump
+RFire:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto LoopJump
+GFire:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto LoopJump
+YFire:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto LoopJump
+LoopJump:
+TNT1 A 0 A_Jump(256, "SpawnLoop")
+Goto SpawnLoop
+SpawnLoop:
+GHAD TU 3
+loop
+Death:
+GHAD TU 3 A_FadeOut(0.45)
+loop
+}
+}
+
+
+
+actor GouZankuu : Gouhadou
+{
+damagetype "GouZankuu"
+Obituary "%o couldn't slip through %k's deluge of Gou Hadoukens."
+Damage (12)
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 1 
+TNT1 A 1 ThrustThingZ(0, random(-10,10), random(0,1), 1)
+Goto Super::Spawn+1
+SpawnLoop:
+GHAD T 0 A_ScaleVelocity(1.05)
+GHAD TU 3 bright
+loop
+}
+}
+
+
+
+actor Shakunetsu : Gouhadou
+{
++DONTBLAST
++RIPPER
+Translation "192:192=43:43", "198:198=189:189", "168:168=174:174"
+Obituary "%o didn't block %k's Shakunetsu Hadouken."
+damagetype "Shakunetsu"
+Damage(12)
+Speed 45
+Radius 16
+States
+{
+SpawnLoop:
+GHAD T 3 A_SpawnItemEx("ShakunetsuFX", 0, Random(-32, 32), 0, Random(-8, -12), Random(-2, 2), 0, 0, SXF_TRANSFERTRANSLATION)
+GHAD U 3
+loop
+Death:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 AAAAA 0 A_SpawnItemEx("ShakunetsuFX", 0, Random(-32, 32), Random(-8, 8), Random(-1, -2), Random(-2, 2), Random(1, 3), 0, SXF_TRANSFERTRANSLATION)
+Goto "Gouhadou::Death"
+}
+}
+
+actor Shakunetsu2 : Shakunetsu
+{
+Damage(17)
+States
+{
+SpawnLoop:
+//TNT1 A 2
+TNT1 A 0 
+GHAD TU 3 A_SpawnItemEx("ShakunetsuFX", 0, Random(-32, 32), 0, Random(-8, -12), Random(-2, 2), 0, 0, SXF_TRANSFERTRANSLATION)
+//goto spawn+1
+Loop
+}
+}
+
+actor Shakunetsu3 : Shakunetsu
+{
+Damage(22)
+States
+{
+SpawnLoop:
+//TNT1 A 2
+GHAD T 0 A_SpawnItemEx("ShakunetsuFX", 0, Random(-32, 32), 0, Random(-8, -12), Random(-2, 2), 0, 0, SXF_TRANSFERTRANSLATION)
+GHAD TTT 1 A_SpawnItemEx("Shakunetsu3FX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+GHAD U 0 A_SpawnItemEx("ShakunetsuFX", 0, Random(-32, 32), 0, Random(-8, -12), Random(-2, 2), 0, 0, SXF_TRANSFERTRANSLATION)
+GHAD UUU 1 A_SpawnItemEx("Shakunetsu3FX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+//goto spawn+1
+Loop
+}
+
+}
+
+actor ShakunetsuFX
+{
+Gravity 0.2
+Renderstyle "Add"
+//Translation "248:248=174:174", "41:41=189:189"
+States
+{
+Spawn:
+GHFX D 1 A_Fadeout(0.02)
+GHFX D 0 A_CheckFloor("Death")
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+
+actor Shakunetsu3FX : GeminiTrail
+{
+//Translation "192:192=43:43", "198:198=189:189", "168:168=174:174"
+RenderStyle "add"
+Alpha 0.8
+scale 4.0
+States
+{
+Spawn:
+TNT1 A 1
+GHAD TTUU 1 A_FadeOut(0.2)
+wait
+}
+}
+
+actor NoSGS : Powerup 
+{
+powerup.duration 20
+}
+
+actor ShunGokuSatsu
+{
+Obituary "%o was instantly defeated by %k's Lagless Hell Frag."
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
+damagetype "ShunGokuSatsu"
+Translation "248:248=59:59", "41:41=61:61"
+Damage (10)
+radius 24
+height 16
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_SpawnItemEx("ShunGokuSatsuFire", 0, Random(-32, 32), 0, Random(-8, -12), Random(-2, 2))
+TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+TNT1 AAA 1 A_SpawnItemEx("ShunGokuSatsuFire", 0, Random(-32, 32), 0, Random(-8, -12), Random(-2, 2))
+stop
+XDeath:
+Crash:
+TNT1 A 0 A_PlaySoundEx("weapon/mirrorabsorb","Auto")
+TNT1 A 0 //A_GiveToTarget("NoSGS", 1)
+TNT1 A 0 A_GiveInventory("NoSGS", 1, AAPTR_TARGET)
+TNT1 A 0 A_GiveInventory("MessatsuFlag", 15)
+TNT1 A 0 A_JumpIfInTargetinventory("MessatsuFlag", 18, 2)
+TNT1 A 0 A_GiveToTarget("MessatsuFlag", 6)
+MDK:
+TNT1 A 2 A_Explode(8,128,0,0,128)
+TNT1 AA 0 A_SpawnItemEx("ShunGokuSatsuFire",Random(-64, 64),Random(-64, 64),Random(0, 96),random(-5,5),random(-5,5),0,random(0,360))
+TNT1 A 0 A_TakeInventory("MessatsuFlag", 1)
+TNT1 A 0 A_JumpIfInventory("MessatsuFlag", 7, "HitSpark")
+TNT1 A 0 A_JumpIfInventory("MessatsuFlag", 1, "MDK")
+Goto Death
+HitSpark:
+TNT1 AA 0 A_SpawnItemEx("ShunGokuSatsuHitFX",Random(-128, 128),Random(-128, 128),Random(0, 96))
+Goto MDK
+Death:
+TNT1 AA 5
+stop
+}
+}
+
+actor HurricaneKick : Gouhadou
+{
+PROJECTILE
++RIPPER
++DONTBLAST
+Damage (0)
+Obituary "%o was kicked around by %k's Tatsumaki Zankukyaku."
+scale 2.5
+damagetype "Tatsumaki"
+Translation "192:192=59:59", "198:198=61:61"
+Renderstyle "Add"
+Speed 0
+height 0
+radius 0
+States
+{
+Spawn:
+TNT1 A 0
+Goto Super::Spawn+1
+SpawnLoop:
+TNT1 A 0 A_Explode(30,85, 0, 0, 85)
+TNT1 A 0 A_Stop
+GHFX DEFG 2 A_Fadeout
+Goto SpawnLoop+2
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor ShunGokuSatsuFire : Gouhadou
+{
++NOINTERACTION
+Gravity 0.1
+Renderstyle "Add"
+Translation "192:192=59:59", "198:198=61:61"
+States
+{
+Spawn:
+GHFX D 0
+Goto Super::Spawn+1
+SpawnLoop:
+GHFX DEFG 2
+GHFX D 0 A_Stop
+GHFX DEFG 2
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+
+
+actor ShunGokuSatsuHitFX : ShunGokuSatsuFire
+{
+Scale 1.5
+Reactiontime 5
+States
+{
+Spawn:
+MMFX A 2
+TNT1 A 1 A_CountDown
+loop
+}
+}
+
+actor ShunGokuSatsuLogo
+{
+Scale 2.0
+Renderstyle "Translucent"
+Alpha 0.1
++NOGRAVITY
+States
+{
+Spawn:
+TNT1 A 5
+SGSD AAAAA 1 A_FadeIn(0.2)
+SGSD A 0
+SGSD A 100
+SGSD A 2 A_Fadeout(0.1)
+wait
+}
+}
+actor GouShoryu1 : Gouhadou
+{
+Obituary "%o was punched skyward by %k's GouShoryuKen."
+PROJECTILE
+Translation "192:192=59:59", "198:198=61:61"
+Renderstyle "Add"
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++RIPPER
+damagetype "GouShoryuStun"
+Damage (0)
+radius 5
+height 5
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+Goto Super::Spawn+1
+SpawnLoop:
+TNT1 A 1 A_Explode(7,48,0, 0, 48)
+GHFX ABC 1 
+Goto Death
+Death:
+GHFX ABC 1 A_Fadeout(0.1)
+wait
+}
+}
+
+actor GouShoryu2 : GouShoryu1
+{
+damagetype "GouShoryuPush"
+}
+
+actor GouShoryuFX : GouShoryu2
+{
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 A 1 
+Goto Gouhadou::Spawn+1 //Mental note: Watch this one
+SpawnLoop:
+GHFX DEFG 2
+Goto Death
+Death:
+GHFX DEFG 2 A_Fadeout(0.2)
+wait
+}
+}
+
+actor MessatsuGouhadou : Gouhadou
+{
+damagetype "GouZankuu"
+Obituary "%o couldn't parry %k's Messatsu Gouhadou."
+Speed 18
+Alpha 0.5
+Damage (0)
+Reactiontime 6
++RIPPER
+States
+{
+Spawn:
+GHAD V 0
+Goto Super::Spawn+1
+SpawnLoop:
+GHAD V 1 
+GHAD V 1 A_SpawnItemEx("MessatsuGouhadou",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+GHAD V 0 A_Stop
+DamageHere:
+GHAD V 0 A_FadeIn(0.1)
+GHAD V 4 A_Explode(10, 48, 0)
+GHAD V 0 A_CountDown
+Loop
+Death:
+GHAD V 1 A_Fadeout
+loop
+}
+}
+
+
+actor Misogi
+{
+PROJECTILE
++DONTBLAST
++RIPPER
++NOCLIP
+DAMAGE (0)
+damagetype "MisogiImpact"
+Scale 2.0
+Radius 1
+Height 1
+Obituary "%o was shattered in pieces by %k's Misogi."
+var int user_MisogiAngle;
+Translation "192:192=43:43"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SetArg(0, 0)//A_SetUserVar("user_MisogiAngle", 0)
+TNT1 A 0 A_ChangeFlag("NOCLIP", 0)
+TNT1 A 0 A_SpawnItemEx("MisogiFX")
+TNT1 A 1 A_Explode(65, 160, 0, 0, 64)
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
+Goto SpawnLoop
+BFire:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto SpawnLoop
+RFire:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto SpawnLoop
+GFire:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto SpawnLoop
+YFire:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto SpawnLoop
+
+SpawnLoop:
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_MisogiAngle", user_MisogiAngle + 15)
+TNT1 A 0 A_SpawnItemEx("MisogiPart",8,0,0,25,0,0,user_MisogiAngle, SXF_TRANSFERTRANSLATION)
+//TNT1 A 0 A_JumpIf(user_MisogiAngle > 345, "Death")
+Goto Death
+Death:
+TNT1 A 5
+stop
+}
+}
+
+actor MisogiPart
+{
+PROJECTILE
+Obituary "%o just couldn't defend against %k's Misogi."
+Scale 2.0
+//Translation "192:192=43:43"
++NOEXPLODEFLOOR
++RIPPER
++STEPMISSILE
+MaxStepHeight 48
+Speed 25
+Damage (20) //5 Damage after first hit
+damagetype "Misogi"
+Radius 32
+Height 32
+States
+{
+Spawn:
+DUOR T 1 A_FadeOut(0.04)
+DUOR T 0 A_SpawnItemEx("MisogiShadow", 0,0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SetArg(0, Args[0]+1)
+DUOR T 0 A_JumpIf(Args[0] > 6, "UpNow")
+Loop
+UpNow:
+DUOR T 0 A_ScaleVelocity(0.8)
+DUOR T 0 ThrustThingZ(0, 60, 0, 0)
+DUOR T 0 A_SpawnItemEx("MisogiShadow", 0,0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 1 A_FadeOut(0.04)
+Loop
+Death:
+DUOR T 1 A_FadeOut 
+wait
+}
+}
+
+actor MisogiShadow : MisogiPart
+{
+PROJECTILE
++NOINTERACTION
+//+CLIENTSIDEONLY
+RenderStyle "add"
+Damage (0)
+Radius 1
+Height 1
+States
+{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_JumpIfCloser(64, "Death")
+DUOR T 1 A_FadeOut(0.1)
+Wait
+Death:
+TNT1 A 0 
+stop
+}
+}
+
+Actor MisogiFX : LightningExtend
+{
+-FLOORHUGGER
+RenderStyle "Add"
+Translation "210:210=59:59", "229:229=61:61"
+Alpha 0.95
+States
+{
+Spawn:
+LIBO L 0 
+LIBO L 0 A_JumpIf(ceilingz-z <= 32, "Death")
+LIBO L 0 A_SpawnItemEx("MisogiFX", 0, 0, 160)
+Spawn2:
+LIBO LLMN 1 A_Fadeout(0.02)
+wait
+}
+}
+
+actor MessShadow : GeminiTrail
+{
+Translation "192:192=59:59", "198:198=61:61"
+Renderstyle "Add"
++FORCEYBILLBOARD
+Alpha 0.95
+States
+{
+Spawn:
+MTSU F 0
+MTSU F 5 
+MTSU G 1 A_Fadeout(0.1)
+Goto Spawn+2
+}
+}
+
+
+actor MessatsuHit
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("MessatsuHitPickup",1)
+stop
+}
+}
+
+actor MessatsuHitPickup : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("MessatsuAmmo",3)
+TNT1 A 0 A_TakeFromTarget("MessChargeLimit", 999)
+stop
+}
+}
+
+actor GouShoryuSpike
+{
+PROJECTILE
++NOINTERACTION
+damagetype "GouShoryuSpike"
+Obituary "%o was spiked by %k's GouShoryuKen."
+Radius 1
+Height 1
+scale 2.5
+speed 0
+Damage (0)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A  0 A_Explode(5, 128, 0, 0, 128)
+stop
+}
+}
+
+actor GouShoryuSlam : GouShoryuSpike
+{
+damagetype "GouShoryuSlam"
+renderstyle "add"
+Alpha 0.8
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+TNT1 A 0 A_Explode(20, 128, 0, 0, 32)
+//NAPA EFGHIJKL 2 A_SpawnItemEx("GouShoryuFX", Random(32, 0), Random(-32, 32), Random(8, 48), Random(2,6), 0, Random(4,8), Random(0,359))
+//NAPA MNOPQRS 2
+TNT1 AAAAAAAAAA 0 A_SpawnItemEx("SlamFX", Random(-16, 16), Random(-16, 16), 0, Random(0, 15), 0,Random(0, 15), Random(0,359))
+TNT1 AAAAAAAAAA 0 A_SpawnItemEx("SlamFX", Random(-16, 16), Random(-16, 16), 0, Random(0, 15), 0,Random(0, 15), Random(0,359))
+stop
+}
+}
+
+actor SlamFX : Gouhadou
+{
++THRUACTORS
+-NOGRAVITY
+Damage(0)
+Renderstyle "Add"
+Translation "192:192=59:59", "198:198=61:61"
+States
+{
+Spawn:
+GHFX D 0
+Goto Super::Spawn+1
+SpawnLoop:
+GHFX DEFGDEFG 2
+Goto FadeLoop
+FadeLoop:
+GHFX DEFG 2 A_Fadeout
+Goto Death
+Death:
+TNT1 A 0
+stop
+}
+}

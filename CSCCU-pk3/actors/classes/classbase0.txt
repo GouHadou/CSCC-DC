@@ -1,0 +1,328 @@
+
+
+
+
+actor ClassBase0 : PlayerPawn
+{
+player.displayname "megaman"
+player.soundclass "megaman"
+player.damagescreencolor "yellow"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+player.jumpz 10
+player.colorrange 0 0
+player.startitem "MegaBuster"
+player.startitem "BusterAmmo", 3
+mass 9999
+gravity 0.8
++NODAMAGETHRUST
++DONTBLAST
++NOBLOOD
++QUICKTORETALIATE
++DONTHARMSPECIES
++THRUSPECIES
+
+damagefactor "Dummy", 0.0
+Player.MaxSkinSizeFactor 0, 0
+scale 2.5
+bloodtype "MegamanBlood"
+
+Var int User_STargTID;
+Var int User_angleDistRegister;
+Var int User_STargRange;
+
+var int user_wepangle;
+var int user_weppitch;
+var int user_wepangle2;
+
+var int user_TTSPD;
+var int user_TV;
+States
+{
+SuperSpawn:
+"----" A 1 A_Jump(256,"Spawn")
+wait
+SuperClassPain:
+"----" A 1 A_Jump(256,"ClassPain")
+wait
+SuperClassDeath:
+"----" A 1 A_Jump(256,"ClassDeath")
+wait
+
+MegamanPain:
+"----" A 0 A_Pain
+"----" A 1 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+"----" A 1 A_Recoil(1)
+"----" AAAAAAAAA 2 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+"----" A 1
+goto SuperSpawn
+
+
+MegamanDeath:
+"----" A 20 ACS_ExecuteAlways(999,0,0)
+MegamanExplode:
+TNT1 A 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+MegamanFall:
+TNT1 A 0 A_PlayerScream
+MegamanErase:
+TNT1 A 1 A_CheckPlayerDone
+wait
+
+/*
+Death:
+"----" H 0 SetPlayerProperty(0, 0, 4)
+"----" H 0 A_TakeInventory("WeaponCharge",999)
+"----" H 0 A_TakeInventory("MessatsuCharge",999)
+"----" H 0 A_NoBlocking
+"----" H 0 A_GiveInventory("CutterFlag",999)
+"----" H 0 A_GiveInventory("IsDead",1)
+"----" H 0 A_Stop
+"----" H 0 A_GiveToTarget("KilledMeStock",1)
+"----" H 0 A_GiveToTarget("FusionStock",1)
+"----" H 0 A_GiveToTarget("KilledMe",1)
+"----" H 0 A_Jump(256, "DeathFix")
+goto DeathFix
+DeathFix:
+"####" H 0
+goto DeathFrames
+DeathFrames:
+"----" H 20 ACS_ExecuteAlways(999,0,0)
+goto DeathBoom
+DeathBoom:
+PLAY Z 0 A_Stop
+PLAY Z 0 A_PlayerScream 
+//PLAY Z 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+PLAY Z 0 A_SpawnItemEx("FakeDeathFX2", 0, 0, 32, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 1 A_CheckPlayerDone
+wait*/
+
+
+
+// SINGLEPLAYER STUFF
+TheEnd: // Used in the original ending
+"####" G 4
+loop
+WalkForward: 
+"####" BBBBBCCCCCDDDDDEEEEE 1 A_Recoil(-0.8)
+loop
+CreditWalk: 
+"####" BCDE 8
+loop
+CreditRun:
+"####" BCDE 5
+loop
+DozerCarry:
+"####" BBBBCCCCDDDDEEEEBBBBCCCCDDDDBBBBCCCCDDDD 1 A_Recoil(-1)
+"####" F 10 A_Stop
+"####" F -1
+stop
+DozerThrow:
+"####" F 0 A_ChangeFlag("THRUACTORS",1)
+"####" F 20 ThrustThingZ(0, 60, 0, 1)
+"####" G 20
+"####" A -1
+stop
+EndlessPain:
+"####" H -1
+stop
+}
+}
+
+
+
+/*
+
+
+actor ClassBase0 : PlayerPawn //Basic stuff
+{
+player.displayname "megaman"
+player.soundclass "megaman"
+player.damagescreencolor "yellow"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+player.jumpz 10
+player.maxhealth 100
+health 100
+player.colorrange 0 0
+player.startitem "MegaBuster"
+player.startitem "BusterAmmo", 3
+mass 9999
+gravity 0.8
++NODAMAGETHRUST
++DONTBLAST
++NOBLOOD
++QUICKTORETALIATE
++DONTHARMSPECIES
++THRUSPECIES
+
+damagefactor "Dummy", 0.0
+Player.MaxSkinSizeFactor 0, 0
+scale 2.5
+bloodtype "MegamanBlood"
+
+Var int User_STargTID;
+Var int User_angleDistRegister;
+Var int User_STargRange;
+
+var int user_wepangle;
+var int user_weppitch;
+var int user_wepangle2;
+
+var int user_TTSPD;
+var int user_TV;
+States
+{
+
+Spawn:
+"----" A 0
+"----" B 1
+"----" A 1
+Goto Spawn+2
+See:
+"----" BCDE 5
+Goto Spawn
+Missile:
+"----" F 5 
+"----" G 4 
+Goto Spawn+2
+Pain:
+"----" H 0 A_ScaleVelocity(0.75)
+"----" H 0
+"----" H 0 A_Pain
+"----" H 0 A_JumpIfInventory("MorphFlag", 1, "CopyPainSnd")
+"----" H 0 A_Jump(256, "PainFix")
+goto PainFix
+CopyPainSnd:
+"----" H 0 A_PlaySound("misc/CopyPain")
+"----" H 0 A_Jump(256, "PainFix")
+goto PainFix
+PainFix:
+"----" H 0
+goto PainFrames
+
+PainFrames:
+"----" H 1 A_SpawnItem("PainFX",0,3)
+"----" H 1 A_Recoil(1)
+"----" HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+"----" H 1 
+"----" H 0 A_Jump(256, "Spawn") 
+Goto Spawn+2
+
+Death:
+"----" H 0 SetPlayerProperty(0, 0, 4)
+"----" H 0 A_TakeInventory("WeaponCharge",999)
+"----" H 0 A_TakeInventory("MessatsuCharge",999)
+"----" H 0 A_NoBlocking
+"----" H 0 A_GiveInventory("CutterFlag",999)
+"----" H 0 A_GiveInventory("IsDead",1)
+"----" H 0 A_Stop
+"----" H 0 A_GiveToTarget("KilledMeStock",1)
+"----" H 0 A_GiveToTarget("FusionStock",1)
+"----" H 0 A_GiveToTarget("KilledMe",1)
+"----" H 0 A_Jump(256, "DeathFix")
+goto DeathFix
+DeathFix:
+"####" H 0
+goto DeathFrames
+DeathFrames:
+"----" H 20 ACS_ExecuteAlways(999,0,0)
+goto DeathBoom
+DeathBoom:
+PLAY Z 0 A_Stop
+PLAY Z 0 A_PlayerScream 
+//PLAY Z 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+PLAY Z 0 A_SpawnItemEx("FakeDeathFX2", 0, 0, 32, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 1 A_CheckPlayerDone
+wait
+
+
+// SINGLEPLAYER STUFF
+TheEnd: // Used in the original ending
+"####" G 4
+loop
+WalkForward: 
+"####" BBBBBCCCCCDDDDDEEEEE 1 A_Recoil(-0.8)
+loop
+CreditWalk: 
+"####" BCDE 8
+loop
+CreditRun:
+"####" BCDE 5
+loop
+DozerCarry:
+"####" BBBBCCCCDDDDEEEEBBBBCCCCDDDDBBBBCCCCDDDD 1 A_Recoil(-1)
+"####" F 10 A_Stop
+"####" F -1
+stop
+DozerThrow:
+"####" F 0 A_ChangeFlag("THRUACTORS",1)
+"####" F 20 ThrustThingZ(0, 60, 0, 1)
+"####" G 20
+"####" A -1
+stop
+EndlessPain:
+"####" H -1
+stop
+Pain.BotSight:
+"####" B 5 HealThing(1)
+Goto Spawn+2
+}
+}*/
+
+
+actor DeathFX3
+{
+height 1
+radius 1
++NOINTERACTION
++NOGRAVITY
+-SOLID
++DONTBLAST
+scale 2.5
+PROJECTILE
+Speed 15
+
+States
+{
+Spawn:
+MMFX JKLM 2
+MMFX A 0 A_CountDown
+loop
+}
+}
+
+actor DeathFX4 : DeathFX3
+{
+speed 5
+}
+
+actor FakeDeathFX2
+{
+-SOLID
++NOGRAVITY
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 A 1
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, 0, -15, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, 10, 10, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, -10, 10, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, 10, -10, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, -10, -10, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, 15, 0, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX3",0, 0, 0, 0, -15, 0, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, 0, 5, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, 0, -5, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, 3.5, 3.5, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, -3.5, 3.5, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, 3.5, -3.5, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, -3.5, -3.5, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, 5, 0, 0, SXF_TRANSFERTRANSLATION)
+PLAY Z 0 A_SpawnItemEx("DeathFX4",0, 0, 0, 0, -5, 0, 0, SXF_TRANSFERTRANSLATION)
+
+TNT1 A 1
+stop
+}
+}

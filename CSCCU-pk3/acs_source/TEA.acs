@@ -1,0 +1,23 @@
+#library "tea"
+#include "zcommon.acs"
+
+script "CSACS_ToastJump" (void)
+{
+int Result = 0;
+
+int Buttons = GetPlayerInput(-1,1);
+int OldButtons = GetPlayerInput(-1,0);
+
+int OldButtonJump = 0;
+int ButtonJump = 0;
+
+if(Buttons & BT_Jump){ButtonJump = 1;}
+if(OldButtons & BT_Jump){OldButtonJump = 1;}
+
+if(GetActorZ(0)-GetActorFloorZ(0)!=0.0)
+{
+if(ButtonJump>0){if(ButtonJump!=OldButtonJump){Result = 1;}}
+}
+
+SetResultValue(Result);
+}

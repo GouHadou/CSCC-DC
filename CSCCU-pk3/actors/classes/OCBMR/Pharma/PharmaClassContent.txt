@@ -1,0 +1,5 @@
+#include "actors/classes/OCBMR/Pharma/Pharma.txt"
+#include "actors/classes/OCBMR/Pharma/Medicator.txt"
+#include "actors/classes/OCBMR/Pharma/MedicatorBeams.txt"
+#include "actors/classes/OCBMR/Pharma/PillGrenadeLauncer.txt"
+

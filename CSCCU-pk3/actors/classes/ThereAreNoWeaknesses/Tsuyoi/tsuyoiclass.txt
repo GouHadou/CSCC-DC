@@ -1,0 +1,29 @@
+actor TsuyoiClass : ClassBaseCSCC
+{
++NOSKIN
+player.displayname "Tsuyoi"
+player.soundclass "tsuyoi"
+player.startitem "StormPunchWep"
+player.forwardmove 0.64, 0.64
+player.sidemove 0.7, 0.7
+player.soundclass "tsuyoi"
+player.jumpz 9
+player.maxhealth 125
+health 125
+player.startitem "SturdyHealthBar"
+States
+{
+Spawn:
+HARM A 0 // ballsacks
+HARM B 1
+HARM A 1
+Goto Spawn+2
+See:
+HARM BCDE 5
+Goto Spawn+2
+Missile:
+HARM F 5 
+HARM G 4 
+goto Spawn+3
+}
+}

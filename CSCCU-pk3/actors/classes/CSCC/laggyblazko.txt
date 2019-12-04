@@ -1,0 +1,7 @@
+#include "actors/classes/CSCC/laggyblazko/lgclass.txt"
+#include "actors/classes/CSCC/laggyblazko/CorporalBase.txt"
+#include "actors/classes/CSCC/laggyblazko/NadeSpam.txt"
+#include "actors/classes/CSCC/laggyblazko/Tommygun.txt"
+#include "actors/classes/CSCC/laggyblazko/CorpFragGrenade.txt"
+#include "actors/classes/CSCC/laggyblazko/CorpGrandDad.txt"
+#include "actors/classes/CSCC/laggyblazko/lgcopy.txt"

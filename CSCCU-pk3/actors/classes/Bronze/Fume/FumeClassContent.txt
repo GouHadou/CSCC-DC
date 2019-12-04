@@ -1,0 +1,2 @@
+#include "actors/Classes/Bronze/Fume/Fume.txt"
+#include "actors/Classes/Bronze/Fume/FumeWeapons.txt"

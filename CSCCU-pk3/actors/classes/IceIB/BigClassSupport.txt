@@ -1,0 +1,65 @@
+actor BigSpawnFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor NoTeleportFog : TeleportFog
+{
+States
+{
+Spawn:
+//Raven:
+//Strife:
+TNT1 A 0
+TNT1 A 1
+Stop
+}
+}
+
+actor TeleportFog3 : TeleportFog2 replaces TeleportFog2
+{
+States
+{
+Spawn:
+TFOG A 0
+TFOG A 3 A_PlaySound("misc/teleport2")
+TFOG BC 2
+Stop
+}
+}
+
+actor SpaceCheck
+{
+PROJECTILE
++DONTBLAST
++DONTSPLASH
++RIPPER
++THRUGHOST
+//+NOEXPLODEFLOOR
+speed 0
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+Death:
+//TNT1 A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+TNT1 A 0 A_GiveToTarget("InSomething",1)
+stop
+}
+}
+
+actor InSomething : PowerDamage
+{
+powerup.duration 2
+damagefactor "normal", 1.0
+}
+
+actor BigTempInvinc : PowerProtection
+{
+powerup.duration 2
+damagefactor "normal", 0.0
+damagefactor "MirrorBuster2", 0.0
+}

@@ -1,0 +1,68 @@
+actor MechUnitB : ClassBaseCSCC
+{
++NOSKIN //This basically means you can't pick what skin you're using on a class.
+player.displayname "Mech Unit 'B'"
+player.soundclass "robutto"
+player.startitem "BoltPistol"
+player.startitem "BoltPistolAmmo", 8
+player.startitem "AtomizerFlag", 1
+player.startitem "AltEquipmentAmmo", 10
+player.forwardmove 0.69, 0.69 //69, dudes!
+player.sidemove 0.67, 0.67
+player.jumpz 12 //This will make our class jump higher than Megaman.
+//player.startitem "CanPickAmmo" //These three are commented out so that our class cannot pick up ammo, use copy weapons, or use items.
+//player.startitem "CanCopyWeapons"
+//player.startitem "CanUseItems"
+player.maxhealth 135
+health 135
+//damagefactor "Normal", 0.74 //THE ABSOLUTE TANKIEST OF ROBOT GIRLS
+player.startitem "DocToadHealthBar" //wheeeeee
+States
+{
+Spawn:
+//GUAR A 0 A_JumpIfInventory("AlreadyGenerating",1,2)
+//GUAR A 0 A_SpawnItemEx("AltAmmoGenerator")
+GUAR A 0 //A_GiveInventory("AlreadyGenerating",1)
+GUAR B 1
+GUAR A 1
+Goto Spawn+2
+See:
+GUAR BCDE 5
+Goto Spawn+2
+Missile:
+GUAR F 5 
+GUAR G 4 
+goto Spawn+3
+
+}
+}
+
+actor AltAmmoGenerator
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
++NoTargetSwitch
+States
+{
+Spawn:
+TNT1 A 1 A_JumpIfInTargetInventory("IsDead",1,"Death")
+TNT1 A 0 A_GiveToTarget("AtomizerFlag",1)
+TNT1 A 10
+TNT1 A 0 A_JumpIfInTargetInventory("CantGenerate",1,"Spawn")
+TNT1 A 0 A_GiveToTarget("AltEquipmentAmmo",1)
+loop
+Death:
+TNT1 A 1
+stop
+}
+}
+
+actor AlreadyGenerating : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}

@@ -1,0 +1,1645 @@
+actor NapalmSoulBuster : Weapon//: MegaBuster
+{
+Weapon.AmmoUse 0
+Weapon.AmmoGive 3
+Weapon.SlotNumber 1
+scale 2.0
+Obituary "%o was deleted by %k."
+weapon.ammotype "BusterAmmo"
+inventory.icon "NULLICON"
+
++WEAPON.AMMO_OPTIONAL
+//+WEAPON.ALT_AMMO_OPTIONAL
++WEAPON.NOAUTOAIM
++WEAPON.DONTBOB
+States
+{
+Spawn:
+WEAP X 1
+stop
+Ready:
+NSHD A 1 A_JumpIfInventory("Once",1,"Ready2")
+NSHD A 0 //SetPlayerProperty(0,1,16)
+NSHD A 0 A_GiveInventory("Once",1)
+Goto Ready2
+Ready2:
+NSHD A 0 A_GunFlash
+NSHD A 0 ACS_ExecuteAlways(991,0,0)
+NSHD A 0 A_JumpIfInventory("CustomAmmo",350,"RandomChipGivers")
+NSHD A 0 A_JumpIfInventory("ChipReady",1,"ChipAttacks")
+NSHD A 2 A_WeaponReady
+NSHD A 0 A_TakeInventory("IsShooting",999)
+NSHD A 0 A_TakeInventory("ChargeComplete",999)
+NSHD A 0 
+Goto Ready2+2
+ChipAttacks:
+NSHD A 0 A_TakeInventory("ChipReady",1)
+NSHD A 0 A_JumpIfInventory("GunSol1Ready1",1,"UseGunSol1")
+NSHD A 0 A_JumpIfInventory("GunSol2Ready2",1,"UseGunSol2")
+NSHD A 0 A_JumpIfInventory("GunSol3Ready3",1,"UseGunSol3")
+NSHD A 0 A_JumpIfInventory("MineReady1",1,"UseMine")
+NSHD A 0 A_JumpIfInventory("TornadoReady1",1,"UseTornado")
+NSHD A 0 A_JumpIfInventory("AirSpin3Ready1",1,"UseAirSpin3")
+NSHD A 0 A_JumpIfInventory("StepSwordReady1",1,"UseStepSword")
+NSHD A 0 A_JumpIfInventory("Meteor3Ready1",1,"UseMeteor3")
+NSHD A 0 A_JumpIfInventory("RedWaveReady1",1,"UseRedWave")
+NSHD A 0 A_JumpIfInventory("BlackBomb3Ready1",1,"UseBlackBomb3")
+NSHD A 0 A_JumpIfInventory("CircleGun3Ready1",1,"UseCircleGun3")
+//NSHD A 0 A_JumpIfInventory("MachineGun3Ready1",1,"UseMachineGun3")
+NSHD A 0 A_JumpIfInventory("Magnum3Ready1",1,"UseMagnum3")
+NSHD A 0 A_JumpIfInventory("BlizzardReady1",1,"UseBlizzard")
+NSHD A 0 A_JumpIfInventory("ElementIceReady1",1,"UseElementIce")
+NSHD A 0 A_JumpIfInventory("GeyserReady1",1,"UseGeyser")
+NSHD A 0 A_JumpIfInventory("Plasma3Ready1",1,"UsePlasma3")
+//NSHD A 0 A_JumpIfInventory("Lightning3Ready1",1,"UseLightning3")
+NSHD A 0 A_JumpIfInventory("CustomVolt3Ready1",1,"UseCustomVolt3")
+NSHD A 0 A_JumpIfInventory("AirHoc3Ready1",1,"UseAirHoc3")
+NSHD A 0 A_JumpIfInventory("SuperVulcanReady2",1,"UseSuperVulcan")
+NSHD A 0 A_JumpIfInventory("GunSolXReady4",1,"UseGunSol4")
+NSHD A 0 A_JumpIfInventory("NeoVariReady1",1,"UseNeoVari")
+NSHD A 0 A_JumpIfInventory("ZSaverReady1",1,"UseZSaver")
+NSHD A 0 A_JumpIfInventory("JusticeOneReady1",1,"UseJusticeOne")
+NSHD A 0 A_JumpIfInventory("GiantHookReady1",1,"UseGiantHook")
+NSHD A 0 A_JumpIfInventory("BassXReady1",1,"UseBass")
+NSHD A 3
+goto Ready2+3
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+NSHD A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+NSHD A 1 A_Raise
+Loop
+Fire:
+NSHD A 0 A_JumpIfInventory("CircleGun3Phase",1,"CircleGun3Fire")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",10,"Magnum3Fire10")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",9,"Magnum3Fire9")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",8,"Magnum3Fire8")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",7,"Magnum3Fire7")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",6,"Magnum3Fire6")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",5,"Magnum3Fire5")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",4,"Magnum3Fire4")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",3,"Magnum3Fire3")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",2,"Magnum3Fire2")
+NSHD A 0 A_JumpIfInventory("Magnum3Phase",1,"Magnum3Fire1")
+NSHD A 0 A_TakeInventory("ChargeComplete",1)
+NSHD A 0 A_TakeInventory("WeaponCharge",999)
+NSHD A 0 A_TakeInventory("PowerNapalmSoulPU",1)
+NSHD A 0 A_JumpIfInventory("Burninator",1,5)
+NSHD AST 3
+NSHD T 2
+NSHD U 0 A_GiveInventory("Burninator",1)
+NSHD U 0 A_TakeInventory("PowerNapalmSpeed",1)
+NSHD U 0 A_GiveInventory("PowerNapalmSpeedSlower",1)
+NSHD U 0 A_JumpIfInventory("BusterPlus",4,"CFire5")//Impact Up+ROF Up(very Slight)
+NSHD U 0 A_JumpIfInventory("BusterPlus",3,"CFire4")//Attack Up x3
+NSHD U 0 A_JumpIfInventory("BusterPlus",2,"CFire3")//Attack Up x2
+NSHD U 0 A_JumpIfInventory("BusterPlus",1,"CFire2")//Attack Up x1
+NSHD U 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//1
+NSHD U 3 A_FireCustomMissile("NapalmVulcanShot1",0,0,0,0)
+NSHD T 3
+NSHD V 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//2
+NSHD V 3 A_FireCustomMissile("NapalmVulcanShot1",0,0,0,0)
+NSHD T 3
+NSHD T 0 A_Refire
+goto BurnReady
+CFire2: //Attack Up
+NSHD U 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//1
+NSHD U 3 A_FireCustomMissile("NapalmVulcanShot2",0,0,0,0)
+NSHD T 3
+NSHD V 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//2
+NSHD V 2 A_FireCustomMissile("NapalmVulcanShot2",0,0,0,0)
+NSHD T 3
+NSHD T 0 A_Refire
+goto BurnReady
+CFire3: //Attack Up
+NSHD U 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//1
+NSHD U 3 A_FireCustomMissile("NapalmVulcanShot3",0,0,0,0)
+NSHD T 3
+NSHD V 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//2
+NSHD V 3 A_FireCustomMissile("NapalmVulcanShot3",0,0,0,0)
+NSHD T 3
+NSHD T 0 A_Refire
+goto BurnReady
+CFire4: //Attack Up
+NSHD U 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//1
+NSHD U 3 A_FireCustomMissile("NapalmVulcanShot4",0,0,0,0)
+NSHD T 3
+NSHD V 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//2
+NSHD V 3 A_FireCustomMissile("NapalmVulcanShot4",0,0,0,0)
+NSHD T 3
+NSHD T 0 A_Refire
+goto BurnReady
+CFire5: //ROF up + Impact Up
+NSHD U 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//1
+NSHD U 2 A_FireCustomMissile("NapalmVulcanShot5",0,0,0,0)
+NSHD T 2
+NSHD V 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//2
+NSHD V 2 A_FireCustomMissile("NapalmVulcanShot5",0,0,0,0)
+NSHD T 2
+NSHD T 0 A_Refire
+goto BurnReady
+BurnReady:
+NSHD T 1 A_WeaponReady(WRF_NOSECONDARY|WRF_NOSWITCH)
+NSHD T 0 A_TakeInventory("Burninator",999)
+NSHD T 0 A_TakeInventory("PowerNapalmSpeedSlower",1)
+NSHD T 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD T 1 A_GiveInventory("PowerNapalmSpeed",1)
+NSHD TSAAA 3 
+Goto Ready2+3
+Fire1:
+NSHD A 0 ACS_ExecuteAlways(991,0,0)
+NSHD A 0 A_PlaySoundEx("weapon/BNShot","Weapon")
+NSHD A 0 A_TakeInventory("ChargeComplete",1)
+NSHD A 0 A_TakeInventory("WeaponChargeX",999)
+NSHD A 0 A_TakeInventory("WeaponCharge",999)
+NSHD A 0 A_TakeInventory("PowerNapalmSoulPU",999)
+NSHD D 0 A_FireCustomMissile("L2BusterShot",0,0,0,0)
+NSHD DCB 3
+NSHD A 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD A 0 A_Refire
+goto Ready2+3
+UseNeoVari:
+TNT1 A 3 
+TNT1 A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+FHUD C 1 A_FireCustomMissile("NSlashFX",60,0,0,0,0,-8)
+FHUD C 0 A_FireCustomMissile("NSlashFX",55,0,0,0,0,-7)
+FHUD C 0 A_FireCustomMissile("NSlashHB",55,0,0,-7)
+FHUD D 1 A_FireCustomMissile("NSlashFX",50,0,0,0,0,-6)
+FHUD D 0 A_FireCustomMissile("NSlashFX2",45,0,0,0,0,-5)
+FHUD D 1 A_FireCustomMissile("NSlashFX2",40,0,0,0,0,-4)
+FHUD D 0 A_FireCustomMissile("NSlashFX2",35,0,0,0,0,-3)
+FHUD D 0 A_FireCustomMissile("NSlashHB",35,0,0,-3)
+FHUD E 1 A_FireCustomMissile("NSlashFX2",30,0,0,0,0,-2)
+FHUD E 0 A_FireCustomMissile("NSlashFX2",25,0,0,0,0,-1)
+FHUD E 1 A_FireCustomMissile("NSlashFX2",20,0,0,0,0,0)
+FHUD E 0 A_FireCustomMissile("NSlashFX2",15,0,0,0,0,1)
+FHUD E 0 A_FireCustomMissile("NSlashHB",15,0,0,1)
+FHUD F 1 A_FireCustomMissile("NSlashFX2",10,0,0,0,0,2)
+FHUD F 0 A_FireCustomMissile("NSlashFX2", 5,0,0,0,0,3)
+FHUD F 1 A_FireCustomMissile("NSlashFX2", 0,0,0,0,0,4)
+FHUD F 0 A_FireCustomMissile("NSlashFX2", -5,0,0,0,0,5)
+FHUD F 0 A_FireCustomMissile("NSlashHB",-5,0,0,5)
+FHUD G 1 A_FireCustomMissile("NSlashFX2",-10,0,0,0,0,6)
+FHUD G 0 A_FireCustomMissile("NSlashFX2",-15,0,0,0,0,7)
+FHUD G 1 A_FireCustomMissile("NSlashFX2",-20,0,0,0,0,8)
+FHUD G 0 A_FireCustomMissile("NSlashFX2",-25,0,0,0,0,9)
+FHUD G 0 A_FireCustomMissile("NSlashHB",-25,0,0,9)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -30,0,0,0,0,10)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -35,0,0,0,0,11)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -40,0,0,0,0,12)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -45,0,0,0,0,13)
+TNT1 A 0 A_FireCustomMissile("NSlashHB",-45,0,0,13)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -50,0,0,0,0,14)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -60,0,0,0,0,15)
+FHUD C 1 A_FireCustomMissile("NSlashFX",-75,0,0,0,0,16)
+FHUD C 0 A_FireCustomMissile("NSlashFX",-90,0,0,0,0,17)
+TNT1 A 0 A_FireCustomMissile("NSlashHB",-90,0,0,18)
+TNT1 A 3
+TNT1 A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+FHUD C 1 A_FireCustomMissile("NSlashFX",60,0,0,0,0,-8)
+FHUD C 0 A_FireCustomMissile("NSlashFX",55,0,0,0,0,-7)
+FHUD C 0 A_FireCustomMissile("NSlashHB",55,0,0,-7)
+FHUD D 1 A_FireCustomMissile("NSlashFX",50,0,0,0,0,-6)
+FHUD D 0 A_FireCustomMissile("NSlashFX2",45,0,0,0,0,-5)
+FHUD D 1 A_FireCustomMissile("NSlashFX2",40,0,0,0,0,-4)
+FHUD D 0 A_FireCustomMissile("NSlashFX2",35,0,0,0,0,-3)
+FHUD D 0 A_FireCustomMissile("NSlashHB",35,0,0,-3)
+FHUD E 1 A_FireCustomMissile("NSlashFX2",30,0,0,0,0,-2)
+FHUD E 0 A_FireCustomMissile("NSlashFX2",25,0,0,0,0,-1)
+FHUD E 1 A_FireCustomMissile("NSlashFX2",20,0,0,0,0,0)
+FHUD E 0 A_FireCustomMissile("NSlashFX2",15,0,0,0,0,1)
+FHUD E 0 A_FireCustomMissile("NSlashHB",15,0,0,1)
+FHUD F 1 A_FireCustomMissile("NSlashFX2",10,0,0,0,0,2)
+FHUD F 0 A_FireCustomMissile("NSlashFX2", 5,0,0,0,0,3)
+FHUD F 1 A_FireCustomMissile("NSlashFX2", 0,0,0,0,0,4)
+FHUD F 0 A_FireCustomMissile("NSlashFX2", -5,0,0,0,0,5)
+FHUD F 0 A_FireCustomMissile("NSlashHB",-5,0,0,5)
+FHUD G 1 A_FireCustomMissile("NSlashFX2",-10,0,0,0,0,6)
+FHUD G 0 A_FireCustomMissile("NSlashFX2",-15,0,0,0,0,7)
+FHUD G 1 A_FireCustomMissile("NSlashFX2",-20,0,0,0,0,8)
+FHUD G 0 A_FireCustomMissile("NSlashFX2",-25,0,0,0,0,9)
+FHUD G 0 A_FireCustomMissile("NSlashHB",-25,0,0,9)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -30,0,0,0,0,10)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -35,0,0,0,0,11)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -40,0,0,0,0,12)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -45,0,0,0,0,13)
+TNT1 A 0 A_FireCustomMissile("NSlashHB",-45,0,0,13)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -50,0,0,0,0,14)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -60,0,0,0,0,15)
+FHUD C 1 A_FireCustomMissile("NSlashFX",-75,0,0,0,0,16)
+FHUD C 0 A_FireCustomMissile("NSlashFX",-90,0,0,0,0,17)
+TNT1 A 0 A_FireCustomMissile("NSlashHB",-90,0,0,18)
+TNT1 A 0 A_TakeInventory("NeoVariReady1",999)
+goto Ready2+3
+UseAirHoc3:
+NSHD A 0 A_TakeInventory("AirHoc3Ready1",999)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+SCLA BC 1
+SCLA A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+SCLA A 0 A_FireCustomMissile("AirHoc3",0,0,0,0)
+SCLA DDEEFFFGGGG 1
+SCLA CBA 2
+goto Ready2+3
+UseMagnum3:
+NSHD A 0 A_TakeInventory("Magnum3Ready1",999)
+NSHD A 0 A_GiveInventory("Magnum3Cursor",10)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD BBBCCCCDDDDD 1
+Goto Magnum3Aiming
+Magnum3Aiming:
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP1
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor1a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor1",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor1",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP2
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor2a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor2",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor2",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP3
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor3a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor3",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor3",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP4
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor4a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor4",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor4",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP5
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor5a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor5",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor5",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP6
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor6a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor6",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor6",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP7
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor7a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor7",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor7",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP8
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor8a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor8",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor8",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP9
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor9a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor9",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor9",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("Magnum3Phase",1)//FP10
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor10a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor10",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("Magnum3AimingCursor10",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_TakeInventory("Magnum3Cursor",1)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_JumpIfInventory("Magnum3Cursor",1,"Magnum3Aiming")
+goto Magnum3Fire1
+//Actual Projectiles Being Fired
+Magnum3Fire1:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position1Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire2:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position2Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+NSHD A 0 A_TakeInventory("PowerAttackBuff1",999)
+Goto Ready2+3
+Magnum3Fire3:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position3Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire4:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position4Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire5:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position5Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire6:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position6Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire7:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position7Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire8:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position8Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire9:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position9Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+Magnum3Fire10:
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 10
+NSHD D 0 //A_PlaySoundEx("weapon/slashclaw","Weapon")
+NSHD D 0 A_FireCustomMissile("Magnum3Position10Spawner",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("Magnum3Phase",10)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+UsePlasma3:
+NSHD A 0 A_TakeInventory("Plasma3Ready1",999)
+NSHD A 0 A_PlaySoundEx("misc/BNAppear","Weapon")
+NSHD A 0 A_SpawnItemEx("Plasma3Actor",32,0,24)
+NSHD A 35
+goto Ready2+3
+UseGunSol1:
+NSHD A 0 A_TakeInventory("GunSol1Ready1",999)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD B 0 A_PlayWeaponSound("weapon/gundelsolclick")//1
+NSHD BCE 3
+NSHD E 0 A_PlayWeaponSound("weapon/gundelsolfire")//1
+NSHD E 0 A_FireCustomMissile("GunDelSol1Beam",0,0,0,0)
+NSHD E 3
+NSHD E 0 A_FireCustomMissile("GunDelSol1Beam",0,0,0,0)
+NSHD E 3 
+NSHD E 0 A_FireCustomMissile("GunDelSol1Beam",0,0,0,0)
+NSHD E 3  
+NSHD ECB 2
+goto Ready2+3
+UseGunSol2:
+NSHD A 0 A_TakeInventory("GunSol2Ready2",999)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD BCF 3
+NSHD F 0 A_PlayWeaponSound("weapon/gundelsolfire")//1
+NSHD F 0 A_FireCustomMissile("GunDelSol2Beam",0,0,0,0,0,-5)
+NSHD F 0 A_FireCustomMissile("GunDelSol2Beam",0,0,0,0,0,5)
+NSHD F 3 
+NSHD F 0 A_FireCustomMissile("GunDelSol2Beam",0,0,0,0,0,-5)
+NSHD F 0 A_FireCustomMissile("GunDelSol2Beam",0,0,0,0,0,5)
+NSHD F 3 
+NSHD F 0 A_FireCustomMissile("GunDelSol2Beam",0,0,0,0,0,5)
+NSHD F 0 A_FireCustomMissile("GunDelSol2Beam",0,0,0,0,0,5)
+NSHD F 3 
+NSHD FCB 3
+goto Ready2+3
+UseGunSol3:
+NSHD A 0 A_TakeInventory("GunSol3Ready3",999)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD A 0 A_PlayWeaponSound("weapon/gundelsolclick")//14
+NSHD BCG 3
+NSHD G 0 A_PlayWeaponSound("weapon/gundelsolfire")
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",10,0,0,0,0,-10)
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",0,0,0,0,0,10)
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",-10,0,0,0,0,-10)
+NSHD G 3 
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",10,0,0,0,0,-10)
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",0,0,0,0,0,10)
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",-10,0,0,0,0,-10)
+NSHD G 3 
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",10,0,0,0,0,-10)
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",0,0,0,0,0,10)
+NSHD G 0 A_FireCustomMissile("GunDelSol3Beam",-10,0,0,0,0,-10)
+NSHD G 3 
+NSHD GCB 3
+goto Ready2+3
+UseGunSol4:
+NSHD A 0 A_TakeInventory("GunSolXReady4",999)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD B 0 A_PlayWeaponSound("weapon/gundelsolclick")//1
+NSHD BCH 3
+NSHD H 0 A_PlayWeaponSound("weapon/gundelsolfire")//1
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam1",10,0,0,0)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam1",-10,0,0,0)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",20,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",0,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",-20,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",20,0,0,0,0,10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",0,0,0,0,0,10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",-20,0,0,0,0,10)
+NSHD H 3 
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam1",10,0,0,0)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam1",-10,0,0,0)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",20,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",0,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",-20,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",20,0,0,0,0,10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",0,0,0,0,0,10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",-20,0,0,0,0,10)
+NSHD H 3 
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam1",10,0,0,0)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam1",-10,0,0,0)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",20,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",0,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",-20,0,0,0,0,-10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",20,0,0,0,0,10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",0,0,0,0,0,10)
+NSHD H 0 A_FireCustomMissile("GunDelSolXBeam2",-20,0,0,0,0,10)
+NSHD H 3  
+NSHD HCB 2
+goto Ready2+3
+UseElementIce:
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD BBCCCDDDD 1
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)// 1/5th
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)// 2/5th
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)// 3/5th
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)// 4/5th
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//1 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//2 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//3 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//4 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//5 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//1 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//2 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//3 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//4 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD D 0 A_PlaySoundEx("weapon/firestorm","Weapon")
+NSHD D 0 A_FireCustomMissile("ElementIce5a",0,0,0,0)//5 of 5
+NSHD D 0 A_FireCustomMissile("ElementIce4a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2a",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1a",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2b",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1b",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce5c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce4c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce3c",0,0,0,0)
+NSHD D 0 A_FireCustomMissile("ElementIce2c",0,0,0,0)
+NSHD D 1 A_FireCustomMissile("ElementIce1c",0,0,0,0)
+NSHD A 0 A_TakeInventory("ElementIceReady1",999)
+NSHD DCBA 2
+Goto Ready2+3
+UseStepSword:
+TNT1 A 0 //A_SpawnItemEx("StepSwordPlaceHolder",0,0,0)
+TNT1 A 0 //A_ChangeFlag("THRUACTORS",1)
+TNT1 A 0 A_Recoil(-512)
+TNT1 A 0 SetPlayerProperty(0,1,4)
+TNT1 A 1
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("weapon/moonblade","Weapon")
+FHUD C 2 A_FireCustomMissile("SSlashR1",40,0,0,0) 
+FHUD D 2 A_FireCustomMissile("SSlashR2",20,0,0,0) 
+FHUD E 2 A_FireCustomMissile("SSlashR2",  0,0,0,0)
+FHUD F 2 A_FireCustomMissile("SSlashR2",-20,0,0,0) 
+FHUD G 4 A_FireCustomMissile("SSlashR1",-40,0,0,0)
+TNT1 A 0 A_Recoil(512)
+TNT1 A 0 A_TakeInventory("StepSwordReady1",999)
+TNT1 A 1 
+TNT1 A 0 //A_ChangeFlag("THRUACTORS",0)
+TNT1 A 0 A_Stop
+TNT1 A 0 SetPlayerProperty(0,0,4)
+goto Ready2+3
+UseSuperVulcan:
+NSHD A 0 A_GiveInventory("IsShooting",1)
+TNT1 A 0 SetPlayerProperty(0,1,0)
+TNT1 A 3
+NSHD LMN 3
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//1
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//2
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//3
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//4
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//5
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//6
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//7
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//8
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//9
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//10
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//11
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD O 0 A_PlaySoundEx("weapon/vulcanfire","Weapon")//12
+NSHD O 0 //A_FireCustomMissile("SuperVulcanFireFX",0,0,-12,0)
+NSHD O 2 A_FireCustomMissile("SuperVulcanShot1",0,0,0,0)
+NSHD P 2
+NSHD CB 2
+NSHD A 0 SetPlayerProperty(0,0,0)
+NSHD A 0 A_TakeInventory("SuperVulcanReady2",999)
+goto Ready2+3
+UseTornado:
+NSHD A 0 SetPlayerProperty(0,1,0)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD BBCCCDDDD 1
+NSHD K 0 A_PlaySoundEx("weapon/airshooter","Weapon")
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//1 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//2 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//3 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//4 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//5 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//6 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//7 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile1",0,0,0,0)//8 of 8
+NSHD K 2 A_FireCustomMissile("TornadoProjectile2",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("TornadoProjectile3",0,0,0,0)
+NSHD K 0 A_TakeInventory("TornadoReady1",999)
+NSHD K 0 A_GiveInventory("GyroSoulPU",1)
+NSHD B 0 SetPlayerProperty(0,0,0)
+goto Ready2+3
+UseBass:
+NSHD A 0 A_TakeInventory("BassXReady1",999)
+NSHD A 0 A_TakeInventory("GigaChipStock",1)
+NSHD A 0 A_PlaySoundEx("misc/BNAppear","Weapon")
+NSHD A 5 A_SpawnItemEx("BassXActor",32,0,4)
+NSHD AA 30
+NSHD A 5
+goto Ready2+3
+UseMine:
+NSHD A 0 A_TakeInventory("MineReady1",999)
+NSHD BC 1
+NSHD D 0 
+NSHD DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 A_SpawnItemEx("DecoyMine",random(-640,640),random(-640,640),1)
+NSHD D 0 A_FireCustomMissile("RealMineSpawner",random(0,359),0,0,0)
+NSHD CBA 3
+goto Ready2+3
+UseAirSpin3:
+NSHD A 0 A_TakeInventory("AirSpin3Ready1",999)
+SCLA BC 1
+SCLA A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+SCLA A 0 A_FireCustomMissile("AirSpin3Spinner",0,0,0,0)
+SCLA DDEEFFFGGGG 1
+SCLA CBA 2
+NSHD A 0 A_GiveInventory("GyroSoulPU",1)
+goto Ready2+3
+UseMeteor3:
+NSHD A 0 A_TakeInventory("Meteor3Ready1",999)
+NSHD A 0 //A_PlaySoundEx("misc/BNAppear","Weapon")
+NSHD A 0 A_SpawnItemEx("Meteor3Spawner")
+NSHD A 35
+goto Ready2+3
+UseRedWave:
+BOMH A 0 A_TakeInventory("RedWaveReady1",999)
+BOMH BCDEF 2
+BOMH F 0 A_Stop
+BOMH F 0 A_PlaySoundEx("weapon/waterwave","Weapon")
+BOMH F 0 A_FireCustomMissile("RedWaveSpawner",0,0,48,0)
+BOMH F 0 A_FireCustomMissile("RedWaveSpawner",0,0,24,0)
+BOMH F 0 A_FireCustomMissile("RedWaveSpawner",0,0,0,0)
+BOMH F 0 A_FireCustomMissile("RedWaveSpawner",0,0,-24,0)
+BOMH F 0 A_FireCustomMissile("RedWaveSpawner",0,0,-48,0)
+BOMH GGG 2
+BOMH HI 2
+NSHD A 0 A_Refire
+Goto Ready2+3
+UseBlackBomb3:
+BOMH A 0 A_TakeInventory("BlackBomb3Ready1",999)
+BOMH A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BOMH BC 4
+BOMH C 0 A_Stop
+BOMH C 0 A_FireCustomMissile("BlackBomb3",0,0,8,0,0,5)
+BOMH DE 2
+BOMH FG 1
+BOMH HI 2
+NSHD A 7
+NSHD A 0 A_Refire
+Goto Ready2+3
+UseZSaver:
+TNT1 A 0 A_TakeInventory("ZSaverReady1",999)
+//Slash 1
+TNT1 A 0 A_PlaySoundEx("weapon/moonblade","Weapon")
+FHUD C 2 A_FireCustomMissile("ZSlash1R1",40,0,0,0) 
+FHUD D 2 A_FireCustomMissile("ZSlash1R2",20,0,0,0) 
+FHUD E 2 A_FireCustomMissile("ZSlash1R2", 0,0,0,0)
+FHUD F 2 A_FireCustomMissile("ZSlash1R2",-20,0,0,0) 
+FHUD G 2 A_FireCustomMissile("ZSlash1R1",-40,0,0,0)
+TNT1 A 3
+//Slash 2
+TNT1 A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+FHUD J 0 A_FireCustomMissile("ZSlash2aFX",-170,0,0,0,0,75)
+FHUD J 0 A_FireCustomMissile("ZSlash2a",-10,0,0,0,0,90)
+FHUD J 0 A_FireCustomMissile("ZSlash2bFX",-170,0,0,0,0,75)
+FHUD J 0 A_FireCustomMissile("ZSlash2b",-10,0,0,0,0,90)
+FHUD J 0 A_FireCustomMissile("ZSlash2cFX",-170,0,0,0,0,75)
+FHUD J 0 A_FireCustomMissile("ZSlash2c",-10,0,0,0,0,90)
+FHUD J 0 A_FireCustomMissile("ZSlash2dFX",-170,0,0,0,0,75)
+FHUD J 0 A_FireCustomMissile("ZSlash2d",-10,0,0,0,0,90)
+FHUD J 0 A_FireCustomMissile("ZSlash2eFX",-170,0,0,0,0,75)
+FHUD J 0 A_FireCustomMissile("ZSlash2e",-10,0,0,0,0,90)
+FHUD J 0 A_FireCustomMissile("ZSlash2fFX",-170,0,0,0,0,75)
+FHUD J 0 A_FireCustomMissile("ZSlash2f",-10,0,0,0,0,90)
+FHUD J 2 
+FHUD K 0 A_FireCustomMissile("ZSlash2aFX",-5,0,0,0,0,75)
+FHUD K 0 A_FireCustomMissile("ZSlash2a",-5,0,0,0,0,60)
+FHUD K 0 A_FireCustomMissile("ZSlash2bFX",-5,0,0,0,0,75)
+FHUD K 0 A_FireCustomMissile("ZSlash2b",-5,0,0,0,0,60)
+FHUD K 0 A_FireCustomMissile("ZSlash2cFX",-5,0,0,0,0,75)
+FHUD K 0 A_FireCustomMissile("ZSlash2c",-5,0,0,0,0,60)
+FHUD K 0 A_FireCustomMissile("ZSlash2dFX",-5,0,0,0,0,75)
+FHUD K 0 A_FireCustomMissile("ZSlash2d",-5,0,0,0,0,60)
+FHUD K 0 A_FireCustomMissile("ZSlash2eFX",-5,0,0,0,0,75)
+FHUD K 0 A_FireCustomMissile("ZSlash2e",-5,0,0,0,0,60)
+FHUD K 0 A_FireCustomMissile("ZSlash2fFX",-5,0,0,0,0,75)
+FHUD K 0 A_FireCustomMissile("ZSlash2f",-5,0,0,0,0,60)
+FHUD K 2  
+FHUD L 0 A_FireCustomMissile("ZSlash2aFX",0,0,0,0,0,45)
+FHUD L 0 A_FireCustomMissile("ZSlash2a",0,0,0,0,0,30)
+FHUD L 0 A_FireCustomMissile("ZSlash2bFX",0,0,0,0,0,45)
+FHUD L 0 A_FireCustomMissile("ZSlash2b",0,0,0,0,0,30)
+FHUD L 0 A_FireCustomMissile("ZSlash2cFX",0,0,0,0,0,45)
+FHUD L 0 A_FireCustomMissile("ZSlash2c",0,0,0,0,0,30)
+FHUD L 0 A_FireCustomMissile("ZSlash2dFX",0,0,0,0,0,45)
+FHUD L 0 A_FireCustomMissile("ZSlash2d",0,0,0,0,0,30)
+FHUD L 0 A_FireCustomMissile("ZSlash2eFX",0,0,0,0,0,45)
+FHUD L 0 A_FireCustomMissile("ZSlash2e",0,0,0,0,0,30)
+FHUD L 0 A_FireCustomMissile("ZSlash2fFX",0,0,0,0,0,45)
+FHUD L 0 A_FireCustomMissile("ZSlash2f",0,0,0,0,0,30)
+FHUD L 2 
+FHUD M 0 A_FireCustomMissile("ZSlash2aFX",5,0,0,0,0,15)
+FHUD M 0 A_FireCustomMissile("ZSlash2a",5,0,0,0,0,0)
+FHUD M 0 A_FireCustomMissile("ZSlash2bFX",5,0,0,0,0,15)
+FHUD M 0 A_FireCustomMissile("ZSlash2b",5,0,0,0,0,0)
+FHUD M 0 A_FireCustomMissile("ZSlash2cFX",5,0,0,0,0,15)
+FHUD M 0 A_FireCustomMissile("ZSlash2c",5,0,0,0,0,0)
+FHUD M 0 A_FireCustomMissile("ZSlash2dFX",5,0,0,0,0,15)
+FHUD M 0 A_FireCustomMissile("ZSlash2d",5,0,0,0,0,0)
+FHUD M 0 A_FireCustomMissile("ZSlash2eFX",5,0,0,0,0,15)
+FHUD M 0 A_FireCustomMissile("ZSlash2e",5,0,0,0,0,0)
+FHUD M 0 A_FireCustomMissile("ZSlash2fFX",5,0,0,0,0,15)
+FHUD M 0 A_FireCustomMissile("ZSlash2f",5,0,0,0,0,0)
+FHUD M 2  
+FHUD N 0 A_FireCustomMissile("ZSlash2aFX",10,0,0,0,0,-15)
+FHUD N 0 A_FireCustomMissile("ZSlash2a",10,0,0,0,0,-30)
+FHUD N 0 A_FireCustomMissile("ZSlash2bFX",10,0,0,0,0,-15)
+FHUD N 0 A_FireCustomMissile("ZSlash2b",10,0,0,0,0,-30)
+FHUD N 0 A_FireCustomMissile("ZSlash2cFX",10,0,0,0,0,-15)
+FHUD N 0 A_FireCustomMissile("ZSlash2c",10,0,0,0,0,-30)
+FHUD N 0 A_FireCustomMissile("ZSlash2dFX",10,0,0,0,0,-15)
+FHUD N 0 A_FireCustomMissile("ZSlash2d",10,0,0,0,0,-30)
+FHUD N 0 A_FireCustomMissile("ZSlash2eFX",10,0,0,0,0,-15)
+FHUD N 0 A_FireCustomMissile("ZSlash2e",10,0,0,0,0,-30)
+FHUD N 0 A_FireCustomMissile("ZSlash2fFX",10,0,0,0,0,-15)
+FHUD N 0 A_FireCustomMissile("ZSlash2f",10,0,0,0,0,-30)
+FHUD N 2 
+TNT1 A 2
+//Slash 3
+TNT1 A 0 A_PlaySoundEx("weapon/BNLSwordSwing","Weapon")
+FHUD C 1 A_FireCustomMissile("NSlashFX",60,0,0,0,0,-8)
+FHUD C 0 A_FireCustomMissile("NSlashFX",55,0,0,0,0,-7)
+FHUD C 0 A_FireCustomMissile("ZSlash3",55,0,0,-7)
+FHUD D 1 A_FireCustomMissile("NSlashFX",50,0,0,0,0,-6)
+FHUD D 0 A_FireCustomMissile("NSlashFX2",45,0,0,0,0,-5)
+FHUD D 1 A_FireCustomMissile("NSlashFX2",40,0,0,0,0,-4)
+FHUD D 0 A_FireCustomMissile("NSlashFX2",35,0,0,0,0,-3)
+FHUD D 0 A_FireCustomMissile("ZSlash3",35,0,0,-3)
+FHUD E 1 A_FireCustomMissile("NSlashFX2",30,0,0,0,0,-2)
+FHUD E 0 A_FireCustomMissile("NSlashFX2",25,0,0,0,0,-1)
+FHUD E 1 A_FireCustomMissile("NSlashFX2",20,0,0,0,0,0)
+FHUD E 0 A_FireCustomMissile("NSlashFX2",15,0,0,0,0,1)
+FHUD E 0 A_FireCustomMissile("ZSlash3",15,0,0,1)
+FHUD F 1 A_FireCustomMissile("NSlashFX2",10,0,0,0,0,2)
+FHUD F 0 A_FireCustomMissile("NSlashFX2", 5,0,0,0,0,3)
+FHUD F 1 A_FireCustomMissile("NSlashFX2", 0,0,0,0,0,4)
+FHUD F 0 A_FireCustomMissile("NSlashFX2", -5,0,0,0,0,5)
+FHUD F 0 A_FireCustomMissile("ZSlash3",-5,0,0,5)
+FHUD G 1 A_FireCustomMissile("NSlashFX2",-10,0,0,0,0,6)
+FHUD G 0 A_FireCustomMissile("NSlashFX2",-15,0,0,0,0,7)
+FHUD G 1 A_FireCustomMissile("NSlashFX2",-20,0,0,0,0,8)
+FHUD G 0 A_FireCustomMissile("NSlashFX2",-25,0,0,0,0,9)
+FHUD G 0 A_FireCustomMissile("ZSlash3",-25,0,0,9)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -30,0,0,0,0,10)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -35,0,0,0,0,11)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -40,0,0,0,0,12)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -45,0,0,0,0,13)
+TNT1 A 0 A_FireCustomMissile("ZSlash3",-45,0,0,13)
+TNT1 A 1 A_FireCustomMissile("NSlashFX", -50,0,0,0,0,14)
+TNT1 A 0 A_FireCustomMissile("NSlashFX", -60,0,0,0,0,15)
+TNT1 A 1 A_FireCustomMissile("NSlashFX",-75,0,0,0,0,16)
+TNT1 A 0 A_FireCustomMissile("ZSlash3",-90,0,0,17)
+TNT1 A 1
+FHUD CD 2
+FHUD E 1
+FHUD E 0 A_PlaySoundEx("weapon/flamesword","Weapon")
+FHUD E 0 A_FireCustomMissile("ZSlash4",0,0,0,0)
+FHUD E 1
+FHUD FG 2
+TNT1 A 0 A_TakeInventory("ZSaverReady1",999)
+goto Ready2+3
+UseGiantHook:
+TNT1 A 0 A_TakeInventory("GiantHookReady1",1)
+TNT1 A 0 A_TakeInventory("GigaChipStock",1)
+TNT1 A 0 SetPlayerProperty(0,1,4)
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 0 A_Stop
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookLeftFX",45,0,4,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookLeft",45,0,4,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookLeftFX",30,0,2,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookLeft",30,0,2,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookLeftFX",0,0,0,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookLeft",0,0,0,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 2 A_FireCustomMissile("GiantHookLeftFX",-30,0,-2,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookLeft",-30,0,-2,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 2 A_FireCustomMissile("GiantHookLeftFX",-45,0,-4,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookLeft",-45,0,-4,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookRightFX",-45,0,-4,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookRight",-45,0,-4,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookRightFX",-30,0,-2,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookRight",-30,0,-2,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookRightFX",0,0,0,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookRight",0,0,0,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookRightFX",30,0,2,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookRight",30,0,2,0)
+TNT1 A 0 //A_PlaySoundEx("weapon/thunderbeam","Weapon")
+TNT1 A 0 A_FireCustomMissile("GiantHookRightFX",45,0,4,0)
+TNT1 A 2 A_FireCustomMissile("GiantHookRight",45,0,4,0)
+TNT1 A 0 SetPlayerProperty(0,0,4)
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD A 2
+goto Ready2+3
+UseCustomVolt3:
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD K 0 A_TakeInventory("CustomVolt3Ready1",999)
+NSHD BBCCCDDDD 1
+NSHD K 0 A_PlaySoundEx("weapon/thunderbeam","Weapon")
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("CustomVolt3Beam",-20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("CustomVolt3Beam",-20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("CustomVolt3Beam",-20,0,0,0)
+NSHD K 0 A_GiveInventory("HasFired",1)
+NSHD K 0 A_TakeInventory("CustomAmmo",16)//to counteract the custom ammo gained during firing
+NSHD K 0 A_JumpIfInventory("CustomAmmo",16,"CustomVoltExtend")
+NSHD K 0 A_TakeInventory("HasFired",10)
+NSHD K 0 A_TakeInventory("IsShooting",1)
+goto Ready2+3
+CustomVoltExtend:
+NSHD K 0
+NSHD K 0 A_PlaySoundEx("weapon/thunderbeam","Weapon")
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("CustomVolt3Beam",-20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("CustomVolt3Beam",-20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",20,0,0,0)
+NSHD K 0 A_FireCustomMissile("CustomVolt3Beam",0,0,0,0)
+NSHD K 2 A_FireCustomMissile("CustomVolt3Beam",-20,0,0,0)
+NSHD K 0 A_GiveInventory("HasFired",1)
+NSHD K 0 A_TakeInventory("CustomAmmo",16)//to counteract the custom ammo gained during firing
+NSHD K 0 A_JumpIfInventory("HasFired",10,2)
+NSHD K 0 A_JumpIfInventory("CustomAmmo",16,"CustomVoltExtend")
+NSHD K 0
+NSHD K 0 A_TakeInventory("HasFired",10)
+NSHD K 0 A_TakeInventory("IsShooting",1)
+goto Ready2+3
+UseGeyser:
+BOMH A 0 A_TakeInventory("GeyserReady1",999)
+BOMH A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BOMH BC 2
+BOMH C 0 A_Stop
+BOMH C 0 A_FireCustomMissile("GeyserProjectile",0,0,8,0,0,8)
+BOMH DE 2
+BOMH FG 2
+BOMH HI 2
+NSHD A 7
+NSHD A 0 A_Refire
+Goto Ready2+3
+UseJusticeOne:
+BOMH A 0 A_TakeInventory("JusticeOneReady1",999)
+NSHD A 2
+NSHD A 10 A_SpawnItemEx("JusticeOne",-32,0,256,96,0,-48)
+NSHD A 5
+NSHD A 0 A_Refire
+Goto Ready2+3
+UseCircleGun3:
+NSHD A 0 A_TakeInventory("CircleGun3Ready1",999)
+NSHD A 0 A_GiveInventory("Magnum3Cursor",35)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD BBBCCCCDDDDD 1
+Goto CircleGun3Aiming
+CircleGun3Aiming:
+NSHD D 0 
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP1
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor1",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor1a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP2
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor2",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor2a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP3
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor3",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor3a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP4
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor4",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor4a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP5
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor5",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor5a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP6
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor6",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor6a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP7
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor7",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor7a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_GiveInventory("CircleGun3Phase",1)//FP8
+NSHD D 0 A_PlaySoundEx("misc/BombCount","Voice")
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor8",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_FireCustomMissile("CircleGun3AimingCursor8a",0,0,0,0)
+NSHD D 1 A_WeaponReady
+NSHD D 0 A_TakeInventory("Magnum3Cursor",1)
+NSHD D 0 A_TakeInventory("CircleGun3Phase",8)
+NSHD D 0 A_JumpIfInventory("Magnum3Cursor",1,"CircleGun3Aiming")
+goto CircleGun3Fire
+CircleGun3Fire:
+NSHD D 0
+NSHD D 0 A_Stop
+NSHD D 0 SetPlayerProperty(0,1,4)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD D 0 A_FireCustomMissile("CircleGun3FirePosition",0,0,0,0)
+NSHD D 15
+NSHD D 0 A_TakeInventory("Magnum3Cursor",35)
+NSHD D 0 A_TakeInventory("CircleGun3Phase",8)
+NSHD D 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD D 0 SetPlayerProperty(0,0,4)
+NSHD D 0 
+Goto Ready2+3
+UseBlizzard:
+NSHD A 0 A_TakeInventory("BlizzardReady1",999)
+NSHD A 0 A_GiveInventory("IsShooting",1)
+NSHD A 0 A_Stop
+NSHD A 0 SetPlayerProperty(0,1,4)
+NSHD A 0 A_ChangeFlag("NOGRAVITY",1)
+NSHD A 0 A_ChangeFlag("FLOORHUGGER",1)
+NSHD BBCCCKKKK 1
+NSHD K 0 A_PlaySoundEx("weapon/icewavespawn","weapon")
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",64,0,1,0,0,0,0)
+NSHD K 4
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",128,64,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",128,0,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",128,-64,1,0,0,0,0)
+NSHD K 4
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",192,128,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",192,64,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",192,0,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",192,-64,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",192,-128,1,0,0,0,0)
+NSHD K 4
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",256,192,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",256,128,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",256,64,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",256,0,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",256,-64,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",256,-128,1,0,0,0,0)
+NSHD K 0 A_SpawnItemEx("BlizzardIcicle",256,-192,1,0,0,0,0)
+NSHD K 4
+NSHD K 0 SetPlayerProperty(0,0,4)
+NSHD K 0 A_ChangeFlag("NOGRAVITY",0)
+NSHD K 0 A_ChangeFlag("FLOORHUGGER",0)
+NSHD CCCBB 1
+NSHD A 10 A_TakeInventory("IsShooting",1)
+NSHD A 0 A_TakeInventory("PowerProtoSoulPU",1)
+goto Ready2+3
+AltFire:
+NSHD Z 0 A_TakeInventory("PowerNapalmSpeedSlower",1)
+NSHD Z 0 A_TakeInventory("PowerNapalmSoulPU",1)
+NSHD Z 0 A_GiveInventory("PowerNapalmSpeed",1)
+NSHD Z 1 A_GiveInventory("IsShooting",1)
+Goto AltHold
+AltHold:
+NSHD Z 0 A_JumpIfInventory("WeaponChargeX",70,"AltHold3")
+NSHD Z 0 A_JumpIfInventory("WeaponChargeX",1,"AltHold2")
+NSHD Z 0 //A_GiveInventory("PowerSlowerMovement",1)
+NSHD Z 1 A_PlaySoundEx("weapon/BNCharge1","Weapon")
+NSHD Z 1 A_GiveInventory("WeaponChargeX",2)
+NSHD Z 0 A_Refire
+Goto Fire1
+AltHold2:
+NSHD Z 0 
+NSHD Z 0 A_JumpIfInventory("WeaponChargeX",70,"AltHold3")
+NSHD Z 1 ACS_ExecuteAlways(991,0,63)
+NSHD Z 0 A_GiveInventory("WeaponChargeX",1)
+NSHD I 1 ACS_ExecuteAlways(991,0,36)
+NSHD I 0 A_GiveInventory("WeaponChargeX",1)
+NSHD I 0 A_Refire
+Goto Fire1
+AltHold3:
+NSHD I 0 A_JumpIfInventory("NapalmCharged",1,3)
+NSHD J 0 A_GiveInventory("NapalmCharged",1)
+NSHD J 0 A_PlaySoundEx("weapon/BNCharge2","Weapon")
+NSHD J 0
+NSHD J 1 ACS_ExecuteAlways(991,0,64)
+NSHD I 1 ACS_ExecuteAlways(991,0,36)
+NSHD T 0 A_JumpIfInventory("Meteor3Ready1",1,"AltHold3X")
+NSHD T 0 A_JumpIfInventory("RedWaveReady1",1,"AltHold3X")
+NSHD T 0 A_JumpIfInventory("BlackBomb3Ready1",1,"AltHold3X")
+NSHD T 0 A_JumpIfInventory("Magnum3Ready1",1,"AltHold3X")
+NSHD I 0 A_Refire
+Goto AltFire3
+AltHold3X:
+NSHD J 0 A_GiveInventory("NapalmCharged",1)
+NSHD J 1 ACS_ExecuteAlways(991,0,64)
+NSHD I 1 ACS_ExecuteAlways(991,0,36)
+NSHD I 0 A_Refire
+Goto AltFire3X
+AltFire3:
+NSHD A 0 A_StopSoundEx ("Weapon")
+NSHD A 0 A_TakeInventory("WeaponChargeX",105)
+NSHD A 0 ACS_ExecuteAlways(991,0,0)
+NSHD A 0 //SetPlayerProperty(0,1,0)
+NSHD STTT 2
+NSHD T 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NSHD T 0 A_FireCustomMissile("TankCannonShot",0,0,-32,8)
+NSHD T 0 A_FireCustomMissile("TankCannonShot",0,0,32,8)
+NSHD SSSSTT 2
+NSHD A 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD A 0 A_TakeInventory("NapalmCharged",2)
+NSHD A 0 //SetPlayerProperty(0,0,0)
+goto Ready2+3
+AltFire3X:
+NSHD A 0 A_StopSoundEx ("Weapon")
+NSHD A 0 A_TakeInventory("WeaponChargeX",105)
+NSHD A 0 ACS_ExecuteAlways(991,0,0)
+NSHD A 0 //SetPlayerProperty(0,1,0)
+NSHD ATTT 3
+NSHD T 0 A_JumpIfInventory("Meteor3Ready1",1,"NapalmBombS1")
+NSHD T 0 A_JumpIfInventory("RedWaveReady1",1,"NapalmBombS2")
+NSHD T 0 A_JumpIfInventory("BlackBomb3Ready1",1,"NapalmBombS3")
+NSHD T 0 A_JumpIfInventory("Magnum3Ready1",1,"NapalmBombS4")
+NSHD T 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NSHD T 1 A_FireCustomMissile("NapalmBombShot1",0,0,0,0,0,1)
+NSHD S 12
+NSHD S 0 A_TakeInventory("Meteor3Ready1",999)
+NSHD S 0 A_TakeInventory("RedWaveReady1",999)
+NSHD S 0 A_TakeInventory("BlackBomb3Ready1",999)
+NSHD S 0 A_TakeInventory("Magnum3Ready1",999)
+NSHD S 0 A_TakeInventory("NapalmCharged",2)
+NSHD S 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD S 0 A_TakeInventory("IsShooting",999)
+goto Ready2+3
+NapalmBombS1:
+NSHD T 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NSHD T 1 A_FireCustomMissile("NapalmBombShot1",0,0,0,0,0,1)
+NSHD S 12
+NSHD S 0 A_TakeInventory("Meteor3Ready1",999)
+NSHD S 0 A_TakeInventory("RedWaveReady1",999)
+NSHD S 0 A_TakeInventory("BlackBomb3Ready1",999)
+NSHD S 0 A_TakeInventory("Magnum3Ready1",999)
+NSHD S 0 A_TakeInventory("NapalmCharged",2)
+NSHD S 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD S 0 A_TakeInventory("IsShooting",999)
+goto Ready2+3
+NapalmBombS2:
+NSHD T 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NSHD T 1 A_FireCustomMissile("NapalmBombShot2",0,0,0,0,0,1)
+NSHD S 12
+NSHD S 0 A_TakeInventory("Meteor3Ready1",999)
+NSHD S 0 A_TakeInventory("RedWaveReady1",999)
+NSHD S 0 A_TakeInventory("BlackBomb3Ready1",999)
+NSHD S 0 A_TakeInventory("Magnum3Ready1",999)
+NSHD S 0 A_TakeInventory("NapalmCharged",2)
+NSHD S 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD S 0 A_TakeInventory("IsShooting",999)
+goto Ready2+3
+NapalmBombS3:
+NSHD T 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NSHD T 1 A_FireCustomMissile("NapalmBombShot3",0,0,0,0,0,1)
+NSHD S 12
+NSHD S 0 A_TakeInventory("Meteor3Ready1",999)
+NSHD S 0 A_TakeInventory("RedWaveReady1",999)
+NSHD S 0 A_TakeInventory("BlackBomb3Ready1",999)
+NSHD S 0 A_TakeInventory("Magnum3Ready1",999)
+NSHD S 0 A_TakeInventory("NapalmCharged",2)
+NSHD S 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD S 0 A_TakeInventory("IsShooting",999)
+goto Ready2+3
+NapalmBombS4:
+NSHD T 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NSHD T 1 A_FireCustomMissile("NapalmBombShot4",0,0,0,0,0,1)
+NSHD S 12
+NSHD S 0 A_TakeInventory("Meteor3Ready1",999)
+NSHD S 0 A_TakeInventory("RedWaveReady1",999)
+NSHD S 0 A_TakeInventory("BlackBomb3Ready1",999)
+NSHD S 0 A_TakeInventory("Magnum3Ready1",999)
+NSHD S 0 A_TakeInventory("NapalmCharged",2)
+NSHD S 0 A_GiveInventory("PowerNapalmSoulPU",1)
+NSHD S 0 A_TakeInventory("IsShooting",999)
+goto Ready2+3
+NoAmmo:
+NSHD A 0
+NSHD A 1
+Goto Ready2+3
+Flash:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CustomAmmo",1)
+TNT1 A 0 A_GiveInventory("ShieldAmmo",1)
+TNT1 A 1
+loop
+RandomChipGivers:
+NSHD A 0 A_TakeInventory("CustomAmmo",350)
+NSHD A 0 A_TakeInventory("ChipGiverRandomized",3)
+NSHD A 1 A_GiveInventory("ChipGiverRandomized",3)
+goto Ready2+3
+}
+}
+
+Actor NapalmVulcanShot1 : FastProjectile
+{
+PROJECTILE
++BLOODSPLATTER
++SKYEXPLODE
+Radius 8
+Height 16
+Speed 32
+Damage(2)//20
+Damagetype "NapalmVulcan"
+Obituary "%o was deleted by %k. (NapalmSoul)"
+Scale 1.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_ScaleVelocity(32.0)//32^2 = 1024
+TNT1 A 1
+goto Spawn+2
+Death:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 A 1 A_SpawnItemEx("NapalmVulcanImpact",random(-1,1),random(-4,4),random(-4,4))
+stop
+}
+}
+
+//Buster+1: +5
+actor NapalmVulcanShot2 : NapalmVulcanShot1
+{damage (2)}//25
+//Buster+2: +10
+actor NapalmVulcanShot3 : NapalmVulcanShot1
+{damage (3)}//30
+//Buster+3: +15
+actor NapalmVulcanShot4 : NapalmVulcanShot1
+{damage (4)}//35
+//Buster+4: +20 & Explosion Damage
+Actor NapalmVulcanShot5 : NapalmVulcanShot1
+{
+Damage(2)//20
+Damagetype "NapalmVulcan2"
+States
+{
+Death:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 A 0 A_SpawnItemEx("NapalmVulcanImpact2",random(-1,1),random(-4,4),random(-4,4))
+TNT1 A 1 A_Explode(2,80,0)//20
+stop
+}
+}
+
+Actor NapalmVulcanImpact 
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+NVLC A 0
+NVLC ABCD 2
+stop
+}
+}
+
+Actor NapalmVulcanImpact2
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 4.5
+States
+{
+Spawn:
+NVLC A 0
+NVLC ABCD 2 A_SpawnItemEx("MiniNVI",random(-32,32),random(-32,32),random(-32,32))
+stop
+}
+}
+
+Actor MiniNVI
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 2.0
+States
+{
+Spawn:
+DSPK D 0
+DSPK DEFG 1
+stop
+}
+}
+
+Actor TankCannonShot : FastProjectile
+{
+PROJECTILE
++BLOODSPLATTER
++SKYEXPLODE
+Radius 16
+Height 32
+Speed 32
+Damage(0)
+Damagetype "TankCannon"
+Obituary "%o was deleted by %k. (NapalmSoul-Alt)"
+Scale 5.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_ScaleVelocity(32.0)//32^2 = 1024
+TNT1 A 1
+goto Spawn+2
+Death:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("misc/hugequake","Weapon")
+TNT1 A 0 Radius_Quake(8,23,0,20,0)
+NAPA E 1 A_Explode(12,192,0)//120
+NAPA FGHIJKLMNOPQRS 2
+stop
+}
+}
+
+actor NapalmBombShot1
+{
+PROJECTILE
++BLOODSPLATTER
+-NOGRAVITY
+Radius 16
+Height 24
+speed 40
+damage(0)
+damagetype "FireTypeX"
+gravity 1.0
+Obituary "%o was deleted by %k. (NapalmSoul-Alt)"
+scale 3.5
+States
+{
+Spawn:
+NPB1 A 0
+NPB1 A 0 ThrustThingZ(0, 40, 0, 1)
+NPB1 A 1 A_JumpIf(velz<=8,"Phase2")
+Goto Spawn+2
+Phase2:
+NPB1 B 0
+NPB1 B 1 A_JumpIf(velz<=-8,"Phase3")
+goto Phase2
+Phase3:
+NPB1 C 0
+NPB1 C 1 A_JumpIf(velz<=-32,"Phase4")
+goto Phase3
+Phase4:
+NPB1 D 0
+NPB1 D 2 A_ChangeVelocity(velx*0.9,0,velz,CVF_RELATIVE|CVF_REPLACE)
+NPB1 D 2
+goto Phase4
+Death:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+TNT1 A 0 A_Explode(16,256,0)//160
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 A 5 A_SpawnItemEx("NapalmImpact1")
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+TNT1 A 0 //A_Explode(80,256,0)
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+stop
+}
+}
+
+Actor NapalmBombShot2 : NapalmBombShot1
+{
+States
+{
+Death:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+TNT1 A 0 A_Explode(38,256,0)//380
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 A 5 A_SpawnItemEx("NapalmImpact1")
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+TNT1 A 0 //A_Explode(190,256,0)
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+stop
+}
+}
+
+Actor NapalmBombShot3 : NapalmBombShot1
+{
+scale 3.5
+States
+{
+Death:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+TNT1 A 0 A_Explode(50,256,0) //500
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 A 5 A_SpawnItemEx("NapalmImpact1")
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+TNT1 A 0 //A_Explode(250,256,0)
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+stop
+}
+}
+
+Actor NapalmBombShot4 : NapalmBombShot1
+{
+States
+{
+Death:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+TNT1 A 0 A_Explode(36,256,0)//360
+TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+TNT1 A 5 A_SpawnItemEx("NapalmImpact1")
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+TNT1 A 0 //A_Explode(180,256,0)
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("NapalmImpact2",random(-256,256),random(-256,256),random(0,32))
+stop
+}
+}
+
+Actor NapalmImpact1 
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 4.5
+States
+{
+Spawn:
+NPB2 A 0
+NPB2 ABCDE 3
+stop
+}
+}
+
+Actor NapalmImpact2 
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 3.0
+States
+{
+Spawn:
+NPB3 A 0
+NPB3 ABCDEFGHIJKL 1
+stop
+}
+}

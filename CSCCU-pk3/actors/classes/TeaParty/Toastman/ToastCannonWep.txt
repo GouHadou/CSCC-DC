@@ -1,0 +1,1315 @@
+actor ToastCannonWep : BaseMM8BDMWep
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 84
+Weapon.SlotNumber 0
+Inventory.Pickupmessage "Power up! Toast Cannon!"
+weapon.ammotype "ToastAmmo"
+Obituary "%o was left buttered up by %k's Butter Slider."
+Tag "Toast Cannon"
+inventory.icon "NULLICON"
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Ready:
+TST1 A 0 A_GunFlash
+TST1 A 0 ACS_ExecuteAlways(998,0,14)
+Ready0:
+TST1 A 0 A_JumpIfInventory("ToastAmmo",28,"Ready1")
+TST1 A 1 A_WeaponReady(WRF_NOSECONDARY)
+TST1 A 0 A_GiveInventory("ToastAmmo", 1)
+goto Ready0
+Ready1:
+TST1 A 1 A_WeaponReady
+TST1 A 0 A_GiveInventory("ToastAmmo", 1)
+goto Ready1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TST1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+TST1 A 1 A_Raise
+Loop
+
+Fire:
+Hold:
+TST1 A 0 A_JumpIfInventory("ToastCharge",42,"Hold2")
+TST1 A 1 A_GiveInventory("ToastCharge",1)
+TST1 A 0 A_GiveInventory("ToastAmmo", 1)
+TST1 A 0 A_Refire
+Goto Fire1
+Hold2:
+TST1 A 0 A_JumpIfInventory("ToastSound",1,"Hold3")
+TST1 A 0 A_GiveInventory("ToastSound",1)
+TST1 I 0 A_PlaySoundEx("weapon/toastready","SoundSlot7")
+goto Hold3
+Hold3:
+TST1 I 1 
+TST1 A 0 A_GiveInventory("ToastAmmo", 1)
+TST1 I 0 A_Refire
+Goto Fire3
+
+Fire1:
+TST1 A 0 A_TakeInventory("ToastCharge",999)
+TST1 A 0 A_TakeInventory("ToastSound",999)
+TST1 A 0 A_ClearRefire
+TST1 A 0 A_PlaySoundEx("weapon/toastfire","Weapon")
+TST1 A 0 A_GiveInventory("ToastMainfire",1)
+TST1 BCDEFGHI 2
+Goto Ready0
+Fire3:
+TST1 A 0 A_TakeInventory("ToastCharge",999)
+TST1 A 0 A_TakeInventory("ToastSound",999)
+TST1 A 0 A_ClearRefire
+TST1 A 0 A_PlaySoundEx("weapon/toastfire","Weapon")
+TST1 A 0 A_GiveInventory("ToastMainfire2",1)
+TST1 BCDEFG 2
+TNT1 A 3
+TST1 HI 2
+Goto Ready0
+
+Altfire: 
+TST1 A 0 A_TakeInventory("ToastAmmo",28)
+TST1 A 0 A_ClearRefire
+TST1 A 0 A_PlaySoundEx("weapon/toastfire","Weapon")
+TST1 A 0 A_JumpIfInventory("OrangeJuiceOn",1,"OJAltfire")
+TST1 A 0 A_GiveInventory("ToastAlt",1)
+goto AltfireEnd
+OJAltfire:
+TST1 A 0 A_GiveInventory("ToastAlt2",1)
+goto AltfireEnd
+AltfireEnd:
+TST1 BCDEFG 2
+TST1 HI 2
+Goto Ready0
+
+Flash:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TNT1 A 0 A_JumpIfInventory("ButterSliderFlag",1,"SlideBegin")
+TNT1 A 1
+loop
+SlideBegin:
+TNT1 A 0 A_GiveInventory("ButterSliderFlag",30)
+TNT1 A 0 A_GiveInventory("FlyDeactivate", 1)
+Slide:
+TNT1 A 0 SetPlayerProperty(0, 1, 0)
+TNT1 A 0 A_TakeInventory("ButterSliderFlag",1)
+TNT1 A 0 A_JumpIfInventory("IsUnderWater", 1, "UnderWater")
+Goto SlideContinue
+UnderWater:
+TNT1 A 0 A_JumpIf(z-floorz > 32, 1)
+Goto SlideContinue
+TNT1 A 0 A_JumpIf(momz <= 0, 2)
+TNT1 A 0 ThrustThingZ(0, 7, 0, 1)
+Goto SlideContinue
+TNT1 A 0 A_GiveInventory("FlyActivate", 1)
+TNT1 A 0 ThrustThingZ(0, 5, 0, 0)
+Goto SlideContinue+1
+SlideContinue:
+TNT1 A 0 A_GiveInventory("FlyDeactivate", 1)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TNT1 A 0 A_SpawnItemEX("ButterDamager",24,0,10)
+TST1 A 0 A_GiveInventory("ToastSlider",1)
+TNT1 A 0 A_GiveInventory("ButterSliderHandler",1)
+TNT1 A 1 A_JumpIf(CallACS("CSACS_ToastJump")==1,"ButterPogo")
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TST1 A 0 A_GiveInventory("ToastSlider",1)
+TNT1 A 0 A_GiveInventory("ButterSliderHandler",1)
+TNT1 A 1 A_JumpIf(CallACS("CSACS_ToastJump")==1,"ButterPogo")
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TST1 A 0 A_GiveInventory("ToastSlider",1)
+TNT1 A 0 A_GiveInventory("ButterSliderHandler",1)
+TNT1 A 1 A_JumpIf(CallACS("CSACS_ToastJump")==1,"ButterPogo")
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TST1 A 0 A_GiveInventory("ToastSlider",1)
+TNT1 A 0 A_GiveInventory("ButterSliderHandler",1)
+TNT1 A 1 A_JumpIf(CallACS("CSACS_ToastJump")==1,"ButterPogo")
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TST1 A 0 A_GiveInventory("ToastSlider",1)
+TNT1 A 0 A_GiveInventory("ButterSliderHandler",1)
+TNT1 A 1 A_JumpIf(CallACS("CSACS_ToastJump")==1,"ButterPogo")
+TNT1 A 0 A_JumpIfInventory("ButterSliderFlag", 1, "Slide")
+Goto SlideEnd
+ButterPogo:
+TNT1 A 0
+TNT1 A 0 ThrustThingZ(0, 40, 0, 0)
+TNT1 A 0 A_Jump(256,"SlideEnd")
+Goto SlideEnd
+SlideEnd:
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 A_GiveInventory("FlyDeactivate", 1)
+TNT1 A 0 A_StopSound(CHAN_6)
+TNT1 A 0 A_TakeInventory("ButterSoundTime", 1)
+TNT1 A 0 A_TakeInventory("ButterPushTime", 1)
+TNT1 A 0 A_TakeInventory("ButterSliderFlag", 999)
+TNT1 A 10
+goto Flash
+NoFlash:
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 A_GiveInventory("FlyDeactivate", 1)
+TNT1 A 0 A_StopSound(CHAN_6)
+TNT1 A 0 A_TakeInventory("ButterSoundTime", 1)
+TNT1 A 0 A_TakeInventory("ButterPushTime", 1)
+TNT1 A 0 A_TakeInventory("ButterSliderFlag", 999)
+TNT1 A 10
+stop
+
+NoAmmo:
+TST1 A 1
+goto Ready0
+}
+}
+
+actor ToastCharge : Inventory
+{
+inventory.amount 1
+inventory.maxamount 42
+}
+
+actor ToastSound : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor ToastAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 84
+}
+
+actor ButterSliderFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 30
+}
+
+actor ButterSoundTime : Powerup
+{
+powerup.duration 6
+}
+
+actor ButterPushTime : Powerup
+{
+powerup.duration 2
+}
+
+actor ButterSliderHandler : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("ButterSoundTime",1,3)
+TNT1 A 0 A_GiveInventory("ButterSoundTime",1)
+TNT1 A 0 A_PlaySoundEX("weapon/oilslider","SoundSlot6")
+TNT1 A 0 A_JumpIfInventory("ButterPushTime",1,"No")
+TNT1 A 0 A_GiveInventory("ButterPushTime",1)
+TNT1 A 0 A_CheckFloor("GroundPush")
+TNT1 A 0 A_JumpIfInventory("ToastmanSpeed",1,"PushFast")
+TNT1 A 0 A_Recoil(-2)
+stop
+PushFast:
+TNT1 A 0 A_Recoil(-3)
+stop
+GroundPush:
+TNT1 A 0 A_JumpIfInventory("ToastmanSpeed",1,"GroundPushFast")
+TNT1 A 0 A_Recoil(-4)
+stop
+GroundPushFast:
+TNT1 A 0 A_Recoil(-6)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ButterSlickShot
+{
+Translation "250:250=214:214", "202:202=215:215"
+Obituary "%o slipped out of the universe due to %k's Butter Slick Shot."
+damagetype "Butter"
+PROJECTILE
+Radius 10
+Height 10
+scale 2.5
+-NOGRAVITY
+speed 30
+damage (15)
+States
+{
+Spawn:
+TST3 D 0
+TST3 D 5 A_CheckFloor("Death")
+loop
+Crash:
+XDeath:
+TST3 D 1
+stop
+Death:
+TST3 D 0 
+TST3 D 0 A_JumpIf(z-floorz<=0,"Death2")
+TST3 D 1 A_GiveInventory("CutterFlag", 1)
+TST3 D 0 A_JumpIfInventory("CutterFlag", 85, "Xdeath")
+loop
+Death2:
+TST3 D 1 A_SpawnItemEx("ButterSlick",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+actor ButterSlickShotB : ButterSlickShot {Translation "250:250=196:196", "202:202=205:205"}
+actor ButterSlickShotR : ButterSlickShot {Translation "250:250=170:170", "202:202=171:171"}
+actor ButterSlickShotG : ButterSlickShot {Translation "250:250=138:138", "202:202=104:104"}
+actor ButterSlickShotY : ButterSlickShot {Translation "250:250=214:214", "202:202=229:229"}
+
+actor ButterSlick
+{
+Translation "250:250=214:214", "202:202=215:215"
+Obituary "%o slipped out of the universe due to %k's Butter Slick Shot."
+damagetype "Butter"
++MISSILE
++DONTSPLASH
++NOEXPLODEFLOOR
++NOTARGETSWITCH
+Damage (15)
+Height 10
+Radius 8
+scale 2.5
+mass 99999
+reactiontime 86
+painchance 256
+states
+{
+Spawn:
+TST3 G 0
+TST3 G 1 
+Goto Spawn2
+Spawn2:
+TST3 G 1 A_Stop
+Goto SlideWait
+SlideWait:
+TST3 E 1 A_JumpIfCloser(40, "Slide")
+TST3 E 0 A_GiveInventory("CutterFlag", 1)
+TST3 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST3 E 0 A_JumpIfInventory("CutterFlag", 85, "Death")
+loop
+Slide:
+TST3 E 0
+TST3 E 0 A_JumpIfInTargetInventory("ButterSliderFlag", 1,"Spawn2")
+TST3 E 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TNT1 A 2 A_GiveToTarget("ButterSliderFlag",30)
+stop
+NewShot:
+TST3 E 0 A_SpawnItemEx("ButterSlickShot", 0, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+Goto Death 
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor ButterBlob
+{
+Translation "250:250=214:214", "202:202=215:215"
+Obituary "%o was destroyed by %k's power of a nutritious breakfast."
+damagetype "Butter"
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
+Speed 40
+Damage (25)
+radius 20
+height 20
+scale 4.5
+States
+{
+Spawn:
+TST3 DDDDD 3 A_SpawnItemEx("ButterSlickShot",0,0,0,random(2,4),0,2,random(0,359),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,4,random(240,359),SXF_TRANSFERTRANSLATION)
+stop
+Crash:
+TST3 D 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST3 D 0 A_SpawnItemEx("ButterSlickFX",0,0,0,random(4,8),0,4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickFX",0,0,0,random(4,8),0,4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickFX",0,0,0,random(4,8),0,4,random(240,359),SXF_TRANSFERTRANSLATION)
+stop
+Death:
+TST3 D 0 A_CheckCeiling("CeilingDeath")
+TST3 D 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,4,random(240,359),SXF_TRANSFERTRANSLATION)
+stop
+CeilingDeath:
+TST3 D 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,-4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,-4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST3 D 0 A_SpawnItemEx("ButterSlickShot",0,0,0,random(4,8),0,-4,random(240,359),SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+actor ButterBlobB : ButterBlob {Translation "250:250=196:196", "202:202=205:205"}
+actor ButterBlobR : ButterBlob {Translation "250:250=170:170", "202:202=171:171"}
+actor ButterBlobG : ButterBlob {Translation "250:250=138:138", "202:202=104:104"}
+actor ButterBlobY : ButterBlob {Translation "250:250=214:214", "202:202=229:229"}
+
+actor ButterSlickFX
+{
+damage 0
++RIPPER
+-NOGRAVITY
++CLIENTSIDEONLY
+scale 2.5
+//NOINTERACTION
+Height 2
+Radius 2
+States
+{
+Spawn:
+TST3 D 2
+TNT1 A 2
+TST3 D 2
+TNT1 A 2
+TST3 D 2
+TNT1 A 2
+TST3 D 2
+TNT1 A 2
+TST3 D 2
+TNT1 A 2
+stop
+}
+}
+
+actor ButterSliderFX
+{
+Translation "250:250=214:214", "202:202=215:215"
+PROJECTILE
++RIPPER
++DONTBLAST
++NOCLIP
++NOINTERACTION
++CLIENTSIDEONLY
+Radius 8
+Height 16
+scale 2.5
+damage (0)
+speed 20
+States
+{
+Spawn:
+TST3 F 2 
+stop
+}
+}
+
+actor ButterDamager
+{
+PROJECTILE
+damagetype "Butter"
+Obituary "%o was left buttered up by %k's Butter Slider."
++RIPPER
++NOINTERACTION
++DONTBLAST
+damage (0)
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Explode(12,80,0)
+stop
+}
+}
+
+actor FlavorToggleItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "You got a balanced breakfast!"
+inventory.icon "TSTFS"
+Tag "Flavor Swap"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_JumpIfInventory("FlavorCooldown",1,"Nope")
+TNT1 A 0 A_PlaySoundEx("item/press","SoundSlot4")
+TNT1 A 0 A_GiveInventory("FlavorCooldown",1)
+TNT1 A 0 A_JumpIfInventory("OrangeJuiceOn",1,"NotUse")
+TNT1 A 0 A_GiveInventory("OrangeJuiceOn",1)
+fail
+NotUse:
+TNT1 A 0 A_TakeInventory("OrangeJuiceOn",999)
+fail
+Nope:
+TNT1 A 0
+fail
+}
+}
+
+actor OrangeJuiceOn : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor FlavorCooldown : Powerup
+{
+Powerup.Duration 4
+}
+
+actor ToastJamShot
+{
+renderstyle translucent
+alpha 0.75
+Translation "249:249=60:60", "195:195=249:249", "199:199=72:72", "192:192=68:68"
+PROJECTILE
+Radius 10
+Height 10
+scale 2.5
+-NOGRAVITY
++THRUACTORS
+speed 40
+damage (0)
+States
+{
+Spawn:
+TST2 A 0
+TST2 ABC 2 A_CheckFloor("Death")
+loop
+Death:
+TST2 D 0 A_CheckCeiling("CeilingDeath")
+TST2 D 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(4,8),0,4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(4,8),0,4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(4,8),0,4,random(240,359),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(8,12),0,4,random(60,179),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(8,12),0,4,random(180,299),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(8,12),0,4,random(300,419),SXF_TRANSFERTRANSLATION)
+TST2 A 0 A_ChangeFlag("NOGRAVITY",1)
+TST2 A 0 A_Stop
+TST2 HIJK 2
+stop
+CeilingDeath:
+TST2 D 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(4,8),0,-4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(4,8),0,-4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(4,8),0,-4,random(240,359),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(8,12),0,-4,random(60,179),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(8,12),0,-4,random(180,299),SXF_TRANSFERTRANSLATION)
+TST2 D 0 A_SpawnItemEx("ToastJamShot2",0,0,0,random(8,12),0,-4,random(300,419),SXF_TRANSFERTRANSLATION)
+TST2 A 0 A_ChangeFlag("NOGRAVITY",1)
+TST2 A 0 A_Stop
+TST2 HIJK 2
+stop
+}
+}
+actor ToastJamShotB : ToastJamShot {Translation "249:249=199:199", "195:195=244:244", "199:199=74:74", "192:192=205:205"}
+actor ToastJamShotR : ToastJamShot {Translation "249:249=45:45", "195:195=191:191", "199:199=41:41", "192:192=171:171"}
+actor ToastJamShotG : ToastJamShot {Translation "249:249=131:131", "195:195=135:135", "199:199=128:128", "192:192=104:104"}
+actor ToastJamShotY : ToastJamShot {Translation "249:249=223:223", "195:195=234:234", "199:199=232:232", "192:192=229:229"}
+
+actor ToastJamShot2
+{
+renderstyle translucent
+alpha 0.75
+PROJECTILE
+Radius 6
+Height 6
+scale 1.5
+-NOGRAVITY
++THRUACTORS
+speed 40
+damage (0)
+States
+{
+Spawn:
+TST2 A 0
+TST2 ABC 5 A_CheckFloor("Death")
+loop
+Death:
+TST2 A 0 
+TST2 A 0 A_JumpIf(z-floorz<=0,"Death2")
+TST2 A 1 A_GiveInventory("CutterFlag", 1)
+TST2 A 0 A_JumpIfInventory("CutterFlag", 350, "Xdeath")
+TST2 A 0 A_JumpIf(z-floorz<=0,"Death2")
+TST2 A 1 A_GiveInventory("CutterFlag", 1)
+TST2 A 0 A_JumpIfInventory("CutterFlag", 350, "Xdeath")
+TST2 B 0 A_JumpIf(z-floorz<=0,"Death2")
+TST2 B 1 A_GiveInventory("CutterFlag", 1)
+TST2 B 0 A_JumpIfInventory("CutterFlag", 350, "Xdeath")
+TST2 B 0 A_JumpIf(z-floorz<=0,"Death2")
+TST2 B 1 A_GiveInventory("CutterFlag", 1)
+TST2 B 0 A_JumpIfInventory("CutterFlag", 350, "Xdeath")
+TST2 C 0 A_JumpIf(z-floorz<=0,"Death2")
+TST2 C 1 A_GiveInventory("CutterFlag", 1)
+TST2 C 0 A_JumpIfInventory("CutterFlag", 350, "Xdeath")
+TST2 C 0 A_JumpIf(z-floorz<=0,"Death2")
+TST2 C 1 A_GiveInventory("CutterFlag", 1)
+TST2 C 0 A_JumpIfInventory("CutterFlag", 350, "Xdeath")
+loop
+Death2:
+TST3 D 1 A_SpawnItemEx("ToastJamBlob",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor ToastJamBlob
+{
+renderstyle translucent
+alpha 0.75
++MISSILE
++DONTSPLASH
++NOEXPLODEFLOOR
++NOTARGETSWITCH
++THRUACTORS
+Damage (0)
+Height 6
+Radius 6
+scale 1.5
+mass 99999
+reactiontime 176
+painchance 256
+states
+{
+Spawn:
+TST2 D 0
+TST2 D 1 
+Goto Spawn2
+Spawn2:
+TST2 D 2 A_Stop
+TST2 D 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BIdle")
+TST2 D 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RIdle")
+TST2 D 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GIdle")
+TST2 D 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YIdle")
+Goto Idle
+Idle:
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickup",96,RGF_PLAYERS|RGF_NOTARGET,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+BIdle:
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupB",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+RIdle:
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupR",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+GIdle:
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupG",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+YIdle:
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 F 0 A_GiveInventory("CutterFlag", 1)
+TST2 F 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 F 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 G 0 A_GiveInventory("CutterFlag", 1)
+TST2 G 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 G 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+TST2 E 0 A_GiveInventory("CutterFlag", 1)
+TST2 E 0 A_JumpIf(z-floorz>0,"NewShot")
+TST2 F 0 A_RadiusGive("ToastmanSlowPickupY",96,RGF_PLAYERS,1)
+TST2 E 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+NewShot:
+TST2 E 0 A_SpawnItemEx("ToastJamShot2", 0, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+Goto Death 
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSlowPickup : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("ToastmanSlow",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),0)
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),0)
+TNT1 A 0 A_GiveInventory("ToastmanSlow",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSlowPickupB : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"No")
+TNT1 A 0 A_JumpIfInventory("ToastmanSlow",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSlow",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSlowPickupR : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"No")
+TNT1 A 0 A_JumpIfInventory("ToastmanSlow",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSlow",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSlowPickupG : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"No")
+TNT1 A 0 A_JumpIfInventory("ToastmanSlow",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSlow",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSlowPickupY : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"No")
+TNT1 A 0 A_JumpIfInventory("ToastmanSlow",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastJamDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSlow",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSlow : PowerSpeed
+{
+Powerup.Duration 3
+Speed 0.75
++POWERSPEED.NOTRAIL
+}
+
+actor ToastOJShot
+{
+renderstyle translucent
+alpha 0.75
+Translation "250:250=214:214", "198:198=218:218"
+PROJECTILE
+Radius 10
+Height 10
+scale 2.5
+-NOGRAVITY
++THRUACTORS
+speed 40
+damage (0)
+States
+{
+Spawn:
+TST4 A 0
+TST4 A 5 A_CheckFloor("Death")
+loop
+Death:
+TST4 A 0 A_CheckCeiling("CeilingDeath")
+TST4 A 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(4,8),0,4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(4,8),0,4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(4,8),0,4,random(240,359),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(8,12),0,4,random(60,179),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(8,12),0,4,random(180,299),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(8,12),0,4,random(300,419),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_ChangeFlag("NOGRAVITY",1)
+TST4 A 0 A_Stop
+TST4 DEF 2
+stop
+CeilingDeath:
+TST4 A 0 A_PlaySoundEx("weapon/oilshot", "Weapon")
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(4,8),0,-4,random(0,119),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(4,8),0,-4,random(120,239),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(4,8),0,-4,random(240,359),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(8,12),0,-4,random(60,179),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(8,12),0,-4,random(180,299),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_SpawnItemEx("ToastOJShot2",0,0,0,random(8,12),0,-4,random(300,419),SXF_TRANSFERTRANSLATION)
+TST4 A 0 A_ChangeFlag("NOGRAVITY",1)
+TST4 A 0 A_Stop
+TST4 HIJ 2
+stop
+}
+}
+actor ToastOJShotB : ToastOJShot {Translation "250:250=196:196", "198:198=74:74"}
+actor ToastOJShotR : ToastOJShot {Translation "250:250=170:170", "198:198=41:41"}
+actor ToastOJShotG : ToastOJShot {Translation "250:250=138:138", "198:198=128:128"}
+actor ToastOJShotY : ToastOJShot {Translation "250:250=214:214", "198:198=232:232"}
+
+actor ToastOJShot2
+{
+renderstyle translucent
+alpha 0.75
+PROJECTILE
+Radius 6
+Height 6
+scale 1.5
+-NOGRAVITY
++THRUACTORS
+speed 40
+damage (0)
+States
+{
+Spawn:
+TST4 A 0
+TST4 A 5 A_CheckFloor("Death")
+loop
+Death:
+TST4 A 0 
+TST4 A 0 A_JumpIf(z-floorz<=0,"Death2")
+TST4 A 1 A_GiveInventory("CutterFlag", 1)
+TST4 A 0 A_JumpIfInventory("CutterFlag", 350, "Xdeath")
+loop
+Death2:
+TST4 A 1 A_SpawnItemEx("ToastOJBlob",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor ToastOJBlob
+{
+renderstyle translucent
+alpha 0.75
++MISSILE
++DONTSPLASH
++NOEXPLODEFLOOR
++NOTARGETSWITCH
++THRUACTORS
+Damage (0)
+Height 6
+Radius 6
+scale 1.5
+mass 99999
+reactiontime 176
+painchance 256
+states
+{
+Spawn:
+TST4 C 0
+TST4 C 1 
+Goto Spawn2
+Spawn2:
+TST4 C 1 A_Stop
+TST4 C 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BIdle")
+TST4 C 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RIdle")
+TST4 C 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GIdle")
+TST4 C 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YIdle")
+Goto Idle
+Idle:
+TST4 B 0 A_GiveInventory("CutterFlag", 1)
+TST4 B 0 A_JumpIf(z-floorz>0,"NewShot")
+TST4 B 0 A_JumpIfCloser(96,"Idle2")
+goto IdleEnd
+Idle2:
+TST4 B 0 A_GiveToTarget("ToastmanSpeedPickup",1)
+goto IdleEnd
+IdleEnd:
+TST4 B 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+goto Idle
+BIdle:
+TST4 B 0 A_GiveInventory("CutterFlag", 1)
+TST4 B 0 A_JumpIf(z-floorz>0,"NewShot")
+TST4 B 0 A_RadiusGive("ToastmanSpeedPickupB",96,RGF_PLAYERS,1)
+TST4 B 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+RIdle:
+TST4 B 0 A_GiveInventory("CutterFlag", 1)
+TST4 B 0 A_JumpIf(z-floorz>0,"NewShot")
+TST4 B 0 A_RadiusGive("ToastmanSpeedPickupR",96,RGF_PLAYERS,1)
+TST4 B 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+GIdle:
+TST4 B 0 A_GiveInventory("CutterFlag", 1)
+TST4 B 0 A_JumpIf(z-floorz>0,"NewShot")
+TST4 B 0 A_RadiusGive("ToastmanSpeedPickupG",96,RGF_PLAYERS,1)
+TST4 B 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+YIdle:
+TST4 B 0 A_GiveInventory("CutterFlag", 1)
+TST4 B 0 A_JumpIf(z-floorz>0,"NewShot")
+TST4 B 0 A_RadiusGive("ToastmanSpeedPickupY",96,RGF_PLAYERS,1)
+TST4 B 1 A_JumpIfInventory("CutterFlag", 350, "Death")
+loop
+NewShot:
+TST4 B 0 A_SpawnItemEx("ToastOJShot2", 0, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+Goto Death 
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSpeedPickup : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("ToastmanSpeed",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),0)
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),0)
+TNT1 A 0 A_GiveInventory("ToastmanSpeed",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSpeedPickupB : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,1)
+goto No
+TNT1 A 0 A_JumpIfInventory("ToastmanSpeed",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSpeed",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSpeedPickupR : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,1)
+goto No
+TNT1 A 0 A_JumpIfInventory("ToastmanSpeed",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSpeed",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSpeedPickupG : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,1)
+goto No
+TNT1 A 0 A_JumpIfInventory("ToastmanSpeed",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSpeed",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSpeedPickupY : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,1)
+goto No
+TNT1 A 0 A_JumpIfInventory("ToastmanSpeed",1,"No")
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(90,269),1)
+TNT1 A 0 A_SpawnItemEX("ToastOJDrip",random(0,32),0,random(8,64),0,0,0,random(270,449),1)
+TNT1 A 0 A_GiveInventory("ToastmanSpeed",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor ToastmanSpeed : PowerSpeed
+{
+Powerup.Duration 3
+Speed 1.5
++POWERSPEED.NOTRAIL
+}
+
+actor ToastJamDrip
+{
+Translation "249:249=60:60", "195:195=249:249"
++MISSILE
++DONTBLAST
++THRUACTORS
++DONTSPLASH
+-NOGRAVITY
++CLIENTSIDEONLY
+Radius 4
+Height 4
+Speed 10
+Scale 1.0
+States
+{
+Spawn:
+TST5 A 16
+goto Death
+Death:
+TST5 A 0 A_ChangeFlag("NOGRAVITY",1)
+TST5 A 0 A_Stop
+TST5 BC 5
+stop
+}
+}
+
+actor ToastOJDrip : ToastJamDrip
+{
+Translation "250:250=214:214", "198:198=218:218"
+States
+{
+Spawn:
+TST5 D 16
+goto Death
+Death:
+TST5 D 0 A_ChangeFlag("NOGRAVITY",1)
+TST5 D 0 A_Stop
+TST5 EF 5
+stop
+}
+}
+
+actor ToastMainfire : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("ButterSlickShot",0,0,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("ButterSlickShotB",0,0,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("ButterSlickShotR",0,0,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("ButterSlickShotG",0,0,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("ButterSlickShotY",0,0,8,0)
+stop
+}
+}
+
+actor ToastMainfire2 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("ButterBlob",0,0,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("ButterBlobB",0,0,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("ButterBlobR",0,0,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("ButterBlobG",0,0,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("ButterBlobY",0,0,8,0)
+stop
+}
+}
+
+actor ToastSlider : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireT")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireT")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireT")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireT")
+TNT1 A 0 A_SpawnItemEx("ButterSliderFX", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM)
+stop
+FireT:
+TNT1 A 0 A_SpawnItemEx("ButterSliderFX", 24, 0, 2, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor ToastAlt : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("ToastJamShot",0,0,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("ToastJamShotB",0,0,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("ToastJamShotR",0,0,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("ToastJamShotG",0,0,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("ToastJamShotY",0,0,8,0)
+stop
+}
+}
+
+actor ToastAlt2 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("ToastOJShot",0,0,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("ToastOJShotB",0,0,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("ToastOJShotR",0,0,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("ToastOJShotG",0,0,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("ToastOJShotY",0,0,8,0)
+stop
+}
+}

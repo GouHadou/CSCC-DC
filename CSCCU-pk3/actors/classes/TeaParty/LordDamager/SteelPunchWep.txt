@@ -1,0 +1,113 @@
+actor SteelPunchWep : BaseMM8BDMWep
+{
+Weapon.AmmoUse 2
+Weapon.AmmoGive 28
+Weapon.SlotNumber 3
+Inventory.Pickupmessage "Power up! Steel Punch!"
+Obituary "%o was crushed by %k's \chSteel Punch\c-."
+Tag "Steel Punch"
+weapon.ammotype "SteelPunchAmmo"
+inventory.icon "STPUNCH"
+States
+{
+Spawn:
+LDSP I 1
+loop
+Ready:
+STPH A 0 ACS_ExecuteAlways(998,0,DYE_LORDDAMAGERCOL)
+STPH A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+STPH A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+STPH A 1 A_Raise
+Loop
+Fire:
+STPH A 2 A_JumpIfNoAmmo("NoAmmo")
+STPH A 0 A_PlaySoundEx("Weapon/napalm","Weapon")
+STPH A 0 A_GiveInventory("SteelPunchRepulsion",1)
+STPH A 0 A_FireCustomMissile("MissilePunchC",0,1,-2,-8)
+STPH A 0 A_FireCustomMissile("MissilePunchFXC",0,0,-2,-8)
+STPH A 0 A_FireCustomMissile("MissilePunchFX2C",0,0,-2,-8)
+STPH BCCCCCBAAAAA 2
+STPH A 1 A_Refire
+Goto Ready+1
+NoAmmo:
+STPH A 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+actor SteelPunchAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
++INVENTORY.IGNORESKILL
+}
+
+actor MissilePunchC : MissilePunch
+{
+Obituary "%o was crushed by %k's \chSteel Punch\c-."
+Speed 100
+damage (30)
+}
+
+actor MissilePunchFXC : MissilePunchFX
+{
+Speed 100
+}
+
+actor MissilePunchFX2C : MissilePunchFX2
+{
+Speed 100
+}
+
+actor SteelPunchRepulsion : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_Blast(0,256,195,90)
+stop
+}
+}
+
+actor SteelPunchWepC : SteelPunchWep
+{
+}
+/*
+actor SteelPunchWepGiver : WepGiver replaces SteelPunchWep
+{
+Inventory.Pickupmessage "Power up! Steel Punch!"
+States
+{
+Spawn:
+LDSP I 1
+loop
+Pickup2:
+DUST B 0 A_JumpIfInventory("SteelPunchWepC",1,"No")
+DUST B 0 A_GiveInventory("SteelPunchWepC",1)
+stop
+Rock_P:goto Rock_P1
+}
+}
+/*
+actor SteelPunchWepCDropped : WepCDropped
+{
+Inventory.Pickupmessage "Power up! Steel Punch!"
+States
+{
+Spawn:
+LDSP I 1500
+stop
+Pickup1:
+TNT1 A 0 A_JumpIfInventory("GouhadouAmmo",0,"No")
+goto Pickup2
+Pickup3:
+TNT1 A 0 A_GiveInventory("SteelPunchWepC",1)
+stop
+}
+}*/

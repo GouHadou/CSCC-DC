@@ -1,0 +1,112 @@
+actor Daveris : ClassBaseCSCC 
+{
+player.displayname "Daveris"
+player.soundclass "davesfx"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+Player.ViewHeight 60
+Player.AttackZOffset 22
+player.startitem "DaverisClassWep"
+//player.startitem "SturdyHealthBar"
+player.startitem "DaverisAmmo", 28
+//damagefactor "Normal", 0.8
+player.maxhealth 125
+health 125
+
+gravity 0.4
+States
+{
+Spawn:
+BLUG B 0
+BLUG B 1 
+BLUG A 1 A_JumpIfInventory("DaverisCounterAttack", 1, "Missile")
+Goto Spawn+2
+See:
+BLUG B 1 
+BLUG BBBBCCCCCDDDDDCCCCC 1 A_JumpIfInventory("DaverisCounterAttack", 1, "Missile")
+Goto Spawn
+Missile:
+BLUG F 5 
+BLUG F 4 
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+BLUG H 0 A_SpawnItemEx("DaverisCopyHitMain",1)
+goto pain+1
+Death.Backstab:
+BLUG H 0 SetPlayerProperty(0, 0, 4)
+BLUG H 0 A_TakeInventory("PharaohCharge",999)   
+BLUG H 0 A_NoBlocking
+BLUG H 0 A_GiveInventory("CutterFlag",999)
+BLUG H 0 A_GiveInventory("IsDead",1)
+BLUG H 0 A_Stop
+BLUG H 0 A_GiveToTarget("KilledMeStock",1)
+BLUG H 1 A_GiveToTarget("KilledMe",1)
+BLUG H 1 A_GiveToTarget("ClearDisguise",1)
+BLUG H 0 A_GiveToTarget("DisguiseOn",1)
+BLUG H 0 A_GiveToTarget("DaverisDisguise",1)
+BLUG H 0 ACS_ExecuteAlways(775,0,367)
+goto BackstabFrames
+}
+}
+
+actor DaverisCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("DaverisMorphItem",1)
+stop
+}
+}
+
+actor DaverisCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("DaverisCopyPickupMain",1)
+stop
+}
+}
+
+
+actor DaverisMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 29)
+stop
+}
+}
+
+actor DaverisMorph : Daveris
+{
++NOSKIN
+player.morphweapon "DaverisClassWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+

@@ -1,0 +1,274 @@
+actor RedEyes : ClassBaseCSCC
+{
+player.displayname "Red Eyes"
+player.soundclass "redeyes"
+player.damagescreencolor "red"
+
+player.forwardmove 0.7, 0.7
+player.sidemove 0.68, 0.68
+player.jumpz 10
+gravity 0.8
+//+BOSS
++NOBLOOD
++DONTBLAST
++NODAMAGETHRUST
+player.startitem "RedEyesWep"
+//player.startitem "DocToadHealthBar"
+player.startitem "RedEyesWepB"
+player.startitem "BusterAmmo", 3
+player.startitem "CannotUseHealth"
+player.colorrange 0 0
+mass 9999
+player.maxhealth 140
+health 140
+//damagefactor "Normal", 0.7
+
+scale 2.5
++QUICKTORETALIATE
+States
+{
+Spawn:
+CRYM A 0
+CRYM B 1 
+CRYM A 1
+Goto Spawn+2
+See:
+CRYM  BCDE 5
+Goto Spawn
+Missile:
+CRYM  F 5
+CRYM  G 4
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+CRYM H 0 A_SpawnItemEx("RedEyesCopyHitMain",1)
+goto pain+1
+Death:
+CRYM H 20 A_GiveInventory("ClassDeathPickup",1)
+PLAY Z 0 //SetPlayerProperty(0, 0, 4)
+PLAY Z 0 A_PlayerScream /*A_PlaySoundEX("misc/devildeath","Voice")*/
+VLBL QRSTUV 2
+PLAY Z -1
+stop
+Death.Beam:
+Death.Gravity:
+Death.instagibPokeball:
+PLAY Z 1 SetPlayerProperty(0, 0, 4)
+PLAY Z 0 A_GiveInventory("CutterFlag",999)
+PLAY Z 0 A_GiveToTarget("KilledMe",1)
+PLAY Z 0 A_GiveToTarget("KilledMeStock",1)
+PLAY Z 0 A_GiveInventory("IsDead",1)
+PLAY Z -1
+stop
+Death.instagib:
+PLAY Z 1 SetPlayerProperty(0, 0, 4)
+PLAY Z 0 A_GiveInventory("CutterFlag",999)
+PLAY Z 0 A_GiveToTarget("KilledMe",1)
+PLAY Z 0 A_GiveToTarget("KilledMeStock",1)
+PLAY Z 0 A_GiveInventory("IsDead",1)
+goto DeathBoom
+TheEnd:
+CRYM  G 4
+loop
+CreditWalk:
+CRYM  BCDE 8
+loop
+Pain.Self:
+CRYM  F 5
+CRYM  G 4
+goto spawn
+Death.TornadoBlow:
+Death.WindStorm:
+Death.GravityHold:
+CRYM  H 0
+goto DeathFrames
+Death.Backstab:
+CRYM  H 1 SetPlayerProperty(0, 0, 4)
+CRYM  H 1 A_TakeInventory("PharaohCharge",999)   
+CRYM  H 1 A_NoBlocking
+CRYM  H 1 A_GiveInventory("CutterFlag",999)
+CRYM  H 1 A_GiveInventory("IsDead",1)
+CRYM  H 1 A_Stop
+CRYM  H 1 A_GiveToTarget("KilledMeStock",1)
+CRYM  H 1 A_GiveToTarget("KilledMe",1)
+CRYM  H 1 A_GiveToTarget("ClearDisguise",1)
+CRYM  H 1 A_GiveToTarget("DisguiseOn",1)
+CRYM  H 1 A_GiveToTarget("RedDisguise",1)
+CRYM  H 1 ACS_ExecuteAlways(775,0,666)
+goto BackstabFrames
+}
+}
+
+actor ClientObjects
+{
++CLIENTSIDEONLY
+}
+
+actor NashGore_FlyingBlood : ClientObjects
+{
+ game Doom
+ scale 2.5
+ health 1
+ radius 8
+ height 1
+ mass 1
+ renderstyle translucent
+ alpha 1.0
+ +CORPSE
+ 
+ +NOTELEPORT
+ +NOBLOCKMAP
+ states
+ {
+ Spawn:
+  TNT1 A 0 A_CheckSight("Cheap")
+  FBLD ABCD 1 A_SpawnItem("NashGore_FlyingBloodTrail",0,0,0,1)
+  FBLD ABCD 1 A_JumpIf(waterlevel > 1, "Remove")
+//  FBLD A 0 A_Fadeout(0.1)
+  loop
+ Cheap:
+  FBLD ABCD 8 A_SpawnItem("NashGore_FlyingBloodTrail",0,0,0,1)
+  FBLD ABCD 1 A_JumpIf(waterlevel > 1, "Remove")
+//  FBLD A 0 A_Fadeout(0.1)
+  loop
+ Crash:
+  TNT1 A 1 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+  stop
+   Remove: // Anti-Lag - Removes blood in water.
+      NULL A 0 
+        stop
+ }
+}
+
+actor NashGore_BloodSpot : ClientObjects
+{
+ game Doom
+ radius 12
+ height 2
+ mass 1
+ 
+  renderstyle translucent
+ alpha 1.0
+ +NOTELEPORT
+ -NOBLOCKMAP
+ states
+ {
+ Spawn:
+  TNT1 A 0
+  TNT1 A 0 A_PlaySound("gibbage/blood")
+  TNT1 A 0 A_Jump(64,4)
+  TNT1 A 0 A_Jump(128,4)
+  TNT1 A 0 A_Jump(192,4)
+  TNT1 A 0 A_Jump(255,4)
+  // make the blood spots stay on the ground. 1500 is the default duration.
+  TNT1 A 100 A_JumpIf(waterlevel > 1, "Remove")
+  stop
+  TNT1 A 100 A_JumpIf(waterlevel > 1, "Remove")
+  stop
+  TNT1 A 100 A_JumpIf(waterlevel > 1, "Remove")
+  stop
+  TNT1 A 100 A_JumpIf(waterlevel > 1, "Remove")
+  stop
+   Remove: // Anti-Lag - Removes blood in water.
+      NULL A 0 
+        stop
+ }
+}
+
+// Blood trails spawned by FlyingBlood
+actor NashGore_FlyingBloodTrail : ClientObjects
+{
+ game Doom
+ scale 2.5
+ mass 1
+ +LOWGRAVITY
+ +NOTELEPORT
+ +NOBLOCKMAP
+ 
+ states
+ {
+  Spawn:
+  BTRL A 4 A_JumpIf(waterlevel > 1, "Remove")
+  BTRL B 4 A_JumpIf(waterlevel > 1, "Remove")
+  BTRL C 4 A_JumpIf(waterlevel > 1, "Remove")
+  BTRL D 4 A_JumpIf(waterlevel > 1, "Remove")
+  stop
+   Remove: // Anti-Lag - Removes blood in water.
+      NULL A 0 
+        stop
+ }
+}
+
+actor RedEyesCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("RedEyesMorphItem",1)
+stop
+}
+}
+
+actor RedEyesCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("RedEyesCopyPickupMain",1)
+stop
+}
+}
+
+
+actor RedEyesMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 34)
+stop
+}
+}
+
+actor RedEyesMorph : RedEyes
+{
++NOSKIN
+player.morphweapon "RedEyesWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor RedEyesMorph2 : RedEyes
+{
++NOSKIN
+player.morphweapon "RedEyesWepB"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

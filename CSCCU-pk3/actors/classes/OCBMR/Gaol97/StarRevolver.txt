@@ -1,0 +1,160 @@
+actor StarRevolverWep : FlameBuster
+{
+Weapon.AmmoUse1 1
+Weapon.AmmoGive1 5
+Weapon.AmmoUse2 10
+Weapon.AmmoGive2 140
+Weapon.SlotNumber 1
+Inventory.Pickupmessage ""
+Obituary "%o was torched by %k."
+weapon.ammotype1 "StarRevolverAmmo"
+//weapon.ammotype2 "StarRevolverAmmo"
+inventory.icon "NULLICON"
++WEAPON.AMMO_OPTIONAL
++WEAPON.ALT_AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.CHEATNOTWEAPON
++WEAPON.NOAUTOAIM
+scale 2.0
+States
+{
+Spawn:
+WEAP X 1
+stop
+Ready:
+FHUD A 0 //ACS_ExecuteAlways(998,0,186)
+FHUD A 0 A_GunFlash
+FHUD A 0 A_WeaponReady
+GAO1 A 0 A_JumpIfInventory("UseOverHeat",1,"OverHold")
+FHUD A 2 A_WeaponReady
+Goto Ready+2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+HEAT G 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BUST B 1 A_Raise
+Loop
+Fire:
+HEAT G 0 A_JumpIfInventory("OverHeating",1,"OverHeat1")
+HEAT G 0 A_ChangeFlag("NOGRAVITY",0)
+HEAT G 0 A_JumpIfInventory("Burninator",1,"BurnReady2")
+//---
+HEAT G 0 A_Takeinventory("RevolverCharge",100)
+HEAT G 0 A_Jumpifnoammo("Reload")
+HEAT G 1 //A_GiveInventory("IsShooting",1)
+HEAT G 0 //A_GiveInventory("PowerFireSpeed",1)
+HEAT K 1 A_PlaySoundEx("weapon/waveburner","Weapon")
+HEAT L 0 A_FireCustomMissile("StarShot",0,1,0,0,0,0)
+HEAT L 0 //A_Takeinventory("IsShooting",15)
+//HEAT KL 1 
+Goto Hold
+Hold:
+HEAT G 1 //A_Jumpifnoammo("HoldGutter")
+HEAT G 0 A_GiveInventory("RevolverCharge",1)
+HEAT G 1 A_Jumpifinventory("RevolverCharge",12,"Reload")
+HEAT G 0 A_Refire("Hold")
+Goto Ready+2
+HoldGutter:
+HEAT G 1 
+HEAT G 0 A_Refire("HoldGutter")
+Goto Ready+2
+Reload:
+HEAT G 0 A_jumpifinventory("IsShooting",1,5)
+HEAT G 0 A_GiveInventory("StarRevolverAmmo",1)
+HEAT G 0 A_Takeinventory("RevolverCharge",100)
+HEAT GHGHG 1 
+HEAT G 0 A_jumpifinventory("StarRevolverAmmo",5,1)
+loop
+HEAT G 0
+HEAT G 0
+Goto Ready+2
+AltFire:
+FHUD A 1 A_JumpIfInventory("InfernoDash",28,"AltFire2")
+FHUD A 4 A_TakeInventory("Burninator",999)
+FUHD A 0
+goto BurnReady2
+AltFire2:
+FHUD I 0 A_JumpIfInventory("Burninator",1,"AltHold")
+FHUD I 0 A_GiveInventory("Burninator",1)
+FHUD I 0 A_GiveInventory("NoIDRegen",1)
+FHUD I 0 A_ChangeFlag("NOGRAVITY",1)
+FHUD I 0 SetPlayerProperty(0,1,0)
+FHUD IHHH 2
+AltHold: 
+FHUD I 0 A_JumpIfInventory("InfernoDash",45,"AltHold1")
+Goto Ready+2
+AltHold1: 
+TNT1 A 0 A_PlaySoundEx("weapon/chargekick","Weapon")
+Althold2:
+FHUD I 0 A_GiveInventory("NoIDRegen",1)
+TNT1 A 0 A_SpawnItemEx("InfernoPillar",-25)
+TNT1 A 0 A_ChangeVelocity(30,0,sin(pitch)*-50,CVF_RELATIVE|CVF_REPLACE)//A_Recoil(-6)
+TNT1 A 0 A_FireCustomMissile("InfernoDashRam",0,1,0,0)
+TNT1 A 1 A_SpawnItemEx("InfernoPillar",-55)
+TNT1 A 0 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 1 A_SpawnItemEx("InfernoPillar",-55)
+TNT1 A 0 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 1 A_SpawnItemEx("InfernoPillar",-55)
+TNT1 A 0 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 1 A_SpawnItemEx("InfernoPillar",-55)
+TNT1 A 0 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 1 A_SpawnItemEx("InfernoPillar",-55)
+TNT1 A 0 A_Jumpifnoammo("BurnReady")
+TNT1 A 0 A_Refire("Althold2")
+Goto BurnReady
+BurnReady:
+/*
+TNT1 A 1 //A_WeaponReady
+TNT1 A 2 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("InfernoPillar")
+TNT1 A 2 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 2 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("InfernoPillar")
+TNT1 A 2 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 2 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 2 A_FireCustomMissile("InfernoDashRam",0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("InfernoPillar")
+*/
+FHUD H 0 A_ChangeFlag("NOGRAVITY",0)
+FHUD H 0 SetPlayerProperty(0,0,0)
+FHUD HI 2
+FHUD A 10 //31
+FHUD A 0 A_TakeInventory("Burninator",999)
+FHUD A 0 A_TakeInventory("NoIDRegen",999)
+Goto Ready+2
+NoAmmo:
+HEAT G 1
+Goto Ready+2
+Flash:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CrossBombAmmo",1)
+TNT1 A 0 A_JumpIfInventory("NoIDRegen",1,2)
+TNT1 A 0 A_GiveInventory("InfernoDash",2)
+TNT1 A 1
+TNT1 A 1 A_TakeInventory("OverHeatCoolDown",2)
+TNT1 A 0 A_TakeInventory("DazzlingGleamCoolDown",2)
+loop
+}
+}
+
+actor StarRevolverAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 5
+}
+
+actor RevolverCharge : Ammo
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor InfernoDashPRotect : PowerProtection
+{
+inventory.amount 1
+inventory.maxamount 5
+Powerup.Duration 8
+damagefactor "FireTypeR", 0.0  
+}

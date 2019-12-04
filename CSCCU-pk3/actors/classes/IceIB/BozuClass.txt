@@ -1,0 +1,2 @@
+#include "actors/classes/IceIB/bozu/bozuclass.txt"
+#include "actors/classes/IceIB/bozu/bozuwep.txt"

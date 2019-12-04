@@ -1,0 +1,107 @@
+actor Breve : ClassBaseCSCC
+{
+player.displayname "breve"
+player.soundclass "brevec"
+player.startitem "StaveCannonWep"
+Player.startitem "StaveAmmo", 28
+Player.startitem "BreveItem1", 3
+//player.startitem "SturdyHealthBar"
+player.maxhealth 125
+health 125
+//damagefactor "Normal", 0.8
+
+
+States
+{
+Spawn:
+BREV A 0
+BREV B 1 
+BREV A 1 
+Goto Spawn+2
+See:
+BREV BCDE 5 
+Goto Spawn
+Missile:
+BREV F 5 
+BREV G 4 
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+BREV H 0 A_SpawnItemEx("BreveCopyHitMain",1)
+goto pain+1
+Death.Backstab:
+BREV H 0 SetPlayerProperty(0, 0, 4)
+BREV H 0 A_TakeInventory("PharaohCharge",999)   
+BREV H 0 A_NoBlocking
+BREV H 0 A_GiveInventory("CutterFlag",999)
+BREV H 0 A_GiveInventory("IsDead",1)
+BREV H 0 A_Stop
+BREV H 0 A_GiveToTarget("KilledMeStock",1)
+BREV H 1 A_GiveToTarget("KilledMe",1)
+BREV H 1 A_GiveToTarget("ClearDisguise",1)
+BREV H 0 A_GiveToTarget("DisguiseOn",1)
+BREV H 0 A_GiveToTarget("BreveDisguise",1)
+BREV H 0 ACS_ExecuteAlways(775,0,45)
+goto BackstabFrames
+}
+}
+
+actor BreveCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("BreveMorphItem",1)
+stop
+}
+}
+
+actor BreveCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("BreveCopyPickupMain",1)
+stop
+}
+}
+
+
+actor BreveMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 11)
+stop
+}
+}
+
+actor BreveMorph : Breve
+{
++NOSKIN
+player.morphweapon "StaveCannonWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

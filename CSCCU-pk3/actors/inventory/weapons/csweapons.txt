@@ -1,0 +1,363 @@
+actor DangerWrapWepCS : DangerWrapWep
+{
+}
+
+actor JunkShieldWepCS : JunkShieldWep
+{
+}
+
+actor NoiseCrushWepCS : NoiseCrushWep
+{
+}
+
+actor ScorchWheelWepCS : ScorchWheelWep
+{
+}
+
+actor SuperAdaptorWepCS : Weapon
+{
+}
+
+actor ThunderBoltWepCS : ThunderBoltWep
+{
+}
+
+actor WildCoilWepCS : WildCoilWep
+{
+}
+
+actor SlashClawWepCS : SlashClawWep
+{
+}
+
+actor FreezeCrackerWepCS : FreezeCrackerWep
+{
+}
+
+actor AirShooterWepCS : AirShooterWep
+{
+}
+
+actor AtomicFireWepCS : AtomicFireWep
+{
+}
+
+actor BalladeCrackerWepCS : BalladeCrackerWep
+{
+}
+
+actor BassBusterCS : BassBuster
+{
+}
+
+actor BlizzardAttackWepCS : BlizzardAttackWep
+{
+}
+
+actor BubbleLeadWepCS : BubbleLeadWep
+{
+}
+
+actor CentaurFlashWepCS : CentaurFlashWep
+{
+}
+
+actor ChargeKickWepCS : ChargeKickWep
+{
+}
+
+actor CrashBombWepCS : CrashBombWep
+{
+}
+
+actor CrystalEyeWepCS : CrystalEyeWep
+{
+}
+
+actor DiveMissileWepCS : DiveMissileWep
+{
+}
+
+actor DrillBombWepCS : DrillBombWep
+{
+}
+
+actor DustCrusherWepCS : DustCrusherWep
+{
+}
+
+actor FireStormWepCS : FireStormWep
+{
+}
+
+actor FlameBlastWepCS : FlameBlastWep
+{
+}
+
+actor FlashStopperWepCS : FlashStopperWep
+{
+}
+
+actor GeminiLaserWepCS : GeminiLaserWep
+{
+}
+
+actor GravityHoldWepCS : GravityHoldWep
+{
+}
+
+actor GyroAttackWepCS : GyroAttackWep
+{
+}
+
+actor HardKnuckleWepCS : HardKnuckleWep
+{
+}
+
+actor HyperBombWepCS : HyperBombWep
+{
+}
+
+actor IceSlasherWepCS : IceSlasherWep
+{
+}
+
+actor KnightCrushWepCS : KnightCrushWep
+{
+}
+
+actor LeafShieldWepCS : LeafShieldWep
+{
+}
+
+actor MagnetMissileWepCS : MagnetMissileWep
+{
+}
+
+actor MetalBladeWepCS : MetalBladeWep
+{
+}
+
+actor MirrorBusterWepCS : MirrorBusterWep
+{
+}
+
+actor NapalmBombWepCS : NapalmBombWep
+{
+}
+
+actor NeedleCannonWepCS : NeedleCannonWep
+{
+}
+
+actor PharaohShotWepCS : PharaohShotWep
+{
+}
+
+actor PlantBarrierWepCS : PlantBarrierWep
+{
+}
+
+actor PowerStoneWepCS : PowerStoneWep
+{
+}
+
+actor ProtoBusterCS : ProtoBuster
+{
+}
+
+actor QuickBoomerangWepCS : QuickBoomerangWep
+{
+}
+
+actor RainFlushWepCS : RainFlushWep
+{
+}
+
+actor RingBoomerangWepCS : RingBoomerangWep
+{
+}
+
+actor RollingCutterWepCS : RollingCutterWep
+{
+}
+
+actor SakugarneWepCS : SakugarneWep
+{
+}
+
+actor ScrewCrusherWepCS : ScrewCrusherWep
+{
+}
+
+actor SearchSnakeWepCS : SearchSnakeWep
+{
+}
+
+actor ShadowBladeWepCS : ShadowBladeWep
+{
+}
+
+actor SilverTomahawkWepCS : SilverTomahawkWep
+{
+}
+
+actor SkullBarrierWepCS : SkullBarrierWep
+{
+}
+
+actor SparkShockWepCS : SparkShockWep
+{
+}
+
+actor StarCrashWepCS : StarCrashWep
+{
+}
+
+actor SuperArmWepCS : SuperArmWep
+{
+}
+
+actor ThunderBeamWepCS : ThunderBeamWep
+{
+}
+
+actor TimeStopperWepCS : TimeStopperWep
+{
+}
+
+actor TopSpinWepCS : TopSpinWep
+{
+}
+
+actor WaterWaveWepCS : WaterWaveWep
+{
+}
+
+actor WindStormWepCS : WindStormWep
+{
+}
+
+actor YamatoSpearWepCS : YamatoSpearWep
+{
+}
+
+actor OilSliderWepCS : OilSliderWep
+{
+}
+
+
+actor TimeSlowWepCS : TimeSlowWep
+{
+}
+
+actor MegaBallWepCS : MegaBallWep
+{
+}
+
+actor AstroCrushWepCS : AstroCrushWep
+{
+}
+
+actor FlameSwordWepCS : FlameSwordWep
+{
+}
+
+actor FlashBombWepCS : FlashBombWep
+{
+}
+
+actor HomingSniperWepCS : HomingSniperWep
+{
+}
+
+actor IceWaveWepCS : IceWaveWep
+{
+}
+
+actor ThunderClawWepCS : ThunderClawWep
+{
+}
+
+actor TornadoHoldWepCS : TornadoHoldWep
+{
+}
+
+actor WaterBalloonWepCS : WaterBalloonWep
+{
+}
+
+
+actor IceWallWepCS : IceWallWep
+{
+}
+
+actor WaveBurnerWepCS : WaveBurnerWep
+{
+}
+
+actor RemoteMineWepCS : RemoteMineWep
+{
+}
+
+actor SpreadDrillWepCS : SpreadDrillWep
+{
+}
+
+actor TenguBladeWepCS : TenguBladeWep
+{
+}
+
+actor MagicCardWepCS : MagicCardWep
+{
+}
+
+actor CopyVisionWepCS : CopyVisionWep
+{
+}
+
+actor LightningBoltWepCS : LightningBoltWep
+{
+}
+
+actor ConcreteShotWepCS : ConcreteShotWep
+{
+}
+
+
+actor TornadoBlowWepCS : TornadoBlowWep
+{
+}
+
+actor LaserTridentWepCS : LaserTridentWep
+{
+}
+
+actor PlugBallWepCS : PlugBallWep
+{
+}
+
+actor HornetChaserWepCS : HornetChaserWep
+{
+}
+
+actor MagmaBazookaWepCS : MagmaBazookaWep
+{
+}
+
+actor BlackHoleBombWepCS : BlackHoleBombWep
+{
+}
+
+actor JewelSatelliteWepCS : JewelSatelliteWep
+{
+}
+
+actor SolarBlazeWepCS : SolarBlazeWep
+{
+}
+/*
+actor WepCS :  Wep
+{
+}
+*/

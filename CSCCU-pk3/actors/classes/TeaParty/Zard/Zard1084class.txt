@@ -1,0 +1,123 @@
+actor Zard1084class : ClassBaseCSCC 
+{
+player.displayname "Zard1084" 
+player.soundclass "Zard1084"
+player.startitem "ZardGun"
+player.startitem "ZardAmmo", 60 
+//player.startitem "ParalizingBeamspellUseItem"
+//player.startitem "DanmakuBoomerangWep"
+player.startitem "ZardSword"
+//player.startitem "FlashFreezespellUseItem"
+//player.startitem "SummonYukkuriUseItem", 3
+player.startitem "IsZardFlag"
+player.maxhealth 125
+health 125
+//damagefactor "Normal", 0.8
+States
+{
+Spawn:
+ZARD A 0 
+ZARD B 1
+ZARD A 1
+Goto Spawn+2
+See:
+ZARD BCDE 5 
+Goto Spawn
+Missile:
+ZARD F 5 
+ZARD G 4
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+ZARD H 0 A_SpawnItemEx("ZardCopyHitMain",1)
+goto pain+1
+}
+}
+
+
+actor ZardCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("ZardMorphItem",1)
+stop
+}
+}
+
+actor ZardCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("ZardCopyPickupMain",1)
+stop
+}
+}
+
+
+actor ZardMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 41)
+stop
+}
+}
+
+actor ZardMorph : Zard1084class 
+{
++NOSKIN
+player.morphweapon "ZardGun"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor ZardMorph2 : Zard1084class 
+{
++NOSKIN
+player.morphweapon "ZardSword"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+actor ZardMorph3 : Zard1084class 
+{
++NOSKIN
+player.morphweapon "DanmakuBoomerangWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

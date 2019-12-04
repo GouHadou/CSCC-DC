@@ -1,0 +1,2 @@
+#include "actors/Classes/Bronze/ZenTrainer/ZenTrainer.txt"
+#include "actors/Classes/Bronze/ZenTrainer/ZenTrainerWeapon.txt"

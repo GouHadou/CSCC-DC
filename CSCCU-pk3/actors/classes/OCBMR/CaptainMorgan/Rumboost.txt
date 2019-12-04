@@ -1,0 +1,153 @@
+
+//[+]========================================================================[+]
+//--------------------------------|Rum Booster|--------------------------------
+//[+]========================================================================[+]
+//When you need an extra bit of power for the fight, nothing get's the job done 
+//like a bottle of good Rum!...maybe, I don't drink so I don't know. either way 
+//the captain's second weapon is a bottle of rum that he can drink to give himself
+//a boost in both attack and defense, but it also causes his aim to go off some. 
+//fortunately his rate of fire speeds up as well so you might blow someone up 
+//if you just lob bombs at random.
+//[+]========================================================================[+]
+
+actor RumBoosterWep : Weapon
+{
+Weapon.AmmoUse1 4
+Weapon.AmmoGive1 4
+//Weapon.AmmoUse2 1
+//Weapon.AmmoGive2 4
+Weapon.SlotNumber 2
+Weapon.KickBack 300
+Obituary "%o was blasted by %k."
+Inventory.Pickupmessage ""
+weapon.ammotype1 "RumSupply"
+//weapon.ammotype2 "CaptTinyBombAmmo"
+Inventory.icon "BOMBSI"
++WEAPON.AMMO_OPTIONAL
++WEAPON.ALT_AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.CHEATNOTWEAPON
++WEAPON.NOAUTOAIM
+scale 2.0
+States
+{
+Ready:
+RMBT A 0 A_GunFlash
+RMBT A 0 ACS_ExecuteAlways(998,0,3)
+RMBT A 0 A_Jumpifinventory("RumSupply",4,"Ready2")
+RMBT E 2 A_WeaponReady
+RMBT E 3 A_WeaponReady
+Goto Ready+2
+Ready2:
+RMBT A 2 A_WeaponReady
+RMBT A 3 A_WeaponReady
+Goto Ready+2
+Weaponlock:
+RMBT A 1 A_WeaponReady(WRF_NOSWITCH)
+loop
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+RMBT A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+RMBT A 1 A_Raise
+Loop
+Fire:
+//BLTR B 0 A_WeaponReady(WRF_NOSWITCH)
+RMBT B 0  A_JumpIfNoAmmo("NoAmmo")
+RMBT B 0// A_GiveInventory("2Soon2Switch")
+RMBT A 0 A_Jumpifinventory("RumDefensePower",1,"Drunk")
+RMBT B 0 A_PlaySoundEx("misc/oil","Weapon")
+RMBT BCD 4 A_Stop
+RMBT DCB 4 A_Stop
+RMBT B 0 A_PlaySoundEx("misc/oil","Weapon")
+RMBT BCD 4 A_Stop
+RMBT DCB 4 A_Stop
+RMBT B 0 A_GiveInventory("RumDefensePower",1)
+RMBT B 0 A_GiveInventory("RumAttackPower",1)
+RMBT B 0 A_GiveInventory("RumSpeedDrop",1)
+RMBT B 0 A_TakeInventory("RumSupply",4)
+Goto Ready+2
+//[+]----------[+]
+/*
+Altfire:
+RMBT A 0 A_JumpIfNoAmmo("NoAmmo")
+RMBT C 0 A_PlaySoundEx("weapon/powerstone","Weapon")
+RMBT A 0 A_TakeInventory("CaptTinyBombAmmo",1)
+RMBT CC 1 A_FireCustomMissile("CaptTinyBomb",random(0,20),0)
+RMBT CC 1 A_FireCustomMissile("CaptTinyBomb",random(359,330),0)
+RMBT C 1 A_FireCustomMissile("CaptTinyBomb",0,0)
+RMBT BA 8
+Goto Weaponlock*/
+Flash:
+//TNT1 A 0 A_JumpIfInventory("CaptLooseCannonTimer",35,"SelfDestruct")
+TNT1 A 1 //A_JumpIfInventory("LCFuseFlag",1,8) //5
+TNT1 A 0 //A_JumpIfInventory("2Soon2Switch",1,6) //2
+TNT1 A 70
+TNT1 A 0 A_JumpIfInventory("CaptLooseCannonAmmo",4,2)
+TNT1 A 0 A_GiveInventory("CaptLooseCannonAmmo",1)
+TNT1 A 0 A_JumpIfInventory("CaptTinyBombAmmo",4,2)
+TNT1 A 0 A_GiveInventory("CaptTinyBombAmmo",1)
+TNT1 AA 1
+loop
+Goto Ready+2
+Drunk:
+TNT1 A 1
+Goto Ready+2
+NoAmmo:
+TNT1 A 1
+TNT1 A 1 //ACS_Execute(979,0)
+Goto Ready+2
+}
+}
+/*
+actor 2Soon2Switch: Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}*/
+
+
+actor RumDefensePower : PowerProtection // determines how long you must hold to light the fuse
+{
+inventory.amount 1
+inventory.maxamount 1
++NOPAIN
+Powerup.Duration -20
+DamageFactor "Normal", 0.70
+}
+
+actor RumSpeedDrop : Powerspeed // determines how long you must hold to light the fuse
+{
+inventory.amount 1
+inventory.maxamount 1
++NOPAIN
+Powerup.Duration -20
+Speed 0.45
+}
+
+actor RumAttackPower : PowerDamage // determines how long you held the bomb
+{
+inventory.amount 1
+inventory.maxamount 1
+Powerup.Duration -20
+Powerup.Color D6881A, 0.5
+damagefactor "NORMAL", 1.25
++INVENTORY.HUBPOWER
++INVENTORY.UNDROPPABLE
+//+INVENTORY.UNTOSSABLE
+
+}
+
+actor RumSupply : Ammo 
+{
+inventory.amount 1
+inventory.maxamount 4
+}
+
+actor CaptTinyBombAmmo : Ammo 
+{
+inventory.amount 1
+inventory.maxamount 4
+}

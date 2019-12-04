@@ -1,0 +1,332 @@
+actor ProtoGiver : ItemGiver replaces ProtoUpgrade
+{
+inventory.pickupmessage "Support Item! Proto Upgrade!"
+States
+{
+Spawn:
+WEA2 Q 0
+Goto "ItemGiver::Spawn+1"
+LaggyBlazkoSpawn:
+COW1 A 0 A_SetTranslucent(1.0, 0)
+COW1 A 35
+goto Spawn
+HilmanSpawn:
+HDEF X 0 A_SetTranslucent(1.0, 0)
+HDEF X 35
+goto Spawn
+SmashSpawn:
+USCU F 0 A_SetTranslucent(1.0, 0)
+USCU F 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanUseItems", 1, "Give")
+DUST B 0 A_JumpIfInventory("LaggyHUD", 1, "CorpPickup")
+DUST B 0 A_JumpIfInventory("StandardSpecial", 1, "SmashPU")
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+fail
+Give:
+WEAP Q 0 A_GiveInventory("ProtoUpgrade")
+stop
+CorpPickup:
+//Grand Dad
+DUST B 0 A_JumpIfInventory("CorpGrandDad", 1, "WFail")
+TNT0 A 1 ACS_NamedExecuteAlways("CorpWeaponPickup",0,2,1)
+stop
+SmashPU:
+DUST B 0 A_GiveInventory("UltraSmasherClawsUpgrade", 1)
+Stop
+Hil:
+DUST B 0 A_GiveInventory("HilDefend", 1)
+stop
+}
+}
+
+actor BassGiver : ItemGiver replaces BassUpgrade
+{
+inventory.pickupmessage "Support Item! Bass Upgrade!"
+States
+{
+Spawn:
+WEA3 A 0
+Goto "ItemGiver::Spawn+1"
+LaggyBlazkoSpawn:
+COW1 A 0 A_SetTranslucent(1.0, 0)
+COW1 A 35
+goto Spawn
+HilmanSpawn:
+HSPD X 0 A_SetTranslucent(1.0, 0)
+HSPD X 35
+goto Spawn
+SmashSpawn:
+USCU F 0 A_SetTranslucent(1.0, 0)
+USCU F 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanUseItems", 1, "Give")
+DUST B 0 A_JumpIfInventory("LaggyHUD", 1, "CorpPickup")
+DUST B 0 A_JumpIfInventory("StandardSpecial", 1, "SmashPU")
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+fail
+Give:
+WEA3 A 0 A_GiveInventory("BassUpgrade")
+stop
+CorpPickup:
+//Grand Dad
+DUST B 0 A_JumpIfInventory("CorpGrandDad", 1, "WFail")
+TNT0 A 1 ACS_NamedExecuteAlways("CorpWeaponPickup",0,2,1)
+stop
+SmashPU:
+DUST B 0 A_GiveInventory("UltraSmasherClawsUpgrade", 1)
+Stop
+Hil:
+DUST B 0 A_GiveInventory("HilSpeed", 1)
+stop
+}
+}
+
+actor SuperAdaptorGiver : ItemGiver replaces AdaptorUpgrade
+{
+inventory.pickupmessage "Support Item! Super Adaptor!"
+States
+{
+Spawn:
+WEA3 P 0
+Goto "ItemGiver::Spawn+1"
+SmashSpawn:
+USCU F 0 A_SetTranslucent(1.0, 0)
+USCU F 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanCopyWeapons", 1, "Give")
+DUST B 0 A_JumpIfInventory("StandardSpecial", 1, "SmashPU")
+DUST B 0 
+fail
+Give:
+WEAP Q 0 A_GiveInventory("AdaptorUpgrade")
+stop
+SmashPU:
+DUST B 0 A_GiveInventory("UltraSmasherClawsUpgrade", 1)
+Stop
+}
+}
+
+actor TrebleBoostGiver : ItemGiver replaces TrebleBoostUpgrade
+{
+inventory.pickupmessage "Support Item! Treble Boost Upgrade!"
+States
+{
+Spawn:
+TRBB I 0
+Goto "ItemGiver::Spawn+1"
+SmashSpawn:
+USCU F 0 A_SetTranslucent(1.0, 0)
+USCU F 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanCopyWeapons", 1, "Give")
+DUST B 0 A_JumpIfInventory("StandardSpecial", 1, "SmashPU")
+DUST B 0 
+fail
+Give:
+TRBB I 0 A_GiveInventory("TrebleBoostUpgrade")
+stop
+SmashPU:
+DUST B 0 A_GiveInventory("UltraSmasherClawsUpgrade", 1)
+Stop
+}
+}
+
+actor LaserBusterGiver : ItemGiver replaces LaserBusterUpgrade
+{
+inventory.pickupmessage "Support Item! Laser Buster!"
+States
+{
+Spawn:
+WEA4 K 0
+Goto "ItemGiver::Spawn+1"
+LaggyBlazkoSpawn:
+COW1 A 0 A_SetTranslucent(1.0, 0)
+COW1 A 35
+goto Spawn
+HilmanSpawn:
+HSPD X 0 A_SetTranslucent(1.0, 0)
+HSPD X 35
+goto Spawn
+SmashSpawn:
+USCU F 0 A_SetTranslucent(1.0, 0)
+USCU F 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanUseItems", 1, "Give")
+DUST B 0 A_JumpIfInventory("LaggyHUD", 1, "CorpPickup")
+DUST B 0 A_JumpIfInventory("StandardSpecial", 1, "SmashPU")
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+fail
+Give:
+WEAP Q 0 A_GiveInventory("LaserBusterUpgrade")
+stop
+CorpPickup:
+//Grand Dad
+DUST B 0 A_JumpIfInventory("CorpGrandDad", 1, "WFail")
+TNT0 A 1 ACS_NamedExecuteAlways("CorpWeaponPickup",0,2,1)
+stop
+SmashPU:
+DUST B 0 A_GiveInventory("UltraSmasherClawsUpgrade", 1)
+Stop
+Hil:
+DUST B 0 A_GiveInventory("HilSpeed", 1)
+stop
+}
+}
+
+actor ArrowBusterGiver : ItemGiver replaces ArrowBusterUpgrade
+{
+inventory.pickupmessage "Support Item! Arrow Buster!"
+States
+{
+Spawn:
+WEA4 L 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+HATK X 0 A_SetTranslucent(1.0, 0)
+HATK X 35
+goto Spawn
+SmashSpawn:
+USCU F 0 A_SetTranslucent(1.0, 0)
+USCU F 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanCopyWeapons", 1, "Give")
+DUST B 0 A_JumpIfInventory("StandardSpecial", 1, "SmashPU")
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+DUST B 0 
+fail
+Give:
+WEA4 L 0 A_GiveInventory("ArrowBusterUpgrade")
+stop
+SmashPU:
+DUST B 0 A_GiveInventory("UltraSmasherClawsUpgrade", 1)
+Stop
+Hil:
+DUST B 0 A_GiveInventory("HilAttack", 1)
+stop
+}
+}
+
+actor DuoFistGiver : ItemGiver replaces DuoFistUpgrade
+{
+inventory.pickupmessage "Support Item! Duo Fist!"
+States
+{
+Spawn:
+DUOF A 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+HATK X 0 A_SetTranslucent(1.0, 0)
+HATK X 35
+goto Spawn
+SmashSpawn:
+USCU F 0 A_SetTranslucent(1.0, 0)
+USCU F 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+DUST B 0 A_JumpIfInventory("CanCopyWeapons", 1, "Give")
+DUST B 0 A_JumpIfInventory("StandardSpecial", 1, "SmashPU")
+DUST B 0 
+fail
+Give:
+DUOF A 0 A_GiveInventory("DuoFistUpgrade")
+stop
+SmashPU:
+DUST B 0 A_GiveInventory("UltraSmasherClawsUpgrade", 1)
+Stop
+Hil:
+DUST B 0 A_GiveInventory("HilAttack", 1)
+stop
+}
+}
+
+actor TangoGiver : ItemGiver replaces TangoSummon
+{
+inventory.pickupmessage "Support Item! Tango Roll!"
+States
+{
+Spawn:
+WEA3 B 0
+Goto "ItemGiver::Spawn+1"
+GizmoSpawn:
+HELP R 0 A_SetTranslucent(1.0, 0)
+HELP R 35
+goto Spawn
+HilmanSpawn:
+LABL X 0 A_SetTranslucent(1.0, 0)
+LABL X 35
+goto Spawn
+ZardSpawn:
+YUKK I 0 A_SetTranslucent(1.0, 0)
+YUKK I 35
+goto Spawn
+Pickup:
+WEAP Q 0 A_JumpIfInventory("GizmoCopy",1,"Gizmo")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+DUST B 0 A_JumpIfInventory("IsZardFlag",1,"Spellcard")
+DUST B 0 A_JumpIfInventory("HilItem",1,"Hil")
+fail
+Give:
+WEA3 B 0 A_GiveInventory("TangoSummon")
+stop
+Gizmo:
+WEAP Q 0 A_GiveInventory("KittyHelper")
+stop
+Spellcard:
+DUST B 0 A_GiveInventory("SummonYukkuriUseItem",1)
+stop
+Hil:
+WEAP Q 0 A_GiveInventory("BeamBallSummon", 1)
+stop
+}
+}
+
+
+actor TrebleGiver : ItemGiver replaces TrebleSentry
+{
+inventory.pickupmessage "Support Item! Treble Sentry!"
+States
+{
+Spawn:
+TRBI A 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+LABL X 0 A_SetTranslucent(1.0, 0)
+LABL X 35
+goto Spawn
+GizmoSpawn:
+HELP R 0 A_SetTranslucent(1.0, 0)
+HELP R 35
+goto Spawn
+ZardSpawn:
+YUKK I 0 A_SetTranslucent(1.0, 0)
+YUKK I 35
+goto Spawn
+Pickup:
+WEAP Q 0 A_JumpIfInventory("GizmoCopy",1,"Gizmo")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+DUST B 0 A_JumpIfInventory("IsZardFlag",1,"Spellcard")
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+fail
+Give:
+TRBI A 0 A_GiveInventory("TrebleSentry")
+stop
+Gizmo:
+WEAP Q 0 A_GiveInventory("KittyHelper")
+stop
+Spellcard:
+DUST B 0 A_GiveInventory("SummonYukkuriUseItem",1)
+stop
+Hil:
+DUST B 0 A_GiveInventory("BeamBallSummon", 1)
+DUST B 0
+stop
+}
+}

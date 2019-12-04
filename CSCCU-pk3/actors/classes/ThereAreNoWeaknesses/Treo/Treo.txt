@@ -1,0 +1,50 @@
+actor Treo : ClassBaseCSCC
+{
++NOSKIN
+player.displayname "Treo"
+player.soundclass "treocls"
+player.startitem "TreoWep"
+//player.startitem "TreoWepX"
+player.startitem "TreoItem"
+player.startitem "BlueFireAmmo", 28
+player.startitem "CannotUseHealth"
+player.forwardmove 0.55, 0.55
+player.sidemove 0.55, 0.55
+player.maxhealth 180
+health 180
+player.startitem "HeavyHealthBar"
+States
+{
+Spawn:
+TREO A 0 
+TREO B 1
+TREO A 3
+TRES A 1
+Goto Spawn+3
+See:
+TREO BCDE 5
+Goto Spawn+2
+Missile:
+TREO F 5 
+TREO G 4 
+goto Spawn+3
+}
+}
+
+actor TurbomanScorchActive : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor MegaDrainHealth : Health
+{
+inventory.amount 10
+inventory.maxamount 100
+}
+
+actor GigaDrainHealth : Health
+{
+inventory.amount 20
+inventory.maxamount 100
+}

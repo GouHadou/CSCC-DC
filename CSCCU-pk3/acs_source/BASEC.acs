@@ -1,0 +1,177 @@
+#include "zcommon.acs"
+#include "8BDMLIB.acs"
+
+#DEFINE CSACS_PICKUPENTER 143
+#DEFINE CSACS_PICKUPRESPAWN 144
+#DEFINE CSACS_WALLKICK 160
+
+
+Script "CSACS_Heal" (int Mode, int HealAmount)
+{
+int MaxHealth = GetActorProperty(0,APROP_SPAWNHEALTH);
+If(MaxHealth==0){MaxHealth=100;}
+if(Mode==1)
+{
+if(GetActorProperty(0,APROP_Health)==MaxHealth){SetResultValue(1);}
+else{SetResultValue(0);}
+terminate;
+}
+HealThing(HealAmount,MaxHealth);
+}
+
+/*//Older perventage healing method
+script "CSACS_Heal" (int Magic, int HPBoost) //Health related script
+{
+	int h = max(PlayerHealth(),0);
+	switch(Magic)
+	{
+		Case 0://Return Health
+			if(HPBoost == 7777){
+				log(s:"HP: ",i:h);
+				terminate;
+			}
+			SetResultValue(CheckInventory("Health"));
+			break;
+		Case 1://Check current HP, if less than max health, return true
+			if(h < GetActorProperty(0, APROP_SPAWNHEALTH)){SetResultValue(1);}
+			else{SetResultValue(0);}
+			break;
+		Case 2://Basic Healing
+			if(h <= 0){terminate;}
+			int HPAdd2 = min(h + HPBoost,GetActorProperty(0, APROP_SPAWNHEALTH));
+			SetActorProperty(0, APROP_HEALTH, HPAdd2);
+			break;
+		Case 3://Percentage Healing
+			if(h <= 0){terminate;}
+			int SpawnHP3 = GetActorProperty(0, APROP_SPAWNHEALTH);
+			int PCT3;
+			if(GetCVAR("YD_NoHealingScale")){
+				PCT3 = HPBoost;
+			}
+			else{
+				PCT3 = round(HPBoost * 0.01 * SpawnHP3 + h);
+			}
+			int HPAdd3 = min(PCT3 + h,SpawnHP3);
+			SetActorProperty(0, APROP_HEALTH, HPAdd3);
+			break;
+		Case 7://Change Health to this exact amount
+			if(h <= 0){terminate;}
+			SetActorProperty(0, APROP_HEALTH, HPBoost);
+			break;
+		Case 9://Burning damage
+			if (GetActorProperty(0,APROP_HEALTH) >= HPBoost+1){
+				SetActorProperty(0, APROP_HEALTH, (GetActorProperty(0,APROP_HEALTH)-HPBoost));
+				break;
+			}
+			SetResultValue(2);
+			break;
+		Case 66://Returns MaxHp
+			SetResultValue(GetActorProperty(0, APROP_SPAWNHEALTH));
+			break;
+	}
+
+}
+
+function int min (int a, int b)
+{
+	if (a < b)
+		return a;
+
+	return b;
+}
+
+function int max (int a, int b)
+{
+	if (a > b)
+		return a;
+
+	return b;
+}
+
+function int round(int fixedNumber)
+{
+	return (fixedNumber + 0.5) >> 16;
+}*/
+
+
+Script "CSACS_HealthSet" (void) CLIENTSIDE
+{
+int StateSet = 0;
+If(CheckActorClass(consolePlayerNumber()+1000,"BoneheadCSCC")){SetActorState(0,"Bonehead"); StateSet=1;}
+If(CheckActorClass(consolePlayerNumber()+1000,"Bikdark")){SetActorState(0,"Bonehead"); StateSet=1;}
+If(CheckActorClass(consolePlayerNumber()+1000,"RedEyes")){SetActorState(0,"Bonehead"); StateSet=1;}
+If(CheckActorClass(consolePlayerNumber()+1000,"Missingno.class")){SetActorState(0,"Bonehead"); StateSet=1;}
+If(StateSet==0){SetActorState(0,"DefaultState");}
+}
+
+
+//Scripts for weapon / item transparency 
+int CLASSFLAG = 0;
+int OLDCLASSFLAG = -1;
+
+Script CSACS_PICKUPENTER ENTER CLIENTSIDE
+{
+OLDCLASSFLAG = CLASSFLAG;
+CLASSFLAG = PlayerClass(ConsolePlayerNumber());
+}
+
+Script CSACS_PICKUPRESPAWN RESPAWN CLIENTSIDE
+{
+ACS_ExecuteAlways(CSACS_PICKUPENTER, 0);
+}
+
+Script "CSACS_ITEMSET" (void) CLIENTSIDE
+{
+int StateSet = 0;
+	If(CheckActorClass(consolePlayerNumber()+1000,"MegamanCSCC")){SetActorState(0,"MegaSpawn"); StateSet=1;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"LaggyBlazko")){SetActorState(0,"LaggyBlazkoSpawn"); StateSet=2;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"Beed28")){SetActorState(0,"Beed28Spawn"); StateSet=3;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"BlazeClass")){SetActorState(0,"BlazeSpawn"); StateSet=4;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"Ukiyama")){SetActorState(0,"UkiSpawn"); StateSet=5;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"Gizmo")){SetActorState(0,"GizmoSpawn"); StateSet=6;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"HumanDestroyer")){SetActorState(0,"HumanDestroyerSpawn"); StateSet=7;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"CopyRobot")){SetActorState(0,"CopySpawn"); StateSet=8;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"KorbyClass")){SetActorState(0,"KorbySpawn"); StateSet=9;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"Zard1084class")){SetActorState(0,"ZardSpawn"); StateSet=10;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"Smash")){SetActorState(0,"SmashSpawn"); StateSet=11;}
+	If(CheckActorClass(consolePlayerNumber()+1000,"Hilman170499")){SetActorState(0,"HilmanSpawn"); StateSet=12;}
+	If(StateSet==0){SetActorState(0,"OtherSpawn");}
+}
+
+
+int JumpAngByte;
+int TotalAngles;
+
+script CSACS_WALLKICK (void)
+{
+	SetActivatorToTarget(0);
+	JumpAngByte = 0;
+	TotalAngles = 0;
+    if (CheckInventory("WallN") && !CheckInventory("WallS")) {
+	    //ThrustThingZ(0,50,0,1);
+		JumpAngByte += 128;
+		TotalAngles++;
+	}
+    if ( !CheckInventory("WallN")) {
+		JumpAngByte += 256;
+		TotalAngles++;
+	}
+	if (CheckInventory("WallE") && !CheckInventory("WallW")) {
+	    JumpAngByte += 64;
+		TotalAngles++;
+	}
+	if (CheckInventory("WallW") && !CheckInventory("WallE")) {
+	    JumpAngByte += 192;
+		TotalAngles++;
+	}
+	if (!CheckInventory("WallN") && CheckInventory("WallE") && !CheckInventory("WallW")) { //Somewhere, a mathematician is crying.
+	    JumpAngByte = 32;
+		TotalAngles = 1;
+	}
+	if (TotalAngles>0) {
+		JumpAngByte /= TotalAngles;
+
+			ThrustThing(((GetActorAngle(0) >> 8) + JumpAngByte),10,1);
+		
+	}
+}

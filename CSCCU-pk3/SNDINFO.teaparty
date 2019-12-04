@@ -1,0 +1,208 @@
+
+//Zard
+$playersound	Zard1084 male	*death		TOHODEAD
+$playersound	Zard1084 male	*xdeath		TOHOOVKL
+$playersound	Zard1084 male	*gibbed		TOHOOVKL
+$playersound	Zard1084 male	*pain100	MEGAPAIN
+$playersound	Zard1084 male	*pain75		MEGAPAIN
+$playersound	Zard1084 male	*pain50		MEGAPAIN
+$playersound	Zard1084 male	*pain25		MEGAPAIN
+$playersound	Zard1084 male	*grunt		LAND
+$playersound	Zard1084 male	*land		LAND
+$playersound	Zard1084 male	*jump		ZARDJUMP
+$playersound	Zard1084 male	*fist		dsnone
+$playersound	Zard1084 male	*usefail	LAND
+$playersound	Zard1084 male	*taunt		SPARTA
+
+weapon/ZardLaserShot   ZARDSHOT
+weapon/ZardCrossSword  claw
+weapon/Freezebreak   ICEWBRAK
+weapon/ZardGunCharge   bdoor
+weapon/ZardGunChargeFull   BOMBTIC
+weapon/ZardAirJump   ZARDJUMP
+weapon/YukkuriAttack   YUKKATCK
+weapon/YukkuriPain   MEGAPAIN
+weapon/YukkuriDeath   YUKKDEAD
+
+$playersound    PrinnyQueen	female	*death		PRINDEAT
+$playersound	PrinnyQueen	female	*xdeath 	PRINDEAT
+$playersound	PrinnyQueen	female	*gibbed		PRINDEAT
+$playersound	PrinnyQueen	female	*pain100	PRINPAIN
+$playersound	PrinnyQueen	female	*pain75		PRINPAIN
+$playersound	PrinnyQueen	female	*pain50		PRINPAIN
+$playersound	PrinnyQueen	female	*pain25		PRINPAIN
+$playersound	PrinnyQueen	female	*grunt		ROKKLAND
+$playersound	PrinnyQueen	female	*land		ROKKLAND
+$playersound	PrinnyQueen	female	*jump		dsnone
+$playersound	PrinnyQueen	female	*fist		dsnone
+$playersound	PrinnyQueen	female	*usefail	ROKKLAND
+$playeralias	PrinnyQueen female	*taunt		PrinnyQueen/taunt
+
+$random PrinnyQueen/taunt { PrinnyQueen/taunt1 PrinnyQueen/taunt2 PrinnyQueen/taunt3 PrinnyQueen/taunt4 PrinnyQueen/taunt5 PrinnyQueen/taunt6 PrinnyQueen/taunt7 PrinnyQueen/taunt8 }
+PrinnyQueen/taunt1       PRIN1
+PrinnyQueen/taunt2       PRIN2
+PrinnyQueen/taunt3       PRIN3
+PrinnyQueen/taunt4       PRIN4
+PrinnyQueen/taunt5       PRIN5
+PrinnyQueen/taunt6       PRIN6
+PrinnyQueen/taunt7       PRIN7
+PrinnyQueen/taunt8       PRIN8
+
+$playersound	Light male	*death		MEGADEAT
+$playersound	Light male	*xdeath		MEGADEAT
+$playersound	Light male	*gibbed		MEGADEAT
+$playersound	Light male	*pain100	MEGAPAIN
+$playersound	Light male	*pain75		MEGAPAIN
+$playersound	Light male	*pain50		MEGAPAIN
+$playersound	Light male	*pain25		MEGAPAIN
+$playersound	Light male	*grunt		LAND
+$playersound	Light male	*land		LAND
+$playersound	Light male	*jump		dsnone
+$playersound	Light male	*fist		dsnone
+$playersound	Light male	*usefail	LAND
+$playersound	Light male	*taunt		LITNT
+
+
+$playersound	PR01SND	male	*death		MEGADEAT
+$playersound	PR01SND	male	*xdeath		MEGADEAT
+$playersound	PR01SND	male	*gibbed		MEGADEAT
+$playersound	PR01SND	male	*pain100	MEGAPAIN
+$playersound	PR01SND	male	*pain75		MEGAPAIN
+$playersound	PR01SND	male	*pain50		MEGAPAIN
+$playersound	PR01SND	male	*pain25		MEGAPAIN
+$playersound	PR01SND	male	*grunt		LAND
+$playersound	PR01SND	male	*land		LAND
+$playersound	PR01SND	male	*jump		dsnone
+$playersound	PR01SND	male	*fist		dsnone
+$playersound	PR01SND	male	*usefail	LAND
+$playersound	PR01SND	male	*taunt		PROTMUS7
+weapon/chidori1	CHDRIS1
+weapon/chidori2	CHDRIS2
+
+
+//Smash
+Smash/punch1      Punch1
+Smash/punch2      Punch2
+Smash/punch4      Punch4
+Smash/punch5      Punch5
+Smash/punch6      Punch9
+Smash/punch7      Punch14
+Smash/punch8      PunchBC
+Smash/punch9      PunchSS
+Smash/punch10      PunchSC
+Smash/punch11      PunchUSC
+
+$random Smash/punch { Smash/Punch1 Smash/Punch2 }
+
+Smash/criticalhit      Punch3
+Smash/criticalhit2      CritHit
+Smash/criticalhit3      ShinKill
+Smash/SkullCracker      HITHARD
+Smash/VulcanJab      Jab
+Smash/SpiritBlast1      SPIRIT
+Smash/SpiritBlast2      BLAST
+Smash/GroundPound1      GRNDPND1
+Smash/GroundPound2      GRNDPND2
+Smash/Dash      Dash
+Smash/Skill      Skill
+Smash/Eat      Eat
+Smash/SmashItem      SABox
+Smash/SmashItem2      SAEMBLM
+Smash/SmashItem3      SALIFE
+
+
+$playersound	"Smash" 	male	*death		SONICDIE
+$playersound    "Smash" 	male    *xdeath     SONICDIE
+$playersound	"Smash" 	male	*pain100	MEGAPAIN
+$playersound    "Smash" 	male	*pain75		MEGAPAIN
+$playersound    "Smash" 	male	*pain50		MEGAPAIN
+$playersound    "Smash"  	male	*pain25		MEGAPAIN
+$playersound	"Smash" 	male	*land		SONICLND
+$playersound	"Smash" 	male	*usefail	SONICLND
+$playersound	"Smash" 	male	*jump   	SONICJMP
+$playersound	"Smash"	    male	*gibbed		SONICDIE
+$playersound	"Smash" 	male	*grunt		NONE
+misc/dizzy	DIZZY
+
+$playersound	Missingno.class	male	*death		MNODEAT
+$playersound	Missingno.class	male	*xdeath		MNODEAT
+$playersound	Missingno.class	male	*gibbed		MNODEAT
+$playersound	Missingno.class	male	*pain100	MNOPAIN
+$playersound	Missingno.class	male	*pain75		MNOPAIN
+$playersound	Missingno.class	male	*pain50		MNOPAIN
+$playersound	Missingno.class	male	*pain25		MNOPAIN
+$playersound	Missingno.class	male	*grunt		MNOLAND
+$playersound	Missingno.class	male	*land		MNOLAND
+$playersound	Missingno.class	male	*jump		MNOJUMP
+$playersound	Missingno.class	male	*fist		dsnone
+$playersound	Missingno.class	male	*usefail	MNOLAND
+$playersound	Missingno.class	male	*taunt		dsnone
+
+weapon/Glitchshot CBLFIRE
+weapon/Glitchshielduse GLFIELD
+sound/Glitcheffect CBLCRPT
+
+weapon/toastfire TOSTFIRE
+weapon/toastready TSTREADY
+item/press ITMPRESS
+
+$playersound	toastman	male	*death		MEGADEAT
+$playersound	toastman	male	*xdeath		MEGADEAT
+$playersound	toastman	male	*gibbed		MEGADEAT
+$playersound	toastman	male	*pain100	MEGAPAIN
+$playersound	toastman	male	*pain75		MEGAPAIN
+$playersound	toastman	male	*pain50		MEGAPAIN
+$playersound	toastman	male	*pain25		MEGAPAIN
+$playersound	toastman	male	*grunt		LAND
+$playersound	toastman	male	*land		LAND
+$playersound	toastman	male	*jump		dsnone
+$playersound	toastman	male	*fist		dsnone
+$playersound	toastman	male	*usefail	LAND
+$playersound	toastman	male	*taunt		TSTBACON
+
+$playersound	hilsound male	*death		MEGADEAT
+$playersound	hilsound male	*xdeath		MEGADEAT
+$playersound	hilsound male	*gibbed		MEGADEAT
+$playersound	hilsound male	*pain100	MEGAPAIN
+$playersound	hilsound male	*pain75		MEGAPAIN
+$playersound	hilsound male	*pain50		MEGAPAIN
+$playersound	hilsound male	*pain25		MEGAPAIN
+$playersound	hilsound male	*grunt		LAND
+$playersound	hilsound male	*land		LAND
+$playersound	hilsound male	*jump		dsnone
+$playersound	hilsound male	*fist		dsnone
+$playersound	hilsound male	*usefail	LAND
+$playersound	hilsound male	*taunt		dsnone
+
+misc/hilvictory DSRADIO
+
+//LordDamager
+$playeralias	lorddc	male	*death		lordd/death1
+$playeralias	lorddc	male	*xdeath		lordd/death1
+$playeralias	lorddc	male	*gibbed		lordd/death1
+$playersound	lorddc	male	*pain100	MEGAPAIN
+$playersound	lorddc	male	*pain75		MEGAPAIN
+$playersound	lorddc	male	*pain50		MEGAPAIN
+$playersound	lorddc	male	*pain25		MEGAPAIN
+$playersound	lorddc	male	*grunt		YDSTOMP
+$playersound	lorddc	male	*land		YDSTOMP
+$playersound	lorddc	male	*jump		dsnone
+$playersound	lorddc	male	*fist		dsnone
+$playersound	lorddc	male	*usefail	dsnone
+$playeralias	lorddc	male	*taunt		LordD/Taunt
+
+lordd/death1 LDDED1
+lordd/death2 LDDED2
+$random LordD/Death { LordD/Death1 LordD/Death2 }
+
+LordD/Stun LDSTN1
+
+LordD/Taunt1 LDTAU1
+LordD/Taunt2 LDTAU2
+LordD/Taunt3 LDTAU3
+LordD/Taunt4 LDTAU4
+LordD/Taunt5 LDTAU5
+LordD/Taunt6 LDTAU6
+LordD/Taunt7 LDTAU7
+LordD/Taunt8 LDTAU8
+$random LordD/Taunt {LordD/Taunt1 LordD/Taunt2 LordD/Taunt3 LordD/Taunt4 LordD/Taunt5 LordD/Taunt6 LordD/Taunt7 LordD/Taunt8}

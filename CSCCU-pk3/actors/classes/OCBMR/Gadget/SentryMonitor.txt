@@ -1,0 +1,273 @@
+
+//[+]========================================================================[+]
+//----------------------------|Sentry Monitor|------------------------------------
+//[+]========================================================================[+]
+// a Tablet that gadget uses to spawn his devices
+//[+]========================================================================[+]
+actor SentryMonitor : Weapon
+{
+Weapon.AmmoUse1 100
+Weapon.AmmoGive1 1000
+Weapon.AmmoUse2 1
+Weapon.AmmoGive2 1000
+Weapon.SlotNumber 2
+Obituary "%o was blasted by %k."
+Inventory.Pickupmessage ""
+weapon.ammotype1 "Electrammo"
+weapon.ammotype2 "Electrammo"
+Inventory.icon "COPYVI"
++WEAPON.AMMO_OPTIONAL
++WEAPON.ALT_AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.CHEATNOTWEAPON
++WEAPON.NOAUTOAIM
++WEAPON.NOAUTOFIRE
+scale 2.0
+States
+{
+Ready:
+GDTB A 0 A_Gunflash
+GDTB A 0 A_Jumpifinventory("Sentryoption",4,"Ready4") // ElectroFence
+GDTB A 0 A_Jumpifinventory("Sentryoption",3,"Ready3") // ThunderTower
+GDTB A 0 A_Jumpifinventory("Sentryoption",2,"Ready2") // Dispenser
+GDTB A 0 A_Jumpifinventory("Sentryoption",1,"Ready1") // Normal/Remote Sentry
+GDTB A 1 A_WeaponReady
+Goto Ready+1
+Ready1:
+GDTB B 1 A_WeaponReady
+Goto Ready+1
+Ready2:
+GDTB C 1 A_WeaponReady
+Goto Ready+1
+Ready3:
+GDTB F 1 A_WeaponReady
+Goto Ready+1
+Ready4:
+GDTB G 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+MSNH A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+MSNH A 1 A_Raise
+Loop
+Fire:
+GDTB A 1 A_Jumpifinventory("Sentryoption",4,"Reroll")
+GDTB A 0 A_GiveInventory("Sentryoption",1)
+Goto Ready+1
+Reroll:
+GDTB A 0 A_TakeInventory("Sentryoption",9)
+GDTB A 1 A_GiveInventory("Sentryoption",1)
+Goto Ready+1
+Altfire:  
+GDTB A 0 A_Jumpifnoammo("Noammo")
+//---
+GDTB A 0 A_Jumpifinventory("Sentryoption",4,"Ammocheck4") // ElectroFence
+GDTB A 0 A_Jumpifinventory("Sentryoption",3,"Ammocheck3") // ThunderTower
+GDTB A 0 A_Jumpifinventory("Sentryoption",2,"Ammocheck2") // Dispenser
+GDTB A 0 A_Jumpifinventory("Sentryoption",1,"Ammocheck1") // Normal/Remote Sentry
+Goto NoAmmo
+//---
+Ammocheck1:
+GDTB A 0 //A_Jumpifinventory("RemoteSentryActive",1,"Reclaim1")
+GDTB A 0 A_Jumpifinventory("Electrammo",200,"Altfire1")
+Goto NoAmmo
+Ammocheck2:
+GDTB A 0 A_Jumpifinventory("DispenserActive",1,"Reclaim2")
+GDTB A 0 A_Jumpifinventory("Electrammo",200,"Altfire2")
+Goto NoAmmo
+Ammocheck3:
+GDTB A 0 A_Jumpifinventory("ThunderTowerActive",1,"Reclaim3")
+GDTB A 0 A_Jumpifinventory("Electrammo",100,"Altfire3")
+Goto NoAmmo
+Ammocheck4:
+GDTB A 0 A_Jumpifinventory("ElectrofenceActive",1,"Reclaim4")
+GDTB A 0 A_Jumpifinventory("Electrammo",600,"Altfire4")
+Goto NoAmmo
+//---
+Altfire1: // ===Normal/Remote  Sentry===
+GDTB A 0 A_Jumpifinventory("GadgetSentryActive",1,"Reclaim1")
+GDTB A 0 //A_GiveInventory("2Soon2Switch") 
+GDTB A 1 A_SpawnitemEx("SentryMarker", 120, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+GDTB A 1 A_Refire
+GDTB A 1 //A_JumpIfInventory("SpawnDeny",1,"NoAmmo")
+GDTB A 0 A_PlaySoundEx("weapon/waterballoon","Weapon")  
+GDTB A 0 A_TakeInventory("Electrammo",200)
+GDTB A 0 
+GDTB A 0 A_GiveInventory("GadgetsentryPlanter")
+GDTB A 0 A_GiveInventory("GadgetSentryActive",1)
+GDTB A 0// A_GiveInventory("GadgetSentryController") 
+GDTB A 10
+Goto Ready+1
+Altfire2:  // ===Dispenser===
+GDTB A 0 A_Jumpifinventory("DispenserActive",1,"Reclaim2")
+GDTB A 0// A_GiveInventory("2Soon2Switch") 
+GDTB A 1 A_SpawnitemEx("DispenserMarker", 120, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+GDTB A 1 A_Refire
+GDTB A 1 //A_JumpIfInventory("SpawnDeny",1,"NoAmmo")
+GDTB A 0 A_PlaySoundEx("weapon/waterballoon","Weapon")  
+GDTB A 0 A_TakeInventory("Electrammo",200)
+GDTB A 0 
+GDTB A 0 A_GiveInventory("GadgetDispenserPlanter")
+GDTB A 0 A_GiveInventory("DispenserActive",1)
+GDTB A 10
+Goto Ready+1
+Altfire3: // ===ThunderTower===
+GDTB A 0 A_Jumpifinventory("ThunderTowerActive",1,"Reclaim3")
+GDTB A 0 //A_GiveInventory("2Soon2Switch") 
+GDTB A 1 A_SpawnitemEx("ThunderTowerMarker", 120, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+GDTB A 1 A_Refire
+GDTB A 1// A_JumpIfInventory("SpawnDeny",1,"NoAmmo")
+GDTB A 0 A_PlaySoundEx("weapon/waterballoon","Weapon")  
+GDTB A 0 A_TakeInventory("Electrammo",100)
+GDTB A 0 
+GDTB A 0 A_GiveInventory("ThunderTowerPlanter")
+GDTB A 0 A_GiveInventory("ThunderTowerActive",1)
+GDTB A 10
+Goto Ready+1
+Altfire4: // ===ElectroFence===
+GDTB A 0 A_Jumpifinventory("ElectrofenceActive",1,"Reclaim4")
+GDTB A 0 //A_GiveInventory("2Soon2Switch") 
+GDTB A 1 A_SpawnitemEx("ElectrofenceMarker", 120, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+GDTB A 1 A_Refire
+GDTB A 1 //A_JumpIfInventory("SpawnDeny",1,"NoAmmo")
+GDTB A 0 A_PlaySoundEx("weapon/waterballoon","Weapon")  
+GDTB A 0 A_TakeInventory("Electrammo",600)
+GDTB A 0 
+GDTB A 0 A_GiveInventory("ElectroFencePlanter")
+GDTB A 0 A_GiveInventory("ElectrofenceActive",1)
+GDTB A 10
+Goto Ready+1
+//------[]
+Flash:
+TNT1 A 0// A_JumpIfInventory("2Soon2Switch",1,2)
+TNT1 A 0// A_GiveInventory("GadgetAmmo",6)
+TNT1 AA 1
+loop
+Reclaim1: // ===Normal/Remote Sentry===
+GDTB D 0
+GDTB D 0 A_Jumpifinventory("GadgetSentryReclaim",1,2)
+GDTB D 1 A_GiveInventory("GadgetSentryReclaim",1)
+GDTB D 0
+ReclaimHold1:
+GDTB D 1
+GDTB D 0 A_Jumpifinventory("GadgetSentryReclaim",1,2)
+GDTB D 1 A_GiveInventory("GadgetSentryReclaim",1)
+GDTB D 0 A_Refire("ReclaimHold1")
+Goto Ready+1
+//====//
+Reclaim2: // ===Dispenser===
+GDTB D 0
+GDTB D 0 A_Jumpifinventory("DispenserReclaim",1,2)
+GDTB D 1 A_GiveInventory("DispenserReclaim",1)
+GDTB D 0
+ReclaimHold2:
+GDTB D 1
+GDTB D 0 A_Jumpifinventory("DispenserReclaim",1,2)
+GDTB D 1 A_GiveInventory("DispenserReclaim",1)
+GDTB D 0 A_Refire("ReclaimHold2")
+Goto Ready+1
+//====//
+Reclaim3: // ===ThunderTower===
+GDTB D 0
+GDTB D 0 A_Jumpifinventory("ThunderTowerReclaim",1,2)
+GDTB D 1 A_GiveInventory("ThunderTowerReclaim",1)
+GDTB D 0
+ReclaimHold3:
+GDTB D 1
+GDTB D 0 A_Jumpifinventory("ThunderTowerReclaim",1,2)
+GDTB D 1 A_GiveInventory("ThunderTowerReclaim",1)
+GDTB D 0 A_Refire("ReclaimHold3")
+Goto Ready+1
+//====//
+Reclaim4: // ===ElectroFence===
+GDTB D 0
+GDTB D 0 A_Jumpifinventory("ElectrofenceReclaim",1,2)
+GDTB D 1 A_GiveInventory("ElectrofenceReclaim",1)
+GDTB D 0
+ReclaimHold4:
+GDTB D 1
+GDTB D 0 A_Jumpifinventory("ElectrofenceReclaim",1,2)
+GDTB D 1 A_GiveInventory("ElectrofenceReclaim",1)
+GDTB D 0 A_Refire("ReclaimHold4")
+Goto Ready+1
+NoAmmo:
+TNT1 A 1
+TNT1 A 1 //ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor Sentryoption : Inventory // anti-spam
+{
+inventory.amount 1
+inventory.maxamount 10
+}
+
+//[+]========================================================================[+]
+//----------------------------|Remote Controll|------------------------------------
+//[+]========================================================================[+]
+// unlike other Sentries, this one won't fire on it's own unless you are a good 
+//distance from it, when you are near, it becomes remote controlled by you so long as the weapon is equipped.
+//[+]========================================================================[+]
+actor RemoteSentryController : Weapon
+{
+Weapon.AmmoUse1 100
+Weapon.AmmoGive1 0
+Weapon.AmmoUse2 100
+Weapon.AmmoGive2 0
+Weapon.SlotNumber 3
+Obituary "%o was blasted by %k."
+Inventory.Pickupmessage ""
+weapon.ammotype1 "Electrammo"
+weapon.ammotype2 "Electrammo"
+Inventory.icon "REMOI"
++WEAPON.AMMO_OPTIONAL
++WEAPON.ALT_AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.CHEATNOTWEAPON
++WEAPON.NOAUTOAIM
++WEAPON.NOAUTOFIRE
+scale 2.0
+States
+{
+Ready:
+GDTB B 0 A_GunFlash
+GDTB B 2 A_WeaponReady
+GDTB B 0 A_Jumpifinventory("GadgetSentryActive",1,"Ready2")
+GDTB B 3 A_WeaponReady
+Goto Ready+2
+Ready2:
+GDTB E 2 A_WeaponReady
+GDTB E 3 A_WeaponReady
+Goto Ready2+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+MSNH A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+MSNH A 1 A_Raise
+Loop
+Fire:
+GDTB E 0 A_GiveInventory("RCSShoot")
+GDTB E 1
+GDTB E 0 A_Refire
+GDTB E 0 A_TakeInventory("RCSShoot")
+GDTB E 0
+Goto Ready+2
+//------[]
+Flash:
+TNT1 A 0 A_GiveInventory("RCSInControl")
+TNT1 AA 1
+loop
+NoAmmo:
+GDTB A 1
+GDTB A 1 //ACS_Execute(979,0)
+Goto Ready+2
+}
+}
+
+

@@ -1,0 +1,2 @@
+#include "actors/classes/CSCC/sergio/sergclass.txt"
+#include "actors/classes/CSCC/sergio/sergwep.txt"

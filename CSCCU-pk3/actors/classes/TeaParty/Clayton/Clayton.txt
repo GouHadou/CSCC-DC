@@ -1,0 +1,87 @@
+actor Clayton : ClassBaseCSCC  
+{
+player.displayname "Clayton"
+player.soundclass "megaman" 
+player.maxhealth 100
+player.startitem "ClaytonWep" 
+player.startitem "ClayAmmo", 52
+States
+{
+Spawn:
+CLAY A 0 
+CLAY B 1
+CLAY A 1
+Goto Spawn+2
+See:
+CLAY BCDE 5 
+Goto Spawn
+Missile:
+CLAY F 5 
+CLAY G 4
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+CLAY H 0 A_SpawnItemEx("ClaytonCopyHitMain",1)
+goto pain+1
+}
+}
+
+actor ClaytonCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("ClaytonMorphItem",1)
+stop
+}
+}
+
+actor ClaytonCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("ClaytonCopyPickupMain",1)
+stop
+}
+}
+
+
+actor ClaytonMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 47)
+stop
+}
+}
+
+actor ClaytonMorph : Clayton
+{
++NOSKIN
+player.morphweapon "ClaytonWep" 
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

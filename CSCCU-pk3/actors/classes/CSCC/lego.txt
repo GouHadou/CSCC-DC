@@ -1,0 +1,2 @@
+#include "actors/classes/CSCC/lego/legoclass.txt"
+#include "actors/classes/CSCC/lego/legoweapons.txt"

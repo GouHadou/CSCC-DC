@@ -1,0 +1,143 @@
+Actor IsLordDamager : Inventory{}
+
+actor LordDamager : ClassBaseCSCC
+{
+Health 150
+player.MaxHealth 150
+player.displayname "LordDamager"
+player.soundclass "lorddc" 
+player.forwardmove 0.55, 0.55
+player.sidemove 0.55, 0.55
+player.startitem "IsLordDamager"
+player.startitem "MissilePunchWep"
+player.startitem "LaserCannonWep"
+player.startitem "MissilePunchAmmo", 5
+player.startitem "SmogCannonAmmo", 50
+player.startitem "LDRamActivator"
+States
+{
+Spawn:
+LDMG A 0
+LDMG B 1
+LDMG A 1
+Goto Spawn+2
+See:
+LDMG BC 4 A_PlaySoundEx("misc/hugequake2","SoundSlot6")
+Goto Spawn
+Missile:
+LDMG F 5 
+LDMG G 4 
+goto Spawn
+Pain.SparkShock:
+PLY1 H 0 A_SpawnItemEx("ShockFX",4,0,32)
+PLY1 H 0 A_GiveInventory("Shocked",1)
+PLY1 H 0 A_Jump(128,2)
+PLY1 H 0 A_PlaysoundEX("LordDamager/stun","Body")
+PLY1 H 0
+Goto Pain+1
+Pain.CopyAlt:
+Pain.CopyMain:
+LDMG H 0 A_SpawnItemEx("LDCopyHitMain",1)
+goto pain+1
+
+
+WalkForward: 
+LDMG BBBBBCCCCC 1 A_Recoil(-0.8)
+loop
+CreditWalk: 
+LDMG BC 8
+loop
+CreditRun:
+LDMG BC 5
+loop
+}
+}
+
+actor LDColorBase : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+TNT1 A 0 A_JumpIfInventory("IsLordDamager",1,"Default")
+stop
+}
+}
+
+actor LDCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("LDMorphItem",1)
+stop
+}
+}
+
+actor LDCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("LDCopyPickupMain",1)
+stop
+}
+}
+
+
+actor LDMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 54)
+stop
+}
+}
+
+actor LDMorph : LordDamager
+{
++NOSKIN
+player.morphweapon "MissilePunchWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor LDMorph2 : LordDamager
+{
++NOSKIN
+player.morphweapon "LaserCannonWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

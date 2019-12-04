@@ -1,0 +1,115 @@
+actor IAmTheTile : Inventory
+{
+Inventory.Amount 1
+Inventory.maxamount 1
+}
+
+actor GummyClass : ClassBaseCSCC
+{
+player.displayname "Gummywormz"
+player.forwardmove 0.7, 0.7
+player.soundclass "gummyc"
+player.sidemove 0.7, 0.7
+player.startitem "AirTileShotgunWep"
+player.startitem "AirTileAmmo", 50
+//player.startitem "DocToadHealthBar"
+player.startitem "IAmTheTile", 1
+player.maxhealth 140
+health 140
+//damagefactor "Normal", 0.7
+States
+{
+Spawn:
+AIRM A 0
+AIRM A 1 
+AIRM A 1
+Goto Spawn+1
+See:
+AIRM BCDE 5 
+Goto Spawn
+Missile:
+AIRM F 5
+AIRM F 4
+goto Spawn+2
+Pain.CopyAlt:
+Pain.CopyMain:
+AIRM H 0 A_SpawnItemEx("GummywormzCopyHitMain",1)
+goto pain+1
+Death.Backstab:
+AIRM H 0 SetPlayerProperty(0, 0, 4)
+AIRM H 0 A_TakeInventory("PharaohCharge",999)   
+AIRM H 0 A_NoBlocking
+AIRM H 0 A_GiveInventory("CutterFlag",999)
+AIRM H 0 A_GiveInventory("IsDead",1)
+AIRM H 0 A_Stop
+AIRM H 0 A_GiveToTarget("KilledMeStock",1)
+AIRM H 1 A_GiveToTarget("KilledMe",1)
+AIRM H 1 A_GiveToTarget("ClearDisguise",1)
+AIRM H 0 A_GiveToTarget("DisguiseOn",1)
+AIRM H 0 A_GiveToTarget("GummyDisguise",1)
+AIRM H 0 ACS_ExecuteAlways(775,0,351)
+goto BackstabFrames
+}
+}
+
+
+
+actor GummywormzCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("GummywormzMorphItem",1)
+stop
+}
+}
+
+actor GummywormzCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("GummywormzCopyPickupMain",1)
+stop
+}
+}
+
+
+actor GummywormzMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 7)
+stop
+}
+}
+
+actor GummywormzMorph : GummyClass
+{
++NOSKIN
+player.morphweapon "AirTileShotgunWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

@@ -1,0 +1,33 @@
+[IntroStrings]
+"All I leave in my path is scrap metal. Don't get in my way."
+"We haven't met? I'm Breve. The last name you'll want to hear."
+
+[FragStrings]
+"Another kill. Am I fighting machines or children?"
+"You don't stand a chance."
+"Oh, you didn't see me there? That's too bad."
+"You should have ran at the sight of me."
+
+[KilledStrings]
+"Defeated?! Must have been a fluke."
+"I just let my guard down. That's all."
+"Next time you won't be so lucky..."
+
+[RareRoamingStrings]
+"I was thinking of clubbing some seals after this..."
+
+[RoamingStrings]
+"Why are you hiding? It just delays the inevitable."
+"Check behind you, $player_random_notself..."
+"Are you dead yet? I don't have much time to waste."
+
+[EnragedStrings]
+"Hmph. You don't know who you're messing with."
+
+[WinStrings]
+"All in a day's work. I have more robots to destroy."
+"You haven't seen nothing yet."
+
+[LoseStrings]
+"Failure...How can I make up for this?"
+"Don'ÃÂt think this is the end!"

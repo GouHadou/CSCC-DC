@@ -1,0 +1,248 @@
+actor YellowDevilOld : ClassBaseCSCC
+{
+Player.ViewHeight 56
+Player.AttackZOffset 36
+player.displayname "Yellow Devil Old"
+player.soundclass "ydclass"
+player.forwardmove 0.5, 0.5
+player.sidemove 0.48, 0.48
+player.startitem "HeavyHealthBar"
+player.startitem "YellowDevilArm"
+player.startitem "YellowDevilEye"
+player.startitem "ArmAmmo", 56
+player.startitem "EyeAmmo", 28
+damagefactor "Normal", 0.5
+damagefactor "ThunderBeam", 1.0
+damagefactor "SparkShock", 1.0
+damagefactor "DevilBody", 0.4
+damagefactor "ThunderBolt", 1.0
+damagefactor "LightningWave", 1.0
+damagefactor "LightningShot", 1.0
+damagefactor "ThunderBlade", 1.0
+damagefactor "SaviorThunder", 1.0
+damagefactor "GizmoLightning", 1.0
+States
+{
+Spawn:
+NYDV B 0
+NYDV B 1
+NYDV AAAAA 1 
+NYDV A 0 A_GiveInventory("EyeAmmo",1)
+NYDV A 0 A_GiveInventory("ArmAmmo",1)
+Goto Spawn+2
+See:
+NYDV B 5
+NYDV A 0 A_GiveInventory("EyeAmmo",1)
+NYDV A 0 A_GiveInventory("ArmAmmo",1)
+NYDV C 5 
+NYDV A 0 A_GiveInventory("EyeAmmo",1)
+NYDV A 0 A_GiveInventory("ArmAmmo",1)
+NYDV D 5 
+NYDV A 0 A_GiveInventory("EyeAmmo",1)
+NYDV A 0 A_GiveInventory("ArmAmmo",1)
+NYDV E 5 
+Goto Spawn
+Missile:
+NYDV F 5 
+NYDV G 4 
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+NYDV H 0 A_SpawnItemEx("YDOldCopyHitMain",1)
+goto pain+1
+Pain.SparkShock:
+BEED H 0 A_SpawnItemEx("WeaknessEffect",random(-40,40), random(-40,40), 90,0,0,0,0,32)
+PLAY H 0 A_PlaySoundEx("weapon/criticalhit","SoundSlot5")
+goto "ClassBaseCSCC::Pain.SparkShock"
+Pain.ThunderBeam:
+Pain.ThunderBolt:
+Pain.LightningWave:
+Pain.LightningShot:
+Pain.ThunderBlade:
+Pain.SaviorThunder:
+Pain.GizmoLightning:
+BEED H 0 A_SpawnItemEx("WeaknessEffect",random(-40,40), random(-40,40), 90,0,0,0,0,32)
+PLAY H 0 A_PlaySoundEx("weapon/criticalhit","SoundSlot5")
+Goto Pain
+PainFix:
+NYDV H 0
+goto PainFrames
+DeathFix:
+NYDV H 0
+goto DeathFrames
+Pain.WilyIce:
+NYDV H 0
+goto WilyIceFrames
+/*Death.Backstab:
+NYDV H 0 SetPlayerProperty(0, 0, 4)
+NYDV H 0 A_TakeInventory("PharaohCharge",999)   
+NYDV H 0 A_NoBlocking
+NYDV H 0 A_GiveInventory("CutterFlag",999)
+NYDV H 0 A_GiveInventory("IsDead",1)
+NYDV H 0 A_Stop
+NYDV H 0 A_GiveToTarget("KilledMeStock",1)
+NYDV H 1 A_GiveToTarget("KilledMe",1)
+NYDV H 1 A_GiveToTarget("ClearDisguise",1)
+NYDV H 0 A_GiveToTarget("DisguiseOn",1)
+NYDV H 0 A_GiveToTarget("YDDisguise",1)
+NYDV H 0 ACS_ExecuteAlways(775,0,503)
+goto BackstabFrames*/
+TheEnd:
+NYDV G 4
+loop
+CreditWalk:
+NYDV BCDE 8
+loop
+CreditRun:
+NYDV BCDE 5
+loop
+Death.WindStorm:
+Death.GravityHold:
+NYDV H 0 SetPlayerProperty(0, 0, 4)
+NYDV H 0 A_ChangeFlag("NOINTERACTION", 1)
+NYDV H 0 A_TakeInventory("WeaponCharge",999)
+NYDV H 0 A_NoBlocking
+NYDV H 0 A_TakeInventory("CutterFlag",999)
+NYDV H 0 A_GiveInventory("IsDead",1)
+NYDV H 0 A_Stop
+NYDV H 0 A_GiveToTarget("KilledMeStock",1)
+NYDV H 1 A_GiveToTarget("KilledMe",1)
+NYDV H 0 ACS_ExecuteAlways(999,0,0)
+NYDV H 0 SetPlayerProperty(0, 0, 4)
+RiseMyMegaman:
+NYDV H 1 ThrustThingZ(0,10,0,1)
+NYDV H 0 A_JumpIf(ceilingz-z<64, "ExplodeNow")
+NYDV H 0 A_GiveInventory("Cutterflag", 1)
+NYDV H 0 A_JumpIfInventory("CutterFlag", 35, "ExplodeNow")
+Goto RiseMyMegaman
+ExplodeNow:
+NYDV H 0 A_Stop
+NYDV H 0 A_PlayerScream
+NYDV H 0 A_GiveInventory("CutterFlag",999)
+NYDV H 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 0)
+NYDV Z 1 A_CheckPlayerDone
+wait
+
+
+DeathFrames:
+NYDV H 1 A_GiveToTarget("KilledMe",1)
+NYDV H 19 ACS_ExecuteAlways(999,0,0)
+goto DeathBoom
+WilyIceFrames:
+NYDV H 0 A_ChangeFlag("SHOOTABLE",0)
+NYDV H 0 SetPlayerProperty(0,1,4)
+NYDV H 0 A_SpawnItemEx("ImFrozen")
+NYDV H 0 A_GiveInventory("IceVision",1)
+NYDV H 30 A_Stop
+NYDV H 30 A_ChangeFlag("SHOOTABLE",1)
+NYDV H 0 SetPlayerProperty(0,0,0)
+NYDV H 0 A_TakeInventory("IceVision",1)
+//NYDV H 0 A_Jump(256, "Spawn")
+Goto Spawn
+/*BackstabFrames:
+NYDV H 1 ACS_ExecuteAlways(999,0,0)
+NYDV H 1 A_SetTranslucent (0.9, 0) 
+NYDV H 1 A_SetTranslucent (0.8, 0) 
+NYDV H 1 A_SetTranslucent (0.7, 0) 
+NYDV H 1 A_SetTranslucent (0.6, 0) 
+NYDV H 1 A_SetTranslucent (0.5, 0) 
+NYDV H 1 A_SetTranslucent (0.4, 0) 
+NYDV H 1 A_SetTranslucent (0.3, 0) 
+NYDV H 1 A_SetTranslucent (0.2, 0) 
+NYDV H 1 A_SetTranslucent (0.1, 0) 
+NYDV H 1 A_SetTranslucent (0.0, 0)
+PLAY Z -1*/
+
+Death.Beam:
+Death.instagib:
+NYDV Z 1 SetPlayerProperty(0, 0, 4)
+NYDV H 0 A_GiveToTarget("KilledMe",1)
+NYDV H 0 A_GiveToTarget("KilledMeStock",1)
+PLAY Z 0 A_GiveInventory("CutterFlag",999)
+NYDV H 0 A_GiveInventory("IsDead",1)
+goto DeathBoom
+DeathBoom:
+PLAY H 0 SetPlayerProperty(0, 0, 4)
+PLAY H 0 A_PlayerScream
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+YPRO A 0 A_SpawnItemEx("YellowBlob",0,0,0,random(1,15),0,13,random(0,259))
+NYDV Z 3
+PLAY Z -1
+stop
+}
+}
+
+actor YDOldCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("YDOldMorphItem",1)
+stop
+}
+}
+
+actor YDOldCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("YDOldCopyPickupMain",1)
+stop
+}
+}
+
+
+actor YDOldMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 14)
+stop
+}
+}
+
+actor YDOldMorph : YellowDevilOld
+{
++NOSKIN
+player.morphweapon "YellowDevilArm"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

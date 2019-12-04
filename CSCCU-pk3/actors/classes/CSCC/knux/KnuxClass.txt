@@ -1,0 +1,98 @@
+actor Knux : ClassBaseCSCC
+{
+player.displayname "Knux"
+player.soundclass  "KnuxC"
+
+player.startitem "BubbleArrowBoss"
+player.startitem "ReselectBubbleArrowBoss"
+player.startitem "KnuxAmmo",140
+player.startitem "KnuxMineItem",3
+
+player.forwardmove 0.6, 0.6
+player.sidemove 0.58, 0.58
+player.jumpz 18
+
+//damagefactor "Normal", 0.8
+player.maxhealth 125
+health 125
+//player.startitem "SturdyHealthBar"
+States
+{
+Spawn:
+HUNT A 0
+HUNT B 1
+HUNT A 1 
+Goto Spawn+2
+See:
+HUNT BCDE 5
+Goto Spawn
+Missile:
+HUNT F 5 
+HUNT G 4 
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+HUNT H 0 A_SpawnItemEx("KnuxCopyHitMain",1)
+goto pain+1
+}
+}
+
+actor KnuxCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("KnuxMorphItem",1)
+stop
+}
+}
+
+actor KnuxCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("KnuxCopyPickupMain",1)
+stop
+}
+}
+
+
+actor KnuxMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 37)
+stop
+}
+}
+
+actor KnuxMorph : Knux
+{
++NOSKIN
+player.morphweapon "BubbleArrowBoss"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

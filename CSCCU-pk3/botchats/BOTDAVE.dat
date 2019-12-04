@@ -1,0 +1,33 @@
+[IntroStrings]
+"\cpGentlemen."
+"\cmGentlemen."
+"\cdGentlemen."
+"\cmMentlegen."
+
+[FragStrings]
+"\\cpk\\cce\\cpk\\cce\\cpk\\cce\\cpk\\cce\\cpk\\cce\\cpk\\cce\\cpk"
+
+[KilledStrings]
+"Turn up this ungodly difficulty at once!"
+"...You're Celebi, aren't you?"
+"Hm."
+
+[RoamingStrings]
+"*ROARR*"
+"Cease thy unmanly idling!"
+"AFK."
+"It's not being evasive, it's a tactical retreat."
+
+[RareRoamingStrings]
+"\cfWHAT IS A MAN!"
+
+[EnragedStrings]
+"Cease this at once!"
+
+[WinStrings]
+"I've triumphed."
+"Seems I've won."
+
+[LoseStrings]
+"Good. Do it online now."
+"Fascinating."

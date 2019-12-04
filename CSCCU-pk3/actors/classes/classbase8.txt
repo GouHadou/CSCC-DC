@@ -1,0 +1,7 @@
+actor ClassBase8 : ClassBase7 //Magicode States
+{
+States
+{
+
+}
+}

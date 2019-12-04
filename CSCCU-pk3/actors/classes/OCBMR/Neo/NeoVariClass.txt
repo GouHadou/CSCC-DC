@@ -1,0 +1,256 @@
+actor NNCReborn : ClassBaseCSCC
+{
+player.displayname "Neo?"
+player.soundclass "Nk"
+Health 100
+Player.MaxHealth 100
++NOBLOOD
++NOBLOODDECALS
++NODAMAGETHRUST
++DONTBLAST
++QUICKTORETALIATE
+player.damagescreencolor "green"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+player.jumpz 14
+player.colorrange 0 0
+player.startitem "CanUseItems"
+player.startitem "NoHealthBar2"
+player.startitem "NeoVariX"
+player.startitem "NeoBlade"
+player.startitem "AuraPalm"
+player.startitem "AuraBow"
+player.startitem "CrystalSpear"
+player.startitem "BowAmmo", 15
+player.startitem "PalmAmmo", 64
+player.startitem "BladeAmmo", 71
+player.startitem "SpearAmmo", 8
+player.startitem "StaminAmmo", 64
+player.startitem "ManaPoints", 200
+player.startitem "FireSpell"
+player.startitem "BlizzardSpell"
+player.startitem "ThunderSpell"
+player.startitem "MeleeDashTrigger"
+
+
+Player.WeaponSlot 1, "NeoBlade"
+Player.WeaponSlot 2, "AuraPalm"
+Player.WeaponSlot 3, "AuraBow"
+Player.WeaponSlot 4, "CrystalSpear"
+Player.WeaponSlot 5, "FireSpell"
+Player.WeaponSlot 6, "BlizzardSpell"
+Player.WeaponSlot 7, "ThunderSpell"
+
+//player.startitem "HasASubWeapon"
+//player.startitem "N05Ultima"
+//player.startitem "SubWeaponCount", 5//Cant pickup subweapons, nor Buffs
+damagefactor "Normal", 1.0
+mass 9999
+gravity 0.8
+scale 2.5
+Player.MaxSkinSizeFactor 0, 0
+States
+{
+Spawn:
+NEQS A 0
+NEQS B 1 A_TakeInventory("IsDead",1)
+NEQS AAA 35 A_JumpIfInventory("ChangingPose",1,"WhichPose")
+NEQS P 1 A_JumpIfInventory("ChangingPose",1,"WhichPose")
+NEQS P 2 A_GiveInventory("StaminAmmo",1)
+Goto Spawn+5
+WhichPose:
+NEQS A 0 A_JumpIfInventory("DJumpActive",1,"DragoonJump")
+NEQS A 0 A_JumpIfInventory("UsingAtma",1,"Pose2")
+NEQS A 0 A_JumpIfInventory("UsingUltima",1,"Pose2")
+NEQS A 1 A_TakeInventory("ChangingPose",999)
+Goto Spawn+3
+See:
+NEQS B 0 //A_JumpIfInventory("OnBoard",1,"StaticFlight")
+NEQS B 5 A_JumpIfInventory("ChangingPose",1,"WhichPose")
+NEQS C 5 A_JumpIfInventory("ChangingPose",1,"WhichPose")
+NEQS D 5 A_JumpIfInventory("ChangingPose",1,"WhichPose")
+NEQS E 5 A_JumpIfInventory("ChangingPose",1,"WhichPose")
+Goto Spawn
+DragoonJump:
+NEQS X 3 A_JumpIfInventory("HDFSCounter", 1, "DragoonPlunge")
+loop
+DragoonPlunge:
+NEQS Y 1
+NEQS Y 1 A_JumpIfInventory("HDFSCounter", 1, "DragoonPlunge")
+NEQS Y 1 A_TakeInventory("ChangingPose",999)
+Goto Spawn+3
+StaticFlight:
+NEQS X 3
+NEQS X 3 //A_JumpIfInventory("OnBoard", 1, "StaticFlight")
+goto Spawn+3
+Missile:
+NEQS A 1
+NEQS F 0 A_JumpIfInventory("ChangingPose",1,"WhichPose")
+NEQS F 0 A_JumpIfInventory("BlizzagaAttackCounter", 1, "BlizzagaIdle")
+NEQS F 0 A_JumpIfInventory("Burninator", 1, "Missile1") //Aura Palm
+NEQS F 0 A_JumpIfInventory("Burninator2", 1, "Missile2") //Neo Blade(Range)
+NEQS F 0 A_JumpIfInventory("Burninator3", 1, "Missile3")
+NEQS F 0 A_JumpIfInventory("Burninator4", 1, "Missile4")//Aura Bow
+NEQS F 0 //A_JumpIfInventory("MeleeStyle1", 1, "Melee1")//Neo Blade(Melee)
+NEQS F 0 //A_JumpIfInventory("MeleeStyle2", 1, "Melee2")
+NEQS F 0 //A_JumpIfInventory("MeleeStyle3", 1, "Melee3")
+NEQS G 1 
+NEQS G 0 A_JumpIfInventory("BlizzagaAttackCounter", 1, "BlizzagaIdle")
+NEQS G 0 A_JumpIfInventory("Burninator", 1, "Missile1") //Aura Palm
+NEQS G 0 A_JumpIfInventory("Burninator2", 1, "Missile2") //Neo Blade(Range)
+NEQS G 0 A_JumpIfInventory("Burninator3", 1, "Missile3")
+NEQS G 0 A_JumpIfInventory("Burninator4", 1, "Missile4")//Aura Bow
+NEQS G 0 //A_JumpIfInventory("MeleeStyle1", 1, "Melee1")//Neo Blade(Melee)
+NEQS G 0 //A_JumpIfInventory("MeleeStyle2", 1, "Melee2")
+NEQS G 0 //A_JumpIfInventory("MeleeStyle3", 1, "Melee3")
+NEQS GGGGF 1 A_JumpIfInventory("Burninator4", 1, "Missile4")
+NEQS FF 1
+NEQS F 1 A_JumpIfInventory("BlizzagaAttackCounter", 1, "BlizzagaIdle")
+goto Spawn+2
+Missile1:
+NEQS T 3
+NEQS T 3 A_JumpIfInventory("Burninator", 1, "Missile1")
+NEQS T 3
+NEQS T 0 A_TakeInventory("IdleCounter",105)
+goto Spawn+2
+Missile2:
+NEQS M 3
+NEQS M 3 A_JumpIfInventory("Burninator2", 1, "Missile2")
+NEQS M 3
+NEQS M 0 A_TakeInventory("IdleCounter",105)
+goto Spawn+2
+Missile3:
+NEQS I 3
+NEQS I 3 A_JumpIfInventory("Burninator3", 1, "Missile3")
+NEQS I 3
+NEQS I 0 A_TakeInventory("IdleCounter",105)
+goto Spawn+2
+Missile4:
+NEQS I 6
+NEQS I 4 
+NEQS I 2 A_JumpIfInventory("Burninator4", 2, "Missile3")
+NEQS I 0 A_TakeInventory("IdleCounter",105)
+goto Spawn+2
+Melee1:
+NEQS F 3
+NEQS F 3 //A_JumpIfInventory("MeleeStyle1", 1, "Melee1")
+NEQS F 3
+NEQS G 0 A_TakeInventory("IdleCounter",105)
+NEQS G 9
+goto Spawn+2
+BlizzagaIdle:
+NEQS X 2 
+NEQS X 1 A_JumpIfInventory("BlizzagaAttackCounter", 1, "BlizzagaIdle")
+NEQS X 0 A_TakeInventory("IdleCounter",105)
+goto Spawn+3
+Flying:
+NEOF YYYYY 1
+goto Spawn+3
+Pose2:
+NEQS Y 3
+NEQS Y 1 A_JumpIfInventory("UsingAtma",1,"Pose2")
+NEQS Y 1 A_JumpIfInventory("UsingUltima",1,"Pose2")
+NEQS Y 1 A_TakeInventory("ChangingPose",999)
+goto Spawn+3
+CreditWalk:
+TNT1 A 0 A_SpawnItemEx("NeoCredits")
+CreditWalk2:
+ENDN ABCD 8
+loop
+CreditRun:
+NEOF Y 5
+loop
+}
+}
+
+Actor NeoVariable : Inventory
+{ 
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+Actor NeoVariX : Inventory
+{ 
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+Actor IDontGetKnockedBack : Inventory
+{ 
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+Actor IAmCharging : Inventory
+{ 
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+Actor BlizzaraChecker : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+Actor BlizzagaAttackCounter : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 80
+}
+
+Actor IdleCounter : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 105
+}
+
+Actor ChangingPose : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor NeoCredits  
+{
++CLIENTSIDEONLY
++NOINTERACTION
+scale 1.0
+States
+{
+Spawn:
+TLON ABCDABCDABCDABCE 8
+loop
+}
+}
+
+
+Actor Burninator : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+Actor Burninator2 : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+Actor Burninator3 : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 3
+}
+
+Actor Burninator4 : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 3
+}
+
+Actor WeaponChargeNeo : Inventory 
+{
+inventory.amount 1
+inventory.maxamount 70
+}

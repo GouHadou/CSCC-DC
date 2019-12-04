@@ -1,0 +1,6 @@
+graphic M_DOOM, 1000,1000 //lolathing
+{
+   XScale 2.5
+   YScale 2.5
+   Patch CSCCBAN, 0, 30
+}

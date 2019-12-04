@@ -1,0 +1,50 @@
+actor ParanoiaCreeperWep : MegaBuster
+{
+//$Category MM8BDM-Weapons
+Weapon.AmmoUse 4
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o was creeped out by %k's Paranoia Creeper."
+Inventory.Pickupmessage "Power up! Paranoia Creeper!"
+weapon.ammotype "ParanoiaCreeperAmmo"
+inventory.pickupsound "weapon/weaponup"
+inventory.icon "PCREEPI"
++WEAPON.AMMO_OPTIONAL
+Scale 2.0
+States
+{
+Spawn:
+PACR A 1
+loop
+Ready:
+HSNI C 0 ACS_ExecuteAlways(998,0,88)
+HSNI C 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+HSNI C 1
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+HSNI C 1
+Loop
+Fire:
+HSNI D 0 A_JumpIfNoAmmo("NoAmmo")
+HSNI D 0 A_PlaySoundEX("item/beat", "Weapon")
+HSNI D 0 A_FireCustomMissile("ParaCreeperSpawner",0,1,8,0)
+HSNI DE 3 
+HSNI C 18
+goto Ready+1
+NoAmmo:
+HSNI C 1 ACS_Execute(979,0)
+HSNI C 0 A_Refire
+Goto Ready+1
+}
+}
+
+actor ParanoiaCreeperAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+

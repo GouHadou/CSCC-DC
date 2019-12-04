@@ -1,0 +1,597 @@
+actor LaggyBlazko : ClassBaseCSCC
+{
+player.displayname "Corporal"
+Player.Face "LGY"
+player.soundclass "Laggy"
+player.damagescreencolor "Black"
+player.maxhealth 80
+health 80
+
+player.startitem "CanPickAmmo"
+player.startitem "LaggyHUD", 1
+//player.startitem "LaggyReload"
+
+Player.startitem "TommyGun"
+player.startitem "NadeSpam"
+Player.startitem "NoMagTommy"
+Player.startitem "FatBullets", 90
+//Player.startitem "TommyAmmo", 30 //lolno, you have to learn to grab energy.
+Player.startitem "NadeAmmoClass", 16
+player.startitem "CorpReload"
+player.startitem "CorpGrenade"
+player.startitem "CanUseWTanks"
+player.startitem "CorpArsenal"
+States
+{
+Spawn:
+LGY2 A 0
+LGY2 A 5 
+LGY2 A 1
+Goto Spawn+2
+See:
+LGY2 BCDE 5 
+Goto Spawn
+Missile:
+LGY2 F 2
+LGY2 G 2 
+LGY2 F 2
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+LGY2 H 0 A_SpawnItemEx("LaggyBlazkoCopyHitMain",1)
+goto pain+1
+Pain.SparkShock:
+"----" H 0 A_SpawnItemEx("ShockFX",4,0,32)
+"----" H 0 A_GiveInventory("Shocked",1)
+Pain.ThunderBeam:
+Pain.ThunderBolt:
+Pain.ThunderClaw:
+Pain.LightningBolt:
+Pain.PlugBall:
+Pain.Electric:
+Pain.YellowDevil:
+Pain.LightningWave:
+Pain.LightningShot:
+pain.BlazeTesla:
+pain.ThunderBlade:
+pain.SavRush:
+pain.SaviorThunder:
+pain.GizmoLightning:
+pain.KLIGHT:
+LGY2 H 0 A_ScaleVelocity(0.75)
+LGY2 H 0
+LGY2 H 0 A_Pain
+LGY2 H 0 //A_GiveInventory("TempInvince",1)
+LGY2 H 0 //SetPlayerProperty(0, 1, 4)
+Skeleton:
+LGY2 S 1 A_SpawnItem("PainFX",0,3)
+LGY2 S 1 A_Recoil(1)
+LGY2 S 1 A_SpawnItem("PainFX",0,3)
+LGY2 S 1 //A_Recoil(1)
+LGY2 T 1 A_SpawnItem("PainFX",0,3)
+LGY2 T 1 //A_Recoil(1)
+LGY2 T 1 A_SpawnItem("PainFX",0,3)
+LGY2 T 1 //A_Recoil(1)
+LGY2 S 1 A_SpawnItem("PainFX",0,3)
+LGY2 S 1 //A_Recoil(1)
+LGY2 S 1 A_SpawnItem("PainFX",0,3)
+LGY2 S 1 //A_Recoil(1)
+LGY2 T 1 A_SpawnItem("PainFX",0,3)
+LGY2 T 1 //A_Recoil(1)
+LGY2 T 1 A_SpawnItem("PainFX",0,3)
+LGY2 T 1 //A_Recoil(1)
+LGY2 H 1 A_SpawnItem("PainFX",0,3)
+LGY2 H 1 //A_Recoil(1)
+LGY2 H 1 A_SpawnItem("PainFX",0,3)
+LGY2 H 1 //A_Recoil(1)
+LGY2 H 0 //SetPlayerProperty(0, 0, 4)
+LGY2 H 0//SetPlayerProperty(0,0,1)
+goto Spawn
+Pain.WilyIce:
+LGY2 H 0
+goto WilyIceFrames
+TheEnd:
+LGY2 G 4
+loop
+CreditWalk:
+LGY2 BCDE 8
+loop
+CreditRun:
+LGY2 BCDE 5
+loop
+Death.Fire:
+Death.OilCanister:
+Death.WeaponShot1:
+Death.WeaponShot2:
+Death.WeaponShot3:
+Death.FlameBlast:
+Death.FireStorm:
+Death.FireSpin:
+Death.FlameSword:
+Death.FlameSwordSpark:
+Death.AtomicFire1:
+Death.AtomicFire2:
+Death.AtomicFire3:
+Death.ScorchWheel:
+Death.WaveBurner:
+Death.MagmaBazooka:
+Death.KFIR:
+Death.KFlamethrower:
+Death.GizmoFire:
+Death.AuraFlame:
+Death.FoxFirePower:
+Death.FoxFireSpread:
+Death.HellfireCutter:
+Death.HellfireCutterBurn:
+Death.JCFlameThrower:
+Death.JCFirePillar:
+Death.JCFireBomb:
+Death.KFlamethrower:
+Death.GDSShot:
+Death.GDSWave:
+Death.Shakunetsu:
+Death.AutoFlame:
+LGY2 H 0 A_GiveInventory("MFWBurning",1)
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+PLAY Z 0 A_SpawnItemEx("BurnBlazko",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+LGY2 Z 75
+LGY2 Z 0 A_TakeInventory("MFWBurning",1)
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+
+Death.MirrorBuster:
+Death.MirrorBuster1:
+Death.MirrorBuster2:
+Death.GeminiLaser:
+Death.Starcrash: //dunno
+Death.CentaurFlash:
+Death.AstroCrush:
+Death.BlackHoleBomb:
+Death.Beam:
+Death.BFGSplash:
+Death.telefrag:
+Death.Railgun:
+Death.Disintegrate:
+Death.SolarLaser:
+Death.JaxFlash:
+Death.GizmoPlasma:
+Death.GDSShot:
+Death.GDSWave:
+LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+PLAY H 0 A_PlaySoundEx("Laggy/Gibbed","Body")
+LGY2 O 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY2 OPQRZ 5
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+Death.RollingCutter:
+Death.GyroAttack:
+Death.SilverTomahawk:
+Death.DualBlade:
+Death.IceBlade:
+Death.ZardSword:
+Death.HolySword:
+Death.ChaosSlash:
+LGY2 O 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+LGY4 A 1 A_SpawnItem("PainFX",0,3)
+LGY4 AAAABBCC 3
+LGY4 DDEEFEEDEE 6
+LGY4 GH 6
+LGY4 I 21 ThrustThingZ(0, 10, 0, 1)
+LGY4 IZIZIZI 3
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+Death.ChargeKick:
+Death.MegaBall:
+Death.GouShoryuPush:
+Death.RendingKick:
+LGY2 H 0 A_GiveInventory("MFWKicked",1)
+LGY2 H 0 A_NoBlocking
+LGY3 Q 1 A_facetarget
+LGY2 I 0 A_PlayerScream
+LGY2 I 0 A_Recoil(10)
+LGY2 I 0 ThrustThingZ(0, 25, 0, 1)
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+LGY3 R 10
+LGY3 S 35
+LGY3 T 10
+LGY3 UVUVUVUVUVUVUVUVUVUVUVVVVVVVVVVVVVVVVVVVVVZVZVZV 3
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+Death.WindStorm:
+"----" H 0
+Goto GenDeath2
+Death.Instagib:
+LGY2 H 0 A_TakeInventory("WeaponCharge",999) 
+LGY2 H 0 A_GiveInventory("CutterFlag",999)
+LGY2 H 0 A_NoBlocking
+LGY2 H 0 A_GiveInventory("IsDead",1)
+Death.HD:
+//Death:
+ClassDeath:
+//MegamanDeath:
+//DeathFrames:
+LGY2 H 0 //A_GiveInventory("ClassDeathPickup",1)
+"----" H 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+GenDeath1:
+LGY2 O 0 SetPlayerProperty(0, 0, 4)
+LGY2 I 0 A_JumpIfHealthLower(-20,"GenDeath2")
+LGY2 I 1 A_facetarget
+LGY2 I 0 A_PlayerScream
+LGY2 I 0 A_Recoil(10)
+LGY2 I 0 ThrustThingZ(0, 25, 0, 1)
+LGY2 IJJ 5
+LGY2 K 70
+LGY2 KZKZKZK 3
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+GenDeath2:
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+LGY2 L 1 A_facetarget
+LGY2 I 0 A_Recoil(10)
+LGY2 I 0 ThrustThingZ(0, 25, 0, 1)
+LGY2 L 0 A_PlayerScream
+LGY2 LMM 5
+LGY2 N 70
+LGY2 NZNZNZN 3
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+Death.GravityHold:
+Death.Crush:
+Death.MisogiImpact:
+LGY2 H 1 A_GiveInventory("ClassDeathPickup",1)
+LGY2 H 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY2 M 5
+LGY2 N 70
+LGY2 NZNZNZN 3
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+Death.Electric:
+Death.ThunderBolt:
+Death.ThunderClaw:
+Death.ThunderBeam:
+Death.SparkShock:
+Death.LightningBolt:
+Death.PlugBall:
+Death.YellowDevil:
+Death.LightningWave:
+Death.LightningShot:
+Death.BlazeTesla:
+Death.ThunderBlade:
+Death.SavRush:
+Death.SaviorThunder:
+Death.GizmoLightning:
+Death.KLIGHT:
+LGY2 H 1 A_GiveInventory("ClassDeathPickup",1)
+LGY2 S 1 A_SpawnItem("PainFX",0,3)
+LGY2 S 1 A_Recoil(1)
+LGY2 S 0 A_PlaySoundEx("Weapon/SparkShock","Body")
+LGY2 STST 2 A_SpawnItem("PainFX",0,3)
+LGY2 S 0 A_PlaySoundEx("Weapon/SparkShock","Body")
+LGY2 STST 2 A_SpawnItem("PainFX",0,3)
+LGY2 S 0 A_PlaySoundEx("Weapon/SparkShock","Body")
+LGY2 STSTST 2 A_SpawnItem("PainFX",0,3)
+LGY2 S 0 A_PlaySoundEx("Weapon/SparkShock","Body")
+LGY2 STSTST 2 A_SpawnItem("PainFX",0,3)
+PLAY Z 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY7 P 70
+LGY7 PZPZPZP 3
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+Death.HyperBomb:
+Death.CrashBomb:
+Death.DrillBomb:
+Death.NapalmBomb:
+Death.DangerWrap://ZOMG not a bomb
+Death.FlashBomb:
+Death.RemoteMine:
+Death.FusionBomb:
+Death.FusionFuseBlast:
+Death.Bomb:
+Death.FuseBlast:
+Death.Flare:
+Death.BlazeRPG:
+Death.RageSeeker:
+Death.Meteor:
+Death.AutoCannon:
+Death.LegoMissile:
+Death.LegoMissile2:
+Death.StickyBomb:
+Death.StickyBomb2:
+Death.KSD:
+Death.Protorang:
+LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)//Must make a face later
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+LGY2 O 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY2 O 0 A_SpawnItemEx("CorpEye",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY2 O 0 A_SpawnItemEx("CorpEye2",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY2 O 0 A_SpawnItemEx("CorpExplosionFX")
+LGY4 I 3 A_PlaySoundEx("Laggy/Explode","Body")
+LGY4 J 3 bright Radius_Quake (2,20,0,32,0)
+LGY4 NNNNNNNNNNNNNNNNNNNNNNNNNZNZNZN 3 //Yeah, I was kind of lazy here. Thanks to Max for the last sprite.
+Goto DeathFinal
+Death.Ice:
+Death.Ice2:
+Death.FCrack2:
+Death.FreezeCracker:
+Death.FreezeCrackerBit:
+Death.IceWave:
+Death.IceSpike:
+Death.IceBall:
+Death.IceShard:
+Death.BlazeCyro:
+Death.GizmoIce:
+Death.IcePulse:
+Death.KICE:
+Death.ChillingCaesura:
+Death.ArcticAdagio:
+Death.FrozenCapella:
+Death.FreonIceShot:
+Death.FreonIceTrap:
+LGY2 H 0 A_GiveInventory("MFWFrozen",1)
+LGY4 P 60 A_PlaySoundEx("Laggy/Ice1","Body")
+Death.IceSlasher:
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+LGY2 H 0 A_TakeInventory("MFWFrozen",1)
+LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)
+LGY2 H 0 A_PlaySoundEx("Laggy/Ice2","Body")
+PLAY ZZZZZZZZZZZZZZZZ 0 A_SpawnItemEx("LaggyIceCube",0,0,Random(0,56),Random(-8,8),Random(-8,8),Random(0,8))
+PLAY Z 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY4 Z 10 ThrustThingZ(0, 25, 0, 1)
+Goto DeathFinal
+Death.BlizzardAttack:
+Death.RefrainFlurry:
+Death.NegativeBreath:
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+LGY2 H 0 A_GiveInventory("MFWFrozen",1)
+LGY4 P 4 A_PlaySoundEx("weapon/napalm","Body") 
+LGY5 ABCDEFGGGGGGGGGGGGHI 4
+LGY5 J 35
+LGY5 ZJZJZJ 3
+//PLAY Z 1 A_CheckPlayerDone
+Goto DeathFinal
+DeathFinal:
+//PLAY Z 0 A_JumpIfInventory("TsukiHit", 1, "TsukiSoulDrop")
+PLAY Z 1 A_CheckPlayerDone
+wait
+/*TsukiSoulDrop:
+"----" H 0 A_SpawnItemEx("TsukiSoul", 0, 0, 32)
+"----" H 0 A_TakeInventory("TsukiHit",999)
+Goto DeathFinal+1*/
+Death.Backstab:
+LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
+LGY2 H 1 A_GiveToTarget("ClearDisguise",1)
+LGY2 H 0 A_GiveToTarget("DisguiseOn",1)
+LGY2 H 0 A_GiveToTarget("LaggyDisguise",1)
+LGY2 H 0 ACS_ExecuteAlways(775,0,352)
+goto BackstabFrames
+}
+}
+
+
+Actor BlazkoHelmet
+{
+Radius 20
+Height 20
+Scale 2.5
+Bouncefactor 0.6
+WallBounceFactor 0.6
++DoomBounce
+Mass 10
+Speed 0
+Projectile
+-Nogravity
+States
+{
+spawn:
+LGY3 E 0
+LGY3 E 0 ThrustThingZ(0, 25, 0, 1)
+LGY3 EFGH 8
+Goto Spawn+2
+Death:
+LGY3 W 63
+LGY3 ZWZWZWZ 3
+stop
+}
+}
+
+Actor BurnBlazko
+{
+Radius 20
+Height 56
+Speed 8
+Scale 2.5
+States
+{
+Spawn:
+LGY3 A 0
+LGY3 A 0 A_Playsound ("Blazko/Burn1")
+LGY3 AAABBBCCCDDDAAABBBCCCDDDAAABBBCCCDDDAAABBBCCCDDDAAABBBCCCDDDAAABBBCCCDDD 1 Bright A_Wander
+LGY3 A 0 A_Playsound ("Blazko/Burn2")
+PLAY Z 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
+LGY3 IJKLMNNOP 3
+Stop
+}
+}
+
+actor LaggyIceCube
+{
+PROJECTILE
+Radius 1
+Height 1
+scale 2.5
+-NOGRAVITY
+-SOLID
+speed 0
+reactiontime 35
+states
+{
+Spawn:
+LGY3 E 0 ThrustThingZ(0, 20, 0, 1)
+LGY4 Q 1 A_CountDown
+goto Spawn+1
+Death:
+LGY4 QQQQQQQQQQQQQQQQQQQQQZQZQZQZ 3
+Stop
+}
+}
+
+actor CorpExplosionFX
+{
+scale 2.5
++NOINTERACTION
++CLIENTSIDEONLY
+states
+{
+Spawn:
+LGY6 A 2
+LGY6 B 1
+LGY6 CDEFGHIJ 3 bright
+stop
+}
+}
+
+Actor CorpEye : BlazkoHelmet
+{
+Radius 6
+Height 6
+States
+{
+spawn:
+LGY4 J 0
+LGY4 J 0 ThrustThingZ(0, 25, 0, 1)
+LGY4 JKLM 8
+Goto Spawn+2
+Death:
+LGY4 J 63
+LGY4 ZJZJZJZ 3
+stop
+}
+}
+
+Actor CorpEye2 : BlazkoHelmet
+{
+States
+{
+spawn:
+LGY4 L 0
+LGY4 L 0 ThrustThingZ(0, 25, 0, 1)
+LGY4 LMJK 8
+Goto Spawn+2
+Death:
+LGY4 L 63
+LGY4 ZLZLZLZ 3
+stop
+}
+}
+
+
+//--------
+
+actor LaggyHUD : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+actor CorpArsenal : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+actor MFWIHaveNoFace : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+actor MFWBurning : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+
+actor MFWKicked : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+actor MFWFrozen : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+
+actor LaggyBlazkoCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("LaggyBlazkoMorphItem",1)
+stop
+}
+}
+
+actor LaggyBlazkoCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("LaggyBlazkoCopyPickupMain",1)
+stop
+}
+}
+
+
+actor LaggyBlazkoMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 10)
+stop
+}
+}
+
+actor LaggyBlazkoMorph : LaggyBlazko
+{
++NOSKIN
+player.morphweapon "NadeSpam"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor LaggyBlazkoMorph2 : LaggyBlazko
+{
++NOSKIN
+player.morphweapon "TommyGun"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

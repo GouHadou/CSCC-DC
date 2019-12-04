@@ -1,0 +1,3 @@
+#include "actors/classes/CSCC/fenga/fengaclass.txt"
+#include "actors/classes/CSCC/fenga/fengawep.txt"
+#include "actors/classes/CSCC/fenga/fengaig.txt"

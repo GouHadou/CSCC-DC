@@ -1,0 +1,20 @@
+$playersound	bonehead	male	*death		BONEXPLD
+$playersound	bonehead	male	*xdeath		BONEXPLD
+$playersound	bonehead	male	*gibbed		BONEXPLD
+$playersound	bonehead	male	*pain100	SKELDMG
+$playersound	bonehead	male	*pain75		SKELDMG
+$playersound	bonehead	male	*pain50		SKELDMG
+$playersound	bonehead	male	*pain25		SKELDMG
+$playersound	bonehead	male	*grunt		SKELLND
+$playersound	bonehead	male	*land		SKELLND
+$playersound	bonehead	male	*jump		dsnone
+$playersound	bonehead	male	*fist		dsnone
+$playersound	bonehead	male	*usefail	SKELLND
+$playersound	bonehead	male	*taunt		BNTAUNT1
+$playersound	bonehead	female	*taunt		BNTAUNT2
+$playersound	bonehead	other	*taunt		BNTAUNT3
+
+actor/boneexplode bonexpld
+actor/bonesummon bonesumm
+actor/boneregen bonergen
+actor/boneshoot boneshot

@@ -1,0 +1,4 @@
+//This file is an extension of DECORATE, it includes the files listed.
+#include "actors/classes/IceIB/UkiSubmissionClass/DiamondIceClass.txt"
+#include "actors/classes/IceIB/UkiSubmissionClass/DiamondIceWep.txt"
+#include "actors/classes/IceIB/UkiSubmissionClass/FlashFreezeWep.txt"

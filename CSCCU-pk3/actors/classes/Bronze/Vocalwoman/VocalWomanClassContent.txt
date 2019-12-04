@@ -1,0 +1,2 @@
+#include "actors/Classes/Bronze/VocalWoman/VocalWoman.txt"
+#include "actors/Classes/Bronze/VocalWoman/VocalMic.txt"

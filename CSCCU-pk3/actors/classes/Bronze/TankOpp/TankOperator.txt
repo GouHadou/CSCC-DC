@@ -1,0 +1,36 @@
+actor TankOperator : ClassBaseCSCC
+{
+Player.DamageScreenColor "Black"
+Player.DisplayName "TankOperator"
+player.forwardmove 0.78, 0.78
+player.sidemove 0.76, 0.76
+Health 200
+Player.MaxHealth 200
+Player.StartItem "ClassicTankWeapon"
+Player.StartItem "TankOpAmmo", 70
+Player.StartItem "BulkTankActivatorPickup"
+Player.StartItem "TankRepairAmmo", 175
+
+states
+{
+Spawn:
+PROM A 0
+TNT1 A 0 A_JumpIfInventory("TankyTankFlag",1,"DonPon")
+PROM B 1
+PROM A 1 A_JumpIfInventory("TankyTankFlag",1,"DonPon")
+Goto Spawn+3
+See:
+TNT1 A 0 A_JumpIfInventory("TankyTankFlag",1,"DonPon")
+PROM BCDE 5
+Goto Spawn
+Missile:
+TNT1 A 0 A_JumpIfInventory("TankyTankFlag",1,"DonPon")
+PROM F 5
+PROM G 4
+goto Spawn
+DonPon:
+V_X1 A 1
+V_X1 A 0 A_JumpIfInventory("TankyTankFlag",1,"DonPon")
+goto Spawn
+}
+}

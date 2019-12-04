@@ -1,0 +1,52 @@
+actor CrystalWallWep : MegaBuster 
+{
+Weapon.AmmoGive 28 
+Weapon.AmmoUse 4
+Weapon.SlotNumber 1  
+Obituary "%o walked into %k's Crystal Wall." 
+Inventory.Pickupmessage "Power up! Crystal Wall!"
+weapon.ammotype "CrystalWallAmmo" 
+inventory.pickupsound "weapon/weaponup" 
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON 
++WEAPON.NOAUTOAIM
+inventory.icon "CWALLI" 
+Scale 2.0
+States
+{
+Spawn: 
+CWAL A 1
+loop
+Ready:
+CWAL B 0 ACS_ExecuteAlways(998,0,655) 
+CWAL B 1 A_WeaponReady
+goto Ready+1
+Deselect: 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+CWAL B 1 A_Lower
+Loop
+Select: 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+CWAL B 1 A_Raise
+Loop
+Fire:
+CWAL B 0 A_JumpIfNoAmmo("NoAmmo")
+CWAL B 1
+CWAL CD 2
+CWAL E 2  A_FireCustomMissile("CrystalWallStart",0,0,0,0) 
+CWAL E 12
+CWAL DC 2
+CWAL B 20
+goto Ready+1
+NoAmmo: 
+CWAL B 1 
+Goto Ready+1 
+}
+}
+
+actor CrystalWallAmmo : Ammo 
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+

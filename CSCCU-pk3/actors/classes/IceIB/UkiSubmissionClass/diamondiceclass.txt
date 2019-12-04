@@ -1,0 +1,45 @@
+actor DiamondIceMan : ClassBaseCSCC
+{
+player.displayname "Diamond IceMan" //Name pending change
+player.soundclass "ukiice"
+player.startitem "DiamondIceWep"
+player.startitem "DiamondIceManAmmo",28
+player.forwardmove 0.75, 0.75
+player.sidemove 0.70, 0.70
+States
+{
+Spawn:
+VNIC A 0
+VNIC B 1 
+VNIC A 1 
+Goto Spawn+2
+See:
+VNIC BCDE 5
+Goto Spawn+2
+Missile:
+VNIC F 5 
+VNIC G 4 
+goto Spawn+3
+
+}
+}
+/*
+actor MegamanCopy : MegamanCS
+{
++NOSKIN
+player.morphweapon "MegaBusterCS"
+player.soundclass "BestClassEver"
+}
+
+actor MegamanMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 //Morph Copy into Megaman
+stop
+}
+}

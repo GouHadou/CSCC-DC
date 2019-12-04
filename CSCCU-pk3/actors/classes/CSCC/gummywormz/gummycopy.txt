@@ -1,0 +1,53 @@
+actor AirTileShotgunWepCS : MegaBuster
+{
+Weapon.AmmoUse 4
+Weapon.AmmoGive 40
+Weapon.SlotNumber 4
+Obituary "%o's eyes were burned by %k's Air Tile Shotgun."
+Inventory.Pickupmessage "Power up! Air Tile Shotgun!"
+weapon.ammotype "AirTileCAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
+inventory.icon "ATSICO"
+Scale 2.0
+States
+{
+Spawn:
+AMTI J 1 
+loop
+Ready:
+AMTI C 0 ACS_ExecuteAlways(998,0,374)
+AMTI C 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 A 0 //A_TakeInventory("GummCopyM",999)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+AMTI C 1 A_Lower
+Loop
+Select:
+TNT1 A 0// A_GiveInventory("GummCopyM",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+AMTI C 1 A_Raise
+Loop
+Fire:
+AMTI C 0 A_JumpIfNoAmmo("NoAmmo")
+AMTI C 0 A_PlaySoundEx("weapon/airshooter","Weapon")
+AMTI C 0 A_FireCustomMissile("AirTileSG1",0,0,8,0)
+AMTI C 0 A_FireCustomMissile("AirTileSG1",-15,0,8,0)
+AMTI C 0 A_FireCustomMissile("AirTileSG1",15,1,8,0)
+AMTI EDC 3
+AMTI C 3
+AMTI C 7
+AMTI C 0 A_Refire
+Goto Ready+1
+NoAmmo:
+AMTI C 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor AirTileCAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 40
+}

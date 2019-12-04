@@ -1,0 +1,6 @@
+//Breve
+BRVPB="BRVPB" {}
+BRVPC="BRVPC" {}
+//Gizmo
+GITMA="GITMA" {}
+GITMB="GITMB" {}

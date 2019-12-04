@@ -1,0 +1,92 @@
+#library "ICEICE"
+#include "zcommon.acs"
+
+Script 400 (int i)
+{
+SetActorProperty(0, APROP_Invulnerable , 0);
+int h = GetActorProperty(0, APROP_HEALTH);
+if (h > 0) {
+int g = GetActorProperty(0, APROP_GRAVITY);
+	switch (i) {
+		default:
+		if	(MorphActor(0, "FrostWalrusSlide", "", 0x7FFFFFFF, MRF_FULLHEALTH|MRF_NEWTIDBEHAVIOUR|MRF_WHENINVULNERABLE, "NoTeleportFog", "NoTeleportFog")) {
+			 delay(1);
+			 MorphFix(h,g);
+		}
+		break;
+		case 0:
+		if (UnMorphActor(0)) {
+			delay(1);
+			MorphFix(h,g);
+		}
+		break;
+	}
+}
+}
+
+Function void MorphFix (int h, int g)
+{
+int h2 = GetActorProperty(0, APROP_HEALTH);
+if (h2 > 0) {
+	h += (h2-100);
+	if (h <= 0) { h = 1; }
+	SetActorProperty(0,APROP_HEALTH,h);
+}
+if (CheckActorProperty(0, APROP_GRAVITY,1.0)) {
+	SetActorProperty(0,APROP_GRAVITY,g);
+}
+}
+
+Script 401 (void)
+{
+SetResultValue(CheckInventory("WalrusSlideAngle"));
+}
+
+Script 402 (int currentAngle, int inputAngle, int angleChangeLimit)
+{
+//print(i:inputAngle);
+
+int angleDif = inputAngle-currentAngle;
+
+if (angleDif>128) {
+	angleDif-=256;
+} else if (angleDif<-128) {
+	angleDif+=256;
+}
+
+if (angleDif>angleChangeLimit) {
+	angleDif = angleChangeLimit;
+} else if (angleDif<-angleChangeLimit) {
+	angleDif = -angleChangeLimit;
+}
+
+//print(i:angleDif);
+
+currentAngle += angleDif;
+
+if (currentAngle>256) {
+	currentAngle-=256;
+} else if (currentAngle<0) {
+	currentAngle+=256;
+}
+
+int angleInventory = CheckInventory("WalrusSlideAngle");
+
+if (angleInventory<currentAngle) {
+	giveInventory("WalrusSlideAngle",currentAngle-angleInventory);
+} else if (angleInventory>currentAngle) {
+	takeInventory("WalrusSlideAngle",angleInventory-currentAngle);
+}
+
+}
+
+
+script 403 (int speed)
+{
+if(speed==1){
+SetActorProperty(0,APROP_SPEED,1.0);
+}
+if(speed==0){
+SetActorProperty(0,APROP_SPEED,0.3);
+}
+}

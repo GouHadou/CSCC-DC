@@ -1,0 +1,370 @@
+actor StaveCannonWep : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+weapon.ammotype "StaveAmmo"
+Inventory.Pickupmessage "Power Up! Needle Cannon!"
+inventory.pickupsound "weapon/weaponup"
+DropItem "NeedleCannonWep"
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+inventory.icon "TNT1A0"
+Scale 2.0
+States
+{
+Ready:
+BREB A 0 ACS_ExecuteAlways(998,0,45)
+BREB A 0 A_JumpIfInventory("BrevePlatformGenerator",150,"BrevePlatformGiver")
+BREB A 0 A_JumpIfInventory("BreveFlag",1,"Ready2")
+BREB A 0 A_GiveInventory("BrevePlatformGenerator",1)
+BREB A 7 A_WeaponReady(WRF_NOSWITCH)
+BREB A 0 A_GiveInventory("StaveAmmo",1)
+Goto Ready+1
+Ready2:
+BREB A 0 A_JumpIfInventory("BrevePlatformGenerator",150,"BrevePlatformGiver")
+BREB A 0 A_JumpIfInventory("BreveFlag2",1,3)
+BREB A 0 A_GiveInventory("BreveFlag2",1)
+BREB A 0 A_GunFlash
+BREB A 1 A_WeaponReady(WRF_NOSWITCH)
+BREB A 0 A_GiveInventory("StaveAmmo",1)
+BREB A 0 A_GiveInventory("BrevePlatformGenerator",1)
+BREB A 1 A_WeaponReady(WRF_NOSWITCH)
+BREB A 0 A_GiveInventory("StaveAmmo",1)
+BREB A 0 A_GiveInventory("BrevePlatformGenerator",1)
+BREB A 1 A_WeaponReady(WRF_NOSWITCH)
+Goto Ready+1
+BrevePlatformGiver:
+BREB A 0 A_GiveInventory("BreveItem1",1)
+BREB A 0 A_TakeInventory("BrevePlatformGenerator",999)
+goto Ready+1
+Deselect:
+TNT1 A 0 A_SelectWeapon("StaveCannonWep")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BREB A 1 A_Raise
+Loop
+Fire:
+SNKW A 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
+BREB A 0 A_JumpIfNoAmmo("NoAmmo")
+BREB A 0 A_JumpIfInventory("BreveFlag",1,"Fire2")
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB BC 1
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BC 1
+BREB A 0 A_JumpIfNoAmmo("NoAmmo")
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BC 1
+BREB A 0 A_JumpIfNoAmmo("NoAmmo")
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BCB 2
+BREB A 8
+BREB B 0 A_Refire
+goto Ready+1
+Fire2:
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB BC 1
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BC 1
+BREB A 0 A_GiveInventory("StaveAmmo", 1)
+BREB A 0 A_JumpIfNoAmmo("NoAmmo")
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BC 1
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB A 0 A_JumpIfNoAmmo("NoAmmo")
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB B 0 A_Refire
+BREB BCB 1
+BREB A 1
+goto Ready+1
+AltFire:
+BRVH A 0 A_JumpIfInventory("StaveAmmo",4,1)
+goto NoAmmo
+BRVH A 0 A_JumpIfInventory("BreveFlag",1,"AltFire2")
+BRVH A 0 A_TakeInventory("StaveAmmo",4)
+BRVH A 0 A_FireCustomMissile("LagSpikePointer",0,0,0,0)
+BRVH AB 2
+BRVH C 20
+BRVH B 0 A_Refire
+Goto Ready+1
+AltFire2:
+BRVH A 0 A_TakeInventory("StaveAmmo",4)
+BRVH A 0 A_FireCustomMissile("LagSpikePointer",0,0,0,0)
+BRVH AB 1
+BRVH C 4
+BRVH B 0 A_Refire
+goto Ready+1
+BotCheck:
+BRVH A 0 A_JumpIfInventory("StaveAmmo",28,"BotAlt")
+BREB A 0 A_JumpIfInventory("BreveFlag",1,"Fire2")
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB BC 1
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BC 1
+BREB A 0 A_JumpIfNoAmmo("NoAmmo")
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BC 1
+BREB A 0 A_JumpIfNoAmmo("NoAmmo")
+BREB A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BREB A 0 A_FireCustomMissile("StaveCannonShot",random(3,-3),1,8,0)
+BREB BCB 2
+BREB A 8
+BREB B 0 A_Refire
+goto Ready+1
+BotAlt:
+BRVH A 0 A_JumpIfInventory("BreveFlag",1,"AltFire2")
+BRVH A 0 A_TakeInventory("StaveAmmo",4)
+BRVH A 0 A_FireCustomMissile("LagSpikePointer",0,0,0,0)
+BRVH AB 2
+BRVH C 20
+BRVH B 0 A_Refire
+Goto Ready+1
+Flash:
+TNT1 A 0 //ACS_ExecuteAlways(191,0,1)
+TNT1 A 30
+TNT1 A 0 //ACS_ExecuteAlways(191,0,0) 
+TNT1 A 0 A_TakeInventory("BreveFlag",999)
+TNT1 A 0 A_TakeInventory("BreveFlag2",999)
+stop
+NoAmmo:
+BREB A 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor StaveAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor BreveFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor BreveFlag2 : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor BrevePlatformGenerator : Inventory
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 150
+}
+
+actor StaveCannonShot 
+{
+PROJECTILE
+Obituary "%o was gunned down by %k's Stave Cannon."
+Radius 8
+Height 8
+damagetype "StaveCannon"
+scale 2.0
+damage (9)
+speed 40
+States
+{
+Spawn:
+BRVS A 8
+BRVS A 0 A_ChangeFlag("NoGravity",0)
+loop
+Death:
+BRVS A 0 A_JumpIf(z-ceilingz==0-8, "Ceiling")
+BRVS A 0 A_JumpIf(z-floorz<4,"Ground")
+BRVS A 0
+stop
+Ceiling:
+BRVS A 0 A_SpawnItemEx("StaveCannonCeilingSpike")
+stop
+Ground:
+BRVS A 0 A_SpawnItemEx("StaveCannonGroundSpike")
+stop
+}
+}
+
+actor StaveCannonCeilingSpike 
+{
+PROJECTILE
+-FLOORHUGGER
+-NOGRAVITY
+Obituary "%o was smashed by %k's Stave Cannon Ceiling Spike."
+Radius 8
+Height 8
+scale 2.0
+damage (20)
+damagetype "Needle"
+speed 25
+states
+{
+Spawn:
+BRVF A 0
+BRVF A 0 ThrustThingZ(0,-7,0,1)
+BRVF A 1
+goto Spawn+2
+Death:
+BRVS A 0 A_ChangeFlag("FloorHugger",1)
+BRVS A 0 A_SpawnItemEx("StaveCannonGroundSpike")
+stop
+XDeath:
+Crash:
+stop
+}
+}
+
+actor StaveCannonGroundSpike 
+{
+PROJECTILE
++FLOORHUGGER
++NOGRAVITY
+Obituary "%o got a spike in %p foot by %k's Stave Cannon Ground Spike."
+Radius 8
+Height 8
+scale 2.0
+damage (10)
+damagetype "Needle"
+reactiontime 120
+speed 0
+states
+{
+Spawn:
+BREG A 1 A_Countdown
+loop 
+Death:
+stop
+}
+}
+
+
+
+actor LagSpikePointer : FastProjectile
+{
+PROJECTILE
++NoTargetSwitch
++DontBlast
+damagetype "LagSpike"
+Radius 15
+Height 4 
+scale 2.5
+damage (0)
+reactiontime 3
+speed 300
+States
+{
+Spawn:
+TNT1 A 1 A_Countdown
+loop
+Death:
+TNT1 A 0 A_ChangeFlag("FloorHugger",1)
+TNT1 A 0 A_SpawnItemEx("LagSpike",0,0,-100000,1)
+stop
+}
+}
+
+actor LagSpike
+{
+Projectile
++FloorHugger
++DontBlast
++NoClip
+scale 2.5
+Speed 0
+States
+{
+Spawn:
+LAGS A 1 
+LAGS A 0 A_Stop
+BREB A 0 A_PlaySoundEx("weapon/powerstone","Weapon")
+LAGS A 1
+LAGS B 2
+LAGS C 0 A_SpawnItemEx("LagSpikeDamager")
+LAGS C 6
+LAGS BA 2
+stop
+}
+}
+
+actor LagSpikeDamager
+{
+PROJECTILE
++DontBlast
+Obituary "%o was lagged out by %k's Lag Spike."
++NoTargetSwitch
++FloorHugger
+Radius 30
+Height 50
+damagetype "LagSpike"
+scale 2.5
+damage (25)
+speed 0
+States
+{
+Spawn:
+TNT1 A 1
+stop
+}
+}
+
+actor BreveItem1 : Item1
+{
+inventory.icon "BREVI1"
+states
+{
+Use:
+WEA2 A 0 A_JumpIf(momz==0, "land")
+WEA2 A 0 A_SpawnItemEx("BrevePlatform",0,0,14,0,0,0,0,0,0)
+stop
+Land:
+WEA2 A 0 A_SpawnItemEx("BrevePlatform",56,0,38,0,0,0,0,0,0)
+stop
+}
+}
+
+actor BrevePlatform : Item1Platform
+{
+States
+{
+Spawn:
+BRVP AB 2
+BRVP C 71
+Goto Death
+Death:
+BRVP BA 2 A_ChangeFlag("SOLID",0)
+stop
+}
+}
+
+actor StaveCannonBotWep : StaveCannonWep
+{
+Weapon.AmmoUse 0
+States
+{
+Fire:
+STCA B 0 A_JumpIfNoAmmo("NoAmmo")
+STCA B 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+STCA B 0 A_FireCustomMissile("StaveCannonShot",random(-1,1),1,8,0,0,random(-1,1))
+STCA CD 2
+STCA B 8
+STCA B 0 A_Refire
+Goto Ready+1
+AltFire:
+STCA B 0 A_TakeInventory("StaveAmmo", 14)
+STCA C 0 A_FireCustomMissile("LagSpikePointer",0,0,0,0)
+STCA D 4 A_GunFlash
+STCA B 4
+Goto Ready+1
+}
+}

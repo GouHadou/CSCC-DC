@@ -1,0 +1,91 @@
+ColdFusion
+-Fusion Bombs damaging changed, now dealing 2 constant full radius explosions 
+ instead of several explosions on fusion. This was due to it potentially hitting
+ for over 90 damage
+-Bot can now use the air boost and dash
+-doubled alt ammo usage
+
+Sinkman
+-Alt uses more ammo
+-Bot now uses alt
+
+KingYamato
+-Jet steal now moved to a flash state instead of a whole 2nd weapon (need to fix the desynch on spawn)
+-bot uses alt now
+
+Finite Zero
+-Bot uses alt now
+
+Jack Corvus
+-fixed oilpit damagers
+
+Gummywormz
+-increased ammo regen
+
+Chimeraman
+-Dashing Orb damage 25 > 20
+-Crit orb damage 50 > 40
+-Fuse Blast 100 > 80
+-Crit Fuse Blast 150>100
+
+CutmanMike
+-Hellfire Cutter Damage 1>0
+-Hellfire cutter damager 2 ripper > 12 nonripper (to match rolling cutter)
+
+LaggyBlazko > Renamed to Corporal
+! Updated to the CSCCB version
+Now gets Frag Grenades and the Grand Dad rifle from weapon pickups
+(Need to fix the pickup cooldown timers)
+(Need to add the fake bullet visual)
+
+Ice/Sparky
+-lightning shot nolonger rips
+-lightning shot 15>13
+
+Fenga Papit
+-Ammo regen 1>2
+-Mainfire ammo use 1>2
+
+Messatsu
+(This will be a nightmare to balance...)
+
+TheBladeRonin
+-Dual Blade damager 5 hits of 5 damage explosions > 1 hit of 5 damage
+
+Travis
+-SolShot damage 10>15
+-SolWave Radius 5>36
+-Altfire now spawns 1 SolWave every 4 tics instead of 3 every 2 tics
+
+Stonefunk
+-holding rocks now drains ammo, and auto throws once it runs out
+-Thrown rocks 15>10
+-Alt dig debris rate halved
+
+Korby
+(Needs power protection)
+
+Sergio
+-Psyshot 10>15
+
+Rozark
+-OblivionWings 1 2 and 3 15/20/25 > 10/10/10 (did this since damage is trippled 
+ when the alt is used making the damage 45/60/75 per boomerang)
+-SockSwing 20>10
+
+Knux
+-Split arrow explosion damage 30/40/50 > 10/15/20
+
+Zard
+-Gave sword and shuriken again
+-sword's alt now uses ammo
+-Yukuri now have a timer
+-nolonger spawns with yukuri
+-Danmaku gun 10>7
+
+AliceTheIceFairy
+-Reactivated alt for Rocket Jump
+-Changed the movement method for altfire from recoil to change velocity
+
+GiantMega
+-Gembuster projectiles nolonger rip

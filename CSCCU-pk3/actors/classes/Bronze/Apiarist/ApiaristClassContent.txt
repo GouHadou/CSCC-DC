@@ -1,0 +1,4 @@
+#include "actors/Classes/Bronze/Apiarist/Apiarist.txt"
+#include "actors/Classes/Bronze/Apiarist/HiveGunBase.txt"
+#include "actors/Classes/Bronze/Apiarist/SwarmedStatus.txt"
+#include "actors/Classes/Bronze/Apiarist/Apiary.txt"

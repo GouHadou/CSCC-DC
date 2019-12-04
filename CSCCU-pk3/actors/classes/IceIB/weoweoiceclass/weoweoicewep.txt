@@ -1,0 +1,304 @@
+//I'm lazy so have lots of comments curtosy of Korby the Wion
+actor CoolerClassWep : MegaBuster //This is really weoweoice, just lazy :D
+{
+Weapon.AmmoUse 0 
+Weapon.AmmoGive 16 
+Weapon.SlotNumber 2
+Obituary "%o was killed by %k's Weo Weo Ice Burst." 
+Inventory.Pickupmessage "Power up! Weo Weo Ice Weapon!"
+weapon.ammotype "WeoWeoIceFlag4"
+weapon.ammotype2 "WeoWeoIceFlag3"
+inventory.pickupsound "weapon/weaponup" 
++WEAPON.AMMO_OPTIONAL 
++WEAPON.NOAUTOAIM
+Scale 2.0
+
+States
+{
+Spawn:
+TNT1 A 1 
+stop
+Ready: 
+COOW B 0 ACS_ExecuteAlways(998,0,100)
+COOW B 10 A_WeaponReady
+COOW B 0 A_GiveInventory("WeoWeoIceAmmo",1)
+COOW B 2 A_TakeInventory("WeoWeoIceFlag3",1)
+COOW B 2 A_TakeInventory("WeoWeoIceFlag4",1)
+Goto Ready+1
+Deselect: 
+TNT1 A 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+COOW B 1 A_Lower
+Loop
+Select: 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+COOW B 1 A_Raise
+Loop
+Fire: 
+COOW B 0 A_JumpIfInventory("WeoWeoIceFlag2",1,"splode")
+COOW B 0 A_JumpIfInventory("WeoWeoIceFlag4",1,"Readyyo")
+COOW B 0 A_PlaySoundEX("weoweoice/mainfire1","Weapon")
+COOW B 3 A_FireCustomMissile("WeoWeoProjectile",0,0,0)
+COOW B 0 A_GiveInventory("WeoWeoIceFlag2",1)
+COOW B 0 A_GiveInventory("WeoWeoIceFlag5",1)
+COOW B 8 A_GiveInventory("WeoWeoIceFlag4",16)
+Goto Ready+1
+splode:
+COOW B 0 A_PlaySoundEX("weoweoice/mainfire2","Weapon")
+COOW B 0 A_SpawnItemEX("WeoWeoItem",0,0,0)
+COOW B 8 A_TakeInventory("WeoWeoIceFlag2",99)
+Goto Ready+1
+AltFire: 
+COOW B 0 A_JumpIfInventory("WeoWeoIceFlag3",1,"Readyyo")
+COOW B 0 A_JumpIfInventory("WeoWeoIceFlag5",1,"DoubleDamageWeoWeo")
+COOW B 0 A_PlaySoundEX("weoweoice/altfire","Weapon")
+COOW B 3 A_FireCustomMissile("WeoWeoProjectile2",0,0,0)
+COOW B 0 A_GiveInventory("WeoWeoIceFlag3",18)
+goto Ready+1
+DoubleDamageWeoWeo:
+COOW B 0 A_PlaySoundEX("weoweoice/altfire","Weapon")
+COOW B 3 A_FireCustomMissile("WeoWeoProjectile3",0,0,0)
+COOW B 0 A_GiveInventory("WeoWeoIceFlag3",18)
+COOW B 0 A_TakeInventory("WeoWeoIceFlag5",999)
+goto Ready+1
+Readyyo:
+goto Ready+1
+NoAmmo: // This state is called in the firing frame if the player doesn't have enough ammo to fire it.
+COOW B 1
+COOW B 1 ACS_Execute(979,0)
+
+Goto Ready+1 // Go back to the ready state, but skip the color change/sound script.
+}
+}
+
+actor WeoWeoIceAmmo : Ammo // self explanitory
+{
+inventory.amount 1
+inventory.maxamount 16 
+}
+
+actor WeoWeoIceWeaponAmmo : Ammo // self explanitory
+{
+inventory.amount 1
+inventory.maxamount 16 
+}
+
+actor WeoWeoIceFlag5 : Ammo // double damage on stuff
+{
+inventory.amount 1
+inventory.maxamount 2
+}
+
+actor WeoWeoIceFlag2 : Ammo // double damage on stuff
+{
+inventory.amount 1
+inventory.maxamount 2
+}
+
+actor WeoWeoIceFlag : Ammo //explode
+{
+inventory.amount 1
+inventory.maxamount 2
+}
+
+actor WeoWeoIceFlag3 : Ammo // This is the Cooldown on things
+{
+inventory.amount 1
+inventory.maxamount 18
+}
+
+actor WeoWeoIceFlag4 : Ammo // This is the Cooldown on things
+{
+inventory.amount 1
+inventory.maxamount 16
+}
+
+actor WeoWeoIceWepFlag : Ammo // the thingy for explode on the copy wep
+{
+inventory.amount 1
+inventory.maxamount 2
+}
+
+actor WeoWeoProjectile // As always, take care with the actor names as they can be case sensitive later.
+{
+Obituary "%o was killed by %k's Weo Weo Ice Burst."
+PROJECTILE // This adds a bunch of flags to the actor to let Skulltag know it's a projectile.
+Radius 32 // Radius (hitbox) of the projectile
+Height 32 // Height (hitbox) of the projectile
+scale 2.5 // Unless for some reason you want to scale the sprite of the actor, this should always be 2.5 (MM8BDM specific).
+damagetype "WeoWeoIce1"
+damage (24) // How much damage the projectile causes. Keep in mind players have 100 health.
++FORCEXYBILLBOARD // This special flag makes it so you can't look up/down at the projectile as if it was a paper cutout. Recommended for all projectiles.
+speed 30 // How fast the projectile travels from when it is created.
+States
+{
+Spawn:
+CATP AB 3 // This is a basic projectile that just plays it's animation with nothing special.
+loop
+Death:
+MMFX BCDE 3 // MMFX is a sprite found in the MM8BDM pk3 file. You can use any resources included in it.
+stop // Stop removes the projectile from the game.
+}
+}
+
+actor WeoWeoProjectile2 // As always, take care with the actor names as they can be case sensitive later.
+{
+Obituary "%o was killed by %k's Weo Weo Ice Burst."
+PROJECTILE // This adds a bunch of flags to the actor to let Skulltag know it's a projectile.
+Radius 32 // Radius (hitbox) of the projectile
+Height 32 // Height (hitbox) of the projectile
+scale 2.5 // Unless for some reason you want to scale the sprite of the actor, this should always be 2.5 (MM8BDM specific).
+damagetype "WeoWeoIce2"
+damage (25) // How much damage the projectile causes. Keep in mind players have 100 health.
++FORCEXYBILLBOARD // This special flag makes it so you can't look up/down at the projectile as if it was a paper cutout. Recommended for all projectiles.
+speed 70 // How fast the projectile travels from when it is created.
+States
+{
+Spawn:
+CATP AB 3 // This is a basic projectile that just plays it's animation with nothing special.
+loop
+Death:
+MMFX BCDE 3 // MMFX is a sprite found in the MM8BDM pk3 file. You can use any resources included in it.
+stop // Stop removes the projectile from the game.
+}
+}
+
+actor WeoWeoProjectile3 // As always, take care with the actor names as they can be case sensitive later.
+{
+Obituary "%o was killed by %k's Weo Weo Ice Burst."
+PROJECTILE // This adds a bunch of flags to the actor to let Skulltag know it's a projectile.
+Radius 32 // Radius (hitbox) of the projectile
+Height 32 // Height (hitbox) of the projectile
+scale 2.5 // Unless for some reason you want to scale the sprite of the actor, this should always be 2.5 (MM8BDM specific).
+damagetype "WeoWeoIce2"
+damage (50) // How much damage the projectile causes. Keep in mind players have 100 health.
++FORCEXYBILLBOARD // This special flag makes it so you can't look up/down at the projectile as if it was a paper cutout. Recommended for all projectiles.
+speed 70 // How fast the projectile travels from when it is created.
+States
+{
+Spawn:
+CATP AB 3 // This is a basic projectile that just plays it's animation with nothing special.
+loop
+Death:
+MMFX BCDE 3 // MMFX is a sprite found in the MM8BDM pk3 file. You can use any resources included in it.
+stop // Stop removes the projectile from the game.
+}
+}
+
+actor WeoWeoWepProjectile // As always, take care with the actor names as they can be case sensitive later.
+{
+Obituary "%o was killed by %k's Weo Weo Ice Burst."
+PROJECTILE // This adds a bunch of flags to the actor to let Skulltag know it's a projectile.
+Radius 32 // Radius (hitbox) of the projectile
+Height 32 // Height (hitbox) of the projectile
+scale 2.5 // Unless for some reason you want to scale the sprite of the actor, this should always be 2.5 (MM8BDM specific).
+damagetype "WeoWeoIceWep"
+damage (24) // How much damage the projectile causes. Keep in mind players have 100 health.
++FORCEXYBILLBOARD // This special flag makes it so you can't look up/down at the projectile as if it was a paper cutout. Recommended for all projectiles.
+speed 70 // How fast the projectile travels from when it is created.
+States
+{
+Spawn:
+CATP AB 3 // This is a basic projectile that just plays it's animation with nothing special.
+loop
+Death:
+MMFX BCDE 3 // MMFX is a sprite found in the MM8BDM pk3 file. You can use any resources included in it.
+stop // Stop removes the projectile from the game.
+}
+}
+
+actor WeoWeoWepItem // this is gonna esplode
+{
+Obituary "%o was killed by %k's Weo Weo Ice Burst."
+PROJECTILE 
+Radius 32 
+Height 32 
+scale 2.5
+damagetype "WeoWeoIceWep2"
+damage (0)
++FORCEXYBILLBOARD 
+speed 0 
+States
+{
+Spawn:
+CATP AB 3
+//loop
+Crash:
+XDeath:
+Death:
+CATP H 0 A_Explode(30,196,0)// MMFX is a sprite found in the MM8BDM pk3 file. You can use any resources included in it.
+stop // Stop removes the projectile from the game.
+}
+}
+
+actor WeoWeoItem 
+{
+Obituary "%o was killed by %k's Weo Weo Ice Burst."
+PROJECTILE 
+Radius 32 // Radius (hitbox) of the projectile
+Height 32 // Height (hitbox) of the projectile
+scale 2.5 // Unless for some reason you want to scale the sprite of the actor, this should always be 2.5 (MM8BDM specific).
+damagetype "WeoWeoIceItem"
+damage (0) // How much damage the projectile causes. Keep in mind players have 100 health.
++FORCEXYBILLBOARD // This special flag makes it so you can't look up/down at the projectile as if it was a paper cutout. Recommended for all projectiles.
+speed 0 // How fast the projectile travels from when it is created.
+States
+{
+Spawn:
+CATP AB 18
+//stop
+Crash:
+XDeath:
+Death:
+CATP H 3 A_Explode(30,128,0)
+stop 
+}
+}
+
+
+
+actor WeoWeoIceWep : MegaBuster
+{
+Weapon.AmmoUse 2
+Weapon.AmmoGive 36
+Weapon.SlotNumber 2
+Obituary "%o was killed by %k's Weo Weo Ice Burst."
+Inventory.Pickupmessage "Power up! Weo Weo Ice Wep!"
+weapon.ammotype "WeoWeoIceWeaponAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL  
++WEAPON.NOAUTOAIM
+Scale 2.0
+States
+{
+Spawn:
+COOW A 1
+loop
+Ready:
+COOW B 0 ACS_ExecuteAlways(998,0,100)
+COOW B 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+COOW B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+COOW B 1 A_Raise
+Loop
+Fire:
+COOW B 0 A_JumpIfInventory("WeoWeoIceWepFlag",1,"splode2")
+COOW B 0 A_PlaySoundEX("weoweoice/mainfire1","Weapon")
+COOW BC 3 A_FireCustomMissile("WeoWeoWepProjectile",0,0,0)
+COOW B 0 A_GiveInventory("WeoWeoIceWepFlag",1)
+Goto Ready+1
+splode2:
+COOW B 0 A_PlaySoundEX("weoweoice/mainfire2","Weapon")
+COOW B 0 A_SpawnItemEX("WeoWeoWepItem",0,0,0)
+COOW B 15 A_TakeInventory("WeoWeoIceWepFlag",1)
+Goto Ready+1
+NoAmmo:
+COOW B 1 
+Goto Ready+1
+}
+}

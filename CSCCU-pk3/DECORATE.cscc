@@ -1,0 +1,147 @@
+const int WCCS_COLDFUSION = 370;
+const int WCCS_ROZARK = 371;
+const int WCCS_DWINGSCHARGE1 = 372;
+const int WCCS_DWINGSCHARGE2 = 373;
+const int WCCS_DWINGSCHARGE3 = 374;
+const int WCCS_ADARA = 375;
+const int WCCS_ICE = 376;
+const int WCCS_SPARKY = 377;
+const int WCCS_ICESPARKY = 378;
+const int WCCS_MESSATSU = 379;
+const int WCCS_MESSCHARGE = 380;
+const int WCCS_UKIYAMA = 381;
+const int WCCS_KNUX = 382;
+const int WCCS_MUTANTYOSHI = 383;
+const int WCCS_KORBY = 384;
+const int WCCS_BLADERODEN = 420;
+const int WCCS_BIKDARK = 1;
+const int WCCS_DAVERIS = 419;
+const int WCCS_GIZMO = 385;
+const int WCCS_HCANONCHARGE1 = 386;
+const int WCCS_HCANONCHARGE2 = 387;
+const int WCCS_HCANONCHARGE3 = 388;
+const int WCCS_FINITEZERO = 4;
+const int WCCS_KINGYAMATO = 409;
+const int WCCS_JACKCORVUS = 410;
+const int WCCS_YELLOWDEVIL = 411;
+const int WCCS_CHIMERAMAN = 412;
+const int WCCS_CUTMANMIKE = 25;
+const int WCCS_LAGGYBLAZKO = 413;
+const int WCCS_BREVE = 45;
+const int WCCS_BEED28 = 414;
+const int WCCS_BLAZE = 3;
+const int WCCS_TSUKI = 415;
+const int WCCS_TSUKIC = 416;
+
+const int WCCS_HUMANDESTROYER = 29;
+const int WCCS_STONEFUNK = 40;
+const int WCCS_REDEYES = 666;
+
+
+
+
+const int CSACS_COPYCOPYWEP = 137;
+const int CSACS_COPYCOLORS = 139;
+const int CSACS_COPYMORPH = 140;
+const int CSACS_COPYSPEED = 141;
+const int CSACS_ICESPARKSWAP = 142;
+
+const int CSACS_PICKUPENTER = 143;
+const int CSACS_PICKUPRESPAWN = 144;
+const int CSACS_ITEMSET = 145;
+const int CSACS_UKIREMOTEAIM = 146;
+const int CSACS_UKIREMOTE = 147;
+const int CSACS_UKIDAMAGE = 148;
+const int CSACS_ROZPOISON = 149;
+const int CSACS_ROZPOISONVIS = 150;
+const int CSACS_SETHEALTH = 151;
+const int CSACS_TAKEWEAPON = 152;
+
+
+
+const int CSACS_JCSPEED = 790;
+const int CSACS_BEEDBOTWEP = 654;
+
+const int CSACS_BIKHEALTH = 774;
+const int CSACS_LEGOTEAMCHECK = 630;
+const int CSACS_REDEYESHEALTH = 666;
+const int DYE_JAX = 977;
+const int WCCS_MESSCHARGE2 = 386;
+const int ChargeLimit = 18;
+
+
+
+#include "actors/classes/classbase0.txt"
+#include "actors/classes/classbase1.txt"
+#include "actors/classes/classbase2.txt"
+#include "actors/classes/classbase3.txt"
+#include "actors/classes/classbase4.txt"
+#include "actors/classes/classbase5.txt"
+#include "actors/classes/classbase6.txt"
+#include "actors/classes/classbase7.txt"
+#include "actors/classes/classbase8.txt"
+#include "actors/classes/classbaseU.txt"
+#include "actors/classes/Classbasetest.txt"
+#include "actors/classes/Classbasefinal.txt"
+#include "actors/classes/classbaseflags.txt"
+#include "actors/classes/CustomWepMan.txt"
+
+
+#include "actors/classes/megaman.txt"
+#include "actors/inventory/assistreplacements.txt"
+#include "actors/inventory/cwepreplacements.txt"
+
+//Classes V1
+#include "actors/classes/CSCC/coldfusion.txt"
+#include "actors/classes/CSCC/sinkman.txt"
+#include "actors/classes/CSCC/kingyamato.txt"
+#include "actors/classes/CSCC/finitezero.txt"
+#include "actors/classes/CSCC/jackcorvus.txt"
+#include "actors/classes/CSCC/yellowdevilold.txt"
+#include "actors/classes/CSCC/yellowdevil.txt"
+#include "actors/classes/CSCC/chimeraman.txt"
+#include "actors/classes/CSCC/gummywormz.txt"
+
+
+#include "actors/classes/CSCC/copyrobot.txt"
+#include "actors/classes/CSCC/icespark.txt"
+#include "actors/classes/CSCC/messatsu.txt"
+#include "actors/classes/CSCC/ukiyamaold.txt"
+#include "actors/classes/CSCC/ukiyama.txt"
+#include "actors/classes/CSCC/knux.txt"
+#include "actors/classes/CSCC/MutantYoshi.txt"
+#include "actors/classes/CSCC/Rozark.txt"
+#include "actors/classes/CSCC/AdaraMozes.txt"
+#include "actors/classes/CSCC/Korby.txt"
+
+//CSCCV4
+#include "actors/classes/CSCC/jaxof7.txt"
+
+
+
+#include "actors/classes/CSCC/cutmanmike.txt"
+#include "actors/classes/CSCC/laggyblazko.txt"
+#include "actors/classes/CSCC/breve.txt"
+#include "actors/classes/CSCC/beed28.txt"
+#include "actors/classes/CSCC/blaze.txt"
+#include "actors/classes/CSCC/tsukiyomaru.txt"
+#include "actors/classes/CSCC/tsukiyomaru2.txt"
+#include "actors/classes/CSCC/tsukiyomaruold.txt"
+#include "actors/classes/CSCC/thebladeroden.txt"
+
+#include "actors/classes/CSCC/michael712.txt"
+#include "actors/classes/CSCC/unix.txt"
+#include "actors/classes/CSCC/bikdark.txt"
+#include "actors/classes/CSCC/lego.txt"
+#include "actors/classes/CSCC/saviorsword.txt"
+#include "actors/classes/CSCC/daveris.txt"
+#include "actors/classes/CSCC/gizmo.txt"
+#include "actors/classes/CSCC/humandestroyer.txt"
+#include "actors/classes/CSCC/stonefunk.txt"
+#include "actors/classes/CSCC/redeyes.txt"
+#include "actors/classes/CSCC/travis.txt"
+#include "actors/classes/CSCC/trolltsuki.txt"
+#include "actors/classes/CSCC/sergio.txt"
+#include "actors/classes/CSCC/fenga.txt"
+
+#include "actors/classes/CSCC/freon.txt"

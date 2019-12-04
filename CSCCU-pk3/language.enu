@@ -1,0 +1,99 @@
+[enu default]
+//Obituaries go here
+
+OB_JAXPSYCHO = "%o was no use against %k's Psychokinesis.";
+OB_JAXMINE = "%o was blown apart by %k's Psychominesis.";
+OB_JAXCONDUIT = "%o was another victim of %k's Psychonduit.";
+
+TAG_JAXPSYCHO1 = "Jax Psycho Lift";
+TAG_JAXPSYCHO2 = "Jax Psycho";
+
+
+//=|Aegis
+OB_BURSTBLADE = "%o was vanquished by %k's Burst Blade.";
+//=|Zaffre
+OB_HIPEGUN = "%o was spotted by %k's HipeGun";
+OB_TOPGRENADE = "%o could not evade %k's TopGrenade.";
+OB_FLAREGUN = "%o was Blinded by %k's FlareGun.";
+//===|Edgelord
+OB_EDGEGUN = "%o was impersonnelly done in by %k's Edge Gun.";
+OB_EDGEKATANA = "%o cut themself on %k's Edge Katana.";
+OB_EDGEBURST = "%o was obliterated by %k's Edge Burst.";
+
+OB_STEPKATANA = "%o cut themself on %k's Step Katana.";
+PU_STEPKATANA = "Power up! Step Katana!";
+TAG_STEPKATANA = "Step Katana";
+//===|Badz
+OB_BADZBUSTER = "%o was worsened by %k's Badz Buster.";
+OB_ORBITALMISSILE = "%o collided with %k's Orbital Missile.";
+PU_ORBITALMISSILE = "Power up! Orbital Missile!";
+TAG_ORBITALMISSILE = "Orbital Missile";
+//===|ankhzirus
+OB_DESERTBLAZE = "%o was parched by %k's Desert Blaze.";
+OB_ANKHGRAPPLE = "%o was ensnared by %k's Grappling Bandage.";
+OB_SANDGOLEM = "%o failed to escape %k's Sand Golem.";
+OB_ANKHCURSE = "%o was doomed by %k's Cursed Strike.";
+OB_ANKHABSORBER = "%o was turned against by %k's Ankh Absorber.";
+
+PU_CURSEDSTRIKE = "Power Up! Cursed Strike!";
+TAG_CURSEDSTRIKE = "Cursed Strike";
+
+//===|Corporal
+OB_TOMMYGUN = "%o was put to sleep with the fishes by %k's Tommy Gun.";
+OB_CORPKNIFE = "%o was shut up by %k.";
+OB_NADESPAM = "%o was blasted by %k's Nadespam.";
+OB_FRAGGRENADE = "%o was fragmented by %k's fragmentation grenade.";
+OB_GRANDDAD = "%o met %k's Grand Dad.";
+
+TAG_NADESPAM = "Nade Spam";
+TAG_TOMMYGUN = "TommyGun";
+TAG_FRAGGRENADE = "Fragmentation Grenade";
+TAG_GRANDDAD = "Grand Dad";
+
+PU_NADESPAM = "Power up! Nade Spam!";
+
+//===|Storm Conductor
+OB_SPARKMARKER = "%o stumbled upon %k's Spark Marker.";
+OB_CHAINLIGHTNING = "%o conducted %k's Chain Lightning.";
+OB_RAINPARADE = "%o was rained on by %k's Rain Parade.";
+PU_RAINPARADE = "Power Up! Rain Parade!";
+TAG_RAINPARADE = "Rain Parade";
+
+//===|InsanePharaohman
+TAG_PHARAOHBUSTER = "\c[p0][\c[k7]0\c[p0]] \cjInsanity Buster \c[p0][\c[k7]0\c[p0]]";
+TAG_FIREBOLT = "\cu[\c[w5]B\cu] \ciFire Bolt\cu [\c[w5]B\cu]";
+TAG_EXECUTE1 = "\cu[\c[w5]B\cu] \ccExecute LV \cd1\cu [\c[w5]B\cu]";
+TAG_EXECUTE2 = "\cu[\c[g1]A\cu] \cuExecute LV \cv2\cu [\c[g1]A\cu]";
+TAG_SETSWATCH = "\cu[\c[g1]A\cu] \c[c2]Set's Watch\cu [\c[g1]A\cu]";
+TAG_EXECUTE3 = "\cu[\c[s8]S\cu] \cmExecute LV \cg3\cu [\c[s8]S\cu]";
+TAG_SANCTUARY = "\cu[\c[s8]S\cu] \c[c0]Sanctuary\cu [\c[s8]S\cu]";
+TAG_ASCENSION = "\c[c9][\c[y9]SS\c[c9]] \c[n2]Ascension\cu \c[c9][\c[y9]SS\c[c9]]";
+TAG_PHARAOHBUSTERPLUS = "\c[c9][\c[y9]0\c[c9]] \cjAscended Insanity Buster\cu \c[c9][\c[y9]0\c[c9]]";
+
+//===|Snailz
+PU_SNAILBREEDER = "You get a box of snails.";
+PU_SNAILSHELL = "You get a giant shell dome.";
+
+OB_SNAILBREEDER1 = "%o was slugged by %k.";
+OB_SNAILTRAIL = "%o got into a sticky situation involving %k.";
+OB_SNAILBUDDY = "%o said hello to %k's Snail Buddy.";
+OB_SNAILATTAC = "%o was mauled by %k's Killer Snail.";
+OB_SNAILSLAP = "%o was worn down by %k.";
+OB_SNAILBOMB = "%o was slugged to submission by %k's Ballistic Mucus."; //The legend returns
+OB_SNAILSHELL = "%o was left shell-shocked %k's Shellter splint.";
+
+TAG_SNAILBREEDER1 = "Basic Snail Spells";
+TAG_SNAILBREEDER2 = "Power Snail Spells";
+
+
+//===|Undyne
+OB_SNIPERSPEAR = "%o was pierced by %k's Ranged Spear Throw.";
+OB_PINPOINTSPEAR = "%o was pierced by %k's Pinpoint Spear.";
+OB_UNDYNESD = "%o was struck down %k's Determination Termination.";
+
+OB_BURSTSPEAR = "%o was pierced by %k's Spear Burst.";
+OB_SPEARWAVE = "%o was pierced by %k's Spear Wave.";
+OB_UNDYINGSD = "%o was struck down %k's Dying Shout.";
+
+
+MENU_MEGANAME = "Megaman";

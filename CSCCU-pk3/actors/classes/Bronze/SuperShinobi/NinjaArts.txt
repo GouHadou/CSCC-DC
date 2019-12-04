@@ -1,0 +1,287 @@
+actor NinjaArts : MegaBuster
+{
+Weapon.SlotNumber 1
+Weapon.AmmoUse 0
+Obituary "\cgOOPS!"
+Inventory.Pickupmessage "You have obtained the Magic Scroll. Now you are a Ninja! :O"
+weapon.ammotype "BusterAmmo"
+inventory.pickupsound ""
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+Tag "Master Ninja Arts"
+dropitem "NeedleWaveWepCDropped"
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 1
+stop
+Ready:
+TNT1 A 0 ACS_ExecuteAlways(991,0,179)
+DNHA A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+TNT1 A 1 A_Raise
+Loop
+Slash:
+TNT1 A 0 A_PlaySoundEx("assninja/slash","Weapon")
+TNT1 A 0 A_FireCustomMissile("NinjaSlash",0,0,0,0)
+TNT1 AAAAAAAA 2
+TNT1 A 0 A_Refire
+SWOH BAA 2
+Goto Ready+1
+Fire:
+TNT1 A 0 A_JumpIfInventory("NQuickDrawCheck",1,"QuickDraw")
+DNHA DDEEEE 1
+TNT1 A 0 A_Refire
+//TNT1 A 0 A_JumpIfCloser(75,"Slash")
+DNAR ABC 1 A_ClearRefire
+TNT1 A 0 A_PlaySoundEx("assninja/attack","Weapon")
+TNT1 A 0 A_FireCustomMissile("NinjaNeedle",0,0,0,0)
+TNT1 A 0 A_FireCustomMissile("NinjaNeedle",-3.5,0,0,0)
+TNT1 A 0 A_FireCustomMissile("NinjaNeedle",3.5,0,0,0)
+TNT1 A 0 A_FireCustomMissile("NinjaNeedle",-6,0,0,0)
+TNT1 A 0 A_FireCustomMissile("NinjaNeedle",6,0,0,0)
+DNAR DE 1 A_ClearRefire
+TNT1 AAA 1 A_ClearRefire
+//TNT1 A 0 A_ClearRefire
+DNHA ED 2 A_ReFire
+Goto Ready+1
+Hold:
+//TNT1 A 0 A_JumpIfCloser(75,"Slash")
+DNAR ABC 1
+TNT1 A 0 A_PlaySoundEx("assninja/attack","Weapon")
+TNT1 A 0 A_FireCustomMissile("Shurikendo",0,0,0,0)
+TNT1 A 0 A_FireCustomMissile("Shurikendo",4,0,0,0)
+TNT1 A 0 A_FireCustomMissile("Shurikendo",-4,0,0,0)
+DNAR DE 1
+TNT1 AAAAAAA 2
+TNT1 A 0 A_ClearRefire
+DNHA ED 2 A_Refire
+Goto Ready+1
+Slash:
+TNT1 A 0 A_PlaySoundEx("assninja/slash","Weapon")
+TNT1 A 0 A_FireCustomMissile("NinjaSlash",0,0,0,0)
+TNT1 AAAAAAAA 2
+TNT1 A 0 A_Refire
+SWOH BAA 2
+Goto Ready+1
+AltFire:
+DNHA A 1
+TNT1 A 0 A_CheckFloor("Slide")
+DNHA AAAA 1
+TNT1 A 0 A_Refire
+DNHA AA 1
+Goto Ule
+AltHold:
+TNT1 A 0 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_CheckFloor("Slide")
+TNT1 A 0 A_PlaySound("click")
+DNHA AA 1
+TNT1 A 0 A_ClearRefire
+Goto DiveKick
+  DiveKick:
+	TNT1 A 0 //SetPlayerProperty(0,1,4) //Times have changed, but you better make sure you're actually aiming at them when it hits.
+	DNKI CB 1 A_Stop
+	TNT1 A 0 A_PlaySoundEx("assninja/slide","Weapon")
+	TNT1 A 0 ThrustThingZ(0,50,1,0)
+	TNT1 A 0 A_Recoil(-90)
+  KickInterp:
+	TNT1 A 0 A_JumpIfInventory("KickTimer",140,"KickFail")
+	DNKI C 0 A_JumpIfCloser(175,"KickHit")
+	DNKI A 1 A_CheckFloor("KickLand")
+	TNT1 A 0 A_GiveInventory("KickTimer",1)
+	Loop
+  KickHit:
+	TNT1 A 0 A_TakeInventory("KickTimer",9999)
+	TNT1 A 0 A_FireCustomMissile("QuakeKickHIT",0,0,0,0) 
+	TNT1 A 0 //SetPlayerProperty(0,0,4)
+	TNT1 A 0 A_PlaySoundEx("clash","Weapon")
+	TNT1 A 0 A_ScaleVelocity(0.5)
+	TNT1 A 0 ThrustThingZ(0,95,0,0)
+	DNKI BC 2
+	TNT1 A 0 A_ScaleVelocity(1)
+	Goto Ready+1
+  KickFail:
+	TNT1 A 0 A_TakeInventory("KickTimer",9999)
+	DNKI BC 3
+	TNT1 A 0 //SetPlayerProperty(0,0,4)
+	Goto Ready+1
+  KickLand:
+	TNT1 A 0 A_TakeInventory("KickTimer",9999)
+	TNT1 A 0 Radius_Quake(1,15,0,64,0)
+	TNT1 A 0 A_PlaySoundEx("izunadrophit","Weapon")
+	TNT1 A 0 A_FireCustomMissile("QuakeKick",0,0,0,0) 
+	TNT1 A 0 A_Stop
+	DNKI BC 2 
+	TNT1 A 0 //SetPlayerProperty(0,0,4)
+	DNKI C 3
+	Goto Ready+1
+Slide: //<-- Original Code
+TNT1 A 0 A_GiveInventory("NQuickDrawCheck",1)
+DNKI C 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_TakeInventory("NQuickDrawCheck",999)
+TNT1 A 0 A_JumpIf(z-floorz>0,"Ule")
+TNT1 A 0 A_GiveInventory("NQuickDrawCheck",1)
+DNKI BA 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_TakeInventory("NQuickDrawCheck",999)
+TNT1 A 0 A_PlaySoundEx("assninja/slide","Weapon")
+TNT1 A 0 A_Recoil(-35)
+DNKI A 2 //A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_FireCustomMissile("NinjaKick",0,0,0,0)
+DNKI A 2 //A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_FireCustomMissile("NinjaKick",0,0,0,0)
+DNKI A 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_FireCustomMissile("NinjaKick",0,0,0,0)
+DNKI A 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_FireCustomMissile("NinjaKick",0,0,0,0)
+DNKI A 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_FireCustomMissile("NinjaKick",0,0,0,0)
+DNKI BCCCC 1
+DNHA AAAAAAAAAAAAAAA 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+DNHA A 0 A_Refire
+Goto Ready+1
+QuickDraw:
+TNT1 A 0 A_JumpIf(z-floorz>0,"Ule")
+TNT1 A 0 SetPlayerProperty(0,1,0)
+TNT1 A 0 A_PlaySoundEx("assninja/highjump","SoundSlot5")
+TNT1 A 0 A_Stop
+TNT1 A 0 A_ChangeFlag("THRUACTORS",1)
+TNT1 A 0 A_Recoil(-100)
+TNT1 A 0 A_GiveInventory("NQuickDrawSpeed",1)
+TNT1 A 1 A_FireCustomMissile("NinjaSlash",0,0,0,0)
+TNT1 A 0 A_PlaySoundEx("quickdraw","Weapon")
+TNT1 AAAAAAAAA 1 A_FireCustomMissile("NinjaSlash",0,0,0,0)
+TNT1 A 0 A_TakeInventory("NQuickDrawSpeed",999)
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 A_ChangeFlag("THRUACTORS",0)
+//TNT1 A 0 A_Stop
+TNT1 A 0 A_ScaleVelocity(0.5)
+SWOH BAA 2
+TNT1 A 0 A_ScaleVelocity(1)
+TNT1 A 0 A_TakeInventory("NQuickDrawCheck",999)
+DNHA A 20
+DNHA AAAAAAA 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+Goto Ready+1
+Ule:
+TNT1 A 0 //A_PlaySoundEx("julius/ULE","SoundSlot5")
+TNT1 A 0 ThrustThingZ(0,150,1,0)
+TNT1 A 0 A_ScaleVelocity(1.25)
+DNKI AAA 1
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+DNKI A 1 A_JumpIfCloser(120,"UleDunk")
+DNKI A 1 A_CheckFloor("UleCrash")
+TNT1 A 0 A_ScaleVelocity(1.0)
+DNKI BC 2
+TNT1 A 0 A_ReFire
+Goto Ready+1
+UleCrash:
+TNT1 A 0 ThrustThingZ(0,60,0,0)
+TNT1 A 0 A_ScaleVelocity(0.85)
+TNT1 A 0 A_ReFire
+TNT1 AAAAAA 1
+TNT1 A 0 A_ScaleVelocity(1.0)
+Goto Ready+1
+UleDunk:
+TNT1 A 0 ThrustThingZ(0,150,0,0)
+TNT1 A 0 A_PlaySoundEx("smash/spiked","Weapon")
+TNT1 A 0 A_FireCustomMissile("NinjaDunk",0,0,0,0)
+TNT1 A 0 A_ScaleVelocity(2.5)
+DNKI ABC 1
+TNT1 A 0 A_ScaleVelocity(1.0)
+DNHA AA 2 A_CheckFloor("GetReady")
+Wait
+GetReady:
+DNHA A 1
+Goto Ready+1
+}
+}
+
+actor KickTimer : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 9999
+}
+
+actor QuakeKick
+{
+PROJECTILE
+Speed 0
+Damage (0)
+Radius 0
+Height 0
+Obituary "%o was crushed by %k's Rider Ki-- I mean, Ninja Kick!"
+Scale 4.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Explode(15,150,0,0,75)
+ASEX ABCDEF 1
+stop
+}
+}
+
+actor QuakeKickHIT : QuakeKick
+{
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Explode(35,150,0,0,75)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,0)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,15)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,30)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,45)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,60)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,75)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,90)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,105)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,120)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,135)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,150)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,165)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,180)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,195)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,210)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,225)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,240)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,255)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,270)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,285)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,300)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,315)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,330)
+TNT1 A 0 A_SpawnItemEx("NinjaSmashShockwavePart",0,0,0,18,0,0,345)
+ASEX ABCDEF 1
+stop
+}
+}
+
+actor NQuickDrawCheck : Inventory {}
+
+actor NQuickDrawSpeed : PowerSpeed
+{
+Powerup.Duration 0x7FFFFFFF
+Speed 1.5
+}

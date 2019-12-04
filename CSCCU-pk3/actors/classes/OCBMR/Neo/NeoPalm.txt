@@ -1,0 +1,765 @@
+actor AuraPalm : Weapon
+{
+Weapon.AmmoUse1 1
+Weapon.AmmoGive1 32
+Weapon.AmmoUse2 1
+Weapon.AmmoGive2 0
+Weapon.SlotNumber 2
+Obituary "%o was facepalmed by %k's Aura Palm."
+Inventory.Pickupmessage "You got Treasure: Aura Palm!"
+Inventory.icon "NEOPALM"
+Weapon.Ammotype1 "PalmAmmo"
+Weapon.Ammotype2 "StaminAmmo"
++WEAPON.DONTBOB
++WEAPON.NOAUTOAIM
++WEAPON.AMMO_OPTIONAL
++WEAPON.ALT_AMMO_OPTIONAL
+scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Ready:
+NEOP A 0 //A_TakeInventory("MeleeStyle1",1)
+NEOP A 0 //A_TakeInventory("MeleeStyle2",1)
+NEOP A 0 //A_TakeInventory("MeleeStyle3",1)
+NEOP A 0 //A_GiveInventory("Burninator",1)
+NEOP A 0 A_TakeInventory("Burninator",1)
+NEOP A 0 A_TakeInventory("Burninator2",1)
+NEOP A 0 A_TakeInventory("Burninator3",1)
+NEOP A 0 A_TakeInventory("Burninator4",1)
+NEOP A 0 A_JumpIfInventory("Once",1,"Ready2")
+NEOP A 0 //ACS_ExecuteAlways(703,0,0)
+NEOP A 0 A_GiveInventory("Once",1)
+Goto Ready2
+Ready2:
+NEOP A 0 A_GunFlash 
+NEOP A 0
+NEOP A 0 A_JumpIfInventory("ChargeShotAmmo",60,"Ready3")
+NEOP A 0 A_JumpIfInventory("ChargeShot",1,"Ready3")
+NEOP AB 3 A_WeaponReady
+NEOP A 0 A_GiveInventory("ChargeShotAmmo",12)
+NEOP A 0 A_TakeInventory("Burninator",1)
+Goto Ready2+2
+Ready3:
+NEOP C 0 A_TakeInventory("ChargeShotAmmo",60)
+NEOP C 0 A_GiveInventory("ChargeShot", 1)
+NEOP C 0 A_GiveInventory("PalmAmmo", 32)
+NEOP CD 3 A_WeaponReady
+NEOP D 0 A_TakeInventory("Burninator",1)
+goto Ready3+3
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+NEOP A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+NEOP A 1 A_Raise
+Loop
+Fire:
+NEOP A 0 A_JumpIfInventory("ChargeShot",1,"FireCS")
+NEOP A 0 A_JumpIfInventory("PalmAmmo",1,"Fire2")
+NEOP AB 2
+goto NoAmmo
+FireCS:
+TNT1 A 0 A_GiveInventory("Burninator",1)
+NEOP A 0 A_TakeInventory("ChargeShot",1)
+NEOP A 0// A_JumpIfInventory("OnBoard",1,2)
+NEOP A 0 A_JumpIfInventory("Check4MeleeDash",1,"CSDashCheck")
+NEOP A 0
+NEOP EF 3
+NEOP G 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NEOP G 0 A_FireCustomMissile("AuraChargeShot",0,0,0,0,0,0)
+NEOP GHGHGH 3
+NEOP FE 3
+NEOP AB 3
+goto Ready2+2
+CSDashCheck:
+NEOP A 0 A_JumpIf(ACS_ExecuteWithResult(667,0)==1,"FDCShot")
+NEOP A 0 A_JumpIf(ACS_ExecuteWithResult(667,0)==2,"BDCShot")
+NEOP A 0 A_JumpIf(ACS_ExecuteWithResult(667,0)==3,"SDLCShot")
+NEOP A 0 A_JumpIf(ACS_ExecuteWithResult(667,0)==4,"SDRCShot")
+NEOP A 0
+NEOP EF 3
+NEOP G 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NEOP G 0 A_FireCustomMissile("AuraChargeShot",0,0,0,0,0,0)
+NEOP GHGHGH 3
+NEOP FE 3
+NEOP AB 3
+goto Ready2+2
+FDCShot:
+TNT1 A 0 A_GiveInventory("Burninator",1)
+NEOP A 0 A_TakeInventory("ChargeShot",1)
+NEOP A 0 A_TakeInventory("StaminAmmo",7)
+NEOP AB 1
+NEOP CD 1
+NEOP EF 1
+NEOP G 0 A_Recoil(-7)
+NEOP G 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NEOP G 0 A_FireCustomMissile("AuraFDCShot",0,0,0,0)
+NEOP G 0 ThrustThingZ(0,12,0,0)
+NEOP GH 3
+NEOP G 0 SetPlayerProperty(0,1,4)
+NEOP GHGHGH 3
+NEOP FE 3
+NEOP AB 3
+NEOP B 0 SetPlayerProperty(0,0,4)
+NEOP B 0 A_JumpIfInventory("StaminAmmo",7,"Ready2")
+goto Winded
+SDLCShot:
+TNT1 A 0 A_GiveInventory("Burninator",1)
+NEOP A 0 A_TakeInventory("ChargeShot",1)
+NEOP A 0 A_TakeInventory("StaminAmmo",3)
+NEOP A 0 SetPlayerProperty(0,1,0)
+NEOP A 0 A_ChangeVelocity(0,24,momz,CVF_RELATIVE|CVF_REPLACE)
+NEOP A 0 ThrustThingZ(0,8,0,0)
+NEOP A 0 A_ChangeFlag("NOGRAVITY",0)
+NEOP AB 1
+NEOP CD 2
+NEOP EF 3
+NEOP G 0 A_ChangeFlag("NOGRAVITY",1)
+NEOP G 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NEOP G 0 A_FireCustomMissile("AuraFDCShot",0,0,0,0)
+NEOP G 0 ThrustThingZ(0,16,0,0)
+NEOP GH 3
+NEOP G 0 A_ChangeFlag("NOGRAVITY",0)
+NEOP G 0 SetPlayerProperty(0,1,4)
+NEOP GHGHGH 3
+NEOP FE 3
+NEOP AB 3
+NEOP B 0 SetPlayerProperty(0,0,4)
+NEOP B 0 SetPlayerProperty(0,0,0)
+NEOP B 0 A_JumpIfInventory("StaminAmmo",3,"Ready2")
+goto Winded
+SDRCShot:
+TNT1 A 0 A_GiveInventory("Burninator",1)
+NEOP A 0 A_TakeInventory("ChargeShot",1)
+NEOP A 0 A_TakeInventory("StaminAmmo",3)
+NEOP A 0 SetPlayerProperty(0,1,0)
+NEOP A 0 A_ChangeVelocity(0,-24,momz,CVF_RELATIVE|CVF_REPLACE)
+NEOP A 0 ThrustThingZ(0,8,0,0)
+NEOP A 0 A_ChangeFlag("NOGRAVITY",0)
+NEOP AB 1
+NEOP CD 2
+NEOP EF 3
+NEOP G 0 A_ChangeFlag("NOGRAVITY",1)
+NEOP G 0 A_PlaySoundEx("weapon/cfire","Weapon")
+NEOP G 0 A_FireCustomMissile("AuraFDCShot",0,0,0,0)
+NEOP G 0 ThrustThingZ(0,16,0,0)
+NEOP GH 3
+NEOP G 0 A_ChangeFlag("NOGRAVITY",0)
+NEOP G 0 SetPlayerProperty(0,1,4)
+NEOP GHGHGH 3
+NEOP FE 3
+NEOP AB 3
+NEOP B 0 SetPlayerProperty(0,0,4)
+NEOP B 0 SetPlayerProperty(0,0,0)
+NEOP B 0 A_JumpIfInventory("StaminAmmo",3,"Ready2")
+goto Winded
+BDCShot:
+TNT1 A 0 A_GiveInventory("Burninator",1)
+TNT1 A 0 A_TakeInventory("StaminAmmo",10)
+TNT1 A 0 SetPlayerProperty(0,1,0)
+NEOP A 3
+TNT1 A 0 A_Recoil(12)
+TNT1 A 0 ThrustThingZ(0,10,0,0)
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 5
+TNT1 A 0 A_PlaySoundEx("weapon/cfire","Weapon")
+TNT1 A 0 A_FireCustomMissile("AuraFDCShot",0,0,0,0)
+TNT1 A 5
+TNT1 A 3 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 0 SetPlayerProperty(0,0,0)
+goto Waiting4Floor
+Fire2:
+NEOP E 0 A_JumpIfInventory("Burninator",1,"FireHold1")
+NEOP G 0 A_GiveInventory("Burninator",1)
+NEOP EF 2
+FireHold1: 
+NEOP G 0 A_JumpIfInventory("FiringPhase",7,"FireHold8")
+NEOP G 0 A_JumpIfInventory("FiringPhase",6,"FireHold7")
+NEOP G 0 A_JumpIfInventory("FiringPhase",5,"FireHold6")
+NEOP G 0 A_JumpIfInventory("FiringPhase",4,"FireHold5")
+NEOP G 0 A_JumpIfInventory("FiringPhase",3,"FireHold4")
+NEOP G 0 A_JumpIfInventory("FiringPhase",2,"FireHold3")
+NEOP G 0 A_JumpIfInventory("FiringPhase",1,"FireHold2")
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 0 A_GiveInventory("FiringPhase",1)
+NEOP G 3 A_FireCustomMissile("AuraShotContFire1",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 
+Goto BurnReady
+FireHold2: 
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 3 A_FireCustomMissile("AuraShotContFire2",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 A_GiveInventory("FiringPhase",1)
+Goto BurnReady
+FireHold3: 
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 3 A_FireCustomMissile("AuraShotContFire3",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 A_GiveInventory("FiringPhase",1)
+Goto BurnReady
+FireHold4: 
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 3 A_FireCustomMissile("AuraShotContFire4",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 A_GiveInventory("FiringPhase",1)
+Goto BurnReady
+FireHold5: 
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 3 A_FireCustomMissile("AuraShotContFire5",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 A_GiveInventory("FiringPhase",1)
+Goto BurnReady
+FireHold6: 
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 3 A_FireCustomMissile("AuraShotContFire6",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 A_GiveInventory("FiringPhase",1)
+Goto BurnReady
+FireHold7: 
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 3 A_FireCustomMissile("AuraShotContFire7",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 A_GiveInventory("FiringPhase",1)
+Goto BurnReady
+FireHold8: 
+NEOP G 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+NEOP G 3 A_FireCustomMissile("AuraShotContFire8",random(-1,1),1,0,0,0,random(-1,1))
+NEOP H 3 A_TakeInventory("FiringPhase",7)
+Goto BurnReady
+BurnReady:
+NEOP G 1 A_WeaponReady
+NEOP G 0 A_TakeInventory("Burninator",1)
+NEOP FE 2 
+Goto Ready2+2
+BurnReady2:
+NEOP FE 4 A_TakeInventory("Burninator",999)
+Goto Ready2+2
+Flash:
+TNT1 A 0 A_JumpIfInventory("Burninator",1,2)
+TNT1 A 0 A_GiveInventory("StaminAmmo",1)
+TNT1 A 5 A_GiveInventory("ManaPoints",1)
+TNT1 A 0 A_JumpIfInventory("Burninator",1,2)
+TNT1 A 0 A_GiveInventory("StaminAmmo",1)
+TNT1 A 5 A_GiveInventory("ManaPoints",2)
+loop
+Waiting4Floor:
+NEOP AB 2 A_CheckFloor("WaitingEnd")
+goto Waiting4Floor
+WaitingEnd:
+NEOP ABABABABAB 1 SetPlayerProperty(0,1,4)
+NEOP A 0 SetPlayerProperty(0,0,0)
+NEOP A 0 SetPlayerProperty(0,0,4)
+NEOP A 0 A_TakeInventory("Burninator",1)
+NEOP A 0 A_JumpIfInventory("StaminAmmo",10,"Ready2")
+goto Winded
+Winded:
+NEOP AAABBBAAABBBAAABBBAAABBBAA 1 SetPlayerProperty(0,1,4)
+NEOP A 0 A_TakeInventory("Burninator",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 2 SetPlayerProperty(0,1,4)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 1 SetPlayerProperty(0,1,4)
+TNT1 A 0 SetPlayerProperty(0,0,4)
+goto Ready2+2
+NoAmmo:
+NEOP A 0
+NEOP A 35
+NEOP A 0 A_GiveInventory("PalmAmmo",32)
+Goto Ready2+2
+}
+}
+
+Actor PalmAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+Inventory.Amount 1
+Inventory.MaxAmount 32
+}
+
+Actor ChargeShotAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+Inventory.Amount 1
+Inventory.MaxAmount 60
+}
+
+Actor ChargeShot : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+Actor FiringPhase : Inventory
+{ 
+Inventory.Amount 1
+Inventory.MaxAmount 7
+}
+
+actor AuraShotContFire1 //freeze status, basic shot
+{
+Obituary "%o was facepalmed by %k's Aura Palm."
+PROJECTILE
++MISSILE
++BLOODSPLATTER
++SHOOTABLE
++NODAMAGETHRUST
+-NOTARGETSWITCH
++NOBLOOD
++DONTSPLASH
++DONTRIP
++SEEKERMISSILE
+-EXTREMEDEATH
+Health 100
+PainChance 256
+Radius 8
+Height 16
+Damage (4) //40
+DamageType "WaterType"
+speed 64
+reactiontime 6
+scale 2.5
+States
+{
+Spawn:
+ARA1 A 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA1 A 0 A_ChangeFlag("THRUGHOST",0)
+ARA1 A 0 A_SpawnItemEx("AuraParticle1",random(-8,8),random(-8,8),random(-8,8))
+ARA1 B 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA1 B 0 A_SpawnItemEx("AuraParticle1",random(-8,8),random(-8,8),random(-8,8))
+ARA1 C 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA1 C 0 A_SpawnItemEx("AuraParticle1",random(-8,8),random(-8,8),random(-8,8))
+ARA1 C 0 A_CountDown
+loop
+Death:
+ARA1 DEFG 2
+stop
+}
+}
+
+actor AuraShotContFire2 : AuraShotContFire1 //petrification status, hitbox x1.5
+{
+Radius 12
+Height 24
+DamageType "RockType"
+States
+{
+Spawn:
+ARA2 A 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ARA2 A 0 A_SpawnItemEx("AuraParticle2",random(-8,8),random(-8,8),random(-8,8))
+ARA2 B 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA2 B 0 A_SpawnItemEx("AuraParticle2",random(-8,8),random(-8,8),random(-8,8))
+ARA2 C 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA2 C 0 A_SpawnItemEx("AuraParticle2",random(-8,8),random(-8,8),random(-8,8))
+ARA2 C 0 A_CountDown
+loop
+Death:
+ARA2 DEFG 2
+stop
+}
+}
+
+actor AuraShotContFire3 : AuraShotContFire1 //burn status, more damage
+{
+Damage(5) //5
+DamageType "FireType"
+States
+{
+Spawn:
+ARA3 A 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ARA3 A 0 A_SpawnItemEx("AuraParticle3",random(-8,8),random(-8,8),random(-8,8))
+ARA3 B 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA3 B 0 A_SpawnItemEx("AuraParticle3",random(-8,8),random(-8,8),random(-8,8))
+ARA3 C 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA3 C 0 A_SpawnItemEx("AuraParticle3",random(-8,8),random(-8,8),random(-8,8))
+ARA3 C 0 A_CountDown
+loop
+Death:
+ARA3 DEFG 2
+stop
+}
+}
+
+actor AuraShotContFire4 : AuraShotContFire1 //paralysis status, knockback
+{
+DamageType "AirType"
+States
+{
+Spawn:
+ARA4 A 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ARA4 A 0 A_SpawnItemEx("AuraParticle4",random(-8,8),random(-8,8),random(-8,8))
+ARA4 B 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA4 B 0 A_SpawnItemEx("AuraParticle4",random(-8,8),random(-8,8),random(-8,8))
+ARA4 C 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA4 C 0 A_SpawnItemEx("AuraParticle4",random(-8,8),random(-8,8),random(-8,8))
+ARA4 C 0 A_CountDown
+loop
+Death:
+ARA4 DEFG 2
+stop
+}
+}
+
+actor AuraShotContFire5 : AuraShotContFire1 //explodes while travels, very high homing
+{
+Damage (2) //10
+DamageType "HolyType"
+reactiontime 2
+States
+{
+Spawn:
+ARA5 A 0
+ARA5 A 0 A_Explode(1,64,0)//10
+ARA5 A 0 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 A 1 A_SpawnItemEx("AuraParticle5",0,24,0)
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ARA5 B 0 A_Explode(1,64,0)//10
+ARA5 B 0 //A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 B 1 A_SpawnItemEx("AuraParticle5",0,19,19)
+ARA5 C 0 A_Explode(1,64,0)//10
+ARA5 C 0 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 C 1 A_SpawnItemEx("AuraParticle5",0,0,24)
+ARA5 B 0 A_Explode(1,64,0)//10
+ARA5 B 0 //A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 B 1 A_SpawnItemEx("AuraParticle5",0,-19,19)
+ARA5 A 0 A_Explode(1,64,0)//10
+ARA5 A 0 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 A 1 A_SpawnItemEx("AuraParticle5",0,-24,0)
+ARA5 B 0 A_Explode(1,64,0)//10
+ARA5 B 0 //A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 B 1 A_SpawnItemEx("AuraParticle5",0,-19,-19)
+ARA5 C 0 A_Explode(1,64,0)//10
+ARA5 C 0 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 C 1 A_SpawnItemEx("AuraParticle5",0,0,-24)
+ARA5 B 0 A_Explode(1,64,0)//10
+ARA5 B 0 //A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA5 B 1 A_SpawnItemEx("AuraParticle5",0,19,-19)
+ARA5 B 0 A_CountDown
+loop
+Death:
+ARA5 DEFG 2
+stop
+}
+}
+
+actor AuraShotContFire6 : AuraShotContFire1 //health 2x, weakening status
+{
+Health 200
+DamageType "DarkType"
+reactiontime 2
+States
+{
+Spawn:
+ARA6 A 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ARA6 A 2 A_SpawnItemEx("AuraParticle6",random(-8,8),random(-8,8),random(-8,8))
+ARA6 B 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA6 B 2 A_SpawnItemEx("AuraParticle6",random(-8,8),random(-8,8),random(-8,8))
+ARA6 C 1 A_SeekerMissile(3,4,SMF_LOOK|SMF_PRECISE,64,10)
+ARA6 C 2 A_SpawnItemEx("AuraParticle6",random(-8,8),random(-8,8),random(-8,8))
+ARA6 C 0 A_CountDown
+loop
+Death:
+ARA6 DEFG 2
+stop
+}
+}
+
+actor AuraShotContFire7 : AuraShotContFire1 //ignores walls, shields, etc
+{
++NOCLIP
++DONTBLAST
++THRUGHOST
+DamageType "GhostType"
+reactiontime 2
+States
+{
+Spawn2:
+ARA7 A 0
+ARA7 A 0 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA7 AAA 1 A_Explode(1,128,0) //10
+ARA7 A 0 A_SpawnItemEx("AuraParticle7",random(-8,8),random(-8,8),random(-8,8))
+ARA7 B 0 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA7 BBB 1 A_Explode(2,128,0) //20
+ARA7 B 0 A_SpawnItemEx("AuraParticle7",random(-8,8),random(-8,8),random(-8,8))
+ARA7 C 0 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA7 CCC 1 A_Explode(2,128,0) //20
+ARA7 C 0 A_SpawnItemEx("AuraParticle7",random(-8,8),random(-8,8),random(-8,8))
+ARA7 C 0 A_CountDown
+loop
+Death:
+ARA7 DEFG 2
+stop
+}
+}
+
+actor AuraShotContFire8 : AuraShotContFire1 //explodes on contact, confusion status
+{
+Damage(0)
+DamageType "FairyType"
+States
+{
+Spawn2:
+ARA8 A 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ARA8 A 0 A_SpawnItemEx("AuraParticle8",random(-8,8),random(-8,8),random(-8,8))
+ARA8 B 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA8 B 0 A_SpawnItemEx("AuraParticle8",random(-8,8),random(-8,8),random(-8,8))
+ARA8 C 1 A_SeekerMissile(2,3,SMF_LOOK|SMF_PRECISE,64,3)
+ARA8 C 0 A_SpawnItemEx("AuraParticle8",random(-8,8),random(-8,8),random(-8,8))
+ARA8 C 0 A_CountDown
+loop
+Death:
+FLEX C 2
+FLEX E 2 A_Explode(4,128,0)//40
+FLEX F 2 
+stop
+}
+}
+
+actor AuraChargeShot : AuraShotContFire1 //Charge Shot
+{
+//+RIPPER
++PIERCEARMOR
+-LOOKALLAROUND
++THRUGHOST
+Health 256
+Damage (7) //71
+DamageType "AuraType2"
+Radius 12
+Height 24
+speed 71
+reactiontime 19
+scale 3.5
+States
+{
+Spawn:
+ACSH A 0 
+ACSH A 2 
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ACSH B 2 A_SeekerMissile(5,7,SMF_LOOK,80,10)
+ACSH C 2 A_SeekerMissile(5,7,SMF_LOOK,80,10)
+ACSH D 2 A_SeekerMissile(5,7,SMF_LOOK,80,10)
+ACSH A 2 A_SeekerMissile(5,7,SMF_LOOK,80,10)
+ACSH D 0 A_CountDown
+goto Spawn+3
+Death:
+MSEX A 0
+MSEX A 2 A_SpawnItemEx("APCSExplosion")
+MSEX BCDEF 2  
+stop
+}
+}
+
+actor AuraFDCShot : AuraShotContFire1 //-Forward Dash Charge Shot
+{
+//+RIPPER
++PIERCEARMOR
+-LOOKALLAROUND
+Health 256
+Damage (13) // 128
+DamageType "AuraType3" //More recoil for direct hits
+Radius 12
+Height 24
+speed 92
+reactiontime 19
+scale 3.5
+States
+{
+Spawn:
+ACSH A 0 
+ACSH A 2 
+TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
+ACSH B 2 A_SeekerMissile(6,8,SMF_LOOK,96,12)
+ACSH B 0 A_JumpIfCloser(32,"Death")
+ACSH C 2 A_SeekerMissile(6,8,SMF_LOOK,96,12)
+ACSH C 0 A_JumpIfCloser(32,"Death")
+ACSH D 2 A_SeekerMissile(6,8,SMF_LOOK,96,12)
+ACSH D 0 A_JumpIfCloser(32,"Death")
+ACSH A 2 A_SeekerMissile(6,8,SMF_LOOK,96,12)
+ACSH A 0 A_JumpIfCloser(32,"Death")
+ACSH A 0 A_CountDown
+goto Spawn+3
+Death:
+MSEX A 0
+MSEX A 2 A_SpawnItemEx("APCSExplosion")
+MSEX BCDEF 2 
+stop
+}
+}
+
+actor APCSExplosion
+{
+Obituary "%o was facepalmed by %k's Aura Palm."
+PROJECTILE
++THRUGHOST
++DONTBLAST
++RIPPER
+Radius 4
+Height 8
+damage (0)
+damagetype "AuraType2"
+speed 32
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+
+/*
+// was 8 and 16 damage instead of 2 and 4 ~bika
+TNT1 A 0 A_Explode(2,16,0)//1
+TNT1 A 0 A_Explode(4,32,0)//2
+TNT1 A 0 A_Explode(2,48,0)//3
+TNT1 A 0 A_Explode(4,64,0)//4
+TNT1 A 0 A_Explode(2,80,0)//5
+TNT1 A 0 A_Explode(4,96,0)//6
+TNT1 A 0 A_Explode(2,112,0)//7
+TNT1 A 0 A_Explode(4,128,0)//8
+TNT1 A 0 A_Explode(2,144,0)//9
+TNT1 A 0 A_Explode(4,160,0)//10
+TNT1 A 0 A_Explode(2,176,0)//11
+TNT1 A 0 A_Explode(4,192,0)//12
+TNT1 A 0 A_Explode(2,208,0)//13
+TNT1 A 0 A_Explode(4,224,0)//14
+TNT1 A 0 A_Explode(2,240,0)//15
+TNT1 A 1 A_Explode(4,256,0)//16
+*/
+
+TNT1 A 1 A_Explode(13,256,0,0,96)
+stop
+}
+}
+
+actor AuraParticle1
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA1 D 0
+ARA1 DEFG 1
+stop
+}
+}
+
+actor AuraParticle2
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA2 D 0
+ARA2 DEFG 1
+stop
+}
+}
+
+actor AuraParticle3
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA3 D 0
+ARA3 DEFG 1
+stop
+}
+}
+
+actor AuraParticle4
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA4 D 0
+ARA4 DEFG 1
+stop
+}
+}
+
+actor AuraParticle5
+{
+PROJECTILE
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA5 D 0
+ARA5 DEFG 1
+stop
+}
+}
+
+actor AuraParticle6
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA6 D 0
+ARA6 DEFG 1
+stop
+}
+}
+
+actor AuraParticle7
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA7 D 0
+ARA7 DEFG 1
+stop
+}
+}
+
+actor AuraParticle8
+{
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 1.5
+States
+{
+Spawn:
+ARA8 D 0
+ARA8 DEFG 1
+stop
+}
+}
+
+actor AuraParticle9
+{
+Obituary "%o was facepalmed by %k's Aura Palm."
+PROJECTILE
++NOGRAVITY
++FORCEXYBILLBOARD
++PIERCEARMOR
+Radius 4
+Height 8
+Speed 8
+Damage (1)
+DamageType "AuraType"
+Scale 2.0
+States
+{
+Spawn:
+ARA9 A 0
+ARA9 ABCDEFG 1
+stop
+}
+}

@@ -1,0 +1,26 @@
+actor Pistonman : ClassBaseCSCC
+{
+Health 100
+Player.MaxHealth 100
+player.forwardmove 0.72, 0.72
+player.sidemove 0.7, 0.7
+player.jumpz 14
+player.displayname "Pistonman"
+player.startitem "PistonTremorBoss"
+player.startitem "PistonTremorAmmo", 500
+states
+{
+Spawn:
+SPNG A 0
+SPNG B 1
+SPNG A 1
+Goto Spawn+2
+See:
+SPNG BCDE 5
+Goto Spawn
+Missile:
+SPNG F 5
+SPNG G 4
+goto Spawn
+}
+}

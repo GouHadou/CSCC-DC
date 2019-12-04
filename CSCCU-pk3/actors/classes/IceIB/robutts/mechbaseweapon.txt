@@ -1,0 +1,362 @@
+actor BoltPistol : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 8 //NNNNNNERFED
+Weapon.SlotNumber 1
+Obituary "%o was shot down by %k's Bolt Pistol."
+Inventory.Pickupmessage "Loading \cuBolt_Pistol \c-weapons data..."
+weapon.ammotype "BoltPistolAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
+//inventory.icon "STARSI" //leftovers from Oralee -- NEVER MIND she doesn't need an icon because custom bars yo
+Scale 2.0
+
+States
+{
+Spawn:
+TNT1 A 1
+stop
+Ready:
+CMUA A 0 ACS_ExecuteAlways(991,0,9) //Top Spin's palette, again placeholder, again do this when cleaning up
+CMUA A 1 A_Gunflash
+Readier:
+CMUA A 2 A_WeaponReady
+CMUA A 0 A_JumpIfNoAmmo("NoAmmo") //If you run out of ammo the weapon automatically reloads.
+//CMUA A 45 A_WeaponReady(WRF_ALLOWRELOAD) //If you don't shoot for a second and a half, you reload.
+CMUA A 5 A_WeaponReady(WRF_ALLOWRELOAD)
+//CMUA A 0 A_JumpIfInventory("BoltPistolAmmo",8,"Readier") //Skips the reload sequence if you already have a full clip.
+//CMUA A 1
+//CMUA A 0 A_GiveInventory("BoltPistolAmmo",8) //There used to be an animation, but you couldn't shoot during it (interrupt the reload). I just removed it for simplicity's sake.
+//CMUA A 1
+Goto Ready+2
+Deselect: //Eventually I want actual weapon lowering similar to how core Doom does it. Because Halo. Because yes.
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+CMUA A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+CMUA A 1 A_Raise
+Loop
+Fire: //Single shot, semi-automatic rounds. Decent damage per bullet, lethal if multiple shots are connected.
+CMUA A 0 A_JumpIfNoAmmo("NoAmmo") //Failsafe for the automatic reload.
+CMUA A 0 A_PlaySoundEx("RoboDrone/basicshot","Weapon")
+CMUA B 3 A_FireCustomMissile("BoltPistolShot",0,0,12,0) //Noticeably fires from the right.
+COOW B 0 A_TakeInventory("BoltPistolAmmo",1)
+CMUA A 8
+CMUA A 0 A_Refire //Intentional. Clicking each time to shoot is annoying and slows your firing rate.
+Goto Ready+1
+AltFire: //Will eventually check for multiple alt flags. For now, defaults to Frost Atomizer.
+CMUA A 1
+CMUA A 0 A_JumpIfInventory("AltEquipmentAmmo",10,"AltGround")
+goto Ready+2
+AltGround:
+CMUA A 1
+CMUA A 0 A_CheckFloor("AltChecks")
+goto Ready+2
+AltChecks:
+CMUA A 1
+CMUA A 0 A_JumpIfInventory("AtomizerFlag",1,"FreezeBomb") //For some reason this check is never called. I had to comment out Ready+1 just to make the bombs work.
+//goto Ready+1
+FreezeBomb:
+CMUA A 1
+CMUA A 0 A_GiveInventory("CantGenerate",1)
+CMUA A 1 SetPlayerProperty(0,1,4)
+CMIB DDD 1 A_Stop
+CMIB EF 3
+TNT1 A 3
+TNT1 A 1 A_SpawnItemEx("FreezeBombSummoner",0,0,0)
+TNT1 A 1 A_TakeInventory("AltEquipmentAmmo",10)
+TNT1 A 5 A_PlaySoundEx("RoboDrone/bombthud","Weapon")
+CMUA ML 3
+CMUA A 3 SetPlayerProperty(0,0,4)
+CMUA A 1 A_TakeInventory("CantGenerate",999)
+goto Ready+2
+Reload:
+NoAmmo:
+CMUA A 1
+CMUA CDE 3
+CMUA F 3 A_PlaySoundEx("RoboDrone/reload","Weapon")
+CMUA E 6
+CMUA F 3 A_PlaySoundEx("RoboDrone/reload","Weapon")
+CMUA EEEEC 3
+CMUA A 0 A_GiveInventory("BoltPistolAmmo",8) //Reloads the weapon with a full clip.
+CMUA A 1
+Goto Ready+2
+Flash:
+TNT1 A 0 A_GiveInventory("AtomizerFlag",1)
+TNT1 A 10
+TNT1 A 0 A_JumpIfInventory("CantGenerate",1,"Flash")
+TNT1 A 0 A_GiveInventory("AltEquipmentAmmo",1)
+loop
+PauseFlash:
+TNT1 A 1
+Goto Flash
+}
+}
+
+actor BoltPistolAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 8
+}
+
+actor BoltPistolShot : FastProjectile
+{
+PROJECTILE
+Radius 5
+Height 5
+scale 2.5
+damage (16)
+damagetype "BoltPistol" //so it breaks Freeze condition
++FORCEXYBILLBOARD
+speed 88 //hurr hurrrrrr
+States
+{
+Spawn:
+CMUA G 1
+loop
+Death:
+CMUA HIJK 3
+stop
+}
+}
+
+actor AtomizerFlag : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor CantGenerate : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor AltEquipmentAmmo: Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 30
+}
+
+actor FreezeBombSummoner
+{
+PROJECTILE
+-NOGRAVITY
+Radius 8
+Height 10
+Scale 2.5
+ReactionTime 9
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 ThrustThingZ(0, 55, 1, 0)
+TNT1 A 2 A_CountDown
+Goto Spawn+2
+Crash:
+Death:
+TNT1 A 0
+TNT1 A 1 A_SpawnItemEx("FreezeBombActor",16,0,0)
+stop
+}
+}
+
+actor FreezeBombActor
+{
+PROJECTILE
+-FORCEXYBILLBOARD
++NOGRAVITY
++RIPPER
+Radius 8
+Height 10
+scale 2.5
+speed 0
+gravity 3.0
+reactiontime 80
+Damage (0)
+damagetype "FrostAtomizer"
+States
+{
+Spawn:
+CMIB B 0
+CMIB B 1 A_CountDown
+loop
+Death:
+CMIB B 0
+CMIB B 1 A_Stop
+CMIB B 0 A_SpawnItemEx("FreezeBombEffects",0,0,8)
+CMIB B 0 A_SpawnItemEx("FreezeMistDamager",0,0,0)
+CMIB B 1 A_PlaySoundEx("weapon/icewaveloop","Weapon")
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 7
+CMIB B 0 A_SpawnItemEx("FreezeMistDamager",0,0,0)
+CMIB B 1 A_PlaySoundEx("weapon/icewaveloop","Weapon")
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 7
+CMIB B 0 A_SpawnItemEx("FreezeMistDamager",0,0,0)
+CMIB B 1 A_PlaySoundEx("weapon/icewaveloop","Weapon")
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 7
+CMIB B 0 A_SpawnItemEx("FreezeMistDamager",0,0,0)
+CMIB B 1 A_PlaySoundEx("weapon/icewaveloop","Weapon")
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 7
+CMIB B 0 A_SpawnItemEx("FreezeMistDamager",0,0,0)
+CMIB B 1 A_PlaySoundEx("weapon/icewaveloop","Weapon")
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 7
+CMIB B 0 A_SpawnItemEx("FreezeMistDamager",0,0,0)
+CMIB B 1 A_PlaySoundEx("weapon/icewaveloop","Weapon")
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 0 A_SpawnItemEx("FreezeBombParticle",0,0,8,random2(5),random2(5),random2(5))
+CMIB B 7
+MMFX BCDE 3
+stop
+}
+}
+
+actor FreezeMistDamager
+{
++NOGRAVITY
++MISSILE
++SKYEXPLODE
++RIPPER
+-SOLID
+height 1
+radius 256
+damage (14)
+damagetype "FrostAtomizer"
+Obituary "%o was frozen stiff by %k's Frost Atomizer."
+States
+{
+Spawn:
+TNT1 A 1
+stop
+}
+}
+
+actor FreezeBombEffects
+{
+PROJECTILE
++FORCEXYBILLBOARD
++NOGRAVITY
++RIPPER
+Radius 6
+Height 9
+scale 2.5
+speed 0
+gravity 3.0
+reactiontime 48
+Damage (0)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("FreezeBombHaze",0,0,0,random2(14),random2(14),0)
+TNT1 A 0 A_SpawnItemEx("FreezeBombHaze",0,0,0,random2(14),random2(14),0)
+TNT1 A 1 A_CountDown
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor FreezeBombHaze
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+RenderStyle "Translucent"
+Alpha 0.6
+Scale 2.5
+States
+{
+Spawn:
+CMIB C 8
+CMIB CCC 4 A_FadeOut(0.2)
+Death:
+CMIB C 0
+stop
+}
+}
+
+actor FreezeBombParticle
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+Scale 2.5
+States
+{
+Spawn:
+CMIB GHI 4
+CMIB J 4 A_Stop
+stop
+}
+}
+
+
+
+/*
+actor CoolWeapon : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o was killed by %k's Cool Weapon."
+Inventory.Pickupmessage "Power up! Cool Weapon!"
+weapon.ammotype "CoolWeaponAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
+inventory.icon "COOWI"
+Scale 2.0
+States
+{
+Spawn:
+COOW A 1
+loop
+Ready:
+COOW B 0 ACS_ExecuteAlways(998,0,100)
+COOW B 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+COOW B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+COOW B 1 A_Raise
+Loop
+Fire:
+COOW B 0 A_JumpIfNoAmmo("NoAmmo")
+COOW B 0 A_PlaySoundEx("weapon/coolattack","Weapon")
+COOW B 0 A_FireCustomMissile("CoolProjectile",0,1,8,0)
+COOW CD 3
+COOW B 16
+COOW B 0 A_Refire
+Goto Ready+1
+NoAmmo:
+COOW B 1 
+Goto Ready+1
+}
+}
+*/

@@ -1,0 +1,203 @@
+actor PillGrenadeLauncherWep : Weapon
+{
+Weapon.AmmoUse 1
+Weapon.AmmoUse2 0
+Weapon.AmmoGive 3
+Weapon.SlotNumber 1
+scale 2.0
+Obituary "%o was blown to bits by %k"
+Inventory.Pickupmessage "$PU_MEGABUSTER"
+weapon.ammotype "PillGrenadeClip"
+weapon.ammotype2 "PillGrenadeClip"
+inventory.icon "NULLICON"
++WEAPON.AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.NOAUTOFIRE
++WEAPON.NOAUTOAIM
+States
+{
+Spawn:
+WEAP X 1
+stop
+Ready:
+BUST B 0 
+"####" B 16 A_WeaponReady
+"####" B 0 A_jumpifinventory("PillGrenadeClip",3,"Ready")
+Goto Reload
+"####" A 0 A_PlaySound("weapon/rminestick")
+"####" B 0 A_GiveInventory("PillGrenadeClip")
+Goto Ready
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+"####" B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+"####" B 1 A_Raise
+Loop
+Fire:
+"####" B 0 A_JumpIfNoAmmo("NoAmmo")
+"####" C 1
+"####" B 0 A_PlaySoundEx("weapon/GrenadeLauncher","Weapon")
+"####" B 0 A_Giveinventory("PillGrenadeShooter")
+"####" CD 5
+"####" B 7
+"####" B 1 A_Refire
+goto Ready
+
+NoAmmo:
+"####" B 1
+"####" B 0 A_jumpifinventory("PillGrenadeClip",1,"Ready")
+"####" B 16
+Reload:
+"####" B 0 A_PlaySound("weapon/rminestick")
+"####" B 0 A_GiveInventory("PillGrenadeClip")
+"####" B 0 A_jumpifinventory("PillGrenadeClip",3,"Ready")
+"####" B 15 A_WeaponReady
+Goto Reload
+Flash:
+TNT1 A 1
+stop
+NoFlash:
+TNT1 A 1
+stop
+}
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Ammo & inventory|---------------------------
+//[+]========================================================================[+]
+actor PillGrenadeClip : Ammo
+{
+inventory.amount 1
+inventory.maxamount 3
++INVENTORY.IGNORESKILL
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Projectiles |--------------------------------
+//[+]========================================================================[+]
+actor PillGrenadeProjectile 
+{
+PROJECTILE
+damagetype "Explosion"
+Obituary "%o was blown up by %k"
+SeeSound "weapon/PillShot"
+radius 11
+height 20
+scale 2.0
+-NOGRAVITY
++CANBOUNCEWATER
++DOOMBOuNCE
++NOEXPLODEFLOOR
++MTHRUSPECIES
+-ALLOWBOUNCEONACTORS
+speed 55
+gravity 1.0
+bouncefactor 0.8
+Damage (5)
+wallbouncefactor 0.8
+reactiontime 55
+States
+{
+Spawn:
+PILG A 0
+PILG A 0 ThrustThingZ(0, 15, 0, 1)
+PILG A 0 
+PILG A 0 A_ChangeFlag("THRUACTORS",0)
+PILG A 1 A_CountDown
+PILG A 0 A_Checkfloor("Slowdown")
+
+PILG B 1 A_CountDown
+PILG B 0 A_Checkfloor("Slowdown")
+
+PILG C 1 A_CountDown
+PILG C 0 A_Checkfloor("Slowdown")
+
+PILG D 1 A_CountDown
+PILG D 0 A_Checkfloor("Slowdown")
+
+PILG E 1 A_CountDown
+PILG E 0 A_Checkfloor("Slowdown")
+
+PILG F 1 A_CountDown
+PILG F 0 A_Checkfloor("Slowdown")
+
+PILG G 1 A_CountDown
+PILG G 0 A_Checkfloor("Slowdown")
+
+PILG H 1 A_CountDown
+PILG H 0 A_Checkfloor("Slowdown")
+Goto Spawn+2
+Slowdown:
+PILG A 0 A_ChangeFlag("THRUACTORS",1)
+PILG A 1 A_ScaleVelocity(0.6)
+PILG A 1 A_CountDown
+PILG A 0 A_Checkfloor("Slowdown")
+Goto Spawn+2
+XDeath:
+Crash:
+TNT1 A 1 A_PlaySoundEx("Weapon/Pillexplode","SoundSlot5")
+Death:
+//PILG A 0 A_Stop
+TNT1 A 0 A_SpawnItemEx("PillGrenadeBlast")
+stop
+}
+}
+
+	actor PillGrenadeProjectile_BLUE : PillGrenadeProjectile{}
+	actor PillGrenadeProjectile_RED : PillGrenadeProjectile{translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"}
+// [+++]=============================[+++]
+Actor PillGrenadeBlast
+{
+PROJECTILE
++NOINTERACTION
+speed 0
+Damage (0)
+DamageType "NormalTypeX" 
+Scale 3.5
+States
+{
+Spawn:
+ASEX A 0
+TNT1 A 1  
+ASEX A 0 A_Explode(15, 180, 0,0,180)
+NAPC A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+ASEX ABCDEF 1 //A_Explode(250, 180, 0,0,50)
+stop
+}
+}
+
+
+//[+]========================================================================[+]
+//--------------------------------|Special Actors|------------------------------
+//[+]========================================================================[+]
+
+//[+]========================================================================[+]
+//--------------------------------|Item Shooters|------------------------------
+//[+]========================================================================[+]
+actor PillGrenadeShooter : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BUST B 0 A_FireCustomMissile("PillGrenadeProjectile",0,1,4,12)
+stop
+TeamRedFire:
+BUST B 0 A_FireCustomMissile("PillGrenadeProjectile_RED",0,1,4,12)
+TNT1 A 0
+stop
+TeamBlueFire:
+BUST B 0 A_FireCustomMissile("PillGrenadeProjectile_BLUE",0,1,4,12)
+TNT1 A 0
+stop
+}
+}

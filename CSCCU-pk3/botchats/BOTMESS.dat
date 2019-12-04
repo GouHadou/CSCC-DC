@@ -1,0 +1,43 @@
+[IntroStrings]
+"Well okay then."
+"\cgDODGE!!!"
+
+[FragStrings]
+"That was close!"
+"Gotcha $player_killed!"
+"Are you ready for \cground 3??"
+"What's everyones obsession with those foam darts.  That's so weird."
+
+[KilledStrings]
+"HAX!...AND LIES!"
+"Whelp, that was not my best."
+"Are you ready for \cground 2?? $player_killedby"
+"/me takes down notes on $player_killedby"
+"Chikusho!"
+
+[RareRoamingStrings]
+"Shoosh"
+
+[RoamingStrings]
+"Hmph."
+"Alright, who invited $player_random_notself?"
+"Come on, $player_lastplace. You can do better than that!"
+
+[EnragedStrings]
+"\cgGET BACK HERE $player_inlead! I'M NOT THROUGH WITH YOU YET!"
+
+[DemoralizedStrings]
+"mada mada!!"
+
+[LosingRoamingStrings]
+"\ckNo banana......\c-banana"
+"Ha, I'm really good at fl-\cgexploding\c-........"
+
+[WinStrings]
+"Victoly!"
+"I'll take it!"
+"Well okay then."
+
+[LoseStrings]
+"Wait, what? How?"
+"Nice work $player_inlead.  Don't expect a repeat though."

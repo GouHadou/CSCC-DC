@@ -1,0 +1,4 @@
+#include "actors/classes/CSCC/yellowdevilold/ydclassold.txt"
+#include "actors/classes/CSCC/yellowdevilold/ydwepsold.txt"
+//#include "actors/classes/CSCC1/yellowdevil/ydig.txt"
+//#include "actors/classes/CSCC/yellowdevilold/ydcopyold.txt"

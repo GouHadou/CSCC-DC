@@ -1,0 +1,100 @@
+actor CrazyWaveBossUp : CrazyWaveBoss
+{
+Weapon.Ammouse 18
+Tag "$TAG_PHARAOHBUSTERPLUS"
+Obituary "%o felt the impact of %k's \c[w2]hitmarkers\c-."
+States
+{
+Fire: 
+PHMG A 0 ACS_ExecuteAlways(512,0,1,-1)
+PHMG A 0 A_JumpIfNoAmmo("NoAmmo")
+PHMG A 0 A_JumpIfInventory("MGFiring",1,"Fire1")
+PHMG A 0 A_GiveInventory("MGFiring",1)
+IPSH ABCD 2
+PHMG A 0 A_PlaySoundEx("pharaohbuster/ready","Weapon")
+IPSH EEEF 1
+goto Fire1
+Fire1: 
+PHMG A 0 A_PlaySoundEx("pharaohbuster/mgfireplus","Weapon")
+IPSH F 1 A_FireCustomMissile("FakePharaohBulletPlus",fRandom(-2.5,2.5),7,-10,0,0,fRandom(-2.5,2.5))
+IPSH G 0 Bright A_FireBullets(2.5,2.1,1,5,"PharaohBulletImpact",FBF_NORANDOM|FBF_USEAMMO)
+IPSH G 2
+PHMG A 0 A_Refire
+Goto Unready 
+Unready: 
+PHMG A 0 ACS_ExecuteAlways(512,0,0,0) 
+PHMG A 0 A_TakeInventory("MGFiring",1)
+IPSH CBA 2
+Goto Ready1
+
+Altfire:
+IPST D 0 A_JumpIfInventory("TechAmmo",100,1) //Check ammo and proceed if full
+Goto NoAmmo
+IPST A 0 A_PlaySoundEx("insanitytech/swing","Weapon")
+IPST DABE 1
+IPST E 1 Offset (40,0)
+IPST EEEE 4 Offset (32,0)
+IPST E 0 A_TakeInventory("TechAmmo",100) //Take ammo so RNG can't be manipulated
+IPST E 0 A_Jump(8,"SanctuaryGet")
+IPST E 0 A_Jump(64,"SetsWatchGet")
+IPST E 0 A_Jump(256,"FireBoltGet", "ExecuteGet")
+Goto Altfire
+
+
+NoAmmo:
+PHMG A 0 ACS_ExecuteAlways(512,0,0,0)
+PHMG A 0 A_JumpifInventory("MGFiring",1,"Unready")
+IPID A 1
+Goto Ready1
+}
+}
+
+actor PharaohBulletImpact
+{
++NOGRAVITY
++MTHRUSPECIES
++PUFFONACTORS
++PUFFGETSOWNER
++HITTRACER
++SHOOTABLE
+attacksound ""
+damagetype "Insanity"
+damage (0)
+scale 1.2
+Obituary "%o felt the impact of %k's \c[w2]hitmarkers\c-."
+States
+{
+Spawn:
+TNT1 A 1
+Death:
+PMGX C 1 A_CheckFlag("Shootable","Mark",AAPTR_TRACER)
+stop
+Mark:
+HTMK AA 1
+TNT1 A 0 A_PlaySound("pharaohbuster/markerhit")
+stop
+}
+}
+
+actor FakePharaohBulletPlus : FakeBullet
+{
+PROJECTILE
++MTHRUSPECIES
++GHOST
++FORCEXYBILLBOARD
++DONTREFLECT
++DONTBLAST
+Translation "192:192=80:80"
+speed 22
+scale 0.8
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 1 ACS_NamedExecuteAlways("PitchMatch",0)
+TNT1 A 0 A_scalevelocity(3.875)
+TNT1 A 1 //Small distance before tracers appear
+TNT1 A 0 A_scalevelocity(4.0)
+goto Spawn2
+}
+}

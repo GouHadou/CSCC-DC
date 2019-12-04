@@ -1,0 +1,470 @@
+Actor AuronApp : ClassBaseCSCC
+{
+Player.DisplayName "Auron.App"
+Player.SoundClass "Auron"
+Player.damagescreencolor "White"
+Player.ForwardMove 0.8, 0.8
++NOSKIN
++NOBLOOD
++NOBLOODDECALS
++NODAMAGETHRUST
++DONTBLAST
+Player.SideMove 0.78, 0.78
+Health 100
+Player.MaxHealth 100
+Player.jumpz 13
+Player.colorrange 0 0
+Player.StartItem "BNFlag"
+Player.StartItem "IsAuron"
+Player.StartItem "EmotionState", 1
+Player.StartItem "CanUseItems"
+Player.StartItem "AuronABCBuster"
+Player.StartItem "AuronBNShieldItem"
+Player.StartItem "UnderShirtFlag"
+Player.StartItem "BusterAmmo",3
+Player.StartItem "DoublePointStock",1
+Player.StartItem "GunDelSolExStock",1
+Player.StartItem "GigaChipStock",1
+Player.StartItem "RegularChipGiver",1 //Regular Chip
+Player.StartItem "MasterOfSubWeapons" //Basically, no carry limit + sub weps cost less 2 use
+//Player.StartItem "SubWeaponEddie", 1
+Damagefactor "Normal", 1.375 //for now
+//Type
+mass 9999
+scale 2.0
+States
+{
+Spawn: 
+BMAP A 0 A_JumpIfInventory("SoulUnisonActive",1,7)
+BMAP B 1 A_JumpIfInventory("SoulUnisonActive",1,6)
+BMAP A 0 A_JumpIfInventory("SoulUnisonActive",1,5)
+BMAP A 1 A_JumpIfInventory("IsShooting",1,"Missile2")
+BMAP A 0 A_JumpIfInventory("NeoVariReady1",1,"Missile3")
+BMAP A 0 A_JumpIfInventory("StepSwordReady1",1,"Missile4")
+BMAP A 0 A_JumpIfInventory("HolyDashCounter",1,"HolyDash")
+GoTo Spawn+2
+AUGS A 0
+AUGS A 0 A_JumpIfInventory("ProtoSoul",1,16)
+AUGS A 0 A_JumpIfInventory("NapalmSoul",1,20)
+AUGS A 0 A_JumpIfInventory("SearchSoul",1,24)
+AUGS A 0 //A_JumpIfInventory("KnightSoul",1,28)
+AUGS A 0 A_JumpIfInventory("AquaSoul",1,32)
+AUGS A 0 //A_JumpIfInventory("ElecSoul",1,36)
+AUGS A 0 A_JumpIfInventory("IsShooting",1,"GyroMissile")
+AUGS A 1 A_JumpIfInventory("GyroSoulPU",1,4)
+AUGS A 0 A_JumpIfInventory("IsShooting",1,"GyroMissile")
+AUGS A 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"GyroSee")//18
+AUGS A 0 A_JumpIfInventory("EmotionState",1,"Spawn")//19
+goto Spawn+15
+AUGS U 0 A_JumpIfInventory("IsShooting",1,"GyroMissile2")
+AUGS U 2 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"GyroSee")
+AUGS V 0 A_JumpIfInventory("IsShooting",1,"GyroMissile2")
+AUGS V 2 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"GyroSee")//23
+AUGS A 0 A_JumpIfInventory("EmotionState",1,"Spawn")//24
+goto Spawn+15//Proto Soul
+AUPS A 0 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"ProtoSee")
+AUPS A 1 A_JumpIfInventory("IsShooting",1,"ProtoMissile")
+AUPS A 0 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"ProtoSee")
+AUPS A 1 A_JumpIfInventory("IsShooting",1,"ProtoMissile")//28
+AUPS A 0 A_JumpIfInventory("EmotionState",1,"Spawn")//29
+goto Spawn+25//NapalmSoul
+AUNS A 0 A_JumpIfInventory("IsShooting",1,"NapalmMissile")
+AUNS A 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"NapalmSee")
+AUNS A 0 A_JumpIfInventory("IsShooting",1,"NapalmMissile")
+AUNS A 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"NapalmSee")//33
+AUSS A 0 A_JumpIfInventory("EmotionState",1,"Spawn")//34
+goto Spawn+30//SearchSoul
+AUSS A 0 A_JumpIfInventory("IsShooting",1,"SearchMissile")
+AUSS A 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"SearchSee")
+AUSS A 0 A_JumpIfInventory("IsShooting",1,"SearchMissile")
+AUSS A 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"SearchSee")//38
+AUSS A 0 A_JumpIfInventory("EmotionState",1,"Spawn")//39
+goto Spawn+35//KnightSoul
+AUKS A 0 //A_JumpIfInventory("IsShooting",1,"KnightMissile")
+AUKS A 1 //A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"KnightSee")
+AUKS A 0 //A_JumpIfInventory("IsShooting",1,"KnightMissile")
+AUKS A 1 //A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"KnightSee")//43
+AUKS A 0 //A_JumpIfInventory("EmotionState",1,"Spawn")//44
+goto Spawn+40//AquaSoul
+AUAS A 0 A_JumpIfInventory("IsShooting",1,"AquaMissile")
+AUAS A 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"AquaSee")
+AUAS A 0 A_JumpIfInventory("IsShooting",1,"AquaMissile")
+AUAS A 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"AquaSee")//48
+AUAS A 0 A_JumpIfInventory("EmotionState",1,"Spawn")//49
+goto Spawn+45//ElecSoul
+AUES A 0 //A_JumpIfInventory("IsShooting",1,"ElecMissile")
+AUES A 1 //A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"ElecSee")
+AUES A 0 //A_JumpIfInventory("IsShooting",1,"ElecMissile")
+AUES A 1 //A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"ElecSee")//53
+AUES A 0 //A_JumpIfInventory("EmotionState",1,"Spawn")//54
+goto Spawn+50
+See:
+BMAP B 0
+BMAP B 0 A_JumpIfInventory("GyroSoul",1,"GyroSee")
+BMAP B 0 A_JumpIfInventory("ProtoSoul",1,"ProtoSee")
+BMAP B 0 A_JumpIfInventory("NapalmSoul",1,"NapalmSee")
+BMAP B 0 A_JumpIfInventory("SearchSoul",1,"SearchSee")
+BMAP B 0 //A_JumpIfInventory("KnightSoul",1,"KnightSee")
+BMAP B 0 A_JumpIfInventory("AquaSoul",1,"AquaSee")
+//BMAP B 0 A_JumpIfInventory("ElecSoul",1,"ElecSee")
+BMAP B 0 A_JumpIfInventory("HolyDashCounter",1,"HolyDash")
+BMAP B 0 A_JumpIfInventory("NeoVariReady1",1,"Missile3")
+BMAP B 0 A_JumpIfInventory("StepSwordReady1",1,"Missile4")
+BMAP B 5 A_JumpIfInventory("IsShooting",1,7)
+BMAP C 0 A_JumpIfInventory("HolyDashCounter",1,"HolyDash")
+BMAP C 5 A_JumpIfInventory("IsShooting",1,6)
+BMAP D 0 A_JumpIfInventory("HolyDashCounter",1,"HolyDash")
+BMAP D 5 A_JumpIfInventory("IsShooting",1,5)
+BMAP E 0 A_JumpIfInventory("HolyDashCounter",1,"HolyDash")
+BMAP E 5 A_JumpIfInventory("IsShooting",1,4)
+goto Spawn+1
+BMAP I 5
+BMAP J 5
+BMAP K 5
+BMAP L 4
+BMAP L 1
+goto Spawn+1
+HolyDash:
+BMAP MN 2
+HolyDash2:
+BMAP O 1 //A_SpawnItemEx("HolyRollingFX1",0,0,0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+BMAP O 1 //A_SpawnItemEx("HolyRollingFX2",0,0,0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+BMAP O 1 //A_SpawnItemEx("HolyRollingFX3",0,0,0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+BMAP O 1 //A_SpawnItemEx("HolyRollingFX4",0,0,0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+BMAP O 1 //A_SpawnItemEx("HolyRollingFX5",0,0,0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+BMAP O 1 //A_SpawnItemEx("HolyRollingFX6",0,0,0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+BMAP O 0 A_JumpIfInventory("HDFSCounter",1,"HolyDash2")
+BMAP O 1 A_JumpIfInventory("HolyDashCounter",1,"HolyDash2")
+goto Spawn+2
+GyroSee:
+AUGS B 5 A_JumpIfInventory("GyroSoulFlight",1,"GyroForm")
+AUGS C 5 A_JumpIfInventory("GyroSoulFlight",1,"GyroForm")
+AUGS D 5 A_JumpIfInventory("GyroSoulFlight",1,"GyroForm")
+AUGS E 5 A_JumpIfInventory("GyroSoulFlight",1,"GyroForm")
+goto Spawn+15
+ProtoSee:
+AUPS B 5 A_JumpIfInventory("IsShooting",1,"ProtoMissile")
+AUPS C 5 A_JumpIfInventory("IsShooting",1,"ProtoMissile")
+AUPS D 5 A_JumpIfInventory("IsShooting",1,"ProtoMissile")
+AUPS E 4 A_JumpIfInventory("IsShooting",1,"ProtoMissile")
+AUPS E 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"ProtoSee")
+goto Spawn+25
+NapalmSee:
+AUNS B 5
+AUNS C 4
+AUNS C 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"NapalmSee")
+goto Spawn+30
+SearchSee:
+AUSS B 5 A_JumpIfInventory("ChargeComplete",1,"SearchMissile2")
+AUSS C 5 A_JumpIfInventory("ChargeComplete",1,"SearchMissile2")
+AUSS D 5 A_JumpIfInventory("ChargeComplete",1,"SearchMissile2")
+AUSS E 4 A_JumpIfInventory("ChargeComplete",1,"SearchMissile2")
+AUSS E 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"SearchSee")
+goto Spawn+35
+KnightSee:
+AUKS B 5
+AUKS C 5
+AUKS D 5
+AUKS E 4
+AUKS E 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"KnightSee")
+goto Spawn+40
+AquaSee:
+AUAS B 5
+AUAS C 5
+AUAS D 5
+AUAS E 4
+AUAS E 1 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,"AquaSee")
+goto Spawn+45
+Missile:
+BMAP G 0 A_JumpIfInventory("GyroSoul",1,"GyroMissile")
+BMAP G 0 A_JumpIfInventory("ProtoSoul",1,"ProtoMissile")
+BMAP G 0 A_JumpIfInventory("NapalmSoul",1,"NapalmMissile")
+BMAP G 0 A_JumpIfInventory("SearchSoul",1,"SearchMissile")
+//BMAP G 0 A_JumpIfInventory("KnightSoul",1,"KnightMissile")
+BMAP G 0 A_JumpIfInventory("AquaSoul",1,"AquaMissile")
+//BMAP G 0 A_JumpIfInventory("ElecSoul",1,"ElecMissile")
+BMAP G 6 
+BMAP F 3 
+GoTo Spawn+2
+BMAP I 5
+BMAP J 5
+BMAP K 5
+BMAP L 5
+goto Spawn+2
+Missile2:
+BMAP G 3 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,4)
+BMAP G 3 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,4)
+BMAP G 3 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,4)
+BMAP G 3 A_JumpIf(momx>0.8|momx<-0.8|momy>0.78|momy<-0.78,4)
+GoTo Spawn+2
+BMAP I 0
+BMAP I 5 //A_JumpIf(momx==0|momy==0,"Missile2")
+BMAP J 5 //A_JumpIf(momx==0|momy==0,"Missile2")
+BMAP K 5 //A_JumpIf(momx==0|momy==0,"Missile2")
+BMAP L 5 //A_JumpIf(momx==0|momy==0,"Missile2")
+goto Spawn+2
+Missile3:
+BMAP MNO 6
+GoTo Spawn+2
+Missile4:
+BMAP F 1
+BMAP MNO 4
+BMAP F 2
+GoTo Spawn+2
+GyroMissile:
+AUGS F 0 A_JumpIfInventory("GyroSoulFlight",1,"GyroForm")
+AUGS F 1 A_JumpIfInventory("GyroSoulPU",1,"GyroMissile2")
+AUGS F 0 A_JumpIfInventory("GyroSoulFlight",1,"GyroForm")
+AUGS F 1 A_JumpIfInventory("GyroSoulPU",1,"GyroMissile2")
+AUGS F 18
+goto Spawn+7
+GyroMissile2:
+AUGS X 0
+AUGS XYXYXYXYXY 2
+goto Spawn+7
+GyroForm:
+HELI A 0
+HELI A 0 A_JumpIfInventory("GyroSoulFlight",2,2)
+HELI A 4 A_GiveInventory("GyroSoulFlight",1)
+HELI B 0 
+HELI BC 2 A_PlaySoundEx("weapon/tengudash","Voice")
+HELI B 1 A_JumpIfInventory("GyroFlightTimer",1,"GyroForm")
+//HELI C 1 A_JumpIfInventory("GyroFlightTimer",1,"GyroForm")
+goto Spawn+7
+ProtoMissile:
+AUPS F 0 A_JumpIfInventory("ChargeComplete",1,"ProtoMissile2")
+AUPS F 0 A_JumpIfInventory("NeoVariReady1",1,"Missile3PS")
+AUPS F 0 A_JumpIfInventory("StepSwordReady1",1,"Missile4PS")
+AUPS F 0 A_JumpIfInventory("ZSaverReady1",1,"Missile5PS")
+AUPS F 0 A_JumpIfInventory("MoonBlade3Ready1",1,"Missile4PS")
+AUPS F 0 A_JumpIfInventory("HawkCut3Ready2",1,"Missile6PS")
+AUPS F 0 A_JumpIfInventory("CustomSwordReady3",1,"Missile7PS")
+AUPS F 0 A_JumpIfInventory("IsShooting",1,"ProtoMissileX")
+AUPS F 9
+goto Spawn+25
+ProtoMissile2:
+AUPS MM 2
+AUPS M 0 A_JumpIfInventory("NeoVariReady1",1,"Missile3PS")
+AUPS M 0 A_JumpIfInventory("StepSwordReady1",1,"Missile4PS")
+AUPS M 0 A_JumpIfInventory("ZSaverReady1",1,"Missile5PS")
+AUPS M 0 A_JumpIfInventory("MoonBlade3Ready1",1,"Missile4PS")
+AUPS M 0 A_JumpIfInventory("HawkCut3Ready2",1,"Missile6PS")
+AUPS M 0 A_JumpIfInventory("CustomSwordReady3",1,"Missile7PS")
+AUPS MNO 3
+AUPS A 1
+goto Spawn+25
+Missile3PS:
+AUPS MNO 6
+AUPS MNO 6
+GoTo Spawn+25
+Missile4PS:
+AUPS M 1
+AUPS MNO 4
+AUPS O 2
+GoTo Spawn+25
+Missile5PS:
+AUPS MNO 3
+AUPS ONM 3
+AUPS MNO 3
+AUPS MNO 3
+GoTo Spawn+25
+Missile6PS:
+AUPS M 1
+AUPS MNO 2
+AUPS A 1
+AUPS ONM 3
+AUPS O 1
+GoTo Spawn+25
+Missile7PS:
+AUPS MNO 6
+AUPS A 1
+GoTo Spawn+25
+ProtoMissileX:
+AUPS FF 3
+AUPS F 3 A_JumpIfInventory("IsShooting",1,"ProtoMissileX")
+goto Spawn+25
+NapalmMissile:
+AUNS D 0 A_JumpIfInventory("Burninator",1,"NapalmMissileX")
+AUNS D 0 A_JumpIfInventory("NapalmCharged",1,"NapalmMissileY")
+AUNS D 0 A_JumpIfInventory("NapalmCharged",2,"NapalmMissileZ")
+AUNS D 0 A_JumpIfInventory("IsShooting",1,"NapalmMissile2")
+AUNS D 1 A_JumpIfInventory("Burninator",1,"NapalmMissileX")
+goto Spawn+30
+NapalmMissile2:
+AUNS D 3
+AUNS D 3 A_JumpIfInventory("IsShooting",1,"NapalmMissile2")
+AUNS D 3
+goto Spawn+30
+NapalmMissileX:
+AUNS I 0
+AUNS I 3 A_JumpIfInventory("PowerNapalmSpeed",1,"Spawn")
+AUNS JK 3 
+AUNS L 3 A_JumpIfInventory("PowerNapalmSpeed",1,"Spawn")
+goto NapalmMissileX
+NapalmMissileY:
+AUNS D 3 
+AUNS D 3 A_JumpIfInventory("NapalmCharged",1,"NapalmMissileY")
+AUNS E 3
+AUNS F 3
+AUNS E 8
+goto Spawn+30
+NapalmMissileZ:
+AUNS D 3 
+AUNS D 3 A_JumpIfInventory("NapalmCharged",2,"NapalmMissileZ")
+AUNS A 3
+AUNS M 3
+AUNS N 4 //Lolz
+AUNS O 12
+goto Spawn+30
+SearchMissile:
+AUSS I 0 A_JumpIfInventory("ChargeComplete",1,"SearchMissile2")
+AUSS II 3
+AUSS I 3 A_JumpIfInventory("IsShooting",1,"SearchMissile")
+goto Spawn+35
+SearchMissile2:
+AUSS F 9
+AUSS F 24
+goto Spawn+35
+AquaMissile:
+AUAS G 3
+AUAS G 3 A_JumpIfInventory("IsShooting",1,"AquaMissile")
+AUAS F 3 
+goto Spawn+45
+Pain.WillOWisp:
+BMAP H 0 A_JumpIfInventory("NapalmSoul",1,"NapalmPain")
+BMAP H 0 A_PlaySoundEx("weapon/firestorm","SoundSlot5")
+BMAP H 0 //A_JumpIfInventory("PowerBurnedAttackStat",1,3)
+BMAP H 0 //A_SpawnItemEx("IveBeenBurned")
+BMAP H 0// A_GiveInventory("PowerBurnedAttackStat",1)
+BMAP H 0
+GoTo Pain+3
+Pain:
+WhichPain:
+BMAP H 0
+BMAP H 0
+BMAP H 0
+BMAP H 0 A_JumpIfInventory("GyroFlightTimer",1,"HeliPain")
+BMAP H 0 A_JumpIfInventory("GyroSoul",1,"GyroPain")
+BMAP H 0 A_JumpIfInventory("ProtoSoul",1,"ProtoPain")
+BMAP H 0 A_JumpIfInventory("NapalmSoul",1,"NapalmPain")
+BMAP H 0 A_JumpIfInventory("SearchSoul",1,"SearchPain")
+BMAP H 0 A_JumpIfInventory("AquaSoul",1,"AquaPain")
+goto PainFrames
+PainFrames:
+BMAP H 0 A_Pain
+BMAP H 1 //A_GiveInventory("IveBeenHit",1)
+BMAP HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+BMAP H 0 //SetPlayerProperty(0,0,1)
+BMAP H 0 A_Jump(256,"Spawn")
+goto Spawn+2
+HeliPain:
+HELI B 0 
+HELI B 0 A_Pain
+HELI B 2// A_GiveInventory("IveBeenHit",1)
+HELI CBCBCBCBC 2 A_SpawnItem("PainFX",0,3)
+HELI C 0 //SetPlayerProperty(0,0,1)
+HELI C 0 A_Jump(256,"GyroForm")
+goto GyroForm+3
+GyroPain:
+AUGS H 0 
+AUGS H 0 A_Pain
+AUGS H 0 //SetPlayerProperty(0,0,4)
+AUGS H 1// A_GiveInventory("IveBeenHit",1)
+AUGS HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+AUGS H 0 //SetPlayerProperty(0,0,1)
+AUGS H 0 A_Jump(256,"Spawn")
+goto Spawn+2
+ProtoPain:
+AUPS H 0 
+AUPS H 0 A_Pain
+AUPS H 0 //SetPlayerProperty(0,0,4)
+AUPS H 1// A_GiveInventory("IveBeenHit",1)
+AUPS HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+AUPS H 0 //SetPlayerProperty(0,0,1)
+AUPS H 0 A_Jump(256,"Spawn")
+goto Spawn+2
+NapalmPain:
+AUNS H 0 
+AUNS H 0 A_Pain
+AUNS H 0 //SetPlayerProperty(0,0,4)
+AUNS H 1 //A_GiveInventory("IveBeenHit",1)
+AUNS HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+AUNS H 0 //SetPlayerProperty(0,0,1)
+AUNS H 0 A_Jump(256,"Spawn")
+goto Spawn+2
+SearchPain:
+AUSS H 0 
+AUSS H 0 A_Pain
+AUSS H 0 //SetPlayerProperty(0,0,4)
+AUSS H 1// A_GiveInventory("IveBeenHit",1)
+AUSS HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+AUSS H 0 //SetPlayerProperty(0,0,1)
+AUSS H 0 A_Jump(256,"Spawn")
+goto Spawn+2
+AquaPain:
+AUAS H 0 
+AUAS H 0 A_Pain
+AUAS H 0 //SetPlayerProperty(0,0,4)
+AUAS H 1 //A_GiveInventory("IveBeenHit",1)
+AUAS HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+AUAS H 0 //SetPlayerProperty(0,0,1)
+AUAS H 0 A_Jump(256,"Spawn")
+goto Spawn+2
+Death:
+BMAP H 0 SetPlayerProperty(0,0,4)
+BMAP H 0 A_TakeInventory("WeaponCharge",999)
+BMAP H 0 A_NoBlocking
+BMAP H 0 A_GiveInventory("CutterFlag",999)
+BMAP H 0 A_GiveInventory("IsDead",1)
+BMAP H 0 A_Stop
+BMAP H 0 A_GiveToTarget("KilledMeStock",1)
+BMAP H 1 A_GiveToTarget("KilledMe",1)
+BMAP H 19 ACS_ExecuteAlways(999,0,0)
+BMAP H 0 SetPlayerProperty(0,0,4)
+BMAP H 0 A_PlayerScream
+BMAP H 0 A_SpawnItemEx("FakeDeathFX",0,0,32)
+BMAP Z 1 A_CheckPlayerDone
+Wait
+Death.Boost:
+Death.PirateMine:
+Death.FlingDamage:
+Death.TurboRoader:
+Death.Spiney:
+Death.Falling:
+BMAP H 0 SetPlayerProperty(0,0,4)
+BMAP H 0 A_TakeInventory("WeaponCharge",999)
+BMAP H 0 A_NoBlocking
+BMAP H 0 A_GiveInventory("CutterFlag",999)
+BMAP H 0 A_GiveInventory("IsDead",1)
+BMAP H 0 A_Stop
+BMAP H 0 A_GiveToTarget("KilledMeStock",1)
+BMAP H 1 A_GiveToTarget("KilledMe",1)
+BMAP H 19 ACS_ExecuteAlways(999,0,0)
+BMAP H 0 SetPlayerProperty(0,0,4)
+BMAP H 0 A_PlaySoundEx("misc/andyoufail","Voice")
+BMAP H 35
+BMAP H 0 A_PlayerScream
+BMAP H 0 A_SpawnItemEx("FakeDeathFX",0,0,32)
+BMAP Z 1 A_CheckPlayerDone
+Wait
+Death.MagBolt:
+Death.MagnetMissile:
+BMAP H 0 SetPlayerProperty(0, 0, 4)
+BMAP H 0 A_TakeInventory("WeaponCharge",999)   
+BMAP H 0 A_NoBlocking
+BMAP H 0 A_GiveInventory("CutterFlag",999)
+BMAP H 0 //A_PlayerScream
+BMAP H 0 A_PlaySoundEx("misc/howthehell","Voice")
+BMAP H 105
+BMAP H 0 A_PlayerScream
+BMAP H 0 A_SpawnItemEx("FakeDeathFX",0,0,32)
+BMAP Z 1 A_CheckPlayerDone
+Wait
+}
+}
+
+Actor IsAuron : Inventory
+{ 
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}

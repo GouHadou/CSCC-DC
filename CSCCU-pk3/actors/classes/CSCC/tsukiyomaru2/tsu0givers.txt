@@ -1,0 +1,94 @@
+actor TsuGiverBase : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++INVENTORY.AUTOACTIVATE
+states
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("TsukiClassWeapon2",1,"IsTsuki")
+stop
+IsTsuki:
+TNT1 A 0 A_PlaySoundEx("weapon/weaponup","Voice")
+stop
+NoGive:
+TNT1 A 0 
+Stop
+}
+}
+
+actor TsuCannonGiver : TsuGiverBase 
+{
+states
+{
+IsTsuki:
+TNT1 A 0 A_JumpIfInventory("TsuCannonChanger",1,"FullCharge")
+TNT1 A 0 A_Jump(248,"NoGive")
+TNT1 A 0 A_GiveInventory("TsuCannonChanger",1)
+TNT1 A 0 A_PlaySoundEx("weapon/weaponup","Voice")
+stop
+FullCharge:
+TNT1 A 0 A_GiveInventory("CannonChargeCounter",480)
+stop
+}
+}
+
+actor TsuDevourGiver : TsuGiverBase 
+{
+states
+{
+IsTsuki:
+TNT1 A 0 A_JumpIfInventory("TsuDevourChanger",1,"NoGive")
+TNT1 A 0 A_GiveInventory("TsuDevourChanger",1)
+TNT1 A 0 A_PlaySoundEx("weapon/weaponup","Voice")
+stop
+}
+}
+
+actor TsuCometGiver : TsuGiverBase 
+{
+states
+{
+IsTsuki:
+TNT1 A 0 A_JumpIfInventory("TsuCometChanger",1,"NoGive")
+TNT1 A 0 A_GiveInventory("TsuCometChanger",1)
+TNT1 A 0 A_PlaySoundEx("weapon/weaponup","Voice")
+stop
+}
+}
+
+actor TsuNociGiver : TsuGiverBase 
+{
+states
+{
+IsTsuki:
+TNT1 A 0 A_JumpIfInventory("TsuNociChanger",1,"NoGive")
+TNT1 A 0 A_GiveInventory("TsuNociChanger",1)
+TNT1 A 0 A_PlaySoundEx("weapon/weaponup","Voice")
+stop
+}
+}
+
+actor TsuTerrorGiver : TsuGiverBase 
+{
+states
+{
+IsTsuki:
+TNT1 A 0 A_JumpIfInventory("TsuTerrorChanger",1,"NoGive")
+TNT1 A 0 A_GiveInventory("TsuTerrorChanger",1)
+TNT1 A 0 A_PlaySoundEx("weapon/weaponup","Voice")
+stop
+}
+}
+
+actor TsuNilGiver : TsuGiverBase 
+{
+states
+{
+IsTsuki:
+TNT1 A 0 A_JumpIfInventory("TsuNilChanger",1,"NoGive")
+TNT1 A 0 A_GiveInventory("TsuNilChanger",1)
+TNT1 A 0 A_PlaySoundEx("weapon/weaponup","Voice")
+stop
+}
+}

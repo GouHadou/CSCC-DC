@@ -1,0 +1,249 @@
+actor YellowDevil : ClassBaseCSCC
+{
+species "Player"
+player.displayname "Yellow Devil"
+player.soundclass "yd"
+player.damagescreencolor "yellow"
+player.forwardmove 0.6, 0.6
+player.jumpz 10
+player.sidemove 0.58, 0.58
+player.colorrange 0 0
+player.startitem "YDElectroKinesis"
+player.startitem "YDElectroConstructs"
+player.startitem "YellowDevilHUD"
+player.startitem "NoHealthBar2"
+player.startitem "ElectrokinesisAmmo",28
++NOSKIN
+mass 9999
+gravity 0.8
++NODAMAGETHRUST
++DONTBLAST
+bloodtype ""
+scale 2.5
+damagefactor "Dummy", 0.0
+States
+{
+Spawn:
+YDSK A 0
+YDSK B 1
+YDSK A 1
+Goto Spawn+2
+See:
+YDSK B 5
+YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
+YDSK C 5
+YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
+YDSK D 5
+YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
+YDSK E 5
+YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
+Goto Spawn
+Missile:
+YDSK FFFFF 1
+YDSK GGGG 1  
+goto Spawn
+Pain.ThunderBolt:
+Pain.ThunderBeam:
+Pain.SparkShock:
+Pain.ThunderClaw:
+Pain.LightningBolt:
+Pain.PlugBall:
+Pain.LightningWave:
+Pain.LightningShot:
+Pain.ThunderBlade:
+Pain.SaviorThunder:
+Pain.GizmoLightning:
+Pain.YellowDevil:
+PLAY H 0 A_JumpIfInventory("DontChargeMe", 1, "Pain")
+PLAY H 0 A_GiveInventory("DontChargeMe",1)
+PLAY H 0 A_GiveInventory("ElectricCharge",1)
+goto Pain
+Pain.CopyAlt:
+Pain.CopyMain:
+CFSK H 0 A_SpawnItemEx("YellowDevilCopyHitMain",1)
+goto pain+1
+Death:
+YDSK H 0 A_GiveInventory("ClassDeathPickup",1)
+YDSK H 0 A_Stop
+YDSK H 0 A_SetTranslucent (0.9, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.9, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.8, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.7, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.6, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.5, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.4, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.3, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.2, 0) 
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.1, 0)
+YDSK H 3 A_SpawnItemEx("YDDeathFX",0,0,12,0,0,64)
+YDSK H 0 A_SetTranslucent (0.0, 0)
+PLAY H 0 A_GiveToTarget("KilledMeStock",1)
+YDSK H 1 A_GiveToTarget("KilledMe",1)
+PLAY H 0 ACS_ExecuteAlways(999,0,0)
+PLAY H 0 SetPlayerProperty(0, 0, 4)
+PLAY H 0 //A_PlayerScream
+YDSK Z -1 A_CheckPlayerDone
+wait
+Death.Backstab:
+YDSK H 0 SetPlayerProperty(0, 0, 4)
+YDSK H 0 A_TakeInventory("PharaohCharge",999)   
+YDSK H 0 A_NoBlocking
+YDSK H 0 A_GiveInventory("CutterFlag",999)
+YDSK H 0 A_GiveInventory("IsDead",1)
+YDSK H 0 A_Stop
+YDSK H 0 A_GiveToTarget("KilledMeStock",1)
+YDSK H 1 A_GiveToTarget("KilledMe",1)
+YDSK H 1 A_GiveToTarget("ClearDisguise",1)
+YDSK H 0 A_GiveToTarget("DisguiseOn",1)
+YDSK H 0 A_GiveToTarget("YDDisguise",1)
+YDSK H 0 ACS_ExecuteAlways(775,0,351)
+goto BackstabFrames
+}
+}
+
+actor YellowDevilHUD : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+actor ElectroConstructsAmmo : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "You got an electric charge!"
+inventory.pickupsound "weapon/weaponup"
++NOGRAVITY
++FLOATBOB
+RenderStyle "translucent"
+Alpha 0.95
+scale 2.5
+radius 12
+height 4
+gravity 0.1
+reactiontime 150
+States
+{
+Spawn:
+YDLG GHIH 3 A_Countdown
+loop
+Pickup:
+TNT1 A 0 A_JumpIfInventory("YellowDevilHUD", 1, "Success")
+fail
+Success:
+YDLG G 0 A_GiveInventory("Health",15)
+YDLG G 0 A_GiveInventory("ElectricCharge",1)
+stop
+}
+}
+
+actor ElectricCharge : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 5
+}
+
+actor YDDeathFX
+{
+-SOLID
++NOGRAVITY
++NOINTERACTION
+scale 2.5
+States
+{
+Spawn:
+YDLG A 0 A_PlaySoundEx("weapon/thunderbolt","voice")
+YDLG JKLMNO 1
+stop
+}
+}
+
+actor DontChargeMe : PowerProtection
+{
+powerup.duration 3
+damagefactor "Normal", 1.0
+}
+
+actor YellowDevilCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("YellowDevilMorphItem",1)
+stop
+}
+}
+
+actor YellowDevilCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("YellowDevilCopyPickupMain",1)
+stop
+}
+}
+
+
+actor YellowDevilMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 6)
+stop
+}
+}
+
+actor YellowDevilMorph : YellowDevil
+{
++NOSKIN
+player.morphweapon "YDElectroConstructs"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor YellowDevilMorph2 : YellowDevil
+{
++NOSKIN
+player.morphweapon "YDElectroKinesis"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

@@ -1,0 +1,6 @@
+#include "actors/classes/OCBMR/Wilter/Wilter.txt"
+#include "actors/classes/OCBMR/Wilter/FreezeRay.txt"
+#include "actors/classes/OCBMR/Wilter/Yeti_iceWall.txt"
+#include "actors/classes/OCBMR/Wilter/IcePowers.txt"
+#include "actors/classes/OCBMR/Wilter/IceSubweapons.txt"
+

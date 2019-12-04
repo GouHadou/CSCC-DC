@@ -1,0 +1,141 @@
+actor SpectralWaveWepCS : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 16
+Weapon.SlotNumber 7
+Obituary "%o felt hopeless with %k's Spectral Wave."
+Inventory.Pickupmessage "Power up! Spectral Wave!"
+weapon.ammotype "SpectralWaveAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
+inventory.icon "TSUCWI"
+Scale 2.0
+States
+{
+Spawn:
+TSUC W 1
+loop
+Ready:
+SKLA A 0 ACS_ExecuteAlways(998,0,34)
+SKLA A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+//TNT1 A 0 A_TakeInventory("TsukCopyM",999)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+SKLA A 1 A_Lower
+Loop
+Select:
+//TNT1 A 0 A_GiveInventory("TsukCopyM",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+SKLA A 1 A_Raise
+Loop
+Fire:
+SKLA B 0 A_JumpIfNoAmmo("NoAmmo")
+SKLA B 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+SKLA B 0 A_FireCustomMissile("SpectralWaveStart",0,1,0,0)
+SKLA BCDEFGH 2
+SKLA A 8
+SKLA A 0 A_Refire
+goto Ready+1
+NoAmmo:
+SKLA A 1 ACS_Execute(979,0)
+Goto Hold
+}
+}
+
+actor SpectralWaveAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 16
+}
+
+actor SpectralWaveStart
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
++NOINTERACTION
++PAINLESS
+Radius 0
+Height 0
+Obituary "%o could not avoid %k's Fox-Fire Spread."
+damage (0)
+speed 1
+States
+{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,0,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,-8,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,8,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,-16,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,16,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,-24,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,24,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,-32,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("SpectralWave",0,32,0,momx*45,momy*45,momz*45,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor SpectralWave
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++FORCEXYBILLBOARD
++DONTBLAST
++BRIGHT
+Radius 5
+Height 5
+scale 2.5
+damage (6)
+damagetype "SpectralWave"
+speed 45
+States
+{
+Spawn:
+TSU0 FG 2
+loop
+Death:
+TSU0 H 1 A_PlaySoundEx("weapon/firestorm","Voice")
+TSU0 HIJKLH 1
+stop
+}
+}
+
+actor SpectralShot
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++FORCEXYBILLBOARD
++DONTBLAST
++BRIGHT
+Radius 5
+Height 5
+scale 2.5
+damage (7)
+damagetype "SpectralWave"
+speed 30
+States
+{
+Spawn:
+TSU0 FG 2
+loop
+Death:
+TSU0 H 1 A_PlaySoundEx("weapon/firestorm","Voice")
+TSU0 HIJKLH 1
+stop
+}
+}
+
+

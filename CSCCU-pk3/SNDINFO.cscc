@@ -1,0 +1,731 @@
+weapon/criticalhit CSCCCRIT
+
+//Cold Fusion
+$playersound	coldfus	male	*death		MEGADEAT
+$playersound	coldfus	male	*xdeath		MEGADEAT
+$playersound	coldfus	male	*gibbed		MEGADEAT
+$playersound	coldfus	male	*pain100	MEGAPAIN
+$playersound	coldfus	male	*pain75		MEGAPAIN
+$playersound	coldfus	male	*pain50		MEGAPAIN
+$playersound	coldfus	male	*pain25		MEGAPAIN
+$playersound	coldfus	male	*grunt		LAND
+$playersound	coldfus	male	*land		LAND
+$playersound	coldfus	male	*fist		dsnone
+$playersound	coldfus	male	*usefail	LAND
+
+
+weapon/fusionreaction CRKFUSE
+$volume weapon/fusionreaction 2.0
+weapon/lasersight CFIGLSR
+
+//SinkMan
+classes/sinkflush SINKF
+classes/waterdrop WATRDROP
+
+//King Yamato
+weapon/yamatoslam FATLAND
+weapon/yamatostart FATASTRT
+weapon/yamatostab FATASHOT
+weapon/yamatoend FATAFNSH
+
+//Finite Zero
+weapon/solarl SOLARL
+
+//Jack Corvus
+
+$playeralias	"jcclass"	male	*death		jcclass/death
+$playersound	"jcclass"	male	*xdeath		jcclass/death
+$playersound	"jcclass"	male	*gibbed		jcclass/death
+$playersound	"jcclass"	male	*pain100	MEGAPAIN
+$playersound	"jcclass"	male	*pain75		MEGAPAIN
+$playersound	"jcclass"	male	*pain50		MEGAPAIN
+$playersound	"jcclass"	male	*pain25		MEGAPAIN
+$playersound	"jcclass"	male	*grunt		JCFALL
+$playersound	"jcclass"	male	*land		JCFALL
+$playersound	"jcclass"	male	*fist		dsnone
+$playersound	"jcclass"	male	*usefail	LAND
+
+jcclass/death1       JCDED1
+jcclass/death2       JCDED2
+jcclass/death3       JCDED3
+
+$random jcclass/death {
+jcclass/death1
+jcclass/death2
+jcclass/death3
+}
+
+
+
+//Old Yellow Devil
+$playersound	ydclass	male	*death		MEGADEAT
+$playersound	ydclass	male	*xdeath		MEGADEAT
+$playersound	ydclass	male	*gibbed		MEGADEAT
+$playersound	ydclass	male	*pain100	MEGAPAIN
+$playersound	ydclass	male	*pain75		MEGAPAIN
+$playersound	ydclass	male	*pain50		MEGAPAIN
+$playersound	ydclass	male	*pain25		MEGAPAIN
+$playersound	ydclass	male	*grunt		quake
+$playersound	ydclass	male	*land		quake
+$playersound	ydclass	male	*fist		dsnone
+$playersound	ydclass	male	*usefail	quake
+$playersound	ydclass	male	*taunt		YDTaunt
+
+//New GummyWormz 
+weapon/fountainalert ATALRT
+
+$limit weapon/fountainalert 1
+
+$playersound	gummyc	male	*death		MEGADEAT
+$playersound	gummyc	male	*xdeath		MEGADEAT
+$playersound	gummyc	male	*gibbed		MEGADEAT
+$playersound	gummyc	male	*pain100	MEGAPAIN
+$playersound	gummyc	male	*pain75		MEGAPAIN
+$playersound	gummyc	male	*pain50		MEGAPAIN
+$playersound	gummyc	male	*pain25		MEGAPAIN
+$playersound    gummyc	male	*grunt		LAND
+$playersound	gummyc	male	*land		LAND
+$playersound	gummyc	male	*fist		dsnone
+$playersound	gummyc	male	*usefail	LAND
+$playersound	gummyc	male	*taunt		GUMTAU
+
+//Chimera Man
+weapon/pokethrow POKETHRW
+weapon/pokesmoke POKESMKE
+weapon/poketwitch POKETWCH
+weapon/pokecatch POKEFNFR
+
+$playersound	Chimsfx	male	*death		MEGADEAT
+$playersound	Chimsfx	male	*xdeath		MEGADEAT
+$playersound	Chimsfx	male	*gibbed		MEGADEAT
+$playersound	Chimsfx	male	*pain100	MEGAPAIN
+$playersound	Chimsfx	male	*pain75		MEGAPAIN
+$playersound	Chimsfx	male	*pain50		MEGAPAIN
+$playersound	Chimsfx	male	*pain25		MEGAPAIN
+$playersound	Chimsfx	male	*grunt		LAND
+$playersound	Chimsfx	male	*land		LAND
+$playersound	Chimsfx	male	*fist		dsnone
+$playersound	Chimsfx	male	*usefail	LAND
+$playersound	Chimsfx	male	*taunt		CHIMTAUN
+
+
+
+
+
+
+
+
+//Copy Robot
+$playersound	BestClassEver	male	*death		MEGADEAT
+$playersound	BestClassEver	male	*xdeath		MEGADEAT
+$playersound	BestClassEver	male	*gibbed		MEGADEAT
+$playersound	BestClassEver	male	*pain100	MEGAPAIN
+$playersound	BestClassEver	male	*pain75		MEGAPAIN
+$playersound	BestClassEver	male	*pain50		MEGAPAIN
+$playersound	BestClassEver	male	*pain25		MEGAPAIN
+$playersound	BestClassEver	male	*grunt		LAND
+$playersound	BestClassEver	male	*land		LAND
+$playersound	BestClassEver	male	*fist		dsnone
+$playersound	BestClassEver	male	*usefail	LAND
+$playersound	BestClassEver	male	*taunt		BCETAUNT
+
+misc/CopyPain MEGAPAIN
+
+//Ice-Spark
+weapon/lightningfall	WILYBEAM
+weapon/warp	DSITMBK
+
+//Messatsu
+weapon/supermove SUPACT
+
+$playersound	MessClass	male	*death		MEGADEAT
+$playersound	MessClass	male	*xdeath		MEGADEAT
+$playersound	MessClass	male	*gibbed		MEGADEAT
+$playersound	MessClass	male	*pain100	MEGAPAIN
+$playersound	MessClass	male	*pain75		MEGAPAIN
+$playersound	MessClass	male	*pain50		MEGAPAIN
+$playersound	MessClass	male	*pain25		MEGAPAIN
+$playersound	MessClass	male	*grunt		LAND
+$playersound	MessClass	male	*land		LAND
+$playersound	MessClass	male	*fist		dsnone
+$playersound	MessClass	male	*usefail	LAND
+
+//Ukiyama
+$playersound	Ukiyamac	male	*death		MEGADEAT
+$playersound	Ukiyamac	male	*xdeath		MEGADEAT
+$playersound	Ukiyamac	male	*gibbed		MEGADEAT
+$playersound	Ukiyamac	male	*pain100	MEGAPAIN
+$playersound	Ukiyamac	male	*pain75		MEGAPAIN
+$playersound	Ukiyamac	male	*pain50		MEGAPAIN
+$playersound	Ukiyamac	male	*pain25		MEGAPAIN
+$playersound    Ukiyamac	male	*grunt		LAND
+$playersound	Ukiyamac	male	*land		LAND
+$playersound	Ukiyamac	male	*fist		dsnone
+$playersound	Ukiyamac	male	*usefail	LAND
+$playersound	Ukiyamac	male	*taunt	    UKIYTAUN
+
+weapon/UkiRevolverShot   UKIS
+weapon/UkiRevolverReload UKIR
+weapon/MeteorLand smash
+weapon/WindTornadoStart Tornado
+weapon/SodaGlugLow	SGL
+weapon/SodaGlugHigh	SGH
+weapon/SodaGlugNormal	SGN
+weapon/Burp	Burp
+weapon/BonusSoda	BS
+weapon/SodaOpen	OPN
+
+//Knux
+$playersound	knuxc	male	*death		MEGADEAT
+$playersound	knuxc	male	*xdeath		MEGADEAT
+$playersound	knuxc	male	*gibbed		MEGADEAT
+$playersound	knuxc	male	*pain100	MEGAPAIN
+$playersound	knuxc	male	*pain75		MEGAPAIN
+$playersound	knuxc	male	*pain50		MEGAPAIN
+$playersound	knuxc	male	*pain25		MEGAPAIN
+$playersound    knuxc	male	*grunt		dsnone //LAND
+$playersound	knuxc	male	*land		LAND
+$playersound	knuxc	male	*jump		dsnone
+$playersound	knuxc	male	*fist		dsnone
+$playersound	knuxc	male	*usefail	LAND
+
+$playersound	knuxc	male	*taunt	dsnone
+
+//MutantYoshi
+$playersound	myoshi	male	*death		SONICDIE
+$playersound	myoshi	male	*xdeath		SONICDIE
+$playersound	myoshi	male	*gibbed		SONICDIE
+$playersound	myoshi	male	*pain100	MEGAPAIN
+$playersound	myoshi	male	*pain75		MEGAPAIN
+$playersound	myoshi	male	*pain50		MEGAPAIN
+$playersound	myoshi	male	*pain25		MEGAPAIN
+$playersound	myoshi	male	*grunt		dsnone
+$playersound	myoshi	male	*land		dsnone
+$playersound	myoshi	male	*jump		SONICJMP
+$playersound	myoshi	male	*fist		dsnone
+$playersound	myoshi	male	*usefail	LAND
+$playersound	myoshi	male	*taunt		dsnone
+
+weapon/tongue		MY_LICK
+weapon/egglockon	YI_COIN
+weapon/eggtoss		SMB2TOS
+
+myoshi/swallow		MY_GULP
+myoshi/spit			MY_SPIT
+myoshi/firebreath	MY_FIRE
+myoshi/noammo		MY_NAMO
+myoshi/spin			DSSPIN
+myoshi/spindash		DSSPNDSH
+myoshi/release		DSZOOM
+myoshi/thok			DSTHOK
+myoshi/NoEgg		NOEGG
+
+//Rozark
+$playersound	RozarkClass	male	*death		ROZDEATH
+$playersound	RozarkClass	male	*xdeath		ROZPIT
+$playersound	RozarkClass	male	*gibbed		ROZPIT
+$playersound	RozarkClass	male	*pain100	ROZPAIN
+$playersound	RozarkClass	male	*pain75		ROZPAIN
+$playersound	RozarkClass	male	*pain50		ROZPAIN
+$playersound	RozarkClass	male	*pain25		ROZPAIN
+$playersound	RozarkClass	male	*grunt		ROZLAND
+$playersound	RozarkClass	male	*land		ROZLAND
+$playersound	RozarkClass	male	*jump		ROZJUMP
+$playersound	RozarkClass	male	*fist		dsnone
+$playersound	RozarkClass	male	*usefail	ROZLAND
+$playersound	RozarkClass	male	*taunt		ROZTAUNT
+
+
+weapon/DWThrow		DWTHROW
+weapon/DWCatch		DWCATCH
+weapon/InsanityOff	INSANOFF
+weapon/InsanityOn	INSANON
+weapon/Marked	MARKED
+Rozark/Sock1 AIRSMACO
+Rozark/Sock2 AIRSMACT
+$random Rozark/Sock { Rozark/Sock1 Rozark/Sock2 }
+Pain/Sock SOCKHIT
+effect/SockB DRIP
+
+//Adara Mozes
+adaramozes/chillingcaesura	adacc
+adaramozes/arcticadagio	adaaa
+adaramozes/explosion	adaex
+
+//Korby
+$playersound	korby	male	*death		MEGADEAT
+$playersound	korby	male	*xdeath		MEGADEAT
+$playersound	korby	male	*gibbed		MEGADEAT
+$playersound	korby	male	*pain100	MEGAPAIN
+$playersound	korby	male	*pain75		MEGAPAIN
+$playersound	korby	male	*pain50		MEGAPAIN
+$playersound	korby	male	*pain25		MEGAPAIN
+$playersound	korby	male	*grunt		LAND
+$playersound	korby	male	*land		LAND
+$playersound	korby	male	*fist		dsnone
+$playersound	korby	male	*usefail	LAND
+$playersound	korby	male	*taunt		KORTAUNT
+
+Weapon/BadBreath	BADBRTH
+Weapon/CometFall	COMET
+Weapon/WaterDrop	WATRDROP
+
+//--In Gizmo's sound folder--
+Korby/Needle1      ATTACK11
+Korby/Needle2      ATTACK12
+Korby/Needle3      ATTACK13
+Korby/Needle4      claw
+Korby/Needle5      claw
+
+$random Korby/Needle { Korby/Needle1 Korby/Needle2 Korby/Needle3 Korby/Needle4 Korby/Needle5 }
+
+
+
+
+
+$playersound	ydclass	male	*death		MEGADEAT
+$playersound	ydclass	male	*xdeath		MEGADEAT
+$playersound	ydclass	male	*gibbed		MEGADEAT
+$playersound	ydclass	male	*pain100	MEGAPAIN
+$playersound	ydclass	male	*pain75		MEGAPAIN
+$playersound	ydclass	male	*pain50		MEGAPAIN
+$playersound	ydclass	male	*pain25		MEGAPAIN
+$playersound	ydclass	male	*grunt		quake
+$playersound	ydclass	male	*land		quake
+$playersound	ydclass	male	*fist		dsnone
+$playersound	ydclass	male	*usefail	quake
+$playersound	ydclass	male	*taunt		YDTaunt
+
+//Yellow Devil
+$playersound	yd	male	*death		MEGADEAT
+$playersound	yd	male	*xdeath		MEGADEAT
+$playersound	yd	male	*gibbed		MEGADEAT
+$playersound	yd	male	*pain100	YDPAIN
+$playersound	yd	male	*pain75		YDPAIN
+$playersound	yd	male	*pain50		YDPAIN
+$playersound	yd	male	*pain25		YDPAIN
+$playersound	yd	male	*grunt		YDLAND
+$playersound	yd	male	*land		YDLAND
+$playersound	yd	male	*fist		dsnone
+$playersound	yd	male	*usefail	YDLAND
+
+
+weapon/ydlightningform wilybeam
+
+
+
+//Cutman Mike
+weapons/lightningstrike WOOLSHOT
+
+//Laggy Blazko
+$playersound	"Laggy" 	male	*taunt		STATIK
+$playersound	"Laggy" 	male	*death		DSLGYDIE
+$playersound    "Laggy" 	male    *xdeath     DSLGYDIH
+$playeralias	"Laggy" 	male	*pain100	Laggy/Pain
+$playeralias    "Laggy" 	male	*pain75		Laggy/Pain
+$playeralias    "Laggy" 	male	*pain50		Laggy/Pain
+$playeralias    "Laggy"  	male	*pain25		Laggy/Pain
+$playersound	"Laggy" 	male	*land		DSLGYOOF
+$playersound	"Laggy" 	male	*usefail	DSLGYNWY
+$playersound 	"Laggy"	    male	*gibbed		DSLGYGIB
+$playersound	"Laggy" 	male	*grunt		DSLGYOOF
+$playersound	"Laggy"		male	*fist		dsnone
+
+$random Laggy/Pain {Laggy/Pain1 Laggy/Pain2 Laggy/Pain2 Laggy/Pain2 Laggy/Pain2}
+Blazko/Burn2 DSLGYDIH
+Laggy/Pain1 DSLGYPAI
+Laggy/Pain2 DSLGYPA2
+Laggy/Gibbed DSLGYGIB
+Laggy/Ice1 DSLBFREZ
+Laggy/Ice2 DSLBICBR
+Laggy/Head MEGAPAIN
+Laggy/Explode DSLGYEXP
+weapon/TommyFire    TOMMYBWM
+$random Weapon/TommyRicochet {Rico1 Rico2 Rico3 Rico4 Rico5}
+Rico1 Ricoc1
+Rico2 Ricoc2
+Rico3 Ricoc3
+Rico4 Ricoc4
+Rico5 Ricoc5
+Weapon/TommyClip Tomclip
+Weapon/TommyLoad Tomload
+Weapon/knife				bjknife
+weapon/RifleFire DSRIFLE
+weapon/RifleLoad DSRIFLE2
+
+Blazko/Burn1 AHEAT4
+Blazko/Burn2 DSLGYGIB
+
+
+Corp/FragPin CORG1PIN
+Corp/FragBounce CORG1BOU
+Corp/FragExplode CORG1EXP
+Corp/Fragment1 CORG1FG1
+Corp/Fragment2 CORG1FG2
+Corp/Fragment3 CORG1FG3
+$random Corp/Fragment {Corp/Fragment1 Corp/Fragment2 Corp/Fragment3}
+
+Silence DSNONE
+
+Corp/GrandChamber CORW1CBR
+Corp/GrandClip CORW1CLP
+Corp/GrandEject CORW1EJT
+Corp/GrandFire CORW1FIR
+Corp/GrandLoad CORW1LOD
+Corp/GrandUnload TomClip
+
+Corp/Casing0 CASING00
+Corp/Casing1 CASING01
+Corp/Casing2 CASING02
+Corp/Casing3 CASING03
+Corp/Casing4 CASING04
+Corp/Casing5 CASING05
+Corp/Casing6 CASING06
+Corp/Casing7 CASING07
+$random Corp/CasingEnd1 {Corp/Casing1 Corp/Casing2 Corp/Casing3}
+$random Corp/CasingEnd2 {Corp/Casing5 Corp/Casing6 Corp/Casing7}
+
+
+
+
+//Breve
+$playersound	brevec	male	*death		MEGADEAT
+$playersound	brevec	male	*xdeath		MEGADEAT
+$playersound	brevec	male	*gibbed		MEGADEAT
+$playersound	brevec	male	*pain100	MEGAPAIN
+$playersound	brevec	male	*pain75		MEGAPAIN
+$playersound	brevec	male	*pain50		MEGAPAIN
+$playersound	brevec	male	*pain25		MEGAPAIN
+$playersound    brevec	male	*grunt		LAND
+$playersound	brevec	male	*land		LAND
+$playersound	brevec	male	*fist		dsnone
+$playersound	brevec	male	*usefail	LAND
+$playersound	brevec	male	*taunt		NOTBREVE
+
+//Beed
+weapon/beedmissile MAGMBAZO
+weapon/beedlockon COMSW
+beed28/reaverbot	REAVBOT
+
+//Blaze
+$playersound	Blazesfx	male	*death		MEGADEAT
+$playersound	Blazesfx	male	*xdeath		MEGADEAT
+$playersound	Blazesfx	male	*gibbed		MEGADEAT
+$playersound	Blazesfx	male	*pain100	MEGAPAIN
+$playersound	Blazesfx	male	*pain75		MEGAPAIN
+$playersound	Blazesfx	male	*pain50		MEGAPAIN
+$playersound	Blazesfx	male	*pain25		MEGAPAIN
+$playersound	Blazesfx	male	*grunt		LAND
+$playersound	Blazesfx	male	*land		LAND
+$playersound	Blazesfx	male	*fist		dsnone
+$playersound	Blazesfx	male	*usefail	LAND
+$playersound	Blazesfx	male	*taunt		BLZTAUNT
+weapon/flamethrow AHEAT4
+
+//Tsuki
+weapon/tsukihowl TsuHowl
+
+
+$playersound	Tsuki	male	*death		Tsudeath
+$playersound	Tsuki	male	*xdeath		Tsudeath
+$playersound	Tsuki	male	*gibbed		Tsudeath
+$playersound	Tsuki	male	*pain100	MEGAPAIN
+$playersound	Tsuki	male	*pain75		MEGAPAIN
+$playersound	Tsuki	male	*pain50		MEGAPAIN
+$playersound	Tsuki	male	*pain25		MEGAPAIN
+$playersound	Tsuki	male	*grunt		dsnone
+$playersound	Tsuki	male	*land		dsnone
+$playersound	Tsuki	male	*fist		dsnone
+$playersound	Tsuki	male	*usefail	LAND
+$playersound	Tsuki	male	*taunt		Tsutaunt
+
+$volume LEJUMP 1.5
+$volume LEPAIN 9.0
+
+$playersound	legosfx	male	*death		MEGADEAT
+$playersound	legosfx	male	*xdeath		MEGADEAT
+$playersound	legosfx	male	*gibbed		LEDIE
+$playersound	legosfx	male	*pain100	MEGAPAIN
+$playersound	legosfx	male	*pain75		MEGAPAIN
+$playersound	legosfx	male	*pain50		MEGAPAIN
+$playersound	legosfx	male	*pain25		MEGAPAIN
+$playersound	legosfx	male	*grunt		FATLAND
+$playersound	legosfx	male	*land		LELAND
+$playersound	legosfx	male	*fist		dsnone
+$playersound	legosfx	male	*usefail	LAND
+//$playersound	legosfx	male	*taunt		dsnone
+
+weapon/legomissileshot LEGOMS
+weapon/legomissileexplode LEGOME
+weapon/legobuttonpress LEBUTTON
+weapon/legobombexplode LEGOME
+
+//TheBladeRoden
+weapon/autocannon	AUTOCANN
+player/TBRfall	TBRFALL
+player/TBRland	TBRLAND
+
+//Bikdark
+$playersound	Bikdark		male	*death		BIKDEATH
+$playersound	Bikdark		male	*xdeath		BIKDEATH
+$playersound	Bikdark		male	*gibbed		BIKDEATH
+$playersound	Bikdark		male	*pain100	BIKPAIN
+$playersound	Bikdark		male	*pain75		BIKPAIN
+$playersound	Bikdark		male	*pain50		BIKPAIN
+$playersound	Bikdark		male	*pain25		BIKPAIN
+$playersound	Bikdark		male	*grunt		BIKLAND
+$playersound	Bikdark		male	*land		BIKLAND
+$playersound	Bikdark		male	*fist		dsnone
+$playersound	Bikdark		male	*usefail	BIKLAND
+$playersound	Bikdark		male	*taunt	    BIKTAUNT
+
+weapon/sine BIKSINE
+weapon/cosine BIKCOSIN
+weapon/tangent BIKTANG
+
+//SaviorSword
+$playersound	savclass	male	*death		MEGADEAT
+$playersound	savclass	male	*xdeath		MEGADEAT
+$playersound	savclass	male	*gibbed		MEGADEAT
+$playersound	savclass	male	*pain100	MEGAPAIN
+$playersound	savclass	male	*pain75		MEGAPAIN
+$playersound	savclass	male	*pain50		MEGAPAIN
+$playersound	savclass	male	*pain25		MEGAPAIN
+$playersound	savclass	male	*grunt		LAND
+$playersound	savclass	male	*land		LAND
+$playersound	savclass	male	*fist		dsnone
+$playersound	savclass	male	*usefail	LAND
+$playersound	savclass	male	*taunt		SAVTAUNT
+
+weapon/savreverse	GRAVFLIP
+weapon/Thunderwool		THUNWOOL
+weapon/MachinaMult		MACMULTI
+weapon/SparkSpread		SPARKSPR
+weapon/MachinaCharge	MACCHARG
+weapon/MachinaReload	MACRLOAD
+weapon/MachinaFire1		MACFIRE1
+weapon/MachinaFire2		MACFIRE2
+
+//Daveris
+$playersound	davesfx	male	*death		MEGADEAT
+$playersound	davesfx	male	*xdeath		MEGADEAT
+$playersound	davesfx	male	*gibbed		MEGADEAT
+$playersound	davesfx	male	*pain100	MEGAPAIN
+$playersound	davesfx	male	*pain75		MEGAPAIN
+$playersound	davesfx	male	*pain50		MEGAPAIN
+$playersound	davesfx	male	*pain25		MEGAPAIN
+$playersound	davesfx	male	*grunt		LAND
+$playersound	davesfx	male	*land		LAND
+$playersound	davesfx	male	*fist		dsnone
+$playersound	davesfx	male	*usefail	LAND
+$playersound	davesfx	male	*taunt		DAVETAUN
+
+weapon/icebreath	ICEBREAT
+
+//Gizmo
+Gizmo/death1      SONICDE1
+Gizmo/death2      SONICDE2
+
+$random Gizmo/death { Gizmo/death1 Gizmo/death2 }
+
+Gizmo/cpain1      SONICHR4
+Gizmo/cpain2      SONICHR5
+
+$random Gizmo/cpain { Gizmo/cpain1 Gizmo/cpain2 }
+
+
+
+Gizmo/attack1      ATTACK11
+Gizmo/attack2      ATTACK12
+Gizmo/attack3      ATTACK13
+Gizmo/attack4      claw
+Gizmo/attack5      claw
+
+$random Gizmo/attack { Gizmo/attack1 Gizmo/attack2 Gizmo/attack3 Gizmo/attack4 Gizmo/attack5 }
+
+Gizmo/strong1      ATTACK14
+Gizmo/strong2      ATTACK15
+Gizmo/strong3      ATTACK16
+Gizmo/strong4      claw
+Gizmo/strong5      claw
+
+$random Gizmo/strong { Gizmo/strong1 Gizmo/strong2 Gizmo/strong3 Gizmo/strong4 Gizmo/strong5 }
+
+
+$playeralias	"Gizmo" 	male	*death		Gizmo/death
+$playersound    "Gizmo" 	male    *xdeath     SONICDE1
+$playersound	"Gizmo" 	male	*pain100	SONICHR1
+$playersound    "Gizmo" 	male	*pain75		SONICHR2
+$playersound    "Gizmo" 	male	*pain50		SONICHR3
+$playeralias    "Gizmo"  	male	*pain25		Gizmo/cpain
+$playersound	"Gizmo" 	male	*land		SONICLND
+$playersound	"Gizmo" 	male	*usefail	SONICLND
+$playersound	"Gizmo" 	male	*jump   	SONICJMP
+$playersound	"Gizmo"	    male	*gibbed		SONICDE1
+$playersound	"Gizmo" 	male	*grunt		NONE
+$playeralias	"Gizmo" 	male	*taunt		Gizmo/taunt
+
+$random Gizmo/taunt { Gizmo/taunt1 Gizmo/taunt2 Gizmo/taunt3 Gizmo/taunt4 Gizmo/taunt6 }
+
+
+Gizmo/taunt1      GIZMOLGO
+Gizmo/taunt2      GIZMOHAH
+Gizmo/taunt3      GIZMOSEE
+Gizmo/taunt4      GIZMOLGO
+Gizmo/taunt5      GIZMOFIR
+Gizmo/taunt6      GIZMOCOM
+
+weapon/gizchrg	GIZCHARG
+weapon/gizchrgloop	GIZLOOP
+weapon/gizfire	CHARGFIR
+weapon/clawg	CLAWGLOV
+weapon/frostc	FROST
+weapon/flamet	fire4
+weapon/plasma	PLASMA
+weapon/lightc	bolt04
+weapon/stonec	stone1
+weapon/hydroc	HYDRO1
+weapon/hydrocharge	HYDRCHRG
+weapon/rfmissile	RFMISS1
+weapon/rfrocket	RFMISS3
+weapon/blastcannonhit	CHAOSHIT
+weapon/blastcannonhit2	CHAOHIT2
+weapon/eternalshield	BARRIER
+
+chaos/blastcannon	BLASTCAN
+
+misc/jump   	SONICJMP
+misc/eterup 	ETERNUPG
+misc/cfire2 	HITHARD
+misc/cfire3 	FALLING
+misc/bigpain 	INSTAGIZ
+misc/click		SONICGUN
+misc/click2		SONICRFM
+misc/rfexplode	RFMISS2
+misc/rfblast	RFMISS4
+
+Gizmo/torrent1	TORRENT1
+Gizmo/torrent2	TORRENT2
+Gizmo/torrent3	TORRENT3
+Gizmo/torrent4	TORRENT4
+
+misc/Ring	Ring
+misc/Ring2	Ringhit
+misc/Ringthrow	Thok
+
+$random Gizmo/torrent { Gizmo/torrent1 Gizmo/torrent2 Gizmo/torrent3 Gizmo/torrent4 }
+
+
+Kitty/Hurt1	CATHIT1
+Kitty/Hurt2	CATHIT3
+Kitty/Hurt3	CATHIT4
+Kitty/Hurt4	CATHIT6
+
+$random Kitty/Hurt { Kitty/Hurt1 Kitty/Hurt2 Kitty/Hurt3 Kitty/Hurt4 }
+
+Kitty/Attack1	CHAJUMP1
+Kitty/Attack2	CHAJUMP3
+Kitty/Attack3	CHAJUMP4
+
+$random Kitty/Attack { Kitty/Attack1 Kitty/Attack2 Kitty/Attack3 Kitty/Attack4 }
+
+//HD/Stonefunk
+weapon/zip		ZIIIIIP
+weapon/drillin	drillin
+weapon/drillout drillout
+
+//Red Eyes
+splat mucus
+
+redeyes/taunt1      REDTAU1
+redeyes/taunt2      REDTAU2
+redeyes/taunt3      REDTAU3
+redeyes/taunt4      REDTAU4
+redeyes/taunt5      REDTAU5
+redeyes/taunt6      REDTAU6
+
+redeyes/death1      REDDEA1
+redeyes/death2      REDDEA2
+redeyes/death3      REDDEA3
+
+$random redeyes/taunt { redeyes/taunt1 redeyes/taunt2 redeyes/taunt3 redeyes/taunt4 redeyes/taunt5 redeyes/taunt6 } //can't get this to work HNNNG WHY
+$random redeyes/death { redeyes/death1 redeyes/death2 redeyes/death3 }//OR THIS
+
+$playeralias	"redeyes"	male	*taunt	    redeyes/taunt
+$playeralias	"redeyes"	male	*death		redeyes/death 
+$playeralias	"redeyes"	male	*xdeath		redeyes/death
+$playeralias	"redeyes"	male	*gibbed		redeyes/death
+$playersound	"redeyes"	male	*pain100	MEGAPAIN
+$playersound	"redeyes"	male	*pain75		MEGAPAIN
+$playersound	"redeyes"	male	*pain50		MEGAPAIN
+$playersound	"redeyes"	male	*pain25		MEGAPAIN
+$playersound	"redeyes"	male	*grunt		LAND
+$playersound	"redeyes"	male	*land		LAND
+$playersound	"redeyes"	male	*jump		dsnone
+$playersound	"redeyes"	male	*fist		dsnone
+$playersound	"redeyes"	male	*usefail	LAND
+
+$playersound	michael712	male	*death		MEGADEAT
+$playersound	michael712	male	*xdeath		MEGADEAT
+$playersound	michael712	male	*gibbed		MEGADEAT
+$playersound	michael712	male	*pain100	M712OUCH
+$playersound	michael712	male	*pain75		M712OUCH
+$playersound	michael712	male	*pain50		M712OUCH
+$playersound	michael712	male	*pain25		M712OUCH
+$playersound	michael712	male	*grunt		M712LAND
+$playersound	michael712	male	*land		M712LAND
+$playersound	michael712	male	*fist		dsnone
+$playersound	michael712	male	*usefail	LAND
+$playersound	michael712	male	*taunt		M7TAUNT
+
+//Travis
+weapon/solshot		gds-shot
+weapon/solwave		gds-wave
+weapon/solcharge	gds-char
+
+//troll
+$playersound	trollol	male	*death		MEGADEAT
+$playersound	trollol	male	*xdeath		MEGADEAT
+$playersound	trollol	male	*gibbed		MEGADEAT
+$playersound	trollol	male	*pain100	MEGAPAIN
+$playersound	trollol	male	*pain75		MEGAPAIN
+$playersound	trollol	male	*pain50		MEGAPAIN
+$playersound	trollol	male	*pain25		MEGAPAIN
+$playersound	trollol	male	*grunt		LAND
+$playersound	trollol	male	*land		LAND
+$playersound	trollol	male	*fist		dsnone
+$playersound	trollol	male	*usefail	LAND
+$playersound	trollol	male	*taunt		TrolTaun
+
+$playersound	flamemammoth	male	*death		MEGADEAT
+$playersound	flamemammoth	male	*xdeath		MEGADEAT
+$playersound	flamemammoth	male	*gibbed		MEGADEAT
+$playersound	flamemammoth	male	*pain100	MEGAPAIN
+$playersound	flamemammoth	male	*pain75		MEGAPAIN
+$playersound	flamemammoth	male	*pain50		MEGAPAIN
+$playersound	flamemammoth	male	*pain25		MEGAPAIN
+$playersound	flamemammoth	male	*grunt		FATLAND
+$playersound	flamemammoth	male	*land		FATLAND
+$playersound	flamemammoth	male	*fist		dsnone
+$playersound	flamemammoth	male	*usefail	FATLAND
+$playersound	flamemammoth	male	*taunt		FLAMTAUN
+
+//Jax
+$playersound	jaxclass	male	*death		MEGADEAT
+$playersound	jaxclass	male	*xdeath		MEGADEAT
+$playersound	jaxclass	male	*gibbed		MEGADEAT
+$playersound	jaxclass	male	*pain100	MEGAPAIN
+$playersound	jaxclass	male	*pain75		MEGAPAIN
+$playersound	jaxclass	male	*pain50		MEGAPAIN
+$playersound	jaxclass	male	*pain25		MEGAPAIN
+$playersound	jaxclass	male	*grunt		LAND
+$playersound	jaxclass	male	*land		LAND
+$playersound	jaxclass	male	*fist		dsnone
+$playersound	jaxclass	male	*usefail	LAND
+$playersound	jaxclass	male	*taunt		JAXTAU
+
+//Freon
+freon/icebreath	frbre
+freon/icetrap	frtra
+freon/iceshot	frice
+freon/iceshotexplosion	fricx

@@ -1,0 +1,216 @@
+Actor Gadget : ClassBaseCSCC
+{
+Player.DisplayName "Gadget"
+Player.SoundClass "Megaman"
+Player.JumpZ 10
+Player.ForwardMove 0.7, 0.7 //0.8, 0.8
+Player.SideMove 0.67, 0.67 //0.78, 0.78
+Health 125
+Player.MaxHealth 125
+Player.StartItem "Electrammo", 1000
+Player.StartItem "CanUseItems"
+Player.StartItem "BuddySentrySpawner"
+Player.StartItem "DynashockGun"
+Player.StartItem "SentryMonitor"
+Player.StartItem "RemoteSentryController"
+Player.StartItem "SentryOption"
+//--
+Player.StartItem "SubWeaponCount", 2
+Player.StartItem "CanUseBuffs"
+//Player.StartItem "SubWeaponEddie", 1
+//Damagefactor "Normal", 1.2
+//Type Dragon/???  He's just pure electric ~Bika
+Player.StartItem "ElectricTypeTag"
+States
+{
+Spawn: 
+SNAM A 0 A_JumpIfInventory("Once", 1, 2)
+SNAM A 1 A_JumpIf(ACS_ExecuteWithResult(975, 1)==1,"TeamGame")
+Spawn2:
+SNAM A 0
+SNAM B 1
+SNAM A 1
+GoTo Spawn2+2
+See:
+SNAM BCDE 5
+GoTo Spawn2+1
+TeamGame:
+SNAM A 0 A_GiveInventory("Once",1)
+SNAM A 0 //A_GiveInventory("FireSentryWep",1)
+SNAM A 0 //A_GiveInventory("BeamSentryWep",1)
+GoTo Spawn2+2
+Missile:
+SNAM F 5
+SNAM G 4
+GoTo Spawn2+2
+Pain:
+SNAM H 0
+SNAM H 0 A_Recoil(1)
+SNAM H 0
+SNAM H 0 A_Pain
+SNAM H 0 A_Jump(256,"PainFix")
+GoTo PainFix
+PainFix:
+SNAM H 0
+GoTo PainFrames
+PainFrames:
+SNAM H 0 SetPlayerProperty(0,0,4)
+SNAM H 1// A_GiveInventory("IveBeenHit",1)
+SNAM HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+SNAM H 0 SetPlayerProperty(0,0,1)
+SNAM H 0 A_Jump(256,"Spawn")
+GoTo Spawn2+2
+Death:
+SNAM H 0 Thing_Remove(537)
+//SNAM H 0 A_JumpIf(ACS_ExecuteWithResult(975, 1)==1,2)
+//--
+SNAM A 0// A_Takeinventory("NormSentryActive",99)
+SNAM A 0 //A_Takeinventory("FireSentryActive",99)
+SNAM A 0 //A_Takeinventory("BeamSentryActive",99)
+SNAM A 0 //A_Takeinventory("RemoteSentryActive",99)
+SNAM A 0 A_Takeinventory("DispenserActive",99)
+SNAM A 0 A_Takeinventory("ThunderTowerActive",99)
+//--
+SNAM H 1 A_KillChildren(KILS_KILLMISSILES)
+SNAM H 0 A_RemoveChildren(True)
+SNAM H 0 SetPlayerProperty(0, 0, 4)
+SNAM H 0 A_TakeInventory("WeaponCharge",999)
+SNAM H 0 A_NoBlocking
+SNAM H 0 A_GiveInventory("CutterFlag",999)
+SNAM H 0 A_GiveInventory("IsDead",1)
+SNAM H 0 A_Stop
+SNAM H 0 A_GiveToTarget("KilledMeStock",1)
+SNAM H 1 A_GiveToTarget("KilledMe",1)
+SNAM H 19 ACS_ExecuteAlways(999,0,0)
+SNAM H 0 SetPlayerProperty(0, 0, 4)
+SNAM H 0 A_PlayerScream
+SNAM H 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+SNAM Z 1 A_CheckPlayerDone
+wait
+Death.Falling:
+SNAM H 0 Thing_Remove(537)
+//SNAM H 0 A_JumpIf(ACS_ExecuteWithResult(975, 1)==1,2)
+//--
+SNAM A 0// A_Takeinventory("NormSentryActive",99)
+SNAM A 0 //A_Takeinventory("FireSentryActive",99)
+SNAM A 0 //A_Takeinventory("BeamSentryActive",99)
+SNAM A 0 //A_Takeinventory("RemoteSentryActive",99)
+SNAM A 0 A_Takeinventory("DispenserActive",99)
+SNAM A 0 A_Takeinventory("ThunderTowerActive",99)
+//--
+SNAM H 1 A_KillChildren(KILS_KILLMISSILES)
+SNAM H 0 A_RemoveChildren(True)
+SNAM H 0 SetPlayerProperty(0, 0, 4)
+SNAM H 0 A_TakeInventory("WeaponCharge",999)
+SNAM H 0 A_NoBlocking
+SNAM H 0 A_GiveInventory("CutterFlag",999)
+SNAM H 0 A_GiveInventory("IsDead",1)
+SNAM Z 1 A_PlayerScream
+SNAM Z 1 A_Stop
+SNAM Z 0 A_GiveToTarget("KilledMeStock",1)
+SNAM Z 0 A_GiveToTarget("KilledMe",1)
+SNAM Z 1 ACS_ExecuteAlways(999,0,0)
+SNAM Z 1 A_CheckPlayerDone
+wait
+}
+}
+
+actor AlienWeapons : Inventory //For Basegrey, get's alternate copyweapons.
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+//[+]========================================================================[+]
+//----------------------------|Audio Calls|------------------------------------
+//[+]========================================================================[+]
+Actor SentryDown : CustomInventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+Pickup:
+TNT1 A 1 A_PlaySoundEx("Sentries/Sentrydown","Voice")
+TNT1 A 0 
+Stop
+}
+}
+
+Actor DispenserDown : CustomInventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+Pickup:
+TNT1 A 1 A_PlaySoundEx("Sentries/DispenserDown","Voice")
+TNT1 A 0 
+Stop
+}
+}
+
+Actor SentryGoingup : CustomInventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+Pickup:
+TNT1 A 1 A_PlaySoundEx("Sentries/Sentryup","Voice")
+TNT1 A 0 
+Stop
+}
+}
+
+Actor Dispensergoingup : CustomInventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+Pickup:
+TNT1 A 0 A_Jump(134,"Pickup.Alt")
+TNT1 A 1 A_PlaySoundEx("Sentries/Dispenserup1","Voice")
+Stop
+Pickup.Alt:
+TNT1 A 1 A_PlaySoundEx("Sentries/Dispenserup2","Voice")
+Stop
+}
+}
+
+Actor MovingThis : CustomInventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+Stop
+Pickup:
+TNT1 A 0 A_Jump(134,"Pickup.Alt")
+TNT1 A 1 A_PlaySoundEx("Sentries/Pickup","Voice")
+Stop
+Pickup.Alt:
+TNT1 A 1 A_PlaySoundEx("Sentries/Pickup2","Voice")
+Stop
+}
+}

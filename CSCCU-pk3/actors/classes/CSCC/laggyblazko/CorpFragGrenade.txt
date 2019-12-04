@@ -1,0 +1,205 @@
+actor CorpFragGrenade : CorporalWeaponBase
+{
+Tag "$TAG_FRAGGRENADE"
+Weapon.AmmoUse 1
+Weapon.AmmoGive 10
+weapon.ammotype "FragGrenadeAmmo"
+Weapon.SlotNumber 4
+inventory.icon "COG1I"
+dropitem "NadeSpamWepGiver"
+States
+{
+Ready:
+NADE B 0 ACS_ExecuteAlways(998,0,413)
+NADE B 0 A_JumpIfNoAmmo("NoAmmo") 
+TNT1 A 4 A_WeaponReady(WRF_NOPRIMARY)
+COG1 F 2 Offset(0,160) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+COG1 F 2 Offset(0,128) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+COG1 F 2 Offset(0,96) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+COG1 F 2 Offset(0,64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
+Ready2:
+TNT1 A 0 A_JumpIfNoAmmo("NoAmmo") 
+COG1 F 1 A_WeaponReady
+//NADE B 1 A_GiveInventory("NadeAmmoClass",1)
+loop
+Fire: 
+COG1 F 2 Offset(8,64)
+COG1 F 2 Offset(16,96)
+COG1 F 2 Offset(24,128)
+COG1 F 2 Offset(32,160)
+Throw:
+TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
+TNT1 A 5 
+NADE B 0 A_JumpIfNoAmmo("NoAmmo") 
+TNT1 A 4 A_PlaySoundEx("Corp/FragPin","Weapon")
+NADE B 0 A_AlertMonsters//The pin alerts them as well =P
+Hold:
+TNT1 A 1 A_GiveInventory("GrenadeForce",1)
+TNT1 A 0 A_Refire
+NADE B 0 A_AlertMonsters
+NADE B 0 A_PlaySoundEx("weapon/crackerthrow","Weapon")
+NADE B 0 A_JumpIfInventory("GrenadeForce",15,"ThrowFast")
+NADE B 0 A_FireCustomMissile ("FragGrenade", 0, 1, -8, 0)
+goto ThrowAnim
+ThrowFast:
+NADE B 0 A_FireCustomMissile ("FragGrenadeFast", 0, 1, -8, 0)
+ThrowAnim:
+NADE CDEFGH 1
+NADE H 0 A_TakeInventory("GrenadeForce",15)
+NADE H 0 A_JumpIfNoAmmo("NoAmmo")
+NADE C 0 A_Refire("Throw") 
+COG1 F 2 Offset(0,128)
+COG1 F 2 Offset(0,64)
+Goto Ready2+1
+AltFire:
+COG1 F 1 Offset(0,64)
+COG1 F 1 Offset(0,128)
+TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
+goto Knife
+KnifeEnd:
+NADE H 0 A_JumpIfNoAmmo("NoAmmo") 
+COG1 F 1 Offset(0,128)
+COG1 F 1 Offset(0,64)
+TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
+Goto Ready2
+NoAmmo:
+TNT1 A 1 A_TakeInventory("CorpFragGrenade",1)
+Loop
+}
+}
+
+Actor FragGrenadeAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 10
+}
+
+Actor GrenadeForce : Inventory
+{
+inventory.amount 1
+inventory.maxamount 15
+}
+
+
+actor FragGrenade
+{
+PROJECTILE
+Obituary "%o was fragmented by %k's fragmentation grenade."
+Height 4
+Radius 2
+scale 2.5
+Damage (0)
+-NOGRAVITY
+-NOTELEPORT
+speed 20
++HEXENBOUNCE
++BOUNCEONACTORS
++ALLOWBOUNCEONACTORS
+SeeSound "Corp/FragBounce"
+bouncefactor 0.8
+wallbouncefactor 0.8
+reactiontime 10
+bouncecount 3
+damagetype "FragGrenade"
+//+MTHRUSPECIES
+States
+{
+Spawn:
+NADE Z 0
+NADE Z 0 A_StopSound(CHAN_VOICE)
+NADE Z 0 A_CountDown
+COG1 BCED 4
+Goto Spawn+2
+Death:
+NADE Z 0 A_Stop
+NADE Z 0 A_PlaySoundEx("Corp/FragExplode", "Weapon")
+NADE Z 0 A_ChangeFlag("NOGRAVITY",1)
+NADE Z 0 A_Explode(20,180)//Hurts souce
+
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,0)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,30)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,60)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,90)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,120)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,150)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,180)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,-30)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,-60)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,-90)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,-120)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,30,0,0,-150)
+
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,15,0)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,21,45)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,15,90)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,21,135)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,15,180)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,21,-45)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,15,-90)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,21,-135)
+
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,-15,0)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,-21,45)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,-15,90)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,-21,135)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,-15,180)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,-21,-45)
+NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,26,0,-15,-90)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,21,0,-21,-135)
+
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,0,0, 30,0)
+//NADE Z 0 A_SpawnItemEx("GrenadeFrag",0,0,0,0,0,-30,0)
+
+//Theoretical max damage: 20 + (6 + 4 + 4)*5 = 15 + 70 = 90
+//But no one will ever hit a target with all its fragments... right?
+
+BOMB BCDEFGHIJKLMNOPQR 1
+stop
+}
+}
+
+actor GrenadeFrag
+{
+PROJECTILE
++HEXENBOUNCE
++THRUACTORS //I'd rather avoid 0 damage rippers
+-NOGRAVITY
+SeeSound "Corp/Fragment"
+DeathSound "Corp/Fragment"
+damagetype "GrenadeFragment"
+Obituary "%o was fragmented by %k's fragmentation grenade."
+bouncefactor 0.8
+wallbouncefactor 0.8
+bouncecount 4
+//reactiontime 35
+Speed 0
+Damage (5)
+height 4
+radius 2
+scale 2.5
+//+MTHRUSPECIES
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_StopSound(CHAN_VOICE)
+LASH B 4
+LASH B 1 A_ChangeFlag("THRUACTORS",false)
+LASH B 1
+Wait
+}
+}
+
+actor FragGrenadeFast : FragGrenade
+{
+bouncecount 2
+Speed 40
+}
+
+actor FragGrenadeCooldown : Inventory
+{
+}
+
+

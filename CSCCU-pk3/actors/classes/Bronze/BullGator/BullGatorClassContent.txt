@@ -1,0 +1,2 @@
+#include "actors/Classes/Bronze/BullGator/BullGator.txt"
+#include "actors/Classes/Bronze/BullGator/BullGatorRifles.txt"

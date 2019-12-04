@@ -1,0 +1,45 @@
+actor NegaSwordman : ClassBaseCSCC 
+{
++NOSKIN 
+player.displayname "NegaSwordman"
+player.soundclass "Sowrd"
+player.startitem "BlizzardWaveBoss"
+player.startitem "BlizzardEnergyAmmo", 175 
+player.startitem "BadzInversionItem", 1
+player.forwardmove 0.7, 0.7
+player.sidemove 0.68, 0.68
+player.jumpz 10
+player.maxhealth 125
+health 125
+damagefactor "CrystalEye", 1.5
+damagefactor "FlashBomb", 1.1
+damagefactor "FlashStopper", 1.2
+player.startitem "SturdyHealthBar" 
+States
+{
+Spawn:
+SWOM A 0 
+SWOM B 1  
+SWOM A 1  
+Goto Spawn+2 
+See:
+SWOM BCDE 5
+Goto Spawn+2
+Missile:
+SWOM F 1
+SWOM F 0 A_JumpIfInventory("DecoyFlag1",1,"SuperSpin")
+SWOM F 4
+SWOM G 4 
+goto Spawn+3
+SuperSpin:
+SWTR ABCD 1
+SWTR A 0 A_JumpIfInventory("DecoyFlag1",1,"SuperSpin")
+Goto Spawn
+Pain:
+SWOM H 0 A_JumpIfInventory("DecoyFlag1",1,"SuperSpin")
+SWOM H 0 A_ScaleVelocity(0.75)
+SWOM H 0
+SWOM H 0 A_JumpIfInventory("MorphFlag", 1, "CopyPainSnd")
+goto SuperClassPain
+}
+}

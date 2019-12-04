@@ -1,0 +1,2 @@
+#include "actors/Classes/Bronze/Hikari/Hikari.txt"
+#include "actors/Classes/Bronze/Hikari/HikariPowers.txt"

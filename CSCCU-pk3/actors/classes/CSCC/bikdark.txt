@@ -1,0 +1,2 @@
+#include "actors/classes/CSCC/bikdark/BikClass.txt"
+#include "actors/classes/CSCC/bikdark/BikWep.txt"

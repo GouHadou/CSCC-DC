@@ -1,0 +1,1802 @@
+actor ClassDeathPickup : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 SetPlayerProperty(0, 0, 4)
+TNT1 A 0 A_TakeInventory("WeaponCharge",999)
+TNT1 A 0 A_TakeInventory("ConcreteTime", 999)
+TNT1 A 0 A_NoBlocking
+TNT1 A 0 A_GiveInventory("CutterFlag",999)
+TNT1 A 0 A_GiveInventory("IsDead",1)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_GiveToTarget("KilledMeStock",1)
+TNT1 A 0 A_GiveToTarget("FusionStock",1)
+TNT1 A 0 A_GiveToTarget("ChaosMagika",3)
+TNT1 A 0 A_GiveToTarget("DiceCheck", 1)
+TNT1 A 0 A_GiveToTarget("KilledMe",1)
+stop
+}
+}
+
+actor WeaknessEffect
+{
++NOINTERACTION
++NONETID
+Radius 3
+Height 3
++NOGRAVITY
+- SOLID
+States
+{
+Spawn:
+WEAK A 0 bright
+WEAK ABABA 2 bright
+stop
+}
+}
+
+actor GlassHealthBar : Inventory //1.5x or more
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+actor ProtoHealthBar : GlassHealthBar //1.3 - 1.499
+{
+}
+actor LightHealthBar : GlassHealthBar //1.2 - 1.299
+{
+}
+actor MegaHealthBar : GlassHealthBar //1.1 - 1.199
+{
+}
+actor DuoHealthBar : GlassHealthBar //0.9 - 0.999
+{
+}
+actor SturdyHealthBar : GlassHealthBar //0.8 - 0.899
+{
+}
+actor DocToadHealthBar : GlassHealthBar //0.7 - 0.799
+{
+}
+actor ToadHealthBar : GlassHealthBar //.6 - .699
+{
+}
+actor HeavyHealthBar : GlassHealthBar //.55 - .6 most useful bar ever >_>
+{
+}
+actor HardHealthBar : GlassHealthBar //.5 nuff said
+{
+}
+
+actor CanPickAmmo : Once {+INVENTORY.UNDROPPABLE}
+actor CanCopyWeapons : CanPickAmmo {}
+actor CanUseItems : CanPickAmmo {}
+actor Wep2 : Once {}
+actor NewBossHealth : Once {}
+
+
+actor DashChecker
+{
+PROJECTILE
++DONTBLAST
+Damage (0)
+Radius 0
+Height 0
+Renderstyle "none"
++NOINTERACTION
++NOCLIP
+Scale 2.5
+States
+{
+Spawn:
+PLAY A 0
+PLAY A 0 A_GiveToTarget("DashChecker0", 1)
+PLAY A 1 
+PLAY A 0 A_JumpIfInTargetInventory("DashFinishFlag", 1, "Death")
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+
+actor DashChecker0 : CustomInventory
+{
++AUTOACTIVATE
+States
+{
+Use:
+TNT1 A 0 A_SpawnItemEx("DashChecker1")
+stop
+}
+}
+
+actor DashChecker1
+{
+PROJECTILE
++DONTBLAST
+Damage (0)
+Radius 16
+Height 56
+Renderstyle "none"
+Scale 2.5
+States
+{
+Spawn:
+PLAY A 0
+PLAY A 0 A_GiveToTarget("DashFinish", 1)
+stop
+Death:
+PLAY A 0 A_JumpIf(z-floorz < 0, "Clipping")
+stop
+Clipping:
+PLAY A 0 A_SpawnItemEx("DashChecker2", 0, 0, 16)
+stop
+}
+}
+
+actor DashChecker2: DashChecker1
+{
+Height 40
+States
+{
+Death:
+PLAY A 0
+stop
+}
+}
+
+actor DashFinish : CustomInventory
+{
++AUTOACTIVATE
+States
+{
+Use:
+TNT1 A 0 A_ChangeFlag("SOLID", 1)
+TNT1 A 0 A_ChangeFlag("THRUACTORS", 0)
+TNT1 A 0 A_GiveInventory("DashFinishFlag", 1)
+stop
+}
+}
+
+actor DashFinishFlag : Powerup 
+{
+powerup.duration 5
+}
+
+actor RushJetStealHit
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("RushJetStealPickup")
+stop
+}
+}
+
+actor RushJetStealPickup : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("YamatosStolenJet",1)
+stop
+}
+}
+
+actor BreveHit
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("BreveHitPickup",1)
+stop
+}
+}
+
+actor BreveHitPickup : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("BreveFlag",1)
+stop
+}
+}
+
+actor BikHit 
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("BikdarkHealthGiver",1)
+stop
+}
+}
+
+actor BikdarkHealthGiver : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Pickup:
+TNT1 A 0 A_JumpIfInTargetInventory("BikHealthAllow",1,"Heal")
+stop
+Heal:
+TNT1 A 0 A_TakeFromTarget("BikHealthAllow",1)
+TNT1 A 0 A_GiveToTarget("Health",13)
+stop
+}
+}
+
+actor GizmoSlow : PowerupGiver
+{
+  inventory.maxamount 0
+  powerup.duration -2
+  powerup.color "00 00 00", 0.0
+  powerup.type "PowerGizmoSlow"
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  states
+  {
+  Spawn:
+    TNT1 A 6
+    loop
+  }
+}
+
+actor PowerGizmoSlow : PowerSpeed
+{
+Speed 0.6
+}
+
+
+
+actor PainPower : Powerup
+{
+powerup.duration 3
+}
+
+actor GravityHoldPainPower : PainPower {}
+actor WilyIcePainPower : PainPower {}
+
+actor TypeDeathFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor ExplodeDeathFlag : TypeDeathFlag {}
+actor FallingDeathFlag : TypeDeathFlag {}
+actor RisingDeathFlag : TypeDeathFlag {}
+actor IceDeathFlag : TypeDeathFlag {}
+
+actor RiseMyMegamanFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 35
+}
+
+
+actor SelfTotallyFrozen : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("SelfTotallyFrozenFlag",1)
+TNT1 A 0 SetPlayerProperty(0,1,4)
+stop
+}
+}
+
+actor SelfTotallyFrozenFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+
+actor Unfreeze : CustomInventory
+{
+States
+{
+Pickup1:
+TNT1 A 0 A_JumpIfInventory("SelfTotallyFrozenFlag",1,"PickupNo")
+//TNT1 A 0 A_JumpIfInventory("TimeStoppedTFFlag",1,"PickupNo")
+//TNT1 A 0 A_JumpIfInventory("WilyIceTFFlag",1,"PickupNo")
+//TNT1 A 0 A_JumpIfInventory("SelfStoppedTFFlag",1,"PickupNo")
+//TNT1 A 0 A_JumpIfInventory("TimeStoppedCounter",1,"PickupNo")
+//TNT1 A 0 A_TakeInventory("TotallyFrozenLook",1)
+TNT1 A 0 SetPlayerProperty(0,0,4)
+stop
+PickupNo:
+TNT1 A 0
+stop
+}
+}
+
+actor SelfTotallyUnfrozen : Unfreeze
+{
+States
+{
+Pickup:
+TNT1 A 0 A_TakeInventory("SelfTotallyFrozenFlag",1)
+goto Pickup1
+}
+}
+
+
+actor TempPitProtect : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 //A_JumpIf(ACS_ExecuteWithResult(804,66)>=1,"No")
+TNT1 A 0 A_JumpIfInventory("TempPitProtectFlag",1,"Pickup2")
+TNT1 A 0 A_ChangeFlag("NOBLOCKMONST",0)
+TNT1 A 0 A_SpawnItemEx("TempPitProtectEnder")
+Pickup2:
+TNT1 A 0 A_GiveInventory("TempPitProtectFlag",1)
+stop
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor TempPitProtectFlag : Powerup
+{
+Powerup.Duration 35
+}
+
+actor TempPitProtectEnder
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+Spawn2:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInTargetInventory("TempPitProtectFlag",1,"Spawn2")
+TNT1 A 0 A_GiveToTarget("TempPitProtectEnd", 1)
+stop
+}
+}
+
+actor TempPitProtectEnd : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("IsBot",1,"Pickup2")
+TNT1 A 0 A_ChangeFlag("NOBLOCKMONST",1)
+Pickup2:
+TNT1 A 0
+stop
+}
+}
+
+actor CanWallJump : Inventory{
+inventory.amount 1
+inventory.maxamount 1}
+
+actor NoJump : Inventory{
+inventory.amount 1
+inventory.maxamount 1}
+
+actor NoWallJump : Inventory{
+inventory.amount 1
+inventory.maxamount 1}
+
+actor WallJump : Inventory{
+inventory.amount 1
+inventory.maxamount 1}
+
+actor WallJumpCount : Inventory{
+inventory.amount 1
+inventory.maxamount 30}
+
+
+actor WallJumpGive : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("WallN",1,"Jump1")
+TNT1 A 0 A_JumpIfInventory("WallE",1,"Jump2")
+TNT1 A 0 A_JumpIfInventory("WallW",1,"Jump3")
+TNT1 A 0 A_JumpIfInventory("WallS",1,"Jump4")
+stop
+Jump1:
+//TNT1 A 0 A_Recoil (5)
+TNT1 A 0 ACS_ExecuteAlways(160,0)
+TNT1 A 0 ThrustThingZ(0,40,0,0)
+stop
+Jump2:
+TNT1 A 0 
+TNT1 A 0 ACS_ExecuteAlways(160,0)
+TNT1 A 0 ThrustThingZ(0,40,0,0)
+stop
+Jump3:
+TNT1 A 0 
+TNT1 A 0 ACS_ExecuteAlways(160,0)
+TNT1 A 0 ThrustThingZ(0,40,0,0)
+stop
+Jump4:
+TNT1 A 0 ACS_ExecuteAlways(160,0)
+TNT1 A 0 ThrustThingZ(0,40,0,0)
+stop
+}
+}
+
+
+actor WallJumping : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++INVENTORY.AUTOACTIVATE
+-INVBAR
+States
+{
+Spawn:
+TNT1 A 1
+//loop
+Use:
+TNT1 A 0 A_SpawnItemEx("WallCheckN",23,0,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+TNT1 A 0 A_SpawnItemEx("WallCheckS",-23,0,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+TNT1 A 0 A_SpawnItemEx("WallCheckE",0,23,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+TNT1 A 0 A_SpawnItemEx("WallCheckW",0,-23,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("WallJumpMan")
+TNT1 A 1
+//fail
+stop
+}
+}
+
+
+actor WallJumpMan
+{
+-SOLID
++NOGRAVITY
++MISSILE
++NOTARGETSWITCH
++NOBLOCKMAP
+Height 0
+Radius 0
+scale 2.5
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("WallJump",1,"Boost")
+Goto Boost
+Boost:
+TNT1 A 0 A_TakeFromTarget("WallJump",1)
+Goto BoostLoop1
+BoostLoop1:
+TNT1 A 1 A_GiveToTarget("WallJumpGive")
+TNT1 A 1 A_GiveToTarget("NoWallJump",1)
+TNT1 A 0 A_JumpIfInTargetInventory("AdaptorFlag",1,"BoostLoop2")
+stop
+BoostLoop2:
+TNT1 A 0 A_GiveInventory("WallJumpCount",1)
+TNT1 A 0 A_JumpIfInventory("WallJumpCount",34,"BoostEnd")
+TNT1 A 1 A_TakeFromTarget("NoWallJump",999)
+TNT1 A 0 A_JumpIfInventory("WallJumpCount",9,"BoostLoop2")
+TNT1 A 0 A_JumpIfInTargetInventory("AdaptorFlag",1,"BoostLoop2")
+stop
+BoostEnd:
+TNT1 A 0// A_Print("BoostEnd")
+TNT1 A 7 A_TakeInventory("WallJumpCount",999)
+TNT1 A 1 A_TakeFromTarget("NoWallJump",999)
+TNT1 A 1 A_TakeFromTarget("WallJumping",1)
+TNT1 A 0 A_TakeFromTarget("WallJump",1)
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor WallCheckN 
+{
+PROJECTILE
++RIPPER
++PAINLESS
+Height 10
+Radius 10
+Speed 0
+damage (0)
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_TakeFromTarget("WallN",1)
+TNT1 A 1
+stop
+Death:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("WallN",1)
+TNT1 A 1
+stop
+}
+}
+
+actor WallCheckS : WallCheckN
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_TakeFromTarget("WallS",1)
+TNT1 A 1
+stop
+Death:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("WallS",1)
+TNT1 A 1
+stop
+}
+}
+
+actor WallCheckE : WallCheckN
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_TakeFromTarget("WallE",1)
+TNT1 A 1
+stop
+Death:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("WallE",1)
+TNT1 A 1
+stop
+}
+}
+
+actor WallCheckW : WallCheckN
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_TakeFromTarget("WallW",1)
+TNT1 A 1
+stop
+Death:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("WallW",1)
+TNT1 A 1
+stop
+}
+}
+
+actor WallN : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor WallS : WallN
+{
+}
+actor WallE : WallN
+{
+}
+actor WallW : WallN
+{
+}
+
+actor InvisibleFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+
+actor FlashFreezeGiver : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 1 A_SpawnItemEx("FlashFreezeFX",4,0,100,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor FlashFreezeGiverGiver : CustomInventory
+{
+-SOLID
++NOGRAVITY
++MISSILE
++NOBLOCKMAP
+Height 0
+Radius 0
+scale 2.5
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInTargetInventory("Isdead",1,"Death") 
+TNT1 A 0 A_JumpIfInTargetInventory("FlashFreezeCounter",1,"Thing")
+TNT1 A 1
+Goto Death
+Thing:
+TNT1 A 0 A_TakeFromTarget("FlashFreezeCounter",1)
+TNT1 A 0 A_GiveToTarget("DiamondFreeze")
+TNT1 A 2 A_GiveToTarget("FlashFreezeGiver")
+goto Spawn
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor FlashFreezeFX
+{
++NOINTERACTION
+-SOLID
++NOGRAVITY
+Scale 1.5
+States
+{
+Spawn:
+CICL C 0
+CICL CD 1 A_SpawnItemEx("SnowFlakes",0,0,0,random2(5),random2(5),random(-1,-5))
+stop
+}
+}
+
+actor SnowFlakes
+{
++NOINTERACTION
+-SOLID
++NOGRAVITY
+Scale .5
+States
+{
+Spawn:
+CICL CDCDCDCD 2 
+stop
+}
+}
+
+actor DiamondFreeze : PowerupGiver
+{
+  inventory.maxamount 0
+  powerup.duration 3
+  powerup.color "00 00 00", 0.0
+  powerup.type "PowerDiamondFreeze"
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  states
+  {
+  Spawn:
+    TNT1 A 6
+    loop
+  }
+}
+
+actor PowerDiamondFreeze : PowerSpeed
+{
+Speed 0.4
+}
+
+//
+// custom freeze effect woo woooooo - SmashBro
+//
+
+actor FrozenStiff
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+reactiontime 42 //Lasts barely longer than a second, ignoring resets from Frost Atomizer's constant haze effect.
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_CheckFloor("IceIceBaby") //Only grounded players are frozen. Hey, I'm not COMPLETELY heartless.
+goto Death
+IceIceBaby:
+TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("FreezeBreak",1,"Death")
+TNT1 A 0 A_GiveToTarget("FrostAtomizerArmor",1) //Then again, you only get the armor if you're frozen.
+TNT1 A 1 A_GiveToTarget("FrozenStopMovement",1) //Maybe I'm just that much of an asshole.
+TNT1 A 0 A_CountDown
+loop
+Death:
+TNT1 A 1
+stop
+}
+}
+
+actor FrozenStopMovement : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_SpawnItemEx("FreezeEffect")
+stop
+}
+}
+
+actor FreezeEffect
+{
+scale 2.5
+- SOLID
++NOGRAVITY
++CLIENTSIDEONLY
+States
+{
+Spawn:
+CMIB K 0
+CMIB K 2
+stop
+}
+}
+
+//custom powerup woo woooooo
+actor FreezeBreak : PowerProtection
+{
+Powerup.Duration 3
+damagefactor "normal", 0.6 //Reduces damage from rippers or other attacks immediately after thawing.
+}
+
+actor FrostAtomizerArmor : PowerProtection
+{
+Powerup.Duration 9
+damagefactor "normal", 1.0
+damagefactor "BoltPistol", 1.4 //Boosts the damage from Mech Girl's main attacks.
+damagefactor "FrostAtomizer", 0.1 //Reduces Frost Atomizer's damage to a mere footnote.
+}
+
+actor ReverseSpeed : PowerSpeed 
+{
+Powerup.Duration 180
+Speed -1.0
+}
+
+
+//[+]====================|OCBMR|================[+]
+
+
+actor InvulnerabilityFrames : PowerProtection
+{
+Powerup.Duration 35
+damagefactor "Normal", 0.0
+damagefactor "AuraType", 0.25
+}
+
+
+actor ShortInvulnerabilityFrames : PowerProtection
+{
+-INVBAR
+-COUNTITEM
+Inventory.maxamount 1
+Powerup.Duration 7
+damagefactor "Normal", 0.0
+}
+
+actor MiniProtectionFrames : PowerupGiver
+{
+-INVBAR
+-COUNTITEM
+Inventory.maxamount 1
+powerup.duration 5
+powerup.type "PowerMiniProtectionFrames"
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
+states
+{
+Spawn:
+TNT1 A 1
+loop
+}
+}
+
+actor PowerMiniProtectionFrames : PowerProtection
+{
+Powerup.Duration 5
+damagefactor "LightBringerC", 0.15
+damagefactor "LightBringerC2", 0.15
+damagefactor "RagnarokC", 0.15
+damagefactor "RagnarokC2", 0.15
+damagefactor "Blaze", 0.2
+damagefactor "Normal", 0.25
+}
+/*
+actor HitStunController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 9
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}
+
+actor PowerWaiting2LandProtection : PowerProtection
+{
+Powerup.Duration 350
+damagefactor "Normal", 0.0
+damagefactor "AuraType2", 0.0
+damagefactor "AuraType3", 0.0
+}
+
+actor PowerSnipedProtection : PowerProtection
+{
+Powerup.Duration 7
+damagefactor "ATBSemiAuto", 0.0
+damagefactor "ATBSniper", 0.0
+}
+
+actor PowerSenKarasuProtection : PowerProtection
+{
+Powerup.Duration 16
+damagefactor "ChidoriLP", 0.0
+}
+
+
+actor PowerDMPProtection : PowerProtection
+{
+Powerup.Duration 35
+damagefactor "Normal", 0.0
+}
+
+//Auron ChipStuff
+actor SwordTypeSafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerSwordProtection",1)
+TNT1 A 0 A_GiveToTarget("IveBeenHitStunned",1)
+TNT1 A 9
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 9
+TNT1 A 0 A_TakeFromTarget("PowerSwordProtection",1)
+stop
+}
+}
+
+actor SwordType2SafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerSwordProtection2",1)
+TNT1 A 0 A_GiveToTarget("IveBeenHitStunned",1)
+TNT1 A 5
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 5
+TNT1 A 0 A_TakeFromTarget("PowerSwordProtection2",1)
+stop
+}
+}
+
+actor SwordType3SafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerSwordProtection3",1)
+TNT1 A 5
+TNT1 A 0 A_TakeFromTarget("PowerSwordProtection3",1)
+stop
+}
+}
+
+actor AirElementSafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerAirMHProtection",1)
+TNT1 A 0 A_GiveToTarget("IveBeenHitStunned",1)
+TNT1 A 6
+TNT1 A 0 A_TakeFromTarget("PowerAirMHProtection",1)
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}
+
+actor GyroSafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerGyroProtection",1)
+TNT1 A 0 A_GiveToTarget("IveBeenHitStunned",1)
+TNT1 A 8
+TNT1 A 0 A_TakeFromTarget("PowerGyroProtection",1)
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}
+
+actor BreakTypeSafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerBreakProtection",1)
+TNT1 A 0 A_GiveToTarget("IveBeenHitStunned",1)
+TNT1 A 0 Radius_Quake(10,5,0,15,0)
+TNT1 A 6
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 6
+TNT1 A 0 A_TakeFromTarget("PowerBreakProtection",1)
+stop
+}
+}
+
+actor BreakType2SafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerBreakProtection2",1)
+TNT1 A 1
+TNT1 A 0 //A_GiveToTarget("IveBeenHitStunned",1)
+TNT1 A 8
+TNT1 A 0 //A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 9
+TNT1 A 0 A_TakeFromTarget("PowerBreakProtection2",1)
+stop
+}
+}
+
+actor GeyserSafetyController
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerGeyserProtection",1)
+TNT1 A 10
+TNT1 A 0 A_TakeFromTarget("PowerGeyserProtection",1)
+stop
+}
+}
+
+actor PowerSwordProtection : PowerProtection
+{
+Powerup.Duration 18
+damagefactor "SwordTypeA", 0.0
+damagefactor "SwordTypeA2", 0.0
+damagefactor "SwordTypeA3", 0.0
+}
+
+actor PowerSwordProtection2 : PowerProtection
+{
+Powerup.Duration 10
+damagefactor "SwordTypeA", 0.0
+damagefactor "SwordTypeA2", 0.0
+damagefactor "SwordTypeA3", 0.0
+}
+
+actor PowerSwordProtection3 : PowerProtection
+{
+Powerup.Duration 5
+damagefactor "SwordTypeA", 0.0
+damagefactor "SwordTypeA2", 0.0
+damagefactor "SwordTypeA3", 0.0
+}
+
+actor PowerAirMHProtection : PowerProtection
+{
+Powerup.Duration 6
+damagefactor "AirTypeMH", 0.0
+}
+
+actor PowerGyroProtection : PowerProtection
+{
+Powerup.Duration 4
+damagefactor "GyroChargeShot", 0.0
+}
+
+actor PowerBreakProtection : PowerProtection
+{
+Powerup.Duration 10
+damagefactor "BreakTypeA", 0.0
+}
+
+actor PowerBreakProtection2 : PowerProtection
+{
+Powerup.Duration 18
+damagefactor "BreakTypeA2", 0.0
+}
+
+actor PowerGeyserProtection : PowerProtection
+{
+Powerup.Duration 10
+damagefactor "Geyser", 0.0
+damagefactor "Blizzard", 0.0
+}
+*/
+actor PowerFireMagicProtection : PowerProtection
+{
+Powerup.Duration 4
+damagefactor "FireType", 0.0
+damagefactor "FireTypeX", 0.0
+damagefactor "FireSpin", 0.0
+}
+/*
+actor PowerJusticeOneSlowed : PowerSpeed
+{
+Powerup.Duration 350
+Speed 0.67
+}
+
+//"Zap"s
+actor NapalmZap
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("IveBeenHitNapalm",1)
+TNT1 A 2
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}
+
+actor NapalmZap2
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("IveBeenHitNapalm",1)
+TNT1 A 1
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}
+
+actor InfiniteVulcanZap
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("IveBeenHitNapalm",1)
+TNT1 A 3
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}
+
+actor SilverBulletZap
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("IveBeenHitNapalm",1)
+TNT1 A 4
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}
+
+actor IveBeenHitNapalm : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 
+TNT1 A 0 SetPlayerProperty(0,1,4)
+stop
+}
+}
+
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//XXX    Status Effects    XXX
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+//Burn
+actor IveBeenBurned
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("BurnedDamage",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("ImNotBurnedNow",1)
+stop
+DeathTake:
+TNT1 A 0
+TNT1 A 1 A_GiveToTarget("ImNotBurnedNow",1)
+stop
+}
+}
+
+actor BurnedDamage : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 DamageThing(6)
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+TNT1 A 0 A_SpawnItemEx("NormalFireFX",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 A_SpawnItemEx("NormalFireFX",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 A_SpawnItemEx("NormalFireFX",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+stop
+}
+}
+
+actor ImNotBurnedNow : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 SetPlayerProperty(0,0,4)
+TNT1 A 0 A_TakeInventory("PowerBurnedAttackStat",1)
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
+stop
+}
+}
+
+actor NormalFireFX
+{
++NOINTERACTION
++CLIENTSIDEONLY
+scale 2.0
+states
+{
+Spawn:
+LFLM I 0
+LFLM I 2 A_PlaySoundEx("weapon/firestorm","Voice")
+LFLM JKL 2 
+LFLM O 2 A_FadeOut(0.5)
+stop
+}
+}
+
+actor PowerBurnedAttackStat : PowerDamage
+{
+Powerup.Duration 700
+Damagefactor "Normal", 0.5
+Powerup.Color Red, 0.5
+}
+
+//Paralysis
+actor IveBeenParalyzed
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
++NOTARGETSWITCH
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_GiveToTarget("PowerElecVision",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_Jump(160,4)
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+TNT1 A 0
+DeathTake:
+TNT1 A 0
+TNT1 A 1 A_GiveToTarget("ImNotParalyzedNow",1)
+stop
+}
+}
+
+actor ImNotParalyzedNow : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 SetPlayerProperty(0,0,4)
+TNT1 A 0 A_TakeInventory("PowerElecVision",999)
+stop
+}
+}
+
+actor ZappyZap
+{
+-SOLID
++NOGRAVITY
++NOTARGETSWITCH
+radius 1
+height 1
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("IveBeenZapped",1)
+TNT1 A 1
+TNT1 A 0 A_GiveToTarget("IveBeenFreed",1)
+stop
+}
+}*/
+
+actor IveBeenZapped : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 SetPlayerProperty(0,1,4)
+TNT1 A 0 DamageThing(1)
+TNT1 A 0 A_Stop
+stop
+}
+}
+
+actor PowerElecVision : PowerSpeed
+{
+Powerup.Duration 350
+Powerup.Color Yellow, 0.5
+Speed 0.67
+}
+
+actor ChillEffect : PowerupGiver
+{
+Speed 0.8
+powerup.duration 35
+powerup.type "PowerChillEffect"
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
+states
+{
+Pickup:
+TNT1 A 35
+stop
+}
+}
+
+//BEHOLD, WIZARDRY AND SHIT
+actor PowerChillEffect : PowerSpeed
+{
+Powerup.Duration 35
+Speed 0.75 //It stacks, so it doesn't do much
+}
+
+//Poison  ~Bika
+actor PoisonWatcher //: CustomInventory
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+Obituary "%0 succumed to poison"
+States
+{
+Spawn:
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("PoisonedEffect",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("PoisonedEffect",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("PoisonedEffect",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("PoisonedEffect",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("PoisonedEffect",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("PoisonedEffect",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("PoisonedDamage",1)
+TNT1 A 1 A_JumpIfInTargetInventory("PoisonMark",1,"Spawn")
+stop
+Death:
+DeathTake:
+TNT1 A 0
+TNT1 A 1 //A_GiveToTarget("ImNotPoisonedNow",1)
+stop
+}
+}
+
+actor StatusNummer : PowerProtection // for DOTs
+{
+inventory.amount 1
+inventory.maxamount 1
++NOPAIN
+Powerup.Duration 1
+}
+
+
+actor PoisonedDamage : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 100
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_giveinventory("StatusNummer",1)
+TNT1 A 0 A_Jumpifhealthlower(100,"soften")
+TNT1 A 0 DamageThing(health*0.05)
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+TNT1 A 0 A_SpawnItemEx("PoisonedFX1",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 A_SpawnItemEx("PoisonedFX1",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 A_SpawnItemEx("PoisonedFX1",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+stop
+Soften:
+TNT1 A 0 A_Jumpifhealthlower(10,"Perish")
+TNT1 A 0 DamageThing(9)
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+TNT1 A 0 A_SpawnItemEx("PoisonedFX1",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 A_SpawnItemEx("PoisonedFX1",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 A_SpawnItemEx("PoisonedFX1",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+Perish:
+TNT1 A 0 A_Takeinventory("PoisonMark",99)
+stop
+}
+}
+
+actor PoisonedFX1  //These are decorative.
+{
+PROJECTILE
++NOINTERACTION
++NOGRAVITY
+height 2
+Radius 2
+damage (0)
+reactiontime 1
+scale 1
+RenderStyle "Translucent"
+Alpha 0.5
+States
+{
+Spawn:
+PSMG AABCDEF 2
+stop
+}
+}
+
+actor PoisonedEffect : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+TNT1 A 0 A_SpawnItemEx("PoisonedFX1",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+stop
+}
+}
+
+actor PoisonMark : powerup
+{
++INVENTORY.ADDITIVETIME
+powerup.duration -2
+}
+
+
+actor PoisonStackDelay : powerup
+{powerup.duration 5}
+
+//Burn2  ~Bika
+actor Burn2Watcher //: CustomInventory
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+Obituary "%0 succumed to poison"
+States
+{
+Spawn:
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("Burned2Effect",1)
+TNT1 A 0 A_GiveToTarget("PowerBurned2AttackStat",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("Burned2Effect",1)
+TNT1 A 0 A_GiveToTarget("PowerBurned2AttackStat",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("Burned2Effect",1)
+TNT1 A 0 A_GiveToTarget("PowerBurned2AttackStat",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("Burned2Effect",1)
+TNT1 A 0 A_GiveToTarget("PowerBurned2AttackStat",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("Burned2Effect",1)
+TNT1 A 0 A_GiveToTarget("PowerBurned2AttackStat",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("Burned2Effect",1)
+TNT1 A 0 A_GiveToTarget("PowerBurned2AttackStat",1)
+TNT1 AAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_GiveToTarget("Burned2Damage",1)
+TNT1 A 0 A_GiveToTarget("PowerBurned2AttackStat",1)
+TNT1 A 1 A_JumpIfInTargetInventory("Burn2Mark",1,"Spawn")
+stop
+Death:
+DeathTake:
+TNT1 A 0
+TNT1 A 1 //A_GiveToTarget("ImNotBurned2Now",1)
+stop
+}
+}
+
+actor Burned2Damage : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 100
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_giveinventory("StatusNummer",1)
+TNT1 A 0 DamageThing(5)
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+TNT1 A 0 //A_SpawnItemEx("NormalFireFX",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //A_SpawnItemEx("NormalFireFX",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //A_SpawnItemEx("NormalFireFX",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+stop
+Perish:
+TNT1 A 0 //A_Takeinventory("PoisonMark",99)
+stop
+}
+}
+
+actor PowerBurned2AttackStat : PowerDamage
+{
+Powerup.Duration 10
+Damagefactor "Normal", 0.5
+Powerup.Color Red, 0.5
+}
+
+
+actor Burned2Effect : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+TNT1 A 0 //A_SpawnItemEx("NormalFireFX",random(-24,24),random(-32,32),random(1,32))
+TNT1 A 0 //SetPlayerProperty(0,1,4)
+stop
+}
+}
+
+actor Burn2Mark : powerup
+{
+//+INVENTORY.ADDITIVETIME
+powerup.duration -5
+}
+
+
+actor Burn2StackDelay : powerup
+{powerup.duration 5}
+/*
+actor DonkWatcher //: CustomInventory
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+Obituary "%0 succumed to poison"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("DonkCheck",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_TakeFromTarget("DonkCheck",1)
+stop
+Death:
+DeathTake:
+TNT1 A 0
+TNT1 A 1 A_TakeFromTarget("DonkCheck",1)
+stop
+}
+}
+
+actor TripleDonkWatcher //: CustomInventory
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+Obituary "%0 succumed to poison"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("TripleDonkCheck",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_TakeFromTarget("TripleDonkCheck",1)
+stop
+Death:
+DeathTake:
+TNT1 A 0
+TNT1 A 1 A_TakeFromTarget("TripleDonkCheck",1)
+stop
+}
+}*/
+
+actor NoHealthBar2 : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}

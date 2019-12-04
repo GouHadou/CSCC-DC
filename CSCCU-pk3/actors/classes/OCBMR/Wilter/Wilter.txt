@@ -1,0 +1,249 @@
+Actor Wilter : ClassBaseCSCC
+{
+Player.DisplayName "Wilter"
+Player.SoundClass "Megaman"
+Player.JumpZ 12
+Player.ForwardMove 0.5, 0.5 //0.8, 0.8
+Player.SideMove 0.5, 0.5 //0.78, 0.78
+Health 150
+Player.MaxHealth 150
+Player.StartItem "CanUseItems"
+Player.StartItem "IceMaster"
+Player.StartItem "FreezerayWep"
+Player.StartItem "BlizzardMaker2Wep"
+Player.StartItem "IceBombWep"
+Player.StartItem "ChillPower", 300
+Player.StartItem "SubWeaponCount", 2
+Player.StartItem "IAmIceType", 1
+Player.StartItem "CanUseBuffs"
+//Player.StartItem "SubWeaponEddie", 1
+//Damagefactor "Normal", 1.5
+Player.StartItem "IceTypeTag"
+//===========[+]
+DamageFactor "Weavile", 0.5
+DamageFactor "WeoWeoIce1", 0.5
+DamageFactor "WeoWeoIce2", 0.5
+DamageFactor "WeoWeoIceWep", 0.5
+DamageFactor "WeoWeoIceWep2", 0.5
+DamageFactor "WeoWeoIceItem", 0.5
+DamageFactor "BlizzardSword", 0.5
+DamageFactor "FlashFreeze", 0.5
+DamageFactor "DiamondIcecicle", 0.5
+DamageFactor "FrostTowerBuild", 0.5
+DamageFactor "FrostTowerB", 0.5
+DamageFactor "BozuSnow", 0.5
+DamageFactor "BozuWave", 0.5
+DamageFactor "BozuFlake", 0.5
+DamageFactor "BozuShieldPiece", 0.5
+DamageFactor "BozuShieldShot", 0.5
+DamageFactor "BozuBreath", 0.5
+DamageFactor "BoltPistol", 0.5
+DamageFactor "FrostAtomizer", 0.5
+DamageFactor "KICE", 0.5
+DamageFactor "FrozenCapella", 0.5
+DamageFactor "ChillingCaesura", 0.5
+DamageFactor "ArcticAdagio", 0.5
+DamageFactor "IceBlade", 0.5
+DamageFactor "IceBall", 0.5
+DamageFactor "IceShard", 0.5
+DamageFactor "Ice2", 0.5
+DamageFactor "FCrack2", 0.5
+DamageFactor "IcePulse", 0.5
+DamageFactor "RefrainFlurry", 0.5
+DamageFactor "NegativeBreath", 0.5
+DamageFactor "FreonIceShot", 0.5
+DamageFactor "FreonIceTrap", 0.5
+DamageFactor "GizmoIce", 0.5
+
+
+DamageFactor "WilterFreezeRay", 0.5
+damagefactor "IceType", 0.5
+damagefactor "IceTypeX", 0.5
+damagefactor "IceShard", 0.5
+damagefactor "IceSlasher", 0.5
+damagefactor "BlizzardAttack", 0.5
+damagefactor "FreezeCracker", 0.5
+damagefactor "FreezeCrackerBit", 0.5
+damagefactor "IceWave", 0.5
+damagefactor "IceWall", 0.5
+damagefactor "ChillEffect", 0.5
+damagefactor "EIceType", 0.5
+damagefactor "EIceType2", 0.5
+Var Int User_HitMem;
+//===========[+]
+States
+{
+Spawn: 
+FREE A 0
+FREE B 1
+FREE A 1
+GoTo Spawn+2
+See:
+FREE BCDE 5
+GoTo Spawn+1
+Missile:
+FREE F 5
+FREE G 4
+GoTo Spawn+2
+Pain:
+FREE H 0
+FREE H 0 A_Recoil(1)
+FREE H 0
+FREE H 0 A_Pain
+FREE H 0 A_Jump(256,"PainFix")
+GoTo PainFix
+PainFix:
+FREE H 0
+GoTo PainFrames
+PainFrames:
+FREE H 0 SetPlayerProperty(0,0,4)
+FREE H 1 //A_GiveInventory("IveBeenHit",1)
+FREE HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+FREE H 0 SetPlayerProperty(0,0,1)
+FREE H 0 A_Jump(256,"Spawn")
+GoTo Spawn+2
+
+Pain.Weavile:
+Pain.WeoWeoIce1:
+Pain.WeoWeoIce2:
+Pain.WeoWeoIceWep:
+Pain.WeoWeoIceWep2:
+Pain.WeoWeoIceItem:
+Pain.BlizzardSword:
+Pain.FlashFreeze:
+Pain.DiamondIcecicle:
+Pain.FrostTowerBuild:
+Pain.FrostTowerB:
+Pain.BozuSnow:
+Pain.BozuWave:
+Pain.BozuFlake:
+Pain.BozuShieldPiece:
+Pain.BozuShieldShot:
+Pain.BozuBreath:
+Pain.BoltPistol:
+Pain.FrostAtomizer:
+Pain.KICE:
+Pain.FrozenCapella:
+Pain.ChillingCaesura:
+Pain.ArcticAdagio:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.Ice2:
+Pain.FCrack2:
+Pain.IcePulse:
+Pain.RefrainFlurry:
+Pain.NegativeBreath:
+Pain.FreonIceShot:
+Pain.FreonIceTrap:
+Pain.GizmoIce:
+Pain.IceType:
+Pain.IceTypeX:
+Pain.IceShard:
+Pain.IceSlasher:
+Pain.BlizzardAttack:
+Pain.FreezeCracker:
+Pain.FreezeCrackerBit:
+Pain.IceWave:
+Pain.IceWall:
+Pain.ChillEffect:
+Pain.EIceType:
+Pain.EIceType2:
+FREE H 0 A_JumpIf(User_HitMem <= 0, 3)
+FREE H 0 A_GiveInventory("ChillPower",(User_HitMem-Health)*25)
+FREE H 0 A_GiveInventory("IceMasterPowerProtect",1)
+FREE H 0
+FREE H 0 A_SetUserVar("User_HitMem",Health)
+Goto Pain+3
+Death:
+FREE H 0 Thing_Remove(537)
+FREE H 0 SetPlayerProperty(0, 0, 4)
+FREE H 0 A_TakeInventory("WeaponCharge",999)
+FREE H 0 A_NoBlocking
+FREE H 0 A_GiveInventory("CutterFlag",999)
+FREE H 0 A_GiveInventory("IsDead",1)
+FREE H 0 A_Stop
+FREE H 0 A_GiveToTarget("KilledMeStock",1)
+FREE H 1 A_GiveToTarget("KilledMe",1)
+FREE H 19 ACS_ExecuteAlways(999,0,0)
+FREE H 0 SetPlayerProperty(0, 0, 4)
+FREE H 0 A_PlayerScream
+FREE H 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+FREE Z 1 A_CheckPlayerDone
+wait
+Death.Falling:
+FREE H 0 Thing_Remove(537)
+FREE H 0 SetPlayerProperty(0, 0, 4)
+FREE H 0 A_TakeInventory("WeaponCharge",999)
+FREE H 0 A_NoBlocking
+FREE H 0 A_GiveInventory("CutterFlag",999)
+FREE H 0 A_GiveInventory("IsDead",1)
+FREE Z 1 A_PlayerScream
+FREE Z 1 A_Stop
+FREE Z 0 A_GiveToTarget("KilledMeStock",1)
+FREE Z 0 A_GiveToTarget("KilledMe",1)
+FREE Z 1 ACS_ExecuteAlways(999,0,0)
+FREE Z 1 A_CheckPlayerDone
+wait
+}
+}
+
+actor IceMaster : Inventory //For Basegrey, get's alternate copyweapons.
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor IceMasterPowerProtect : PowerProtection
+{
+Powerup.Duration 4
+DamageFactor "Weavile", 0.0
+DamageFactor "WeoWeoIce1", 0.0
+DamageFactor "WeoWeoIce2", 0.0
+DamageFactor "WeoWeoIceWep", 0.0
+DamageFactor "WeoWeoIceWep2", 0.0
+DamageFactor "WeoWeoIceItem", 0.0
+DamageFactor "BlizzardSword", 0.0
+DamageFactor "FlashFreeze", 0.0
+DamageFactor "DiamondIcecicle", 0.0
+DamageFactor "FrostTowerBuild", 0.0
+DamageFactor "FrostTowerB", 0.0
+DamageFactor "BozuSnow", 0.0
+DamageFactor "BozuWave", 0.0
+DamageFactor "BozuFlake", 0.0
+DamageFactor "BozuShieldPiece", 0.0
+DamageFactor "BozuShieldShot", 0.0
+DamageFactor "BozuBreath", 0.0
+DamageFactor "BoltPistol", 0.0
+DamageFactor "FrostAtomizer", 0.0
+DamageFactor "KICE", 0.0
+DamageFactor "FrozenCapella", 0.0
+DamageFactor "ChillingCaesura", 0.0
+DamageFactor "ArcticAdagio", 0.0
+DamageFactor "IceBlade", 0.0
+DamageFactor "IceBall", 0.0
+DamageFactor "IceShard", 0.0
+DamageFactor "Ice2", 0.0
+DamageFactor "FCrack2", 0.0
+DamageFactor "IcePulse", 0.0
+DamageFactor "RefrainFlurry", 0.0
+DamageFactor "NegativeBreath", 0.0
+DamageFactor "FreonIceShot", 0.0
+DamageFactor "FreonIceTrap", 0.0
+DamageFactor "GizmoIce", 0.0
+
+
+DamageFactor "WilterFreezeRay", 0.0
+DamageFactor "IceType", 0.0   
+DamageFactor "IceTypex", 0.0
+DamageFactor "IceShard", 0.0
+DamageFactor "IceSlasher", 0.0
+DamageFactor "BlizzardAttack", 0.0
+DamageFactor "FreezeCracker", 0.0
+DamageFactor "FreezeCrackerBit", 0.0
+DamageFactor "IceWave", 0.0
+DamageFactor "IceWall", 0.0
+DamageFactor "ChillEffect", 0.0
+DamageFactor "EIceType", 0.0
+DamageFactor "EIceType2", 0.0
+}

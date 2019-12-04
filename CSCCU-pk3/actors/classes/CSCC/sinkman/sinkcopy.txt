@@ -1,0 +1,53 @@
+
+actor SinkSprayWep : MegaBuster 
+{ 
+Weapon.AmmoUse 1
+Weapon.AmmoGive 42
+Weapon.SlotNumber 4
+Obituary "%o was scalded by %k's Sink Spray."
+Inventory.Pickupmessage "Power up! Sink Spray!"
+weapon.ammotype "SinkSprayAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
+//+WEAPON.MELEEWEAPON
+inventory.icon "SNKWI"
+Scale 2.0
+States
+{
+Spawn:
+SNKW X 0
+SNKW X 1
+SNKW X 1 
+Goto Spawn+2
+Ready:
+SNSP A 0 ACS_ExecuteAlways(998,0,18) 
+SNSP A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 B 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+SNSP A 1 A_Lower
+Loop
+Select:
+TNT1 B 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+SNSP A 1 A_Raise
+Loop
+Fire:
+SNSP A 0 A_JumpIfNoAmmo("NoAmmo")
+SNSP A 0 A_PlaySoundEx("classes/sinkflush","Weapon")
+SNSP A 0 A_FireCustomMissile ("SinkSpray",0,1,8,0)
+SNSP A 5
+SNSP A 0 A_Refire
+Goto Ready+1
+NoAmmo:
+SNSP A 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor SinkSprayAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 42
+}

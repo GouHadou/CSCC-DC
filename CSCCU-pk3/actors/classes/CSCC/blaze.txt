@@ -1,0 +1,3 @@
+#include "actors/classes/CSCC/blaze/blzclass.txt"
+#include "actors/classes/CSCC/blaze/blzwep.txt"
+#include "actors/classes/CSCC/blaze/blzig.txt"

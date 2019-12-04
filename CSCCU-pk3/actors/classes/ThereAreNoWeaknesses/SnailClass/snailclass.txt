@@ -1,0 +1,37 @@
+actor SnailClass : ClassBaseCSCC //Everything's better with snails
+{
++NOSKIN
+player.displayname "TankSnail"
+player.soundclass "snail"
+player.startitem "TankSnailWeapon"
+player.startitem "MucusAmmo", 28
+player.forwardmove 0.46, 0.46 //Let's just say he's incredibly SLUGgish
+player.sidemove 0.44, 0.44
+player.jumpz 5 //Snails are terrible at jumping okay?
+player.maxhealth 200
+health 200 //SHELL-shocking-ly durable, eh?
+damagefactor "ThunderBeam", 1.1 //He may be weaponised, but he's still a hydrostatic snail on the inside
+damagefactor "SparkShock", 1.1
+damagefactor "ThunderBolt", 1.1
+damagefactor "ThunderClaw", 1.1
+damagefactor "BlastSplicer", 1.1
+States
+{
+Spawn:
+TSNA A 0
+TSNA B 1
+TSNA A 1
+Goto Spawn+2
+See:
+TSNA B 5
+TSNA C 5
+TSNA D 5 A_PlaySound("weapon/OilSlider", CHAN_AUTO , 0.3)
+TSNA E 5
+Goto Spawn+2
+Missile:
+TSNA F 5 
+TSNA G 4 
+goto Spawn+3
+
+}
+}

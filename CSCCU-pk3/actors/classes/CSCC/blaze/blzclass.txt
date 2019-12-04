@@ -1,0 +1,164 @@
+actor BlazeClass : ClassBaseCSCC
+{
+player.displayname "blaze"
+player.soundclass "BlazeSfx"
+player.forwardmove 0.8
+player.sidemove 0.75, 0.75
+player.startitem "BlazeCannon"
+player.startitem "BlazeCrateWeapon", 28
+player.startitem "BlazeArmorPickup", 1
+player.startitem "CanPickAmmo"
+States
+{
+Spawn:
+BLZE A 0
+BLZE B 1
+BLZE A 1 
+Goto Spawn+2
+See:
+BLZE BCDE 5 
+Goto Spawn
+Missile:
+BLZE F 5 
+BLZE G 4 
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+BLZE H 0 A_SpawnItemEx("BlazeCopyHitMain",1)
+goto pain+1
+Pain.Flare:
+BLZE H 0 A_JumpIf(momz>0, "Launch")
+goto Pain+1
+Launch:
+BLZE H 0 ThrustThingZ(0,90,0,0)
+BLZE H 0 A_SpawnItemEx("RocketJumper")
+goto Pain+1
+Death.Backstab:
+BLZE H 0 SetPlayerProperty(0, 0, 4)
+BLZE H 0 A_TakeInventory("PharaohCharge",999)   
+BLZE H 0 A_NoBlocking
+BLZE H 0 A_GiveInventory("CutterFlag",999)
+BLZE H 0 A_GiveInventory("IsDead",1)
+BLZE H 0 A_Stop
+BLZE H 0 A_GiveToTarget("KilledMeStock",1)
+BLZE H 1 A_GiveToTarget("KilledMe",1)
+BLZE H 1 A_GiveToTarget("ClearDisguise",1)
+BLZE H 0 A_GiveToTarget("DisguiseOn",1)
+BLZE H 0 A_GiveToTarget("BlazeDisguise",1)
+BLZE H 0 ACS_ExecuteAlways(775,0,3)
+goto BackstabFrames
+}
+}
+
+actor RocketJumping : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor RocketJumper
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("PowerRocketJump", 1)
+TNT1 A 0 A_GiveToTarget("RocketJumping", 1)
+Spawn2:
+TNT1 A 1 A_GiveToTarget("RocketJumpCheck", 1)
+TNT1 A 0 A_JumpIfInTargetInventory("PowerRocketJump",1,"Spawn2")
+stop
+}
+}
+
+actor RocketJumpCheck : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_JumpIf(z-floorz==0, "EndBoost")
+TNT1 A 0 A_JumpIfInventory("RocketJumping",1,"DownCheck")
+TNT1 A 0 A_JumpIf(momz>=0, "EndBoost")
+stop
+DownCheck:
+TNT1 A 0 A_JumpIf(momz>0, 2)
+TNT1 A 0 A_TakeInventory("RocketJumping",999)
+TNT1 A 0
+stop
+EndBoost:
+TNT1 A 0 A_TakeInventory("PowerRocketJump",999)
+stop
+}
+}
+
+actor PowerRocketJump : PowerSpeed
+{
+Speed 2.5
+Powerup.Duration 90
+}
+
+actor BlazeCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("BlazeMorphItem",1)
+stop
+}
+}
+
+actor BlazeCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("BlazeCopyPickupMain",1)
+stop
+}
+}
+
+
+actor BlazeMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 15)
+stop
+}
+}
+
+actor BlazeMorph : BlazeClass
+{
++NOSKIN
+player.morphweapon "BlazeCannon"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

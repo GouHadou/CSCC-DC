@@ -1,0 +1,41 @@
+actor JuriClass : ClassBaseCSCC 
+{
++NOSKIN 
+player.displayname "Juri Kitai"
+player.soundclass "megaman"
+player.startitem "JuriClassWeapon" 
+player.startitem "JuriBugAmmo", 3 
+player.forwardmove 0.8, 0.8
+player.sidemove 0.68, 0.68
+player.jumpz 10
+damagefactor "Normal", 0.5
+damagefactor "ShadowBlade", 0.7
+damagefactor "CentaurFlash", 1.0
+damagefactor "JuriFear", 1.0
+damagefactor "JuriScream", 1.0
+player.startitem "HardHealthBar"
+States
+{
+Spawn:
+ROLL A 0
+ROLL B 1  
+ROLL A 1 
+Goto Spawn+2 
+See:
+ROLL BCDE 5
+Goto Spawn+1
+Missile:
+ROLL F 5 
+ROLL G 4 
+goto Spawn+3
+PainFix:
+ROLL H 0 A_TakeInventory("ParanoiaFlag", 999)
+goto PainFrames
+Pain:
+ROLL H 0 A_TakeInventory("ParanoiaFlag", 999)
+ROLL H 0 A_ScaleVelocity(0.75)
+ROLL H 0
+ROLL H 0 A_JumpIfInventory("MorphFlag", 1, "CopyPainSnd")
+goto SuperClassPain
+}
+}

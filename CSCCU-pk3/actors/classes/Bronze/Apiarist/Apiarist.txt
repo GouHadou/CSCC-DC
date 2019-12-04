@@ -1,0 +1,26 @@
+actor Apiarist : ClassBaseCSCC 
+{
+Player.DisplayName "Apiarist"
+Player.MaxHealth 85
+player.forwardmove 0.74, 0.74
+player.sidemove 0.71, 0.71
+Health 85
+player.startitem "HiveGun"
+player.startitem "HiveGunB"
+player.startitem "ApiaryItemFire"
+states
+{
+Spawn:
+DYNA A 0
+DYNA B 1
+DYNA A 1
+Goto Spawn+2
+See:
+DYNA BCDE 5
+Goto Spawn
+Missile:
+DYNA F 5
+DYNA G 4
+goto Spawn
+}
+}

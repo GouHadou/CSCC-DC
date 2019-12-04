@@ -1,0 +1,298 @@
+
+actor HiveGun : BaseMM8BDMWep
+{
+Tag "HiveGun"
+Weapon.AmmoUse 1
+Weapon.AmmoGive 100
+scale 2.0
+Obituary "$OB_Burner"
+Inventory.Pickupmessage "$PU_MEGABUSTER"
+weapon.ammotype "HiveGunClip"
+inventory.icon "NULLICON"
++WEAPON.AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.NOAUTOFIRE
++WEAPON.NOAUTOAIM
+States
+{
+Spawn:
+WEAP X 1
+stop
+Ready:
+BUST B 1 A_WeaponReady
+"####" B 0 A_Jumpifinventory("Reload_Trigger",1,"Reload")
+"####" B 0 A_Jumpifinventory("HiveGunClip",1,"Ready")
+Goto Reload
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+"####" B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+"####" B 1 A_Raise
+Loop
+Fire:
+"####" B 0 A_JumpIfNoAmmo("NoAmmo")
+"####" B 0 A_Giveinventory("FlameShotTimer")
+hold:
+"####" B 0 A_Jumpifinventory("FlameShotTimer",1,1)
+Goto FlameShot
+"####" B 0 A_JumpIfNoAmmo("NoAmmo")
+"####" L 0 A_PlaySoundEx("weapon/hornethover","Weapon")
+"####" B 0 A_Giveinventory("FlameThrowerShooter")
+"####" C 2
+"####" B 0 A_Refire
+"####" B 1
+goto Ready
+FlameShot:
+"####" B 0 A_JumpIfNoAmmo("NoAmmo")
+"####" B 0 A_PlaySoundEx("weapon/hornethover","Weapon")
+"####" B 0 A_PlaySoundEx("weapon/hornetchaser","soundslot7")
+"####" B 0 A_Giveinventory("FlameThrowerShooter")
+"####" B 0 A_Giveinventory("BigBeeShooter")
+"####" B 0 A_Giveinventory("FlameShotTimer")
+"####" C 2
+"####" B 0 A_Refire("Hold")
+"####" B 1
+goto Ready
+
+
+NoAmmo:
+"####" B 1
+"####" B 0 A_Jumpifinventory("HiveGunClip",1,"Ready")
+Reload:
+"####" B 1 Offset(0,32)
+"####" B 1 Offset(0,46)
+"####" B 1 Offset(0,58)
+"####" B 1 Offset(0,70)
+"####" B 1 Offset(0,82)
+"####" B 0 A_PlaySoundEx("weapon/rminestick","Weapon")
+"####" B 42 
+"####" B 0 A_PlaySoundEx("weapon/Crashland","Weapon")
+"####" B 1 Offset(0,82)
+"####" B 1 Offset(0,70)
+"####" B 1 Offset(0,58)
+"####" B 1 Offset(0,46)
+"####" B 1 Offset(0,32)
+"####" B 0 A_Giveinventory("HiveGunClip",100)
+"####" B 0 A_TakeInventory("Reload_Trigger",999)
+"####" B 1 A_Refire("Fire")
+Goto Ready
+Flash:
+TNT1 A 5 
+stop
+NoFlash:
+TNT1 A 1
+stop
+}
+}
+
+actor HiveGun2 : HiveGun
+{Weapon.SlotNumber 2}
+//[+]========================================================================[+]
+//--------------------------------|Ammo & inventory|---------------------------
+//[+]========================================================================[+]
+actor HiveGunClip : Ammo
+{
+inventory.amount 1
+inventory.maxamount 100
++INVENTORY.IGNORESKILL
+}
+
+Actor HiveGunhitDelay : powerprotection
+{
+Powerup.duration 3
+Damagefactor "HiveGun", 0
+}
+
+actor FlameShotTimer : powerup {inventory.amount 1 powerup.duration 20}
+//[+]========================================================================[+]
+//--------------------------------|Projectiles |--------------------------------
+//[+]========================================================================[+]
+actor HGHitbox1 : FastProjectile
+{
+
+PROJECTILE
++NOINTERACTION
++BLOODSPLATTER
++THRUGHOST
++DONTBLAST
++DONTREFLECT
++MTHRUSPECIES
++FORCEPAIN
+Radius 10
+Height 12
+damage (4)
+damagetype "HiveGun"
+RenderStyle "Add"
+Obituary "$OB_HiveGun"
+speed 74
+scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 0 A_SpawnItemEx("BeeParticleFx",random(-20,20),random(-20,20),random(-20,20),momx/5,momy/5,momz/5,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("HGHitbox2",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+XDeath:
+Crash:
+TNT1 A 1 
+stop
+Death:
+stop
+}
+}
+	actor HGHitbox1_RED : HGHitbox1{}
+	actor HGHitbox1_BLUE : HGHitbox1 {translation "227:227=198:198","229:229=192:192"}
+
+actor HGHitbox2 : HGHitbox1
+{
+Radius 16
+Height 12
+damage (3)
+speed 176
+States
+{
+Spawn:
+TNT1 C 0
+TNT1 A 0 A_SpawnItemEx("HGHitbox3",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION) 
+TNT1 C 0 A_Stop
+TNT1 C 1 A_Changeflag("NOINTERACTION",1)
+stop
+XDeath:
+Crash:
+TNT1 A 1 
+stop
+Death:
+stop
+}
+}
+
+actor HGHitbox3 : HGHitbox1
+{
+Radius 28
+Height 12
+damage (2)
+speed 285
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_Stop
+TNT1 A 1 A_Changeflag("NOINTERACTION",1)
+stop
+XDeath:
+Crash:
+TNT1 A 1 
+stop
+Death:
+stop
+}
+}
+
+actor BigBeeShot : ProjectileBase
+{
+Speed 15
+Damage (20 + CallACS("DamageRate",5,300,60))
+radius 8
+Damagetype "BigBee"
+//MissileHeight 16
+height 8
+scale 1.8
+States
+{
+Spawn:
+TNT1 A 0 
+HCHS BC 2 
+Loop
+Death:
+TNT1 A 1 //A_Spawnitemex("CrisperizerPuff1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+	actor BigBeeShot_RED : BigBeeShot{}
+	actor BigBeeShot_BLUE : BigBeeShot {translation "227:227=198:198","229:229=192:192"}
+//[+]========================================================================[+]
+//--------------------------------|Special Actors|------------------------------
+//[+]========================================================================[+]
+actor BeeParticleFx  //flames 
+{
+PROJECTILE
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
+height 2
+Radius 2
+damage (0)
+reactiontime 1
+scale 2
+//RenderStyle "ADD"
+//Alpha 1.0
+States
+{
+Spawn:
+HCHS B 0 Thrustthingz(0,30,0,0)
+HCHS B 0 A_SetScale(Frandom(0.5,1.5))
+HCHS BCBC 2 A_ScaleVelocity(0.9)
+HCHS BZB 1 
+stop
+}
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Item Shooters|------------------------------
+//[+]========================================================================[+]
+actor FlameThrowerShooter : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BUST B 0 A_FireCustomMissile("HGHitbox1",0,1,4,0)
+stop
+TeamRedFire:
+BUST B 0 A_FireCustomMissile("HGHitbox1_RED",0,1,4,0)
+TNT1 A 0
+stop
+TeamBlueFire:
+BUST B 0 A_FireCustomMissile("HGHitbox1_BLUE",0,1,4,0)
+TNT1 A 0
+stop
+}
+}
+
+actor BigBeeShooter : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BUST B 0 A_FireCustomMissile("BigBeeShot",0,0,4,0)
+stop
+TeamRedFire:
+BUST B 0 A_FireCustomMissile("BigBeeShot_RED",0,0,4,0)
+TNT1 A 0
+stop
+TeamBlueFire:
+BUST B 0 A_FireCustomMissile("BigBeeShot_BLUE",0,0,4,0)
+TNT1 A 0
+stop
+}
+}

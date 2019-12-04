@@ -1,0 +1,619 @@
+
+actor CannotUseHealth : Once {}
+
+
+actor SmallHealthCS : CustomInventory replaces SmallHealth
+{
+inventory.pickupmessage "$PU_SMALLHEALTH"
++COUNTITEM
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthSet")
+HBAL AB 6
+loop
+DefaultState:
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+goto Spawn+2
+Bonehead:
+TNT1 A 0 A_SetTranslucent(0.5, 0)
+goto Spawn+2
+Pickup:
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,"No")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_Heal",1)==1,"No")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Heal",0,0,15)
+TNT1 A 0 A_PlaySound("item/energyup")
+stop
+No:
+TNT1 A 0
+fail
+
+/*
+Pickup:
+TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("Healthscript",1),"HealMe")
+fail
+HealMe:
+TNT1 A 0 A_PlaySound("item/energyup",3,1.0)
+TNT1 A 0 ACS_NamedExecuteAlways("Healthscript",0,3,15)
+stop*/
+}
+}
+
+actor BigHealthCS : CustomInventory replaces BigHealth
+{
+inventory.pickupmessage "$PU_LARGEHEALTH"
++COUNTITEM
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthSet")
+HBAL CD 6
+loop
+DefaultState:
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+goto Spawn+2
+Bonehead:
+TNT1 A 0 A_SetTranslucent(0.5, 0)
+goto Spawn+2
+Pickup:
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,"No")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_Heal",1)==1,"No")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Heal",0,0,40)
+TNT1 A 0 A_PlaySound("item/energyup")
+stop
+No:
+TNT1 A 0
+fail
+}
+}
+
+actor MegaHealthCS : CustomInventory replaces MegaHealth
+{
+inventory.pickupmessage "Picked up a mega health capsule."
++COUNTITEM
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthSet")
+HBAL EF 6
+loop
+DefaultState:
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+goto Spawn+2
+Bonehead:
+TNT1 A 0 A_SetTranslucent(0.5, 0)
+goto Spawn+2
+Pickup:
+TNT1 A 0 A_JumpIfInventory("CannotUseHealth",1,"No")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_Heal",1)==1,"No")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Heal",0,0,500)
+TNT1 A 0 A_PlaySound("item/energyup")
+stop
+No:
+TNT1 A 0
+fail
+}
+}
+
+actor WeaponEnergyCS : ItemGiver replaces WeaponEnergy
+{
+inventory.amount 1
+inventory.maxamount 0
+inventory.pickupmessage "$PU_SMALLENERGY"
+inventory.pickupsound "item/energyup"
+States
+{
+Spawn:
+EBAL A 0
+EBAL A 0 A_JumpIf(tid == 999, 2)
+EBAL A 0 Thing_ChangeTID(0,999)
+EBAL A 0
+Goto "ItemGiver::Spawn+1"
+CopySpawn:
+Megaspawn:
+UkiyamaSpawn:
+LaggyBlazkoSpawn:
+Beed28Spawn:
+BlazeSpawn:
+UkiSpawn:
+HilmanSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+Goto Animation
+KorbySpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+KMAG AA 6
+KBAG A 0 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+/*ColdFusionSpawn:
+IceSparkySpawn:
+MessatsuSpawn:
+KnuxSpawn:
+YoshiSpawn:
+RozarkSpawn:
+AdaraSpawn:
+"----" A 0 A_SetTranslucent(0.5, 0)
+Goto Animation
+*/
+Animation:
+EBAL AB 6
+EBAL A 0 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+Pickup:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0),"Success")
+TNT1 A 0 A_JumpIfInventory("UkiyamaClassWep", 1, "UkiSuccess")
+TNT1 A 0 A_JumpIfInventory("ICE", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("FIR", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("LIT", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("LaggyHUD", 1, "LaggySuccess")
+TNT1 A 0 A_JumpIfInventory("Beed28HUD", 1, "BeedSuccess")
+TNT1 A 0 A_JumpIfInventory("BlazeCannon", 1, "BlazeSuccess")
+TNT1 A 0 A_JumpIfInventory("HilGunWep", 1, "HilAmmoPU")
+fail
+Success:
+TNT1 A 0 ACS_ExecuteAlways(992,0,30)
+stop
+UkiSuccess:
+TNT1 A 0 A_GiveInventory("UpgradeTimer", 65)
+TNT1 A 0 A_GiveInventory("UkiAmmo", 4)
+stop
+KorbySuccess:
+TNT1 A 0 A_GiveInventory("MP", 15)
+stop
+LaggySuccess:
+TNT1 A 0 A_GiveInventory("FatBullets", 16)
+stop
+BeedSuccess:
+TNT1 A 0 A_GiveInventory("Beed28LaserAmmo", 6)
+stop
+BlazeSuccess:
+TNT1 A 0 A_GiveInventory("BlazeArmorAmmoRestore",1)
+stop
+HilAmmoPU:
+TNT1 A 0 A_GiveInventory("HilRayAmmo", 4)
+stop
+}
+}
+
+
+
+
+actor BigWeaponEnergyCS : ItemGiver replaces BigWeaponEnergy
+{
+inventory.amount 1
+inventory.maxamount 0
+inventory.pickupmessage "$PU_LARGEENERGY"
+inventory.pickupsound "item/energyup"
+States
+{
+Spawn:
+EBAL C 0
+EBAL C 0 A_JumpIf(tid == 999, 2)
+EBAL C 0 Thing_ChangeTID(0,999)
+EBAL C 0
+Goto "ItemGiver::Spawn+1"
+CopySpawn:
+Megaspawn:
+UkiyamaSpawn:
+LaggyBlazkoSpawn:
+Beed28Spawn:
+BlazeSpawn:
+UkiSpawn:
+HilmanSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+Goto Animation
+KorbySpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+KMAG CC 6
+KMAG C 0 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+/*ColdFusionSpawn:
+IceSparkySpawn:
+MessatsuSpawn:
+KnuxSpawn:
+YoshiSpawn:
+RozarkSpawn:
+AdaraSpawn:
+
+"----" A 0 A_SetTranslucent(0.5, 0)
+Goto Animation
+*/
+Animation:
+EBAL CD 6
+EBAL A 0 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+Pickup:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0),"Success")
+TNT1 A 0 A_JumpIfInventory("UkiyamaClassWep", 1, "UkiSuccess")
+TNT1 A 0 A_JumpIfInventory("ICE", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("FIR", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("LIT", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("TommyGun", 1, "LaggySuccess")
+TNT1 A 0 A_JumpIfInventory("Beed28HUD", 1, "BeedSuccess")
+TNT1 A 0 A_JumpIfInventory("BlazeCannon", 1, "BlazeSuccess")
+TNT1 A 0 A_JumpIfInventory("HilGunWep", 1, "HilAmmoPU")
+fail
+Success:
+TNT1 A 0 ACS_ExecuteAlways(992,0,72)
+stop
+UkiSuccess:
+TNT1 A 0 A_GiveInventory("UpgradeTimer", 150)
+TNT1 A 0 A_GiveInventory("UkiAmmo", 10)
+stop
+KorbySuccess:
+TNT1 A 0 A_GiveInventory("MP", 40)
+stop
+LaggySuccess:
+TNT1 A 0 A_GiveInventory("FatBullets", 30)
+stop
+BeedSuccess:
+TNT1 A 0 A_GiveInventory("Beed28LaserAmmo", 12)
+stop
+BlazeSuccess:
+TNT1 A 0 A_GiveInventory("BlazeArmorAmmoBigRestore",1)
+stop
+HilAmmoPU:
+TNT1 A 0 A_GiveInventory("HilRayAmmo", 10)//because this class needs all the help it can get =/
+stop
+}
+}
+
+
+
+
+
+actor MegaWeaponEnergyCS : ItemGiver replaces MegaWeaponEnergy
+{
+inventory.amount 1
+inventory.maxamount 0
+inventory.pickupmessage "Picked up a mega energy capsule."
+inventory.pickupsound "item/energyup/large"
+States
+{
+Spawn:
+EBAL C 0
+EBAL C 0 A_JumpIf(tid == 999, 2)
+EBAL C 0 Thing_ChangeTID(0,999)
+EBAL C 0
+Goto "ItemGiver::Spawn+1"
+CopySpawn:
+Megaspawn:
+UkiyamaSpawn:
+LaggyBlazkoSpawn:
+Beed28Spawn:
+BlazeSpawn:
+UkiSpawn:
+HilmanSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+Goto Animation
+KorbySpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+EBAL IJ 6
+KMAG C 0 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+
+Animation:
+EBAL IJ 6
+EBAL A 0 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+Pickup:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0),"Success")
+TNT1 A 0 A_JumpIfInventory("UkiyamaClassWep", 1, "UkiSuccess")
+TNT1 A 0 A_JumpIfInventory("ICE", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("FIR", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("LIT", 1, "KorbySuccess")
+TNT1 A 0 A_JumpIfInventory("TommyGun", 1, "LaggySuccess")
+TNT1 A 0 A_JumpIfInventory("Beed28HUD", 1, "BeedSuccess")
+TNT1 A 0 A_JumpIfInventory("BlazeCannon", 1, "BlazeSuccess")
+TNT1 A 0 A_JumpIfInventory("HilGunWep", 1, "HilAmmoPU")
+fail
+Success:
+TNT1 A 0 ACS_ExecuteAlways(992,0,255)
+stop
+UkiSuccess:
+TNT1 A 0 A_GiveInventory("UpgradeTimer", 500)
+TNT1 A 0 A_GiveInventory("UkiAmmo", 100)
+stop
+KorbySuccess:
+TNT1 A 0 A_GiveInventory("MP", 100)
+stop
+LaggySuccess:
+TNT1 A 0 A_GiveInventory("FatBullets", 300)
+stop
+BeedSuccess:
+TNT1 A 0 A_GiveInventory("Beed28LaserAmmo", 100)
+stop
+BlazeSuccess:
+TNT1 A 0 A_GiveInventory("BlazeArmorAmmoMegaRestore",1)
+stop
+HilAmmoPU:
+TNT1 A 0 A_GiveInventory("HilRayAmmo", 100)//because this class needs all the help it can get =/
+stop
+}
+}
+
+
+
+
+
+
+//Prop replacements
+actor TurboRoaderCS : TurboRoader replaces TurboRoader
+{
++DONTREFLECT
+}
+
+actor HangingTireCS : HangingTire replaces HangingTire
+{
++DONTREFLECT
++THRUGHOST
+}
+
+Actor ThunderClawPegCS : ThunderClawPeg replaces ThunderClawPeg
+{
+States
+{
+pain.Tongue:
+pain.Grapple:
+THOO A 0
+Goto Pain.ThunderClaw
+}
+}
+
+actor OilFlameCS : OilFlame replaces OilFlame
+{
+damagetype "OilFlame"
+}
+
+actor OilCanisterCS : OilCanister replaces OilCanister
+{
+States
+{
+Pain.Shakunetsu:
+Pain.KFir:
+Pain.KFlamethrower:
+Pain.GizmoFire:
+Pain.JCFlameThrower:
+Pain.JCFirePillar:
+Pain.JCFireBomb:
+Pain.Fire:
+Pain.FireSpin:
+Goto Pain.Ignition
+}
+}
+
+actor FirePillarCS : FirePillar replaces FirePillar
+{
+States
+{
+Pain.FreezeCracker:
+Pain.FreezeCrackerBit:
+Pain.BlizzardAttack:
+Pain.IceSlasher:
+Pain.IceWave:
+Pain.IceWall:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.IceSpike:
+Pain.KIce:
+Pain.FrozenCapella:
+Pain.ChillingCaesura:
+Pain.ArcticAdagio:
+Pain.BlazeCyro:
+Pain.IcePulse:
+Pain.RefrainFlurry:
+Pain.NegativeBreath:
+Pain.FreonIceShot:
+Pain.GizmoIce:
+FIRP A 0 A_ChangeFlag("SHOOTABLE", 0)
+FIRP A 0 A_GivetoTarget("FPFrozen", 1)
+FIRP A 0 A_Jump(256,"Death2")
+stop
+}
+}
+
+actor IceBlockDamagerCS : IceBlockDamager replaces IceBlockDamager
+{
+Damagetype "Iceblock"
+}
+
+actor TeruTeruCS : TeruTeru replaces TeruTeru
+{
+painchance "LightingWave", 256
+painchance "LightningShot", 256
+painchance "KLIGHT", 256
+painchance "BlazeTesla", 256
+painchance "GizmoLightning", 256
+painchance "ThunderBlade", 256
+painchance "SavRush", 256
+painchance "SaviorThunder", 256
+painchance "YellowDevil", 256
+painchance "IceBlade", 256
+painchance "IceBall", 256
+painchance "IceShard", 256
+painchance "IceSpike", 256
+painchance "KIce", 256
+painchance "FrozenCapella", 256
+painchance "ChillingCaesura", 256
+painchance "ArcticAdagio", 256
+painchance "BlazeCyro", 256
+painchance "IcePulse", 256
+painchance "RefrainFlurry", 256
+painchance "NegativeBreath", 256
+painchance "FreonIceShot", 256
+painchance "GizmoIce", 256
+States
+{
+Pain.ThunderBolt:
+Pain.ThunderBeam:
+Pain.ThunderClaw:
+Pain.SparkShock:
+Pain.LightningBolt:
+Pain.LightingWave:
+Pain.LightningShot:
+Pain.KLIGHT:
+Pain.BlazeTesla:
+Pain.GizmoLightning:
+Pain.ThunderBlade:
+Pain.SavRush:
+Pain.SaviorThunder:
+Pain.YellowDevil:
+Death:
+TERU A 0 ACS_Execute(1,0)
+Goto Dropping
+
+Pain.FreezeCracker:
+Pain.FreezeCrackerBit:
+Pain.IceSlasher:
+Pain.IceWave: //How would this even work?
+Pain.IceWall: //This is doable, but very insane to pull off.
+Pain.BlizzardAttack:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.IceSpike:
+Pain.KIce:
+Pain.FrozenCapella:
+Pain.ChillingCaesura:
+Pain.ArcticAdagio:
+Pain.BlazeCyro:
+Pain.IcePulse:
+Pain.RefrainFlurry:
+Pain.NegativeBreath:
+Pain.FreonIceShot:
+Pain.GizmoIce:
+TERU A 0 ACS_Execute(1,0,1)
+Goto Dropping
+}
+}
+
+
+
+////Give Gizmo Kitty Eddie
+
+actor JunkLavaPillarCS : JunkLavaPillar replaces JunkLavaPillar 
+{
+states
+{
+Pain.FreezeCracker:
+Pain.FreezeCrackerBit:
+Pain.BlizzardAttack:
+Pain.IceSlasher:
+Pain.IceWave:
+Pain.IceWall:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.IceSpike:
+Pain.KIce:
+Pain.FrozenCapella:
+Pain.ChillingCaesura:
+Pain.ArcticAdagio:
+Pain.BlazeCyro:
+Pain.IcePulse:
+Pain.RefrainFlurry:
+Pain.NegativeBreath:
+Pain.FreonIceShot:
+Pain.GizmoIce:
+TNT1 A 1 A_CallSpecial(special, args[0], args[1], 0, args[3], args[4])
+Goto Spawn
+}
+}
+
+actor MagmaBeamCS1 :MagmaBeamV1 replaces MagmaBeamV1
+{
+States
+{
+Pain.FreezeCracker:
+Pain.FreezeCrackerBit:
+Pain.BlizzardAttack:
+Pain.IceSlasher:
+Pain.IceWave:
+Pain.IceWall:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.IceSpike:
+Pain.KIce:
+Pain.FrozenCapella:
+Pain.ChillingCaesura:
+Pain.ArcticAdagio:
+Pain.BlazeCyro:
+Pain.IcePulse:
+Pain.RefrainFlurry:
+Pain.NegativeBreath:
+Pain.FreonIceShot:
+Pain.GizmoIce:
+"----" A 0 A_GiveToTarget("MagmaBeamFlag", 175)
+"----" A 0 A_GiveToTarget("FrozenBeamFlag", 1)
+"----" A 0 A_Jump(256, "FrozenConcrete")
+Goto Spawn2
+}
+}
+
+actor MagmaBeamCS2 :MagmaBeamV2 replaces MagmaBeamV2
+{
+States
+{
+Pain.FreezeCracker:
+Pain.FreezeCrackerBit:
+Pain.BlizzardAttack:
+Pain.IceSlasher:
+Pain.IceWave:
+Pain.IceWall:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.IceSpike:
+Pain.KIce:
+Pain.FrozenCapella:
+Pain.ChillingCaesura:
+Pain.ArcticAdagio:
+Pain.BlazeCyro:
+Pain.IcePulse:
+Pain.RefrainFlurry:
+Pain.NegativeBreath:
+Pain.FreonIceShot:
+Pain.GizmoIce:
+"----" A 0 A_GiveToTarget("MagmaBeamFlag", 175)
+"----" A 0 A_GiveToTarget("FrozenBeamFlag", 1)
+"----" A 0 A_Jump(256, "FrozenConcrete")
+Goto Spawn2
+}
+}
+actor MagmaBeamCS3 :MagmaBeamV3 replaces MagmaBeamV3
+{
+States
+{
+Pain.FreezeCracker:
+Pain.FreezeCrackerBit:
+Pain.BlizzardAttack:
+Pain.IceSlasher:
+Pain.IceWave:
+Pain.IceWall:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.IceSpike:
+Pain.KIce:
+Pain.FrozenCapella:
+Pain.ChillingCaesura:
+Pain.ArcticAdagio:
+Pain.BlazeCyro:
+Pain.IcePulse:
+Pain.RefrainFlurry:
+Pain.NegativeBreath:
+Pain.FreonIceShot:
+Pain.GizmoIce:
+"----" A 0 A_GiveToTarget("MagmaBeamFlag", 175)
+"----" A 0 A_GiveToTarget("FrozenBeamFlag", 1)
+"----" A 0 A_Jump(256, "FrozenConcrete")
+Goto Spawn2
+}
+}

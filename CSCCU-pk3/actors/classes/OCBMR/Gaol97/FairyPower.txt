@@ -1,0 +1,440 @@
+actor FairyPower : Weapon
+{
+Weapon.AmmoUse1 7
+Weapon.AmmoGive1 56
+Weapon.AmmoUse2 35
+Weapon.AmmoGive2 35
+Weapon.SlotNumber 2
+Obituary "%o was flashed by %k."
+weapon.ammotype1 "DazzleCharge"
+weapon.ammotype2 "CrossBombAmmo"
+inventory.icon "NULLICON"
++WEAPON.AMMO_OPTIONAL
++WEAPON.ALT_AMMO_OPTIONAL
++WEAPON.DONTBOB
+scale 2.0
+//var int user_DZCD;
+States
+{
+Spawn:
+WEAP X 1
+stop
+Ready:
+GAO1 A 0 //ACS_ExecuteAlways(998,0,718)
+GAO1 A 0 A_GunFlash
+GAO1 A 0 A_JumpIfInventory("UseOverHeat",1,"OverHold")
+GAO1 A 2 A_WeaponReady
+GAO1 A 0 A_JumpIfInventory("UseOverHeat",1,"OverHold")
+GAO1 A 2 A_WeaponReady
+Goto Ready+2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+GAO1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+GAO1 A 1 A_Raise
+Loop
+Fire:
+GAO1 A 1 
+GAO1 A 1 A_JumpIfInventory("OverHeating",1,"OverHeat1")
+GAO1 A 0 A_JumpIfInventory("DazzlingGleamCoolDown",1,"NoAmmo")
+GAO1 A 0 A_ChangeFlag("NOGRAVITY",0)
+goto Hold
+Hold:
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",56,"Hold6")//1 
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",52,"Hold5")//4
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",49,"Hold4")//7
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",42,"Hold3")//14
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",28,"Hold2")//28
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",2,"Hold1")//56
+GAO1 A 1 
+GAO1 B 1 
+GAO1 B 0 A_GiveInventory("DazzleCharge",2)
+GAO1 B 0 //A_SetUserVar("user_DZCD",2)
+GAO1 B 0 A_Refire
+Goto NoChargeFlash
+Hold1:
+GAO1 A 0 A_StopSoundEx ("Weapon") 
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",28,"Hold2")
+GAO1 A 1
+GAO1 B 1 
+GAO1 B 0 A_GiveInventory("DazzleCharge",4)
+GAO1 B 0 //A_SetUserVar("user_DZCD",user_DZCD+3)
+GAO1 B 0 A_Refire
+Goto NoChargeFlash
+Hold2:
+GAO1 A 0 A_StopSoundEx ("Weapon") 
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",42,"Hold3")
+GAO1 A 1
+GAO1 C 1 
+GAO1 C 0 A_GiveInventory("DazzleCharge",3)
+GAO1 B 0 //A_SetUserVar("user_DZCD",user_DZCD+3)
+GAO1 C 0 A_Refire
+Goto WeakFlash
+Hold3:
+GAO1 A 0 A_StopSoundEx ("Weapon") 
+GAO1 A 0 A_JumpIfInventory("DazzleCharge",49,"Hold4")
+GAO1 A 1
+GAO1 D 1 
+GAO1 D 0 A_GiveInventory("DazzleCharge",2)
+GAO1 B 0 //A_SetUserVar("user_DZCD",user_DZCD+2)
+GAO1 D 0 A_Refire
+Goto WeakFlash
+Hold4:
+GAO1 B 0 A_StopSoundEx ("Weapon")
+GAO1 B 0 A_JumpIfInventory("DazzleCharge",52,"Hold5") 
+GAO1 B 1
+GAO1 C 1 
+GAO1 C 0 A_GiveInventory("DazzleCharge",1)
+GAO1 B 0 //A_SetUserVar("user_DZCD",user_DZCD+2)
+GAO1 C 0 A_Refire
+Goto NormalFlash
+Hold5:
+GAO1 B 0 A_StopSoundEx ("Weapon")
+GAO1 B 0 A_JumpIfInventory("DazzleCharge",56,"Hold6") 
+GAO1 B 1
+GAO1 D 1 
+GAO1 D 0 A_GiveInventory("DazzleCharge",1)
+GAO1 B 0 //A_SetUserVar("user_DZCD",user_DZCD+1)
+GAO1 D 0 A_Refire
+Goto NormalFlash
+Hold6:
+GAO1 C 0 A_StopSoundEx ("Weapon")
+GAO1 C 1
+GAO1 D 1 
+GAO1 D 0 A_Refire
+Goto StrongFlash
+NoChargeFlash://Minor Stun
+TNT1 A 0 //A_JumpIfInventory("OnBoard",1,2)
+GAO1 A 0 SetPlayerProperty(0,1,4)
+GAO1 A 2 A_GiveInventory("IsShooting",1) 
+GAO2 A 2
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 A 0 A_PlaySoundEx("weapon/slow","Weapon")
+GAO3 A 0 ACS_ExecuteAlways(976,0)
+GAO3 A 2 A_FireCustomMissile("BasicDazzlingGleam",0,0,0,0)
+GAO3 A 0 A_PlaySoundEx("weapon/slow","Weapon")
+GAO3 A 2 A_FireCustomMissile("BasicDazzlingGleam",0,0,0,0)
+GAO3 A 0 ACS_ExecuteAlways(976,0)
+GAO3 A 0 SetPlayerProperty(0,0,4)
+GAO3 A 20 //A_TakeInventory("DazzleCharge",56)
+GAO2 A 5 A_TakeInventory("IsShooting",1)
+GAO1 A 2 
+GAO1 A 0 //A_GiveInventory("DazzlingGleamCoolDown",35)
+Goto Cooldown //Ready+2
+WeakFlash://Disorients
+TNT1 A 0// A_JumpIfInventory("OnBoard",1,2)
+GAO1 A 0 SetPlayerProperty(0,1,4)
+GAO1 A 0 A_GiveInventory("IsShooting",1) 
+GAO1 AB 1
+GAO2 BC 2 
+GAO3 CD 3
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 D 0 A_PlaySoundEx("weapon/centaurflash","Weapon")
+GAO3 D 0 ACS_ExecuteAlways(976,0)
+GAO3 D 3 A_FireCustomMissile("DGWeakFlash",0,0,0,0)
+GAO3 D 0 A_PlaySoundEx("weapon/centaurflash","Weapon")
+GAO3 D 0 ACS_ExecuteAlways(976,0)
+GAO3 D 3 A_FireCustomMissile("DGWeakFlash",0,0,0,0)
+GAO3 D 0 A_PlaySoundEx("weapon/centaurflash","Weapon")
+GAO3 D 0 ACS_ExecuteAlways(976,0)
+GAO3 D 3 A_FireCustomMissile("DGWeakFlash",0,0,0,0)
+GAO3 D 0 //SetPlayerProperty(0,0,4)
+GAO3 DC 3
+GAO2 CB 2 
+GAO1 BA 1
+GAO3 A 0 SetPlayerProperty(0,0,4)
+GAO1 A 0 //A_TakeInventory("DazzleCharge",56)
+GAO1 A 0 A_TakeInventory("IsShooting",1)
+GAO1 A 0 //A_GiveInventory("DazzlingGleamCoolDown",user_DZCD)
+Goto Cooldown //Ready+2
+NormalFlash://Blinds(HATE)
+TNT1 A 0// A_JumpIfInventory("OnBoard",1,2)
+GAO1 A 0 SetPlayerProperty(0,1,4)
+GAO1 A 1 A_GiveInventory("IsShooting",1) 
+GAO2 AB 2 
+GAO3 BC 3
+GAO3 DD 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 D 0 A_PlaySoundEx("weapon/flashstopper","Weapon")
+GAO3 D 0 ACS_ExecuteAlways(976,0)
+GAO3 D 4 A_FireCustomMissile("DGNormalFlash",0,0,0,0)
+GAO3 E 0 A_PlaySoundEx("weapon/flashstopper","Weapon")
+GAO3 E 0 ACS_ExecuteAlways(976,0)
+GAO3 E 4 A_FireCustomMissile("DGNormalFlash",0,0,0,0)
+GAO3 D 0 A_PlaySoundEx("weapon/flashstopper","Weapon")
+GAO3 D 0 ACS_ExecuteAlways(976,0)
+GAO3 D 4 A_FireCustomMissile("DGNormalFlash",0,0,0,0)
+GAO3 E 0 A_PlaySoundEx("weapon/flashstopper","Weapon")
+GAO3 E 0 ACS_ExecuteAlways(976,0)
+GAO3 E 4 A_FireCustomMissile("DGNormalFlash",0,0,0,0)
+GAO3 DE 5
+GAO3 CBA 3
+GAO2 A 2 
+GAO1 A 2
+GAO1 A 0 SetPlayerProperty(0,0,4)
+GAO1 A 0 //A_TakeInventory("DazzleCharge",56)
+GAO1 A 0 A_TakeInventory("IsShooting",1)
+GAO1 A 0 //A_GiveInventory("DazzlingGleamCoolDown",2)
+Goto Cooldown //Ready+2
+StrongFlash://Repels(Projectiles and People)
+TNT1 A 0// A_JumpIfInventory("OnBoard",1,2)
+GAO1 A 0 SetPlayerProperty(0,1,4)
+GAO1 A 0 A_GiveInventory("IsShooting",1) 
+GAO1 ABCD 1
+GAO2 ABCD 1 
+GAO3 ABCD 1
+GAO3 E 0 A_PlaySoundEx("weapon/StarFlash","Weapon")
+GAO3 E 0 ACS_ExecuteAlways(976,0)
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 E 0 A_GiveInventory("Repulsion",1)
+GAO3 E 4 A_FireCustomMissile("DGStrongFlash",0,0,0,0)
+GAO3 F 0 //A_PlaySoundEx("weapon/mirrorabsorb","Weapon")
+GAO3 F 0 ACS_ExecuteAlways(976,0)
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 F 0 A_GiveInventory("Repulsion",1)
+GAO3 F 4 A_FireCustomMissile("DGStrongFlash",0,0,0,0)
+GAO3 E 0 //A_PlaySoundEx("weapon/mirrorabsorb","Weapon")
+GAO3 E 0 ACS_ExecuteAlways(976,0)
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 E 0 A_GiveInventory("Repulsion",1)
+GAO3 E 4 A_FireCustomMissile("DGStrongFlash",0,0,0,0)
+GAO3 F 0 //A_PlaySoundEx("weapon/mirrorabsorb","Weapon")
+GAO3 F 0 ACS_ExecuteAlways(976,0)
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 F 0 A_GiveInventory("Repulsion",1)
+GAO3 F 4 A_FireCustomMissile("DGStrongFlash",0,0,0,0)
+GAO3 E 0 //A_PlaySoundEx("weapon/mirrorabsorb","Weapon")
+GAO3 E 0 ACS_ExecuteAlways(976,0)
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 E 0 A_GiveInventory("Repulsion",1)
+GAO3 E 4 A_FireCustomMissile("DGStrongFlash",0,0,0,0)
+GAO3 F 0 //A_PlaySoundEx("weapon/mirrorabsorb","Weapon")
+GAO3 F 0 ACS_ExecuteAlways(976,0)
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 F 0 A_GiveInventory("Repulsion",1)
+GAO3 F 4 A_FireCustomMissile("DGStrongFlash",0,0,0,0)
+GAO3 E 0 //A_PlaySoundEx("weapon/mirrorabsorb","Weapon")
+GAO3 E 0 ACS_ExecuteAlways(976,0)
+GAO3 D 0 A_Spawnitemex("Starflashspread") //Bika
+GAO3 E 0 A_GiveInventory("Repulsion",1)
+GAO3 E 4 A_FireCustomMissile("DGStrongFlash",0,0,0,0)
+GAO3 D 5
+GAO2 C 4
+GAO1 B 3
+GAO1 A 2 
+GAO1 A 0 SetPlayerProperty(0,0,4)
+GAO1 A 0 //A_TakeInventory("DazzleCharge",56)
+GAO1 A 0 A_TakeInventory("IsShooting",1)
+GAO1 A 0 //A_GiveInventory("DazzlingGleamCoolDown",user_DZCD)
+Goto Cooldown //Ready+2
+OverHold:
+HEAT G 0 A_TakeInventory("UseOverHeat",1)
+HEAT G 0 SetPlayerProperty(0,1,0)
+HEAT G 0 A_Stop
+HEAT G 0 A_ChangeFlag("NOGRAVITY",1)
+HEAT G 0 ThrustThingZ(0,4,0,0)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT H 0 A_GiveInventory("PowerOverHeatedprotection",1)
+//OverHold2:
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+HEAT G 0 A_SpawnItemEx("OverHeatFS1")
+HEAT GH 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+HEAT H 0 A_GiveInventory("OverHeating",1)
+//OverHold3:
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon") 
+HEAT G 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon") 
+HEAT G 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon") 
+HEAT G 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon") 
+HEAT G 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon") 
+HEAT G 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon") 
+HEAT G 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon") 
+HEAT G 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 1 A_SpawnItemEx("OverHeatFS2")
+HEAT I 0 A_GiveInventory("OverHeating",1)
+HEAT I 0 
+//OverHold4:
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon")
+HEAT G 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon")
+HEAT G 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon")
+HEAT G 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT G 0 A_PlaySoundEx("weapon/heat2", "Weapon")
+HEAT G 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 1 A_SpawnItemEx("OverHeatFS3")
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT J 0 
+//OverHold5:
+HEAT H 0 A_PlaySoundEx("weapon/heat3", "Weapon")
+HEAT H 1 A_SpawnItemEx("OverHeatFS4")
+HEAT J 1 A_SpawnItemEx("OverHeatFS4")
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT H 0 A_PlaySoundEx("weapon/heat3", "Weapon")
+HEAT H 1 A_SpawnItemEx("OverHeatFS4")
+HEAT J 1 A_SpawnItemEx("OverHeatFS4")
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT H 0 A_PlaySoundEx("weapon/heat3", "Weapon")
+HEAT H 1 A_SpawnItemEx("OverHeatFS4")
+HEAT J 1 A_SpawnItemEx("OverHeatFS4")
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT J 0 
+//OverHold6:
+HEAT I 0 A_PlaySoundEx("weapon/heat3", "Weapon")
+HEAT I 2
+HEAT J 1 
+HEAT J 0 A_GiveInventory("OverHeating",1)
+HEAT I 0 A_JumpIfInventory("OverHeating",28,"OverHeat2")
+Goto OverHeat2
+OverHeat1:
+HEAT G 0
+HEAT G 0 A_GiveInventory("PowerOverHeatedSpeed",1)
+HEAT G 0 A_StopSoundEx("Weapon") 
+HEAT G 0 A_TakeInventory("OverHeating",28)
+HEAT G 0 A_GiveInventory("UnleashIt",1)
+HEAT K 3 A_SpawnItemEx("MinorOverheating",0,0,40)
+HEAT LLL 3
+HEAT G 0 SetPlayerProperty(0,0,0)
+HEAT G 0 A_ChangeFlag("NOGRAVITY",0)
+HEAT G 0 A_TakeInventory("UnleashIt",999)
+HEAT G 23
+TNT1 A 0 A_GiveInventory("OverHeatCoolDown",350)
+Goto Cooldown //Ready+2
+OverHeat2:
+HEAT K 0
+HEAT K 0 A_StopSoundEx("Weapon") 
+HEAT K 0 A_TakeInventory("OverHeating",28)
+HEAT K 0 A_SpawnItemEx("OverHeatShockWave",0,0,40)
+HEAT K 0 SetPlayerProperty(0,0,0)
+HEAT KL 3
+HEAT G 4
+TNT1 A 0 SetPlayerProperty(0,1,4)
+TNT1 A 70 
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 0 SetPlayerProperty(0,0,4)
+TNT1 A 0 A_GiveInventory("PowerOverHeatedDef",1)
+TNT1 A 0 A_GiveInventory("PowerOverHeatedSpeed",1)
+TNT1 A 0 A_GiveInventory("OverHeatCoolDown",350)
+Goto Ready+2
+AltFire:
+BOMH B 0
+BOMH B 0 A_JumpIfNoAmmo("NoAmmo")
+BOMH B 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BOMH B 0 A_FireCustomMissile("GCrossBomb",0,1,8,0)
+BOMH BCD 3
+BOMH EFG 2
+TNT1 A 3
+GAO1 A 3
+Goto Ready+2
+Cooldown:
+TNT1 A 0 A_TakeInventory("DazzleCharge",1)
+TNT1 A 0 A_GiveInventory("DazzlingGleamCoolDown",2)
+TNT1 A 0 A_jumpifInventory("DazzleCharge",1,"Cooldown")
+Goto Ready+2
+Flash:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("InfernoDash",1)
+TNT1 A 0 A_GiveInventory("CrossBombAmmo",1)
+TNT1 A 0 A_TakeInventory("OverHeatCoolDown",1)
+TNT1 A 1 A_TakeInventory("DazzlingGleamCoolDown",1)
+TNT1 A 0 //A_LOGINT(user_DZCD)
+loop
+NoAmmo:
+GAO1 A 0
+GAO1 A 1
+Goto Ready+2
+}
+}
+
+actor DazzleCharge : Ammo
+{
+inventory.amount 1
+inventory.maxamount 56
+}
+
+actor CrossBombAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 35
+}
+
+actor DazzlingGleamCoolDown : Inventory
+{
+inventory.amount 1
+inventory.maxamount 112
+}

@@ -1,0 +1,234 @@
+//Copy Robot
+texture BESTBAR //Copy vertical bar animated
+	allowdecals
+	pic RAINBAR1 tics 4
+	pic RAINBAR2 tics 4
+	pic RAINBAR3 tics 4
+	pic RAINBAR4 tics 4
+	pic RAINBAR5 tics 4
+	pic RAINBAR6 tics 4
+	pic RAINBAR7 tics 4
+	
+
+texture VESTBAR //Copy horizontal bar animated, doesn't work :(
+	allowdecals
+	pic RAINBAI1 tics 4
+	pic RAINBAI2 tics 4
+	pic RAINBAI3 tics 4
+	pic RAINBAI4 tics 4
+	pic RAINBAI5 tics 4
+	pic RAINBAI6 tics 4
+	pic RAINBAI7 tics 4
+
+texture UKIFULL
+	allowdecals
+	pic ModBar2 tics 3
+	pic ModBar3 tics 3
+	pic ModBar2 tics 3
+	pic ModBar tics 10
+	
+texture YDLFULL1
+	allowdecals
+	pic YDLFULL1 tics 2
+	pic YDLFULL2 tics 2
+	pic YDLFULL3 tics 2
+	pic YDLFULL2 tics 2
+	
+texture BEEDEYES
+pic BEEDEYE1 tics 3
+pic BEEDEYE2 tics 3
+pic BEEDEYE3 tics 3
+pic BEEDEYE4 tics 3
+
+texture VEEDEYES
+pic VEEDEYE1 tics 2
+pic VEEDEYE2 tics 2
+pic VEEDEYE3 tics 2
+pic VEEDEYE4 tics 2
+pic VEEDEYE5 tics 2
+pic VEEDEYE6 tics 2
+
+//LordDamager
+Texture LDBAR
+pic BARHEALT tics 2
+pic LDRBAR tics 2
+
+Texture LDVAR
+pic VARHEALT tics 2
+pic LDRVAR tics 2
+
+texture PADSTOK1
+	pic PADSTOKA tics 4
+	pic PADSTOKB tics 4
+	
+texture PADSTOK2
+	pic PADSTOKC tics 4
+	pic PADSTOKC tics 4
+	
+texture CURSOX
+    pic CURSOR tics 5
+    pic WIF tics 5
+	
+texture FLASHS
+pic FLASHS1 tics 4
+pic FLASHS2 tics 4
+pic FLASHS3 tics 4
+pic FLASHS4 tics 4
+pic FLASHS5 tics 4
+pic FLASHS6 tics 4
+pic FLASHS7 tics 4
+pic FLASHS8 tics 4
+pic FLASHS9 tics 4
+
+texture RUSHOUT
+pic RUSHH2H8 tics 4
+pic TNT1A0 tics 4
+
+texture BEATOUT
+pic BEATB8B2 tics 4
+pic TNT1A0 tics 4
+
+texture QARROW
+pic BLACK tics 4
+pic YELLOW tics 4
+
+texture FBLIND
+pic FBLIND1 tics 2
+pic FBLIND2 tics 2
+pic FBLIND3 tics 2
+
+texture DOZEANI
+pic DOZER1 tics 5
+pic DOZER2 tics 5
+
+//VERTICAL BARS
+//Oil Slider
+texture BARFLS1
+pic BARHLTRN tics 4
+pic BARAMT31 tics 4
+
+//Atomic Fire
+texture BARFLS2
+pic BARHEALT tics 1
+pic BARAMM13 tics 1
+
+//Leaf Shield
+texture BARFLS3
+pic BARHEALT tics 4
+pic BARAMMO4 tics 4
+
+//Pharaoh Shot
+texture BARFLS4
+pic BARHEALT tics 1
+pic BARAMM20 tics 1
+
+//Skull Barrier
+texture BARFLS5
+pic BARHEALT tics 4
+pic BARAMM21 tics 4
+
+//Star Crash
+texture BARFLS6
+pic BARHEALT tics 4
+pic BARAMM23 tics 4
+
+//Plant Barrier
+texture BARFLS7
+pic BARHEALT tics 4
+pic BARAMM28 tics 4
+
+//Junk Shield
+texture BARFLS8
+pic BARHEALT tics 4
+pic BARAMM32 tics 4
+
+//Wild Coil
+texture BARFLS9
+pic BARHEALT tics 4
+pic BARAMM35 tics 4
+
+//Noise Crush
+texture BARFLS10
+pic BARHEALT tics 4
+pic BARAMM37 tics 4
+
+
+
+//HORIZONTAL BARS
+//Oil Slider
+texture VARFLS1
+pic VARHLTRN tics 4
+pic VARAMT31 tics 4
+
+//Atomic Fire
+texture VARFLS2
+pic VARHEALT tics 1
+pic VARAMM13 tics 1
+
+//Leaf Shield
+texture VARFLS3
+pic VARHEALT tics 4
+pic VARAMMO4 tics 4
+
+//Pharaoh Shot
+texture VARFLS4
+pic VARHEALT tics 1
+pic VARAMM20 tics 1
+
+//Skull Barrier
+texture VARFLS5
+pic VARHEALT tics 4
+pic VARAMM21 tics 4
+
+//Star Crash
+texture VARFLS6
+pic VARHEALT tics 4
+pic VARAMM23 tics 4
+
+//Plant Barrier
+texture VARFLS7
+pic VARHEALT tics 4
+pic VARAMM28 tics 4
+
+//Junk Shield
+texture VARFLS8
+pic VARHEALT tics 4
+pic VARAMM32 tics 4
+
+//Wild Coil
+texture VARFLS9
+pic VARHEALT tics 4
+pic VARAMM35 tics 4
+
+//Noise Crush
+texture VARFLS10
+pic VARHEALT tics 4
+pic VARAMM37 tics 4
+
+
+//MM8 Addition
+//Homing Sniper
+texture BARFLS11
+pic BARHEALT tics 4
+pic BARAMM44 tics 4
+
+texture VARFLS11
+pic VARHEALT tics 4
+pic VARAMM44 tics 4
+
+texture RUSHMOUT
+pic RUSHO0 tics 4
+pic TNT1A0 tics 4
+//=============OCBMR===========
+//OverHeal
+texture BARFLS12
+pic BARHEALT tics 4
+pic BAROVH1 tics 4
+pic BAROVH2 tics 4
+pic BAROVH1 tics 4
+
+texture VARFLS12
+pic VARHEALT tics 4
+pic VAROVH1 tics 4
+pic VAROVH2 tics 4
+pic VAROVH1 tics 4

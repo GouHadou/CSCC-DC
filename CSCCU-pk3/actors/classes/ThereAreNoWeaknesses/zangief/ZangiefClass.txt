@@ -1,0 +1,44 @@
+actor Zangief : ClassBaseCSCC
+{
+player.displayname "Zangief"
+player.soundclass  "ZangiefC"
+
+player.startitem "AtomicSuplexBoss"
+//player.startitem "AtomicBusterBoss"
+
+player.forwardmove 0.6, 0.6
+player.sidemove 0.58, 0.58
+
+Health 150
+Player.Maxhealth 150
+player.startitem "ToadHealthBar"
+states
+{
+Spawn:
+1H51 A 0 
+1H51 B 1
+1H51 A 1
+Goto Spawn+2
+See:
+1H51 BCDE 5
+Goto Spawn
+Missile:
+1H51 A 1
+1H51 A 0 A_JumpIfInventory("AirGrab", 1, "Flying")
+1H51 A 0 A_JumpIfInventory("GroundGrab", 1, "Running")
+1H51 A 0 A_JumpIfInventory("Lariat", 1, "Spin")
+goto Spawn
+Spin:
+1H51 IJKLM 3
+goto Spawn
+Flying:
+1H51 U 5
+1H51 U 1 A_JumpIfInventory("AirGrab", 1, "Flying")
+1H51 V 5
+goto Spawn
+Running:
+1H51 RST 5
+1H51 T 0 A_JumpIfInventory("GroundGrab", 1, "Running")
+Goto Spawn
+}
+}

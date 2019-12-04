@@ -1,0 +1,3 @@
+#include "actors/classes/CSCC/knux/KnuxClass.txt"
+#include "actors/classes/CSCC/knux/KnuxWep.txt"
+#include "actors/classes/CSCC/knux/KnuxCopy.txt"

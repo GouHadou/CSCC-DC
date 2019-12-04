@@ -1,0 +1,103 @@
+actor TravisClass : ClassBaseCSCC
+{
+player.displayname "Travis"
+player.soundclass "megaman"
+player.forwardmove 0.85, 0.85
+player.sidemove 0.83, 0.83
+player.startitem "GunDelSol"
+player.startitem "SolarEnergy", 48
+player.startitem "GunDelSolX"
+States
+{
+Spawn:
+MMSU A 0
+MMSU B 1 
+MMSU A 1
+Goto Spawn+2
+See:
+MMSU BCDE 5
+Goto Spawn
+Missile:
+MMSU F 5
+MMSU G 4 
+goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+MMSU H 0 A_SpawnItemEx("TravisCopyHitMain",1)
+goto pain+1
+Death.Backstab:
+MMSU H 0 SetPlayerProperty(0, 0, 4)
+MMSU H 0 A_TakeInventory("PharaohCharge",999)   
+MMSU H 0 A_NoBlocking
+MMSU H 0 A_GiveInventory("CutterFlag",999)
+MMSU H 0 A_GiveInventory("IsDead",1)
+MMSU H 0 A_Stop
+MMSU H 0 A_GiveToTarget("KilledMeStock",1)
+MMSU H 1 A_GiveToTarget("KilledMe",1)
+MMSU H 1 A_GiveToTarget("ClearDisguise",1)
+MMSU H 0 A_GiveToTarget("DisguiseOn",1)
+MMSU H 0 A_GiveToTarget("TravisDisguise",1)
+MMSU H 0 ACS_ExecuteAlways(775,0,370)
+goto BackstabFrames
+}
+}
+
+actor TravisCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("TravisMorphItem",1)
+stop
+}
+}
+
+actor TravisCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("TravisCopyPickupMain",1)
+stop
+}
+}
+
+
+actor TravisMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 22)
+stop
+}
+}
+
+actor TravisMorph : TravisClass
+{
++NOSKIN
+player.morphweapon "GunDelSol"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

@@ -1,0 +1,196 @@
+actor ShieldWaveProjectile
+{
+PROJECTILE
++FLOORCLIP
++MTHRUSPECIES
+//+THRUGHOST
++RIPPER
++NOEXPLODEFLOOR
+Radius 5
+Height 5
+scale 2.5
+damage (0)
+reactiontime 7
+Translation "198:198=103:103", "192:192=196:196"
+DamageType "ShieldWave"
+speed 45
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 2 A_SpawnitemEx("ShieldWaveShock",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Countdown
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor ShieldWaveShock
+{
+PROJECTILE
++FLOORCLIP
++THRUGHOST
++MTHRUSPECIES
++NOEXPLODEFLOOR
+Radius 5
+Height 5
+scale 2.5
+damage (0)
+reactiontime 5
+Obituary "%o was Crushed by %k's ShieldWave"
+DamageType "ShieldWave"
+speed 0
+States
+{
+Spawn:
+BEWA B 0
+TNT1 A 1
+BEWA B 0 A_Explode(5,80,0,0,80)
+BEWA B 0 A_PlaySoundEx("weapon/noisecrush1","Soundslot6")
+
+BEWA B 2 A_Fadeout
+BEWA B 0 A_SetScale(2.6,2.6)
+
+BEWA B 2 A_Fadeout
+BEWA B 0 A_SetScale(2.8,2.8)
+
+BEWA B 2 A_Fadeout
+BEWA B 0 A_SetScale(3.0,3.0)
+
+BEWA B 2 A_Fadeout
+BEWA B 0 A_SetScale(3.2,3.2)
+
+BEWA B 2 A_Fadeout
+BEWA B 0 A_SetScale(3.4,3.4)
+
+BEWA B 2 A_Fadeout
+BEWA B 0 A_SetScale(3.6,3.6)
+stop
+Death:
+BEWA A 0
+stop
+}
+}
+
+
+	actor ShieldWaveProjectile_BLUE : ShieldWaveProjectile
+	{translation "192:192=192:192", "198:198=198:198" , "196:196=196:196"}
+
+	actor ShieldWaveProjectile_RED : ShieldWaveProjectile
+	{translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"}
+	
+	actor ShieldWaveProjectile_GREEN : ShieldWaveProjectile
+	{Translation "192:192=104:104", "198:198=128:128"}
+	
+	actor ShieldWaveProjectile_GOLD : ShieldWaveProjectile
+	{Translation "192:192=229:229", "198:198=232:232"}
+//[+]========================================================================[+]
+//--------------------------------|Special Actors|------------------------------
+//[+]========================================================================[+]
+actor ProjectileDeleter : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_CheckFlag("MISSILE","IsProj")
+Stop
+IsProj:
+TNT1 A 0 A_jumpif(damage == 0,"nope")
+TNT1 A 0 A_Die 
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor ShieldWaveCooler : WatcherBase 
+{
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("ShieldWaveCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("ShieldWaveCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor ShieldWaveCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("ShieldWaveCooldownItem",85)
+TNT1 A 0 A_Spawnitemex("ShieldWaveCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor ShieldWaveCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 85
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Item Shooters|------------------------------
+//[+]========================================================================[+]
+actor ShieldWaveShooter : CustomInventory 
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 1 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 1 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
+BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
+BUST B 1 A_FireCustomMissile("ShieldWaveProjectile",0,0,0,-4)
+stop
+TeamRedFire:
+BUST B 1 A_FireCustomMissile("ShieldWaveProjectile_RED",0,0,0,-4)
+TNT1 A 1
+stop
+TeamBlueFire:
+BUST B 1 A_FireCustomMissile("ShieldWaveProjectile_BLUE",0,0,0,-4)
+TNT1 A 1
+stop
+TeamGreenFire:
+BUST B 1 A_FireCustomMissile("ShieldWaveProjectile_GREEN",0,0,0,-4)
+TNT1 A 1
+stop
+TeamGoldFire:
+BUST B 1 A_FireCustomMissile("ShieldWaveProjectile_GOLD",0,0,0,-4)
+TNT1 A 1
+stop
+}
+}

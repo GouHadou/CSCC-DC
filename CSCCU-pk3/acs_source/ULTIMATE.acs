@@ -1,0 +1,34 @@
+#library "ultimate"
+#include "zcommon.acs"
+
+Script "CSACS_BoneheadHealth" (int Regen)
+{
+if(Regen==1){SetActorProperty(0,APROP_Health,GetActorProperty(0,APROP_SpawnHealth)); Regen=0;}
+int HP = GetActorProperty(0,APROP_Health);
+    
+while(GetActorProperty(0,APROP_Health)<GetActorProperty(0,APROP_SpawnHealth))
+	{
+	if(CheckInventory("IsDead")==1 || PlayerNumber() == -1 || !PlayerInGame(PlayerNumber())){TakeInventory("BoneheadRegen",999); terminate;}
+	if(CheckInventory("BoneheadSpeed")==1){TakeInventory("BoneheadRegen",999); terminate;}
+		
+	if(HP != GetActorProperty(0, APROP_Health))
+		{
+		TakeInventory("BoneheadRegen",999);
+		HP = GetActorProperty(0, APROP_Health);
+		}
+		
+	Delay(1);
+	GiveInventory("BoneheadRegen",1);
+	If(CheckInventory("BoneheadRegen")==105){TakeInventory("BoneheadRegen",999); GiveInventory("BoneheadBones",1); ACS_NamedExecuteAlways("CSACS_BoneheadHealth",0,1); terminate;}
+	}
+	
+if(CheckInventory("IsDead")==1 || PlayerNumber() == -1 || !PlayerInGame(PlayerNumber())){TakeInventory("BoneheadRegen",999); terminate;}
+if(CheckInventory("BoneheadSpeed")==1){TakeInventory("BoneheadRegen",999); terminate;}
+Delay(1);
+restart;
+}
+
+Script "CSACS_SetPointer" (int pointer, int TID)
+{
+SetPointer(pointer,TID);
+}

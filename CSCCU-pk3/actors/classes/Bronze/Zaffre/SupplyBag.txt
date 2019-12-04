@@ -1,0 +1,346 @@
+actor HiPEGunD : HiPEGun_Base
+{
+Tag "SupplyBag"
+//Weapon.AmmoUse 1
+//Weapon.AmmoGive 3
+Weapon.SlotNumber 2
+//Weapon.SlotPriority 0
+scale 2.0
+Obituary "$OB_HiPEGun"
+inventory.icon "VOXBI"
+Inventory.Pickupmessage "$PU_MEGABUSTER"
+//weapon.ammotype "BusterAmmo"
++WEAPON.ALLOW_WITH_RESPAWN_INVUL
+
+States
+{
+Spawn:
+WEAP X 1
+stop
+/*
+Ready:
+BUSR B 0 A_Jumpifinventory("WilyTeamFlag",1,"RedReady")
+BUST B 0 
+RedReady:
+"####" B 1 A_WeaponReady
+Goto Ready
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+"####" B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+"####" B 1 A_Raise
+Loop
+Fire:
+"####" B 1 
+Goto Ready
+*/
+Altfire:
+"####" B 0 A_JumpIfinventory("SupplyBagCooldownItem",1,"NoAmmo")
+
+//BUSR B 0 A_Jumpifinventory("WilyTeamFlag",1,2)
+HSPR B 0 
+"####" B 0
+"####" FFGGG 1
+"####" C 0 A_PlaySoundEx("weapon/waterballoon","Weapon")
+"####" B 0 A_GiveInventory("SupplyBagShooter")
+"####" B 0 A_Giveinventory("SupplyBagCooldown")
+"####" IJKLM 2
+"####" B 0 A_Jump(256,"Ready")
+goto Ready
+/*
+Flash:
+TNT1 A 1
+stop
+NoFlash:
+TNT1 A 1
+stop
+*/
+}
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Ammo & inventory|---------------------------
+//[+]========================================================================[+]
+actor SupplyBagToss : ProjectileBase
+{
+damagetype "Voxleator"
+Obituary "$OB_MEGABUSTER"
+-MTHRUSPECIES
++BounceOnWalls
++BOUNCEONCEILINGS
++BOUNCEONACTORS
++ALLOWBOUNCEONACTORS
++BOUNCEONACTORS
++USEBOUNCESTATE
++HITTRACER
+Speed 25
+Damage (0)
+radius 18
+height 20
+scale 1.0
+Reactiontime 20
+Bouncecount 3
+States
+{
+Spawn:
+TNT1 A 0
+SUPB A 4
+SUPB A 0 A_ChangeFlag("NOGRAVITY",false)
+Spawn2:
+SUPB A 2 A_Countdown
+loop
+Bounce.Actor.Creature:
+Bounce.Actor:
+SUPB A 0 A_JumpIf(IsPointerEqual(AAPTR_TRACER, AAPTR_TARGET) == TRUE, "Spawn2") //bounce off the owner
+SUPB A 1 //A_Jumpifinventory("KingTeamFlag",1,"HealIt",AAPTR_TRACER) 
+Goto Spawn2
+HealIt:
+SUPB A 0 A_ChangeFlag("NOINTERACTION",true)
+SUPB A 0 A_GiveInventory("BigHealthCS",1,AAPTR_TRACER)
+SUPB A 0 A_GiveInventory("BigWeaponEnergyCS",1,AAPTR_TRACER)
+TNT1 A 0 A_Giveinventory("HealEffectSpawn2",1,AAPTR_TRACER)
+TNT1 A 0 A_PlaySoundEx("Support/Heal1","Weapon")
+Goto Terminate
+Death:
+VBIT A 0 A_SpawnitemEx("SupplyBagPickup",0,0,5,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS|SXF_NOCHECKPOSITION)
+stop
+Terminate:
+SUPB A 0 A_ChangeFlag("NOGRAVITY",true)
+HARD BCDE 4 A_Stop
+stop
+}
+}
+
+actor SupplyBagToss_BLUE : SupplyBagToss
+{translation "192:192=205:205", "198:198=74:74"
+States
+{
+Bounce.Actor.Creature:
+Bounce.Actor:
+SUPB A 0 A_JumpIf(IsPointerEqual(AAPTR_TRACER, AAPTR_TARGET) == TRUE, "Spawn2")
+SUPB A 0 A_Jumpifinventory("LightTeamFlag",1,"HealIt",AAPTR_TRACER) 
+Goto Spawn2
+
+Death:
+VBIT A 0 A_SpawnitemEx("SupplyBagPickup_BLUE",0,0,5,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS|SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor SupplyBagToss_RED : SupplyBagToss{
+translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"
+States
+{
+Bounce.Actor.Creature:
+Bounce.Actor:
+SUPB A 0 A_JumpIf(IsPointerEqual(AAPTR_TRACER, AAPTR_TARGET) == TRUE, "Spawn2")
+SUPB A 0 A_Jumpifinventory("WilyTeamFlag",1,"HealIt",AAPTR_TRACER) 
+Goto Spawn2
+
+Death:
+VBIT A 0 A_SpawnitemEx("SupplyBagPickup_RED",0,0,5,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS|SXF_NOCHECKPOSITION)
+stop
+}
+}
+actor SupplyBagToss_GREEN : SupplyBagToss{
+Translation "192:192=104:104", "198:198=128:128"
+States
+{
+Bounce.Actor.Creature:
+Bounce.Actor:
+SUPB A 0 A_JumpIf(IsPointerEqual(AAPTR_TRACER, AAPTR_TARGET) == TRUE, "Spawn2")
+SUPB A 0 A_Jumpifinventory("CossackTeamFlag",1,"HealIt",AAPTR_TRACER) 
+Goto Spawn2
+
+Death:
+VBIT A 0 A_SpawnitemEx("SupplyBagPickup_GREEN",0,0,5,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS|SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor SupplyBagToss_GOLD : SupplyBagToss{
+Translation "192:192=229:229", "198:198=232:232"
+States
+{
+Bounce.Actor.Creature:
+Bounce.Actor:
+SUPB A 0 A_JumpIf(IsPointerEqual(AAPTR_TRACER, AAPTR_TARGET) == TRUE, "Spawn2")
+SUPB A 0 A_Jumpifinventory("KingTeamFlag",1,"HealIt",AAPTR_TRACER) 
+Goto Spawn2
+
+Death:
+VBIT A 0 A_SpawnitemEx("SupplyBagPickup_GOLD",0,0,5,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS|SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+//===========================
+actor SupplyBagPickup : CustomInventory
+{
+inventory.pickupmessage "Picked up A Supply Bag!"
+Inventory.PickupSound "item/energy"
+Var int user_tally;
++COUNTITEM
++FLOORCLIP
+Scale 1.0
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0  A_PlaySoundEx("support/Healdiode1","SoundSlot7") 
+SUPB A 0 ACS_NamedExecuteAlways("ObjectTally",0)
+SUPB AB 4 
+BUST A 0 A_Jumpif(user_tally >= 4,"Aftergive")
+Goto Spawn+3
+Pickup:
+SUPB A 1 A_Jump(256,"Check2")//A_Jumpifinventory("LightTeamFlag",1,"HealIt",AAPTR_TRACER) 
+fail
+
+
+Check2:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0) || CallACS("GetHPPerc",0)<100,"Success")
+fail
+
+Success:
+TNT1 A 0 A_GiveInventory("BigHealthCS",1)
+TNT1 A 0 A_GiveInventory("BigWeaponEnergyCS",1)
+Goto Aftergive
+
+Aftergive:
+PRMN A 0 ACS_NamedExecuteAlways("ObjectDeathTally",0)
+stop
+
+Nope:
+TNT1 A 0 
+fail
+}
+}
+
+
+actor SupplyBagPickup_BLUE : SupplyBagPickup
+{
+States
+{
+Pickup:
+SUPB A 1 A_Jumpifinventory("LightTeamFlag",1,"Check2") 
+fail
+}
+}
+
+actor SupplyBagPickup_RED : SupplyBagPickup
+{
+States
+{
+Pickup:
+SUPB A 1 A_Jumpifinventory("WilyTeamFlag",1,"Check2") 
+fail
+}
+}
+
+actor SupplyBagPickup_GREEN : SupplyBagPickup
+{
+States
+{
+Pickup:
+SUPB A 1 A_Jumpifinventory("CossackTeamFlag",1,"Check2") 
+fail
+}
+}
+
+actor SupplyBagPickup_GOLD : SupplyBagPickup
+{
+States
+{
+Pickup:
+SUPB A 1 A_Jumpifinventory("KingTeamFlag",1,"Check2") 
+fail
+}
+}
+//[+]========================================================================[+]
+//--------------------------------|Utility Actors|------------------------------
+//[+]========================================================================[+]
+
+
+actor SupplyBagCooler : WatcherBase // Coolers are a type of watcher actor that handle weapon cooldowns
+{
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("SupplyBagCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("SupplyBagCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor SupplyBagCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("SupplyBagCooldownItem",88)
+TNT1 A 0 A_Spawnitemex("SupplyBagCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor SupplyBagCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 88
+}
+//[+]========================================================================[+]
+//--------------------------------|Item Shooters|------------------------------
+//[+]========================================================================[+]
+actor SupplyBagShooter : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
+BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
+BUST B 0 A_FireCustomMissile("SupplyBagToss",0,0,4,3)
+stop
+TeamRedFire:
+BUST B 0 A_FireCustomMissile("SupplyBagToss_RED",0,0,4,3)
+TNT1 A 0
+stop
+TeamBlueFire:
+BUST B 0 A_FireCustomMissile("SupplyBagToss_BLUE",0,0,4,3)
+TNT1 A 0
+stop
+
+TeamGreenFire:
+BUST B 0 A_FireCustomMissile("SupplyBagToss_GREEN",0,0,4,3)
+TNT1 A 0
+stop
+TeamGoldFire:
+BUST B 0 A_FireCustomMissile("SupplyBagToss_GOLD",0,0,4,3)
+TNT1 A 0
+stop
+}
+}

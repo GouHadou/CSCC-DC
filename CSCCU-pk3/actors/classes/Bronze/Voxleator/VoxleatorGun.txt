@@ -1,0 +1,1227 @@
+//[+]========================================================================[+]
+//------------------------------|Primary Weapon|--------------------------------
+//[+]========================================================================[+]
+//
+//[+]========================================================================[+]
+
+
+actor VoxleatorGun : BaseMM8BDMWep
+{
+Weapon.AmmoUse 20
+Weapon.AmmoGive 100
+Weapon.AmmoUse2 20
+Weapon.AmmoGive2 100
+Weapon.SlotNumber 1
+Inventory.Pickupmessage "$PU_MEGABUSTER"
+Obituary "%o got Voxilized by %k"
+Tag "Voxelator"
+weapon.ammotype "VoxleMatter"
+weapon.ammotype2 "VoxleMatter"
+inventory.icon "NULLICON"
+Dropitem ""
++WEAPON.ALLOW_WITH_RESPAWN_INVUL
+States
+{
+Spawn:
+WEAP X 1
+loop
+Ready:
+PROC D 0 
+PROC D 1 A_WeaponReady
+PROC D 0 A_Jumpifinventory("MatterSpawnTrigger",1,"MatterSpawn")
+Goto Ready
+
+Ready2: //sublimated
+PROC D 0 
+PROC D 1 //A_WeaponReady(WRF_NOPRIMARY|WRF_NOSECONDARY|WRF_NOSWITCH)
+PROC D 0 A_Jumpifinventory("SublimateFlag",1,"Ready2")
+CENF D 0 A_PlaySoundEx("weapon/centauruncloak", "weapon")
+PROC D 2 A_SetTranslucent(0.2, 1)
+PROC D 2 A_SetTranslucent(0.4, 1)
+PROC D 2 A_SetTranslucent(0.6, 1)
+PROC D 2 A_SetTranslucent(0.8, 0)
+PROC D 2 A_SetTranslucent(1.0, 0)
+PROC DDD 1 A_SetTranslucent(1.0, 0)
+Goto Ready
+
+Deselect:
+BUST D 0 A_TakeInventory("Once",999)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+BUST B 1 A_Lower
+Loop
+Select:
+BUST B 0 A_GunFlash
+BUST B 0 ACS_ExecuteAlways(998,0,DYE_DIVEMISSILE)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BUST B 1 A_Raise
+Loop
+Fire:
+PROC D 0 //A_JumpIfInventory("DisintegrateStore",1,"AutoFire")
+//PROC D 0 A_StopSoundex("soundslot7")
+//PROC D 0 A_JumpIfNoAmmo("AutoFire")
+
+PROC D 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+PROC D 0 A_GiveInventory("VoxleShotShooter",1)
+PROC EF 3
+PROC D 1
+//PROC D 0 A_TakeInventory("WeaponCharge",999)
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+//PROC D 0 A_Refire
+PROC D 3
+PROC D 0 A_Refire
+goto Ready
+/*
+Fire2:
+PROC D 0 A_StopSoundex("soundslot7")
+PROC J 0 //ACS_ExecuteAlways(991,0,36)
+PROC D 0 A_TakeInventory("WeaponCharge",999)
+PROC D 0 A_TakeInventory("DisintegrateStore",999)
+PROC D 0 A_PlaySoundEx("weapon/pshot","Weapon")
+PROC D 0 A_Takeinventory("VoxleMatter",20)
+PROC F 6 A_GiveInventory("DisintegratorShooter",1)
+PROC ED 3
+PROC D 9
+PROC D 0 
+goto Ready
+
+AutoFire:
+PROC D 0 A_StopSoundex("soundslot7")
+PROC D 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+PROC D 0 A_GiveInventory("VoxleShotShooter",1)
+PROC EF 2
+PROC D 4
+PROC D 0 A_TakeInventory("WeaponCharge",999)
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+PROC D 0 A_Refire("AutoFire")
+goto Ready
+
+PocketFire: //Takes no ammo
+PROC J 0 //ACS_ExecuteAlways(991,0,36)
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+PROC D 0 A_TakeInventory("WeaponCharge",999)
+PROC D 0 A_TakeInventory("DisintegrateStore",999)
+PROC D 0 A_PlaySoundEx("weapon/pshot","Weapon")
+PROC F 6 A_GiveInventory("DisintegratorShooter",1)
+PROC ED 3
+PROC D 9
+PROC D 0 A_Refire
+goto Ready
+
+Hold:
+PROC D 0 A_JumpIfInventory("DisintegrateStore",1,"HoldGutter")
+
+PROC D 0 A_JumpIfInventory("WeaponCharge",24,"Charge2")
+PROC D 0 A_JumpIfInventory("WeaponCharge",10,"Charge")
+PROC D 1 A_GiveInventory("WeaponCharge",1)
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+PROC D 0 A_Refire
+Goto Ready
+
+HoldGutter:
+PROC D 1
+PROC D 0 A_Refire("HoldGutter")
+Goto Ready
+
+Charge:
+PROC D 0 A_JumpIfInventory("WeaponCharge",24,"Charge2")
+PROC D 0 A_JumpIfInventory("WeaponCharge",11,"Charge1")
+PROC D 0 A_PlaySoundEx("weapon/pchargelong","soundslot7")
+Goto Charge1
+Charge1:
+PROC J 0 A_JumpIfInventory("WeaponCharge",24,"Charge2")
+PROC D 1 //ACS_ExecuteAlways(991,0,63)
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+PROC H 0 A_Refire("Charge1.a")
+Goto Fire
+Charge1.a:
+PROC H 1 //ACS_ExecuteAlways(991,0,36)
+PROC H 0 A_Refire("Charge1.b")
+Goto Fire
+Charge1.b:
+PROC H 1 //ACS_ExecuteAlways(991,0,36)
+PROC H 0 A_Refire("Charge1.c")
+Goto Fire
+Charge1.c:
+PROC H 1 //ACS_ExecuteAlways(991,0,36)
+PROC H 0 A_GiveInventory("WeaponCharge",2)
+PROC H 0 A_Refire("Charge1")
+Goto Fire
+Charge2:
+PROC I 1 //ACS_ExecuteAlways(991,0,64)
+PROC H 0 A_Jumpif(CallACS("InputGrab",2) == True,"PocketCharge")
+PROC H 0 A_Refire("Charge2.a")
+Goto Fire2
+Charge2.a:
+PROC H 1 //ACS_ExecuteAlways(991,0,36)
+PROC H 0 A_Jumpif(CallACS("InputGrab",2) == True,"PocketCharge")
+PROC H 0 A_Refire("Charge2")
+Goto Fire2
+
+PocketCharge:
+PROC J 0 //ACS_ExecuteAlways(991,0,36)
+PROC D 0 A_StopSoundex("soundslot7")
+PROC D 0 A_TakeInventory("WeaponCharge",999)
+PROC D 0 A_PlaySoundEx("weapon/WaterBalloon","Weapon")
+PROC D 0 A_GiveInventory("DisintegrateStore",1)
+PROC D 0 A_Takeinventory("VoxleMatter",20)
+PROC D 0 A_SpawnitemEx("VoxChargeWatcher")
+PROC EF 2
+PROC D 1
+PROC D 0 
+goto Ready
+*/
+Altfire:
+PROC D 0 //A_JumpIfInventory("DisintegrateStore",1,"PocketFire")
+PROC D 0 A_JumpIfNoAmmo("NoAmmo")
+PROC D 0 A_Takeinventory("VoxleMatter",20)
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+
+
+PROC D 0 A_PlaySoundEx("weapon/pshot","Weapon")
+PROC F 6 A_GiveInventory("DisintegratorShooter",1)
+PROC ED 3
+PROC D 9
+PROC D 0 A_Refire
+goto Ready
+/*
+PROC EEE 2 A_PlaySoundEx("weapon/heat1","Weapon")
+PROC D 0 A_GiveInventory("DissolveShotShooter",1)
+PROC F 2 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+PROC D 7
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+goto Ready
+
+
+Vanish:
+CENF A 0 A_PlaySoundEx("weapon/Sublimate","Weapon")
+CENF AAAAAAAAAA 0 A_SpawnItemEx("VoxBitFX6", 0, 0, 28, 256/12, 0, random2(256/12), random(0, 359))
+CENF AAAAAAAAAA 0 A_SpawnItemEx("VoxBitFX5", 0, 0, 28, 256/12, 0, random2(256/12), random(0, 359))
+PROC D 0 A_GiveInventory("SublimateFlag",1)
+PROC D 0 A_SpawnItemEx("SublimateWatcher")
+Goto Ready2
+Recov:
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)>=100,"NoAmmo")
+PROC III 1 A_SpawnItemEx("VoxBitFX",30,0,random(30,50),momx/4,momy/4,1,random(0,360),SXF_ABSOLUTEMOMENTUM)
+PROC D 0 A_PlaySoundEx("weapon/heat1","SoundSlot6") 
+PROC D 0 A_JumpIfInventory("VoxleRecovBuffer",1,5)
+PROC D 0 HealThing(3)
+PROC D 0 A_PlaySoundEx("item/energyup","SoundSlot7") 
+PROC D 0 A_Takeinventory("VoxleMatter",5)
+PROC D 0 A_GiveInventory("VoxleRecovBuffer",1)
+PROC D 0 A_GiveInventory("VoxleRegenStall",1)
+PROC D 0
+PROC D 1 A_Refire("Recov2")
+Goto Ready
+Recov2:
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)>=100,"NoAmmo")
+PROC HHH 1 A_SpawnItemEx("VoxBitFX",30,0,random(30,50),momx/4,momy/4,1,random(0,360),SXF_ABSOLUTEMOMENTUM)
+PROC D 0 A_PlaySoundEx("weapon/heat1","SoundSlot6") 
+PROC D 0 A_JumpIfInventory("VoxleRecovBuffer",1,5)
+PROC D 0 HealThing(3)
+PROC D 0 A_PlaySoundEx("item/energyup","SoundSlot7") 
+PROC D 0 A_Takeinventory("VoxleMatter",5)
+PROC D 0 A_GiveInventory("VoxleRecovBuffer",1)
+PROC D 0
+PROC D 1 A_Refire("Recov")
+Goto Ready
+*/
+MatterSpawn:
+PROC H 1 A_PlaySoundEx("support/Healdiode1","SoundSlot7") 
+PROC HIHIHI 2
+PROC E 2 A_GiveInventory("VoxelRecoverShooter",1)
+PROC D 0 A_PlaySoundEx("weapon/Waterballoon","SoundSlot7") 
+PROC D 0 A_Takeinventory("VoxleMatter",20)
+TNT1 A 0 A_Giveinventory("VoxleRegenStall")
+TNT1 A 0 A_Giveinventory("VoxleRecovBuffer")
+PROC EF 2
+PROC D 5
+Goto Ready
+
+NoAmmo:
+PROC D 1 ACS_Execute(979,0)
+Goto Ready
+Flash:
+TNT1 A 3
+TNT1 A 0 A_Jumpifinventory("VoxleRegenStall",1,5)
+TNT1 A 0 A_Jumpifinventory("VoxleMatter",100,4)
+TNT1 A 0 A_Jumpifinventory("VoxleRegenBuffer",1,3)
+
+TNT1 A 0 A_Giveinventory("VoxleMatter",1)
+TNT1 A 0 A_Giveinventory("VoxleRegenBuffer")
+TNT1 A 0
+loop
+NoFlash:
+TNT1 A 1
+stop
+}
+}
+
+
+//[+]========================================================================[+]
+//--------------------------------|Ammo & inventory|---------------------------
+//[+]========================================================================[+]
+actor VoxleMatter : Ammo
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor DisintegrateStore : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor DisintegrateCount : Inventory
+{
+inventory.amount 1
+inventory.maxamount 10
+}
+
+Actor VoxleRegenBuffer : Powerup
+{
+inventory.amount 1
+powerup.duration 4
+}
+
+Actor VoxleRegenStall : Powerup
+{
+inventory.amount 1
+powerup.duration 25
+}
+
+Actor VoxleRecovBuffer : Powerup
+{
+inventory.amount 1
+powerup.duration 55
+}
+
+Actor DissolvePower : PowerProtection
+{
+inventory.amount 1
+powerup.duration -3
+DamageFactor "NORMAL", 1.5
+powerup.color "82 A8 B5", 0.6
+}
+
+actor MatterSpawnTrigger : Powerup {inventory.amount 1 powerup.duration 6 }
+actor SublimateFlag : Powerup {inventory.amount 1 powerup.duration 55 }
+
+//[+]========================================================================[+]
+//--------------------------------|Projectiles |--------------------------------
+//[+]========================================================================[+]
+actor VoxleShot : FastProjectileBase
+{
+damagetype "Voxleator"
+MissileType "VoxleShotTRail"
+//translation "192:192=4:4", "198:198=205:205"
+Obituary "%o got Voxilized by %k"
+Speed 175
+Damage (30)
+radius 5
+height 5
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 2
+BASB U 2 A_SpawnItemEx("VoxBitFX",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)//|SXF_TRANSFERTRANSLATION
+wait
+}
+}
+
+	actor VoxleShot_BLUE : VoxleShot
+	{Missiletype "VoxleShotTRail_BLUE"
+	translation "192:192=205:205", "198:198=74:74"
+	}
+
+	actor VoxleShot_RED : VoxleShot
+	{
+	Missiletype "VoxleShotTRail_RED"
+	translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"
+	}
+	actor VoxleShot_GOLD : VoxleShot
+	{
+	Missiletype "VoxleShotTRail_GOLD"
+	Translation "192:192=229:229", "198:198=232:232"
+	}
+	
+	actor VoxleShot_GREEN : VoxleShot
+	{
+	Missiletype "VoxleShotTRail_GREEN"
+	Translation "192:192=104:104", "198:198=128:128"
+	}
+
+actor DisintegratorShot : FastProjectileBase
+{
+damagetype "Disintegrator"
+Missiletype "DiscintegratorTrail"
+Obituary "%o was Disintegrated by %k"
+Speed 175
+Damage (5)
++HITTRACER
+radius 5
+height 5
+scale 3.5
+States
+{
+Spawn:
+TNT1 A 0
+Spawn2:
+CRIS A 1 
+TNT1 AAA 0 A_SpawnItemEx("VoxBitFX",random(-15,15),random(-15,15),random(-15,15),momx/6,momy/6,momz/6,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+Loop
+Crash:
+TNT1 A 0 A_JumpIf(CallACS("Actor_Classifier",CallACS("PointerTID",AAPTR_TRACER,0),2) == FALSE,"Death")
+TNT1 A 0 A_Explode(callACS("LostHealthCount"),20,0,0,20)
+TNT1 A 2 
+Death:
+TNT1 A 2 
+stop
+}
+}
+
+	actor DisintegratorShot_BLUE : DisintegratorShot
+	{Missiletype "DiscintegratorTrail_BLUE"
+	translation "192:192=205:205", "198:198=74:74"
+	}
+
+	actor DisintegratorShot_RED : DisintegratorShot
+	{
+	Missiletype "DiscintegratorTrail_RED"
+	translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"
+	}
+	actor DisintegratorShot_GOLD : DisintegratorShot
+	{
+	Missiletype "DiscintegratorTrail_GOLD"
+	Translation "192:192=229:229", "198:198=232:232"
+	}
+	
+	actor DisintegratorShot_GREEN : DisintegratorShot
+	{
+	Missiletype "DiscintegratorTrail_GREEN"
+	Translation "192:192=104:104", "198:198=128:128"
+	}
+
+actor VoxleBit : ProjectileBase
+{
+damagetype "Voxleator"
+Obituary "$OB_MEGABUSTER"
++SEEKERMISSILE
++NOINTERACTION
+Speed 45
+Damage (0)
+radius 5
+height 5
+scale 2.0
+ReactionTime 200
+States
+{
+Spawn:
+TNT1 A 0
+VBIT A 0 A_TransferPointer(AAPTR_TARGET,AAPTR_DEFAULT,AAPTR_TARGET,AAPTR_TRACER)
+VBIT AB 2
+Pursue:
+VBIT A 2 A_Seekermissile(50,50,SMF_PRECISE)
+VBIT A 0 A_SpawnItemEx("VoxBitFX5",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT A 0 A_JumpifTracerCloser(100,"Death")
+
+VBIT B 2 A_Seekermissile(50,50,SMF_PRECISE)
+VBIT B 0 A_SpawnItemEx("VoxBitFX5",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT B 0 A_JumpifTracerCloser(100,"Death")
+VBIT B 0 A_CountDown
+loop
+Death:
+VBIT A 0
+PROC D 0 A_PlaySoundEx("misc/GravityWarn","Weapon")
+PROC D 0 A_GiveInventory("VoxleMatter",6,AAPTR_TRACER)
+stop
+}
+}
+
+/*
+actor V_MatterSpawner : ProjectileBase
+{
+damagetype "Voxleator"
+Obituary "$OB_MEGABUSTER"
++BounceOnWalls
++BounceOnFLOORS
++BOUNCEONCEILINGS
++THRUACTORS
+Speed 45
+Damage (0)
+radius 5
+height 5
+scale 2.0
+Reactiontime 12
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0
+TNT1 A 0 A_ScaleVelocity(0.6)
+VBIT A 0 A_SpawnItemEx("VoxBitFX5",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT B 0 A_SpawnItemEx("VoxBitFX4",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 2 A_CountDown
+loop
+Death:
+VBIT A 0 A_SpawnitemEx("VoxleMatterPickup",0,0,5,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS|SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor V_MatterSpawner_BLUE : V_MatterSpawner{translation "192:192=205:205", "198:198=74:74"}
+actor V_MatterSpawner_RED : V_MatterSpawner{translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"}
+actor V_MatterSpawner_GREEN : V_MatterSpawner{Translation "192:192=104:104", "198:198=128:128"}
+actor V_MatterSpawner_GOLD : V_MatterSpawner{Translation "192:192=229:229", "198:198=232:232"}
+*/
+
+actor DissolveShot : FastProjectileBase
+{
++HITTRACER
+damagetype "Voxleator"
+MissileType "DissolveShotTRail"
+//translation "192:192=4:4", "198:198=205:205"
+Obituary "%o got Voxilized by %k"
+Speed 80
+Damage (15)
+radius 12
+height 7
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 2
+Spawn2:
+BASB UU 1 A_SpawnItemEx("VoxBitFX6",random(-25,25),random(-25,25),random(-25,25),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)//|SXF_TRANSFERTRANSLATION
+loop
+XDeath:
+TNT1 A 0 A_GiveInventory("DissolveTrigger",1,AAPTR_Tracer) //Gives a pickup to whoever it hit (via HITTRACER)
+stop
+}
+}
+
+	actor DissolveShot_BLUE : DissolveShot
+	{Missiletype "DissolveShotTRail_BLUE"
+	translation "192:192=205:205", "198:198=74:74"
+	}
+
+	actor DissolveShot_RED : DissolveShot
+	{
+	Missiletype "DissolveShotTRail_RED"
+	translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"
+	}
+	actor DissolveShot_GOLD : DissolveShot
+	{
+	Missiletype "DissolveShotTRail_GOLD"
+	Translation "192:192=229:229", "198:198=232:232"
+	}
+	
+	actor DissolveShot_GREEN : DissolveShot
+	{
+	Missiletype "DissolveShotTRail_GREEN"
+	Translation "192:192=104:104", "198:198=128:128"
+	}
+	
+actor VoxelRecoveShot : ProjectileBase
+{
+damagetype "Voxleator"
+Obituary "$OB_MEGABUSTER"
++ThruSpecies
++BOUNCEONWALLS
++BOUNCEONCEILINGS
+-MTHRUSPECIES
++HITTRACER
+Speed 35
+Gravity 3.8
+Damage (0)
+radius 11
+height 11
+scale 2.0
+Var int User_GravTime;
+States
+{
+Spawn:
+TNT1 A 0
+VBIT A 0 A_SpawnItemEx("VoxBitFX5",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT B 0 A_SpawnItemEx("HealFX5",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT B 3 A_SetUserVar("User_GravTime",User_GravTime+1)//A_Checkfloor("Slowdown")
+TNT1 A 0 A_Jumpif(User_GravTime < 2,"Spawn")
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",false)
+Spawn2:
+VBIT A 0 A_SpawnItemEx("VoxBitFX5",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT B 0 A_SpawnItemEx("HealFX5",random(-15,15),random(-15,15),random(-15,15),momx/4,momy/4,momz/4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT B 3 
+loop
+Death:
+TNT1 A 0 A_SpawnitemEX("VoxleCloudArea",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 //ACS_NamedExecuteAlways("RadiusGiveSQ",0,1,100,2)
+VBIT A 0 //A_Jumpif(CallACS("TeamCheck") == True,"Healme")
+TNT1 A 1
+stop
+Healme:
+TNT1 A 1 //A_GiveInventory("VoxleHeal1",1,AAPTR_TRACER)
+TNT1 A 1
+stop
+}
+}
+
+actor VoxelRecoveShot_BLUE : VoxelRecoveShot{translation "192:192=205:205", "198:198=74:74"}
+actor VoxelRecoveShot_RED : VoxelRecoveShot{translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"}
+actor VoxelRecoveShot_GREEN : VoxelRecoveShot{Translation "192:192=104:104", "198:198=128:128"}
+actor VoxelRecoveShot_GOLD : VoxelRecoveShot{Translation "192:192=229:229", "198:198=232:232"}
+
+//[+]========================================================================[+]
+//--------------------------------|Special Actors|------------------------------
+//[+]========================================================================[+]
+actor VoxBitFX : FXActor_A
+{
+scale 0.7
+Alpha 0.8
+States
+{
+Spawn:
+VBIT A 0
+VBIT A 0 A_SetScale(frandom(0.6,1.3))
+VBIT A 15
+VBIT AZAZAZ 2 
+stop
+}
+}
+
+actor VoxBitFX2 : FXActor_A
+{
+scale 0.7
+Alpha 0.8
+States
+{
+Spawn:
+VBIT A 0
+VBIT A 5
+stop
+}
+}
+
+actor VoxBitFX3 : FXActor_A
+{
+scale 0.4
+Alpha 0.8
+States
+{
+Spawn:
+VBIT A 0
+VBIT A 5
+stop
+}
+}
+
+
+actor VoxBitFX4 : FXActor_B
+{
+scale 0.7
+Alpha 0.8
+speed 60
+States
+{
+Spawn:
+VBIT A 0
+VBIT A 0 A_SetScale(frandom(0.3,1.0))
+VBIT A 4
+VBIT AZAZAZAZ 2
+stop
+}
+}
+
+actor VoxBitFX5 : FXActor_A
+{
+scale 0.7
+Alpha 0.8
+speed 60
+States
+{
+Spawn:
+VBIT A 0
+VBIT A 0 A_SetScale(frandom(0.5,1.2))
+VBIT ABAB 1
+VBIT AZBZAZBZ 2
+stop
+}
+}
+
+actor VoxBitFX6 : FXActor_A //Sublimate
+{
+scale 0.7
+Alpha 0.8
+speed 60
+States
+{
+Spawn:
+VBIT A 0
+VBIT A 0 A_SetScale(frandom(0.9,1.2))
+VBIT ABABA 1 A_ScaleVelocity(0.4)
+VBIT AZBZAZBZ 2
+stop
+}
+}
+
+actor DiscintegratorTrail : FXActor_B
+{
+//translation "192:192=104:104", "198:198=110:110", "196:196=101:101", "197:197=109:109"
+
+scale 1.6
+Alpha 0.7
+States
+{
+Spawn:
+CRBM A 0
+CRIS BCD 1 
+//BSTG AAAAA 1 A_Fadeout
+stop
+}
+}
+
+actor DiscintegratorTrail_BLUE : DiscintegratorTrail{translation "192:192=205:205", "198:198=74:74"}
+actor DiscintegratorTrail_RED : DiscintegratorTrail{translation "192:192=54:54", "198:198=42:42" , "196:196=18:18", "197:197=173:173"}
+actor DiscintegratorTrail_GREEN : DiscintegratorTrail{Translation "192:192=104:104", "198:198=128:128","196:196=108:108", "197:197=110:110"}
+actor DiscintegratorTrail_GOLD : DiscintegratorTrail{Translation "192:192=229:229", "198:198=232:232","196:196=161:161", "197:197=162:162"}
+
+actor VoxleShotTRail : FXActor_B
+{
+//translation "192:192=104:104", "198:198=110:110", "196:196=101:101", "197:197=109:109"
+
+scale 2
+Alpha 0.7
+States
+{
+Spawn:
+CRBM A 0
+BASB U 1 
+//BSTG AAAAA 1 A_Fadeout
+stop
+}
+}
+
+actor VoxleShotTRail_BLUE : VoxleShotTRail{translation "192:192=205:205", "198:198=74:74"}
+actor VoxleShotTRail_RED : VoxleShotTRail{translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"}
+actor VoxleShotTRail_GREEN : VoxleShotTRail{Translation "192:192=104:104", "198:198=128:128"}
+actor VoxleShotTRail_GOLD : VoxleShotTRail{Translation "192:192=229:229", "198:198=232:232"}
+
+actor DissolveShotTrail : FXActor_B
+{
+//translation "192:192=104:104", "198:198=110:110", "196:196=101:101", "197:197=109:109"
+
+scale 1.6
+Alpha 0.7
+States
+{
+Spawn:
+CRBM A 0
+CRIS CD 1 
+//BSTG AAAAA 1 A_Fadeout
+stop
+}
+}
+
+actor DissolveShotTrail_BLUE : DissolveShotTrail{translation "192:192=205:205", "198:198=74:74"}
+actor DissolveShotTrail_RED : DissolveShotTrail{translation "192:192=54:54", "198:198=42:42" , "196:196=18:18", "197:197=173:173"}
+actor DissolveShotTrail_GREEN : DissolveShotTrail{Translation "192:192=104:104", "198:198=128:128","196:196=108:108", "197:197=110:110"}
+actor DissolveShotTrail_GOLD : DissolveShotTrail{Translation "192:192=229:229", "198:198=232:232","196:196=161:161", "197:197=162:162"}
+
+actor VoxBitFXSpawn : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_SpawnItemEx("VoxBitFX",30,0,random(30,50),momx/4,momy/4,1,random(0,360),SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+TNT1 A 0
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor VoxBitFXSpawn2 : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 //A_SpawnItemEx("VoxBitFX4",30,0,random(30,50),momx/2,momy/2,1,random(0,360),SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+CENF AA 0 A_SpawnItemEx("VoxBitFX6", 0, 0, 28, 256/12, 0, random2(256/12), random(0, 359))
+CENF AA 0 A_SpawnItemEx("VoxBitFX5", 0, 0, 28, 256/12, 0, random2(256/12), random(0, 359))
+TNT1 A 0
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+Actor VoxChargeWatcher : Watcherbase
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("VoxBitFXSpawn",1)
+TNT1 A 4
+TNT1 A 0 A_JumpIfInTargetInventory("DisintegrateStore",1,"Spawn")
+Stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+/*
+actor VoxleMatterPickup : CustomInventory
+{
+inventory.pickupmessage "Picked up Voxle Matter!"
+Inventory.PickupSound "item/1up"
+Var int user_tally;
++COUNTITEM
++FLOAT
++FLOATBOB
++NOGRAVITY
++FLOORCLIP
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0 
+BUST A 0 ACS_NamedExecuteAlways("ObjectTally",0)
+VBIT AA 2 A_SpawnItemEx("VoxBitFX5",random(-15,15),random(-15,15),random(-15,15),0,0,4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+VBIT BB 2 A_SpawnItemEx("VoxBitFX4",random(-15,15),random(-15,15),random(-15,15),0,0,4,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+BUST A 0 A_Jumpif(user_tally >= 4,"Aftergive")
+Goto Spawn+2
+Pickup:
+TNT1 A 0 A_JumpifInventory("VoxleatorGun",1,"Voxleator")
+
+TNT1 A 0 A_JumpifInventory("EdgeGunBoss",1,"Edgelord")
+TNT1 A 0 A_JumpifInventory("HikariArms",1,"Hikari")
+TNT1 A 0 A_JumpifInventory("MessatsuWep",1,"Messatsu")
+TNT1 A 0 A_JumpifInventory("BurstBlade",1,"Aegis")
+TNT1 A 0 A_JumpifInventory("CrazyWaveBoss",1,"Pharaohman")
+
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0),"Mega")
+fail
+
+Edgelord:
+TNT1 A 0 A_JumpifInventory("DarkPowerAmmo",100,"Nope")
+TNT1 A 0 A_GiveInventory("DarkPowerAmmo",20)
+TNT1 A 0
+Goto Aftergive
+Hikari:
+TNT1 A 0 A_JumpifInventory("HikariSuperMeter",900,"Nope")
+TNT1 A 0 A_GiveInventory("HikariSuperMeter",150)
+TNT1 A 0
+Goto Aftergive
+Messatsu:
+TNT1 A 0 A_JumpifInventory("MessatsuAmmo",56,"Nope")
+TNT1 A 0 A_GiveInventory("MessatsuAmmo",15)
+TNT1 A 0
+Goto Aftergive
+Aegis:
+TNT1 A 0 A_JumpifInventory("ShieldBreak",1,3)
+TNT1 A 0 A_JumpifInventory("ShieldEnergy",350,"Nope")
+TNT1 A 0 A_GiveInventory("ShieldEnergy",50)
+TNT1 A 0
+Goto Aftergive
+Pharaohman:
+TNT1 A 0 A_JumpifInventory("TechAmmo",100,"Nope")
+TNT1 A 0 A_GiveInventory("TechAmmo",20)
+TNT1 A 0
+Goto Aftergive
+Voxleator:
+TNT1 A 0 A_JumpifInventory("VoxleMatter",100,"Nope")
+TNT1 A 0 A_GiveInventory("VoxleMatter",50)
+TNT1 A 0
+Goto Aftergive
+Mega: //And Corporal
+TNT1 A 0 A_PlaySound("item/energyup",3,1.0)
+TNT1 A 0 ACS_ExecuteAlways(992,0,30)
+Goto Aftergive
+
+Aftergive:
+PRMN A 0 ACS_NamedExecuteAlways("ObjectDeathTally",0)
+stop
+
+Nope:
+TNT1 A 0 
+fail
+}
+}
+
+
+actor SublimateWatcher : WatcherBase 
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("SublimateStart")
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1 A_GiveToTarget("VoxBitFXSpawn",1)
+TNT1 A 0 A_GiveToTarget("VoxleHeal2",1)
+TNT1 A 0 A_GiveToTarget("VoxBitFXSpawn2",1)
+TNT1 A 0 A_JumpIfInTargetInventory("SublimateFlag",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0 A_GiveToTarget("FlyDeactivate",1)
+TNT1 A 0 A_GiveToTarget("SublimateEnd")
+TNT1 A 15 
+TNT1 A 0 A_GiveToTarget("SublimateSuperEnd")
+stop
+}
+}
+
+actor SublimateStart : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
+TNT1 A 0 A_ChangeFlag(CANTSEEK, true)
+TNT1 A 0 A_ChangeFlag(INVISIBLE, true)
+TNT1 A 0 A_ChangeFlag(SHOOTABLE, False)
+TNT1 A 0 A_SetTranslucent(0.0, 0)
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor SublimateEnd : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+TNT1 A 0 A_ChangeFlag(CANTSEEK, False)
+TNT1 A 0 A_ChangeFlag(INVISIBLE, False)
+TNT1 A 0 A_ChangeFlag(SHOOTABLE, true)
+//TNT1 A 0 A_SetTranslucent(0.1, 1)
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor SublimateSuperEnd : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+TNT1 A 0 A_ChangeFlag(CANTSEEK, False)
+TNT1 A 0 A_ChangeFlag(INVISIBLE, False)
+TNT1 A 0 A_ChangeFlag(SHOOTABLE, true)
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+*/
+
+actor DissolveWatcher : WatcherBase 
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 3 //A_GiveToTarget("VoxBitFXSpawn",1)
+TNT1 A 0 A_GiveToTarget("VoxBitFXSpawn2",1)
+TNT1 A 0 A_JumpIfInTargetInventory("DissolvePower",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 1 
+stop
+}
+}
+
+actor DissolveTrigger : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_JumpIf(CallACS("Actor_Classifier",0,2) == FALSE,"Nope")
+TNT1 A 1 A_JumpifInventory("DissolvePower",1,"Addon")
+TNT1 A 0 A_GiveInventory("DissolvePower")
+TNT1 A 0 A_SpawnitemEx("DissolveWatcher")
+TNT1 A 0 A_PlaySoundEx("Support/Negative","Soundslot6")
+stop
+Addon:
+TNT1 A 0 A_GiveInventory("DissolvePower")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+//[+]========================================================================[+]
+//--------------------------------|Item Shooters|------------------------------
+//[+]========================================================================[+]
+actor RecoveMatterItemFire : CustomInventory 
+{
+Tag "Launch Recovery matter"
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "$PU_ETANK"
+inventory.icon "VOXBI"
+Inventory.PickupSound "item/1up"
++INVBAR
++COUNTITEM
+scale 2.2
+Radius 30
+States
+{
+Spawn:
+EBAL F 0 
+EBAL F 0 Thing_ChangeTID(0,999)
+EBAL FE 6
+Goto Spawn+2
+Use:
+TNT1 A 0 A_JumpIfInventory("VoxleRecovBuffer",1,"Nope")
+TNT1 A 0 A_JumpIfInventory("VoxleMatter",20,1)
+goto Nope
+TNT1 A 0
+TNT1 A 0 A_Giveinventory("MatterSpawnTrigger")
+fail
+Death:
+TNT1 A 0
+stop
+Nope:
+TNT1 A 0 ACS_Execute(979,0)
+fail
+}
+}
+
+
+actor VoxleShotShooter : CustomInventory 
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
+BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
+PROC D 0 A_FireCustomMissile("VoxleShot",0,0,8,0)
+stop
+TeamBlueFire:
+PROC D 0 A_FireCustomMissile("VoxleShot_BLUE",0,0,8,0)
+TNT1 A 0
+stop
+TeamRedFire:
+PROC D 0 A_FireCustomMissile("VoxleShot_RED",0,0,8,0)
+TNT1 A 0
+stop
+TeamGreenFire:
+PROC D 0 A_FireCustomMissile("VoxleShot_GREEN",0,0,8,0)
+TNT1 A 0
+stop
+TeamGoldFire:
+PROC D 0 A_FireCustomMissile("VoxleShot_GOLD",0,0,8,0)
+TNT1 A 0
+stop
+}
+}
+
+
+actor DisintegratorShooter : CustomInventory 
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
+BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
+PROC D 0 A_FireCustomMissile("DisintegratorShot",0,0,8,0)
+stop
+TeamBlueFire:
+PROC D 0 A_FireCustomMissile("DisintegratorShot_BLUE",0,0,8,0)
+TNT1 A 0
+stop
+TeamRedFire:
+PROC D 0 A_FireCustomMissile("DisintegratorShot_RED",0,0,8,0)
+TNT1 A 0
+stop
+TeamGreenFire:
+PROC D 0 A_FireCustomMissile("DisintegratorShot_GREEN",0,0,8,0)
+TNT1 A 0
+stop
+TeamGoldFire:
+PROC D 0 A_FireCustomMissile("DisintegratorShot_GOLD",0,0,8,0)
+TNT1 A 0
+stop
+}
+}
+/*
+actor VoxleMatterShooter : CustomInventory 
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
+BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
+PROC D 0 A_FireCustomMissile("V_MatterSpawner",0,0,8,0)
+stop
+TeamBlueFire:
+PROC D 0 A_FireCustomMissile("V_MatterSpawner_BLUE",0,0,8,0)
+TNT1 A 0
+stop
+TeamRedFire:
+PROC D 0 A_FireCustomMissile("V_MatterSpawner_RED",0,0,8,0)
+TNT1 A 0
+stop
+TeamGreenFire:
+PROC D 0 A_FireCustomMissile("V_MatterSpawner_GREEN",0,0,8,0)
+TNT1 A 0
+stop
+TeamGoldFire:
+PROC D 0 A_FireCustomMissile("V_MatterSpawner_GOLD",0,0,8,0)
+TNT1 A 0
+stop
+}
+}
+*/
+
+actor DissolveShotShooter : CustomInventory 
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
+BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
+PROC D 0 A_FireCustomMissile("DissolveShot",0,0,8,0)
+stop
+TeamBlueFire:
+PROC D 0 A_FireCustomMissile("DissolveShot_BLUE",0,0,8,0)
+TNT1 A 0
+stop
+TeamRedFire:
+PROC D 0 A_FireCustomMissile("DissolveShot_RED",0,0,8,0)
+TNT1 A 0
+stop
+TeamGreenFire:
+PROC D 0 A_FireCustomMissile("DissolveShot_GREEN",0,0,8,0)
+TNT1 A 0
+stop
+TeamGoldFire:
+PROC D 0 A_FireCustomMissile("DissolveShot_GOLD",0,0,8,0)
+TNT1 A 0
+stop
+}
+}
+
+actor VoxelRecoverShooter : CustomInventory 
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
+BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
+PROC D 0 A_FireCustomMissile("VoxelRecoveShot",0,0,8,0)
+stop
+TeamBlueFire:
+PROC D 0 A_FireCustomMissile("VoxelRecoveShot_BLUE",0,0,8,0)
+TNT1 A 0
+stop
+TeamRedFire:
+PROC D 0 A_FireCustomMissile("VoxelRecoveShot_RED",0,0,8,0)
+TNT1 A 0
+stop
+TeamGreenFire:
+PROC D 0 A_FireCustomMissile("VoxelRecoveShot_GREEN",0,0,8,0)
+TNT1 A 0
+stop
+TeamGoldFire:
+PROC D 0 A_FireCustomMissile("VoxelRecoveShot_GOLD",0,0,8,0)
+TNT1 A 0
+stop
+}
+}

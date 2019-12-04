@@ -1,0 +1,49 @@
+actor ClassBase5 : ClassBase4 //therearenoweaknesses States
+{
+States
+{
+Pain.AbsorbDrain:
+"----" H 0 A_GiveToTarget("DrainFlag",1)
+goto Pain+1
+Pain.TreoBurn:
+NOFX A 0 //ACS_ExecuteAlways(525,0,0) (DoT)
+goto Pain+1
+Pain.TreoFire:
+NOFX AAAA 0 A_SpawnItemEx("WillFireBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
+goto Pain
+Pain.UpperMucus:
+"----" H 0 A_PlaySoundEx("weapon/OilSlider","SoundSlot5")
+"----" H 0 A_GiveInventory("MucusBlind",1)
+Goto pain+1
+Pain.LowerMucus:
+"----" H 0 A_PlaySoundEx("weapon/OilSlider","SoundSlot5")
+"----" H 0 A_GiveInventory("MucusStep",1)
+Goto pain+1
+Pain.EnergyBlade:
+"----" H 0 A_GiveInventory("EnergyBladeProtect",1)
+goto Pain+1
+Pain.VoltWall://Defined in VizWep.txt
+"----" H 0 A_GiveInventory("VoltSlow",1)
+"----" H 0 A_GiveInventory("VoltWeaken",1)
+Goto pain+1
+Pain.FlySuplex:
+Pain.Suplex:
+"----" H 0 A_GiveInventory("ZangiefSuplexStart",1)
+goto Pain
+Pain.ZangiefPush:
+"----" H 0 A_GiveInventory("ZangiefPushStart",1)
+goto Pain+1
+Pain.JuriFear:
+"----" H 0 ACS_ExecuteAlways(968, 0, 0)
+"----" H 0 A_SpawnItemEX("JuriHitWatch", 1)
+Goto Pain+2 //See Also: Pain state
+Pain.JuriScream:
+"----" H 0 A_SpawnItemEX("JuriAlertWatch")
+Goto Pain+1
+Pain.CrystalShockwave:
+"----" H 0 A_GiveInventory("CrystalMissileProtect",1)
+goto Pain+1
+
+
+}
+}

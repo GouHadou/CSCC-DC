@@ -1,0 +1,41 @@
+actor BozuClass : ClassBaseCSCC
+{
+player.displayname "Bozu"
+player.soundclass "megaman"
+player.startitem "BozuBallWep"
+//player.startitem "BozuShieldWep"
+player.startitem "BozuAmmo", 28
+States
+{
+Spawn:
+SNOW A 0
+SNOW B 1
+SNOW A 1
+Goto Spawn+2
+See:
+SNOW BCDE 5
+Goto Spawn
+Missile:
+SNOW F 5 
+SNOW G 4 
+goto Spawn
+
+}
+}
+
+actor BozuDeathFX
+{
+-SOLID
++CLIENTSIDEONLY
++NOGRAVITY
++FORCEXYBILLBOARD
+renderstyle add
+alpha 0.9
+scale 2.5
+States
+{
+Spawn:
+BOFX AB 4 A_Fadeout(0.05)
+loop
+}
+}

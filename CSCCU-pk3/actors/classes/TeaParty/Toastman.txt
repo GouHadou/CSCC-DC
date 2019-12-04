@@ -1,0 +1,2 @@
+#include "actors/classes/TeaParty/Toastman/ToastMan.txt"
+#include "actors/classes/TeaParty/Toastman/ToastCannonWep.txt"

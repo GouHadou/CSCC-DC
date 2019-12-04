@@ -1,0 +1,14 @@
+#include "actors/classes/TeaParty/Smash/smash.txt"
+
+
+#include "actors/classes/TeaParty/Smash/ForwardSpecial.txt"
+#include "actors/classes/TeaParty/Smash/StandardSpecial.txt"
+#include "actors/classes/TeaParty/Smash/BackwardSpecial.txt"
+#include "actors/classes/TeaParty/Smash/SideSpecial.txt"
+#include "actors/classes/TeaParty/Smash/ForwardSpecial-USC.txt"
+#include "actors/classes/TeaParty/Smash/StandardSpecial-USC.txt"
+#include "actors/classes/TeaParty/Smash/BackwardSpecial-USC.txt"
+#include "actors/classes/TeaParty/Smash/SideSpecial-USC.txt"
+#include "actors/classes/TeaParty/Smash/SuperSpiritBlast.txt"
+#include "actors/classes/TeaParty/Smash/SmashAttacks.txt"
+#include "actors/classes/TeaParty/Smash/SmashItems.txt"

@@ -1,0 +1,2 @@
+#include "actors/classes/IceIB/Weavile/WeavileClass.txt"
+#include "actors/classes/IceIB/Weavile/WeavileWep.txt"

@@ -1,0 +1,1067 @@
+//+[==SANCTUARY==]+
+
+actor SanctuaryTech : CrazyWaveBoss
+{
+Weapon.AmmoUse 1
+Weapon.SlotNumber 4
+Obituary "%o was cursed by %k's Insanity Tech: \c[c0]Sanctuary\c-."
+Tag "$TAG_SANCTUARY"
+inventory.icon "SNCIT0"
+States
+{
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+IPID A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+IPID A 1 A_Raise
+Loop
+
+//+[== SELL THE TECH ==]+
+
+Altfire:
+IPID A 1
+IPID A 0
+Althold:
+IPID A 1 A_JumpIfInventory("SellCharge",100,"SellTech")
+IPID A 0 A_GiveInventory("SellCharge",5)
+IPID A 0 A_Refire
+Goto Ready1
+SellTech:
+IPID A 0 A_SpawnItemEx("SellFX_Helper")
+IPID A 1 Offset(0,25)
+IPID A 1 Offset(0,50) A_PlaySoundEx("insanitytech/sell3","Weapon")
+IPID A 1 Offset(0,75)
+IPID A 1 Offset(0,100) A_GiveInventory("TechAmmo",75)
+IPID A 10
+IPID A 0 A_JumpIfInventory("SanctuaryAmmo",2,"SellTechX")
+IPID A 0 A_TakeInventory("SanctuaryAmmo",99)
+IPID A 0 A_TakeInventory("SanctuaryTech",99)
+Goto Ready1
+SellTechX:
+IPID A 0 A_TakeInventory("SanctuaryAmmo",1)
+Goto Ready1
+
+//+[== USE THE TECH ==]+
+
+Fire:
+PEXC A 0
+PEXC IIHH 1 Offset(0,52)
+Hold:
+PEXC E 0 Offset(0,52) A_JumpIfInventory("CutterFlag",150,"Hold2")
+PEXC E 1 Offset(0,52) A_GiveInventory("CutterFlag",10)
+PEXC E 0 Offset(0,52) A_Refire
+Goto UseFail
+Hold2:
+PEXC F 1 Offset(12,52) A_PlaySoundEx("weapon/crackermine","Weapon")
+Hold3:
+PHMG A 0 ACS_ExecuteAlways(512,0,1,0)
+PEXC F 1 Offset(12,52)
+PEXC F 0 A_Refire("Hold3")
+Goto Release
+Release:
+PHMG A 0 ACS_ExecuteAlways(512,0,1,0)
+PEXC G 0 A_TakeInventory("SanctuaryAmmo",1)
+PEXC G 1 Offset(0,52) A_PlaySoundEx("weapon/coilthrow","Weapon")
+PEXC G 1 Offset(0,52) A_GiveInventory("SanctuaryTeam",1)
+PEXC G 11 Offset(-8,62)
+PEXC G 1 Offset(-16,92)
+PEXC G 1 Offset(-24,112)
+IPID A 1 Offset(-24,82)
+IPID A 1 Offset(-32,92)
+PHMG A 0 ACS_ExecuteAlways(512,0,0,0)
+TakeAll:
+IPID A 0 A_TakeInventory("CutterFlag",999)
+IPID A 0 A_JumpIfInventory("SanctuaryAmmo",1,"Ready1")
+IPID A 0 A_TakeInventory("SanctuaryTech",99)
+Goto Ready1
+
+UseFail:
+PEXC E 1 Offset(-16,92) A_TakeInventory("CutterFlag",999)
+PEXC E 1 Offset(-24,112)
+IPID A 1 Offset(-24,82)
+IPID A 1 Offset(-32,92)
+Goto Ready1
+Flash:
+TNT1 A 1
+loop
+}
+}
+
+actor SanctuaryBullet
+{
+Translation "192:192=254:254", "198:198=239:239"
+Obituary "%o was cursed by %k's Insanity Tech: \c[c0]Sanctuary\c-."
+PROJECTILE
+Radius 28
+Height 28
+Scale 4.5
+Speed 350
+Damage (5)
+damagetype "Sanctuary"
++RIPPER
++THRUACTORS
++MTHRUSPECIES
++HEXENBOUNCE
++DONTREFLECT
++EXPLODEONWATER
++SKYEXPLODE
+-NOGRAVITY
+Gravity 4
+Bouncecount 10
+Bouncefactor 0.01
+WallBounceFactor 0.01
+States
+{
+Spawn:
+SNCB A 1
+SNCB A 0 A_ChangeFlag("THRUACTORS",0)
+loopit:
+SNCB ABC 1 A_CheckFloor("Death")
+loop
+Death:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryBulletFloor",0,0,0)
+stop
+}
+}
+
+Actor SanctuaryBulletL : SanctuaryBullet
+{
+Translation "192:192=165:165", "198:198=74:74" 
+States
+{
+Death:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryBulletFloorL",0,0,0) 
+stop
+}
+}
+
+Actor SanctuaryBulletW : SanctuaryBullet
+{
+Translation "192:192=165:165", "198:198=41:41"
+States
+{
+Death:
+TNT1 A 0	
+TNT1 A 0 A_SpawnItemEx("SanctuaryBulletFloorW",0,0,0) 
+stop
+}
+}
+
+Actor SanctuaryBulletC : SanctuaryBullet
+{
+Translation "192:192=165:165", "198:198=128:128"
+States
+{
+Death:
+TNT1 A 0	
+TNT1 A 0 A_SpawnItemEx("SanctuaryBulletFloorC",0,0,0) 
+stop
+}
+}
+
+Actor SanctuaryBulletK : SanctuaryBullet
+{
+Translation "192:192=165:165", "198:198=232:232"
+States
+{ 
+Death:
+TNT1 A 0	
+TNT1 A 0 A_SpawnItemEx("SanctuaryBulletFloorK",0,0,0) 
+stop
+}
+}
+
+Const int SancHealRad = 240;
+
+actor SanctuaryBulletFloor
+{
+Translation "192:192=239:239", "198:198=254:254", "199:199=39:39"
+Obituary "%o was cursed by %k's Insanity Tech: \c[c0]Sanctuary\c-."
++MISSILE
++NODAMAGETHRUST
++NOBLOOD
++NOGRAVITY
++DONTSPLASH
++NOEXPLODEFLOOR
++NOTARGETSWITCH
++THRUSPECIES
+species "Sanctuary"
+Scale 3.5
+Damage (0)
+Height 60
+Radius 20
+health 50
+Mass 99999
+painchance 256
+States
+{
+Spawn:
+TNT1 A 0 
+SNCB D 10 A_PlaySoundEx("weapon/rminestick","Body")
+SNCB EFGH 2
+SNCB H 18
+SNCB N 2
+TNT1 A 0 A_PlaySoundEx("weapon/copyvision","Body")
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+loopit:
+SNCB I 0 A_ChangeFlag("SHOOTABLE",1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,8,SancHealRad,1)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,8,SancHealRad,1)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,8,SancHealRad,1)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,8,SancHealRad,1)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 0 A_JumpIfInventory("CutterFlag", 150, "Death")
+loop
+Pain:
+TNT1 A 0 A_PlaySoundEx("robot/death","Body")
+SNCB K 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,8,SancHealRad,1)
+SNCB L 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,8,SancHealRad,1)
+SNCB M 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,8,SancHealRad,1)
+goto loopit
+Death:
+TNT1 A 0 A_JumpIfInventory("CutterFlag", 5, 4)
+TNT1 A 0 A_PlaySoundEx("sanctuary/fail","Weapon")
+TNT1 A 0 A_GiveToTarget("SanctuaryTech", 1)
+TNT1 A 0 A_GiveToTarget("SanctuaryAmmo", 1)
+TNT1 A 0 A_PlaySoundEx("misc/door","Body")
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB H 8
+SNCB GFE 2
+stop
+}
+}
+
+Actor SanctuaryBulletFloorL
+{
+Species "BLUEMember"
+Translation "192:192=160:160", "198:198=162:162", "199:199=74:74", "250:250=196:196", "251:251=205:205", "254:254=74:74"
+Obituary "%o went color blind due to %k's \ctRainbow Arrow\c-."
++MISSILE
++NODAMAGETHRUST
++NOBLOOD
++NOGRAVITY
++DONTSPLASH
++NOEXPLODEFLOOR
++NOTARGETSWITCH
++THRUSPECIES
+species "Sanctuary"
+Scale 3.5
+Damage (0)
+Height 60
+Radius 20
+health 100
+Mass 99999
+painchance 256
+States
+{
+Spawn:
+TNT1 A 0 
+SNCB D 10 A_PlaySoundEx("weapon/rminestick","Body")
+SNCB EFGH 2
+SNCB H 18
+SNCB N 2
+TNT1 A 0 A_PlaySoundEx("weapon/copyvision","Body")
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+loopit:
+SNCB I 0 A_ChangeFlag("SHOOTABLE",1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,6,SancHealRad,1) //Healing the allies
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,7,SancHealRad,4) //Hurting the enemies
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,6,SancHealRad,1)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,7,SancHealRad,4)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,6,SancHealRad,1)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,7,SancHealRad,4)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,6,SancHealRad,1)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,7,SancHealRad,4)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB I 0 A_GiveInventory("CutterFlag", 1)
+SNCB I 1 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB J 0 A_GiveInventory("CutterFlag", 1)
+SNCB J 0 A_JumpIfInventory("CutterFlag", 250, "Death")
+loop
+Pain:
+TNT1 A 0 A_PlaySoundEx("robot/death","Body")
+SNCB K 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,6,SancHealRad,1)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,7,SancHealRad,4)
+SNCB L 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,6,SancHealRad,1)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,7,SancHealRad,4)
+SNCB M 1 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,6,SancHealRad,1)
+TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveSQ",0,7,SancHealRad,4)
+goto loopit
+Death:
+TNT1 A 0 A_JumpIfInventory("CutterFlag", 5, 4)
+TNT1 A 0 A_PlaySoundEx("sanctuary/fail","Weapon")
+TNT1 A 0 A_GiveToTarget("SanctuaryTech", 1)
+TNT1 A 0 A_GiveToTarget("SanctuaryAmmo", 1)
+TNT1 A 0 A_PlaySoundEx("misc/door","Body")
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXSpawnerF1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+SNCB H 8
+SNCB GFE 2
+stop
+}
+}
+
+Actor SanctuaryBulletFloorW : SanctuaryBulletFloorL
+{
+Species "REDMember"
+Translation "192:192=160:160", "198:198=162:162", "199:199=41:41", "250:250=170:170", "251:251=171:171", "254:254=41:41"
+DesignatedTeam 1
+}
+
+Actor SanctuaryBulletFloorC : SanctuaryBulletFloorL
+{
+Species "GREENMember"
+Translation "192:192=160:160", "198:198=162:162", "199:199=128:128", "250:250=138:138", "251:251=104:104", "254:254=128:128"
+DesignatedTeam 2
+}
+
+Actor SanctuaryBulletFloorK : SanctuaryBulletFloorL
+{
+Species "GOLDMember"
+Translation "192:192=160:160", "198:198=162:162", "199:199=232:232", "250:250=214:214", "251:251=229:229", "254:254=223:223"
+DesignatedTeam 3
+}
+
+actor SancHealTimer : inventory {inventory.amount 1 inventory.maxamount 10}
+Actor SancHealdelay : Powerup {inventory.amount 1 powerup.duration 5}
+actor SancHurtTimer : inventory {inventory.amount 1 inventory.maxamount 10}
+Actor SancHurtdelay : Powerup {inventory.amount 1 powerup.duration 5}
+
+actor SancHealer : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)>=100,"Nope")
+
+TNT1 A 0 A_Jumpifinventory("SancHealTimer",1,2)
+TNT1 A 0 A_SpawnItemEx("SancHealWatcher")
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("SancHealTimer",5)
+TNT1 A 0
+stop
+Nope:
+TNT1 A 0 A_TakeInventory("SancHealTimer",99)
+TNT1 A 0
+stop
+}
+}
+
+actor SancHealerDM : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)>=100,"Nope")
+
+TNT1 A 0 A_Jumpifinventory("SancHealTimer",1,2)
+TNT1 A 0 A_SpawnItemEx("SancHealWatcherDM")
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("SancHealTimer",5)
+TNT1 A 0
+stop
+Nope:
+TNT1 A 0 A_TakeInventory("SancHealTimer",99)
+TNT1 A 0
+stop
+}
+}
+
+actor SancHurter : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)<=2,"Nope")
+
+TNT1 A 0 A_Jumpifinventory("SancHurtTimer",1,2)
+TNT1 A 0 A_SpawnItemEx("SancHurtWatcher")
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("SancHurtTimer",5)
+TNT1 A 0
+stop
+Nope:
+TNT1 A 0 A_TakeInventory("SancHurtTimer",99)
+TNT1 A 0
+stop
+}
+}
+
+Actor SancHealWatcher 
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("SancHealItem",1)
+TNT1 A 1
+TNT1 A 0 A_JumpifinTargetInventory("SancHealTimer",1,"spawn")
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor SancHealWatcherDM
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("SancHealItemDM",1)
+TNT1 A 1
+TNT1 A 0 A_JumpifinTargetInventory("SancHealTimer",1,"spawn")
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor SancHurtWatcher 
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("SancHurtItem",1)
+TNT1 A 1
+TNT1 A 0 A_JumpifinTargetInventory("SancHurtTimer",1,"spawn")
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor SancHealItem : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Jumpifinventory("CutterFlag",999,"Nope")
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)>=100,"Nope")
+LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("Actor_Classifier",0,2) == TRUE, "HealMe")
+stop
+HealMe:
+TNT1 A 0 A_Jumpifinventory("SancHealdelay",1,"Nope")
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 1 A_Giveinventory("SancHealdelay")
+TNT1 A 0 HealThing(2)
+TNT1 A 0 A_PlaySoundEx("sanctuary/heal","SoundSlot7")
+TNT1 A 0 A_TakeInventory("SancHealTimer",1)
+TNT1 A 0
+stop
+
+Nope:
+TNT1 A 0 A_TakeInventory("SancHealTimer",99)
+stop
+}
+}
+
+actor SancHealItemDM : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Jumpifinventory("CutterFlag",999,"Nope")
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)>=100,"Nope")
+LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("Actor_Classifier",0,2) == TRUE, "HealMe")
+stop
+HealMe:
+TNT1 A 0 A_Jumpifinventory("SancHealdelay",1,"Nope")
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 1 A_Giveinventory("SancHealdelay")
+TNT1 A 0 HealThing(4)
+TNT1 A 0 A_PlaySoundEx("sanctuary/heal","SoundSlot7")
+TNT1 A 0 A_TakeInventory("SancHealTimer",1)
+TNT1 A 0
+stop
+
+Nope:
+TNT1 A 0 A_TakeInventory("SancHealTimer",99)
+stop
+}
+}
+
+actor SancHurtItem : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Jumpifinventory("CutterFlag",999,"Nope")
+TNT1 A 0 A_JumpIf(CallACS("GetHPPerc",0)<=2,"Nope")
+LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("Actor_Classifier",0,2) == TRUE, "HurtMe")
+stop
+HurtMe:
+TNT1 A 0 A_Jumpifinventory("SancHurtdelay",1,"Nope")
+TNT1 A 0 A_Giveinventory("HurtEffectSpawn",1)
+TNT1 A 1 A_Giveinventory("SancHurtdelay")
+TNT1 A 0 HealThing(-2)
+TNT1 A 0 A_PlaySoundEx("sanctuary/hurt","SoundSlot7")
+TNT1 A 0 A_TakeInventory("SancHurtTimer",1)
+TNT1 A 0
+stop
+
+Nope:
+TNT1 A 0 A_TakeInventory("SancHurtTimer",99)
+stop
+}
+}
+
+/*actor HealEffectSpawn : CustomInventory  [THIS ONE IS ALREADY PRESENT IN ZAFFRE'S DECORATE]
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealFX2",30,0,random(0,50),momx/4,momy/4,1,random(0,360),SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+TNT1 A 0
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}*/
+
+actor HurtEffectSpawn : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HurtFX2",30,0,random(0,50),momx/4,momy/4,1,random(0,360),SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+TNT1 A 0
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+/*actor HealFX2 [THIS ONE IS ALREADY PRESENT IN ZAFFRE'S DECORATE]
+{
+PROJECTILE
++NOINTERACTION
++NOCLIP
++CLIENTSIDEONLY
+radius 8
+height 8
+Damage (0)
+scale 1.5
+Reactiontime 35
+Renderstyle "ADD"
+Alpha 1
+States
+{
+Spawn:
+HEAL A 0
+HEAL A 10
+HEAL AAAABBBCC 1 
+stop
+}
+}*/
+
+
+actor HurtFX2
+{
+PROJECTILE
++NOINTERACTION
++NOCLIP
++CLIENTSIDEONLY
+radius 8
+height 8
+Damage (0)
+scale 1.5
+Reactiontime 35
+Renderstyle "ADD"
+Alpha 1
+States
+{
+Spawn:
+HURT A 0
+HURT A 10
+HURT AAAABBBCC 1 
+stop
+}
+}
+
+actor SanctuaryAmmo : Ammo
+{
+inventory.amount 2
+inventory.maxamount 2
+}
+
+actor SanctuaryFXSpawner
+{
+Height 0
+Radius 0
+- SOLID
++NOGRAVITY
++NOINTERACTION
++CLIENTSIDEONLY
+//+NONETID
+states
+{
+spawn5c:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,0,165,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",165,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,165,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,0,-165,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-165,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,-165,0,0,0,0,0,129)
+spawn4c:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",105,105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",105,-105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-105,105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-105,-105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",105,105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",105,-105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-105,105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-105,-105,105,0,0,0,0,129)
+spawn3c:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,0,90,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",90,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,90,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,0,-90,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-90,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",0,-90,0,0,0,0,0,129)
+spawn2c:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",60,60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",60,-60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-60,60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-60,-60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",60,60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",60,-60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-60,60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX3",-60,-60,60,0,0,0,0,129)
+spawn1c:
+TNT1 A 0
+stop
+
+spawn5b:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,0,165,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",165,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,165,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,0,-165,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-165,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,-165,0,0,0,0,0,129)
+spawn4b:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",105,105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",105,-105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-105,105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-105,-105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",105,105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",105,-105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-105,105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-105,-105,105,0,0,0,0,129)
+spawn3b:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,0,90,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",90,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,90,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,0,-90,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-90,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",0,-90,0,0,0,0,0,129)
+spawn2b:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",60,60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",60,-60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-60,60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-60,-60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",60,60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",60,-60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-60,60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX2",-60,-60,60,0,0,0,0,129)
+spawn1b:
+TNT1 A 0
+stop
+
+spawn5a:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,0,165,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",165,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,165,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,0,-165,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-165,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,-165,0,0,0,0,0,129)
+spawn4a:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",105,105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",105,-105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-105,105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-105,-105,-105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",105,105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",105,-105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-105,105,105,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-105,-105,105,0,0,0,0,129)
+spawn3a:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,0,90,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",90,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,90,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,0,-90,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-90,0,0,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",0,-90,0,0,0,0,0,129)
+spawn2a:
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",60,60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",60,-60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-60,60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-60,-60,-60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",60,60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",60,-60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-60,60,60,0,0,0,0,129)
+TNT1 A 0 A_SpawnItemEx("SanctuaryFX1",-60,-60,60,0,0,0,0,129)
+spawn1a:
+TNT1 A 0
+stop
+}
+}
+
+actor SanctuaryFXSpawner1 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXMA",0,0,0,0,0,0,0,129)
+goto Spawn1a
+}
+}
+
+actor SanctuaryFXSpawner2 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXMB",0,0,0,0,0,0,0,129)
+goto Spawn1b
+}
+}
+
+actor SanctuaryFXSpawner3 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXMC",0,0,0,0,0,0,0,129)
+goto Spawn2c
+}
+}
+
+actor SanctuaryFXSpawner4 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXMD",0,0,0,0,0,0,0,129)
+goto Spawn2a
+}
+}
+
+actor SanctuaryFXSpawner5 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXME",0,0,0,0,0,0,0,129)
+goto Spawn3b
+}
+}
+
+actor SanctuaryFXSpawner6 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXMF",0,0,0,0,0,0,0,129)
+goto Spawn3c
+}
+}
+
+actor SanctuaryFXSpawner7 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXMG",0,0,0,0,0,0,0,129)
+goto Spawn4a
+}
+}
+
+actor SanctuaryFXSpawner8 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXMH",0,0,0,0,0,0,0,129)
+goto Spawn4b
+}
+}
+
+actor SanctuaryFXSpawnerF1 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXM3",0,0,0,0,0,0,0,129)
+goto Spawn5c
+}
+}
+
+actor SanctuaryFXSpawnerF2 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXM1",0,0,0,0,0,0,0,129)
+goto Spawn5a
+}
+}
+
+actor SanctuaryFXSpawnerF3 : SanctuaryFXSpawner
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SanctuaryFXM2",0,0,0,0,0,0,0,129)
+goto Spawn5b
+}
+}
+
+actor SanctuaryFX1 : SanctuaryFXSpawner
+{
+scale 2.5
+RenderStyle Add
+Alpha 0.6
++CLIENTSIDEONLY
+states
+{
+Spawn:
+SANC G 0
+SANC G 1
+stop
+}
+}
+
+actor SanctuaryFX2 : SanctuaryFX1
+{
+states
+{
+Spawn:
+SANC H 0
+SANC H 1
+stop
+}
+}
+
+actor SanctuaryFX3 : SanctuaryFX1
+{
+states
+{
+Spawn:
+SANC I 0
+SANC I 1
+stop
+}
+}
+
+actor SanctuaryFXM1 : SanctuaryFX1{}
+actor SanctuaryFXM2 : SanctuaryFX2{}
+actor SanctuaryFXM3 : SanctuaryFX3{}
+
+actor SanctuaryFXMA : SanctuaryFXM1{Alpha 0.06}
+actor SanctuaryFXMB : SanctuaryFXM2{Alpha 0.09}
+actor SanctuaryFXMC : SanctuaryFXM3{Alpha 0.12}
+actor SanctuaryFXMD : SanctuaryFXM1{Alpha 0.15}
+actor SanctuaryFXME : SanctuaryFXM2{Alpha 0.18}
+actor SanctuaryFXMF : SanctuaryFXM3{Alpha 0.21}
+actor SanctuaryFXMG : SanctuaryFXM1{Alpha 0.24}
+actor SanctuaryFXMH : SanctuaryFXM2{Alpha 0.27}
+
+actor SanctuaryTeam : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+goto Default
+Default:
+CODB A 0 A_FireCustomMissile("SanctuaryBullet",0,0,-10,0) 
+stop
+LightFire:
+CODB A 0 A_FireCustomMissile("SanctuaryBulletL",0,0,-10,0) 
+stop
+WilyFire:
+CODB A 0 A_FireCustomMissile("SanctuaryBulletW",0,0,-10,0) 
+stop
+CossackFire:
+CODB A 0 A_FireCustomMissile("SanctuaryBulletC",0,0,-10,0) 
+stop
+KingFire:
+CODB A 0 A_FireCustomMissile("SanctuaryBulletK",0,0,-10,0) 
+stop
+}
+}

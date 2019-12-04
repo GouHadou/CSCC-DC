@@ -1,0 +1,3136 @@
+//Cold Fusion
+graphic CFWPI, 30, 30 {XScale 2.0 YScale 2.0 Patch CFWPA0, 0, 0}
+//SinkMan
+graphic SNKWI, 30, 30 {XScale 2.0 YScale 2.0 Patch SNKWX0, 0, 0}
+
+//Copy Robot
+graphic  BANISHI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BANUA0, 0, 0
+}
+
+//Ice / Sparky
+graphic ICBUI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ICBUA0, 0, 0
+}
+
+graphic SPBUI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SPBUA0, 0, 0
+}
+
+graphic ICSPFUS, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ISFUA0, 0, 0
+}
+//Beed Copy
+graphic MIBAAI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MIBAZ0, 0, 0
+}
+graphic TSUCWI, 30, 30 //Tsuki Copy Icon
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TSUCW0, 0, 0
+}
+//Messatsu
+graphic RDEMON, 30, 30 //Shin Gokou Satsu
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MESUA0, 0, 0
+}
+
+graphic TEMAGOU, 30, 30//Gou Hadoken
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MESUB0, 0, 0
+}
+
+graphic MISOGI, 30, 30 //Misogi
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MESUC0, 0, 0
+}
+
+//Ukiyama
+graphic UKIREM, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHL0, 0, 0
+}
+
+graphic UKIUPG, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHK0, 0, 0
+}
+
+graphic UKISNI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHB0, 0, 0
+}
+
+graphic UKIRPD, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHC0, 0, 0
+}
+
+graphic UKISHT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHD0, 0, 0
+}
+
+graphic UKIARC, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHG0, 0, 0
+}
+
+graphic UKIAMP, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHF0, 0, 0
+}
+
+graphic UKIVEL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHE0, 0, 0
+}
+
+graphic UKINER, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHH0, 0, 0
+}
+
+graphic UKIEXP, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHJ0, 0, 0
+}
+
+graphic UKIBOU, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHI0, 0, 0
+}
+
+graphic UKIRTE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CJOYA0, 0, 0
+}
+graphic UKIRTE2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CJOYB0, 0, 0
+}
+
+graphic UKIFULL, 9, 29
+{
+}
+
+graphic METEI, 30, 30//Meteor Stick
+{
+   XScale 2.0
+   YScale 2.0
+   Patch METEA0, 0, 0
+}
+
+//Knux
+graphic KnuxIcon, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BARWJ0, 0, 0
+}
+
+graphic BubArrow, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BARWK0, 0, 0
+}
+
+
+//Mutant Yoshi
+graphic EGGWI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EGGWA0, 0, 0
+}
+
+//Rozark
+graphic RZBAT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch RZBTX0, 0, 0
+}
+
+//AdaraMozes
+graphic CHICA, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ADCCB0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+//Korby
+graphic COMETIC, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch COMZZ0, 0, 0
+}
+
+graphic  KORBTRSH, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch KBHUX0, 0, 0
+}
+
+graphic KYSTI, 30, 30 //Ky Jet
+{
+   XScale 2.0
+   YScale 2.0
+   Patch KYSTA0, 0, 0
+}
+
+//Finite Laser
+graphic SLLSI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SLLSA0, 0, 0
+}
+
+graphic CHIDI, 30, 30 //Chimera Mans dice icon
+{
+   XScale 2.0
+   YScale 2.0
+   Patch DIEIA0, 0, 0
+}
+
+//Yellow Devil
+graphic STATI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch STSHD0, 0, 0
+}
+
+Graphic TOMMYI, 30, 30//Blazko's Tommy Gun
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TOMYA0, 0, 0
+}
+Graphic NADEI, 30, 30//Nade Spam
+{
+   XScale 2.0
+   YScale 2.0
+   Patch NADEA0, 0, 0
+}
+Graphic COG1I, 30, 30//Fragmentation Grenade
+{
+   XScale 2.0
+   YScale 2.0
+   Patch COG1A0, 0, 0
+}
+
+Graphic COW1I, 30, 30//Grand Dad semiautomatic rifle
+{
+   XScale 2.0
+   YScale 2.0
+   Patch COW1A0, 0, 0
+}
+
+graphic MAGAICON, 30, 30//Laggy Reload
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TOMYR0, 0, 0
+}
+
+graphic  BREVI1, 30, 30 // Breve Icon
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BPLTA0, 0, 0
+} 
+
+sprite BRECA0, 30, 30 //Breve Lag Spike Icon
+{ 
+   XScale 1.0
+   YScale 1.0
+   Patch BREVA8A2, 0, 0 {Translation "192:192=228:228", "198:198=121:121"} 
+}
+
+graphic SENTRIG, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SEWIW0, 0, 0
+}
+graphic SENWISP, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SEWII0, 0, 0
+}
+
+graphic TZCHARGE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00A0, 0, 0
+}
+
+graphic TZRAPID, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00B0, 0, 0
+}
+
+graphic TZCANNON, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00C0, 0, 0
+}
+
+graphic TZDEVOUR, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00D0, 0, 0
+}
+
+graphic TZCOMET, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00E0, 0, 0
+}
+
+graphic TZNOCI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00F0, 0, 0
+}
+
+graphic TZTERROR, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00G0, 0, 0
+}
+
+graphic TZNIL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00H0, 0, 0
+}
+
+graphic TZRAIL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TZ00I0, 0, 0
+}
+
+graphic AUCAIC, 30, 30//Blade Roden Auto Cannon
+{
+   XScale 2.0
+   YScale 2.0
+   Patch AUCAI0, 0, 0
+}
+
+graphic DUBLIC, 30, 30//Blade Roden Dual Blade
+{
+   XScale 2.0
+   YScale 2.0
+   Patch DUBLI0, 0, 0
+}
+
+graphic BIKIC, 30, 30 //Biks Stuff
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SHOIA0, 0, 0
+}
+
+graphic SBLWI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SBLWI0, 0, 0
+}
+
+//Gizmo Stuff
+texture CLWGBAR2, 56, 8 
+{
+patch CLWGBAR1, 0, 0 {rotate 90} 
+}
+
+graphic ETERNI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ETERN0, 0, 0
+}
+
+texture ETERBAR2, 56, 8 
+{
+patch ETERBAR1, 0, 0 {rotate 90}
+}
+
+graphic PLASMI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PLSME0, 0, 0
+}
+
+texture PLASBAR2, 56, 8 
+{
+patch PLASBAR1, 0, 0 {rotate 90} 
+}
+
+graphic CHAOSI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CHAOE0, 0, 0
+}
+
+texture CHAOBAR2, 56, 8
+{
+patch CHAOBAR1, 0, 0 {rotate 90} 
+}
+
+graphic FLAMEI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FLMEE0, 0, 0
+}
+
+texture FLMEBAR2, 56, 8 
+{
+patch FLMEBAR1, 0, 0 {rotate 90} 
+}
+
+graphic FROSTI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FRSTE0, 0, 0
+}
+
+texture FRSTBAR2, 56, 8 
+{
+patch FRSTBAR1, 0, 0 {rotate 90}
+}
+
+graphic LIGHTI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LGHTE0, 0, 0
+}
+
+texture ELECBAR2, 56, 8 
+{
+patch ELECBAR1, 0, 0 {rotate 90} 
+}
+
+
+graphic HYDROI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HYDRE0, 0, 0
+}
+
+/*
+texture BARAMM66, 56, 8 
+{
+patch BARAMMO6, 0, 0 {rotate 90} 
+}*/
+
+graphic MISSLI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MISSE0, 0, 0
+}
+
+graphic KITTHI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HELPR0, 0, 0
+}
+
+graphic KITTYI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HELPS0, 0, 0
+}
+
+graphic KITTYI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HELPS0, 0, 0
+}
+
+graphic GITEMI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch GITME0, 0, 0
+}
+
+graphic ETERUI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ETERUP, 0, 0
+}
+
+graphic COMETIC, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch COMZZ0, 0, 0
+}
+
+
+
+//SaviorSword textures start here. Be prepared for a wall of text.
+
+texture SAVBARH, 56, 8 
+{
+patch SAVBARV, 0, 0 {rotate 90} 
+}
+
+sprite SAVSH1, 4, 7
+{
+offset 6,2
+patch SCLAH1, 0, 0 {Translation "54:54=228:228", "105:105=41:41"} 
+}
+sprite SAVSH5, 4, 7
+{
+offset -3,2
+patch SCLAH5, 0, 0 {Translation "54:54=228:228", "105:105=41:41"} 
+}
+sprite SAVSH6H4, 20, 5
+{
+offset 5,2
+patch SCLAH6H4, 0, 0 {Translation "54:54=228:228", "105:105=41:41"} 
+}
+sprite SAVSH7H3, 12, 5
+{
+offset 6,2
+patch SCLAH7H3, 0, 0 {Translation "210:211=228:228", "105:105=41:41"} 
+}
+sprite SAVSH8H2, 16, 7
+{
+offset 8,3
+patch SCLAH8H2, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+
+sprite SAVSI1, 13, 9
+{
+offset 6,4
+patch SCLAI1, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSI5, 13, 9
+{
+offset 6,4
+patch SCLAI5, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSI6I4, 22, 13
+{
+offset 5,8
+patch SCLAI6I4, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSI7I3, 26, 9
+{
+offset 6,4
+patch SCLAI7I3, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSI8I2, 28, 9
+{
+offset 8,6
+patch SCLAI8I2, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+
+sprite SAVSJ1, 18, 14
+{
+offset 6,8
+patch SCLAJ1, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}   
+}
+sprite SAVSJ5, 18, 14
+{
+offset 11,8
+patch SCLAJ5, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSJ6J4, 22, 13
+{
+offset 5,10
+patch SCLAJ6J4, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSJ7J3, 24, 12
+{
+offset 2,9
+patch SCLAJ7J3, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}   
+}
+sprite SAVSJ8J2, 29, 14
+{
+offset 8,11
+patch SCLAJ8J2, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+
+sprite SAVSK1, 18, 15
+{
+offset 2,12
+patch SCLAK1, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSK5, 18, 15
+{
+offset 13,11
+patch SCLAK5, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSK6K4, 16, 15
+{
+offset 0,12
+patch SCLAK6K4, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSK7K3, 12, 15
+{
+offset -11,12
+patch SCLAK7K3, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSK8K2, 16, 15
+{
+offset -5,13
+patch SCLAK8K2, 0, 0 {Translation "210:211=228:228", "105:105=41:41"} 
+}
+
+sprite SAVSL1, 11, 11
+{
+offset -6,13
+patch SCLAL1, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSL5, 11, 11
+{
+offset 16,13
+patch SCLAL5, 0, 0 {Translation "210:211=228:228", "105:105=41:41"} 
+}
+sprite SAVSL6L4, 9, 11
+{
+offset -5,13
+patch SCLAL6L4, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}   
+}
+sprite SAVSL7L3, 8, 11
+{
+offset -15,12
+patch SCLAL7L3, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+sprite SAVSL8L2, 8, 11
+{
+offset -8,13
+patch SCLAL8L2, 0, 0 {Translation "210:211=228:228", "105:105=41:41"}  
+}
+
+sprite SAVCH1, 4, 7
+{
+offset 6,2
+patch SAVSH1, 0, 0 {FlipY} 
+}
+sprite SAVCH5, 4, 7
+{
+offset -3,2
+patch SAVSH5, 0, 0 {FlipY} 
+}
+sprite SAVCH6H4, 20, 5
+{
+offset 5,2
+patch SAVSH6H4, 0, 0 {FlipY} 
+}
+sprite SAVCH7H3, 12, 5
+{
+offset 6,2
+patch SAVSH7H3, 0, 0 {FlipY} 
+}
+sprite SAVCH8H2, 16, 7
+{
+offset 8,3
+patch SAVSH8H2, 0, 0 {FlipY} 
+}
+
+sprite SAVCI1, 13, 9
+{
+offset 6,4
+patch SAVSI1, 0, 0 {FlipY} 
+}
+sprite SAVCI5, 13, 9
+{
+offset 6,4
+patch SAVSI5, 0, 0 {FlipY} 
+}
+sprite SAVCI6I4, 22, 13
+{
+offset 5,8
+patch SAVSI6I4, 0, 0 {FlipY} 
+}
+sprite SAVCI7I3, 26, 9
+{
+offset 6,4
+patch SAVSI7I3, 0, 0 {FlipY} 
+}
+sprite SAVCI8I2, 28, 9
+{
+offset 8,6
+patch SAVSI8I2, 0, 0 {FlipY} 
+}
+
+sprite SAVCJ1, 18, 14
+{
+offset 6,8
+patch SAVSJ1, 0, 0 {FlipY} 
+}
+sprite SAVCJ5, 18, 14
+{
+offset 11,8
+patch SAVSJ5, 0, 0 {FlipY} 
+}
+sprite SAVCJ6J4, 22, 13
+{
+offset 5,10
+patch SAVSJ6J4, 0, 0 {FlipY} 
+}
+sprite SAVCJ7J3, 24, 12
+{
+offset 2,9
+patch SAVSJ7J3, 0, 0 {FlipY} 
+}
+sprite SAVCJ8J2, 29, 14
+{
+offset 8,11
+patch SAVSJ8J2, 0, 0 {FlipY} 
+}
+
+sprite SAVCK1, 18, 15
+{
+offset 2,12
+patch SAVSK1, 0, 0 {FlipY} 
+}
+sprite SAVCK5, 18, 15
+{
+offset 13,11
+patch SAVSK5, 0, 0 {FlipY} 
+}
+sprite SAVCK6K4, 16, 15
+{
+offset 0,12
+patch SAVSK6K4, 0, 0 {FlipY} 
+}
+sprite SAVCK7K3, 12, 15
+{
+offset -11,12
+patch SAVSK7K3, 0, 0 {FlipY} 
+}
+sprite SAVCK8K2, 16, 15
+{
+offset -5,13
+patch SAVSK8K2, 0, 0 {FlipY} 
+}
+
+sprite SAVCL1, 11, 11
+{
+offset -6,13
+patch SAVSL1, 0, 0 {FlipY} 
+}
+sprite SAVCL5, 11, 11
+{
+offset 16,13
+patch SAVSL5, 0, 0 {FlipY} 
+}
+sprite SAVCL6L4, 9, 11
+{
+offset -5,13
+patch SAVSL6L4, 0, 0 {FlipY} 
+}
+sprite SAVCL7L3, 8, 11
+{
+offset -15,12
+patch SAVSL7L3, 0, 0 {FlipY} 
+}
+sprite SAVCL8L2, 8, 11
+{
+offset -8,13
+patch SAVSL8L2, 0, 0 {FlipY} 
+}
+
+graphic SAVICON, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SAVSM0, 0, 0
+}
+graphic M712IC, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch M7WPJ0, 0, 0
+}
+
+graphic BLOODSP, 30, 30 //Red Eyes Arrow Icon
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VLBLN0, 0, 0
+}
+
+graphic FOUNICO, 30, 30 //gummy
+{
+   XScale 2.0
+   YScale 2.0
+   Patch AMTIJ0, 0, 0
+}
+
+graphic ASPICO, 30, 30 //Gummy Stuff
+{
+   XScale 2.0
+   YScale 2.0
+   Patch AMTIK0, 0, 0
+}
+graphic ATSICO, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch AMTIJ0, 0, 0
+}
+//Freon
+graphic FRICB, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FRIBA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic FRICS, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FRISA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic FRICT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FRITA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic FRINV, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FRIIA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic SAPICON, 30, 30 //Unix Sapper
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BIKDO0, 0, 0
+}
+
+
+
+//Zard
+graphic ZDGN, 30, 30{XScale 2.0 YScale 2.0 Patch ZDGNA0, 0, 0}
+graphic ZDIC, 30, 30{XScale 2.0 YScale 2.0 Patch ZDICA0, 0, 0}
+graphic ZRSD, 30, 30{XScale 2.0 YScale 2.0 Patch ZRSDP0, 0, 0}
+Graphic PABMA0, 32, 32{XScale 2.0 YScale 2.0 Patch PABMA0, 0, 0}
+Graphic FSFZA0, 32, 32{XScale 2.0 YScale 2.0 Patch FSFZA0, 0, 0}
+Graphic RTEAA0, 32, 32{XScale 2.0 YScale 2.0 Patch RTEAA0, 0, 0}
+Graphic LTEAA0, 32, 32{XScale 2.0 YScale 2.0 Patch LTEAA0, 0, 0}
+graphic AJUMA0, 30, 30{XScale 2.0 YScale 2.0 Patch AJUMA0, 0, 0}
+graphic WJUMA0, 30, 30{XScale 2.0 YScale 2.0 Patch WJUMA0, 0, 0}
+graphic YUKKI0, 30, 30{XScale 2.0 YScale 2.0 Patch YUKKI0, 0, 0}
+//AliceTheIceFairy
+graphic RJUMPI, 30, 30{XScale 2.0 YScale 2.0 Patch RJMDA0, 0, 0}
+//Protoman
+graphic PROTOSI, 32, 32{XScale 2.0 YScale 2.0 Patch WEAPU0, 0, 0}
+graphic SPIRII, 175, 50
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SPIRE0, 0, 0
+}
+//Hilman
+graphic HILLIGH, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILTBLU, 0, 0
+}
+
+graphic HILWILY, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILTRED, 0, 0
+}
+
+graphic HILCOS, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILTORA, 0, 0
+}
+
+graphic HILMRX, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILTPUR, 0, 0
+}
+
+graphic HILARRO, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILARW, 0, 0
+}
+
+graphic HILFLSH, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILFFW, 0, 0
+}
+
+graphic HMEDI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HMEDX0, 0, 0
+}
+
+graphic HJUMI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HJUMX0, 0, 0
+}
+
+graphic HBOXI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HBOXX0, 0, 0
+}
+
+graphic HSVRI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HSVRX0, 0, 0
+}
+
+graphic HATKI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HATKX0, 0, 0
+}
+
+graphic HDEFI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HDEFX0, 0, 0
+}
+
+graphic HSPDI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HSPDX0, 0, 0
+}
+
+graphic HILPWR, 16, 16
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILPWRI, 0, 0
+}
+
+graphic HILARM, 16, 16
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILARMI, 0, 0
+}
+
+graphic HILMOB, 16, 16
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HILMOBI, 0, 0
+}
+graphic LABLI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LABLX0, 0, 0
+}
+
+//LordDamager
+graphic LOSICA0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LOSICC0, 0, 0
+}
+
+graphic LWEPB0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LWEPB0, 0, 0
+}
+
+graphic PSMGI0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PSMGI0, 0, 0
+}
+
+graphic LDRMI0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LDRMI0, 0, 0
+}
+
+graphic STPUNCH, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LDSPI0, 0, 0
+}
+///////////////////////////////////////////////////////////////
+graphic ICSHI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ICSHA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic WSwoIcon, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SWOIA0, 0, 0
+}
+
+graphic WAgiIcon, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch AGIIA0, 0, 0
+}
+///////////////////--------------------------------------------
+graphic COOWI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch COOWA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic BSLWI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BSLAZ0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+
+graphic ICEITEM, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch IMAGA0, 0, 0
+}
+
+graphic BWAVI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BWAVK0, 0, 0
+}
+
+graphic CICCI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CICCA0, 0, 0
+}
+///////////////////////////////////////////////////////////////////////////////
+//treo?
+graphic TREIC, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TREIA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic TREID, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TREIB0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+graphic BLMUI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BLMUX0, 0, 0
+}
+
+graphic TSNLIGH, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TSNTBLU, 0, 0
+}
+
+graphic TSNWILY, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TSNTRED, 0, 0
+}
+
+graphic TSNCOS, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TSNTORA, 0, 0
+}
+
+graphic TSNMRX, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TSNTPUR, 0, 0
+}
+
+//not ceridran
+graphic ENBLROW, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRICN1, 0, 0
+}
+
+graphic ENBLSPD, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRICN2, 0, 0
+}
+
+//lago the blago
+graphic VWEAP1, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VICOA0, 0, 0
+}
+
+graphic VWEAP2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VICOB0, 0, 0
+}
+
+//me :D
+graphic JKIKICO, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch JKIKA0, 0, 0
+}
+
+//it's obviously cf's
+graphic PCREEPI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PACRA0, 0, 0 // The whole sprite name of the weapon icon goes here.
+}
+
+
+graphic Horiform, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRYIB0, 0, 0
+}
+
+graphic LineForm, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRYIC0, 0, 0
+}
+
+graphic AllForm, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRYIA0, 0, 0
+}
+
+graphic CWALLI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CWALA0, 0, 0
+}
+/////////////////////////////////////////////////////////////////////////////////
+// Texture definitions generated by SLADE3
+// on Wed Nov 13 04:48:54 2019
+
+Graphic "STATICB", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STCIA0", 0, 0
+}
+
+Graphic "HTANK", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NEBAX0", 0, 0
+}
+
+Graphic "LIBRAUI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LIBRA0", 0, 0
+}
+
+Graphic "BUFFATK", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STATA0", 0, 0
+}
+
+Graphic "BUFFDEF", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STATB0", 0, 0
+}
+
+Graphic "BUFFSPD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STATC0", 0, 0
+}
+
+Graphic "NERFATK", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STATD0", 0, 0
+}
+
+Graphic "NERFDEF", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STATE0", 0, 0
+}
+
+Graphic "NERFSPD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STATF0", 0, 0
+}
+
+Graphic "ATMAI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ATMAX0", 0, 0
+}
+
+Graphic "IMKNWP1", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "IMKNO0", 0, 0
+}
+
+Graphic "CNFSRAY", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "IMKNP0", 0, 0
+}
+
+Graphic "IMKNWP2", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "IMKNQ0", 0, 0
+}
+
+Graphic "SOLARBI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ITLOS0", 0, 0
+}
+
+Graphic "ITLSWP2", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ITLOT0", 0, 0
+}
+
+Sprite "OTSPA0", 320, 200
+{
+	Patch "FSTOD0", 188, 102
+	{
+		Translation "0:238=3:3", "239:239=5:5"
+	}
+}
+
+Graphic "MYSKTSI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WEA3Q0", 0, 0
+	{
+		Translation "228:228=197:197", "111:111=194:194"
+	}
+}
+
+Graphic "HEVSWSI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WEA3Q0", 0, 0
+	{
+		Translation "228:228=152:152", "111:111=154:154"
+	}
+}
+
+Graphic "SACSWSI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WEA3Q0", 0, 0
+	{
+		Translation "111:111=200:200"
+	}
+}
+
+Graphic "DRKSWSI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WEA3Q0", 0, 0
+	{
+		Translation "228:228=181:181", "111:111=5:5"
+	}
+}
+
+Graphic "GALCTSI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WEA3Q0", 0, 0
+	{
+		Translation "228:228=118:118", "111:111=130:130"
+	}
+}
+
+Graphic "PROTOSI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WEAPU0", 0, 0
+}
+
+Graphic "PROTOHOK", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PHOKA0", 0, 0
+}
+
+Graphic "PRTGA0", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PRTGA0", 0, 0
+}
+
+Graphic "PRTGB0", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PRTGB0", 0, 0
+}
+
+Graphic "DRKMSSLE", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "DRKMA0", 0, 0
+}
+
+Graphic "LOSICA0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LOSICC0", 0, 0
+}
+
+Graphic "RRTWEP1", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBMA0", 0, 0
+}
+
+Graphic "RRTWEP2", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBMB0", 0, 0
+}
+
+Graphic "BASICTO", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBMC0", 0, 0
+}
+
+Graphic "FIRETO", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBMD0", 0, 0
+}
+
+Graphic "ELECTO", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBME0", 0, 0
+}
+
+Graphic "ICETO", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBMF0", 0, 0
+}
+
+Graphic "CHAOSWP1", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBMG0", 0, 0
+}
+
+Graphic "CHAOSWP2", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBMH0", 0, 0
+}
+
+Graphic "FLMBSTR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "G97IA0", 0, 0
+}
+
+Graphic "OVERHEAT", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "G97IB0", 0, 0
+}
+
+Graphic "CRSBOMB", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "G97IC0", 0, 0
+}
+
+Graphic "ATBSMG", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ASMGA0", 0, 0
+}
+
+Graphic "BMSLSRI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BLICA0", 0, 0
+}
+
+Graphic "FOAMVBI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "FVICA0", 0, 0
+}
+
+Graphic "ATRLVBI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "AVICA0", 0, 0
+}
+
+Graphic "GRVTVBI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "GVICA0", 0, 0
+}
+
+Graphic "ATBSAR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ASARA0", 0, 0
+}
+
+Graphic "ATBSNI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ASNIA0", 0, 0
+}
+
+Graphic "OMICON01", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OMICA0", 0, 0
+}
+
+Graphic "MAGRISE", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MAGRA0", 0, 0
+}
+
+Graphic "EDDIE1", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "EDE1A0", 0, 0
+}
+
+Graphic "MINILSR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPA0", 0, 0
+}
+
+Graphic "MINILBM", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPB0", 0, 0
+}
+
+Graphic "MINIHDO", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPC0", 0, 0
+}
+
+Graphic "MINIBLZ", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPD0", 0, 0
+}
+
+Graphic "MINIFST", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPE0", 0, 0
+}
+
+Graphic "MINISHC", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPF0", 0, 0
+}
+
+Graphic "MINIFLR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPI0", 0, 0
+}
+
+Graphic "MINISPT", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "OCBPJ0", 0, 0
+}
+
+Graphic "BLAZEROD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BLZRA0", 0, 0
+}
+
+Graphic "FROSTSTF", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "FSTSA0", 0, 0
+}
+
+Graphic "RAGNAROK", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "RXSWK0", 0, 0
+}
+
+Graphic "ILLUMINA", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "RXSWL0", 0, 0
+}
+
+Graphic "ATMAWEAP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "RXSWM0", 0, 0
+}
+
+Graphic "BUGSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BUGPA0", 0, 0
+}
+
+Graphic "DGNSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "DGNPA0", 0, 0
+}
+
+Graphic "DRKSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "DRKPA0", 0, 0
+}
+
+Graphic "ELCSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ELCPA0", 0, 0
+}
+
+Graphic "FIRSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "FRPLA0", 0, 0
+}
+
+Graphic "FLYSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "FLYPA0", 0, 0
+}
+
+Graphic "GHOSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "GHOPA0", 0, 0
+}
+
+Graphic "GRDSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "GRDPA0", 0, 0
+}
+
+Graphic "GRSSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "GRSPA0", 0, 0
+}
+
+Graphic "ICESHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ICEPA0", 0, 0
+}
+
+Graphic "PSNSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PSNPA0", 0, 0
+}
+
+Graphic "PSYSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PSYPA0", 0, 0
+}
+
+Graphic "RCKSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "RCKPA0", 0, 0
+}
+
+Graphic "STLSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STLPA0", 0, 0
+}
+
+Graphic "WTRSHD", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WTRPA0", 0, 0
+}
+
+Graphic "NORMALT", 32, 16
+{
+	Patch "TYPEA0", 0, 0
+}
+
+Graphic "FIGHTNGT", 32, 16
+{
+	Patch "TYPEB0", 0, 0
+}
+
+Graphic "FLYINGT", 32, 16
+{
+	Patch "TYPEC0", 0, 0
+}
+
+Graphic "POISONT", 32, 16
+{
+	Patch "TYPED0", 0, 0
+}
+
+Graphic "GROUNDT", 32, 16
+{
+	Patch "TYPEE0", 0, 0
+}
+
+Graphic "ROCKT", 32, 16
+{
+	Patch "TYPEF0", 0, 0
+}
+
+Graphic "BUGTT", 32, 16
+{
+	Patch "TYPEG0", 0, 0
+}
+
+Graphic "GHOSTT", 32, 16
+{
+	Patch "TYPEH0", 0, 0
+}
+
+Graphic "STEELT", 32, 16
+{
+	Patch "TYPEI0", 0, 0
+}
+
+Graphic "QQQQQQT", 32, 16
+{
+	Patch "TYPEJ0", 0, 0
+}
+
+Graphic "FIRET", 32, 16
+{
+	Patch "TYPEK0", 0, 0
+}
+
+Graphic "WATERT", 32, 16
+{
+	Patch "TYPEL0", 0, 0
+}
+
+Graphic "GRASST", 32, 16
+{
+	Patch "TYPEM0", 0, 0
+}
+
+Graphic "ELECTRCT", 32, 16
+{
+	Patch "TYPEN0", 0, 0
+}
+
+Graphic "PSYCHICT", 32, 16
+{
+	Patch "TYPEN0", 0, 0
+}
+
+Graphic "ICENT", 32, 16
+{
+	Patch "TYPEP0", 0, 0
+}
+
+Graphic "DRAGONT", 32, 16
+{
+	Patch "TYPEQ0", 0, 0
+}
+
+Graphic "DARKT", 32, 16
+{
+	Patch "TYPER0", 0, 0
+}
+
+Graphic "WTRFLLI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WTFIA0", 0, 0
+}
+
+Graphic "BSRAGE", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ATMAY0", 0, 0
+}
+
+Graphic "AURONS", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WEAPU0", 0, 0
+}
+
+Graphic "AURONR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "RFLCT0", 0, 0
+}
+
+Graphic "SOULDUN", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NSDUA0", 0, 0
+}
+
+Graphic "SHUFFLE1", 56, 40
+{
+	Patch "ZSHFA0", 0, 0
+}
+
+Graphic "SHUFFLE0", 56, 40
+{
+	Patch "ZSHFB0", 0, 0
+}
+
+Graphic "SC01GS1", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPA0", 0, 0
+}
+
+Graphic "SC02GS2", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPB0", 0, 0
+}
+
+Graphic "SC03GS3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPC0", 0, 0
+}
+
+Graphic "SC04BPO", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPD0", 0, 0
+}
+
+Graphic "SC05MIN", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPE0", 0, 0
+}
+
+Graphic "SC06TOR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPF0", 0, 0
+}
+
+Graphic "SC07AS3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPG0", 0, 0
+}
+
+Graphic "SC08STP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPH0", 0, 0
+}
+
+Graphic "SC09MTR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPI0", 0, 0
+}
+
+Graphic "SC10RWV", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPJ0", 0, 0
+}
+
+Graphic "SC11BBM", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPK0", 0, 0
+}
+
+Graphic "SC12CLG", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPL0", 0, 0
+}
+
+Graphic "SC13MCG", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPM0", 0, 0
+}
+
+Graphic "SC14MAG", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPN0", 0, 0
+}
+
+Graphic "SC15BLI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPO0", 0, 0
+}
+
+Graphic "SC16ICE", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPP0", 0, 0
+}
+
+Graphic "SC17GUY", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPQ0", 0, 0
+}
+
+Graphic "SC18PS3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPR0", 0, 0
+}
+
+Graphic "SC19LIT", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPS0", 0, 0
+}
+
+Graphic "SC20CV3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPT0", 0, 0
+}
+
+Graphic "SC21AH3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CHIPU0", 0, 0
+}
+
+Graphic "MC22DBP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MEGAA0", 0, 0
+}
+
+Graphic "MC23SVC", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MEGAB0", 0, 0
+}
+
+Graphic "MC24APT", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MEGAC0", 0, 0
+}
+
+Graphic "MC25GSX", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MEGAD0", 0, 0
+}
+
+Graphic "MC26NVS", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MEGAE0", 0, 0
+}
+
+Graphic "MC27ZSV", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MEGAF0", 0, 0
+}
+
+Graphic "MC28JS1", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MEGAG0", 0, 0
+}
+
+Graphic "GC29GFH", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "GIGAA0", 0, 0
+}
+
+Graphic "GC30BAS", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "GIGAB0", 0, 0
+}
+
+Graphic "GUNSOL1", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICNA0", 0, 0
+}
+
+Graphic "GUNSOL2", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICNB0", 0, 0
+}
+
+Graphic "GUNSOL3", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICNC0", 0, 0
+}
+
+Graphic "GUNSOLX", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICND0", 0, 0
+}
+
+Graphic "SUPERV", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICNE0", 0, 0
+}
+
+Graphic "ATKP30", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICNF0", 0, 0
+}
+
+Graphic "DBLPNT", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICNG0", 0, 0
+}
+
+Graphic "GBASSX", 56, 48
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NICNH0", 0, 0
+}
+
+Graphic "ARMOOD1", 48, 16
+{
+	Patch "MOODA0", 0, 0
+}
+
+Graphic "ARMOOD2", 48, 16
+{
+	Patch "MOODB0", 0, 0
+}
+
+Graphic "ARMOOD3", 48, 16
+{
+	Patch "MOODC0", 0, 0
+}
+
+Graphic "ARMOOD4", 48, 16
+{
+	Patch "MOODD0", 0, 0
+}
+
+Graphic "ARMOOD5", 48, 16
+{
+	Patch "MOODE0", 0, 0
+}
+
+Graphic "ARMOOD6", 48, 16
+{
+	Patch "MOODF0", 0, 0
+}
+
+Graphic "ARMOOD1", 48, 16
+{
+	Patch "MOODA0", 0, 0
+}
+
+Graphic "PROTOSL", 48, 16
+{
+	Patch "SOUNP0", 0, 0
+}
+
+Graphic "GYROSL", 48, 16
+{
+	Patch "SOUNG0", 0, 0
+}
+
+Graphic "NAPLMSL", 48, 16
+{
+	Patch "SOUNN0", 0, 0
+}
+
+Graphic "SERCHSL", 48, 16
+{
+	Patch "SOUNS0", 0, 0
+}
+
+Graphic "KNGHTSL", 48, 16
+{
+	Patch "SOUNK0", 0, 0
+}
+
+Graphic "AQUASL", 48, 16
+{
+	Patch "SOUNA0", 0, 0
+}
+
+Graphic "ELECSL", 48, 16
+{
+	Patch "SOUNE0", 0, 0
+}
+
+Graphic "NEOSL", 48, 16
+{
+	Patch "SOUNX0", 0, 0
+}
+
+Graphic "NEORG", 48, 16
+{
+	Patch "SOUNY0", 0, 0
+}
+
+Graphic "NEOTC", 48, 16
+{
+	Patch "SOUNZ0", 0, 0
+}
+
+Graphic "AURONHD", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "AUHDA0", 0, 0
+}
+
+Graphic "CUSTBAR", 144, 15
+{
+	XScale 1.750
+	YScale 1.750
+	Patch "CUSTBAR", 0, 0
+}
+
+Graphic "CUSTFULL", 144, 15
+{
+	XScale 1.750
+	YScale 1.750
+	Patch "CUSTFULL", 0, 0
+}
+
+Graphic "HELTHBX", 42, 16
+{
+	Patch "HPBXA0", 0, 0
+}
+
+Graphic "BSTRLV1", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BUL1A0", 0, 0
+}
+
+Graphic "BSTRLV2", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BUL2A0", 0, 0
+}
+
+Graphic "BSTRLV3", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BUL3A0", 0, 0
+}
+
+Graphic "BSTRLV4", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BUL4A0", 0, 0
+}
+
+Graphic "BSTRLV5", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BUL5A0", 0, 0
+}
+
+Graphic "CHIPLV1", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL1A0", 0, 0
+}
+
+Graphic "CHIPLVN", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL1B0", 0, 0
+}
+
+Graphic "CHIPLV2", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL2A0", 0, 0
+}
+
+Graphic "CHIPLV3A", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL3A0", 0, 0
+}
+
+Graphic "CHIPLV3B", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL3B0", 0, 0
+}
+
+Graphic "CHIPLV3C", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL3C0", 0, 0
+}
+
+Graphic "CHIPLV4B", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL3B0", 0, 0
+}
+
+Graphic "CHIPLV4C", 96, 56
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CUL3C0", 0, 0
+}
+
+Graphic "PC01MB3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PCHPA0", 0, 0
+}
+
+Graphic "PC02HC3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PCHPB0", 0, 0
+}
+
+Graphic "PC03CST", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PCHPC0", 0, 0
+}
+
+Graphic "PC04MUR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PCHPD0", 0, 0
+}
+
+Graphic "PC05DRE", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PCHPE0", 0, 0
+}
+
+Graphic "NVSWDN", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NVBLA0", 0, 0
+}
+
+Graphic "NEOBLDE", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NBLUA0", 0, 0
+}
+
+Graphic "NEOPALM", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NEOPX0", 0, 0
+}
+
+Graphic "NEONBOW", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NBOUA0", 0, 0
+}
+
+Graphic "NEASPER", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NSPUA0", 0, 0
+}
+
+Graphic "NLUNGEI", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NLNGA0", 0, 0
+}
+
+Graphic "FIRESP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "FIRAA0", 0, 0
+}
+
+Graphic "BOLTSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BOLTA0", 0, 0
+}
+
+Graphic "BLIZDSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ICE1A0", 0, 0
+}
+
+Graphic "SCORGSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "SCRGA0", 0, 0
+}
+
+Graphic "STUNSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "STOPA0", 0, 0
+}
+
+Graphic "GRUDGES", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "GRDGA0", 0, 0
+}
+
+Graphic "METEORS", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "METEO0", 0, 0
+}
+
+Graphic "FLARESP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "FLARE0", 0, 0
+}
+
+Graphic "QUAKESP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "QUAKA0", 0, 0
+}
+
+Graphic "AEROSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "AEROA0", 0, 0
+}
+
+Graphic "SURFSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "SURFA0", 0, 0
+}
+
+Graphic "REFLECTS", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "REFLC0", 0, 0
+}
+
+Graphic "HEALSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "HEALA0", 0, 0
+}
+
+Graphic "HOLYSP", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "HOLYI0", 0, 0
+}
+
+Graphic "ULTIMA", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "ULTMA0", 0, 0
+}
+
+Graphic "EDDIE2", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "EDE2A0", 0, 0
+}
+
+Graphic "XPOTION", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "XPOTA0", 0, 0
+}
+
+Graphic "XETHER", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "XETHA0", 0, 0
+}
+
+Graphic "XELIXIR", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "XELXA0", 0, 0
+}
+
+Graphic "WARPICO", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "WARPA0", 0, 0
+}
+
+Graphic "RVSBRSK", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BZRKA0", 0, 0
+}
+
+Graphic "RVSBRSKA", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BZRKB0", 0, 0
+}
+
+Graphic "RVSRAGE", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "RAGEA0", 0, 0
+}
+
+Graphic "RVSRAGEA", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "RAGEB0", 0, 0
+}
+
+Graphic "PILICON1", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLA0", 0, 0
+}
+
+Graphic "PILICON2", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLB0", 0, 0
+}
+
+Graphic "PILICON3", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLC0", 0, 0
+}
+
+Graphic "PILICON4", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLD0", 0, 0
+}
+
+Graphic "PILICON5", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLE0", 0, 0
+}
+
+Graphic "PILICON6", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLF0", 0, 0
+}
+
+Graphic "PILICON7", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLG0", 0, 0
+}
+
+Graphic "PILICON8", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLH0", 0, 0
+}
+
+Graphic "PILICON9", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLI0", 0, 0
+}
+
+Graphic "PILICN10", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLJ0", 0, 0
+}
+
+Graphic "PILION11", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLK0", 0, 0
+}
+
+Graphic "PILICN12", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLL0", 0, 0
+}
+
+Graphic "PILICN13", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLM0", 0, 0
+}
+
+Graphic "PILICN14", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLN0", 0, 0
+}
+
+Graphic "PILICN15", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLO0", 0, 0
+}
+
+Graphic "PILICN16", 32, 32
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "PILLP0", 0, 0
+}
+
+
+//InsanePharaohman
+Graphic "TECHHUD", 69, 74{Patch "TECHHUD", 0, 0}
+Graphic "TECHHUD1", 69, 74{Patch "TECHHUD1", 0, 0}
+Graphic "TECHHUD2", 69, 74{Patch "TECHHUD2", 0, 0}
+Graphic "TECHHUD3", 69, 74{Patch "TECHHUD3", 0, 0}
+Graphic "TECHHUD4", 69, 74{Patch "TECHHUD4", 0, 0}
+Graphic "TECHHU5B", 69, 74{Patch "TECHHUD5", 0, 0}
+Graphic "TECHHU5O", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=217:217", "198:198=221:221"}}
+Graphic "TECHHU5Y", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=160:160", "198:198=229:229"}}
+Graphic "TECHHU5R", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=172:172", "198:198=176:176"}}
+Graphic "TECHHU5G", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=109:109", "198:198=111:111"}}
+Graphic "TECHHU5P", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=58:58", "198:198=62:62"}}
+
+
+//Aegis
+Sprite "LTSCI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NPSIA0", 0, 0
+}
+
+Sprite "BARRI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NPSIB0", 0, 0
+}
+//Voxleator
+Sprite "VOXAI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "VXHDA0", 0, 0
+}
+
+Sprite "VOXBI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "VXHDB0", 0, 0
+}
+//Zaffre
+Sprite "TPGNI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CWEPA0", 0, 0
+}
+
+Sprite "VOXCI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "VXHDC0", 0, 0
+}
+//LordDamager
+graphic LOSICA0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LOSICC0, 0, 0
+}
+
+graphic LWEPB0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LWEPB0, 0, 0
+}
+
+graphic PSMGI0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PSMGI0, 0, 0
+}
+
+graphic LDRMI0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LDRMI0, 0, 0
+}
+
+graphic STPUNCH, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch LDSPI0, 0, 0
+}
+
+//Ankhzirus
+graphic ANSTAFF, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ANKST0, 0, 0
+}
+
+//Hikari
+Graphic PFKO, 128, 56
+{
+ XScale 2.0
+ YScale 2.0
+ Patch PFKO, 0, 0
+}
+
+graphic HIKOK, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HIKOU0, 0, 0
+}
+
+graphic PERFHUD1, 333, 120
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PERFHUD1, 0, 0
+}
+
+graphic PERFHUD2, 333, 120
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PERFHUD2, 0, 0
+}
+
+//EdgeLord
+graphic ItemUse, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch USEIA0, 0, 0
+}
+graphic ItemUseE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch USEIB0, 0, 0
+}
+graphic EdgeGunI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EDGAA0, 0, 0
+}
+graphic EdgeSwdI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EDGAB0, 0, 0
+}
+graphic EdgeBrsI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EDGAC0, 0, 0
+}
+
+//Akane
+graphic DARSPLT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch DKSPI0, 0, 0
+}
+
+graphic SHAPULL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SHPLI0, 0, 0
+}
+
+graphic SUNSPLT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SSPLI0, 0, 0
+}
+
+graphic SHASPH, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SHSPI0, 0, 0
+}
+//corporal
+Graphic TOMMYI, 30, 30//Blazko's Tommy Gun
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TOMYA0, 0, 0
+}
+Graphic NADEI, 30, 30//Nade Spam
+{
+   XScale 2.0
+   YScale 2.0
+   Patch NADEA0, 0, 0
+}
+
+graphic MAGAICON, 30, 30//Laggy Reload
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TOMYR0, 0, 0
+}
+
+Graphic COG1I, 30, 30//Fragmentation Grenade
+{
+   XScale 2.0
+   YScale 2.0
+   Patch COG1A0, 0, 0
+}
+
+Graphic COW1I, 30, 30//Grand Dad semiautomatic rifle
+{
+   XScale 2.0
+   YScale 2.0
+   Patch COW1A0, 0, 0
+}
+//SuperShinobi
+graphic NINFAN, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch NIWEP0, 0, 0
+}
+
+//Flameryn
+graphic FDECOY, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FLDCI0, 0, 0
+}
+
+//TankOpp
+graphic TANKACTI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TANKICON, 0, 0
+}
+
+graphic TANKDACT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FOOTICON, 0, 0
+}
+
+//Vocalwoman
+graphic VOCAL1, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPA0, 0, 0
+}
+
+graphic VOCAL2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPB0, 0, 0
+}
+
+graphic VOCAL3, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPC0, 0, 0
+}
+
+graphic MUNOZ0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MUNOZ0, 0, 0
+}
+
+//Snail Breeder
+graphic SNELICO1, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BLMUX0, 0, 0
+}
+
+graphic SNELICO2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BLMUY0, 0, 0
+}
+
+graphic SNELICO3, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SNSHX0, 0, 0
+}
+
+//Yang 
+graphic YANGRLD, 30, 30 //Yang reload Sprite
+{
+   XScale 2.0
+   YScale 2.0
+   Patch YNGRA0, 0, 0
+}
+
+//Fume
+graphic FICON1, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FUICA0, 0, 0
+}
+
+graphic FICON2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FUICB0, 0, 0
+}
+
+// Zen Trainer
+graphic ClouIcon,30,30{XScale 2.0 YScale 2.0 Patch ZNITA0,0,0}
+
+//Yang 
+graphic EMBCEL, 30, 30 //Yang reload Sprite
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EMCEX0, 0, 0
+}
+
+//========================
+//______|CopyWeps|________
+//========================
+
+graphic ORBMSL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ORBDX0, 0, 0
+}
+
+graphic PISTRE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PTREA0, 0, 0
+}
+
+graphic NINFAN, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch NIWEP0, 0, 0
+}
+
+graphic INSAR0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch INASA0, 0, 0
+}
+
+// End of texture definitions

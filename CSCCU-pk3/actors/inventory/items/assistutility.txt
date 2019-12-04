@@ -1,0 +1,447 @@
+actor ItemGiver : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.pickupmessage "Support Item! "
+Inventory.PickupSound "item/1up"
+scale 2.0
++COUNTITEM
+-FLOATBOB
++INVBAR
+States
+{
+Spawn:
+"----" A 0
+"----" A 35 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+OtherSpawn:
+Goto ColdFusionSpawn
+MegaSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+"----" A 0 A_Jump(256, "Animation") 
+goto Animation
+CopySpawn:
+ColdFusionSpawn:
+IceSparkySpawn:
+MessatsuSpawn:
+UkiyamaSpawn:
+KnuxSpawn:
+YoshiSpawn:
+RozarkSpawn:
+AdaraSpawn:
+KorbySpawn:
+KingYamatoSpawn:
+FiniteZeroSpawn:
+JackCorvusSpawn:
+OldYDSpawn:
+YellowDevilSpawn:
+ChimeraManSpawn:
+CutManMikeSpawn:
+LaggyBlazkoSpawn:
+BreveSpawn:
+Beed28Spawn:
+BlazeSpawn:
+BlazeOldSpawn:
+TsukiSpawn:
+TsukiOldSpawn:
+TheBladeRodenSpawn:
+M712Spawn:
+BikdarkSpawn:
+LegoSpawn:
+SaviorSwordSpawn:
+DaverisSpawn:
+HumanDestroyerSpawn:
+StonefunkSpawn:
+RedEyesSpawn:
+GizmoSpawn:
+ZardSpawn:
+SmashSpawn:
+HilmanSpawn:
+"----" A 0 A_SetTranslucent(0.5, 0)
+"----" A 0 A_Jump(256, "Animation")
+goto Animation
+Animation:
+"----" A 0
+"----" A 35 
+"----" A 5 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+Pickup:
+DUST B 0 A_JumpIfInventory("CanUseItems", 1, "Give")
+fail
+WFail:
+DUST B 0
+fail
+Mega:
+DUST B 0 
+stop
+Death:
+"----" A 1 A_Fadeout
+loop
+}
+}
+
+actor ExitUnitGiver : ItemGiver replaces ExitUnit
+{
+inventory.pickupmessage "Support Item! Exit Unit!"
+inventory.icon "EXITSI"
+States
+{
+Spawn:
+EXIT A 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+HSVR X 0 A_SetTranslucent(1.0, 0)
+HSVR X 35
+goto Spawn
+Pickup:
+WADP A 0 A_JumpIfInventory("HilItem", 1, "Hil")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+fail
+Give:
+EXIT A 0 A_GiveInventory("ExitUnit")
+stop
+Hil:
+EXIT A 0 A_GiveInventory("HilSaver", 1)
+stop
+}
+}
+
+actor BeatCallGiver : ItemGiver replaces BeatCall
+{
+inventory.pickupmessage "Support Item! Beat Call!"
+States
+{
+Spawn:
+WEA3 I 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+HSVR X 0 A_SetTranslucent(1.0, 0)
+HSVR X 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+DUST B 0 
+fail
+Give:
+WEA3 I 0 A_GiveInventory("BeatCallCheck")
+stop
+Hil:
+DUST B 0 A_GiveInventory("HilSaver", 1)
+stop
+}
+}
+
+actor RushCoilGiver : ItemGiver replaces RushCoil
+{
+inventory.pickupmessage "Support Item! Rush Coil!"
+inventory.icon "RCOIL"
+States
+{
+Spawn:
+WEAP B 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+HJUM X 0 A_SetTranslucent(1.0, 0)
+HJUM X 35
+goto Spawn
+ZardSpawn:
+WJUM A 0 A_SetTranslucent(1.0, 0)
+WJUM A 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanUseItems", 1, "Give")
+DUST B 0 A_JumpIfInventory("IsZardFlag",1,"Spellcard")
+DUST B 0 A_JumpIfInventory("HilItem",1,"Hil")
+fail
+Give:
+WEAP B 0 A_GiveInventory("RushCoil")
+stop
+Spellcard:
+DUST B 0 A_GiveInventory("TornadoJump",1)
+stop
+Hil:
+WEAP Q 0 A_JumpIfInventory("HilBooster",3,"FullHil")
+WEAP Q 0 A_GiveInventory("HilBooster", 1)
+stop
+FullHil:
+WEAP Q 0
+fail
+}
+}
+
+actor RushJetGiver : ItemGiver replaces RushJet
+{
+inventory.pickupmessage "Support Item! Rush Jet!"
+inventory.icon "RUSHJ"
+States
+{
+Spawn:
+WEA2 B 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+HJUM X 0 A_SetTranslucent(1.0, 0)
+HJUM X 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanUseItems", 1, "Give")
+DUST B 0 A_JumpIfInventory("HilItem",1,"Hil")
+fail
+Give:
+WEA2 B 0 A_GiveInventory("RushJet")
+stop
+Hil:
+DUST B 0 A_JumpIfInventory("HilBooster",3,"FullHil")
+DUST B 0 A_GiveInventory("HilBooster", 1)
+stop
+FullHil:
+DUST B 0
+fail
+}
+}
+
+actor RushMarineGiver : ItemGiver replaces RushMarine
+{
+inventory.pickupmessage "Support Item! Rush Marine!"
+inventory.icon "RUSHM"
+States
+{
+Spawn:
+RUSH N 0
+Goto "ItemGiver::Spawn+1"
+Give:
+RUSH N 0 A_GiveInventory("RushMarine")
+stop
+}
+}
+
+actor Item1Giver : ItemGiver replaces Item1
+{
+inventory.maxamount 3
+inventory.pickupmessage "Support Item! Item 1!"
+inventory.icon "ITEM1"
+States
+{
+Spawn:
+WEA2 A 0
+Goto "ItemGiver::Spawn+1"
+GizmoSpawn:
+GITM E 0 A_SetTranslucent(1.0, 0)
+GITM E 35
+goto Spawn
+HilmanSpawn:
+HJUM X 0 A_SetTranslucent(1.0, 0)
+HJUM X 35
+goto Spawn
+ZardSpawn:
+AJUM A 0 A_SetTranslucent(1.0, 0)
+AJUM A 35
+goto Spawn
+Pickup:
+WEAP Q 0 A_JumpIfInventory("GizmoCopy",1,"Gizmo")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+DUST B 0 A_JumpIfInventory("IsZardFlag",1,"Spellcard")
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+fail
+Give:
+WEAP Q 0 A_GiveInventory("Item1", 3)
+stop
+Gizmo:
+WEAP Q 0 A_GiveInventory("ItemG", 3)
+stop
+Spellcard:
+DUST B 0 A_GiveInventory("AirJump",3)
+stop
+Hil:
+DUST B 0 A_JumpIfInventory("HilBooster",3,"FullHil")
+DUST B 0 A_GiveInventory("HilBooster", 1)
+stop
+FullHil:
+DUST B 0
+fail
+}
+}
+
+
+actor Item2Giver : ItemGiver replaces Item2
+{
+inventory.maxamount 2
+inventory.pickupmessage "Support Item! Item 2!"
+inventory.icon "ITEM2"
+States
+{
+Spawn:
+WEA2 D 0
+Goto "ItemGiver::Spawn+1"
+Give:
+WEAP Q 0 A_GiveInventory("Item2", 2)
+stop
+}
+}
+
+actor WireAdaptorGiver : ItemGiver replaces WireAdaptor
+{
+inventory.maxamount 2
+inventory.pickupmessage "Support Item! Wire Adaptor!"
+States
+{
+Spawn:
+WADP A 0
+Goto "ItemGiver::Spawn+1"
+HilmanSpawn:
+HJUM X 0 A_SetTranslucent(1.0, 0)
+HJUM X 35
+goto Spawn
+Pickup:
+WADP A 0 A_JumpIfInventory("HilItem", 1, "Hil")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+fail
+Give:
+WEAP Q 0 A_GiveInventory("WireAdaptor",2)
+stop
+Hil:
+WADP A 0 A_JumpIfInventory("HilBooster",3,"FullHil")
+WADP A 0 A_GiveInventory("HilBooster", 1)
+stop
+FullHil:
+WADP A 0
+fail
+}
+}
+
+actor BeatSupportGiver : ItemGiver replaces BeatSupport
+{
+inventory.pickupmessage "Support Item! Beat Support!"
+inventory.icon "BEATI"
+States
+{
+Spawn:
+WEA4 O 0
+Goto "ItemGiver::Spawn+1"
+GizmoSpawn:
+HELP R 0 A_SetTranslucent(1.0, 0)
+HELP R 35
+goto Spawn
+Pickup:
+WEAP Q 0 A_JumpIfInventory("GizmoCopy",1,"Gizmo")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+fail
+Give:
+WEA4 O 0 A_GiveInventory("BeatSupport")
+stop
+Gizmo:
+WEAP Q 0 A_GiveInventory("KittyHelper")
+stop
+}
+}
+
+actor ReggaeCallGiver : ItemGiver replaces ReggaeCall
+{
+inventory.pickupmessage "Support Item! ReggaeCall!"
+inventory.icon "REGGS"
+States
+{
+Spawn:
+WEA9 Z 0
+Goto "ItemGiver::Spawn+1"
+GizmoSpawn:
+HELP R 0 A_SetTranslucent(1.0, 0)
+HELP R 35
+goto Spawn
+Pickup:
+WEAP Q 0 A_JumpIfInventory("GizmoCopy",1,"Gizmo")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+fail
+Give:
+WEA9 Z 0 A_GiveInventory("ReggaeCall")
+stop
+Gizmo:
+WEAP Q 0 A_GiveInventory("KittyHelper")
+stop
+}
+}
+
+actor EddieBomberGiver : ItemGiver replaces EddieBomber
+{
+inventory.pickupmessage "Support Item! EddieBomber!"
+inventory.icon "EDDIEB"
+States
+{
+Spawn:
+EDDI Q 0
+Goto "ItemGiver::Spawn+1"
+GizmoSpawn:
+HELP R 0 A_SetTranslucent(1.0, 0)
+HELP R 35
+goto Spawn
+Pickup:
+WEAP Q 0 A_JumpIfInventory("GizmoCopy",1,"Gizmo")
+WEAP Q 0 A_JumpIfInventory("CanUseItems",1,"Give")
+fail
+Give:
+EDDI Q 0 A_GiveInventory("EddieBomber")
+stop
+Gizmo:
+WEAP Q 0 A_GiveInventory("KittyHelper")
+stop
+}
+}
+
+actor EddieSummonGiver : ItemGiver replaces EddieSummon
+{
+inventory.pickupmessage "$PU_EDDIECALL"
+inventory.icon "EDDIEC"
+States
+{
+Spawn:
+WEAP Q 0
+Goto "ItemGiver::Spawn+1"
+CopySpawn:
+Goto MegaSpawn
+GizmoSpawn:
+HELP S 0 A_SetTranslucent(1.0, 0)
+HELP S 35
+goto Spawn
+HilmanSpawn:
+HBOX X 0 A_SetTranslucent(1.0, 0)
+HBOX X 35
+goto Spawn
+Pickup:
+DUST B 0 A_JumpIfInventory("CanUseItems", 1, "Give")
+WEAP Q 0 A_JumpIfInventory("GizmoCopy",1,"Gizmo")
+DUST B 0 A_JumpIfInventory("MorphFlag", 1, 2)
+DUST B 0 A_JumpIfInventory("CopyWeapon", 1, "Give")
+DUST B 0 A_JumpIfInventory("HilItem", 1, "Hil")
+DUST B 0
+fail
+Give:
+WEAP Q 0 A_GiveInventory("EddieSummon")
+stop
+Gizmo:
+WEAP Q 0 A_GiveInventory("KittyItem")
+stop
+Hil:
+DUST B 0 A_GiveInventory("HilBoxSummon", 1)
+stop
+}
+}
+
+actor EnergyBalancerGiver : ItemGiver replaces EnergyBalancer
+{
+inventory.pickupmessage "Support Item! Energy Balancer!"
+States
+{
+Spawn:
+NRGB A 0
+Goto "ItemGiver::Spawn+1"
+MegaSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+Goto Animation
+Animation:
+NRGB ABABAB 6 BRIGHT
+NRGB A 0 ACS_NamedExecuteAlways("CSACS_ITEMSET", 0)
+loop
+Give:
+WEAP Q 0 A_GiveInventory("EnergyBalancer", 1)
+stop
+}
+}

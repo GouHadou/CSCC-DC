@@ -1,0 +1,168 @@
+actor M712Weapon1 : MegaBuster
+{
+Weapon.AmmoUse 4 
+Weapon.AmmoGive 14 
+Weapon.SlotNumber 1 
+Obituary "%o was burnt to ash by %k's Aura Flame."
+Inventory.Pickupmessage "Power up! Aura Flame!"
+weapon.ammotype "M712Wep1Ammo" 
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+DropItem "PurpleAuraFlameWepGiver"
+States
+{
+Spawn:
+CFWP Z 0
+CFWP Z 1 
+stop
+Ready: 
+M712 E 0 ACS_ExecuteAlways(998,0,417) 
+M712 E 7 A_WeaponReady
+M712 E 0 A_GiveInventory("M712Wep2Ammo",1)
+M712 E 7 A_WeaponReady
+M712 E 0 A_GiveInventory("M712Wep1Ammo",1)
+M712 E 0 A_GiveInventory("M712Wep2Ammo",1)
+Goto Ready+1 
+Deselect: 
+M712 E 0 A_SelectWeapon("M712Weapon2")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+M712 E 1 A_Lower
+Loop
+Select: 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+M712 E 1 A_Raise
+Loop
+Fire: 
+M712 E 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
+M712 E 0 A_JumpIfNoAmmo("NoAmmo") 
+M712 E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon") 
+M712 E 0 A_TakeInventory("M712Wep1Ammo",2)
+M712 E 0 A_FireCustomMissile("M712Flame1",0,0,8,0) 
+M712 FGHIJKLM 2  
+M712 E 10 
+M712 E 0 A_Refire 
+Goto Ready+1 
+Altfire:
+M712 E 0 A_JumpIfInventory("M712Wep1Ammo",6,"TripleFire")
+Goto Ready+1
+TripleFire:
+M712 E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon") 
+M712 E 0 A_TakeInventory("M712Wep1Ammo",6)
+M712 E 0 A_FireCustomMissile("M712Flame2",-21,0,8,0) 
+M712 E 0 A_FireCustomMissile("M712Flame2",0,0,8,0) 
+M712 E 0 A_FireCustomMissile("M712Flame2",21,0,8,0) 
+M712 FGHIJKLM 2  
+M712 E 15 
+M712 E 0 A_Refire
+Goto Ready+1 
+NoAmmo: 
+M712 E 1 
+Goto Ready+1
+
+BotCheck:
+M712 E 0 A_Jump(48, "TripleFire")
+M712 E 0 A_Jump(32, 1)
+Goto Fire+2
+M712 E 0 A_SelectWeapon("M712Weapon2")
+Goto Ready+1
+
+}
+}
+
+actor M712Wep1Ammo : Ammo 
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+
+actor M712Flame1
+{
+Obituary "%o was burnt to ash by %k's Aura Flame."
+PROJECTILE 
+Radius 12 
+Height 9 
+scale 2.5 
+damage (20)
+damagetype "FireSpin" 
++FORCEXYBILLBOARD
++HEXENBOUNCE
+-NOGRAVITY
++DONTBLAST
+bouncefactor 0.9 
+speed 45 
+reactiontime 26
+States
+{
+Spawn:
+M7FR DEFG 2 
+M7FR D 0 A_CountDown
+Loop
+Death:
+M7IG ABCDE 2 A_Stop
+stop
+}
+}
+
+actor M712Flame2
+{
+Obituary "%o was burnt to ash by %k's Aura Flame."
+PROJECTILE 
+Radius 10 
+Height 7 
+scale 2
+damage (15) 
+damagetype "FireSpin"
++FORCEXYBILLBOARD
++HEXENBOUNCE
+-NOGRAVITY
++DONTBLAST
+bouncefactor 0.9 
+speed 40
+reactiontime 14 
+States
+{
+Spawn:
+M7FR DEFG 2 
+M7FR D 0 A_CountDown
+loop
+Death:
+M7IG ABCDE 2 A_Stop
+stop 
+}
+}
+
+actor M712Bot1 : M712Weapon1
+{
+States
+{
+Select:
+Select: 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+M712 E 1 A_Raise
+Loop
+Deselect: 
+M712 E 0 A_SelectWeapon("M712Bot2")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+M712 E 1 A_Lower
+Loop
+Fire:
+M712 E 0 A_JumpIfNoAmmo("NoAmmo") 
+M712 E 0 A_Jump(128,"Altfire")
+M712 E 0 A_PlaySoundEx("weapon/scorchwheel","Weapon") 
+M712 E 0 A_TakeInventory("M712Wep1Ammo",3)
+M712 E 0 A_FireCustomMissile("M712Flame1",0,0,8,0) 
+M712 FGHIJKLM 2  
+M712 E 20 
+M712 E 0 A_Refire 
+Goto Ready+1 
+NoAmmo: 
+M712 E 1 A_GiveInventory("M712Wep2Ammo",28)
+M712 E 1 A_GiveInventory("M712Wep1Ammo",28)
+M712 E 0 A_SelectWeapon("M712Bot2")
+Goto Ready+1
+}
+}

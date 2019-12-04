@@ -1,0 +1,31 @@
+actor BullGator : ClassBaseCSCC 
+{
+Player.DamageScreenColor "DarkGreen"
+Player.DisplayName "Bull Gator"
+player.forwardmove 0.78, 0.78
+player.sidemove 0.76, 0.76
+Health 85
+Player.MaxHealth 85
+Player.StartItem "BullGatorSleepPierce"
+Player.StartItem "BullGatorSiphonSplitter"
+Player.StartItem "BullGatorConfusionBurst"
+Player.StartItem "BullScopingItem"
+Player.StartItem "BullRifleAmmo1", 125
+Player.StartItem "BullRifleAmmo2", 150
+
+states
+{
+Spawn:
+DAR3 A 0
+DAR3 B 1
+DAR3 A 1
+Goto Spawn+2
+See:
+DAR3 BCDE 5
+Goto Spawn
+Missile:
+DAR3 F 5
+DAR3 G 4
+goto Spawn
+}
+}

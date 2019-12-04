@@ -1,0 +1,51 @@
+//=========================================||
+//		Ice Slasher:FreezeRayBooster
+//=========================================||
+// Freeze ray now does double damage
+//=========================================||
+actor FreezeRayBooser : PowerDamage
+{
+Powerup.Duration 0x7FFFFFFF
+damagefactor "WilterFreezeRay", 2.0
+}
+//=========================================||
+//		Ice Wall:Super Ice Walls
+//=========================================||
+//Ice walls become bigger, and sport 2000 HP
+//=========================================||
+actor SuperIceWall : powerup
+{
+Powerup.Duration 0x7FFFFFFF
+
+}
+//=========================================||
+//		Blizzard Attack: Snow plus
+//=========================================||
+//Chance to spawn more ceiling snow
+//=========================================||
+actor SnowPlus : powerup
+{
+Powerup.Duration 0x7FFFFFFF
+
+}
+//=========================================||
+//		Freeze Cracker: Ice Defense
+//=========================================||
+// Defense up 30% when frost wave is active
+//=========================================||
+actor IceDefense : powerup
+{
+Powerup.Duration 0x7FFFFFFF
+
+}
+//=========================================||
+//		Ice Wave: Ice Resonance
+//=========================================||
+// Ice Blocks spawn damaging frost waves
+//		when in contact with your own
+//=========================================||
+actor IceResonance : powerup
+{
+Powerup.Duration 0x7FFFFFFF
+
+}

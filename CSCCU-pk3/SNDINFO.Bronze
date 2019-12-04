@@ -1,0 +1,370 @@
+//
+//Hikari
+$playersound	hikari		male	*death		HIKDEAD
+$playersound	hikari		male	*xdeath		HIKDEAD
+$playersound	hikari		male	*gibbed		HIKDEAD
+$playeralias	hikari		male	*pain100	hikari/hurt
+$playeralias	hikari		male	*pain75		hikari/hurt
+$playeralias	hikari		male	*pain50		hikari/hurt
+$playeralias	hikari		male	*pain25		hikari/hurt
+$playersound	hikari		male	*grunt		dsnone
+$playersound	hikari		male	*land		LAND
+$playersound	hikari		male	*jump		dsnone
+$playersound	hikari		male	*fist		dsnone
+$playersound	hikari		male	*usefail	LAND
+$playeralias	hikari		male	*taunt	    hikari/taunt
+
+//SuperShinobi
+$playersound	assassin	male	*death		NDIE
+$playersound	assassin	male	*xdeath		NDIE
+$playersound	assassin	male	*gibbed		NDIE
+$playersound	assassin	male	*pain100	NPAIN
+$playersound	assassin	male	*pain75		NPAIN
+$playersound	assassin	male	*pain50		NPAIN2
+$playersound	assassin	male	*pain25		NPAIN2
+$playersound	assassin	male	*grunt		NGRUN
+$playersound	assassin	male	*land		NLAND
+$playersound	assassin	male	*fist		dsnone
+$playersound	assassin	male	*usefail	dsnone
+$playersound	assassin	male	*taunt		HAYABUSA
+$playersound	assassin	male	*jump		NJUMP
+
+//LordDamager
+$playeralias	lorddc	male	*death		lordd/death1
+$playeralias	lorddc	male	*xdeath		lordd/death1
+$playeralias	lorddc	male	*gibbed		lordd/death1
+$playersound	lorddc	male	*pain100	MEGAPAIN
+$playersound	lorddc	male	*pain75		MEGAPAIN
+$playersound	lorddc	male	*pain50		MEGAPAIN
+$playersound	lorddc	male	*pain25		MEGAPAIN
+$playersound	lorddc	male	*grunt		YDSTOMP
+$playersound	lorddc	male	*land		YDSTOMP
+$playersound	lorddc	male	*jump		dsnone
+$playersound	lorddc	male	*fist		dsnone
+$playersound	lorddc	male	*usefail	dsnone
+$playeralias	lorddc	male	*taunt		LordD/Taunt
+
+//Insane Pharaohman
+$playersound	insanec	male	*death		MEGADEAT
+$playersound	insanec	male	*xdeath		MEGADEAT
+$playersound	insanec	male	*gibbed		MEGADEAT
+$playersound	insanec	male	*pain100	MM4PAIN
+$playersound	insanec	male	*pain75		MM4PAIN
+$playersound	insanec	male	*pain50		MM4PAIN
+$playersound	insanec	male	*pain25		MM4PAIN
+$playersound	insanec	male	*grunt		dsnone
+$playersound	insanec	male	*land		PHARLAND
+$playersound	insanec	male	*jump		dsnone
+$playersound	insanec	male	*fist		dsnone
+$playersound	insanec	male	*usefail	LAND
+$playeralias	insanec	male	*taunt		PHARTAUX
+$playersound	insanec	female	*taunt		PHARTAUX
+$playersound	insanec	other	*taunt		PHARTAUX
+
+
+
+//Messatsu
+$playersound	MessClass	male	*death		MEGADEAT
+$playersound	MessClass	male	*xdeath		MEGADEAT
+$playersound	MessClass	male	*gibbed		MEGADEAT
+$playersound	MessClass	male	*pain100	MEGAPAIN
+$playersound	MessClass	male	*pain75		MEGAPAIN
+$playersound	MessClass	male	*pain50		MEGAPAIN
+$playersound	MessClass	male	*pain25		MEGAPAIN
+$playersound	MessClass	male	*grunt		LAND
+$playersound	MessClass	male	*land		LAND
+$playersound	MessClass	male	*fist		dsnone
+$playersound	MessClass	male	*usefail	LAND
+
+//Akane
+$playersound	akane		male	*death		UNCLOAK
+$playersound	akane		male	*xdeath		UNCLOAK
+$playersound	akane		male	*gibbed		UNCLOAK
+$playersound	akane		male	*pain100	BOSSPAIN
+$playersound	akane		male	*pain75		BOSSPAIN
+$playersound	akane		male	*pain50		BOSSPAIN
+$playersound	akane		male	*pain25		BOSSPAIN
+$playersound	akane		male	*grunt		dsnone
+$playersound	akane		male	*land		dsnone
+$playersound	akane		male	*jump		dsnone
+$playersound	akane		male	*fist		dsnone
+$playersound	akane		male	*usefail	LAND
+$playeralias	akane		male	*taunt	    akane/taunt
+
+//ValkyrieMaiden
+$playersound	vmaiden	male	*death		MAIDDIE
+$playersound	vmaiden	male	*xdeath		MAIDDIE
+$playersound	vmaiden	male	*gibbed		MAIDDIE
+$playersound	vmaiden	male	*pain100	MAIDHURT
+$playersound	vmaiden	male	*pain75		MAIDHURT
+$playersound	vmaiden	male	*pain50		MAIDHURT
+$playersound	vmaiden	male	*pain25		MAIDHURT
+$playersound	vmaiden	male	*grunt		dsnone
+$playersound	vmaiden	male	*land		MAIDLAND
+$playersound	vmaiden	male	*fist		dsnone
+$playersound	vmaiden	male	*usefail	dsnone
+$playeralias	vmaiden	male	*taunt		valkyriemaiden/taunt
+$playersound	vmaiden	male	*jump		MAIDJUMP
+
+//Edgelord
+$playersound	edgelordc	male	*death		MEGADEAT
+$playersound	edgelordc	male	*xdeath		MEGADEAT
+$playersound	edgelordc	male	*gibbed		MEGADEAT
+$playersound	edgelordc	male	*pain100	MEGAPAIN
+$playersound	edgelordc	male	*pain75		MEGAPAIN
+$playersound	edgelordc	male	*pain50		MEGAPAIN
+$playersound	edgelordc	male	*pain25		MEGAPAIN
+$playersound	edgelordc	male	*grunt		dsnone
+$playersound	edgelordc	male	*land		LAND
+$playersound	edgelordc	male	*jump		dsnone
+$playersound	edgelordc	male	*fist		dsnone
+$playersound	edgelordc	male	*usefail	LAND
+$playersound	edgelordc	male	*taunt		EDGETAUM
+$playersound	edgelordc	female	*taunt		EDGETAUM
+$playersound	edgelordc	other	*taunt		EDGETAUM
+
+//Vocalwoman
+$playersound	vocalwomanc	male	*death		VOCADETH
+$playersound	vocalwomanc	male	*xdeath		VOCADETH
+$playersound	vocalwomanc	male	*gibbed		VOCADETH
+$playersound	vocalwomanc	male	*pain100	BOSSPAIN
+$playersound	vocalwomanc	male	*pain75		BOSSPAIN
+$playersound	vocalwomanc	male	*pain50		BOSSPAIN
+$playersound	vocalwomanc	male	*pain25		BOSSPAIN
+$playersound	vocalwomanc	male	*grunt		MM6LAND
+$playersound	vocalwomanc	male	*land		MM6LAND
+$playersound	vocalwomanc	male	*fist		dsnone
+$playersound	vocalwomanc	male	*usefail	MM6LAND
+
+//SnailBreeder
+$playersound	snailbreeder	male	*death		MEGADEAT
+$playersound	snailbreeder	male	*xdeath		MEGADEAT
+$playersound	snailbreeder	male	*gibbed		MEGADEAT
+$playersound	snailbreeder	male	*pain100	MM4PAIN
+$playersound	snailbreeder	male	*pain75		MM4PAIN
+$playersound	snailbreeder	male	*pain50		MM4PAIN
+$playersound	snailbreeder	male	*pain25		MM4PAIN
+$playersound	snailbreeder	male	*grunt		CONCSHOT
+$playersound	snailbreeder	male	*land		CONCSHOT
+$playersound	snailbreeder	male	*fist		dsnone
+$playersound	snailbreeder	male	*usefail	LAND
+
+//Yang
+$playersound	Yang	female	*death		MEGADEAT
+$playersound	Yang	female	*xdeath		MEGADEAT
+$playersound	Yang	female	*gibbed		MEGADEAT
+$playersound	Yang	female	*pain100	MEGAPAIN
+$playersound	Yang	female	*pain75		MEGAPAIN
+$playersound	Yang	female	*pain50		MEGAPAIN
+$playersound	Yang	female	*pain25		MEGAPAIN
+$playersound	Yang	female	*grunt		LAND
+$playersound	Yang	female	*land		LAND
+$playersound	Yang	female	*fist		dsnone
+$playersound	Yang	female	*usefail	LAND
+
+//Knight
+weapon/HardBuster1 SKULSHOT
+Support/Barrier BARUP
+Support/StatUp Statsup 
+Support/StatDown StatDown 
+
+//Voxelator|Zaffre
+weapon/rollheal ROLLHEA1
+weapon/rollhealing ROLLHEA2
+weapon/Sublimate HPSUCK
+weapon/Disintegrate FLASH7
+support/Negative NEGSTAT
+support/Healdiode1 HEALDIO1
+support/Healdiode2 HEALDIO2
+Support/Heal1 Recov1 
+weapon/HardBuster3 HRDBST2
+weapon/HardBuster4 DAR1SHOT
+weapon/HardBuster5 DAR3SHOT
+weapon/HardBuster6 DAR3SHO2
+//Hikari
+$random hikari/hurt { hikari/hurt1 hikari/hurt2 }
+hikari/hurt1 HIKHIT1
+hikari/hurt2 HIKHIT2
+
+hikari/bounceback S_M9CON4
+hikari/super HKOSP
+hikari/knockout HIKKO
+hikouken/start HKOSTAT
+hikouken/fire HKOFIRE
+burningknuckle BURKNCK
+accelrevolver ACCREV
+divekick/start DVKICKS
+divekick/fire DVKICKF
+
+morrigan/dash MGDSH
+
+$random hikari/taunt { hikari/taunt1 hikari/taunt2 hikari/taunt3 hikari/taunt4 }
+hikari/taunt1 HIKTNT1
+hikari/taunt2 HIKTNT2
+hikari/taunt3 HIKTNT3
+hikari/taunt4 HIKTNT4
+
+item/ItemUseMM9 9STORSND
+
+//InsanePharaohman
+pharaohbuster/ready PHAMGRDY
+pharaohbuster/mgfire PHAMGFIR
+pharaohbuster/markerhit PHITMARK
+$attenuation pharaohbuster/markerhit 0.5
+pharaohbuster/mgfireplus PHAMGFIP
+weapon/insanitymachinegun PHMGCPY
+
+weapon/insanitywave PHWVCPY $volume PHWVCPY 0.5
+
+insanitytech/swing1 PHRSWING
+$rolloff insanitytech/swing1 1 3
+insanitytech/swing2 PHRSWIN2
+$rolloff insanitytech/swing2 1 3
+$random insanitytech/swing { insanitytech/swing1 insanitytech/swing2 }
+insanitytech/ready PTECHRDY
+$rolloff insanitytech/ready 1 3
+insanitytech/selected PTECHSEL
+$rolloff insanitytech/selected 1 3
+
+firebolt/throw1 PFBTHRO
+firebolt/throw2 PFBTHR2
+$random firebolt/throw { firebolt/throw1 firebolt/throw2 }
+firebolt/explode1 PFBEXPL1
+firebolt/explode2 PFBEXPL2
+$random firebolt/explode { firebolt/explode1 firebolt/explode2 }
+$attenuation firebolt/explode 0.5
+
+execute/charge PEXCHAR
+execute/charge2 PEXCHAR2
+execute/finish PEXFIRE
+execute/finish2 PEXFIRE2
+
+$random execute/laugh { execute/laugh1 execute/laugh2 execute/laugh3 execute/laugh4 execute/laugh5 }
+execute/laugh1 PHAREXB1
+execute/laugh2 PHAREXB2
+execute/laugh3 PHAREXB3
+execute/laugh4 PHAREXB4
+execute/laugh5 PHAREXB5
+$attenuation execute/laugh 0.5
+$limit execute/laugh 1
+
+ascension/draw ASCEDRAW
+ascension/absorb ASCEPOWR
+
+PHARTAU PHARTAU
+PHARTAU1 PHARTAU1
+PHARTAU2 PHARTAU2
+PHARTAU3 PHARTAU3
+PHARTAU4 PHARTAU4
+PHARTAU5 PHARTAU5
+PHARTAU6 PHARTAU6
+$random PHARTAUX { PHARTAU PHARTAU1 PHARTAU2 PHARTAU3 PHARTAU4 PHARTAU5 PHARTAU6 }
+$playeralias insanec male *taunt PHARTAUX
+
+$random ascension/banter { ascension/banter1 ascension/banter2 ascension/banter3 }
+ascension/banter1 PHARTRA1
+ascension/banter2 PHARTRA2
+ascension/banter3 PHARTRA3
+$limit execute/banter 1
+
+insanitytech/sell1 TECHSEL1
+$rolloff insanitytech/sell1 1 3
+insanitytech/sell2 TECHSEL2
+$rolloff insanitytech/sell2 1 3
+insanitytech/sell3 TECHSEL3
+$rolloff insanitytech/sell3 1 3
+
+setswatch/fire SETSFIRE
+setswatch/stop SETSSTOP
+
+sanctuary/heal SANCHEAL
+sanctuary/hurt SANCHURT
+$volume sanctuary/hurt 0.6
+sanctuary/fail SANCFAIL
+
+//SuperShinobi
+assninja/attack NATK
+assninja/needlecharge NCHARGE
+assninja/needlestorm NSTORM
+assninja/needleland NKLAND
+assninja/slash NSLASH
+assninja/star NSTAR
+assninja/slide NSLIDE
+assninja/highjump NHJUMP
+izunadrophit NIDROP
+
+clash KLASH
+click CLICK
+
+quickdraw QSLASH
+
+//PistonMan
+cscc/pistonhit	PISTHIT
+cscc/pistonfail	PISTFAIL
+
+//Akane
+$random akane/taunt { akane/taunt1 akane/taunt2 akane/taunt3 akane/taunt4 akane/taunt5 akane/taunt6 }
+akane/taunt1 AKATNT1
+akane/taunt2 AKATNT2
+akane/taunt3 AKATNT3
+akane/taunt4 AKATNT4
+akane/taunt5 AKATNT5
+akane/taunt6 AKATNT6
+
+//ValkyrieMaiden
+//CHAR
+maiden/enter MAIDENTR
+
+//If they're too loud, I sincerely apologize.
+$random valkyriemaiden/taunt { valkyriemaiden/taunt1 valkyriemaiden/taunt2 valkyriemaiden/taunt3 valkyriemaiden/taunt4 valkyriemaiden/taunt5 valkyriemaiden/taunt6 valkyriemaiden/taunt7 valkyriemaiden/taunt8 }
+
+valkyriemaiden/taunt1 VALTAUN1
+valkyriemaiden/taunt2 VALTAUN2
+valkyriemaiden/taunt3 VALTAUN3
+valkyriemaiden/taunt4 VALTAUN4
+valkyriemaiden/taunt5 VALTAUN5
+valkyriemaiden/taunt6 VALTAUN6
+valkyriemaiden/taunt7 VALTAUN7
+valkyriemaiden/taunt8 VALTAUN8
+
+//LANCE
+
+maiden/lancethrust LTHRUST
+maiden/lancerapid LRAPID
+maiden/lancespin LSPIN
+maiden/lanceupper LUPPER
+maiden/lancedownward LDOWN
+
+maiden/bladeslam BLADSLAM
+weapon/rocksmashed ROCKSMSH
+
+//MISC
+maiden/weaponchange WEAPCHAN
+maiden/weaponselect MSELWEP
+
+maiden/dash MAIDDASH
+
+maiden/barrier MAIDBARR
+maiden/hurt BARRHURT
+
+//Vocalwoman
+$random vocal/song { vocal/song1 vocal/song2 vocal/song3 vocal/song4 }
+vocal/song1 VSONG1
+vocal/song2 VSONG2
+vocal/song3 VSONG3
+vocal/song4 VSONG4
+
+$random vocal/note { vocal/note1 vocal/note2 vocal/note3 vocal/note4 vocal/note5 vocal/note6 vocal/note7 vocal/note8 }
+vocal/note1 VNOTE1
+vocal/note2 VNOTE
+vocal/note3 VNOTE3
+vocal/note4 VNOTE4
+vocal/note5 VNOTE5
+vocal/note6 VNOTE6
+vocal/note7 VNOTE7
+vocal/note8 VNOTE8
+
+vocal/heal ROLLHEA1
+
+//Yang
+weapon/EmberCelica EMBSHOT

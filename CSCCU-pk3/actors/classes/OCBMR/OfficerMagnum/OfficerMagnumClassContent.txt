@@ -1,0 +1,5 @@
+#include "actors/classes/OCBMR/OfficerMagnum/OfficerMagnum.txt"
+#include "actors/classes/OCBMR/OfficerMagnum/OMWeapon1.txt"
+#include "actors/classes/OCBMR/OfficerMagnum/OMWeapon2.txt"
+#include "actors/classes/OCBMR/OfficerMagnum/OMWeapon3.txt"
+

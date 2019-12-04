@@ -1,0 +1,94 @@
+//do later
+
+actor JumpKickWep : MegaBuster
+{
+Weapon.AmmoUse 7
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o was stomped on by %k's Jump Kick."
+Inventory.Pickupmessage "Power up! Jump Kick!"
+weapon.ammotype "JumpKickAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
+inventory.icon "JKIKICO"
+Scale 2.0
+States
+{
+Spawn:
+JKIK A 1
+loop
+Ready:
+BKIC C 0 ACS_ExecuteAlways(998,0,501)
+BKIC C 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+BKIC C 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BKIC C 1 A_Raise
+Loop
+Fire:
+BKIC C 0 A_JumpIfNoAmmo("NoAmmo")
+BKIC C 1 A_JumpIf(z-floorz<=90, "NoAmmo")
+BKIC C 0 A_TakeInventory("JumpKickAmmo",7)
+BKIC AB 3
+Kick:
+BKIC C 0 A_PlaySoundEx("weapon/chargekick","Weapon")
+BKIC C 1 A_SpawnItemEx("JumpKickM",0,0,-15,0,0,0,0)
+BKIC C 2 ThrustThingZ(0,20,1,1)
+BKIC C 0 A_ChangeVelocity(30,0,momz,CVF_RELATIVE|CVF_REPLACE)
+BKIC C 1 A_JumpIf(z-floorz<=0 || momz==0, "EndKick")
+goto Kick+1
+EndKick:
+BKIC C 1 A_SpawnItemEx("JumpKickWaveM")
+BKIC C 40
+Goto Ready+1
+NoAmmo:
+BKIC C 1 
+Goto Ready+1
+}
+}
+
+actor JumpKickAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor JumpKickM : StormKick
+{
+Damage (30)
+Obituary "%o was stomped on by %k's Jump Kick."
+States
+{
+Spawn:
+CKIC E 0
+CKIC E 0
+CKIC E 4 A_Explode(100,128,0)
+stop
+Death:
+stop
+}
+}
+
+actor JumpKickWaveM : StormKick
+{
+Obituary "%o was stomped on by %k's Jump Kick."
+Damage (1)
+Damagetype "SparkShock"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0
+TNT1 A 2 A_Explode(20,128,0)
+stop
+Death:
+stop
+XDEATH:
+TNT1 A 1
+stop
+}
+}

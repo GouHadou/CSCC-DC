@@ -1,0 +1,101 @@
+Actor Pharma : ClassBaseCSCC
+{
+Player.DisplayName "Pharma"
+Player.SoundClass "Rokko"
+Health 100
+Player.MaxHealth 100
+Player.JumpZ 12
+Player.ForwardMove 0.9, 0.9 //Slightly faster
+Player.SideMove 0.88, 0.88
+Player.StartItem "CanUseItems"
+Player.StartItem "BlokkitalPChargeItem", 3
+Player.StartItem "QuickFixPChargeItem", 3
+Player.StartItem "UppenAtemPChargeItem", 3
+Player.StartItem "VigorizerPChargeItem", 3
+Player.StartItem "MedicatorWep"
+Player.StartItem "Mediscan"
+Player.StartItem "PillGrenadeLauncherWep"
+Player.StartItem "PillGrenadeClip", 3
+Player.StartItem "IsPharmacist"
+//var int user_HealerID;
+States
+{
+Spawn: 
+MEDI A 0 
+MEDI B 1
+MEDI A 1
+GoTo Spawn+2
+See:
+MEDI BCDE 5
+GoTo Spawn+1
+Missile:
+MEDI F 5
+MEDI G 4
+GoTo Spawn+2
+Pain:
+DYNA H 0
+DYNA H 0 A_Recoil(2)
+DYNA H 0
+DYNA H 0 A_Pain
+DYNA H 0 A_Jump(256,"PainFix")
+GoTo PainFix
+PainFix:
+DYNA H 0
+GoTo PainFrames
+PainFrames:
+DYNA H 0 SetPlayerProperty(0,0,4)
+DYNA H 1// A_GiveInventory("IveBeenHit",1)
+DYNA HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
+DYNA H 0 SetPlayerProperty(0,0,1)
+DYNA H 0 A_Jump(256,"Spawn")
+GoTo Spawn+2
+Death:
+MEDI H 0 SetPlayerProperty(0, 0, 4)
+MEDI H 0 A_TakeInventory("WeaponCharge",999)
+MEDI H 0 A_NoBlocking
+MEDI H 0 A_GiveInventory("CutterFlag",999)
+MEDI H 0 A_GiveInventory("IsDead",1)
+MEDI H 0 A_Stop
+MEDI H 0 A_GiveToTarget("KilledMeStock",1)
+MEDI H 1 A_GiveToTarget("KilledMe",1)
+MEDI H 19 ACS_ExecuteAlways(999,0,0)
+MEDI H 0 SetPlayerProperty(0, 0, 4)
+MEDI H 0 A_PlayerScream
+MEDI H 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+MEDI Z 1 A_CheckPlayerDone
+wait
+Death.Falling:
+MEDI H 0 SetPlayerProperty(0, 0, 4)
+MEDI H 0 A_TakeInventory("WeaponCharge",999)
+MEDI H 0 A_NoBlocking
+MEDI H 0 A_GiveInventory("CutterFlag",999)
+MEDI H 0 A_GiveInventory("IsDead",1)
+MEDI Z 1 A_PlayerScream
+MEDI Z 1 A_Stop
+MEDI Z 0 A_GiveToTarget("KilledMeStock",1)
+MEDI Z 0 A_GiveToTarget("KilledMe",1)
+MEDI Z 1 ACS_ExecuteAlways(999,0,0)
+MEDI Z 1 A_CheckPlayerDone
+wait
+}
+}
+
+
+actor Mediscan : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_NamedExecutealways("MedivisionScript",0)
+stop
+Nope:
+TNT1 A 0
+stop
+}
+}

@@ -1,0 +1,2 @@
+#include "actors/classes/CSCC/redeyes/redclass.txt"
+#include "actors/classes/CSCC/redeyes/redwep.txt"

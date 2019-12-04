@@ -1,0 +1,233 @@
+actor TsukiyomaruZeroOld : ClassBaseCSCC
+{
+player.displayname "Tsukiyomaru Zero Old"
+player.soundclass "Tsuki"
+player.forwardmove 0.9, 0.9
+player.sidemove 0.78,0.78 
+player.jumpz 10
+player.startitem "TsukiClassWeaponOld"
+player.startitem "SentinelWispsClassAmmo", 140
+player.startitem "SentinelTriggerItem",1
+player.startitem "IsTsukiAndIsAlive",1
+player.colorrange 0 0
+Height 28
+Player.AttackZOffset 20
+States
+{
+Spawn:
+TSUO A 0
+TSUO B 1 
+TSUO A 1 
+Goto Spawn+2
+See:
+TSUO BCD 5 
+Goto Spawn+2
+Missile:
+TSUO F 1 
+TSUO F 4 
+TSUO G 4 
+goto Spawn+2
+Pain.CopyAlt:
+Pain.CopyMain:
+TSUO H 0 A_SpawnItemEx("TsukiOldCopyHitMain",1)
+goto pain+1
+PainFix:
+TSUO H 0
+goto PainFrames
+DeathFix:
+TSUO H 0
+goto DeathFrames
+IceDeathFix:
+TSUO H 0
+goto IceDeathFrames
+Pain.WilyIce:
+TSUO H 0
+goto WilyIceFrames
+
+
+DeathFrames:
+PLAY Z 0 A_GiveInventory("CutterFlag",999)
+TSUO X 0 A_SetTranslucent(1,0)
+TSUO H 0 SetPlayerProperty(0, 0, 4)
+TSUO H 0 A_ChangeFlag("NoInteraction",1)
+TSUO H 0 A_ChangeFlag("NoGravity",1)
+TSUO H 0 A_Stop
+TSUO H 0 A_TakeInventory("IsTsukiAndIsAlive",1)
+TSUO H 0 A_NoBlocking
+TSUO H 0 A_GiveInventory("IsDead",1)
+TSUO H 0 A_Stop
+TSUO H 1 A_GiveToTarget("KilledMe",1)
+TSUO H 19 ACS_ExecuteAlways(999,0,0)
+TSUO H 0 SetPlayerProperty(0, 0, 4)
+TSUO H 0 A_PlayerScream
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,0)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,45)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,90)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,135)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,-45)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,-90)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,-135)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX1",0,0,15,10,0,0,180)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,0)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,45)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,90)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,135)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,-45)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,-90)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,-135)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX2",0,0,15,5,0,0,180)
+TSUO Z 0 A_SpawnItemEx("TsukiDeathFX3",0,0,15,0,0,0,0)
+TSUO Z -1
+stop
+Death.Falling:
+PLAY Z 0 A_GiveInventory("CutterFlag",999)
+TSUO X 0 A_SetTranslucent(1,0)
+TSUO H 0 SetPlayerProperty(0, 0, 4)
+TSUO H 0 A_TakeInventory("IsTsukiAndIsAlive",1)  
+TSUO H 0 A_NoBlocking
+TSUO H 0 A_GiveInventory("IsDead",1)
+TSUO Z 1 A_PlayerScream
+TSUO Z 1 A_Stop
+TSUO Z 1 ACS_ExecuteAlways(999,0,0)
+TSUO Z -1
+stop
+/*
+Death.Backstab:
+TSUO H 0 A_TakeInventory("IsTsukiAndIsAlive",1)
+TSUO X 0 A_SetTranslucent(1,0)
+TSUO H 0 SetPlayerProperty(0, 0, 4)
+TSUO H 0 A_TakeInventory("PharaohCharge",999)   
+TSUO H 0 A_NoBlocking
+TSUO H 0 A_GiveInventory("CutterFlag",999)
+TSUO H 0 A_GiveInventory("IsDead",1)
+TSUO H 0 A_Stop
+TSUO H 0 A_GiveToTarget("KilledMeStock",1)
+TSUO H 1 A_GiveToTarget("KilledMe",1)
+TSUO H 1 A_GiveToTarget("ClearDisguise",1)
+TSUO H 0 A_GiveToTarget("DisguiseOn",1)
+TSUO H 0 A_GiveToTarget("TsukiDisguise",1)
+TSUO H 0 ACS_ExecuteAlways(775,0,0)
+TSUO H 1 ACS_ExecuteAlways(999,0,0)
+TSUO H 1 A_SetTranslucent (0.9, 0) 
+TSUO H 1 A_SetTranslucent (0.8, 0) 
+TSUO H 1 A_SetTranslucent (0.7, 0) 
+TSUO H 1 A_SetTranslucent (0.6, 0) 
+TSUO H 1 A_SetTranslucent (0.5, 0) 
+TSUO H 1 A_SetTranslucent (0.4, 0) 
+TSUO H 1 A_SetTranslucent (0.3, 0) 
+TSUO H 1 A_SetTranslucent (0.2, 0) 
+TSUO H 1 A_SetTranslucent (0.1, 0) 
+TSUO H 1 A_SetTranslucent (0.0, 0)
+TSUO Z -1
+stop*/
+TheEnd:
+TSUO G 4
+loop
+CreditWalk:
+TSUO BCDE 8
+loop
+CreditRun:
+TSUO BCDE 5
+loop
+Death.WindStorm:
+Death.GravityHold:
+TSUO H 0 SetPlayerProperty(0, 0, 4)
+TSUO H 0 A_ChangeFlag("NOINTERACTION", 1)
+TSUO H 0 A_TakeInventory("WeaponCharge",999)
+TSUO H 0 A_NoBlocking
+TSUO H 0 A_TakeInventory("CutterFlag",999)
+TSUO H 0 A_GiveInventory("IsDead",1)
+TSUO H 0 A_Stop
+TSUO H 0 A_GiveToTarget("KilledMeStock",1)
+TSUO H 1 A_GiveToTarget("KilledMe",1)
+TSUO H 0 ACS_ExecuteAlways(999,0,0)
+TSUO H 0 SetPlayerProperty(0, 0, 4)
+RiseMyMegaman:
+TSUO H 1 ThrustThingZ(0,10,0,1)
+TSUO H 0 A_JumpIf(ceilingz-z<64, "ExplodeNow")
+TSUO H 0 A_GiveInventory("Cutterflag", 1)
+TSUO H 0 A_JumpIfInventory("CutterFlag", 35, "ExplodeNow")
+Goto RiseMyMegaman
+ExplodeNow:
+TSUO H 0 A_Stop
+TSUO H 0 A_PlayerScream
+TSUO H 0 A_GiveInventory("CutterFlag",999)
+TSUO H 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 0)
+TSUO Z 1 A_CheckPlayerDone
+wait
+Death.Backstab:
+TSUC H 0 SetPlayerProperty(0, 0, 4)
+TSUC H 0 A_TakeInventory("PharaohCharge",999)   
+TSUC H 0 A_NoBlocking
+TSUC H 0 A_GiveInventory("CutterFlag",999)
+TSUC H 0 A_GiveInventory("IsDead",1)
+TSUC H 0 A_Stop
+TSUC H 0 A_GiveToTarget("KilledMeStock",1)
+TSUC H 1 A_GiveToTarget("KilledMe",1)
+TSUC H 1 A_GiveToTarget("ClearDisguise",1)
+TSUC H 0 A_GiveToTarget("DisguiseOn",1)
+TSUC H 0 A_GiveToTarget("TsukiDisguise",1)
+TSUC H 0 ACS_ExecuteAlways(775,0,409)
+goto BackstabFrames
+}
+}
+
+actor TsukiOldCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("TsukiOldMorphItem",1)
+stop
+}
+}
+
+actor TsukiOldCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("TsukiOldCopyPickupMain",1)
+stop
+}
+}
+
+
+actor TsukiOldMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 24)
+stop
+}
+}
+
+actor TsukiOldMorph : TsukiyomaruZeroOld
+{
++NOSKIN
+player.morphweapon "TsukiClassWeaponOld"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

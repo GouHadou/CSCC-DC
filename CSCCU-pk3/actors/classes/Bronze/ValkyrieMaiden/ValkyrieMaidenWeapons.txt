@@ -1,0 +1,333 @@
+//Hey at least no GUN AND SWORD this time!
+
+actor ValkyrieMaidenMoveset : MegaBuster
+{
+Weapon.SlotNumber 1
+Weapon.AmmoUse 0
+Obituary "%o was killed by %k's Hydra Trident."
+Inventory.Pickupmessage "Maiden Lance Online."
+weapon.ammotype "BusterAmmo"
+inventory.pickupsound ""
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+//Weapon.UpSound "maiden/weaponselect"
+Tag "Hydra Trident"
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 1
+stop
+Ready:
+TNT1 A 0 A_GunFlash
+TNT1 A 0 //A_PlaySoundEx("maiden/weaponchange","SoundSlot6")
+TNT1 A 0 A_JumpIfInventory("ValkyrieMaidenEnterFlag",1,"Active")
+TNT1 A 0 ACS_ExecuteAlways(991,0,37) //This until a pink and green color is made.
+TNT1 A 0 A_GiveInventory("ValkyrieMaidenEnterFlag",1)
+TNT1 A 0 A_SpawnItemEx("ValkyrieMaidenEntranceFX")
+VMHA A 1 //A_PlaySoundEx("maiden/enter","SoundSlot6")
+Goto Active
+Active:
+VMHA A 2 A_WeaponReady
+Goto Active
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+TNT1 A 1 A_Raise
+Loop
+Fire:
+TNT1 A 0 A_GiveInventory("MaidenAttackFlag",1)
+TNT1 AA 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+TNT1 A 0 A_Recoil(-5)
+TNT1 A 0 A_PlaySoundEx("maiden/lancethrust","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenLance",0,0,0,0)
+TNT1 AAAAAAAA 2 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+TNT1 A 0 A_Refire
+TNT1 A 0 A_PlaySoundEx("maiden/lancespin","SoundSlot5")
+VMHA AA 2
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+Goto Active
+Hold:
+TNT1 A 0 A_Recoil(-1)
+TNT1 A 0 A_PlaySoundEx("maiden/lancerapid","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenLanceRapid",0,0,random(-30,30),random(-30,30))
+TNT1 AA 2
+TNT1 A 0 A_ReFire
+TNT1 A 0 A_PlaySoundEx("maiden/lancespin","SoundSlot5")
+VMHA AA 2
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+Goto Active
+RisingJavelin:
+//TNT1 A 0 A_JumpIf(z-floorz>0,"GroundSmashStart")
+TNT1 A 0 A_JumpIf(z-floorz>0,"DashCancel")
+TNT1 A 0 ThrustThingZ(0,75,0,0)
+TNT1 A 0 A_Recoil(-15)
+TNT1 A 0 A_PlaySoundEx("maiden/lanceupper","Weapon")
+TNT1 A 3 A_SpawnItemEx("MaidenRisingJavelinHitboxStart",25,0,0,15,0,momz)
+TNT1 AAAAA 3 A_SpawnItemEx("MaidenRisingJavelinHitbox",25,0,0,15,0,momz)
+VMHA BA 2
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+Goto Active
+NoJavelinDrop:
+VMHA A 3
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+Goto Active
+GroundSmashStart:
+TNT1 A 0 A_Recoil(-500)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_Recoil(-5)
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 A_PlaySoundEx("maiden/lancedownward","Weapon")
+VMDA ED 1
+TNT1 A 0 ThrustThingZ(0,75,0,0)
+VMDA CB 1
+GroundSmash:
+TNT1 A 0 A_GiveInventory("AbilityTimer",1)
+TNT1 A 0 A_GiveInventory("AbilityTimer2",2)
+TNT1 A 0 A_JumpIfInventory("AbilityTimer2",100,"PhaseOut")
+TNT1 A 0 A_FireCustomMissile("MaidenFallingJavelinHitbox",0,0,0,0)
+TNT1 A 0 ThrustThingZ(0,550,1,0)
+TNT1 A 0 A_SpawnItemEx("MaidenFallingJavelinTrail",0,0,-5,0,0,-85)
+VMDA B 1 A_CheckFloor("GroundSmashEnd")
+//TNT1 A 1 A_JumpIf(z-floorz<=0,"GroundSmashEnd")
+Goto GroundSmash
+PhaseOut:
+TNT1 A 0 A_PlaySoundEx("weapon/timestopper","Weapon")
+TNT1 A 0 A_ChangeFlag("THRUACTORS",1)
+TNT1 A 0 SetPlayerProperty(0,0,4)
+TNT1 A 0 SetPlayerProperty(0,0,3)
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+TNT1 AAA 20
+TNT1 A 0 A_ChangeFlag("THRUACTORS",0)
+Goto Active
+GroundSmashEnd:
+TNT1 A 0 A_SpawnItem("MaidenFallingJavelin")
+TNT1 A 0 A_Stop
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 SetPlayerProperty(0,1,4)
+//TNT1 A 0 A_GiveInventory("Repulsion",1)
+MVDA AAAA 5
+TNT1 A 0 SetPlayerProperty(0,0,4)
+TNT1 A 0 SetPlayerProperty(0,0,3)
+TNT1 A 1
+VMHA BA 2
+TNT1 A 0 A_TakeInventory("AbilityTimer",999)
+TNT1 A 0 A_TakeInventory("AbilityTimer2",999)
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+Goto Active
+DashCancel:
+VMHA A 3
+Goto Active
+AltFire:
+TNT1 A 0 A_JumpIfInventory("MaidenAttackFlag",1,"RisingJavelin")
+TNT1 A 0 A_JumpIfInventory("MaidenDashCooldown",1,"DashCancel")
+TNT1 A 0 A_GiveInventory("MaidenAttackFlag",1)
+TNT1 A 0 A_GiveInventory("MaidenDashCooldown",1)
+TNT1 A 0 A_JumpIf(z-floorz>0,"AirDash")
+TNT1 A 0 A_PlaySoundEx("maiden/dash","SoundSlot5")
+TNT1 A 0 SetPlayerProperty(0,1,0)
+TNT1 A 0 ThrustThingZ(0,10,0,0)
+VMKI BB 1 
+VMKI BBB 1
+TNT1 A 0 A_Recoil(-40) 
+VMKI C 2 A_SpawnItemEx("ValkyrieMaidenSpeedBoostFX",0,0,30)
+VMKI CCCCCCCCCCC 2 A_SpawnItemEx("ValkyrieMaidenDashShadow",0,0,0) //12 (GROUND), 13 (AIR)
+TNT1 A 0 SetPlayerProperty(0,0,0)
+VMKI BB 1
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+Goto Active
+AirDash:
+TNT1 A 0 A_PlaySoundEx("maiden/dash","SoundSlot5")
+TNT1 A 0 SetPlayerProperty(0,1,0)
+TNT1 A 0 SetPlayerProperty(0,1,3)
+VMHA BB 1 
+VMHA BBB 1
+TNT1 A 0 A_Recoil(-60) 
+VMHA C 2 A_SpawnItemEx("ValkyrieMaidenSpeedBoostFX",0,0,30)
+VMHA CCCCCCCCCCCC 2 A_SpawnItemEx("ValkyrieMaidenDashShadow",0,0,0)//12 (GROUND), 13 (AIR)
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 SetPlayerProperty(0,0,3)
+VMHA BB 1
+TNT1 A 0 A_TakeInventory("MaidenAttackFlag",999)
+Goto Active
+Flash:
+VMSH A 0 A_JumpIfInventory("IsDead",1,"RIP")
+VMSH A 0 A_JumpIfInventory("ShieldTimeOut",1,"ShieldRecovering")
+VMSH A 1 A_SpawnItemEx("MaidenShieldFX2",23,-17,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
+VMSH A 0 A_JumpIfInventory("MaidenAttackFlag",1,"ShieldDown")
+VMSH A 0 A_JumpIfInventory("ShieldRaise",1,"ShieldAway")
+loop
+ShieldDown:
+VMSH B 0 A_JumpIfInventory("ShieldTimeOut",1,"ShieldRecovering")
+VMSH B 1
+VMSH B 0 A_JumpIfInventory("ShieldDamage",50,"ShieldRecovering")
+VMSH B 0 A_JumpIfInventory("MaidenAttackFlag",1,"ShieldDown")
+//TNT1 A 0 A_PlaySoundEx("maiden/weaponchange","SoundSlot6") //Please don't do this.
+Goto Flash
+ShieldAway:
+TNT1 A 0 A_JumpIfInventory("ShieldTimeOut",1,"ShieldRecovering")
+TNT1 A 0 A_JumpIfInventory("ShieldDamage",50,"ShieldRecovering")
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("ShieldRaise",1,"ShieldAway")
+Goto Flash
+ShieldRecovering:
+TNT1 A 0 A_TakeInventory("ShieldTimeOut",1)
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("ShieldTimeOut",1,"ShieldRecovering")
+TNT1 A 0 A_TakeInventory("ShieldRaise",1)
+//TNT1 A 0 A_TakeInventory("MaidenShieldSlowDown",1)
+Goto Flash
+RIP:
+TNT1 A 0
+stop
+}
+}
+
+actor MaidenAttackFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor MaidenShieldFX
+{
++MISSILE
+Speed 0
++DONTSPLASH
+Damage 0
+Height 35
+Radius 25
+health 9999
+scale 2.5
++SHOOTABLE
++NOBLOOD
+-SOLID
+painchance 256
+bloodtype ""
++DONTRIP
++GHOST
++NORADIUSDMG
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+Death:
+TNT1 A 0 //A_PlaySound("item/protoreflect")
+TNT1 A 1
+stop
+Pain:
+TNT1 A 0
+TNT1 A 2 A_PlaySound("maiden/hurt")
+stop
+}
+}
+
+actor MaidenShieldFX2
+{
++REFLECTIVE
++MISSILE
+Speed 0
++DONTSPLASH
+Damage 0
+Height 35
+Radius 25
+health 9999
+scale 2.5
++SHOOTABLE
++NOBLOOD
+-SOLID
+painchance 256
+bloodtype ""
++DONTRIP
++GHOST
++NORADIUSDMG
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+Death:
+TNT1 A 0 //A_PlaySound("item/protoreflect")
+TNT1 A 1
+stop
+Pain:
+TNT1 A 0 A_GiveToTarget("ShieldDamage",1)
+TNT1 A 0 A_GiveToTarget("ShieldDamageRecoil",1)
+TNT1 A 2 A_PlaySound("maiden/hurt")
+stop
+Pain.HyperBomb:
+Pain.CrashBomb:
+Pain.NapalmBomb:
+Pain.DangerWrap:
+Pain.FlashBomb:
+Pain.RemoteMine:
+TNT1 A 0 A_GiveToTarget("ShieldDamage",5)
+TNT1 A 0 A_GiveToTarget("ShieldDamageRecoil",5)
+TNT1 A 2 A_PlaySound("maiden/hurt")
+stop
+}
+}
+
+actor ShieldRaise : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor ShieldDamage : Inventory
+{
+inventory.amount 1
+inventory.maxamount 9999
+}
+
+actor ShieldTimeout : Inventory
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor ShieldDamageRecoil : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++Inventory.AutoActivate
+states
+{
+Use:
+TNT1 A 0 A_Recoil(1)
+stop
+}
+}
+
+actor MaidenDashCooldown : Powerup
+{
+Powerup.Duration -2
+}
+
+actor ValkyrieMaidenSpeedBoostFX : GigaFistFx
+{
+Scale 4.5
+Translation "192:193=32:32", "194:195=236:236"
+}
+
+actor ValkyrieMaidenDashShadow : GeminiTrail
+{
+RenderStyle "Add"
+Alpha 0.89
+Translation "0:255=56:79"
+States
+{
+Spawn:
+KNIM BBBBBB 1 bright A_FadeOut
+stop
+}
+}

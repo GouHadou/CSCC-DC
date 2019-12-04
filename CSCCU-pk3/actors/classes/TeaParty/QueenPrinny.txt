@@ -1,0 +1,2 @@
+#include "actors/classes/TeaParty/QueenPrinny/PrinnyQueenclass.txt"
+#include "actors/classes/TeaParty/QueenPrinny/TrollBuster.txt"

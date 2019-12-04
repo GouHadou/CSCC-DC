@@ -1,0 +1,28 @@
+actor Ankhzirus : ClassBaseCSCC
+{
+Health 75
+Player.MaxHealth 75
+player.forwardmove 0.92, 0.92
+player.sidemove 0.92, 0.92
+player.displayname "Ankhzirus"
+player.startitem "AnkhzirusStaffBoss"
+player.startitem "AnkhzirusBandageBoss"
+player.startitem "AnkhzirusAmmo", 140
+player.startitem "AnkhzirusAmmo2", 70
+player.startitem "AnkhzirusItem"
+states
+{
+Spawn:
+ANKH A 0
+ANKH B 1
+ANKH A 1
+Goto Spawn+2
+See:
+ANKH BCDE 5
+Goto Spawn
+Missile:
+ANKH F 5
+ANKH G 4
+goto Spawn
+}
+}

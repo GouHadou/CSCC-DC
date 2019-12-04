@@ -1,0 +1,961 @@
+actor Glitchfield : MegaBuster
+{
+//$Category MM8BDM-Weapons
+Weapon.AmmoUse1 7
+Weapon.AmmoGive1 28
+Weapon.AmmoUse2 4
+Weapon.AmmoGive2 28
+Weapon.SlotNumber 7
+Obituary "%o has been corrupted by %k's Glitch Field."
+Inventory.Pickupmessage "Power up! Junk Shield!"
+weapon.ammotype1 "GlitchfieldAmmo"
+weapon.ammotype2 "GlitchfieldAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
++INVENTORY.UNDROPPABLE
++WEAPON.CHEATNOTWEAPON
+Scale 2.0
+DropItem "JunkShieldWep"
+States
+{
+Spawn:
+WEA3 N 1
+loop
+Ready:
+GARM A 0 ACS_ExecuteAlways(998,0,1)
+CARM A 0 //ACS_ExecuteAlways(994,0)
+GARM A 0 //A_JumpIf(ACS_ExecuteWithResult(975,0)==3,"Death")
+CARM A 10 A_WeaponReady
+GARM A 1 A_GiveInventory("GlitchfieldAmmo",2)
+Goto Ready+3
+Deselect:
+CARM A 0 A_JumpIfInventory("ShieldCheck", 1, "TakeArmor") 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+GARM A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+CARM A 1 A_Raise
+Loop
+Fire:
+CARM A 0 A_JumpIfInventory("ShieldCheck", 1,"ShieldThrow")
+GARM A 0 A_JumpIfNoAmmo("Hold")
+CARM A 0 A_PlayWeaponSound("weapon/Glitchshielduse")
+CARM A 0 A_GiveInventory("ShieldCheck",1)
+GARM A 0 A_GiveInventory("JunkArmor",1)
+CARM A 0 A_TakeInventory("GlitchfieldAmmo",7)
+GARM A 0 A_SpawnItemEx("GlitchWatcher")
+GARM BCDEF 3
+Goto ShieldActive
+AltFire:
+CARM A 0 A_JumpIfNoAmmo("Hold")
+CARM A 0 A_PlayWeaponSound("weapon/Glitchshot")
+CARM A 0 A_TakeInventory("GlitchfieldAmmo",4)
+CARM A 0 A_FireCustomMissile("GlitchProjectile",0,0,0,0)
+CARM A 0
+CARM B 4
+CARM B 5 A_FireCustomMissile("GlitchProjectile2",0,0,0,0)
+CARM C 10
+CARM B 4
+Goto Ready+1
+ShieldThrow:
+CARM A 0// A_GiveInventory("JunkDone",1)
+CARM A 0 A_TakeInventory("ShieldCheck",1)
+CARM A 0 A_TakeInventory("BasicArmor",999)
+CARM BC 3 
+CARM A 0// A_TakeInventory("JunkDone",1)
+CARM A 0 A_PlayWeaponSound("weapon/Glitchshot")
+Throwing:
+CARM A 0 A_FireCustomMissile("GlitchProjectile",0,0,0,0)
+CARM A 0 A_FireCustomMissile("GlitchProjectile",120,0,0,0)
+CARM C 4 A_FireCustomMissile("GlitchProjectile",-120,0,0,0)
+CARM A 0 A_FireCustomMissile("GlitchProjectile2",0,0,0,0)
+CARM A 0 A_FireCustomMissile("GlitchProjectile2",120,0,0,0)
+CARM C 4 A_FireCustomMissile("GlitchProjectile2",-120,0,0,0)
+CARM C 20 
+CARM B 3
+Goto Ready+2
+ShieldActive:
+GARM A 2 HealThing(1)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,0 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,45 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,90 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,135 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,180 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,225 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,270 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,315 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,80,momx,momy,momz,0 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,0,momx,momy,momz,0 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 2 A_WeaponReady(WRF_NOSECONDARY)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,0 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,45 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,90 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,135 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,180 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,225 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,32,momx,momy,momz,270 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,32,momx,momy,momz,315 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("GlitchDamager",0,0,80,momx,momy,momz,0 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 0 A_SpawnItemEx("FakeGlitchDamager",0,0,0,momx,momy,momz,0 ,SXF_ABSOLUTEMOMENTUM, 0)
+GARM A 2 A_WeaponReady(WRF_NOSECONDARY)
+GARM A 0 A_JumpIfInventory("ShieldCheck", 1,"ShieldActive")
+GARM A 0 A_GiveInventory("GlitchDebrisSpawner",1)
+GARM AAAAAA 5 A_WeaponReady(WRF_NOFIRE)
+goto Ready+2
+Hold:
+GARM A 1 ACS_Execute(979,0)
+GARM A 0 A_Refire
+Goto Ready+2
+NoAmmo:
+GARM A 1 ACS_Execute(979,0)
+Goto Ready+2
+Death:
+GARM A 1
+stop
+TakeArmor:
+CARM A 0 A_TakeInventory("ShieldCheck",1)
+CARM A 0 A_TakeInventory("BasicArmor",100)
+CARM A 1
+Goto Deselect+1
+}
+}
+
+actor GlitchDamager
+{
+Obituary "%o has been corrupted by %k's Glitch Field."
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
+-ACTIVATEIMPACT
+-ACTIVATEPCROSS
++NOTELEPORT
+damagetype "Glitchness"
+Speed 27
+scale 2.5
+radius 5
+Height 32
+Damage (8)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_ChangeVelocity(-20,0,0,CVF_RELATIVE|CVF_REPLACE)
+TNT1 A 6 
+Stop
+Crash:
+TNT1 A 0 
+TNT1 A 1 A_TakeFromTarget("BasicArmor", 5)
+stop
+}
+}
+
+actor GlitchDamager2 : GlitchDamager
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 2 
+stop
+}
+}
+
+actor FakeGlitchDamager : GlitchDamager
+{
+Damage (0)
+}
+
+actor GlitchWatcher
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX1",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX1",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX2",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX2",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX3",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX3",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX4",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX4",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX5",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX5",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX6",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX6",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX7",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX7",1)
+TNT1 A 0 A_JumpIfInTargetInventory("BasicArmor",1,"Continue")
+Goto Death
+Continue:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX8",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX8",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX9",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX9",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX10",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX10",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX11",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX11",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX12",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX12",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX13",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX13",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX14",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX14",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX15",1)
+TNT1 A 1 A_GiveToTarget("GlitchGiveFX15",1)
+TNT1 A 0 A_JumpIfInTargetInventory("BasicArmor",1,"Spawn")
+goto Death
+Death:
+TNT1 A 1 //A_GiveToTarget("JunkDebrisSpawner",1)
+TNT1 A 1 A_TakeFromTarget("ShieldCheck",1)
+TNT1 A 0 A_TakeFromTarget("BasicArmor",100)
+stop
+}
+}
+
+actor GlitchDebrisSpawner : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 AA 0 A_SpawnItemEx("GlitchDebris",0,0,0,random(-10,10),random(-10,10),random(5,15),random(0,360))
+TNT1 AA 1 A_SpawnItemEx("GlitchDebrisSmall",0,0,0,random(-10,10),random(-10,10),random(5,15),random(0,360))
+stop
+}
+}
+
+actor GlitchDebris
+{
+Height 0
+Radius 0
++MISSILE
++RIPPER
++NOBLOCKMAP
+-SOLID
+damage 0
+scale 2.5
+//+CLIENTSIDEONLY
++NOINTERACTION
+reactiontime 4
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_PlaySoundEx("weapon/junkend","Voice")
+GASH AB 1
+TNT1 A 2 A_CountDown
+Goto Spawn+2
+}
+}
+
+actor GlitchDebrisSmall
+{
+Height 0
+Radius 0
++MISSILE
+-SOLID
+scale 2.5
++NOBLOCKMAP
++RIPPER
+damage 0
++CLIENTSIDEONLY
+reactiontime 3
+States
+{
+Spawn:
+JSHI W 2
+TNT1 A 2 A_CountDown
+loop
+}
+}
+
+actor GlitchGiveFX1 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX1",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX2 : GlitchGiveFX1
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX2",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX3 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX3",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX4 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX4",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX5 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX5",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX6 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX6",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX7 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX7",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX8 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX8",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX9 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX9",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX10 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX10",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX11 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX11",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX12 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX12",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX13 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX13",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX14 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX14",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchGiveFX15 : GlitchGiveFX2
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 1 A_SpawnItemEx("GlitchShieldFX15",random(-32,32),random(-32,32),0,momx,momy,random(0,55),0,SXF_ABSOLUTEMOMENTUM)
+stop
+}
+}
+
+actor GlitchProjectile
+{
+Obituary "%o has been corrupted by %k's Glitch Field."
+PROJECTILE
+Damage (20)
+damagetype "Glitchness"
+Height 10
+Radius 21
+scale 2.5
+Speed 18
+States
+{
+Spawn:
+GASH ABCB 4
+loop
+}
+}
+
+actor GlitchProjectile2
+{
+Obituary "%o has been corrupted by %k's Glitch Field."
+PROJECTILE
+Damage 0
+damagetype "Glitchness"
+Height 10
+Radius 21
+scale 2.5
+Speed 18
+States
+{
+Spawn:
+GASH DE 4
+loop
+}
+}
+
+
+
+actor GlitchShieldFX1
+{
+scale 2.5
+- SOLID
++NOGRAVITY
+//+CLIENTSIDEONLY
+//+NONETID
+States
+{
+Spawn:
+GASH A 1
+GASH A 1
+stop
+}
+}
+
+actor GlitchShieldFX2 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH B 1
+GASH B 1
+stop
+}
+}
+
+actor GlitchShieldFX3 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH C 1
+GASH C 1
+stop
+}
+}
+
+actor GlitchShieldFX4 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH D 1
+GASH D 1
+stop
+}
+}
+
+actor GlitchShieldFX5 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH E 1
+GASH E 1
+stop
+}
+}
+
+actor GlitchShieldFX6 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH D 1
+GASH D 1
+stop
+}
+}
+
+actor GlitchShieldFX7 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH C 1
+GASH C 1
+stop
+}
+}
+
+actor GlitchShieldFX8 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH B 1
+GASH B 1
+stop
+}
+}
+
+actor GlitchShieldFX9 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH A 1
+GASH A 1
+stop
+}
+}
+
+actor GlitchShieldFX10 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH B 1
+GASH B 1
+stop
+}
+}
+
+actor GlitchShieldFX11 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH C 1
+GASH C 1
+stop
+}
+}
+
+actor GlitchShieldFX12 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH D 1
+GASH D 1
+stop
+}
+}
+
+actor GlitchShieldFX13 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH E 1
+GASH E 1
+stop
+}
+}
+
+actor GlitchShieldFX14 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH D 1
+GASH D 1
+stop
+}
+}
+
+actor GlitchShieldFX15 : GlitchShieldFX1
+{
+States
+{
+Spawn:
+GASH C 1
+GASH C 1
+stop
+}
+}
+
+actor GlitchfieldAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor WaterLiftUse : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 3
+inventory.icon "WATRSI"
+scale 2.0
++COUNTITEM
++INVBAR
+states
+{
+Failure:
+TNT1 A 0
+fail
+Use:
+TNT1 A 0 
+WEA2 A 0 A_SpawnItemEx("SpoutHold", 56, 0, 4, 0, 0, 0, 0, 0, 0)
+stop
+}
+}
+
+actor SpoutHold
+{
+damagetype "SpoutHold"
++DONTBLAST
++NOEXPLODEFLOOR
++FIXMAPTHINGPOS
++RIPPER
++DONTREFLECT
++FLOORHUGGER
+Scale 2.5
+Height 48
+Radius 20
+Speed 0
+Damage (0)
+reactiontime 70
+States
+{
+Spawn:
+TORH B 1 A_JumpIf(z-floorz<=0,"Change")
+TORH B 0 A_CountDown
+Loop
+Change:
+TORH BC 1 
+goto Floor
+Floor:
+FLMB A 0 A_ChangeFlag("MISSILE",1)
+FLMB A 0 A_ChangeFlag("FLOORHUGGER",1)
+FLMB A 0 A_ChangeFlag("NOCLIP",1)
+//TORH D 0 A_PlaySoundEx("weapon/tornadohold","Weapon")
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+TORH D 0 A_SpawnItemEx("HoldingSpout",0,0,15,0,0,0,0,SXF_NOCHECKPOSITION)
+TORH DEDE 1
+stop
+Death:
+FLMB A 0 
+stop
+}
+}
+
+actor HoldingSpout
+{
+PROJECTILE
+damage(5) 
++DONTREFLECT
+//+RIPPER
+damagetype "WaterType"
+Obituary "%o tried to join %k on the Water Lift."
+height 8
+radius 48
+Scale 2.5
+Speed 0
+States
+{
+Spawn:
+WWAV AA 0 ThrustThingZ(0,20,0,0)
+WWAV ABC 1
+Loop1:
+WWAV D 0 A_PlaySoundEx("weapon/waterwave","Weapon")
+WWAV DDD 1 A_JumpIfCloser(48,"Lift1")
+Loop2:
+WWAV D 0 A_PlaySoundEx("weapon/waterwave","Weapon")
+WWAV DDD 1 A_JumpIfCloser(48,"Lift2")
+Loop3:
+WWAV D 0 A_PlaySoundEx("weapon/waterwave","Weapon")
+WWAV DDD 1 A_JumpIfCloser(48,"Lift3")
+goto Loop1
+Lift1:
+WWAV D 1 A_GiveToTarget("SpoutThruster",1)
+WWAV DD 1
+goto Loop2
+Lift2:
+WWAV D 1 A_GiveToTarget("SpoutThruster",1)
+WWAV DD 1
+goto Loop3
+Lift3:
+WWAV D 1 A_GiveToTarget("SpoutThruster",1)
+WWAV DD 1
+goto Loop1
+Death:
+WWAV A 1 A_SpawnItemEx("SpoutHoldEnd")
+stop
+XDeath:
+WWAV A 0 
+WWAV A 0 A_SpawnItemEx("SpoutLifter",0,0,0,0,0,momz)
+stop
+}
+}
+
+actor SpoutHoldEnd
+{
++NOINTERACTION
++CLIENTSIDEONLY
+Scale 2.5
+States
+{
+Spawn:
+WWAV DCBA 3
+stop
+}
+}
+
+actor SpoutLifter : HoldingSpout
+{
+
+DAMAGE (0)
+States
+{
+Death:
+WWAV A 0 
+stop
+XDeath:
+WWAV A 0 
+stop
+}
+}
+
+actor SpoutThruster : TornadoThruster
+{
+States
+{
+Pickup:
+TNT1 A 1 ThrustThingZ(0,28,0,0)
+stop
+}
+}

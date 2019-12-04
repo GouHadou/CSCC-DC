@@ -1,0 +1,4 @@
+#include "actors/classes/CSCC/finitezero/fzclass.txt"
+#include "actors/classes/CSCC/finitezero/fzwep.txt"
+#include "actors/classes/CSCC/finitezero/fzig.txt"
+#include "actors/classes/CSCC/finitezero/fzcopy.txt"

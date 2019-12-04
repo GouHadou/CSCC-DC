@@ -1,0 +1,7 @@
+actor ClassBase6 : ClassBase5 //CSCCB States
+{
+States
+{
+
+}
+}

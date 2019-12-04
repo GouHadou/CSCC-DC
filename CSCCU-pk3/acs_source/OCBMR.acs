@@ -1,0 +1,834 @@
+#library "ocbmr"
+#include "zcommon.acs"
+
+script 107 (void)
+{
+if(
+CheckActorFloorTexture(ActivatorTID(),"F_SKY1")==1
+||CheckActorFloorTexture(ActivatorTID(),"BUBBLE23")==1
+||CheckActorFloorTexture(ActivatorTID(),"HFALL")==1
+||CheckActorFloorTexture(ActivatorTID(),"CHARG46")==1
+||CheckActorFloorTexture(ActivatorTID(),"CHARG48")==1
+||CheckActorFloorTexture(ActivatorTID(),"FIRELAV")==1
+||CheckActorFloorTexture(ActivatorTID(),"SHAFALX1")==1
+||CheckActorFloorTexture(ActivatorTID(),"JLAVA")==1
+||CheckActorFloorTexture(ActivatorTID(),"SWORLAVX")==1
+||CheckActorFloorTexture(ActivatorTID(),"BUBBWTR")==1
+||CheckActorFloorTexture(ActivatorTID(),"CHARTRCK")==1
+||CheckActorFloorTexture(ActivatorTID(),"CHARGRND")==1
+||CheckActorFloorTexture(ActivatorTID(),"SHALAVAX")==1
+||CheckActorFloorTexture(ActivatorTID(),"BLACKR1")==1
+||CheckActorFloorTexture(ActivatorTID(),"ASTSNDX")==1
+||CheckActorFloorTexture(ActivatorTID(),"WT1LAVAX")==1
+||(GetLevelInfo(LEVELINFO_LEVELNUM)!=15
+&&CheckActorFloorTexture(ActivatorTID(),"BLACK")==1)
+||(GetLevelInfo(LEVELINFO_LEVELNUM)!=75
+&&CheckActorFloorTexture(ActivatorTID(),"AQWATER")==1)
+){
+SetResultValue(1);
+}else{
+SetResultValue(0);
+}
+}
+
+
+script 665 (void)
+{
+if(GetCvar("invasion")==1||GetCvar("cooperative")==1)
+{
+UnMorphActor(ActivatorTID());
+TakeInventory("BugTypeWepIMKN",1);
+GiveInventory("BugTypeWepITLS",1);
+TakeInventory("ConfuseRayItem",1);
+GiveInventory("SolarBeamItem",1);
+Delay(1);
+}
+Delay(3);
+terminate;
+}
+
+Script "ImurkonoMorph" (void)
+{
+MorphActor(ActivatorTID(),"Imurkono","",0x7FFFFFFF,514,"","");
+terminate;
+}
+
+
+Script "OMArmWarper" (void) CLIENTSIDE
+{
+	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+	
+	// Loop if shield is active
+	while(GetActorProperty(Player, APROP_HEALTH)>0
+	){
+		Delay(1);
+	}
+	
+	// Remove
+	Thing_Remove(0);
+}
+
+
+#DEFINE MAX_PLAYERS 64
+
+//MAX_TARGET_ANGLE (0.0 - 0.5) i think
+#DEFINE MAX_TARGET_ANGLE 0.005
+#DEFINE MAX_TARGET_ANGLE2 0.0005
+#DEFINE TEAM_NONE -1
+#DEFINE TEAM_COOP -2
+
+#DEFINE LOSAMMO_MAX 300
+
+//just using this until GetActorProperty(0,APROP_Height)/2 works
+#DEFINE PLAYER_CENTER 28.0
+
+int targetRegister; //replaced with User_STargTID
+int angleDistRegister; // replaced with User_angleDistRegister
+
+
+
+script "TracerTargeter" (int TargType, int TargRange) {
+	int ownerNumber = PlayerNumber();
+	int team;
+	int x;
+	int y;
+	int z;
+	int angle;
+	int pitch;
+	int i;
+	
+	str WepName = getweapon();
+	//log(s:WepName);
+	// each instance of this script is tied to a weapon, when you are off of it, it terminates
+	
+	//if(CheckInventory("TargScriptActive")){Terminate;}
+		//an instance of this script is already live for this person
+	
+	if (TargRange<=0){setuservariable(0,"User_STargRange",600); 
+					  adjustInventory("TargetingRangeFlag",getuservariable(0,"User_STargRange")+1);}
+	else{setuservariable(0,"User_STargRange",TargRange);
+		adjustInventory("TargetingRangeFlag",getuservariable(0,"User_STargRange")+1);}
+	
+	GiveInventory("TargActive",1);
+	
+	while(GetActorProperty(0,APROP_HEALTH) > 0 
+			&& Checkinventory("TargActive")
+			&& getWeapon() == WepName
+			) { 
+		team = getSelfTeam();
+		x = GetActorX(0);
+		y = GetActorY(0);
+		z = GetActorZ(0) + GetActorViewHeight(0);
+		angle = GetActorAngle(0);
+		pitch = pitchAdjust(GetActorPitch(0));
+		
+		//targetRegister = -1;
+		//angleDistRegister = MAX_TARGET_ANGLE;
+		if(!Checkinventory("TargHolder"))
+		{
+		
+		setuservariable(0,"User_STargTID",-1);
+		
+		if(Checkinventory("TargContractor"))
+		{setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE2);}
+		else
+		{setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE);}
+
+			if(team==TEAM_NONE) {
+				for(i=0;i<ownerNumber;i++) {
+					Targeter(x, y, z, angle, pitch, i);
+				}
+				for(i=ownerNumber+1;i<MAX_PLAYERS;i++) {
+					Targeter(x, y, z, angle, pitch, i);
+				}
+			} else if(team!=TEAM_COOP) {
+				for(i=0;i<ownerNumber;i++) {
+					TargeterTeam(team, x, y, z, angle, pitch, i, TargType);
+				}
+				for(i=ownerNumber+1;i<MAX_PLAYERS;i++) {
+					TargeterTeam(team, x, y, z, angle, pitch, i, TargType);
+				}
+			}
+		}
+		
+		if(xyzDistance(0,getuservariable(0,"User_STargTID")+1000) <= TargRange
+			&& !checkinventory("RespawnCamera"))
+		{
+		setpointer(AAPTR_TRACER,getuservariable(0,"User_STargTID")+1000);
+		}
+		else {setpointer(AAPTR_TRACER,0,AAPTR_NULL);}
+		adjustInventory("TargetingFlag",getuservariable(0,"User_STargTID")+1);
+		if (TargRange!=checkinventory("TargetingRangeFlag"))
+			{
+			setuservariable(0,"User_STargRange",TargRange);
+			adjustInventory("TargetingRangeFlag",getuservariable(0,"User_STargRange")+1);
+			}
+		//giveinventory("TargScriptActive");
+		delay(1);
+	}
+		//takeinventory("TargScriptActive",9)
+		setuservariable(0,"User_STargTID",-1);
+		setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE);
+		adjustInventory("TargetingFlag",0);
+		adjustInventory("TargetingRangeFlag",0);
+}
+
+function void TargeterTeam(int team, int x, int y, int z, int angle, int pitch, int i, int TargType) {
+	if(team != GetPlayerInfo(i, PLAYERINFO_TEAM) && TargType <= 0) 
+		{
+		Targeter(x, y, z, angle, pitch, i);
+		}
+		
+	else if(team == GetPlayerInfo(i, PLAYERINFO_TEAM) && TargType == 1) 
+		{
+		Targeter(x, y, z, angle, pitch, i);
+		}
+		
+	Else if(TargType >= 2) 
+		{
+		Targeter(x, y, z, angle, pitch, i);
+		}
+}
+
+function void Targeter(int x, int y, int z, int angle, int pitch, int i) {
+	int target = i+1000;
+	if(CheckActorInventory(target,"Discorded")==0
+		&& GetActorProperty(target,APROP_HEALTH)>0
+		&& CheckSight(0,target,CSF_NOFAKEFLOORS)) {
+		int xDist = GetActorX(target) - x;
+		int yDist = GetActorY(target) - y;
+		int angleDist = vectorangle(xDist,yDist);
+		int dist = fDistanceVal1(angleDist, xDist, yDist);
+		int zDist = GetActorZ(target) + PLAYER_CENTER - z;
+		int pitchDist = vectorangle(dist, zDist);
+		//dist = fDistanceVal2(pitchDist, dist, zDist);		
+		
+		angleDist = WrapAround(angleDist-angle);
+		pitchDist = WrapAround(pitchDist-pitch);
+		angleDist = fixedMul(angleDist,angleDist) + fixedMul(pitchDist,pitchDist);
+		//print(f:angleDist);
+		if(angleDist<getuservariable(0,"User_angleDistRegister")) {
+			//targetRegister = i;
+			//angleDistRegister = angleDist;
+			
+			setuservariable(0,"User_STargTID",i);
+			setuservariable(0,"User_angleDistRegister",angleDist);
+			
+			
+		}
+	}
+}
+
+function int fDistanceVal1(int ang, int x, int y)
+{
+	int len;
+	
+	if(((ang+0.125)%0.5) > 0.25) len = fixeddiv(y, sin(ang));
+	else len = fixeddiv(x, cos(ang));
+
+	//print(f:len);
+	return len;
+}
+
+function int fDistanceVal2(int ang, int len, int z)
+{
+	if(((ang+0.125)%0.5) > 0.25) len = fixeddiv(z, sin(ang));
+	else len = fixeddiv(len, cos(ang));
+
+	//print(f:len);
+	return len;
+}
+
+function int pitchAdjust(int i) {
+	if(i>0.0) return 1.0-i;
+	return -i;
+}
+
+function int WrapAround(int i)
+{
+	if(i<-0.5) return i+1.0;
+	if(i>0.5) return i-1.0;
+	return i;
+}
+
+
+function int getSelfTeam(void)
+{
+if (GetCVar("teamplay")==1||GetCVar("teamlms")==1||GetCVar("teampossession")==1
+||GetCVar("teamgame")==1){
+	Return PlayerTeam();
+} else if (GetCVar("cooperative")==1) {
+	Return TEAM_COOP;
+}
+Return TEAM_NONE;
+}
+
+function void adjustInventory(str item, int quantity) {
+	int diff = quantity-CheckInventory(item);
+	if(diff>0) {
+		giveInventory(item,diff);
+	} else if (diff<0) {
+		takeInventory(item,-diff);
+	}
+}
+
+function void adjustActorInventory(int actor, str item, int quantity) {
+	int diff = quantity-CheckActorInventory(actor,item);
+	if(diff>0) {
+		giveActorInventory(actor,item,diff);
+	} else if (diff<0) {
+		takeActorInventory(actor,item,-diff);
+	}
+}
+
+script "TargeterHudVision" ENTER CLIENTSIDE {
+	int ownerNumber = PlayerNumber();
+	
+	if(ownerNumber==ConsolePlayerNumber()) {
+	
+		int xOffset = 10.0;
+		int yOffset = 380.0;
+		int t;
+		int T_Range;
+		int i;
+	
+		while(GetActorProperty(0,APROP_HEALTH) > 0) {
+			t =  checkInventory("TargetingFlag"); //getuservariable(0,"User_STargTID")+1;
+			T_Range = checkInventory("TargetingRangeFlag"); //getuservariable(ownerNumber+1000,"User_STargRange");
+			/*
+			SetHudSize(640, 480, 0);
+			SetFont("SMALLFONT");
+			HudMessage(s:"target number: ", i:t; HUDMSG_PLAIN, 100, CR_UNTRANSLATED, xOffset+0.1, yOffset+0.0, 1.0);
+			if(t>0) {
+				HudMessage(s:"target name: ",n:t; HUDMSG_PLAIN, 101, CR_UNTRANSLATED, xOffset+0.1, yOffset+8.0, 1.0);
+			} else {
+				HudMessage(s:"no target"; HUDMSG_PLAIN, 101, CR_UNTRANSLATED, xOffset+0.1, yOffset+8.0, 1.0);
+			}
+			HudMessage(s:"LOSAmmo: ",i:checkInventory("LOSAmmo"); HUDMSG_PLAIN, 102, CR_UNTRANSLATED, xOffset+0.1, yOffset+16.0, 1.0);
+			*/
+			
+			if(t>0) {
+			if(checkinventory("TargHolder")) {
+				HudMessageOnActorZPlusAllign(1000-1+t, PLAYER_CENTER, 103, 0, 0, 0, 0, T_Range, "JUSTA0", "Target", 0, CR_UNTRANSLATED);
+				}
+				else
+				{
+				HudMessageOnActorZPlusAllign(1000-1+t, PLAYER_CENTER, 103, 0, 0, 0, 0, T_Range, "JUSTB0", "Target", 0, CR_UNTRANSLATED);
+				}
+			}
+			
+			//apparently these two for loops are done in a way that excludes the
+			//script activator. possibly for potential desynch maybe?
+			
+			for(i=0;i<ownerNumber;i++) {
+				if(CheckActorInventory(1000+i,"Discorded")) {
+					HudMessageOnActorZPlusAllign(1000+i, PLAYER_CENTER, 200+i, 0, 0, 0, -10, 9000, "JUSTA0", "Discord", 0, CR_UNTRANSLATED);
+				}
+			}
+			for(i=ownerNumber+1;i<MAX_PLAYERS;i++) {
+				if(CheckActorInventory(1000+i,"Discorded")) {
+					HudMessageOnActorZPlusAllign(1000+i, PLAYER_CENTER, 200+i, 0, 0, 0, -10, 9000, "JUSTA0", "Discord", 0, CR_UNTRANSLATED);
+				}
+			}
+			
+			delay(1);
+		}
+	}
+}
+
+script "TargeterHudRespawn" RESPAWN CLIENTSIDE {
+	ACS_NamedExecuteAlways("TargeterHudVision",0);
+}
+/*
+script 407 (void) {
+	SetResultValue(checkInventory("TargetingFlag"));
+}
+
+script 408 (int target) {
+	if(checkInventory("DiscordActive")) {
+		GiveInventory("DiscordDeactivate",1);
+		do {
+			delay(1);
+		} while(checkInventory("DiscordActive"));
+		TakeInventory("DiscordDeactivate",1);
+	}
+	
+	int owner = ActivatorTID();
+	target = target-1+1000;
+	SetActivator(0,AAPTR_NULL);
+	
+	GiveActorInventory(owner,"DiscordActive",1);
+	GiveActorInventory(owner,"LOSAmmo",LOSAMMO_MAX);
+	GiveActorInventory(target,"Discorded",1);
+	
+	while(GetActorProperty(owner,APROP_HEALTH)>0
+		&& GetActorProperty(target,APROP_HEALTH)>0
+		&& CheckActorInventory(owner,"DiscordDeactivate")==0
+		&& CheckActorInventory(owner,"LOSAmmo")>0) {
+		
+		if(CheckSight(owner,target,CSF_NOFAKEFLOORS)) {
+			AdjustActorInventory(owner,"LOSAmmo",LOSAMMO_MAX);
+		} else {
+			TakeActorInventory(owner,"LOSAmmo",1);
+		}
+		
+		delay(1);
+		  
+	}
+	
+	TakeActorInventory(owner,"DiscordActive",1);
+	TakeActorInventory(owner,"LOSAmmo",LOSAMMO_MAX);
+	TakeActorInventory(target,"Discorded",1);
+}
+*/
+script "TargeterHudEnter" ENTER { //So joining players see stuff right
+	for(int i=0;i<MAX_PLAYERS;i++) {
+		Thing_ChangeTID(1000+i,1000+i);
+	}
+}
+//Pretty sure I don't need a respawn script to call this too.
+
+//HudMessageOnActor from ZDoom wiki
+function void HudMessageOnActorZPlusAllign(int tid, int ZPlus, int msgID, int hudX, int hudY, int xOffset, int yOffset, int range, str sprite, str text, int holdTime, str colour)
+{
+		
+	int dist, angle, vang, pitch, x, y;
+	
+	if (holdTime == 0) { holdTime = 0.1; }	
+	if (hudX == 0) { hudX = 640; }
+	if (hudY == 0) { hudY = 480; }
+	
+	if(sprite != -1)
+	{
+		
+		SetFont(sprite);
+		text = "A";
+		
+	}
+	
+	SetHudSize(hudX, hudY, 1);
+	x = GetActorX(tid) - GetActorX(0);
+	y = GetActorY(tid) - GetActorY(0);
+	
+	vang = VectorAngle(x,y);
+	angle = (vang - GetActorAngle(0) + 1.0) % 1.0;
+	
+	if(((vang+0.125)%0.5) > 0.25) dist = FixedDiv(y, sin(vang));
+	else dist = FixedDiv(x, cos(vang));
+	
+	if ((angle < 0.23 || angle > 0.85) && (dist >> 16) < range)
+	{
+		
+		if (GetActorPitch(0) >= -0.5 && GetActorPitch(0) <= 0.5)
+		{
+ 
+			pitch = VectorAngle(dist, GetActorZ(tid) + ZPlus - (GetActorZ(0) + GetActorViewHeight(0)));
+			pitch += FixedMul(GetActorPitch(0), 1.2) % 1.0;
+ 
+			if ((hudX/2) * sin(angle) != 0 && cos(angle) != 0 && (hudX/2) * sin(pitch) != 0 && cos(pitch) != 0)
+			{
+				
+				x = hudX/2 - ((hudX/2) * sin(angle) / cos(angle));
+				y = hudY/2 - ((HUDX/2) * sin(pitch) / cos(pitch));
+				
+				x+=xOffset;
+				y+=yOffset;
+				
+				HudMessage(s:text; HUDMSG_PLAIN, msgID, colour, (x << 16)+0.1, (y << 16)+0.1, holdTime);
+				
+			}
+			
+		}
+		
+	}
+	
+}
+
+//==============================
+// Distance measuring functions
+function int xyzDistance (int tid1, int tid2)
+{
+	int x, y, z, d;
+	x = GetActorX(tid1) - GetActorX(tid2) >> 16; // Convert fixed point to integer
+	y = GetActorY(tid1) - GetActorY(tid2) >> 16;
+	z = GetActorZ(tid1) - GetActorZ(tid2) >> 16;
+	d = sqrt8( x*x + y*y + z*z );
+	return d;
+}
+
+function int sqrt8(int number)
+{
+	if(number <= 3)
+	{
+		if(number > 0)
+		{
+			return 1;
+		}
+		return 0;
+	}
+
+	int oldAns = number >> 1,                     // initial guess
+	    newAns = (oldAns + number / oldAns) >> 1; // first iteration
+
+	// main iterative method
+	while(newAns < oldAns)
+	{
+		oldAns = newAns;
+		newAns = (oldAns + number / oldAns) >> 1;
+	}
+
+	return oldAns;
+}
+
+
+Script "TurretReticleWarper" (void) CLIENTSIDE
+{
+	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+	
+	// Loop if shield is active
+	while(GetActorProperty(Player, APROP_HEALTH)>0
+	&& CheckActorInventory(Player, "TurretReticleHold") > 0
+	){
+		Delay(1);
+	}
+	
+	// Remove
+	Thing_Remove(0);
+}
+
+Script "Tracer_GetTID" (Void)
+{
+//log(i:ActivatorTID());
+SetActivator(0,AAPTR_TRACER);
+//log(i:ActivatorTID());
+SetResultValue(ActivatorTID());
+}
+
+Script "LineTarget_GetTID" (Void)
+{
+//log(i:ActivatorTID());
+SetActivator(0,AAPTR_GET_LINETARGET);
+//log(i:ActivatorTID());
+SetResultValue(ActivatorTID());
+}
+
+Script "Master_GetTID" (Void)
+{
+//log(i:ActivatorTID());
+SetActivator(0,AAPTR_MASTER);
+//log(i:ActivatorTID());
+SetResultValue(ActivatorTID());
+}
+
+Script "Actor_Classifier" (int TID, int CheckType)
+{
+bool output;
+
+switch(CheckType)
+	{
+	case 0: if ((ClassifyActor(TID) & ACTOR_NONE)){output = true;} break;
+	case 1: if ((ClassifyActor(TID) & ACTOR_WORLD)){output = true;} break;
+	case 2: if ((ClassifyActor(TID) & ACTOR_PLAYER)){output = true;} break;
+	case 3: if ((ClassifyActor(TID) & ACTOR_BOT)){output = true;} break;
+	case 4: if ((ClassifyActor(TID) & ACTOR_VOODOODOLL)){output = true;} break;
+	case 5: if ((ClassifyActor(TID) & ACTOR_MONSTER)){output = true;} break;
+	case 6: if ((ClassifyActor(TID) & ACTOR_ALIVE)){output = true;} break;
+	case 7: if ((ClassifyActor(TID) & ACTOR_DEAD)){output = true;} break;
+	case 8: if ((ClassifyActor(TID) & ACTOR_MISSILE)){output = true;} break;
+	case 9: if ((ClassifyActor(TID) & ACTOR_GENERIC)){output = true;} break;
+	}
+
+setresultvalue(output);
+}
+
+Script "HealthPercent" (int TargTID, int Type, int perval)
+{
+int HealthPercent;
+int PlayerCurrentHealth;
+int PlayerMaxHealth;
+
+	if(GetActorProperty(TargTID,APROP_HEALTH)<=0){PlayerCurrentHealth = 1; }
+		Else{PlayerCurrentHealth = GetActorProperty(TargTID,APROP_Health);}
+	if(GetActorProperty(TargTID,APROP_SpawnHealth)<=0){PlayerMaxHealth = 1; }
+		Else{PlayerMaxHealth = GetActorProperty(TargTID,APROP_SpawnHealth);}
+		
+
+// Type 0 = current percentage of health
+// Type 1 = Value of Health at that percentage
+
+Switch (Type)
+	{
+	default : HealthPercent = ((PlayerCurrentHealth*100)/PlayerMaxHealth); Break;
+	Case 1 : HealthPercent = (fixeddiv(PlayerMaxHealth,100)*perval) >> 16; Break;
+	}
+
+SetResultValue(HealthPercent);
+}
+
+Script "OverhealDrain" (Int Tick)
+{
+if (GetActorProperty(0,APROP_HEALTH) > Tick) {Setactorproperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH) - Tick));}
+}
+
+
+script "PitchGrab" (Void)
+{
+int FiringPlayer= ACS_ExecuteWithResult(257, 0);
+int Output = 360 * (GetActorPitch(FiringPlayer));
+
+//Log(f:Output);
+//Log(i:Output >> 16);
+//Setresultvalue(cos(GetActorPitch(FiringPlayer)) * 64 >> 16);
+Setresultvalue(Output >> 16);
+
+//--
+}
+
+//returns the relative pitch of a thing with tid2, from a thing with tid1.
+function int GetTargetPitch (int tid1, int tid2)
+{
+    int x, y, z, xy, a;
+    x = GetActorX(tid2) - GetActorX(tid1);
+    y = GetActorY(tid2) - GetActorY(tid1);
+    z = GetActorZ(tid2) - GetActorZ(tid1);
+    a = VectorAngle(x, y);
+
+    if ((a + 0.125) % 0.5 > 0.25)
+        xy = FixedDiv(y, sin(a));
+    else
+        xy = FixedDiv(x, cos(a));
+
+    return -VectorAngle(xy, z);
+}
+
+
+script "PitchToTarget" (int TargTID)
+{
+ //if(SelfTID <=0 && activatorTID() != 0)
+ //{SelfTID = activatorTID();}
+
+if(TargTID <=0){TargTID = ACS_ExecuteWithResult(257,0);}
+
+
+setactorpitch(0,GetTargetPitch(0,TargTID));
+}
+
+script "PitchToTracer" (int TracTID)
+{
+ //if(SelfTID <=0 && activatorTID() != 0)
+ //{SelfTID = activatorTID();}
+
+if(TracTID <=0){TracTID = ACS_NamedExecuteWithResult("Tracer_GetTID");}
+
+
+setactorpitch(0,GetTargetPitch(0,TracTID));
+}
+
+
+Script "OBJECTTALLY" (int BaseNum)
+{
+int MasterTID = ACS_ExecuteWithResult(257, 0);
+
+// objects work within the 3000's range, the playernumber being in the 100th place
+//Naturally this means a single player can only have up to 9 items
+if (BaseNum < 3000){BaseNum = 3000;}
+
+int ObjTIDBase = BaseNum + ((MasterTID-1000)*100);
+bool TIDset = false;
+int TIDCount;
+
+while(!TIDset)
+{
+if(ThingCount(T_NONE,ObjTIDBase+TIDCount))
+	{
+	//log(s:"Object with TID ",i:ObjTIDBase+TIDCount,s:" Already exists");
+	TIDCount++;
+	//continue;
+	}
+	Else
+	{
+	//log(s:"This object's TID is now ",i:ObjTIDBase+TIDCount,s:"!");
+	Thing_ChangeTID(0,ObjTIDBase+TIDCount);
+	//log(s:"This object's TID is now ",i:ActivatorTID(),s:"!");
+	TIDset = true;
+	}
+}
+
+for(int i; i < 9; i++)
+{
+SetUserVariable(ObjTIDBase+i,"User_Tally",GetUserVariable(ObjTIDBase+i,"User_Tally")+1);
+//log(s:"Object with TID ",i:ObjTIDBase+i,s:" Now has a tally of ",i:GetUserVariable(ObjTIDBase+i,"User_Tally"));
+}
+//--
+}
+
+Script "OBJECTDEATHTALLY" (VOID)
+{
+int MasterTID = ACS_ExecuteWithResult(257, 0);
+int ObjTIDBase = 3000 + ((MasterTID-1000)*100);
+
+// ment to be called when an object dies, this makes all objects drop their tally by 1. if their tally was above
+//the one that died. this is only for if the object was destroyed, not terminated due to being overtallied
+int ObjTID = ActivatorTID();
+int EmptyTally = GetUserVariable(ObjTID,"User_Tally");
+//log(s:"object ",i:ObjTID ,s:" was destroyed!");
+
+for(int i; i < 9; i++)
+{
+	if(GetUserVariable(ObjTIDBase+i,"User_Tally") > 1)
+	{
+	SetUserVariable(ObjTIDBase+i,"User_Tally",GetUserVariable(ObjTIDBase+i,"User_Tally")-1);
+	//log(s:"Object with TID ",i:ObjTIDBase+i,s:" Now has a new tally of ",i:GetUserVariable(ObjTIDBase+i,"User_Tally"));
+	}
+}
+
+}
+
+Script "DEPLPOYABLEDELETER" (int gone) DISCONNECT
+{
+//log(i:gone);
+int ObjTIDBase = 3000 + ((gone)*100);
+int ObjTIDBase2 = 4000 + ((gone)*100);
+int ObjTIDBase3 = 4000 + ((gone)+1000);
+int ObjTIDBase4 = 5000 + ((gone)+1000);
+for(int i; i < 9; i++)
+{
+	SetActorState (ObjTIDBase+i, "Perish");
+	SetActorState (ObjTIDBase2+i, "Perish");
+
+}
+
+	SetActorState (ObjTIDBase3, "Perish");
+	SetActorState (ObjTIDBase4, "Perish");
+}
+
+
+int ServerMAX = 32;
+
+
+//======|Medivision Script
+script "MedivisionScript" (VOID) CLIENTSIDE
+{ 
+int Target_TID;
+//int Target_Distance;
+//int Activeplayer;
+int PlayersTeam;
+int IsTeamGame = ACS_ExecuteWithResult(975, 1);
+str TeamTag; 
+
+Switch(PlayerTeam())
+	{
+	Case 0: TeamTag = "_BLUE"; Break;
+	Case 1: TeamTag = "_RED"; Break;
+	}
+
+while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
+	{
+	Delay(1);
+PlayersTeam = GetPlayerInfo(ActivatorTID()-1000, PLAYERINFO_TEAM);
+For(int p = 0;p < ServerMax; p++)
+	{
+	If(!PlayerInGame(p)){continue;}
+	if(p+1000 == ActivatorTID()){continue;}
+	if(checkWeapon("RespawnCamera")&&GetActorProperty(0,APROP_HEALTH)>0){continue;}
+	If(PlayersTeam != GetPlayerInfo(p, PLAYERINFO_TEAM)){continue;}
+	
+	Target_TID = p+1000;
+	If((xyzDistance(0,Target_TID) < 900) && Checksight(0,Target_TID,0))
+		{
+		SpawnForced(strparam(s:TinyBarHealth(Target_TID),s:TeamTag),GetActorX(Target_TID),GetActorY(Target_TID),GetActorZ(Target_TID) + (65 << 16));
+		//GiveActorInventory(Target_TID,"Tinybarspawner", 1);
+		}
+	}
+	}
+}
+
+
+Str TinyBarSprite[21] = {
+"Tinybar0",
+"Tinybar1",
+"Tinybar2",
+"Tinybar3",
+"Tinybar4",
+"Tinybar5",
+"Tinybar6",
+"Tinybar7",
+"Tinybar8",
+"Tinybar9",
+"TinyBar10",
+"Tinybar11",
+"Tinybar12",
+"Tinybar13",
+"Tinybar14",
+"Tinybar15",
+"Tinybar16",
+"Tinybar17",
+"Tinybar18",
+"Tinybar19",
+"TinyBar20"
+};
+
+function str TinyBarHealth (int TargTID)
+{
+int output;
+int HealthPercent;
+int PlayerCurrentHealth;// = GetActorProperty(0,APROP_Health);
+int PlayerMaxHealth;// = GetActorProperty(0,APROP_SpawnHealth);
+int OverHealth;
+
+	if(GetActorProperty(TargTID,APROP_HEALTH)<=0){PlayerCurrentHealth = 1; }
+		Else{PlayerCurrentHealth = GetActorProperty(TargTID,APROP_Health);}
+	if(GetActorProperty(TargTID,APROP_SpawnHealth)<=0){PlayerMaxHealth = 1; }
+		Else{PlayerMaxHealth = GetActorProperty(TargTID,APROP_SpawnHealth);}
+		
+HealthPercent = ((PlayerCurrentHealth*100)/PlayerMaxHealth);
+OverHealth = HealthPercent-100;
+ if(OverHealth < 0){OverHealth = 0;}
+  if(HealthPercent > 100){HealthPercent = 100;}
+
+HealthPercent = HealthPercent / 10;
+OverHealth = OverHealth / 5;
+
+HealthPercent =  HealthPercent + OverHealth;
+if(HealthPercent > 20){HealthPercent = 20;}
+if(HealthPercent < 0){HealthPercent = 0;}
+return (TinyBarSprite[HealthPercent]);
+}
+
+/*
+//==============================
+// Distance measuring functions
+function int xyzDistance (int tid1, int tid2)
+{
+	int x, y, z, d;
+	x = GetActorX(tid1) - GetActorX(tid2) >> 16; // Convert fixed point to integer
+	y = GetActorY(tid1) - GetActorY(tid2) >> 16;
+	z = GetActorZ(tid1) - GetActorZ(tid2) >> 16;
+	d = sqrt8( x*x + y*y + z*z );
+	return d;
+}
+
+function int sqrt8(int number)
+{
+	if(number <= 3)
+	{
+		if(number > 0)
+		{
+			return 1;
+		}
+		return 0;
+	}
+
+	int oldAns = number >> 1,                     // initial guess
+	    newAns = (oldAns + number / oldAns) >> 1; // first iteration
+
+	// main iterative method
+	while(newAns < oldAns)
+	{
+		oldAns = newAns;
+		newAns = (oldAns + number / oldAns) >> 1;
+	}
+
+	return oldAns;
+}*/
+

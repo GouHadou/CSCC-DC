@@ -1,0 +1,187 @@
+actor BlazeThrower : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 1
+Obituary "%o couldn't take the heat from %k's Flamethrower."
+Inventory.Pickupmessage "Power Up! Fire Storm!"
+weapon.ammotype "BlazeThrowerAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+inventory.icon "TNT1A0"
+Scale 2.0
+States
+{
+Spawn:
+BLZA Z 0
+BLZA Z 1 
+stop
+Ready:
+BLZA A 0 ACS_ExecuteAlways(998,0,3)
+BLZA A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 A 0 A_SelectWeapon("FlareRocketLauncher")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+goto ready+1
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BLZA A 1 A_Raise
+Loop
+Fire:
+BLZA B 0 A_JumpIfInventory("IsBot", 1, "BotFire")
+BLZA A 0 A_JumpIfNoAmmo("NoAmmo")
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),1,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_Refire
+Goto Ready+1
+
+Botfire:
+BLZA A 2 A_JumpIfCloser(600, "Spray")
+Goto Deselect
+Spray:
+JCHN I 0 A_Jump(5, "AltFire")
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_Refire
+Goto Ready+1
+BotAlt:
+Altfire:
+BLZA D 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BLZA D 0 A_FireCustomMissile("StunGrenade",0,0,8,0)
+BLZA DEFGHIJ 2
+BLZA A 35
+Goto Ready+1
+NoAmmo:
+BLZA A 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor BlazeThrowerAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor BlazeThrowerBullet
+{
+PROJECTILE 
+Radius 8 
+Height 8 
+scale 2.5 
+damage (4) 
+damagetype "FireSpin"
++FORCEXYBILLBOARD 
++DONTBLAST
+speed 60
+States
+{
+Spawn:
+FIRE ABABAB 1 ThrustThingZ(0, 8, 0, 1)
+stop
+Death:
+FIRE A 1 A_SpawnItemEx("OilPitIgnite",0,0,8)
+stop
+}
+}
+
+actor StunGrenade
+{
+PROJECTILE
+-NOGRAVITY
++RIPPER
++BOUNCEONACTORS
+Radius 4
+Height 4
+scale 2.5
+speed 40
+damagetype "SparkShock"
++HEXENBOUNCE
+Obituary "%o got a concussion from %k's Shockblast Grenade."
+bouncefactor 0.6
+wallbouncefactor 0.7
+States
+{
+Spawn:
+CCGN A 35
+CCGN A 0 A_Stop
+CCGN A 0 A_PlaySoundEx("weapon/sparkshock", "Voice")
+CCGN A 0 A_Explode(5, 350, 0)
+CCGN A 0 A_SpawnItemEX("StunNadeEffect", 0, 0, 0)
+stop
+Death:
+TNT1 A 0
+Stop
+}
+}
+/*
+actor StunNadeEffect
+{
+Scale 2.5
++NOGRAVITY
++NOINTERACTION
+States
+{
+Spawn:
+NAPA EFGHIJKLMNOPQRS 1
+stop
+}
+}*/
+
+actor BlazeThrowerBot : BlazeThrower
+{
+States
+{
+Deselect:
+TNT1 A 0 A_SelectWeapon("FlareRocketBot")
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Fire:
+BLZA A 0 A_JumpIfCloser(400,"Altfire")
+BLZA D 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+BLZA D 0 A_FireCustomMissile("StunGrenade",0,0,8,0)
+BLZA DEFGHIJ 2
+BLZA A 35
+Goto Ready+1
+Altfire:
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),1,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),1,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+BLZA B 0 A_PlaySoundEx("weapon/flamethrow","Weapon")
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),1,-8,0)
+BLZA B 1 A_FireCustomMissile("BlazeThrowerBullet",random(-8,8),0,-8,0)
+BLZA C 1
+Goto Ready+1
+}
+}

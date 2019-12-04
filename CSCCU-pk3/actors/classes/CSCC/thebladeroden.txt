@@ -1,0 +1,3 @@
+#include "actors/classes/CSCC/thebladeroden/tbrclass.txt"
+#include "actors/classes/CSCC/thebladeroden/tbrwep.txt"
+#include "actors/classes/CSCC/thebladeroden/tbrig.txt"

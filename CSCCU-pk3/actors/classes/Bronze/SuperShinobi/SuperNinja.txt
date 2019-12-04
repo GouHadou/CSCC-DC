@@ -1,0 +1,30 @@
+actor MasterNinja : ClassBaseCSCC
+{
+Health 65
+player.MaxHealth 65
+player.displayname "Shinobi"
+player.soundclass "assassin"
+player.damagescreencolor "black"
+player.forwardmove 0.89, 0.89
+player.sidemove 0.9, 0.9
+player.jumpz 13
+player.startitem "NinjaArts"
+player.startitem "CanUseItems"
+player.startitem "CanWallJump"
+player.startitem "StaminaFlag", 500
+States
+{
+Spawn:
+SHAM A 0
+SHAM B 1
+SHAM A 1
+Goto Spawn+2
+See:
+SHAM BCDE 3
+Goto Spawn
+Missile:
+SHAM F 5 
+SHAM G 4 
+goto Spawn
+}
+}

@@ -1,0 +1,33 @@
+[IntroStrings]
+"Right... let's get moving."
+"Incoming!"
+"Go go go!"
+
+[FragStrings]
+"KA-BOOM!!"
+"Gotcha!"
+"Sentry down!"
+
+[KilledStrings]
+"Sigh..."
+"What the heck."
+"SPY!"
+
+[RoamingStrings]
+"..."
+"Stop running away."
+"/me does a quick check-up"
+
+[RareRoamingStrings]
+"OW! Lag spike!"
+
+[EnragedStrings]
+"Now ya got me fired, and that's not good!"
+
+[WinStrings]
+"Eat grit!"
+"This time I got real..."
+
+[LoseStrings]
+"Oh man..."
+"Sorry, I had some problems there."

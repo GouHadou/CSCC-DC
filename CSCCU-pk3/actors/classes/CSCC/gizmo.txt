@@ -1,0 +1,4 @@
+#include "actors/classes/CSCC/gizmo/gizclass.txt"
+#include "actors/classes/CSCC/gizmo/gizwep.txt"
+#include "actors/classes/CSCC/gizmo/gizupgrades.txt"
+#include "actors/classes/CSCC/gizmo/gizig.txt"

@@ -1,0 +1,3 @@
+#include "actors/classes/TeaParty/Protoman/ProtomanCSCC.txt"
+#include "actors/classes/TeaParty/Protoman/Proto01BusterWep.txt"
+#include "actors/classes/TeaParty/Protoman/Proto01CopyWep.txt"

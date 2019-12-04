@@ -1,0 +1,2 @@
+#include "actors/Classes/Bronze/Edgelord/Edgelord.txt"
+#include "actors/Classes/Bronze/Edgelord/EdgeWeapons.txt"

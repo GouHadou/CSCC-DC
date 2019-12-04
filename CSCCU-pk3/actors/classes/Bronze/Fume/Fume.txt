@@ -1,0 +1,29 @@
+Actor IsFume : Inventory{}
+
+actor Fume : ClassBaseCSCC
+{
+player.displayname "fume"
+player.soundclass "megaman"
+player.forwardmove 1.0, 1.0
+player.sidemove 0.5, 0.5
+Health 100
+Player.MaxHealth 100
+player.startitem "IsFume"
+player.startitem "FumeSprayNade"
+player.startitem "FumeSprayWave"
+states
+{
+Spawn:
+MORO A 0
+MORO B 1
+MORO A 1
+Goto Spawn+2
+See:
+MORO BCDE 5
+Goto Spawn
+Missile:
+MORO F 5
+MORO G 4
+goto Spawn
+}
+}

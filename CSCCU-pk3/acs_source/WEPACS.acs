@@ -1,0 +1,527 @@
+#library "wepacs"
+
+// [Mike] Scripts file for changing colors based on your weapon
+#include "zcommon.acs"// [Lego] Always include this before 8bdmlib
+#include "8bdmlib.acs"// included with MM8BDM under acs_source.
+					  // See 8bdmlib.acs for details.
+
+#DEFINE MAX_WEAPONS_GLOBAL 114 // Maximum number of weapons for the following arrays
+// v6's weapon total would be 94
+// v7's weapon total would be 103
+#DEFINE MAX_BUSTERS 7 // Maximum number of non-ammo buster upgrades for the following arrays
+// v7's max busters would be 8
+
+// Array Layout
+//  0 - Weapon Name according to the Engine (Ex. RollingCutterWep)
+//  1 - Weapon Ammo according to the Engine (Ex. RollingCutterAmmo)
+//  2 - Weapon Name according to the Player (Ex. Rolling Cutter)
+//  3 - Ammo gain multiplier (0.0 - 1.0)
+//  4 - Can be given by Eddie? (YES/NO)
+//  5 - Can be Stolen by Reggae (no longer used)? (YES/NO)
+//  6 - LMS Slot
+
+str weapons_ammo[MAX_WEAPONS_GLOBAL][7] = 
+{
+{"TrebleBoost", "TrebleBoostAmmo", "Treble Boost", 1.0, "NO", "NO", "SLOT_NONE"},
+
+{"SuperArmWepCS", "SuperArmAmmo", "Super Arm", 1.0, "YES", "YES", "SLOT_POWER"},
+{"HyperBombWepCS", "HyperBombAmmo", "Hyper Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+{"IceSlasherWepCS", "IceSlasherAmmo", "Ice Slasher", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"ThunderBeamWepCS", "ThunderBeamAmmo", "Thunder Beam", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"FireStormWepCS", "FireStormAmmo", "Fire Storm", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"RollingCutterWepCS", "RollingCutterAmmo", "Rolling Cutter", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"TimeSlowWepCS", "TimeSlowAmmo", "Time Slow", 1.0, "YES", "YES", "SLOT_NONE"},
+{"OilSliderWepCS", "OilSliderAmmo", "Oil Slider", 1.0, "YES", "YES", "SLOT_CLOSE"},
+
+{"BubbleLeadWepCS", "BubbleLeadAmmo", "Bubble Lead", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"MetalBladeWepCS", "MetalBladeAmmo", "Metal Blade", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"AtomicFireWepCS", "AtomicFireAmmo", "Atomic Fire", 1.0, "YES", "YES", "SLOT_POWER"},
+{"LeafShieldWepCS", "LeafShieldAmmo", "Leaf Shield", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"AirShooterWepCS", "AirShooterAmmo", "Air Shooter", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"QuickBoomerangWepCS", "QuickBoomerangAmmo", "Quick Boomerang", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"CrashBombWepCS", "CrashBombAmmo", "Crash Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+{"TimeStopperWepCS", "TimeStopperAmmo", "Time Stopper", 0.25, "YES", "YES", "SLOT_NONE"}, 
+
+{"MagnetMissileWepCS", "MagnetMissileAmmo", "Magnet Missile", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"TopSpinWepCS", "TopSpinAmmo", "Top Spin", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"NeedleCannonWepCS", "NeedleCannonAmmo", "Needle Cannon", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"ShadowBladeWepCS", "ShadowBladeAmmo", "Shadow Blade", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"GeminiLaserWepCS", "GeminiLaserAmmo", "Gemini Laser", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"SearchSnakeWepCS", "SearchSnakeAmmo", "Search Snake", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"HardKnuckleWepCS", "HardKnuckleAmmo", "Hard Knuckle", 1.0, "YES", "YES", "SLOT_POWER"},
+{"SparkShockWepCS", "SparkShockAmmo", "Spark Shock", 1.0, "YES", "YES", "SLOT_RANGED"},
+
+{"DrillBombWepCS", "DrillBombAmmo", "Drill Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+{"RingBoomerangWepCS", "RingBoomerangAmmo", "Ring Boomerang", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"DustCrusherWepCS", "DustCrusherAmmo", "Dust Crusher", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"PharaohShotWepCS", "PharaohShotAmmo", "Pharaoh Shot", 1.0, "YES", "YES", "SLOT_POWER"},
+{"SkullBarrierWepCS", "SkullBarrierAmmo", "Skull Barrier", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"DiveMissileWepCS", "DiveMissileAmmo", "Dive Missile", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"RainFlushWepCS", "RainFlushAmmo", "Rain Flush", 1.0, "YES", "YES", "SLOT_NONE"},
+{"FlashStopperWepCS", "FlashStopperAmmo", "Flash Stopper", 1.0, "YES", "YES", "SLOT_NONE"},
+
+{"NapalmBombWepCS", "NapalmBombAmmo", " Napalm Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+{"ChargeKickWepCS", "ChargeKickAmmo", "Charge Kick", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"GyroAttackWepCS", "GyroAttackAmmo", "Gyro Attack", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"PowerStoneWepCS", "PowerStoneAmmo", "Power Stone", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"WaterWaveWepCS", "WaterWaveAmmo", "Water Wave", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"CrystalEyeWepCS", "CrystalEyeAmmo", "Crystal Eye", 1.0, "YES", "YES", "SLOT_POWER"},
+{"StarCrashWepCS", "StarCrashAmmo", "Star Crash", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"GravityHoldWepCS", "GravityHoldAmmo", "Gravity Hold", 1.0, "YES", "YES", "SLOT_NONE"},
+
+{"BlizzardAttackWepCS", "BlizzardAttackAmmo", "Blizzard Attack", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"FlameBlastWepCS", "FlameBlastAmmo", "Flame Blast", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"YamatoSpearWepCS", "YamatoSpearAmmo", "Yamato Spear", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"PlantBarrierWepCS", "PlantBarrierAmmo", "Plant Barrier", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"SilverTomahawkWepCS", "SilverTomahawkAmmo", "Silver Tomahawk", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"WindStormWepCS", "WindStormAmmo", "Wind Storm", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"KnightCrushWepCS", "KnightCrushAmmo", "Knight Crush", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"CentaurFlashWepCS", "CentaurFlashAmmo", "Centaur Flash", 1.0, "YES", "YES", "SLOT_NONE"},
+
+{"FreezeCrackerWepCS", "FreezeCrackerAmmo", "Freeze Cracker", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"NoiseCrushWepCS", "NoiseCrushAmmo", "Noise Crush", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"WildCoilWepCS", "WildCoilAmmo", "Wild Coil", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"DangerWrapWepCS", "DangerWrapAmmo", "Danger Wrap", 1.0, "YES", "YES", "SLOT_POWER"},
+{"ScorchWheelWepCS", "ScorchWheelAmmo", "Scorch Wheel", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"JunkShieldWepCS", "JunkShieldAmmo", "Junk Shield", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"SlashClawWepCS", "SlashClawAmmo", "Slash Claw", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"ThunderBoltWepCS", "ThunderBoltAmmo", "Thunder Bolt", 1.0, "YES", "YES", "SLOT_RANGED"},
+
+{"AstroCrushWepCS", "AstroCrushAmmo", "Astro Crush", 1.0, "YES", "YES", "SLOT_NONE"},
+{"FlameSwordWepCS", "FlameSwordAmmo", "Flame Sword", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"ThunderClawWepCS", "ThunderClawAmmo", "Thunder Claw", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"HomingSniperWepCS", "HomingSniperAmmo", "Homing Sniper", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"WaterBalloonWepCS", "WaterBalloonAmmo", "Water Balloon", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"MegaBallWepCS", "MegaBallAmmo", "Mega Ball", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"FlashBombWepCS", "FlashBombAmmo", "Flash Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+{"IceWaveWepCS", "IceWaveAmmo", "Ice Wave", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"TornadoHoldWepCS", "TornadoHoldAmmo", "Tornado Hold", 1.0, "YES", "YES", "SLOT_CLOSE"},
+
+{"TenguBladeWepCS", "TenguBladeAmmo", "Tengu Blade", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"WaveBurnerWepCS", "WaveBurnerAmmo", "Wave Burner", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"SpreadDrillWepCS", "SpreadDrillAmmo", "Spread Drill", 1.0, "YES", "YES", "SLOT_POWER"},
+{"MagicCardWepCS", "MagicCardAmmo", "Magic Card", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"RemoteMineWepCS", "RemoteMineAmmo", "Remote Mine", 1.0, "YES", "YES", "SLOT_POWER"},
+{"CopyVisionWepCS", "CopyVisionAmmo", "Copy Vision", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"IceWallWepCS", "IceWallAmmo", "Ice Wall", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"LightningBoltWepCS", "LightningBoltAmmo", "Lightning Bolt", 1.0, "YES", "YES", "SLOT_NONE"},
+
+{"PlugBallWepCS", "PlugBallAmmo", "Plug Ball", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"LaserTridentWepCS", "LaserTridentAmmo", "Laser Trident", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"BlackHoleBombWepCS", "BlackHoleBombAmmo", "Black Hole Bomb", 1.0, "YES", "YES", "SLOT_NONE"},
+{"JewelSatelliteWepCS", "JewelSatelliteAmmo", "Jewel Satellite", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"ConcreteShotWepCS", "ConcreteShotAmmo", "Concrete Shot", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"TornadoBlowWepCS", "TornadoBlowAmmo", "Tornado Blow", 1.0, "YES", "YES", "SLOT_NONE"},
+{"HornetChaserWepCS", "HornetChaserAmmo", "Hornet Chaser", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"MagmaBazookaWepCS", "MagmaBazookaAmmo", "Magma Bazooka", 1.0, "YES", "YES", "SLOT_CLOSE"},
+ 
+{"SolarBlazeWepCS", "SolarBlazeAmmo", "Solar Blaze", 1.0, "YES", "YES", "SLOT_NONE"},
+
+
+//{"WheelCutterWep", "WheelCutterAmmo", "Wheel Cutter", 1.0, "YES", "YES", "SLOT_CLOSE"},
+//{"ReboundStrikerWep", "ReboundStrikerAmmo", "Rebound Striker", 1.0, "YES", "YES", "SLOT_RANGED"},
+//{"ThunderWoolWep", "ThunderWoolAmmo", "Thunder Wool", 1.0, "YES", "YES", "SLOT_CLOSE"},
+//{"CommandoBombWep", "CommandoBombAmmo", "Commando Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+//{"ChillSpikeWep", "ChillSpikeAmmo", "Chill Spike", 1.0, "YES", "YES", "SLOT_CLOSE"},
+//{"WaterShieldWep", "WaterShieldAmmo", "Water Shield", 1.0, "YES", "YES", "SLOT_SHIELD"},
+//{"TripleBladeWep", "TripleBladeAmmo", "TripleBlade", 1.0, "YES", "YES", "SLOT_CLOSE",},
+
+/*
+{"GrabBusterWep", "GrabBusterAmmo", "Grab Buster", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"BubbleBombWep", "BubbleBombAmmo", "BubbleBomb", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"PhotonMissileWep", "PhotonMissileAmmo", "Photon Missile", 1.0, "YES", "YES", "SLOT_POWER"},
+{"SaltWaterWep", "SaltWaterAmmo", "Salt Water", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"ElectricShockWep", "ElectricShockAmmo", "Commando Bomb", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"BlackHoleWep", "BlackHoleAmmo", "Black Hole", 1.0, "YES", "YES", "SLOT_NONE"},
+{"DeepDiggerWep", "DeepDiggerAmmo", "Deep Digger", 1.0, "YES", "YES", "SLOT_POWER"},
+{"BreakDashWep", "BreakDashAmmo", "Break Dash", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"SparkChaserWep", "SparkChaserAmmo", "Spark Chaser", 1.0, "YES", "YES", "SLOT_RANGED"},
+*/
+{"SakugarneWepCS", "SakugarneAmmo", "Sakugarne", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"BalladeCrackerWepCS", "BalladeCrackerAmmo", "Ballade Cracker", 1.0, "YES", "YES", "SLOT_POWER"},
+{"ScrewCrusherWepCS", "ScrewCrusherAmmo", "Screw Crusher", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"MirrorBusterWepCS", "MirrorBusterAmmo", "Mirror Buster", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"FusionBombWepCS", "FusionBombAmmo", "Fusion Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+{"IceBladeWepCS", "IceBladeAmmo", "Ice Blade", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"LightningWaveWepCS", "LightningWaveAmmo", "Lighting Wave", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"GouhadouWepCS", "GouhadouAmmo", "Gou Hadouken", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"MeteorWepCS", "MeteorAmmo", "Meteor Staff", 1.0, "YES", "YES", "SLOT_POWER"},
+{"BubbleArrowWepCS", "BubbleArrowAmmo", "Bubble Arrow", 1.0, "YES", "YES", "SLOT_POWER"},
+{"EggTossWepCS", "EggTossAmmo", "Egg Toss", 1.0, "YES", "YES", "SLOT_POWER"},
+{"BloodyBatWepCS", "BloodyBatAmmo", "Bloody Bat", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"FrozenCapellaWepCS", "FrozenCapellaAmmo", "Frozen Capella", 1.0, "YES", "YES", "SLOT_CLOSE"},
+
+{"CometWepCS", "CometAmmo", "Comet", 1.0, "YES", "YES", "SLOT_POWER"},
+{"SinkSprayWep", "SinkSprayAmmo", "Sink Spray", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"SolarLaserWep", "SolarLaserAmmo", "Solar Laser", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"StaticShockWep", "StaticShockAmmo", "Static Shock", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"AirTileShotgunWepCS", "AirTileCAmmo", "Air Tile Shotgun", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"NadeSpamWep", "NadeAmmo", "Nadespam", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"MissileBarrageWepCS", "MissileBarrageAmmo", "Missile Barrage", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"SpectralWaveWepCS", "SpectralWaveAmmo", "Spectral Wave", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"PurpleAuraFlameWep", "M712Wep5Ammo", "Purple Aura Flame", 1.0, "YES", "YES", "SLOT_RANGED"},
+{"StickyBombWep", "StickyBombAmmo", "Sticky Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
+{"ZardGunCopyWep", "ZardCopyWepAmmo", "Danmaku Buster", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"SteelPunchWepC", "SteelPunchAmmo", "Seel Punch", 1.0, "YES", "YES", "SLOT_POWER"},
+{"Proto01CopyWep", "Proto01CopyWepAmmo", "Proto Shield", 1.0, "YES", "YES", "SLOT_SHIELD"}
+};
+
+str BusterUpgrades[MAX_BUSTERS] =
+{
+"ProtoUpgrade",
+"ArrowBusterUpgrade",
+"LaserBusterUpgrade",
+"BassUpgrade",
+"DuoFistUpgrade",
+"AdaptorUpgrade",
+"TrebleBoostUpgrade"/*,
+"MegaArmUpgrade"*/
+};
+
+
+Script 992 (int amount, int AmmoMode) // Script to determine which weapon to give ammo to
+{
+	Switch(AmmoMode)
+	{
+	Case 1: // If this is an mtank, give exactly the ammo of each weapon and terminate
+		For(int i = 0; i < MAX_WEAPONS_GLOBAL; i++)
+		{
+			If(CheckInventory(weapons_ammo[i][0]) == 1)
+			{
+				GiveInventory(weapons_ammo[i][1], GetAmmoCapacity(weapons_ammo[i][1]));
+			}
+		}
+		terminate;
+
+	Case 2: // Double ammo for Energy Saver
+		For(i = 0; i < MAX_WEAPONS_GLOBAL; i++)
+		{
+			If(CheckInventory(weapons_ammo[i][1]) > 0)
+			{
+				GiveInventory(weapons_ammo[i][1], CheckInventory(weapons_ammo[i][1]));
+			}
+		}
+		terminate;
+	}
+	
+	
+	// Which weapon player currently has equipped.
+	int ThisWeapon = WhichWeapon();
+
+	//print(i:ThisWeapon);
+
+	If(CheckInventory("EnergyBalancerActive"))
+	{
+		If(CheckInventory(weapons_ammo[ThisWeapon][1]) == GetAmmoCapacity(weapons_ammo[ThisWeapon][1]) || ThisWeapon < 0)  // If player has the Energy Balancer, then check to see if the currently selected weapon is not at maximum
+		{
+			ThisWeapon = EnergyBalancer(); // Finds the lowest ammo weapon using the Energy Balancer function and sets it as the weapon to fill
+		}
+	}
+
+	If(ThisWeapon >= 0) //If this weapon is not a buster
+	{
+		// [Lego] Ammo capsules now specify a percentage
+		// This percentage is then converted to fixed, then divided by 100.
+		int percentage = FixedMul(FixedDiv(amount << 16, 100.0), weapons_ammo[ThisWeapon][3]);
+		
+		amount = (GetAmmoCapacity(weapons_ammo[ThisWeapon][1]) * percentage) >> 16;
+		//printbold(s:"Percentage is: ", f:percentage, s:"\nAmount is:", i:amount);
+			
+		int AmmoMultiplier = 1.0;
+		
+		Amount = FixedMul(Amount, AmmoMultiplier);
+		//printbold(i:Amount);
+		GiveInventory(weapons_ammo[ThisWeapon][1], amount);
+	}
+}
+
+//Is the player's current weapon not full?
+//If the player has the energy balancer and there was no fail recently, do they have a not-full weapon?
+//If so, pickup ammo
+script 984 (void)
+{
+	int ThisWeapon = WhichWeapon();
+	if(ThisWeapon>=0 && CheckInventory(weapons_ammo[ThisWeapon][1]) < GetAmmoCapacity(weapons_ammo[ThisWeapon][1])) {
+		SetResultValue( TRUE );
+	} else if(CheckInventory("EnergyBalancerActive")&&!CheckInventory("EnergyBalancerFullDelay")) {
+		ThisWeapon = EnergyBalancer();
+		if(ThisWeapon>=0) {
+			SetResultValue( TRUE );
+		} else {
+			GiveInventory("EnergyBalancerFullDelay",1);
+			SetResultValue( FALSE );
+		}
+	} else {
+		SetResultValue( FALSE );
+	}
+}
+
+
+// LMS Weapon Randomization
+//
+script 981 (void)
+{
+// Check server CVAR to see if weapons are enabled (default true)
+if(GetCvar("mm8bdm_sv_nolmsweapons")==true){terminate;}
+
+// Check server CVAR to see if random start weapon is enabled
+if(GetCvar("mm8bdm_sv_randomstartweapon")== true){
+	str rweapon = weapons_ammo[random(0,MAX_WEAPONS_GLOBAL)][0];
+	GiveInventory(rweapon,1);
+	SetWeapon(rweapon);
+	}
+
+// Check if the game is actually LMS
+if(GetCvar("lastmanstanding")==1||GetCvar("teamlms")==1){
+	// Ignore if game is set to instagib
+	if(GetCvar("instagib")==1){terminate;}
+	
+	while(GetGameModeState()!=GAMESTATE_COUNTDOWN && GetGameModeState()!=GAMESTATE_INPROGRESS && ShieldWepRandom == 0)
+    {
+        Delay(5);
+    }
+	
+	Delay(5);
+	
+	// Take bots Mega Buster so they actually use a different weapon (limited to ranged weapon at present)
+	if(PlayerIsBot(PlayerNumber())){
+		TakeInventory("MegaBuster",1);
+	}
+	
+	// Give players one of each weapon type at random
+	
+	GiveInventory(weapons_ammo[ShieldWepRandom][0],1);
+	GiveInventory(weapons_ammo[RapidWepRandom][0],1);
+	GiveInventory(weapons_ammo[CloseWepRandom][0],1);
+	GiveInventory(weapons_ammo[PowerWepRandom][0],1);
+	GiveInventory(weapons_ammo[RangedWepRandom][0],1);
+	Delay(1);
+	
+	// Give the bot the Mega Buster back
+	if(PlayerIsBot(PlayerNumber())){
+		GiveInventory("MegaBuster",1);
+	}
+}
+}
+
+// A script to generate random numbers for LMS weapons
+//
+script 980 OPEN
+{
+	int WeaponSelect;
+	If(ACS_ExecuteWithResult(975) != 2){terminate;}
+	
+	do
+	{
+		Delay(5);
+	}
+	while(GetGameModeState()==GAMESTATE_INPROGRESS);
+	
+	//Ranged Wep
+	do
+	{
+		WeaponSelect = Random(0, MAX_WEAPONS_GLOBAL-1);	
+	}
+	while(weapons_ammo[WeaponSelect][6] != "SLOT_RANGED"); //AKA 2
+	RangedWepRandom = WeaponSelect;
+
+	//Rapid Wep
+	do
+	{
+		WeaponSelect = Random(0, MAX_WEAPONS_GLOBAL-1);	
+	}
+	while(weapons_ammo[WeaponSelect][6] != "SLOT_RAPID"); //AKA 3
+	RapidWepRandom = WeaponSelect;
+
+	//Close Wep
+	do
+	{
+		WeaponSelect = Random(0, MAX_WEAPONS_GLOBAL-1);	
+	}
+	while(weapons_ammo[WeaponSelect][6] != "SLOT_CLOSE"); //AKA 4
+	CloseWepRandom = WeaponSelect;
+
+	//Power Wep
+	do
+	{
+		WeaponSelect = Random(0, MAX_WEAPONS_GLOBAL-1);	
+	}
+	while(weapons_ammo[WeaponSelect][6] != "SLOT_POWER"); //AKA 5
+	PowerWepRandom = WeaponSelect;
+	
+
+	//Shield Wep
+	do
+	{
+		WeaponSelect = Random(0, MAX_WEAPONS_GLOBAL-1);	
+	}
+	while(weapons_ammo[WeaponSelect][6] != "SLOT_SHIELD"); //AKA 7
+	ShieldWepRandom = WeaponSelect;
+
+}
+
+
+
+//Eddie Random Weapon script
+Script 256 (void)
+{
+	int i = 0;
+	int TotalWeapons = MAX_WEAPONS_GLOBAL + MAX_BUSTERS;
+	int ThePlayer = ACS_ExecuteWithResult(257);
+	bool finished = false;
+	
+	while(!finished)
+	{
+		int RandomSelection = random(1, TotalWeapons)-1;
+		int WeaponName;
+		
+		if(RandomSelection >= MAX_WEAPONS_GLOBAL)
+		{
+			RandomSelection-=MAX_WEAPONS_GLOBAL;
+			WeaponName = BusterUpgrades[RandomSelection];
+		}
+		else
+		{
+			WeaponName = Weapons_Ammo[RandomSelection][0];
+		}
+		
+		//printbold(i:RandomSelection, s:" - ", s:WeaponName);
+		
+		if(Weapons_Ammo[RandomSelection][4] != "NO")
+		{
+			//PrintBold(s:WeaponName);
+			if(CheckActorInventory(ThePlayer, WeaponName) || ThingCountName(WeaponName, 0) > 0)
+			{
+				//PrintBold(s:WeaponName, s:" is invalid!");
+				i++;
+				if(i>35){
+				finished = true;
+				}
+			}
+			else
+			{
+				finished = true;
+			}
+		}
+	}
+
+	// [Lego] This would cause the weapon to not spawn under certain circumstances.
+	//SpawnProjectile(0, WeaponName, GetActorAngle(0)>>8, 75, 40, 1.0, 0);
+	
+	int tempTID = thePlayer + 3000;
+	SpawnForced(weaponName, GetActorX(0), GetActorY(0), GetActorZ(0), tempTID);
+	ThrustThing(GetActorAngle(0)>>8, 9, false, tempTID);
+	ThrustThingZ(tempTID, 10, 0, 0);
+	Thing_ChangeTID(tempTID, 0);
+}
+
+
+Script 252 ENTER
+{
+if(PlayerIsBot(PlayerNumber()))
+	{
+	int xPos;
+	int yPos;
+	int d = 10;
+	int BotWeapon;
+	int MaxPlayers = GetMaxPlayers();
+	Delay(35);
+	if(CheckInventory("NoBotFix")==1){terminate;}
+	While(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && !CheckInventory("IsDead")==1)
+		{
+		xPos = GetActorX(0);
+		yPos = GetActorY(0);
+		Delay(35);
+		BotWeapon = BotWeaponSelect();
+		If(d <= 0 && BotWeapon >= 0)
+			{
+			If(BotWeapon >= MAX_WEAPONS_GLOBAL)
+				{
+				UseInventory(BusterUpgrades[BotWeapon-MAX_WEAPONS_GLOBAL]);
+				d=Random(15, 25);
+				}
+			Else
+				{
+				If(weapons_ammo[BotWeapon][0] == "TrebleBoost")
+					{
+					UseInventory("TrebleBoostUpgrade");
+					d=Random(15, 25);
+					}
+				Else
+					{
+					SetWeapon(weapons_ammo[BotWeapon][0]);
+					//printbold(s:weapons_ammo[BotWeapon][0]);
+					d=Random(5, 15);
+					}
+				}
+			}
+		Else
+			{
+			If(d > 0){d--;}
+			}
+		if(ACS_ExecuteWithResult(972)==2 || GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || CheckInventory("IsDead")==1){terminate;}
+
+		}
+	}
+}
+
+
+
+// [Mess] Energy Balancer Functions
+Function int WhichWeapon(void) // Which weapon is the player currently using.  From weapons_ammo array
+{
+For(int i = 0; i < MAX_WEAPONS_GLOBAL; i++)
+	{
+	If(CheckWeapon(weapons_ammo[i][0]))
+		{
+		If(weapons_ammo[i][3] > 0.0){Return i;}
+		}
+	}
+Return -1;
+}
+
+Function int EnergyBalancer(void) // Finds out which weapon has the lowest ammo ratio wise from the players inventory
+{
+int CurrentRatio;
+int MinRatio = 1.0;
+int LowestWeapon = -1;
+
+For(int w = 0; w < MAX_WEAPONS_GLOBAL; w++)
+	{
+	If(CheckInventory(weapons_ammo[w][0])&&weapons_ammo[w][3]>0.0)
+		{
+		CurrentRatio = 1.0*CheckInventory(weapons_ammo[w][1])/GetAmmoCapacity(weapons_ammo[w][1]);
+		If(CurrentRatio < MinRatio)
+			{
+			MinRatio = CurrentRatio;
+			LowestWeapon = w;
+			}
+		}
+	}
+return LowestWeapon;
+}
+
+function int BotWeaponSelect (void)
+{
+int SelectedWeapon;
+int WeaponName;
+int i = 0;
+
+While(i <= 15)
+	{
+	SelectedWeapon = Random(0, MAX_WEAPONS_GLOBAL + MAX_BUSTERS-1);
+	If(SelectedWeapon >= MAX_WEAPONS_GLOBAL)
+		{
+		WeaponName = BusterUpgrades[SelectedWeapon-MAX_WEAPONS_GLOBAL];
+		}
+	Else
+		{
+		WeaponName = weapons_ammo[SelectedWeapon][0];
+		If(WeaponName == "TrebleBoost"){WeaponName = "TrebleBoostUpgrade";}
+		}
+	i++;
+	If(CheckInventory(WeaponName)){Return(SelectedWeapon);}
+	}
+Return(-1);
+}
+

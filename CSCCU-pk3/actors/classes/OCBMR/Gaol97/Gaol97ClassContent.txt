@@ -1,0 +1,7 @@
+#include "actors/classes/OCBMR/Gaol97/G97Class.txt"
+#include "actors/classes/OCBMR/Gaol97/BlazeThrower.txt"
+#include "actors/classes/OCBMR/Gaol97/FairyPower.txt"
+#include "actors/classes/OCBMR/Gaol97/StarRevolver.txt"
+#include "actors/classes/OCBMR/Gaol97/g97FireProjectiles.txt"
+#include "actors/classes/OCBMR/Gaol97/g97FairyProjectiles.txt"
+

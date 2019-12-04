@@ -1,0 +1,3 @@
+#include "actors/classes/CSCC/AdaraMozes/AdaraWeapon.txt"
+#include "actors/classes/CSCC/AdaraMozes/AdaraMozes.txt"
+#include "actors/classes/CSCC/AdaraMozes/AdaraCopy.txt"
