@@ -634,7 +634,7 @@ goto Ready2+1
 Fire2:
 HCAN B 0 A_TakeInventory("HandCannonAmmo",999)
 HCAN E 3 A_PlaySoundEx("weapon/pshot","Weapon")
-HCAN C 3 A_FireCustomMissile("ChargeShot2",0,0,8,0)
+HCAN C 3 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
 HCAN EB 3 
 HCAN E 0
 HCAN B 0 A_Refire
@@ -645,7 +645,7 @@ HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
 HCAN B 3 
 HCAN B 0 ACS_ExecuteAlways(991,0,385)
 HCAN B 0 A_Recoil(5)
-HCAN B 1 A_FireCustomMissile("ChargeShot3",0,0,8,0)
+HCAN B 1 A_FireCustomMissile("GizmoChargeShot3",0,0,8,0)
 HCAN ECEB 3 
 HCAN B 9
 HCAN B 0 A_Refire
@@ -705,7 +705,7 @@ inventory.amount 1
 inventory.maxamount 32//52
 }
 
-actor ChargeShot2
+actor GizmoChargeShot2
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -728,7 +728,7 @@ loop
 }
 
 
-actor ChargeShot3
+actor GizmoChargeShot3
 {
 Obituary "%o was blasted by %k's Plasma Cannon."
 PROJECTILE
@@ -765,7 +765,7 @@ stop
 }
 
 
-actor ChargeShotFX
+actor GizmoChargeShotFX
 {
 +CLIENTSIDEONLY
 -SOLID
@@ -863,7 +863,7 @@ HCAN B 0 A_TakeInventory("WeaponCharge",500)
 HCAN B 0 A_ClearRefire
 HCAN B 0 A_PlaySoundEx("weapon/pshot","Weapon")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("ChargeShot2",0,0,8,0)
+HCAN B 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
 HCAN EB 2
 Goto Ready+1
 Fire2:
@@ -872,7 +872,7 @@ HCAN B 0 A_TakeInventory("WeaponCharge",500)
 HCAN B 0 A_ClearRefire
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 5, "Fire2r")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",5)
-HCAN B 0 A_FireCustomMissile("ChargeShot2",0,0,8,0)
+HCAN B 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
 HCAN EB 3
 Goto Ready+1
 Fire2r:
@@ -889,7 +889,7 @@ HCAN B 0 A_ClearRefire
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 10, "Fire3r")
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 5, "Fire2r")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("ChargeShot2",0,0,8,0)
+HCAN B 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
 HCAN ECEB 3 
 HCAN B 9
 Goto Ready+1

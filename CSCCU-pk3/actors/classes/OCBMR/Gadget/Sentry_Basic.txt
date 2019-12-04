@@ -147,7 +147,7 @@ TRET A 1
 TRET A 0 A_TakeInventory("SentryStalling",9)
 TRET A 0 A_Changevelocity(0,0,0,CVF_REPLACE)
 TRET A 0 A_JumpIfInTargetInventory("RCSShoot", 1, "Shoot")
-TRET A 0 A_GiveInventory("TargetMarker2", 1,AAPTR_MASTER)
+TRET A 0 A_GiveInventory("GadgetTargetMarker2", 1,AAPTR_MASTER)
 TRET A 0 ACS_ExecuteAlways(989, 0, ACS_ExecuteWithResult(257)+100, 32)
 TRET A 0 A_GiveInventory("SentrySightShooter")
 TRET A 0 A_JumpIfInTargetInventory("RCSInControl", 1, "Remote")
@@ -155,7 +155,7 @@ TRET A 0 //ACS_ExecuteAlways(998,0,175)
 goto Scan
 Shoot:
 TRET A 0 A_PlaySoundEx("weapon/BasherShot","weapon")
-TRET A 1 A_GiveInventory("TargetMarker2", 1,AAPTR_MASTER)
+TRET A 1 A_GiveInventory("GadgetTargetMarker2", 1,AAPTR_MASTER)
 	TRET A 0 A_Giveinventory("SentrySightShooter")
 TRET A 1 ACS_ExecuteAlways(989, 0, ACS_ExecuteWithResult(257)+100, 32)
 	TRET A 0 A_Giveinventory("SentrySightShooter")
@@ -302,7 +302,7 @@ inventory.maxamount 1
 Actor TurretReticleHold : Powerup {inventory.amount 1 inventory.maxamount 1 Powerup.Duration 10}
 
 
-Actor TargetMarker2 : CustomInventory
+Actor GadgetTargetMarker2 : CustomInventory
 {
 Inventory.amount 1
 Inventory.MaxAmount 1

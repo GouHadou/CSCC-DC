@@ -316,13 +316,13 @@ NV2X G 0 A_GiveInventory("BowAmmo",15)
 Goto Ready2+2
 }
 }
-
+/*
 Actor Burninator4 : Inventory
 {
 Inventory.Amount 1
 Inventory.MaxAmount 2
 }
-
+*/
 Actor BowAmmo : Ammo
 {
 +INVENTORY.IGNORESKILL
