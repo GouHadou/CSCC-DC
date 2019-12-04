@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/humandestroyer/hdclass.txt"
-#include "actors/classes/CSCC/humandestroyer/hdwep1.txt"
-#include "actors/classes/CSCC/humandestroyer/hdwep2.txt"

@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/trolltsuki/ttsuclass.txt"
-#include "actors/classes/CSCC/trolltsuki/ttsuwep.txt"
-#include "actors/classes/CSCC/trolltsuki/ttsuig.txt"

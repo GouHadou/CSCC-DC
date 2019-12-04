@@ -1,4 +1,0 @@
-#include "actors/classes/CSCC/beed28/b28class.txt"
-#include "actors/classes/CSCC/beed28/b28wep.txt"
-#include "actors/classes/CSCC/beed28/b28ig.txt"
-#include "actors/classes/CSCC/beed28/b28copy.txt"

@@ -1,4 +1,0 @@
-#include "actors/classes/CSCC/messatsu/messclass.txt"
-#include "actors/classes/CSCC/messatsu/messwep.txt"
-//#include "actors/classes/CSCC/messatsu/messig.txt"
-#include "actors/classes/CSCC/messatsu/messcopy.txt"

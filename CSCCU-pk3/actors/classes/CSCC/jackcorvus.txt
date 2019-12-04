@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/jackcorvus/jcclass.txt"
-#include "actors/classes/CSCC/jackcorvus/jcwep.txt"
-//#include "actors/classes/CSCC1/jackcorvus/jcig.txt"

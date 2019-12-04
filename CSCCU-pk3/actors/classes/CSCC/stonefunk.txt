@@ -1,2 +1,0 @@
-#include "actors/classes/CSCC/stonefunk/stonclass.txt"
-#include "actors/classes/CSCC/stonefunk/stonwep.txt"

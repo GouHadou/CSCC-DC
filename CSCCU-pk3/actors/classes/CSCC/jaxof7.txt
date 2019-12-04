@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/jaxof7/JaxClass.txt"
-#include "actors/classes/CSCC/jaxof7/JaxWeapon.txt"
-//#include "actors/classes/CSCC/jaxof7/jaxig.txt"

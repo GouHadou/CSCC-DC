@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/kingyamato/kyclass.txt"
-#include "actors/classes/CSCC/kingyamato/kywep.txt"
-#include "actors/classes/CSCC/kingyamato/kyig.txt"

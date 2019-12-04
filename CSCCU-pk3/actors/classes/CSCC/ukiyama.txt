@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/ukiyama/ukiclass.txt"
-#include "actors/classes/CSCC/ukiyama/ukiwep1.txt"
-#include "actors/classes/CSCC/ukiyama/ukicopy.txt"

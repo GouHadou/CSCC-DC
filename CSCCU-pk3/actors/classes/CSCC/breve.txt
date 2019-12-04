@@ -1,2 +1,0 @@
-#include "actors/classes/CSCC/breve/breclass.txt"
-#include "actors/classes/CSCC/breve/brewep.txt"

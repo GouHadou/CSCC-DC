@@ -1,4 +1,0 @@
-#include "actors/classes/CSCC/tsukiyomaru2/tsuki0class2.txt"
-#include "actors/classes/CSCC/tsukiyomaru2/tsuki0weapon2.txt"
-#include "actors/classes/CSCC/tsukiyomaru2/tsu0givers.txt"
-#include "actors/classes/CSCC/tsukiyomaru2/tsuki0ig.txt"

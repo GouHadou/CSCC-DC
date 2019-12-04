@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/MutantYoshi/MYoshiClass.txt"
-#include "actors/classes/CSCC/MutantYoshi/MYoshiWep.txt"
-#include "actors/classes/CSCC/MutantYoshi/MYoshiCopy.txt"

@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/chimeraman/chimclass.txt"
-#include "actors/classes/CSCC/chimeraman/chimwep.txt"
-//#include "actors/classes/CSCC1/chimeraman/chimig.txt"

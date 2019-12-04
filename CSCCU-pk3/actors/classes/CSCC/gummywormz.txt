@@ -1,4 +1,0 @@
-#include "actors/classes/CSCC/gummywormz/gwclass.txt"
-#include "actors/classes/CSCC/gummywormz/gwwep.txt"
-#include "actors/classes/CSCC/gummywormz/gwig.txt"
-#include "actors/classes/CSCC/gummywormz/gummycopy.txt"

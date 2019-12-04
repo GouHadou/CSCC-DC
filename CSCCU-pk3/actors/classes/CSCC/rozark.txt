@@ -1,4 +1,0 @@
-#include "actors/classes/CSCC/rozark/rozarkclass.txt"
-#include "actors/classes/CSCC/rozark/rozarkwep.txt"
-#include "actors/classes/CSCC/rozark/rozarkwep2.txt"
-#include "actors/classes/CSCC/rozark/rozarkcopy.txt"

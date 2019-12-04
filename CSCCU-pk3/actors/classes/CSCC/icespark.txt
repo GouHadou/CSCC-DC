@@ -1,4 +1,0 @@
-#include "actors/classes/CSCC/icespark/isclass.txt"
-#include "actors/classes/CSCC/icespark/iswep1.txt"
-#include "actors/classes/CSCC/icespark/iswep2.txt"
-#include "actors/classes/CSCC/icespark/iscopy.txt"

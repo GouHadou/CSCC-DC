@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/blazeold/blazeclass.txt"
-#include "actors/classes/CSCC/blazeold/blazethrower.txt"
-#include "actors/classes/CSCC/blazeold/flarerocket.txt"

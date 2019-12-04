@@ -1,5 +1,0 @@
-#include "actors/classes/CSCC/tsukiyomaru/tsu0class.txt"
-#include "actors/classes/CSCC/tsukiyomaru/tsu0wep.txt"
-#include "actors/classes/CSCC/tsukiyomaru/tsu0wep2.txt"
-#include "actors/classes/CSCC/tsukiyomaru/tsukicopy.txt"
-//#include "actors/classes/CSCC/tsukiyomaru/tsu0ig.txt"

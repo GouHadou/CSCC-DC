@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/saviorsword/savclass.txt"
-#include "actors/classes/CSCC/saviorsword/savwep.txt"
-#include "actors/classes/CSCC/saviorsword/savig.txt"

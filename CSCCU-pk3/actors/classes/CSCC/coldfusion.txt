@@ -1,4 +1,0 @@
-#include "actors/classes/CSCC/coldfusion/cfclass.txt"
-#include "actors/classes/CSCC/coldfusion/cfwep.txt"
-//#include "actors/classes/CSCC/coldfusion/cfig.txt"
-#include "actors/classes/CSCC/coldfusion/cfcopy.txt"

@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/ukiyamaold/UkiyamaClass.txt"
-#include "actors/classes/CSCC/ukiyamaold/UkiyamaClassWep.txt"
-#include "actors/classes/CSCC/ukiyamaold/UkiRevolverWep.txt"

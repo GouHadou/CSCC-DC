@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/copyrobot/copyclass.txt"
-#include "actors/classes/CSCC/copyrobot/copywep.txt"
-//#include "actors/classes/CSCC/copyrobot/copyig.txt"

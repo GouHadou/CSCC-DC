@@ -1,2 +1,0 @@
-#include "actors/classes/CSCC/Freon/FreonWeapon.txt"
-#include "actors/classes/CSCC/Freon/Freon.txt"

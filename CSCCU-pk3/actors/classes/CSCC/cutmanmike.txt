@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/cutmanmike/cmmclass.txt"
-#include "actors/classes/CSCC/cutmanmike/cmmwep.txt"
-//#include "actors/classes/CSCC1/cutmanmike/cmmig.txt"

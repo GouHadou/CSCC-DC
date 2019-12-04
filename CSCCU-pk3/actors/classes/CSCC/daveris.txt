@@ -1,3 +1,0 @@
-#include "actors/classes/CSCC/daveris/davclass.txt"
-#include "actors/classes/CSCC/daveris/davwep.txt"
-#include "actors/classes/CSCC/daveris/davig.txt"
