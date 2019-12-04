@@ -145,9 +145,10 @@ actor RumSupply : Ammo
 inventory.amount 1
 inventory.maxamount 4
 }
-
+/*
 actor CaptTinyBombAmmo : Ammo 
 {
 inventory.amount 1
 inventory.maxamount 4
 }
+*/

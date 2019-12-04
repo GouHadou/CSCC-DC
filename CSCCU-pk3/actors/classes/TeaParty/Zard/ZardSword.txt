@@ -192,7 +192,7 @@ stop
 }
 }
 
-actor ZSlash3
+actor ZSlashR3
 {
 Obituary "%o was CutDown by %k's Magical shifting Sword!"
 PROJECTILE

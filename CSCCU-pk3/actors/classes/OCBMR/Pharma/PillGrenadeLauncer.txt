@@ -84,7 +84,7 @@ Reload:
 "####" B 1 Offset(0,46)
 "####" B 1 Offset(0,32)
 "####" B 0 A_Giveinventory("PillshotAmmo",45)
-"####" B 0 A_TakeInventory("Reload_Trigger",999)
+//"####" B 0 A_TakeInventory("Reload_Trigger",999)
 "####" B 1 A_Refire("Fire")
 Goto Ready
 }
