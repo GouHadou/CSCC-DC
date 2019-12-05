@@ -8,6 +8,7 @@
 #DEFINE CSACS_COPYSPEED 141
 
 #DEFINE CSACS_ICESPARKSWAP 142
+#DEFINE CSACS_UKIINFO 145
 #DEFINE CSACS_UKIREMOTEAIM 146
 #DEFINE CSACS_UKIREMOTE 147
 #DEFINE CSACS_UKIDAMAGE 148
@@ -1073,6 +1074,48 @@ Switch(speed)
 	break;
 	}
 
+}
+
+//Script for Uki's Hud Info
+Script CSACS_UKIINFO (int IsExplosion)
+{
+int ThePlayer = ACS_ExecuteWithResult(257);
+//SetActivatorToTarget(0);
+If(ThePlayer < 1000){SetResultValue(10);terminate;}
+int TotalDamage = 15;
+
+If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage = 35;}
+If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
+If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 2;}
+If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
+If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
+If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 5;}
+    SetResultValue(TotalDamage);
+	
+SetHudSize(800, 680, True);
+SetFont("SMALLFONT");
+HudMessage(d:(TotalDamage),s:" damage";
+HUDMSG_FADEOUT, 1, CR_GOLD, 60.1, 205.1, 5<<16);
+SetFont("SMALLFONT");
+HudMessage(s:"";
+HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 940.1, 5<<16);
+SetFont("SMALLFONT");
+HudMessage(s:"";
+HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 920.1, 5<<16);
+SetFont("SMALLFONT");
+HudMessage(s:"";
+HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 900.1, 5<<16);
+
+If(CheckActorInventory(ThePlayer, "SnipeFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Shot Size -Fire Rate"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 215.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "RapidFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Fire Rate -Spread"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 215.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "ShotgunFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Projectiles Fired -Spread -Fire Rate"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.5, 215.5, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "HomingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Homing"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "ArcingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Arc"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.5, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "VelocityFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Speed +Ripper"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "NerfFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Damage Debuff"; HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 235.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "BouncingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Bouncing"; HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 235.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "ExplodingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+EXPLOSIONS?!"; HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 235.1, 5<<16);;}
 }
 
 //Script to handle aiming of Uki's vision
