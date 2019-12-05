@@ -1,6 +1,4 @@
-// Core game/legacy scripts that should only be messed with if you know what you're doing.
-
-#library "global"
+#library "GLOBAL"
 #include "zcommon.acs"// [Lego] Always include this before 8bdmlib
 #include "8bdmlib.acs"// included with MM8BDM under acs_source.
 					  // See 8bdmlib.acs for details

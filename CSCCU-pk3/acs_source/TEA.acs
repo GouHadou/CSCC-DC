@@ -1,5 +1,6 @@
-#library "tea"
+#library "TEA"
 #include "zcommon.acs"
+#include "8bdmlib.acs"
 
 script "CSACS_ToastJump" (void)
 {

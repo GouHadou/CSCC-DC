@@ -1,5 +1,6 @@
-#library "ocbmr"
+#library "OCBMR"
 #include "zcommon.acs"
+#include "8bdmlib.acs"
 
 script 107 (void)
 {
@@ -444,43 +445,6 @@ function void HudMessageOnActorZPlusAllign(int tid, int ZPlus, int msgID, int hu
 	
 }
 
-//==============================
-// Distance measuring functions
-function int xyzDistance (int tid1, int tid2)
-{
-	int x, y, z, d;
-	x = GetActorX(tid1) - GetActorX(tid2) >> 16; // Convert fixed point to integer
-	y = GetActorY(tid1) - GetActorY(tid2) >> 16;
-	z = GetActorZ(tid1) - GetActorZ(tid2) >> 16;
-	d = sqrt8( x*x + y*y + z*z );
-	return d;
-}
-
-function int sqrt8(int number)
-{
-	if(number <= 3)
-	{
-		if(number > 0)
-		{
-			return 1;
-		}
-		return 0;
-	}
-
-	int oldAns = number >> 1,                     // initial guess
-	    newAns = (oldAns + number / oldAns) >> 1; // first iteration
-
-	// main iterative method
-	while(newAns < oldAns)
-	{
-		oldAns = newAns;
-		newAns = (oldAns + number / oldAns) >> 1;
-	}
-
-	return oldAns;
-}
-
-
 Script "TurretReticleWarper" (void) CLIENTSIDE
 {
 	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
@@ -702,10 +666,6 @@ for(int i; i < 9; i++)
 	SetActorState (ObjTIDBase4, "Perish");
 }
 
-
-int ServerMAX = 32;
-
-
 //======|Medivision Script
 script "MedivisionScript" (VOID) CLIENTSIDE
 { 
@@ -713,7 +673,6 @@ int Target_TID;
 //int Target_Distance;
 //int Activeplayer;
 int PlayersTeam;
-int IsTeamGame = ACS_ExecuteWithResult(975, 1);
 str TeamTag; 
 
 Switch(PlayerTeam())

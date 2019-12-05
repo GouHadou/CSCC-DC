@@ -1,5 +1,6 @@
-#library "ultimate"
+#library "ULTIMATE"
 #include "zcommon.acs"
+#include "8bdmlib.acs"
 
 Script "CSACS_BoneheadHealth" (int Regen)
 {

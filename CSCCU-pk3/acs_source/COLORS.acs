@@ -1,4 +1,4 @@
-#library "colors"
+#library "COLORS"
 #include "zcommon.acs"
 #include "8bdmlib.acs"
 
