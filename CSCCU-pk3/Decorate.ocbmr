@@ -10,7 +10,3 @@
 #include "actors/classes/OCBMR/Gaol97/Gaol97ClassContent.txt"
 #include "actors/classes/OCBMR/Mason/MasonClassContent.txt"
 #include "actors/classes/OCBMR/Itolos/ItolosClassContent.txt"
-#include "actors/classes/OCBMR/Pharma/PharmaClassContent.txt"
-#include "actors/classes/OCBMR/Gadget/GadgetClassContent.txt"
-#include "actors/classes/OCBMR/Wilter/WilterClassContent.txt"
-#include "actors/classes/OCBMR/CaptainMorgan/CaptainMorganClassContent.txt"

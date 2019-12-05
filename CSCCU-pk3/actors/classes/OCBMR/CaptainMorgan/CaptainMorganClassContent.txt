@@ -1,4 +1,0 @@
-#include "actors/classes/OCBMR/CaptainMorgan/CaptainMorgan.txt"
-#include "actors/classes/OCBMR/CaptainMorgan/LooseCannon.txt"
-#include "actors/classes/OCBMR/CaptainMorgan/RumBoost.txt"
-
