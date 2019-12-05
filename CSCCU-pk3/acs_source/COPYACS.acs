@@ -98,8 +98,8 @@ SetFont("SMALLFONT");
 Switch(MorphWho)
 	{
 	Case 999: //Manual unmorph
-	SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
-	UnmorphActor(ActivatorTID(), 0);
+    SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
+    UnmorphActor(ActivatorTID(), 0);
 	Case 0: 
 	ClearInventory();
 	SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
@@ -120,6 +120,7 @@ Switch(MorphWho)
 	SetPlayerProperty(0, 0, 0);
 	SetHudSize(600,380,0);
 	HudMessage(s:"\ccCopy ability expired!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+    GiveInventory("CopyRobotUnmorphed", 1);
 	GiveInventory("CopyWeapon", 1);
 	SetWeapon("CopyWeapon");
 	GiveInventory("CopyAmmo", 14);
@@ -943,13 +944,30 @@ Case 33: //Stonefunk
 	MorphActor(ActivatorTID(), "BoneheadMorph", "", 0, 258, "", "");
 	TakeInventory("CanCopyWeapons", 1);
 	GiveInventory("MorphFlag", 1);
-	GiveInventory("MissedMemoAmmo", 56);
-	GiveInventory("BoneheadAmmo", 105);
-	GiveInventory("BoneheadScriptActivate", 1);
-	GiveInventory("CannotUseHealth", 1);
+	GiveInventory("BoneheadClassItems", 1);
 	break;
 
+	Case 668: //Gee
+	ClearInventory();
+	SetHudSize(600,380,0);
+    WhichClass = Random(0, 1);
+    if(ACS_ExecuteWithResult(975, 1)==0){WhichClass = 1;}
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdGee (Healing Burst) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "GeeBurstBoss1Morph", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdGee (Damaging Burst) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "GeeBurstBoss2Morph", "", 0, 258, "", "");
+		break;
+		}
 	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("GeeClassItems",1);
+	break;
 	}
 
 

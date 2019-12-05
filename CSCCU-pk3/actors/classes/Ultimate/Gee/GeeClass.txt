@@ -31,7 +31,7 @@ WIZD G 9
 goto Spawn
 Pain.CopyAlt:
 Pain.CopyMain:
-WIZD H 0 //A_SpawnItemEx("GeeCopyHitMain",1)
+WIZD H 0 A_SpawnItemEx("GeeCopyHitMain",1)
 goto Pain+1
 PainFix:
 WIZD H 0
@@ -118,6 +118,51 @@ stop
 }
 }
 actor GeeDMPackage : Once {}
+
+actor GeeCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("GeeMorphItem",1)
+stop
+}
+}
+
+actor GeeCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("GeeCopyPickupMain",1)
+stop
+}
+}
+
+actor GeeMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 668)
+stop
+}
+}
 
 actor GeeBurstBoss1Morph : GeeCSCC
 {

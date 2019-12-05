@@ -6,10 +6,7 @@ player.forwardmove 0.6
 player.sidemove 0.58
 player.jumpz 12
 player.startitem "MissedMemoBoss"
-player.startitem "MissedMemoAmmo", 56
-player.startitem "BoneheadAmmo", 105
-player.startitem "BoneheadScriptActivate"
-player.startitem "CannotUseHealth"
+player.startitem "BoneheadClassItems"
 
 player.maxhealth 45
 health 45
@@ -75,6 +72,20 @@ CVSK H 0 A_GiveToTarget("DisguiseOn",1)
 CVSK H 0 //A_GiveToTarget("BoneheadDisguise",1) you can figure this out
 CVSK H 0 ACS_ExecuteAlways(775,0,4)
 goto BackstabFrames
+}
+}
+
+actor BoneheadClassItems : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_BoneheadHealth")
+TNT1 A 0 A_GiveInventory("MissedMemoAmmo", 56)
+TNT1 A 0 A_GiveInventory("BoneheadAmmo", 105)
+TNT1 A 0 A_GiveInventory("CannotUseHealth", 1)
+stop
 }
 }
 

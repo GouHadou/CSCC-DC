@@ -267,3 +267,8 @@ YOKM Q 1
 stop
 }
 }
+
+actor CopyRobotUnmorphed : Powerup
+{
+powerup.duration 10
+}

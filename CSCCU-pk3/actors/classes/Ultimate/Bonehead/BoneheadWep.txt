@@ -68,6 +68,7 @@ Altfire:
 TNT1 A 0 A_JumpIfInventory("MissedMemoAmmo",0,1)
 goto NoAmmo
 TNT1 A 0 A_PlaySoundEx("actor/boneexplode","Weapon")
+TNT1 A 0 ACS_ExecuteAlways(191,0,APROP_Speed,2,1)
 TNT1 A 0 A_GiveInventory("BoneheadSpeed",1)
 TNT1 A 0 A_ChangeFlag("INVULNERABLE",1)
 TNT1 A 0 A_TakeInventory("MissedMemoAmmo",999)
@@ -81,6 +82,7 @@ TNT1 A 5 A_GiveInventory("BoneheadBones",1)
 TNT1 A 0 A_ChangeFlag("INVULNERABLE",0)
 TNT1 A 0 A_TakeInventory("InvisibleFlag",1)
 TNT1 A 0 A_SetTranslucent(1.0)
+TNT1 A 0 ACS_ExecuteAlways(191,0,APROP_Speed,1,1)
 TNT1 A 0 A_TakeInventory("BoneheadSpeed",1)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_BoneheadHealth",0,1)
 BHED GHA 2
@@ -255,11 +257,11 @@ Powerup.Strength 100
 Powerup.Mode "Translucent"
 }
 
-actor BoneheadSpeed : PowerSpeed
+actor BoneheadSpeed : Powerup //PowerSpeed
 {
 Powerup.Duration -30
-Speed 2.0
-+POWERSPEED.NOTRAIL
+//Speed 2.0
+//+POWERSPEED.NOTRAIL
 }
 
 actor BoneheadBone1
@@ -510,17 +512,6 @@ TNT1 A 1 A_GiveInventory("MissedMemoAmmo",1)
 stop
 No:
 TNT1 A 0
-stop
-}
-}
-
-actor BoneheadScriptActivate : CustomInventory
-{
-States
-{
-Pickup:
-TNT1 A 0
-TNT1 A 1 ACS_NamedExecuteAlways("CSACS_BoneheadHealth")
 stop
 }
 }
