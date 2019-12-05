@@ -12,7 +12,7 @@ Translation "192:192=107:107", "198:198=128:128"
 Player.StartItem "CanUseItems"
 //Player.StartItem "FlameBuster"
 Player.StartItem "StarRevolverWep"
-Player.StartItem "FairyPower"
+//Player.StartItem "FairyPower"
 Player.StartItem "OverHeatItem"
 Player.StartItem "InfernoDash", 140
 Player.StartItem "CrossBombAmmo", 56
