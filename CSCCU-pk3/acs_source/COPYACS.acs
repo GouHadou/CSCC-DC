@@ -98,18 +98,22 @@ SetFont("SMALLFONT");
 Switch(MorphWho)
 	{
 	Case 999: //Manual unmorph
+	SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
 	UnmorphActor(ActivatorTID(), 0);
 	Case 0: 
 	ClearInventory();
+	SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
 	GiveInventory("CanCopyWeapons", 1);
 	//GiveInventory("ResetPlayerStats", 1);
 	GiveInventory("LightHealthBar", 1);
+	
 	TakeInventory("TsuPowerChanger",1);
 	TakeInventory("TsuSpeedChanger",1);
 	TakeInventory("TsuSpreadChanger",1);
 	TakeInventory("LDRamActivator", 1);
 	TakeInventory("SentinelTriggerItem",1);
 	TakeInventory("OilBoat",999);
+	SetActorProperty(ActivatorTID(), APROP_Alpha, 1.0);
 	SetPlayerProperty(0, 0, 16);
 	SetPlayerProperty(0, 0, 3);
 	SetPlayerProperty(0, 0, 4);
@@ -932,7 +936,7 @@ Case 33: //Stonefunk
 	GiveInventory("AutoFlameAmmo", 112);
 	break;
 	
-	Case 999: //Bonehead
+	Case 667: //Bonehead
 	ClearInventory();
 	SetHudSize(600,380,0);
 	HudMessage(s:"\cgYou \cicopied \ckthe \cdBonehead \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
