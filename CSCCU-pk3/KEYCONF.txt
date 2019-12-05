@@ -117,10 +117,6 @@ addplayerclass Arnon nomenu
 AddPlayerClass Mason nomenu
 AddPlayerClass Gaol97 nomenu
 //AddPlayerClass Itolos nomenu
-AddPlayerClass Pharma nomenu
-AddPlayerClass Gadget nomenu
-AddPlayerClass Wilter nomenu
-AddPlayerClass CaptainMorgan nomenu
 
 //██████████████████████████████████████████Magicode████████████████████████████████████████
 //AddPlayerClass Zomo.EXE nomenu
