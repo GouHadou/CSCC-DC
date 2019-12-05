@@ -1672,60 +1672,13 @@ DrawImage "HELTHBX", 0, 72;
 DrawNumber 4, AURONFONT, UNTRANSLATED, ClingCount, 40, 74;
 }*/
 
-//Pharma
+
 //===OverHeal Health indicator
 InInventory not NoHealthBar2, 1 //for those who don't use health bars
 	{
 	InInventory OverhealValue, 1 {DrawBar "BARFLS12", "NOBAR", OverhealValue, vertical, 24, 8;}
 	}
 
-/*
-InInventory IsPharmacist
-{
-DrawBar "BARAMMO1", "BAREMPTY", JetFuel, vertical, 8, 8;
-}
-
-IsSelected PharmaSMG
-{
-	DrawBar "BARAMMO6", "BAREMPTY", Ammo1, vertical, 16, 8;
-}*/
-
-IsSelected PillgunWep
-{
-DrawBar "BARAMMO1", "BAREMPTY", PillShotAmmo, vertical, 16, 8;
-
-}
-
-//=====PillCharges
-InInventory QuickFixCharge
-{
-DrawBar "BARAMMO1", "BAREMPTY", QuickFixCharge, vertical, 16, 8;
-DrawImage "PILLICON5", 32, 64;
-}
-
-InInventory UppenAtemCharge
-{
-DrawBar "BARAMM46", "BAREMPTY", UppenAtemCharge, vertical, 16, 8;
-DrawImage "PILLICON9", 32, 64;
-}
-
-InInventory VigorizerCharge
-{
-DrawBar "BARAMM13", "BAREMPTY", VigorizerCharge, vertical, 16, 8;
-DrawImage "PILLICON2", 32, 64;
-}
-
-InInventory BlokkitalCharge
-{
-DrawBar "BARAMM16", "BAREMPTY", BlokkitalCharge, vertical, 16, 8;
-DrawImage "PILLICON2", 32, 64;
-}
-/*
-//BaseGrey
-InInventory StealthAmmo
-{
-	DrawBar "BARAMM21", "Nobar", StealthAmmo, vertical, 16, 8;
-}*/
 
 //Arnon
 IsSelected ATBSubMachineGun
@@ -1843,140 +1796,7 @@ IsSelected RoxasFrostStaff
 {Drawbar "CBARAM01", "BAREMPTY", ChargingAmmo2, vertical, 8, 8;}
 }*/
 
-//Wilter
-IsSelected BlizzardMaker2Wep
-{
-DrawBar "BARAMM31", "BAREMPTY", ChillPower, vertical, 16, 8;
-DrawBar "BARAMM15", "BAREMPTY", BlizzardMakerChill, vertical, 8, 8;
-DrawBar "BARAMM45", "BAREMPTY", IceBombChill, vertical, 0, 8;
-DrawImage "BLIZSI", 8, 64;
-DrawImage "IWALL", 16, 64;
-DrawImage "FCRASI", 0, 64;
-DrawImage "LASERSI", 8, 72;
-}
 
-IsSelected FreezerayWep
-{
-DrawBar "BARAMM31", "BAREMPTY", ChillPower, vertical, 16, 8;
-DrawBar "BARAMM15", "BAREMPTY", BlizzardMakerChill, vertical, 8, 8;
-DrawBar "BARAMM45", "BAREMPTY", IceBombChill, vertical, 0, 8;
-DrawImage "BLIZSI", 8, 64;
-DrawImage "IWALL", 16, 64;
-DrawImage "FCRASI", 0, 64;
-DrawImage "LASERSI", 16, 72;
-}
-
-IsSelected IceBombWep
-{
-DrawBar "BARAMM31", "BAREMPTY", ChillPower, vertical, 16, 8;
-DrawBar "BARAMM15", "BAREMPTY", BlizzardMakerChill, vertical, 8, 8;
-DrawBar "BARAMM45", "BAREMPTY", IceBombChill, vertical, 0, 8;
-DrawImage "BLIZSI", 8, 64;
-DrawImage "IWALL", 16, 64;
-DrawImage "FCRASI", 0, 64;
-DrawImage "LASERSI", 0, 72;
-}
-
-//Captain Morgan
-IsSelected CaptLooseCannonWep
-{
-	InInventory CaptLooseCannonWep, 1 {DrawBar "BARAMMO4", "BAREMPTY", Ammo1, vertical, 16, 8;}
-	InInventory CaptLooseCannonTimer, 1 {DrawBar "BARAMMO4", "NOBAR", CaptLooseCannonTimer, vertical, 80, 64;}  //adjust later
-}
-
-IsSelected RumBoosterWep
-{
- DrawBar "BARAMMO2", "BAREMPTY", Ammo1, vertical, 16, 8;
-}
-
-//Gadget
-InInventory DynashockGun
-{
-	DrawBar "BARAMMO6", "Nobar", Electrammo, vertical, 16, 8;
-	DrawImage "BatBar", 16, 8;
-}
-
-IsSelected SentryMonitor
-{
-	DrawNumber 12, "8BDMAFONT", UNTRANSLATED, Sentryoption, 75, 93;
-	InInventory Sentryoption, 1 
-		{ 
-		InInventory not Sentryoption, 2
-			{
-			 
-			DrawString "8BDMAFONT", UNTRANSLATED, "Normal", 80, 93,0,alignment(left);
-			}
-		}
-	InInventory Sentryoption, 2
-		{ 
-		InInventory not Sentryoption, 3
-			{
-			DrawString "8BDMAFONT", UNTRANSLATED, "Dispenser", 80, 93,0,alignment(left);
-			}
-		}
-	InInventory Sentryoption, 3
-		{ 
-		InInventory not Sentryoption, 4
-			{
-			DrawString "8BDMAFONT", UNTRANSLATED, "Thunder Tower", 80, 93,0,alignment(left);
-			}
-		}
-	InInventory Sentryoption, 4
-		{ 
-		InInventory not Sentryoption, 5
-			{
-			DrawString "8BDMAFONT", UNTRANSLATED, "Electro Fence", 80, 93,0,alignment(left);
-			}
-		}
-
-
-}//"8BDMAFONT"
-/*
-InInventory NormSentryActive
-{
-	InInventory NormSentryHPView, 1 {DrawBar "VARAMMO4", "VAREMPTY", NormSentryHPView, horizontal, 8, 72;}
-	DrawImage "COPYVI", 0, 72;
-}
-InInventory FireSentryActive
-{
-	InInventory FireSentryHPView, 1 {DrawBar "VARAMM57", "VAREMPTY", FireSentryHPView, horizontal, 8, 80;}
-	DrawImage "BURNRI", 0, 80;
-}
-InInventory BeamSentryActive
-{
-	InInventory BeamSentryHPView, 1 {DrawBar "VARAMM16", "VAREMPTY", BeamSentryHPView, horizontal, 8, 88;}
-	DrawImage "LASERSI", 0, 88;
-}
-*/
-InInventory ElectroFenceActive
-{
-	InInventory ElectroFenceHPView, 1 {DrawBar "VARAMM57", "VAREMPTY", ElectroFenceHPView, horizontal, 8, 80;}
-	DrawImage "BURNRI", 0, 80;
-}
-
-InInventory ThunderTowerActive
-{
-	InInventory ThunderTowerHPView, 1 {DrawBar "VARAMM53", "VAREMPTY", ThunderTowerHPView, horizontal, 8, 88;}
-	DrawImage "LIGHTNI", 0, 88;
-}
-
-InInventory GadgetsentryActive
-{
-	InInventory GadgetsentryHPView, 1 {DrawBar "VARAMM56", "VAREMPTY", GadgetsentryHPView, horizontal, 8, 96;}
-	DrawImage "REMOI", 0, 96;
-}
-
-InInventory DispenserActive
-{
-	InInventory DispenserHPView, 1 {DrawBar "VARAMM58", "VAREMPTY", DispenserHPView, horizontal, 8, 104;}
-	DrawImage "EDDIE2", 0, 104;
-}
-/*
-//Pharma
-IsSelected PharmaSMG
-{
-	DrawBar "BARAMMO6", "BAREMPTY", Ammo1, vertical, 16, 8;
-}*/
 
 //[+]=================|+++++|======================[+]
 //[+]=================|+++++|======================[+]

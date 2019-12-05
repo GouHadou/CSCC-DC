@@ -380,14 +380,6 @@ misc/invasionclear IVSTGCLR
 item/suprise	SUPRISE
 
 
-//Sentries
-Sentries/Sentrydown SNDW
-Sentries/Dispenserdown DPDW
-Sentries/Sentryup SNGU
-Sentries/Dispenserup1 DPGU
-Sentries/Dispenserup2 DPGU2
-Sentries/Pickup MOVINSN
-Sentries/Pickup2 MOVINSN2
 weapon/BasherShot VULCAN1
 
 // Neo Arceus //
