@@ -44,7 +44,7 @@ FSTO A 0 A_GiveInventory("JaxSelfSlow",1)
 //FSTO A 0 A_FireCustomMissile("JaxHold",0,1,8,0)
 FSTO A 0 A_FireCustomMissile("JaxHold",0,0,8,0)
 HEAT G 0 A_TakeInventory("JaxPsychoAmmo",6,TIF_NOTAKEINFINITE)
-TNT1 A 0 A_GiveInventory("JaxHoldCharge",100)
+TNT1 A 0 A_GiveInventory("JaxHoldCharge",777)
 JAX7 B 2
 FSTO A 0 A_PlaySoundEx("weapon/gravityhold","Weapon")
 JAX7 CD 2
@@ -160,7 +160,8 @@ inventory.maxamount 34
 actor JaxHoldCharge : Ammo
 {
 inventory.amount 1
-inventory.maxamount 100
+//inventory.maxamount 100
+inventory.maxamount 150
 +INVENTORY.IGNORESKILL
 }
 
@@ -185,6 +186,17 @@ stop
 }
 
 actor JaxPsychoAmmoDeplete : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("JaxPsychoAmmoDeplete2",1)
+TNT1 A 0 A_GiveInventory("JaxPsychoAmmoDeplete2",1)
+stop
+}
+}
+
+actor JaxPsychoAmmoDeplete2 : CustomInventory
 {
 states
 {
@@ -403,13 +415,25 @@ Spawn2S:
 TNT1 A 1
 Spawn2:
 TNT1 A 0 A_Warp(AAPTR_TRACER, 0, 0, 0, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION)
-TNT1 A 0 A_JumpIfCloser(500,"Spawn3")
-//TNT1 A 0 A_JumpIfCloser(1500,"PullIn")
-TNT1 A 0 A_JumpIfCloser(2500,"PullIn")
+TNT1 A 0 A_JumpIfCloser(600,"Spawn3")
+TNT1 A 0 A_JumpIfCloser(1200,"PullIn1")
+TNT1 A 0 A_JumpIfCloser(1800,"PullIn2")
+TNT1 A 0 A_JumpIfCloser(2400,"PullIn3")
 goto Spawn3
-PullIn:
+PullIn1:
 TNT1 A 0 A_FaceTarget
-TNT1 A 0 ThrustThing(angle*256/360,5,0,CallACS("core_gettracer",0))
+TNT1 A 0 A_GiveInventory("TempPitProtect",1,AAPTR_TRACER)
+TNT1 A 0 ThrustThing(angle*256/360,1,0,CallACS("core_gettracer",0))
+goto Spawn3
+PullIn2:
+TNT1 A 0 A_FaceTarget
+TNT1 A 0 A_GiveInventory("TempPitProtect",1,AAPTR_TRACER)
+TNT1 A 0 ThrustThing(angle*256/360,2,0,CallACS("core_gettracer",0))
+goto Spawn3
+PullIn3:
+TNT1 A 0 A_FaceTarget
+TNT1 A 0 A_GiveInventory("TempPitProtect",1,AAPTR_TRACER)
+TNT1 A 0 ThrustThing(angle*256/360,3,0,CallACS("core_gettracer",0))
 Spawn3:
 TNT1 A 1 A_GiveInventory("JaxHeld",1,AAPTR_TRACER)
 TNT1 A 0 A_JumpIfInventory("JaxHoldResist",1,"NotDead",AAPTR_TRACER)
@@ -449,7 +473,7 @@ stop
 }
 
 actor JaxHoldStart : PowerUp { Powerup.Duration 3 }
-actor JaxHolding : PowerUp { Powerup.Duration 700 }
+//actor JaxHolding : PowerUp { Powerup.Duration 700 }
 actor JaxFlinging : PowerUp { Powerup.Duration 3 }
 
 actor JaxHoldResist : PowerProtection
@@ -479,4 +503,11 @@ actor JaxHeldSpeed : PowerSpeed
 Powerup.Duration 3
 //+POWERSPEED.NOTRAIL
 Speed 1.9
+}
+
+actor JaxHolding : PowerSpeed
+{
+Powerup.Duration 700
++POWERSPEED.NOTRAIL
+Speed 0.85
 }

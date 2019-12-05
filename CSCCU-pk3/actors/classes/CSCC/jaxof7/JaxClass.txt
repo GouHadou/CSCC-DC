@@ -4,8 +4,8 @@ player.displayname "JaxOf7"
 player.soundclass "jaxclass"
 Health 150
 Player.Maxhealth 150
-player.forwardmove 0.6, 0.6
-player.sidemove 0.5, 0.5
+player.forwardmove 0.55, 0.55
+player.sidemove 0.53, 0.53
 player.startitem "JaxPsycho1"
 player.startitem "JaxPsycho2"
 player.startitem "JaxPsychoAmmo", 13
