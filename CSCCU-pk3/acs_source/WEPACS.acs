@@ -161,7 +161,8 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"StickyBombWep", "StickyBombAmmo", "Sticky Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
 {"ZardGunCopyWep", "ZardCopyWepAmmo", "Danmaku Buster", 1.0, "YES", "YES", "SLOT_RAPID"},
 {"SteelPunchWepC", "SteelPunchAmmo", "Seel Punch", 1.0, "YES", "YES", "SLOT_POWER"},
-{"Proto01CopyWep", "Proto01CopyWepAmmo", "Proto Shield", 1.0, "YES", "YES", "SLOT_SHIELD"}
+{"Proto01CopyWep", "Proto01CopyWepAmmo", "Proto Shield", 1.0, "YES", "YES", "SLOT_SHIELD"},
+{"EmberCelicaWepCS", "EmberCelicaAmmo", "Ember Celica", 1.0, "YES", "YES", "SLOT_RANGED"}
 };
 
 str BusterUpgrades[MAX_BUSTERS] =

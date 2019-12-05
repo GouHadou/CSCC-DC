@@ -29,7 +29,10 @@ InInventory not NoHealthBar2, 1
 	InInventory HeavyHealthBar, 1{DrawBar "BARHEALH", "BAREMPTY", Health, vertical, 24, 8;}
 	InInventory HardHealthBar, 1{DrawBar "BARHEAHA", "BAREMPTY", Health, vertical, 24, 8;}
 	
-	InInventory BasicArmor, 1{DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
+	InInventory not NoArmorBar, 1
+		{
+		InInventory BasicArmor, 1{DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
+		}
 	InInventory HealthNumberFlag, 1
 {
 	//DrawNumber 5,CMBHPFONT,Untranslated,Health,/*interpolate(10),*/alignment(left),31,30;
@@ -157,6 +160,20 @@ IsSelected GouhadouWepCS
 	DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 16, 8;
 	}
 	}
+	
+//====|Yang
+IsSelected EmberCelica
+	{
+	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
+	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8;}
+	}
+IsSelected EmberCelicaWepCS
+	{
+	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
+	}
+
 //Old Ukiyama
 IsSelected UkiyamaClassWepOld
 	{
