@@ -11,6 +11,7 @@ const int WCCS_ICESPARKY = 378;
 const int WCCS_MESSATSU = 379;
 const int WCCS_MESSCHARGE = 380;
 const int WCCS_MESSCHARGE2 = 386;
+const int WCCS_YANG = 387;
 const int WCCS_UKIYAMA = 381;
 const int WCCS_KNUX = 382;
 const int WCCS_MUTANTYOSHI = 383;
