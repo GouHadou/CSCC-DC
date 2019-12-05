@@ -23,6 +23,10 @@ Missile:
 NIRO F 5 
 NIRO G 4
 goto Spawn
+Pain.CopyAlt:
+Pain.CopyMain:
+MTSU H 0 A_SpawnItemEx("YangCopyHitMain",1)
+goto pain+1
 ClassPain:
 NIRO H 0
 NIRO H 0 A_JumpIfInventory("GravityHoldPainPower",1,"GravityHoldWait")
@@ -36,7 +40,52 @@ goto SuperSpawn
 }
 }
 
-actor YangMorph : Messatsu
+actor YangCopyHitMain
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("YangCopyPickupMain",1)
+stop
+}
+}
+
+actor YangCopyPickupMain : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("YangMorphItem",1)
+stop
+}
+}
+
+actor YangMorphItem : CustomInventory
+{
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 665)
+stop
+}
+}
+
+actor YangMorph : Yang
 {
 +NOSKIN
 player.morphweapon "EmberCelica"
@@ -49,18 +98,3 @@ YOKM H 0
 Goto "ClassBaseCSCC::Pain+2"
 }
 }
-/*
-actor YangBoostItem : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 ACS_NamedExecuteAlways("YangBoost")
-stop
-}
-}*/

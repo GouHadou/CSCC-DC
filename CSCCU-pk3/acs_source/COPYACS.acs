@@ -937,6 +937,15 @@ Case 33: //Stonefunk
 	GiveInventory("AutoFlameAmmo", 112);
 	break;
 	
+		Case 665: //Yang
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cdYang \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(ActivatorTID(), "YangMorph", "", 0, 258, "", "");
+	GiveInventory("YangClassItems", 1);
+	GiveInventory("MorphFlag", 1);
+	break;
+	
 	Case 667: //Bonehead
 	ClearInventory();
 	SetHudSize(600,380,0);
