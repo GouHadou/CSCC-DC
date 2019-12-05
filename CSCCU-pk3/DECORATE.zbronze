@@ -1,0 +1,2 @@
+const int WCCS_YANG = 387;
+#include "actors/classes/Bronze/Yang/YangClassContent.txt"

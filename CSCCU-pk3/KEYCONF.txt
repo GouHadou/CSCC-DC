@@ -105,7 +105,7 @@ addplayerclass Zangief nomenu
 //AddPlayerClass TankOperator
 //addplayerclass SnailBreeder
 //addplayerclass Apiarist
-//AddPlayerClass Yang
+AddPlayerClass Yang
 //AddPlayerClass Fume
 //AddPlayerClass ZenTrainer
 //addplayerclass Undyne

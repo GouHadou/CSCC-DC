@@ -709,16 +709,15 @@ texture SHELLBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:19
 */
 
 //Yang
-/*
+
 texture AURABAR, 8, 56{patch AURBAR, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
 texture AURABAR2, 56, 8{patch AURBAR2, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
-
 
 texture YANGBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
 texture YANGSEM, 8, 56{patch YANG1, 0, 0}
 texture YANGBARH, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
 texture YANGSEMH, 56, 8{patch YANG2, 0, 0}
-*/
+
 //Fume
 /*
 graphic FUMEBAR,8,56{patch BARENERG,0,0{Translation "192:192=228:228","198:198=61:61"}}
