@@ -219,15 +219,29 @@ PLAY A 0 A_JumpIfInTargetInventory("PhotonCharge",78,"Give2")
 PLAY A 0 A_JumpIfInTargetInventory("PhotonCharge",1,"Give")
 stop
 Give:
+PLAY A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
 PLAY A 1 A_GiveToTarget("PhotonFXGive",1)
 Goto Spawn
 Give2:
-PLAY AAA 1 A_GiveToTarget("PhotonFXGive2",1)
+PLAY A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+PLAY A 1 A_GiveToTarget("PhotonFXGive2",1)
+PLAY A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+PLAY A 1 A_GiveToTarget("PhotonFXGive2",1)
+PLAY A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+PLAY A 1 A_GiveToTarget("PhotonFXGive2",1)
 PLAY A 0 A_JumpIfInTargetInventory("PhotonCharge",78,"Give3")
 stop
 Give3:
-PLAY AAA 1 A_GiveToTarget("PhotonFXGive3",1)
+PLAY A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+PLAY A 1 A_GiveToTarget("PhotonFXGive3",1)
+PLAY A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+PLAY A 1 A_GiveToTarget("PhotonFXGive3",1)
+PLAY A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+PLAY A 1 A_GiveToTarget("PhotonFXGive3",1)
 PLAY A 0 A_JumpIfInTargetInventory("PhotonCharge",78,"Give2")
+stop
+Death:
+PLAY A 0
 stop
 }
 }
