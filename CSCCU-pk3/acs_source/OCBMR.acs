@@ -531,7 +531,7 @@ SetResultValue(HealthPercent);
 
 Script "OverhealDrain" (Int Tick)
 {
-if (GetActorProperty(0,APROP_HEALTH) > Tick) {Setactorproperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH) - Tick));}
+if(GetActorProperty(0,APROP_HEALTH) > Tick){SetActorProperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH)-Tick));}
 }
 
 

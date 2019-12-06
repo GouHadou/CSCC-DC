@@ -105,7 +105,6 @@ stop
 }
 }
 
-
 actor BoneheadCopyPickupMain : CustomInventory
 {
 inventory.amount 1
