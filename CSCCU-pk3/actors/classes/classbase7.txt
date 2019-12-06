@@ -4,6 +4,7 @@ States
 {
 //[+]====================|OCBMR|================[+]
 Pain.Aururinite:
+Pain.AuraTypeX
 Pain.AuraType:
 "----" H 0 
 goto pain+1
