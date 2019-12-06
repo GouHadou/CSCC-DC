@@ -33,47 +33,95 @@ Select:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
 YNGF A 1 A_Raise
 Loop
+Hold:
+YNGF A 0 A_TakeInventory("WeaponCharge", 35)
+YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeftCharge")
+Goto FireRightCharge
 Fire:
+YNGF A 0 A_TakeInventory("WeaponCharge", 35)
 YNGF A 0 A_JumpIfInventory("EmberCelicaDown", 1, "GroundAttackCheck")
 YNGF A 0 A_JumpIfInventory("EmberCelicaUp", 1, "Uppercut")
-YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
-//YNGF A 0 A_SetArg(4, ACS_NamedExecuteWithResult("YangSpeedCheck") - 5)
 YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeft")
 Goto FireRight
+
+FireRightCharge:
+YNGF A 0 A_GiveInventory("WeaponCharge", 1)
+YNGF A 1 A_JumpIfInventory("WeaponCharge", 20, "FireRightCharge2a")
+YNGF A 0 A_Refire("FireRightCharge")
+Goto FireRight
 FireRight:
-YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
+YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch",cos(-pitch)*32,8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
 YNGF A 0 A_JumpIfNoAmmo("RightFinish")
 YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,8,0)
 Goto RightFinish
+FireRightCharge2a:
+YNGF EF 1
+Goto FireRightCharge2b
+FireRightCharge2b:
+YNGF F 1
+YNGF F 0 A_Refire("FireRightCharge2b")
+Goto FireRight2
+FireRight2:
+YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
+YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch2",cos(-pitch)*32,8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
+YNGF A 0 A_JumpIfNoAmmo("RightFinish")
+YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,8,0)
+YNGF EBC 1
+YNGF DDDD 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+YNGF C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+YNGF CB 5
+Goto FireFinish
+
+FireLeftCharge:
+YNGF A 0 A_GiveInventory("WeaponCharge", 1)
+YNGF A 1 A_JumpIfInventory("WeaponCharge", 20, "FireLeftCharge2a")
+YNGF A 0 A_Refire("FireLeftCharge")
+Goto FireLeft
 FireLeft:
-YNGF A 0 A_TakeInventory("LeftRightFlag", 1)
+YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch",cos(-pitch)*32,-8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
 YNGF A 0 A_JumpIfNoAmmo("LeftFinish")
-YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker",0,1,-8,0)
+YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
 Goto LeftFinish
+FireLeftCharge2a:
+YNGF BC 1
+Goto FireLeftCharge2b
+FireLeftCharge2b:
+YNGF C 1
+YNGF C 0 A_Refire("FireLeftCharge2b")
+Goto FireLeft2
+FireLeft2:
+YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
+YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch2",cos(-pitch)*32,-8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
+YNGF A 0 A_JumpIfNoAmmo("LeftFinish")
+YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
+YNGF BEF 1
+YNGF GGGG 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+YNGF G 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+YNGF FE 5
+Goto FireFinish
+
 RightFinish:
 YNGF BC 1
-YNGF DDDD 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
-//RightLoop:
-YNGF C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
-YNGF C 0 A_JumpIfInventory("EmberCelicaBoost", 1, 1)
-Goto FireFinish
-YNGF CB 5
+YNGF DDDDC 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 Goto FireFinish
 LeftFinish:
 YNGF EF 1
-YNGF GGGG 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
-//LeftLoop:
-YNGF F 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
-YNGF F 0 A_JumpIfInventory("EmberCelicaBoost", 1, 1)
-Goto FireFinish
-YNGF FE 5
+YNGF GGGGF 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 Goto FireFinish
 FireFinish:
 YNGF A 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireFinish2")
+YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
 YNGF A 0 A_JumpIfNoAmmo("BotReloadCheck")
-Goto FireFinish2
+YNGF A 0 A_Refire
+Goto Ready+1 
+FireFinish2:
+YNGF A 0 A_TakeInventory("LeftRightFlag", 1)
+YNGF A 0 A_JumpIfNoAmmo("BotReloadCheck")
+YNGF A 0 A_Refire
+Goto Ready+1 
 UpperCut:
 YNGF B 0 A_SetArg(4, momz)
 YNGF B 0 A_Stop
@@ -108,10 +156,8 @@ TNT1 A 25
 Goto ReloadFinish
 BotReloadCheck:
 YNGF A 0 A_JumpIfInventory("IsBot", 1, "Reloading")
-Goto FireFinish2
-FireFinish2:
-YNGF A 1 A_Refire
-goto Ready+1
+Goto Ready+1 //Goto FireFinish2
+
 Reloading:
 YNGF A 0 SetPlayerProperty(0, 1, 4)
 YNGF A 0 A_ScaleVelocity(0.5)
@@ -275,6 +321,41 @@ loop
 }
 }
 
+actor EmberCelicaPunch2 : EmberCelicaPunch
+{
+var int User_ShotPower;
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+Goto "Super::Spawn+1"
+RealSpawn:
+TNT1 A 0 
+TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 2))
+//TNT1 A 0 A_ChangeVelocity(1.25)
+TNT1 A 2 A_ChangeFlag("THRUACTORS", FALSE)
+YNGP F 1 
+YNGP FF 1 A_JumpIfCloser(32, "Death")
+Goto Death
+Death:
+YNGP F 0 A_ChangeFlag("NOINTERACTION", 1)
+YNGP F 0 A_Explode(User_ShotPower, 48, 0, 0, 32)
+YNGP F 0 A_Stop
+YNGP F 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
+YNGP F 0 A_FadeOut(0.15)
+YNGP F 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
+YNGP F 0 A_FadeOut(0.15)
+YNGP F 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
+YNGP F 0 A_FadeOut(0.15)
+YNGP F 0 A_ScaleVelocity(0.5)
+DeathLoop:
+YNGP G 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
+YNGP G 0 A_FadeOut(0.15)
+loop
+}
+}
+
 actor EmberCelicaUpper : EmberCelicaPunch
 {
 damagetype "EmberCelicaUpper"
@@ -321,6 +402,12 @@ actor EmberCelicaBoost : PowerSpeed
 PowerUp.Duration 15
 Speed 2.0
 }
+
+actor YangRapidFire : Powerup
+{
+PowerUp.Duration 3
+}
+
 
 actor EmberCelicaDown : Powerup
 {
@@ -708,6 +795,9 @@ YNGK D 0 A_SetArg(0, ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResu
 YNGK D 0 A_ChangeFlag("THRUACTORS", FALSE)
 YNGK DDEEFF 1 A_FadeIn(0.1)
 stop
+Death:
+"----" A 1 A_Fadeout
+wait
 }
 }
 
