@@ -442,8 +442,8 @@ sprite T1BSA0,120,100{Offset -184,-94 Patch B_HNA0,0,0{Translation "192:192=85:8
 sprite T1BSB0,140,116{Offset -184,-98 Patch B_HNB0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
 sprite T1BSC0,144,112{Offset -187,-102 Patch B_HNC0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
 */
+
 //Snail Breeder
-/*
 sprite SNLBA0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 //throw
 sprite SNLBB0, 308, 204 {Offset -272, 46 Patch HSPRF0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
@@ -460,7 +460,6 @@ sprite SNLBK0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:1
 sprite BLMUA0, 320, 200 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 sprite BLMUB0, 320, 200 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 sprite BLMUC0, 320, 200 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
-*/
 
 
 //ZenTrainer HUD

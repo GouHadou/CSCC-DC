@@ -71,19 +71,21 @@ TAG_ASCENSION = "\c[c9][\c[y9]SS\c[c9]] \c[n2]Ascension\cu \c[c9][\c[y9]SS\c[c9]
 TAG_PHARAOHBUSTERPLUS = "\c[c9][\c[y9]0\c[c9]] \cjAscended Insanity Buster\cu \c[c9][\c[y9]0\c[c9]]";
 
 //===|Snailz
-PU_SNAILBREEDER = "You get a box of snails.";
-PU_SNAILSHELL = "You get a giant shell dome.";
+PU_SNAILBREEDER = "You get a bag of snails.";
+PU_SNAILSHELL = "You get a Shellter.";
 
-OB_SNAILBREEDER1 = "%o was slugged by %k.";
+OB_SNAILBREEDER = "%o was slugged by %k.";
 OB_SNAILTRAIL = "%o got into a sticky situation involving %k.";
 OB_SNAILBUDDY = "%o said hello to %k's Snail Buddy.";
-OB_SNAILATTAC = "%o was mauled by %k's Killer Snail.";
-OB_SNAILSLAP = "%o was worn down by %k.";
-OB_SNAILBOMB = "%o was slugged to submission by %k's Ballistic Mucus."; //The legend returns
-OB_SNAILSHELL = "%o was left shell-shocked %k's Shellter splint.";
+OB_SNAILATTAC = "%o was mauled by %k's Jumping Snail.";
+OB_SNAILBANANA = "%o slipped up against %k's Banana Slug.";
+OB_SNAILMAGNET = "%o was run down by %k's Homing Snails.";
 
-TAG_SNAILBREEDER1 = "Basic Snail Spells";
-TAG_SNAILBREEDER2 = "Power Snail Spells";
+OB_SNAILSHELL = "%o was left shell-shocked a splint of %k's Shellter.";
+
+OB_SNAILBOMB = "%o was slugged to submission by %k's Ballistic Mucus."; //The legend returns
+
+TAG_SNAILBREEDER1 = "A bag of snails";
 
 
 //===|Undyne

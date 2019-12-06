@@ -2955,20 +2955,20 @@ graphic MUNOZ0, 30, 30
    Patch MUNOZ0, 0, 0
 }
 */
+
 //Snail Breeder
-/*
 graphic SNELICO1, 30, 30
 {
    XScale 2.0
    YScale 2.0
-   Patch BLMUX0, 0, 0
+   Patch SNLZX0, 0, 0
 }
 
 graphic SNELICO2, 30, 30
 {
    XScale 2.0
    YScale 2.0
-   Patch BLMUY0, 0, 0
+   Patch SNLZY0, 0, 0
 }
 
 graphic SNELICO3, 30, 30
@@ -2977,7 +2977,7 @@ graphic SNELICO3, 30, 30
    YScale 2.0
    Patch SNSHX0, 0, 0
 }
-*/
+
 //Yang 
 /*
 graphic YANGRLD, 30, 30 //Yang reload Sprite

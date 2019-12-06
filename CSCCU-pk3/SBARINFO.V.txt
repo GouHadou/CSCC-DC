@@ -1213,6 +1213,12 @@ IsSelected AtomicSuplexBoss
 	{
 	Drawbar"BARAMM12", "BAREMPTY", Ammo1, vertical, 16, 8;
 	}
+	
+//██████████████████████████████████████████Bronze████████████████████████████████████████
+//Bronze, I dunno
+//====|Snail Breeder
+IsSelected SnailBreederPets{Drawbar"SNAILBAR", "BAREMPTY", Ammo1, vertical, 16, 8; Drawbar"SHELLBAR", "BAREMPTY", Ammo2, vertical, 32, 8;}
+	InInventory ShellterFlag, 1{DrawImage "SNSHX0", 298,16;}
 //██████████████████████████████████████████Ultimate████████████████████████████████████████
 
 //Bonehead
