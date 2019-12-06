@@ -50,7 +50,10 @@ Pain.TornadoJump:
 Goto pain+1
 
 Pain.TrollBuster:
-"----" H 0 A_ScaleVelocity(0.5)
+"----" H 0 A_ScaleVelocity(0.8)
+Goto Pain+1
+Pain.TrollBuster2:
+"----" H 0 A_Stop
 Goto Pain+1
 Pain.GemSpike:
 "----" H 0 
