@@ -152,7 +152,7 @@ BLMU F 0
 stop
 Death:
 BLMU D 0 A_PlaySoundEx("misc/oil", "Weapon")
-BLMU D 0 A_Explode(60, 128, 0)
+BLMU D 0 A_Explode(33, 128, 0)
 BLMU D 0 A_SpawnItemEX("MucusSpread",0,0,0,13,0,0,135)
 BLMU D 0 A_SpawnItemEX("MucusSpread",0,0,0,13,0,0,180)
 BLMU D 0 A_SpawnItemEX("MucusSpread",0,0,0,13,0,0,-135)
