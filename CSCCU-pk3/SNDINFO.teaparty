@@ -24,13 +24,13 @@ weapon/YukkuriAttack   YUKKATCK
 weapon/YukkuriPain   MEGAPAIN
 weapon/YukkuriDeath   YUKKDEAD
 
-$playersound    PrinnyQueen	female	*death		PRINDEAT
-$playersound	PrinnyQueen	female	*xdeath 	PRINDEAT
-$playersound	PrinnyQueen	female	*gibbed		PRINDEAT
-$playersound	PrinnyQueen	female	*pain100	PRINPAIN
-$playersound	PrinnyQueen	female	*pain75		PRINPAIN
-$playersound	PrinnyQueen	female	*pain50		PRINPAIN
-$playersound	PrinnyQueen	female	*pain25		PRINPAIN
+$playersound    PrinnyQueen	female	*death		MEGADEAT
+$playersound	PrinnyQueen	female	*xdeath 	MEGADEAT
+$playersound	PrinnyQueen	female	*gibbed		MEGADEAT
+$playersound	PrinnyQueen	female	*pain100	MEGAPAIN
+$playersound	PrinnyQueen	female	*pain75		MEGAPAIN
+$playersound	PrinnyQueen	female	*pain50		MEGAPAIN
+$playersound	PrinnyQueen	female	*pain25		MEGAPAIN
 $playersound	PrinnyQueen	female	*grunt		ROKKLAND
 $playersound	PrinnyQueen	female	*land		ROKKLAND
 $playersound	PrinnyQueen	female	*jump		dsnone
