@@ -132,16 +132,16 @@ gravity 0.25
 States
 {
 Spawn:
-ACSH A 0
-ACSH A 0 A_SpawnItemEX ("MuzzleFX", -16, 0, 0, momx/10, momy/10, momz/10, 0, SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION, 0)
-ACSH A 3 
+BRD1 A 0
+BRD1 A 0 A_SpawnItemEX ("MuzzleFX", -16, 0, 0, momx/10, momy/10, momz/10, 0, SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION, 0)
+BRD1 A 3 
 Looping:
-ACSH A 3
+BRD1 A 3
 loop
 Death:
-ACSH A 0 A_Stop
-AUCA A 0 A_PlaySoundEx("weapon/crackerexplode","Weapon")
-ACSH A 0 A_Explode(16, 64, 0)
+BRD1 A 0 A_Stop
+BRD1 A 0 A_PlaySoundEx("weapon/crackerexplode","Weapon")
+BRD1 A 0 A_Explode(16, 64, 0)
 NAPA EFGHIJKLMNOPQRS 1
 stop
 }
