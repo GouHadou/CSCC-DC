@@ -6,7 +6,7 @@ ACTOR OverHealHealth : HealthBonus
   Inventory.MaxAmount 2000
 }
 
-Actor HealDelay : powerup{inventory.amount 1 Powerup.duration 12}
+Actor OverhealDelay : powerup{inventory.amount 1 Powerup.duration 17}
 Actor OverHealWatcher 
 //Passes info for SBARINFO
 {
@@ -15,30 +15,26 @@ Actor OverHealWatcher
 +NOGRAVITY
 +NOINTERACTION
 Reactiontime 5
-Obituary "%0 succumed to poison"
 Var int user_Decay;
 States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_GiveToTarget("OverHealerUpdate",1)
-TNT1 A 0 //A_GiveToTarget("ReinforceBarrierSpawner",1)
-TNT1 A 0 //A_GiveToTarget("BusterProtection",1)
-TNT1 A 0 A_Setuservar("user_Decay",user_Decay+1)
-TNT1 A 0 A_JumpIfintargetinventory("HealDelay",1,2)
+TNT1 A 0 A_GiveToTarget("OverHealerUpdate",1)
+TNT1 A 1 A_Setuservar("user_Decay",user_Decay+1)
+TNT1 A 0 A_JumpIfintargetinventory("OverhealDelay",1,2)
 TNT1 A 0 A_Jumpif(user_Decay >= 5, "DownTick")
-TNT1 A 0
-TNT1 A 0 A_JumpIfintargetinventory("OverhealValue",1,"Spawn")
-
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+goto Spawn+2
 DownTick:
-
 TNT1 A 0 A_Setuservar("user_Decay",0)
-TNT1 A 0 //A_GiveToTarget("DaDiBuffer", 1)
-TNT1 A 0 A_GiveToTarget("DecayerTick", 1)
-TNT1 A 0 A_JumpIfintargetinventory("OverhealValue",1,"Spawn")
+TNT1 A 1 A_GiveToTarget("DecayerTick", 1)
+TNT1 A 0 A_GiveToTarget("OverHealerUpdate",1)
+TNT1 A 1 A_JumpIfintargetinventory("OverhealValue",1,"Spawn")
+goto Death
 Death:
 DeathTake:
-TNT1 A 0
+TNT1 A 0 A_TakeFromTarget("OverhealValue",999)
 TNT1 A 1 //A_TakeFromTarget("OverhealMax",9999)
 stop
 }
@@ -59,7 +55,6 @@ TNT1 A 0 ACS_NamedExecutealways("OverHealDrain",0,1)
 TNT1 A 0
 stop
 Nope:
-//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
 TNT1 A 0
 stop
 }
@@ -77,7 +72,7 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0 A_Takeinventory("OverhealValue",9999)
-TNT1 A 1 A_Giveinventory("OverhealValue",(CallACS("HealthPercent",0))-100)
+TNT1 A 1 A_Giveinventory("OverhealValue",(CallACS("HealthPercent",0))-101)
 TNT1 A 0
 stop
 Nope:

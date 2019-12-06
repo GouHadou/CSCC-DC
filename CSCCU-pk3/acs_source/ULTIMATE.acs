@@ -42,11 +42,14 @@ int Result = GetPlayerInfo(PlayerNumber(),PLAYERINFO_TEAM);
 SetResultValue(Result);
 }
 
-Script "CSACS_GeeHeal" (int HealAmount)
+Script "CSACS_GeeHeal" (int HealAmount, int Overheal)
 {
 SetActivator(0,AAPTR_TRACER);
 int MaxHealth = GetActorProperty(0,APROP_SPAWNHEALTH);
-if(GetActorProperty(0,APROP_Health)==MaxHealth){terminate;}
-If(MaxHealth==0){MaxHealth=100;}
-HealThing(HealAmount,MaxHealth);
+if(MaxHealth==0){MaxHealth=100;}
+for(int g=1;g<=HealAmount;g++)
+    {
+    if(GetActorProperty(0,APROP_Health)<MaxHealth){HealThing(1,MaxHealth);}
+    else if(ACS_NamedExecuteWithResult("HealthPercent",0)<150 && Overheal==1){GiveInventory("GeeOverhealItem",1);}
+    }
 }

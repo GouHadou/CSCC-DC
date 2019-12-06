@@ -13,7 +13,7 @@ int MaxHealth = GetActorProperty(0,APROP_SPAWNHEALTH);
 If(MaxHealth==0){MaxHealth=100;}
 if(Mode==1)
 {
-if(GetActorProperty(0,APROP_Health)==MaxHealth){SetResultValue(1);}
+if(GetActorProperty(0,APROP_Health)>=MaxHealth){SetResultValue(1);}
 else{SetResultValue(0);}
 terminate;
 }
@@ -97,10 +97,7 @@ function int round(int fixedNumber)
 Script "CSACS_HealthSet" (void) CLIENTSIDE
 {
 int StateSet = 0;
-If(CheckActorClass(consolePlayerNumber()+1000,"BoneheadCSCC")){SetActorState(0,"Bonehead"); StateSet=1;}
-If(CheckActorClass(consolePlayerNumber()+1000,"Bikdark")){SetActorState(0,"Bonehead"); StateSet=1;}
-If(CheckActorClass(consolePlayerNumber()+1000,"RedEyes")){SetActorState(0,"Bonehead"); StateSet=1;}
-If(CheckActorClass(consolePlayerNumber()+1000,"Missingno.class")){SetActorState(0,"Bonehead"); StateSet=1;}
+If(CheckActorInventory(consolePlayerNumber()+1000,"CannotUseHealth")){SetActorState(0,"Bonehead"); StateSet=1;}
 If(StateSet==0){SetActorState(0,"DefaultState");}
 }
 
