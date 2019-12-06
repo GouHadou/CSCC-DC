@@ -243,6 +243,9 @@ goto Pain
 Pain.SavRush:
 "----" H 0 A_SpawnItemEx("SavHit")
 goto Pain.SparkShock
+Pain.SaviorGravity:
+"----" H 0 ThrustThingZ(0, 75, 0, 0)
+Goto Pain+1
 //Gizmo
 Pain.GizmoIce:
 "----" H 0 A_GiveInventory("GizmoSlow",1)
