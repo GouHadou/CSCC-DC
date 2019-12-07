@@ -147,3 +147,4 @@ AddPlayerClass Gaol97 nomenu
 //██████████████████████████████████████████Ultimate████████████████████████████████████████
 addplayerclass "BoneheadCSCC" nomenu
 addplayerclass "GeeCSCC" nomenu
+addplayerclass "Abra" nomenu
