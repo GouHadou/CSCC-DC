@@ -1,0 +1,348 @@
+actor Psybeamwep : MegaBuster
+{
+Weapon.AmmoUse 25
+Weapon.AmmoGive 0
+Weapon.SlotNumber 2
+Obituary "%o's brain melted."
+Inventory.Pickupmessage "Power up! Thunder Bolt!"
+weapon.ammotype "PsychicAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+//inventory.icon "SPBUSI"
+DropItem "LightningWaveWepGiver"
+Scale 2.0
+States
+{
+Spawn:
+WEA2 X 1
+loop
+Ready:
+ABRH A 0 ACS_ExecuteAlways(998,0,43)
+ABRH A 0 A_GunFlash
+ABRH A 0 A_ClearRefire
+ABRH A 2 A_GiveInventory("PsychicCharge",1)
+ABRH A 1 A_WeaponReady
+Goto Ready+3
+Deselect:
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 A 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+ABRH A 1 A_Raise
+Goto Select+1
+
+Fire:
+ABRH A 0 A_JumpIfInventory("PsychicCharge",28,"Fire2")
+ABRH A 0 A_TakeInventory("PsychicCharge",28)
+ABRH BC 1
+ABRH A 0 A_PlaySoundEx("weapon/psychicshot","weapon")
+ABRH C 20 A_FireCustomMissile("AbraPsychicShot",0,0,8,0) 
+ABRH B 2 A_refire
+goto Ready+2
+Hold:
+ABRH A 0 A_TakeInventory("PsychicCharge",28)
+ABRH C 2
+ABRH A 0 A_PlaySoundEx("weapon/psychicshot","weapon")
+ABRH C 20 A_FireCustomMissile("AbraPsychicShot",0,0,8,0) 
+ABRH C 0 A_refire
+ABRH B 2
+goto Ready+2
+Fire2:
+ABRH DEF 1 A_TakeInventory("PsychicCharge",28) //2
+TNT1 A 5  //7 in total //0
+ABRH E 1 //1
+//IDLS A 0 SetPlayerProperty(0,1,4)
+ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,0,9,0)
+ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,15,9,0)
+ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,-15,9,0)
+ABRH G 5 A_FireCustomMissile("PsybeamShove",0,0,0,0)
+ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,0,9,0)
+ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,15,9,0)
+ABRH G 5 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,-15,9,0)
+ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,0,9,0)
+ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,15,9,0)
+ABRH G 5 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,-15,9,0)
+ABRH G 0 A_FireCustomMissile("Psybeam2",15,0,0,0)
+ABRH G 0 A_FireCustomMissile("Psybeam2",-15,0,0,0)
+ABRH H 3 A_FireCustomMissile("Psybeam2",0,0,0,0)
+ABRH A 2
+//IDLS A 0 SetPlayerProperty(0,0,4)
+goto Ready+2
+
+
+
+
+AltFire:
+/*ABRH A 1 A_JumpIfInventory("PsychicCharge",28,"Teleporting")
+goto Ready+2
+Teleporting:
+ABRH A 0 A_TakeInventory("PsychicCharge",28)*/
+ABRH A 22 A_GiveInventory("WarpGo",1)
+Airwait:
+ABRH A 1 A_JumpIf(z-floorz<=0, "Land")
+loop
+Land:
+ABRH A 0
+goto Ready+2
+
+NoAmmo:
+ABRH IJ 1
+ABRH J 0 A_TakeInventory("PsychicCharge",28)
+ABRH K 18 A_FireCustomMissile("PsychicShot",0,0,0,0)
+ABRH J 2 
+goto Ready+2
+
+Flash:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+ABRH A 0 A_JumpIfInventory("TeleportTimer",1,"TeleportCooldown")
+TNT1 A 0 A_JumpIfInventory("WarpGo",1,"Flash.CentWarp")
+TNT1 A 1
+loop
+Flash.CentWarp:
+TNT1 A 0 //A_GiveInventory("CentaurWarpStart_P",1)
+TNT1 A 0 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
+TNT1 A 1 A_SetTranslucent(0.9,0)
+TNT1 A 1 A_SetTranslucent(0.8,0)
+TNT1 A 1 A_SetTranslucent(0.7,0)
+TNT1 A 1 A_SetTranslucent(0.6,0)
+TNT1 A 1 A_SetTranslucent(0.5,0)
+TNT1 A 1 A_SetTranslucent(0.4,0)
+TNT1 A 1 A_SetTranslucent(0.3,0)
+TNT1 A 1 A_SetTranslucent(0.2,0)
+TNT1 A 1 A_SetTranslucent(0.1,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TNT1 A 0// A_TakeInventory("UnSolid",99)
+TNT1 A 0 A_ChangeFlag("SOLID",0)
+TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 1 A_SetTranslucent(0.0,0)
+TNT1 A 0 A_Stop
+//TNT1 A 1 A_ChangeVelocity(cos(pitch)*500,0,-sin(pitch)*500,3)//A_Recoil(-500)
+TNT1 A 1 A_ChangeVelocity(cos(pitch)*800,0,-sin(pitch)*800,3)//The new Binford Teleport with MORE POWER! *grunt grunt grunt*
+TNT1 A 1 A_Stop
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TNT1 A 0 A_ChangeFlag("THRUSPECIES",0)
+TNT1 A 0 //A_SpawnItemEx("ReSolidifier")
+TNT1 A 0 
+TNT1 A 1 A_SetTranslucent(0.1,0)
+TNT1 A 0 A_TakeInventory("WarpGo",1)
+TNT1 A 1 A_SetTranslucent(0.2,0)
+TNT1 A 1 A_SetTranslucent(0.3,0)
+TNT1 A 1 A_SetTranslucent(0.4,0)
+TNT1 A 1 A_SetTranslucent(0.5,0)
+TNT1 A 1 A_SetTranslucent(0.6,0)
+TNT1 A 1 A_SetTranslucent(0.7,0)
+TNT1 A 1 A_SetTranslucent(0.8,0)
+TNT1 A 1 A_SetTranslucent(0.9,0)
+TNT1 A 1 A_SetTranslucent(1.0,0)
+TNT1 A 0 A_GiveInventory("TeleportTimer",30)
+TeleportCooldown:
+TNT1 A 1 A_TakeInventory("WarpGo",1)
+TNT1 A 0 A_TakeInventory("TeleportTimer",1)
+ABRH A 0 A_JumpIfInventory("TeleportTimer",1,"TeleportCooldown")
+goto Flash
+NoFlash:
+TNT1 A 0
+stop
+}
+}
+
+actor TeleportTimer : inventory
+{
+inventory.amount 1
+inventory.maxamount 30
+}
+
+
+actor PsychicAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor PsychicCharge : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor WarpGo : Once{}
+
+actor AbraPsychicShot
+{
+Obituary "%o was hit by %k's psychic blast!"
+PROJECTILE
+Radius 10
+Height 10
+damage (20)
+damagetype "Psychic"
+speed 30
+scale 2.5
+States
+{
+Spawn:
+CMN1 ABC 3 
+loop
+}
+}
+
+actor PsybeamShove
+{
+Translation "55:55=247:247","4:4=247:247","168:168=247:247","208:208=247:247", "197:197=251:251"
+PROJECTILE
+-ALLOWBOUNCEONACTORS
++CANBOUNCEWATER
+WALLBOUNCEFACTOR 0.91
+BOUNCEFACTOR 0.91
+Obituary "%o was skewered by %k's psybeam!"
+speed 5
+Radius 15
+Height 15
+damagetype "PsychicShove"
+scale 4.0
+damage (20)
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+TNT1 A 3
+Death:
+TNT1 A 1 A_Explode(20,128,0,0,128)
+Stop
+}
+}
+
+actor Psybeam2
+{
+Translation "87:87=0:0", "42:42=251:251"
+PROJECTILE
++RIPPER
+Obituary "%o was blasted by %k's psybeam!"
+speed 22
+Radius 15
+Height 15
+damagetype "Psybeam"
+scale 4.0
+damage (30)
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+PROC B 0
+PROC B 0 A_PlaySoundEx("weapon/Psybeam","weapon",1)
+PROC BBBBBBBBBBBBBBB 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
+PROC BBBBBBBBBBBBBBB 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
+PROC BBBBBBBBBBBBBBB 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
+stop
+}
+}
+
+actor Psybeam
+{
+Translation "55:55=247:247", "197:197=251:251"
+PROJECTILE
++RIPPER
+Obituary "%o was blasted by %k's psybeam!"
+speed 22
+Radius 15
+Height 15
+damagetype "Psybeam"
+scale 4.0
+damage (30)
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/Psybeam","weapon",1)
+TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamTrail",0,0,0,0,0,0,0)
+TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamTrail2",0,0,0,0,0,0,0)
+TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamTrail3",0,0,0,0,0,0,0)
+stop
+}
+}
+
+actor PsybeamTrail
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+scale 5.0
+height 0
+radius 0
+States
+{
+Spawn:
+PSYB A 5
+stop
+}
+}
+
+actor PsybeamTrail2 : PsybeamTrail
+{
+scale 4.0
+}
+
+actor PsybeamTrail3 : PsybeamTrail
+{
+scale 2.0
+}
+
+actor PsybeamFX
+{
+-SOLID
++NOGRAVITY
++NOBLOCKMAP
++FIXMAPTHINGPOS
++NOTIMEFREEZE
+Height 0
+Radius 0
+scale 5.0
++CLIENTSIDEONLY
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 A 0
+PSYB A 5
+stop
+}
+}
+
+actor PsybeamFX2
+{
+Translation "0:0=251:251", "251:251=250:250"
+-SOLID
++NOGRAVITY
++NOBLOCKMAP
++FIXMAPTHINGPOS
++NOTIMEFREEZE
+Height 0
+Radius 0
+scale 2.5
++CLIENTSIDEONLY
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 A 0
+PSYB A 3
+stop
+}
+}
+
+actor PsybeamProtect : PowerProtection
+{
+Powerup.Duration 10
+damagefactor "Psybeam", 0.0
+}

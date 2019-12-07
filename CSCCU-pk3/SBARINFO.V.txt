@@ -1256,6 +1256,12 @@ else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
 DrawImage "GEEGRPH2", 6, 65;
 DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 26, 73;
 }
+
+//Abra
+IsSelected Psybeamwep
+	{
+	DrawBar "TLEBAR", "NOBAR", PsychicCharge, vertical, 24, 8;
+	}
 	
 //[+]=================|OCBMR|======================[+]
 //[+]=================|+++++|======================[+]
