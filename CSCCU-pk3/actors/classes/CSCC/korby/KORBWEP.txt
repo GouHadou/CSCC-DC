@@ -193,110 +193,30 @@ goto Fire1
 Fire3:
 KBHF F 0 A_JumpIfInventory("MP", 30, "Fire3R")
 goto Fire2
-/*AltFire:
-KBHU A 0 A_TakeInventory("BMRemoverFlag", 1)
-KBHU A 0 A_TakeInventory("BMHoldFlag", 1)
-KBHU A 0 A_JumpIfInventory("PowerPowahSpeed",1,"NoAmmo")
-KBHU A 0 A_SetArg(3, 0) 
+AltFire:
 KBHU A 0 A_JumpIfInventory("TMFLAG",1,"WG")
 KBHU A 0 A_JumpIfInventory("LIMIF",1 , "LimitGlove")
 KBHU BCD 2
-KBHU A 0 A_JumpIfInventory("BADBF", 1, "BadBreath")
-KBHU A 0 A_JumpIfInventory("FLASF", 1, "KFlash")
-KBHU A 0 A_JumpIfInventory("FLAMF", 1, "Flamethrower")
-KBHU A 0 A_JumpIfInventory("SELFF", 1, "SelfDestruct")
-KBHU A 0 A_JumpIfInventory("THOUF", 1, "BLAMELEGO")
-KBHU A 0 A_JumpIfInventory("WHITF", 1, "Whitewind")
-KBHU A 0 A_JumpIfInventory("TIMEF",1, "TimeMagic")
-KBHU A 0 A_JumpIfInventory("AQUAF", 1, "AquaBreath")
-KBHU A 0 A_JumpIfInventory("BLASF", 1, "Blaster")
-KBHU A 0 A_JumpIfInventory("MANTF", 1, "MatraMagic")*/
-AltFire2:
-//KBHU D 0 A_TakeInventory("BMFlag", 1)
-KBHU D 0 A_GiveInventory("BMHoldFlag", 1)
-KBHU D 0 A_ChangeFlag("NOPAIN", 1)
-//KBHU D 0 A_ChangeFlag("DONTRIP", 1)
-KBHU D 0 SetPlayerProperty(0, 1, 16) 
-KBHU D 0 A_SetArg(0, health)
-KBHU D 0 //ACS_ExecuteAlways(CSACS_SETHEALTH, 0, 100)
-HBHU D 0 A_SetArg(1, 100)
-KBHU D 0 A_ReFire
-KBHU D 1 A_JumpIfInventory("IsBot", 1, "AltHold")
-Goto AltFinish
-BoomProtect:
-KBHU A 0 A_JumpIfInventory("BMFlag", 1, 1)
-Goto BMToReady
-KBHU A 2 A_TakeInventory("BMHoldFlag", 1)
-KBHU A 5 A_Refire("BoomProtect")
-Goto BMToReady
-AltHold:
-KBHU D 1 A_JumpIfInventory("BMRemoverFlag", 1, "BMFix")
-KBHU D 0 A_JumpIfInventory("TMFLAG",1,"WG")
 KBHU D 0 A_JumpIfInventory("BADBF", 1, "BadBreath")
-KBHU A 0 A_JumpIfInventory("SELFF", 1, "SelfDestruct")
 KBHU D 0 A_JumpIfInventory("FLASF", 1, "KFlash")
 KBHU D 0 A_JumpIfInventory("FLAMF", 1, "Flamethrower")
+KBHU D 0 A_JumpIfInventory("SELFF", 1, "SelfDestruct")
 KBHU D 0 A_JumpIfInventory("THOUF", 1, "BLAMELEGO")
 KBHU D 0 A_JumpIfInventory("WHITF", 1, "Whitewind")
 KBHU D 0 A_JumpIfInventory("TIMEF",1, "TimeMagic")
 KBHU D 0 A_JumpIfInventory("AQUAF", 1, "AquaBreath")
 KBHU D 0 A_JumpIfInventory("BLASF", 1, "Blaster")
 KBHU D 0 A_JumpIfInventory("MANTF", 1, "MatraMagic")
-KBHU D 0 A_JumpIfInventory("LIMIF",1 , "LimitGlove")
-KBHU D 0 A_JumpIfInventory("IsBot", 1, "BotBM")
-KBHU D 0 A_JumpIf(Health != Args[1], "BMContinue")
-KBHU D 1 A_ReFire
-Goto AltFinish
-BotBM:
-KBHU DDDDDDDDDD 1 A_JumpIf(Health != Args[1], "BMContinue")
-KBHU DDDDDDDDDD 1 A_JumpIf(Health != Args[1], "BMContinue")
-Goto AltFinish
-AltFinish:
+AltFireH:
+KBHU D 1 A_SpawnItemEx("KorbyBMAbsorb1", 38, 0, 0, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM, 0)
+KBHU D 0 A_JumpIfInventory("BMFlag", 1, "BMAcquired")
+KBHU D 1 A_Refire("AltFireH")
 KBHU DCB 2
-KBHU B 0 ACS_ExecuteAlways(CSACS_SETHEALTH, 0, Args[0])
-KBHU B 0 A_SetArg(3, 0)
-KBHU B 0 SetPlayerProperty(0, 0, 16)
-KBHU B 0 A_ChangeFlag("NOPAIN", 0)
-//KBHU B 0 A_ChangeFlag("DONTRIP", 0)
-KBHU B 0 A_JumpIfInventory("BMFlag", 1, 1)
-Goto BMToReady
-KBHU B 0 ACS_ExecuteAlways(976, 0)
-KBHU B 5 A_Refire("BoomProtect")
-goto BMToReady
-BMContinue:
-KBHU D 0 A_JumpIfInventory("BMHoldFlag", 1, 1)
-Goto BMFix
-KBHU D 0 A_SetArg(3, Args[3]+(Args[1]-health))
-KBHU D 0 HealThing(100-health)
-KBHU D 0 A_JumpIf(Args[3] >= 500, "AltFinish")
-KBHU DDDDD 1 A_JumpIf(Health != Args[1], "BMContinue2")
-Goto AltSet
-BMFix:
-KBHU D 1 A_TakeInventory("BMRemoverFlag", 1)
-Goto AltFire
-BMToReady:
-KBHU B 0 A_TakeInventory("BMHoldFlag", 1)
-goto Ready+2
-BMContinue2:
-KBHU D 0 A_JumpIfInventory("IsBot", 1, "BotBM")
-KBHU D 0 A_Refire
-Goto AltFinish
-AltSet:
-KBHU D 0 A_GiveInventory("BMFlag", 1)
-KBHU D 0 A_PlaySoundEX("weapon/timestopper","Weapon")
-KBHU D 0 A_JumpIf(Args[3] >= 99, "BADBFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 90, "SELFFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 80, "MANTFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 70, "WHITFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 60, "TIMEFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 50, "FLASFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 40, "BLASFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 30, "FLAMFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 20, "LIMIFGive")
-KBHU D 0 A_JumpIf(Args[3] >= 10, "AQUAFGive")
-KBHU D 0 A_JumpIf(Args[3] > 1, "THOUFGive")
-KBHU D 0 A_JumpIf(Args[3] == 1, "SELFFGive") //Per Korby
-Goto AltFinish
+Goto Ready+2
+BMAcquired:
+KBHU DCB 3
+KBHU BBBBBBBB 1 A_WeaponReady(WRF_NOSECONDARY)
+Goto Ready+2
 
 FLAMFGive:
 KBHU D 0 A_GiveInventory("FLAMF",1)
@@ -2074,3 +1994,101 @@ Powerup.Duration 35
 
 actor BMFlag : Once {}
 actor BMHoldFlag : Once {}
+
+actor KorbyBMAbsorb1 
+{
++MISSILE
+//+RIPPER
++DONTSPLASH
++SHOOTABLE
++GHOST
++NOBLOOD
++NOTARGETSWITCH
++DONTRIP
++DONTBLAST
+Damage 0
+Height 48
+speed 0
+health 255
+painchance 256
+PainThreshold 1
+Radius 32
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 2
+stop
+Pain:
+TNT1 A 0 A_JumpIfInTargetInventory("BMFlag", 1, "Death")
+TNT1 A 0 A_ChangeFlag("INVULNERABLE",1)
+TNT1 A 0 A_SetArg(3, 255-health)
+TNT1 A 0 A_GiveInventory("BMFlag", 1, AAPTR_TARGET)
+TNT1 A 0 A_PlaySoundEX("weapon/timestopper","Weapon")
+TNT1 A 0 A_JumpIf(Args[3] >= 99, "BADBFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 90, "SELFFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 80, "MANTFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 70, "WHITFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 60, "TIMEFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 50, "FLASFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 40, "BLASFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 30, "FLAMFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 20, "LIMIFGive")
+TNT1 A 0 A_JumpIf(Args[3] >= 10, "AQUAFGive")
+TNT1 A 0 A_JumpIf(Args[3] > 1, "THOUFGive")
+TNT1 A 0 A_JumpIf(Args[3] == 1, "SELFFGive") //Per Korby
+stop
+
+FLAMFGive:
+TNT1 A 0 A_GiveInventory("FLAMF",1, AAPTR_TARGET)
+Goto BMFinish
+THOUFGive:
+TNT1 A 0 A_GiveInventory("THOUF",1, AAPTR_TARGET)
+Goto BMFinish
+LIMIFGive:
+TNT1 A 0 A_GiveInventory("LIMIF",1, AAPTR_TARGET)
+Goto BMFinish
+MANTFGive:
+TNT1 A 0 A_GiveInventory("MANTF",1, AAPTR_TARGET)
+Goto BMFinish
+AQUAFGive:
+TNT1 A 0 A_GiveInventory("AQUAF",1, AAPTR_TARGET)
+Goto BMFinish
+TIMEFGive:
+TNT1 A 0 A_GiveInventory("TIMEF",1, AAPTR_TARGET)
+Goto BMFinish
+WHITFGive:
+TNT1 A 0 A_GiveInventory("WHITF",1, AAPTR_TARGET)
+Goto BMFinish
+FLASFGive:
+TNT1 A 0 A_GiveInventory("FLASF",1, AAPTR_TARGET)
+Goto BMFinish
+BLASFGive:
+TNT1 A 0 A_GiveInventory("BLASF",1, AAPTR_TARGET)
+Goto BMFinish
+SELFFGive:
+TNT1 A 0 A_GiveInventory("SELFF",1, AAPTR_TARGET)
+TNT1 A 30
+Goto BMFinish
+BADBFGive:
+TNT1 A 0 A_GiveInventory("BADBF",1, AAPTR_TARGET)
+Goto BMFinish
+
+BMFinish:
+TNT1 A 0 
+stop
+Death:
+TNT1 A 0
+stop
+}
+}
+/*
+actor KorbyBMAbsorb2 : KorbyBMAbsorb1
+{
+States
+{
+Spawn:
+MIRR B 2
+stop
+}
+}*/

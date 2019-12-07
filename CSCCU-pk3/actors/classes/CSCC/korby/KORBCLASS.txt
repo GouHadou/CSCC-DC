@@ -9,7 +9,7 @@ player.startitem "CanPickAmmo"
 player.startitem "KorbyHUD"
 player.startitem "IsKorby"
 player.startitem "NoHealthBar2"
-//player.startitem "BMRemover"
+player.startitem "BMRemover"
 player.startitem "MP", 100
 player.forwardmove 0.6, 0.6
 player.sidemove 0.58, 0.58
