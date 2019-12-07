@@ -171,3 +171,30 @@ script CSACS_WALLKICK (void)
 		
 	}
 }
+
+//Common ACS Scripts
+
+script "HitKnockBack" (int force)
+{
+int pusher = ACS_NamedExecuteWithResult("GetTarget", AAPTR_TARGET);
+int Vang = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActorY(pusher)) >> 8;
+ThrustThing(Vang, force, 1, 0);
+}
+
+Script "GetTarget" (int Target)
+{
+SetActivator(0, Target);
+int ReturnTID = ActivatorTID();
+SetResultValue(ReturnTID);
+}
+
+Function int CSCCButtonCheck (int NewButtons, int OldButtons, int Which)
+{
+	int ButtonNow = NewButtons & Which;
+	int ButtonOld = OldButtons & Which;
+	If(ButtonNow > ButtonOld){Return 1;}
+	If(ButtonNow < ButtonOld){Return 2;}
+	If(ButtonNow > 0 &&  ButtonOld > 0){Return 3;}
+	Return 0;
+}
+//End Common Scripts
