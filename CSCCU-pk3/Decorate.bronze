@@ -1,6 +1,2 @@
-#include "Actors/classes/Bronze/Snailz/SnailBreeder.txt"
-#include "Actors/classes/Bronze/Snailz/SnailSpells.txt"
-#include "Actors/classes/Bronze/Snailz/SnailBody.txt"
-#include "Actors/classes/Bronze/Snailz/SnailEffects.txt"
 
 #include "actors/classes/Bronze/Yang/YangClassContent.txt"
