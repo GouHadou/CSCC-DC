@@ -247,21 +247,21 @@ DUBL A 0 A_JumpIfNoAmmo("NoAmmo")
 AUCA A 0 A_JumpIfInventory("DualBladesAmmo",2,"AltFireSuccess")
 goto Ready+1
 AltFireSuccess:
-DUBL A 2 A_TakeInventory("DualBladesAmmo",4)
+DUBL A 2 A_TakeInventory("DualBladesAmmo",2)
 DUBL A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
-DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,1,0,0,0,30)
+DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,0,0,0,0,30)
 DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",-10,1,0,0,0,30)
 TNT1 A 2
-DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,1,0,0,0,20)
+DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,0,0,0,0,20)
 DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",-10,1,0,0,0,20)
 DUBL M 2
-DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,1,0,0,0,10)
+DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,0,0,0,0,10)
 DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",-10,1,0,0,0,10)
 DUBL N 2
-DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,1,0,0,0,0)
+DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,0,0,0,0,0)
 DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",-10,1,0,0,0,-0)
 DUBL O 2
-DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,1,0,0,0,-10)
+DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",10,0,0,0,0,-10)
 DUBL A 0 A_FireCustomMissile("BladeHitboxVertical",-10,1,0,0,0,-10)
 DUBL P 2
 TNT1 A 15

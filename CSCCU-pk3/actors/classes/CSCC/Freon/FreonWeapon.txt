@@ -211,7 +211,7 @@ TNT1 A 0 A_TakeInventory("InvisibleFlag",1)
 FRHD R 0 A_TakeInventory("InvisFlag",1)
 Fire:
 FRHD R 0 A_JumpIfInventory("InvisFlag",1,"InvisOut1")
-FRHD RRSS 2
+FRHD RS 3
 Hold:
 FRHD H 1 A_PlaySoundEx("freon/icebreath","Weapon")
 FRHD H 2 A_FireCustomMissile("NegativeBreath",random(-22,22),0,8,0)
@@ -319,7 +319,7 @@ States
 {
 Spawn:
 TNT1 A 0
-FRBR AABBCCDDDEEFFGG 1 A_ScaleVelocity(0.9)
+FRBR AABBCCDDDEEFFGG 1 A_ScaleVelocity(0.95)
 Death:
 TNT1 A 0
 stop

@@ -2979,7 +2979,7 @@ graphic SNELICO3, 30, 30
 }
 
 //Yang 
-/*
+
 graphic YANGRLD, 30, 30 //Yang reload Sprite
 {
    XScale 2.0
@@ -2993,7 +2993,7 @@ graphic EMBCEL, 30, 30
    YScale 2.0
    Patch EMCEX0, 0, 0
 }
-*/
+
 //Fume
 /*
 graphic FICON1, 30, 30

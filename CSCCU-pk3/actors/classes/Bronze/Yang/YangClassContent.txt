@@ -1,0 +1,3 @@
+#include "actors/classes/Bronze/yang/EmberCelica.txt"
+#include "actors/classes/Bronze/yang/EmberCelicaWep.txt"
+#include "actors/classes/Bronze/yang/Yang.txt"

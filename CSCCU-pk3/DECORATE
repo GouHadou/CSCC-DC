@@ -10,7 +10,8 @@ const int WCCS_SPARKY = 377;
 const int WCCS_ICESPARKY = 378;
 const int WCCS_MESSATSU = 379;
 const int WCCS_MESSCHARGE = 380;
-const int WCCS_MESSCHARGE2 = 386;
+const int WCCS_MESSCHARGE2 = 389;
+const int WCCS_YANG = 390;
 const int WCCS_UKIYAMA = 381;
 const int WCCS_KNUX = 382;
 const int WCCS_MUTANTYOSHI = 383;
@@ -22,6 +23,7 @@ const int WCCS_GIZMO = 385;
 const int WCCS_HCANONCHARGE1 = 386;
 const int WCCS_HCANONCHARGE2 = 387;
 const int WCCS_HCANONCHARGE3 = 388;
+
 const int WCCS_FINITEZERO = 4;
 const int WCCS_KINGYAMATO = 409;
 const int WCCS_JACKCORVUS = 410;

@@ -1,0 +1,115 @@
+actor EmberCelicaWep : MegaBuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Obituary "%o was blown to pieces by %k's Ember Celica."
+weapon.ammotype "EmberCelicaAmmo"
+Inventory.Pickupmessage "Power up! Ember Celica!"
+Tag "Ember Celica"
+inventory.icon "EMBCEL"
+States
+{
+Spawn:
+EMCE X 1
+Loop
+Ready:
+EMCE A 0 ACS_ExecuteAlways(998,0,WCCS_YANG)
+EMEC A 0 A_JumpIfInventory("YangSemblance", 100, 2)
+EMCE A 0 A_GiveInventory("YangSemblance", 1)
+EMCE A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 A 0 A_TakeInventory("YangSemblance", 100)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+EMCE A 1 A_Raise
+Loop
+Fire:
+EMCE A 0 A_JumpIfNoAmmo("NoAmmo")
+EMCE A 0 ACS_ExecuteAlways(991,0,WCCS_YANG)
+EMCE A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
+EMCE A 0 A_FireCustomMissile("EmberCelicaFirecracker2",0,1,8,0)
+EMCE B 2 
+EMCE B 2 A_TakeInventory("YangSemblance", 100)
+EMCE CBA 2
+
+EMCE A 0 A_Refire
+goto Ready+1
+NoAmmo:
+EMCE A 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor EmberCelicaFirecracker2 : EmberCelicaFirecracker
+{
+PROJECTILE
+damagetype "EmberCelica"
+Obituary "%o was blown to pieces by %k's Ember Celica."
+SeeSound "weapon/solarshoot"
+var int User_ShotPower;
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
+Goto RealSpawn
+BFire:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto RealSpawn
+RFire:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto RealSpawn
+GFire:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto RealSpawn
+YFire:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto RealSpawn
+RealSpawn:
+TNT1 A 0
+TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 4))
+TNT1 A 2 A_ChangeFlag("THRUACTORS", FALSE)
+YNGP AB 2 A_SpawnItemEx("YangFireSpawner")
+Goto RealSpawn+3
+Death:
+YNGP C 0 A_Explode(5+User_ShotPower, 64, 0, 0, 16)
+YNGP C 0 A_PlaySoundEx("weapon/crackerexplode", CHAN_BODY)
+YNGP C 0 A_SpawnItemEx("BoostExplosion")
+stop
+}
+}
+
+
+actor EmberCelicaWepCS : EmberCelicaWep
+{
+}
+
+actor EmberCelicaWepGiver : WepGiver replaces EmberCelicaWep
+{
+inventory.pickupmessage "Power up! Ember Celica!"
+States
+{
+Spawn:
+EMCE X 1
+Goto "WepGiver::Spawn+1"
+Pickup:
+EMCE X 0 A_JumpIfInventory("EmberCelicaWepCS", 1, "WFail")
+EMCE X 0 A_JumpIfInventory("CanCopyWeapons", 1, "Mega")
+EMCE X 0 
+fail
+WFail:
+TNT1 A 0 
+fail
+Mega:
+DUST B 0 A_GiveInventory("EmberCelicaWepCS",1)
+stop
+}
+}

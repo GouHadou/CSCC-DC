@@ -533,7 +533,7 @@ sprite IDWAJ0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:1
 sprite CPMGA0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=160:160", "198:198=216:216"}}
 sprite CPMGB0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=160:160", "198:198=216:216"}}
 sprite CPMGC0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=160:160", "198:198=216:216"}}
-
+*/
 //Ember Celica
 sprite EMCEA0, 320, 200
 {  XScale 1.0 YScale 1.0 Offset 0,0
@@ -547,4 +547,3 @@ sprite EMCEC0, 320, 200
 {  XScale 1.0 YScale 1.0 Offset 0,0
    Patch BUSTD0, 188, 102 {Translation "192:192=232:232", "198:198=228:228"} 
 }
-*/
