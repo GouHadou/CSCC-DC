@@ -1,0 +1,56 @@
+#library "SNAILACS"
+//#include "zcommon.acs"
+//#include "8bdmlib.acs"
+#include "BASEC.acs"
+
+//Snail Breeder
+script "cscc_stillalive" (void) //Check if player is alive; can be ued for other things
+{
+int magicnumber = GetActorProperty(0,APROP_TargetTID);
+if(!PlayerInGame(magicnumber - 1000)||GetActorProperty(magicnumber,APROP_Health)<=0)
+{SetActorState(0,"Begone",0);}
+}
+
+script "snailz_trailchecker" (void) //Check if player is walking.
+{
+int buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+if (buttons & (BT_FORWARD|BT_BACK|BT_MOVELEFT|BT_MOVERIGHT))
+{GiveInventory("YesToTrail",1);}
+}
+
+script "snailz_climbchecker" (void) //Spawn checker in any of the 8 directions.
+{
+int buttons = GetPlayerInput(-1, INPUT_BUTTONS); //Corresponds to the sprite rotations
+if (buttons & BT_FORWARD && !(buttons & (BT_MOVELEFT|BT_MOVERIGHT))){GiveInventory("SnailzClimb1",1);}
+if (buttons & BT_FORWARD && buttons & BT_MOVELEFT){GiveInventory("SnailzClimb2",1);}
+if (buttons & BT_MOVELEFT && !(buttons & (BT_FORWARD|BT_BACK))){GiveInventory("SnailzClimb3",1);}
+if (buttons & BT_BACK && buttons & BT_MOVELEFT){GiveInventory("SnailzClimb4",1);}
+if (buttons & BT_BACK && !(buttons & (BT_MOVELEFT|BT_MOVERIGHT))){GiveInventory("SnailzClimb5",1);}
+if (buttons & BT_BACK && buttons & BT_MOVERIGHT){GiveInventory("SnailzClimb6",1);}
+if (buttons & BT_MOVERIGHT && !(buttons & (BT_FORWARD|BT_BACK))){GiveInventory("SnailzClimb7",1);}
+if (buttons & BT_FORWARD && buttons & BT_MOVERIGHT){GiveInventory("SnailzClimb8",1);}
+}
+
+script "snailz_shellchecker" (void)
+{
+int button;
+do{
+button = GetPlayerInput(-1, INPUT_BUTTONS);
+if (button & (BT_ATTACK|BT_ALTATTACK)){break;}
+delay(4);
+}
+while(CheckInventory("ShellterFlag") >0 && CheckInventory("ClassDeathPickup") <1 && CheckInventory("SnailBreederPets") >0);
+TakeInventory("ShellterFlag",1);ACS_NamedExecuteAlways("core_freezeplayer",0,0,0);ACS_NamedExecuteAlways("snailz_heavystatue",0,0);
+GiveInventory("LightenSnail",1);
+}
+
+script "snailz_heavystatue" (int weights)//Makes player heavier to remove knockback
+{
+switch(weights)
+{
+case 0://Off
+SetActorProperty(0,APROP_Mass,9999);break;
+case 1://On
+SetActorProperty(0,APROP_Mass,999999);break;
+}
+}
