@@ -952,12 +952,14 @@ Do
 	If(CurrentHealth < GetActorProperty(PlayerTID, APROP_HEALTH)){CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);}
 	If(CurrentHealth > GetActorProperty(PlayerTID, APROP_HEALTH))
 		{
-		If(CheckInventory("OverhealValue") && CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH) < 5)
-		{}
+		If(CheckInventory("OverhealValue") && (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH))<5)
+			{
+			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+			}
 		Else
 			{
-			If(!CheckInventory("ParryBlock")){GiveInventory("MessParrySuccess", 1);}
-			SetActorProperty(0,APROP_HEALTH,((GetActorProperty(0,APROP_HEALTH))+ CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH)));
+			GiveInventory("MessParrySuccess", 1);
+			SetActorProperty(0,APROP_HEALTH,(CurrentHealth));
 			}
 		}
 	Delay(1);
