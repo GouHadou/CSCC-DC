@@ -38,28 +38,28 @@ BLUH C 0 A_JumpIfInventory("ShardFlag",2,"Shot3")
 BLUH C 0 A_JumpIfInventory("ShardFlag",1,"Shot2")
 BLUH C 0 A_PlaySoundEx("weapon/mbuster","Weapon")
 BLUH C 0 A_FireCustomMissile ("IceShardShot", 0, 1, 0, 5)
-BLUH C 15
+BLUH C 11
 BLUH C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 BLUH C 0 A_Refire
 Goto Ready+1
 Shot4:
 BLUH C 0 A_PlaySoundEx("weapon/pshot","Weapon")
 BLUH C 0 A_FireCustomMissile ("IceShard3", 0, 1, 0, 5)
-BLUH C 15
+BLUH C 11
 BLUH C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 BLUH C 0 A_Refire
 Goto Ready+1
 Shot3:
 BLUH C 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
 BLUH C 0 A_FireCustomMissile ("IceShard2", 0, 1, 0, 5)
-BLUH C 15
+BLUH C 11
 BLUH C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 BLUH C 0 A_Refire
 Goto Ready+1
 Shot2:
 BLUH C 0 A_PlaySoundEx("weapon/iceslasher","Weapon")
 BLUH C 0 A_FireCustomMissile ("IceShard1", 0, 1, 0, 5)
-BLUH C 15
+BLUH C 11
 BLUH C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 BLUH C 0 A_Refire
 Goto Ready+1
@@ -88,7 +88,7 @@ BLUH C 0 A_JumpIfInventory("ShardFlag",2,"Shot3")
 BLUH C 0 A_JumpIfInventory("ShardFlag",1,"Shot2")
 BLUH C 0 A_PlaySoundEx("weapon/mbuster","Weapon")
 BLUH C 0 A_FireCustomMissile ("IceShardShot", 0, 1, 0, 5)
-BLUH C 15
+BLUH C 11
 BLUH C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 BLUH C 0 A_Refire
 Goto Ready+1
