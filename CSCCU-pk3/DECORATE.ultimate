@@ -5,3 +5,7 @@
 //Gee
 #include "actors/classes/Ultimate/Gee/GeeClass.txt"
 #include "actors/classes/Ultimate/Gee/GeeWep.txt"
+
+//Abra
+#include "actors/classes/Ultimate/Abra/Psybeam.txt"
+#include "actors/classes/Ultimate/Abra/Abra.txt"

@@ -427,6 +427,7 @@
 #DEFINE ZANGIEF 438
 
 #DEFINE GEE 439
+#DEFINE SNAILBREEDER 510
 
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
@@ -800,4 +801,6 @@ CreateTranslation (NaturesWonder, 192:192=165:165, 198:198=166:166);
 CreateTranslation (CrystalWall, 192:192=197:197, 198:198=198:198);
 CreateTranslation (ZANGIEF, 192:192=212:212, 198:198=15:15, 195:195=186:186, 204:204=229:229);
 CreateTranslation (GEE, 192:192=4:4, 198:198=70:70);
+CreateTranslation (SNAILBREEDER, 192:192=110:110, 198:198=220:220);
+
 }

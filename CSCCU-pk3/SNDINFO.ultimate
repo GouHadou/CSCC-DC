@@ -42,3 +42,24 @@ weapon/geedamg1 GEEDAMG1
 weapon/geedamg2 GEEDAMG2
 weapon/geedamg3 GEEDAMG3
 weapon/geecharge GEECHRGE
+
+$playersound	abra	male	*death		POKEFAINT
+$playersound	abra	male	*xdeath		POKEFAINT
+$playersound	abra	male	*gibbed		POKEFAINT
+$playersound	abra	male	*pain100	MEGAPAIN
+$playersound	abra	male	*pain75		MEGAPAIN
+$playersound	abra	male	*pain50		POKEHIT
+$playersound	abra	male	*pain25		POKEHIT
+$playersound	abra	male	*grunt		dsnone
+$playersound	abra	male	*land		LAND
+$playersound	abra	male	*jump		dsnone
+$playersound	abra	male	*fist		dsnone
+$playersound	abra	male	*usefail	POKEBUMP
+$playersound	abra	male	*taunt		ABRATAU
+
+weapon/abrateleport	ABRATEL
+$volume weapon/abrateleport 0.4
+weapon/psychicshot	PSYSHOT
+$volume weapon/psychicshot 0.4
+weapon/psybeam	PSYBEAM
+$volume weapon/psybeam 0.4

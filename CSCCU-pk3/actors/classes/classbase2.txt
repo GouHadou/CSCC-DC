@@ -31,6 +31,8 @@ Pain.SinkSpray:
 "----" H 0 A_GiveInventory("SinkSoak", 1)
 goto Pain+1
 //Ice / Sparky painstate [Ice: I'm appropriating these for general rapid hits now]
+Pain.IcePulse:
+Pain.NegativeBreath:
 Pain.KamaitachiWhirlwind:
 Pain.SpearBarrage:
 Pain.SolarLaser:
@@ -89,10 +91,10 @@ Pain.Gozan:
 Goto Pain+1
 Pain.Gosho:
 "----" H 0 A_CheckFloor("GoshoUp")
-"----" H 0 A_ChangeVelocity(0, 0, -20, CVF_RELATIVE)
+"----" H 0 ThrustThingZ(0, 60, 1, 0)
 Goto Pain+1
 GoshoUp:
-"----" H 0 A_ChangeVelocity(0, 0, 20, CVF_RELATIVE)
+"----" H 0 ThrustThingZ(0, 60, 0, 0)
 Goto Pain+1
 
 Pain.GouShoryuSlam:
