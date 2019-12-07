@@ -58,7 +58,7 @@ addplayerclass "Missingno" nomenu
 addplayerclass "ToastMan" nomenu 
 addplayerclass "ChaosFantasy" nomenu 
 addplayerclass "Hilman170499" nomenu 
-//addplayerclass "LordDamager" nomenu 
+addplayerclass "LordDamager" nomenu 
 addplayerclass "Jake" nomenu 
 //addplayerclass "Dakutatoru" nomenu 
 addplayerclass NNCReborn nomenu //Neo
