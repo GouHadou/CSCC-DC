@@ -103,7 +103,7 @@ addplayerclass Zangief nomenu
 //AddPlayerClass ValkyrieMaiden
 //addplayerclass Vocalwoman
 //AddPlayerClass TankOperator
-//addplayerclass SnailBreeder
+addplayerclass SnailBreeder
 //addplayerclass Apiarist
 AddPlayerClass Yang
 //AddPlayerClass Fume
@@ -147,3 +147,4 @@ AddPlayerClass Gaol97 nomenu
 //██████████████████████████████████████████Ultimate████████████████████████████████████████
 addplayerclass "BoneheadCSCC" nomenu
 addplayerclass "GeeCSCC" nomenu
+addplayerclass "Abra" nomenu

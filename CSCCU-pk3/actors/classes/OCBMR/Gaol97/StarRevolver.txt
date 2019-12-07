@@ -36,6 +36,7 @@ Select:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
 BUST B 1 A_Raise
 Loop
+Hold:
 Fire:
 HEAT G 0 A_JumpIfInventory("OverHeating",1,"OverHeat1")
 HEAT G 0 A_ChangeFlag("NOGRAVITY",0)
@@ -48,17 +49,7 @@ HEAT G 0 //A_GiveInventory("PowerFireSpeed",1)
 HEAT KL 1 A_PlaySoundEx("weapon/waveburner","Weapon")
 HEAT L 0 A_FireCustomMissile("StarShot",0,1,0,0,0,0)
 HEAT L 0 //A_Takeinventory("IsShooting",15)
-HEAT LLG 1 
-Goto Hold
-Hold:
-HEAT G 1 //A_Jumpifnoammo("HoldGutter")
-HEAT G 0 //A_GiveInventory("RevolverCharge",1)
-//HEAT G 1 A_Jumpifinventory("RevolverCharge",12,"Reload")
-HEAT G 0 A_Refire("Hold")
-Goto Ready+2
-HoldGutter:
-HEAT G 1 
-HEAT G 0 A_Refire("HoldGutter")
+HEAT LLG 5 
 Goto Ready+2
 Reload:
 HEAT G 0 A_jumpifinventory("IsShooting",1,5)
@@ -83,14 +74,14 @@ FHUD I 0 A_ChangeFlag("NOGRAVITY",1)
 FHUD I 0 SetPlayerProperty(0,1,0)
 FHUD IHHH 2
 AltHold: 
-FHUD I 0 A_JumpIfInventory("InfernoDash",35,"AltHold1")
+FHUD I 0 A_JumpIfInventory("InfernoDash",10,"AltHold1")
 Goto BurnReady
 AltHold1: 
 TNT1 A 0 A_PlaySoundEx("weapon/chargekick","Weapon")
 Althold2:
 FHUD I 0 A_GiveInventory("NoIDRegen",1)
 TNT1 A 0 A_SpawnItemEx("InfernoPillar",-25)
-TNT1 A 0 A_ChangeVelocity(30,0,sin(pitch)*-50,CVF_RELATIVE|CVF_REPLACE)//A_Recoil(-6)
+TNT1 A 0 A_ChangeVelocity(30,0,sin(pitch)*-30,CVF_RELATIVE|CVF_REPLACE)//A_Recoil(-6)
 TNT1 A 0 A_FireCustomMissile("InfernoDashRam",0,1,0,0)
 TNT1 A 1 A_SpawnItemEx("InfernoPillar",-55)
 TNT1 A 0 A_FireCustomMissile("InfernoDashRam",0,0,0,0)

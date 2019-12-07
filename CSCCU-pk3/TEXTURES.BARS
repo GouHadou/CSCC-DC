@@ -395,6 +395,9 @@ texture GEEVMMO1, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=229:229", "19
 texture GEEAMMO2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=76:76", "198:198=243:243"}}
 texture GEEVMMO2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=76:76", "198:198=243:243"}}
 
+texture TLEBAR, 8, 56{patch TWBAR, 0, 0 {Translation "192:192=39:39", "198:198=251:251"}}
+texture VTLEBAR, 56, 8{patch VTWBAR, 0, 0 {Translation "192:192=39:39", "198:198=251:251"}}
+
 texture SXVAR1, 56, 8
 {
 patch SXBAR1, 0, 0 {rotate 90}
@@ -700,13 +703,12 @@ texture VALTVAR,56,8{patch TNT1A0,0,0}
 graphic IWAVEBAR,8,56{patch BARENERG,0,0{Translation "192:192=239:239", "198:198=44:44"}}
 graphic IWAVEVAR,56,8{patch IWAVEBAR,0,0{rotate 90}}
 */
-//Snails
-/*
+
+//Snailz
 texture SNAILBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 texture SNAILBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 texture SHELLBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=220:220"}}
 texture SHELLBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=220:220"}}
-*/
 
 //Yang
 

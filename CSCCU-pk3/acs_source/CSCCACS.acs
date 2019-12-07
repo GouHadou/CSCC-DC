@@ -1,6 +1,7 @@
 #library "CSCCACS"
-#include "zcommon.acs"
-#include "8bdmlib.acs"
+//#include "zcommon.acs"
+//#include "8bdmlib.acs"
+#include "BASEC.acs"
 
 #DEFINE CSACS_ICESPARKSWAP 142
 #DEFINE CSACS_UKIINFO 145
@@ -951,8 +952,15 @@ Do
 	If(CurrentHealth < GetActorProperty(PlayerTID, APROP_HEALTH)){CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);}
 	If(CurrentHealth > GetActorProperty(PlayerTID, APROP_HEALTH))
 		{
-		GiveInventory("MessParrySuccess", 1);
-		HealThing(CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH));
+		If(CheckInventory("OverhealValue") && (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH))<5)
+			{
+			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+			}
+		Else
+			{
+			GiveInventory("MessParrySuccess", 1);
+			SetActorProperty(0,APROP_HEALTH,(CurrentHealth));
+			}
 		}
 	Delay(1);
 	}
@@ -1248,29 +1256,3 @@ Return 0;
 }
 
 //End Yang Scripts
-
-//Common ACS Scripts
-script "HitKnockBack" (int force)
-{
-int pusher = ACS_NamedExecuteWithResult("GetTarget", AAPTR_TARGET);
-int Vang = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActorY(pusher)) >> 8;
-ThrustThing(Vang, force, 1, 0);
-}
-
-Script "GetTarget" (int Target)
-{
-SetActivator(0, Target);
-int ReturnTID = ActivatorTID();
-SetResultValue(ReturnTID);
-}
-
-Function int CSCCButtonCheck (int NewButtons, int OldButtons, int Which)
-{
-	int ButtonNow = NewButtons & Which;
-	int ButtonOld = OldButtons & Which;
-	If(ButtonNow > ButtonOld){Return 1;}
-	If(ButtonNow < ButtonOld){Return 2;}
-	If(ButtonNow > 0 &&  ButtonOld > 0){Return 3;}
-	Return 0;
-}
-//End Common Scripts

@@ -324,7 +324,7 @@ Goto Ready+1
 DemonFlip:
 GHAD O 0 A_JumpIf(ACS_NamedExecuteWithResult("EnemyProximity", 896) == 0, 2)
 GHAD O 0 A_GiveInventory("MessatsuAmmo", 2)
-GHAD O 0 A_PlaySoundEx("weapon/tengudash", "Voice", 0, 1)
+GHAD O 0 A_PlaySoundEx("weapon/tengudash", "Weapon")
 GHAD OOOOOOOO 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0 ,Random(0, -32), 0,0,0, Random(0, 360))
 GHAD O 0 A_TakeInventory("JumpCancler", 1)
 GHAD O 0 A_GiveInventory("DemonFlipActive", 1)
