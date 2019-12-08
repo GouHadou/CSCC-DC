@@ -1,5 +1,5 @@
 
-actor SinkSprayWep : MegaBuster 
+actor SinkSprayWep : Base8BDMWeapon 
 { 
 Weapon.AmmoUse 1
 Weapon.AmmoGive 42

@@ -1,4 +1,4 @@
-actor TsukiTrollWep : MegaBuster
+actor TsukiTrollWep : Base8BDMWeapon
 {
 //Weapon.AmmoUse 21
 Weapon.AmmoUse 14

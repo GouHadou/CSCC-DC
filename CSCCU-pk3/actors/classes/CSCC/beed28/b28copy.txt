@@ -1,4 +1,4 @@
-actor MissileBarrageWep : MegaBuster 19011
+actor MissileBarrageWep : Base8BDMWeapon 19011
 {
 	Weapon.AmmoUse 4
 	Weapon.AmmoGive 28

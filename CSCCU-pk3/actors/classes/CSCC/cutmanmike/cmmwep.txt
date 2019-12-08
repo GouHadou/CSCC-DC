@@ -1,4 +1,4 @@
-actor HellfireCutterBoss : MegaBuster 20056
+actor HellfireCutterBoss : Base8BDMWeapon 20056
 {
 Weapon.AmmoUse 28
 Weapon.AmmoGive 28

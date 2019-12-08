@@ -1,4 +1,4 @@
-actor OMBulletWep : MegaBuster 
+actor OMBulletWep : Base8BDMWeapon 
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 0

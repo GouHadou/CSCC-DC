@@ -1,4 +1,4 @@
-actor ParanoiaCreeperWep : MegaBuster
+actor ParanoiaCreeperWep : Base8BDMWeapon
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 4

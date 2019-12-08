@@ -1,4 +1,4 @@
-actor BlazeThrower : MegaBuster
+actor BlazeThrower : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

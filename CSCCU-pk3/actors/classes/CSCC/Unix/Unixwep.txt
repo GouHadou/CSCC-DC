@@ -1,4 +1,4 @@
-actor BikKnife : MegaBuster
+actor BikKnife : Base8BDMWeapon
 {
 Weapon.AmmoUse2 1
 Weapon.AmmoGive2 28

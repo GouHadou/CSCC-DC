@@ -1,4 +1,4 @@
-actor SinkmanIG : MegaBuster
+actor SinkmanIG : Base8BDMWeapon
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 56

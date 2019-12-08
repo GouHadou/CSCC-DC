@@ -1,4 +1,4 @@
-actor Glitchfield : MegaBuster
+actor Glitchfield : Base8BDMWeapon
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse1 7

@@ -1,4 +1,4 @@
-actor DanmakuBoomerangWep : MegaBuster
+actor DanmakuBoomerangWep : Base8BDMWeapon
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 15

@@ -1,4 +1,4 @@
-actor JackCorvusClass : MegaBuster 
+actor JackCorvusClass : Base8BDMWeapon 
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 56

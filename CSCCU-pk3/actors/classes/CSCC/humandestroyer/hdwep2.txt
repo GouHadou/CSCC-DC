@@ -1,4 +1,4 @@
-actor HDClassWep2 : MegaBuster //need copy
+actor HDClassWep2 : Base8BDMWeapon //need copy
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 14 //28

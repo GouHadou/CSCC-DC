@@ -1,4 +1,4 @@
-actor CorporalWeaponBase : MegaBuster
+actor CorporalWeaponBase : Base8BDMWeapon
 {
 DropItem "NadeSpamWepCDropped"
 Obituary "$OB_CORPKNIFE"

@@ -1,4 +1,4 @@
-actor Machina : MegaBuster
+actor Machina : Base8BDMWeapon
 {
 Weapon.SlotNumber 1
 Obituary "%o felt the shock of %k' Electric Machina."

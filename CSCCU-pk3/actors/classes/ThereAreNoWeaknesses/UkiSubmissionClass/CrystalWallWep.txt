@@ -1,4 +1,4 @@
-actor CrystalWallWep : MegaBuster 
+actor CrystalWallWep : Base8BDMWeapon 
 {
 Weapon.AmmoGive 28 
 Weapon.AmmoUse 4

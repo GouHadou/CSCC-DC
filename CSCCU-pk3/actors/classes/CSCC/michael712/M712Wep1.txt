@@ -1,4 +1,4 @@
-actor M712Weapon1 : MegaBuster
+actor M712Weapon1 : Base8BDMWeapon
 {
 Weapon.AmmoUse 4 
 Weapon.AmmoGive 14 

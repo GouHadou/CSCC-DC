@@ -1,4 +1,4 @@
-actor FlashFreezeWep : MegaBuster 20000
+actor FlashFreezeWep : Base8BDMWeapon 20000
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 7

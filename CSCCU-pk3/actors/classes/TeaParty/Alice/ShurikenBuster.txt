@@ -1,4 +1,4 @@
-actor ShurikenBuster : MegaBuster
+actor ShurikenBuster : Base8BDMWeapon
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 3

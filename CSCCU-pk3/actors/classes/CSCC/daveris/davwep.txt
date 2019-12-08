@@ -1,4 +1,4 @@
-actor DaverisClassWep : MegaBuster 
+actor DaverisClassWep : Base8BDMWeapon 
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

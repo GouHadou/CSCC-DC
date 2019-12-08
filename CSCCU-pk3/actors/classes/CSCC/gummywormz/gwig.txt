@@ -1,4 +1,4 @@
-Actor GummyIGWep : MegaBuster
+Actor GummyIGWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

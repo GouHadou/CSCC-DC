@@ -21,7 +21,7 @@ inventory.amount 1
 inventory.maxamount 9999
 }
 
-actor CopyWeapon : MegaBuster
+actor CopyWeapon : Base8BDMWeapon
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

@@ -1,4 +1,4 @@
-actor SaviorWeapon1 : MegaBuster
+actor SaviorWeapon1 : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 14

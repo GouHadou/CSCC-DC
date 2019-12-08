@@ -1,4 +1,4 @@
-actor RocketJumpWep : MegaBuster
+actor RocketJumpWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28

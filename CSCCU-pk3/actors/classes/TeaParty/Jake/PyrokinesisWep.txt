@@ -1,4 +1,4 @@
-actor PyrokinesisWep : MegaBuster 
+actor PyrokinesisWep : Base8BDMWeapon 
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 0
@@ -71,7 +71,7 @@ Goto Ready+1
 }
 }
 
-actor NovaBomberWep : MegaBuster 
+actor NovaBomberWep : Base8BDMWeapon 
 {
 Weapon.AmmoUse 15
 Weapon.AmmoGive 0

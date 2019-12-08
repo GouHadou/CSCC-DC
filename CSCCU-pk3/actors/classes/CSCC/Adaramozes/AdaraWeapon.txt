@@ -1,4 +1,4 @@
-actor AdaraWeapon : MegaBuster
+actor AdaraWeapon : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

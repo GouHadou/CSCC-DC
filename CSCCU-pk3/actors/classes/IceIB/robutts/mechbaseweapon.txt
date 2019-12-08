@@ -1,4 +1,4 @@
-actor BoltPistol : MegaBuster
+actor BoltPistol : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 8 //NNNNNNERFED
@@ -317,7 +317,7 @@ stop
 
 
 /*
-actor CoolWeapon : MegaBuster
+actor CoolWeapon : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

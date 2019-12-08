@@ -1,4 +1,4 @@
-actor UnixIGWep : MegaBuster
+actor UnixIGWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28

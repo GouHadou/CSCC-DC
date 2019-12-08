@@ -1,4 +1,4 @@
-actor OblivionWingsClass : MegaBuster 
+actor OblivionWingsClass : Base8BDMWeapon 
 {
 Weapon.AmmoUse 10
 Weapon.AmmoGive 30

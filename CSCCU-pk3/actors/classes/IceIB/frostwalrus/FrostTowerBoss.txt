@@ -731,7 +731,7 @@ powerup.duration 60
 damagefactor "normal", 1.0
 }
 
-actor FrostTowerWep : MegaBuster
+actor FrostTowerWep : Base8BDMWeapon
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 1

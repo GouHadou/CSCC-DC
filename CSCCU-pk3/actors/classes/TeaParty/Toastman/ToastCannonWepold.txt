@@ -1,4 +1,4 @@
-actor ToastCannonWep : MegaBuster 31356
+actor ToastCannonWep : Base8BDMWeapon 31356
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 56
