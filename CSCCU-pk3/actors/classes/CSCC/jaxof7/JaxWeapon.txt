@@ -4,7 +4,7 @@ Weapon.AmmoUse 7
 Inventory.Pickupmessage "You got Jax's Telekentic Powers... It's No Use!"
 Obituary "$OB_JAXPSYCHO"
 weapon.ammotype "JaxPsychoAmmo"
-DropItem "TimeSlowWep"
+DropItem "TimeSlowWepGiver"
 States
 {
 Spawn:

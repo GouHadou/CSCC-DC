@@ -1074,3 +1074,13 @@ For(wp = 0; wp < MAX_WEAPONS_GLOBAL; wp++)
 	If(CheckInventory(weapons_ammo[wp][0])){/*printbold(s:weapons_ammo[wp][0]);*/TakeInventory(weapons_ammo[wp][0], 1);}
 	}
 }
+
+//Copy Random Wep Giver
+Script "CopyRandomWeapon" (void)
+{
+int RandomSelection = random(2, MAX_WEAPONS_GLOBAL)-1;
+int WeaponName =  Weapons_Ammo[RandomSelection][0];
+int GiverName = StrParam(s:StrLeft(WeaponName, StrLen(WeaponName)-2), s:"Giver");
+SpawnForced(GiverName, GetActorX(0), GetActorY(0), GetActorZ(0), 0);
+
+}

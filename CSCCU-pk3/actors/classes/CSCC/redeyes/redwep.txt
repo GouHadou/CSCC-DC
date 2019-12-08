@@ -10,7 +10,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.NOAUTOFIRE
 Scale 2.0
-DropItem "WaterBalloonWep"
+DropItem "WaterBalloonWepGiver"
 States
 {
 Spawn:

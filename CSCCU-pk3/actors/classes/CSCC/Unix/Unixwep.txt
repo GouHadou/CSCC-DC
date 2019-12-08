@@ -13,7 +13,7 @@ inventory.pickupsound "weapon/weaponup"
 +INVENTORY.UNDROPPABLE
 +WEAPON.NOAUTOFIRE
 Scale 2.0
-DropItem "ShadowBladeWep"
+DropItem "ShadowBladeWepGiver"
 States
 {
 Ready:

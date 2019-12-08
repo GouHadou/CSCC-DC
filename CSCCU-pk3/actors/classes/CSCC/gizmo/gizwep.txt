@@ -10,7 +10,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.CHEATNOTWEAPON
 +WEAPON.DONTBOB
-DropItem "SlashClawWep"
+DropItem "SlashClawWepGiver"
 //inventory.icon "CLAWGI"
 Scale 2.0
 States

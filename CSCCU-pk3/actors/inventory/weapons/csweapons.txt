@@ -1,17 +1,21 @@
 actor DangerWrapWepCS : DangerWrapWep
 {
+DropItem "DangerWrapWepGiver"
 }
 
 actor JunkShieldWepCS : JunkShieldWep
 {
+DropItem "JunkShieldWepGiver"
 }
 
 actor NoiseCrushWepCS : NoiseCrushWep
 {
+DropItem "NoiseCrushWepGiver"
 }
 
 actor ScorchWheelWepCS : ScorchWheelWep
 {
+DropItem "ScorchWheelWepGiver"
 }
 
 actor SuperAdaptorWepCS : Weapon
@@ -20,30 +24,37 @@ actor SuperAdaptorWepCS : Weapon
 
 actor ThunderBoltWepCS : ThunderBoltWep
 {
+DropItem "ThunderBoltWepGiver"
 }
 
 actor WildCoilWepCS : WildCoilWep
 {
+DropItem "WildCoilWepGiver"
 }
 
 actor SlashClawWepCS : SlashClawWep
 {
+DropItem "SlashClawWepGiver"
 }
 
 actor FreezeCrackerWepCS : FreezeCrackerWep
 {
+DropItem "FreezeCrackerWepGiver"
 }
 
 actor AirShooterWepCS : AirShooterWep
 {
+DropItem "AirShooterWepGiver"
 }
 
 actor AtomicFireWepCS : AtomicFireWep
 {
+DropItem "AtomicFireWepGiver"
 }
 
 actor BalladeCrackerWepCS : BalladeCrackerWep
 {
+DropItem "BalladeCrackerWepGiver"
 }
 
 actor BassBusterCS : BassBuster
@@ -52,114 +63,142 @@ actor BassBusterCS : BassBuster
 
 actor BlizzardAttackWepCS : BlizzardAttackWep
 {
+DropItem "BlizzardAttackWepGiver"
 }
 
 actor BubbleLeadWepCS : BubbleLeadWep
 {
+DropItem "BubbleLeadWepGiver"
 }
 
 actor CentaurFlashWepCS : CentaurFlashWep
 {
+DropItem "CentaurFlashWepGiver"
 }
 
 actor ChargeKickWepCS : ChargeKickWep
 {
+DropItem "ChargeKickWepGiver"
 }
 
 actor CrashBombWepCS : CrashBombWep
 {
+DropItem "CrashBombWepGiver"
 }
 
 actor CrystalEyeWepCS : CrystalEyeWep
 {
+DropItem "CrystalEyeWepGiver"
 }
 
 actor DiveMissileWepCS : DiveMissileWep
 {
+DropItem "DiveMissileWepGiver"
 }
 
 actor DrillBombWepCS : DrillBombWep
 {
+DropItem "DrillBombWepGiver"
 }
 
 actor DustCrusherWepCS : DustCrusherWep
 {
+DropItem "DustCrusherWepGiver"
 }
 
 actor FireStormWepCS : FireStormWep
 {
+DropItem "FireStormWepGiver"
 }
 
 actor FlameBlastWepCS : FlameBlastWep
 {
+DropItem "FlameBlastWepGiver"
 }
 
 actor FlashStopperWepCS : FlashStopperWep
 {
+DropItem "FlashStopperWepGiver"
 }
 
 actor GeminiLaserWepCS : GeminiLaserWep
 {
+DropItem "GeminiLaserWepGiver"
 }
 
 actor GravityHoldWepCS : GravityHoldWep
 {
+DropItem "GravityHoldWepGiver"
 }
 
 actor GyroAttackWepCS : GyroAttackWep
 {
+DropItem "GyroAttackWepGiver"
 }
 
 actor HardKnuckleWepCS : HardKnuckleWep
 {
+DropItem "HardKnuckleWepGiver"
 }
 
 actor HyperBombWepCS : HyperBombWep
 {
+DropItem "HyperBombWepGiver"
 }
 
 actor IceSlasherWepCS : IceSlasherWep
 {
+DropItem "IceSlasherWepGiver"
 }
 
 actor KnightCrushWepCS : KnightCrushWep
 {
+DropItem "KnightCrushWepGiver"
 }
 
 actor LeafShieldWepCS : LeafShieldWep
 {
+DropItem "LeafShieldWepGiver"
 }
 
 actor MagnetMissileWepCS : MagnetMissileWep
 {
+DropItem "MagnetMissileWepGiver"
 }
 
 actor MetalBladeWepCS : MetalBladeWep
 {
+DropItem "MetalBladeWepGiver"
 }
 
 actor MirrorBusterWepCS : MirrorBusterWep
 {
+DropItem "MirrorBusterWepGiver"
 }
 
 actor NapalmBombWepCS : NapalmBombWep
 {
+DropItem "NapalmBombWepGiver"
 }
 
 actor NeedleCannonWepCS : NeedleCannonWep
 {
+DropItem "NeedleCannonWepGiver"
 }
 
 actor PharaohShotWepCS : PharaohShotWep
 {
+DropItem "PharaohShotWepGiver"
 }
 
 actor PlantBarrierWepCS : PlantBarrierWep
 {
+DropItem "PlantBarrierWepGiver"
 }
 
 actor PowerStoneWepCS : PowerStoneWep
 {
+DropItem "PowerStoneWepGiver"
 }
 
 actor ProtoBusterCS : ProtoBuster
@@ -168,189 +207,235 @@ actor ProtoBusterCS : ProtoBuster
 
 actor QuickBoomerangWepCS : QuickBoomerangWep
 {
+DropItem "QuickBoomerangWepGiver"
 }
 
 actor RainFlushWepCS : RainFlushWep
 {
+DropItem "RainFlushWepGiver"
 }
 
 actor RingBoomerangWepCS : RingBoomerangWep
 {
+DropItem "RingBoomerangWepGiver"
 }
 
 actor RollingCutterWepCS : RollingCutterWep
 {
+DropItem "RollingCutterWepGiver"
 }
 
 actor SakugarneWepCS : SakugarneWep
 {
+DropItem "SakugarneWepGiver"
 }
 
 actor ScrewCrusherWepCS : ScrewCrusherWep
 {
+DropItem "ScrewCrusherWepGiver"
 }
 
 actor SearchSnakeWepCS : SearchSnakeWep
 {
+DropItem "SearchSnakeWepGiver"
 }
 
 actor ShadowBladeWepCS : ShadowBladeWep
 {
+DropItem "ShadowBladeWepGiver"
 }
 
 actor SilverTomahawkWepCS : SilverTomahawkWep
 {
+DropItem "SilverTomahawkWepGiver"
 }
 
 actor SkullBarrierWepCS : SkullBarrierWep
 {
+DropItem "SkullBarrierWepGiver"
 }
 
 actor SparkShockWepCS : SparkShockWep
 {
+DropItem "SparkShockWepGiver"
 }
 
 actor StarCrashWepCS : StarCrashWep
 {
+DropItem "StarCrashWepGiver"
 }
 
 actor SuperArmWepCS : SuperArmWep
 {
+DropItem "SuperArmWepGiver"
 }
 
 actor ThunderBeamWepCS : ThunderBeamWep
 {
+DropItem "ThunderBeamWepGiver"
 }
 
 actor TimeStopperWepCS : TimeStopperWep
 {
+DropItem "TimeStopperWepGiver"
 }
 
 actor TopSpinWepCS : TopSpinWep
 {
+DropItem "TopSpinWepGiver"
 }
 
 actor WaterWaveWepCS : WaterWaveWep
 {
+DropItem "WaterWaveWepGiver"
 }
 
 actor WindStormWepCS : WindStormWep
 {
+DropItem "WindStormWepGiver"
 }
 
 actor YamatoSpearWepCS : YamatoSpearWep
 {
+DropItem "YamatoSpearWepGiver"
 }
 
 actor OilSliderWepCS : OilSliderWep
 {
+DropItem "OilSliderWepGiver"
 }
 
 
 actor TimeSlowWepCS : TimeSlowWep
 {
+DropItem "TimeSlowWepGiver"
 }
 
 actor MegaBallWepCS : MegaBallWep
 {
+DropItem "MegaBallWepGiver"
 }
 
 actor AstroCrushWepCS : AstroCrushWep
 {
+DropItem "AstroCrushWepGiver"
 }
 
 actor FlameSwordWepCS : FlameSwordWep
 {
+DropItem "FlameSwordWepGiver"
 }
 
 actor FlashBombWepCS : FlashBombWep
 {
+DropItem "FlashBombWepGiver"
 }
 
 actor HomingSniperWepCS : HomingSniperWep
 {
+DropItem "HomingSniperWepGiver"
 }
 
 actor IceWaveWepCS : IceWaveWep
 {
+DropItem "IceWaveWepGiver"
 }
 
 actor ThunderClawWepCS : ThunderClawWep
 {
+DropItem "ThunderClawWepGiver"
 }
 
 actor TornadoHoldWepCS : TornadoHoldWep
 {
+DropItem "TornadoHoldWepGiver"
 }
 
 actor WaterBalloonWepCS : WaterBalloonWep
 {
+DropItem "WaterBalloonWepGiver"
 }
 
 
 actor IceWallWepCS : IceWallWep
 {
+DropItem "IceWallWepGiver"
 }
 
 actor WaveBurnerWepCS : WaveBurnerWep
 {
+DropItem "WaveBurnerWepGiver"
 }
 
 actor RemoteMineWepCS : RemoteMineWep
 {
+DropItem "RemoteMineWepGiver"
 }
 
 actor SpreadDrillWepCS : SpreadDrillWep
 {
+DropItem "SpreadDrillWepGiver"
 }
 
 actor TenguBladeWepCS : TenguBladeWep
 {
+DropItem "TenguBladeWepGiver"
 }
 
 actor MagicCardWepCS : MagicCardWep
 {
+DropItem "MagicCardWepGiver"
 }
 
 actor CopyVisionWepCS : CopyVisionWep
 {
+DropItem "CopyVisionWepGiver"
 }
 
 actor LightningBoltWepCS : LightningBoltWep
 {
+DropItem "LightningBoltWepGiver"
 }
 
 actor ConcreteShotWepCS : ConcreteShotWep
 {
+DropItem "ConcreteShotWepGiver"
 }
 
 
 actor TornadoBlowWepCS : TornadoBlowWep
 {
+DropItem "TornadoBlowWepGiver"
 }
 
 actor LaserTridentWepCS : LaserTridentWep
 {
+DropItem "LaserTridentWepGiver"
 }
 
 actor PlugBallWepCS : PlugBallWep
 {
+DropItem "PlugBallWepGiver"
 }
 
 actor HornetChaserWepCS : HornetChaserWep
 {
+DropItem "HornetChaserWepGiver"
 }
 
 actor MagmaBazookaWepCS : MagmaBazookaWep
 {
+DropItem "MagmaBazookaWepGiver"
 }
 
 actor BlackHoleBombWepCS : BlackHoleBombWep
 {
+DropItem "BlackHoldBombWepGiver"
 }
 
 actor JewelSatelliteWepCS : JewelSatelliteWep
 {
+DropItem "JewelSatelliteWepGiver"
 }
 
 actor SolarBlazeWepCS : SolarBlazeWep

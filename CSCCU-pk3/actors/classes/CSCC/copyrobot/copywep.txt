@@ -33,7 +33,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
-dropitem "RandomWeapon"
+dropitem "CopyRandomWeapon"
 Scale 2.0
 States
 {
@@ -202,5 +202,18 @@ fail
 Success:
 EBAL E 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 999)
 fail
+}
+}
+
+actor CopyRandomWeapon
+{
++NOINTERACTION
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CopyRandomWeapon", 0)
+TNT1 A 2
+stop
 }
 }

@@ -9,7 +9,7 @@ weapon.ammotype "IceShotAmmo"
 inventory.icon "FRICS"
 inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
-DropItem "BlizzardAttackWep"
+DropItem "BlizzardAttackWepGiver"
 Scale 2.0
 States
 {

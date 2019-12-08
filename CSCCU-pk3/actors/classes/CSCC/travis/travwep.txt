@@ -13,7 +13,7 @@ inventory.pickupsound "weapon/weaponup"
 +INVENTORY.UNDROPPABLE
 //inventory.icon "GDSI"
 inventory.icon "TNT1A0"
-DropItem "WaveBurnerWep"
+DropItem "WaveBurnerWepGiver"
 Scale 2.0
 
 States

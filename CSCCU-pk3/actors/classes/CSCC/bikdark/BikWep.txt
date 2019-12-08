@@ -9,7 +9,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
 +WEAPON.NOAUTOFIRE
-DropItem "PlantBarrierWep"
+DropItem "PlantBarrierWepGiver"
 Scale 2.0
 States
 {
