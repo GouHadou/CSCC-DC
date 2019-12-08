@@ -1,4 +1,4 @@
-actor FreonWeapon : MegaBuster
+actor FreonWeapon : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -441,7 +441,7 @@ fail
 
 //Below is the CoolWeapon from the Weapon Tutorial, copied over so Megaman would have something to pick up
 
-actor NegativeBreathWeapon : MegaBuster
+actor NegativeBreathWeapon : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 56
@@ -507,7 +507,7 @@ inventory.maxamount 1
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-actor FreonWeapon : MegaBuster
+actor FreonWeapon : Base8BDMWeapon
 {
 States
 {

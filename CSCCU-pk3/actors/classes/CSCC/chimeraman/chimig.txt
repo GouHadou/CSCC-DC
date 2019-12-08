@@ -1,4 +1,4 @@
-actor PokeballIGWep : Megabuster
+actor PokeballIGWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28

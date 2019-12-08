@@ -1,4 +1,4 @@
-actor StaticShockWep : MegaBuster
+actor StaticShockWep : Base8BDMWeapon
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 2

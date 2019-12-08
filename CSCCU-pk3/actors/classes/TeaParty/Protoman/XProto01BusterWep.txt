@@ -524,7 +524,7 @@ fail
 }
 
 
-actor ChidoreWep : MegaBuster 27034
+actor ChidoreWep : Base8BDMWeapon 27034
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse2 42

@@ -1,4 +1,4 @@
-actor TankSnailWeapon : MegaBuster
+actor TankSnailWeapon : Base8BDMWeapon
 {
 Weapon.AmmoUse 6
 Weapon.AmmoGive 28
@@ -296,7 +296,7 @@ stop
 }
 }
 
-actor MucusCopyWep : MegaBuster
+actor MucusCopyWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 7
 Weapon.AmmoGive 28

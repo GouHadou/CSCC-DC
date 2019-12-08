@@ -1,4 +1,4 @@
-actor ClawGlovesWep : MegaBuster 
+actor ClawGlovesWep : Base8BDMWeapon 
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 112
@@ -1258,7 +1258,7 @@ stop
 }
 
 //===Eternal Claws===----------------------------------------------------
-actor EternalClawsWep : MegaBuster 
+actor EternalClawsWep : Base8BDMWeapon 
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 112

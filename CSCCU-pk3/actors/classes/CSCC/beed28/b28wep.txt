@@ -1,4 +1,4 @@
-actor Beed28Weapon1 : MegaBuster
+actor Beed28Weapon1 : Base8BDMWeapon
 {
 	Weapon.AmmoUse 7
 	Weapon.AmmoGive 28
@@ -652,7 +652,7 @@ actor MirrorShotSmallAlt : MirrorShotMedium replaces MirrorShotSmall
 damage (15)
 }
 
-actor Beed28Weapon2 : MegaBuster
+actor Beed28Weapon2 : Base8BDMWeapon
 {
 	Weapon.AmmoUse 7
 	Weapon.AmmoGive 28

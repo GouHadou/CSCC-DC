@@ -1,4 +1,4 @@
-actor ClaytonWep : MegaBuster
+actor ClaytonWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 52
@@ -175,7 +175,7 @@ stop
 }
 }
 
-actor Claytonwep2 : MegaBuster
+actor Claytonwep2 : Base8BDMWeapon
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 52
@@ -386,7 +386,7 @@ stop
 }
 
 
-actor Claytonwep3 : MegaBuster
+actor Claytonwep3 : Base8BDMWeapon
 {
 Weapon.AmmoUse 6
 Weapon.AmmoGive 52

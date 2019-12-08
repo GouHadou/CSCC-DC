@@ -1,4 +1,4 @@
-ACTOR ZardSword : MegaBuster 
+ACTOR ZardSword : Base8BDMWeapon 
 {
 +WEAPON.NOAUTOFIRE
 Weapon.AmmoUse 10

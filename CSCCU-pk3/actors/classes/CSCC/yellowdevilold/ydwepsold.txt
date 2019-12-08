@@ -1,4 +1,4 @@
-actor YellowDevilArm : MegaBuster
+actor YellowDevilArm : Base8BDMWeapon
 {
 Weapon.AmmoUse 8
 Weapon.AmmoGive 56
@@ -224,7 +224,7 @@ stop
 }
 }
 
-actor YellowDevilEye : MegaBuster
+actor YellowDevilEye : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

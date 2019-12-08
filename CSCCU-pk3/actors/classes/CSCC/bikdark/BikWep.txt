@@ -1,4 +1,4 @@
-actor BikTriangleSine : MegaBuster
+actor BikTriangleSine : Base8BDMWeapon
 {
 Weapon.SlotNumber 1
 Obituary "%o was corrected by %k's Trigonometrical Functions."

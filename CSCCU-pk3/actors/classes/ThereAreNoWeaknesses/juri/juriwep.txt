@@ -1,4 +1,4 @@
-actor JuriClassWeapon : Megabuster
+actor JuriClassWeapon : Base8BDMWeapon
 {
 Weapon.AmmoUse 3
 Weapon.AmmoGive 9

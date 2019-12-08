@@ -1,4 +1,4 @@
-actor FireSpell : MegaBuster 
+actor FireSpell : Base8BDMWeapon 
 {
 Weapon.AmmoUse 20
 Weapon.AmmoGive 0

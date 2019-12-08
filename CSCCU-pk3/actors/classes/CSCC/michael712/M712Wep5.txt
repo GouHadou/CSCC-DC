@@ -1,5 +1,5 @@
 //Megaman's weapon. Michael712 drops this upon defeat.
-actor PurpleAuraFlameWep : MegaBuster
+actor PurpleAuraFlameWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 2 
 Weapon.AmmoGive 28 

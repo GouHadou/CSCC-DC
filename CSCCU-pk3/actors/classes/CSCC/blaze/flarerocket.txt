@@ -1,4 +1,4 @@
-actor FlareRocketLauncher : MegaBuster
+actor FlareRocketLauncher : Base8BDMWeapon
 {
 Weapon.AmmoUse 3
 Weapon.AmmoGive 28

@@ -1,4 +1,4 @@
-actor StormPunchBotWep : MegaBuster
+actor StormPunchBotWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 0

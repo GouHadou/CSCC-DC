@@ -1,4 +1,4 @@
-actor JaxInstagibWep : MegaBuster 
+actor JaxInstagibWep : Base8BDMWeapon 
 {
 Weapon.SlotNumber 1
 Weapon.AmmoUse 0

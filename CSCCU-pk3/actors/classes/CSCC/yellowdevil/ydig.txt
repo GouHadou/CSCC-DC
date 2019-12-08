@@ -1,4 +1,4 @@
-actor YDInstagib : MegaBuster
+actor YDInstagib : Base8BDMWeapon
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 1

@@ -1,4 +1,4 @@
-actor NinjaWep : MegaBuster //18000
+actor NinjaWep : Base8BDMWeapon //18000
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -342,7 +342,7 @@ stop
 }
 }
 
-actor NinjaStarWep : MegaBuster
+actor NinjaStarWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

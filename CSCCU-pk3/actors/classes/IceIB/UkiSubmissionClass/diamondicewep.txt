@@ -1,4 +1,4 @@
-actor DiamondIceWep : MegaBuster 
+actor DiamondIceWep : Base8BDMWeapon 
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 1

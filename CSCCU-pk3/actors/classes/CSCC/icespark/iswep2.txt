@@ -1,4 +1,4 @@
-actor SparkyWep : MegaBuster
+actor SparkyWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 25
 Weapon.AmmoGive 100

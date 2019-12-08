@@ -53,7 +53,7 @@ actor UpgradeChoiceActive :  Once
 {
 }
 
-actor UkiyamaClassWep : MegaBuster 
+actor UkiyamaClassWep : Base8BDMWeapon 
 {
 Weapon.AmmoGive 28 
 Weapon.AmmoUse 1

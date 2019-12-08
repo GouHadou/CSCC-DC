@@ -1,4 +1,4 @@
-actor Beed28WeaponIG : MegaBuster
+actor Beed28WeaponIG : Base8BDMWeapon
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28

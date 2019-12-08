@@ -1,4 +1,4 @@
-actor CometWep : MegaBuster
+actor CometWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 5
 Weapon.AmmoGive 28

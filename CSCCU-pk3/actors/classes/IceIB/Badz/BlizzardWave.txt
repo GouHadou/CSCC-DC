@@ -1,4 +1,4 @@
-Actor BlizzardWaveBoss : MegaBuster
+Actor BlizzardWaveBoss : Base8BDMWeapon
 {
 Weapon.AmmoUse 20
 Weapon.AmmoGive 1

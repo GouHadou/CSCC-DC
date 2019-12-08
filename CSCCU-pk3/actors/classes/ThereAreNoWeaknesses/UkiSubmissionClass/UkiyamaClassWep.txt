@@ -1,4 +1,4 @@
-actor NatureStaffWep : MegaBuster 
+actor NatureStaffWep : Base8BDMWeapon 
 {
 Weapon.AmmoGive 28 
 Weapon.AmmoUse 4 

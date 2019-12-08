@@ -1,4 +1,4 @@
-actor BozuBallWep : MegaBuster
+actor BozuBallWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 2
 Weapon.AmmoUse2 8
@@ -322,7 +322,7 @@ Stop
 }
 }
 
-actor BozuShieldWep : MegaBuster
+actor BozuShieldWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 8

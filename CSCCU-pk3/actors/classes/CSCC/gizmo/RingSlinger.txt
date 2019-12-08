@@ -5,7 +5,7 @@
 //
 // There are less comments here. See weapon example 1 for a full run down of everything.
 
-actor RingSlingerWep : MegaBuster 18001
+actor RingSlingerWep : Base8BDMWeapon 18001
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28

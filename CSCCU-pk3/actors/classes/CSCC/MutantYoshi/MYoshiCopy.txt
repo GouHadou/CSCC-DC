@@ -1,4 +1,4 @@
-actor EggTossWep : MegaBuster
+actor EggTossWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

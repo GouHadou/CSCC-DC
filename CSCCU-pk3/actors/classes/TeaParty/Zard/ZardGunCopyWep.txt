@@ -1,4 +1,4 @@
-actor ZardGunCopyWep : MegaBuster
+actor ZardGunCopyWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 5
 Weapon.AmmoGive 120

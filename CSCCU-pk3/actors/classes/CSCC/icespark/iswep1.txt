@@ -1,4 +1,4 @@
-actor IceWep : MegaBuster
+actor IceWep : Base8BDMWeapon
 {
 Weapon.AmmoUse 25
 Weapon.AmmoGive 100

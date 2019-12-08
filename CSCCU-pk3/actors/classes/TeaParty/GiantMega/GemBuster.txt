@@ -1,4 +1,4 @@
-actor GemBuster : MegaBuster
+actor GemBuster : Base8BDMWeapon
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 3
@@ -185,7 +185,7 @@ Inventory.Maxamount 999
 
 
 
-actor GemSniper : MegaBuster
+actor GemSniper : Base8BDMWeapon
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 0
