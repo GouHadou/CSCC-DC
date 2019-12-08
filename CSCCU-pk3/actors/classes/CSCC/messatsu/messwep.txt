@@ -1639,11 +1639,14 @@ TNT1 A 0
 TNT1 A 0 A_GiveInventory("TemaInv", 1)
 TNT1 A 0 A_GiveInventory("RagingDemonInv", 1)
 TNT1 A 0 A_GiveInventory("MisogiInv", 1)
+TNT1 A 0 A_GiveInventory("IsMessatsu", 1)
 TNT1 A 0 ACS_NamedExecuteAlways("MessParryCheck", 0)
 TNT1 A 0 ACS_NamedExecuteAlways("MessDamageAmmo", 0)
 stop
 }
 }
+
+actor IsMessatsu : Once {}
 /*actor MessParryItem : CustomInventory
 {
 inventory.amount 1

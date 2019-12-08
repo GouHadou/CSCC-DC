@@ -907,7 +907,7 @@ Script "MessParryCheck" (void)
 {
 int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
 int InputOldButtons = InputButtons;
-while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
+while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsMessatsu"))
 	{
 	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
 	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1 )
