@@ -1,3 +1,0 @@
-//This file is an extension of DECORATE, it includes the files listed.
-#include "actors/classes/IceIB/BlizzardKnight/BlizzardKnightclass.txt"
-#include "actors/classes/IceIB/BlizzardKnight/BlizzardKnightwep.txt"

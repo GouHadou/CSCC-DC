@@ -1,12 +1,30 @@
-#include "actors/classes/IceIB/Weavile.txt"
-
-
-#include "actors/classes/IceIB/BlizzardKnight.txt"
-#include "actors/classes/IceIB/UkiSubmissionClass.txt"
 #include "actors/classes/IceIB/BigClassSupport.txt"
-#include "actors/classes/IceIB/KS.txt"
-#include "actors/classes/IceIB/Sowrdman.txt"
-#include "actors/classes/IceIB/WeoWeoIceClass.txt"
-#include "actors/classes/IceIB/bozuclass.txt"
-#include "actors/classes/IceIB/Robutts.txt" // oLo Noseman oLo
-#include "actors/classes/IceIB/FrostWalrus.txt"
+
+//===|Weavile
+#include "actors/classes/IceIB/Weavile/WeavileClass.txt"
+#include "actors/classes/IceIB/Weavile/WeavileWep.txt"
+//===|BlizzardKnight
+#include "actors/classes/IceIB/BlizzardKnight/BlizzardKnightclass.txt"
+#include "actors/classes/IceIB/BlizzardKnight/BlizzardKnightwep.txt"
+//===|DiamondIce
+#include "actors/classes/IceIB/UkiSubmissionClass/DiamondIceClass.txt"
+#include "actors/classes/IceIB/UkiSubmissionClass/DiamondIceWep.txt"
+#include "actors/classes/IceIB/UkiSubmissionClass/FlashFreezeWep.txt"
+//===|IceMage
+#include "actors/classes/IceIB/IceMage/KS.txt"
+//===|Sowrdman
+#include "actors/classes/IceIB/Badz/Sowrdman.txt"
+#include "actors/classes/IceIB/Badz/BlizzardWave.txt"
+#include "actors/classes/IceIB/Badz/BlizzardCannon.txt"
+//===|WeoWeoIce
+#include "actors/classes/IceIB/weoweoiceclass/weoweoiceclass.txt"
+#include "actors/classes/IceIB/weoweoiceclass/weoweoicewep.txt"
+//===|Bozu
+#include "actors/classes/IceIB/bozu/bozuclass.txt"
+#include "actors/classes/IceIB/bozu/bozuwep.txt"
+//===|Robutts
+#include "actors/classes/IceIB/robutts/mechbaseweapon.txt"
+#include "actors/classes/IceIB/robutts/mechunitbeta.txt"
+//===|FrostWalrus
+#include "actors/classes/IceIB/frostwalrus/frostwalrusclass.txt"
+#include "actors/classes/IceIB/frostwalrus/frosttowerboss.txt"
