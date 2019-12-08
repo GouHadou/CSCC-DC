@@ -70,3 +70,10 @@ const int DYE_LORDDAMAGERCOL = 437;
 //===|Jake
 #include "actors/classes/TeaParty/Jake/Jake.txt"
 #include "actors/classes/TeaParty/Jake/PyrokinesisWep.txt"
+
+//==|LordDamager
+#include "actors/classes/TeaParty/LordDamager/LordDamager.txt"
+#include "actors/classes/TeaParty/LordDamager/MissilePunch.txt"
+#include "actors/classes/TeaParty/LordDamager/LaserCannon.txt"
+#include "actors/classes/TeaParty/LordDamager/SmogCannon.txt"
+#include "actors/classes/TeaParty/LordDamager/SteelPunchWep.txt"
