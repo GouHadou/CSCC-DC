@@ -1,4 +1,0 @@
-#include "actors/classes/OCBMR/Itolos/ItolosImurkono.txt"
-#include "actors/classes/OCBMR/Itolos/ItolosBugType.txt"
-#include "actors/classes/OCBMR/Itolos/ImurkonoBugType.txt"
-

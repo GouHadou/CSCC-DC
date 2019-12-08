@@ -1,2 +1,0 @@
-#include "actors/classes/TeaParty/Light/Lightclass.txt"
-#include "actors/classes/TeaParty/Light/HolyBuster.txt"

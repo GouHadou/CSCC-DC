@@ -1,8 +1,0 @@
-#include "actors/classes/TeaParty/Smash/smash.txt"
-
-
-#include "actors/classes/TeaParty/Smash/StandardSpecial.txt"
-#include "actors/classes/TeaParty/Smash/StandardSpecial-USC.txt"
-//#include "actors/classes/TeaParty/Smash/SuperSpiritBlast.txt"
-#include "actors/classes/TeaParty/Smash/SmashAttacks.txt"
-#include "actors/classes/TeaParty/Smash/SmashItems.txt"

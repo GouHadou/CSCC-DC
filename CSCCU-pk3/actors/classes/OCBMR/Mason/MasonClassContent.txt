@@ -1,3 +1,0 @@
-#include "actors/classes/OCBMR/Mason/DetectiveM.txt"
-#include "actors/classes/OCBMR/Mason/PlasmaWep.txt"
-

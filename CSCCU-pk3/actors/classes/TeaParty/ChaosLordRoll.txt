@@ -1,3 +1,0 @@
-#include "actors/classes/TeaParty/ChaosLordRoll/chaoslordroll.txt"
-//#include "actors/classes/TeaParty/ChaosLordRoll/chaossword.txt"
-#include "actors/classes/TeaParty/ChaosLordRoll/chaossword2.txt"

@@ -1,4 +1,0 @@
-#include "actors/classes/TeaParty/Hilman/HILCLASS.txt"
-#include "actors/classes/TeaParty/Hilman/HILGIVER.txt"
-#include "actors/classes/TeaParty/Hilman/HILITEMS.txt"
-#include "actors/classes/TeaParty/Hilman/HILWEP.txt"
