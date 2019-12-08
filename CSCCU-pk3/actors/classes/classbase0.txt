@@ -63,7 +63,7 @@ goto SuperSpawn
 MegamanDeath:
 "----" A 20 ACS_ExecuteAlways(999,0,0)
 MegamanExplode:
-TNT1 A 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+TNT1 A 0 A_SpawnItemEx("FakeDeathFX2", 0, 0, 32, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 MegamanFall:
 TNT1 A 0 A_PlayerScream
 MegamanErase:
