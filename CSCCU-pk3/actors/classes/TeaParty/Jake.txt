@@ -1,2 +1,0 @@
-#include "actors/classes/TeaParty/Jake/Jake.txt"
-#include "actors/classes/TeaParty/Jake/PyrokinesisWep.txt"

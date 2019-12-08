@@ -1,3 +1,0 @@
-#include "actors/classes/TeaParty/Alice/Alicetheicefairyclass.txt"
-#include "actors/classes/TeaParty/Alice/RocketJumpWep.txt"
-#include "actors/classes/TeaParty/Alice/ShurikenBuster.txt"

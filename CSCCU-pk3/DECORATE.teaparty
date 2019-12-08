@@ -1,21 +1,72 @@
 const int DYE_LORDDAMAGERCOL = 437;
 
 
+//===|Zard
+#include "actors/classes/TeaParty/Zard/Zard1084class.txt"
+#include "actors/classes/TeaParty/Zard/ZardGunWep.txt"
+#include "actors/classes/TeaParty/Zard/YukkuriReimuSummon.txt"
+#include "actors/classes/TeaParty/Zard/DanmakuBoomerangWep.txt"
+#include "actors/classes/TeaParty/Zard/ZardSword.txt"
+#include "actors/classes/TeaParty/Zard/ZardGunCopyWep.txt"
 
-#include "actors/classes/TeaParty/Zard.txt"
-#include "actors/classes/TeaParty/QueenPrinny.txt"
-#include "actors/classes/TeaParty/Alice.txt"
-#include "actors/classes/TeaParty/GiantMega.txt"
-#include "actors/classes/TeaParty/Light.txt"
-#include "actors/classes/TeaParty/Protoman.txt"
-#include "actors/classes/TeaParty/Clayton.txt"
-#include "actors/classes/TeaParty/Fyone.txt"
-#include "actors/classes/TeaParty/Missingno.txt"
-#include "actors/classes/TeaParty/Smash.txt"
-#include "actors/classes/TeaParty/Toastman.txt"
-#include "actors/classes/TeaParty/ChaosLordRoll.txt"
-#include "actors/classes/TeaParty/Hilman.txt"
-#include "actors/classes/TeaParty/LordDamager.txt"
-#include "actors/classes/TeaParty/Jake.txt"
-//Dakutatoru
-//Neo
+//===|QueenPrinny
+#include "actors/classes/TeaParty/QueenPrinny/PrinnyQueenclass.txt"
+#include "actors/classes/TeaParty/QueenPrinny/TrollBuster.txt"
+
+//===|Alice
+#include "actors/classes/TeaParty/Alice/Alicetheicefairyclass.txt"
+#include "actors/classes/TeaParty/Alice/RocketJumpWep.txt"
+#include "actors/classes/TeaParty/Alice/ShurikenBuster.txt"
+
+//===|GiantMega
+#include "actors/classes/TeaParty/GiantMega/Giantmega.execlass.txt"
+#include "actors/classes/TeaParty/GiantMega/GemBuster.txt"
+
+//===|Light
+#include "actors/classes/TeaParty/Light/Lightclass.txt"
+#include "actors/classes/TeaParty/Light/HolyBuster.txt"
+
+//===|Protoman
+#include "actors/classes/TeaParty/Protoman/ProtomanCSCC.txt"
+#include "actors/classes/TeaParty/Protoman/Proto01BusterWep.txt"
+#include "actors/classes/TeaParty/Protoman/Proto01CopyWep.txt"
+
+//===|Clayton
+#include "actors/classes/TeaParty/Clayton/Clayton.txt"
+#include "actors/classes/TeaParty/Clayton/ClaytonWep.txt"
+
+//===|Fyone
+#include "actors/classes/TeaParty/Fyone/fyone.txt"
+#include "actors/classes/TeaParty/Fyone/photoncannon.txt"
+
+//===|Missingno
+#include "actors/classes/TeaParty/Missingno/Missingno.class.txt"
+#include "actors/classes/TeaParty/Missingno/Glitchfield.txt"
+
+//===|Smash
+#include "actors/classes/TeaParty/Smash/smash.txt"
+
+#include "actors/classes/TeaParty/Smash/StandardSpecial.txt"
+#include "actors/classes/TeaParty/Smash/StandardSpecial-USC.txt"
+//#include "actors/classes/TeaParty/Smash/SuperSpiritBlast.txt"
+#include "actors/classes/TeaParty/Smash/SmashAttacks.txt"
+#include "actors/classes/TeaParty/Smash/SmashItems.txt"
+
+//===|Toastman
+#include "actors/classes/TeaParty/Toastman/ToastMan.txt"
+#include "actors/classes/TeaParty/Toastman/ToastCannonWep.txt"
+
+//===|ChaosLordRoll
+#include "actors/classes/TeaParty/ChaosLordRoll/chaoslordroll.txt"
+//#include "actors/classes/TeaParty/ChaosLordRoll/chaossword.txt"
+#include "actors/classes/TeaParty/ChaosLordRoll/chaossword2.txt"
+
+//===|Hilman
+#include "actors/classes/TeaParty/Hilman/HILCLASS.txt"
+#include "actors/classes/TeaParty/Hilman/HILGIVER.txt"
+#include "actors/classes/TeaParty/Hilman/HILITEMS.txt"
+#include "actors/classes/TeaParty/Hilman/HILWEP.txt"
+
+//===|Jake
+#include "actors/classes/TeaParty/Jake/Jake.txt"
+#include "actors/classes/TeaParty/Jake/PyrokinesisWep.txt"

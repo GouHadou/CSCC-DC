@@ -1,2 +1,0 @@
-#include "actors/classes/TeaParty/Missingno/Missingno.class.txt"
-#include "actors/classes/TeaParty/Missingno/Glitchfield.txt"

@@ -2,11 +2,53 @@
 #include "actors/Inventory/Targeter.txt"
 #include "actors/Inventory/TinyBar.txt"
 
-#include "actors/classes/OCBMR/Neo/NeoClassContent.txt"
+//===|Neo
+#include "actors/classes/OCBMR/Neo/NeoVariClass.txt"
+#include "actors/classes/OCBMR/Neo/NeoBlade.txt"
+#include "actors/classes/OCBMR/Neo/NeoPalm.txt"
+#include "actors/classes/OCBMR/Neo/NeoBow.txt"
+#include "actors/classes/OCBMR/Neo/NeoStaff.txt"
+#include "actors/classes/OCBMR/Neo/FireSpell.txt"
+#include "actors/classes/OCBMR/Neo/BlizzardSpell.txt"
+#include "actors/classes/OCBMR/Neo/ThunderSpell.txt"
+#include "actors/classes/OCBMR/Neo/NeoPowers.txt"
 
-#include "actors/classes/OCBMR/AuronApp/AuronClassContent.txt"
-#include "actors/classes/OCBMR/OfficerMagnum/OfficerMagnumClassContent.txt"
-#include "actors/classes/OCBMR/Arnon/ArnonClassContent.txt"
-#include "actors/classes/OCBMR/Gaol97/Gaol97ClassContent.txt"
-#include "actors/classes/OCBMR/Mason/MasonClassContent.txt"
-#include "actors/classes/OCBMR/Itolos/ItolosClassContent.txt"
+//===|AuronApp
+#include "actors/classes/OCBMR/AuronApp/AuronApp.txt"
+#include "actors/classes/OCBMR/AuronApp/AuronBCBuster.txt"
+#include "actors/classes/OCBMR/AuronApp/AuronFlags.txt"
+#include "actors/classes/OCBMR/AuronApp/AuronChips.txt"
+#include "actors/classes/OCBMR/AuronApp/NCPrograms.txt"
+#include "actors/classes/OCBMR/AuronApp/ChipProjectiles.txt"
+#include "actors/classes/OCBMR/AuronApp/SearchSoulBuster.txt"
+#include "actors/classes/OCBMR/AuronApp/GyroSoulBuster.txt"
+#include "actors/classes/OCBMR/AuronApp/NapalmSoulBuster.txt"
+#include "actors/classes/OCBMR/AuronApp/AquaSoulBuster.txt"
+#include "actors/classes/OCBMR/AuronApp/ProtoSoulBuster.txt"
+
+//===|OfficerMagnum
+#include "actors/classes/OCBMR/OfficerMagnum/OfficerMagnum.txt"
+#include "actors/classes/OCBMR/OfficerMagnum/OMWeapon1.txt"
+#include "actors/classes/OCBMR/OfficerMagnum/OMWeapon2.txt"
+#include "actors/classes/OCBMR/OfficerMagnum/OMWeapon3.txt"
+
+//===|Arnon
+#include "actors/classes/OCBMR/Arnon/Arnon.txt"
+#include "actors/classes/OCBMR/Arnon/TriBuster.txt"
+
+//===|Gaol97
+#include "actors/classes/OCBMR/Gaol97/G97Class.txt"
+#include "actors/classes/OCBMR/Gaol97/BlazeThrower.txt"
+#include "actors/classes/OCBMR/Gaol97/FairyPower.txt"
+#include "actors/classes/OCBMR/Gaol97/StarRevolver.txt"
+#include "actors/classes/OCBMR/Gaol97/g97FireProjectiles.txt"
+#include "actors/classes/OCBMR/Gaol97/g97FairyProjectiles.txt"
+
+//===|Mason
+#include "actors/classes/OCBMR/Mason/DetectiveM.txt"
+#include "actors/classes/OCBMR/Mason/PlasmaWep.txt"
+
+//===|Itolos
+#include "actors/classes/OCBMR/Itolos/ItolosImurkono.txt"
+#include "actors/classes/OCBMR/Itolos/ItolosBugType.txt"
+#include "actors/classes/OCBMR/Itolos/ImurkonoBugType.txt"

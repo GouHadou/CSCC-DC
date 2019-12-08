@@ -1,2 +1,0 @@
-#include "actors/classes/TeaParty/Clayton/Clayton.txt"
-#include "actors/classes/TeaParty/Clayton/ClaytonWep.txt"
