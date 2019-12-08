@@ -92,14 +92,14 @@ int HasUsedMovement;
 
 if(PlayerIsBot(PlayerNumber())){terminate;}
 
-while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
+while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYang"))
 	{
 	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
 	HasUsedMovement=0;
 	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
 		{
 		Delay(5);
-		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0){terminate;}
+		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
 		}
 
 	SpeedPressed = CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1;
