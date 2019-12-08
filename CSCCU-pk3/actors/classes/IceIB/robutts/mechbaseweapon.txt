@@ -1,4 +1,4 @@
-actor BoltPistol : Base8BDMWeapon
+actor BoltPistol : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 8 //NNNNNNERFED
@@ -317,7 +317,7 @@ stop
 
 
 /*
-actor CoolWeapon : Base8BDMWeapon
+actor CoolWeapon : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

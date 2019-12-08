@@ -1,4 +1,4 @@
-actor TreoWep : Base8BDMWeapon
+actor TreoWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 36
@@ -933,7 +933,7 @@ Loop
 }
 
 
-actor GigaDrainWep : Base8BDMWeapon
+actor GigaDrainWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28

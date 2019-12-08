@@ -1,4 +1,4 @@
-actor IceBladeWep : Base8BDMWeapon 
+actor IceBladeWep : BaseMM8BDMWep 
 {
 Weapon.AmmoUse 3
 Weapon.AmmoGive 28
@@ -102,7 +102,7 @@ Actor IceBladeWepCS : IceBladeWep
 
 
 
-actor LightningWaveWep : Base8BDMWeapon 
+actor LightningWaveWep : BaseMM8BDMWep 
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28

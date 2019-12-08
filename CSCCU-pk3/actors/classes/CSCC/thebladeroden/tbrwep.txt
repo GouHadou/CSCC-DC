@@ -1,4 +1,4 @@
-actor AutocannonWep : Base8BDMWeapon 
+actor AutocannonWep : BaseMM8BDMWep 
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -173,7 +173,7 @@ Stop
 }
 }
 
-actor DualBladesWep : Base8BDMWeapon
+actor DualBladesWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

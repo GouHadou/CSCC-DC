@@ -1,4 +1,4 @@
-actor LegoMissilesBoss : Base8BDMWeapon
+actor LegoMissilesBoss : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 2
@@ -162,7 +162,7 @@ stop
 }
 }
 
-actor LegoStickiesBoss : Base8BDMWeapon
+actor LegoStickiesBoss : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 10
@@ -394,7 +394,7 @@ actor LegoStickyMineX : LegoStickyMine
 Translation "195:207=250:254"
 }
 
-actor StickyBombWep : Base8BDMWeapon//Compatable DoomED number here
+actor StickyBombWep : BaseMM8BDMWep//Compatable DoomED number here
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 15

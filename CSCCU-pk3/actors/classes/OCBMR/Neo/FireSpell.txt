@@ -1,4 +1,4 @@
-actor FireSpell : Base8BDMWeapon 
+actor FireSpell : BaseMM8BDMWep 
 {
 Weapon.AmmoUse 20
 Weapon.AmmoGive 0

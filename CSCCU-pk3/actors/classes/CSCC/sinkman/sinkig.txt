@@ -1,4 +1,4 @@
-actor SinkmanIG : Base8BDMWeapon
+actor SinkmanIG : BaseMM8BDMWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 56

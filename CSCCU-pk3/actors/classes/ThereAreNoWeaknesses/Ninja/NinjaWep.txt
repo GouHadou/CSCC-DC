@@ -1,4 +1,4 @@
-actor NinjaWep : Base8BDMWeapon //18000
+actor NinjaWep : BaseMM8BDMWep //18000
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -342,7 +342,7 @@ stop
 }
 }
 
-actor NinjaStarWep : Base8BDMWeapon
+actor NinjaStarWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

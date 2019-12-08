@@ -1,4 +1,4 @@
-actor CrystalWallWep : Base8BDMWeapon 
+actor CrystalWallWep : BaseMM8BDMWep 
 {
 Weapon.AmmoGive 28 
 Weapon.AmmoUse 4

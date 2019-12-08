@@ -1,4 +1,4 @@
-actor NatureStaffWep : Base8BDMWeapon 
+actor NatureStaffWep : BaseMM8BDMWep 
 {
 Weapon.AmmoGive 28 
 Weapon.AmmoUse 4 

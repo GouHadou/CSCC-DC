@@ -1,6 +1,6 @@
 //Blaze's scrapped Knife Toss. Left in here in case we decide to bring it back in some form.
 
-actor KnifeToss : Base8BDMWeapon
+actor KnifeToss : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 200
@@ -12,6 +12,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 +INVENTORY.UNDROPPABLE
 Scale 2.0
+inventory.icon "NULLICON"
 States
 {
 Spawn:

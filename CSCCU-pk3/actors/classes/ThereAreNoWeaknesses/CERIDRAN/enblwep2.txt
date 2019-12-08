@@ -1,4 +1,4 @@
-actor EnergyBladeWeapon2 : Base8BDMWeapon
+actor EnergyBladeWeapon2 : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 7

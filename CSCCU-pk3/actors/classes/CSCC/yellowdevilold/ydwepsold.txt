@@ -1,4 +1,4 @@
-actor YellowDevilArm : Base8BDMWeapon
+actor YellowDevilArm : BaseMM8BDMWep
 {
 Weapon.AmmoUse 8
 Weapon.AmmoGive 56
@@ -224,7 +224,7 @@ stop
 }
 }
 
-actor YellowDevilEye : Base8BDMWeapon
+actor YellowDevilEye : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

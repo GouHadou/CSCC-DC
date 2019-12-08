@@ -1,4 +1,4 @@
-actor CorporalWeaponBase : Base8BDMWeapon
+actor CorporalWeaponBase : BaseMM8BDMWep
 {
 DropItem "NadeSpamWepCDropped"
 Obituary "$OB_CORPKNIFE"
@@ -16,6 +16,12 @@ Deselect:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 TNT1 A 1 A_Lower
 Loop
+Ready:
+TNT1 A 1
+goto Ready
+Fire:
+TNT1 A 1
+goto Ready
 Knife:
 NADE KL 2
 NADE M 0 A_PlaySoundEx("Weapon/knife","Weapon")

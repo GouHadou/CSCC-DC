@@ -21,7 +21,7 @@ inventory.amount 1
 inventory.maxamount 9999
 }
 
-actor CopyWeapon : Base8BDMWeapon
+actor CopyWeapon : BaseMM8BDMWep
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

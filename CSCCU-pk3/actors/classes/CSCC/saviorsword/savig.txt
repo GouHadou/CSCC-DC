@@ -1,4 +1,4 @@
-actor Machina : Base8BDMWeapon
+actor Machina : BaseMM8BDMWep
 {
 Weapon.SlotNumber 1
 Obituary "%o felt the shock of %k' Electric Machina."

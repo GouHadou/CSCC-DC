@@ -1,6 +1,6 @@
 //do later
 
-actor JumpKickWep : Base8BDMWeapon
+actor JumpKickWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 7
 Weapon.AmmoGive 28

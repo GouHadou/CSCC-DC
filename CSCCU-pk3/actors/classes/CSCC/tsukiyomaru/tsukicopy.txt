@@ -1,4 +1,4 @@
-actor SpectralWaveWepCS : Base8BDMWeapon
+actor SpectralWaveWepCS : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 16

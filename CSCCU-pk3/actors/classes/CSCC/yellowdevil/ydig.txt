@@ -1,4 +1,4 @@
-actor YDInstagib : Base8BDMWeapon
+actor YDInstagib : BaseMM8BDMWep
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 1

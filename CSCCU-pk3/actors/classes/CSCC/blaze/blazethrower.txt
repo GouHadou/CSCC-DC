@@ -1,4 +1,4 @@
-actor BlazeThrower : Base8BDMWeapon
+actor BlazeThrower : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -10,7 +10,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
-inventory.icon "TNT1A0"
+inventory.icon "NULLICON"
 Scale 2.0
 States
 {

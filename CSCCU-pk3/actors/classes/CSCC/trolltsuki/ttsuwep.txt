@@ -1,4 +1,4 @@
-actor TsukiTrollWep : Base8BDMWeapon
+actor TsukiTrollWep : BaseMM8BDMWep
 {
 //Weapon.AmmoUse 21
 Weapon.AmmoUse 14

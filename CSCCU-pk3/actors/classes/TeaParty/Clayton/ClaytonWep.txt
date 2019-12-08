@@ -1,4 +1,4 @@
-actor ClaytonWep : Base8BDMWeapon
+actor ClaytonWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 52
@@ -175,7 +175,7 @@ stop
 }
 }
 
-actor Claytonwep2 : Base8BDMWeapon
+actor Claytonwep2 : BaseMM8BDMWep
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 52
@@ -386,7 +386,7 @@ stop
 }
 
 
-actor Claytonwep3 : Base8BDMWeapon
+actor Claytonwep3 : BaseMM8BDMWep
 {
 Weapon.AmmoUse 6
 Weapon.AmmoGive 52

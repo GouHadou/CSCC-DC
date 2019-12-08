@@ -1,4 +1,4 @@
-actor StaticShockWep : Base8BDMWeapon
+actor StaticShockWep : BaseMM8BDMWep
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 2

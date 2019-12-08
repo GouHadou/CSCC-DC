@@ -1,4 +1,4 @@
-actor Beed28Weapon1 : Base8BDMWeapon
+actor Beed28Weapon1 : BaseMM8BDMWep
 {
 	Weapon.AmmoUse 7
 	Weapon.AmmoGive 28
@@ -12,6 +12,7 @@ actor Beed28Weapon1 : Base8BDMWeapon
 	+WEAPON.AMMO_OPTIONAL
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
+	inventory.icon "NULLICON"
 	Scale 2.0
 
 	States
@@ -652,7 +653,7 @@ actor MirrorShotSmallAlt : MirrorShotMedium replaces MirrorShotSmall
 damage (15)
 }
 
-actor Beed28Weapon2 : Base8BDMWeapon
+actor Beed28Weapon2 : BaseMM8BDMWep
 {
 	Weapon.AmmoUse 7
 	Weapon.AmmoGive 28

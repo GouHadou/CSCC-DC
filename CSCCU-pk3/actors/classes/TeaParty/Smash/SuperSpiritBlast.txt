@@ -1,5 +1,5 @@
 //Beta weapon to use against Evil Robot.
-actor SuperFist : Base8BDMWeapon 26782 
+actor SuperFist : BaseMM8BDMWep 26782 
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 112

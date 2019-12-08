@@ -1,4 +1,4 @@
-actor PyrokinesisWep : Base8BDMWeapon 
+actor PyrokinesisWep : BaseMM8BDMWep 
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 0
@@ -71,7 +71,7 @@ Goto Ready+1
 }
 }
 
-actor NovaBomberWep : Base8BDMWeapon 
+actor NovaBomberWep : BaseMM8BDMWep 
 {
 Weapon.AmmoUse 15
 Weapon.AmmoGive 0

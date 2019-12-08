@@ -1,4 +1,4 @@
-actor DiamondIceWep : Base8BDMWeapon 
+actor DiamondIceWep : BaseMM8BDMWep 
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 1

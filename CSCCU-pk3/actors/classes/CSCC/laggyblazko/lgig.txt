@@ -1,4 +1,4 @@
-actor Springfield: Base8BDMWeapon
+actor Springfield: BaseMM8BDMWep
 {
 Weapon.SlotNumber 2
 Obituary "%o stood in the sights of %k's Springfield."

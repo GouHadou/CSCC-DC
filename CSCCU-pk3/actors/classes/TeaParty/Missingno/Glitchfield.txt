@@ -1,4 +1,4 @@
-actor Glitchfield : Base8BDMWeapon
+actor Glitchfield : BaseMM8BDMWep
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse1 7

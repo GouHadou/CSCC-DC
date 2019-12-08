@@ -1,4 +1,4 @@
-actor BikTriangleSine : Base8BDMWeapon
+actor BikTriangleSine : BaseMM8BDMWep
 {
 Weapon.SlotNumber 1
 Obituary "%o was corrected by %k's Trigonometrical Functions."
@@ -11,6 +11,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.NOAUTOFIRE
 DropItem "PlantBarrierWepGiver"
 Scale 2.0
+inventory.icon "NULLICON"
 States
 {
 Ready:

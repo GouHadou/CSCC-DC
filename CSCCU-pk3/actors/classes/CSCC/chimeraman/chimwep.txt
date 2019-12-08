@@ -1,4 +1,4 @@
-actor ChimeraBuster : Base8BDMWeapon
+actor ChimeraBuster : BaseMM8BDMWep
 {
 Weapon.AmmoUse 3
 Weapon.AmmoGive 0
@@ -297,7 +297,7 @@ Goto Ready+1
 }
 
 /*
-actor ChimeraDice : Base8BDMWeapon
+actor ChimeraDice : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.SlotNumber 1

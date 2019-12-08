@@ -1,4 +1,4 @@
-actor StormPunchBotWep : Base8BDMWeapon
+actor StormPunchBotWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 0
