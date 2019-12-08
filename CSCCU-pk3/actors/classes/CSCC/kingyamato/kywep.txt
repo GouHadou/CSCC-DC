@@ -11,7 +11,7 @@ Inventory.Pickupmessage "Power Up! Yamato Spear!"
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
 Scale 2.0
-DropItem "YamatoSpearWep"
+DropItem "YamatoSpearWepGiver"
 States
 {
 Ready:

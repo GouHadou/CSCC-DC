@@ -6,7 +6,7 @@ Weapon.SlotNumber 2
 weapon.ammotype "StaveAmmo"
 Inventory.Pickupmessage "Power Up! Needle Cannon!"
 inventory.pickupsound "weapon/weaponup"
-DropItem "NeedleCannonWep"
+DropItem "NeedleCannonWepGiver"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE

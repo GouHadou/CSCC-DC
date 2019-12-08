@@ -13,7 +13,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.ALT_AMMO_OPTIONAL
 +INVENTORY.UNDROPPABLE
 +WEAPON.CHEATNOTWEAPON
-DropItem "ThunderBeamWep"
+DropItem "ThunderBeamWepGiver"
 Scale 2.0
 States
 {

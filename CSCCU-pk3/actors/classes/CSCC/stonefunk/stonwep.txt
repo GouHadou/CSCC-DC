@@ -9,7 +9,7 @@ weapon.ammotype "StoneDiveLimit"
 +WEAPON.DONTBOB
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
-DropItem "SuperArmWep"
+DropItem "SuperArmWepGiver"
 inventory.icon "TNT1A0"
 States
 {

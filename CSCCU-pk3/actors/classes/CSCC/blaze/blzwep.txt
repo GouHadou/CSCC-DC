@@ -8,7 +8,7 @@ Inventory.Pickupmessage "Power Up! Hand Cannon!"
 weapon.ammotype "BlazeCrateWeapon"
 weapon.ammotype2 "BlazeSecondaryAmmo"
 inventory.pickupsound "weapon/weaponup"
-DropItem "WaveBurnerWep"
+DropItem "WaveBurnerWepGiver"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE

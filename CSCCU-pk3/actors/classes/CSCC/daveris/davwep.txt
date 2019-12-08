@@ -11,7 +11,7 @@ inventory.pickupsound "weapon/weaponup"
 +INVENTORY.UNDROPPABLE
 +WEAPON.CHEATNOTWEAPON
 inventory.icon "TNT1A0"
-DropItem "IceSlasherWep"
+DropItem "IceSlasherWepGiver"
 Scale 2.0
 States
 {

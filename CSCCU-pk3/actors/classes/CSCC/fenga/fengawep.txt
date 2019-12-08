@@ -10,7 +10,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
-dropitem "BalladeCrackerWepCS"
+dropitem "BalladeCrackerWepGiver"
 Scale 2.0
 States
 {

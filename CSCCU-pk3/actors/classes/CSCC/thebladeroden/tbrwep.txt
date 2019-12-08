@@ -11,7 +11,7 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
 inventory.icon "AUCAIC"
-DropItem "DiveMissileWep"
+DropItem "DiveMissileWepGiver"
 Scale 2.0
 States
 {
