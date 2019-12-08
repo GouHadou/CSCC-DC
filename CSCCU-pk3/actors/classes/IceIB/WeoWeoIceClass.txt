@@ -1,2 +1,0 @@
-#include "actors/classes/IceIB/weoweoiceclass/weoweoiceclass.txt"
-#include "actors/classes/IceIB/weoweoiceclass/weoweoicewep.txt"

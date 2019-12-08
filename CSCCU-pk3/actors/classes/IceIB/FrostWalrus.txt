@@ -1,2 +1,0 @@
-#include "actors/classes/IceIB/frostwalrus/frostwalrusclass.txt"
-#include "actors/classes/IceIB/frostwalrus/frosttowerboss.txt"
