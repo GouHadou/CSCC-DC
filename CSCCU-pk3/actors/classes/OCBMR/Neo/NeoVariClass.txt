@@ -41,10 +41,6 @@ Player.WeaponSlot 5, "FireSpell"
 Player.WeaponSlot 6, "BlizzardSpell"
 Player.WeaponSlot 7, "ThunderSpell"
 
-//player.startitem "HasASubWeapon"
-//player.startitem "N05Ultima"
-//player.startitem "SubWeaponCount", 5//Cant pickup subweapons, nor Buffs
-damagefactor "Normal", 1.0
 mass 9999
 gravity 0.8
 scale 2.5

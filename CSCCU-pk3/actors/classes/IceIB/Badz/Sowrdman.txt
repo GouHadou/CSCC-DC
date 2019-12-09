@@ -35,7 +35,7 @@ SuperSpin:
 SWTR ABCD 1
 SWTR A 0 A_JumpIfInventory("DecoyFlag1",1,"SuperSpin")
 Goto Spawn
-Pain:
+ClassPain:
 SWOM H 0 A_JumpIfInventory("DecoyFlag1",1,"SuperSpin")
 SWOM H 0 A_ScaleVelocity(0.75)
 SWOM H 0

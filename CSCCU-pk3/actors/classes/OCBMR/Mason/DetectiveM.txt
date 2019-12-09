@@ -12,11 +12,6 @@ Player.StartItem "DualPlasmaPistols"
 Player.StartItem "BusterAmmo", 3
 Player.StartItem "PiercingLaserAmmo", 350
 Player.StartItem "DMasonPowerItem"
-Player.StartItem "MasterOfSubWeapons" //Basically, no carry limit + sub weps cost less 2 use
-//Player.StartItem "SubWeaponEddie", 1
-Damagefactor "Normal", 1.0
-//Type Psychic
-Player.StartItem "PsychicTypeTag"
 States
 {
 Spawn: 
@@ -31,28 +26,5 @@ Missile:
 DMSN F 5
 DMSN F 30
 GoTo Spawn+2
-Pain:
-NTIM H 0
-NTIM H 0 A_Recoil(1)
-NTIM H 0
-NTIM H 0 A_Pain
-NTIM H 0 A_Jump(256,"PainFix")
-GoTo PainFix
-PainFix:
-NTIM H 0
-GoTo PainFrames
-PainFrames:
-NTIM H 0 SetPlayerProperty(0,0,4)
-NTIM H 1// A_GiveInventory("IveBeenHit",1)
-NTIM HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
-NTIM H 0 SetPlayerProperty(0,0,1)
-NTIM H 0 A_Jump(256,"Spawn")
-GoTo Spawn+2
-TheEnd:
-NTIM G 4 
-loop
-CredWalk:
-NTIM BCDE 8
-loop
 }
 }

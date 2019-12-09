@@ -31,7 +31,7 @@ goto Spawn+3
 PainFix:
 ROLL H 0 A_TakeInventory("ParanoiaFlag", 999)
 goto PainFrames
-Pain:
+ClassPain:
 ROLL H 0 A_TakeInventory("ParanoiaFlag", 999)
 ROLL H 0 A_ScaleVelocity(0.75)
 ROLL H 0
