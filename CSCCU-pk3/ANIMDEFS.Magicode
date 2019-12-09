@@ -1,28 +1,4 @@
-//TheMod Emblem
-Texture TMEMB
-Pic TMBLA0 tics 4
-Pic TMBLB0 tics 4
-Pic TMBLC0 tics 4
-Pic TMBLD0 tics 4
-Pic TMBLE0 tics 4
-Pic TMBLF0 tics 4
 
-//Item System
-Texture ABL1A0
-Pic ABILA0 tics 4
-Pic ABILB0 tics 4
-
-Texture ABL2A0
-Pic ABILC0 tics 4
-Pic ABILD0 tics 4
-
-Texture ABL3A0
-Pic ABILE0 tics 4
-Pic ABILF0 tics 4
-
-Texture ABL4A0
-Pic ABILG0 tics 4
-Pic ABILH0 tics 4
 
 //Glazed Set
 texture GLACBAR
