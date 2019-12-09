@@ -1,4 +1,338 @@
 // Constants
+
+//=====|Translation Dyes|=======
+// Weapon Colors
+const int DYE_MEGABUSTER = 0;
+const int DYE_BUBBLELEAD = 1;
+const int DYE_LEAFSHIELD = 2;
+const int DYE_ATOMICFIRE = 3;
+const int DYE_SHADOWBLADE = 4;
+const int DYE_NAPALMBOMB = 5;
+const int DYE_AIRSHOOTER = 6;
+const int DYE_HYPERBOMB = 7;
+const int DYE_MAGNETMISSILE = 8;
+const int DYE_TOPSPIN = 9;
+const int DYE_NEEDLECANNON = 10;
+const int DYE_GEMINILASER = 11;
+const int DYE_SEARCHSNAKE = 12;
+const int DYE_TIMESTOPPER = 13;
+const int DYE_SUPERARM = 14;
+const int DYE_ICESLASHER = 15;
+const int DYE_THUNDERBEAM = 16;
+const int DYE_METALBLADE = 17;
+const int DYE_HARDKNUCKLE = 18;
+const int DYE_DRILLBOMB = 19;
+const int DYE_BLIZZARDATTACK = 20;
+const int DYE_FIRESTORM = 21;
+const int DYE_QUICKBOOMERANG = 22;
+const int DYE_CRASHBOMB = 23;
+const int DYE_CHARGEKICK = 24;
+const int DYE_ROLLINGCUTTER = 25;
+const int DYE_SPARKSHOCK = 26;
+const int DYE_RINGBOOMERANG = 27;
+const int DYE_GYROATTACK = 28;
+const int DYE_POWERSTONE = 29;
+const int DYE_DUSTCRUSHER = 30;
+const int DYE_PHARAOHSHOT = 31;
+const int DYE_WATERWAVE = 32;
+const int DYE_CRYSTALEYE = 33;
+const int DYE_SKULLBARRIER = 34;
+const int DYE_FLAMEBLAST = 35;
+const int DYE_PROTOBUSTER = 36;
+const int DYE_YAMATOSPEAR = 37;
+const int DYE_DIVEMISSILE = 38;
+const int DYE_PLANTBARRIER = 39;
+const int DYE_SILVERTOMAHAWK = 40;
+const int DYE_WINDSTORM = 41;
+const int DYE_KNIGHTCRUSH = 42;
+const int DYE_STARCRASH = 43;
+const int DYE_RAINFLUSH = 44;
+const int DYE_SAKUGARNE = 45;
+const int DYE_BASSBUSTER = 46;
+const int DYE_BALLADECRACKER = 47;
+const int DYE_SCREWCRUSHER = 48;
+const int DYE_FLASHSTOPPER = 49;
+const int DYE_GRAVITYHOLD = 50;
+const int DYE_CENTAURFLASH = 51;
+const int DYE_MIRRORBUSTER = 52;
+
+const int DYE_BALLADEREAL = 53;
+
+const int DYE_ATOMICFIRECRG1 = 60;
+const int DYE_ATOMICFIRECRG2 = 61;
+const int DYE_ATOMICFIRECRG3 = 62;
+
+const int DYE_PROTOCHARGE1 = 63;
+const int DYE_PROTOCHARGE2 = 64;
+
+const int DYE_ENKERCHARGE1 = 65;
+const int DYE_ENKERCHARGE2 = 66;
+
+const int DYE_METALMANREAL = 67;
+
+const int DYE_BOSSPAIN = 68;
+
+const int DYE_FREEZECRACKER = 54;
+const int DYE_NOISECRUSH = 55;
+const int DYE_THUNDERBOLT = 56;
+const int DYE_JUNKSHIELD = 57;
+const int DYE_WILDCOIL = 58;
+const int DYE_SCORCHWHEEL = 59;
+const int DYE_SLASHCLAW = 69;
+const int DYE_DANGERWRAP = 70;
+
+const int DYE_NOISECRUSHCRG1 = 71;
+const int DYE_NOISECRUSHCRG2 = 72;
+const int DYE_NOISECRUSHCRG3 = 73;
+
+const int DYE_WILDCOILCRG1 = 74;
+const int DYE_WILDCOILCRG2 = 75;
+const int DYE_WILDCOILCRG3 = 76;
+
+const int DYE_SUPERADAPTOR = 77;
+const int DYE_SUPERADAPTORCRG1 = 78;
+const int DYE_SUPERADAPTORCRG2 = 79;
+const int DYE_SUPERADAPTORCRG3 = 80;
+
+const int DYE_FLAMESWORD = 81;
+const int DYE_ICEWAVE = 82;
+const int DYE_THUNDERCLAW = 83;
+const int DYE_WATERBALLOON = 84;
+const int DYE_TORNADOHOLD = 85;
+const int DYE_FLASHBOMB = 86;
+const int DYE_ASTROCRUSH = 87;
+const int DYE_HOMINGSNIPER = 88;
+
+const int DYE_HOMINGCHRG1 = 89;
+const int DYE_HOMINGCHRG2 = 90;
+const int DYE_HOMINGCHRG3 = 91;
+
+const int DYE_MEGACHARGE1 = 92;
+const int DYE_MEGACHARGE2 = 93;
+const int DYE_MEGACHARGE3 = 94;
+
+const int DYE_OILSLIDER = 95;
+const int DYE_TIMESLOW = 96;
+
+const int DYE_MEGABALL = 100;
+
+const int DYE_DUOFIST = 101;
+const int DYE_DUOCHARGE1 = 102;
+const int DYE_DUOCHARGE2 = 103;
+const int DYE_DUOCHARGE3 = 104;
+
+const int DYE_ICEDEATH = 105;
+
+const int DYE_LASERCHARGE1 = 106;
+const int DYE_LASERCHARGE2 = 107;
+
+const int DYE_TENGUBLADE = 170;
+const int DYE_WAVEBURNER = 171;
+const int DYE_SPREADDRILL = 172;
+const int DYE_MAGICCARD = 173;
+const int DYE_REMOTEMINE = 174;
+const int DYE_COPYVISION = 175;
+const int DYE_ICEWALL = 176;
+const int DYE_LIGHTNINGBOLT = 177;
+const int DYE_TREBLEBOOST = 178;
+
+// [Korby] Bass colors
+const int DYE_TENGUBLADEB = 179;
+const int DYE_WAVEBURNERB = 180;
+const int DYE_SPREADDRILLB = 181;
+const int DYE_MAGICCARDB = 182;
+const int DYE_REMOTEMINEB = 183;
+const int DYE_COPYVISIONB = 184;
+const int DYE_ICEWALLB = 185;
+const int DYE_LIGHTNINGBOLTB = 186;
+
+const int DYE_PLUGBALL = 187;
+const int DYE_LASERTRIDENT = 188;
+const int DYE_TORNADOBLOW = 189;
+const int DYE_JEWELSATELLITE = 190;
+const int DYE_MAGMABAZOOKA = 191;
+const int DYE_MAGMACHARGE1 = 192;
+const int DYE_MAGMACHARGE2 = 193;
+const int DYE_CONCRETESHOT = 194;
+const int DYE_CONCRETEDAMAGE = 195;
+const int DYE_BLACKHOLEBOMB = 196;
+const int DYE_HORNETCHASER = 197;
+
+const int DYE_SOLARBLAZE = 198;
+const int DYE_WHEELCUTTER = 199;
+const int DYE_REBOUNDSTRIKER = 200;
+const int DYE_THUNDERWOOL = 201;
+const int DYE_COMMANDOBOMB = 202;
+const int DYE_CHILLSPIKE = 203;
+const int DYE_WATERSHIELD = 204;
+const int DYE_TRIPLEBLADE = 205;
+
+const int DYE_GRABBUSTER = 206;
+const int DYE_BUBBLEBOMB = 207;
+const int DYE_PHOTONMISSILE = 208;
+const int DYE_SALTWATER = 209;
+const int DYE_ELECTRICSHOCK = 210;
+const int DYE_BLACKHOLE = 211;
+const int DYE_DEEPDIGGER = 212;
+const int DYE_BREAKDASH = 213;
+const int DYE_BREAKDASHCHARGE1 = 214;
+const int DYE_BREAKDASHCHARGE2 = 215;
+const int DYE_BREAKDASHCHARGE3 = 216;
+const int DYE_SPARKCHASER = 217;
+const int DYE_MEGAARM = 218;
+const int DYE_MEGAARMCHARGE1 = 219;
+const int DYE_MEGAARMCHARGE2 = 220;
+const int DYE_MEGAARMCHARGE3 = 221;
+
+// Misc Character Colors
+
+const int DYE_CUTMAN = 720;
+const int DYE_GUTSMAN = 721;
+const int DYE_ICEMAN = 722;
+const int DYE_BOMBMAN = 723;
+const int DYE_FIREMAN = 724;
+const int DYE_ELECMAN = 725;
+const int DYE_TIMEMAN = 726;
+const int DYE_OILMAN = 727;
+
+const int DYE_METALMAN = 740;
+const int DYE_AIRMAN = 741;
+const int DYE_BUBBLEMAN = 742;
+const int DYE_QUICKMAN = 743;
+const int DYE_CRASHMAN = 744;
+const int DYE_FLASHMAN = 745;
+const int DYE_HEATMAN = 746;
+const int DYE_WOODMAN = 747;
+const int DYE_DRWILYC = 748;
+const int DYE_DRWILYCSUIT = 749;
+const int DYE_DRWILYCAPSULEF = 750;
+const int DYE_DRWILYCAPSULEI = 751;
+
+const int DYE_ALIEN = 755;
+
+const int DYE_NEEDLEMAN = 760;
+const int DYE_MAGNETMAN = 761;
+const int DYE_GEMINIMAN = 762;
+const int DYE_HARDMAN = 763;
+const int DYE_TOPMAN = 764;
+const int DYE_SNAKEMAN = 765;
+const int DYE_SPARKMAN = 766;
+const int DYE_SHADOWMAN = 767;
+const int DYE_DOCROBOT = 768;
+
+const int DYE_BRIGHTMAN = 780;
+const int DYE_TOADMAN = 781;
+const int DYE_DRILLMAN = 782;
+const int DYE_PHARAOHMAN = 783;
+const int DYE_RINGMAN = 784;
+const int DYE_DUSTMAN = 785;
+const int DYE_DIVEMAN = 786;
+const int DYE_SKULLMAN = 787;
+
+const int DYE_GRAVITYMAN = 800;
+const int DYE_WAVEMAN = 801;
+const int DYE_STONEMAN = 802;
+const int DYE_GYROMAN = 803;
+const int DYE_STARMAN = 804;
+const int DYE_CHARGEMAN = 805;
+const int DYE_NAPALMMAN = 806;
+const int DYE_CRYSTALMAN = 807;
+const int DYE_DARKMAN1 = 808;
+const int DYE_DARKMAN2 = 809;
+const int DYE_DARKMAN3 = 810;
+const int DYE_DARKMAN4 = 811;
+const int DYE_GRAVITYMANFLIP = 814;
+const int DYE_CHARGEMANHOT = 815;
+
+const int DYE_BLIZZARDMAN = 820;
+const int DYE_CENTAURMAN = 821;
+const int DYE_FLAMEMAN = 822;
+const int DYE_KNIGHTMAN = 823;
+const int DYE_PLANTMAN = 824;
+const int DYE_TOMAHAWKMAN = 825;
+const int DYE_WINDMAN = 826;
+const int DYE_YAMATOMAN = 827;
+
+const int DYE_FREEZEMAN = 840;
+const int DYE_JUNKMAN = 841;
+const int DYE_BURSTMAN = 842;
+const int DYE_CLOUDMAN = 843;
+const int DYE_SPRINGMAN = 844;
+const int DYE_SLASHMAN = 845;
+const int DYE_SHADEMAN = 846;
+const int DYE_TURBOMAN = 847;
+
+const int DYE_SHADECHARGE1 = 850;
+const int DYE_SHADECHARGE2 = 851;
+
+const int DYE_TENGUMAN = 860;
+const int DYE_ASTROMAN = 861;
+const int DYE_SWORDMAN = 862;
+const int DYE_CLOWNMAN = 863;
+const int DYE_SEARCHMAN = 864;
+const int DYE_FROSTMAN = 865;
+const int DYE_GRENADEMAN = 866;
+const int DYE_AQUAMAN = 867;
+const int DYE_ORIGINDUO = 868;
+const int DYE_EVILROBOT = 869;
+
+const int DYE_CONCRETEMAN = 880;
+const int DYE_TORNADOMAN = 881;
+const int DYE_SPLASHWOMAN = 882;
+const int DYE_PLUGMAN = 883;
+const int DYE_JEWELMAN = 884;
+const int DYE_HORNETMAN = 885;
+const int DYE_MAGMAMAN = 886;
+const int DYE_GALAXYMAN = 887;
+const int DYE_GALAXYMAN1 = 890;
+const int DYE_GALAXYMAN2 = 891;
+const int DYE_GALAXYMAN3 = 892;
+const int DYE_GALAXYMAN4 = 893;
+const int DYE_GALAXYMAN5 = 894;
+const int DYE_GALAXYMAN6 = 895;
+const int DYE_GALAXYMAN7 = 896;
+
+const int DYE_BLADEMAN = 900;
+const int DYE_PUMPMAN = 901;
+const int DYE_COMMANDOMAN = 902;
+const int DYE_CHILLMAN = 903;
+const int DYE_SHEEPMAN = 904;
+const int DYE_STRIKEMAN = 905;
+const int DYE_NITROMAN = 906;
+const int DYE_SOLARMAN = 907;
+
+const int DYE_DYNAMOMAN = 922;
+const int DYE_COLDMAN = 923;
+const int DYE_GROUNDMAN = 924;
+const int DYE_PIRATEMAN = 925;
+const int DYE_BURNERMAN = 926;
+const int DYE_MAGICMAN = 927;
+const int DYE_KINGMAN = 928;
+
+const int DYE_BUSTERRODG = 940;
+const int DYE_MEGAWATERS = 941;
+const int DYE_HYPERSTORMH = 942;
+const int DYE_ENKER = 943;
+const int DYE_PUNK = 944;
+const int DYE_BALLADE = 945;
+const int DYE_QUINT = 946;
+const int DYE_BRGCOPY = 950;
+const int DYE_MWSCOPY = 951;
+const int DYE_HSHCOPY = 952;
+
+const int DYE_TERRA = 960;
+const int DYE_MERCURY = 961;
+const int DYE_VENUS = 962;
+const int DYE_MARS = 963;
+const int DYE_JUPITER = 964;
+const int DYE_SATURN = 965;
+const int DYE_URANUS = 966;
+const int DYE_PLUTO = 967;
+const int DYE_NEPTUNE = 968;
+const int DYE_SUNSTAR = 969;
+
+//=====|CSCC Dyes|=======
+
 const int WCCS_COLDFUSION = 370;
 const int WCCS_ROZARK = 371;
 const int WCCS_DWINGSCHARGE1 = 372;
@@ -69,6 +403,51 @@ const int CSACS_BIKHEALTH = 774;
 const int CSACS_LEGOTEAMCHECK = 630;
 const int CSACS_REDEYESHEALTH = 666;
 const int DYE_JAX = 977;
+
+//======|CSCCB Color Definitions
+const int DYE_HIKOUKEN = 970;
+const int DYE_HIKOUKENC1 = 971;
+const int DYE_HIKOUKENC2 = 972;
+
+const int DYE_PISTONMAN = 973;
+const int DYE_BULL_COLOR = 974;
+const int DYE_AEGISCOLOR = 975;
+//const int DYE_LORDDAMAGERCOL = 976;
+//const int DYE_MESSATSU = 977;
+const int DYE_MESSCHARGE1 = 978;
+const int DYE_MESSCHARGE2 = 979;
+
+const int DYE_CRAZYWAVE = 980;
+const int DYE_PHARAOHMANRAGE = 981;
+const int DYE_PHARAOHBLINK = 982;
+const int DYE_PHARAOHEXECUTE1 = 983;
+const int DYE_PHARAOHEXECUTE2 = 984;
+const int DYE_PHARAOHEXECUTE3 = 985;
+
+const int DYE_AKANE = 986;
+const int DYE_AKANELIGHT = 987;
+const int DYE_DARKSPLITTER = 988;
+const int DYE_DARKSPLITTERLIGHT = 989;
+
+//const int DYE_CORPORAL = 990;//986
+//const int DYE_NADESPAM = 991;//987
+
+const int DYE_EDGELORD = 992;//986
+
+const int DYE_FLAMERYN = 993;
+const int DYE_TOPGRENADE = 994;
+const int DYE_TOPGRENADE2 = 995;
+
+const int DYE_VOCALWOMAN = 996;
+const int DYE_IDOLWAVE = 997;
+
+const int DYE_SNAILBREEDER = 998;
+
+const int DYE_ANKHZIRUS = 999;
+const int DYE_CURSEDSTRIKE = 1000;
+
+const int DYE_EMBERCELICA = 1001;
+const int DYE_FUME = 1002;
 
 // Base actors
 #include "actors/classes/classbase0.txt"

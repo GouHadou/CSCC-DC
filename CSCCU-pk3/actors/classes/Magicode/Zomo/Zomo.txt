@@ -642,10 +642,10 @@ ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
 ZOMO H 2
 goto MegamanErase
-Death:
+ClassDeath:
 ZOMO H 0 A_GiveInventory("IsDead",1)
 ZOMO H 0 A_GiveInventory("HudClearer",1)
-ZOMO H 0 A_SpawnItemEx("RandomZomoWepSpawner",0,0,16)
+ZOMO H 0 //A_SpawnItemEx("RandomZomoWepSpawner",0,0,16)
 ZOMO H 0 A_Jump(48,"Boommmmm")
 ZOMO H 0 A_Jump(256,"BNDeath1","BNDeath2")
 goto BNDeath1
