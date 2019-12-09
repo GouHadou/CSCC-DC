@@ -50,13 +50,6 @@ Actor WoodFlag3 : Once{}
 
 Actor DarkSoulFlag : Once{}
 
-Actor ChargeFlag : Inventory
-{
-inventory.amount 1
-inventory.maxamount 2
-+INVENTORY.IGNORESKILL
-}
-
 Actor WindFlag : Once{}
 Actor WindFlag2 : Once{}
 Actor WindFlag3 : Once{}
@@ -64,13 +57,6 @@ Actor WindFlag3 : Once{}
 Actor BreakFlag : Once{}
 Actor BreakFlag2 : Once{}
 Actor BreakFlag3 : Once{}
-
-Actor BNFlag : Inventory
-{
-inventory.amount 1
-inventory.maxamount 1
-+INVENTORY.IGNORESKILL
-}
 
 actor UsingSlot1 : Once {}
 actor UsingSlot2 : Once {}
@@ -312,13 +298,6 @@ inventory.maxamount 1
 
 Actor TreeBombFlag2 : Once {}
 Actor TreeBombFlag3 : Once {}
-
-actor InvisibleFlag : Inventory
-{
-inventory.amount 1
-inventory.maxamount 1
-+INVENTORY.IGNORESKILL
-}
 
 Actor InvisibleFlag2 : Once {}
 Actor InvisibleFlag3 : Once {}

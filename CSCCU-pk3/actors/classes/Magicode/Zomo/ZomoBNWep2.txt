@@ -54,7 +54,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto RealReady+1
 FireReady:
 BUST B 0 ACS_ExecuteAlways(991,0,520)
@@ -81,7 +81,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 FIBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto FireReady+1
 AquaReady:
 BUST B 0 ACS_ExecuteAlways(991,0,524)
@@ -108,7 +108,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 AQBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto AquaReady+1 
 ElecReady:
 BUST B 0 ACS_ExecuteAlways(991,0,528)
@@ -135,7 +135,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 ELBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto ElecReady+1
 WoodReady:
 BUST B 0 ACS_ExecuteAlways(991,0,532)
@@ -162,7 +162,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 WOBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto WoodReady+1
 WindReady:
 BUST B 0 ACS_ExecuteAlways(991,0,540)
@@ -189,7 +189,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 WBUS A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto WindReady+1
 BreakReady:
 BUST B 0 ACS_ExecuteAlways(991,0,544)
@@ -216,7 +216,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BRKB A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto BreakReady+1
 CustomSoundCheck:
 BUST B 0 A_GiveInventory("CustomFlag",1)
@@ -274,9 +274,9 @@ goto ProtoReady+2
 ReshuffleCheck:
 BUST B 0 A_TakeInventory("User1_Trigger",99)
 BUST B 0 A_TakeInventory("User2_Trigger",99)
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,1)
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,1)
 goto Ready+2
-BUST B 0 A_TakeInventory("CustomAmmo",300)
+BUST B 0 A_TakeInventory("ZomoCustomAmmo",300)
 BUST B 0 A_GiveInventory("ReshuffleChipAuto",1)
 goto Ready+2
 PACheck:
@@ -812,7 +812,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag2",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"WMDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto WoodmanReady+1
 BassReady:
 BUST B 0 ACS_ExecuteAlways(991,0,46)
@@ -839,7 +839,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag2",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"BEXEDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto BassReady+1
 BubbleReady:
 BUST B 0 ACS_ExecuteAlways(991,0,819)
@@ -866,7 +866,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag2",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"BubbleDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto BubbleReady+1
 FEXEReady:
 BUST B 0 ACS_ExecuteAlways(991,0,816)
@@ -893,7 +893,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag2",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"FEXEDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto FEXEReady+1
 NapalmReady:
 BUST B 0 ACS_ExecuteAlways(991,0,817)
@@ -920,7 +920,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag2",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"NapalmDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto NapalmReady+1
 FreezeReady:
 BUST B 0 ACS_ExecuteAlways(991,0,818)
@@ -947,7 +947,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag2",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"FreezeDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto FreezeReady+1
 ProtoReady:
 BUST B 0 ACS_ExecuteAlways(991,0,975)
@@ -975,7 +975,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag2",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"ProtoEXEDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto ProtoReady+2
 AnimDecide:
 BUST B 0 A_JumpIfInventory("FireFlag2",1,"FireAnim")

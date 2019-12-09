@@ -245,7 +245,7 @@ stop
 }
 }
 
-actor Psybeam
+actor AbraPsybeam
 {
 Translation "55:55=247:247", "197:197=251:251"
 PROJECTILE
@@ -263,14 +263,14 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("weapon/Psybeam","weapon",1)
-TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamTrail",0,0,0,0,0,0,0)
-TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamTrail2",0,0,0,0,0,0,0)
-TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamTrail3",0,0,0,0,0,0,0)
+TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("AbraPsybeamTrail",0,0,0,0,0,0,0)
+TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("AbraPsybeamTrail2",0,0,0,0,0,0,0)
+TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("AbraPsybeamTrail3",0,0,0,0,0,0,0)
 stop
 }
 }
 
-actor PsybeamTrail
+actor AbraPsybeamTrail
 {
 +NOINTERACTION
 +NOGRAVITY
@@ -288,12 +288,12 @@ stop
 }
 }
 
-actor PsybeamTrail2 : PsybeamTrail
+actor AbraPsybeamTrail2 : AbraPsybeamTrail
 {
 scale 4.0
 }
 
-actor PsybeamTrail3 : PsybeamTrail
+actor AbraPsybeamTrail3 : AbraPsybeamTrail
 {
 scale 2.0
 }

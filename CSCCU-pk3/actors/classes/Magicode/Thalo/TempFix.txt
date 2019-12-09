@@ -16,8 +16,6 @@ Inventory.MaxAmount 2
 
 actor DetoxLevel : Inventory {}
 
-actor PoisonMark : Inventory {}
-
 actor TempFireProof : Inventory {}
 
 actor FocusSpeedDown : Inventory {}

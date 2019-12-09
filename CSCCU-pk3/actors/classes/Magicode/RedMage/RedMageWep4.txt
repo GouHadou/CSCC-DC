@@ -198,7 +198,7 @@ States
 {
 Spawn:
 TNT1 A 0
-FCRA AAABBB 1 A_SpawnItemEx("BlizzaraTrail")
+FCRA AAABBB 1 A_SpawnItemEx("RedMageBlizzaraTrail")
 goto Spawn+1
 Crash:
 XDeath:
@@ -272,7 +272,7 @@ goto Spawn+1
 }
 }
 
-actor BlizzaraTrail
+actor RedMageBlizzaraTrail
 {
 scale 4.5
 -SOLID

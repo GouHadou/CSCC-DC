@@ -56,10 +56,10 @@ SHFL I 5
 loop
 Use:
 TNT1 A 0 A_JumpIfInventory("DarkSoulFlag",1,"No")
-TNT1 A 0 A_JumpIfInventory("CustomAmmo",300,"Reshuffle")
+TNT1 A 0 A_JumpIfInventory("ZomoCustomAmmo",300,"Reshuffle")
 fail
 Reshuffle:
-TNT1 A 0 A_TakeInventory("CustomAmmo",350)
+TNT1 A 0 A_TakeInventory("ZomoCustomAmmo",350)
 TNT1 A 0 A_TakeInventory("Recover300Chip",99)
 TNT1 A 0 A_TakeInventory("FlashBombChip",99)
 TNT1 A 0 A_TakeInventory("MagBoltChip",99)
@@ -5672,7 +5672,7 @@ TNT1 A 0 A_GiveInventory("FastGaugeFlag",1)
 stop
 AltFast:
 TNT1 A 0 A_GiveInventory("ZomoMemory",32)
-TNT1 A 0 A_GiveInventory("CustomAmmo",175)
+TNT1 A 0 A_GiveInventory("ZomoCustomAmmo",175)
 stop
 }
 }

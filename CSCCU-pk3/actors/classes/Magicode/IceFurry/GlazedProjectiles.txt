@@ -353,10 +353,10 @@ TNT1 A 0 A_SpawnItemEx("IceSpikeSpawner",0,0,0,30,0,0,300)
 TNT1 A 0 A_SpawnItemEx("IceSpikeSpawner",0,0,0,30,0,0,330)
 stop
 Ceiling:
-TNT1 A 0 A_SpawnItemEx("IceBall",0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("GlaceIceBall",0,0,0,0,0,0)
 stop
 Wall:
-TNT1 A 0 A_SpawnItemEx("IceBall",0,0,0,4,0,10,180)
+TNT1 A 0 A_SpawnItemEx("GlaceIceBall",0,0,0,4,0,10,180)
 stop
 }
 }
@@ -413,7 +413,7 @@ loop
 }
 }
 
-actor IceBall
+actor GlaceIceBall
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -456,7 +456,7 @@ stop
 }
 }
 
-actor IceSpike
+actor GlaceIceSpike
 {
 PROJECTILE
 +FLOORHUGGER
@@ -485,7 +485,7 @@ stop
 }
 }
 
-actor IceSpike2 : IceSpike
+actor IceSpike2 : GlaceIceSpike
 {
 +NOGRAVITY
 -FLOORHUGGER
@@ -613,6 +613,6 @@ stop
 }
 }
 
-actor IceSpikeI : IceSpike { Obituary "%o reminded %k that ChillSpikeWep doesn't exist yet, but they didn't listen." }
+actor IceSpikeI : GlaceIceSpike { Obituary "%o reminded %k that ChillSpikeWep doesn't exist yet, but they didn't listen." }
 
-actor IceBall2 : IceBall { Obituary "%k tossed %o their lost Ice Ball back, knocking them out cold." }
+actor IceBall2 : GlaceIceBall { Obituary "%k tossed %o their lost Ice Ball back, knocking them out cold." }

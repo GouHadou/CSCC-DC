@@ -1770,8 +1770,8 @@ InInventory ProtoEXEFlag3, 1{DrawImage "PEX1I0", 39, 157; DrawImage "PEX2I0", 53
 
 DrawSelectedInventory INDEXFONT, 16, 81, 14, 82, White;
 Drawbar "BARENERG", "BAREMPTY", Ammo1, vertical, 16, 25;
-Drawbar "CUSTFULL", "CUSTBAR", CustomAmmo, horizontal, 120, 18;
-InInventory CustomAmmo, 300{DrawBar "BNCSBAR", "CUSTBAR", CustomAmmo, horizontal, 120, 18;}
+Drawbar "CUSTFULL", "CUSTBAR", ZomoCustomAmmo, horizontal, 120, 18;
+InInventory ZomoCustomAmmo, 300{DrawBar "BNCSBAR", "CUSTBAR", ZomoCustomAmmo, horizontal, 120, 18;}
 }
 
 

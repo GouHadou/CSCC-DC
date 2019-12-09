@@ -351,12 +351,6 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
-actor RapidFlag : Inventory
-{
-inventory.amount 1
-inventory.maxamount 1
-}
-
 //Other
 
 actor AbilityTimer : Inventory

@@ -374,23 +374,6 @@ fail
 }
 }
 
-ACTOR TooSoonFlagX : Powerup
-{
-Powerup.Duration 262
-}
-
-actor FlightDisableFlag : Inventory
-{
-inventory.amount 1
-inventory.maxamount 1
-}
-
-actor YesFlightFlag : Inventory
-{
-inventory.amount 1
-inventory.maxamount 1
-}
-
 actor OMAmmoChangerItem : CustomInventory
 {
 inventory.amount 1

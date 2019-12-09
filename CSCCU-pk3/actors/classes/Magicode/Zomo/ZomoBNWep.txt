@@ -65,7 +65,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto RealReady+1
 FireReady:
 BUST B 0 ACS_ExecuteAlways(991,0,520)
@@ -92,7 +92,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 FIBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto FireReady+1
 AquaReady:
 BUST B 0 ACS_ExecuteAlways(991,0,524)
@@ -119,7 +119,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 AQBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto AquaReady+1 
 ElecReady:
 BUST B 0 ACS_ExecuteAlways(991,0,528)
@@ -146,7 +146,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 ELBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto ElecReady+1
 WoodReady:
 BUST B 0 ACS_ExecuteAlways(991,0,532)
@@ -173,7 +173,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 WOBN A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto WoodReady+1
 WindReady:
 BUST B 0 ACS_ExecuteAlways(991,0,540)
@@ -200,7 +200,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 WBUS A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto WindReady+1
 BreakReady:
 BUST B 0 ACS_ExecuteAlways(991,0,544)
@@ -227,7 +227,7 @@ BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BRKB A 1 A_WeaponReady
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto BreakReady+1
 CustomSoundCheck:
 BUST B 0 A_GiveInventory("CustomFlag",1)
@@ -285,9 +285,9 @@ goto ProtoReady+2
 ReshuffleCheck:
 BUST B 0 A_TakeInventory("User1_Trigger",99)
 BUST B 0 A_TakeInventory("User2_Trigger",99)
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,1)
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,1)
 goto Ready+2
-BUST B 0 A_TakeInventory("CustomAmmo",300)
+BUST B 0 A_TakeInventory("ZomoCustomAmmo",300)
 BUST B 0 A_GiveInventory("ReshuffleChipAuto",1)
 goto Ready+2
 PACheck:
@@ -954,7 +954,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"WMDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto WoodmanReady+1
 BassReady:
 BUST B 0 ACS_ExecuteAlways(991,0,46)
@@ -981,7 +981,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"BEXEDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto BassReady+1
 BubbleReady:
 BUST B 0 ACS_ExecuteAlways(991,0,819)
@@ -1008,7 +1008,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"BubbleDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto BubbleReady+1
 FEXEReady:
 BUST B 0 ACS_ExecuteAlways(991,0,816)
@@ -1035,7 +1035,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"FEXEDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto FEXEReady+1
 NapalmReady:
 BUST B 0 ACS_ExecuteAlways(991,0,817)
@@ -1062,7 +1062,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"NapalmDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto NapalmReady+1
 FreezeReady:
 BUST B 0 ACS_ExecuteAlways(991,0,818)
@@ -1089,7 +1089,7 @@ BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"FreezeDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto FreezeReady+1
 ProtoReady:
 BUST B 0 ACS_ExecuteAlways(991,0,975)
@@ -1117,33 +1117,33 @@ BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
 BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
 BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
 BUST B 0 A_JumpIfInventory("CustomFlag",1,"ProtoEXEDirect")
-BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+BUST B 0 A_JumpIfInventory("ZomoCustomAmmo",300,"CustomSoundCheck")
 goto ProtoReady+2
 Flash:
 TNT1 A 0 A_JumpIfInventory("FastGaugeFlag",1,"FastFlash")
 TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"ShieldFlash")
 TNT1 AA 1 A_JumpIfInventory("MagBoltStartFlag",1,"FlashMB")
 TNT1 A 0 A_JumpIfInventory("ExistCount",6,"MemoryRegen")
-TNT1 A 0 A_GiveInventory("CustomAmmo",1)
+TNT1 A 0 A_GiveInventory("ZomoCustomAmmo",1)
 TNT1 A 0 A_GiveInventory("ExistCount",1)
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
 loop
 ShieldFlash:
 PESH A 2 Offset(20,-148)
-PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",1)
 PESH A 2 Offset(20,-128)
-PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",1)
 PESH A 2 Offset(20,-108)
-PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",1)
 PESH A 2 Offset(20,-88)
-PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",1)
 PESH A 2 Offset(20,-68)
-PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",1)
 PESH AA 1 A_JumpIfInventory("FastGaugeFlag",1,"FastShield")
 TNT1 A 0 A_SpawnItemEx("ProtoShieldXTM",28,0,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
 TNT1 A 0 A_SpawnItemEx("ProtoShieldFX",23,-10,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
 TNT1 A 0 A_JumpIfInventory("ExistCount",6,"MemoryRegen")
-TNT1 A 0 A_GiveInventory("CustomAmmo",1)
+TNT1 A 0 A_GiveInventory("ZomoCustomAmmo",1)
 TNT1 A 0 A_GiveInventory("ExistCount",1)
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
 TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"ShieldFlashDirect")
@@ -1155,27 +1155,27 @@ FastFlash:
 TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"FastShield")
 TNT1 AA 1 A_JumpIfInventory("FastCancelFlag",1,"FastStop")
 TNT1 A 0 A_JumpIfInventory("ExistCount",3,"MemoryRegen")
-TNT1 A 0 A_GiveInventory("CustomAmmo",2)
+TNT1 A 0 A_GiveInventory("ZomoCustomAmmo",2)
 TNT1 A 0 A_GiveInventory("ExistCount",1)
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
 TNT1 A 0 A_JumpIfInventory("MagBoltStartFlag",1,"FlashMB")
 loop
 FastShield:
 PESH A 2 Offset(20,-148)
-PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",2)
 PESH A 2 Offset(20,-128)
-PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",2)
 PESH A 2 Offset(20,-108)
-PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",2)
 PESH A 2 Offset(20,-88)
-PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",2)
 PESH A 2 Offset(20,-68)
-PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 0 A_GiveInventory("ZomoCustomAmmo",2)
 PESH AA 1 Offset(20,-48) A_JumpIfInventory("FastCancelFlag",1,"FastStop")
 TNT1 A 0 A_SpawnItemEx("ProtoShieldXTM",28,0,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
 TNT1 A 0 A_SpawnItemEx("ProtoShieldFX",23,-10,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
 TNT1 A 0 A_JumpIfInventory("ExistCount",3,"MemoryRegen")
-TNT1 A 0 A_GiveInventory("CustomAmmo",2)
+TNT1 A 0 A_GiveInventory("ZomoCustomAmmo",2)
 TNT1 A 0 A_GiveInventory("ExistCount",1)
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
 TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"FastShieldDirect")
@@ -1195,7 +1195,7 @@ TNT1 A 0 A_SpawnItemEx("MagBoltFXActor",24,6,30,0,0,0,0,SXF_NOCHECKPOSITION|SXF_
 TNT1 A 1 A_SpawnItemEx("MagBoltRadiusDamager",0,0,8)
 TNT1 A 0 A_SpawnItemEx("MagBoltFXActor",24,6,30,0,0,0,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
 TNT1 A 0 ACS_ExecuteAlways(247,0,40,400,0)
-TNT1 A 0 A_GiveInventory("CustomAmmo",2)
+TNT1 A 0 A_GiveInventory("ZomoCustomAmmo",2)
 TNT1 A 0 A_GiveInventory("CutterFlag",1)
 loop
 FlashStop:
@@ -1937,84 +1937,6 @@ inventory.maxamount 150
 +INVENTORY.IGNORESKILL
 }
 
-Actor BNBusterShot1 : FastProjectile
-{
-PROJECTILE
-+DONTBLAST
-Obituary "%o got pew pew'd by that pea-shooting buster %k has."
-Radius 8
-Height 8
-Speed 125
-Damage(4)
-Scale 1.0
-Translation "192:192=160:160", "198:198=162:162"
-Damagetype "ZomoBN"
-States
-{
-Spawn:
-TNT1 A 2
-loop
-Crash:
-XDeath:
-TNT1 A 0 A_PlaySoundEx("weapon/BNShotHit","SoundSlot5")
-BIM1 BCD 2
-stop
-Death:
-BIM1 BCD 2
-stop
-}
-}
-
-Actor BNBusterShot2 : BNBusterShot1
-{
-Obituary "Who needs full charging? Certainly not %k, as they did away with %o just fine."
-Translation "192:192=107:107", "198:198=109:109"
-Radius 14
-Height 14
-Speed 600
-Damage(15) //Might change later if needed.
-Scale 1.5
-States
-{
-Death:
-BIM1 BCDE 2
-stop
-}
-}
-
-Actor BNBusterShot3
-{
-PROJECTILE
-//+DONTBLAST
-Damagetype "ZomoBN"
-Obituary "%o was pierced by the power of %k's fully-charged Buster Shot."
-Radius 24
-Height 24
-Speed 55
-Damage(20) //Might have to change later as well...
-Scale 3.0
-States
-{
-Spawn:
-TNT1 A 0
-CHBU AA 1 A_SpawnItemEx("MBOrb1",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
-CHBU BB 1 A_SpawnItemEx("MBOrb2",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
-CHBU CC 1 A_SpawnItemEx("MBOrb3",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
-CHBU DD 1 A_SpawnItemEx("MBOrb4",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
-goto Spawn+1
-Death:
-TNT1 A 0 A_Stop
-TNT1 A 1 A_SpawnItemEx("BNBShot3Explosion")
-stop
-Crash:
-XDeath:
-TNT1 A 0 A_Stop
-TNT1 A 0 A_PlaySoundEx("weapon/BNShotHit","SoundSlot5")
-TNT1 A 1 A_SpawnItemEx("BNBShot3Explosion")
-stop
-}
-}
-
 Actor BNBShot3Explosion
 {
 PROJECTILE
@@ -2066,7 +1988,7 @@ actor MBOrb2 : MBOrb1{Translation "208:213=251:251", "214:215=251:251"}
 actor MBOrb3 : MBOrb1{Translation "208:213=178:178", "214:215=178:178"}
 actor MBOrb4 : MBOrb1{Translation "208:213=105:105", "214:215=105:105"}
 
-Actor CustomAmmo : Ammo
+Actor ZomoCustomAmmo : Ammo
 {
 inventory.amount 1
 inventory.maxamount 300

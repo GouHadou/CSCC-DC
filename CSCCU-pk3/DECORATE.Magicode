@@ -85,6 +85,17 @@
 #Include "Actors/classes/Magicode/Aquoon/Attacks/WaveSpiker.txt"
 #Include "Actors/classes/Magicode/Aquoon/Attacks/FragmentedShark.txt"
 
+//===|Zomo
+#include "actors/classes/Magicode/Zomo/Zomo.txt"
+#include "actors/classes/Magicode/Zomo/ZomoChips.txt"
+#include "actors/classes/Magicode/Zomo/ZomoBNWep.txt"
+#include "actors/classes/Magicode/Zomo/ZomoBNWep2.txt"
+#include "actors/classes/Magicode/Zomo/ZomoBNWep3.txt"
+#include "actors/classes/Magicode/Zomo/ZomoChipEffects.txt"
+#include "actors/classes/Magicode/Zomo/ZomoFlags.txt"
+#include "actors/classes/Magicode/Zomo/BusterProjectiles.txt"
+#include "actors/classes/Magicode/Zomo/NaviSoulProjectiles.txt"
+
 //===|RedMage
 #include "actors/classes/Magicode/RedMage/RedMage.txt"
 #include "actors/classes/Magicode/RedMage/RedMageWep1.txt"
@@ -99,17 +110,6 @@
 #include "actors/classes/Magicode/RedMage/RedMageWep10.txt"
 #include "actors/classes/Magicode/RedMage/SpellFusion.txt"
 #include "actors/classes/Magicode/RedMage/MysteryTomes.txt"
-
-//===|Zomo
-#include "actors/classes/Magicode/Zomo/Zomo.txt"
-#include "actors/classes/Magicode/Zomo/ZomoChips.txt"
-#include "actors/classes/Magicode/Zomo/ZomoChipEffects.txt"
-#include "actors/classes/Magicode/Zomo/ZomoBNWep.txt"
-#include "actors/classes/Magicode/Zomo/ZomoBNWep2.txt"
-#include "actors/classes/Magicode/Zomo/ZomoBNWep3.txt"
-#include "actors/classes/Magicode/Zomo/ZomoFlags.txt"
-#include "actors/classes/Magicode/Zomo/BusterProjectiles.txt"
-#include "actors/classes/Magicode/Zomo/NaviSoulProjectiles.txt"
 
 //===|Slick
 #include "actors/classes/Magicode/Slick/Slick.txt"

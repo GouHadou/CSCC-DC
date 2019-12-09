@@ -1641,8 +1641,8 @@ DrawImage "ZOMHPG", 130, 183;
 DrawNumber 4, ZOMFONT, UNTRANSLATED, Health, Alignment(Right), 168, 184;
 DrawSelectedInventory INDEXFONT, 50, 184, 48, 185, White;
 Drawbar "VARENERG", "VAREMPTY", Ammo1, horizontal, 58, 184;
-Drawbar "CUSTFULL", "CUSTBAR", CustomAmmo, horizontal, 120, 18;
-InInventory CustomAmmo, 300{DrawBar "BNCSBAR", "CUSTBAR", CustomAmmo, horizontal, 120, 18;}
+Drawbar "CUSTFULL", "CUSTBAR", ZomoCustomAmmo, horizontal, 120, 18;
+InInventory ZomoCustomAmmo, 300{DrawBar "BNCSBAR", "CUSTBAR", ZomoCustomAmmo, horizontal, 120, 18;}
 //InInventory AntiFireTime, 1{DrawImage "AWINA0", 176, 184;}
 //InInventory AntiAquaTime, 1{DrawImage "ABRKA0", 176, 184;}
 //InInventory AntiElecTime, 1{DrawImage "AWINA0", 176, 184;}

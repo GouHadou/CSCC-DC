@@ -155,7 +155,7 @@ PowerMorph.PlayerClass "Imurkono"
 PowerMorph.MorphStyle (MRF_FULLHEALTH|MRF_ADDSTAMINA|MRF_UNDOBYDEATHFORCED)
 }
 
-Actor Imurkono : PlayerPawn
+Actor Imurkono : ClassbaseCSCC
 {
 Player.DisplayName "Imurkono"
 Player.SoundClass "Imurkono"
