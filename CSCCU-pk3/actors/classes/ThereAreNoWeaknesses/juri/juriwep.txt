@@ -1,4 +1,4 @@
-actor JuriClassWeapon : BaseMM8BDMWep
+actor JuriClassWeapon : BaseCSCCWep
 {
 Weapon.AmmoUse 3
 Weapon.AmmoGive 9

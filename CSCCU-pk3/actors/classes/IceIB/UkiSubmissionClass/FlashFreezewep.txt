@@ -1,4 +1,4 @@
-actor FlashFreezeWep : BaseMM8BDMWep 20000
+actor FlashFreezeWep : BaseCSCCWep 20000
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 7

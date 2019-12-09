@@ -1,4 +1,4 @@
-actor HDClassWep1 : BaseMM8BDMWep //need copy
+actor HDClassWep1 : BaseCSCCWep //need copy
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

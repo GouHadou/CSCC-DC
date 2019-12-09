@@ -1,4 +1,4 @@
-actor FlareRocketLauncher : BaseMM8BDMWep
+actor FlareRocketLauncher : BaseCSCCWep
 {
 Weapon.AmmoUse 3
 Weapon.AmmoGive 28

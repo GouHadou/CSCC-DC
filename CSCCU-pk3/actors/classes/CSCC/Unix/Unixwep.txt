@@ -1,4 +1,4 @@
-actor BikKnife : BaseMM8BDMWep
+actor BikKnife : BaseCSCCWep
 {
 Weapon.AmmoUse2 1
 Weapon.AmmoGive2 28

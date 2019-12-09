@@ -1,6 +1,6 @@
 
 
-actor HiPEGun_Base : BaseMM8BDMWep
+actor HiPEGun_Base : BaseCSCCWep
 {
 Tag "HiPEGun"
 Weapon.AmmoUse 1

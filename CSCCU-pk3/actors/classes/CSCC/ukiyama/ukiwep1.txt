@@ -53,7 +53,7 @@ actor UpgradeChoiceActive :  Once
 {
 }
 
-actor UkiyamaClassWep : BaseMM8BDMWep 
+actor UkiyamaClassWep : BaseCSCCWep 
 {
 Weapon.AmmoGive 28 
 Weapon.AmmoUse 1

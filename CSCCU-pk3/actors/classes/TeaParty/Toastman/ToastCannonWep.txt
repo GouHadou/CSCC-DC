@@ -1,4 +1,4 @@
-actor ToastCannonWep : BaseMM8BDMWep
+actor ToastCannonWep : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 84

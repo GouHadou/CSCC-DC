@@ -7,7 +7,7 @@ const int VIZ_DASH_DMG = 70;
 const int VIZ_DASH_RADIUS = 120;
 const int VIZ_PAD_ID = 5000;
 
-actor VoltLaserWep : BaseMM8BDMWep
+actor VoltLaserWep : BaseCSCCWep
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 2
@@ -461,7 +461,7 @@ loop
 }
 }
 
-actor VoltWallWep : BaseMM8BDMWep //Copyweps, yeeeeee
+actor VoltWallWep : BaseCSCCWep //Copyweps, yeeeeee
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 1

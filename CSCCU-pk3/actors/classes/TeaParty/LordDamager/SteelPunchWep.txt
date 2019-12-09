@@ -1,4 +1,4 @@
-actor SteelPunchWep : BaseMM8BDMWep
+actor SteelPunchWep : BaseCSCCWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28

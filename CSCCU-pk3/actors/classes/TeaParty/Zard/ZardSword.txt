@@ -1,4 +1,4 @@
-ACTOR ZardSword : BaseMM8BDMWep 
+ACTOR ZardSword : BaseCSCCWep 
 {
 +WEAPON.NOAUTOFIRE
 Weapon.AmmoUse 10

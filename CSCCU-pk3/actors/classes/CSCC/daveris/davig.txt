@@ -1,4 +1,4 @@
- actor DaverisClassIGWep : BaseMM8BDMWep
+ actor DaverisClassIGWep : BaseCSCCWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28

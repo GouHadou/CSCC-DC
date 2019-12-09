@@ -1,4 +1,4 @@
-actor ClawGlovesWep : BaseMM8BDMWep 
+actor ClawGlovesWep : BaseCSCCWep 
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 112
@@ -1258,7 +1258,7 @@ stop
 }
 
 //===Eternal Claws===----------------------------------------------------
-actor EternalClawsWep : BaseMM8BDMWep 
+actor EternalClawsWep : BaseCSCCWep 
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 112

@@ -1,4 +1,4 @@
-actor FusionBombClassWep : BaseMM8BDMWep
+actor FusionBombClassWep : BaseCSCCWep
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

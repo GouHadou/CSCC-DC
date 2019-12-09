@@ -317,7 +317,7 @@ fail
 }
 
 
-actor ChidoreWep : BaseMM8BDMWep 27034
+actor ChidoreWep : BaseCSCCWep 27034
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse2 42

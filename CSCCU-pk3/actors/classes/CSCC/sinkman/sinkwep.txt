@@ -1,4 +1,4 @@
-actor SinkSprayClassWep : BaseMM8BDMWep
+actor SinkSprayClassWep : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 56

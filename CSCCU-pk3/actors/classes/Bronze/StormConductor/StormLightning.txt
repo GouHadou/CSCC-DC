@@ -1,4 +1,4 @@
-actor StormLightningBoss : BaseMM8BDMWep
+actor StormLightningBoss : BaseCSCCWep
 {
 Inventory.Pickupmessage ""
 Obituary "$OB_CHAINLIGHTNING"

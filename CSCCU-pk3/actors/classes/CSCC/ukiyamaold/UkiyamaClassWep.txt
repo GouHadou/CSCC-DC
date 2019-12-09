@@ -1,4 +1,4 @@
-actor UkiyamaClassWepOld : BaseMM8BDMWep 
+actor UkiyamaClassWepOld : BaseCSCCWep 
 {
 Weapon.AmmoUse 56
 Weapon.AmmoGive 28 

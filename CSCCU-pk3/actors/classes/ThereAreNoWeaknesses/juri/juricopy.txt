@@ -1,4 +1,4 @@
-actor ParanoiaCreeperWep : BaseMM8BDMWep
+actor ParanoiaCreeperWep : BaseCSCCWep
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 4

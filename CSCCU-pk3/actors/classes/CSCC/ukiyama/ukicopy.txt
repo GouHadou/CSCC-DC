@@ -1,4 +1,4 @@
-actor MeteorWep : MegaBuster 
+actor MeteorWep : BaseCSCCWep 
 {
 Weapon.AmmoUse 28 
 Weapon.AmmoGive 56

@@ -1,5 +1,5 @@
 //I'm lazy so have lots of comments curtosy of Korby the Wion
-actor CoolerClassWep : BaseMM8BDMWep //This is really weoweoice, just lazy :D
+actor CoolerClassWep : BaseCSCCWep //This is really weoweoice, just lazy :D
 {
 Weapon.AmmoUse 0 
 Weapon.AmmoGive 16 
@@ -257,7 +257,7 @@ stop
 
 
 
-actor WeoWeoIceWep : BaseMM8BDMWep
+actor WeoWeoIceWep : BaseCSCCWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 36

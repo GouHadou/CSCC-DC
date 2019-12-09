@@ -88,3 +88,4 @@ const int DYE_JAX = 977;
 
 #include "actors/inventory/assistreplacements.txt"
 #include "actors/inventory/cwepreplacements.txt"
+#include "actors/inventory/CsccWepBase.txt"

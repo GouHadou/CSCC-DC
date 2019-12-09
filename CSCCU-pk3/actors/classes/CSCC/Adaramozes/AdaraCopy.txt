@@ -1,4 +1,4 @@
-actor FrozenCapellaWep : BaseMM8BDMWep
+actor FrozenCapellaWep : BaseCSCCWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28

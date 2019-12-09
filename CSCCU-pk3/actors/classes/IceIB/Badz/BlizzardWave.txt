@@ -1,4 +1,4 @@
-Actor BlizzardWaveBoss : BaseMM8BDMWep
+Actor BlizzardWaveBoss : BaseCSCCWep
 {
 Weapon.AmmoUse 20
 Weapon.AmmoGive 1

@@ -1,4 +1,4 @@
-actor PsychicProwess : BaseMM8BDMWep
+actor PsychicProwess : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

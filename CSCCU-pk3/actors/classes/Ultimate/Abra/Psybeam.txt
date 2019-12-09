@@ -1,4 +1,4 @@
-actor Psybeamwep : MegaBuster
+actor Psybeamwep : BaseCSCCWep
 {
 Weapon.AmmoUse 25
 Weapon.AmmoGive 0

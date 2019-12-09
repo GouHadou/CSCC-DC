@@ -1,6 +1,6 @@
 //Blaze's scrapped Knife Toss. Left in here in case we decide to bring it back in some form.
 
-actor KnifeToss : BaseMM8BDMWep
+actor KnifeToss : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 200

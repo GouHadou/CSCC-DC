@@ -1,4 +1,4 @@
-actor OrbitalMissileBoss : BaseMM8BDMWep
+actor OrbitalMissileBoss : BaseCSCCWep
 {
 Inventory.Pickupmessage "Satellite Sign \"Orbital Missile\""
 dropitem "OrbitalMissileWepCDropped"

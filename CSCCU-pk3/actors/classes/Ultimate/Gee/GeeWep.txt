@@ -1,7 +1,7 @@
 const int GEE_HEAL = 25;
 const int GEE_DMG = 20;
 
-actor GeeBurstBoss1 : BaseMM8BDMWep
+actor GeeBurstBoss1 : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 15

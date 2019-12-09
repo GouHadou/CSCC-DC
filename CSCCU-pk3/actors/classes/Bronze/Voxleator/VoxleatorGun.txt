@@ -5,7 +5,7 @@
 //[+]========================================================================[+]
 
 
-actor VoxleatorGun : BaseMM8BDMWep
+actor VoxleatorGun : BaseCSCCWep
 {
 Weapon.AmmoUse 20
 Weapon.AmmoGive 100

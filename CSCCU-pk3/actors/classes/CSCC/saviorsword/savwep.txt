@@ -1,4 +1,4 @@
-actor SaviorWeapon1 : BaseMM8BDMWep
+actor SaviorWeapon1 : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 14

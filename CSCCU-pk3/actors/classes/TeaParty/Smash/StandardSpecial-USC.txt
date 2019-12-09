@@ -1,4 +1,4 @@
-actor StandardSpecialUSC : BaseMM8BDMWep 25712
+actor StandardSpecialUSC : BaseCSCCWep 25712
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 112

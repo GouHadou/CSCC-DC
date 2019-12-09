@@ -1,4 +1,4 @@
-actor AdaraWeapon : BaseMM8BDMWep
+actor AdaraWeapon : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

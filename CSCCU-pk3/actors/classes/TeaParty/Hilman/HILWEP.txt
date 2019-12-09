@@ -1,4 +1,4 @@
-actor HilGunWep : BaseMM8BDMWep 
+actor HilGunWep : BaseCSCCWep 
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -148,7 +148,7 @@ stop
 }
 }
 
-actor HilFlashWep : BaseMM8BDMWep
+actor HilFlashWep : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -291,7 +291,7 @@ Goto Ready2+1
 
 
 
-actor FlashMissileIGWep : BaseMM8BDMWep
+actor FlashMissileIGWep : BaseCSCCWep
 {
 Weapon.AmmoGive 28
 Weapon.SlotNumber 2

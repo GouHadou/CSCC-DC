@@ -1,4 +1,4 @@
-actor EmberCelicaWep : MegaBuster
+actor EmberCelicaWep : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28

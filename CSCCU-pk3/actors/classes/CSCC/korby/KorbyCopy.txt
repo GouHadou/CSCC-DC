@@ -1,4 +1,4 @@
-actor CometWep : BaseMM8BDMWep
+actor CometWep : BaseCSCCWep
 {
 Weapon.AmmoUse 5
 Weapon.AmmoGive 28

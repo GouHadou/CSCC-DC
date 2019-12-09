@@ -1,4 +1,4 @@
-actor BlazeCannon : BaseMM8BDMWep
+actor BlazeCannon : BaseCSCCWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28

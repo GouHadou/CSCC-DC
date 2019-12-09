@@ -1,4 +1,4 @@
-actor BikTriangleSine : BaseMM8BDMWep
+actor BikTriangleSine : BaseCSCCWep
 {
 Weapon.SlotNumber 1
 Obituary "%o was corrected by %k's Trigonometrical Functions."

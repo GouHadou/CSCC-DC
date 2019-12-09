@@ -1,5 +1,5 @@
 
-actor HiveGun : BaseMM8BDMWep
+actor HiveGun : BaseCSCCWep
 {
 Tag "HiveGun"
 Weapon.AmmoUse 1

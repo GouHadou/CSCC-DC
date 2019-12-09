@@ -1,4 +1,4 @@
-actor AnkhzirusStaffBoss : BaseMM8BDMWep
+actor AnkhzirusStaffBoss : BaseCSCCWep
 {
 Inventory.Pickupmessage "*insert pocket sand joke*"
 Obituary "$OB_ANKHGRAPPLE"

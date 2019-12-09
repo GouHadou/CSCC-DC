@@ -1,7 +1,7 @@
 const int BONEHEAD_DMG = 12;
 const int BONEHEAD_THROWNDMG = 8;
 
-actor MissedMemoBoss : BaseMM8BDMWep
+actor MissedMemoBoss : BaseCSCCWep
 {
 Weapon.AmmoUse 84
 Weapon.AmmoGive 84

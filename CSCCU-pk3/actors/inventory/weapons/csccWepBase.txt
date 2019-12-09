@@ -1,0 +1,10 @@
+actor BaseCSCCWep : BaseMM8BDMWep
+{
+	-WEAPON.AMMO_OPTIONAL
+	-WEAPON.ALT_AMMO_OPTIONAL
+	-WEAPON.ALT_USES_BOTH
+	-WEAPON.DONTBOB
+	-inventory.pickupsound "weapon/weaponup"
+	-Scale 2.0
+	inventory.icon "NULLICON"
+}

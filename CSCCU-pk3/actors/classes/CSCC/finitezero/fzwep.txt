@@ -1,4 +1,4 @@
-actor SolarLaserBoss : BaseMM8BDMWep
+actor SolarLaserBoss : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 56

@@ -1,4 +1,4 @@
-actor MissileBarrageWep : BaseMM8BDMWep 19011
+actor MissileBarrageWep : BaseCSCCWep 19011
 {
 	Weapon.AmmoUse 4
 	Weapon.AmmoGive 28

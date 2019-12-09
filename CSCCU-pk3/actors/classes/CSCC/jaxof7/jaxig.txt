@@ -1,4 +1,4 @@
-actor JaxInstagibWep : BaseMM8BDMWep 
+actor JaxInstagibWep : BaseCSCCWep 
 {
 Weapon.SlotNumber 1
 Weapon.AmmoUse 0

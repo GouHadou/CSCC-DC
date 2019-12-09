@@ -1,4 +1,4 @@
-actor RedEyesWep : BaseMM8BDMWep
+actor RedEyesWep : BaseCSCCWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 3
@@ -96,7 +96,7 @@ Goto Ready+1
 }
 }
 
-actor RedEyesWepB : BaseMM8BDMWep
+actor RedEyesWepB : BaseCSCCWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 3

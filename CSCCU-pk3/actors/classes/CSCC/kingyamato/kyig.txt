@@ -1,4 +1,4 @@
-actor KingSpearInstagib : BaseMM8BDMWep
+actor KingSpearInstagib : BaseCSCCWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28
@@ -108,7 +108,7 @@ actor Camping : PowerProtection
 
 
 
-actor YamatoFinger : BaseMM8BDMWep 
+actor YamatoFinger : BaseCSCCWep 
 {
 Weapon.AmmoUse 0
 Weapon.SlotNumber 1

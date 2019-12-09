@@ -1,4 +1,4 @@
-actor TrollBuster : BaseMM8BDMWep
+actor TrollBuster : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 3

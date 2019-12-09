@@ -1,4 +1,4 @@
-actor BlizzardSwordBoss : MegaBuster
+actor BlizzardSwordBoss : BaseCSCCWep
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

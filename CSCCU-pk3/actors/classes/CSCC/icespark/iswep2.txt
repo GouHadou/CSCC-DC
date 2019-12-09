@@ -1,4 +1,4 @@
-actor SparkyWep : BaseMM8BDMWep
+actor SparkyWep : BaseCSCCWep
 {
 Weapon.AmmoUse 25
 Weapon.AmmoGive 100

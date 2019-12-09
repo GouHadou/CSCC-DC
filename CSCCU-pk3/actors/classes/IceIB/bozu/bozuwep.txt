@@ -1,4 +1,4 @@
-actor BozuBallWep : BaseMM8BDMWep
+actor BozuBallWep : BaseCSCCWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoUse2 8
@@ -322,7 +322,7 @@ Stop
 }
 }
 
-actor BozuShieldWep : BaseMM8BDMWep
+actor BozuShieldWep : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 8

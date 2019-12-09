@@ -12,7 +12,7 @@ inventory.amount 1
 inventory.maxamount 45
 }
 
-actor MutantYoshiTongue : BaseMM8BDMWep
+actor MutantYoshiTongue : BaseCSCCWep
 {
 //Weapon.AmmoUse 2
 Weapon.AmmoGive 28

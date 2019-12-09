@@ -1,4 +1,4 @@
-actor YDElectrokinesis : BaseMM8BDMWep
+actor YDElectrokinesis : BaseCSCCWep
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse 1

@@ -1,4 +1,4 @@
-actor EggTossWep : BaseMM8BDMWep
+actor EggTossWep : BaseCSCCWep
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

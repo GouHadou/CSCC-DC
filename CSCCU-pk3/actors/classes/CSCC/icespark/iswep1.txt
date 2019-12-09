@@ -1,4 +1,4 @@
-actor IceWep : BaseMM8BDMWep
+actor IceWep : BaseCSCCWep
 {
 Weapon.AmmoUse 25
 Weapon.AmmoGive 100

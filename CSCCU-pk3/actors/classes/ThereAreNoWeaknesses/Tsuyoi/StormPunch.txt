@@ -10,7 +10,7 @@ Inventory.amount 1
 Inventory.maxamount 50
 }
 
-actor StormPunchWep : BaseMM8BDMWep
+actor StormPunchWep : BaseCSCCWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 0

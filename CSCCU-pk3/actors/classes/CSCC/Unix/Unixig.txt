@@ -1,4 +1,4 @@
-actor UnixIGWep : BaseMM8BDMWep
+actor UnixIGWep : BaseCSCCWep
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28

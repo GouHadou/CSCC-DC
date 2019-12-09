@@ -1,4 +1,4 @@
-actor BubbleArrowWep : BaseMM8BDMWep
+actor BubbleArrowWep : BaseCSCCWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28

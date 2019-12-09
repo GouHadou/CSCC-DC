@@ -1,4 +1,4 @@
-actor GemBuster : BaseMM8BDMWep
+actor GemBuster : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 3
@@ -185,7 +185,7 @@ Inventory.Maxamount 999
 
 
 
-actor GemSniper : BaseMM8BDMWep
+actor GemSniper : BaseCSCCWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 0

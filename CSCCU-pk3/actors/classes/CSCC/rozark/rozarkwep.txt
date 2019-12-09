@@ -1,4 +1,4 @@
-actor OblivionWingsClass : BaseMM8BDMWep 
+actor OblivionWingsClass : BaseCSCCWep 
 {
 Weapon.AmmoUse 10
 Weapon.AmmoGive 30

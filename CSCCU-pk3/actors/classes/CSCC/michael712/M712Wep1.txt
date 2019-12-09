@@ -1,4 +1,4 @@
-actor M712Weapon1 : BaseMM8BDMWep
+actor M712Weapon1 : BaseCSCCWep
 {
 Weapon.AmmoUse 4 
 Weapon.AmmoGive 14 

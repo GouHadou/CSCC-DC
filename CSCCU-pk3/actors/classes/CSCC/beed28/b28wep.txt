@@ -1,4 +1,4 @@
-actor Beed28Weapon1 : BaseMM8BDMWep
+actor Beed28Weapon1 : BaseCSCCWep
 {
 	Weapon.AmmoUse 7
 	Weapon.AmmoGive 28
@@ -653,7 +653,7 @@ actor MirrorShotSmallAlt : MirrorShotMedium replaces MirrorShotSmall
 damage (15)
 }
 
-actor Beed28Weapon2 : BaseMM8BDMWep
+actor Beed28Weapon2 : BaseCSCCWep
 {
 	Weapon.AmmoUse 7
 	Weapon.AmmoGive 28

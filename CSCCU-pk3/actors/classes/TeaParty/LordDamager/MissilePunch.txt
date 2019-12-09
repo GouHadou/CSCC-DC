@@ -1,4 +1,4 @@
-actor MissilePunchWep : BaseMM8BDMWep 
+actor MissilePunchWep : BaseCSCCWep 
 {
 Weapon.AmmoUse 1
 Weapon.SlotNumber 1

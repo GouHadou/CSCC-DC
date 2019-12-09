@@ -1,4 +1,4 @@
-actor HolyBuster : BaseMM8BDMWep
+actor HolyBuster : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 3
@@ -108,7 +108,7 @@ stop
 }
 }
 
-actor HolySword : BaseMM8BDMWep
+actor HolySword : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 3
@@ -637,7 +637,7 @@ stop
 }
 }
 
-actor LightWallWep : BaseMM8BDMWep
+actor LightWallWep : BaseCSCCWep
 {
 Weapon.AmmoUse 28
 Weapon.AmmoGive 28

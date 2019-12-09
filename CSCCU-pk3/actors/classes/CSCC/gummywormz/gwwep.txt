@@ -1,4 +1,4 @@
-actor AirTileShotgunWep : BaseMM8BDMWep
+actor AirTileShotgunWep : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 50

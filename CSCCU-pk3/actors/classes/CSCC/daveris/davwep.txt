@@ -1,4 +1,4 @@
-actor DaverisClassWep : BaseMM8BDMWep 
+actor DaverisClassWep : BaseCSCCWep 
 {
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28

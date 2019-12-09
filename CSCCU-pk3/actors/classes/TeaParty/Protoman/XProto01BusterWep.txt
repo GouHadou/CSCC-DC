@@ -1,4 +1,4 @@
-actor Proto01Buster : BaseMM8BDMWep
+actor Proto01Buster : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 3
@@ -524,7 +524,7 @@ fail
 }
 
 
-actor ChidoreWep : BaseMM8BDMWep 27034
+actor ChidoreWep : BaseCSCCWep 27034
 {
 //$Category MM8BDM-Weapons
 Weapon.AmmoUse2 42

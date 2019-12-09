@@ -1,4 +1,4 @@
-actor SnailBreederPets : BaseMM8BDMWep
+actor SnailBreederPets : BaseCSCCWep
 {
 weapon.ammotype1 "SnailerAmmo"
 weapon.ammotype2 "ShellAmmo"

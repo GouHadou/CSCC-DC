@@ -1,4 +1,4 @@
-actor PhotonCannonWep : BaseMM8BDMWep 18042
+actor PhotonCannonWep : BaseCSCCWep 18042
 {
 Weapon.AmmoUse 0
 Weapon.AmmoGive 28
