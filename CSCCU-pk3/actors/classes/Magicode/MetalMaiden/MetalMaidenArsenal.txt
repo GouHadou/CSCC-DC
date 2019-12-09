@@ -1,0 +1,755 @@
+//EVERYTHING with a few exceptions HAS BEEN RECODED FROM SCRATCH.
+
+actor MetalMaidenArsenal : MegaBuster
+{
+Weapon.SlotNumber 1
+scale 2.0
+Inventory.Pickupmessage "Maiden Buster Online."
+Obituary "%o was killed by %k's Plasma Blaster Buster."
+//weapon.ammotype "MaidenCharge"
+Tag "Plasma Energy Cannon"
++INVENTORY.UNDROPPABLE
++WEAPON.CHEATNOTWEAPON
+//Weapon.UpSound "maiden/weaponselect"
+States
+{
+Spawn:
+TNT1 A 1
+stop
+Ready:
+TNT1 A 0 A_GunFlash
+TNT1 A 0 A_JumpIfInventory("MetalMaidenEnterFlag",1,"Active")
+TNT1 A 0 ACS_Execute(991,0,47)
+TNT1 A 0 A_GiveInventory("MetalMaidenEnterFlag",1)
+TNT1 A 0 //A_SpawnItemEx("MetalMaidenEntranceFX")
+MVBU A 1 //A_PlaySoundEx("maiden/enter","SoundSlot6")
+Goto Active
+Active:
+TNT1 A 0 A_TakeInventory("MetalMaidenBladeAnim",999)
+TNT1 A 0 A_TakeInventory("MetalMaidenThrowAnim",999)
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+MVBU A 2 A_WeaponReady
+TNT1 A 0 A_TakeInventory("MaidenCharge",1)
+Goto Active
+
+//Switch Weaponry
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+TNT1 A 1 A_Raise
+Loop
+
+DASH:
+TNT1 A 0 A_JumpIfInventory("MaidenDashCooldown",1,"NoDash")
+TNT1 A 0 A_GiveInventory("MaidenDashCooldown")
+TNT1 A 0 A_GiveInventory("MetalMaidenDashAnim")
+TNT1 A 0 A_PlaySoundEx("maiden/dash","Weapon")
+TNT1 A 0 A_Recoil(-50)
+TNT1 A 0 A_SpawnItemEx("MaidenSpeedBoostFX",0,0,30)
+MVHA BC 1
+MVHA CCCCCCC 2 A_SpawnItemEx("MetalMaidenDashShadow")
+MVHA CB 2
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_TakeInventory("MetalMaidenDashAnim")
+Goto Active
+NoDash:
+TNT1 A 1
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+Goto Active
+
+//Attacks 1 of 2
+Fire:
+TNT1 A 0 A_GiveInventory("MetalMaidenGunAnim",1)
+Hold:
+TNT1 A 0 A_JumpIfInventory("MetalMaidenBladeAnim",1,"TornadoSlashStartup")
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"MissileStormOmega")
+TNT1 A 0 A_JumpIfInventory("Once",1,"RapidFire")
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",50,"ChargeStart")
+MVBU A 1 //A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY)
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX",0,0,0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_ReFire
+Goto Shoot
+ChargeStart:
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",55,"ChargeUp")
+TNT1 A 0 A_PlaySoundEx("weapon/pchargelong","SoundSlot5")
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+ChargeUp:
+TNT1 A 0 A_JumpIfInventory("Once",1,"RapidFire")
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",390,"FullCharge_S")
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+MVBU B 1 //A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX",0,0,0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_Refire
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",400,"ChargeShotF")
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",200,"ChargeShot")
+Goto Shoot
+Shoot:
+TNT1 A 0 A_TakeInventory("MaidenCharge",999)
+TNT1 A 0 A_PlaySoundEx("maiden/busterfire","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenBusterShotWeak",0,0,8,0)
+MVBU BCB 2 
+TNT1 A 0 A_GiveInventory("Once")
+MVBU CC 3
+TNT1 A 0 A_Refire
+TNT1 A 0 A_TakeInventory("Once")
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+Goto Active
+FullCharge_S:
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",395,"FullCharge")
+TNT1 A 0 A_PlaySoundEx("maiden/gunchargefull","SoundSlot7")
+TNT1 A 0 A_GiveInventory("MaidenCharge",10)
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+FullCharge:
+TNT1 A 0 A_JumpIfInventory("Once",1,"RapidFire")
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+TNT1 A 0 A_GiveInventory("AbilityTimer",5)
+MVBU C 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX",0,0,0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX2",random(-30,30),random(-30,30),0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX2",random(-30,30),random(-30,30),0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_Refire
+TNT1 A 0 A_JumpIfInventory("AbilityTimer",500,"ChargeShotM")
+Goto ChargeShotF
+ChargeShot:
+TNT1 A 0 A_TakeInventory("AbilityTimer",99999)
+TNT1 A 0 A_TakeInventory("MaidenCharge",9999)
+TNT1 A 0 A_Recoil(20)
+TNT1 A 0 A_PlaySoundEx("maiden/chargeshot2","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenBusterShotStrong",0,0,8,0)
+MVBU CCB 2
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+Goto Active
+ChargeShotF:
+TNT1 A 0 A_TakeInventory("AbilityTimer",99999)
+TNT1 A 0 A_TakeInventory("MaidenCharge",9999)
+TNT1 A 0 A_Recoil(40)
+TNT1 A 0 A_FireCustomMissile("MaidenBusterShotMax",0,0,8,0)
+TNT1 A 0 A_PlaySoundEx("maiden/chargedbusterfire","Weapon")
+MVBU CCB 2
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+Goto Active
+ChargeShotM:
+TNT1 A 0 A_TakeInventory("AbilityTimer",99999)
+TNT1 A 0 A_TakeInventory("MaidenCharge",9999)
+TNT1 A 0 A_Recoil(60)
+TNT1 A 0 A_FireCustomMissile("MaidenBusterShotMax_U",0,0,8,0)
+TNT1 A 0 A_PlaySoundEx("maiden/chargedbusterfire_ultimate","Weapon")
+MVBU CCB 2
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+Goto Active
+RapidFire:
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+TNT1 A 0 A_PlaySoundEx("maiden/busterfire","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenBusterShotFast",random(-5,5),0,8,0)
+MVBU BC 2 
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_Refire
+TNT1 A 0 A_TakeInventory("Once")
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+Goto Active
+
+GunEX:
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",400,"Laser")
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",200,"ChargeShot")
+TNT1 A 0 A_ClearRefire
+Goto Active
+Laser:
+TNT1 A 0 A_JumpIfInventory("AbilityTimer",500,"Laser_U")
+TNT1 A 0 A_TakeInventory("MaidenCharge",999)
+TNT1 A 0 A_TakeInventory("AbilityTimer",99999)
+TNT1 A 0 A_PlaySoundEx("maiden/laser","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenLaserSpawner",0,0,8,0)
+MVBU BCBBBBBBBBBBBBBAAAAAAAA 1
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+TNT1 A 0 A_ClearRefire
+Goto Active
+Laser_U:
+TNT1 A 0 A_TakeInventory("MaidenCharge",999)
+TNT1 A 0 A_TakeInventory("AbilityTimer",99999)
+TNT1 A 0 A_PlaySoundEx("maiden/laser_ultimate","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenLaserSpawner_U",0,0,8,0)
+MVBU BCBBBBBBBBBBBBBAAAAAAAA 1
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+TNT1 A 0 A_ClearRefire
+Goto Active
+
+//Attacks 2 of 2
+AltFire:
+AltHold:
+TNT1 A 0 A_JumpIfInventory("MetalMaidenGunAnim",1,"GunEX")
+TNT1 A 0 A_GiveInventory("MetalMaidenBladeAnim",1)
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",50,"SwordChargeStart")
+BSHU A 1 //A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY)
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX",0,0,0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_ReFire
+TNT1 A 0 A_JumpIfHealthLower(1050,"Slash")
+Goto SlashBeam
+SwordChargeStart:
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",55,"SwordChargeUp")
+TNT1 A 0 A_PlaySoundEx("maiden/swordcharge","SoundSlot5")
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+SwordChargeUp:
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",390,"FullChargeSword_S")
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+BSHU B 1 //A_WeaponReady(WRF_NOSWITCH|WRF_SECONDARY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX",0,0,0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_ReFire
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",200,"ChargeSlash")
+Goto Slash
+FullChargeSword_S:
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",395,"FullChargeSword")
+TNT1 A 0 A_PlaySoundEx("maiden/swordchargefull","SoundSlot7")
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+FullChargeSword:
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"DASH")
+TNT1 A 0 A_GiveInventory("MaidenCharge",5)
+BSHU B 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX",0,0,0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX2",random(-30,30),random(-30,30),0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenChargeFX2",random(-30,30),random(-30,30),0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_Refire
+Goto ChargeSlash_U
+Slash:
+TNT1 A 0 A_TakeInventory("MaidenCharge",999)
+TNT1 A 0 A_GiveInventory("MetalMaidenBladeAnim")
+TNT1 AA 1
+TNT1 A 0 A_PlaySoundEx("maiden/beamsword","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenBlade",0,0,0,0)
+TNT1 AAAAA 3
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_ReFire
+BSHU BA 2
+TNT1 A 0 A_TakeInventory("MetalMaidenBladeAnim",999)
+Goto Active
+SlashBeam:
+TNT1 A 0 A_TakeInventory("MaidenCharge",999)
+TNT1 A 0 A_GiveInventory("MetalMaidenBladeAnim")
+TNT1 AA 1
+TNT1 A 0 A_PlaySoundEx("maiden/beamsword","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenBladeBeam",0,0,0,0)
+TNT1 A 0 A_FireCustomMissile("MaidenBlade",0,0,0,0)
+TNT1 AAAAA 3
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_ReFire
+BSHU BA 2
+TNT1 A 0 A_TakeInventory("MetalMaidenBladeAnim",999)
+Goto Active
+ChargeSlash:
+TNT1 A 0 A_TakeInventory("MaidenCharge",999)
+TNT1 A 0 A_GiveInventory("MetalMaidenBladeAnim")
+TNT1 AA 1
+TNT1 A 0 A_PlaySoundEx("maiden/chargedbeamsword","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenBladeCharged",0,0,0,0)
+TNT1 AAAAAAAAAAAAAA 3
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_ClearReFire
+BSHU BBBAA 2
+TNT1 A 0 A_TakeInventory("MetalMaidenBladeAnim",999)
+Goto Active
+ChargeSlash_U:
+TNT1 A 0 A_TakeInventory("MaidenCharge",999)
+TNT1 A 0 A_GiveInventory("MetalMaidenBladeAnim")
+TNT1 AA 1
+TNT1 A 0 A_PlaySoundEx("maiden/chargedbeamsword_ultimate","Weapon")
+TNT1 A 0 A_FireCustomMissile("MaidenBladeCharged_U",0,0,0,0)
+TNT1 AAAAAAAAAAAAAA 3
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_ClearReFire
+BSHU BBBAA 2
+TNT1 A 0 A_TakeInventory("MetalMaidenBladeAnim",999)
+Goto Active
+
+TornadoSlashMove:
+TNT1 A 0 A_Recoil(-25)
+Goto TornadoSlashStartupX
+TornadoSlashStartup:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_JumpIfInventory("User1_Trigger",1,"TornadoSlashMove")
+TornadoSlashStartupX:
+TNT1 A 0 A_GiveInventory("MetalMaidenBladeAnim",1)
+TNT1 A 0 A_TakeInventory("MetalMaidenDashAnim",999)
+TNT1 A 0 A_GiveInventory("MaidenSteelFortress",1)
+TNT1 A 0 A_GiveInventory("Repulsion",1)
+TNT1 A 0 SetPlayerProperty(0,1,0)
+TNT1 A 0 SetPlayerProperty(0,1,3)
+TNT1 A 0 A_PlaySoundEx("maiden/spinattack","Weapon")
+TornadoSlash:
+TNT1 A 0 A_TakeInventory("MaidenCharge",8)
+TNT1 A 0 A_SpawnItemEx("ThunderTrail",random(-50,50),random(-50,50),random(-50,75))
+TNT1 A 1 A_SpawnItemEx("MaidenTornadoSlashHitbox",10,0,25,12,0,0)
+TNT1 A 0 A_SetAngle(angle-25.0)
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",1,"TornadoSlash")
+TNT1 A 0 Radius_Quake(3,5,0,64,0)
+TNT1 AAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("ThunderTrail",random(-250,250),random(-250,250),random(-250,250))
+TNT1 A 0 A_TakeInventory("MaidenSteelFortress",999)
+TNT1 A 0 A_GiveInventory("Repulsion",1)
+//TNT1 A 0 A_SpawnItemEx("MaidenTornadoSlashHitboxSpawner",0,0,25) //<-- JUMP HERE NEXT
+TNT1 A 0 A_TakeInventory("AbilityTimer",9999)
+TNT1 A 0 A_TakeInventory("MetalMaidenBladeAnim",999)
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 SetPlayerProperty(0,0,3)
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+Goto Active
+TornadoCancel:
+BSHU A 1
+TNT1 A 0 A_TakeInventory("MetalMaidenBladeAnim",999)
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+Goto Active
+
+//ULTIMATE
+MissileStormOmega:
+TNT1 A 0 A_GiveInventory("MetalMaidenCrashAnim",1)
+TNT1 A 0 A_GiveInventory("MaidenMissileStormFlag",1)
+TNT1 A 0 SetPlayerProperty(0,1,3)
+TNT1 A 0 A_ChangeFlag("INVULNERABLE",1)
+TNT1 A 0 A_PlaySoundEx("overdrive/maidencrash","SoundSlot7")
+TNT1 A 0 Radius_Quake(9,35,0,64,0)
+TNT1 A 3 ACS_Execute(991,0,89)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashFX1",-8,0,35,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX1",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,90)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX2",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,91)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX1",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,89)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX2",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,90)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX1",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,91)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX2",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,89)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX1",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,90)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX2",0,0,30)
+TNT1 A 3 ACS_Execute(991,0,91)
+TNT1 A 0 A_SpawnItemEx("MaidenCrashActivateFX1",0,0,30)
+TNT1 A 0 ACS_Execute(991,0,101)
+TNT1 A 0 A_GiveInventory("MetalMaidenThrowAnim",1)
+MVHA ABCD 2
+TNT1 A 0 A_GiveInventory("MaidenCharge",9999)
+Goto MissileStormOmegaAttack
+MissileStormOmegaAttack:
+TNT1 A 0 A_TakeInventory("MaidenCharge",4)
+TNT1 A 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+MVHA D 2 A_FireCustomMissile("MaidenOverkillMissile",0,0,random(-30,30),random(-30,30))
+TNT1 A 0 A_JumpIfInventory("MaidenCharge",1,"MissileStormOmegaAttack")
+TNT1 A 0 ACS_Execute(991,0,178)
+MVHA DCBA 4
+TNT1 A 0 SetPlayerProperty(0,0,3)
+TNT1 A 0 A_TakeInventory("SmashFlag",999)
+TNT1 A 0 A_TakeInventory("MaidenMissileStormFlag",9999)
+TNT1 A 0 A_TakeInventory("MetalMaidenOverdriveMode",9999)
+TNT1 A 0 A_TakeInventory("MetalMaidenOverdriveModeMax",9999)
+TNT1 A 0 A_TakeInventory("MetalMaidenOverdriveModeSet",9999)
+TNT1 A 0 A_TakeInventory("MetalMaidenOverdriveModeSpeed",9999)
+TNT1 A 0 A_TakeInventory("MetalMaidenOverdriveModeDefense",9999)
+TNT1 A 0 A_TakeInventory("MetalMaidenThrowAnim",999)
+TNT1 A 0 A_TakeInventory("MetalMaidenCrashAnim",999)
+TNT1 A 0 A_TakeInventory("User1_Trigger",999)
+TNT1 A 0 A_TakeInventory("User2_Trigger",999)
+TNT1 A 0 A_TakeInventory("User3_Trigger",999)
+TNT1 A 0 A_TakeInventory("User4_Trigger",999)
+TNT1 A 0 A_ChangeFlag("INVULNERABLE",0)
+TNT1 A 0 A_TakeInventory("MetalMaidenGunAnim",999)
+Goto Active
+
+//MISC
+Flash:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"Dead")
+TNT1 A 0 A_JumpIfInventory("MaidenShieldAbsorbCharge",500,"PressureStart")
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"SuperReadyFlash")
+TNT1 A 1
+Loop
+SuperReadyFlash:
+TNT1 A 0 A_JumpIfInventory("MaidenMissileStormFlag",1,"MissileStormFlash")
+TNT1 A 0 A_JumpIfInventory("Isdead",1,"NoFlash") 
+TNT1 A 1 A_SpawnItemEx("MetalMaidenWings",-8,0,12,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("SuperAttackFX",random(-30,30),random(-30,30),random(0,50))
+TNT1 A 0 A_JumpIfInventory("Isdead",1,"NoFlash")
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"SuperReadyFlash")
+Goto Flash
+MissileStormFlash:
+TNT1 A 0 A_JumpIfInventory("Isdead",1,"NoFlash") 
+TNT1 A 1 A_SpawnItemEx("MetalMaidenWingsGreatForme",-8,0,12,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("Isdead",1,"NoFlash")
+TNT1 A 0 A_JumpIfInventory("MaidenMissileStormFlag",1,"MissileStormFlash")
+Goto Flash
+PressureStart:
+TNT1 A 0 A_JumpIfInventory("PressureReady",1,"PressureReady")
+TNT1 A 0 A_PlaySoundEx("maiden/shieldchargefull","SoundSlot7")
+TNT1 A 0 Radius_Quake(7,35,0,64,0)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenPressureWave",0,0,0,momx,momy,15,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_GiveInventory("PressureReady",1)
+TNT1 A 0 A_GiveInventory("MaidenPressureBoost",1)
+PressureReady:
+TNT1 A 0 ACS_Execute(991,0,778)
+TNT1 A 1 
+TNT1 A 0 A_SpawnItemEx("PressureParticles",random(-100,100),random(-100,100),0,0,0,15)
+TNT1 A 0 ACS_Execute(991,0,779)
+TNT1 A 1 
+TNT1 A 0 A_SpawnItemEx("PressureParticles",random(-100,100),random(-100,100),0,0,0,15)
+TNT1 A 0 ACS_Execute(991,0,780)
+TNT1 A 1 //I'd rather not have the ground constantly shake when she has this much energy. As much as I want it.
+TNT1 A 0 A_SpawnItemEx("PressureParticles",random(-100,100),random(-100,100),0,0,0,15)
+TNT1 A 0 A_JumpIfInventory("MaidenShieldAbsorbCharge",500,"PressureReady")
+TNT1 A 0 A_TakeInventory("PressureReady",999)
+TNT1 A 0 A_TakeInventory("MaidenPressureBoost",999)
+TNT1 A 0 ACS_Execute(991,0,77)
+Goto Flash
+Dead:
+TNT1 A 1
+stop
+}
+}
+
+actor MetalMaidenEnterFlag : Inventory {}
+
+actor MetalMaidenEntranceFX : GeminiTrail
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("maiden/enter","SoundSlot6")
+L:
+TNT1 A 0 A_GiveInventory("Clip",1)
+TNT1 A 1 A_SpawnItemEx("MetalMaidenEnterParticle",random(-30,30),random(-30,30),0,0,0,random(5,15))
+TNT1 A 0 A_SpawnItemEx("MetalMaidenEnterRing",0,0,0,0,0,15)
+TNT1 A 0 A_SpawnItemEx("ThunderTrail",random(-30,30),random(-30,30),random(0,50))
+TNT1 A 0 A_JumpIfInventory("Clip",35,"End")
+loop
+End:
+TNT1 A 1
+stop
+}
+}
+
+actor MetalMaidenEnterRing : GeminiTrail
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+RenderStyle "Add"
+Alpha 2
+Translation "0:255=239:239"
+States
+{
+Spawn:
+TNT1 A 0
+SPFX BB 1 bright
+SPFX BBBB 1 bright A_FadeOut
+stop
+}
+}
+
+actor MetalMaidenEnterParticle : GeminiTrail
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+RenderStyle "Add"
+Alpha 2
+Translation "0:255=239:239"
+States
+{
+Spawn:
+TNT1 A 0
+SPFX AA 1 bright
+SPFX AAAA 1 bright A_FadeOut
+stop
+}
+}
+
+actor MetalMaidenWings : AdaptorWings
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+States
+{
+Spawn:
+TNT1 A 0
+MMWI NN 1
+stop
+}
+}
+
+actor MetalMaidenChargeFX : GeminiTrail
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+RenderStyle "Add"
+Alpha 0.95
+Translation "0:255=249:249"
+States
+{
+Spawn:
+TNT1 A 0
+SPFX BB 1 bright
+SPFX BBBB 1 bright A_FadeOut
+stop
+}
+}
+
+actor MetalMaidenChargeFX2 : GeminiTrail
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+RenderStyle "Add"
+Alpha 0.95
+Translation "0:255=249:249"
+States
+{
+Spawn:
+TNT1 A 0
+SPFX AA 1 bright
+SPFX AAAA 1 bright A_FadeOut
+stop
+}
+}
+
+actor MaidenCharge : Ammo
+{
+inventory.amount 1
+inventory.maxamount 400
++INVENTORY.IGNORESKILL
+}
+
+
+actor MaidenDashCooldown : Powerup
+{
+Powerup.Duration -1
+}
+
+actor MetalMaidenDashShadow : GeminiTrail
+{
+RenderStyle "Add"
+Alpha 0.89
+Translation "0:255=56:79"
+States
+{
+Spawn:
+MEMA MMMMMM 1 bright A_FadeOut
+stop
+}
+}
+
+actor MaidenFireballDashFlag : Inventory {}
+
+actor MaidenSteelFortress : PowerProtection
+{
+DamageFactor "Normal", 0.0
+Powerup.Duration 0x7FFFFFFF
+//Powerup.Color "Blue"
+}
+
+actor MaidenPressureBoost : PowerProtection
+{
+DamageFactor "Normal", 0.75
+Powerup.Duration 0x7FFFFFFF
+//Powerup.Color "Cyan"
+}
+
+actor PressureReady : Inventory {}
+
+actor PressureParticles : GeminiTrail
+{
++NOTIMEFREEZE
+Scale 1.5
+Translation "0:255=16:47"
+States
+{
+Spawn:
+TNT1 A 0
+MMFX BCCDDDEEEE 1 A_FadeOut
+stop
+}
+}
+
+actor MetalMaidenPressureWave
+{
++EXTREMEDEATH
++SPECTRAL
++CLIENTSIDEONLY
+PROJECTILE
+Scale 5.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,0)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,15)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,30)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,45)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,60)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,75)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,90)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,105)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,120)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,135)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,150)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,165)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,180)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,195)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,210)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,225)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,240)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,255)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,270)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,285)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,300)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,315)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,330)
+TNT1 A 0 A_SpawnItemEx("MaidenPressureWaveFX",0,0,0,18,0,0,345)
+stop
+}
+}
+
+actor MaidenPressureWaveFX : GeminiTrail
+{
+Translation "192:193=160:160"
+Speed 25
+RenderStyle "Add"
+Alpha 0.95
+States
+{
+Spawn:
+DUOR TTTTTTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Recoil(5)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_ScaleVelocity(0.10)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Recoil(-25)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SetAngle(angle-150.0)
+DUOR TTT 1 bright A_SpawnItemEx("GroundShockWavePartTrail",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+stop
+}
+}
+
+actor MetalMaidenWingsGreatForme : GeminiTrail
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+States
+{
+Spawn:
+TNT1 A 0
+//Middle
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-5,15,25,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-5,-15,25,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-10,25,25,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-10,-25,25,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+//Middle
+//Lower
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-20,45,5,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-20,-45,5,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-20,65,0,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-20,-65,0,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+//Lower
+//Upper
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-20,45,45,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-20,-45,45,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-25,45,55,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-25,-45,55,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-35,65,70,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+TNT1 A 0 A_SpawnItemEx("MetalMaidenWingsPiece",-35,-65,70,momx,momy,momz,0,SXF_ABSOLUTEVELOCITY)
+//Upper
+//Create
+TNT1 A 1
+stop
+}
+}
+
+actor MetalMaidenWingsPiece : GeminiTrail
+{
++NOTIMEFREEZE
++CLIENTSIDEONLY
+Scale 1.8
+States
+{
+Spawn:
+MMFX BB 1
+stop
+}
+}

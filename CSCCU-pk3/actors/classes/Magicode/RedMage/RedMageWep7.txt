@@ -1,0 +1,328 @@
+actor RedMageThundaraWep : RedMageDiaraWep
+{
+Tag "Thundara"
+Weapon.SlotNumber 2
+Inventory.Pickupmessage "Spell learned: Thundara!"
+inventory.icon "THNRI0"
+States
+{
+SFCheck1:
+//RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak")
+RMHD A 0 A_JumpIfInventory("SpellFusionPower",300,"SFCheck")
+RMHD A 0 A_TakeInventory("User1_Trigger",99)
+goto Ready+11
+SFCheck:
+//RMHD A 0 A_TakeInventory("SpellFusionPower",350)
+RMHD A 0 A_JumpIfInventory("FissionWaveFlag",1,"FissionReady")
+RMHD A 0 A_JumpIfInventory("WateraSpellFlag",1,"ThunderStorm")
+RMHD A 0 A_JumpIfInventory("FocusSpellFlag",1,"Thundaja")
+RMHD A 0 A_JumpIfInventory("BlizzaraSpellFlag",1,"FlashFreeze")
+RMHD A 0 A_JumpIfInventory("FiraSpellFlag",1,"FissionWave")
+RMHD A 0 A_JumpIfInventory("AeroraSpellFlag",1,"AvianCyclone")
+RMHD A 0 A_JumpIfInventory("SlowSpellFlag",1,"PlasmaTrap")
+RMHD A 0 A_JumpIfInventory("BlinkSpellFlag",1,"LightningSprint")
+RMHD A 0 A_JumpIfInventory("TemperSpellFlag",1,"ThunderBlade")
+goto Ready+11
+ReshuffleCheck:
+RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+7
+ReshufflePlease:
+RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
+RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+12
+ThunderStorm:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD A 0 A_SpawnItemEx("ThunderStormSpellSpawnerFX",0,0,25)
+RMHD A 0 A_SpawnItemEx("ThunderStormSpellBoltSpawner",0,0,10)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+Thundaja:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("ThundajaShot",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+FlashFreeze:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("FlashFreezeShot",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+FissionWave:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD BC 2
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD A 0 A_FireCustomMissile("FissionWaveSpawner",0,0,8,0)
+RMHD A 0 A_GiveInventory("FissionWaveFlag",1)
+goto FissionReady
+FissionReady:
+RMHD D 0 A_TakeInventory("RedMageMana",1)
+RMHD DD 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOSECONDARY)
+RMHD D 0 A_JumpIfInventory("RedMageMana",1,"FissionReady")
+goto FissionStop
+FissionStop:
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD D 0 A_TakeInventory("User1_Trigger",999)
+RMHD D 0 A_TakeInventory("FissionWaveFlag",99)
+RMHD CB 2
+goto Ready+5
+AvianCyclone:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD A 0 A_SpawnItemEx("AvianCyclone",0,0,4,13,0,0,0,SXF_NOCHECKPOSITION)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+PlasmaTrap:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("PlasmaTrapSpawner",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+LightningSprint:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD A 0 A_FireCustomMissile("LSTestChecker",0,0,8,0)
+RMHD BC 2
+RMHD DDDDDDDDDDDDDDDDDDDD 1 A_JumpIfInventory("LSFlag",1,"TeleSuccess") //Ammo will only be taken away upon successful movement.
+RMHD CB 2
+RMHD A 0 A_TakeInventory("SpellFusionActive",99)
+RMHD A 0 A_TakeInventory("User1_Trigger",99)
+RMHD A 5 A_TakeInventory("User2_Trigger",99)
+goto Ready+5
+TeleSuccess:
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_TakeInventory("RedMageMana",64)
+RMHD A 0 A_ChangeFlag("THRUACTORS",1)
+RMHD A 0 A_ChangeFlag("NOBLOCKMONST",0)
+RMHD A 0 A_PlaySoundEX("weapon/lightningbolt","weapon")
+RMHD D 5 A_SpawnItemEx("LSBolt",0,0,5)
+RMHD D 0 Thing_Move(0,CallACS("RedMageSprintHandler",0),1)
+RMHD D 0 A_PlaySoundEX("weapon/lightningbolt","weapon")
+RMHD D 0 A_SpawnItemEx("LSBolt",0,0,5)
+RMHD DDDDDDDDDD 1 A_Stop
+RMHD D 0 A_ChangeFlag("THRUACTORS",0)
+RMHD D 0 A_ChangeFlag("NOBLOCKMONST",1)
+RMHD CB 2
+RMHU AAAAAAAAAA 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 5 A_TakeInventory("User2_Trigger",999)
+goto Ready+5
+ThunderBlade:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD B 2 A_PlaySoundEX("weapon/timestopper","weapon")
+RMHD C 2
+RMHD D 0 A_TakeInventory("TemperEffect",99)
+RMHD D 0 A_TakeInventory("FlameTongueFusionPower",99)
+RMHD D 0 A_TakeInventory("HydroBladeFusionPower",99)
+RMHD D 0 A_TakeInventory("MagicBladeFusionPower",99)
+RMHD D 0 A_TakeInventory("IceBrandFusionPower",99)
+RMHD D 0 A_TakeInventory("FalchionFusionPower",99)
+RMHD D 20 A_GiveInventory("TBladeFusionPower",1)
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+Altfire:
+RMHD A 0 A_JumpIfInventory("LastStandPower",1,"ThundaraFree")
+RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"ThundaraFree")
+RMHD A 0 A_JumpIfInventory("RedMageMana",32,"ThundaraUse")
+Goto Ready+5
+ThundaraFree:
+goto ThundaraUse+1
+ThundaraUse:
+RMHD B 0 A_TakeInventory("RedMageMana",32)
+RMHD BC 2
+RMHD D 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD D 45 A_FireCustomMissile("ThundaraShot",0,0,8,0)
+RMHD CB 2
+RMHD A 0 A_Refire
+goto Ready+5
+}
+}
+
+actor ThundaraShot : FastProjectile
+{
+PROJECTILE
++DONTBLAST
++SKYEXPLODE
++RIPPER
++THRUACTORS
+Speed 250
+Damage(0)
+radius 5
+height 5
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Death:
+LBFX D 0 A_SpawnItemEx("ThundaraBoltSpawner")
+TNT1 A 1
+stop
+}
+}
+
+actor ThundaraBoltSpawner
+{
+PROJECTILE
++DONTBLAST
++THRUGHOST
++RIPPER
++NOEXPLODEFLOOR
++THRUACTORS
+Damage(0)
+Speed 0
+Scale 2.0
+Radius 4
+Height 4
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_JumpIf(z-floorz==0,"DeathGround")
+goto Air
+Air:
+TNT1 A 1 A_ChangeVelocity(0,0,-100,CVF_RELATIVE|CVF_REPLACE)
+TNT1 A 0 A_JumpIf(z-floorz<=4,"Death2")
+loop
+DeathGround:
+LBFX DEFG 2 bright
+LBFX HIJ 1 bright
+LBFX D 0 A_SpawnItemEx("ThundaraBolt",0,0,0)
+TNT1 A 1
+stop
+Death2:
+LBFX DEFG 2 bright
+LBFX HIJ 1 bright
+LBFX D 0 A_SpawnItemEx("ThundaraBolt",-8,0,0)
+TNT1 A 1
+stop
+}
+}
+
+actor ThundaraBolt
+{
+PROJECTILE
++RIPPER
++NOEXPLODEFLOOR
++FORCEYBILLBOARD
++FLOORHUGGER
++PIERCEARMOR
++DONTBLAST
++OLDRADIUSDMG
++THRUACTORS
+Damage (0)
+DamageType "Thundara"
+Obituary "%o passed out from an electric-induced coma from %k's Thundara spell."
+height 7
+radius 7
+scale 2.5
+states
+{
+Spawn:
+LIBO G 0
+LIBO G 0 A_PlaySoundEx("weapon/thunderbolt","SoundSlot7")
+LIBO G 0 Radius_Quake(3,40,0,75,0)
+LIBO G 1 bright A_SpawnItemEx("LightningExtend",0,0,355)
+LIBO G 0 A_SpawnItemEx("ThundaraShockwaveSpawner")
+LIBO GGGGGGGGGGGGGGG 0 A_SpawnItemEx("EarthShatterFX",random(-36,36),random(-36,36),8,random(-8,8),random(-8,8),random(1,8))
+LIBO G 0 A_Explode(60,300,0,0,30) //given the mana cost and prediction needed to catch someone, being in the sweet spot of 60 units is an easy 1/3 of your HP at normal armor
+LIBO HIJK 1 bright
+stop
+}
+}
+
+Actor ThundaraShockwaveSpawner
+{
+PROJECTILE
++DONTBLAST
++NOINTERACTION
+-SOLID
++CLIENTSIDEONLY
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,0)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,15)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,30)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,45)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,60)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,75)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,90)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,105)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,120)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,135)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,150)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,165)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,180)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,195)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,210)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,225)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,240)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,255)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,270)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,285)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,300)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,315)
+TNT1 A 0 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,330)
+TNT1 A 1 A_SpawnItemEx("ThundaraShockwave",0,0,0,20,0,0,345)
+stop
+}
+}
+
+actor ThundaraShockwave
+{
+PROJECTILE
+Scale 2.0
++FLOORHUGGER
++RIPPER
++CLIENTSIDEONLY
++NOINTERACTION
+Damage(0)
+Renderstyle "Add"
+Translation "192:192=229:229"
+Speed 5
+Radius 32
+Height 32
+States
+{
+Spawn:
+DUOR T 0
+DUOR T 1 bright A_FadeOut(0.08)
+goto Spawn+1
+}
+}

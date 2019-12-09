@@ -1,0 +1,357 @@
+So, you are probably wondering why this is here... well, this is one of my most technical works to date and I would not be lying if I said
+half the mechanics are a mystery to even my dev team even though they should ask questions and are the first to see my work in action. However, with this guide
+I will hopefully explain all things that the class has on it as best as I can. Note that some mechanics may not be accurate to the actual game(s) due to limitations or bad
+2D to 3D crossovers. Read on...
+
+1. Generic explanation of generic genericness
+2. The Buster and You
+3a. You, your chips, and your memory
+3b. Chip Breakdown (Big section)
+4. Navis: They are YOUR friends!
+5. Special Mechanics (Final Smash and Program Advances)
+6. Tips and Tricks
+
+Section 1: Generic explanation of generic genericness
+
+So, this userclass thing. It represents a nerd and his love of the Battle Network series. Quite a few core gameplay features are found on this class, which by the way is held
+together quite literally by oh so many flags (most people would not understand that unless you know how decorate works). Either way, your buster or your chips can both be depended on
+to take out your enemies, although generally using battlechips will give an extra edge over those who go basic and stick to mainfire charge shots. First off, time to hop into the first
+mechanic, THE BN MEGABUSTER.
+
+
+Section 2: The Buster and You
+
+This class comes with three "weapons". For all intents and purposes, they function the same exact way, but they count as "slots". Each weapon represents a specific slot; Wep 1 is Slot 1,
+Wep 2 is Slot 2, and Wep 3 is Slot 3. Your HUD will always display a green arrow to show your active weapon in case you forget or do not have the option to show wep names on. That being said,
+this is important because you need these slots to store your battlechips and elements (I would do Soul Unisons but some spick thought he was first to this concept and beat me to it... who was it
+I wonder? I believe his name starts with an N and rhymes with Dio. While we are here, just some basic explanations on the buster attacks (most are meant to represent style changes in a sense)
+
+>Normal (White Dot): Your basic element; all three slots start with this and will be reset to this after you use a Final Smash. Nothing out of the blue here, charge shots will generally be moderately
+powerful and the only time you get elemental charge attacks is using a full-charged shot. Low/Mid charge shots are never like that, and are pretty fast to replicate their speed in the actual game.
+
+>Fire (Fire symbol): Not exactly good on range, but staying in its path or backing up through it will almost guarantee a death or heavy damage. Good for people who are trying to go up close for attacks.
+Gotten from assigning a fire-based chip to a slot. Decent charge time, moderate/high damage.
+
+>Aqua (3 water drops symbol): While this element may lack in focused power and damage, it has something no other charge attack has: a very quick charge time. If you like to just spread a bit of fun or spam
+in general, this element is made for you. Low-Mid damage. Gotten from aqua-based chips being put on a slot.
+
+>Elec (Bolt symbol): This element is not used mainly for damage... but it does have a very important use: stun time. Do not worry too much, one attack from anything will cut the stun off or about 2 seconds time.
+The charge time is slower than most elemental shots for that reason, but the projectile is fairly quick to travel. By the way, did I mention that heavy hitting chips could use help from this charge shot?
+Low damage, gotten from elec-based chips being put on a slot.
+
+>Wood (Leaf symbol): You cried out that you just cannot reach that annoying camper sitting in a fairly difficult spot to reach on a map... and Nature finally decided to help you. This element is sort of like a sniping
+attack; charge it up and let loose a Leaf Tornado where the shot lands. It does radius damage and can temporary slow down whoever it hits, akin to the Vanilla Flash Bomb. Also does moderate damage too, but is a bit
+lacking if you cannot aim or predict. Moderate charge time. Gotten from wood-based chips being put on a slot.
+
+>Wind (Air symbol): One of the first non-canon additions. This element essentially acts like a short range slash attack and can do moderate damage depending on how much the attack hits
+a person. Non-charging, medium speed. gotten from wind-based chips being put on a slot.
+
+>Break (Gear symbol): The second non-canon element addition. He is bigger, faster and stronger too, he is the 6th memeber of the BN crew: Gear Shot! Anyways, this charge shot is what the Fire attack wishes it can be; more
+ranged, shield/guard piercing, non-reflectable, and it bounces! Also has decent charge time and damage to boot! However, Break-element chips tend to be a bit rarer so if you get a hold of one, do keep it.
+
+Generally, your HUD will track the element assigned for each slot to the right of where it says "Slot 1", "Slot 2" and "Slot 3", to the right of the chip icon as well. Note that you will never get an element other than what
+a chip says it assigns, like wood elements will never come from MagBolt for example. Moving on to the next section.
+
+
+Section 3a - You, your Chips and your Memory
+
+So, you have your buster and style changes... but what would Battle Network be without its battlechips? For archiving reasons, this class used to just use chips directly as items and they are immediately used up. However, that system
+allowed camping/being a pansy to give a massive advantage in the form of stockpiling. Also, each chip is one use, which is wasted if you miss. With that, the class now makes use of Memory (no, not the kind that allows you to remember
+that day way back when you first thought you were making something groundbreaking but in the end flopped on its ass... I mean what). Memory is like your ammo, which you can hold 64 of at any time. Obviously each chip demands an amount
+of memory to successfully be used. This works well because you store up to 3 chips and elements at a time (you can store multiples of the same element if you wanted to because that can happen). Your memory regenerates slowly
+over time or can be gotten from weapon capsules if you are really pushing for management. Just be careful to switch weps and not use chips all on the same weapon slot, as they overwrite each other. After about 15 seconds, you can
+use the Reshuffle ability (whatever button you assign for User 1) for a fresh pack of 3 chips. Note that special-case chips will NOT be shuffled; the below fall under this category:
+
+>Custom Gauge modifications (FastGauge)
+>Mega/Giga chips (will be explained later)
+>Program Advances
+>Vanilla/TheMod specific items (obviously)
+
+
+Section 3b - Chip Breakdown
+
+Ah yes, the meat of this class. Battlechips are where your fighting abilities come from. While this class is more light-armored than Megaman/Bass, it is arguably just as versatile if not more so than them. Luckily there are many battlechips to
+work with, which are generally given in packs of 3 per shuffle (ACS generally will try its best to not give chips you already had before, but still will hiccup occasionally). Your weapons will remember assigned chips just to the right of the Slot-1/2/3 icons
+and will do so across shuffles, so no need to worry about RNG laughing at your attempts to find a combo that works out. With that out of the way, how about we learn about our arsenal, shall we? The format will generally go as follows:
+
+Name > Element > Memory > Rarity > Damage
+
+1. MagBolt (Elec) (64) (Fairly Rare) (20 per explosion, can do about 5-600 in great circumstances)
+-Feel like being an asshole and/or need to pull a Scorpion on someone? Reel them in with this attack. It uses your entire bar to counter trolling, so make it count. However, it does not discriminate against anyone who can be
+pulled in. Can work nicely with a CrossBomb chip if you are quick enough. Note this battlechip will not cause pit deaths unless for some reason you happen to be affected by a specific flag at the wrong time.
+
+2. MiniBomb (Normal) (2) (Common) (60 Direct, 75 explode damage)
+-A nice, basic set of 2 tossable bombs that is light on memory usage. Good if you need SOMETHING to use in a pinch. Nuff said.
+
+3. MidBomb (Normal) (6) (Semi-Common) (90 Direct, 125 x 3 explode damage)
+-MiniBomb had an older brother; this would be him. The explosions are done in a line of 3, hence the potential to score up to 125 x 3 damage.
+
+4. CrossBomb (Normal) (12) (Uncommon) (120 direct, 175 x 5 damage)
+-The daddy of the MiniBomb crew. The explosions form a plus shape. It has the potential to net 175 x 5 damage, but as a realist I promise you that does NOT happen too often due to moving targets.
+
+5. CannonBall (Break) (16) (Semi-Common) (300 direct and 35 damage per dirt piece)
+-How does one even throw a heavy metal ball? Either way, this chip can pack the pain if you have some decent aim, and as a bonus heavy objects like this cause a temporary slowdown if it hits a person. Otherwise, on impact it causes debris to fly and bounce around.
+Who said being strong did not pay off...
+
+6. Flash Bomb, which is not vanilla Flash Bomb (Elec) (48) (Rare) (25 direct, guaranteed 75 explode damage)
+-Probably one of my more favorite chips, as while it rarely kills it has good setup potential for a combo or two if you find some action. The 75 damage is always forced by the way for being in the somewhat wide radius of the bomb. If you want good results, use this
+and then a chip that is hard to land or only has one use for it... or go for the dick move and use this and charge the elec attack then finish with ElecSword if you can hit and have the memory... oh and bonus points if you actually kill a person with the Flash Bomb
+itself. :D
+
+7. Recover 300 (Normal) (56) (Uncommon) (No damage, Heals user)
+-Pretty straightforward. Heals the user by 300 HP, and is good in a pinch when you cannot find a capsule in sight. This chip is banned in LMS/TLMS gamemodes.
+
+8. Red Apple (Normal) (36) (Uncommon) (No damage, Heals user)
+-A risky but rewarding chip. This spawns an apple around you somewhere, and it teleports 3 times before going away forever. Whoever shoots it will be healed by 500 HP. That is right, ANYONE can shoot it, so use it openly and discretely for best effect.
+This chip is banned in LMS/TLMS gamemodes.
+
+9. Yellow Apple (Normal) (36) (Uncommon) (Support)
+-Same as red apple, but this time whoever hits the apple gets a power boost for 15 seconds. RAWWWWWW POWERRRRRRR!
+This chip is banned in LMS/TLMS gamemodes.
+
+10. Green Apple (Normal) (36) (Uncommon (Support)
+-Same as red apple, except hitting this will grant a massive damage reduction to the person for 10 seconds, making you take 10% of the damage you normally do.
+This chip is banned in LMS/TLMS gamemodes.
+
+11. TimeBomb (Normal) (42) (Uncommon) (500 explode damage)
+-Do you like walking away from explosions? Cool, SO DO I. Leave this thing out in an open area and a few secs or so later it will go boom. I mean you could try to stop it by simply shooting it, but you really ought to have some high DPS to stop it; I suggest
+simply running away and hope you do not take too much damage. Can also be dodged by going around a wall, obstacle or corner.
+
+12. Sword (Normal) (4) (Common) (150 damage)
+-A basic short-range attack. It is light on memory usage and handy in a pinch. Your best bet with attacks like these is to go for a stunning attack and try using this a couple of times.
+
+13. WideSword (Normal) (8) (Semi-Common) (180 damage)
+-A bit better than your standard sword chip; it has a wider hitbox and does a bit more damage but otherwise it is about the same as a Sword chip.
+
+14. LongSword (Normal) (12) (Uncommon) (180 damage x 2?)
+-This sword has a longer reach than the other two swords, but due to a Doom limitation it has to be done with 2 hitboxes, 1 behind the other. This poses a possibility that it can hit twice, and yet there is not much that can be done about it.
+
+15. FireSword (Fire) (16) (Semi-Common) (120 damage, can rip)
+-The first of the elemental sword chips, with each having an effect tied to it. This one simply has increased damage potential, and can rip. Has the range/hitbox of a WideSword.
+
+16. AquaSword (Aqua) (16) (Semi-Common) (325 damage)
+-This chip can slow down your victim temporarily if they get hit. Can be effective if you need to land a chip that is a bit more aim-dependent.
+
+17. ElecSword (Elec) (32) (Semi-Common) (250 damage)
+-This chip serves as a good stun and does not do too badly in the damage department. Most effective in a stun chain if you can manage it, or as setup for a hard-to-land attack.
+
+18. WoodSword (Wood) (16) (Semi-Common) (300 damage)
+-This chip can cause a decent bit of recoil if it hits your target. Good against people who like to camp near pits or hard to reach areas.
+
+19. TreeBomb (Wood) (32) (Uncommon) (250 direct + 25 ripping WoodTower damage)
+-Similar to CannonBall in a sense, but this does not pierce guards. On contact with a person it goes away but left alone on the ground it will sprout and spew out 3 sets of 8 WoodTowers in 8 directions. Good for surprise crowd control.
+
+20. Invisible (Normal) (56) (Uncommon) (Support - Body Effect)
+-Need to catch your breath and attack without much worry about being ganged up on, or just feel like being sneaky? Use this chip. It might cost you most your memory but for 10 seconds you get to ignore most attacks, not counting most elec-based
+attacks and select class/vanilla weapon attacks. This cannot be active at the same time as another "Body Effect" and will cancel the old one with the new one (you can still use AntiDamage but at that point you would be wasting it to dodge a small bit of damage).
+No, ElecSword does NOT bypass being invisible. Some examples that can include:
+
+>Gemini Laser
+>Search Snake
+>Uninstall chip (bypasses AND immediately cancels the effect)
+>Quick Boomerang
+>Beam attacks
+>Speed-oriented attacks
+>Homing Sniper
+
+You get the idea. It can dodge a majority of attacks with very minute damage, but not all of them. You cannot dodge stage hazards however, as they do damage per usual. Banned in LMS/TLMS gamemodes.
+
+21. Boomerang (Wood) (8) (Common) (60 ripping damage)
+-Sometimes you need to have it all come back to you. That is what a Boomerang is for; it travels a short distance before heading back in the opposite direction it was shot from. Anything in its path will be ripped right through.
+
+22. Hi-Boomerang (Wood) (12) (Semi-Common) (75 ripping damage)
+-Functionally the same as a normal Boomerang, only red and a bit stronger.
+
+23. M-Boomerang (Wood) (18) (Uncommon) (90 ripping damage)
+-Functionally the same as a normal Boomerang, yet stronger than both that and a Hi-Boomerang.
+
+24. Meteors (Fire) (48) (Rare) (75 direct, 150 explode damage)
+-Behold, the power of Ne- I mean, the power to smite people with space rocks! Essentially like vanilla Astro Crush, but the area of effect is more spread out and can be just as devastating. Best used when your opponent is stunned
+or slowed down.
+
+25. Energy Bomb (Normal) (12) (Semi-Common) (25-35 explode damage, multiple explosions)
+-Now this is what is essentially vanilla Flash Bomb but with gravity affecting it. The velocity-scaling effect is a bit more noticeable on this chip over its vanilla counterpart however.
+
+26. Mega Energy Bomb (Normal) (18) (Uncommon) (40-50 explode damage, multiple explosions)
+-The older brother to Energy Bomb. Does more damage and the explosion sizes are a bit bigger.
+
+27. Harpoon-2 (Aqua) (8) (Common) (35 ripper damage)
+-So you need an arrow that can travel fast and hit hard? This is the chip for you; it fires two harpoons in the direction you are aiming that will puncture anything in its way. Good for fending off attacks in a pinch.
+
+28. Harpoon-3 (Aqua) (14) (Semi-Common) (35 ripper damage)
+-Functions like its lower level counterpart, except 3 Harpoons are fired and they are a bit faster.
+
+29. Harpoon-4 (Aqua) (20) (Uncommon) (35 ripper damage)
+-Just like the other chips in this family, but 4 Harpoons are fired and these are the fastest of the bunch.
+
+30. FastGauge (None) (No Cost) (Uncommon) (No damage)
+-You may not see the immediate benefit of this chip at first, but over time it pays off in dividends. Your chip reshuffling and memory regeneration rates are both doubled, meaning you can belt out new chips and combos at twice the speed and be twice as unpredictable! Due to the way the chip works, it is a 1-time use chip and
+in the case of you already having this effect active, any subsequent uses will fill your Custom Gauge by 50% so you don't waste it completely. Banned in LMS/TLMS gamemodes.
+
+31. Uninstall (Normal) (16) (Semi-Common) (100 damage)
+-No, this does not uninstall TheMod or the userclass from your computer; in fact, the chip shoots a fast blast of strange energy that will cause debuffs in attack, defense and speed temporarily if it hits, as well as negate the effects of Invisible and FastGauge completely. A pretty handy setup or field-leveling attack if used right.
+
+32. Attack+ (None) (42) (Uncommon) (No damage)
+-Do you feel weak? Somewhat underpowered against that annoying person playing as Ignis? With this chip you can turn the tables a bit with a 25% power boost on anything offensive for 10 seconds! If you really need to, this chip can also negate the attack lowering effect of Uninstall; note you cannot stack power boosts on top of each other.
+Oh, did I mention you COULD use this chip right before summoning a certain explosive Navi onto the field? Try it. Banned in LMS/TLMS gamemodes.
+
+33. AntiDamage (Normal) (48) (Uncommon) (100 x 3 counter damage)
+-Sometimes you will need a veil of protection while waiting for those certain chips, or if you need HP badly. Using this chip will allow you to negate the next hit done on you and also counter with one of your own attacks. During this time, you will not be killable by ANY means until the effect is activated or if you decide to jump into a hazard (which cancels the attack and gets you a suicide in the process).
+As for the counterattack, you jump up and leave a fake body doll on the ground and then throw 3 shuriken in different directions that will home/bounce around. This chip shares a cooldown with AntiWind and AntiBreak, and chips in this family cannot be stacked on each other to provide the infamous 7-layers of defense; that can be quite messy and difficult for me as a coder to manage. Banned in LMS/TLMS gamemodes.
+
+34. AntiWind (Wind) (48) (Uncommon) (50 tornado damage/15 typhoon ripping damage; very deadly)
+-Works similarly to AntiDamage, but will only trigger on anything that vaguely uses some form of wind attack. It also lacks the Buddha ability of AntiDamage because it is a specific elemental counter, so you may die without being able to use this chip fully. I made up for this by making it and AntiBreak do more damage over AntiDamage. Just keep in mind to not be too close to this class
+if you plan to use a Wind attack, as the typhoon spinning may draw you in and demolish you. Cannot be stacked with any other Anti chip. 1 of 2 non-canon chips made for this class. Banned in LMS/TLMS gamemodes.
+
+35. AntiBreak (Break) (48) (Uncommon) (100 big scrap damage/50 little scrap damage)
+-Works similarly to AntiDamage, but will only trigger on anything that vaguely uses some form of metal/guard piercing in the attack. It also lacks the Buddha ability of AntiDamage because it is a specific elemental counter, so you may die without being able to use this chip fully. I made up for this by making it and AntiWind do more damage over AntiDamage. Just keep in mind to not be too close to this class
+if you plan to use an attack matching the above description, as you may find that garbage is not safe to touch yet alone be under. Cannot be stacked with any other Anti chip. 1 of 2 non-canon chips made for this class. Banned in LMS/TLMS gamemodes.
+
+36. SeekBomb (Normal) (24) (Semi-Common) (80 direct/80 explode damage)
+-Not quite the strongest chip ever made, but it follow its chosen target to the ends of the earth if it must or until it is led into a wall or obstacle. On a full bar only 2 can be thrown, with a 3rd being possible a short time later. If you have a good hunch that your target is weak, pick this chip and aim in their direction to give a SeekBomb the best chances of picking your intended target, and try not to have
+anyone else nearby either.
+
+37. Muramasa (Normal) (42) (Uncommon) (??? damage; equal to lost HP)
+-Not for the faint of heart. This chip draws on the lack of life in your body to wreak an appropriate amount of revenge on its victims; in other words, you have to be low HP to get the most out of this attack. That being said, the highest possible damage that can be done is 999 before any damage boosts are applied;
+I suggest coupling this with Anti-Damage or some kind of effect that makes you near-impervious to damage.
+
+38. WindRack (Wind) (24) (Semi-Common) (90 x 5 explode damage)
+-While not being the most threatening chip in the arsenal, it has an uncanny ability to push people away that are around you. Although I would not suggest this, you can sweep people into pits if they are close enough and are facing the right direction. Keep in mind this is meant to function as a close-range defensive attack.
+
+39. DrillArm (Break) (24) (Semi-Common) (100 x 3-6 damage; 3-600 total)
+-Functionally it has the hitbox of a longsword, but it is fairly close range for such a potentially powerful attack, as it can do up to 600 damage if landed right. Should it hit, the attack will try to force the target to face you and be drawn in for more damage. As with any other Break attack, it can bypass guards and shields.
+
+40. AirShot (Wind) (16) (Common) (15-20 explode damage)
+-Not really a powerful chip, but it can cause a great deal of recoil to whoever it hits. As of right now, you can shoot Pirate Mines with this attack and send them at people, but other than that no other props/spawnable actors can be shot in this way...
+at least for now.
+
+41. Dash Attack (Normal) (28) (Semi-Common) (160 x 10 explode damage; will not always do the max amount)
+-Need to make a quick getaway and flip people off while doing so? Why not use Dash Attack! This will allow you to get needed mobility in a pinch and damage people at the same time; just be aware you can use this twice per bar so keep that in mind. As it allows you to dash right through people, some checks have been added to hopefully avoid situations where you may become
+stuck inside an actor or another player; in this case, it will try to eject you if said checks collide with some kind of actor but even this can fail at times (yes nothing is perfect, leave me alone). Otherwise, you will be stopped and recoiled slightly at the end of the attack; bumping into walls and losing your momentum will make this recoil much more noticeable.
+
+
+Section 4 - Navis: They are YOUR friends!
+
+On occasion you may find some kind of blue or red-bordered item in your inventory after spawning or a re-shuffle... this means you have hit the jackpot! These are Navi Summons, portable turret-styled helpers that can wreak havoc on anyone who dares walk into their line of sight. I will point out a few general limitations and general rules on them right quick to clear
+up a good deal of questions:
+
+>Navis follow a cooldown rule; although you may not run into this problem too often, only one Navi is summonable per 30-45 seconds. Giga Chip-level summons have a separate cooldown as they tend to be VERY destructive over the Mega Chip-level summons.
+>Navis follow a set AI routine based on Treble Sentry coding. This is generally okay enough, but sometimes they need to be mobile to be useful. Most Navis as a result have the ability to travel through the map to reach their targets, often ignoring physics to do so. Be wary if you see such a thing and you know it is NOT yours!
+Keep in mind that this extra feature depends on a valid target to work properly; you may notice they tend to straight shot out of the map if you summon a Navi without anyone else around to target.
+>Navis are considered monsters; no matter how good of a coder I claim to be, it would be very difficult to get around the fact that they can still hurt their owners, and bypassing this would take some very advanced Decorate and/or ACS that is currently beyond my ability. I tried whatever I can to mitigate the chances of your summons
+potentially hurting you by accident; at least they never actively try to turn on their owners. If anyone happens to know a method to fix this limitation, by all means please share it with me.
+>Being monsters, there are situations where it takes a bit more in workarounds to ensure the owners get proper kill credit (believe me, this is harder than it looks on paper). As far as I care, 95% of the time you will get credit for kills your summon manages to get.
+>Some Navis have painstate effects tied in to their attacks, which due to the above limitation can potentially affect their owner if not careful. I have made sure that in most cases I went with solutions that will allow a Navi to still be useful but at the same time not punish the owner for being careless.
+>Navis will generally be noted by having somewhat appropriate colors (CBM/YD colors served as a good base) and being transparent. Due to the way they move around, I made adjustments to account for the transparency changes as well.
+>ALL Navi chips are banned in LMS/TLMS gamemodes for obvious balance reasons.
+
+That being said, it is time to talk about the Navis themselves!
+
+
+1. Woodman.EXE
+-Not quite the useless hunk of wood you remember. He does not like you, nor should you like him.
+>Ground Pound: Woodman will jump around and try to stomp people near him. Kind of embarassing to die in this way.
+>Bullet Seed: Hey, this guy is totally a Pokemon, I swear... anyways, Woodman will attempt to pelt his target with giant seeds for a few rounds.
+>Wood Towers: A bunch of wooden toothpi- I mean towers erupt from the ground around Woodman. Not quite the most threatening from afar, but these can hurt and add up quickly in damage if you step through too many.
+
+2. Bass.EXE
+-By far the most destructive summon available. If you thought a tiny cactus with tons of needles were bad, this Navi will make you reconsider life. Being one of the rarest chips to be obtained in Deathmatch gameplay, it should come as no surprise that
+Bass.EXE is far from fair. Did I mention it is far more useful than the OCBMR version? Not to brag or anything, just stating some facts... ._.
+>Hell Wheels: Scorch Wheel has met its match. Not only do these hug the floor, they also will try to home in on their target and rip through them. They always said a ripping homing attack was bad, but why would the God of the Undernet ever listen to them...? Hmph, weaklings.
+>DarkSword: Used as an extension of the movement ability most Navis share, this attack is a bit more sudden, as it is a bit hard to catch Bass broadcasting it and you may not realize you are the next victim until it is too late, so always watch your back and keep moving if you see Bass in any map.
+>Burst Rake: Bass will broadcast this attack with a glowing fist and appropriate sound effect; after that, no more games. A series of Air Bursts are shot at enemies and boy do they hurt. Just hope you can find a wall or obstacle before you become the next victim...
+
+3. Freezeman.EXE
+-He is cold, he is bad, he will rain death on you... that is, if you have yet to succumb to the chilling effects. All he needs is a cold frigid atmosphere and maybe your soul as well. Note that all his attacks have a small chance to cause a temporary movement hinderance effect.
+>Icicle Rain: Freezeman will drop giant icicles around him from the sky. Watch out, as even non-direct hits can hurt a good bit!
+>Ground Icicles: A series of icicles are spread across the ground. The spawners can hug the floors, so having height over this guy will not do you much good.
+>Blizzard: A close to mid range attack that can overwhelm targets if they stay around Freezeman for too long.
+
+4. Bubbleman.EXE
+-Remember that pussy of a Navi from Battle Network 3? Well, he fixed some of his ways and decided to be a bit more upfront with his attacks. Blub!
+>Bubble Harpoons: No shields this time, thankfully. The harpoons generally act the same as the Harpoon chip series, minus being able to rip. 3 volleys of 5-6 are fired per time Bubbleman decides to use this attack pattern.
+>Bubble Bombs: A series of giant bubbles are launched in different directions around Bubbleman. They bounce but are slow, so what is the catch? They can hurt and tend to be very threatening in groups.
+>Bubble Mines: Essentially the same as Danger Wrap from Megaman 7, just more threatening.
+
+5. Flashman.EXE
+-Quite possibly the simplest Navi made thus far, but the most aggrevating as well. With an AoE attack the size of a Cutman stage and the ability to freeze anyone caught in said attack for 3 seconds, why use anyone else for your
+dirty work? Nuff said.
+
+6. Napalmman.EXE
+-The first Navi to be affected by a specific boosting chip to power its attacks up, and the first Navi to come with... minions of sorts. Napalmman likes his arsenal, and you should hate him for it. Most attacks are capable of lighting oil pits.
+>Special Ability: Turrets - Napalmman (or rather you) spawn two turrets randomly around the general location that Napalmman would spawn, and like other Navis they follow a modified Treble Sentry AI. They do not move however, but rather rotate and fire bursts of rounds at their targets.
+>Napalm Spray: A series of tiny Napalm Bombs are sprayed around a small area near Napalmman, leaving behind rings of napalm where the bombs land. These can be threatening if stepped on continuously.
+>Giant Napalm Bombs: 2 big Napalm Bombs are launched near Napalmman and produce a moderately-damaging explosion where they land.
+>Eruption: A series of Napalm fire lines and fire pillars are spewn about around Napalmman, hence the name of the attack. Napalm rings spawn in lines as they travel away from the source, and the fire pillars move around with a mind of their own from the point where they are spawned.
+
+
+Section 5 - Special Mechanics (Final Smash and Program Advances)
+
+So you have all these battlechips and buster attacks, yet still you are NOT satisfied? Ugh, fine. Maybe you would like to get a taste of real power that most classes would die for...
+
+Final Smash: Dark Soul
+-For about 15 to 20 seconds, you gain the overwhelming power of darkness. You lose any actively assigned chips and elements assigned and cannot activate any more chips of any kind until your Final Smash is over, so weigh that drawback before activating the Smash Ball item. Your primary becomes the DS Buster, which spews out balls of darkness that deal varying amounts of damage
+(think Psywave from Pokemon), and your altfire allows you to call from a pool of random DarkChip attacks (most are canon, 1 or 2 attacks are not). Below are the possible attacks:
+>Dark Boomerang: A boomerang with some nice homing capability, and it rips. It slows down after a bit and then will roam at that speed until it finds a target, and then picks up its speed again.
+>Dark Meteor: A shower of meteors is spawned in a line where you aim for a while until it dissipates. Very destructive; it is a rare attack for this reason.
+>Dark Wide: A noclipping attack that rips and travels a decent distance. Starts off at a slow speed at first (this is where it is most deadly as standing rippers are extremely dangerous) and picks up speed over time.
+>Dark Drill: Like the normal DrillArm, except more damaging, lasts longer, and fires Drill Bombs that gained the power of Remote Mine explosions (multiple explosions).
+>Dark Bomb: Not quite an actual Dark Chip, but it has shown up as a selection in BN4. Anyways, it packs the force of an Omega Bomb (more on this shortly) and comes with Michael Bay approved explosions.
+
+This is just a small sample of existing Dark Chips; I will likely feature a few more later in V3 and beyond.
+
+
+Program Advances
+
+A lesser-known feature of this class is the ability to combine a series of chips to form a powerful one-time item attack that can easily destroy most other classes without a thought. Being 1-use however is a double-edged sword; while Program Advances are very deadly, you can easily waste them, so please make them count. Before we discuss the combinations, some general notes:
+>Previously the way the class was done, there was no thought whatsoever on forming these combo chips; you generally had to just press a button and if you held a valid set of chips it would do the rest for you. Now you have to weigh your options each reshuffle and actually place chips in their correct slots; see how that works well?
+>You cannot hold more than one PA at a time; checks are in place to prevent forming more until your previous one is used. This is to discourage item hoarding and bullshitting your way to victory.
+>Program Advances require chips to be placed in specific slots with other chips in order to be ready for a combination.
+>All chips active are cleared, as well as the chip items themselves as an extra measure, leaving you elements in your weapon slots.
+>The way to run the Program Advance checker is not very obvious, but for those who did not know... you have to go to the bottom of "Customize Controls" and make a bind for the "User 2" key. Every person is different so I'll leave that one up to you.
+
+And now, the Program Advances! Note that S1 is Slot 1, S2 is Slot 2, and S3 is Slot 3 and this just means what chip must be readied on the weapon in question for it to work. Other conditions will be noted if necessary.
+
+1. LifeSword (S1 = Sword, S2 = WideSword, S3 = LongSword)
+-Any person who has played any Battle Network game will remember this bread & butter PA; it has appeared in practically EVERY game. For those who have not played any of the games, this combines the range of the three swords to produce a 3 x 2 hitbox; in here, that just means
+a really wide projectile with a great range. It packs a punch too, generally killing any class without a second thought.
+
+2. ElemSword (S1 = FireSword, S2 = AquaSword, S3 = ElecSword)
+-Instead of just swinging each sword in quick succession in-game, here you get 2 projectiles for each elemental sword which travel until they hit an obstacle or wall! They still have their effects from the original attacks,
+not to mention a bit of power boost on each projectile to ensure that the combo attack is not just one more projectile for each element. Take that, BN3. Also includes the WoodSword attack, even though it is not factored into the
+Program Advance.
+
+3. Omega Bomb (S1 = MiniBomb, S2 = MidBomb, S3 = CrossBomb)
+-While not as destructive as LifeSword or ElemSword, it does have a pretty acceptable explosion radius, which makes it good for finishing enemies you know are weak.
+
+4. TimeBomb+ (S1/2/3 = TimeBomb)
+-You will need a total of 3 TimeBomb chips in each weapon slot to pull this one off, but it will be worth it in the end. After it reaches 0, a massive explosion will go off and pretty much kill anything in its radius or heavily damage them. A stun on someone will guarantee this to happen.
+
+5. Arrows (S1 = Harpoon-2, S2 = Harpoon-3, S3 = Harpoon-4)
+-Instead of just shooting a short volley, why not clear out your enemies with a continuous stream of arrows? These are twice as powerful as the normal versions and they still rip. Quite the effective Program Advance.
+
+6. Omega Boomerang (S1 = Boomerang, S2 = Hi-Boomerang, S3 = M-Boomerang)
+-If you had a hard time believing that a boomerang can be destructive, then this Program Advance will clear up any doubts. 2 sets of 6 boomerangs are tossed in 6 different directions. They bounce and rip through opponents for a short amount of time, so it will definitely get someone killed, especially in small, enclosed spaces where Boomerangs can bounce around rapidly.
+
+7. SunMoon (S1 = Meteors, S2 = Attack+, S3 = Uninstall)
+-What a weird set of chips. Anyways, upon use a giant Red Sun is spawned (sometimes in low-ceiling stages you may not see this unfortunately) which drops a ton of meteors. Next, a Blue Moon takes it place to bombard a medium-sized area with orbital lasers. Finally, Red Sun comes back in to drop in on the action... literally!
+The celestial body is quite heavy, and may likely squash someone if they do not see it coming. The projectiles should always make it through ceilings if the main spawner is wedged up in the ceiling itself.
+
+
+Section 6 - Tips and Tricks
+
+So you think you know everything? How about some developer tips that may be able to step your game up...
+
+1. Manage your memory
+-This is very important. Knowing your costs and using weapon capsules to your advantage in Deathmatch mode can really help you get out kills faster. It also really helps to have FastGauge active to double your kill potential.
+
+2. Your busters have more use than you think
+-The buster charge attacks sometimes have more use than you realize. Aqua shots are very quick and cause recoil. Elec shots can stun and are very versatile for setting up heavy hitting attacks. Wood shots can slow down people; so can Wind shots to a degree.
+
+3. Know your chips
+-The best way to make your gameplay improve is knowing the ins and outs of your chips. MagBolt and some close-range chip like a Sword might serve as a good combo if someone does not move away in time.
+
+4. Make a bind for Program Advances
+-I cannot stress this enough. I know it sounds like a bad feature, but having a bind for activating Program Advances is needed for the chaotic gameplay, and is much better than typing "Puke 302" in the console.
+
+Good luck, and enjoy!

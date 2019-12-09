@@ -1,5 +1,20 @@
 clearplayerclasses
 
+AddKeySection "ExtraKeys" Weaponabilities
+addmenukey "Reload" +Reload
+addmenukey "Zoom" +Zoom
+
+AddKeySection "Abilities" Weaponabilities
+
+addmenukey "Ability 1" +user1
+addmenukey "Ability 2" +user2
+addmenukey "Ability 3" +user3
+addmenukey "Ability 4" +user4
+defaultbind j +user1
+defaultbind k +user2
+defaultbind l +user3
+defaultbind m +user4
+
 //██████████████████████████████████████████CSCC████████████████████████████████████████
 addplayerclass "MegamanCSCC" nomenu 
 addplayerclass "ColdFusion" nomenu  

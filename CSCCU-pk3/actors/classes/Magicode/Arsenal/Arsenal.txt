@@ -1,0 +1,32 @@
+Actor IsArsenal : Inventory{}
+
+Actor Arsenal : ClassBaseCSCC
+{
+Health 150
+Player.MaxHealth 150
+Player.DisplayName "Arsenal"
+Player.SoundClass "Arsenal"
+player.forwardmove 0.55, 0.55 
+player.sidemove 0.55, 0.55
+Player.JumpZ 10
+Player.StartItem "CanUseItems"
+Player.StartItem "ArsenalGearWep"
+Player.StartItem "ArsenalBlastItem"
+Player.StartItem "IsArsenal"
+States
+{
+Spawn: 
+WMCH A 0
+WMCH B 1
+WMCH A 1
+GoTo Spawn+2
+See:
+WMCH BCDE 5
+GoTo Spawn+1
+Missile:
+WMCH F 5
+WMCH G 4
+GoTo Spawn+3
+
+}
+}

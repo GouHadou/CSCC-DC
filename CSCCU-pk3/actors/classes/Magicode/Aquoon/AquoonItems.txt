@@ -1,0 +1,16 @@
+Actor AquoonSlowdown : PowerSpeed
+{
+PowerUp.Duration 15
+PowerUp.Color "Blue" 0.3
+Speed 0.75
+}
+
+Actor AquoonProtection : PowerProtection
+{
+PowerUp.Duration 2
+DamageFactor "ColdStream", 0.0
+DamageFactor "IceTrap", 0.0
+DamageFactor "IceFrag", 0.0
+DamageFactor "CondensionWhirlpool", 0.0
+DamageFactor "WaterBurst", 0.0
+}

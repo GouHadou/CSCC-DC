@@ -1,0 +1,49 @@
+Actor IsAquoon : Once {}
+
+Actor IceAquoon : ClassBaseCSCC
+{
+Health 125
+Player.MaxHealth 125
+Player.DisplayName "Aquoon" 
+Player.SoundClass "Aquoon" 
+Player.DamageScreenColor "blue" 
+Player.ForwardMove 0.8, 0.8
+Player.SideMove 0.8, 0.8
+Player.JumpZ 11
+Player.StartItem "IsAquoon"
+Player.StartItem "CanUseItems"
+Player.StartItem "AquoonWeapon1"
+Player.StartItem "AquoonWeapon2"
+Player.StartItem "AquoonIceAmmo", 400
+Player.StartItem "AquoonWaterAmmo", 400
+States
+{
+Spawn:
+AQUO A 0
+AQUO B 1 A_JumpIfInventory("FragmentedSharkAnim",1,"FragmentedShark")
+AQUO A 1 A_JumpIfInventory("FragmentedSharkAnim",1,"FragmentedShark")
+GoTo Spawn+2
+See:
+AQUO BBBBBCCCCCDDDDDEEEEE 1 A_JumpIfInventory("FragmentedSharkAnim",1,"FragmentedShark")
+GoTo Spawn+1
+Missile:
+AQUO FFFFGGGG 1 A_JumpIfInventory("FragmentedSharkAnim",1,"FragmentedShark")
+GoTo Spawn+2
+FragmentedShark:
+CBTP A 420
+CBTP A 0 A_TakeInventory("FragmentedSharkAnim",999)
+GoTo Spawn+2
+
+PainFrames:
+AQUO H 0 A_PlaySoundEX("Aquoon/Pain","SoundSlot1")
+AQUO H 0 SetPlayerProperty(0,0,4)
+AQUO HHHHHHHHHHHHHHHHHH 1 A_SpawnItem("PainFX",0,3)
+AQUO H 0 SetPlayerProperty(0,0,1)
+AQUO H 0 A_Jump(256,"Spawn")
+GoTo Spawn+2
+
+}
+}
+
+Actor IceForm : Once {}
+Actor LiquidForm : Once {}

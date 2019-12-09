@@ -1,0 +1,487 @@
+Actor ChargeFlag : Inventory{inventory.amount 1 inventory.maxamount 2 +INVENTORY.IGNORESKILL}
+
+Actor BNBusterShot1 : FastProjectile
+{
+PROJECTILE
++DONTBLAST
+Obituary "%o got pew pew'd by that pea-shooting buster %k has."
+Radius 8
+Height 8
+Speed 125
+Damage(10)
+Scale 1.0
+Translation "192:192=160:160", "198:198=162:162"
+Damagetype "ZomoBN"
+States
+{
+Spawn:
+TNT1 A 2
+loop
+Crash:
+XDeath:
+TNT1 A 0 A_PlaySoundEx("weapon/BNShotHit","SoundSlot5")
+BIM1 BCD 2
+stop
+Death:
+BIM1 BCD 2
+stop
+}
+}
+
+Actor BNBusterShot2 : BNBusterShot1
+{
+Obituary "Who needs full charging? Certainly not %k, as they did away with %o just fine."
+Translation "192:192=107:107", "198:198=109:109"
+Radius 14
+Height 14
+Speed 600
+Damage(15) //Might change later if needed.
+Scale 1.5
+States
+{
+Death:
+BIM1 BCDE 2
+stop
+}
+}
+
+Actor BNBusterShot3
+{
+PROJECTILE
+//+DONTBLAST
+Damagetype "ZomoBN"
+Obituary "%o was pierced by the power of %k's fully-charged Buster Shot."
+Radius 24
+Height 24
+Speed 55
+Damage(30) //Might have to change later as well...
+Scale 3.0
+States
+{
+Spawn:
+TNT1 A 0
+CHBU AA 1 //A_SpawnItemEx("MBOrb1",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+CHBU BB 1 //A_SpawnItemEx("MBOrb2",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+CHBU CC 1 //A_SpawnItemEx("MBOrb3",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+CHBU DD 1 //A_SpawnItemEx("MBOrb4",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+goto Spawn+1
+Death:
+TNT1 A 0 A_Stop
+TNT1 A 1 //A_SpawnItemEx("BNBShot3Explosion")
+stop
+Crash:
+XDeath:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("weapon/BNShotHit","SoundSlot5")
+TNT1 A 1 //A_SpawnItemEx("BNBShot3Explosion")
+stop
+}
+}
+
+Actor BNFireShotSpawner
+{
+PROJECTILE
++RIPPER
++DONTBLAST
++DONTSPLASH
+Speed 50
+Radius 16
+Height 32
+Damage(0)
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_SpawnItemEx("BNFireShot1")
+loop
+Death:
+TNT1 A 1 A_SpawnItemEx("OilPitIgnite",0,0,8)
+stop
+}
+}
+
+
+Actor BNFireShot1
+{
+PROJECTILE
++RIPPER
++DONTBLAST
++DONTSPLASH
+Obituary "%o was overcooked by %k's Charged Flamethrower Buster Attack."
+Damagetype "BNFire"
+Speed 20
+Radius 20
+Height 28
+Damage(3)
+Scale 2.0
+States
+{
+Spawn:
+FLTH A 0
+FLTH A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+FLTH ABCDABCDABCDABCDABCD 2
+stop
+Death:
+TNT1 A 1 A_SpawnItemEx("OilPitIgnite",0,0,8)
+stop
+}
+}
+
+actor BNBubbleShotSpawner
+{
+PROJECTILE
+-NOGRAVITY
++DONTSPLASH
+Obituary "%o got a bit too wet thanks to %k's Charged Aqua Shot Attack."
+Translation "57:63=204:204", "79:79=204:204", "251:254=204:204"
+Damagetype "BNAqua"
+Radius 8
+Height 10
+Speed 45
+Damage(8)
+Scale 2.5
+States
+{
+Spawn:
+WTRB B 0
+WTRB B 0 ThrustThingZ(0,35,0,1)
+WTRB BCD 2
+goto Spawn+2
+Death:
+BNBL A 0 A_Stop
+BNBL A 0 A_NoGravity
+BNBL A 0 A_PlaySoundEx("weapon/BNBubbleBurst","Voice")
+TNT1 AAAAA 0 A_SpawnItemEx("BNBubbleShotSpread",0,0,5,random(-8,8),random(-8,8),random(0,10))
+TNT1 A 0 A_Explode(15,150,0)
+BNBL ABCDEFGHI 1
+stop
+}
+}
+
+actor BNBubbleShotSpread : BNBubbleShotSpawner
+{
+Radius 5
+Height 7
+Damage(4)
+Scale 1.5
+States
+{
+Spawn:
+WTRB BCD 2
+loop
+Death:
+BNBL A 0 A_Stop
+BNBL A 0 A_NoGravity
+BNBL A 0 A_PlaySoundEx("weapon/BNBubbleBurst","Voice")
+TNT1 A 0 A_Explode(10,100,0)
+BNBL ABCDEFGHI 1
+stop
+}
+}
+
+Actor BNElecRing : FastProjectile
+{
+PROJECTILE
+//+DONTBLAST
+Obituary "%o was zapped to death by %k's charged ElecRing Buster Attack."
+Damagetype "BNElectric"
+Speed 125
+Radius 22
+Height 12
+Damage(10) //Hey, it's fair for something that STUNS.
+Scale 2.0
+States
+{
+Spawn:
+ERNG A 0
+ERNG A 1 A_SpawnItemEx("ElecRingImageA")
+ERNG B 1 A_SpawnItemEx("ElecRingImageB")
+ERNG C 1 A_SpawnItemEx("ElecRingImageC")
+ERNG D 1 A_SpawnItemEx("ElecRingImageD")
+ERNG E 1 A_SpawnItemEx("ElecRingImageE")
+goto Spawn+1
+Death:
+TNT1 A 0
+stop
+Crash:
+XDeath:
+TNT1 A 0 A_PlaySoundEx("weapon/plugball","Voice")
+stop
+}
+}
+
+Actor ElecRingImageA
+{
+-SOLID
++CLIENTSIDEONLY
++NOINTERACTION
+Renderstyle "Add"
+Radius 1
+Height 1
+Scale 2.0
+States
+{
+Spawn:
+ERNG A 4
+goto Death
+Death:
+ERNG A 1 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor ElecRingImageB : ElecRingImageA
+{
+States
+{
+Spawn:
+ERNG B 4
+goto Death
+Death:
+ERNG B 1 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor ElecRingImageC : ElecRingImageA
+{
+States
+{
+Spawn:
+ERNG C 4
+goto Death
+Death:
+ERNG C 1 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor ElecRingImageD : ElecRingImageA
+{
+States
+{
+Spawn:
+ERNG D 4
+goto Death
+Death:
+ERNG D 1 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor ElecRingImageE : ElecRingImageA
+{
+States
+{
+Spawn:
+ERNG E 4
+goto Death
+Death:
+ERNG E 1 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor WindSlicer
+{
+PROJECTILE
++THRUGHOST
++RIPPER
+Obituary "%o's limbs were torn out by %k's Wind Slicer."
+Translation "192:192=93:93", "198:198=3:3"
+Damagetype "WSlicer"
+Damage(2)
+Speed 25
+Radius 16
+Height 10
+Scale 2.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/boomerangthrow","Voice")
+WSLI A 2 A_Explode(20,90,0)
+WSLI A 0 A_SetTranslucent(0.8)
+WSLI B 2 A_Explode(20,90,0)
+WSLI B 0 A_SetTranslucent(0.7)
+WSLI C 2 A_Explode(20,90,0)
+WSLI C 0 A_SetTranslucent(0.5)
+WSLI D 1 A_Explode(20,90,0)
+WSLI D 0 A_SetTranslucent(0.3)
+WSLI D 1 A_Explode(20,90,0)
+WSLI D 1 A_SetTranslucent(0.2)
+stop
+}
+}
+
+
+Actor AirSpreadShot : FastProjectile
+{
+PROJECTILE
++DONTBLAST
+Obituary "%o went \cjPOP \c-after being pumped up too much by %k's Air Spreader."
+Translation "168:168=200:200", "208:208=200:200"
+Damagetype "BNSpreader"
+Speed 200
+Radius 16
+Height 16
+Damage(8)
+Scale 2.0
+States
+{
+Spawn:
+WINS A 0
+WINS ABCD 3
+loop
+Death:
+TNT1 A 0 A_PlaySoundEx("weapon/pshot","Voice")
+TNT1 A 0 A_Explode(15,175,0)
+TNT1 AAAAA 2 A_SpawnItemEx("AirSpreadExplosion",random(-120,120),random(-120,120),random(-100,100),0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+Actor AirSpreadExplosion : TestExplosion
+{
+Damagetype "BNSpreader"
+Translation "209:215=93:93"
+Obituary "%o went \cjPOP \c-after being pumped up too much by %k's Air Spreader."
+Scale 1.75
+States
+{
+Spawn:
+ASEX A 0
+ASEX A 0 A_Explode(10,125,0)
+ASEX ABCDEF 2
+stop
+}
+}
+
+Actor MetalGearShot
+{
+PROJECTILE
++HEXENBOUNCE
++RIPPER
++THRUGHOST
++DONTREFLECT
++DONTBLAST
++BOUNCEONCEILINGS
+Obituary "%o went rolling with %k's Metal Gear Shot."
+Damagetype "BNGearShot"
+Bouncefactor 1.0
+WallBounceFactor 1.0
+Bouncecount 8
+Radius 28
+Height 48
+Scale 2.0
+Speed 45
+Damage(10)
+States
+{
+Spawn:
+MGER A 0
+MGER A 1 A_SpawnItemEx("MetalGearShotImageA")
+MGER B 1 A_SpawnItemEx("MetalGearShotImageB")
+goto Spawn+1
+}
+}
+
+actor MetalGearShotImageA : FireSwordFX
+{
+Scale 2.0
+States
+{
+Spawn:
+MGER A 0
+MGER A 1 A_Fadeout(0.07)
+goto Spawn+1
+}
+}
+
+actor MetalGearShotImageB : MetalGearShotImageA
+{
+States
+{
+Spawn:
+MGER B 0
+MGER B 1 A_Fadeout(0.07)
+goto Spawn+1
+}
+}
+
+Actor WoodSapSeed
+{
+PROJECTILE
++HEXENBOUNCE
++BOUNCEONCEILINGS
+-BOUNCEONACTORS
+Damagetype "SapSeed"
+Damage(13)
+BounceCount 3
+BounceFactor 0.9
+WallBounceFactor 0.9
+Obituary "%o's life force was drained away by %k's Sap Seed."
+Radius 10
+Height 10
+Scale 1.5
+Speed 40
+States
+{
+Spawn:
+LESE C 0
+LESE C 0 A_PlaySoundEx("weapon/leafshield","Weapon")
+LESE C 2
+goto Spawn+2
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor BNWoodTornadoSpawner : FastProjectile
+{
+PROJECTILE
++DONTBLAST
++DONTSPLASH
+Obituary "%k taught %o a valuable lesson: Nature CAN hurt you."
+Speed 500
+Radius 10
+Height 10
+Damage(2)
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 2
+loop
+Death:
+TNT1 A 0 A_Stop
+TRND A 0 A_PlaySoundEx("weapon/BNTornado","Voice")
+TRND A 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND B 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND C 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND D 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND E 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND F 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND A 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND B 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND C 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND D 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND E 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+TRND F 3 A_Explode(5,150,0)
+TRND A 0 A_SpawnItemEx("WoodSwordFX",0,0,0,random(-10,10),random(-10,10),random(5,10))
+stop
+}
+}

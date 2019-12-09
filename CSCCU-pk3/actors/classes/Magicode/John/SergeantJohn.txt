@@ -1,0 +1,41 @@
+actor SergeantJohn : ClassBaseCSCC
+{
+Health 125
+Player.MaxHealth 125
+player.displayname "Sergeant John" 
+player.soundclass "John" 
+player.damagescreencolor "red" 
+player.forwardmove 0.75, 0.75 
+player.sidemove 0.75, 0.75
+player.jumpz 11
+player.startitem "NormalClass"
+player.startitem "JohnGunWep"
+player.startitem "CanUseItems"
+player.startitem "NoHealthBar"
+player.startitem "NoIcons"
+Player.StartItem "NoUltBar"
+States
+{
+Spawn:
+SGJN A 0
+SGJN B 1 A_JumpIfInventory("JohnGunFlag",1,"Missile")
+SGJN A 1 A_JumpIfInventory("JohnGunFlag",1,"Missile")
+GoTo Spawn+2
+See:
+SGJN B 5 A_JumpIfInventory("JohnGunFlag",1,"Missile")
+SGJN C 5 A_JumpIfInventory("JohnGunFlag",1,"Missile")
+SGJN D 5 A_JumpIfInventory("JohnGunFlag",1,"Missile")
+SGJN E 5 A_JumpIfInventory("JohnGunFlag",1,"Missile")
+GoTo Spawn+1
+Missile:
+SGJN FG 4
+GoTo Spawn+2
+
+TheEnd:
+SGJN G 4
+loop
+CreditWalk:
+SGJN BCDE 8
+loop
+}
+}

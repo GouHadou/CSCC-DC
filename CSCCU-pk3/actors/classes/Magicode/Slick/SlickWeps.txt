@@ -1,0 +1,952 @@
+actor SlickWep1 : BaseMM8BDMWepTM
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 30
+Weapon.SlotNumber 1
+scale 2.0
+Obituary "%o was inked up by %k's Ink Shot."
+weapon.ammotype "SlickInkAmmo"
+inventory.icon "SLHIA0"
++WEAPON.NOAUTOAIM
+Tag "Ink Shot / Ink Portal"
+States
+{
+Spawn:
+TNT1 A 1
+stop
+
+Ready:
+SLIH B 0 ACS_ExecuteAlways(998,0,774)
+SLIH B 0 A_GunFlash
+SLIH B 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+SLIH B 2 A_WeaponReady
+SLIH B 0 A_GiveInventory("SlickInkAmmo",1)
+goto Ready+2
+
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+SLIH B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+SLIH B 1 A_Raise
+Loop
+
+Fire: //Ink Shot (Ammo)
+SLIH B 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+SLIH D 1 A_JumpIfNoAmmo("Fire2")
+SLIH C 1 A_PlaySoundEx("slick/inkshot","Weapon")
+SLIH B 0 A_GiveInventory("BlobCount",1)
+SLIH B 2 A_FireCustomMissile("InkDrop",random(-3,3),1,8,0)
+SLIH B 0 A_TakeInventory("User1_Trigger",999)
+SLIH B 0 A_TakeInventory("User2_Trigger",999)
+SLIH B 0 A_TakeInventory("User3_Trigger",999)
+SLIH B 0 A_TakeInventory("User4_Trigger",999)
+SLIH B 0 A_Refire("Fire")
+goto Ready+2
+Fire2: //Ink Shot (No Ammo)
+SLIH BD 1
+SLIH C 1 A_PlaySoundEx("slick/inkshot","Weapon")
+SLIH B 3 A_FireCustomMissile("InkDrop2",random(-6,6),0,8,0)
+SLIH B 0 A_TakeInventory("User1_Trigger",999)
+SLIH B 0 A_TakeInventory("User2_Trigger",999)
+SLIH B 0 A_TakeInventory("User3_Trigger",999)
+SLIH B 0 A_TakeInventory("User4_Trigger",999)
+SLIH B 0 A_Refire("Fire")
+goto Ready+2
+
+Altfire: //Ink Portal
+SLIH B 0 A_JumpIfInventory("InkPortalSpawned",1,"InkTeleport")
+SLIH B 0 A_JumpIfInventory("InkPortalFlag",1,"NoAmmo")
+SLIH BD 2
+SLIH B 0 A_GiveInventory("InkPortalFlag",1)
+SLIH B 0 A_TakeInventory("SlickInkAmmo",15)
+SLIH B 0 A_FireCustomMissile("InkPortal",0,0,0,0)
+SLIH B 0 A_PlaySoundEx("slick/throw","Weapon")
+SLIH CCDB 2
+SLIH B 0 A_TakeInventory("User1_Trigger",999)
+SLIH B 0 A_TakeInventory("User2_Trigger",999)
+SLIH B 0 A_TakeInventory("User3_Trigger",999)
+SLIH B 0 A_TakeInventory("User4_Trigger",999)
+SLIH B 0 A_Refire
+goto Ready+2
+InkTeleport:
+SLIH B 0 A_TakeInventory("InkPortalSpawned",1)
+SLIH B 0 A_Stop
+SLIH B 0 A_ChangeFlag("NOPAIN",1)
+SLIH B 0 SetPlayerProperty(0,1,4)
+SLIH B 0 A_SetTranslucent(0.75, 0)
+SLIH B 1 Offset(0,50)
+SLIH B 0 A_SetTranslucent(0.5, 0)
+SLIH B 1 Offset(0,75)
+SLIH B 0 A_SetTranslucent(0.25, 0)
+SLIH B 1 Offset(0,100)
+SLIH B 0 A_SetTranslucent(0.0, 0)
+SLIH B 0 A_TakeInventory("InkPortalFlag",1)
+SLIH B 0 A_TakeInventory("UnSolid",1)
+SLIH B 0 A_ChangeFlag("SOLID",0)
+SLIH B 0 A_GiveInventory("Nudge",1)
+SLIH B 1 Thing_Move(tid, tid+6000, 1)
+SLIH B 0 ThrustThingZ(0,50,0,0)
+SLIH B 0 A_PlaySoundEx("slick/activate","Weapon")
+SLIH B 0 A_GiveInventory("InkPortalKill",1)
+SLIH B 0 A_SpawnItemEx("ReSolidifier")
+SLIH B 1 Offset(0,100)
+SLIH B 0 A_SetTranslucent(0.2, 0)
+SLIH B 1 Offset(0,80)
+SLIH B 0 A_SetTranslucent(0.4, 0)
+SLIH B 1 Offset(0,60)
+SLIH B 0 A_SetTranslucent(0.6, 0)
+SLIH B 1 Offset(0,40)
+SLIH B 0 A_SetTranslucent(0.8, 0)
+SLIH B 1 Offset(0,32)
+SLIH B 0 A_SetTranslucent(1.0, 0)
+SLIH B 0 A_ChangeFlag("NOPAIN",0)
+SLIH B 0 SetPlayerProperty(0,0,4)
+SLIH B 0 A_TakeInventory("InkPortalKill",1)
+SLIH B 0 A_TakeInventory("User1_Trigger",999)
+SLIH B 0 A_TakeInventory("User2_Trigger",999)
+SLIH B 0 A_TakeInventory("User3_Trigger",999)
+SLIH B 0 A_TakeInventory("User4_Trigger",999)
+goto Ready+2
+
+UB1: //Ink Activate
+SLIH B 0 A_TakeInventory("InkPortalSpawned",1)
+SLIH B 1 Offset(0,32)
+SLIH B 1 Offset(0,40)
+SLIH B 1 Offset(0,60)
+SLIH B 1 Offset(0,80)
+SLIH B 1 Offset(0,100)
+SLIH B 0 A_GiveInventory("InkDropExplode",1)
+SLIH B 0 A_TakeInventory("InkPortalFlag",1)
+SLIH B 8 A_PlaySoundEx("slick/activate","Weapon")
+SLIH B 0 A_TakeInventory("InkDropExplode",1)
+SLIH B 0 A_GiveInventory("InkPortalKill",1)
+SLIH B 1 Offset(0,80)
+SLIH B 1 Offset(0,60)
+SLIH B 1 Offset(0,40)
+SLIH B 1 Offset(0,32)
+SLIH B 0 A_TakeInventory("InkPortalKill",1)
+SLIH B 0 A_TakeInventory("User1_Trigger",999)
+SLIH B 0 A_TakeInventory("User2_Trigger",999)
+SLIH B 0 A_TakeInventory("User3_Trigger",999)
+SLIH B 0 A_TakeInventory("User4_Trigger",999)
+goto Ready+2
+
+Ultimate: //Ink Jet
+SLIH B 0 A_TakeInventory("SmashFlag",1)
+SLIH B 1 Offset(0,32)
+SLIH B 1 Offset(0,40)
+SLIH B 1 Offset(0,60)
+SLIH B 1 Offset(0,80)
+SLIH B 1 Offset(0,100)
+SLIH B 0 A_GiveInventory("InkJetFlag",1)
+SLIH B 1 Offset(0,80)
+SLIH B 1 Offset(0,60)
+SLIH B 1 Offset(0,40)
+SLIH B 1 Offset(0,32)
+SLIH B 0 A_TakeInventory("User1_Trigger",999)
+SLIH B 0 A_TakeInventory("User2_Trigger",999)
+SLIH B 0 A_TakeInventory("User3_Trigger",999)
+SLIH B 0 A_TakeInventory("User4_Trigger",999)
+goto Ready+2
+
+NoAmmo:
+SLIH B 5 ACS_NamedExecute("SlickAmbientSound",0)
+SLIH B 0 A_TakeInventory("User1_Trigger",999)
+SLIH B 0 A_TakeInventory("User2_Trigger",999)
+SLIH B 0 A_TakeInventory("User3_Trigger",999)
+SLIH B 0 A_TakeInventory("User4_Trigger",999)
+goto Ready+2
+
+Flash:
+TNT1 A 0 A_JumpIfInventory("InkJetFlag",1,"JetFlash")
+TNT1 A 1 A_JumpIfInventory("InkClingerTimer",1,"ClingFlash")
+TNT1 A 0 A_TakeInventory("InkClingerTimer",1)
+TNT1 A 0 A_JumpIfInventory("InkJetFlag",1,"JetFlash")
+TNT1 A 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+loop
+
+ClingFlash:
+TNT1 A 0 A_Stop
+ClingFlashLoop:
+TNT1 A 0 A_JumpIfInventory("InkClingerTimer",2,"TakeAll")
+TNT1 A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,1)
+TNT1 A 0 A_PlaySoundEx("weapon/OilSlider","Auto")
+TNT1 A 2 A_TakeInventory("InkClingerTimer",1)
+TNT1 A 0 A_StopSoundEx("Auto")
+TNT1 A 0 A_JumpIfInventory("InkClingerTimer",1,"ClingFlashLoop")
+TNT1 A 1 A_TakeInventory("InkClingerTimer",999)
+TNT1 A 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+goto Flash
+TakeAll:
+TNT1 A 0 A_PlaySoundEx("weapon/OilSlider","Auto")
+TNT1 A 2 A_TakeInventory("InkClingerTimer",2)
+goto ClingFlashLoop+4
+
+JetFlash:
+TNT1 A 0 ACS_NamedExecuteAlways("MCSpeedSetScript",0,1)
+TNT1 A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,1)
+TNT1 A 0 ThrustThingZ(0,100,0,0)
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",0)
+TNT1 A 4 A_GiveInventory("InkJetTimer",200)
+JetFlashLoop:
+TNT1 A 0 ACS_ExecuteAlways(991,0,522)
+TNT1 A 0 A_ChangeVelocity(0,0,-sin(pitch)*2)
+TNT1 A 0 A_GiveInventory("SlickInkAmmo",999)
+TNT1 A 0 A_TakeInventory("BlobCount",999)
+TNT1 A 0 A_GiveInventory("SlickCharge",999)
+TNT1 A 0 A_SpawnItemEx("InkJetSpray",-5,-10,10,0,0,-15,0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEx("InkJetSpray",-5,10,10,0,0,-15,0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEX("InkJetWatcher",-5,0,30,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_TakeInventory("InkJetTimer",1)
+TNT1 A 0 A_JumpIfInventory("InkJetTimer",1,"JetFlashLoop.a")
+goto JetFlashEnd
+JetFlashLoop.a:
+TNT1 A 0 ACS_ExecuteAlways(991,0,522)
+TNT1 A 0 A_ChangeVelocity(0,0,2,CVF_RELATIVE)
+TNT1 A 0 A_GiveInventory("SlickInkAmmo",999)
+TNT1 A 0 A_TakeInventory("BlobCount",999)
+TNT1 A 0 A_GiveInventory("SlickCharge",999)
+TNT1 A 1 A_SpawnItemEX("InkJetWatcher",-5,0,30,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_TakeInventory("InkJetTimer",1)
+TNT1 A 0 A_JumpIfInventory("InkJetTimer",1,"JetFlashLoop")
+goto JetFlashEnd
+JetFlashEnd:
+TNT1 A 0 ACS_ExecuteAlways(991,0,774)
+TNT1 A 0 A_TakeInventory("InkJetFlag",1)
+TNT1 A 0 A_TakeInventory("SlickCharge",999)
+TNT1 A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+TNT1 A 0 ACS_NamedExecuteAlways("MCSpeedSetScript",0,0)
+TNT1 A 0 A_Stop
+TNT1 A 0 ThrustThingZ(0,100,0,0)
+TNT1 A 0 A_PlaySoundEx("weapon/drillexplode", "SoundSlot5")
+TNT1 A 0 A_SpawnItemEx("DrillExplode",-5)
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
+goto Flash
+}
+}
+
+actor SlickWep2 : SlickWep1
+{
+Weapon.SlotNumber 2
+inventory.icon "SLHIB0"
+Tag "Ink Wave / Ink Portal"
+States
+{
+
+Fire: //Upper-Cutter
+SLIH B 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+Hold:
+SLIH B 1 A_JumpIfNoAmmo("NoAmmo")
+SLIH B 0 A_PlaySoundEx("Rin/UltUpprcutS","Weapon")
+Hold1:
+SLIH B 0 A_JumpIfInventory("SlickCharge",1,"Hold2")
+SLIH B 1 A_GiveInventory("SlickCharge",1)
+SLIH B 0 A_Refire("Hold1")
+Goto Charger1
+Hold2:
+SLIH B 0 A_JumpIfInventory("SlickCharge",20,"Hold3Start")
+SLIH E 1 ACS_ExecuteAlways(991,0,523)
+SLIH B 0 A_Refire("Hold2.a")
+Goto Charger1
+Hold2.a:
+SLIH B 0 ACS_ExecuteAlways(991,0,774)
+SLIH B 1 A_GiveInventory("SlickCharge",1)
+SLIH B 0 A_Refire("Hold2")
+Goto Charger1
+Hold3Start:
+SLIH B 0 A_PlaySoundEx("Rin/UltUpprcutR","Weapon")
+Hold3:
+SLIH F 1 ACS_ExecuteAlways(991,0,521)
+SLIH B 0 A_Refire("Hold3.a")
+Goto Charger2
+Hold3.a:
+SLIH B 1 ACS_ExecuteAlways(991,0,774)
+SLIH B 0 A_JumpIfInventory("IsBot", 1, "BotFire")
+SLIH B 0 A_Refire("Hold3")
+Goto Charger2
+BotFire:
+SLIH B 0 A_Jump(16, "Charger2")
+SLIH B 0 A_Refire("Hold3")
+Goto Charger2
+
+Charger1: //Charger (Low Charge) //Placeholder
+SLIH B 0 ACS_ExecuteAlways(991,0,774)
+SLIH B 0 A_TakeInventory("SlickInkAmmo",5)
+SLIH D 3 A_TakeInventory("SlickCharge",999)
+SLIH B 0 A_PlaySoundEx("slick/chargeshot1","Weapon")
+SLIH B 0 A_FireCustomMissile("InkWaveSpawner1",0,0,0,0)
+SLIH CDBB 3
+SLIH B 0 A_Refire
+Goto Ready+2
+Charger2: //Charger (High Charge) //Placeholder
+SLIH B 0 ACS_ExecuteAlways(991,0,774)
+SLIH B 0 A_TakeInventory("SlickInkAmmo",10)
+SLIH D 4 A_TakeInventory("SlickCharge",999)
+SLIH B 0 A_PlaySoundEx("slick/chargeshot2","Weapon")
+SLIH B 0 A_FireCustomMissile("InkWaveSpawner2",0,0,0,0)
+SLIH CDB 6
+SLIH B 0 A_Refire
+Goto Ready+2
+}
+}
+
+//Mainfire (Weapon 1)
+actor InkDrop
+{
+PROJECTILE
+translation "192:192=174:174", "198:198=179:179"
+Obituary "%o was inked up by %k's Ink Shot."
+damagetype "SlickInk"
+Damage (7)
+speed 100
+species "Ink"
+-THRUSPECIES
++DONTSPLASH
++SKYEXPLODE
++USEBOUNCESTATE
++HEXENBOUNCE
+Height 6
+Radius 6
+Scale 2
+States
+{
+Spawn:
+SLOI D 0
+SLOI D 3 ThrustThingZ(0,8,0,1)
+SLOI D 1 A_Changeflag("NOGRAVITY",0)
+goto Spawn+2
+Bounce.Floor:
+TNT1 A 0 A_PlaySoundEx("slick/splat","Weapon")
+TNT1 A 0 A_SpawnItemEx("InkDropFloor",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_SetScale(1.25)
+WTRB KLMN 1
+goto Death
+Bounce.Ceiling:
+TNT1 A 0 A_PlaySoundEx("slick/splat","Weapon")
+TNT1 A 0 A_SpawnItemEx("InkDropCeiling",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_SetScale(1.25)
+WTRB OPQR 1
+goto Death
+Bounce.Wall:
+TNT1 A 0 A_PlaySoundEx("slick/splat","Weapon")
+TNT1 A 0 A_SpawnItemEx("InkDropWall",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_SetScale(1.25)
+WTRB KLMN 1
+goto Death
+Crash:
+Bounce.Actor:
+TNT1 A 0 A_PlaySoundEx("slick/shothit","Weapon")
+TNT1 A 0 A_Stop
+TNT1 A 0 A_SetScale(1)
+TNT1 A 0 A_Explode(2,45,0)
+WTRB KLMN 1
+stop
+XDeath:
+Death:
+TNT1 A 1 A_Stop
+stop
+}
+}
+
+actor InkDropFloor
+{
+PROJECTILE
+species "Ink"
+-THRUSPECIES
++FLOORHUGGER
++NOGRAVITY
++NOTARGETSWITCH
++THRUGHOST
++THRUACTORS
++DONTSPLASH
+Speed 0
+Damage (0)
+Height 6
+Radius 6
+scale 2.5
+reactiontime 500
+States
+{
+Spawn:
+TNT1 A 0
+SLOI E 0 A_JumpIfInTargetInventory("BlobCount",50,"Death")
+goto Spawn2
+Spawn2:
+SLOI "#" 0 A_JumpIfInTargetInventory("BlobCount",50,"Death")
+SLOI "#" 0 A_GiveInventory("InkDropProxyGive")
+SLOI "#" 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+SLOI "#" 1 A_Countdown
+loop
+Death:
+TNT1 A 0 A_TakeFromTarget("BlobCount",1)
+stop
+Death2:
+TNT1 A 0 A_PlaySoundEx("sprinkler/shot","SoundSlot9",1)
+TNT1 AAA 0 A_SpawnItemEx("InkDropBubble",random(-15,15),random(-15,15),4,0,0,random(1,10),random(-256,256),SXF_TRANSFERTRANSLATION)
+SLOI E 4 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",20,"Death2End")
+loop
+Death2End:
+TNT1 A 0 A_TakeFromTarget("BlobCount",1)
+TNT1 A 1 A_StopSoundEx("SoundSlot9")
+stop
+InkCling:
+SLOI "#" 0 A_GiveInventory("InkDropProxyGive")
+SLOI "#" 1 A_GiveToTarget("InkClingerTimer",1)
+SLOI "#" 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+SLOI "#" 0 A_Countdown
+SLOI "#" 0 A_JumpIfInTargetInventory("InkClingerTimer",2,"RemoveAll")
+SLOI "#" 0 A_JumpIfCloser(32,"InkCling")
+SLOI "#" 0 A_TakeFromTarget("InkClingerTimer",1)
+Goto Spawn2
+RemoveAll:
+SLOI "#" 0 A_TakeFromTarget("InkClingerTimer",2)
+SLOI "#" 0 A_JumpIfCloser(32,"InkCling")
+Goto Spawn2
+}
+}
+
+actor InkDropCeiling : InkDropFloor
+{
+-FLOORHUGGER
++CEILINGHUGGER
+States
+{
+Spawn:
+TNT1 A 0
+SLOI F 0 A_JumpIfInTargetInventory("BlobCount",50,"Death")
+goto Spawn2
+Spawn2:
+SLOI "#" 0 A_JumpIfInTargetInventory("BlobCount",50,"Death")
+SLOI "#" 0 A_GiveInventory("InkDropProxyGive")
+SLOI "#" 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+SLOI "#" 1 A_Countdown
+SLOI "#" 0 A_JumpIfCloser(32,"InkCling")
+loop
+Death2:
+TNT1 A 0 A_PlaySoundEx("sprinkler/shot","SoundSlot9",1)
+TNT1 AAA 0 A_SpawnItemEx("InkDropBubble",random(-15,15),random(-15,15),0,0,0,random(-1,-10),random(-256,256),SXF_TRANSFERTRANSLATION)
+SLOI F 4 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",20,"Death2End")
+loop
+}
+}
+
+actor InkDropWall : InkDropCeiling
+{
+-CEILINGHUGGER
+-FLOORHUGGER
++NOGRAVITY
+States
+{
+Spawn:
+TNT1 A 0
+SLOI G 0 A_JumpIfInTargetInventory("BlobCount",50,"Death")
+goto Spawn2
+Death2:
+TNT1 A 0 A_PlaySoundEx("sprinkler/shot","SoundSlot9",1)
+TNT1 AAA 0 A_SpawnItemEx("InkDropBubble",0,random(-15,15),random(-15,15),random(1,20),0,0,0,SXF_TRANSFERTRANSLATION)
+SLOI G 4 A_GiveInventory("CutterFlag",1)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",20,"Death2End")
+loop
+}
+}
+
+actor InkDrop2 : InkDrop
+{
+-NOGRAVITY
+-USEBOUNCESTATE
+-HEXENBOUNCE
+Damage (4)
+Scale 1.5
+States
+{
+Spawn:
+SLOI D 0
+SLOI D 1
+loop
+Crash:
+XDeath:
+Death:
+Bounce.Actor:
+Bounce.Floor:
+Bounce.Ceiling:
+Bounce.Wall:
+TNT1 A 0 A_PlaySoundEx("slick/shothit","Weapon")
+TNT1 A 0 A_Stop
+TNT1 A 0 A_SetScale(1)
+TNT1 A 0 A_Explode(2,45,0)
+WTRB KLMN 1
+stop
+}
+}
+
+actor InkDropProxyGive : CustomInventory
+{
++AutoActivate
+States
+{
+Pickup:
+TNT1 A 0 A_CheckRange(60,"Nope")
+SLOI "#" 0 ACS_NamedExecuteAlways("RadiusGiveSQ", 0, 29, 32, 1)
+SLOI "#" 0 ACS_NamedExecuteAlways("RadiusGiveSQ", 0, 30, 32, 4)
+stop
+
+Nope:
+TNT1 A 0
+Stop
+}
+}
+
+//Mainfire (Weapon 2)
+actor InkWaveSpawner1 : FastProjectile
+{
+PROJECTILE
++FLOATBOB
++THRUGHOST
++THRUACTORS
++DONTBLAST
++DONTSPLASH
++SKYEXPLODE
+Speed 100
+radius 1
+height 1
+reactiontime 7
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 //A_GiveToTarget("TargetMarker", 1)
+TNT1 A 0 //A_JumpIf(ACS_NamedExecuteWithResult("core_targetexists")==0,"Death")
+TNT1 A 0 //ACS_ExecuteAlways(989, 0, ACS_ExecuteWithResult(257)+100)
+TNT1 A 1 A_SpawnItemEx("InkWave1")
+TNT1 A 0 A_Countdown
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor InkWaveSpawner2 : InkWaveSpawner1
+{
+reactiontime 12
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 //A_GiveToTarget("TargetMarker", 1)
+TNT1 A 0 //A_JumpIf(ACS_NamedExecuteWithResult("core_targetexists")==0,"Death")
+TNT1 A 0 //ACS_ExecuteAlways(989, 0, ACS_ExecuteWithResult(257)+100)
+TNT1 A 1 A_SpawnItemEx("InkWave2")
+TNT1 A 0 A_Countdown
+loop
+}
+}
+
+actor InkWave1
+{
+PROJECTILE
+translation "192:192=174:174", "193:207=179:179"
++FLOATBOB
++THRUGHOST
++THRUACTORS
++DONTBLAST
++DONTSPLASH
++SKYEXPLODE
+-THRUSPECIES
+species "InkWave"
+damagetype "InkWave"
+Obituary "%o was inked by %k's Ink Wave."
+renderstyle "translucent"
+alpha 0.75
+Speed 0
+Damage (0)
+radius 15
+height 15
+scale 2.5
+reactiontime 200
+States
+{
+Spawn:
+TNT1 A 0
+GIGF H 0
+GIGF "#" 0 A_Explode(2, 35, 0)
+GIGF "#" 0 A_GiveInventory("InkWaveProxyGive")
+GIGF "#" 1 A_Countdown
+GIGF "#" 0 A_GiveInventory("InkWaveProxyGive")
+GIGF "#" 1 A_Countdown
+loop
+Death:
+GIGF "##########" 1 A_Fadeout
+stop
+}
+}
+
+
+
+actor InkWave2 : InkWave1
+{
+radius 30
+height 30
+reactiontime 100
+States
+{
+Spawn:
+TNT1 A 0
+GIGF I 0
+GIGF "#" 0 A_Explode(2, 70, 0)
+GIGF "#" 0 A_GiveInventory("InkWaveProxyGive")
+GIGF "#" 1 A_Countdown
+GIGF "#" 0 A_GiveInventory("InkWaveProxyGive")
+GIGF "#" 1 A_Countdown
+loop
+}
+}
+
+actor InkWaveProxyGive : CustomInventory
+{
++AutoActivate
+States
+{
+Pickup:
+TNT1 A 0 A_CheckRange(100,"nope")
+GIGF "#" 0 ACS_NamedExecuteAlways("RadiusGiveSQ", 0, 30, 70, 4)
+GIGF "#" 0 ACS_NamedExecuteAlways("RadiusGiveSQ", 0, 31, 70, 1)
+stop
+
+Nope:
+TNT1 A 0
+Stop
+}
+}
+
+actor InkWaveRider : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/OilSlider","Auto")
+TNT1 A 0 A_SpawnItemEx("InkRiderWatcher")
+TNT1 A 1 A_ChangeVelocity(25,0,-sin(pitch)*25,CVF_REPLACE|CVF_RELATIVE)
+stop
+}
+}
+
+actor InkRiderWatcher : ConcreteWatcher
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AAAAA 1 A_GiveToTarget("InkRiderStart",1)
+TNT1 A 1 A_GiveToTarget("InkRiderEnd",1)
+stop
+}
+}
+
+actor InkRiderStart : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 1 SetPlayerProperty(0,1,0)
+stop
+}
+}
+
+actor InkRiderEnd : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 1 SetPlayerProperty(0,0,0)
+stop
+}
+}
+
+//Altfire
+actor InkPortal
+{
++MISSILE
+translation "192:192=174:174", "198:198=179:179", "4:4=174:174", "208:208=174:174", "209:212=179:179"
+renderstyle "translucent"
+alpha 0.75
++SOLID
++NOGRAVITY
++THRUACTORS
+-THRUSPECIES
++DONTSPLASH
++DONTBLAST
++SKYEXPLODE
++HEXENBOUNCE
++USEBOUNCESTATE
+-ACTIVATEPCROSS
+species "SlickInk"
+damagetype "SlickPortal"
+Obituary "%o was caught in the explosion of %k's Ink Portal."
+Speed 60
+radius 50
+height 50
+scale 2.5
+reactiontime 25
+States
+{
+Spawn:
+TNT1 A 0
+BLKH B 0 A_SpawnItemEx("InkPortalFXSpawner", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH B 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH B 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH C 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH C 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH D 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH D 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH E 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+BLKH E 1 A_Countdown
+BLKH B 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death2")
+loop
+Death:
+Crash:
+XDeath:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_StopSound
+TNT1 A 0 A_SpawnItemEx("InkPortal2",0,0,-12,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+Bounce.Wall:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_StopSound
+TNT1 A 0 A_SpawnItemEx("InkPortal2",0,0,-18,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+Bounce.Floor:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_StopSound
+TNT1 A 0 A_SpawnItemEx("InkPortal2",0,0,7,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+Bounce.Ceiling:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_StopSound
+TNT1 A 0 A_SpawnItemEx("InkPortal2",0,0,-20,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+Death2:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_FadeIn(10.0)
+TNT1 A 0 A_PlaySoundEx("slick/explode","Weapon")
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("InkPortalExplode",random(-20,20),random(-20,20),random(-15,15),random(5,25),0,momz,random(-256,256),SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Explode(8,128,0)
+TNT1 A 0 A_TakeFromTarget("InkPortalSpawned",1)
+TNT1 A 0 A_TakeFromTarget("InkPortalFlag",1)
+ASEX ABCDEF 2 A_TakeFromTarget("InkPortalKill",1)
+stop
+}
+}
+
+actor InkPortalFXSpawner : BlackHoleBombFXSpawner
+{
+reactiontime 8
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_SpawnItemEx("BlackHoleBombFX", 125, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Countdown
+loop
+}
+}
+
+actor InkPortal2
+{
++MISSILE
++DONTRIP
++SHOOTABLE
++NOGRAVITY
++THRUGHOST
++THRUSPECIES
++DONTSPLASH
++SKYEXPLODE
++NOTARGETSWITCH
+species "SlickInk"
+damagetype "SlickPortal"
+Obituary "%o was caught in the explosion of %k's Ink Portal."
+mass 9999
+health 500
+radius 35
+height 35
+scale 2.5
+painchance 256
+painsound "misc/devilpain"
+Damagefactor "SlickPortal", 0
+Damagefactor "InkWave", 0
+States
+{
+Spawn:
+TNT1 A 0
+IKPO F 0 A_GiveToTarget("InkPortalSpawned",1)
+IKPO F 0 A_PlaySoundEx("weapon/blackholebomb","Weapon",1)
+IKPO F 0 Thing_ChangeTID(0,6000+ACS_ExecuteWithResult(257, 0))
+IKPO F 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO F 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO G 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO G 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO H 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO H 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO I 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO I 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO J 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO J 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO K 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO K 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO L 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO L 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO M 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO M 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO N 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO N 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO O 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO O 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO P 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO P 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+IKPO Q 0 A_JumpIfInTargetInventory("InkDropExplode",1,"Death")
+IKPO Q 1 A_JumpIfInTargetInventory("InkPortalKill",1,"Death")
+goto Spawn+2
+Pain:
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",0)
+TNT1 A 0 A_Pain
+TNT1 A 5 A_SpawnItemEx("InkPortalPainFX")
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
+goto Spawn+2
+Death:
+TNT1 A 0 A_PlaySoundEx("slick/explode","Weapon")
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("InkPortalExplode",random(-20,20),random(-20,20),random(-15,15),random(5,25),0,momz,random(-256,256),SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_Explode(8,128,0)
+TNT1 A 0 A_TakeFromTarget("InkPortalSpawned",1)
+TNT1 A 0 A_TakeFromTarget("InkPortalFlag",1)
+TNT1 A 0 A_SpawnItemEx("InkPortalExplosion",0,0,18,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 1 A_TakeFromTarget("InkPortalKill",1)
+stop
+}
+}
+
+actor InkPortalPainFX : PainFX { scale 3 }
+
+actor InkPortalExplosion : DrillExplode
+{
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+ASEX ABCDEF 2
+stop
+}
+}
+
+actor InkPortalExplode
+{
+PROJECTILE
+species "SlickInk"
++THRUSPECIES
+-NOGRAVITY
+damagetype "SlickPortal"
+Obituary "%o was caught in the explosion of %k's Ink Portal."
+Speed 0
+Damage (2)
+radius 5
+height 5
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+SPSH T 0 ThrustThingZ(0,15,0,0)
+SPSH T 1
+goto Spawn+2
+Death:
+TNT1 A 0 A_SetScale(1.25)
+WTRB K 0 A_Explode(2,45,0)
+WTRB KLMN 2
+stop
+}
+}
+
+//User Ability 1
+actor InkDropBubble
+{
+PROJECTILE
++THRUGHOST
++THRUACTORS
++DONTSPLASH
++DONTBLAST
++SKYEXPLODE
+damagetype "SlickInk"
+Obituary "%o was caught in %k's ink trap."
+Speed 0
+Damage (0)
+radius 1
+height 1
+scale 1.5
+reactiontime 10
+States
+{
+Spawn:
+TNT1 A 0
+SLIB H 2 A_Explode(2,10,0)
+SLIB H 0 A_Countdown
+loop
+Death:
+SLIB IJK 2
+stop
+}
+}
+
+//Ultimate
+actor InkJetWatcher : HardKnuckleFX
+{
+States
+{
+Spawn:
+TNT1 A 0
+INKJ E 1 A_Warp(AAPTR_TARGET,-5,0,30,0,WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor InkJetSpray
+{
+PROJECTILE
++RIPPER
+damagetype "SlickInk"
+Obituary "%o was hit by the ink coming from %k's Ink Jet."
+Speed 27
+Damage (2)
+radius 5
+height 15
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+JESP ABCDEFGHI 1
+wait
+Death:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("slick/splat","SoundSlot5")
+WTRB KLMN 1
+stop
+}
+}

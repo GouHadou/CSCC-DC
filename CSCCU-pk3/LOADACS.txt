@@ -7,3 +7,5 @@ CSCCACS
 ULTIMATE
 COPYACS
 BRONZE
+themod
+themod2

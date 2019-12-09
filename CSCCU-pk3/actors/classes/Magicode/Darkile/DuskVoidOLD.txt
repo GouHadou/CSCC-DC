@@ -1,0 +1,755 @@
+actor DuskVoidOLDWep : Weapon
+{
+Obituary "%k's void sent %o to another dimension."
+Weapon.SlotNumber 1
+scale 2.0
++WEAPON.AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.CHEATNOTWEAPON
+States
+{
+Spawn:
+WEAP X 1
+stop
+Ready:
+DKBS B 0 ACS_ExecuteAlways(998,0,137)
+DKBS B 0 A_GunFlash
+DKBS B 0 A_TakeInventory("DuskCharge",999)
+DKBS B 2 A_WeaponReady
+Goto Ready+3
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+DKBS B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+DKBS B 1 A_Raise
+Loop
+Fire:
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"FinalSmash")
+Goto Hold
+Fire1:
+DKBS B 0 A_JumpIfNoAmmo("Hold")
+DKBS B 0 A_PlaySoundEx("weapon/pharaoh1","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid1",0,0,8,0)
+DKBS B 1 A_TakeInventory("DuskCharge",999)
+DKBS CD 3
+DKBS B 0 A_Refire
+Goto Ready+3
+Fire2:
+DKBS B 0 A_TakeInventory("DuskCharge",999)
+DKBS B 0 A_PlaySoundEx("weapon/pharaoh1","Weapon")
+DKBS B 3 A_FireCustomMissile("DuskVoid2",0,0,8,0)
+DKBS CD 3
+DKBS B 0 A_Refire
+Goto Ready+3
+Fire3:
+DKBS B 0 A_TakeInventory("DuskCharge",999)
+DKBS B 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid3",0,0,8,0)
+DKBS CD 3
+DKBS B 9
+DKBS B 0 A_Refire
+Goto Ready+3
+Fire4:
+DKBS B 0 A_TakeInventory("DuskCharge",999)
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 ACS_ExecuteAlways(991,0,137)
+DKBS B 0 A_GiveInventory("PowerSlightSpeedReduction",1) 
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_PlaySoundEx("weapon/pshot","Weapon")
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS B 0 A_FireCustomMissile("DuskVoid4",random(-3,3),0,8,0,0,random(-3,3))
+DKBS CD 2
+DKBS B 0 A_Refire
+Goto Ready+3
+Hold:
+TNT1 A 0 A_JumpIfInventory("DarkileDamageUp",1,"DespHold")
+DKBS B 0 A_JumpIfInventory("DuskCharge",100,"Charge4")
+DKBS B 0 A_JumpIfInventory("DuskCharge",20,"Charge3")
+DKBS B 0 A_JumpIfInventory("DuskCharge",10,"Charge2")
+DKBS B 0 A_JumpIfInventory("DuskCharge",1,"Charge")
+DKBS B 1 A_GiveInventory("DuskCharge",1)
+DKBS B 0 A_Refire
+Goto Ready+3
+Charge:
+DKBS D 0 A_JumpIfInventory("DuskCharge",100,"Charge4")
+DKBS B 0 A_JumpIfInventory("DuskCharge",20,"Charge3")
+DKBS B 0 A_JumpIfInventory("DuskCharge",10,"Charge2")
+DKBS B 0 A_JumpIfInventory("DuskCharge",2,"Charge1")
+DKBS C 1
+Goto Charge1
+Charge1:
+DKBS D 0 A_JumpIfInventory("DuskCharge",100,"Charge4")
+DKBS B 0 A_JumpIfInventory("DuskCharge",20,"Charge3")
+DKBS B 0 A_JumpIfInventory("DuskCharge",10,"Charge2")
+DKBS C 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+DKBS C 4 A_SpawnItemEx("DuskVoid1H",0,0,27)
+DKBS C 0 A_GiveInventory("DuskCharge",1)
+DKBS C 0 A_Refire
+Goto Fire1
+Charge2:
+DKBS D 0 A_JumpIfInventory("DuskCharge",100,"Charge4")
+DKBS D 0 A_JumpIfInventory("DuskCharge",20,"Charge3")
+DKBS B 0 A_PlaySoundEx("weapon/heat2", "Weapon")
+DKBS D 4 A_SpawnItemEx("DuskVoid2H",0,0,27)
+DKBS D 0 A_GiveInventory("DuskCharge",1)
+DKBS D 0 A_Refire
+Goto Fire2
+Charge3:
+DKBS D 0 A_JumpIfInventory("DuskCharge",100,"Charge4")
+DKBS D 0 A_PlaySoundEx("weapon/heat3", "Weapon")
+DKBS D 2 A_SpawnItemEx("DuskVoid3H",0,0,27)
+DKBS D 0 A_GiveInventory("DuskCharge",1)
+DKBS D 0 A_Refire
+Goto Fire3
+Charge4:
+DKBS D 0 A_GiveInventory("PowerSlightSpeedReduction",1)
+DKBS D 0 ACS_ExecuteAlways(991,0,731)
+DKBS D 0 A_PlaySoundEx("weapon/WireAdp", "Weapon")
+DKBS D 2 A_SpawnItemEx("DuskVoid3H",0,0,27)
+DKBS D 0 A_JumpIfInventory("IsBot", 1, "BotFire")
+DKBS D 0 A_Refire
+Goto Fire4
+DespHold:
+DKBS B 0 A_JumpIfInventory("DuskCharge",25,"Charge4")
+DKBS B 0 A_JumpIfInventory("DuskCharge",10,"DespCharge3")
+DKBS B 0 A_JumpIfInventory("DuskCharge",5,"DespCharge2")
+DKBS B 0 A_JumpIfInventory("DuskCharge",1,"DespCharge")
+DKBS B 1 A_GiveInventory("DuskCharge",1)
+DKBS B 0 A_Refire
+Goto Ready+3
+DespCharge:
+DKBS D 0 A_JumpIfInventory("DuskCharge",25,"Charge4")
+DKBS B 0 A_JumpIfInventory("DuskCharge",10,"DespCharge3")
+DKBS B 0 A_JumpIfInventory("DuskCharge",5,"DespCharge2")
+DKBS B 0 A_JumpIfInventory("DuskCharge",2,"DespCharge1")
+DKBS C 1
+Goto DespCharge1
+DespCharge1:
+DKBS D 0 A_JumpIfInventory("DuskCharge",25,"Charge4")
+DKBS B 0 A_JumpIfInventory("DuskCharge",10,"DespCharge3")
+DKBS B 0 A_JumpIfInventory("DuskCharge",5,"DespCharge2")
+DKBS C 0 A_PlaySoundEx("weapon/heat1", "Weapon")
+DKBS C 4 A_SpawnItemEx("DuskVoid1H",0,0,27)
+DKBS C 0 A_GiveInventory("DuskCharge",1)
+DKBS C 0 A_Refire
+Goto Fire1
+DespCharge2:
+DKBS D 0 A_JumpIfInventory("DuskCharge",25,"Charge4")
+DKBS D 0 A_JumpIfInventory("DuskCharge",10,"DespCharge3")
+DKBS B 0 A_PlaySoundEx("weapon/heat2", "Weapon")
+DKBS D 4 A_SpawnItemEx("DuskVoid2H",0,0,27)
+DKBS D 0 A_GiveInventory("DuskCharge",1)
+DKBS D 0 A_Refire
+Goto Fire2
+DespCharge3:
+DKBS D 0 A_JumpIfInventory("DuskCharge",25,"Charge4")
+DKBS D 0 A_PlaySoundEx("weapon/heat3", "Weapon")
+DKBS D 2 A_SpawnItemEx("DuskVoid3H",0,0,27)
+DKBS D 0 A_GiveInventory("DuskCharge",1)
+DKBS D 0 A_Refire
+Goto Fire3
+BotFire:
+DKBS D 0 A_Jump(16, "Fire4")
+DKBS D 0 A_Refire
+Goto Fire4
+Altfire:
+DKBS B 0 A_JumpIfInventory("DarkileDamageUp",1,"DespAlt")
+DKBS I 0 A_PlaySoundEx("weapon/noisecrush1","Weapon")
+DKBS BB 0 A_FireCustomMissile("DarkWhip",0,0,random(-72,72),random(-32,32))
+DKBS CD 5
+DKBS B 10
+DKBS B 0 A_Refire
+Goto Ready+2
+DespAlt:
+DKBS I 0 A_PlaySoundEx("weapon/noisecrush2","Weapon")
+DKBS BB 0 A_FireCustomMissile("VoidHand",0,0,random(-56,56),random(-48,48))
+DKBS CD 8
+DKBS B 16
+DKBS B 0 A_Refire
+Goto Ready+2
+/*DashAttack:
+MKIC C 0 SetPlayerProperty(0,1,0)
+MKIC C 0 A_PlaySoundEx("weapon/chargekick","Weapon")
+MKIC C 2 A_ChangeVelocity(35,0,momz,CVF_RELATIVE|CVF_REPLACE)
+MKIC A 8 SetPlayerProperty(0,0,0)
+MKIC BC 5
+MKIC C 0 A_Refire
+Goto Ready+2*/
+FinalSmash:
+DKBS B 0 A_JumpIfInventory("DuskHoleFlag",1,"BlackHole")
+DKBS B 0 A_JumpIfInventory("DuskFlag2",1,"NoAmmo")
+DKBS B 0 A_JumpIfNoAmmo("NoAmmo")
+DKBS B 0 A_FireCustomMissile("DuskuduskHole",0,1,8,0)
+DKBS B 0 A_GiveInventory("DuskHoleFlag",1)
+DKBS B 0 A_GiveInventory("DuskFlag2",1)
+DKBS BCD 3
+DKBS B 3
+DKBS DCB 3
+DKBS B 0
+DKBS BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_WeaponReady
+DKBS BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_WeaponReady
+DKBS BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_WeaponReady
+goto BlackHole
+BlackHole:
+DKBS B 10 A_GiveInventory("DuskHoleFlag",1)
+DKBS B 0 A_TakeInventory("DuskHoleFlag",999)
+DKBS B 0 A_TakeInventory("SmashFlag",1)
+DKBS B 30 
+DKBS B 0 A_Refire
+Goto Ready+2
+Flash:
+TNT1 A 0 A_JumpIfHealthLower(0,"NoAura")
+TNT1 A 0 A_JumpIfHealthLower(201,"Aura")
+GoTo NoAura
+Aura:
+TNT1 A 0 A_JumpIfInventory("DarkileDamageUp",1,1)
+TNT1 A 1 A_GiveInventory("DarkileDamageUp",1)
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-3,3),random(-3,3),random(-8,8),random(-5,5),random(-5,5),random(-5,5))
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-3,3),random(-3,3),random(-8,8),random(-5,5),random(-5,5),random(-5,5))
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-6,6),random(-6,6),random(-8,8),random(-6,6),random(-6,6),random(-6,6))
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-6,6),random(-6,6),random(-8,8),random(-6,6),random(-6,6),random(-6,6))
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-9,9),random(-9,9),random(-8,8),random(-7,7),random(-7,7),random(-7,7))
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-9,9),random(-9,9),random(-8,8),random(-7,7),random(-7,7),random(-7,7))
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-12,12),random(-12,12),random(-8,8),random(-8,8),random(-8,8),random(-8,8))
+TNT1 A 1 A_SpawnItemEx("DarkileAura",random(-12,12),random(-12,12),random(-8,8),random(-8,8),random(-8,8),random(-8,8))
+GoTo Flash
+NoAura:
+TNT1 A 1 A_TakeInventory("DarkileDamageUp",1)
+GoTo Flash
+NoAmmo:
+DKBS B 1 ACS_Execute(979,0)
+Goto Ready+2
+}
+}
+
+actor DuskDarkile : Inventory {}
+
+actor DarkileDamageUp : PowerDamage
+{
+Powerup.Duration 0x7FFFFFFF
+damagefactor "Normal", 1.5 //We can try higher values later if needed
+}
+
+actor DuskFlag : Ammo
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor DuskHoleFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 2
+}
+
+actor DuskFlag2 : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor DarkileAura
+{
+Translation "41:41=79:79", "248:248=61:61"
++NOINTERACTION
++CLIENTSIDEONLY
+Radius 1
+Height 1
++NOGRAVITY
+Scale 2.0
+renderstyle "Translucent"
+alpha 0.95
+-SOLID
+States
+{
+Spawn:
+TNT1 A 0 ThrustThingZ(0,4,0,0)
+FSWD DEFDEF 1 A_FadeOut(0.01)
+stop
+}
+}
+
+actor DuskuduskHole
+{
+PROJECTILE
++NOTARGETSWITCH
++FORCEXYBILLBOARD
++RIPPER
+Obituary "%o was sent into another dimension by %k, beware the hole!"
+Radius 30
+Height 16
+scale 5.0
+damage (10)
+damagetype "DuskHole"
+speed 10
+States
+{
+Spawn:
+DKBH A 0
+DKBH A 0 A_PlaySoundEx("weapon/noisecrush1","Weapon",1)
+DKBH AA 1 A_JumpIfInTargetInventory("DuskHoleFlag",2,"Switch")
+DKBH A 0 A_ChangeVelocity(cos(-pitch)*10, 0, sin(-pitch)*10, CVF_RELATIVE|CVF_REPLACE)
+DKBH AA 1 A_JumpIfInTargetInventory("DuskHoleFlag",2,"Switch")
+DKBH A 0 A_ChangeVelocity(cos(-pitch)*10, 0, sin(-pitch)*10, CVF_RELATIVE|CVF_REPLACE)
+DKBH BB 1 A_JumpIfInTargetInventory("DuskHoleFlag",2,"Switch")
+DKBH B 0 A_ChangeVelocity(cos(-pitch)*10, 0, sin(-pitch)*10, CVF_RELATIVE|CVF_REPLACE)
+DKBH BB 1 A_JumpIfInTargetInventory("DuskHoleFlag",2,"Switch")
+DKBH B 0 A_ChangeVelocity(cos(-pitch)*10, 0, sin(-pitch)*10, CVF_RELATIVE|CVF_REPLACE)
+DKBH CC 1 A_JumpIfInTargetInventory("DuskHoleFlag",2,"Switch")
+DKBH C 0 A_ChangeVelocity(cos(-pitch)*10, 0, sin(-pitch)*10, CVF_RELATIVE|CVF_REPLACE)
+DKBH CC 1 A_JumpIfInTargetInventory("DuskHoleFlag",2,"Switch")
+DKBH C 0 A_ChangeVelocity(cos(-pitch)*10, 0, sin(-pitch)*10, CVF_RELATIVE|CVF_REPLACE)
+loop
+Death:
+Switch:
+BLKH B 0 A_StopSound
+BLKH B 0 A_SpawnItemEx("DuskHole",0,0,0,0,0,0,0)
+BLKH B 0 A_SpawnItemEx("DuskuduskSound")
+stop
+}
+}
+
+actor DuskHole
+{
+PROJECTILE
++FORCEXYBILLBOARD
++RIPPER
++NOINTERACTION
+Obituary "%o was sent into another dimension by %k, beware the hole!"
+seesound "weapon/astrocrush"
+Height 32
+Radius 32
+Damage(10)
+damagetype "DuskHole"
+Reactiontime 8
+Scale 4.0
+States
+{
+Spawn:
+DKBH D 0 A_Stop
+DKBH D 0 ACS_ExecuteAlways(247,0,65,650)
+DKBH D 0 A_Explode(25,256,0)
+DKBH DDEE 1
+DKBH E 0 ACS_ExecuteAlways(247,0,65,650)
+DKBH E 0 A_Explode(25,256,0)
+DKBH EEFF 1
+DKBH F 0 ACS_ExecuteAlways(247,0,65,650)
+DKBH F 0 A_Explode(25,256,0)
+DKBH FFDD 1
+DKBH D 0 ACS_ExecuteAlways(247,0,65,650)
+DKBH D 0 A_Explode(25,256,0)
+DKBH DDEE 1
+DKBH E 0 ACS_ExecuteAlways(247,0,65,650)
+DKBH E 0 A_Explode(25,256,0)
+DKBH EEFF 1
+DKBH F 0 ACS_ExecuteAlways(247,0,65,650)
+DKBH F 0 A_Explode(25,256,0)
+DKBH FFDD 1
+DKBH Q 0 A_Countdown
+loop
+Death:
+BLKH F 0 A_StopSound
+BLKH B 0 A_TakeFromTarget("DuskFlag2",999)
+stop
+}
+}
+
+actor DuskuduskSound
+{
+-SOLID
++NOINTERACTION
+height 0
+radius 0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/astrocrush","auto")
+stop
+}
+}
+
+Actor DuskCharge : Inventory {Inventory.MaxAmount 100}
+
+Actor DuskVoid1H : MegaShot
+{
++MISSILE
++RIPPER
+-SOLID
++THRUGHOST
++DONTBLAST
+Height 18
+Radius 12
+Damage (10)
+Scale 1.25
+Translation "41:41=254:254", "210:210=0:0", "208:208=5:5"
+Obituary "%k's void sent %o to another dimension."
+States
+{
+Spawn:
+REME NO 1
+Stop
+Death:
+TNT1 A 0
+Stop
+}}
+
+Actor DuskVoid2H : DuskVoid1H 
+{
+Height 28
+Radius 18
+Scale 2.5
+Damage (15)
+}
+
+Actor DuskVoid3H : DuskVoid1H 
+{
+Radius 36
+Height 56
+Scale 4
+Damage (20)
+}
+
+Actor DuskVoid1
+{
+PROJECTILE
++DONTBLAST
+Speed 20
+Radius 10
+Height 10
+Scale 1.25
+Damage(50)
+DamageType "DuskVoid"
+Translation "41:41=254:254", "210:210=0:0", "208:208=5:5"
+Obituary "%k's void sent %o to another dimension."
+States
+{
+Spawn:
+REME NO 1
+Loop
+Death:
+REME N 3 A_FadeOut(0.25)
+loop
+}}
+
+Actor DuskVoid2 : MegaShot
+{
+Translation "41:41=254:254", "210:210=0:0", "208:208=5:5"
+Obituary "%k's void sent %o to another dimension."
+Speed 35
+Radius 18
+Height 18
+Scale 2.0
+Damage (100)
+bouncefactor 0.85
+wallbouncefactor 0.85
+bouncecount 3
+States
+{
+Spawn:
+REME NO 1
+Loop
+Death:
+REME N 3 A_FadeOut(0.25)
+stop
+}}
+
+Actor DuskVoid3 : DuskVoid1
+{
+Speed 50
+Radius 32
+Height 32 
+Scale 3.5
+Damage(200) //(400)  Never have something like this do 100% of the direct damage  ~Zomo
+DamageType "DuskVoid"
+Translation "41:41=254:254", "210:210=0:0", "208:208=5:5"
+Obituary "%k's void sent %o to another dimension."
+States
+{
+Spawn:
+REME N 0
+REME NO 1 A_CheckFloor("Death2")
+loop
+Crash:
+XDeath:
+TNT1 A 0 A_PlaySoundEx("misc/mm3explosion","Voice")
+TNT1 A 0 A_Explode(200,192,0)
+ASEX ABCDEF 2
+stop
+Death:
+TNT1 A 0 A_Explode(120,150,0)
+TNT1 A 1 A_JumpIf(z-floorz<=0,"Death2")
+goto Death3
+Death2:
+TNT1 A 0
+TNT1 A 7 A_SpawnItemEx("DarkPillar")
+TNT1 A 7 A_SpawnItemEx("DarkPillar",90,0,-100)
+TNT1 A 7 A_SpawnItemEx("DarkPillar",180,0,-100)
+TNT1 A 7 A_SpawnItemEx("DarkPillar",270,0,-100)
+TNT1 A 7 A_SpawnItemEx("DarkPillar",360,0,-100)
+TNT1 A 7 A_SpawnItemEx("DarkPillar",450,0,-100)
+TNT1 A 7 A_SpawnItemEx("DarkPillar",530,0,-100)
+TNT1 A 7 A_SpawnItemEx("DarkPillar",620,0,-100)
+TNT1 A 7 A_SpawnItemEx("DarkPillar",710,0,-100)
+stop
+Death3:
+REME N 3 A_FadeOut(0.2)
+loop
+}
+}
+
+Actor DuskVoid4 : DuskVoid2
+{
+Scale 2.0
+Damage (28)
++RIPPER
+}
+
+Actor DarkPillar : IceWave
+{
++RIPPER
++FLOORHUGGER
+DamageType "DarkPillar"
+Obituary "%o got blasted off by %k's dark pillar."
+Damage(28)
+Radius 32
+Height 84
+Scale 3.5
+States
+{
+Spawn:
+TNT1 A 0
+DKPL A 0 A_PlaySoundEx("weapon/flamesword", "Weapon")
+DKPL ABCD 4
+DKPL CDBA 3
+goto Death
+Death:
+TNT1 A 1
+stop
+}
+}
+
+Actor PulseBlast
+{
+Translation "208:208=63:63","209:215=0:0"
++MISSILE
+-SOLID
++THRUGHOST
++DONTBLAST
++NOGRAVITY
+//RIPPER
+Height 16
+Radius 16
+Damage(30)
+Scale 1.5
+Obituary "%k surged dark energy through %o's vital organs."
+States
+{
+Spawn:
+TNT1 A 1
+goto death
+Death:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("weapon/noisecrush1","Weapon")
+TNT1 A 0 A_Explode(60,128,0)
+NAPA EFGHIJKLMNOPQRS 1
+Stop
+}}
+
+actor DarkWhip
+{
+PROJECTILE
++NOCLIP
++NOINTERACTION
++THRUGHOST
+Radius 5
+Height 5
+scale 2.5
+damage (0)
+meleerange 12
+speed 050
+Translation "208:208=0:0", "215:215=63:63"
+States
+{
+Spawn:
+MMFX D 0
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",0,0,0,2,0,0)
+MMFX DDDDDDDD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX D 0 A_ScaleVelocity(0.5)
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX D 0 A_ScaleVelocity(-2.0)
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX A 0 A_CustomMissile("ReturningDarkWhip",0,0,0,0)
+stop
+}
+}
+
+actor ReturningDarkWhip : DarkWhip
+{
+States
+{
+Spawn:
+MMFX D 0
+MMFX D 0 A_JumpIfCloser(64,"Death")
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX D 0 A_JumpIfCloser(64,"Death")
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX D 0 A_JumpIfCloser(64,"Death")
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX D 0 A_JumpIfCloser(64,"Death")
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX D 0 A_JumpIfCloser(64,"Death")
+MMFX DD 1 A_SpawnItemEx("DarkWhipDamager",4,0,0,2,0,0)
+MMFX D 0 A_JumpIfCloser(64,"Death")
+MMFX D 0 A_CustomMissile("ReturningDarkWhip",0,0,0,0)
+stop
+Death:
+MMFX A 0
+Stop
+}
+}
+
+actor DarkWhipDamager
+{
+PROJECTILE
++DONTSPLASH
++DONTBLAST
++THRUGHOST
++PICKUP
+Translation "208:208=0:0", "215:215=63:63"
+Damagetype "MagicCard" 
+Obituary "%o was whipped into shape by %k."
+radius 16
+height 8
+Damage (40)
+Scale 1.25
+States
+{
+Spawn:
+TNT1 A 0 A_SetTranslucent(0.5)
+MMFX BCDE 1
+stop
+}
+}
+
+actor VoidHand
+{
+PROJECTILE
++NOCLIP
++NOINTERACTION
++THRUGHOST
+Radius 5
+Height 5
+scale 2.5
+damage (0)
+meleerange 12
+speed 50
+Translation "192:192=246:246", "194:194=79:79"
+States
+{
+Spawn:
+GIGF F 0
+GIGF FD 1 A_SpawnItemEx("VoidHandDamager",0,0,0,2,0,0)
+GIGF FFFFFFFF 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_ScaleVelocity(0.5)
+GIGF FD 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_ScaleVelocity(-2.0)
+GIGF FD 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_CustomMissile("ReturningVoidHand",0,0,0,0)
+stop
+}
+}
+
+actor ReturningVoidHand : VoidHand
+{
+States
+{
+Spawn:
+GIGF F 0
+GIGF F 0 A_JumpIfCloser(64,"Death")
+GIGF FF 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_JumpIfCloser(64,"Death")
+GIGF FF 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_JumpIfCloser(64,"Death")
+GIGF FF 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_JumpIfCloser(64,"Death")
+GIGF FF 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_JumpIfCloser(64,"Death")
+GIGF FF 1 A_SpawnItemEx("VoidHandDamager",4,0,0,2,0,0)
+GIGF F 0 A_JumpIfCloser(64,"Death")
+GIGF F 0 A_CustomMissile("ReturningVoidHand",0,0,0,0)
+stop
+Death:
+MMFX A 0
+Stop
+}
+}
+
+actor VoidHandDamager
+{
+PROJECTILE
++DONTSPLASH
++DONTBLAST
++THRUGHOST
++PICKUP
+Translation "208:208=79:79", "215:215=246:246"
+Damagetype "MagicCard" 
+Obituary "%o was pulled in by %k's void hand."
+radius 28
+height 24
+Damage (75)
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0 A_SetTranslucent(0.5)
+MMFX BCDE 1
+stop
+}
+}

@@ -39,6 +39,9 @@ var int user_wepangle2;
 
 var int user_TTSPD;
 var int user_TV;
+
+Var int user_HitMemory;
+
 States
 {
 SuperSpawn:

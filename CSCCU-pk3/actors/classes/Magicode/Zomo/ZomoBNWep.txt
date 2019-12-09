@@ -1,0 +1,2286 @@
+actor ZomoBNWep : BaseMM8BDMWepTM
+{
+Weapon.AmmoUse 2
+Weapon.AmmoGive 64
+Weapon.SlotNumber 1
+scale 2.0
+Obituary "%o met defeat at the hands of the Style Master, %k!"
+Inventory.Pickupmessage "Battle routine, set! Execute!"
+weapon.ammotype "ZomoMemory"
++WEAPON.ALT_AMMO_OPTIONAL
++WEAPON.NOAUTOAIM
+Tag "BN Buster (Slot 1)"
+States
+{
+Spawn:
+NORM I 1
+loop
+Select:
+TNT1 A 0 A_GiveInventory("UsingSlot1",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BUST B 1 A_Raise
+goto Select+1
+Deselect:
+TNT1 A 0 A_TakeInventory("UsingSlot1",99)
+TNT1 A 0 A_TakeInventory("ShieldUp",999)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+BUST B 1 A_Lower
+goto Deselect+2
+Ready:
+BUST B 0 ACS_ExecuteAlways(998,0,0)
+BUST B 0 A_GunFlash
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_TakeInventory("CutterFlag",999)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoReady")
+Goto RealReady
+RealReady:
+BUST B 0 A_TakeInventory("ShieldUp",999)
+BUST B 0 ACS_ExecuteAlways(991,0,0)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanSet")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassSet")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeSet")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleSet")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashSet")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmSet")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoSet")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto RealReady+1
+FireReady:
+BUST B 0 ACS_ExecuteAlways(991,0,520)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanSet")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassSet")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeSet")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleSet")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashSet")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmSet")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoSet")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+FIBN A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto FireReady+1
+AquaReady:
+BUST B 0 ACS_ExecuteAlways(991,0,524)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanSet")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassSet")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeSet")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleSet")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashSet")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmSet")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoSet")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+AQBN A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto AquaReady+1 
+ElecReady:
+BUST B 0 ACS_ExecuteAlways(991,0,528)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanSet")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassSet")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeSet")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleSet")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashSet")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmSet")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoSet")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+ELBN A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto ElecReady+1
+WoodReady:
+BUST B 0 ACS_ExecuteAlways(991,0,532)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanSet")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassSet")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeSet")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleSet")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashSet")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmSet")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoSet")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+WOBN A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto WoodReady+1
+WindReady:
+BUST B 0 ACS_ExecuteAlways(991,0,540)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanSet")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassSet")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeSet")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleSet")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashSet")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmSet")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoSet")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+WBUS A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto WindReady+1
+BreakReady:
+BUST B 0 ACS_ExecuteAlways(991,0,544)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanSet")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassSet")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeSet")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleSet")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashSet")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmSet")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoSet")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BRKB A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto BreakReady+1
+CustomSoundCheck:
+BUST B 0 A_GiveInventory("CustomFlag",1)
+BUST B 0 A_PlaySoundEx("zomo/customready","SoundSlot6")
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WMDirect")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BEXEDirect")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEDirect")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmDirect")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeDirect")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleDirect")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoEXEDirect")
+goto RealReady
+WoodmanSet:
+BUST B 0 A_GiveInventory("NaviCooldown",1)
+BUST B 0 A_SpawnItemEx("WoodmanNaviWatcher",0,0,28)
+goto WoodmanReady
+BassSet:
+BUST B 0 A_GiveInventory("GigaCooldown",1)
+BUST B 0 A_SpawnItemEx("BassNaviWatcher",0,0,28)
+goto BassReady
+FlashSet:
+BUST B 0 A_GiveInventory("NaviCooldown",1)
+BUST B 0 A_SpawnItemEx("FlashNaviWatcher",0,0,28)
+goto FEXEReady
+NapalmSet:
+BUST B 0 A_GiveInventory("NaviCooldown",1)
+BUST B 0 A_SpawnItemEx("NapalmNaviWatcher",0,0,28)
+goto NapalmReady
+FreezeSet:
+BUST B 0 A_GiveInventory("NaviCooldown",1)
+BUST B 0 A_SpawnItemEx("FreezeNaviWatcher",0,0,28)
+goto FreezeReady
+BubbleSet:
+BUST B 0 A_GiveInventory("NaviCooldown",1)
+BUST B 0 A_SpawnItemEx("BubbleNaviWatcher",0,0,28)
+goto BubbleReady
+ProtoSet:
+BUST B 0 A_GiveInventory("NaviCooldown",1)
+BUST B 0 A_SpawnItemEx("ProtoNaviWatcher",0,0,28)
+goto ProtoReady
+WMDirect:
+goto WoodmanReady+1
+BEXEDirect:
+goto BassReady+1
+FEXEDirect:
+goto FEXEReady+1
+NapalmDirect:
+goto NapalmReady+1
+FreezeDirect:
+goto FreezeReady+1
+BubbleDirect:
+goto BubbleReady+1
+ProtoEXEDirect:
+goto ProtoReady+2
+ReshuffleCheck:
+BUST B 0 A_TakeInventory("User1_Trigger",99)
+BUST B 0 A_TakeInventory("User2_Trigger",99)
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,1)
+goto Ready+2
+BUST B 0 A_TakeInventory("CustomAmmo",300)
+BUST B 0 A_GiveInventory("ReshuffleChipAuto",1)
+goto Ready+2
+PACheck:
+BUST B 0 A_TakeInventory("User1_Trigger",99)
+BUST B 0 A_TakeInventory("User2_Trigger",99)
+BUST B 0 ACS_NamedExecuteAlways("ZomoPAHandler",0)
+goto Ready+2
+AttackPlus:
+BUST B 0 A_JumpIfInventory("AttackPlusCooldown",1,"ADFail")
+BUST B 0 A_JumpIfInventory("ZomoMemory",42,"AttackPlusSuccess")
+goto NoAmmo
+AttackPlusSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",42)
+BUST B 0 A_PlaySoundEx("misc/BNRecover","Voice")
+BUST B 0 A_GiveInventory("AttackPlusBoost",1)
+BUST B 0 A_GiveInventory("AttackPlusCooldown",1)
+BUST B 0 A_TakeInventory("PowerFullSynchro",999) //To prevent stacking
+BUST B 0 A_TakeInventory("AttackDebuffU",999) //Counter effect
+goto AnimDecide
+DrillArm:
+BUST B 0 A_JumpIfInventory("ZomoMemory",24,"DrillArmSuccess")
+goto NoAmmo
+DrillArmSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",24)
+BRKB B 0 A_PlaySoundEx("weapon/DrillArmBN","Weapon")
+BRKB B 0 A_SpawnItemEx("DrillArmHitbox",48,0,28)
+BRKB B 0 A_SpawnItemEx("DrillArmHitbox",96,0,28)
+BRKB BBB 1 A_SpawnItemEx("DrillArmFXActorA",84,12,20)
+BRKB CCC 1 A_SpawnItemEx("DrillArmFXActorB",84,12,20)
+BRKB B 0 A_PlaySoundEx("weapon/DrillArmBN","Weapon")
+BRKB B 0 A_SpawnItemEx("DrillArmHitbox",48,0,28)
+BRKB B 0 A_SpawnItemEx("DrillArmHitbox",96,0,28)
+BRKB BBB 1 A_SpawnItemEx("DrillArmFXActorA",84,12,20)
+BRKB CCC 1 A_SpawnItemEx("DrillArmFXActorB",84,12,20)
+BRKB B 0 A_PlaySoundEx("weapon/DrillArmBN","Weapon")
+BRKB B 0 A_SpawnItemEx("DrillArmHitbox",48,0,28)
+BRKB B 0 A_SpawnItemEx("DrillArmHitbox",96,0,28)
+BRKB BBB 1 A_SpawnItemEx("DrillArmFXActorA",84,12,20)
+BRKB CCC 1 A_SpawnItemEx("DrillArmFXActorB",84,12,20)
+goto BreakReady
+AirShot:
+BUST B 0 A_JumpIfInventory("ZomoMemory",14,"AirShotSuccess")
+goto NoAmmo
+AirShotSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",14)
+BUST B 0 A_FireCustomMissile("AirShotProjectile",0,0,8,0)
+WBUS BC 4
+WBUS A 18
+goto RealReady
+WindRack:
+BUST B 0 A_JumpIfInventory("ZomoMemory",24,"WindRackSuccess")
+goto NoAmmo
+WindRackSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",24)
+BUST B 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+TNT1 A 0 A_SpawnItemEx("WindRackExplosion",0,0,8)
+TENA D 1 A_SpawnItemEx("WindRackHitbox",72,60,20,0,0,0,0,SXF_NOCHECKPOSITION)
+TENA D 1 A_SpawnItemEx("WindRackHitbox",72,30,25,0,0,0,0,SXF_NOCHECKPOSITION)
+TENA E 1 A_SpawnItemEx("WindRackHitbox",72,0,30,0,0,0,0,SXF_NOCHECKPOSITION)
+TENA E 1 A_SpawnItemEx("WindRackHitbox",72,-30,35,0,0,0,0,SXF_NOCHECKPOSITION)
+TENA F 2 A_SpawnItemEx("WindRackHitbox",72,-60,40,0,0,0,0,SXF_NOCHECKPOSITION)
+TENA G 15 A_SpawnItemEx("WindRackPushEffect",0,0,16)
+goto RealReady
+Invisibility:
+BUST B 0 A_JumpIfInventory("ZomoMemory",56,"InvisSuccess")
+goto NoAmmo
+InvisSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",56)
+BUST B 0 A_PlaySoundEx("weapon/invisible","Weapon")
+BUST B 0 A_SpawnItemEx("Recov300FX2",0,0,5,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+BUST B 0 A_GiveInventory("InvisArmor",1)
+BUST B 0 A_SpawnItemEx("InvisController",0,0,24,0,0,0,0,SXF_NOCHECKPOSITION)
+BUST B 0 A_SetTranslucent(0.3)
+goto AnimDecide
+Sword:
+BUST B 0 A_JumpIfInventory("ZomoMemory",6,"SwordSuccess")
+goto NoAmmo
+SwordSuccess:
+NSWD A 0 A_TakeInventory("ZomoMemory",6)
+NSWD A 0 A_JumpIfInventory("ProtoEXEFlag",1,"FastSword")
+NSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+NSWD A 0 A_FireCustomMissile("SwordHitbox",0,0,0,0)
+NSWD AB 2
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",16,-32,36,0,0,0,0)
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",32,-16,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",48,0,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",32,16,36,0,0,0,0)
+NSWD E 2 A_SpawnItemEx("SwordSwingFX",16,32,36,0,0,0,0)
+NSWD F 5
+goto RealReady
+FastSword:
+NSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+NSWD A 0 A_FireCustomMissile("SwordHitbox",0,0,0,0)
+NSWD AB 1
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",16,-32,36,0,0,0,0)
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",32,-16,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",48,0,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",32,16,36,0,0,0,0)
+NSWD E 1 A_SpawnItemEx("SwordSwingFX",16,32,36,0,0,0,0)
+NSWD F 3
+goto RealReady
+WideSword:
+BUST B 0 A_JumpIfInventory("ZomoMemory",8,"WSwordSuccess")
+goto NoAmmo
+WSwordSuccess:
+NSWD A 0 A_TakeInventory("ZomoMemory",8)
+NSWD A 0 A_JumpIfInventory("ProtoEXEFlag",1,"FastWSword")
+NSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+NSWD A 0 A_FireCustomMissile("SwordHitbox2",0,0,0,0)
+NSWD AB 2
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",8,-32,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",16,-24,36,0,0,0,0)
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",24,-16,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",32,-8,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",40,-0,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",32,8,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",24,16,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",16,24,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",8,32,36,0,0,0,0)
+NSWD E 2
+NSWD F 5
+goto RealReady
+FastWSword:
+NSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+NSWD A 0 A_FireCustomMissile("SwordHitbox2",0,0,0,0)
+NSWD AB 1
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",8,-32,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",16,-24,36,0,0,0,0)
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",24,-16,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",32,-8,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",40,-0,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",32,8,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",24,16,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",16,24,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",8,32,36,0,0,0,0)
+NSWD E 1
+NSWD F 3
+goto RealReady
+LongSword:
+BUST B 0 A_JumpIfInventory("ZomoMemory",12,"LSwordSuccess")
+goto NoAmmo
+LSwordSuccess:
+NSWD A 0 A_TakeInventory("ZomoMemory",12)
+NSWD A 0 A_JumpIfInventory("ProtoEXEFlag",1,"FastLSword")
+NSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+NSWD A 0 A_FireCustomMissile("SwordHitbox3",0,0,0,0)
+NSWD AB 2
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",16,-16,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",32,-12,36,0,0,0,0)
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",48,-8,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",64,-4,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",80,0,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",64,4,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",48,8,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",32,12,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",16,16,36,0,0,0,0)
+NSWD E 2
+NSWD F 5
+goto RealReady
+FastLSword:
+NSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+NSWD A 0 A_FireCustomMissile("SwordHitbox3",0,0,0,0)
+NSWD AB 1
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",16,-16,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",32,-12,36,0,0,0,0)
+NSWD C 1 A_SpawnItemEx("SwordSwingFX",48,-8,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX",64,-4,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",80,0,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",64,4,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",48,8,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX",32,12,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX",16,16,36,0,0,0,0)
+NSWD E 2
+NSWD F 3
+goto RealReady
+LifeSword:
+NSWD A 0 A_PlaySoundEx("weapon/BNLSwordSwing","Weapon")
+NSWD A 0 A_FireCustomMissile("SwordHitboxLS",0,0,0,0)
+NSWD AB 2
+NSWD C 1 A_SpawnItemEx("SwordSwingFX2",16,-32,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX2",24,-28,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX2",32,-24,36,0,0,0,0)
+NSWD C 1 A_SpawnItemEx("SwordSwingFX2",40,-20,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX2",48,-16,36,0,0,0,0)
+NSWD C 0 A_SpawnItemEx("SwordSwingFX2",56,-12,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX2",64,-8,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX2",72,-4,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX2",80,0,36,0,0,0,0)
+NSWD D 1 A_SpawnItemEx("SwordSwingFX2",72,4,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX2",64,8,36,0,0,0,0)
+NSWD D 0 A_SpawnItemEx("SwordSwingFX2",56,12,36,0,0,0,0)
+NSWD E 1 A_SpawnItemEx("SwordSwingFX2",48,16,36,0,0,0,0)
+NSWD E 0 A_SpawnItemEx("SwordSwingFX2",40,20,36,0,0,0,0)
+NSWD E 0 A_SpawnItemEx("SwordSwingFX2",32,24,36,0,0,0,0)
+NSWD E 1 A_SpawnItemEx("SwordSwingFX2",24,28,36,0,0,0,0)
+NSWD E 0 A_SpawnItemEx("SwordSwingFX2",16,32,36,0,0,0,0)
+NSWD F 2 A_TakeInventory("PALimiter",999)
+NSWD F 13 A_TakeInventory("LifeSwordFlag",999)
+goto RealReady
+FireSword:
+BUST B 0 A_JumpIfInventory("ZomoMemory",16,"FireSwordSuccess")
+goto NoAmmo
+FireSwordSuccess:
+FIRF A 0 A_TakeInventory("ZomoMemory",16)
+FIRF A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+FIRF A 0 A_FireCustomMissile("FireSwordSlash",0,0,0,0)
+FIRF AABBCCDD 1 A_SpawnItemEx("FireSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+FIRF E 2
+FIRF F 15
+goto RealReady
+AquaSword:
+BUST B 0 A_JumpIfInventory("ZomoMemory",16,"AquaSwordSuccess")
+goto NoAmmo
+AquaSwordSuccess:
+AAQU A 0 A_TakeInventory("ZomoMemory",16)
+AAQU A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+AAQU A 0 A_FireCustomMissile("AquaSwordSlash",0,0,0,0)
+AAQU AABBCCDD 1 A_SpawnItemEx("AquaSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+AAQU E 2
+AAQU F 15
+goto RealReady
+ElecSword:
+BUST B 0 A_JumpIfInventory("ZomoMemory",32,"ElecSwordSuccess")
+goto NoAmmo
+ElecSwordSuccess:
+ELEE A 0 A_TakeInventory("ZomoMemory",32)
+ELEE A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+ELEE A 0 A_FireCustomMissile("ElecSwordSlash",0,0,0,0)
+ELEE AABBCCDD 1 A_SpawnItemEx("ElecSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+ELEE E 2
+ELEE F 15
+goto RealReady
+WoodSword:
+BUST B 0 A_JumpIfInventory("ZomoMemory",16,"WoodSwordSuccess")
+goto NoAmmo
+WoodSwordSuccess:
+WOOW A 0 A_TakeInventory("ZomoMemory",16)
+WOOW A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+WOOW A 0 A_FireCustomMissile("WoodSwordSlash",0,0,0,0)
+WOOW AABBCCDD 1 A_SpawnItemEx("WoodSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+WOOW E 2
+WOOW F 15
+goto RealReady
+ElemSword:
+FIRF AABBCC 1 A_SpawnItemEx("FireSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+FIRF E 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+FIRF DE 3 A_FireCustomMissile("FireSwordSlash2",0,0,0,0)
+FIRF F 4
+AAQU AABBCC 1 A_SpawnItemEx("AquaSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+AAQU E 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+AAQU DE 3 A_FireCustomMissile("AquaSwordSlash2",0,0,0,0)
+AAQU F 4
+ELEE AABBCC 1 A_SpawnItemEx("ElecSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+ELEE E 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+ELEE DE 3 A_FireCustomMissile("ElecSwordSlash2",0,0,0,0)
+ELEE F 4
+WOOW AABBCC 1 A_SpawnItemEx("WoodSwordFX",random(5,15),random(5,15),28,random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+WOOW E 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+WOOW DE 3 A_FireCustomMissile("WoodSwordSlash2",0,0,0,0)
+WOOW F 0 A_TakeInventory("ElemSwordFlag",999)
+WOOW F 4 A_TakeInventory("PALimiter",999)
+goto RealReady
+CannonBall:
+BUST B 0 A_JumpIfInventory("ZomoMemory",16,"CBallSuccess")
+goto NoAmmo
+CBallSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",16)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("BNCannonBall",0,0,8,0)
+goto AnimDecide2
+MiniBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",2,"MiniBombSuccess")
+goto NoAmmo
+MiniBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",2)
+ZTRW ABCD 2
+ZTRW E 2 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW F 2 A_FireCustomMissile("BNMiniBomb",0,0,8,0)
+ZTRW G 2 A_FireCustomMissile("BNMiniBomb",random(-13,13),0,8,0,0,random(-5,5))
+ZTRW HI 2
+ZTRW J 10
+goto RealReady
+MidBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",6,"MidBombSuccess")
+goto NoAmmo
+MidBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",6)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("BNMidBomb",0,0,8,0)
+goto AnimDecide2
+CrossBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",16,"CrossBombSuccess")
+goto NoAmmo
+CrossBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",16)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("BNCrossBomb",0,0,8,0)
+goto AnimDecide2
+OmegaBomb:
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("OmegaBomb",0,0,8,0)
+ZTRW A 0 A_TakeInventory("OmegaBombFlag",999)
+BUST B 0 A_TakeInventory("PALimiter",999)
+goto AnimDecide2
+MagBolt:
+BUST B 0 A_JumpIfInventory("ZomoMemory",64,"MagBoltSuccess")
+goto NoAmmo
+MagBoltSuccess:
+BUST B 0 A_GiveInventory("MagBoltStartFlag",1)
+BUST B 0 A_TakeInventory("ZomoMemory",64)
+BUST B 0 A_Stop
+BUST B 0 SetPlayerProperty(0,1,4)
+BUST B 0 A_PlaySoundEx("weapon/thunderbolt","Weapon")
+BUST B 0 A_JumpIfInventory("KnightFlag",17,"MBCut")
+BUST B 0 A_JumpIfInventory("IsDead",1,"MBStop")
+BUST B 0 A_GiveInventory("KnightFlag",1)
+ELBN BC 1
+goto MagboltSuccess+2
+MBCut:
+BUST B 0 SetPlayerProperty(0,0,4)
+BUST B 0 A_TakeInventory("MagBoltStartFlag",999)
+BUST B 0 A_TakeInventory("KnightFlag",999)
+goto RealReady
+FlashBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",48,"FlashBombSuccess")
+goto NoAmmo
+FlashBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",48)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("BNFlashBomb",0,0,8,0)
+goto AnimDecide2
+Recov300:
+BUST B 0 A_JumpIfInventory("ZomoMemory",56,"Recov300Success")
+goto NoAmmo
+Recov300Success:
+BUST B 0 A_TakeInventory("ZomoMemory",56)
+BUST B 0 HealThing(50)
+BUST B 0 A_SpawnItemEx("Recov300FX",0,0,8,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+goto AnimDecide
+TimeBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",38,"TimeBombSuccess")
+goto NoAmmo
+TimeBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",38)
+ZTRW A 0 A_FireCustomMissile("TimeBomb",0,0,8,0)//A_SpawnItemEx("TimeBombSpawner",36,0,16,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+goto AnimDecide2
+TreeBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",36,"TreeBombSuccess")
+goto NoAmmo
+TreeBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",36)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("BNTreeBomb",0,0,8,0)
+goto AnimDecide2
+RedApple:
+BUST B 0 A_JumpIfInventory("ZomoMemory",56,"RedAppleSuccess")
+goto NoAmmo
+RedAppleSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",56)
+BUST B 0 A_PlaySoundEx("CBM/ItemSpawn","Weapon")
+BUST B 0 A_FireCustomMissile("RedAppleShot",0,0,8,0)
+goto AnimDecide
+GreenApple:
+BUST B 0 A_JumpIfInventory("ZomoMemory",36,"GreenAppleSuccess")
+goto NoAmmo
+GreenAppleSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",36)
+BUST B 0 A_PlaySoundEx("CBM/ItemSpawn","Weapon")
+BUST B 0 A_FireCustomMissile("GreenAppleShot",0,0,8,0)
+goto AnimDecide
+YellowApple:
+BUST B 0 A_JumpIfInventory("ZomoMemory",36,"YellowAppleSuccess")
+goto NoAmmo
+YellowAppleSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",36)
+BUST B 0 A_PlaySoundEx("CBM/ItemSpawn","Weapon")
+BUST B 0 A_FireCustomMissile("YellowAppleShot",0,0,8,0)
+goto AnimDecide
+Boomerang1:
+BUST B 0 A_JumpIfInventory("ZomoMemory",8,"Boomer1Success")
+goto NoAmmo
+Boomer1Success:
+BUST B 0 A_TakeInventory("ZomoMemory",8)
+BUST B 0 A_JumpIfInventory("WoodmanRegen",1,"BoomerP1")
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_FireCustomMissile("Boomerang1",0,0,8,0)
+goto AnimDecide
+BoomerP1:
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_FireCustomMissile("BoomerangP1",0,0,8,0)
+goto AnimDecide
+Boomerang2:
+BUST B 0 A_JumpIfInventory("ZomoMemory",12,"Boomer2Success")
+goto NoAmmo
+Boomer2Success:
+BUST B 0 A_TakeInventory("ZomoMemory",12)
+BUST B 0 A_JumpIfInventory("WoodmanRegen",1,"BoomerP2")
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_FireCustomMissile("Boomerang2",0,0,8,0)
+goto AnimDecide
+BoomerP2:
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_FireCustomMissile("BoomerangP2",0,0,8,0)
+goto AnimDecide
+Boomerang3:
+BUST B 0 A_JumpIfInventory("ZomoMemory",16,"Boomer3Success")
+goto NoAmmo
+Boomer3Success:
+BUST B 0 A_TakeInventory("ZomoMemory",16)
+BUST B 0 A_JumpIfInventory("WoodmanRegen",1,"BoomerP3")
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_FireCustomMissile("Boomerang3",0,0,8,0)
+goto AnimDecide
+BoomerP3:
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_FireCustomMissile("BoomerangP3",0,0,8,0)
+goto AnimDecide
+OmegaBoomerang:
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,0)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,-60)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,60)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,-120)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,120)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,180)
+WOBN BCA 4
+BUST B 0 A_PlaySoundEx("weapon/boomerangthrow","Weapon")
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,90)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,-60)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,60)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,-120)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,120)
+BUST B 0 A_SpawnItemEx("BoomerangEX",0,0,24,60,0,0,-90)
+WOBN BCA 4
+BUST B 0 A_TakeInventory("OBoomerangFlag",999)
+BUST B 0 A_TakeInventory("PALimiter",999)
+goto RealReady
+Meteors:
+BUST B 0 A_JumpIfInventory("ZomoMemory",48,"MeteorsSuccess")
+goto NoAmmo
+MeteorsSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",48)
+BUST B 0 A_PlaySoundEx("misc/BNAppear","Weapon")
+BUST B 0 A_FireCustomMissile("MeteorsSpawner",0,0,0,0)
+goto AnimDecide
+EnergyBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",12,"EnergyBombSuccess")
+goto NoAmmo
+EnergyBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",12)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("EnergyBomb",0,0,8,0)
+goto AnimDecide2
+MegaEnergyBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",18,"MEnergyBombSuccess")
+goto NoAmmo
+MEnergyBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",18)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("MegaEnergyBomb",0,0,8,0)
+goto AnimDecide2
+Harpoon2:
+BUST B 0 A_JumpIfInventory("ZomoMemory",8,"H2Success")
+goto NoAmmo
+H2Success:
+BUST B 0 A_TakeInventory("ZomoMemory",8)
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon",0,0,8,0)
+AQBN BC 4
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon",0,0,8,0)
+AQBN BCA 4
+goto RealReady
+Harpoon3:
+BUST B 0 A_JumpIfInventory("ZomoMemory",14,"H3Success")
+goto NoAmmo
+H3Success:
+BUST B 0 A_TakeInventory("ZomoMemory",14)
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon2",0,0,8,0)
+AQBN BC 4
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon2",0,0,8,0)
+AQBN BC 4
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon2",0,0,8,0)
+AQBN BCA 4
+goto RealReady
+Harpoon4:
+BUST B 0 A_JumpIfInventory("ZomoMemory",20,"H4Success")
+goto NoAmmo
+H4Success:
+BUST B 0 A_TakeInventory("ZomoMemory",20)
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon3",0,0,8,0)
+AQBN BC 4
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon3",0,0,8,0)
+AQBN BC 4
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon3",0,0,8,0)
+AQBN BC 4
+BUST B 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+BUST B 0 A_FireCustomMissile("Harpoon3",0,0,8,0)
+AQBN BCA 4
+goto RealReady
+Arrows:
+BUST B 0 A_JumpIfInventory("BallFlag",15,"ArrowsStop")
+BUST B 0 A_FireCustomMissile("HarpoonPA",0,0,8,0)
+BUST B 0 A_GiveInventory("BallFlag",1)
+AQBN BC 2
+AQBN A 1
+goto Arrows
+ArrowsStop:
+BUST B 0 A_TakeInventory("BallFlag",999)
+BUST B 0 A_TakeInventory("ArrowsFlag",999)
+BUST B 0 A_TakeInventory("PALimiter",999)
+goto RealReady
+Uninstall:
+BUST B 0 A_JumpIfInventory("ZomoMemory",16,"UninstallSuccess")
+goto NoAmmo
+UninstallSuccess:
+BUST B 0 A_TakeInventory("ZomoMemory",16)
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("UninstallShot",0,0,8,0)
+Goto AnimDecide
+SeekBomb:
+BUST B 0 A_JumpIfInventory("ZomoMemory",24,"SBombSuccess")
+goto NoAmmo
+SBombSuccess:
+ZTRW A 0 A_TakeInventory("ZomoMemory",24)
+ZTRW A 0 A_PlaySoundEx("weapon/BNBombToss","Weapon")
+ZTRW A 0 A_FireCustomMissile("SeekBomb",0,0,8,0)
+goto AnimDecide2
+Muramasa:
+BUST B 0 A_JumpIfInventory("ZomoMemory",42,"MuraSuccess")
+goto NoAmmo
+MuraSuccess:
+MURN A 0 A_TakeInventory("ZomoMemory",42)
+MURN A 0 ACS_NamedExecuteAlways("MuramasaScript",0)
+MURN AB 2
+MURN A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+MURN A 0 A_FireCustomMissile("MuramasaHitbox",0,0,0,0)
+MURN C 1 A_SpawnItemEx("SwordSwingFX",16,-16,36,0,0,0,0)
+MURN C 0 A_SpawnItemEx("SwordSwingFX",32,-12,36,0,0,0,0)
+MURN C 1 A_SpawnItemEx("SwordSwingFX",48,-8,36,0,0,0,0)
+MURN C 0 A_SpawnItemEx("SwordSwingFX",64,-4,36,0,0,0,0)
+MURN D 1 A_SpawnItemEx("SwordSwingFX",80,0,36,0,0,0,0)
+MURN D 0 A_SpawnItemEx("SwordSwingFX",64,4,36,0,0,0,0)
+MURN D 1 A_SpawnItemEx("SwordSwingFX",48,8,36,0,0,0,0)
+MURN D 0 A_SpawnItemEx("SwordSwingFX",32,12,36,0,0,0,0)
+MURN D 1 A_SpawnItemEx("SwordSwingFX",16,16,36,0,0,0,0)
+MURN EF 2
+goto RealReady
+AntiDamage:
+BUST B 0 A_JumpIfInventory("AntiDamageCooldown",1,"ADFail")
+BUST B 0 A_JumpIfInventory("ZomoMemory",48,"AntiDamageSuccess")
+goto NoAmmo
+ADFail:
+BUST B 0 A_PlaySoundEx("misc/clnbell","Voice")
+goto NoAmmo
+AntiDamageSuccess:
+BUST B 0 A_PlaySoundEx("weapon/invisible","Weapon")
+BUST B 0 A_TakeInventory("ZomoMemory",48)
+BUST B 0 A_GiveInventory("AntiDamageCooldown",1)
+BUST B 0 ACS_NamedExecuteAlways("AntiDamageScript",0)
+goto AnimDecide
+AntiWind:
+BUST B 0 A_JumpIfInventory("AntiDamageCooldown",1,"ADFail")
+BUST B 0 A_JumpIfInventory("ZomoMemory",48,"AntiWindSuccess")
+goto NoAmmo
+AntiWindSuccess:
+BUST B 0 A_PlaySoundEx("weapon/invisible","Weapon")
+BUST B 0 A_TakeInventory("ZomoMemory",48)
+BUST B 0 A_GiveInventory("AntiDamageCooldown",1)
+BUST B 0 ACS_NamedExecuteAlways("AntiDamageScript",0,2)
+goto AnimDecide
+AntiBreak:
+BUST B 0 A_JumpIfInventory("AntiDamageCooldown",1,"ADFail")
+BUST B 0 A_JumpIfInventory("ZomoMemory",48,"AntiBreakSuccess")
+goto NoAmmo
+AntiBreakSuccess:
+BUST B 0 A_PlaySoundEx("weapon/invisible","Weapon")
+BUST B 0 A_TakeInventory("ZomoMemory",48)
+BUST B 0 A_GiveInventory("AntiDamageCooldown",1)
+BUST B 0 ACS_NamedExecuteAlways("AntiDamageScript",0,3)
+goto AnimDecide
+DashAttack:
+BUST B 0 A_JumpIfInventory("ZomoMemory",22,"DashAttackSuccess")
+goto NoAmmo
+DashAttackSuccess:
+HSPR B 0 A_TakeInventory("ZomoMemory",22)
+HSPR B 0 SetPlayerProperty(0,1,4)
+HSPR B 0 A_ChangeFlag("THRUACTORS",1)
+HSPR B 0 A_SetGravity(0.0)
+HSPR B 5 A_PlaySoundEx("weapon/tengudash","Weapon")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR B 0 A_SpawnItemEx("DADamager",0,0,24)
+HSPR B 0 A_ChangeVelocity(cos(pitch)*35,0,-sin(pitch)*15,CVF_RELATIVE|CVF_REPLACE)
+HSPR CC 1 A_SpawnItemEx("DashAttackImage")
+HSPR CCC 2 A_SpawnItemEx("DADamager",0,0,24)
+goto EndTheDash
+EndTheDash:
+HSPR B 0 A_ScaleVelocity(0.0)
+HSPR B 0 A_TakeInventory("ObjectDetected",999)
+HSPR B 0 A_TakeInventory("SpecialCount1",999)
+HSPR B 4 A_Recoil(7)
+HSPR B 0 A_ChangeFlag("THRUACTORS",0)
+HSPR B 0 A_JumpIfInventory("IsUnderWater",1,"EndTheDashUW")
+HSPR B 0 A_SetGravity(0.8)
+HSPR B 1 SetPlayerProperty(0,0,4)
+goto RealReady
+EndTheDashUW:
+HSPR B 0 A_SetGravity(0.2)
+HSPR B 1 SetPlayerProperty(0,0,4)
+goto RealReady
+TimeBombPlus:
+ZTRW A 0 A_FireCustomMissile("TimeBombPlus",0,0,8,0)
+ZTRW A 0 A_TakeInventory("TimeBombPlusFlag",999)
+BUST B 0 A_TakeInventory("PALimiter",999)
+goto AnimDecide2
+WoodmanReady:
+BUST B 0 ACS_ExecuteAlways(991,0,532)
+WOBN A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoReady")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"WMDirect")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto WoodmanReady+1
+BassReady:
+BUST B 0 ACS_ExecuteAlways(991,0,46)
+BASB B 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoReady")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"BEXEDirect")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto BassReady+1
+BubbleReady:
+BUST B 0 ACS_ExecuteAlways(991,0,819)
+BUBA A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoReady")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"BubbleDirect")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto BubbleReady+1
+FEXEReady:
+BUST B 0 ACS_ExecuteAlways(991,0,816)
+FLSA A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoReady")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"FEXEDirect")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto FEXEReady+1
+NapalmReady:
+BUST B 0 ACS_ExecuteAlways(991,0,817)
+NPAR A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoReady")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"NapalmDirect")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto NapalmReady+1
+FreezeReady:
+BUST B 0 ACS_ExecuteAlways(991,0,818)
+MRFA A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoReady")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"FreezeDirect")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto FreezeReady+1
+ProtoReady:
+BUST B 0 ACS_ExecuteAlways(991,0,975)
+BUST B 0 A_GiveInventory("ShieldUp",1)
+PSWD A 1 A_WeaponReady
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("ElemSwordFlag",1,"ElemSword")
+BUST B 0 A_JumpIfInventory("LifeSwordFlag",1,"LifeSword")
+BUST B 0 A_JumpIfInventory("OmegaBombFlag",1,"OmegaBomb")
+BUST B 0 A_JumpIfInventory("OBoomerangFlag",1,"OmegaBoomerang")
+BUST B 0 A_JumpIfInventory("ArrowsFlag",1,"Arrows")
+BUST B 0 A_JumpIfInventory("TimeBombPlusFlag",1,"TimeBombPlus")
+BUST B 0 A_JumpIfInventory("NormalFlag",1,"RealReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+BUST B 0 A_JumpIfInventory("User1_Trigger",1,"ReshuffleCheck")
+BUST B 0 A_JumpIfInventory("User2_Trigger",1,"PACheck")
+BUST B 0 A_JumpIfInventory("CustomFlag",1,"ProtoEXEDirect")
+BUST B 0 A_JumpIfInventory("CustomAmmo",300,"CustomSoundCheck")
+goto ProtoReady+2
+Flash:
+TNT1 A 0 A_JumpIfInventory("FastGaugeFlag",1,"FastFlash")
+TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"ShieldFlash")
+TNT1 AA 1 A_JumpIfInventory("MagBoltStartFlag",1,"FlashMB")
+TNT1 A 0 A_JumpIfInventory("ExistCount",6,"MemoryRegen")
+TNT1 A 0 A_GiveInventory("CustomAmmo",1)
+TNT1 A 0 A_GiveInventory("ExistCount",1)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+loop
+ShieldFlash:
+PESH A 2 Offset(20,-148)
+PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 2 Offset(20,-128)
+PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 2 Offset(20,-108)
+PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 2 Offset(20,-88)
+PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH A 2 Offset(20,-68)
+PESH A 0 A_GiveInventory("CustomAmmo",1)
+PESH AA 1 A_JumpIfInventory("FastGaugeFlag",1,"FastShield")
+TNT1 A 0 A_SpawnItemEx("ProtoShieldXTM",28,0,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
+TNT1 A 0 A_SpawnItemEx("ProtoShieldFX",23,-10,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
+TNT1 A 0 A_JumpIfInventory("ExistCount",6,"MemoryRegen")
+TNT1 A 0 A_GiveInventory("CustomAmmo",1)
+TNT1 A 0 A_GiveInventory("ExistCount",1)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"ShieldFlashDirect")
+goto Flash
+ShieldFlashDirect:
+TNT1 A 0 A_JumpIfInventory("FastGaugeFlag",1,"FastShieldDirect")
+goto ShieldFlash+10
+FastFlash:
+TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"FastShield")
+TNT1 AA 1 A_JumpIfInventory("FastCancelFlag",1,"FastStop")
+TNT1 A 0 A_JumpIfInventory("ExistCount",3,"MemoryRegen")
+TNT1 A 0 A_GiveInventory("CustomAmmo",2)
+TNT1 A 0 A_GiveInventory("ExistCount",1)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 0 A_JumpIfInventory("MagBoltStartFlag",1,"FlashMB")
+loop
+FastShield:
+PESH A 2 Offset(20,-148)
+PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 2 Offset(20,-128)
+PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 2 Offset(20,-108)
+PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 2 Offset(20,-88)
+PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH A 2 Offset(20,-68)
+PESH A 0 A_GiveInventory("CustomAmmo",2)
+PESH AA 1 Offset(20,-48) A_JumpIfInventory("FastCancelFlag",1,"FastStop")
+TNT1 A 0 A_SpawnItemEx("ProtoShieldXTM",28,0,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
+TNT1 A 0 A_SpawnItemEx("ProtoShieldFX",23,-10,8,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION, 0)
+TNT1 A 0 A_JumpIfInventory("ExistCount",3,"MemoryRegen")
+TNT1 A 0 A_GiveInventory("CustomAmmo",2)
+TNT1 A 0 A_GiveInventory("ExistCount",1)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"FastShieldDirect")
+goto Flash
+FastShieldDirect:
+goto FastShield+10
+FastStop:
+TNT1 A 0 A_TakeInventory("FastGaugeFlag",99)
+TNT1 A 0 A_TakeInventory("FastCancelFlag",999)
+TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"ShieldFlashDirect")
+goto Flash
+FlashMB:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 0 A_JumpIfInventory("CutterFlag",18,"MBStop")
+TNT1 A 1 A_SpawnItemEx("MagBoltRadiusDamager",0,0,8)
+TNT1 A 0 A_SpawnItemEx("MagBoltFXActor",24,6,30,0,0,0,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 1 A_SpawnItemEx("MagBoltRadiusDamager",0,0,8)
+TNT1 A 0 A_SpawnItemEx("MagBoltFXActor",24,6,30,0,0,0,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 ACS_ExecuteAlways(247,0,40,400,0)
+TNT1 A 0 A_GiveInventory("CustomAmmo",2)
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+loop
+FlashStop:
+TNT1 A 1 SetPlayerProperty(0,0,4)
+stop
+MBStop:
+TNT1 A 0 SetPlayerProperty(0,0,4)
+TNT1 A 0 A_TakeInventory("KnightFlag",999)
+TNT1 A 0 A_TakeInventory("MagBoltStartFlag",999)
+TNT1 A 0 A_TakeInventory("CutterFlag",999)
+goto Flash
+MemoryRegen:
+TNT1 A 0 A_TakeInventory("ExistCount",999)
+TNT1 A 0 A_GiveInventory("ZomoMemory",2)
+TNT1 A 0 A_JumpIfInventory("ShieldUp",1,"ShieldFlashDirect")
+goto Flash
+AnimDecide:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireAnim")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaAnim")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecAnim")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodAnim")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindAnim")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakAnim")
+BUST CD 4
+BUST B 10
+goto RealReady
+FireAnim:
+FIBN BC 4
+FIBN A 10
+goto RealReady
+AquaAnim:
+AQBN BC 4
+AQBN A 10
+goto RealReady
+ElecAnim:
+ELBN BC 4
+ELBN A 10
+goto RealReady
+WoodAnim:
+WOBN BC 4
+WOBN A 10
+goto RealReady
+WindAnim:
+WBUS BC 4
+WBUS A 10
+goto RealReady
+BreakAnim:
+BRKB BC 4
+BRKB A 10
+goto RealReady
+AnimDecide2:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireAnim2")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaAnim2")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecAnim2")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodAnim2")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindAnim2")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakAnim2")
+ZTRW ABCDEFGHI 2
+ZTRW J 8
+goto RealReady
+FireAnim2:
+FTRW ABCDEFGHI 2
+FTRW J 8
+goto RealReady
+AquaAnim2:
+ATRW ABCDEFGHI 2
+ATRW J 8
+goto RealReady
+ElecAnim2:
+ETRW ABCDEFGHI 2
+ETRW J 8
+goto RealReady
+WoodAnim2:
+WTRW ABCDEFGHI 2
+WTRW J 8
+goto RealReady
+WindAnim2:
+WITR ABCDEFGHI 2
+WITR J 8
+goto RealReady
+BreakAnim2:
+BTRW ABCDEFGHI 2
+BTRW J 8
+goto RealReady
+Fire:
+//BUST B 0 A_JumpIfInventory("DarkSoulFlag",1,"DarkFire")
+BUST B 0 A_JumpIfInventory("SmashFlag",1,"FinalSmash")
+BUST B 0 A_JumpIfInventory("Alt1Flag",1,"ProtoStepSpin")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassFire")
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanFire")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashFire")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmFire")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeFire")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleFire")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoFire")
+goto Hold
+Hold:
+//BUST B 0 A_JumpIfInventory("DarkSoulFlag",1,"DarkFire")
+BUST B 0 A_JumpIfInventory("Alt1Flag",1,"ProtoStepSpin")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassFire")
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanFire")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashFire")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmFire")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeFire")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleFire")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoFire")
+BUST B 0 A_JumpIfInventory("ChargeFlag",2,"Hold4")
+BUST B 0 A_JumpIfInventory("ChargeFlag",1,"Hold2")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireHold")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaHold")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecHold")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodFire")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindFire")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakHold")
+BUST B 0 A_JumpIfInventory("WeaponCharge",1,"Hold2Go")
+BUST B 1 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+WoodmanFire:
+WOBN B 0 A_FireCustomMissile("WoodmanMagicLeaf",random(-8,8),0,8,0,0,random(-5,5))
+WOBN B 4
+WOBN C 8
+WOBN A 6
+WOBN A 0 A_Refire
+goto WoodmanReady+1
+BassFire:
+BASB B 0 A_FireCustomMissile("GospelHead",0,0,random(-12,28),random(-8,8))
+BASB C 4
+BASB DB 10
+BASB A 0 A_Refire
+goto BassReady+1
+FlashFire:
+FLSA A 0 A_PlaySoundEx("weapon/sparkshock","Weapon")
+FLSA A 0 A_FireCustomMissile("VoltBlast",0,0,8,0)
+FLSA B 12
+FLSA CA 8
+FLSA A 0 A_Refire
+goto FEXEReady+1
+NapalmFire:
+NPAR G 0 A_PlaySoundEx("weapon/bassexebuster","Weapon")
+NPAR G 3 A_FireCustomMissile("NapalmBullet",0,0,8,0)
+NPAR F 0 A_PlaySoundEx("weapon/bassexebuster","Weapon")
+NPAR F 3 A_FireCustomMissile("NapalmBullet",0,0,8,0)
+NPAR F 0 A_Refire
+NPAR I 6
+goto NapalmReady+1
+FreezeFire:
+MRFA BC 3
+MRFA C 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+MRFA C 12 A_FireCustomMissile("TundraBlast",0,0,8,0)
+MRFA C 0 A_Refire
+MRFA BA 3
+goto FreezeReady+1
+BubbleFire:
+BUBA A 0 A_JumpIfInventory("BubbleFirePU",1,"BubbleFireHold")
+BUBA A 0 A_GiveInventory("BubbleFirePU",1)
+BUBA B 3
+goto BubbleFireHold
+BubbleFireHold:
+BUBA C 0 A_PlaySoundEx("misc/waterslide","Weapon")
+BUBA C 2 A_FireCustomMissile("MistSpray",random(-7,7),0,8,0)
+BUBA C 0 A_Refire
+BUBA B 3 A_TakeInventory("BubbleFirePU",99)
+BUBA A 6
+goto BubbleReady+1
+ProtoFire:
+PSWD A 0 A_TakeInventory("ShieldUp",999)
+PSWD A 0 A_GiveInventory("Alt2Flag",1)
+PSWD AAAAAAA 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+PSWD B 2
+PSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+PSWD A 0 A_FireCustomMissile("ProtoSwordWave",0,0,8,0)
+PSWD CDE 1
+PSWD F 0 A_TakeInventory("Alt2Flag",999)
+PSWD F 0 A_TakeInventory("Alt1Flag",999)
+PSWD F 20
+PSWD F 0 A_Refire
+goto ProtoReady+1
+VorpalCombo:
+PSWD B 1
+PSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+PSWD A 0 A_FireCustomMissile("VorpalSlice",0,0,8,0)
+PSWD CDE 1
+PSWD F 3
+PSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+PSWD A 0 A_FireCustomMissile("VorpalSlice2",0,0,8,0)
+PSWD CDE 1
+PSWD F 3
+PSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+PSWD A 0 A_FireCustomMissile("VorpalSlice3",0,0,8,0)
+PSWD CDE 1
+PSWD F 3
+PSWD A 0 A_PlaySoundEx("weapon/BNSwordSwing","Weapon")
+PSWD A 0 A_FireCustomMissile("VorpalSlice4",0,0,8,0)
+PSWD CDE 1
+PSWD F 0 A_TakeInventory("Alt2Flag",999)
+PSWD F 0 A_TakeInventory("Alt1Flag",999)
+PSWD F 30
+PSWD F 0 A_Refire
+goto ProtoReady+1
+FireHold:
+BUST B 0 A_JumpIfInventory("ChargeFlag",2,"Hold4F")
+BUST B 0 A_JumpIfInventory("ChargeFlag",1,"Hold2F")
+BUST B 0 A_JumpIfInventory("WeaponCharge",1,"Hold2Go")
+FIBN A 1 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+AquaHold:
+BUST B 0 A_JumpIfInventory("ChargeFlag",2,"Hold4A")
+BUST B 0 A_JumpIfInventory("ChargeFlag",1,"Hold2A")
+BUST B 0 A_JumpIfInventory("WeaponCharge",1,"Hold2Go")
+AQBN A 1 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+ElecHold:
+BUST B 0 A_JumpIfInventory("ChargeFlag",2,"Hold4E")
+BUST B 0 A_JumpIfInventory("ChargeFlag",1,"Hold2E")
+BUST B 0 A_JumpIfInventory("WeaponCharge",1,"Hold2Go")
+ELBN A 1 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+WoodFire:
+WOBN AB 3
+WOBN C 7 A_FireCustomMissile("WoodSapSeed",0,0,8,0)
+BUST B 0 A_Refire
+goto WoodReady+1
+WindFire:
+WBUS AB 3
+WBUS C 8 A_FireCustomMissile("WindSlicer",0,0,8,0)
+BUST B 0 A_Refire
+goto WindReady+1
+BreakHold:
+BUST B 0 A_JumpIfInventory("ChargeFlag",2,"Hold4Break")
+BUST B 0 A_JumpIfInventory("ChargeFlag",1,"Hold2Break")
+BUST B 0 A_JumpIfInventory("WeaponCharge",1,"Hold2Go")
+BRKB A 1 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+Hold2Go:
+BUST B 0 A_GiveInventory("ChargeFlag",1)
+BUST B 0 A_PlaySoundEx("weapon/BNCharge1","Weapon")
+Goto Hold2
+Hold2:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"Hold2F")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"Hold2A")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"Hold2E")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"Hold2Break")
+BUST B 0 A_JumpIfInventory("WeaponCharge",20,"Hold3")
+BNCH A 1 ACS_ExecuteAlways(991,0,536)
+BUST B 1 ACS_ExecuteAlways(991,0,0)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+Hold2F:
+BUST B 0 A_JumpIfInventory("WeaponCharge",20,"Hold3F")
+FIBN D 1 ACS_ExecuteAlways(991,0,521)
+FIBN A 1 ACS_ExecuteAlways(991,0,520)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+Hold2A:
+BUST B 0 A_JumpIfInventory("WeaponCharge",8,"Hold3A")
+AQBN D 1 ACS_ExecuteAlways(991,0,525)
+AQBN A 1 ACS_ExecuteAlways(991,0,524)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+Hold2E:
+BUST B 0 A_JumpIfInventory("WeaponCharge",20,"Hold3E")
+ELBN D 1 ACS_ExecuteAlways(991,0,529)
+ELBN A 1 ACS_ExecuteAlways(991,0,528)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+Hold2Break:
+BUST B 0 A_JumpIfInventory("WeaponCharge",20,"Hold3Break")
+BRKB D 1 ACS_ExecuteAlways(991,0,545)
+BRKB A 1 ACS_ExecuteAlways(991,0,544)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire1
+Hold3:
+BUST B 0 A_JumpIfInventory("WeaponCharge",35,"Hold4Go")
+BNCH B 1 ACS_ExecuteAlways(991,0,537)
+BUST B 1 ACS_ExecuteAlways(991,0,0)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire2
+Hold3F:
+BUST B 0 A_JumpIfInventory("WeaponCharge",32,"Hold4Go")
+FIBN E 1 ACS_ExecuteAlways(991,0,522)
+FIBN A 1 ACS_ExecuteAlways(991,0,520)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire2
+Hold3A:
+BUST B 0 A_JumpIfInventory("WeaponCharge",14,"Hold4Go")
+AQBN E 1 ACS_ExecuteAlways(991,0,526)
+AQBN A 1 ACS_ExecuteAlways(991,0,524)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire2
+Hold3E:
+BUST B 0 A_JumpIfInventory("WeaponCharge",40,"Hold4Go")
+ELBN E 1 ACS_ExecuteAlways(991,0,530)
+ELBN A 1 ACS_ExecuteAlways(991,0,528)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire2
+Hold3Break:
+BUST B 0 A_JumpIfInventory("WeaponCharge",36,"Hold4Go")
+BRKB E 1 ACS_ExecuteAlways(991,0,546)
+BRKB A 1 ACS_ExecuteAlways(991,0,544)
+BUST B 0 A_GiveInventory("WeaponCharge",1)
+BUST B 0 A_Refire
+Goto Fire2
+Hold4Go:
+BUST B 0 A_GiveInventory("ChargeFlag",1)
+BUST B 0 A_PlaySoundEx("weapon/BNCharge2","Weapon")
+goto Hold4
+Hold4:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"Hold4F")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"Hold4A")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"Hold4E")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"Hold4Break")
+BNCH C 1 ACS_ExecuteAlways(991,0,538)
+BUST B 1 ACS_ExecuteAlways(991,0,0)
+BUST B 0 A_Refire
+Goto Fire3
+Hold4F:
+FIBN F 1 ACS_ExecuteAlways(991,0,523)
+FIBN A 1 ACS_ExecuteAlways(991,0,520)
+BUST B 0 A_Refire
+Goto Fire3
+Hold4A:
+AQBN F 1 ACS_ExecuteAlways(991,0,527)
+AQBN A 1 ACS_ExecuteAlways(991,0,524)
+BUST B 0 A_Refire
+Goto Fire3
+Hold4E:
+ELBN F 1 ACS_ExecuteAlways(991,0,531)
+ELBN A 1 ACS_ExecuteAlways(991,0,528)
+BUST B 0 A_Refire
+Goto Fire3
+Hold4Break:
+BRKB F 1 ACS_ExecuteAlways(991,0,547)
+BRKB A 1 ACS_ExecuteAlways(991,0,544)
+BUST B 0 A_Refire
+Goto Fire3
+Fire1:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"Fire1F")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"Fire1A")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"Fire1E")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"Fire1Break")
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot1",0,0,8,0)
+BUST CD 3
+Goto RealReady
+Fire1F:
+BUST B 0 ACS_ExecuteAlways(991,0,520)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot1",0,0,8,0)
+FIBN BC 3
+Goto FireReady+1
+Fire1A:
+BUST B 0 ACS_ExecuteAlways(991,0,524)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot1",0,0,8,0)
+AQBN BC 3
+Goto AquaReady+1
+Fire1E:
+BUST B 0 ACS_ExecuteAlways(991,0,528)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot1",0,0,8,0)
+ELBN BC 3
+Goto ElecReady+1
+Fire1Break:
+BUST B 0 ACS_ExecuteAlways(991,0,544)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot1",0,0,8,0)
+BRKB BC 3
+Goto BreakReady+1
+Fire2:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"Fire2F")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"Fire2A")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"Fire2E")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"Fire2Break")
+BUST B 0 A_TakeInventory("ChargeFlag",999) 
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot2",0,0,8,0)
+BUST CD 3
+Goto RealReady
+Fire2F:
+BUST B 0 ACS_ExecuteAlways(991,0,520)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot2",0,0,8,0)
+FIBN BC 3
+Goto FireReady+1
+Fire2A:
+BUST B 0 ACS_ExecuteAlways(991,0,524)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot2",0,0,8,0)
+AQBN BC 3
+Goto AquaReady+1
+Fire2E:
+BUST B 0 ACS_ExecuteAlways(991,0,528)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot2",0,0,8,0)
+ELBN BC 3
+Goto ElecReady+1
+Fire2Break:
+BUST B 0 ACS_ExecuteAlways(991,0,544)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot2",0,0,8,0)
+BRKB BC 3
+Goto BreakReady+1
+Fire3:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"Fire3F")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"Fire3A")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"Fire3E")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"Fire3Break")
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNFire","Weapon")
+BUST B 0 A_FireCustomMissile("BNBusterShot3",0,0,8,0)
+BUST CD 3
+goto RealReady
+Fire3F:
+BUST B 0 ACS_ExecuteAlways(991,0,520)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+BUST B 0 A_FireCustomMissile("BNFireShotSpawner",0,0,8,0)
+FIBN BC 3
+Goto FireReady+1
+Fire3A:
+BUST B 0 ACS_ExecuteAlways(991,0,524)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/BNBubbleShot","Weapon")
+BUST B 0 A_FireCustomMissile("BNBubbleShotSpawner",0,0,8,0)
+AQBN BC 3
+Goto AquaReady+1
+Fire3E:
+BUST B 0 ACS_ExecuteAlways(991,0,528)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/sparkshock","Weapon")
+BUST B 0 A_FireCustomMissile("BNElecRing",0,0,8,0)
+ELBN BC 3
+Goto ElecReady+1
+Fire3Break:
+BUST B 0 ACS_ExecuteAlways(991,0,544)
+BUST B 0 A_TakeInventory("ChargeFlag",999)
+BUST B 0 A_TakeInventory("WeaponCharge",999)
+BUST B 0 A_ClearRefire
+BUST B 0 A_PlaySoundEx("weapon/metalblade","Weapon")
+BUST B 0 A_FireCustomMissile("MetalGearShot",0,0,8,0)
+BRKB BC 3
+Goto BreakReady+1
+Altfire:
+BUST B 0 A_JumpIfInventory("Alt2Flag",1,"VorpalCombo")
+BUST B 0 A_JumpIfInventory("SCActive",1,"FAltStop")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassAlt")
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanAlt")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashAlt")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmAlt")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeAlt")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleAlt")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoAlt")
+BUST B 0 A_JumpIfNoAmmo("NoAmmo")
+BUST B 0 A_JumpIfInventory("InvisibleFlag",1,"Invisibility")
+BUST B 0 A_JumpIfInventory("SwordFlag",1,"Sword")
+BUST B 0 A_JumpIfInventory("WideSwordFlag",1,"WideSword")
+BUST B 0 A_JumpIfInventory("LongSwordFlag",1,"LongSword")
+BUST B 0 A_JumpIfInventory("FireSwordFlag",1,"FireSword")
+BUST B 0 A_JumpIfInventory("AquaSwordFlag",1,"AquaSword")
+BUST B 0 A_JumpIfInventory("ElecSwordFlag",1,"ElecSword")
+BUST B 0 A_JumpIfInventory("WoodSwordFlag",1,"WoodSword")
+BUST B 0 A_JumpIfInventory("CBallFlag",1,"CannonBall")
+BUST B 0 A_JumpIfInventory("MiniBombFlag",1,"MiniBomb")
+BUST B 0 A_JumpIfInventory("MidBombFlag",1,"MidBomb")
+BUST B 0 A_JumpIfInventory("CrossBombFlag",1,"CrossBomb")
+BUST B 0 A_JumpIfInventory("MagBoltFlag",1,"MagBolt")
+BUST B 0 A_JumpIfInventory("FlashBombFlag",1,"FlashBomb")
+BUST B 0 A_JumpIfInventory("Recov300Flag",1,"Recov300")
+BUST B 0 A_JumpIfInventory("TimeBombFlag",1,"TimeBomb")
+BUST B 0 A_JumpIfInventory("TreeBombFlag",1,"TreeBomb")
+BUST B 0 A_JumpIfInventory("RedAppleFlag",1,"RedApple")
+BUST B 0 A_JumpIfInventory("GreenAppleFlag",1,"GreenApple")
+BUST B 0 A_JumpIfInventory("YellowAppleFlag",1,"YellowApple")
+BUST B 0 A_JumpIfInventory("BoomerangFlag",1,"Boomerang1")
+BUST B 0 A_JumpIfInventory("HiBoomerangFlag",1,"Boomerang2")
+BUST B 0 A_JumpIfInventory("MBoomerangFlag",1,"Boomerang3")
+BUST B 0 A_JumpIfInventory("MeteorFlag",1,"Meteors")
+BUST B 0 A_JumpIfInventory("EnergyBombFlag",1,"EnergyBomb")
+BUST B 0 A_JumpIfInventory("MegaEnergyBombFlag",1,"MegaEnergyBomb")
+BUST B 0 A_JumpIfInventory("Harpoon2Flag",1,"Harpoon2")
+BUST B 0 A_JumpIfInventory("Harpoon3Flag",1,"Harpoon3")
+BUST B 0 A_JumpIfInventory("Harpoon4Flag",1,"Harpoon4")
+BUST B 0 A_JumpIfInventory("UninstallFlag",1,"Uninstall")
+BUST B 0 A_JumpIfInventory("SeekBombFlag",1,"SeekBomb")
+BUST B 0 A_JumpIfInventory("MuramasaFlag",1,"Muramasa")
+BUST B 0 A_JumpIfInventory("AntiDamageFlag",1,"AntiDamage")
+BUST B 0 A_JumpIfInventory("WindRackFlag",1,"WindRack")
+BUST B 0 A_JumpIfInventory("AirShotFlag",1,"AirShot")
+BUST B 0 A_JumpIfInventory("DrillArmFlag",1,"DrillArm")
+BUST B 0 A_JumpIfInventory("AntiWindFlag",1,"AntiWind")
+BUST B 0 A_JumpIfInventory("AntiBreakFlag",1,"AntiBreak")
+BUST B 0 A_JumpIfInventory("AttackPlusFlag",1,"AttackPlus")
+BUST B 0 A_JumpIfInventory("DashAttackFlag",1,"DashAttack")
+HSPR ABC 2
+goto AltHold
+AltHold:
+BUST B 0 A_JumpIfInventory("Alt2Flag",1,"VorpalCombo")
+BUST B 0 A_JumpIfInventory("SCActive",1,"FAltStop")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassAlt")
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanAlt")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FlashAlt")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmAlt")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeAlt")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleAlt")
+BUST B 0 A_JumpIfInventory("ProtoEXEFlag",1,"ProtoAlt")
+HSPR D 12 A_FireCustomMissile("MemoryBlast",0,1,8,0)
+HSPR D 0 A_Refire
+HSPR CB 2
+goto RealReady
+BassAlt:
+DSRD A 0 A_PlaySoundEx("weapon/BNLSwordSwing","Weapon")
+DSRD A 0 A_FireCustomMissile("DarkSwordSlash",0,0,8,0) 
+DSRD ABCDE 2 
+DSRD F 40
+DSRD A 0 A_Refire
+goto BassReady+1
+WoodmanAlt:
+WOBN B 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+WOBN B 0 A_FireCustomMissile("WoodmanLogSpawner",0,0,8,0)
+WOBN BC 6
+WOBN A 55
+WOBN A 0 A_Refire
+goto WoodmanReady+1
+FlashAlt:
+FLSA A 0 A_JumpIfInventory("FlashAuraCooldown",1,"FEXEDirect")
+FLSA A 0 A_JumpIfInventory("FlashAuraSpeed",1,"FlashAuraHold")
+FLSA A 0 A_GiveInventory("FlashAuraSpeed",1)
+FLSA A 0 A_PlaySoundEx("weapon/timestopper","Weapon")
+FLSA A 0 A_FireCustomMissile("FlashStopperNavi",0,0,8,0)
+FLSA A 0 A_SetBlend("99 99 99", 0.95, 15)
+FLSA DE 2
+goto FlashAuraHold
+FlashAuraHold:
+FLSA F 0 A_SpawnItemEx("FlashNaviAura",0,0,4,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+FLSA FG 2
+FLSA F 0 A_Refire
+FLSA H 4 A_TakeInventory("FlashAuraSpeed",99)
+FLSA A 8 A_GiveInventory("FlashAuraCooldown",1)
+goto FEXEReady+1
+NapalmAlt:
+NPAR B 0 A_PlaySoundEx("CBM/BombShot","Weapon")
+NPAR B 2 A_FireCustomMissile("NapalmSprayZ",-5,0,10,5)
+NPAR C 2 A_FireCustomMissile("NapalmSprayZ",0,0,10,0)
+NPAR A 8 A_FireCustomMissile("NapalmSprayZ",5,0,10,-5)
+NPAR D 0 A_PlaySoundEx("CBM/BombShot","Weapon")
+NPAR D 2 A_FireCustomMissile("NapalmSprayZ",5,0,-10,-5)
+NPAR E 2 A_FireCustomMissile("NapalmSprayZ",0,0,-10,0)
+NPAR A 20 A_FireCustomMissile("NapalmSprayZ",-5,0,-10,5)
+NPAR A 0 A_Refire
+goto NapalmReady+1
+FreezeAlt:
+MRFA BC 3
+MRFA C 0 A_PlaySoundEx("weapon/icewallspawn","Weapon")
+MRFA C 0 A_FireCustomMissile("SigilCry",0,0,8,0)
+MRFA C 0 A_GiveInventory("SCActive",1)
+goto FAltHold
+FAltHold:
+MRFA C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+MRFA C 0 A_JumpIfInventory("SCCollided",1,"FAltStop")
+loop
+FAltStop:
+MRFA C 0 A_GiveInventory("SCActive",2)
+MRFA C 0 A_TakeInventory("SCCollided",999)
+MRFA CBA 3
+MRFA C 0 A_TakeInventory("SCActive",999)
+MRFA A 5
+goto FreezeReady+1
+BubbleAlt:
+BUBA B 6
+BUBA A 0 A_PlaySoundEx("weapon/BNBubbleShot","Weapon")
+BUBA C 25 A_FireCustomMissile("BubbleRhapsody",0,0,8,0)
+BUBA BA 6
+BUBA A 0 A_Refire
+goto BubbleReady+1
+ProtoAlt:
+PSWD A 0 A_TakeInventory("ShieldUp",999)
+PSWD A 0 A_GiveInventory("Alt1Flag",1)
+PSWD AAAAAAAAAA 1 A_WeaponReady(WRF_NOSECONDARY|WRF_NOSWITCH)
+PSWD A 0 A_SetTranslucent(0.1)
+PSWD A 0 A_SetGravity(0.0)
+PSWD A 0 A_Stop
+PSWD A 0 SetPlayerProperty(0,1,4)
+PSWD A 0 A_Recoil(-300)
+PSWD A 1
+PSWD A 0 A_Stop
+PSWD A 5 A_SetTranslucent(1.0)
+PSWD A 0 A_PlaySoundEX("weapon/BNLSwordSwing","Weapon")
+PSWD A 0 A_FireCustomMissile("ProtoStepSlash",0,0,8,0)
+PSWD BCD 2
+PSWD EF 1
+PSWD A 0 SetPlayerProperty(0,0,4)
+PSWD A 0 A_TakeInventory("Alt1Flag",999)
+PSWD A 0 A_TakeInventory("Alt2Flag",999)
+PSWD A 0 A_JumpIfInventory("IsUnderWater",1,"PAltFinishUW")
+TNT1 A 35 A_SetGravity(0.8)
+PSWD A 0 A_Refire
+PSWD A 5
+goto ProtoReady+1
+PAltFinishUW:
+TNT1 A 35 A_SetGravity(0.2)
+PSWD A 0 A_Refire
+PSWD A 5
+Goto ProtoReady+1
+ProtoStepSpin:
+PSWD A 0 A_SetTranslucent(0.1)
+PSWD A 0 A_SetGravity(0.0)
+PSWD A 0 A_Stop
+PSWD A 0 SetPlayerProperty(0,1,4)
+PSWD A 0 A_Recoil(-300)
+PSWD A 1
+PSWD A 0 A_Stop
+PSWD A 5 A_SetTranslucent(1.0)
+ProtoStepLoop:
+PSWD A 0 A_PlaySoundEx("weapon/linkspin","Weapon")
+PSWD BC 2
+PSWD DE 1
+PSWD A 0 A_JumpIfInventory("BallFlag",24,"PSLEnd")
+PSWD A 0 A_FireCustomMissile("ProtoStepSpinSlash",0,0,8,0)
+PSWD A 0 A_FireCustomMissile("ProtoStepSpinDamager",0,0,8,0)
+PSWD F 1 A_SetAngle(angle+30.0)
+PSWD A 0 A_GiveInventory("BallFlag",1)
+goto ProtoStepLoop+5
+PSLEnd:
+PSWD A 0 SetPlayerProperty(0,0,4)
+PSWD A 0 A_TakeInventory("Alt1Flag",999)
+PSWD A 0 A_TakeInventory("Alt2Flag",999)
+PSWD A 0 A_TakeInventory("BallFlag",999)
+PSWD A 0 A_JumpIfInventory("IsUnderWater",1,"PSLEndUW")
+TNT1 A 45 A_SetGravity(0.8)
+PSWD A 0 A_Refire
+PSWD A 5
+goto ProtoReady+1
+PSLEndUW:
+TNT1 A 45 A_SetGravity(0.2)
+PSWD A 0 A_Refire
+PSWD A 5
+Goto ProtoReady+1
+FinalSmash:
+BUST B 0 A_GiveInventory("PADecider",1)
+BUST B 0 A_TakeInventory("SmashFlag",999)
+BUST B 0 A_JumpIfInventory("WoodmanFlag",1,"WoodmanReady")
+BUST B 0 A_JumpIfInventory("BassEXEFlag",1,"BassReady")
+BUST B 0 A_JumpIfInventory("FlashmanFlag",1,"FEXEReady")
+BUST B 0 A_JumpIfInventory("NapalmmanFlag",1,"NapalmReady")
+BUST B 0 A_JumpIfInventory("FreezemanFlag",1,"FreezeReady")
+BUST B 0 A_JumpIfInventory("BubblemanFlag",1,"BubbleReady")
+BUST B 0 A_JumpIfInventory("FireFlag",1,"FireReady")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"AquaReady")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"ElecReady")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"WoodReady")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"WindReady")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"BreakReady")
+goto RealReady
+NoAmmo:
+BUST B 0 A_JumpIfInventory("FireFlag",1,"NoAmmoFire")
+BUST B 0 A_JumpIfInventory("AquaFlag",1,"NoAmmoAqua")
+BUST B 0 A_JumpIfInventory("ElecFlag",1,"NoAmmoElec")
+BUST B 0 A_JumpIfInventory("WoodFlag",1,"NoAmmoWood")
+BUST B 0 A_JumpIfInventory("WindFlag",1,"NoAmmoWind")
+BUST B 0 A_JumpIfInventory("BreakFlag",1,"NoAmmoBreak")
+BUST B 1 ACS_Execute(979,0)
+Goto RealReady
+NoAmmoFire:
+FIBN A 1 ACS_Execute(979,0)
+goto FireReady
+NoAmmoAqua:
+AQBN A 1 ACS_Execute(979,0)
+goto AquaReady
+NoAmmoElec:
+ELBN A 1 ACS_Execute(979,0)
+goto ElecReady
+NoAmmoWood:
+WOBN A 1 ACS_Execute(979,0)
+goto WoodReady
+NoAmmoWind:
+WBUS A 1 ACS_Execute(979,0)
+goto WindReady
+NoAmmoBreak:
+BRKB A 1 ACS_Execute(979,0)
+goto BreakReady
+}
+}
+
+Actor BNAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 150
++INVENTORY.IGNORESKILL
+}
+
+Actor BNBusterShot1 : FastProjectile
+{
+PROJECTILE
++DONTBLAST
+Obituary "%o got pew pew'd by that pea-shooting buster %k has."
+Radius 8
+Height 8
+Speed 125
+Damage(4)
+Scale 1.0
+Translation "192:192=160:160", "198:198=162:162"
+Damagetype "ZomoBN"
+States
+{
+Spawn:
+TNT1 A 2
+loop
+Crash:
+XDeath:
+TNT1 A 0 A_PlaySoundEx("weapon/BNShotHit","SoundSlot5")
+BIM1 BCD 2
+stop
+Death:
+BIM1 BCD 2
+stop
+}
+}
+
+Actor BNBusterShot2 : BNBusterShot1
+{
+Obituary "Who needs full charging? Certainly not %k, as they did away with %o just fine."
+Translation "192:192=107:107", "198:198=109:109"
+Radius 14
+Height 14
+Speed 600
+Damage(15) //Might change later if needed.
+Scale 1.5
+States
+{
+Death:
+BIM1 BCDE 2
+stop
+}
+}
+
+Actor BNBusterShot3
+{
+PROJECTILE
+//+DONTBLAST
+Damagetype "ZomoBN"
+Obituary "%o was pierced by the power of %k's fully-charged Buster Shot."
+Radius 24
+Height 24
+Speed 55
+Damage(20) //Might have to change later as well...
+Scale 3.0
+States
+{
+Spawn:
+TNT1 A 0
+CHBU AA 1 A_SpawnItemEx("MBOrb1",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+CHBU BB 1 A_SpawnItemEx("MBOrb2",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+CHBU CC 1 A_SpawnItemEx("MBOrb3",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+CHBU DD 1 A_SpawnItemEx("MBOrb4",random(-16,16),random(-16,16),random(-16,16),random(-10,10),random(-10,10),random(-10,10),0,SXF_NOCHECKPOSITION)
+goto Spawn+1
+Death:
+TNT1 A 0 A_Stop
+TNT1 A 1 A_SpawnItemEx("BNBShot3Explosion")
+stop
+Crash:
+XDeath:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("weapon/BNShotHit","SoundSlot5")
+TNT1 A 1 A_SpawnItemEx("BNBShot3Explosion")
+stop
+}
+}
+
+Actor BNBShot3Explosion
+{
+PROJECTILE
++DONTBLAST
+Damagetype "ZomoBN"
+Obituary "%o was pierced by the power of %k's fully-charged Buster Shot."
+Translation "192:192=171:171", "198:198=173:173"
+Radius 24
+Height 24
+Speed 0
+Damage(0)
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Explode(13,165,0)
+BIM1 BCDEF 2
+stop
+}
+}
+
+actor MBOrb1
+{
+PROJECTILE
++CLIENTSIDEONLY
+-SOLID
++DONTBLAST
++DONTSPLASH
+Translation "208:213=228:228", "214:215=228:228"
+Renderstyle "Translucent"
+Alpha 0.8
+Damage(0)
+Height 3
+Radius 3
+scale 1.0
+Speed 0
+States
+{
+Spawn:
+TNT1 A 0
+MMFX D 2 A_Weave(random(-2,4),random(-5,5),random(-3.5,4),random(-5,5))
+MMFX D 0 A_Fadeout(0.05)
+goto Spawn+1
+}
+}
+
+actor MBOrb2 : MBOrb1{Translation "208:213=251:251", "214:215=251:251"}
+actor MBOrb3 : MBOrb1{Translation "208:213=178:178", "214:215=178:178"}
+actor MBOrb4 : MBOrb1{Translation "208:213=105:105", "214:215=105:105"}
+
+Actor CustomAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 300
++INVENTORY.IGNORESKILL
+}
+
+Actor ZomoMemory : Ammo
+{
+inventory.amount 1
+inventory.maxamount 64
++INVENTORY.IGNORESKILL
+}
+
+Actor DSWispEffect
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Radius 1
+Height 1
+Renderstyle "Translucent"
+Alpha 0.9
+Translation "208:213=61:61", "214:215=61:61"
+Reactiontime 2
+Scale 2.0
+States
+{
+Spawn:
+MMFX D 0
+MMFX D 2 A_SpawnItemEx("DSWispEffectX",0,0,0)
+MMFX D 2 A_SpawnItemEx("DSWispEffectX",0,-30,0)
+MMFX D 0 A_ChangeVelocity(random(-12,12),random(-12,12),random(-12,12),CVF_RELATIVE|CVF_REPLACE)
+MMFX D 2 A_SpawnItemEx("DSWispEffectX",0,0,0)
+MMFX D 2 A_SpawnItemEx("DSWispEffectX",0,30,0)
+MMFX D 0 A_ChangeVelocity(random(-12,12),random(-12,12),random(-12,12),CVF_RELATIVE|CVF_REPLACE)
+MMFX D 0 A_Countdown
+goto Spawn+1
+Death:
+MMFX D 1 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor DSWispEffectX
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Radius 1
+Height 1
+Renderstyle "Add"
+Translation "208:213=79:79", "214:215=79:79"
+Scale 1.0
+States
+{
+Spawn:
+MMFX D 2 A_Fadeout(0.13)
+loop
+}
+}
+
+
+actor PowerDSProtect : PowerProtection
+{
+powerup.duration -20
+Damagefactor "Normal", 0.1
+}
+
+Actor MemoryBlast : MegaShot
+{
+Speed 35
+Radius 12
+Height 12
+Damage(random(40,60))
+Renderstyle Add
+Damagetype "BNMemory"
+Obituary "%o lost their memories to %k's Memory Blast."
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("weapon/mirrordeflect","Weapon")
+TNT1 A 0 A_Jump(256,"SpawnWhite","SpawnRed","SpawnOrange","SpawnYellow","SpawnGreen","SpawnBlue","SpawnIndigo","SpawnViolet")
+goto SpawnWhite
+SpawnWhite:
+TNT1 A 0 ACS_ExecuteAlways(991,0,791)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnRed
+SpawnRed:
+TNT1 A 0 ACS_ExecuteAlways(991,0,792)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnOrange
+SpawnOrange:
+TNT1 A 0 ACS_ExecuteAlways(991,0,793)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnYellow
+SpawnYellow:
+TNT1 A 0 ACS_ExecuteAlways(991,0,794)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnGreen
+SpawnGreen:
+TNT1 A 0 ACS_ExecuteAlways(991,0,795)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnBlue
+SpawnBlue:
+TNT1 A 0 ACS_ExecuteAlways(991,0,796)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnIndigo
+SpawnIndigo:
+TNT1 A 0 ACS_ExecuteAlways(991,0,797)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnViolet
+SpawnViolet:
+TNT1 A 0 ACS_ExecuteAlways(991,0,798)
+DIRA AA 1 A_SpawnItemEx("MemoryBlastFX1",random(-16,16),random(-16,16),random(-16,16),0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto SpawnWhite
+Death:
+TNT1 A 0 A_Explode(random(30,45),100,0)
+TNT1 AAAAAAAA 1 A_SpawnItemEx("MemoryBlastFX1",0,0,0,random(-10,10),random(-10,10),random(-10,10),0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+Actor MemoryBlastFX1
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Radius 3
+Height 3
+Scale 1.5
+Translation "168:168=80:80", "208:208=80:80"
+Damage(0)
+States
+{
+Spawn:
+TNT1 A 0
+FLAS BA 2 A_Fadeout(0.1)
+goto Spawn+1
+}
+}
+
+Actor AquaBurstBubble
+{
+PROJECTILE
+//+CLIENTSIDEONLY
++HEXENBOUNCE
++BOUNCEONCEILINGS
++NOEXPLODEFLOOR
++DONTBLAST
++THRUGHOST
+Obituary "%o got cornered by an Aqua Elemental's Aqua Burst Attack."
+Damagetype "BNNormal"
+Damage(75)
+Speed 25
+Radius 32
+Height 32
+Scale 4.5
+Bouncecount 6
+Bouncefactor 1.0
+WallBounceFactor 1.0
+States
+{
+Spawn:
+BUBB A 0
+BUBB A 0 A_PlaySoundEx("weapon/waterballoon","Voice")
+BUBB ABABABABABABABAB 4
+goto Death
+Death:
+BUBB A 0 A_Stop
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,35,0,random(-3,3),0)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,35,0,random(-3,3),60)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,35,0,random(-3,3),120)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,35,0,random(-3,3),180)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,35,0,random(-3,3),240)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,35,0,random(-3,3),300)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,0,35,10,0)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,0,-35,10,0)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,0,35,-10,0)
+BUBB A 0 A_SpawnItemEx("AquaBurstBubble2",0,0,0,0,-35,-10,0)
+stop
+}
+}
+
+Actor AquaBurstBubble2 : AquaBurstBubble
+{
++DONTSPLASH
+Damage(35)
+Speed 35
+Radius 14
+Height 14
+Scale 2.0
+Translation "57:63=204:204", "79:79=204:204", "251:254=204:204"
+BounceFactor 1.0
+WallBounceFactor 1.0
+Bouncecount 11
+Reactiontime 50
+States
+{
+Spawn:
+WTRB B 0
+WTRB BCD 2
+WTRB B 0 A_Countdown
+loop
+Crash:
+XDeath:
+WTRB A 0 A_Stop
+WTRB A 0 A_PlaySoundEx("weapon/BNBubbleBurst","Voice")
+TNT1 A 0 A_Explode(15,64,0)
+BNBL ABCDEFGHI 1
+stop
+Death:
+TNT1 A 0
+stop
+}
+}

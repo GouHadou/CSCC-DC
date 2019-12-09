@@ -461,7 +461,7 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 					}
 				}
 			}
-		if(CheckWeapon("FusionBombClassWep")==1 || CheckInventory("ColdCopyAlt")==1)
+		if(CheckWeapon("FusionBombClassWep")==1 || CheckInventory("ColdCopyAlt")==1 )
 			{
 			if(CheckInventory("JumpCancler")==0)
 				{
@@ -469,6 +469,139 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 					{
 					TakeInventory("BoostFlag", 1);
 					GiveInventory("CFBoosting",1);
+					}
+				}
+			}
+		if(CheckInventory("CanDoubleJump")==1) {
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1) {
+						ThrustThingZ(0,50,0,0);
+						While(GetActorZ(0) != GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		if(CheckInventory("IsHikari")==1) {
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1) {
+						ThrustThingZ(0,50,0,0);
+						GiveInventory("HikariJumpCancel",1);
+						While(GetActorZ(0) != GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+			
+		If (CheckInventory("IAmBassFlag")==1) { // Bass's double jump
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("BassIsDashing")!=1) {
+						ThrustThingZ(0,40,0,0);
+						While(GetActorZ(0) != GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		If (CheckInventory("MaestroFlag")==1) { // Maestro's double jump
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("BassIsDashing")<1 && CheckInventory("BassDashCooldown")<1) {
+						ThrustThingZ(0,50,0,0);
+						GiveInventory("BassDashCooldown",1);
+						While(GetActorZ(0) != GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		If (CheckInventory("IsTails")==1) { // Tails's flight
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("TailsFlyAnim")!=1) {
+					ThrustThingZ(0,35,0,0);
+					GiveInventory("TailsFlyAnim",1);
+					GiveInventory("TailsFlySpeed",1);
+						While(GetActorZ(0)!=GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		If (CheckInventory("IAmGlaceFlag")==1) { // Glace's double jump
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("NoDoubleJump")<1) {
+						GiveInventory("GlaceDoubleJump",1);
+						While(GetActorZ(0) != GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		if(CheckInventory("IsMetalMaiden")==1) // Metal Maiden's double jump
+			{
+			if(CheckInventory("JumpCancler")==0)
+				{
+				if (CheckInventory("IsMetalMaiden")==1 && CheckInventory("MaidenDashCooldown")<1 && CheckInventory("MaidenDashCooldownLong")<1)
+					{
+						ThrustThingZ(0,55,0,0);
+						LocalAmbientSound("maiden/secondjump",127);
+						GiveInventory("MaidenDoubleJumpTrigger",1);
+						While(GetActorZ(0) != GetActorFloorZ(0))
+						{
+							delay(1);
+						}
+					}
+				}
+			}
+		If (CheckInventory("IsDorkMan")==1) { // Dork Man's Double Jump
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("IsDorkMan")==1 && CheckInventory("DorkFlightCooldown")<1 && CheckInventory("DarknessShieldFlag")<1) {
+						ThrustThingZ(0,35,0,0);
+						GiveInventory("DorkFlight",1);
+						GiveInventory("DorkFlightSpeed",1);
+						GiveInventory("DorkFlightCooldown",1);
+						While(GetActorZ(0) != GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		If (CheckInventory("IsDorkManOmega")==1) { // Dork Man Omega's Double Jump
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("IsDorkManOmega")==1 && CheckInventory("DorkTeleportCooldown")<1 && CheckInventory("DarknessShieldFlag")<1) {
+						ThrustThingZ(0,35,0,0);
+						GiveInventory("DorkTeleportFlag",1);
+						GiveInventory("DorkTeleportCooldown",1);
+						While(GetActorZ(0) != GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		If(CheckInventory("IsRin")==1) { //Rin's Double Jump 
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("NoDoubleJump")==0) {
+					ThrustThingZ(0,45,0,0);
+					LocalAmbientSound("Rin/Jump",127);
+					SpawnProjectile(0,"RinJumpFX",0,0,0,0,0);
+					While(GetActorZ(0)!=GetActorFloorZ(0)) {Delay(1);}
+					}
+				}
+			}
+		If (CheckInventory("IsWarMech")==1) { //WarMech's Jet Jump
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("NoDoubleJump")==0) {
+					GiveInventory("DoubleJump",1);
+					}
+				}
+			}
+		if(CheckInventory("CanBackflip")==1) // Backflip
+			{
+			if(CheckInventory("JumpCancler")==0)
+				{
+				if (CheckInventory("CanBackflip")==1 && CheckInventory("RushJetCounter")<1)
+					{
+						GiveInventory("BackflipThrust",1);
+						While(GetActorZ(0) != GetActorFloorZ(0))
+						{
+							delay(1);
+						}
+					}
+				}
+			}
+		if(CheckInventory("IsDevion")==1) // Devion Doublejump
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("NoDoubleJump")==0) {
+					{
+						GiveInventory("DevionDoubleJump",1);
+						While(GetActorZ(0)!=GetActorFloorZ(0)) {Delay(1);}
+						{
+							delay(1);
+						}
 					}
 				}
 			}

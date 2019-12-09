@@ -1,0 +1,586 @@
+actor BarricadeHealth : inventory {inventory.amount 1 inventory.maxamount 175}
+actor BarricadeActive : inventory {inventory.amount 1 inventory.maxamount 1}
+actor BarricadeKiller : powerup {inventory.amount 1 inventory.maxamount 1 Powerup.duration 5}
+
+
+
+
+Actor ShieldHitBuffer : Powerup
+{
+inventory.amount 1
+inventory.maxamount 1
+powerup.duration 3
+}
+
+
+Actor BarricadePart 
+{
+  Radius 14
+  Height 12
+  Scale 0.5
+  Painchance 256
+  Damage (2)
+  DamageType "ThunderClaw"
+  Species "HiPE"
+  //Designatedteam 0
+  +MISSILE
+  +SHOOTABLE
+  +NOTARGETSWITCH
+  +NOGRAVITY
+  +NOTELEPORT
+  +NOTARGETSWITCH
+  +THRUSPECIES
+  +DONTRIP
+  +DONTSPLASH
+  +FLOORCLIP
+  //+MTHRUSPECIES
+  +DONTREFLECT
+  +NODAMAGETHRUST
+  +RIPPER
+  +DONTBLAST
+  +GHOST	//Give projectiles that you wish to pass through the shield THRUGHOST flag
+
+  Health 1500
+  Var int User_HitDrain;
+    RenderStyle "ADD"
+  Alpha 0.25
+  States
+  {
+  Spawn:
+	TNT1 A 0
+    TNT1 AA 1 A_Stop
+	TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+    TNT1 A 0 A_JumpifinTargetInventory("BarricadeKiller",1,"Death")
+	TNT1 A 1 A_jumpifintargetinventory("BarricadeHealth",1,"Spawn")
+	TNT1 AA 1  A_SpawnItemEx ("ScreenPartVisual", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+	Goto DeathCheck
+	Pain:
+	TNT1 A 0 A_Stop
+	TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+	TNT1 A 0  A_PlaySoundEX ("item/protoreflect","Soundslot5")
+	//TNT1 A 0 A_SetuserVar("User_HitDrain",1500-Health)
+	//TNT1 A 0 A_TakeFromTarget("BarricadeHealth",User_HitDrain)
+	TNT1 A 0 Healthing(1500)
+	//TNT1 A 0 A_logint(User_HitDrain)
+	//TNT1 B 0 A_jumpifintargetinventory("BarricadeHealth",1,"Spawn")
+	TNT1 AA 1  A_Stop
+	Goto DeathCheck
+	DeathCheck:
+	TNT1 AAA 1 A_jumpifintargetinventory("BarricadeHealth",1,"Spawn")
+	Goto Death
+  Death:
+    TNT1 A 2 
+    stop
+  }
+}
+
+Actor BarricadePart_B : BarricadePart{Designatedteam 0 Species "HiPEBLUE"}
+Actor BarricadePart_R : BarricadePart{Designatedteam 1 Species "HiPERED"}
+
+Actor BarricadePart2 : BarricadePart
+{
+  States
+  {
+  Spawn:
+	TNT1 A 0
+    TNT1 AA 1 A_Stop
+	TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual2", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+    TNT1 A 0 A_JumpifinTargetInventory("BarricadeKiller",1,"Death")
+	TNT1 A 1 A_jumpifintargetinventory("BarricadeHealth",1,"Spawn")
+	TNT1 AA 1  A_SpawnItemEx ("ScreenPartVisual", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+	Goto DeathCheck
+	Pain:
+	TNT1 A 0 A_Stop
+	TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual2", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+	TNT1 A 0  A_PlaySoundEX ("item/protoreflect","Soundslot5")
+	//TNT1 A 0 A_SetuserVar("User_HitDrain",1500-Health)
+	//TNT1 A 0 A_TakeFromTarget("BarricadeHealth",User_HitDrain)
+	TNT1 A 0 Healthing(1500)
+	//TNT1 A 0 A_logint(User_HitDrain)
+	//TNT1 B 0 A_jumpifintargetinventory("BarricadeHealth",1,"Spawn")
+	TNT1 AA 1  A_Stop
+	Goto DeathCheck
+	DeathCheck:
+	TNT1 AAA 1 A_jumpifintargetinventory("BarricadeHealth",1,"Spawn")
+	Goto Death
+  Death:
+    TNT1 A 2 
+    stop
+  }
+}
+
+
+Actor BarricadePart2_B : BarricadePart2{Designatedteam 0 Species "HiPEBLUE" Alpha 0.85}
+Actor BarricadePart2_R : BarricadePart2{Designatedteam 1 Species "HiPERED" Alpha 0.95}
+
+//[+]==================================[+]
+//[+]==================================[+]
+/*
+actor ScreenManager
+{
+  Radius 8
+  Height 8
+  Scale 0.5
+  Alpha 0.75
+  //Species "BLUEMember"
+  +NOINTERACTION
+  +FLOORCLIP
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  Shield:
+  BASB A 2
+	TNT1 A 0 A_TakeFromTarget("ShieldEnergy",4)
+    TNT1 A 0 A_Jumpifintargetinventory("ShieldEnergy",1,"Shield")
+	goto Death
+  Death:
+    TNT1 A 2
+	TNT1 A 1 A_PlaySoundEx("weapon/CentaurFlash","Weapon")
+	TNT1 AAAAAAAAAA 0 A_SpawnItemEx("CentaurFlashFX", 0, 0, 28, 256/24, 256/24, random2(256/24), random(0, 359))
+    stop
+  }
+}
+
+*/
+
+//[+]==================================[+]
+//[+]==================================[+]
+actor ScreenSpawner5up_B
+{
+  Radius 1
+  Height 1
+  +NOGRAVITY
+  +NOINTERACTION
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_B", 0, 0, 0, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_B", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_B", 0, 0, 32, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_B", 0, 0, 48, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_B", 0, 0, 64, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_B", 0, 0, 80, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 0, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 32, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 48, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 64, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    stop
+  }
+}
+
+actor ScreenSpawner5up_R
+{
+  Radius 1
+  Height 1
+  +NOGRAVITY
+  +NOINTERACTION
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_R", 0, 0, 0, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_R", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_R", 0, 0, 32, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_R", 0, 0, 48, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_R", 0, 0, 64, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_R", 0, 0, 80, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 0, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 16, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 32, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 48, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 64, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    stop
+  }
+}
+//[+]==================================[+]
+//[+]==================================[+]
+actor ScreenSpawner4up_B
+{
+  Radius 1
+  Height 1
+  +NOGRAVITY
+  +NOINTERACTION
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_B", 0, 0, 8, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_B", 0, 0, 24, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_B", 0, 0, 40, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_B", 0, 0, 56, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_B", 0, 0, 72, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 8, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 24, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 40, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 56, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    stop
+  }
+}
+
+
+actor ScreenSpawner4up_R
+{
+  Radius 1
+  Height 1
+  +NOGRAVITY
+  +NOINTERACTION
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_R", 0, 0, 8, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_R", 0, 0, 24, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_R", 0, 0, 40, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart_R", 0, 0, 56, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("BarricadePart2_R", 0, 0, 72, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 8, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 24, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 40, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenPartVisual", 0, 0, 56, 0, 0, 0, 0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    stop
+  }
+}
+
+//[+]========================================================================[+]
+
+actor ScreenSpawnBall 
+{
+PROJECTILE
++SKYEXPLODE
++DONTBLAST
++MTHRUSPECIES
++THRUACTORS
++BOUNCEONWALLS
++BOUNCEONCEILINGS
++SKYEXPLODE
++NOTARGETSWITCH
+//-NOGRAVITY
+Damage (0)
+//Missiletype "RepidifierTrail"
+speed 60
+Scale 1.6
+Gravity 4.3
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 
+//SCBL AA 2 //A_SpawnitemEx("RepidifierTrail")
+TNT1 A 0 A_Changeflag("NOGRAVITY",0)
+SCBL A 2 //A_SpawnitemEx("RepidifierTrail")
+wait
+Death:
+SCBL A 2 A_Checkfloor("Deploy")
+TNT1 A 0
+stop
+Deploy:
+SCBL A 0 A_JumpifinTargetInventory("BarricadeActive",1,"Replace")
+TNT1 A 0 A_Givetotarget("BarricadeActive")
+SCBL A 1 //A_GiveInventory("BarricadeProjector")
+TNT1 A 0 A_SpawnitemEx("ScreenSpawnBallStationary",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+Replace:
+SCBL A 6 A_Givetotarget("BarricadeKiller")
+SCBL A 0 //A_GiveInventory("BarricadeProjector")
+TNT1 A 0 A_SpawnitemEx("ScreenSpawnBallStationary",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+Actor ScreenSpawnBall_B : ScreenSpawnBall{Designatedteam 0 Species "BLUEMember" }
+Actor ScreenSpawnBall_R : ScreenSpawnBall{Designatedteam 1 Species "REDMember" translation "192:192=173:173", "198:198=42:42" , "196:196=170:170"}
+
+
+actor ScreenSpawnBallStationary 
+{
+PROJECTILE
++SKYEXPLODE
++DONTBLAST
++MTHRUSPECIES
++NOINTERACTION
++NOTARGETSWITCH
+Damage (0)
+//Missiletype "RepidifierTrail"
+speed 0
+Var Int User_Spark;
+Var Int User_Spark2;
+Scale 1.6
+States
+{
+Spawn:
+SCBL A 0 
+SCBL A 1 A_PlaySoundEx("weapon/Crashland","SoundSlot6")
+SCBL AA 4 A_Spawnitemex("DSParkFX",0,random(-80,80),random(0,70),momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+SCBL A 0 A_PlaysoundEX("misc/electrap","SoundSlot6")
+SCBL A 0 A_GiveInventory("BarricadeProjector")
+Spawn1:
+SCBL A 0 A_JumpifinTargetInventory("BarricadeKiller",1,"Terminate")
+SCBL A 0 A_TakeFromTarget("BarricadeHealth",2)
+SCBL A 0 A_SetUserVar("User_Spark2",User_Spark2+1)
+SCBL A 0 A_JumpifinTargetInventory("BarricadeHealth",70,2)
+SCBL A 0 A_SetUserVar("User_Spark",User_Spark+1)
+SCBL A 0 A_Jumpif(User_Spark >= 5,"SparkFx")
+SCBL A 0 A_Jumpif(User_Spark2 >= 11,"SparkFx2")
+SCBL A 2  
+SCBL A 1 A_JumpifinTargetInventory("BarricadeHealth",1,"Spawn1")
+SCBL A 2
+Goto DeathCheck
+
+SparkFx:
+SCBL AAA 0 A_SpawnItemEx("BarricadeSpark", 0, 0, 28, 256/48, 256/48, random2(256/48), random(0, 359))
+SCBL A 0 A_SetUserVar("User_Spark",0)
+SCBL AA 0 A_JumpifinTargetInventory("BarricadeHealth",1,"Spawn1")
+SCBL A 2
+Goto DeathCheck
+
+SparkFx2:
+SCBL A 0 A_Spawnitemex("DSParkFX",0,random(-80,80),random(0,70),momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+SCBL A 0 A_SetUserVar("User_Spark2",0)
+SCBL AA 0 A_JumpifinTargetInventory("BarricadeHealth",1,"Spawn1")
+SCBL A 2
+Goto DeathCheck
+
+DeathCheck:   //intended to be a defense against desynch
+SCBL A 2
+SCBL AA 1 A_JumpifinTargetInventory("BarricadeHealth",1,"Spawn1")
+Goto Death
+Death:
+TNT1 A 1 A_TakeFromTarget("BarricadeActive",99)
+	TNT1 A 1 A_PlaySoundEx("weapon/CentaurFlash","Weapon")
+	TNT1 AAAAAAAAAA 0 A_SpawnItemEx("BarricadeSpark", 0, 0, 28, 256/24, 256/24, random2(256/24), random(0, 359))
+Terminate:
+TNT1 A 0
+stop
+}
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Special Actors|------------------------------
+//[+]========================================================================[+]
+actor BarricadeSpark
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+scale 1.3
+height 0
+radius 0
+States
+{
+Spawn:
+TNT1 A 0
+CFL5 ABCD 2
+CFL5 ABCD 2
+
+stop
+}
+}
+
+actor ScreenPartVisual
+{
+  Radius 8
+  Height 8
+  Scale 0.5
+  RenderStyle Add	//Fuzzy looks great in software mode
+  Alpha 0.45
+  +NOINTERACTION
+  +CLIENTSIDEONLY
+  +FLOORCLIP
+  States
+  {
+  Spawn:
+  TNT1 A 0
+    HEXA BB 1 bright 
+    HEXA B 1 bright A_Fadeout(0.5)
+	HEXA B 1
+    stop
+  Death:
+    TNT1 A 2
+    stop
+  }
+}
+
+actor ScreenPartVisual2 : ScreenPartVisual
+{alpha 0.95}
+
+actor BarricadeCooler  
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
++NOTARGETSWITCH
++NONETID
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("BarricadeCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("BarricadeCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor DSParkFX
+{
+PROJECTILE
++NOINTERACTION
++NOCLIP
++CLIENTSIDEONLY
+radius 8
+height 8
+Damage (0)
+scale 3.0
+Reactiontime 35
+Renderstyle "ADD"
+Alpha 0.9
+States
+{
+Spawn:
+DSCP A 0
+DSCP ABC 2
+DSCP CCAABB 1 A_Fadeout
+stop
+}
+}
+
+actor DSParkFXSpawn : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Spawnitemex("DSParkFX",random(-70,70),random(-170,170),random(0,70),0,0,0,0,SXF_ABSOLUTEPOSITION|SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor BarricadeCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("BarricadeCooldownItem",245)
+TNT1 A 0 A_Spawnitemex("BarricadeCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor BarricadeCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 245
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Item Shooters|------------------------------
+//[+]========================================================================[+]
+actor BarricadeShooter : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
+TNT1 A 0 A_FireCustomMissile("ScreenSpawnBall",0,1,8,0,0,0)
+stop
+TeamRedFire:
+TNT1 A 0 A_FireCustomMissile("ScreenSpawnBall_R",0,1,8,0,0,0)
+TNT1 A 0
+stop
+TeamBlueFire:
+TNT1 A 0 A_FireCustomMissile("ScreenSpawnBall_B",0,1,8,0,0,0)
+TNT1 A 0
+stop
+}
+}
+
+
+actor BarricadeProjector : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0 A_Jumpifintargetinventory("WilyTeamFlag",1,"TeamRedFire")
+BLTR C 0 A_Jumpifintargetinventory("LightTeamFlag",1,"TeamBlueFire")
+//BUST B 0 A_SpawnItemEx("ScreenProjector",cos(pitch)*65,0, (sin(pitch)*-65))
+  TNT1 A 1 A_GiveToTarget("BarricadeHealth",175)
+    //TNT1 A 0 A_SpawnItemEx ("ScreenManager", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+stop
+TeamRedFire:
+  TNT1 A 1 A_GiveToTarget("BarricadeHealth",175)
+  //TNT1 A 0 A_SpawnItemEx ("ScreenManager", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+stop
+TeamBlueFire:
+  TNT1 A 1 A_GiveToTarget("BarricadeHealth",175)
+ // TNT1 A 0 A_SpawnItemEx ("ScreenManager", 0, cos(pitch)*65, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+stop
+}
+}

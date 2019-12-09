@@ -1,0 +1,1222 @@
+Actor Zomo.EXE : ClassBaseCSCC //TO-DO: ACS to deal with giving battlechips better
+{
+Health 100
+Player.MaxHealth 100
+Player.DisplayName "Zomo.EXE"
+Player.SoundClass "ZOMOO"
+Player.StartItem "CanUseItems"
+Player.StartItem "NoIcons"
+Player.StartItem "NoHealthBar"
+Player.StartItem "ZomoBNWep"
+Player.StartItem "ZomoBNWep2"
+Player.StartItem "ZomoBNWep3"
+Player.StartItem "ZomoMemory", 64
+Player.StartItem "BNFlag", 1
+Player.StartItem "NormalFlag"
+Player.StartItem "NormalFlag2"
+Player.StartItem "NormalFlag3"
+Player.StartItem "ShuffleItem"
+Player.StartItem "IsZomo"
+Damagefactor "Lava", 20.0
+Damagefactor "Falling", 20.0
+Damagefactor "Slime", 20.0
+Damagefactor "Water", 20.0
+Player.ForwardMove 0.9, 0.9
+Player.SideMove 0.95, 0.95
+Player.JumpZ 12
+States
+{
+Spawn: 
+ZOMO A 0
+ZOMO B 1
+ZOMO A 1
+GoTo Spawn+2
+See:
+ZOMO BCDE 5
+goto Spawn+2
+Missile:
+ZOMO F 5
+ZOMO G 4
+GoTo Spawn+2
+Pain.ScrotoStep:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Stop
+GoTo Pain+1
+Pain.BNEBomb:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_ScaleVelocity(0.85)
+goto Pain+1
+Pain.BNWood:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_ScaleVelocity(0.8)
+goto Pain+1
+Pain.BNWood2:
+Pain.BNWood3:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Recoil(15)
+ZOMO H 0 A_ScaleVelocity(0.5)
+goto Pain+1
+Pain.BNWoodTower:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0
+goto Pain+1
+Pain.DarkPulse:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("PowerDPulseProtect",1)
+goto Pain+1
+Pain.BNFire:
+Pain.BusterB:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0
+goto Pain+1
+Pain.BNAqua:
+Pain.MistSpray:
+Pain.BubbleRhapsody:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Recoil(2)
+goto Pain+1
+Pain.BNAqua2:
+Pain.BNAqua3:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("PowerASwordSlow",1)
+goto Pain+1
+Pain.BNFreezeman:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_JumpIfInventory("PowerFreezemanImmunity",1,"Pain")
+ZOMO H 0 A_GiveInventory("PowerFreezeSlow",1)
+goto Pain+1
+Pain.BNAirShot:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("TempPitProtect",1)
+ZOMO H 0 A_Recoil(1)
+goto Pain+1
+Pain.BNMemory:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_ScaleVelocity(0.9)
+ZOMO H 0 A_Recoil(3)
+goto Pain+1
+Pain.BNDrillArm:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_FaceTarget
+ZOMO H 0 A_Recoil(-5)
+goto Pain+1
+Pain.Blizzara:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Jump(12,"BlizzaraFreeze")
+GoTo Pain+1
+BlizzaraFreeze:
+ZOMO H 0 A_GiveInventory("PowerFreezeSlow2",1)
+goto Pain+1
+Pain.BNElectric:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("IveBeenZapped",1)
+ZOMO H 0 A_JumpIfInventory("ZapFlag",9,"NotStunnedER")
+ZOMO H 5 A_SpawnItemEx("ShockFX2",random(-12,12),random(-12,12),random(0,12))
+ZOMO H 0 A_GiveInventory("ZapFlag",1)
+goto Pain.BNElectric+2
+NotStunnedER:
+ZOMO H 0 A_TakeInventory("ZapFlag",999)
+ZOMO H 0 A_GiveInventory("IveBeenFreed",1)
+Goto Pain+1
+Pain.BNFBomb:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("BrightBlind",75)
+ZOMO H 0 ACS_ExecuteAlways(249,0)
+ZOMO H 0 A_GiveInventory("IveBeenZapped",1)
+ZOMO H 0 A_JumpIfInventory("ZapFlag",75,"NotStunnedFB")
+ZOMO H 1 A_Stop
+ZOMO H 0 A_GiveInventory("ZapFlag",1)
+goto Pain.BNFBomb+4
+NotStunnedFB:
+ZOMO H 0 A_TakeInventory("ZapFlag",999)
+ZOMO H 0 A_TakeInventory("BrightBlind",999)
+ZOMO H 0 A_GiveInventory("IveBeenFreed",1)
+Goto Pain+1
+Pain.BNFlashman:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_TakeInventory("PowerInvisArmor",999)
+ZOMO H 0 A_GiveInventory("InvisTakerS",1)
+ZOMO H 0 A_GiveInventory("IveBeenZapped",1)
+ZOMO H 0 A_JumpIfInventory("ZapFlag",90,"NotStunnedFMan")
+ZOMO H 1 A_Stop
+ZOMO H 0 A_GiveInventory("ZapFlag",1)
+goto Pain.BNFlashman+4
+NotStunnedFMan:
+ZOMO H 0 A_TakeInventory("ZapFlag",999)
+ZOMO H 0 A_TakeInventory("BrightBlind",999)
+ZOMO H 0 A_GiveInventory("IveBeenFreed",1)
+Goto Pain+1
+Pain.BNESword:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_JumpIfInventory("PowerESwordSlow",1,"Pain")
+ZOMO H 0 A_GiveInventory("PowerESwordSlow",1)
+GoTo Pain+1
+Pain.ScuttleSB:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_JumpIfInventory("PowerElecVision",1,"Pain")
+ZOMO H 0 A_GiveInventory("PowerElecVision",1)
+GoTo Pain+1
+Pain.DraculaLS:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveToTarget("Health",60)
+goto Pain+1
+Pain.BNLong:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("PowerLSProtect",1)
+GoTo Pain+1
+Pain.Watera:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_FaceTarget
+ZOMO H 0 A_Recoil(2)
+goto Pain+1
+Pain.AirShooter:
+Pain.TenguBlade:
+Pain.WildSprint:
+Pain.BNWood:
+Pain.Aerora:
+Pain.TornadoHold:
+Pain.FireVortex:
+Pain.GyroAttack:
+Pain.TailsDash:
+Pain.TailsFlicky:
+Pain.Blizzara:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+goto Pain+1
+Pain.Falchion:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_SetAngle(angle+20.0)
+goto Pain+1
+Pain.WindRack:Pain.WRExplode:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("TempPitProtect",1)
+Pain.WindStorm:
+Pain.FlingDamage:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 ThrustThing(random(0,255),5,0,0)
+ZOMO H 0 ThrustThingZ(0,30,0,0)
+GoTo pain+1
+Pain.Swift:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0
+goto Pain+1
+Pain.BNSpreader:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("TempPitProtect",1)
+ZOMO H 0 A_ScaleVelocity(0.8)
+ZOMO H 0 A_Recoil(5)
+goto Pain+1
+Pain.AnchorSmash:
+Pain.BNGearShot:
+Pain.MetalBlade:
+Pain.AstroCrush:
+Pain.DustCrusher:
+Pain.DustCrusherBit:
+Pain.HardKnuckle:
+Pain.PowerStone:
+Pain.KnightCrush:
+Pain.RollingCutter:
+Pain.RingBoomerang:
+Pain.SilverTomahawk:
+Pain.SpreadDrill:
+Pain.SpreadDrill2:
+Pain.SpreadDrill3:
+Pain.DrillBomb:
+Pain.DuoFist1:
+Pain.DuoFist2:
+Pain.DuoFist3:
+Pain.DuoMeteor:
+Pain.DuoShockwave:
+Pain.CrystalEye:
+Pain.ChargeKick:
+Pain.Sakugarne:
+Pain.ProtoFist:
+Pain.ScrewCrusher:
+Pain.Cosmic:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+GoTo Pain+1
+Pain.RNGHammer1:
+Pain.RNGHammer2:
+Pain.RNGHammer4:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 //A_GiveInventory("PowerRNGProtect",1)
+GoTo Pain+1
+Pain.RNGHammer3:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 //A_GiveInventory("PowerRNGProtect",1)
+ZOMO H 0 A_Recoil(-15)
+GoTo Pain+1
+Pain.RNGHammer5:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Stop
+GoTo Pain+1
+Pain.RNGHammer6:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 //A_GiveInventory("PowerRNGProtect",1)
+ZOMO H 0 A_SetAngle(angle+180.0)
+ZOMO H 0 //A_GiveInventory("IveBeenBurned2",1)
+GoTo Pain+1
+Pain.RNGHammer7:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 //A_GiveInventory("PowerRNGProtect",1)
+ZOMO H 0 A_GiveToTarget("Health",100)
+GoTo Pain+1
+Pain.RNGHammer8:
+ICWL F 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ICWL F 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ICWL F 0 //A_GiveInventory("PowerRNGProtect",1)
+ICWL F 0 A_Stop
+ICWL F 0 SetPlayerProperty(0,1,4)
+ICWL FK 10 ThrustThingZ(0,40,0,0)
+ICWL F 0 SetPlayerProperty(0,0,4)
+GoTo Pain+1
+Pain.RNGHammer9:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 //A_GiveInventory("PowerRNGProtect",1)
+ZOMO H 0 A_Stop
+ZOMO H 0 A_Recoil(70)
+ZOMO H 0 ThrustThingZ(0,70,0,0)
+GoTo Pain+1
+Pain.GiantHardKnuckle:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Recoil(20)
+goto Pain+1
+Pain.BNCBall:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Recoil(15)
+ZOMO H 0 A_ScaleVelocity(0.5)
+GoTo Pain+1
+Pain.Taco:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 1 A_ScaleVelocity(0.75)
+GoTo Pain+1
+Pain.Saturn:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 1 A_PlaySoundEx("weapon/segahard","Saturn")
+GoTo Pain+1
+Pain.BombRain:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_Stop
+ZOMO H 0 A_SetAngle(angle+random(-10,10))
+ZOMO H 0 ThrustThingZ(0,sin(pitch)*random(5,10),1,0)
+ZOMO H 0 A_Recoil(cos(-pitch)*random(3,6))
+GoTo Pain+1
+Pain.BNUninstall:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_SpawnItemEx("UninstallFX",0,0,24,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+ZOMO H 0 A_TakeInventory("PowerInvisArmor",999)
+ZOMO H 0 A_TakeInventory("PowerFullSynchro",999)
+ZOMO H 0 A_TakeInventory("PowerTotalDefense",999)
+ZOMO H 0 A_TakeInventory("PowerAttackPlus",999)
+ZOMO H 0 A_TakeInventory("FastGaugeFlag",999) //To cut off anyone with FastGauge effects
+ZOMO H 0 A_GiveInventory("FastCancelFlag",1) //To cut off anyone with FastGauge effects
+ZOMO H 0 A_TakeInventory("YesFlightFlag",999)
+ZOMO H 0 A_TakeInventory("PowerQuickSpell",99)
+ZOMO H 0 A_TakeInventory("PowerQuickJump",99)
+ZOMO H 0 A_TakeInventory("PowerQuickSpeed",99)
+ZOMO H 0 A_TakeInventory("SpeedRhythmInv",99)
+ZOMO H 0 A_TakeInventory("SharpNoteInv",99)
+ZOMO H 0 A_TakeInventory("FlatBarrierInv",99)
+ZOMO H 0 //A_TakeInventory("PowerHeartRegen",99)
+ZOMO H 0 //A_TakeInventory("PowerShieldRune",99)
+ZOMO H 0 A_TakeInventory("FocusEffect",99)
+ZOMO H 0 A_TakeInventory("TemperEffect",99)
+goto Pain+1
+Pain.Fira:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_JumpIfInventory("FiraBurnFlag",1,"Pain")
+ZOMO H 0 A_Jump(64,"FiraBurn")
+goto Pain+1
+FiraBurn:
+ZOMO H 0 A_GiveInventory("FiraBurnFlag",1)
+ZOMO H 0 //A_SpawnItemEx("FiraDOTWatcher",8,0,8,0,0,0,0,SXF_NOCHECKPOSITION)
+goto Pain+1
+Pain.IceToy:
+ZOMO H 0 A_Stop
+ZOMO H 0 A_Recoil(10)
+ZOMO H 0 ThrustThingZ(0,35,0,0)
+GoTo Pain+1
+Pain.ToySurf:
+ZOMO H 0 SetPlayerProperty(0,1,4)
+ZOMO H 0 A_Recoil(3)
+ZOMO HHH 1 A_JumpIf(CallACS("FloorStateChange",0)==1,"SurfPit")
+GoTo Pain+1
+Pain.Michael:
+ZOMO HHH 1 A_SetAngle(angle-30.0)
+Goto Pain+1
+Pain.SlowSpell:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_JumpIfInventory("PowerSlowSpell",1,"Pain")
+ZOMO H 0 A_GiveInventory("PowerSlowSpell",1)
+GoTo pain+1
+Pain.SlowSpell2:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_JumpIfInventory("PowerSlowSpell2",1,"Pain")
+ZOMO H 0 A_GiveInventory("PowerSlowSpell2",1)
+GoTo pain+1
+Pain.SnowStorm:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiDamage")
+ZOMO H 0 A_JumpIfInventory("PowerFreezeSlow2",1,"Pain")
+ZOMO H 0 A_GiveInventory("PowerFreezeSlow2",1) //lazy but it works
+GoTo Pain+1
+Pain.LaserTrident:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("LaserTridentProtect", 1)
+Goto Pain
+Pain.ConcreteShot:
+ZOMO H 0 A_JumpIfInventory("AntiBreakTime",1,"AntiBreak")
+ZOMO H 0 A_JumpIfInventory("ConcreteVision", 1, "ConcreteReset")
+ZOMO H 0 A_GiveInventory("ConcreteVision", 1)
+ZOMO H 0 A_GiveInventory("ConcreteTime", 105)
+ZOMO H 0 A_SpawnItemEx("ConcreteWatcher")
+goto Pain+1
+ConcreteReset:
+ZOMO H 0 A_GiveInventory("ConcreteTime", 105)
+goto Pain+1
+Pain.TornadoBlow:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 ThrustThingZ(0,60,0,0)
+goto Pain+1
+Pain.RSCCheck: //Sorry but no AntiDamage protection here
+ZOMO H 0 SetPlayerProperty(0,1,4)
+ZOMO H 0 A_GiveInventory("RSCCheckImmunity",1)
+//TNT1 A 0 A_SpawnItemEx("RagingSageWatcher",0,0,28)
+goto Pain.RSCHit
+Pain.RSCHit:
+TNT1 A 0 A_PlaySoundEx("Rin/Connect1","Voice")
+ZOMO H 0 SetPlayerProperty(0,1,4)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1
+ZOMO H 0 A_TakeInventory("RSCCheckImmunity",99)
+ZOMO H 0 SetPlayerProperty(0,0,4)
+goto Pain
+Pain.SmokeTendril:
+ZOMO H 0 A_JumpIfInventory("AntiWindTime",1,"AntiWind")
+ZOMO H 0 A_PlaySoundEx("Rin/Jump","Body")
+ZOMO H 0 A_ScaleVelocity(0.5)
+GoTo Pain+1
+Pain.RoarOfTime:
+ZOMO H 0 A_JumpIfInventory("AntiDamageFlag",1,"AntiDamage")
+ZOMO H 0 A_Stop
+ZOMO H 0 A_PlaySoundEx("weapon/coilexplode","Weapon")
+ZOMO H 0 A_SpawnItemEx("RoarOfTimePainFX",0,0,28)
+GoTo Pain+1
+Pain.SapSeed:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveToTarget("Health",25)
+//ZOMO H 0 A_SpawnItemEx("SapSeedFX",0,0,28,22,0,0,0)
+goto Pain+1
+
+Death.RSFinish:
+ZOMO H 0 A_TakeInventory("WeaponCharge",999)   
+ZOMO H 0 A_NoBlocking
+ZOMO H 0 A_GiveInventory("CutterFlag",999)
+ZOMO H 0 A_GiveInventory("HudClearer",1)
+ZOMO H 1 A_GiveToTarget("KilledMe",1)
+ZOMO H 4 ACS_ExecuteAlways(999,0,0)
+ZOMO HHHHHHHHHH 0 //A_SpawnItemEx("CoinDecider",0,0,0)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+ZOMO H 0 SetPlayerProperty(0,0,4)
+goto MegamanErase
+Death.SpatialRend:
+ZOMO H 0 A_TakeInventory("WeaponCharge",999)   
+ZOMO H 0 A_NoBlocking
+ZOMO H 0 A_GiveInventory("CutterFlag",999)
+ZOMO H 0 A_GiveInventory("HudClearer",1)
+ZOMO H 0 A_GiveToTarget("KilledMe",1)
+ZOMO H 0 ACS_ExecuteAlways(999,0,0)
+ZOMO H 0 SetPlayerProperty(0,0,4)
+ZOMO HHHHHHHHHH 0 //A_SpawnItemEx("CoinDecider",0,0,0)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+ZOMO H 2 A_SpawnItemEx("SpatialRendC",0,0,28)
+ZOMO H 2 A_SpawnItemEx("SpatialRendD",0,0,28)
+goto MegamanErase
+Pain.LightningSprint:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_GiveInventory("PowerLSprintDef",1)
+goto Pain+1
+Pain.WilyIce:
+ZOMO H 0 A_ChangeFlag("SHOOTABLE",0)
+ZOMO H 0 SetPlayerProperty(0,1,4)
+ZOMO H 0 A_SpawnItemEx("ImFrozen")
+ZOMO H 0 A_GiveInventory("IceVision",1)
+ZOMO H 30 A_Stop
+ZOMO H 30 A_ChangeFlag("SHOOTABLE",1)
+ZOMO H 0 SetPlayerProperty(0,0,0)
+ZOMO H 0 A_TakeInventory("IceVision",1)
+Goto Spawn+2
+Pain.StunGun:
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage")
+ZOMO H 0 A_SpawnItemEx("ShockFX",4,0,32)
+ZOMO H 0 A_Stop
+ZOMO H 0 A_GiveInventory("StunGunParalysis",1)
+GoTo Pain+1
+Pain.Drowning:
+Pain.Fire:
+Pain.Falling:
+Pain.Slime:
+ZOMO H 0 SetPlayerProperty(0,0,16) //Meant as a last resort to cancel trap effects
+ZOMO H 1 A_JumpIfInventory("BeatCallCheck", 1, "BeatAssist")
+Goto Spawn+2
+Pain:
+ZOMO H 0
+ZOMO H 0 A_JumpIfInventory("AntiDamageTime",1,"AntiDamage") //The last failsafe in case of non-defined painstates
+ZOMO H 0 A_Pain
+	"----" H 0 A_GiveInventory("HealRamper",1) //For Heal scaling
+	"----" H 0 //ACS_NamedExecuteAlways("Ult_Giver",0,user_HitMemory,1)
+ZOMO H 0 A_Jump(256,"PainFix")
+Goto PainFix
+PainFix:
+ZOMO H 0
+Goto PainFrames
+PainFrames:
+ZOMO H 0 SetPlayerProperty(0,0,4)
+ZOMO HHHH 2 A_SpawnItem("PainFX",0,3)
+ZOMO H 0 A_Jump(256,"Spawn")
+Goto Spawn+2
+AntiBreak:
+ZOMO A 0 ACS_NamedExecuteAlways("AntiDamageScript",0,1)
+ZOMO A 0 SetPlayerProperty(0,1,16)
+ZOMO A 0 A_GiveInventory("StopAntiBreak",1)
+ZOMO A 0 A_SpawnItemEx("AntiDamageController",48,0,24,0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO A 0 SetPlayerProperty(0,2,5)
+ZOMO A 0 A_Stop
+ZOMO A 0 A_ScaleVelocity(0.0)
+ZOMO A 0 SetPlayerProperty(0,1,4)
+ZOMO A 5 A_PlaySoundEx("misc/elementsfx","Voice")
+ZOMO AAAAAAAAAAAAAAA 3 A_SpawnItemEx("AntiBreakScrapMetal",0,0,18,random(-25,25),random(-25,25),random(5,30),0,SXF_NOCHECKPOSITION)
+ZOMO A 0 A_GiveInventory("InvisTakerS",1)
+ZOMO A 0 SetPlayerProperty(0,0,4)
+ZOMO A 0 SetPlayerProperty(0,0,16)
+ZOMO AAAAA 1 SetPlayerProperty(0,0,5)
+goto Spawn+2
+AntiDamage:
+ZOMO A 0 ACS_NamedExecuteAlways("AntiDamageScript",0,1)
+ZOMO A 0 A_GiveInventory("StopAntiDamage",1)
+ZOMO A 0 A_SpawnItemEx("AntiDamageController",48,0,24,0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO A 0 SetPlayerProperty(0,2,5)
+ZOMO A 0 A_Stop
+ZOMO A 0 A_SetGravity(0.0)
+ZOMO A 0 SetPlayerProperty(0,1,4)
+ZOMO A 0 A_PlaySoundEx("weapon/crackerexplode","SoundSlot7")
+ZOMO A 0 A_SpawnItemEx("PoofFX",random(-24,24),random(-24,24),random(24,48))
+ZOMO A 0 A_SpawnItemEx("AntiDamageFX",0,0,4)
+ZOMO AAAAAAAA 1 ThrustThingZ(0,75,0,0)
+ZOMO A 0 A_Stop
+ZOMO A 4 A_CustomMissile("ADShuriken",28,0,0,2,0)
+ZOMO A 4 A_CustomMissile("ADShuriken",28,0,120,2,0)
+ZOMO A 16 A_CustomMissile("ADShuriken",28,0,-120,2,0)
+ZOMO A 0 A_GiveInventory("InvisTakerS",1)
+ZOMO A 0 SetPlayerProperty(0,0,4)
+ZOMO A 0 SetPlayerProperty(0,0,16)
+ZOMO A 0 A_JumpIfInventory("IsUnderWater",1,"GravityUW")
+ZOMO A 0 A_SetGravity(0.8)
+ZOMO AAAAA 1 SetPlayerProperty(0,0,5)
+goto Spawn+2
+GravityUW:
+ZOMO A 0 A_SetGravity(0.2)
+ZOMO AAAAA 1 SetPlayerProperty(0,0,5)
+goto Spawn+2
+AntiWind:
+ZOMO A 0 ACS_NamedExecuteAlways("AntiDamageScript",0,1)
+ZOMO A 0 A_GiveInventory("StopAntiWind",1)
+ZOMO A 0 A_SpawnItemEx("AntiDamageController",48,0,24,0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO A 0 SetPlayerProperty(0,2,5)
+ZOMO A 0 SetPlayerProperty(0,1,16)
+ZOMO A 0 A_Stop
+ZOMO A 0 A_ScaleVelocity(0.0)
+ZOMO A 0 SetPlayerProperty(0,1,4)
+ZOMO A 5 A_PlaySoundEx("misc/elementsfx","Voice")
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonHitbox",0,0,8)
+ZOMO AA 0 A_SpawnItemEx("AntiWindTornado",random(-36,36),random(-36,36),random(12,54),random(-25,25),random(-25,25),random(-25,25),random(0,359),SXF_NOCHECKPOSITION)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonA",0,0,16)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonB",0,0,32)
+ZOMO A 0 A_SpawnItemEx("AntiWindTyphoonC",0,0,48)
+ZOMO AA 1 A_SetAngle(angle+35.0)
+ZOMO A 0 A_GiveInventory("InvisTakerS",1)
+ZOMO A 0 SetPlayerProperty(0,0,4)
+ZOMO A 0 SetPlayerProperty(0,0,16)
+ZOMO AAAAA 1 SetPlayerProperty(0,0,5)
+goto Spawn+2
+Death.Beam:
+Death.Instagib:
+Death.InstaRocket:
+ZOMO H 0 SetPlayerProperty(0,0,4)
+ZOMO H 0 A_GiveInventory("HudClearer",1)
+ZOMO H 0 A_GiveToTarget("KilledMe",1)
+ZOMO H 0 A_GiveInventory("IsDead",1)
+ZOMO H 1 A_NoBlocking
+ZOMO H 0 A_PlaySoundEx("death/OHNOOOO","Voice")
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.90, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.80, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.70, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.60, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.50, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.40, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.30, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.20, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.10, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO HHHHHHHHHH 0 //A_SpawnItemEx("CoinDecider",0,0,0)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+ZOMO H 2
+goto MegamanErase
+Death:
+ZOMO H 0 A_GiveInventory("IsDead",1)
+ZOMO H 0 A_GiveInventory("HudClearer",1)
+ZOMO H 0 A_SpawnItemEx("RandomZomoWepSpawner",0,0,16)
+ZOMO H 0 A_Jump(48,"Boommmmm")
+ZOMO H 0 A_Jump(256,"BNDeath1","BNDeath2")
+goto BNDeath1
+Boommmmm:
+ZOMO H 0 A_Stop
+ZOMO H 0 A_TakeInventory("WeaponCharge",999)   
+ZOMO H 0 A_NoBlocking
+ZOMO H 0 A_GiveInventory("CutterFlag",999)
+ZOMO H 1 A_GiveToTarget("KilledMe",1)
+ZOMO H 0 A_SpawnItemEx("CountTimer3",0,0,72,momx,momy,momz,0)
+ZOMO H 12 A_PlaySoundEx("misc/BombCount","Voice")
+ZOMO H 0 A_SpawnItemEx("CountTimer2",0,0,72,momx,momy,momz,0)
+ZOMO H 12 A_PlaySoundEx("misc/BombCount","Voice")
+ZOMO H 0 A_SpawnItemEx("CountTimer1",0,0,72,momx,momy,momz,0)
+ZOMO H 12 A_PlaySoundEx("misc/BombCount","Voice")
+ZOMO H 1 ACS_ExecuteAlways(999,0,0)
+ZOMO H 0 A_PlaySoundEx("misc/hugequake","Voice")
+ZOMO H 0 Radius_Quake(6,55,0,65,0)
+ZOMO HHHHHHHHHH 0 //A_SpawnItemEx("CoinDecider",0,0,0)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+TNT1 AAAAAAAAAAAAAAA 2 A_SpawnItemEx("ZomoFinalBlastOfFuckYou",random(-200,200),random(-200,200),random(5,100),0,0,0,0,SXF_NOCHECKPOSITION)
+GoTo MegamanErase
+BNDeath1:
+ZOMO H 0 A_Stop
+ZOMO H 0 A_TakeInventory("WeaponCharge",999)   
+ZOMO H 0 A_NoBlocking
+ZOMO H 0 A_GiveInventory("CutterFlag",999)
+ZOMO H 0 A_GiveToTarget("KilledMe",1)
+ZOMO H 5 ACS_ExecuteAlways(999,0,0)
+ZOMO H 0 A_PlaySoundEx("misc/BNDeath1","SoundSlot7")
+ZOMO HHHHHHHHHH 0 //A_SpawnItemEx("CoinDecider",0,0,0)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+ZOMO HHHH 12 A_SpawnItemEx("BNDeathFX",random(-64,64),random(-64,64),random(1,64),0,0,0,0,SXF_NOCHECKPOSITION)
+TNT1 A 1
+goto MegamanErase
+BNDeath2:
+ZOMO H 0 A_Stop
+ZOMO H 0 A_TakeInventory("WeaponCharge",999)   
+ZOMO H 0 A_NoBlocking
+ZOMO H 0 A_GiveInventory("CutterFlag",999)
+ZOMO H 0 A_GiveToTarget("KilledMe",1)
+ZOMO H 20 ACS_ExecuteAlways(999,0,0)
+ZOMO H 0 A_PlaySoundEx("misc/BNDeath2","SoundSlot7")
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.90, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.80, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.70, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.60, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.50, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.40, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.30, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.20, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.10, 0)
+ZOMO H 2 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO HHHHHHHHHH 0 //A_SpawnItemEx("CoinDecider",0,0,0)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+goto MegamanErase
+Death.Falling:
+Death.Water:
+Death.Lava:
+Death.Slime:
+ZOMO H 0 A_Stop
+ZOMO H 0 A_TakeInventory("WeaponCharge",999)   
+ZOMO H 0 A_NoBlocking
+ZOMO H 0 A_GiveInventory("CutterFlag",999)
+ZOMO H 0 A_GiveInventory("HudClearer",1)
+ZOMO H 0 A_GiveToTarget("KilledMe",1)
+ZOMO H 0 A_GiveInventory("IsDead",1)
+ZOMO H 20 ACS_ExecuteAlways(999,0,0)
+ZOMO H 0 A_PlaySoundEx("misc/BNDeath2","SoundSlot7")
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.90, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.80, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.70, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.60, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.50, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.40, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.30, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.20, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO H 2 A_SetTranslucent(0.10, 0)
+ZOMO H 0 A_SpawnItemEx("LightModeFX",random(-75,75),random(-75,75),random(-75,75),0,0,0,0,SXF_NOCHECKPOSITION)
+ZOMO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+ZOMO H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+ZOMO H 2
+goto MegamanErase
+}
+}
+
+
+Actor ExistCount : Inventory
+{
+Inventory.amount 1
+inventory.Maxamount 35
+}
+
+Actor CountTimer3
+{
++NOGRAVITY
+-SOLID
++NOINTERACTION
+scale 3.0
+States
+{
+Spawn:
+COUN A 12
+stop
+}
+}
+
+Actor CountTimer2 : CountTimer3{States{Spawn:COUN B 12
+stop}}
+
+Actor CountTimer1 : CountTimer3
+{
+States
+{
+Spawn:
+COUN C 12
+stop
+}
+}
+
+
+Actor ZomoFinalBlastOfFuckYou //lolgrenademan
+{
+PROJECTILE
+-SOLID
++SKYEXPLODE
++DONTBLAST
+Damagetype "Zomo"
+Obituary "%o is now boom thanks to %k's Final Blast. %o is probably yelling at their computer right now..."
+Height 8
+Radius 8
+Scale 3.5
+States
+{
+Spawn:
+NAPA E 0
+NAPA E 1 A_Explode(175,200,0)
+NAPA E 0 A_PlaySoundEx("misc/morshu","SoundSlot7")
+NAPA FGHIJKLMNOPQRS 1
+stop
+}
+}
+
+Actor IsZomo : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
++INVENTORY.IGNORESKILL
+}
+
+Actor LeenaSupportSummon : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 3
+inventory.pickupmessage "\cvIt's Leena, the Ice Princess and one of your loyal minions!"
+inventory.icon "GLACI0"
+Inventory.PickupSound "item/pokemonget"
++INVBAR
+scale 2.0
+states
+{
+Spawn:
+GLAC I 5
+loop
+Use:
+TNT1 A 0 //A_JumpIfInventory("SummonLimiter",1,"NoGo")
+TNT1 A 0 A_PlaySoundEx("item/refill","Weapon")
+TNT1 A 0 //A_SpawnItemEx("LeenaAssist",48,0,24,0,0,0,0,SXF_SETMASTER|SXF_NOCHECKPOSITION)
+TNT1 A 0 //A_GiveInventory("SummonLimiter",1)
+TNT1 A 0 A_GiveInventory("GlaceonProtection",1)
+stop
+NoGo:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("misc/clnbell","Voice")
+fail
+}
+}
+
+Actor GlaceonProtection : PowerUpGiver
+{
++COUNTITEM
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
+inventory.maxamount 1
+powerup.type "PowerGlaceonProtect"
+States
+{
+Spawn:
+TNT1 A 1
+stop
+}
+}
+
+Actor PowerGlaceonProtect : PowerProtection
+{
+powerup.duration -60
+Damagefactor "GlaceonIceBody", 0.35
+Damagefactor "GlaceonIS", 0.35
+Damagefactor "GlaceonHail", 0.35
+Damagefactor "GlaceonIF", 0.35
+Damagefactor "GlaceonID", 0.35
+}
+
+actor PoofFX
+{
++CLIENTSIDEONLY
++NOINTERACTION
+-SOLID
++NOGRAVITY
+Scale 1.5
+Speed 0
+Radius 1
+Height 1
+States
+{
+Spawn:
+POOF A 0
+POOF AB 2
+goto Death
+Death:
+POOF AB 2 A_Fadeout(0.12)
+loop
+}
+}
+
+actor AntiDamageFX
+{
++CLIENTSIDEONLY
+-SOLID
++NOGRAVITY
+Scale 2.5
+Speed 0
+Radius 10
+Height 10
+States
+{
+Spawn:
+ZDOL A 0
+ZDOL A 45
+goto Death
+Death:
+ZDOL A 2 A_Fadeout(0.1)
+loop
+}
+}
+
+actor InvulFX
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Radius 4
+Height 4
+Damage(0)
+Scale 2.25
+Translation "220:223=110:110", "209:215=105:105"
+Renderstyle "Translucent"
+-SOLID
+States
+{
+Spawn:
+KIRC ABCD 1 A_FadeOut(0.1)
+loop
+}
+}
+
+Actor SynchroFX
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Translation "4:4=184:184", "168:168=184:184", "208:208=184:184"
+Radius 4
+Height 4
+Scale 1.25
+Renderstyle "Add"
+States
+{
+Spawn:
+TBOL I 0
+TBOL IK 2 bright A_Fadeout(0.13)
+loop
+}
+}
+
+Actor ElementSwitchFX
+{
+PROJECTILE
+-SOLID
++NOINTERACTION
+Damage(0)
+Speed 15
+Radius 1
+Height 1
+Scale 1.5
+States
+{
+Spawn:
+TBOL A 0
+TBOL ACGMEEMGCA 2
+stop
+}
+}
+
+Actor IceBlastFX
+{
++NOINTERACTION
+-SOLID
++NOGRAVITY
+Renderstyle "Add"
+Alpha 0.85
+Scale 1.5
+Speed 0
+Radius 1
+Height 1
+States
+{
+Spawn:
+ICWL ABC 3
+stop
+}
+}
+
+Actor IceBlastDeathFX
+{
++NOINTERACTION
+-SOLID
++NOGRAVITY
+Scale 1.5
+Speed 0
+Radius 1
+Height 1
+States
+{
+Spawn:
+ICEP BCD 2
+stop
+}
+}
+
+Actor EarthShatterFX
+{
+PROJECTILE
++CLIENTSIDEONLY
+-SOLID
+-NOGRAVITY
++RIPPER
+Damage(0)
+Speed 10
+Scale 1.5
+Radius 1
+Height 1
+States
+{
+Spawn:
+RSRK A 0
+RSRK A 2
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+/*
+Actor RandomZomoWepSpawner : RandomItem
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Jump(96,"Death")
+TNT1 A 1 A_Jump(256,"FireGet","Aqua","Elec","Wood","Wind","Break")
+goto FireGet
+FireGet:
+TNT1 A 1 A_SpawnItemEx("BNFireBusterGiver")
+stop
+Aqua:
+TNT1 A 1 A_SpawnItemEx("BNAquaBusterGiver")
+stop
+Elec:
+TNT1 A 1 A_SpawnItemEx("BNElecBusterGiver")
+stop
+Wood:
+TNT1 A 1 A_SpawnItemEx("BNWoodBusterGiver")
+stop
+Wind:
+TNT1 A 1 A_SpawnItemEx("BNWindBusterGiver")
+stop
+Break:
+TNT1 A 1 A_SpawnItemEx("BNBreakBusterGiver")
+stop
+Death:
+TNT1 A 1
+stop
+}
+}
+*/
+Actor SpecialCount1 : Inventory{inventory.amount 1 inventory.maxamount 999 +INVENTORY.IGNORESKILL}
+
+Actor HudClearer : CustomInventory
+{
+Inventory.amount 1
+Inventory.maxamount 1
++INVENTORY.AUTOACTIVATE
++INVENTORY.UNDROPPABLE
++INVENTORY.QUIET
+States
+{
+Pickup:
+ZOMO H 0 A_TakeInventory("NormalFlag",99)
+ZOMO H 0 A_TakeInventory("NormalFlag2",99)
+ZOMO H 0 A_TakeInventory("NormalFlag3",99)
+ZOMO H 0 A_TakeInventory("FireFlag",99)
+ZOMO H 0 A_TakeInventory("FireFlag2",99)
+ZOMO H 0 A_TakeInventory("FireFlag3",99)
+ZOMO H 0 A_TakeInventory("AquaFlag",99)
+ZOMO H 0 A_TakeInventory("AquaFlag2",99)
+ZOMO H 0 A_TakeInventory("AquaFlag3",99)
+ZOMO H 0 A_TakeInventory("ElecFlag",99)
+ZOMO H 0 A_TakeInventory("ElecFlag2",99)
+ZOMO H 0 A_TakeInventory("ElecFlag3",99)
+ZOMO H 0 A_TakeInventory("WoodFlag",99)
+ZOMO H 0 A_TakeInventory("WoodFlag2",99)
+ZOMO H 0 A_TakeInventory("WoodFlag3",99)
+ZOMO H 0 A_TakeInventory("WindFlag",99)
+ZOMO H 0 A_TakeInventory("WindFlag2",99)
+ZOMO H 0 A_TakeInventory("WindFlag3",99)
+ZOMO H 0 A_TakeInventory("BreakFlag",99)
+ZOMO H 0 A_TakeInventory("BreakFlag2",99)
+ZOMO H 0 A_TakeInventory("BreakFlag3",99)
+TNT1 A 0 A_TakeInventory("WindRackFlag",99)
+TNT1 A 0 A_TakeInventory("MagBoltFlag",99)
+TNT1 A 0 A_TakeInventory("Recov300Flag",99)
+TNT1 A 0 A_TakeInventory("FlashBombFlag",99)
+TNT1 A 0 A_TakeInventory("MiniBombFlag",99)
+TNT1 A 0 A_TakeInventory("MidBombFlag",99)
+TNT1 A 0 A_TakeInventory("CrossBombFlag",99)
+TNT1 A 0 A_TakeInventory("CBallFlag",99)
+TNT1 A 0 A_TakeInventory("GreenAppleFlag",99)
+TNT1 A 0 A_TakeInventory("RedAppleFlag",99)
+TNT1 A 0 A_TakeInventory("YellowAppleFlag",99)
+TNT1 A 0 A_TakeInventory("TimeBombFlag",99)
+TNT1 A 0 A_TakeInventory("SwordFlag",99)
+TNT1 A 0 A_TakeInventory("WideSwordFlag",99)
+TNT1 A 0 A_TakeInventory("LongSwordFlag",99)
+TNT1 A 0 A_TakeInventory("FireSwordFlag",99)
+TNT1 A 0 A_TakeInventory("AquaSwordFlag",99)
+TNT1 A 0 A_TakeInventory("ElecSwordFlag",99)
+TNT1 A 0 A_TakeInventory("WoodSwordFlag",99)
+TNT1 A 0 A_TakeInventory("TreeBombFlag",99)
+TNT1 A 0 A_TakeInventory("InvisibleFlag",99)
+TNT1 A 0 A_TakeInventory("BoomerangFlag",99)
+TNT1 A 0 A_TakeInventory("HiBoomerangFlag",99)
+TNT1 A 0 A_TakeInventory("MBoomerangFlag",99)
+TNT1 A 0 A_TakeInventory("MeteorFlag",99)
+TNT1 A 0 A_TakeInventory("EnergyBombFlag",99)
+TNT1 A 0 A_TakeInventory("MegaEnergyBombFlag",99)
+TNT1 A 0 A_TakeInventory("Harpoon2Flag",99)
+TNT1 A 0 A_TakeInventory("Harpoon3Flag",99)
+TNT1 A 0 A_TakeInventory("Harpoon4Flag",99)
+TNT1 A 0 A_TakeInventory("UninstallFlag",99)
+TNT1 A 0 A_TakeInventory("AttackPlusFlag",99)
+TNT1 A 0 A_TakeInventory("AntiDamageFlag",99)
+TNT1 A 0 A_TakeInventory("SeekBombFlag",99)
+TNT1 A 0 A_TakeInventory("MuramasaFlag",99)
+TNT1 A 0 A_TakeInventory("DrillArmFlag",99)
+TNT1 A 0 A_TakeInventory("AirShotFlag",99)
+TNT1 A 0 A_TakeInventory("AntiWindFlag",99)
+TNT1 A 0 A_TakeInventory("AntiBreakFlag",99)
+TNT1 A 0 A_TakeInventory("DashAttackFlag",99)
+TNT1 A 0 A_TakeInventory("WindRackFlag2",99)
+TNT1 A 0 A_TakeInventory("MagBoltFlag2",99)
+TNT1 A 0 A_TakeInventory("Recov300Flag2",99)
+TNT1 A 0 A_TakeInventory("FlashBombFlag2",99)
+TNT1 A 0 A_TakeInventory("MiniBombFlag2",99)
+TNT1 A 0 A_TakeInventory("MidBombFlag2",99)
+TNT1 A 0 A_TakeInventory("CrossBombFlag2",99)
+TNT1 A 0 A_TakeInventory("CBallFlag2",99)
+TNT1 A 0 A_TakeInventory("GreenAppleFlag2",99)
+TNT1 A 0 A_TakeInventory("RedAppleFlag2",99)
+TNT1 A 0 A_TakeInventory("YellowAppleFlag2",99)
+TNT1 A 0 A_TakeInventory("TimeBombFlag2",99)
+TNT1 A 0 A_TakeInventory("SwordFlag2",99)
+TNT1 A 0 A_TakeInventory("WideSwordFlag2",99)
+TNT1 A 0 A_TakeInventory("LongSwordFlag2",99)
+TNT1 A 0 A_TakeInventory("FireSwordFlag2",99)
+TNT1 A 0 A_TakeInventory("AquaSwordFlag2",99)
+TNT1 A 0 A_TakeInventory("ElecSwordFlag2",99)
+TNT1 A 0 A_TakeInventory("WoodSwordFlag2",99)
+TNT1 A 0 A_TakeInventory("TreeBombFlag2",99)
+TNT1 A 0 A_TakeInventory("InvisibleFlag2",99)
+TNT1 A 0 A_TakeInventory("BoomerangFlag2",99)
+TNT1 A 0 A_TakeInventory("HiBoomerangFlag2",99)
+TNT1 A 0 A_TakeInventory("MBoomerangFlag2",99)
+TNT1 A 0 A_TakeInventory("MeteorFlag2",99)
+TNT1 A 0 A_TakeInventory("EnergyBombFlag2",99)
+TNT1 A 0 A_TakeInventory("MegaEnergyBombFlag2",99)
+TNT1 A 0 A_TakeInventory("Harpoon2Flag2",99)
+TNT1 A 0 A_TakeInventory("Harpoon3Flag2",99)
+TNT1 A 0 A_TakeInventory("Harpoon4Flag2",99)
+TNT1 A 0 A_TakeInventory("UninstallFlag2",99)
+TNT1 A 0 A_TakeInventory("AttackPlusFlag2",99)
+TNT1 A 0 A_TakeInventory("AntiDamageFlag2",99)
+TNT1 A 0 A_TakeInventory("SeekBombFlag2",99)
+TNT1 A 0 A_TakeInventory("MuramasaFlag2",99)
+TNT1 A 0 A_TakeInventory("DrillArmFlag2",99)
+TNT1 A 0 A_TakeInventory("AirShotFlag2",99)
+TNT1 A 0 A_TakeInventory("AntiWindFlag2",99)
+TNT1 A 0 A_TakeInventory("AntiBreakFlag2",99)
+TNT1 A 0 A_TakeInventory("DashAttackFlag2",99)
+TNT1 A 0 A_TakeInventory("WindRackFlag3",99)
+TNT1 A 0 A_TakeInventory("MagBoltFlag3",99)
+TNT1 A 0 A_TakeInventory("Recov300Flag3",99)
+TNT1 A 0 A_TakeInventory("FlashBombFlag3",99)
+TNT1 A 0 A_TakeInventory("MiniBombFlag3",99)
+TNT1 A 0 A_TakeInventory("MidBombFlag3",99)
+TNT1 A 0 A_TakeInventory("CrossBombFlag3",99)
+TNT1 A 0 A_TakeInventory("CBallFlag3",99)
+TNT1 A 0 A_TakeInventory("GreenAppleFlag3",99)
+TNT1 A 0 A_TakeInventory("RedAppleFlag3",99)
+TNT1 A 0 A_TakeInventory("YellowAppleFlag3",99)
+TNT1 A 0 A_TakeInventory("TimeBombFlag3",99)
+TNT1 A 0 A_TakeInventory("SwordFlag3",99)
+TNT1 A 0 A_TakeInventory("WideSwordFlag3",99)
+TNT1 A 0 A_TakeInventory("LongSwordFlag3",99)
+TNT1 A 0 A_TakeInventory("FireSwordFlag3",99)
+TNT1 A 0 A_TakeInventory("AquaSwordFlag3",99)
+TNT1 A 0 A_TakeInventory("ElecSwordFlag3",99)
+TNT1 A 0 A_TakeInventory("WoodSwordFlag3",99)
+TNT1 A 0 A_TakeInventory("TreeBombFlag3",99)
+TNT1 A 0 A_TakeInventory("InvisibleFlag3",99)
+TNT1 A 0 A_TakeInventory("BoomerangFlag3",99)
+TNT1 A 0 A_TakeInventory("HiBoomerangFlag3",99)
+TNT1 A 0 A_TakeInventory("MBoomerangFlag3",99)
+TNT1 A 0 A_TakeInventory("MeteorFlag3",99)
+TNT1 A 0 A_TakeInventory("EnergyBombFlag3",99)
+TNT1 A 0 A_TakeInventory("MegaEnergyBombFlag3",99)
+TNT1 A 0 A_TakeInventory("Harpoon2Flag3",99)
+TNT1 A 0 A_TakeInventory("Harpoon3Flag3",99)
+TNT1 A 0 A_TakeInventory("Harpoon4Flag3",99)
+TNT1 A 0 A_TakeInventory("UninstallFlag3",99)
+TNT1 A 0 A_TakeInventory("AttackPlusFlag3",99)
+TNT1 A 0 A_TakeInventory("AntiDamageFlag3",99)
+TNT1 A 0 A_TakeInventory("SeekBombFlag3",99)
+TNT1 A 0 A_TakeInventory("MuramasaFlag3",99)
+TNT1 A 0 A_TakeInventory("DrillArmFlag3",99)
+TNT1 A 0 A_TakeInventory("AirShotFlag3",99)
+TNT1 A 0 A_TakeInventory("AntiWindFlag3",99)
+TNT1 A 0 A_TakeInventory("AntiBreakFlag3",99)
+TNT1 A 0 A_TakeInventory("DashAttackFlag3",99)
+Stop
+}
+}

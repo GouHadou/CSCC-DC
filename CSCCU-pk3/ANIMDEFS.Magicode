@@ -1,0 +1,282 @@
+//TheMod Emblem
+Texture TMEMB
+Pic TMBLA0 tics 4
+Pic TMBLB0 tics 4
+Pic TMBLC0 tics 4
+Pic TMBLD0 tics 4
+Pic TMBLE0 tics 4
+Pic TMBLF0 tics 4
+
+//Item System
+Texture ABL1A0
+Pic ABILA0 tics 4
+Pic ABILB0 tics 4
+
+Texture ABL2A0
+Pic ABILC0 tics 4
+Pic ABILD0 tics 4
+
+Texture ABL3A0
+Pic ABILE0 tics 4
+Pic ABILF0 tics 4
+
+Texture ABL4A0
+Pic ABILG0 tics 4
+Pic ABILH0 tics 4
+
+//Glazed Set
+texture GLACBAR
+pic GLABLA1 tics 2
+pic GLABLA2 tics 2
+pic GLABLA3 tics 2
+pic GLABLA4 tics 2
+
+texture GLACVAR
+pic GLAVLA1 tics 2
+pic GLAVLA2 tics 2
+pic GLAVLA3 tics 2
+pic GLAVLA4 tics 2
+
+//DarkSoul
+texture SOULBARB
+pic SOULBAR1 tics 2
+pic SOULBAR2 tics 2
+pic SOULBAR3 tics 2
+pic SOULBAR4 tics 2
+
+texture SOULVARB
+pic SOULVAR1 tics 2
+pic SOULVAR2 tics 2
+pic SOULVAR3 tics 2
+pic SOULVAR4 tics 2
+
+//MP Burst
+texture BURSTBAR
+pic BRSTBAR1 tics 3
+pic BRSTBAR2 tics 3
+pic BRSTBAR3 tics 3
+pic BRSTBAR4 tics 3
+
+texture BURSTVAR
+pic BRSTVAR1 tics 3
+pic BRSTVAR2 tics 3
+pic BRSTVAR3 tics 3
+pic BRSTVAR4 tics 3
+
+//Shadow Ball/Copywep-V
+
+texture DPWRFLS1
+pic BARHEALT tics 1
+pic DPWRBAR tics 1
+
+//Shadow Ball/Copywep-H
+
+texture DPWRFLS2
+pic VARHEALT tics 1
+pic DPWRVAR tics 1
+
+//WarMech's FS Heart
+Texture WMICB0
+Pic WMICA0 tics 2
+Pic WMICB0 tics 2
+Pic WMICC0 tics 2
+Pic WMICD0 tics 2
+Pic WMICE0 tics 2
+Pic WMICF0 tics 2
+Pic WMICG0 tics 2
+
+//W4rlock's Quad Cannon bars
+Texture WSCGBARX
+Pic WSCGBAR1 tics 3
+Pic WSCGBAR1 tics 3
+Pic WSCGBAR2 tics 3
+Pic WSCGBAR3 tics 3
+
+Texture WSCGVARX
+Pic WSCGVAR1 tics 3
+Pic WSCGVAR1 tics 3
+Pic WSCGVAR2 tics 3
+Pic WSCGVAR3 tics 3
+
+Texture QUADBARX
+Pic QUADBAR1 tics 3
+Pic QUADBAR2 tics 3
+Pic QUADBAR3 tics 3
+Pic QUADBAR4 tics 3
+
+Texture QUADVARX
+Pic QUADVAR1 tics 3
+Pic QUADVAR2 tics 3
+Pic QUADVAR3 tics 3
+Pic QUADVAR4 tics 3
+
+texture ROLBAR1
+allowdecals
+pic ROLBAR1 tics 4
+pic ROLBAR2 tics 4
+pic ROLBAR3 tics 4
+pic ROLBAR4 tics 4
+pic ROLBAR5 tics 4
+pic ROLBAR6 tics 4
+pic ROLBAR7 tics 4
+
+texture ROLBAR1V
+allowdecals
+pic ROLBAR1V tics 4
+pic ROLBAR2V tics 4
+pic ROLBAR3V tics 4
+pic ROLBAR4V tics 4
+pic ROLBAR5V tics 4
+pic ROLBAR6V tics 4
+pic ROLBAR7V tics 4
+
+texture SFUSBAR1
+allowdecals
+pic RMAGBAR1 tics 5
+pic RMAGBAR2 tics 5
+pic RMAGBAR3 tics 5
+pic RMAGBAR4 tics 5
+pic RMAGBAR5 tics 5
+pic RMAGBAR6 tics 5
+pic RMAGBAR7 tics 5
+pic RMAGBAR8 tics 5
+
+texture SFUSVAR1
+allowdecals
+pic RMAGVAR1 tics 5
+pic RMAGVAR2 tics 5
+pic RMAGVAR3 tics 5
+pic RMAGVAR4 tics 5
+pic RMAGVAR5 tics 5
+pic RMAGVAR6 tics 5
+pic RMAGVAR7 tics 5
+pic RMAGVAR8 tics 5
+
+texture SFUSBAR2
+allowdecals
+pic SFBAR_A tics 5
+pic SFBAR_B tics 5
+pic SFBAR_C tics 5
+pic SFBAR_D tics 5
+pic SFBAR_E tics 5
+pic SFBAR_F tics 5
+pic SFBAR_G tics 5
+pic SFBAR_H tics 5
+
+texture SFUSVAR2
+allowdecals
+pic SFVAR_A tics 5
+pic SFVAR_B tics 5
+pic SFVAR_C tics 5
+pic SFVAR_D tics 5
+pic SFVAR_E tics 5
+pic SFVAR_F tics 5
+pic SFVAR_G tics 5
+pic SFVAR_H tics 5
+
+texture ROLBAR1
+allowdecals
+pic ROLBAR1 tics 4
+pic ROLBAR2 tics 4
+pic ROLBAR3 tics 4
+pic ROLBAR4 tics 4
+pic ROLBAR5 tics 4
+pic ROLBAR6 tics 4
+pic ROLBAR7 tics 4
+
+texture ROLBAR1V
+allowdecals
+pic ROLBAR1V tics 4
+pic ROLBAR2V tics 4
+pic ROLBAR3V tics 4
+pic ROLBAR4V tics 4
+pic ROLBAR5V tics 4
+pic ROLBAR6V tics 4
+pic ROLBAR7V tics 4
+
+texture SFUSBAR1
+allowdecals
+pic RMAGBAR1 tics 5
+pic RMAGBAR2 tics 5
+pic RMAGBAR3 tics 5
+pic RMAGBAR4 tics 5
+pic RMAGBAR5 tics 5
+pic RMAGBAR6 tics 5
+pic RMAGBAR7 tics 5
+pic RMAGBAR8 tics 5
+
+texture SFUSVAR1
+allowdecals
+pic RMAGVAR1 tics 5
+pic RMAGVAR2 tics 5
+pic RMAGVAR3 tics 5
+pic RMAGVAR4 tics 5
+pic RMAGVAR5 tics 5
+pic RMAGVAR6 tics 5
+pic RMAGVAR7 tics 5
+pic RMAGVAR8 tics 5
+
+texture SFUSBAR2
+allowdecals
+pic SFBAR_A tics 5
+pic SFBAR_B tics 5
+pic SFBAR_C tics 5
+pic SFBAR_D tics 5
+pic SFBAR_E tics 5
+pic SFBAR_F tics 5
+pic SFBAR_G tics 5
+pic SFBAR_H tics 5
+
+texture SFUSVAR2
+allowdecals
+pic SFVAR_A tics 5
+pic SFVAR_B tics 5
+pic SFVAR_C tics 5
+pic SFVAR_D tics 5
+pic SFVAR_E tics 5
+pic SFVAR_F tics 5
+pic SFVAR_G tics 5
+pic SFVAR_H tics 5
+
+//Lily
+Texture LWATBAR
+Pic LWABAR1 tics 3
+Pic LWABAR2 tics 3
+Pic LWABAR3 tics 3
+
+Texture LWATVAR
+Pic LWAVAR1 tics 3
+Pic LWAVAR2 tics 3
+Pic LWAVAR3 tics 3
+
+Texture LWATBAR2
+Pic LWABAR4 tics 3
+Pic LWABAR5 tics 3
+Pic LWABAR6 tics 3
+
+Texture LWATVAR2
+Pic LWAVAR4 tics 3
+Pic LWAVAR5 tics 3
+Pic LWAVAR6 tics 3
+
+Texture LWETBAR
+Pic LWEBAR1 tics 3
+Pic LWEBAR2 tics 3
+Pic LWEBAR3 tics 3
+Pic LWEBAR4 tics 3
+Pic LWEBAR5 tics 3
+Pic LWEBAR6 tics 3
+
+Texture LWETVAR
+Pic LWEVAR1 tics 3
+Pic LWEVAR2 tics 3
+Pic LWEVAR3 tics 3
+Pic LWEVAR4 tics 3
+Pic LWEVAR5 tics 3
+Pic LWEVAR6 tics 3
+
+Texture BNCSBAR
+Pic BNBARF1 tics 6
+Pic BNBARF2 tics 6
+Pic BNBARF3 tics 6
+Pic BNBARF4 tics 6

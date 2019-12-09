@@ -3015,7 +3015,1603 @@ graphic FICON2, 30, 30
 graphic ClouIcon,30,30{XScale 2.0 YScale 2.0 Patch ZNITA0,0,0}
 */
 
+//TheMod Emblem
+Graphic TMBLA0, 32, 32 {XScale 2.0	YScale 2.0	Patch TMEIA0, 0, 0}
+Graphic TMBLB0, 32, 32 {XScale 2.0	YScale 2.0	Patch TMEIB0, 0, 0}
+Graphic TMBLC0, 32, 32 {XScale 2.0	YScale 2.0	Patch TMEIC0, 0, 0}
+Graphic TMBLD0, 32, 32 {XScale 2.0	YScale 2.0	Patch TMEID0, 0, 0}
+Graphic TMBLE0, 32, 32 {XScale 2.0	YScale 2.0	Patch TMEIE0, 0, 0}
+Graphic TMBLF0, 32, 32 {XScale 2.0	YScale 2.0	Patch TMEIF0, 0, 0}
 
+Graphic TMEMB, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+
+//ITEM SYSTEM
+Graphic ABL1A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+Graphic ABL2A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+Graphic ABL3A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+Graphic ABL4A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+
+Graphic ABILA0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILA0, 0, 0}
+Graphic ABILB0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILB0, 0, 0}
+Graphic ABILC0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILC0, 0, 0}
+Graphic ABILD0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILD0, 0, 0}
+Graphic ABILE0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILE0, 0, 0}
+Graphic ABILF0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILF0, 0, 0}
+Graphic ABILG0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILG0, 0, 0}
+Graphic ABILH0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILH0, 0, 0}
+
+//Tanks
+Graphic ENGTI0, 32, 32 {XScale 2.0	YScale 2.0	Patch ENGTI0, 0, 0}
+Graphic WPTNI0, 32, 32 {XScale 2.0	YScale 2.0	Patch WPTNI0, 0, 0}
+Graphic MSTNI0, 32, 32 {XScale 2.0	YScale 2.0	Patch MSTNI0, 0, 0}
+
+Graphic TRAPMINE, 32, 32 {XScale 2.0	YScale 2.0	Patch TRPMI0, 0, 0}
+Graphic TOYNAP, 32, 32 {XScale 2.0	YScale 2.0	Patch TONAI0, 0, 0}
+
+Graphic WALKBOMB, 32, 32 {XScale 2.0	YScale 2.0	Patch WKBOI0, 0, 0}
+Graphic CHEKSPH, 32, 32 {XScale 2.0	YScale 2.0	Patch WKBAI0, 0, 0}
+Graphic BEERICO, 32, 32 {XScale 2.0	YScale 2.0	Patch BEGLI0, 0, 0}
+Graphic CONRAIN, 32, 32 {XScale 2.0	YScale 2.0	Patch COIRN0, 0, 0}
+Graphic CONSTAS, 32, 32 {XScale 2.0	YScale 2.0	Patch COIRM0, 0, 0}
+
+Graphic SANOMB, 32, 32 {XScale 2.0	YScale 2.0	Patch SANDM0, 0, 0}
+
+Graphic METITEM, 32, 32 {XScale 2.0	YScale 2.0	Patch METIT0, 0, 0}
+Graphic SPKITEM, 32, 32 {XScale 2.0	YScale 2.0	Patch SPRKT0, 0, 0}
+Graphic ICSITEM, 32, 32 {XScale 2.0	YScale 2.0	Patch ISLHT0, 0, 0}
+Graphic THUITEM, 32, 32 {XScale 2.0	YScale 2.0	Patch THNBT0, 0, 0}
+
+Graphic EXBAREL, 32, 32 {XScale 2.0	YScale 2.0	Patch EXPBI0, 0, 0}
+Graphic MMMOON, 32, 32 {XScale 2.0	YScale 2.0	Patch MMMOI0, 0, 0}
+Graphic PUYOITEM, 32, 32 {XScale 2.0	YScale 2.0	Patch FPPHI0, 0, 0}
+
+//Arsenal
+graphic ARSIAA, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ARSIA0, 0, 0
+}
+
+graphic ARSIBB, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ARSIB0, 0, 0
+}
+
+graphic ARSICC, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ARSIC0, 0, 0
+}
+
+graphic ARSHIE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ARSID0, 0, 0
+}
+
+//King Baku
+Graphic FRSTI0, 32, 32 {XScale 2.0	YScale 2.0	Patch FRSTI0, 0, 0}
+Graphic MGCPI0, 32, 32 {XScale 2.0	YScale 2.0	Patch MGCPI0, 0, 0}
+Graphic CBPKI0, 32, 32 {XScale 2.0	YScale 2.0	Patch CBPKI0, 0, 0}
+Graphic KBBJI0, 32, 32 {XScale 2.0	YScale 2.0	Patch KBBJI0, 0, 0}
+
+//Yumi
+Graphic YICNA0, 32, 32 {XScale 2.0	YScale 2.0	Patch YICNA0, 0, 0}
+Graphic YICNB0, 32, 32 {XScale 2.0	YScale 2.0	Patch YICNB0, 0, 0}
+Graphic YICNC0, 32, 32 {XScale 2.0	YScale 2.0	Patch YICNC0, 0, 0}
+Graphic YICND0, 32, 32 {XScale 2.0	YScale 2.0	Patch YICND0, 0, 0}
+Graphic YICNOA, 32, 32 {XScale 0.3	YScale 0.3	Offset 16, 10	Patch YICNA0, 0, 0}
+Graphic YICNOB, 32, 32 {XScale 0.3	YScale 0.3	Offset 16, 10	Patch YICNB0, 0, 0}
+Graphic YICNOC, 32, 32 {XScale 0.3	YScale 0.3	Offset 16, 10	Patch YICNC0, 0, 0}
+
+//Vermillion
+Sprite HESTI, 30, 30 {XScale 2.0	YScale 2.0	Patch VICOA0, 0, 0}
+Sprite TOXCMI, 30, 30 {XScale 2.0	YScale 2.0	Patch VICOA1, 0, 0}
+Sprite HYDCMI, 30, 30 {XScale 2.0	YScale 2.0	Patch VICOA2, 0, 0}
+Sprite FMPLI, 30, 30 {XScale 2.0	YScale 2.0	Patch VICOA3, 0, 0}
+
+//Lily
+Graphic POLEI0, 32, 32 {XScale 2.0	YScale 2.0	Patch POLEI0, 0, 0}
+Graphic PLSNI0, 32, 32 {XScale 2.0	YScale 2.0	Patch PLSNI0, 0, 0}
+Graphic LILIC0, 32, 32 {XScale 2.0	YScale 2.0	Patch LILIC0, 0, 0}
+Graphic LILIO0, 32, 32 {XScale 2.0	YScale 2.0	Patch LILIO0, 0, 0}
+
+//WarMech
+Graphic WMICA0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICA0, 0, 0}
+Graphic WMICB0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICB0, 0, 0}
+Graphic WMICC0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICC0, 0, 0}
+Graphic WMICD0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICD0, 0, 0}
+Graphic WMICE0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICE0, 0, 0}
+Graphic WMICF0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICF0, 0, 0}
+Graphic WMICG0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICG0, 0, 0}
+Graphic WMICH0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICH0, 0, 0}
+Graphic WMICI0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICI0, 0, 0}
+Graphic WMICJ0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICJ0, 0, 0}
+Graphic WMICK0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICK0, 0, 0}
+Graphic WMICL0, 32, 32 {XScale 2.0	YScale 2.0	Patch WMICL0, 0, 0}
+
+//John
+Sprite JABIA, 30, 30 {XScale 2.0	YScale 2.0	Patch JABIA0, 0, 0}
+Sprite JABIB, 30, 30 {XScale 2.0	YScale 2.0	Patch JABIB0, 0, 0}
+Sprite JABIC, 30, 30 {XScale 2.0	YScale 2.0	Patch JABIC0, 0, 0}
+
+//Rin
+Graphic RINTMEM, 32, 32 {XScale 2.0	YScale 2.0	Patch TMEMA0, 0, 0}
+Graphic RNICA0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICA0, 0, 0}
+Graphic RNICB0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICB0, 0, 0}
+Graphic RNICC0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICC0, 0, 0}
+Graphic RNICD0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICD0, 0, 0}
+Graphic RNICE0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICE0, 0, 0}
+Graphic RNICF0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICF0, 0, 0}
+Graphic RNICG0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICG0, 0, 0}
+Graphic RNICH0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICH0, 0, 0}
+Graphic RNICI0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICI0, 0, 0}
+Graphic RNICJ0, 32, 32 {XScale 1.7	YScale 1.7	Patch RNICJ0, 0, 0}
+
+Graphic RINHP0, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM0, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP1, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM1, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP2, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM2, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP3, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM3, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP4, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM4, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP5, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM5, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP6, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM6, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP7, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM7, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP8, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM8, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+Graphic RINHP9, 6, 8 {XScale 1.1	YScale 1.1	Patch RINNUM9, 0, 0 {Translation "192:192=80:80", "198:198=93:93"}}
+
+Graphic RINCHG1, 32, 32 {XScale 1.7	YScale 1.7	Patch TNT1A0, 0, 0}
+Graphic RINCHG2, 32, 32 {XScale 1.7	YScale 1.7	Patch TNT1A0, 0, 0}
+
+//Aquoon Ewcons
+Graphic AQFMA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch AQFMA0, 0, 0
+}
+
+Graphic AQFMB0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch AQFMB0, 0, 0
+}
+
+//Omega Zero
+Graphic OMGICON, 30, 30	{XScale 0.3	YScale 0.3	Offset 375, -140	Patch OMGICON, 0, 0}
+Graphic OZSBI0, 32, 32 	{XScale 1.6	YScale 1.5	Patch OZSBI0, 0, 0}
+Graphic OZBTI0, 32, 32 	{XScale 1.6	YScale 1.5	Patch OZBTI0, 0, 0}
+Graphic OZABTS, 174, 94	{XScale 2.0	YScale 2.0	Patch OZABTS, 0, 0}
+
+
+//???
+Graphic MGSHC0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch MGSHC0, 0, 0
+}
+
+Graphic TMWNT0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch TMWNT0, 0, 0
+}
+
+//Glace
+Graphic ICEBUTT, 6, 31
+{
+ XScale 1.0
+ YScale 1.0
+ Patch ICEBUTT, 0, 0
+}
+
+Graphic ICEBEMP, 6, 31
+{
+ XScale 1.0
+ YScale 1.0
+ Patch ICEBEMP, 0, 0
+}
+
+Graphic ICSBUTT, 6, 31
+{
+ XScale 1.0
+ YScale 1.0
+ Patch ICSBUTT, 0, 0
+}
+
+Graphic ICSBEMP, 6, 31
+{
+ XScale 1.0
+ YScale 1.0
+ Patch ICSBEMP, 0, 0
+}
+
+Graphic NOGBAR, 6, 31 {Patch TNT1A0, 0, 0}
+
+Graphic ICSIC1, 20, 20
+{
+ XScale 1.5
+ YScale 1.5
+ Patch ICSIC1, 0, 0
+}
+
+Graphic ICSIC2, 20, 20
+{
+ XScale 1.5
+ YScale 1.5
+ Patch ICSIC2, 0, 0
+}
+
+Graphic ICSHW0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ICSHW0, 0, 0
+}
+
+Graphic ICWEP0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ICWEP0, 0, 0
+}
+
+Graphic ICWEQ0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ICWEQ0, 0, 0
+}
+
+Graphic ICWER0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ICWER0, 0, 0
+}
+
+Graphic ICFIC0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ICFIC0, 0, 0
+}
+
+Graphic ICFIN0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ICFIN0, 0, 0
+}
+
+Graphic ICFIS0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ICFIS0, 0, 0
+}
+
+Graphic SLBWE0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch SLBWE0, 0, 0
+}
+
+Graphic TGTRA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch TGTRA0, 0, 0
+}
+
+Graphic IGNSA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch IGNSA0, 0, 0
+}
+
+Graphic IGNSB0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch IGNSB0, 0, 0
+}
+
+Graphic IGNSC0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch IGNSC0, 0, 0
+}
+
+Graphic DRICO0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DRICO0, 0, 0
+}
+
+Graphic DRICG0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DRICG0, 0, 0
+}
+
+//Bass Weapon Icons
+Graphic BAWEA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEA0, 0, 0
+}
+
+Graphic BAWEB0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEB0, 0, 0
+}
+
+Graphic BAWEC0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEC0, 0, 0
+}
+
+Graphic BAWED0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWED0, 0, 0
+}
+
+Graphic BAWEE0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEE0, 0, 0
+}
+
+Graphic BAWEF0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEF0, 0, 0
+}
+
+Graphic BAWEG0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEG0, 0, 0
+}
+
+Graphic BAWEH0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEH0, 0, 0
+}
+
+Graphic BAWEI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BAWEI0, 0, 0
+}
+//End of Bass Weapon Icons
+
+//BlastProcessor
+Graphic BPICS0, 32, 32 {XScale 2.0	YScale 2.0	Patch BPICS0, 0, 0}
+Graphic BPICE0, 32, 32 {XScale 2.0	YScale 2.0	Patch BPICE0, 0, 0}
+Graphic BPICG0, 32, 32 {XScale 2.0	YScale 2.0	Patch BPICG0, 0, 0}
+
+//Tails
+Graphic TLWPA0, 32, 32 {XScale 1.5	YScale 1.5	Patch TLWPA0, 0, 0}
+Graphic TLWPB0, 32, 32 {XScale 1.5	YScale 1.5	Patch TLWPB0, 0, 0}
+Graphic TLWPC0, 32, 32 {XScale 1.5	YScale 1.5	Patch TLWPC0, 0, 0}
+Graphic TLWPD0, 32, 32 {XScale 1.5	YScale 1.5	Patch TLWPD0, 0, 0}
+
+//Belmont
+Graphic HOLYWTR, 32, 32 {XScale 2.0	YScale 2.0	Patch HLWTR0, 0, 0}
+Graphic HOLYCRS, 32, 32 {XScale 2.0	YScale 2.0	Patch HLCRA0, 0, 0}
+Graphic KNIFE, 32, 32 {XScale 2.0	YScale 2.0	Patch KNIEM0, 0, 0}
+Graphic AXE, 32, 32 {XScale 2.0	YScale 2.0	Patch CVAXA0, 0, 0}
+Graphic STOPWAT, 32, 32 {XScale 2.0	YScale 2.0	Patch CVTIA0, 0, 0}
+
+Graphic BBOKA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BBOKA0, 0, 0
+}
+
+Graphic WBOKA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch WBOKA0, 0, 0
+}
+
+graphic AUTHED, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch AUHEQ0, 0, 0
+}
+
+graphic WEAFC0, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch WEAFC0, 0, 0
+}
+
+graphic BLSHM0, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BLSHM0, 0, 0
+}
+
+Graphic LILAM0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch LILAM0, 0, 0
+}
+
+Graphic WAYSM0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WAYSM0, 0, 0
+}
+
+Graphic RFMSM0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch RFMSM0, 0, 0
+}
+
+Graphic MUNOZ0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch MUNOZ0, 0, 0
+}
+
+Graphic BTICA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch BTICA0, 0, 0
+}
+
+Graphic WSRTA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WSRTA0, 0, 0
+}
+
+graphic BPOWI, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch JWEAD0, 0, 0
+}
+
+Graphic PWICA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch PWICA0, 0, 0
+}
+
+Graphic SMBCA0 ,32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch SMBCA0, 0, 0
+}
+
+Graphic CHLGA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CHLGA0, 0, 0
+}
+
+sprite PHWAA0, 320, 200
+{  XScale 1.0 YScale 1.0 Offset 0,0
+   Patch PHANA0, 184, 94 {Translation "52:52=224:224", "225:225=218:218"}
+}
+
+Graphic DIMPX0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch DIMPX0, 0, 0
+}
+
+Graphic DIMPY0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch DIMPY0, 0, 0
+}
+
+Graphic BMBRIN, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch BBRNX0, 0, 0
+}
+
+Graphic PSYBA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch PSYBA0, 0, 0
+}
+
+Graphic PSHKI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch PSHKI0, 0, 0
+}
+
+Graphic FATKA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch FATKA0, 0, 0
+}
+
+Graphic BEAMI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch BEAMI0, 0, 0
+}
+
+Graphic SHDWI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch SHDWI0, 0, 0
+}
+
+Graphic DGUNA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DGUNA0, 0, 0
+}
+
+//Slick
+Graphic SLHIA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch SLHIA0, 0, 0
+}
+
+Graphic SLHIB0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch SLHIB0, 0, 0
+}
+
+Graphic SLIHUD1, 39, 25
+{
+ XScale 1.5
+ YScale 1.5
+ Patch SLIHUD1, 0, 0
+}
+
+Graphic SLIHUD2, 39, 25
+{
+ XScale 1.5
+ YScale 1.5
+ Patch SLIHUD2, 0, 0
+}
+
+Graphic SLIHUD3, 39, 25
+{
+ XScale 1.5
+ YScale 1.5
+ Patch SLIHUD3, 0, 0
+}
+
+Graphic INKJET, 64, 64
+{
+ XScale 1.5
+ YScale 1.5
+ Patch INKJET, 0, 0
+}
+
+//===ZOMO'S BATTLECHIP ICONS===//
+
+Graphic MBICA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch MBICA0, 0, 0
+}
+
+Graphic MBOMA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch MBOMA0, 0, 0
+}
+
+Graphic MIBMI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch MIBMI0, 0, 0
+}
+
+Graphic CBMBI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CBMBI0, 0, 0
+}
+
+Graphic OBMBI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch OBMBI0, 0, 0
+}
+
+Graphic CBALI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CBALI0, 0, 0
+}
+
+Graphic FBMBI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch FBMBI0, 0, 0
+}
+
+Graphic RCOVI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch RCOVI0, 0, 0
+}
+
+Graphic TBMBI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch TBMBI0, 0, 0
+}
+
+Graphic SWRDI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch SWRDI0, 0, 0
+}
+
+Graphic WSWDI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WSWDI0, 0, 0
+}
+
+Graphic LSWDI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch LSWDI0, 0, 0
+}
+
+Graphic LIFSI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch LIFSI0, 0, 0
+}
+
+Graphic FISDI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch FISDI0, 0, 0
+}
+
+Graphic AQSDI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch AQSDI0, 0, 0
+}
+
+Graphic ELSDI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch ELSDI0, 0, 0
+}
+
+Graphic WOSDI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WOSDI0, 0, 0
+}
+
+Graphic ELEMI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch ELEMI0, 0, 0
+}
+
+Graphic TRBMI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch TRBMI0, 0, 0
+}
+
+Graphic RAPLI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch RAPLI0, 0, 0
+}
+
+Graphic GAPLI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch GAPLI0, 0, 0
+}
+
+Graphic YAPLI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch YAPLI0, 0, 0
+}
+
+Graphic INVSI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch INVSI0, 0, 0
+}
+
+Graphic BOMRI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch BOMRI0, 0, 0
+}
+
+Graphic HBMRI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch HBMRI0, 0, 0
+}
+
+Graphic MBMRI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch MBMRI0, 0, 0
+}
+
+Graphic OBMRI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch OBMRI0, 0, 0
+}
+
+Graphic METEI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch METEI0, 0, 0
+}
+
+Graphic EBMBI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch EBMBI0, 0, 0
+}
+
+Graphic MEBMI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch MEBMI0, 0, 0
+}
+
+Graphic 1HRPI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch 1HRPI0, 0, 0
+}
+
+Graphic 2HRPI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch 2HRPI0, 0, 0
+}
+
+Graphic 3HRPI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch 3HRPI0, 0, 0
+}
+
+Graphic AHRPI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch AHRPI0, 0, 0
+}
+
+Graphic FSTGI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch FSTGI0, 0, 0
+}
+
+Graphic UNISI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch UNISI0, 0, 0
+}
+
+Graphic ATTKI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch ATTKI0, 0, 0
+}
+
+Graphic WMANI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WMANI0, 0, 0
+}
+
+Graphic GLACI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch GLACI0, 0, 0
+}
+
+Graphic BNAVI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch BNAVI0, 0, 0
+}
+
+Graphic FREZI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch FREZI0, 0, 0
+}
+
+Graphic BMANI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch BMANI0, 0, 0
+}
+
+Graphic FMANI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch FMANI0, 0, 0
+}
+
+Graphic NPLMI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch NPLMI0, 0, 0
+}
+
+Graphic ANTII0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch ANTII0, 0, 0
+}
+
+Graphic SKBMI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch SKBMI0, 0, 0
+}
+
+Graphic ZOMOI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch ZOMOI0, 0, 0
+}
+
+Graphic MURAI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch MURAI0, 0, 0
+}
+
+Graphic CHPWEP1, 192, 256{XScale 1.5 YScale 1.5 Patch CHPWEP1, 0, 0}
+Graphic CHPWEP2, 192, 256{XScale 1.5 YScale 1.5 Patch CHPWEP2, 0, 0}
+Graphic CHPWEP3, 192, 256{XScale 1.5 YScale 1.5 Patch CHPWEP3, 0, 0}
+
+//===DIMPSY STUFF===//
+
+Graphic STDLZ0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch STDLZ0, 0, 0
+}
+
+Graphic PINKA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch PINKA0, 0, 0
+}
+
+Graphic SMHBI0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch SMHBI0, 0, 0
+}
+
+Graphic TMEMBL, 32, 32
+{ 
+	XScale 2.0	
+	YScale 2.0
+	Patch TMEMB0, 0, 0 
+}
+
+Graphic AUHEQ0, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch AUHEQ0, 0, 0
+}
+
+Graphic DIMPX0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch DIMPX0, 0, 0
+}
+
+Graphic DIMPY0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch DIMPY0, 0, 0
+}
+
+Graphic PWSTB0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch PWSTB0, 0, 0
+}
+
+Graphic AQCLM0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch AQCLM0, 0, 0
+}
+
+Graphic WEA3C0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEA3C0, 0, 0
+}
+
+Graphic WEAPH0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEAPH0, 0, 0
+}
+
+Graphic WEAPN0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEAPN0, 0, 0
+}
+
+Graphic WEAPK0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEAPK0, 0, 0
+}
+
+Graphic AQCLM0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch AQCLM0, 0, 0
+}
+
+Graphic WEA2J0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEA2J0, 0, 0
+}
+
+Graphic WEA2W0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEA2W0, 0, 0
+}
+
+Graphic WEA3N0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEA3N0, 0, 0
+}
+
+Graphic WEA4E0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch WEA4E0, 0, 0
+}
+
+Graphic LIBOA0, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch LIBOA0, 0, 0
+}
+
+Graphic ESPEI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ESPEI0, 0, 0
+}
+
+Graphic METMM0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch METMM0, 0, 0
+}
+
+Graphic DIMPU0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DIMPU0, 0, 0
+}
+
+Graphic TPLSI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch TPLSI0, 0, 0
+}
+
+Graphic SHFLI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch SHFLI0, 0, 0
+}
+
+Graphic SPRAC0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch SPRAC0, 0, 0
+}
+
+Graphic NCLTC0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch NCLTC0, 0, 0
+}
+
+Graphic NORMI0, 32, 32
+{
+ XScale 1.8
+ YScale 1.8
+ Patch NORMI0, 0, 0
+}
+
+Graphic FRICI0, 32, 32
+{
+ XScale 1.8
+ YScale 1.8
+ Patch FRICI0, 0, 0
+}
+
+Graphic AQICI0, 32, 32
+{
+ XScale 1.8
+ YScale 1.8
+ Patch AQICI0, 0, 0
+}
+
+Graphic ELICI0, 32, 32
+{
+ XScale 1.8
+ YScale 1.8
+ Patch ELICI0, 0, 0
+}
+
+Graphic WDICI0, 32, 32
+{
+ XScale 1.8
+ YScale 1.8
+ Patch WDICI0, 0, 0
+}
+
+Graphic WINII0, 32, 32
+{
+ XScale 1.8
+ YScale 1.8
+ Patch WINII0, 0, 0
+}
+
+Graphic BRAKI0, 32, 32
+{
+ XScale 1.8
+ YScale 1.8
+ Patch BRAKI0, 0, 0
+}
+
+Graphic ELMTI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ELMTI0, 0, 0
+}
+
+Graphic WRACI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch WRACI0, 0, 0
+}
+
+Graphic ASHOI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ASHOI0, 0, 0
+}
+
+Graphic DARMI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DARMI0, 0, 0
+}
+
+Graphic AICOA0, 32, 32
+{
+ XScale 1.5
+ YScale 1.5
+ Patch AICOA0, 0, 0
+}
+
+Graphic WEA2O0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch WEA2O0, 0, 0
+}
+
+Graphic RBOKA0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch RBOKA0, 0, 0
+}
+
+Graphic ADMGI0, 32, 32
+{
+ XScale 2.25
+ YScale 2.25
+ Patch ADMGI0, 0, 0
+}
+
+Graphic AWINI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch AWINI0, 0, 0
+}
+
+Graphic ABRKI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch ABRKI0, 0, 0
+}
+
+Graphic ABRNA0, 48, 48
+{
+ XScale 2.25
+ YScale 2.25
+ Patch ABRNA0, 0, 0
+}
+
+Graphic AWATA0, 48, 48
+{
+ XScale 2.25
+ YScale 2.25
+ Patch AWATA0, 0, 0
+}
+
+Graphic AELEA0, 48, 48
+{
+ XScale 2.25
+ YScale 2.25
+ Patch AELEA0, 0, 0
+}
+
+Graphic AWOOA0, 48, 48
+{
+ XScale 2.25
+ YScale 2.25
+ Patch AWOOA0, 0, 0
+}
+
+Graphic AWINA0, 48, 48
+{
+ XScale 2.25
+ YScale 2.25
+ Patch AWINA0, 0, 0
+}
+
+Graphic ABRKA0, 48, 48
+{
+ XScale 2.25
+ YScale 2.25
+ Patch ABRKA0, 0, 0
+}
+
+Graphic DIARI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DIARI0, 0, 0
+}
+
+Graphic FIRAI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch FIRAI0, 0, 0
+}
+
+Graphic BLZAI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BLZAI0, 0, 0
+}
+
+Graphic WTRAI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch WTRAI0, 0, 0
+}
+
+Graphic THNRI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch THNRI0, 0, 0
+}
+
+Graphic DASHI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DASHI0, 0, 0
+}
+
+Graphic PEXEI0, 32, 32{XScale 2.0 YScale 2.0 Patch PEXEI0, 0, 0}
+
+Graphic BIC1I0, 32, 32{XScale 2.0 YScale 2.0 Patch BIC1I0, 0, 0}
+Graphic BIC2I0, 32, 32{XScale 2.0 YScale 2.0 Patch BIC2I0, 0, 0}
+Graphic WIC1I0, 32, 32{XScale 2.0 YScale 2.0 Patch WIC1I0, 0, 0}
+Graphic WIC2I0, 32, 32{XScale 2.0 YScale 2.0 Patch WIC2I0, 0, 0}
+Graphic FIC1I0, 32, 32{XScale 2.0 YScale 2.0 Patch FIC1I0, 0, 0}
+Graphic FIC2I0, 32, 32{XScale 2.0 YScale 2.0 Patch FIC2I0, 0, 0}
+Graphic NIC1I0, 32, 32{XScale 2.0 YScale 2.0 Patch NIC1I0, 0, 0}
+Graphic NIC2I0, 32, 32{XScale 2.0 YScale 2.0 Patch NIC2I0, 0, 0}
+Graphic FEC1I0, 32, 32{XScale 2.0 YScale 2.0 Patch FEC1I0, 0, 0}
+Graphic FEC2I0, 32, 32{XScale 2.0 YScale 2.0 Patch FEC2I0, 0, 0}
+Graphic BUC1I0, 32, 32{XScale 2.0 YScale 2.0 Patch BUC1I0, 0, 0}
+Graphic BUC2I0, 32, 32{XScale 2.0 YScale 2.0 Patch BUC2I0, 0, 0}
+Graphic PEX1I0, 32, 32{XScale 2.0 YScale 2.0 Patch PEX1I0, 0, 0}
+Graphic PEX2I0, 32, 32{XScale 2.0 YScale 2.0 Patch PEX2I0, 0, 0}
+
+//Red Mage Wep Icons
+
+Graphic AEROI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch AEROI0, 0, 0
+}
+
+Graphic SLWRI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch SLWRI0, 0, 0
+}
+
+Graphic BLNKI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BLNKI0, 0, 0
+}
+
+Graphic TMPRI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch TMPRI0, 0, 0
+}
+
+Graphic FCUSI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch FCUSI0, 0, 0
+}
+
+Graphic RBFFICN1, 32, 32
+{
+ XScale 1.25
+ YScale 1.25
+ Patch TMPRI0, 0, 0
+}
+
+Graphic RBFFICN2, 32, 32
+{
+ XScale 1.25
+ YScale 1.25
+ Patch FCUSI0, 0, 0
+}
+
+//Red Mage Spell Fusions
+Graphic FUSICN1, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN1, 0, 0}
+Graphic FUSICN2, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN2, 0, 0}
+Graphic FUSICN3, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN3, 0, 0}
+Graphic FUSICN4, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN4, 0, 0}
+Graphic FUSICN5, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN5, 0, 0}
+Graphic FUSICN6, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN6, 0, 0}
+Graphic FUSICN7, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN7, 0, 0}
+Graphic FUSICN8, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN8, 0, 0}
+Graphic FUSICN9, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN9, 0, 0}
+Graphic FUSICN10, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN10, 0, 0}
+Graphic FUSICN11, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN11, 0, 0}
+Graphic FUSICN12, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN12, 0, 0}
+Graphic FUSICN13, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN13, 0, 0}
+Graphic FUSICN14, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN14, 0, 0}
+Graphic FUSICN15, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN15, 0, 0}
+Graphic FUSICN16, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN16, 0, 0}
+Graphic FUSICN17, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN17, 0, 0}
+Graphic FUSICN18, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN18, 0, 0}
+Graphic FUSICN19, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN19, 0, 0}
+Graphic FUSICN20, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN20, 0, 0}
+Graphic FUSICN21, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN21, 0, 0}
+Graphic FUSICN22, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN22, 0, 0}
+Graphic FUSICN23, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN23, 0, 0}
+Graphic FUSICN24, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN24, 0, 0}
+Graphic FUSICN25, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN25, 0, 0}
+Graphic FUSICN26, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN26, 0, 0}
+Graphic FUSICN27, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN27, 0, 0}
+Graphic FUSICN28, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN28, 0, 0}
+Graphic FUSICN29, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN29, 0, 0}
+Graphic FUSICN30, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN30, 0, 0}
+Graphic FUSICN31, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN31, 0, 0}
+Graphic FUSICN32, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN32, 0, 0}
+Graphic FUSICN33, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN33, 0, 0}
+Graphic FUSICN34, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN34, 0, 0}
+Graphic FUSICN35, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN35, 0, 0}
+Graphic FUSICN36, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN36, 0, 0}
+Graphic FUSICN37, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN37, 0, 0}
+Graphic FUSICN38, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN38, 0, 0}
+Sprite RMU1A0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU1A0, 0, 0}
+Sprite RMU2A0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU2A0, 0, 0}
+Sprite RMU1B0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU1B0, 0, 0}
+Sprite RMU2B0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU2B0, 0, 0}
+
+//Thalo
+Sprite ABLTF, 30, 30 {XScale 2.0	YScale 2.0	Patch ABLTA0, 0, 0}
+Sprite ABLTB, 30, 30 {XScale 2.0	YScale 2.0	Patch ABLTB0, 0, 0}
+//Sprite HLTHI, 30, 30 {XScale 2.0	YScale 2.0	Patch HLTHA0, 0, 0}
+//Sprite HLFLI, 30, 30 {XScale 2.0	YScale 2.0	Patch HLTHA1, 0, 0}
+Sprite TPGNI, 30, 30 {XScale 2.0	YScale 2.0	Patch CWEPA0, 0, 0}
+//Sprite TRETI, 30, 30 {XScale 2.0	YScale 2.0	Patch TRETX0, 0, 0}
+//Sprite RAHEI, 30, 30 {XScale 2.0	YScale 2.0	Patch RAHEA0, 0, 0}
+
+//Uncategorized
+Graphic POIPH0, 32, 32 {XScale 2.0	YScale 2.0	Patch POIPH0, 0, 0}
+Graphic PWBLI0, 32, 32 {XScale 2.0	YScale 2.0	Patch PWBLI0, 0, 0}
+Graphic MRGAC0, 32, 32 {XScale 2.0	YScale 2.0	Patch MRGAC0, 0, 0}
+Graphic STFLR0, 32, 32 {XScale 2.0	YScale 2.0	Patch STFLR0, 0, 0}
+Graphic TMDMW0, 32, 32 {XScale 2.0	YScale 2.0	Patch TMDMW0, 0, 0}
+Graphic FUBMB0, 32, 32 {XScale 2.0 YScale 2.0 Patch FUBMB0, 0, 0}
+Graphic SBOMI0, 32, 32 {XScale 2.0	YScale 2.0	Patch SBOMI0, 0, 0}
+Graphic GPHKI0, 32, 32 {XScale 2.0	YScale 2.0	Patch GPHKI0, 0, 0}
+Graphic RLARI0, 32, 32 {XScale 2.0	YScale 2.0	Patch RLARI0, 0, 0}
+Graphic RLTNI0, 32, 32 {XScale 2.0	YScale 2.0	Patch RLTNI0, 0, 0}
+Graphic FGAEA0, 32, 32 {XScale 0.75  YScale 0.75  Patch FARWA0, 0, 0}
+Graphic FGAEB0, 32, 32 {XScale 0.75  YScale 0.75 Patch FARWB0, 0, 0}
+Graphic CEMRI0, 32, 32 {XScale 2.0	YScale 2.0	Patch CEMRI0, 0, 0}
+Graphic PAPBIR, 32, 32 {XScale 2.0	YScale 2.0	Patch PPBRI0, 0, 0}
+
+Graphic ULEIUS, 32, 32 {XScale 2.0	YScale 2.0	Patch JULEI0, 0, 0}
+
+graphic BLNKICO, 32, 32 { patch WEAPR0, 0, 0 {Translation "215:215=0:0"} }
+Graphic BLNKICO, 32, 32 {XScale 2.0	YScale 2.0	Patch BLNKICO, 0, 0}
+
+Graphic STRICON, 32, 32 {XScale 2.0 YScale 2.0 Patch STMNI0, 0, 0}
+Graphic 1UPICON, 32, 32 {XScale 2.0 YScale 2.0 Patch 1UPIA0, 0, 0}
+Graphic 1UPIHUD, 32, 32 {XScale 1.0 YScale 1.0 Patch 1UPIH0, 0, 0}
+Graphic LSTDICN, 32, 32 {XScale 2.0 YScale 2.0 Patch LSTDI0, 0, 0}
+Graphic LSTDHUD, 32, 32 {XScale 1.0 YScale 1.0 Patch LSTDI0, 0, 0}
+
+Graphic IHEFI0, 32, 32 {XScale 2.0	YScale 2.0	Patch IHEFI0, 0, 0}
+Graphic INKSI0, 32, 32 {XScale 2.0	YScale 2.0	Patch INKSI0, 0, 0}
+Graphic SMORI0, 32, 32 {XScale 2.0	YScale 2.0	Patch SMORI0, 0, 0}
+
+graphic BLUFCN, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BFALA0, 0, 0
+}
+
+Graphic BBBBI0, 32, 32 {XScale 2.0	YScale 2.0	Patch BBBBI0, 0, 0}
+Graphic MADNI0, 32, 32 {XScale 2.0	YScale 2.0	Patch MADNI0, 0, 0}
+Graphic HDSRI0, 32, 32 {XScale 2.0	YScale 2.0	Patch HDSRI0, 0, 0}
+Graphic TOYCI0, 32, 32 {XScale 2.0	YScale 2.0	Patch TOYCI0, 0, 0}
+
+//
+//
+//
+//
+//
+//
+//
+//Luna Stuff Starts here//
+
+Graphic LUNASTAR, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRA0, 0, 0
+}
+
+Graphic LUNACNTR, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRB0, 0, 0
+}
+
+Graphic LUNAFBNG, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRC0, 0, 0
+}
+
+Graphic LUNAHEAL, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRD0, 0, 0
+}
+
+Graphic LUNABUFF, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRE0, 0, 0
+}
+
+Graphic LUNATNDR, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRF0, 0, 0
+}
+
+Graphic LUNACFAN, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRL0, 0, 0
+}
+
+Graphic LUNANULL, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRM0, 0, 0
+}
+
+Graphic LUNANULX, 32, 32
+{
+	XScale 2.0
+	YScale 2.0
+	Patch CSTRN0, 0, 0
+}
+
+//End of Luna Stuff//
 
 //========================
 //______|CopyWeps|________

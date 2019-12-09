@@ -1,0 +1,71 @@
+actor YumiAntiRegen : Inventory{}
+
+Actor Yumi : ClassBaseCSCC
+{
+Health 90
+Player.MaxHealth 90
+Player.DisplayName "Yumi"
+Player.SoundClass "Yumi"
+Player.ForwardMove 0.85, 0.85
+Player.SideMove 0.85, 0.85
+Player.JumpZ 11
+Player.StartItem "CanUseItems"
+Player.StartItem "YumiSingingWep"
+States
+{
+Spawn: 
+YMIS A 0
+YMIS B 1 A_JumpIfInventory("YumiSongFlag",1,"Missile")
+YMIS A 1 A_JumpIfInventory("YumiSongFlag",1,"Missile")
+GoTo Spawn+2
+See:
+YMIS BCDE 5 A_JumpIfInventory("YumiSongFlag",1,"Missile")
+GoTo Spawn+1
+Missile:
+YMIS F 5
+YMIS G 4
+GoTo Spawn+2
+
+}
+}
+
+actor YumiDeathFX
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+scale 2.5
+height 0
+radius 0
+States
+{
+Spawn:
+YMIS H 0
+YMIS H 1 A_FadeOut(0.1)
+YMIS H 1 A_SpawnItemEX("HighNoteFXD",random(-32,32),random(-32,32),random(-32,32),0,0,random(5,10))
+loop
+}
+}
+
+actor HighNoteFXD
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+renderstyle "Translucent"
+Alpha 0.4
+scale 2.5
+height 0
+radius 0
+States
+{
+Spawn:
+YEFC E 30
+stop
+}
+}
+

@@ -1,0 +1,22 @@
+Actor RinWeapon2 : RinWeapon1
+{
+Tag "Kouhadou / Dash"
+Weapon.SlotNumber 2
+States
+{
+Fire:
+RINH A 0 A_JumpIfInventory("UsingKnee",1,1)
+GoTo ActualFire
+RINH A 0 A_TakeInventory("UsingKnee",999)
+RINH A 0 //A_TakeInventory("NoDoubleJump",999)
+RINH A 0 A_GiveInventory("RinKneeCooldown",1)
+ActualFire:
+RINH U 0 A_JumpIfInventory("SmashFlag",1,"FinalSmash")
+RINH U 0 A_GiveInventory("RinKouhadouAnimation",1)
+RINH U 8 A_PlaySoundEx("Rin/ShotPutS","Weapon")
+RINH V 0 A_PlaySoundEx("Rin/Kouhadou","Weapon")
+RINH V 7 A_FireCustomMissile("Kouhadou",0,0,8,0)
+RINH UT 3
+GoTo Ready+2
+}
+}

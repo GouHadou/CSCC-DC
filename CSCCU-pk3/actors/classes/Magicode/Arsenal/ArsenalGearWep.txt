@@ -1,0 +1,567 @@
+actor ArsenalGearWep : Megabuster
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 0
+Weapon.SlotNumber 1
+Inventory.Pickupmessage "SWISS CHEESE"
+Obituary "%o was filled with lead by %k."
+weapon.ammotype "ArsenalGearAmmo"
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Ready:
+ARSE B 0 ACS_ExecuteAlways(998,0,544)
+ARSE B 0 A_GunFlash
+ARSE B 1 A_WeaponReady
+//ARSE B 0 A_JumpIfInventory("User1_Trigger",1,"ArsenalBlast")
+//ARSE B 0 A_JumpIfInventory("User2_Trigger",1,"ArsenalShielder")
+ARSE B 0 A_JumpIfInventory("User1_Trigger",1,"Reload")
+ARSE B 0 A_JumpIfInventory("ArsenalGearAmmo",1,"Readier")
+Goto Reload
+Readier:
+ARSE B 1 A_WeaponReady
+goto Ready+2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+ARSE B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+ARSE B 1 A_Raise
+Loop
+Fire:
+ARSE B 0 A_JumpIfNoAmmo("Reload")
+ARSE B 0 A_JumpIfInventory("SmashFlag",1,"FinalSmash")
+ARSE B 0 A_PlaySoundEx("weapon/minigun","Weapon")
+ARSE B 0 A_FireCustomMissile("ArsenalShot",random(-2,2),0,8,0,0,random(-2,2))
+ARSE D 2
+ARSE B 0 A_TakeInventory("ArsenalGearAmmo",1,0)
+ARSE C 0 A_Giveinventory("InputClearer")
+ARSE B 0 A_Refire
+Goto Ready+2
+Altfire:
+FIST Q 0 Offset(0,82)
+FIST Q 1 Offset(-5,70)
+FIST Q 1 Offset(-10,58)
+FIST Q 1 Offset(-15,46)
+FIST Q 1 Offset(-20,32)
+FIST Q 1 Offset(-25,24)
+FIST Q 0 A_PlaySoundEx("misc/kingswing","SoundSlot2")
+FIST Q 1 A_FireCustomMissile("ArsenalPunch", 0, 0, 8, 0)
+FIST Q 1 Offset(-20,32)
+FIST Q 1 Offset(-15,46)
+FIST QQQQQ 2
+FIST Q 0 A_Giveinventory("InputClearer")
+FIST Q 0 A_Refire
+goto Ready+2
+/*
+ArsenalBlast:
+ARSE B 0 A_JumpIfInventory("ArsenalBlastCooldownItem",1,"NoAmmo")
+TNT1 A 4
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_FireCustomMissile("ArsenalMissile",-15,0,8,0)
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_FireCustomMissile("ArsenalMissile",-7,0,8,0)
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_FireCustomMissile("ArsenalMissile",0,0,8,0)
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_FireCustomMissile("ArsenalMissile",7,0,8,0)
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_FireCustomMissile("ArsenalMissile",15,0,8,0)
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 8
+ARSE C 0 A_TakeInventory("JohnGunFlag",1)
+ARSE C 0 A_GiveInventory("ArsenalBlastCooldown")
+ARSE C 0 A_Giveinventory("InputClearer")
+TNT1 A 8
+goto Flash
+ArsenalShielder:
+ARSE B 0 A_JumpIfInventory("ArsenalShieldCooldownItem",1,"NoAmmo")
+AHUD BCDEF 2
+ARSE B 0 A_PlaySoundEX("weapon/superpickup","Weapon")
+ARSE B 0 A_GiveInventory("ArsenalShield",1)
+AHUD GH 3
+ARSE C 0 A_TakeInventory("JohnGunFlag",1)
+ARSE C 0 A_GiveInventory("ArsenalShieldCooldown")
+ARSE C 0 A_Giveinventory("InputClearer")
+ARSE B 8
+goto Ready+2
+*/
+FinalSmash:
+AHUD BCDEF 2
+ARSE B 0 A_PlaySoundEX("warmechdies","Weapon")
+ARSE B 0 A_GiveInventory("ArsenalRepair",1)
+ARSE B 0 A_SpawnItemEx("ArsenalRepairWatcher",0,0,28)
+AHUD GH 3
+ARSE B 6 A_TakeInventory("SmashFlag",999)
+ARSE C 0 A_Giveinventory("InputClearer")
+Goto Ready+2
+Reload:
+ARSE B 1 Offset(0,32)
+ARSE B 1 Offset(0,46)
+ARSE B 1 Offset(0,58)
+ARSE B 1 Offset(0,70)
+ARSE B 1 Offset(0,82)
+ARSE B 28 A_PlaySoundEx("weapon/rmstick","Weapon")
+ARSE B 1 A_PlaySoundEx("weapon/Crashland","Weapon")
+ARSE B 1 Offset(0,82)
+ARSE B 1 Offset(0,70)
+ARSE B 1 Offset(0,58)
+ARSE B 1 Offset(0,46)
+ARSE B 1 Offset(0,32)
+ARSE B 0 A_Giveinventory("ArsenalGearAmmo",200)
+ARSE B 13 
+ARSE C 0 A_Giveinventory("InputClearer")
+Goto Ready+2
+Flash:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("ArsenalBlastAmmo",1)
+TNT1 A 1 A_JumpIfInventory("ArsenalShield",1,"ShieldDisplay")
+loop
+ShieldDisplay:
+TNT1 A 1 A_SpawnItemEX("ArsenalShieldFX")
+goto Flash
+NoAmmo:
+ARSE B 1 A_Giveinventory("InputClearer")
+goto Ready+2
+}
+}
+
+actor ArsenalGearAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 100
++INVENTORY.IGNORESKILL
+}
+
+actor ArsenalBlastAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 150
++INVENTORY.IGNORESKILL
+}
+
+actor ArsenalShot : FastProjectile
+{
+PROJECTILE
+Radius 6
+Height 7
+Damagetype "NeedleCannon"
+Obituary "%o was filled with lead by %k."
+Scale 2.5
+Damage (2)
+speed 125
+States
+{
+Spawn:
+LASH B 1
+loop
+}
+}
+
+Actor ArsenalPunch : LightningKnee
+{
+DamageType "BNAirShot"
+Obituary "%k smacked up and clapped up %o."
+Radius 8 //3
+Height 8 //3
+Speed 10
+Scale 2.5
+damage(50)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Explode(40,64,0,0,64)
+TNT1 A 2 A_SpawnItemEX("ArsenalPunchFX",25,0,0)
+Stop
+}
+}
+
+Actor ArsenalPunchFX : BasicClientside
+{
+Scale 1.0
+States
+{
+Spawn:
+ASEX ABCDEF 2
+stop
+}
+}
+
+
+
+
+actor BlasterArsenalShot : ArsenalShot 
+{
+Translation "220:220=176:176"
++RIPPER
+damage (4)
+}
+
+actor FreezerArsenalShot: ArsenalShot
+{
+Translation "220:220=197:197"
+damagetype "IceBomb"
+}
+
+actor SniperArsenalShot: ArsenalShot
+{
+Translation "220:220=229:229"
+damage (3)
+speed 150
+}
+
+Actor ArsenalShield : PowerProtection
+{
+PowerUp.Duration -4
+DamageFactor "normal", .75
+Inventory.Icon "TIMICON"
+}
+
+actor ArsenalMissile
+{
+PROJECTILE
++SEEKERMISSILE
++DONTBLAST
+Radius 9
+Height 9
+scale 5
+damage (2) 
+damagetype "DiveMissile"
+Obituary "%k launched a missile barrage at %o, it went as you would think." //for 10 damage can a dumb obituary be put here?
+speed 40
+Translation "198:198=3:3"
+ReactionTime 70
+States
+{
+Spawn:
+TNT1 A 0
+DIVE AB 1 bright
+DIVE A 0 bright A_SeekerMissile(8,10,SMF_LOOK|SMF_PRECISE,128,10)
+TNT1 A 0 A_CountDown
+loop
+Death:
+TNT1 A 1 A_SpawnItemEX("ArsenalBoom")
+stop
+}
+}
+
+Actor ArsenalBoom
+{
+Projectile
++NOINTERACTION
++NOCLIP
++DONTBLAST
++FORCEXYBILLBOARD
+Radius 0
+Height 0
+scale 6
+damagetype "DiveMissile"
+Obituary "%k launched a missile barrage at %o, it went as you would think."
+speed 0
+States
+{
+Spawn:
+TNT1 A 0
+ASEX A 0 A_PlaySoundEx("misc/mm3explosion", "Weapon")
+ASEX A 1 A_Explode(8,200,0,0,50)//A_Explode(250,128,0,0,64)
+ASEX ABCDEF 2 
+stop
+}
+}
+
+actor ArsenalBlastItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "HSNIPERI"
+scale 2.0
++INVBAR
++NOTARGETSWITCH
+States
+{
+Spawn:
+BOMB A 1
+loop
+Use:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("ArsenalBlastAmmo",150,"Blaster")
+fail
+Blaster:
+TNT1 A 0 A_SpawnItemEx("ArsenalBlastHelper",0,0,28)
+TNT1 A 0 A_TakeInventory("ArsenalBlastAmmo",150)
+fail
+}
+}
+
+actor ArsenalBlastHelper : BasicHelper
+{
++NOTARGETSWITCH
+States
+{
+Spawn:
+TNT1 A 4
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_GiveToTarget("ArsenalBlastPickup1")
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_GiveToTarget("ArsenalBlastPickup2")
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_GiveToTarget("ArsenalBlastPickup3")
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_GiveToTarget("ArsenalBlastPickup4")
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 2
+TNT1 A 0 A_PlaySoundEX("weapon/magnetmissile","Weapon")
+TNT1 A 0 A_GiveToTarget("ArsenalBlastPickup5")
+TNT1 A 0 A_GiveInventory("JohnGunFlag",1)
+TNT1 A 8
+ARSE C 0 A_TakeInventory("JohnGunFlag",1)
+ARSE C 0 A_Giveinventory("InputClearer")
+Death:
+TNT1 A 0
+stop
+}
+}
+
+
+actor ArsenalBlastPickup1 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+states
+{
+Spawn:
+TNT1 A 1
+stop
+Pickup:
+TNT1 A 1 A_FireCustomMissile("ArsenalMissile",-15,0,8,0)
+stop
+}
+}
+
+actor ArsenalBlastPickup2 : ArsenalBlastPickup1 
+{
+states
+{
+Pickup:
+TNT1 A 1 A_FireCustomMissile("ArsenalMissile",-7,0,8,0)
+stop
+}
+}
+
+actor ArsenalBlastPickup3 : ArsenalBlastPickup1 
+{
+states
+{
+Pickup:
+TNT1 A 1 A_FireCustomMissile("ArsenalMissile",0,0,8,0)
+stop
+}
+}
+
+actor ArsenalBlastPickup4 : ArsenalBlastPickup1 
+{
+states
+{
+Pickup:
+TNT1 A 1 A_FireCustomMissile("ArsenalMissile",7,0,8,0)
+stop
+}
+}
+
+actor ArsenalBlastPickup5 : ArsenalBlastPickup1 
+{
+states
+{
+Pickup:
+TNT1 A 1 A_FireCustomMissile("ArsenalMissile",15,0,8,0)
+stop
+}
+}
+
+actor ArsenalBlastCooler // Coolers are a type of watcher actor that handle weapon cooldowns
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("ArsenalBlastCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("ArsenalBlastCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor ArsenalBlastCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("ArsenalBlastCooldownItem",210) //6 seconds
+TNT1 A 0 A_Spawnitemex("ArsenalBlastCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor ArsenalBlastCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 210
+}
+
+actor ArsenalShieldCooler // Coolers are a type of watcher actor that handle weapon cooldowns
+{
++MISSILE
++RIPPER
++NOGRAVITY
++NOINTERACTION
+Reactiontime 5
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("ArsenalShieldCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("ArsenalShieldCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor ArsenalShieldCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("ArsenalShieldCooldownItem",350) //10 seconds
+TNT1 A 0 A_Spawnitemex("ArsenalShieldCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor ArsenalShieldCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 350
+}
+
+actor ArsenalShieldFX
+{
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+scale 2.5
+height 0
+radius 0
+States
+{
+Spawn:
+TNT1 A 0 A_SetTranslucent(0.8,0)
+SHRA A 1
+stop
+}
+}
+
+Actor ArsenalRepair : Powerup {powerup.duration -20 powerup.color Green 0.25}
+
+Actor ArsenalRepairWatcher
+{
++NOINTERACTION
++NOCLIP
+-SOLID
++MISSILE
+radius 1
+height 1
++NOGRAVITY
++DONTBLAST
+Scale 1.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 2
+TNT1 A 0 A_GiveToTarget("ArsenalRepairFXSpawner",1)
+TNT1 A 0 A_GiveToTarget("SubzeroFieldHealer",2)
+TNT1 A 0 A_JumpIfInTargetInventory("ArsenalRepair",1,"Spawn")
+goto Death
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor ArsenalRepairFXSpawner : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("ArsenalRepairFX",0,0,random(0,48),random(1,7),random(1,7),random(1,7),random(0,359))
+stop
+}
+}
+
+Actor ArsenalRepairFX
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+-NOGRAVITY
+Radius 0
+Height 0
+Scale 1.0
+States
+{
+Spawn:
+SPAS AB 1 A_Fadeout(0.12)
+loop
+}
+}

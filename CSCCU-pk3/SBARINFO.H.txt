@@ -1271,6 +1271,651 @@ IsSelected AtomicSuplexBoss
 	Drawbar"VARAMM12", "VAREMPTY", Ammo1, horizontal, 130, 192;
 	}
 	
+//██████████████████████████████████████████Magicode████████████████████████████████████████
+
+//Aquoon
+InInventory IsAquoon, 1 
+	{
+	DrawNumber 1, INDEXFONT, UNTRANSLATED, ColdStreamFired, 48, 185;
+	InInventory SmashFlag, 1 {DrawImage "RINTMEM", 154, 174;}
+	IsSelected AquoonWeapon1 {DrawBar "VARAMM96", "VAREMPTY", AquoonIceAmmo, Horizontal, 58, 184;}
+	IsSelected AquoonWeapon2 {DrawBar "VARAMM93", "VAREMPTY", AquoonWaterAmmo, Horizontal, 58, 184;}
+	}
+
+
+
+//Rin
+InInventory IAmRin, 1
+{
+DrawImage "MAGIHUD", 10, 175;
+//DrawBar "MAGIBAR", "MAGIEMP", UltMaterial, horizontal, 29, 180;
+DrawImage "RINSBAR", 0, 7;
+InInventory Not LowOnHealth {DrawBar "RINHBARF", "RINHBARE", Health, Horizontal, 7, 8;}
+InInventory LowOnHealth, 1 {DrawBar "RINHBARH", "RINHBARE", Health, Horizontal, 7, 8;}
+DrawNumber 4, RINFONT, UNTRANSLATED, Health, 35, 8;
+InInventory RUCCharge, 1 {DrawBar "RINCBARN", "RINCBARE", RUCCharge, Horizontal, 99, 17;}
+InInventory RUCCharge, 15 {DrawBar "RINCBARI", "RINCBARE", RUCCharge, Horizontal, 99, 17;}
+InInventory RUCCharge, 30 {DrawBar "RINCBARF", "RINCBARE", RUCCharge, Horizontal, 99, 17;}
+DrawImage "RINFACE1", 6, 16; DrawImage "RNICC0", 87, 25;
+InInventory RinPhaseDash1, 1 {DrawImage "RNICD0", 87, 25;}
+InInventory RinPhaseDash2, 1 {DrawImage "RNICD0", 87, 25;}
+IsSelected RinGougi1 {DrawImage "RNICB0", 77, 25;}
+IsSelected RinGougi2 {DrawImage "RNICA0", 77, 25;}
+InInventory RUCCharge, 15 {DrawImage "RINCHG1", 77, 25;}
+InInventory RUCCharge, 30 {DrawImage "RINCHG2", 77, 25;}
+DrawSelectedInventory INDEXFONT, 58, 26, 56, 27, White;
+InInventory SmashFlag, 1 {DrawImage "RINTMEM", 97, 25;}
+
+InInventory Not StaminaFlag, 500 {InInventory StaminaFlag, 1 {DrawBar "BARAMMO1", "BAREMPTY", StaminaFlag, Vertical, 21, 36;}}
+
+InInventory DemonRinEnergy, 1 {
+IsSelected RinGougi1 {DrawImage "RNICH0", 77, 25;}
+IsSelected RinGougi2 {DrawImage "RNICI0", 77, 25;}
+DrawImage "RNICG0", 87, 25;
+DrawBar "MGCBAR2", "BAREMPTY", DemonRinEnergy, Vertical, 21, 36;}
+}
+
+//King Baku
+IsSelected FireStarterWep 
+	{
+	Drawbar"VARAMMO5", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	Drawbar"VARAMMO1", "VAREMPTY", Ammo2, horizontal, 58, 176;
+	}
+
+IsSelected MagicPackWep 
+	{
+	Drawbar"VARAMM47", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	Drawbar"VARAMMO1", "VAREMPTY", Ammo2, horizontal, 58, 176;
+	}
+IsSelected CyberPackWep 
+	{
+	Drawbar"VARAMM26", "VAREMPTY", Ammo1, Horizontal, 58, 184;
+	Drawbar"VARAMMO1", "VAREMPTY", Ammo2, horizontal, 58, 176;
+	}
+
+//Glace
+InInventory IAmGlaceFlag, 1
+{
+DrawImage "MAGIHUD", 10, 175;
+//DrawBar "MAGIBAR", "MAGIEMP", UltMaterial, horizontal, 29, 180;
+DrawImage "ICEFHUD1", 10, 5;
+InInventory GlaceHPFX1, 1{DrawImage "ICEFHUD2", 10, 5;}
+InInventory GlaceHPFX2, 1{DrawImage "ICEFHUD3", 10, 5;}
+InInventory GlaceHPFX3, 1{DrawImage "ICEFHUD4", 10, 5;}
+InInventory GlaceDeathHP, 1{DrawImage "ICEFHUD5", 10, 5;}
+InInventory LightTeamFlag, 1 {DrawImage "GLTEA1", 10, 5;}
+InInventory WilyTeamFlag, 1 {DrawImage "GLTEA2", 10, 5;}
+InInventory CossackTeamFlag, 1 {DrawImage "GLTEA3", 10, 5;}
+InInventory KingTeamFlag, 1 {DrawImage "GLTEA4", 10, 5;}
+Drawbar"ICEHBAR", "ICEHEMP", Health, vertical, 23, 27;
+InInventory GlaceAmmo, 0 {DrawBar "ICEEMP", "ICEEMP", GlaceAmmo, vertical, 30, 29;}
+InInventory GlaceAmmo, 1 {DrawBar "ICEBAR2", "NOBAR", GlaceAmmo, vertical, 30, 29;}
+InInventory GlaceAmmo, 26 {DrawBar "ICEBAR1", "NOBAR", GlaceAmmo, vertical, 30, 29;}
+
+InInventory IceBombCooldown, 0 {DrawBar "NOGBAR", "NOGBAR", IceBombCooldown, vertical,reverse, 42, 22;}
+InInventory IceBombCooldown, 1 {Drawbar"ICEBEMP", "NOGBAR", IceBombCooldown, vertical,reverse, 42, 22;}
+InInventory IceBombCooldown, 50 {Drawbar"ICEBUTT", "NOGBAR", IceBombCooldown, vertical,reverse, 42, 22;}
+
+InInventory GlaceAmmo2, 0 {DrawBar "NOGBAR", "NOGBAR", GlaceAmmo2, vertical,reverse, 56, 22;}
+InInventory GlaceAmmo2, 1 {Drawbar"ICSBEMP", "NOGBAR", GlaceAmmo2, vertical,reverse, 56, 22;}
+InInventory GlaceAmmo2, 50 {Drawbar"ICSBUTT", "NOGBAR", GlaceAmmo2, vertical,reverse, 56, 22;}
+
+DrawImage "ICSIC1", 38, 8;
+DrawImage "ICSIC2", 52, 8;
+
+//DrawImage "GLJUMP2", 38, 55;
+//InInventory GlaceDJCooldown, 1 {DrawImage "GLJUMP1", 38, 55;}
+
+DrawSelectedInventory INDEXFONT ,40, 57, 57, 58, white;
+InInventory SmashFlag, 1 {DrawImage "TMEMA0", 70, 65;}
+}
+
+//Red Mage
+InInventory IsRedMage
+{
+DrawImage "RMU1B0", 46, 192;
+DrawImage "RMU2B0", 46, 176;
+DrawSelectedInventory INDEXFONT ,122, 184, 120, 185, white;
+DrawImage weaponicon, 50, 184;
+InInventory RMBuffBanT, 1{DrawImage "RBFFICN1", 188, 182;}
+InInventory RMBuffBanF, 1{DrawImage "RBFFICN2", 204, 182;}
+}
+
+IsSelected RedMageDiaraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageFiraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageAeroraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageBlizzaraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageSlowWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageWateraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageThundaraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageBlinkWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+//IsSelected RedMageProtectWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;}
+IsSelected RedMageTemperWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageFocusWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+
+//Sergeant John
+IsSelected JohnGunWep{
+DrawImage "MAGIHUD", 10, 5;
+//DrawBar "MAGIBAR", "MAGIEMP", UltMaterial, horizontal, 29, 10;
+DrawImage "JOHNHUD", 5, 150;
+InInventory LightTeamFlag, 1 {DrawImage "JOHNBHUD", 5, 150;}
+InInventory WilyTeamFlag, 1 {DrawImage "JOHNRHUD", 5, 150;}
+InInventory CossackTeamFlag, 1 {DrawImage "JOHNGHUD", 5, 150;}
+InInventory KingTeamFlag, 1 {DrawImage "JOHNPHUD", 5, 150;}
+DrawBar "JOHNHP1", "JOHNHP2", Health, vertical, 49, 151;
+DrawNumber 4, JOHNFONT1, Normal, Health, 71, 163, 1;
+DrawImage "JOHNWHUD", 75, 180;
+InInventory LightTeamFlag, 1 {DrawImage "JOHNLHUD", 75, 180;}
+InInventory WilyTeamFlag, 1 {DrawImage "JOHNYHUD", 75, 180;}
+InInventory CossackTeamFlag, 1 {DrawImage "JOHNCHUD", 75, 180;}
+InInventory KingTeamFlag, 1 {DrawImage "JOHNKHUD", 75, 180;}
+DrawNumber 1, JOHNFONT2, Normal, JohnMainAmmo, 95, 185, 1;
+DrawBar "JOHNEMP1", "JOHNWEP1", EMPCooldownItem, vertical,reverse, 118, 181;
+DrawImage "JOHNTHR", 135, 181;
+DrawSelectedInventory INDEXFONT ,10, 145, 28, 146, white;
+}
+
+//Ignis
+IsSelected IgnisArsenalWep {
+Drawbar"VARAMMO5", "VAREMPTY", Ammo1, horizontal, 58, 184;
+Drawbar"VARAMM57", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+
+//Yumi
+IsSelected YumiSingingWep 
+{
+	Drawbar"VARAMM58", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	DrawImage "YICNA0", 37,84;
+	DrawImage "YICNC0", 47,84;
+	DrawString SMALLFONT, YELLOW, "Songs", 65, 76, 0;
+InInventory SongBuffAmmo, 0 {DrawImage "YUCDA0", 40,94;}
+InInventory SongBuffAmmo, 70 {DrawImage "YUCDB0", 40,94;}
+InInventory SongBuffAmmo, 140 {DrawImage "YUCDC0", 40,94;}
+InInventory SongBuffAmmo, 210 {DrawImage "YUCDD0", 40,94;}
+InInventory SongBuffAmmo, 270 {DrawImage "YUCDE0", 40,94;}
+InInventory SongBuffAmmo, 350 {DrawImage "YUCDF0", 40,94;}
+InInventory SongBuffAmmo, 420 {DrawImage "YUCDG0", 40,94;}
+InInventory SongBuffAmmo, 490 {DrawImage "YUCDH0", 40,94;}
+InInventory SongBuffAmmo, 560 {DrawImage "YUCDI0", 40,94;}
+}
+
+//Lily
+ininventory IsLily
+{
+Drawbar"VARAMM51", "VAREMPTY", PollenBuffer, horizontal, 58, 184;
+ininventory Clorophyll, 0 {DrawBar "LWETVAR", "LWETVAR", Clorophyll, horizontal, 58, 176;}
+ininventory Clorophyll, 1 {DrawBar "LWATVAR2", "LWETVAR", Clorophyll, horizontal, 58, 176;}
+ininventory Clorophyll, 303 {DrawBar "LWATVAR", "LWETVAR", Clorophyll, horizontal, 58, 176;}
+InInventory GrassPower {DrawImage "LILPOW", 10, 168;}
+DrawImage "LILHUD1", 8, 30;
+DrawImage "LILHUD2", 8, 43;
+DrawBar "LILBAR2", "LILEMP", GrassBuffer, horizontal, 23, 34;
+DrawBar "LILBAR3", "LILEMP", PlantBuffer, horizontal, 23, 47;
+
+InInventory ToxinEnergy, 1 {DrawBar "LBPBVAR", "NOVAR", ToxinEnergy, horizontal, 130, 184;}
+}
+
+InInventory GrassSpeed, 1 {DrawImage "LILPOW", 290,8;}
+
+//===Bika Hud ===
+InInventory BikaHud
+{
+
+DrawImage "C_HUD", 0, 160;
+InInventory WilyTeamFlag, 1 {DrawImage "C_HUDR", 0, 160;}
+	
+	DrawBar "C_HLTHB", "C_EMPTB", Health, Horizontal, 4, 178;
+	//DrawBar "TS2ARMR", "TS2NOBAR", Basicarmor, Horizontal, 39, 164;
+	
+	DrawNumber 3, CONFONT, UNTRANSLATED, Health, alignment(Left), 5, 166; //72
+	DrawNumber 3, smallfont, white, Ammo1, alignment(left), 41, 166;
+DrawSelectedInventory INDEXFONT ,60, 165, 77, 166, white;
+
+InInventory not NoClipBar, 1{
+//InInventory LightTeamFlag, 1 {DrawImage "AMMOHUD", 68, 151;} 
+DrawImage "AMMOHUD", 68, 151;
+InInventory WilyTeamFlag, 1 {DrawImage "AMMO_R", 68, 151;}
+DrawNumber 3, smallfont, white, Ammo1, alignment(left), 90, 167;
+}
+
+InInventory not NoCoolBar, 1{
+//InInventory LightTeamFlag, 1 {DrawImage "ALTHUD", 216, 159;}
+DrawImage "ALTHUD", 216, 159;
+InInventory WilyTeamFlag, 1 {DrawImage "ALTHUD_R", 216, 159;}
+}
+
+//InInventory LightTeamFlag, 1 {DrawImage "ALTHUD", 241, 159;}
+DrawImage "ALTHUD", 241, 159;
+InInventory WilyTeamFlag, 1 {DrawImage "ALTHUD_R", 241, 159;}
+
+//InInventory LightTeamFlag, 1 {DrawImage "ALTHUD", 266, 159;}
+DrawImage "ALTHUD", 266, 159;
+InInventory WilyTeamFlag, 1 {DrawImage "ALTHUD_R", 266, 159;}
+
+}
+
+//Thalo
+InInventory HipeGun {
+//DrawImage "MAGIHUD", 10, 180;
+//DrawBar "MAGIBAR", "MAGIEMP", UltMaterial, horizontal, 29, 185;
+// ===ForceField===
+DrawImage "LTSCI", 247, 165;
+DrawBar "ALTEMP", "ALTHBAR1", BarricadeCooldownItem, vertical,reverse, 244, 162;
+ininventory BarricadeCooldownItem ,1 {DrawBar "ALTEMP", "ALTHBAR", BarricadeCooldownItem, vertical,reverse, 244, 162;}
+
+// ===Health Generator===
+DrawImage "HGENI", 272, 165;
+DrawBar "ALTEMP", "ALTHBAR1", HealthGeneratorCooldownitem, vertical,reverse, 269, 162;
+ininventory HealthGeneratorCooldownitem ,1 {DrawBar "ALTEMP", "ALTHBAR", HealthGeneratorCooldownitem, vertical,reverse, 269, 162;}
+
+// ===TopGrenade===
+DrawImage "ALTHUD", 291, 159;
+InInventory WilyTeamFlag, 1 {DrawImage "ALTHUD_R", 291, 159;}
+
+DrawImage "TPGNI", 297, 165;
+DrawBar "ALTEMP", "ALTHBAR1", TopGrenadeCooldownItem, vertical,reverse, 294, 162;
+ininventory TopGrenadeCooldownItem ,1 {DrawBar "ALTEMP", "ALTHBAR", TopGrenadeCooldownItem, vertical,reverse, 294, 162;}
+
+}
+
+/*
+IsSelected RNGHammerWep
+{
+InInventory RNGHammer1SBAR {DrawImage "RNG1A0", 160, 10;}
+InInventory RNGHammer2SBAR {DrawImage "RNG2A0", 160, 10;}
+InInventory RNGHammer3SBAR {DrawImage "RNG3A0", 160, 10;}
+InInventory RNGHammer4SBAR {DrawImage "RNG4A0", 160, 10;}
+InInventory RNGHammer5SBAR {DrawImage "RNG5A0", 160, 10;}
+InInventory RNGHammer6SBAR {DrawImage "RNG6A0", 160, 10;}
+InInventory RNGHammer7SBAR {DrawImage "RNG7A0", 160, 10;}
+InInventory RNGHammer8SBAR {DrawImage "RNG8A0", 160, 10;}
+InInventory RNGHammer9SBAR {DrawImage "RNG9B0", 160, 10;}
+}
+*/
+
+//Sal
+
+InInventory IsSal
+{
+	DrawImage "SALHUD", 108, 152;
+	DrawSelectedInventory INDEXFONT ,188, 163, 198, 167, white;
+	DrawImage weaponicon, 188, 180;
+	InInventory Under25Percent, 1 {DrawBar "SHLTH3", "NOVAR", health, horizontal, 125, 165;}
+	InInventory Over25Percent, 1 {DrawBar "SHLTH2", "NOVAR", health, horizontal, 125, 165;}
+	InInventory Over50Percent, 1 {DrawBar "SHLTH1", "NOVAR", health, horizontal, 125, 165;}
+	InInventory LightTeamFlag, 1 {DrawImage "SALHUDA", 108, 152;}
+	InInventory WilyTeamFlag, 1 {DrawImage "SALHUDO", 108, 152;}
+	InInventory CossackTeamFlag, 1 {DrawImage "SALHUDG", 108, 152;}
+	InInventory KingTeamFlag, 1 {DrawImage "SALHUDS", 108, 152;}
+	
+	IsSelected PsychicPower{DrawImage "PSHKI0", 188, 172; DrawBar "SALBAR1", "NOVAR", Ammo1, Horizontal, 112, 173; DrawBar "SALBAR2", "NOVAR", PsybeamEnergy, horizontal, 112, 181;}
+	IsSelected DarkPower{DrawImage "SHDWI0", 188, 172; DrawBar "SALBAR3", "NOVAR", Ammo1, Horizontal, 112, 173; DrawBar "SALBAR4", "NOVAR", FeintAttackEnergy, horizontal, 112, 181;}
+}
+
+//Darkile
+InInventory IsDarkile
+{
+DrawImage "MAGIHUD", 10, 175;
+//DrawBar "MAGIBAR", "MAGIEMP", UltMaterial, horizontal, 29, 180;
+DrawImage "DARHUD", 6, 8;
+InInventory LightTeamFlag, 1 {DrawImage "DABHUD", 6, 8;}
+InInventory WilyTeamFlag, 1 {DrawImage "DADHUD", 6, 8;}
+InInventory CossackTeamFlag, 1 {DrawImage "DAUGUD", 6, 8;}
+InInventory KingTeamFlag, 1 {DrawImage "DAPHUD", 6, 8;}
+DrawBar "DARHBAR", "DAREMP1", Health, horizontal, 41,12;
+DrawBar "DARFSIC", "DARFEMP", SmashFlag, vertical, 29,12;
+IsSelected DuskVoid1Wep {DrawImage "DARWEP1", 10, 12;}
+IsSelected DuskVoid1Wep {DrawBar "DARBAR1","DAREMP2",Ammo1,horizontal,36,18;}
+IsSelected DuskVoid2Wep {DrawImage "DARWEP2", 10, 12;}
+IsSelected DuskVoid2Wep {DrawBar "DARBAR2","DAREMP2",Ammo1,horizontal,36,18;}
+InInventory DuskStormAmmo, 0 {DrawImage "DALT0", 10, 30;}
+InInventory DuskStormAmmo, 20 {DrawImage "DALT1", 10, 30;}
+InInventory DuskStormAmmo, 40 {DrawImage "DALT2", 10, 30;}
+InInventory DuskStormAmmo, 60 {DrawImage "DALT3", 10, 30;}
+InInventory DuskStormAmmo, 80 {DrawImage "DALT4", 10, 30;}
+DrawSelectedInventory INDEXFONT ,57, 34, 70, 34, white;
+}
+
+
+//===ZOMO CLASS STUFF===//
+IsSelected ZomoBNWep
+{
+InInventory UsingSlot1, 1{DrawImage "CHPWEP1", 14, 118;}
+InInventory DarkSoulCounter {DrawBar "SOULVARB","VAREMPTY",DarkSoulCounter,horizontal,58,176;}
+}
+
+IsSelected ZomoBNWep2
+{
+InInventory UsingSlot2, 1{DrawImage "CHPWEP2", 14, 118;}
+InInventory DarkSoulCounter {DrawBar "SOULVARB","VAREMPTY",DarkSoulCounter,horizontal,58,176;}
+}
+
+IsSelected ZomoBNWep3
+{
+InInventory UsingSlot3, 1{DrawImage "CHPWEP3", 14, 118;}
+InInventory DarkSoulCounter {DrawBar "SOULVARB","VAREMPTY",DarkSoulCounter,horizontal,58,176;}
+}
+
+InInventory IsZomo
+{
+DrawImage "ZOMHPG", 130, 183;
+DrawNumber 4, ZOMFONT, UNTRANSLATED, Health, Alignment(Right), 168, 184;
+DrawSelectedInventory INDEXFONT, 50, 184, 48, 185, White;
+Drawbar "VARENERG", "VAREMPTY", Ammo1, horizontal, 58, 184;
+Drawbar "CUSTFULL", "CUSTBAR", CustomAmmo, horizontal, 120, 18;
+InInventory CustomAmmo, 300{DrawBar "BNCSBAR", "CUSTBAR", CustomAmmo, horizontal, 120, 18;}
+//InInventory AntiFireTime, 1{DrawImage "AWINA0", 176, 184;}
+//InInventory AntiAquaTime, 1{DrawImage "ABRKA0", 176, 184;}
+//InInventory AntiElecTime, 1{DrawImage "AWINA0", 176, 184;}
+//InInventory AntiWoodTime, 1{DrawImage "ABRKA0", 176, 184;}
+InInventory AntiWindTime, 1{DrawImage "AWINA0", 54, 8;}
+InInventory AntiBreakTime, 1{DrawImage "ABRKA0", 54, 8;}
+InInventory AntiDamageTime, 1{DrawImage "ADMGI0", 54, 8;}
+InInventory NormalFlag, 1{DrawImage "NORMI0", 53, 135;}
+InInventory FireFlag, 1{DrawImage "FRICI0", 53, 135;}
+InInventory AquaFlag, 1{DrawImage "AQICI0", 53, 135;}
+InInventory ElecFlag, 1{DrawImage "ELICI0", 53, 135;}
+InInventory WoodFlag, 1{DrawImage "WDICI0", 53, 135;}
+InInventory WindFlag, 1{DrawImage "WINII0", 53, 135;}
+InInventory BreakFlag, 1{DrawImage "BRAKI0", 53, 135;}
+InInventory NormalFlag2, 1{DrawImage "NORMI0", 53, 146;}
+InInventory FireFlag2, 1{DrawImage "FRICI0", 53, 146;}
+InInventory AquaFlag2, 1{DrawImage "AQICI0", 53, 146;}
+InInventory ElecFlag2, 1{DrawImage "ELICI0", 53, 146;}
+InInventory WoodFlag2, 1{DrawImage "WDICI0", 53, 146;}
+InInventory WindFlag2, 1{DrawImage "WINII0", 53, 146;}
+InInventory BreakFlag2, 1{DrawImage "BRAKI0", 53, 146;}
+InInventory NormalFlag3, 1{DrawImage "NORMI0", 53, 156;}
+InInventory FireFlag3, 1{DrawImage "FRICI0", 53, 156;}
+InInventory AquaFlag3, 1{DrawImage "AQICI0", 53, 156;}
+InInventory ElecFlag3, 1{DrawImage "ELICI0", 53, 156;}
+InInventory WoodFlag3, 1{DrawImage "WDICI0", 53, 156;}
+InInventory WindFlag3, 1{DrawImage "WINII0", 53, 156;}
+InInventory BreakFlag3, 1{DrawImage "BRAKI0", 53, 156;}
+InInventory AntiDamageFlag, 1{DrawImage "ANTII0", 39, 135;}
+InInventory AntiDamageFlag2, 1{DrawImage "ANTII0", 39, 146;}
+InInventory AntiDamageFlag3, 1{DrawImage "ANTII0", 39, 157;}
+InInventory UninstallFlag, 1{DrawImage "UNISI0", 39, 135;}
+InInventory UninstallFlag2, 1{DrawImage "UNISI0", 39, 146;}
+InInventory UninstallFlag3, 1{DrawImage "UNISI0", 39, 157;}
+InInventory MagBoltFlag, 1{DrawImage "MBICA0", 39, 135;}
+InInventory MagBoltFlag2, 1{DrawImage "MBICA0", 39, 146;}
+InInventory MagBoltFlag3, 1{DrawImage "MBICA0", 39, 157;}
+InInventory Harpoon2Flag, 1{DrawImage "1HRPI0", 39, 135;}
+InInventory Harpoon2Flag2, 1{DrawImage "1HRPI0", 39, 146;}
+InInventory Harpoon2Flag3, 1{DrawImage "1HRPI0", 39, 157;}
+InInventory Harpoon3Flag, 1{DrawImage "2HRPI0", 39, 135;}
+InInventory Harpoon3Flag2, 1{DrawImage "2HRPI0", 39, 146;}
+InInventory Harpoon3Flag3, 1{DrawImage "2HRPI0", 39, 157;}
+InInventory Harpoon4Flag, 1{DrawImage "3HRPI0", 39, 135;}
+InInventory Harpoon4Flag2, 1{DrawImage "3HRPI0", 39, 146;}
+InInventory Harpoon4Flag3, 1{DrawImage "3HRPI0", 39, 157;}
+InInventory MiniBombFlag, 1{DrawImage "MBOMA0", 39, 135;}
+InInventory MiniBombFlag2, 1{DrawImage "MBOMA0", 39, 146;}
+InInventory MiniBombFlag3, 1{DrawImage "MBOMA0", 39, 157;}
+InInventory MidBombFlag, 1{DrawImage "MIBMI0", 39, 135;}
+InInventory MidBombFlag2, 1{DrawImage "MIBMI0", 39, 146;}
+InInventory MidBombFlag3, 1{DrawImage "MIBMI0", 39, 157;}
+InInventory CrossBombFlag, 1{DrawImage "CBMBI0", 39, 135;}
+InInventory CrossBombFlag2, 1{DrawImage "CBMBI0", 39, 146;}
+InInventory CrossBombFlag3, 1{DrawImage "CBMBI0", 39, 157;}
+InInventory CBallFlag, 1{DrawImage "CBALI0", 39, 135;}
+InInventory CBallFlag2, 1{DrawImage "CBALI0", 39, 146;}
+InInventory CBallFlag3, 1{DrawImage "CBALI0", 39, 157;}
+InInventory FlashBombFlag, 1{DrawImage "FBMBI0", 39, 135;}
+InInventory FlashBombFlag2, 1{DrawImage "FBMBI0", 39, 146;}
+InInventory FlashBombFlag3, 1{DrawImage "FBMBI0", 39, 157;}
+InInventory Recov300Flag, 1{DrawImage "RCOVI0", 39, 135;}
+InInventory Recov300Flag2, 1{DrawImage "RCOVI0", 39, 146;}
+InInventory Recov300Flag3, 1{DrawImage "RCOVI0", 39, 157;}
+InInventory GreenAppleFlag, 1{DrawImage "GAPLI0", 39, 135;}
+InInventory GreenAppleFlag2, 1{DrawImage "GAPLI0", 39, 146;}
+InInventory GreenAppleFlag3, 1{DrawImage "GAPLI0", 39, 157;}
+InInventory YellowAppleFlag, 1{DrawImage "YAPLI0", 39, 135;}
+InInventory YellowAppleFlag2, 1{DrawImage "YAPLI0", 39, 146;}
+InInventory YellowAppleFlag3, 1{DrawImage "YAPLI0", 39, 157;}
+InInventory RedAppleFlag, 1{DrawImage "RAPLI0", 39, 135;}
+InInventory RedAppleFlag2, 1{DrawImage "RAPLI0", 39, 146;}
+InInventory RedAppleFlag3, 1{DrawImage "RAPLI0", 39, 157;}
+InInventory TimeBombFlag, 1{DrawImage "TBMBI0", 39, 135;}
+InInventory TimeBombFlag2, 1{DrawImage "TBMBI0", 39, 146;}
+InInventory TimeBombFlag3, 1{DrawImage "TBMBI0", 39, 157;}
+InInventory SwordFlag, 1{DrawImage "SWRDI0", 39, 135;}
+InInventory SwordFlag2, 1{DrawImage "SWRDI0", 39, 146;}
+InInventory SwordFlag3, 1{DrawImage "SWRDI0", 39, 157;}
+InInventory WideSwordFlag, 1{DrawImage "WSWDI0", 39, 135;}
+InInventory WideSwordFlag2, 1{DrawImage "WSWDI0", 39, 146;}
+InInventory WideSwordFlag3, 1{DrawImage "WSWDI0", 39, 157;}
+InInventory LongSwordFlag, 1{DrawImage "LSWDI0", 39, 135;}
+InInventory LongSwordFlag2, 1{DrawImage "LSWDI0", 39, 146;}
+InInventory LongSwordFlag3, 1{DrawImage "LSWDI0", 39, 157;}
+InInventory FireSwordFlag, 1{DrawImage "FISDI0", 39, 135;}
+InInventory FireSwordFlag2, 1{DrawImage "FISDI0", 39, 146;}
+InInventory FireSwordFlag3, 1{DrawImage "FISDI0", 39, 157;}
+InInventory AquaSwordFlag, 1{DrawImage "AQSDI0", 39, 135;}
+InInventory AquaSwordFlag2, 1{DrawImage "AQSDI0", 39, 146;}
+InInventory AquaSwordFlag3, 1{DrawImage "AQSDI0", 39, 157;}
+InInventory ElecSwordFlag, 1{DrawImage "ELSDI0", 39, 135;}
+InInventory ElecSwordFlag2, 1{DrawImage "ELSDI0", 39, 146;}
+InInventory ElecSwordFlag3, 1{DrawImage "ELSDI0", 39, 157;}
+InInventory WoodSwordFlag, 1{DrawImage "WOSDI0", 39, 135;}
+InInventory WoodSwordFlag2, 1{DrawImage "WOSDI0", 39, 146;}
+InInventory WoodSwordFlag3, 1{DrawImage "WOSDI0", 39, 157;}
+InInventory TreeBombFlag, 1{DrawImage "TRBMI0", 39, 135;}
+InInventory TreeBombFlag2, 1{DrawImage "TRBMI0", 39, 146;}
+InInventory TreeBombFlag3, 1{DrawImage "TRBMI0", 39, 157;}
+InInventory InvisibleFlag, 1{DrawImage "INVSI0", 39, 135;}
+InInventory InvisibleFlag2, 1{DrawImage "INVSI0", 39, 146;}
+InInventory InvisibleFlag3, 1{DrawImage "INVSI0", 39, 157;}
+InInventory BoomerangFlag, 1{DrawImage "BOMRI0", 39, 135;}
+InInventory BoomerangFlag2, 1{DrawImage "BOMRI0", 39, 146;}
+InInventory BoomerangFlag3, 1{DrawImage "BOMRI0", 39, 157;}
+InInventory HiBoomerangFlag, 1{DrawImage "HBMRI0", 39, 135;}
+InInventory HiBoomerangFlag2, 1{DrawImage "HBMRI0", 39, 146;}
+InInventory HiBoomerangFlag3, 1{DrawImage "HBMRI0", 39, 157;}
+InInventory MBoomerangFlag, 1{DrawImage "MBMRI0", 39, 135;}
+InInventory MBoomerangFlag2, 1{DrawImage "MBMRI0", 39, 146;}
+InInventory MBoomerangFlag3, 1{DrawImage "MBMRI0", 39, 157;}
+InInventory MeteorFlag, 1{DrawImage "METEI0", 39, 135;}
+InInventory MeteorFlag2, 1{DrawImage "METEI0", 39, 146;}
+InInventory MeteorFlag3, 1{DrawImage "METEI0", 39, 157;}
+InInventory EnergyBombFlag, 1{DrawImage "EBMBI0", 39, 135;}
+InInventory EnergyBombFlag2, 1{DrawImage "EBMBI0", 39, 146;}
+InInventory EnergyBombFlag3, 1{DrawImage "EBMBI0", 39, 157;}
+InInventory MegaEnergyBombFlag, 1{DrawImage "MEBMI0", 39, 135;}
+InInventory MegaEnergyBombFlag2, 1{DrawImage "MEBMI0", 39, 146;}
+InInventory MegaEnergyBombFlag3, 1{DrawImage "MEBMI0", 39, 157;}
+InInventory SeekBombFlag, 1{DrawImage "SKBMI0", 39, 135;}
+InInventory SeekBombFlag2, 1{DrawImage "SKBMI0", 39, 146;}
+InInventory SeekBombFlag3, 1{DrawImage "SKBMI0", 39, 157;}
+InInventory MuramasaFlag, 1{DrawImage "MURAI0", 39, 135;}
+InInventory MuramasaFlag2, 1{DrawImage "MURAI0", 39, 146;}
+InInventory MuramasaFlag3, 1{DrawImage "MURAI0", 39, 157;}
+InInventory WindRackFlag, 1{DrawImage "WRACI0", 39, 135;}
+InInventory WindRackFlag2, 1{DrawImage "WRACI0", 39, 146;}
+InInventory WindRackFlag3, 1{DrawImage "WRACI0", 39, 157;}
+InInventory AirShotFlag, 1{DrawImage "ASHOI0", 39, 135;}
+InInventory AirShotFlag2, 1{DrawImage "ASHOI0", 39, 146;}
+InInventory AirShotFlag3, 1{DrawImage "ASHOI0", 39, 157;}
+InInventory DrillArmFlag, 1{DrawImage "DARMI0", 39, 135;}
+InInventory DrillArmFlag2, 1{DrawImage "DARMI0", 39, 146;}
+InInventory DrillArmFlag3, 1{DrawImage "DARMI0", 39, 157;}
+InInventory AntiWindFlag, 1{DrawImage "AWINI0", 39, 135;}
+InInventory AntiWindFlag2, 1{DrawImage "AWINI0", 39, 146;}
+InInventory AntiWindFlag3, 1{DrawImage "AWINI0", 39, 157;}
+InInventory AntiBreakFlag, 1{DrawImage "ABRKI0", 39, 135;}
+InInventory AntiBreakFlag2, 1{DrawImage "ABRKI0", 39, 146;}
+InInventory AntiBreakFlag3, 1{DrawImage "ABRKI0", 39, 157;}
+InInventory AttackPlusFlag, 1{DrawImage "ATTKI0", 39, 135;}
+InInventory AttackPlusFlag2, 1{DrawImage "ATTKI0", 39, 146;}
+InInventory AttackPlusFlag3, 1{DrawImage "ATTKI0", 39, 157;}
+InInventory DashAttackFlag, 1{DrawImage "DASHI0", 39, 135;}
+InInventory DashAttackFlag2, 1{DrawImage "DASHI0", 39, 146;}
+InInventory DashAttackFlag3, 1{DrawImage "DASHI0", 39, 157;}
+InInventory BassEXEFlag, 1{DrawImage "BIC1I0", 39, 135; DrawImage "BIC2I0", 53, 135;}
+InInventory BassEXEFlag2, 1{DrawImage "BIC1I0", 39, 146; DrawImage "BIC2I0", 53, 146;}
+InInventory BassEXEFlag3, 1{DrawImage "BIC1I0", 39, 157; DrawImage "BIC2I0", 53, 157;}
+InInventory WoodmanFlag, 1{DrawImage "WIC1I0", 39, 135; DrawImage "WIC2I0", 53, 135;}
+InInventory WoodmanFlag2, 1{DrawImage "WIC1I0", 39, 146; DrawImage "WIC2I0", 53, 146;}
+InInventory WoodmanFlag3, 1{DrawImage "WIC1I0", 39, 157; DrawImage "WIC2I0", 53, 157;}
+InInventory FlashmanFlag, 1{DrawImage "FIC1I0", 39, 135; DrawImage "FIC2I0", 53, 135;}
+InInventory FlashmanFlag2, 1{DrawImage "FIC1I0", 39, 146; DrawImage "FIC2I0", 53, 146;}
+InInventory FlashmanFlag3, 1{DrawImage "FIC1I0", 39, 157; DrawImage "FIC2I0", 53, 157;}
+InInventory NapalmmanFlag, 1{DrawImage "NIC1I0", 39, 135; DrawImage "NIC2I0", 53, 135;}
+InInventory NapalmmanFlag2, 1{DrawImage "NIC1I0", 39, 146; DrawImage "NIC2I0", 53, 146;}
+InInventory NapalmmanFlag3, 1{DrawImage "NIC1I0", 39, 157; DrawImage "NIC2I0", 53, 157;}
+InInventory FreezemanFlag, 1{DrawImage "FEC1I0", 39, 135; DrawImage "FEC2I0", 53, 135;}
+InInventory FreezemanFlag2, 1{DrawImage "FEC1I0", 39, 146; DrawImage "FEC2I0", 53, 146;}
+InInventory FreezemanFlag3, 1{DrawImage "FEC1I0", 39, 157; DrawImage "FEC2I0", 53, 157;}
+InInventory BubblemanFlag, 1{DrawImage "BUC1I0", 39, 135; DrawImage "BUC2I0", 53, 135;}
+InInventory BubblemanFlag2, 1{DrawImage "BUC1I0", 39, 146; DrawImage "BUC2I0", 53, 146;}
+InInventory BubblemanFlag3, 1{DrawImage "BUC1I0", 39, 157; DrawImage "BUC2I0", 53, 157;}
+InInventory ProtoEXEFlag, 1{DrawImage "PEX1I0", 39, 135; DrawImage "PEX2I0", 53, 135;}
+InInventory ProtoEXEFlag2, 1{DrawImage "PEX1I0", 39, 146; DrawImage "PEX2I0", 53, 146;}
+InInventory ProtoEXEFlag3, 1{DrawImage "PEX1I0", 39, 157; DrawImage "PEX2I0", 53, 157;}
+}
+
+
+//Metal Maiden
+InInventory IsMetalMaiden, 1
+{
+DrawImage "MAGIHUD", 10, 175;
+//DrawBar "MAGIBAR", "MAGIEMP", UltMaterial, horizontal, 29, 180;
+
+//Decoration
+DrawImage "MAIDNUL2", 0,64; //L U
+DrawImage "MAIDNUL2", 0,94; //L B
+DrawImage "MAIDNUL2", 50,64; //R U
+DrawImage "MAIDNUL2", 50,94; //R B
+
+//Bars
+DrawImage "HDTXT", -3,5;
+Drawbar "LIFEBARM", "NOBARM", Health, horizontal, 32, 8;
+DrawNumber 4, MAIDFONT, GREEN, Health, 20, 8, 1;
+//DrawImage "MAIDLIFE", 24,6;
+DrawImage "HDTXT", -3,15;
+DrawBar "CHRGBAR", "NOCHARGE", MaidenCharge, horizontal, 32, 18;
+DrawNumber 4, MAIDFONT, WHITE, MaidenCharge, 20, 18, 1;
+//DrawImage "MAIDGUNS", 24,16;
+
+//User Trigger Abilities
+DrawImage "MAIDSPED", 20,64;
+//DrawImage "MAIDSPED", 30,64; //DrawImage "MAIDSHLD", 30,64;
+//DrawImage "MAIDGREN", 40,64;
+//Now you may notice the Overdrive Command isn't listed here. That's an illegal ability actually.
+
+DrawString SMALLFONT, YELLOW, "Commands", 65, 56, 0;
+DrawSelectedInventory INDEXFONT, 50, 64, 60, 66, White;
+
+InInventory LightTeamFlag, 1 {DrawString SMALLFONT, BLUE, "Alpha Faction", 65, 76, 0;}
+InInventory WilyTeamFlag, 1 {DrawString SMALLFONT, RED, "Omega Faction", 65, 76, 0;}
+InInventory CossackTeamFlag, 1 {DrawString SMALLFONT, GREEN, "Gamma Faction", 65, 76, 0;}
+InInventory KingTeamFlag, 1 {DrawString SMALLFONT, PURPLE, "Sigma Faction", 65, 76, 0;}
+
+}
+
+//Devion
+InInventory IsDevion, 1
+{
+DrawBar "DEVHBAR", "DNOBAR1", Health, horizontal, 39, 17;
+
+DrawImage "DEVHUD", 8,4;
+DrawImage "DEVHUD1", 39,25;
+DrawImage "DEVHUD2", 39,35;
+
+Drawbar"DEVBAR1", "DNOBAR2", DevionFistAmmo, horizontal, 56,27;
+Drawbar"DEVBAR2", "DNOBAR2", DevionCharge, horizontal, 56,37;
+InInventory DevionCharge, 300 {DrawImage "DEVOK", 108,36;}
+InInventory DevionFever, 1 {Drawbar"DEVF1", "DEVF2", DevionFever, horizontal, 56,37;}
+
+DrawSelectedInventory INDEXFONT ,14, 38, 28, 39, white;
+
+DrawImage "MAGIHUD", 10, 175;
+//DrawBar "MAGIBAR", "MAGIEMP", UltMaterial, horizontal, 29, 180;
+}
+
+//Arsenal
+InInventory IsArsenal, 1
+{
+DrawImage "CLIPTB", 24, 90;
+DrawNumber 3, CONFONT, UNTRANSLATED, ArsenalGearAmmo, alignment(left), 36, 102;
+Drawbar"VARAMMO1", "VAREMPTY", ArsenalBlastAmmo, horizontal, 58, 184;
+}
+
+//
+//Luna Bar H
+IsSelected CrescentArsenalWepI
+{
+DrawBar "SHOSVAR", "VAREMPTY", Ammo1, horizontal, 130, 192;
+DrawBar "VARAMMO1", "VAREMPTY", Ammo2, horizontal, 130, 176;
+DrawImage "LUNANULX", 121, 176;
+DrawImage "LUNASTAR", 50, 184; //Why.
+DrawNumber 3, INDEXFONT, WHITE, CrescentStars, 59, 186; //Why.
+InInventory HasCrescentFanFlag, 1
+{
+DrawImage "LUNACFAN", 121, 176;
+}
+InInventory StarBufferFlags, 1
+{
+DrawBar "VARFLS1", "VNOBAR", StarBufferFlags, horizontal, 130, 192;
+}	
+}
+//
+
+//Cascara
+IsSelected CascaraShotgunWep {Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected CascaraShotgunWep {Drawbar"VARAMMO7", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+
+InInventory IsSlick, 1
+{
+DrawImage "SLIVUD", 60, 184;
+Drawbar "SLIVAR", "SLIVMP", Ammo1, horizontal, 64, 186;
+
+DrawImage "SLIHUD1", 35, 24;
+InInventory BlobCount, 1 {DrawImage "SLIHUD2", 35, 24;}
+InInventory InkPortalSpawned, 1 {DrawImage "SLIHUD3", 35, 24;}
+InInventory InkJetFlag, 1 {DrawImage "INKJET", 270,8;}
+}
+
 //██████████████████████████████████████████Bronze████████████████████████████████████████
 
 	//Bronze, I dunno

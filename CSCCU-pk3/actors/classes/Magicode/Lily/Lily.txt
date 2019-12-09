@@ -1,0 +1,110 @@
+Actor Lily : ClassBaseCSCC
+{
+Health 90
+Player.MaxHealth 90
+Player.DisplayName "Lily"
+Player.SoundClass "Lily"
+Player.JumpZ 12
+Player.ForwardMove 0.93, 0.93 //Slightly faster
+Player.SideMove 0.88, 0.88
+Player.StartItem "CanUseItems"
+Player.StartItem "Clorophyll",200
+Player.StartItem "RazorLeafWep"
+Player.StartItem "WaterSprayWep"
+player.startitem "CanUseItems"
+player.startitem "IsLily"
+//Species "LilyNature"
+//+MTHRUSPECIES
+Gravity 0.6
+States
+{
+Spawn: 
+PLAM A 0
+PLAM B 1 A_JumpIf(z-floorz>0, "Jumping")
+PLAM A 0 A_JumpIfInventory("LilyShootAnim",1,"Missile")
+PLAM A 1 A_JumpIf(z-floorz>0, "Jumping")
+PLAM A 0 A_JumpIfInventory("LilyShootAnim",1,"Missile")
+GoTo Spawn+2
+See:
+PLAM B 5 A_JumpIf(z-floorz>0, "Jumping")
+PLAM B 0 A_JumpIfInventory("LilyShootAnim",1,"Missile")
+PLAM C 5 A_JumpIf(z-floorz>0, "Jumping")
+PLAM C 0 A_JumpIfInventory("LilyShootAnim",1,"Missile")
+PLAM D 5 A_JumpIf(z-floorz>0, "Jumping")
+PLAM D 0 A_JumpIfInventory("LilyShootAnim",1,"Missile")
+PLAM E 5 A_JumpIf(z-floorz>0, "Jumping")
+PLAM E 0 A_JumpIfInventory("LilyShootAnim",1,"Missile")
+GoTo Spawn+1
+Missile:
+PLAM F 5 A_JumpIf(z-floorz>0, "Jumping2")
+PLAM G 4 A_JumpIf(z-floorz>0, "Jumping2")
+GoTo Spawn+2
+Jumping:
+PLAM I 1 A_JumpIf(z-floorz<=0, "Spawn")
+PLAM I 0 A_JumpIfInventory("LilyShootAnim",1,"Jumping2")
+loop
+Jumping2:
+PLAM J 5
+PLAM K 4
+GoTo Jumping
+
+ClassDeath:
+PLAM H 0 SetPlayerProperty(0, 0, 4)
+PLAM H 0 A_TakeInventory("WeaponCharge",999)
+PLAM H 0 A_NoBlocking
+PLAM H 0 A_GiveInventory("CutterFlag",999)
+PLAM H 0 A_GiveInventory("IsDead",1)
+PLAM H 0 A_Stop
+PLAM H 0 A_GiveToTarget("KilledMeStock",1)
+PLAM H 1 A_GiveToTarget("KilledMe",1)
+PLAM H 19 ACS_ExecuteAlways(999,0,0)
+PLAM HHHHHHHHHH 0 //A_SpawnItemEx("CoinDecider",0,0,0)
+PLAM HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 //A_DropInventory("CoinItem")
+PLAM H 0 //ACS_NamedExecuteWithResult("MC_CoinScript")
+PLAM H 0 SetPlayerProperty(0, 0, 4)
+PLAM H 0 A_PlaySoundEx("misc/mwsburst","Voice")
+MWSS ABCDEFGHI 2
+goto DeathLoop
+DeathLoop:
+MWSS H 0 A_JumpIfInventory("KnightFlag",15,"DeathEnd")
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,0)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,30)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,60)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,90)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,120)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,150)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,180)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,210)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,240)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,270)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,300)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,330)
+MWSS H 0 A_SpawnItemEx("LilyWater",0,0,350,10,0,0,360)
+MWSS HI 2
+MWSS H 0 A_GiveInventory("KnightFlag",1)
+loop
+DeathEnd:
+MWSS HGFEDCBA 2
+PLAM Z 1 A_CheckPlayerDone
+wait
+Death.Falling:
+PLAM H 0 SetPlayerProperty(0, 0, 4)
+PLAM H 0 A_TakeInventory("WeaponCharge",999)
+PLAM H 0 A_NoBlocking
+PLAM H 0 A_GiveInventory("CutterFlag",999)
+PLAM H 0 A_GiveInventory("IsDead",1)
+PLAM H 0 A_Stop
+PLAM H 0 A_GiveToTarget("KilledMeStock",1)
+PLAM H 1 A_GiveToTarget("KilledMe",1)
+PLAM H 1 ACS_ExecuteAlways(999,0,0)
+PLAM H 0 SetPlayerProperty(0, 0, 4)
+PLAM H 0 A_PlaySoundEx("misc/mwsburst","Voice")
+MWSS ABCDEFGHI 2
+goto DeathLoop
+PLAM Z 1 A_Stop
+PLAM Z 1 ACS_ExecuteAlways(999,0,0)
+GoTo MegamanErase
+}
+}
+
+Actor IsLily : Inventory{}

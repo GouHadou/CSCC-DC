@@ -1,0 +1,33 @@
+Actor IsSlick : Inventory{}
+
+Actor Slick : ClassBaseCSCC
+{
+Health 100
+Player.MaxHealth 100
+Player.DisplayName "Slick"
+Player.SoundClass "Slick"
+Player.ForwardMove 0.82, 0.82
+Player.SideMove 0.75, 0.75
+Player.JumpZ 12
+Player.StartItem "CanUseItems"
+Player.StartItem "IsSlick", 1
+Player.StartItem "SlickWep1"
+Player.StartItem "SlickWep2"
+Player.StartItem "SlickInkAmmo", 30
+States
+{
+Spawn: 
+SPIB A 0
+SPIB B 1
+SPIB A 1
+GoTo Spawn+2
+See:
+SPIB BCDE 5
+GoTo Spawn+1
+Missile:
+SPIB F 5
+SPIB G 4
+GoTo Spawn+3
+
+}
+}

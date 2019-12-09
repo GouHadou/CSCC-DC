@@ -1,0 +1,223 @@
+Actor ColdStreamFired : Inventory {Inventory.MaxAmount 7}
+Actor ColdStreamAct : Once {}
+
+Actor ColdStream : OilShot
+{
++DONTBLAST
++DONTREFLECT
++NOTARGETSWITCH
++FORCEXYBILLBOARD
+Speed 35
+Alpha 0.9
+Scale 2.7
+Height 15
+Radius 15
+Damage (0)
+Gravity 0.8
+DamageType "ColdStream"
+RenderStyle Translucent
+Obituary "%o got caught in the freezing waters of %k's Cold Stream."
+States
+{
+Spawn:
+TNT1 A 0
+Spawn1:
+CDSM A 1 A_Explode(3,50,0)
+CDSM A 0 A_JumpIfInTargetInventory("IsDead",1,"Disappear")
+CDSM A 0 A_JumpIfInTargetInventory("ColdStreamAct",1,"IceTrap")
+CDSM A 0 A_JumpIfInTargetInventory("IsAquoon",1,"Spawn1")
+GoTo Disappear
+IceTrap:
+TNT1 A 0 A_TakeFromTarget("ColdStreamFired",1)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,1)
+TNT1 A 0 A_SpawnItemEX("IceTrapChunk")
+Stop
+Death:
+TNT1 A 0
+CDSM A 0 A_CheckFloor("FloorEnd")
+CDSM A 0 A_SpawnItemEx("ColdStreamWall",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+Stop
+Crash:
+TNT1 A 0
+Crash1:
+CDSM A 0 A_CheckFloor("FloorEnd")
+CDSM A 1 A_Explode(3,50,0)
+CDSM A 0 A_JumpIfInTargetInventory("IsDead",1,"Disappear")
+CDSM A 0 A_JumpIfInTargetInventory("ColdStreamAct",1,"IceTrap")
+CDSM A 0 A_JumpIfInTargetInventory("IsAquoon",1,"Crash1")
+GoTo Crash1
+FloorEnd:
+TNT1 A 0 A_SpawnItemEx("ColdStreamFloor",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+Stop
+Disappear:
+CDSM A 1 A_FadeOut(0.1)
+Wait
+}
+}
+
+Actor ColdStreamWall
+{
+PROJECTILE
++DONTBLAST
++NOGRAVITY
++DONTREFLECT
+Height 1
+Radius 1
+Alpha 0.9
+Scale 2.7
+Damage (0)
+DamageType "ColdStream"
+RenderStyle Translucent
+Obituary "%o got caught in the freezing waters of %k's Cold Stream."
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Stop
+GoTo Death
+Death:
+CDSM A 1 A_Explode(3,50,0)
+CDSM A 0 A_JumpIfInTargetInventory("IsDead",1,"Disappear")
+CDSM A 0 A_JumpIfInTargetInventory("ColdStreamAct",1,"IceTrap")
+CDSM A 0 A_JumpIfInTargetInventory("IsAquoon",1,"Death")
+GoTo Disappear
+IceTrap:
+TNT1 A 0 A_TakeFromTarget("ColdStreamFired",1)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,1)
+TNT1 A 0 A_SpawnItemEX("IceTrapChunk")
+Stop
+Disappear:
+CDSM A 1 A_FadeOut(0.1)
+Wait
+}
+}
+
+Actor ColdStreamFloor : ColdStreamWall
+{
+Scale 3.0
+Damage (0)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Stop
+GoTo Death
+Death:
+CDSM C 1 A_Explode(3,50,0)
+CDSM C 0 A_JumpIfInTargetInventory("IsDead",1,"Disappear")
+CDSM C 0 A_JumpIfInTargetInventory("ColdStreamAct",1,"IceTrap")
+CDSM C 0 A_JumpIfInTargetInventory("IsAquoon",1,"Death")
+GoTo Disappear
+Disappear:
+CDSM C 1 A_FadeOut(0.1)
+Wait
+}
+}
+
+Actor IceTrapChunk : MegaShot
+{
+-SKYEXPLODE
++DONTREFLECT
++FORCEXYBILLBOARD
++RIPPER
+-NOGRAVITY
+Scale 3.5
+Radius 32
+Height 32
+Speed 35
+Damage(0)
+Alpha 0.85
+ReactionTime 60
+DamageType "IceTrap"
+RenderStyle Translucent
+Obituary "%o was pierced and frozen to their very essence by %k's Ice Trap."
+States
+{
+Spawn:
+TNT1 A 0
+ISPK A 0 A_PlaySoundEX("weapon/icewavespawn","Weapon")
+ISPK A 0 ThrustThingZ(0,20,0,1)
+ISPK AA 0 A_SpawnItemEX("IceDissolveFX",0,0,0,Random(-11,11),Random(-11,11),Random(-11,11))
+ISPK A 0 A_Explode(10,80,0)
+ISPK A 1 A_CountDown
+GoTo Spawn+3
+Death:
+TNT1 A 0 A_SpawnItemEX("IceBreakFX1")
+TNT1 A 0 A_Explode(65,100,0)
+TNT1 AAAAAAAA 0 A_SpawnItemEx("IceTrapBroke",0,0,5,Random(-15,15),Random(-15,15),Random(3,15))
+TNT1 A 1 A_PlaySoundEX("weapon/icewavebreak","Weapon")
+Stop
+}
+}
+
+Actor IceBreakFX1 : LightningStartFX1
+{
++CLIENTSIDEONLY
+Scale 5.0
+States
+{
+Spawn:
+TNT1 A 0
+IBRK A 4
+Stop
+}
+}
+
+Actor IceDissolveFX : LightningStartFX1
+{
++CLIENTSIDEONLY
+Alpha 0.5
+Scale 2.0
+RenderStyle Translucent
+States
+{
+Spawn:
+TNT1 A 0
+IDSV ABCDEFGH 1
+Stop
+}
+}
+
+Actor IceFragProtect : PowerProtection
+{
+PowerUp.Duration 4
+DamageFactor "IceFrag", 0.0
+}
+
+Actor IceTrapBroke
+{
+PROJECTILE
+-NOGRAVITY
++DOOMBOUNCE
++DONTSPLASH
++CANBOUNCEWATER
++BOUNCEONCEILINGS
++FORCEXYBILLBOARD
+Speed 20
+Radius 8
+Height 8
+Alpha 0.9
+Scale 2.5
+Damage (4)
+BounceCount 4
+BounceFactor 0.75
+DamageType "IceFrag"
+WallBounceFactor 0.85
+RenderStyle Translucent
+SeeSound "item/protoreflect"
+Obituary "%o was poked to death by one of %k's Ice Fragments."
+States
+{
+Spawn:
+TNT1 A 0
+FZSK A 1
+Loop
+Death:
+FZSK A 0 A_Stop
+FZSK A 0 A_ChangeFlag(NOGRAVITY,1)
+FZSK A 1 A_FadeOut(0.1)
+Wait
+}
+}

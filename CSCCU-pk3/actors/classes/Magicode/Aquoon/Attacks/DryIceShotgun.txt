@@ -1,0 +1,8 @@
+Actor DryIceShotgunShot : IceTrapBroke 
+{
+Speed 50
+BounceFactor 0.5
+WallBounceFactor 0.5
+DamageType "DryIceShotgun"
+Obituary "%k was so cold, their Dry Ice Shotgun melted %o's body down to a skeleton."
+}

@@ -1,0 +1,363 @@
+actor RinGougi2 : RinGougi1
+{
+Weapon.SlotNumber 2
+Tag "Punch Charge / Phasethrough Dash"
+States
+{
+Fire: //Upper-Cutter
+RINH A 0 A_JumpIfInventory("DemonRinEnergy",1,"UltFire")
+RINH A 0 A_JumpIfInventory("RinPhaseDash",1,"SetFire")
+RINH A 0 A_GiveInventory("RinCheckPhase",1)
+RINH A 0 A_SetTranslucent(1.0,0)
+RINH A 0 A_TakeInventory("RinPhaseDash",1)
+RINH A 0 A_TakeInventory("RinDashAnim",1)
+RINH A 0 A_SpawnItemEx("ReSolidifier")
+RINH A 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+Hold:
+RINH A 0 A_GiveInventory("RinCheckPhase",1)
+RINH A 0 A_SetTranslucent(1.0,0)
+RINH A 0 A_TakeInventory("RinPhaseDash",1)
+RINH A 0 A_TakeInventory("RinDashAnim",1)
+RINH A 0 A_SpawnItemEx("ReSolidifier")
+RINH A 0 A_PlaySoundEx("Rin/UltUpprcutS","Weapon")
+Hold1:
+RINH A 0 A_GiveInventory("RinUpperChargeAnim",1)
+RINH A 0 A_JumpIfInventory("RUCCharge",1,"Hold2")
+RINH A 1 A_GiveInventory("RUCCharge",1)
+RINH A 0 A_Refire("Hold1")
+Goto Punch1
+Hold2:
+RINH A 0 A_JumpIfInventory("RUCCharge",15,"Hold3")
+RINH A 1 ACS_ExecuteAlways(991,0,753)
+RINH A 0 A_GiveInventory("RUCCharge",1)
+RINH A 0 A_Refire("Hold2")
+Goto Punch1
+Hold3:
+RINH A 0 A_JumpIfInventory("RUCCharge",30,"Hold4Start")
+RINH D 1 ACS_ExecuteAlways(991,0,755)
+RINH A 0 A_Refire("Hold3.a")
+Goto SuperPunch1
+Hold3.a:
+RINH A 0 ACS_ExecuteAlways(991,0,753)
+RINH A 1 A_GiveInventory("RUCCharge",1)
+RINH A 0 A_Refire("Hold3")
+Goto SuperPunch1
+Hold4Start:
+RINH A 0 A_PlaySoundEx("Rin/UltUpprcutR","Weapon")
+Hold4:
+RINH A 0 ACS_ExecuteAlways(991,0,756)
+RINH E 1 A_WeaponReady(WRF_NOPRIMARY)
+RINH A 0 A_Refire("Hold4.a")
+Goto SuperPunch2
+Hold4.a:
+RINH A 0 ACS_ExecuteAlways(991,0,753)
+RINH A 1 A_WeaponReady(WRF_NOPRIMARY)
+RINH A 0 A_JumpIfInventory("IsBot", 1, "BotFire")
+RINH A 0 A_Refire("Hold4")
+Goto SuperPunch2
+BotFire:
+RINH A 0 A_Jump(16, "SuperPunch2")
+RINH A 0 A_Refire("Hold3")
+Goto SuperPunch2
+
+Punch1:
+RINH A 0 ACS_ExecuteAlways(991,0,753)
+RINH A 0 A_TakeInventory("RUCCharge",999)
+RINU B 2
+RINH A 0 A_PlaySoundEx("Rin/Punch","Weapon")
+RINH A 0 A_FireCustomMissile("RinPunch",0,0,-30,0)
+RINU CB 1
+RINH A 0 A_Refire("Punch2")
+RINH A 0 A_TakeInventory("RinUpperChargeAnim",1)
+Goto Ready+2
+Punch2:
+RINH A 0 A_PlaySoundEx("Rin/Punch","Weapon")
+RINU D 2
+RINH A 0 A_FireCustomMissile("RinPunch",0,0,30,0)
+RINU ED 1
+RINH A 0 A_Refire("Punch1")
+RINH A 0 A_TakeInventory("RinUpperChargeAnim",1)
+Goto Ready+2
+
+SuperPunch1: //Super Punch (Low Charge)
+RINH A 0 ACS_ExecuteAlways(991,0,753)
+RINH A 0 A_TakeInventory("RUCCharge",999)
+RINU GG 2
+RINH A 0 A_GiveInventory("RinPunchAnim",1)
+RINH A 0 A_PlaySoundEx("Rin/UltUpprcut1","Weapon")
+RINH A 0 A_FireCustomMissile("RinSuperPunch1",0,0,0,0)
+RINU H 6 A_TakeInventory("RinUpperChargeAnim",1)
+RINU G 3 A_TakeInventory("RinPunchAnim",1)
+RINH A 0 A_Refire
+Goto Ready+2
+SuperPunch2: //Super Punch (High Charge)
+RINH A 0 ACS_ExecuteAlways(991,0,753)
+RINH A 0 A_TakeInventory("RUCCharge",999)
+RINU GG 2
+RINH A 0 A_GiveInventory("RinPunchAnim",1)
+RINH A 0 A_PlaySoundEx("Rin/UltUpprcut2","Weapon")
+RINH A 0 A_FireCustomMissile("RinSuperPunch2",0,0,0,0)
+RINU H 12 A_TakeInventory("RinUpperChargeAnim",1)
+RINU G 9 A_TakeInventory("RinPunchAnim",1)
+RINH A 0 A_Refire
+Goto Ready+2
+
+UltFire: //Devil Bombs
+DMRH A 0 A_TakeInventory("DemonRinEnergy",6)
+DMRH BB 2
+DMRH A 0 A_PlaySoundEx("Rin/Kouhadou","Weapon")
+DMRH AAA 0 A_SpawnItemEx("DevilBomb",0,0,0,random(3,12),random(-10,10),random(-4,4),0)
+DMRH CCBA 2
+DMRH A 0 A_Refire("Fire")
+Goto Ready2
+
+NoAmmo:
+RINH A 1 SetPlayerProperty(0,0,0)
+Goto Ready+2
+}
+}
+
+Actor RUCCharge : Inventory {Inventory.MaxAmount 30}
+
+//Mainfire (Uncharged)
+actor RinPunch
+{
+PROJECTILE
++DONTBLAST
+Radius 30
+Height 30
+scale 3.5
+Obituary "%o was lightly tapped into a coma by %k."
+speed 100
+damage (0)
+reactiontime 2
+damagetype "RinPunch"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_CountDown
+goto Spawn+1
+Death:
+TNT1 A 0 A_Explode(10,40,0,0,40)
+goto XDeath
+XDeath:
+TNT1 A 0 A_Stop
+HARD CDE 2
+stop
+Crash:
+TNT1 A 0 A_PlaySoundEx("Rin/Connect1","Weapon")
+goto Death
+}
+}
+
+//Mainfire (Charge 1)
+actor RinSuperPunch1
+{
++MISSILE
++NOGRAVITY
+translation "80:95=196:196", "199:245=197:197", "0:15=198:198", "208:208=196:196", "209:212=197:197"
+renderstyle "translucent"
+alpha 0.8
+damagetype "RinPunch1"
+Obituary "%o was punched so hard by %k's energy punch"
+Speed 50
+Damage (15)
+Radius 20
+Height 20
+scale 5
+reactiontime 5
+States
+{
+Spawn:
+TNT1 A 0
+HARD A 0 A_GiveInventory("CutterFlag",1)
+HARD A 1 A_SpawnItemEx("RinSuperPunch1FX",0,0,0)
+goto Spawn2
+Spawn2:
+HARD A 0 A_TakeInventory("CutterFlag",1)
+HARD A 1 A_SpawnItemEx("RinSuperPunch1FX",0,0,0)
+HARD A 0 A_Countdown
+goto Spawn+1
+Death:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"Spawn2")
+HARD AAAAA 1 A_Fadeout
+stop
+XDeath:
+Crash:
+TNT1 A 0 A_Fadein(10)
+TNT1 A 0 A_SetScale(3)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+ASEX AABBCCDDEEFF 1 A_Fadeout
+stop
+}
+}
+
+actor RinSuperPunch1FX : HardKnuckleFX
+{
+translation "80:95=196:196", "199:245=197:197", "0:15=198:198"
+renderstyle "add"
+scale 5
+States
+{
+Spawn:
+TNT1 A 0
+HARD AAA 1 A_Fadeout
+stop
+}
+}
+
+//Mainfire (Charge 2)
+actor RinSuperPunch2 : RinSuperPunch1
+{
++HEXENBOUNCE
++USEBOUNCESTATE
++DONTSPLASH
+bouncecount 2
+translation "80:95=175:175", "199:245=180:180", "0:15=185:185", "208:208=175:175", "209:212=180:180"
+renderstyle "translucent"
+damagetype "RinPunch2"
+Speed 100
+Damage (0)
+Radius 35
+Height 35
+scale 10
+reactiontime 8
+States
+{
+Spawn:
+TNT1 A 0
+HARD A 0 A_GiveInventory("CutterFlag",1)
+HARD AAAAAA 0 A_SpawnItemEx("RinSuperPunch2Particle",random(-1,-5),random(-60,60),random(-60,60))
+HARD A 1 A_SpawnItemEx("RinSuperPunch2FX",0,0,0)
+goto Spawn2
+Spawn2:
+HARD A 0 A_TakeInventory("CutterFlag",1)
+HARD AAAAAA 0 A_SpawnItemEx("RinSuperPunch2Particle",random(-1,-5),random(-60,60),random(-60,60))
+HARD A 1 A_SpawnItemEx("RinSuperPunch2FX",0,0,0)
+HARD A 0 A_Countdown
+loop
+Death:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",1,"Spawn2")
+HARD AAAAA 1 A_Fadeout
+stop
+XDeath:
+Crash:
+Bounce.Actor:
+TNT1 A 0 A_Fadein(10)
+TNT1 A 0 A_SetScale(5)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+TNT1 A 0 A_Explode(30,256,0,0,256)
+ASEX AABBCCDDEEFF 1 A_Fadeout
+stop
+}
+}
+
+actor RinSuperPunch2FX : RinSuperPunch1FX
+{
+translation "80:95=175:175", "199:245=180:180", "0:15=185:185"
+scale 10
+}
+
+actor RinSuperPunch2Particle : HardKnuckleFX
+{
+translation "214:235=229:229"
+renderstyle "translucent"
+scale 1.5
+States
+{
+Spawn:
+TNT1 A 0
+FSWD DDEEFF 1 A_Fadeout
+stop
+}
+}
+
+//Main -> Alt
+actor RinUppercut
+{
+PROJECTILE
+translation "192:192=41:41", "198:198=42:42"
+renderstyle "translucent"
++THRUGHOST
++THRUACTORS
++DONTBLAST
++DONTSPLASH
++DONTREFLECT
+damagetype "RinUppercut2"
+Obituary "%o was knocked in the chin by %k's uppercut."
+alpha 0.8
+Speed 0
+Damage (0)
+radius 1
+height 1
+scale 2.5
+reactiontime 10
+States
+{
+Spawn:
+TNT1 A 0
+RNUP C 0 A_Warp(AAPTR_TARGET,0,0,30,0,WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION)
+RNUP C 0 A_SpawnItemEx("RinUppercutFX",0,0,0,0,0,-15)
+RNUP C 1 A_Explode(4,100,0,0,100)
+RNUP C 0 ThrustThingZ(0,120,0,0)
+RNUP C 0 A_Countdown
+loop
+Death:
+RNUP CCC 1 A_Fadeout
+stop
+}
+}
+
+actor RinUppercutFX : HardKnuckleFX
+{
+translation "192:192=41:41", "198:198=42:42"
+renderstyle "translucent"
++DONTSPLASH
+-SKYEXPLODE
+States
+{
+Spawn:
+TNT1 A 0
+RNUP CCCCCCCCCC 1 A_Fadeout(0.3)
+stop
+}
+}
+
+//Mainfire ~Ult Ver~
+actor DevilBomb
+{
+PROJECTILE
++FLOAT
++HEXENBOUNCE
+-BOUNCEONACTORS
+damagetype "DevilBomb"
+Obituary "%o was caught in the explosion of one of %k's Devil Bomb"
+Damage (2)
+radius 25
+height 25
+scale 1.5
+reactiontime 300
+States
+{
+Spawn:
+TNT1 A 0
+DRDB B 10
+DRDB B 1 A_Stop
+Spawn2:
+DRDB B 1 A_Countdown
+loop
+Crash:
+XDeath:
+Death:
+TNT1 A 0 A_SetScale(2.5)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_PlaySoundEx("weapon/drillexplode", "Weapon")
+TNT1 A 0 A_ChangeFlag("FLOAT",0)
+TNT1 A 0 A_Explode(9,96,0,0,96)
+NAPA EFGHIJKLMNOPQRS 2
+stop
+}
+}

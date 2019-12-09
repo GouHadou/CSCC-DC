@@ -1,0 +1,138 @@
+Actor UppercutCharge : Inventory {Inventory.MaxAmount 42}
+Actor UppercutCharged : Once {}
+Actor UppercutRemoval : Inventory {Inventory.MaxAmount 9}
+
+Actor RinUppercutAnimation1 : Once {} //Used for the charging animation
+Actor RinUppercutAnimation2 : Once {} //Used for the uncharged uppercut
+Actor RinUppercutAnimation3 : Once {} //Used for the charged uppercut
+
+Actor UltUppercut1 : LightningKnee
+{
+DamageType "UltUppercut1"
+Obituary "%k poked %o's chin with their fist."
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Explode(12,50,0,0,50)
+Stop
+}
+}
+
+Actor UltUppercut1HitFXS
+{
+PROJECTILE
++NOCLIP
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("Rin/Connect1","Weapon")
+TNT1 A 0 A_SpawnItemEx("PowerKneeHitFX")
+Stop
+}
+}
+
+Actor UltUppercut2 : LightningKnee
+{
+DamageType "UltUppercut2"
+Obituary "%k sent %o flying into the air."
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Explode(25,50,0,0,50)
+TNT1 A 1 A_SpawnItemEX("UltUppercut2Trail",20)
+Stop
+}
+}
+
+Actor UltUppercut2Trail : LightningKneeHitFX
+{
+Scale 2.5
+Translation "0:255=189:189"
+States
+{
+Spawn:
+TNT1 A 0
+MMFX B 2
+MMFX CCC 1 A_FadeOut(0.11)
+MMFX D 1 A_FadeOut(0.11)
+Wait
+}
+}
+
+Actor UltUppercut2X : LightningKnee
+{
+DamageType "UltUppercut2X"
+Obituary "%k broke everything in %o."
+States
+{
+Spawn:
+TNT1 A 0
+FLAS A 1 A_Explode(30,50,0,0,50)
+Stop
+}
+}
+
+Actor UltUppercutFXS : DuoShockwave 
+//Sorry Light, I had no choice but to correct this error for you; in the future I would HIGHLY suggest avoiding any potential
+//0-tic loops when possible and instead write out things/use delay like everyone else does.  ~Zomo
+{
++NOCLIP
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,0)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,13)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,26)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,39)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,52)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,65)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,78)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,91)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,104)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,117)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,130)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,143)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,156)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,169)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,182)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,195)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,208)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,221)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,234)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,247)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,260)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,273)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,286)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,299)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,312)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,325)
+TNT1 A 0 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,338)
+TNT1 A 1 A_SpawnItemEX("UltUppercutFX",0,0,0,7,0,0,351)
+Stop
+}
+}
+
+Actor UltUppercutFX : LightningStartFX1
+{
+-NONETID
+Scale 0.7
+Translation "0:255=56:56"
+States
+{
+Spawn:
+TNT1 A 0
+DUOR T 1 A_FadeOut(0.1)
+Wait
+}
+}
+
+Actor RinUppercutProtect : PowerProtection
+{
+PowerUp.Duration 20
+DamageFactor "UltUppercut2", 0.0
+DamageFactor "UltUppercut2X", 0.0
+}

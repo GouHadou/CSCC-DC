@@ -1,0 +1,29 @@
+Actor Ignis : ClassBaseCSCC
+{
+Health 70
+Player.MaxHealth 70
+Player.DisplayName "Ignis"
+Player.SoundClass "Ignis"
+Player.ForwardMove 1.1, 1.1
+Player.SideMove 1.0, 1.0
+Player.JumpZ 12
+Player.StartItem "CanUseItems"
+Player.StartItem "IgnisArsenalWep"
+Player.StartItem "IgnisKickAmmo"
+States
+{
+Spawn: 
+IGNS A 0
+IGNS B 1
+IGNS A 1
+GoTo Spawn+2
+See:
+IGNS BCDE 5
+GoTo Spawn+1
+Missile:
+IGNS F 5
+IGNS G 4
+GoTo Spawn+3
+
+}
+}

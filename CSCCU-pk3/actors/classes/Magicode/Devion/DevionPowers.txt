@@ -1,0 +1,1333 @@
+actor DevionPowers : Megabuster
+{
+Weapon.SlotNumber 1
+scale 2.0
+Obituary "%k already declared %o dead."
+Inventory.Pickupmessage ""
++WEAPON.NOAUTOAIM
+Tag "Your range is just one fist short."
+States
+{
+Spawn:
+WEAP X 1
+loop
+Ready:
+DEVH A 0 ACS_ExecuteAlways(998,0,8200)
+DEVH A 0 A_GunFlash
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH A 1 A_WeaponReady
+Goto Ready+2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+DEVH A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+DEVH A 1 A_Raise
+Loop
+
+Fire: //Oraoraora
+DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH A 0 SetPlayerProperty(0,0,0)
+DEVH A 0 A_JumpIfInventory("DevionShock",1,"Shockwave")
+DEVH A 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+DEVH C 0 A_JumpIfInventory("DevionFever",1,"FireHold1B")
+FireHold1:
+DEVH A 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+DEVH A 0 A_PlaySoundEx("devion/punch1","Weapon")
+DEVH TUV 1 A_FireCustomMissile("DevionPunch",0,0,random(-35,35),random(-25,25),0,0)
+DEVH A 0 A_Refire("FireHold2")
+Goto FireEnd
+FireHold2:
+DEVH A 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+DEVH A 0 A_PlaySoundEx("devion/punch2","Weapon")
+DEVH WXY 1 A_FireCustomMissile("DevionPunch",0,0,random(-35,35),random(-25,25),0,0)
+DEVH A 0 A_Refire("FireHold1")
+Goto FireEnd
+FireEnd:
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+DEVH NOPQRS 1
+Goto Ready+2
+
+FireHold1B:
+DEVH A 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+DEVH A 0 A_PlaySoundEx("devion/punch1","Weapon")
+DEVH A 0 A_FireCustomMissile("DevionPunch2",0,0,random(6,35),random(-2,15))
+DEVH TUV 1
+DEVH A 0 A_Refire("FHCheck1")
+Goto FireEnd
+FireHold2B:
+DEVH A 0 A_JumpIfInventory("SmashFlag",1,"Ultimate")
+DEVH A 0 A_PlaySoundEx("devion/punch2","Weapon")
+DEVH A 0 A_FireCustomMissile("DevionPunch2",0,0,random(-6,-35),random(-2,15))
+DEVH WXY 1
+DEVH A 0 A_Refire("FHCheck2")
+Goto FireEnd
+FHCheck1:
+DEVH A 0 A_JumpIfInventory("DevionFever",1,"FireHold2B")
+goto FireHold2
+FHCheck2:
+DEVH A 0 A_JumpIfInventory("DevionFever",1,"FireHold1B")
+goto FireHold1
+
+Altfire: //Dash
+DEVH C 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH C 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH C 0 A_JumpIfInventory("DevionFever",1,"DTeleport")
+DEVH C 0 A_JumpIfInventory("DevionAirDash2",1,"NoAmmo")
+DEVH C 0 A_JumpIfInventory("DevionAirDash",1,"NoAmmo")
+DEVH C 0 A_Stop
+DEVH C 0 A_GiveInventory("DevionDashAnim",1)
+DEVH C 0 A_PlaySoundEX("weapon/superboost","Weapon")
+DEVH C 0 SetPlayerProperty(0,1,0)
+DEVH C 0 A_Recoil(-50)
+DEVH C 0 ThrustThingZ(0,25,0,0)
+DEVH CCCCC 1 A_SpawnItemEx("DevionDashFX",-8,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+DEVH C 0 SetPlayerProperty(0,0,0)
+DEVH C 0 A_TakeInventory("DevionDashAnim",1)
+DEVH C 0 A_GiveInventory("DevionAirDash")
+DEVH C 0 A_TakeInventory("User1_Trigger",999)
+DEVH C 0 A_TakeInventory("User2_Trigger",999)
+DEVH C 0 A_TakeInventory("User3_Trigger",999)
+DEVH C 0 A_TakeInventory("User4_Trigger",999)
+DEVH C 0 A_CheckFloor("AltFloor")
+goto AltAir
+AltAir:
+DEVH A 0 A_GiveInventory("DevionShock",1)
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH C 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH C 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH C 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH B 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH B 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH B 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH A 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("User2_Trigger",1,"UB2")
+DEVH A 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+AltAir2:
+DEVH A 1 A_WeaponReady(WRF_NOSECONDARY)
+DEVH C 0 A_CheckFloor("AltAirEnd")
+loop
+AltFloor:
+DEVH CBA 3
+AltAirEnd:
+DEVH A 0 A_TakeInventory("DevionShock",1)
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+DEVH A 0 A_GiveInventory("DevionAirDash2")
+DEVH A 1 A_Refire("DashHalt")
+Goto Ready+2
+DashHalt:
+DEVH A 1
+DEVH A 0 A_Refire("DashHalt")
+Goto Ready+2
+
+Shockwave: //Justice Shockwave
+TNT1 A 0 A_TakeInventory("DevionShock",1)
+TNT1 A 0 A_TakeInventory("DevionChargeAnim",1)
+TNT1 A 0 A_TakeInventory("DevionDashAnim",1)
+TNT1 A 0 A_GiveInventory("DShockwaveAnim",1)
+TNT1 A 0 SetPlayerProperty(0,1,0)
+TNT1 A 1 ThrustThingZ(0,-50,0,0)
+TNT1 A 0 A_ChangeVelocity(25,0,momz,CVF_RELATIVE|CVF_REPLACE)
+TNT1 A 0 A_SpawnItemEx("DevionShockwaveTrail",-5,0,20)
+TNT1 A 0 A_SpawnItemEX("DevionBounceCheck",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_SpawnItemEX("DevionBounceBox",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("DBounceFlag",1,"ShockwaveFinish2")
+TNT1 A 0 A_JumpIfInventory("DevionJumpCancel",1,"ShockwaveCancel")
+TNT1 A 1 A_CheckFloor("ShockwaveFinish")
+goto Shockwave+5
+ShockwaveFinish: //Justice Shockwave (End)
+TNT1 A 0 A_PlaySoundEX("devion/shockwave","Weapon")
+TNT1 A 0 A_Stop
+TNT1 A 0 A_SpawnItemEX("JusticeShockwave",0,0,0,0,0,0)
+ShockwaveEnd:
+TNT1 A 0 A_ChangeFlag("NOPAIN",1)
+DEVH NNNOOOPPPQQQRRRSSS 1 SetPlayerProperty(0,1,4)
+DEVH A 0 A_ChangeFlag("NOPAIN",0)
+DEVH A 0 SetPlayerProperty(0,0,4)
+DEVH A 0 SetPlayerProperty(0,0,0)
+DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH A 0 A_TakeInventory("DBounceFlag",999)
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+GoTo Ready+2
+ShockwaveFinish2: //Justice Shockwave (Wall End)
+TNT1 A 0 A_CheckFloor("ShockwaveFinish")
+TNT1 A 0 A_PlaySoundEX("devion/shockwave","Weapon")
+TNT1 A 0 A_SpawnItemEX("JusticeShockwave",0,0,0,0,0,0)//A_SpawnItemEX("JusticeShockwave",35,0,0,0,0,0)
+TNT1 A 0 A_Stop
+TNT1 A 0 A_ChangeVelocity(-10,0,momz,CVF_RELATIVE|CVF_REPLACE)
+TNT1 A 2 ThrustThingZ(0,30,0,0)
+goto ShockwaveEnd
+
+DTeleport: //Teleport
+DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH A 0 A_JumpIfInventory("DevionTeleportCooldown",1,"NoAmmo")
+DEVH A 0 A_TakeInventory("DevionShock",1)
+DEVH A 0 A_FireCustomMissile("DevionTeleportFX")
+DEVH A 0 A_ChangeFlag("THRUACTORS",1)
+DEVH A 0 A_ChangeFlag("INVULNERABLE",1)
+DEVH A 0 A_ChangeFlag("CANTSEEK",1)
+DEVH A 0 A_Stop
+DEVH A 0 A_PlaySoundEx("devion/teleport","Weapon")
+DEVH A 0 A_ChangeVelocity(600*cos(pitch),0,200*-sin(pitch),CVF_RELATIVE|CVF_REPLACE)
+TNT1 A 1
+DEVH NOPQRS 1 A_ChangeVelocity(25*cos(pitch),0,0,CVF_RELATIVE|CVF_REPLACE)
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+DEVH A 0 A_ChangeFlag("CANTSEEK",0)
+DEVH A 0 A_ChangeFlag("INVULNERABLE",0)
+DEVH A 0 A_ChangeFlag("THRUACTORS",0)
+DEVH A 0 A_GiveInventory("DevionTeleportCooldown")
+Goto Ready+2
+
+UB1: //Fist Revolver
+DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH A 0 A_GiveInventory("FistRevolverAnim")
+DEVH A 0 A_PlaySoundEx("devion/gigafist","Weapon")
+DEVH A 0 A_JumpIfInventory("DevionFever",1,"UB1Alt2")
+DEVH A 0 A_JumpIfInventory("DevionCharge",75,"UB1Alt")
+DEVH A 0 A_TakeInventory("DevionFistAmmo",1)
+DEVH A 0 A_FireCustomMissile("FistRevolver",0,0,8,0)
+DEVH EEFFGGHHHHHH 1
+DEVH A 0 A_TakeInventory("FistRevolverAnim")
+DEVH A 0 A_JumpIfInventory("DevionFistAmmo",1,"UB1End")
+goto UB1Reload
+UB1Alt:
+DEVH A 0 A_TakeInventory("DevionCharge",75)
+DEVH A 0 A_FireCustomMissile("FistRevolver2",0,0,8,0)
+DEVH EEFFGGHHHHHH 1
+DEVH A 0 A_TakeInventory("FistRevolverAnim")
+goto UB1End
+UB1Alt2:
+DEVH A 0 A_FireCustomMissile("FistRevolver3",0,0,8,0)
+DEVH EEFFGGHH 1
+DEVH A 0 A_TakeInventory("FistRevolverAnim")
+goto UB1End
+UB1End:
+DEVH IJKLMNOPQRS 1
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+DEVH A 0 A_Refire
+Goto Ready+2
+UB1Reload:
+DEVH A 1 Offset(0,32)
+DEVH A 1 Offset(0,46)
+DEVH A 1 Offset(0,58)
+DEVH A 1 Offset(0,70)
+DEVH A 1 Offset(0,82)
+UB1ReloadLoop:
+DEVH A 1 Offset(0,82)
+DEVH A 0 A_PlaySoundEx("weapon/rminestick","Weapon")
+DEVH A 0 A_Giveinventory("DevionFistAmmo",1)
+DEVH A 0 A_Jumpifinventory("DevionFistAmmo",5,"UB1ReloadLoopEnd")
+DEVH A 5 Offset(0,82)
+loop
+UB1ReloadLoopEnd:
+DEVH A 1 Offset(0,82)
+DEVH A 1 Offset(0,70)
+DEVH A 1 Offset(0,58)
+DEVH A 1 Offset(0,46)
+DEVH A 1 Offset(0,32)
+DEVH A 0 A_PlaySoundEx("weapon/Crashland","Weapon")
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+Goto Ready+2
+
+UB2: //Aura Charge
+DEVH A 0 A_JumpIfInventory("DevionFever",1,"UB2Fever")
+DEVH A 0 A_JumpIfInventory("DevionCharge",300,"FeverActivate")
+DEVH A 0 A_GiveInventory("DevionChargeAnim",1)
+DEVH A 0 A_Stop
+DEVC A 1 A_WeaponReady
+DEVH A 0 A_PlaySoundEx("devion/echarge","SoundSlot7")
+DEVH AAAA 0 A_SpawnItemEx("DevionChargeFX",random(-40,40),random(-40,40),random(6,60))
+DEVH A 0 A_GiveInventory("DevionCharge",1)
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("DevionCharge",300,"Charged")
+DEVH A 0 A_JumpIfInventory("DevionJumpCancel",1,"ShockwaveCancel")
+DEVH A 0 A_Stop
+DEVC A 1 A_WeaponReady
+DEVH AAAA 0 A_SpawnItemEx("DevionChargeFX",random(-40,40),random(-40,40),random(6,60))
+DEVH A 0 A_GiveInventory("DevionCharge",1)
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("DevionCharge",300,"Charged")
+DEVH A 0 A_JumpIfInventory("DevionJumpCancel",1,"ShockwaveCancel")
+DEVH A 0 A_Stop
+DEVC B 1 A_WeaponReady
+DEVH A 0 A_PlaySoundEx("devion/echarge","SoundSlot7")
+DEVH AAAA 0 A_SpawnItemEx("DevionChargeFX",random(-40,40),random(-40,40),random(6,60))
+DEVH A 0 A_GiveInventory("DevionCharge",1)
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("DevionCharge",300,"Charged")
+DEVH A 0 A_JumpIfInventory("DevionJumpCancel",1,"ShockwaveCancel")
+DEVH A 0 A_Stop
+DEVC B 1 A_WeaponReady
+DEVH AAAA 0 A_SpawnItemEx("DevionChargeFX",random(-25,25),random(-25,25),random(0,50))
+DEVH A 0 A_GiveInventory("DevionCharge",1)
+DEVH A 0 A_JumpIfInventory("User1_Trigger",1,"UB1")
+DEVH A 0 A_JumpIfInventory("DevionCharge",300,"Charged")
+DEVH A 0 A_JumpIfInventory("DevionJumpCancel",1,"ShockwaveCancel")
+goto UB2+2
+Charged:
+DEVH A 0 A_PlaySoundEx("devion/efcharge","Weapon")
+DEVH A 0 A_SpawnItemEx("DevionFChargedFX")
+goto NoAmmo
+FeverActivate:
+DEVH SRQ 1
+DEVH A 0 A_TakeInventory("DevionCharge",999)
+DEVH A 0 A_GiveInventory("DevionFever",100)
+DEVH Q 1 A_PlaySoundEx("devion/fever","Weapon")
+DEVH QRS 1
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+goto Ready+2
+
+UB2Fever: //Giga Crush
+DEVH A 0 A_TakeInventory("DevionFever",999)
+DEVH A 0 A_PlaySoundEx("devion/gigacharge","SoundSlot8")
+DEVH A 0 A_GiveInventory("DevionGigaCrush",1)
+goto UB2FeverLoop
+UB2FeverLoop:
+DEVC AAA 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC A 1
+DEVC AAA 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC A 1
+DEVC AAA 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC A 1
+DEVC AAA 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC A 1
+DEVC BBB 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC B 1
+DEVC BBB 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC B 1
+DEVC BBB 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC B 1
+DEVC BBB 0 A_SpawnItemEx("DevionGCrushFX",random(-50,50),random(-50,50),random(0,15),0,0,random(2,25),0,0)
+DEVC B 1
+DEVC A 0 A_GiveInventory("CutterFlag",1)
+DEVC A 0 A_JumpIfInventory("CutterFlag",5,"UB2FeverEnd")
+loop
+UB2FeverEnd:
+DEVH A 0 A_TakeInventory("CutterFlag",999)
+DEVH A 0 A_GiveInventory("DevionJumpPrevent",1)
+DEVH A 0 A_GiveInventory("DevionChargeAnim",1)
+DEVH A 0 A_TakeInventory("DevionGigaCrush",1)
+DEVH A 0 A_PlaySoundEx("devion/gigacrush","SoundSlot8")
+DEVH A 0 A_SpawnItemEx("DevionGCrush",2,0,27)
+DEVH AAAAAAAAAAAAAAAA 1 A_Stop
+DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH A 0 A_TakeInventory("DevionJumpPrevent",1)
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+goto Ready+2
+
+Ultimate: //Gigaton Punch
+DEVH A 0 A_TakeInventory("SmashFlag",999)
+DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH A 0 A_TakeInventory("DevionDashAnim",1)
+DEVH A 0 A_GiveInventory("DevionJumpPrevent",1)
+DEVH A 0 A_ChangeFlag("SHOOTABLE",0)
+DEVH A 0 A_GiveInventory("FistRevolverAnim")
+DEVH A 0 A_JumpIfInventory("DevionFever",1,"UltimateFever")
+DEVH A 0 A_PlaySoundEx("devion/charge1", "Weapon")
+DEVH A 0 A_SpawnItemEx("DevionUltFX1",10,12,27)
+DEVH HHHHHHHHHHHHHHHHHHHH 1 A_Stop
+DEVH A 0 A_PlaySoundEx("devion/charge2", "Weapon")
+DEVH A 0 A_SpawnItemEx("DevionUltFX2",15,12,27)
+DEVH HHHHHHHHHHHHHHHHHHHH 1 A_Stop
+DEVH A 0 A_PlaySoundEx("devion/charge3", "Weapon")
+DEVH A 0 A_SpawnItemEx("DevionUltFX3",20,12,27)
+DEVH HHHHHHHHHHHHHHHHHHHH 1 A_Stop
+DEVH A 0 A_PlaySoundEx("devion/chargepunch","Weapon")
+DEVH A 0 A_FireCustomMissile("GigatonPunch",0,0,8,0)
+DEVH EFGHHIIJJKKLLMMMMMM 1 A_Stop
+DEVH A 0 A_ChangeFlag("SHOOTABLE",1)
+DEVH A 0 A_TakeInventory("FistRevolverAnim")
+DEVH A 0 A_TakeInventory("DevionJumpPrevent",1)
+DEVH NNOOPPQQRRSS 2
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+GoTo Ready+2
+UltimateFever:
+DEVH A 0 A_TakeInventory("DevionFever",999)
+DEVH A 0 A_PlaySoundEx("devion/chargepunch","Weapon")
+DEVH A 0 A_FireCustomMissile("GigatonPunch",0,0,8,0)
+DEVH EFGHHIIJJKKLLMM 1 A_Stop
+DEVH A 0 A_ChangeFlag("SHOOTABLE",1)
+DEVH A 0 A_TakeInventory("FistRevolverAnim")
+DEVH A 0 A_TakeInventory("DevionJumpPrevent",1)
+DEVH NNOOPPQQRRSS 2
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+GoTo Ready+2
+
+ShockwaveCancel:
+DEVH A 0 ThrustThingZ(0,40,0,0)
+NoAmmo:
+DEVH A 0 A_TakeInventory("DevionDashAnim",1)
+DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH A 0 A_TakeInventory("DBounceFlag",999)
+DEVH A 0 A_TakeInventory("DevionShock",1)
+DEVH A 0 A_TakeInventory("DevionJumpCancel",1)
+DEVH A 1 SetPlayerProperty(0,0,0)
+DEVH A 0 A_TakeInventory("User1_Trigger",999)
+DEVH A 0 A_TakeInventory("User2_Trigger",999)
+DEVH A 0 A_TakeInventory("User3_Trigger",999)
+DEVH A 0 A_TakeInventory("User4_Trigger",999)
+Goto Ready+2
+
+Flash:
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"Aura1")
+TNT1 A 1 A_JumpIfInventory("IsDead",1,"StopFlash")
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"Aura2")
+TNT1 A 1 A_JumpIfInventory("DevionDoubleJump",1,"DoubleJump")
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"Aura3")
+TNT1 A 0 A_TakeInventory("DevionFever",1)
+TNT1 A 0 A_JumpIfInventory("DevionFever",1,"FeverFlash")
+TNT1 A 1 A_CheckFloor("FloorFlash")
+loop
+
+Aura1:
+TNT1 A 1 A_SpawnItemEx("DevionAura1FX",0,0,-2,0,0,0,0,SXF_ABSOLUTEMOMENTUM)
+goto Flash+1
+Aura2:
+TNT1 A 1 A_SpawnItemEx("DevionAura2FX",0,0,-2,0,0,0,0,SXF_ABSOLUTEMOMENTUM)
+goto Flash+3
+Aura3:
+TNT1 A 1 A_SpawnItemEx("DevionAura3FX",0,0,-2,0,0,0,SXF_ABSOLUTEMOMENTUM)
+goto Flash+5
+
+StopFlash:
+TNT1 A 0 A_JumpIfInventory("DevionGigaCrush",1,"StopFlash3")
+TNT1 A 0 A_JumpIfInventory("DevionFever",1,"StopFlash2")
+TNT1 A 1 A_StopSoundEx("Weapon")
+goto StopFlash+1
+StopFlash2:
+TNT1 A 0 A_SpawnItemEx("TerraStandDeath",-50,0,15,0,0,0,0,SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 A_JumpIfInventory("DevionGigaCrush",1,"StopFlash3")
+goto StopFlash+1
+StopFlash3:
+TNT1 A 0 A_PlaySoundEx("devion/gigacrush","SoundSlot8")
+TNT1 A 0 A_SpawnItemEx("DevionGCrush",2,0,27)
+goto StopFlash+1
+
+DoubleJump:
+TNT1 A 0 A_JumpIfInventory("DevionChargeAnim",1,"JumpCancel")
+TNT1 A 0 A_JumpIfInventory("DShockwaveAnim",1,"JumpCancel")
+TNT1 A 0 A_TakeInventory("DevionDoubleJump",1)
+TNT1 A 0 A_JumpIfInventory("DevionJumpPrevent",1,"DJNo")
+TNT1 A 0 A_PlaySoundEx("weapon/superboost",1,"Body")
+TNT1 A 0 ThrustThingZ(0,50,0,0)
+TNT1 A 0 A_SpawnItemEx("DevionDJumpFX",0,12,-10,0,0,-4)
+TNT1 A 0 A_SpawnItemEx("DevionDJumpFX",0,-12,-10,0,0,-4)
+TNT1 A 0 ACS_NamedExecuteAlways("MCSpeedSetScript",0,1)
+TNT1 A 1
+goto Flash+4
+DJNo:
+goto Flash+4
+JumpCancel:
+TNT1 A 1 A_GiveInventory("DevionJumpCancel",1)
+goto DoubleJump+1
+
+FloorFlash:
+TNT1 A 0 A_TakeInventory("DevionJumpCancel",1)
+TNT1 A 0 A_TakeInventory("DevionAirDash",1)
+TNT1 A 0 A_TakeInventory("DevionShock",1)
+goto Flash
+
+FeverFlash:
+TNT1 A 0 A_SpawnItemEx("TerraAfterimage",-50,0,15,0,0,0,0,SXF_ABSOLUTEMOMENTUM)
+goto Flash+7
+}
+}
+
+actor DevionFistAmmo : Inventory //For the User1 ability
+{
+inventory.amount 1
+inventory.maxamount 5
+}
+
+actor DevionCharge : Ammo //For the User2 ability
+{
+inventory.amount 1
+inventory.maxamount 300
+}
+
+actor DevionFever : Inventory //For the User2 ability
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+Actor OraOraProtect : PowerProtection
+{
+PowerUp.Duration 3
+DamageFactor "OraOra", 0
+}
+
+//Double Jump
+actor DevionDJumpFX : HardKnuckleFX
+{
+translation "209:212=204:204"
+renderstyle "add"
+scale 1
+States
+{
+Spawn:
+TNT1 A 0
+HARD BCDE 2 A_Fadeout
+wait
+}
+}
+
+//Mainfire
+actor DevionPunchBlocker
+{
++THRUSPECIES
+species "Punch"
++MISSILE
+Speed 0
++DONTSPLASH
+Damage 0
+Radius 16
+Height 10
+health 9999
+scale 2.5
+damagefactor "Devion", 0.0
++SHOOTABLE
++NOBLOOD
+-SOLID
++NOTIMEFREEZE
++NOGRAVITY
++HEXENBOUNCE
++BOUNCEONACTORS
+painchance 256
+bloodtype ""
++DONTRIP
++GHOST
++NORADIUSDMG
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+Death:
+TNT1 A 6 A_Stop
+stop
+Pain:
+TNT1 A 0 
+TNT1 A 0 A_SpawnItemEx("DevionBlockFX")
+TNT1 A 1 A_PlaySound("devion/block")
+stop
+}
+}
+
+actor DevionPunchBlocker2 : DevionPunchBlocker
+{
+Radius 12
+}
+
+actor DevionBlockFX
+{
+scale 2.5
++NOINTERACTION
++CLIENTSIDEONLY
+alpha 0.9
+renderstyle add
+translation "0:255=4:4"
+states
+{
+Spawn:
+HARD C 0 A_SetScale(scaleX + 0.1, 2.5) 
+HARD C 1 A_FadeOut(0.05)
+loop
+}
+}
+
+actor DevionPunch
+{
+PROJECTILE
+translation "192:192=206:206", "194:198=207:207", "0:0=207:207"
++SKYEXPLODE
++DONTSPLASH
++THRUSPECIES
+damagetype "OraOra"
+species "Punch"
+Scale 1.5
+Obituary "%o was hit by a fucking Jojo reference by %k."
+Damage (3)
+Speed 80
+Radius 16
+Height 10
+States
+{
+Spawn:
+TNT1 A 0
+GIGF CDCD 1
+GIGF F 0 A_Recoil(5)
+Spawn2:
+TNT1 A 0 A_ChangeFlag("THRUACTORS",1)
+GIGF CD 1 A_FadeOut(0.2)
+loop
+Death:
+Crash:
+TNT1 A 0 A_PlaySoundEx("devion/punchhit","Weapon")
+TNT1 A 0 A_SetScale(0.75)
+BIM1 BCDEF 2
+stop
+}
+}
+
+actor DevionPunch2 : DevionPunch
+{
++THRUSPECIES
++DONTBLAST
+translation "80:95=196:196","209:215=205:205","199:199=206:206","0:0=207:207"
+scale 2.5
+damagetype "OraOra"
+species "Punch"
+Obituary "%o was hit by a fucking Jojo reference by %k."
+Speed 80
+Radius 12
+Height 10
+Damage (3)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("DevionPunchBlocker2")
+HARD A 1 A_SpawnItemEx("DevionPunch2FX")
+TNT1 A 0 A_SpawnItemEx("DevionPunchBlocker2")
+HARD A 1 A_SpawnItemEx("DevionPunch2FX")
+TNT1 A 0 A_SpawnItemEx("DevionPunchBlocker2")
+HARD A 1 A_SpawnItemEx("DevionPunch2FX")
+goto Spawn2
+Spawn2:
+TNT1 A 0 A_SpawnItemEx("DevionPunchBlocker2")
+TNT1 A 0 A_SpawnItemEx("DevionPunch2FX")
+HARD A 1 A_Fadeout(0.15)
+loop
+Death:
+TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 0 A_Explode(8, 360, 0)
+BOMB BCDEFGHIJKLMNOPQR 1
+stop
+}
+}
+
+actor DevionPunch2FX : HardKnuckleFX
+{
+translation "80:95=196:196","209:215=205:205","199:199=206:206","0:0=207:207"
+Renderstyle "Add"
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+HARD A 1 A_Fadeout(0.1)
+loop
+}
+}
+
+//Alt + Main
+Actor JusticeShockwave
+{
+PROJECTILE
++DONTBLAST
++DONTSPLASH
++SKYEXPLODE
++THRUGHOST
++THRUACTORS
+Obituary "%o was crushed by %k's Justice Shockwave."
+DamageType "DShock2"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("DevionShockwaveFX")
+TNT1 A 0 A_SpawnItemEx("DevionShockwaveCircleFX")
+TNT1 A 0 A_Explode(30,220,0,0,110)
+Stop
+}
+}
+
+actor DevionShockwaveCircleFX : GravityHoldFX
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SetUserVar("user_angle", random(0, 6))
+SpawnLoop:
+TNT1 A 0 A_SpawnItemEx("DevionSWPTM", 220, 0, 0, 0, 0, 0, user_angle, SXF_ABSOLUTEANGLE|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SetUserVar("user_angle", user_angle + 6)
+TNT1 A 0 A_Countdown
+loop
+}
+}
+
+Actor DevionSWPTM : LightningStartFX1
+{
+Translation "0:255=204:204"
+renderstyle "Add"
++FLOORHUGGER
+-NOINTERACTION
++CLIENTSIDEONLY
+States
+{
+Spawn:
+TNT1 A 0
+DUOR T 1 A_FadeOut(0.1)
+Wait
+}
+}
+
+actor DevionShockwaveTrail
+{
+translation "85:92=204:204", "93:246=206:206"
++NOINTERACTION
++NOGRAVITY
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
+-SOLID
+Renderstyle "Add"
+scale 5
+height 1
+radius 1
+States
+{
+Spawn:
+TNT1 A 0
+DGFS A 0 ThrustThingZ(0,-15,0,0)
+DGFS A 1 A_FadeOut(0.1)
+loop
+}
+}
+
+actor DevionShockwaveFX : HardKnuckleFX
+{
+translation "209:212=204:204"
+scale 2.75
+States
+{
+Spawn:
+ASEX ABCDEF 2
+stop
+}
+}
+
+actor DevionBounceBox
+{
+PROJECTILE
+Obituary "%o was punched into oblivion by %k."
+DamageType "DShock"
++DONTSPLASH
++DONTBLAST
++NOEXPLODEFLOOR
++THRUGHOST
++DONTREFLECT
+damage (0)
+Radius 25
+Height 25
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+XDeath:
+Crash:
+TNT1 A 1 A_GiveToTarget("DBounceFlag",1)
+stop
+Death:
+TNT1 A 1
+Stop
+}
+}
+
+actor DevionBounceCheck
+{
+PROJECTILE
++DONTBLAST
+Damagetype "DShock"
+Radius 16
+Height 16
+Scale 1.0
+Damage(10)
+Obituary "%o was crushed by %k's Justice Shockwave."
+Speed 10
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 2
+stop
+Death:
+TNT1 A 0 A_GiveToTarget("DBounceFlag",1)
+TNT1 A 1
+stop
+}
+}
+
+//Alt (Fever Mode)
+actor DevionTeleportFX
+{
+PROJECTILE
++CLIENTSIDEONLY
++THRUGHOST
++THRUACTORS
++DONTSPLASH
+translation "192:192=204:204", "194:240=206:206"
+renderstyle "add"
+Speed 200
+radius 25
+height 25
+reactiontime 4
+States
+{
+Spawn:
+TNT1 A 0
+GIGF H 1 A_SpawnItemEx("DevionTeleportTrail",0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("DevionTeleportTrail",0,0,0,0,0,0)
+TNT1 A 0 A_Countdown
+GIGF I 1 A_SpawnItemEx("DevionTeleportTrail",0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("DevionTeleportTrail",0,0,0,0,0,0)
+TNT1 A 0 A_Countdown
+loop
+Death:
+GIGF HI 1 A_FadeOut(0.5)
+wait
+}
+}
+
+Actor DevionTeleportTrail : GigaFistFX
+{
+translation "192:192=204:204", "194:240=206:206"
+renderstyle "add"
+States
+{
+Spawn:
+TNT1 A 1
+GIGF HHHIIIII 1
+Goto Death
+Death:
+GIGF HI 1 A_FadeOut(0.5)
+wait
+}
+}
+
+//User Button 1
+actor FistRevolver : HardKnuckle
+{
++DONTBLAST
+translation "80:95=206:206","199:199=207:207","209:215=204:204"
+scale 5
+damagetype "FistRevolver"
+Obituary "%o was knuckled so hard they were turned into a sandwich by %k."
+Speed 65
+Radius 24
+Height 20
+Damage (5)
+States
+{
+Spawn:
+HARD A 3 A_SpawnItemEx("FistRevolverFX",0,1,1,-5,0,0,0)
+HARD A 0 A_ChangeFlag("NOGRAVITY",0)
+loop
+Death:
+TNT1 A 0 A_JumpIfCloser(180, "Rocketed")
+TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 0 A_Explode(23, 360, 0)
+BOMB BCDEFGHIJKLMNOPQR 1
+stop
+Rocketed:
+TNT1 A 1 A_GiveToTarget("FistRocketed",1)
+goto Death+1
+Crash:
+TNT1 A 0 //A_GiveToTarget("UltMaterial",2)
+TNT1 A 0 //A_GiveToTarget("UltCheck")
+goto Death
+}
+}
+
+actor FistRevolver2 : FistRevolver
+{
++DONTBLAST
+Speed 100
+States
+{
+Spawn:
+TNT1 A 0
+HARD A 1 A_SpawnItemEx("FistRevolverFX",0,random(-8,8),random(-8,8),random(-5,-25),random(-5,5),random(-5,5),0)
+loop
+}
+}
+
+actor FistRevolver3 : FistRevolver2
+{
+States
+{
+Death:
+TNT1 A 0 A_JumpIfCloser(180, "Rocketed")
+TNT1 AAAAAA 0 A_SpawnItemEx("DevionRock1",0,0,random(4,12),random(-25,25),random(-25,25),random(5,25))
+TNT1 AAAAAA 0 A_SpawnItemEx("DevionRock2",0,0,random(4,12),random(-25,25),random(-25,25),random(5,25))
+TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
+TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 0 A_Explode(23, 360, 0)
+BOMB BCDEFGHIJKLMNOPQR 1
+stop
+}
+}
+
+actor FistRevolverFX : HardKnuckleFX
+{
+translation "209:215=204:204"
+States
+{
+Spawn:
+TNT1 A 0
+HARD CDE 1 A_Fadeout
+wait
+}
+}
+
+actor FistRocketed : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_ChangeVelocity(-Cos(pitch)*30+velx, 0, sin(pitch)*30,CVF_RELATIVE|CVF_REPLACE)
+stop
+}
+}
+
+//User Button 2
+Actor DevionChargeFX : HardKnuckleFX
+{
+translation "228:228=229:229"
+renderstyle "add"
+alpha 0.75
+scale 1.2
+States
+{
+Spawn:
+TNT1 A 0
+TBOL IIJJKKLL 1 A_Fadeout
+stop
+}
+}
+
+Actor DevionFChargedFX : DevionChargeFX
+{
+translation "209:215=160:160", "229:229=221:221"
+alpha 0.75
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+LIBO GGHHIIJJKK 1 A_Fadeout(0.05)
+stop
+}
+}
+
+//User Button 2 (Fever Mode)
+Actor DevionGCrushFX : HardKnuckleFX
+{
+translation "0:255=4:4"
+renderstyle "translucent"
+alpha 0.8
+scale 1
+States
+{
+Spawn:
+TNT1 A 0
+MMFX BBBBB 1 A_SpawnItemEx("DevionGCrushFX2")
+goto Death
+Death:
+MMFX CCDDEE 1 A_Fadeout
+stop
+}
+}
+
+Actor DevionGCrushFX2 : DevionGCrushFX
+{
+States
+{
+Spawn:
+TNT1 A 0
+MMFX BBCCDDEE 1 A_Fadeout
+goto Death
+}
+}
+
+actor DevionGCrush
+{
+PROJECTILE
+translation "0:255=205:205"
+renderstyle "add"
++NOINTERACTION
++DONTBLAST
++DONTSPLASH
++THRUACTORS
++THRUGHOST
++NOCLIP
+alpha 0.8
+damagetype "Devion"
+Obituary "%o forgot to get out in time from %k's Giga Crush."
+scale 1
+States
+{
+Spawn:
+TNT1 A 0
+ASEX B 1 A_Explode(2, 50, 0)
+TNT1 A 0 A_SetScale(1)
+ASEX B 1 A_Explode(2, 60, 0)
+TNT1 A 0 A_SetScale(1.5)
+ASEX B 1 A_Explode(2, 70, 0)
+TNT1 A 0 A_SetScale(2)
+ASEX B 1 A_Explode(2, 80, 0)
+TNT1 A 0 A_SetScale(2.5)
+ASEX B 1 A_Explode(2, 90, 0)
+TNT1 A 0 A_SetScale(3)
+ASEX B 1 A_Explode(2, 100, 0)
+TNT1 A 0 A_SetScale(3.5)
+ASEX B 1 A_Explode(2, 110, 0)
+TNT1 A 0 A_SetScale(4)
+ASEX B 1 A_Explode(2, 120, 0)
+TNT1 A 0 A_SetScale(4.5)
+ASEX B 1 A_Explode(3, 130, 0)
+TNT1 A 0 A_SetScale(5)
+ASEX B 1 A_Explode(3, 140, 0)
+TNT1 A 0 A_SetScale(5.5)
+ASEX B 1 A_Explode(3, 150, 0)
+TNT1 A 0 A_SetScale(6)
+ASEX B 1 A_Explode(3, 160, 0)
+TNT1 A 0 A_SetScale(6.5)
+ASEX B 1 A_Explode(5, 170, 0)
+TNT1 A 0 A_SetScale(7)
+ASEX B 1 A_Explode(5, 180, 0)
+TNT1 A 0 A_SetScale(7.5)
+ASEX B 1 A_Explode(5, 190, 0)
+TNT1 A 0 A_SetScale(8)
+ASEX BBBBB 1 A_Explode(8, 200, 0)
+ASEX BBBBB 1 A_Fadeout
+stop
+}
+}
+
+//Ultimate
+Actor DevionUltFX1 : HardKnuckleFX
+{
+renderstyle "add"
+translation "80:95=206:206","199:199=207:207","209:215=204:204"
+scale 1
+reactiontime 10
+States
+{
+Spawn:
+HARD A 0
+HARD A 0 A_SpawnItemEx("DevionUltFXFX1",0,2,2)
+HARD AA 1 A_SetScale(1)
+HARD A 0 A_Countdown
+HARD AA 1 A_SetScale(2)
+HARD A 0 A_Countdown
+goto Spawn+2
+Death:
+HARD AAAAA 1 A_Fadeout
+stop
+}
+}
+
+Actor DevionUltFXFX1 : DevionUltFX1
+{
+alpha 0.5
+translation "0:255=206:206"
+States
+{
+Spawn:
+MMFX B 0
+MMFX BB 1 A_SetScale(1.5)
+MMFX B 0 A_Countdown
+MMFX BB 1 A_SetScale(2.5)
+MMFX B 0 A_Countdown
+loop
+Death:
+MMFX BBBB 1 A_Fadeout
+stop
+}
+}
+
+Actor DevionUltFX2 : DevionUltFX1
+{
+scale 3
+States
+{
+Spawn:
+HARD A 0
+HARD A 0 A_SpawnItemEx("DevionUltFXFX2",0,2,2)
+HARD AA 1 A_SetScale(3)
+HARD A 0 A_Countdown
+HARD AA 1 A_SetScale(4)
+HARD A 0 A_Countdown
+goto Spawn+2
+}
+}
+
+Actor DevionUltFXFX2 : DevionUltFXFX1
+{
+States
+{
+Spawn:
+MMFX B 0
+MMFX BB 1 A_SetScale(3.5)
+MMFX B 0 A_Countdown
+MMFX BB 1 A_SetScale(4.5)
+MMFX B 0 A_Countdown
+loop
+}
+}
+
+Actor DevionUltFX3 : DevionUltFX1
+{
+scale 5
+States
+{
+Spawn:
+HARD A 0
+HARD A 0 A_SpawnItemEx("DevionUltFXFX3",0,2,2)
+HARD AA 1 A_SetScale(5)
+HARD A 0 A_Countdown
+HARD AA 1 A_SetScale(6)
+HARD A 0 A_Countdown
+goto Spawn+2
+}
+}
+
+Actor DevionUltFXFX3 : DevionUltFXFX1
+{
+States
+{
+Spawn:
+MMFX B 0
+MMFX BB 1 A_SetScale(5.5)
+MMFX B 0 A_Countdown
+MMFX BB 1 A_SetScale(6.5)
+MMFX B 0 A_Countdown
+loop
+}
+}
+
+actor GigatonPunch
+{
+PROJECTILE
++DONTBLAST
++THRUACTORS
++NOCLIP
+translation "80:95=206:206","199:199=207:207","209:215=204:204"
+damagetype "Devion"
+Scale 10
+Radius 30
+Height 30
+Obituary "%o accidentally got caught up in the Earth shattering Gigaton Punch from %k."
+Damage (1)
+Speed 30
+States
+{
+Spawn:
+TNT1 A 0
+HARD A 3
+HARD A 0 A_ChangeFlag("NOCLIP",0)
+loop
+Death:
+HARD A 0 A_PlaySoundEx("weapon/powerstone","Weapon")
+HARD AAAAAA 0 A_SpawnItemEx("GPDeathFX",random(-40,0),random(-40,40),random(-50,50),random(-5,-20),random(-20,20),random(-20,20))
+HARD AAA 0 A_SpawnItemEx("DevionRock1",0,0,random(4,12),random(-25,25),random(-25,25),random(5,25))
+HARD AAA 0 A_SpawnItemEx("DevionRock2",0,0,random(4,12),random(-25,25),random(-25,25),random(5,25))
+HARD A 1 A_GiveInventory("CutterFlag",1)
+HARD A 0 A_JumpIfInventory("CutterFlag",30,"Death2")
+loop
+Death2:
+TNT1 A 0 A_PlaySoundEx("devion/ultexplode", "Weapon")
+TNT1 A 0 A_SetScale(1)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB BB 1 A_Explode(10, 200, 0, 0, 100)
+TNT1 A 0 A_SetScale(2.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB CC 1 A_Explode(10, 250, 0, 0, 150)
+TNT1 A 0 A_SetScale(5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB DD 1 A_Explode(10, 300, 0, 0, 200)
+TNT1 A 0 A_SetScale(7.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB EE 1 A_Explode(10, 350, 0, 0, 250)
+TNT1 A 0 A_SetScale(10)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB FF 1 A_Explode(10, 400, 0, 0, 300)
+TNT1 A 0 A_SetScale(12.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB GG 1 A_Explode(10, 450, 0, 0, 350)
+TNT1 A 0 A_SetScale(15)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB HH 1 A_Explode(10, 500, 0, 0, 400)
+TNT1 A 0 A_SetScale(17.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB II 1 A_Explode(10, 550, 0, 0, 450)
+TNT1 A 0 A_SetScale(20)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB JJ 1 A_Explode(10, 600, 0, 0, 500)
+TNT1 A 0 A_SetScale(22.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB KK 1 A_Explode(10, 650, 0, 0, 550)
+TNT1 A 0 A_SetScale(25)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB LL 1 A_Explode(10, 700, 0, 0, 600)
+TNT1 A 0 A_SetScale(27.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB MM 1 A_Explode(10, 750, 0, 0, 650)
+TNT1 A 0 A_SetScale(30)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB NN 1 A_Explode(10, 800, 0, 0, 700)
+TNT1 A 0 A_SetScale(32.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB OO 1 A_Explode(10, 850, 0, 0, 750)
+TNT1 A 0 A_SetScale(35)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB PP 1 A_Explode(10, 900, 0, 0, 800)
+TNT1 A 0 A_SetScale(37.5)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB QQ 1 A_Explode(10, 950, 0, 0, 850)
+TNT1 A 0 A_SetScale(40)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("GPDeathFX2",random(-300,300),random(-300,300),random(-300,300))
+BOMB RR 1 A_Explode(10, 1000, 0, 0, 1000)
+stop
+}
+}
+
+Actor GPDeathFX : HardKnuckleFX
+{
+translation "192:192=4:4", "198:198=92:92"
+scale 2
+States
+{
+Spawn:
+TNT1 A 0
+6P28 ABABABAB 2 A_Fadeout(0.05)
+6P28 A 1 A_SetScale(1.5)
+6P28 A 1 A_SetScale(1)
+6P28 B 1 A_SetScale(0.5)
+6P28 B 1 A_SetScale(0.25)
+6P28 BBB 1 A_Fadeout(0.05)
+stop
+}
+}
+
+Actor GPDeathFX2 : HardKnuckleFX
+{
+translation "209:212=204:204"
+States
+{
+Spawn:
+TNT1 A 0
+MMFX BCDE 2
+stop
+}
+}
+
+actor DevionRock1
+{
+PROJECTILE
+-NOGRAVITY
+Damagetype "Devion"
+Obituary "Hahahaha! %o got hit in the head by %k's rock."
+Damage (10)
+radius 6
+height 6
+scale 2.5
+reactiontime 25
+States
+{
+Spawn:
+TNT1 A 0
+DROC A 1 A_Countdown
+loop
+Crash:
+TNT1 A 0 //A_GiveToTarget("UltMaterial",5)
+TNT1 A 0 //A_GiveToTarget("UltCheck")
+stop
+}
+}
+
+actor DevionRock2 : DevionRock1
+{
+Damage (5)
+radius 4
+height 4
+States
+{
+Spawn:
+TNT1 A 0
+DROC B 1 A_Countdown
+loop
+}
+}

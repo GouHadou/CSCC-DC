@@ -1,0 +1,224 @@
+//All flags and assisters for enemy attacks due to psychic go here
+
+Actor ShadowBallComboTimer : Powerup{powerup.duration 20}
+
+Actor SalCarryFlag : Once{}
+Actor BDroneFlag : Once{}
+Actor KamikazeFlag : Once{}
+Actor KLaserFlag : Once{}
+Actor QuickieFlag : Once{}
+Actor ScuttleBlueFlag : Once{}
+
+Actor PsychicCarryAssister : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("PsychicManager",0,0,28)
+stop
+}
+}
+
+Actor PsychicManager
+{
++NOINTERACTION
++NOCLIP
+-SOLID
++MISSILE
+radius 1
+height 1
++NOGRAVITY
++DONTBLAST
+Scale 1.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 //time given to register that a flag is given and avoid 0-tic loops
+TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("SalCarryFlag",1,1)
+goto Death
+TNT1 A 0 A_JumpIfInTargetInventory("BDroneFlag",1,"BDrone")
+TNT1 A 0 A_JumpIfInTargetInventory("KamikazeFlag",1,"Kamikaze")
+TNT1 A 0 A_JumpIfInTargetInventory("KLaserFlag",1,"KLaserBall")
+TNT1 A 0 A_JumpIfInTargetInventory("QuickieFlag",1,"YellowFoe")
+TNT1 A 0 A_JumpIfInTargetInventory("ScuttleBlueFlag",1,"ScuttleBlue")
+TNT1 A 0 A_JumpIfInTargetInventory("SalCarryFlag",1,"SpawnState")
+goto Death
+SpawnState:
+goto Spawn+1
+BDrone:
+TNT1 A 0 A_GiveToTarget("BDroneFXSpawner")
+goto Spawn+1
+Kamikaze:
+TNT1 A 0 A_GiveToTarget("KamikazeFXSpawner")
+goto Spawn+1
+KLaserBall:
+TNT1 A 0 A_GiveToTarget("KLaserBallFXSpawner")
+goto Spawn+1
+YellowFoe:
+TNT1 A 0 A_GiveToTarget("YellowFoeFXSpawner")
+goto Spawn+1
+ScuttleBlue:
+TNT1 A 0 A_GiveToTarget("ScuttleBlueFXSpawner")
+goto Spawn+1
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor BDroneFXSpawner : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("BDroneFX",18,-32,16,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+Actor KamikazeFXSpawner : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("KamikazeFX",18,-24,16,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+Actor KLaserBallFXSpawner : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("KLaserBallFX",18,-24,16,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+Actor YellowFoeFXSpawner : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("YellowFoeFX",18,-28,16,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+Actor ScuttleBlueFXSpawner : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("ScuttleBlueFX",18,-24,16,0,0,0,0,SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+Actor BDroneFX
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Translation "220:227=180:180"
+Scale 2.0
+States
+{
+Spawn:
+7IBT A 0
+7IBT A 1
+stop
+}
+}
+
+Actor KamikazeFX : BDroneFX
+{
+Translation "192:192=180:180", "198:198=184:184", "168:168=184:184", "4:4=184:184", "208:208=184:184"
+States
+{
+Spawn:
+CVSK A 0
+CVSK A 1
+stop
+}
+}
+
+Actor KLaserBallFX : BDroneFX
+{
+Alpha 0.75
+Renderstyle "Translucent"
+Translation "192:192=228:228","198:198=229:229"
+States
+{
+Spawn:
+LSBA A 0
+LSBA A 1
+stop
+}
+}
+
+actor YellowFoeFX : BDroneFX
+{
+Translation "192:192=160:160", "198:198=163:163", "247:247=248:248"
+Scale 2.0
+States
+{
+Spawn:
+QUIM A 0
+QUIM A 1
+stop
+}
+}
+
+actor ScuttleBlueFX : BDroneFX
+{
+Translation "192:192=69:69", "198:198=75:75", "164:164=183:183"
+Scale 2.0
+States
+{
+Spawn:
+SCTE A 0
+SCTE A 1
+stop
+}
+}
+
+actor YellowFoeWepSpeed : PowerDoubleFiringSpeed
+{
+powerup.color "Yellow", 0.2
+powerup.duration -10
+}
+
+Actor YellowFoeSpeedBoost : PowerSpeed {powerup.duration -10 speed 1.75}
+
+actor YellowFoeSBFX : GravityHoldFX
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SetUserVar("user_angle", random(0, 6))
+SpawnLoop:
+TNT1 A 0 A_SpawnItemEx("YellowFoeSBParticle", 175, 0, 0, 0, 0, random(40,70), user_angle, SXF_ABSOLUTEANGLE|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SetUserVar("user_angle", user_angle + 12)
+TNT1 A 0 A_Countdown
+loop
+}
+}
+
+actor YellowFoeSBParticle : GravityHoldParticle
+{
+renderstyle "add"
+Alpha 0.85
+Scale 1.5
+States
+{
+Spawn:
+TNT1 A 0
+YFSB AAAAAAAAAAAAAAA 1 A_Fadeout(0.07)
+stop
+}
+}
