@@ -98,49 +98,6 @@ PHAR A 1 bright A_SetTranslucent(1.0, 0)
 PHAR A 0 SetPlayerProperty(0,0,1)
 PHAR A 0 A_TakeInventory("IsVisible",1)
 goto Spawn
-Pain:
-PHAR H 0
-PHAR H 0 A_Recoil(1)
-PHAR H 0 
-PHAR H 0 A_Pain
-PHAR H 0 //A_GiveInventory("TempInvince",1)
-PHAR H 0 //SetPlayerProperty(0, 1, 4)
-PHAR H 0 A_Jump(256, "PainFix")
-goto PainFix
-PainFix:
-PHAR H 0
-goto PainFrames
-PainFrames:
-PHAR H 0 //A_GiveInventory("IveBeenHit",1)
-PHAR H 0 SetPlayerProperty(0,0,4)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 1 A_SpawnItem("PainFX",0,3)
-PHAR H 1 //A_Recoil(1)
-PHAR H 0 SetPlayerProperty(0,0,1)
-PHAR H 0 A_Jump(256, "Spawn")
-Goto Spawn+2
-TheEnd:
-PHAR G 4
-loop
-CreditWalk:
-PHAR BCDE 8
-loop
+
 }
 }

@@ -47,7 +47,7 @@ Missile:
 AFRO F 5
 AFRO G 4
 goto Spawn
-Pain:
+ClassPain:
 AFRO H 0 A_GiveInventory("WalrusInvinc",1)
 AFRO H 0 A_ScaleVelocity(0.75)
 AFRO H 0

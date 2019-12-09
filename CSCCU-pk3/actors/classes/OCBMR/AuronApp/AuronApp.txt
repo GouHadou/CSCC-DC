@@ -338,7 +338,7 @@ BMAP H 0 //A_SpawnItemEx("IveBeenBurned")
 BMAP H 0// A_GiveInventory("PowerBurnedAttackStat",1)
 BMAP H 0
 GoTo Pain+3
-Pain:
+ClassPain:
 WhichPain:
 BMAP H 0
 BMAP H 0
@@ -410,7 +410,7 @@ AUAS HHHHHHHHH 2 A_SpawnItem("PainFX",0,3)
 AUAS H 0 //SetPlayerProperty(0,0,1)
 AUAS H 0 A_Jump(256,"Spawn")
 goto Spawn+2
-Death:
+ClassDeath:
 BMAP H 0 SetPlayerProperty(0,0,4)
 BMAP H 0 A_TakeInventory("WeaponCharge",999)
 BMAP H 0 A_NoBlocking
