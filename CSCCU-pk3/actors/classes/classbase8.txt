@@ -350,9 +350,7 @@ Pain.BakuFire2:
 GoTo Pain+1
 
 //Thalo Painstates:
-Pain.ThunderClaw:
-	"####" H 0 A_GiveInventory("UltBuffer",1)
-GoTo Pain+1
+
 
 //TheMod CopyWep Painstates
 /*

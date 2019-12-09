@@ -1089,33 +1089,6 @@ graphic YUMEBAR, 8, 57{patch YUMEBAR, 0, 0}
 graphic YUMFVAR, 57, 8{patch YUMFBAR, 0, 0 {rotate -90}}
 graphic YUMEVAR, 57, 8{patch YUMEBAR, 0, 0 {rotate -90}}
 
-//Magica
-texture MGCBAR1, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=82:82", "198:198=90:90"}}
-texture MGCVAR1, 56, 8{patch MGCBAR1, 0, 0 {Rotate 90}}
-texture MGCBAR2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=39:39", "198:198=42:42"}}
-texture MGCVAR2, 56, 8{patch MGCBAR2, 0, 0 {Rotate 90}}
-texture MGCBAR3, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=197:197"}}
-texture MGCVAR3, 56, 8{patch MGCBAR3, 0, 0 {Rotate 90}}
-texture MGCBAR4, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=229:229", "198:198=230:230"}}
-texture MGCVAR4, 56, 8{patch MGCBAR4, 0, 0 {Rotate 90}}
-texture MGCBAR5, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=109:109", "198:198=129:129"}}
-texture MGCVAR5, 56, 8{patch MGCBAR5, 0, 0 {Rotate 90}}
-texture MGCBAR6, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=104:104", "198:198=106:106"}}
-texture MGCVAR6, 56, 8{patch MGCBAR6, 0, 0 {Rotate 90}}
-texture MGCBAR7, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=69:69", "198:198=73:73"}}
-texture MGCVAR7, 56, 8{patch MGCBAR7, 0, 0 {Rotate 90}}
-texture MGCBAR8, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=57:57", "198:198=63:63"}}
-texture MGCVAR8, 56, 8{patch MGCBAR8, 0, 0 {Rotate 90}}
-texture MGCBAR9, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=218:218", "198:198=219:219"}}
-texture MGCVAR9, 56, 8{patch MGCBAR9, 0, 0 {Rotate 90}}
-texture MGCBAR10, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=144:144", "198:198=148:148"}}
-texture MGCVAR10, 56, 8{patch MGCBAR10, 0, 0 {Rotate 90}}
-texture MGCBAR11, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=203:203", "198:198=205:205"}}
-texture MGCVAR11, 56, 8{patch MGCBAR11, 0, 0 {Rotate 90}}
-
-texture MULTBAR, 8, 56{patch BARARS02, 0, 0 {Translation "192:192=109:109", "194:194=112:112"}}
-texture MULTVAR, 56, 8{patch MULTBAR, 0, 0 {Rotate 90}}
-
 //Devion
 graphic DEVHBAR, 101, 8{XScale 1.5 YScale 1.5 Patch DEVHBAR, 0, 0}
 graphic DEVBAR1, 75, 8{XScale 1.5 YScale 1.5 Patch DEVBAR1, 0, 0}
