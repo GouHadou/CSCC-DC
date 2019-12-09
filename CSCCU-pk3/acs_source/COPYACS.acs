@@ -977,6 +977,28 @@ Case 33: //Stonefunk
 	GiveInventory("MorphFlag", 1);
 	GiveInventory("GeeClassItems",1);
 	break;
+	
+	Case 669: //Spybot
+	ClearInventory();
+	SetHudSize(600,380,0);
+    WhichClass = Random(0, 1);
+    if(ACS_ExecuteWithResult(975, 1)==0){WhichClass = 1;}
+	Switch(WhichClass)
+		{
+		Case 0:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdSpyBot (Concrete Coil) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "SpyBotCopyMorph1", "", 0, 258, "", "");
+		break;
+		Case 1:
+		HudMessage(s:"\cgYou \cicopied \ckthe \cdSpyBot (Knight CrackerBlast) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		MorphActor(ActivatorTID(), "SpyBotCopyMorph2", "", 0, 258, "", "");
+		break;
+		}
+	
+	TakeInventory("CanCopyWeapons", 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("GeeClassItems",1);
+	break;
 	}
 
 

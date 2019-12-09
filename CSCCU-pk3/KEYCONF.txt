@@ -163,3 +163,4 @@ AddPlayerClass Gaol97 nomenu
 addplayerclass "BoneheadCSCC" nomenu
 addplayerclass "GeeCSCC" nomenu
 addplayerclass "Abra" nomenu
+Addplayerclass "SpyBotCSCC" nomenu

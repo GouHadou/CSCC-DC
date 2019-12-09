@@ -471,3 +471,4 @@ const int DYE_FUME = 1002;
 #include "actors/Inventory/BasicActors.txt"
 #include "actors/Inventory/CTF_Utilities.txt"
 #include "actors/Inventory/GiverPackage.txt"
+#include "Actors/Inventory/BinDefs.txt"

@@ -1,0 +1,374 @@
+actor WeedEater1 : BaseMM8BDMWep
+{
+//$Category MM8BDM-Weapons
+//$Title WEED EATER
+Weapon.AmmoUse 21
+Weapon.AmmoGive 28
+Weapon.SlotNumber 1
+Obituary "%o was froze up by %k's Concrete Wave."
+Inventory.Pickupmessage "Tomas' Charge, but with a pinch of \cqWEED EATER\c-."
+Tag "Concrete Coil"
+weapon.ammotype "WeedEaterCharge"
++WEAPON.AMMO_OPTIONAL
+inventory.icon "CONCRETI"
+States
+{
+Ready:
+WDTR A 0 ACS_ExecuteAlways(998,0,10025) 
+Ready1:
+WDTR A 2 A_WeaponReady
+WDTR A 0 A_GiveInventory("WeedEaterCharge",1)
+Goto Ready1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+WDTR A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+WDTR A 1 A_Raise
+Loop
+Fire:
+WDTR A 0 A_JumpIfInventory("WeedEaterFlag",1,"Altfire.DashCheck")
+WDTR A 0 A_JumpIfNoAmmo("NoAmmo")
+WDTR A 0 A_PlaySoundEx("weapon/concreteshot","Weapon")
+WDTR A 2 A_FireCustomMissile("ConcreteCoilProjectile", 0, 1, 8, 0)
+WDTR BBCCCCBBAA 1
+Goto Ready1
+AltFire:
+WDTR A 1 A_JumpIf(Z - Floorz == 0, "AltFire.Fly")
+Goto AltFire.AirDashCheck
+AltFire.Fly:
+WDTR A 1 A_JumpIfInventory("WeedEaterCharge", 28, "Altfire.RealFly")
+Goto NoAmmo
+Altfire.RealFly:
+TNT1 A 0 A_GiveInventory("SpybotFlyStart_CI",1)
+WDTR A 2 Offset(8,41)
+WDTR A 3 Offset(16,50)
+WDTR A 2 Offset(8,41)
+WDTR A 2 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
+WDTR A 1
+WDTR AAAAAAA 5 ThrustThingZ(0, 0, 0, 0) //Hover for a few tics
+FloorCheck:
+WDTR A 1 A_WeaponReady(WRF_NOSECONDARY|WRF_NOSWITCH)
+WDTR A 0 A_JumpIf(Z - Floorz == 0, "StopCheckingAndLand")
+Loop
+FloorCheck2:
+WDTR A 1 A_JumpIf(Z - Floorz == 0, "StopCheckingAndLand")
+Loop
+StopCheckingAndLand:
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, -135)
+TNT1 A 0 A_GiveInventory("SpybotFlyEnd_CI", 1)
+WDTR A 2 Offset(0,52) //Moves the HUD down vertically
+WDTR A 2 Offset(0,64)
+WDTR A 2 Offset(0,82)
+WDTR A 4
+WDTR A 2 Offset(0,64)
+WDTR A 1 Offset(16,50)
+WDTR A 1 Offset(8,41)
+WDTR A 5 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //Resets the HUD to the default position
+WDTR A 16
+Goto Ready1
+
+Altfire.AirDash:
+WDTR A 0 A_JumpIfInventory("WeedEaterFlag",1,"Altfire.DashCheck")
+WDTR A 3
+Goto Ready1
+Altfire.DashCheck:
+WDTR A 0 A_JumpIfInventory("WeedEaterCharge", 14, "Altfire.Dash")
+Goto FloorCheck2
+Altfire.AirDashCheck:
+WDTR A 0 A_JumpIfInventory("WeedEaterCharge", 28, "Altfire.AirDash2")
+Goto NoAmmo
+Altfire.AirDash2:
+WDTR A 0 A_TakeInventory("WeedEaterCharge",28,1)
+Goto Altfire.AirDash_Real
+Altfire.Dash:
+WDTR A 0 A_GiveInventory("SpybotDash_CI",1)
+WDTR A 2 A_ChangeVelocity(cos(pitch)*45, 0, -sin(pitch)*45, 3)
+WDTR A 2 Offset(8,41)
+WDTR A 2 Offset(16,50)
+WDTR A 0 A_GunFlash("Flash.DashHitbox")
+WDTR AAAAAAAA 2 ThrustThingZ(0,0,0,0)
+WDTR A 1 Offset(8,41)
+WDTR A 1 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
+Goto FloorCheck
+Flash.DashHitbox:
+TNT1 AAAAA 2 A_SpawnItemEx("SpyAirDash", 0, 0, 0)
+stop
+Altfire.AirDash_Real:
+WDTR A 0 A_GiveInventory("SpybotDash2_CI",1)
+WDTR A 2 A_ChangeVelocity(cos(pitch)*45, 0, -sin(pitch)*45, 3)
+WDTR A 2 Offset(8,41)
+WDTR A 2 Offset(16,50)
+WDTR A 0 A_GunFlash("Flash.DashHitbox")
+WDTR AAAAAAAA 2 ThrustThingZ(0,0,0,0)
+WDTR A 1 Offset(8,41)
+WDTR A 1 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
+Goto FloorCheckDash
+NoAmmo:
+WDTR A 1 ACS_Execute(979,0)
+Goto Ready+1
+FloorCheckDash:
+WDTR A 1 A_JumpIf(Z - Floorz == 0, "AirDashEnd")
+Loop
+
+AirDashEnd:
+WDTR A 0 A_TakeInventory("WeedEaterFlag", 9)
+WDTR A 0 A_ChangeFlag("THRUACTORS",0)
+WDTR A 0 A_SpawnItemEx("Resolidifier")
+Goto Ready1
+}
+}
+
+actor WeedEaterCharge : Ammo
+{
+inventory.amount 1
+inventory.maxamount 84
+}
+
+actor WeedEaterShockThing
+{
+PROJECTILE
+translation "198:198=226:226", "192:192=229:229"
+Scale 2.0
++DONTBLAST
++NOINTERACTION
++THRUACTORS
++NOCLIP
++FLOORHUGGER
+Speed 40
+Damage (8)
+Radius 32
+Height 12
+Obituary "%o was stunned by %k's Jetpack Blast."
+DamageType "SpyJetFling"
+States
+{
+Spawn:
+TNT1 A 1
+DUR2 T 4
+DUOR T 0 A_ChangeFlag("NOINTERACTION",0)
+DUOR T 0 A_ChangeFlag("THRUACTORS",0)
+DUOR T 0 A_ChangeFlag("NOCLIP",0)
+DUR2 TTTTTTTTTTTTTTTTTTTT 1 A_FadeOut(0.05)
+stop
+}
+}
+
+actor WeedEaterFlag : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+actor SpybotNapalmBomb : NapalmBomb
+{
+MeleeRange 8
+Obituary "%o blew up from %k's Napalm Nuke."
+States
+{
+Death:
+NAPA A 0 A_Stop
+NAPA A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+NAPA A 0 A_ChangeFlag("NOGRAVITY",1)
+NAPA D 0 A_Explode(MeleeRange, 128, 0)
+NAPA EFGHIJKLMNOPQRS 2
+stop
+}
+}
+
+actor SpyAirDash
+{
+PROJECTILE
++FORCEXYBILLBOARD
++SKYEXPLODE
+//+RIPPER
+renderstyle none
+alpha 0.6
+damagetype "SpyAirDash"
+Obituary "%o couldn't avoid %k's Train Rush."
+scale 2.5
+radius 8
+height 8
+Damage (0)//(4)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Explode(5,128,0,0,81)
+stop 
+}
+}
+
+actor SpyAirDashProtect : PowerProtection
+{
+Powerup.Duration 4
+DamageFactor "SpyAirDash", 0.0
+}
+
+actor SparkShock_Yes : SparkShock
+{
++FLOORHUGGER
++NOEXPLODEFLOOR
+Damage (5)
+Obituary "%o was shocked by %k's Spark Stomp."
+}
+
+actor WeedEaterFlog : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+actor ConcreteCoilProjectile
+{
+PROJECTILE
+-NOGRAVITY
++THRUSPECIES
++BOUNCEONFLOORS
++BOUNCEONWALLS
++USEBOUNCESTATE
++BOUNCEONCEILINGS
+-BOUNCEONACTORS
+BounceCount 9999
+Species "ConcreteShot"
+Obituary "$OB_CONCRETESHOT"
+Radius 16
+Height 32
+Scale 2.5
+Damage (15)
+Speed 25
+DamageType "ConcreteShot"
+Var Int user_bounceCount;
+States
+{
+Spawn:
+CONC B 0
+CONC B 1 ThrustThingZ(0,10,0,1)
+CONC BCC 1
+Spawn2:
+CONC BC 2
+loop
+XDeath:
+CONC E 0 A_PlaySoundEx("weapon/concreteblock","Weapon")
+stop
+Death:
+CONC D 0 A_ChangeFlag(NOGRAVITY, 1)
+CONC D 4
+CONC D 0 A_JumpIfCloser(48, "XDeath")
+CONC B 0 A_SpawnItemEx("ConcreteBlock",0,0,0,0,0,0,0, SXF_ABSOLUTEANGLE)
+CONC E 0 A_PlaySoundEx("weapon/concreteblock","Weapon")
+stop
+DeathX: //Return the projectile to "normal".
+CONC B 0 A_SpawnItemEx("ConcreteCoilNoBounce",0,0,0,25,0,0,0)
+stop
+Bounce:
+CONC D 0 A_JumpIf(user_bounceCount >= 7, "DeathX")
+CONC B 0 ThrustThingZ(0,8 * user_bounceCount,0,0)
+CONC D 0 A_SetUserVar("user_bounceCount",user_bounceCount+1)
+CONC B 0 A_SpawnItemEx("ConcreteBlock",0,0,0,0,0,0,0, SXF_ABSOLUTEANGLE)
+CONC E 0 A_PlaySoundEx("weapon/concreteblock","Weapon")
+CONC E 0 A_ScaleVelocity(1.35)
+CONC E 0 A_ChangeFlag("THRUACTORS",1)
+CONC BCC 1
+CONC E 0 A_ChangeFlag("THRUACTORS",0)
+Goto Spawn2
+
+Bounce.Ceiling:
+CONC D 0 A_JumpIf(user_bounceCount >= 7, "DeathX")
+CONC D 0 A_SetUserVar("user_bounceCount",user_bounceCount+1)
+CONC B 0 A_SpawnItemEx("ConcreteBlock",0,0,0,0,0,0,0, SXF_ABSOLUTEANGLE)
+CONC E 0 A_PlaySoundEx("weapon/concreteblock","Weapon")
+CONC E 0 A_ScaleVelocity(1.35)
+CONC E 0 A_ChangeFlag("THRUACTORS",1)
+CONC BCC 1
+CONC E 0 A_ChangeFlag("THRUACTORS",0)
+Goto Spawn2
+}
+}
+
+Actor ConcreteCoilNoBounce : ConcreteShot
+{
+Damage (15)
+States
+{
+Spawn:
+CONC B 0
+Goto Spawn2
+}
+}
+
+Actor SpybotFlyStart_CI : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("WeedEaterFlag",1)
+TNT1 A 0 A_ChangeFlag("THRUACTORS",1)
+TNT1 A 0 A_ChangeFlag("SOLID",0)
+TNT1 A 0 A_PlaySoundEx("weapon/jupiterboost","Weapon")
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,0)
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,45)
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,90)
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,135)
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,180)
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,225)
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,270)
+TNT1 A 0 A_SpawnItemEx("WeedEaterShockThing",9,12,8,9,0,0,315)
+TNT1 A 0 ThrustThingZ(0, 69, 0, 0)
+TNT1 A 0 A_Recoil(-15)
+TNT1 A 0 A_TakeInventory("WeedEaterCharge", 28, 1)
+Stop
+}
+}
+
+Actor SpybotFlyEnd_CI : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_PlaySoundEx("weapon/sparkshock","Weapon")
+TNT1 A 0 A_ChangeFlag("THRUACTORS",0)
+TNT1 A 0 A_Spawnitemex("ReSolidifier")
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, 0)
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, 45)
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, 90)
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, 135)
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, 180)
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, -45)
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, -90)
+TNT1 A 0 A_SpawnItemEx("SparkShock_Yes", 18, 0, 5, 15, 0, 0, -135)
+TNT1 A 0 A_TakeInventory("WeedEaterFlag", 9)
+Stop
+}
+}
+
+Actor SpybotDash_CI : CustomInventory
+{
+States
+{
+Pickup:
+WDTR A 0 A_TakeInventory("WeedEaterCharge",14,1)
+WDTR A 0 A_PlaySoundEx("weapon/wingmandive","Weapon")
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, 45)
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, -45)
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, 135)
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, -135)
+Stop
+}
+}
+
+Actor SpybotDash2_CI : CustomInventory
+{
+States
+{
+Pickup:
+WDTR A 0 A_TakeInventory("WeedEaterCharge",28,1)
+WDTR A 0 A_PlaySoundEx("weapon/wingmandive","Weapon")
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, 45)
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, -45)
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, 135)
+AWSM C 0 A_SpawnItemEx("SpybotNapalmBomb", 18, 0, 5, 15, 0, 0, -135)
+Stop
+}
+}
