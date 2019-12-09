@@ -9,3 +9,10 @@
 //Abra
 #include "actors/classes/Ultimate/Abra/Psybeam.txt"
 #include "actors/classes/Ultimate/Abra/Abra.txt"
+
+//Spybot
+#include "Actors/Classes/Ultimate/SpyBot/SpyBotClass.txt"
+#include "Actors/Classes/Ultimate/SpyBot/SpyBotWep1.txt"
+#include "Actors/Classes/Ultimate/SpyBot/SpyBotWep2.txt"
+//#include "Actors/Classes/Ultimate/SpyBot/SpyBotWep3.txt" //Never doing it
+

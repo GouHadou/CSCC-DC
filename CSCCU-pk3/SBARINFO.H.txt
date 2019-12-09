@@ -1967,8 +1967,11 @@ IsSelected Psybeamwep
 	DrawBar "VTLEBAR1", "NOBAR", PsychicCharge, horizontal, 130, 184;
 	}
 
-//[+]=================|OCBMR|======================[+]
-//[+]=================|+++++|======================[+]
+//Spybot
+IsSelected WeedEater1{DrawBar "WDTRVAR1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected WeedEater2{DrawBar "WDTRVAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+
+//██████████████████████████████████████████OCBMR████████████████████████████████████████
 
 InInventory IsAuron, 1
 {

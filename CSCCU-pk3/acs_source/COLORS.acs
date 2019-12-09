@@ -583,6 +583,9 @@
 #DEFINE PROTOEXE 975
 
 #DEFINE DEVION 8200
+
+#DEFINE SPYBOTC 10025
+
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
 
@@ -1055,4 +1058,6 @@ CreateTranslation (FREEZEMANEXE, 192:192=4:4, 198:198=69:69);
 CreateTranslation (BUBBLEMANEXE, 192:192=205:205, 198:198=207:207);
 CreateTranslation (PROTOEXE, 192:192=87:87, 198:198=42:42);
 CreateTranslation (DEVION, 192:192=4:4, 198:198=206:206);
+CreateTranslation(SPYBOTC,198:198=[56,142,60]:[56,142,60],192:192=[225,225,0]:[225,225,0]);
+
 }

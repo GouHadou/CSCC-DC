@@ -1143,6 +1143,15 @@ texture SHOSBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=3:3", "198:198
 texture SHOSVAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=3:3", "198:198=5:5"}}
 
 
+// Spybot
+texture WDTRBAR1, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=205:205", "198:198=95:95"}}
+texture WDTRVAR1, 56, 8{patch WDTRBAR1, 0, 0 {Rotate 90}}
+
+
+texture WDTRBAR2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=203:203", "198:198=225:225"}}
+texture WDTRVAR2, 56, 8{patch WDTRBAR2, 0, 0 {Rotate 90}}
+
+
 //========================
 //______|CopyWeps|________
 //========================

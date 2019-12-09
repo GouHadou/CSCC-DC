@@ -1924,8 +1924,12 @@ IsSelected Psybeamwep
 	DrawBar "TLEBAR", "NOBAR", PsychicCharge, vertical, 24, 8;
 	}
 	
-//[+]=================|OCBMR|======================[+]
-//[+]=================|+++++|======================[+]
+//Spybot
+IsSelected WeedEater1{DrawBar "WDTRBAR1", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected WeedEater2{DrawBar "WDTRBAR2", "BAREMPTY", Ammo1, vertical, 16, 8;}
+
+//██████████████████████████████████████████OCBMR████████████████████████████████████████
+
 InInventory IsAuron, 1
 {
 DrawImage "HELTHBX", 0, 16;

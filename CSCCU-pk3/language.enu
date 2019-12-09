@@ -98,4 +98,6 @@ OB_SPEARWAVE = "%o was pierced by %k's Spear Wave.";
 OB_UNDYINGSD = "%o was struck down %k's Dying Shout.";
 
 
+TAG_WEEDEATER = "\cgWEED EATER";
+
 MENU_MEGANAME = "Megaman";

@@ -63,3 +63,29 @@ weapon/psychicshot	PSYSHOT
 $volume weapon/psychicshot 0.4
 weapon/psybeam	PSYBEAM
 $volume weapon/psybeam 0.4
+
+$playersound	spybot	male	*death		MEGADEAT
+$playersound	spybot	male	*xdeath		MEGADEAT
+$playersound	spybot	male	*gibbed		MEGADEAT
+$playersound	spybot	male	*pain100	MEGAPAIN
+$playersound	spybot	male	*pain75		MEGAPAIN
+$playersound	spybot	male	*pain50		MEGAPAIN
+$playersound	spybot	male	*pain25		MEGAPAIN
+$playersound	spybot	male	*grunt		LAND
+$playersound	spybot	male	*land		LAND
+$playersound	spybot	male	*fist		dsnone
+$playersound	spybot	male	*usefail	LAND
+$playeralias	spybot	male	*taunt		SBOTTAU
+
+SBTAUA SBTAUA
+SBTAUB SBTAUB
+SBTAUC SBTAUC
+$random SBOTTAU {SBTAUA SBTAUB SBTAUC}
+
+weapon/jupiterboost S_MV_E3
+weapon/wingmandive WINGDASH
+weapon/KnightShot KNIGSHOT
+weapon/KnightReturn KNIRETRN
+
+SpyBot/FinalMessage CHGWORLD $limit SpyBot/FinalMessage 0
+SpyBot/GoodBye MEGADEAT $limit SpyBot/GoodBye 0
