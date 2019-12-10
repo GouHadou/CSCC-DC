@@ -120,7 +120,8 @@ Pain.GouShoryuStun:
 "----" H 0 A_Stop
 "----" H 0 A_TakeInventory("MessHitFlag", 5)
 "----" HH 0 A_SpawnItemEx("GouShoryuFX",0,0,0,random(-5,7),random(-5,5),random(1,5),0)
-Goto Pain.SparkShock+1
+//Goto Pain.SparkShock+1
+Goto Pain+1
 Pain.ShunGokuSatsu:
 "----" H 0 A_Stop
 Goto Pain+1
