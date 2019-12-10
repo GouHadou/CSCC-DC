@@ -1,3 +1,0 @@
-#include "actors/Classes/Bronze/Voxleator/Voxleator.txt"
-#include "actors/Classes/Bronze/Voxleator/VoxleatorGun.txt"
-#include "actors/Classes/Bronze/Voxleator/Reconstructor.txt"

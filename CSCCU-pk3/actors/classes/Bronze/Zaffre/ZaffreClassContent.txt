@@ -1,6 +1,0 @@
-#include "actors/Classes/Bronze/Zaffre/Zaffre.txt"
-#include "actors/Classes/Bronze/Zaffre/HipeGun.txt"
-#include "actors/Classes/Bronze/Zaffre/FlareGun.txt"
-#include "actors/Classes/Bronze/Zaffre/HealFlare.txt"
-#include "actors/Classes/Bronze/Zaffre/SupplyBag.txt"
-#include "actors/Classes/Bronze/Zaffre/TopGrenadeBoss.txt"

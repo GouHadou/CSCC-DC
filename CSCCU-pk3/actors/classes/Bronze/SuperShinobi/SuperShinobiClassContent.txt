@@ -1,3 +1,0 @@
-#include "actors/Classes/Bronze/SuperShinobi/SuperNinja.txt"
-#include "actors/Classes/Bronze/SuperShinobi/NinjaProjectiles.txt"
-#include "actors/Classes/Bronze/SuperShinobi/NinjaArts.txt"

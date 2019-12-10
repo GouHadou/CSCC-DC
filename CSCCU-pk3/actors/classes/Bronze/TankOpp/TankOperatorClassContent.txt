@@ -1,3 +1,0 @@
-#include "actors/Classes/Bronze/TankOpp/TankOperator.txt"
-#include "actors/Classes/Bronze/TankOpp/TankOperatorParts.txt"
-#include "actors/Classes/Bronze/TankOpp/TankOperatorWeapon.txt"

@@ -1,2 +1,0 @@
-#include "actors/Classes/Bronze/Akane/Akane.txt"
-#include "actors/Classes/Bronze/Akane/DarknessWithin.txt"

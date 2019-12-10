@@ -1,3 +1,0 @@
-#include "actors/Classes/Bronze/Undyne/Undyne.txt"
-#include "actors/Classes/Bronze/Undyne/UndyneWeapons.txt"
-

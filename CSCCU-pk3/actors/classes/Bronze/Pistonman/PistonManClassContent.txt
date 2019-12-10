@@ -1,2 +1,0 @@
-#include "actors/Classes/Bronze/Pistonman/Pistonman.txt"
-#include "actors/Classes/Bronze/Pistonman/PistonTremorBoss.txt"

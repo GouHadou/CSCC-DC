@@ -1,3 +1,0 @@
-#include "actors/Classes/Bronze/StormConductor/StormConductor.txt"
-#include "actors/Classes/Bronze/StormConductor/StormLightning.txt"
-#include "actors/Classes/Bronze/StormConductor/StormRain.txt"

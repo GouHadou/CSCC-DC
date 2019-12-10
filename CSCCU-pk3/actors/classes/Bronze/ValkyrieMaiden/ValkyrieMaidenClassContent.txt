@@ -1,3 +1,0 @@
-#include "actors/Classes/Bronze/ValkyrieMaiden/ValkyrieMaiden.txt"
-#include "actors/Classes/Bronze/ValkyrieMaiden/ValkyrieMaidenWeapons.txt"
-#include "actors/Classes/Bronze/ValkyrieMaiden/ValkyrieMaidenProjectiles.txt"

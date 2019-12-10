@@ -1,3 +1,0 @@
-#include "actors/Classes/Bronze/Ankhzirus/Ankhzirus.txt"
-#include "actors/Classes/Bronze/Ankhzirus/AnkhzirusStaff.txt"
-#include "actors/Classes/Bronze/Ankhzirus/AnkhzirusBandage.txt"
