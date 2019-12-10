@@ -1,7 +1,8 @@
-#library "THEMOD2"
+#library "ISOLATE"
 #include "zcommon.acs"
+#include "8bdmlib.acs"
 
-int ServerMAX = 32;
+//int ServerMAX = 32;
 
 //======| Area heal script distance falloff
 Script 682 (int HealRadius, int HealRadiusMin, int HealAmount)
@@ -58,7 +59,7 @@ int Target_TID;
 int Target_Distance;
 int FiringPlayer;
 int PlayersTeam;
-int IsTeamGame = ACS_ExecuteWithResult(975, 1);
+//int IsTeamGame = ACS_ExecuteWithResult(975, 1);
 //if(GiveRadius == 0){terminate;}
 
 // GiveType 1 = self + Friendlies
@@ -145,6 +146,7 @@ For(int i = 0;i < ServerMax; i++)
 	}
 }
 
+/*
 function int xyzDistance (int tid1, int tid2)
 {
 	int x, y, z, d;
@@ -178,7 +180,7 @@ function int sqrt8(int number)
 
 	return oldAns;
 }
-
+*/
 Function int NoNeg(int Numb)
 {
 int numfinal;

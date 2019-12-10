@@ -1,7 +1,4 @@
-#library "SNAILACS"
-//#include "zcommon.acs"
-//#include "8bdmlib.acs"
-#include "BASEC.acs"
+
 
 //Snail Breeder
 script "cscc_stillalive" (void) //Check if player is alive; can be ued for other things

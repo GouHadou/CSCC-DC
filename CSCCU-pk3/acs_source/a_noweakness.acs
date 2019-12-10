@@ -1,7 +1,3 @@
-#library "NOWEAKNESS"
-//#include "zcommon.acs"
-//#include "8bdmlib.acs"
-#include "BASEC.acs"
 
 //Displays an effect and play a sound when the target is debuffed.
 //Also handles Juri's personal immunity after a hit

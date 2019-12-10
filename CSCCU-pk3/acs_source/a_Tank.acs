@@ -1,10 +1,8 @@
-//Add to Bronze.acs, because I cannot compile it ~Bika
 
-#library "TANK"
-#include "zcommon.acs"
+
 //██████████████████████████████████████████TankLib████████████████████████████████████████
 
-int ServerMAX = 32;
+//int ServerMAX = 32;
 
 
 function bool checkForMovement(int buttons) {
@@ -24,82 +22,6 @@ function bool checkForMovement(int buttons) {
 	}
 
 	return(result);
-}
-
-// Pitch between 2 points
-function int VectorPitch (Int TID1, Int TID2, int ZAdjust)
-{
-	If(ZAdjust != 0){ZAdjust = ZAdjust << 16;}
-	Return(VectorAngle(xydistance(TID1, TID2)<<16,GetActorZ(TID1)-(GetActorZ(TID2)-ZAdjust)));
-}
-
-// Return absolute values
-function int abs (int x)
-{
-    if (x < 0)
-	{
-        return -x;
-	}
-    return x;
-}
-
-function int sqrt8(int number)
-{
-	if(number <= 3)
-	{
-		if(number > 0)
-		{
-			return 1;
-		}
-		return 0;
-	}
-
-	int oldAns = number >> 1,                     // initial guess
-	    newAns = (oldAns + number / oldAns) >> 1; // first iteration
-
-	// main iterative method
-	while(newAns < oldAns)
-	{
-		oldAns = newAns;
-		newAns = (oldAns + number / oldAns) >> 1;
-	}
-
-	return oldAns;
-}
-
-// Distance measuring functions
-function int xyzDistance (int tid1, int tid2)
-{
-	int x, y, z, d;
-	x = GetActorX(tid1) - GetActorX(tid2) >> 16; // Convert fixed point to integer
-	y = GetActorY(tid1) - GetActorY(tid2) >> 16;
-	z = GetActorZ(tid1) - GetActorZ(tid2) >> 16;
-	d = sqrt8( x*x + y*y + z*z );
-	return d;
-}
-
-function int xyDistance (int tid1, int tid2)
-{
-	int x, y, d;
-	x = GetActorX(tid1) - GetActorX(tid2) >> 16;
-	y = GetActorY(tid1) - GetActorY(tid2) >> 16;
-	d = sqrt8( x*x + y*y );
-	return d;
-}
-
-function int zdistance (int tid1, int tid2)
-{
-	int z;
-	z = GetActorZ(tid1) - GetActorZ(tid2) >> 16;
-	return z;
-}
-
-function int GetTargetAngle (int tid1, int tid2)
-{
-    int x, y;
-    x = GetActorX(tid2) - GetActorX(tid1);
-    y = GetActorY(tid2) - GetActorY(tid1);
-    return VectorAngle(x, y);
 }
 
 function int fdistanceVal (int x, int y, int z)

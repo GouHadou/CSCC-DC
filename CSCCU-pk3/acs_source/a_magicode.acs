@@ -2,11 +2,11 @@
 //Half of this is generally unoptimized and can probably be done with advanced decorate wizardry according to some magical fairy I know
 //But that is okay, Z-Magic is nice too. Please ask before you steal ACS that might help you but I know most people will not listen to this anyways
 
-#library "THEMOD"
-#include "zcommon.acs"
+//#library "THEMOD"
+//#include "zcommon.acs"
 
 int DarkFade; //in case of fun trolling time
-int ServerMAX = 32;
+//int ServerMAX = 32;
 
 #DEFINE THEMODEMBLEMTID 90
 #DEFINE THEMODCRATETID 91
@@ -121,9 +121,7 @@ If (SideMove || ForwMove)
 	Return 0;
 }
 
-//Wall jump angling
-int JumpAngByte;
-int TotalAngles;
+
 
 //160
 script "WallJumpScript" (int Force)
@@ -207,7 +205,6 @@ Int Direction = GetDirection();
 SetResultValue(Direction);
 }
 
-Int Buttons[64];
 
 
 //866
@@ -650,22 +647,6 @@ Script "AntiDamageScript" (int Swap) //AntiDamage script
 	}
 }
 
-function int max (int a, int b)
-{
-	if (a > b)
-		return a;
-
-	return b;
-}
-
-function int min (int a, int b)
-{
-	if (a < b)
-		return a;
-
-	return b;
-}
-
 //End of green fairy magic part 2
 
 //890
@@ -681,14 +662,6 @@ script "MuramasaScript" (void) NET //Muramasa script and whatever the fuck else 
 //891
 script "SteamEruptionScript" (int DamageValue)
 {
-
-/*
-So steam eruption does damage proportionate to how much mana Redmage has, right now the max
-value of redmagemana is 64, however at base 100, that being applied 1:1 is going to be a lot,
-especially when this fires a volley of steam projectiles.
-
-I'm reworking the formula to adjust a fixed value by a percentage of the mana.
-*/
 	SetActivatorToTarget(0);
 	int SteamEruptionPower = round((CheckInventory("RedMageMana") / 64) * DamageValue);
 	
@@ -734,40 +707,6 @@ SetResultValue(0);
 }
 }
 
-
-function int xyzDistance (int tid1, int tid2)
-{
-	int x, y, z, d;
-	x = GetActorX(tid1) - GetActorX(tid2) >> 16; // Convert fixed point to integer
-	y = GetActorY(tid1) - GetActorY(tid2) >> 16;
-	z = GetActorZ(tid1) - GetActorZ(tid2) >> 16;
-	d = sqrt8( x*x + y*y + z*z );
-	return d;
-}
-
-function int sqrt8(int number)
-{
-	if(number <= 3)
-	{
-		if(number > 0)
-		{
-			return 1;
-		}
-		return 0;
-	}
-
-	int oldAns = number >> 1,                     // initial guess
-	    newAns = (oldAns + number / oldAns) >> 1; // first iteration
-
-	// main iterative method
-	while(newAns < oldAns)
-	{
-		oldAns = newAns;
-		newAns = (oldAns + number / oldAns) >> 1;
-	}
-
-	return oldAns;
-}
 
 //=======================================
 //user inputs script
@@ -1227,20 +1166,6 @@ Script "YDC_HealthScript" (int Magic, int HPBoost) //Health related script
 
 }
 
-//=======|Heal Ramp|
-//679
-Script "HealRamp" (Int HealMin, Int HealMax)
-{
-int timeMax = 175;
-int rampPerc = (GetActorPowerupTics(0,"HealRamper")*100)/timeMax;
-//log(i:GetActorPowerupTics(0,"HealStall_A"));
-//log(i:rampPerc);
-int output = (HealMax*(100 - rampPerc))/100;
-//log(i:output);
-
-if (output < HealMin){output = HealMin;}
-SetResultValue(output);
-}
 
 
 
@@ -1265,104 +1190,19 @@ SetActivator(0,AAPTR_TARGET);
 SetResultValue(ActivatorTID());
 }
 
-
+/*
 function int abs (int x)
 {
     if (x < 0)
         return -x;
 
     return x;
-}
+}*/
 
 Script "MC_CoinScript" (int Coins)
 {
 CheckInventory("CoinItem");
 SetResultValue(Coins);
-}
-
-Script "OBJECTTALLY" (int BaseNum)
-{
-int MasterTID = ACS_ExecuteWithResult(257, 0);
-
-// objects work within the 3000's range, the playernumber being in the 100th place
-//Naturally this means a single player can only have up to 9 items
-if (BaseNum < 3000){BaseNum = 3000;}
-
-int ObjTIDBase = BaseNum + ((MasterTID-1000)*100);
-bool TIDset = false;
-int TIDCount;
-
-while(!TIDset)
-{
-if(ThingCount(T_NONE,ObjTIDBase+TIDCount))
-	{
-	//log(s:"Object with TID ",i:ObjTIDBase+TIDCount,s:" Already exists");
-	TIDCount++;
-	//continue;
-	}
-	Else
-	{
-	//log(s:"This object's TID is now ",i:ObjTIDBase+TIDCount,s:"!");
-	Thing_ChangeTID(0,ObjTIDBase+TIDCount);
-	//log(s:"This object's TID is now ",i:ActivatorTID(),s:"!");
-	TIDset = true;
-	}
-}
-
-for(int i; i < 9; i++)
-{
-SetUserVariable(ObjTIDBase+i,"User_Tally",GetUserVariable(ObjTIDBase+i,"User_Tally")+1);
-//log(s:"Object with TID ",i:ObjTIDBase+i,s:" Now has a tally of ",i:GetUserVariable(ObjTIDBase+i,"User_Tally"));
-}
-//--
-}
-
-Script "OBJECTDEATHTALLY" (VOID)
-{
-int MasterTID = ACS_ExecuteWithResult(257, 0);
-int ObjTIDBase = 3000 + ((MasterTID-1000)*100);
-
-// ment to be called when an object dies, this makes all objects drop their tally by 1. if their tally was above
-//the one that died. this is only for if the object was destroyed, not terminated due to being overtallied
-int ObjTID = ActivatorTID();
-int EmptyTally = GetUserVariable(ObjTID,"User_Tally");
-//log(s:"object ",i:ObjTID ,s:" was destroyed!");
-
-for(int i; i < 9; i++)
-{
-	if(GetUserVariable(ObjTIDBase+i,"User_Tally") > 1)
-	{
-	SetUserVariable(ObjTIDBase+i,"User_Tally",GetUserVariable(ObjTIDBase+i,"User_Tally")-1);
-	//log(s:"Object with TID ",i:ObjTIDBase+i,s:" Now has a new tally of ",i:GetUserVariable(ObjTIDBase+i,"User_Tally"));
-	}
-}
-
-}
-
-Script "DEPLPOYABLEDELETER" (int gone) DISCONNECT
-{
-//log(i:gone);
-int ObjTIDBase = 3000 + ((gone)*100);
-int ObjTIDBase2 = 4000 + ((gone)*100);
-int ObjTIDBase3 = 4000 + ((gone)+1000);
-int ObjTIDBase4 = 5000 + ((gone)+1000);
-for(int i; i < 9; i++)
-{
-	SetActorState (ObjTIDBase+i, "Perish");
-	SetActorState (ObjTIDBase2+i, "Perish");
-
-}
-
-	SetActorState (ObjTIDBase3, "Perish");
-	SetActorState (ObjTIDBase4, "Perish");
-}
-
-script "TIDCOUNTER" (int Tid)
-{
-int output = 0;
-if (thingcount(T_NONE,Tid) > 0){output = 1;}
-
-setresultvalue(output);
 }
 
 //Bika's health percent script
@@ -1412,6 +1252,7 @@ Script "HealthGenSyncher" (void)
 	Thing_Remove(0);
 }
 
+
 script "HitLogger" ENTER
 {
 //log(s:"Bing!");
@@ -1454,18 +1295,6 @@ script "HitLogger" ENTER
 script "RespawnHitLogger" RESPAWN
 {
 ACS_NamedExecuteAlways("HitLogger",0);
-}
-
-script "HitKnockBack" (int force)
-{
-int pusher = ACS_NamedExecuteWithResult("TargetGrab");
-int Vang = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActorY(pusher)) >> 8;
-//log(i:pusher);
-//log(i:Vang);
-//log(i:GetActorX(0));
-//log(i:GetActorX(pusher));
-//log(i:GetActorX(0) - GetActorX(pusher));
-ThrustThing(Vang, force, 1, 0);
 }
 
 Script "TargetGrab" (Void)

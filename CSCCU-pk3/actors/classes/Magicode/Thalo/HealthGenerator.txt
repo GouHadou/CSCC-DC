@@ -327,7 +327,7 @@ HGEN MNMNMNMN 3 A_Fadeout
 stop
 }
 }
-Actor HealthGenPickup : CustomInventory replaces BigHealth //10002
+Actor HealthGenPickup : CustomInventory //replaces BigHealth //10002
 {
 //$Category MM8BDM-Health/Energy
 -COUNTITEM

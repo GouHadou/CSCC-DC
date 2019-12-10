@@ -1,10 +1,3 @@
-#library "BASEC"
-#include "zcommon.acs"
-#include "8bdmlib.acs"
-
-#DEFINE CSACS_PICKUPENTER 143
-#DEFINE CSACS_PICKUPRESPAWN 144
-#DEFINE CSACS_WALLKICK 160
 
 
 Script "CSACS_Heal" (int Mode, int HealAmount)
@@ -19,80 +12,6 @@ terminate;
 }
 HealThing(HealAmount,MaxHealth);
 }
-
-/*//Older perventage healing method
-script "CSACS_Heal" (int Magic, int HPBoost) //Health related script
-{
-	int h = max(PlayerHealth(),0);
-	switch(Magic)
-	{
-		Case 0://Return Health
-			if(HPBoost == 7777){
-				log(s:"HP: ",i:h);
-				terminate;
-			}
-			SetResultValue(CheckInventory("Health"));
-			break;
-		Case 1://Check current HP, if less than max health, return true
-			if(h < GetActorProperty(0, APROP_SPAWNHEALTH)){SetResultValue(1);}
-			else{SetResultValue(0);}
-			break;
-		Case 2://Basic Healing
-			if(h <= 0){terminate;}
-			int HPAdd2 = min(h + HPBoost,GetActorProperty(0, APROP_SPAWNHEALTH));
-			SetActorProperty(0, APROP_HEALTH, HPAdd2);
-			break;
-		Case 3://Percentage Healing
-			if(h <= 0){terminate;}
-			int SpawnHP3 = GetActorProperty(0, APROP_SPAWNHEALTH);
-			int PCT3;
-			if(GetCVAR("YD_NoHealingScale")){
-				PCT3 = HPBoost;
-			}
-			else{
-				PCT3 = round(HPBoost * 0.01 * SpawnHP3 + h);
-			}
-			int HPAdd3 = min(PCT3 + h,SpawnHP3);
-			SetActorProperty(0, APROP_HEALTH, HPAdd3);
-			break;
-		Case 7://Change Health to this exact amount
-			if(h <= 0){terminate;}
-			SetActorProperty(0, APROP_HEALTH, HPBoost);
-			break;
-		Case 9://Burning damage
-			if (GetActorProperty(0,APROP_HEALTH) >= HPBoost+1){
-				SetActorProperty(0, APROP_HEALTH, (GetActorProperty(0,APROP_HEALTH)-HPBoost));
-				break;
-			}
-			SetResultValue(2);
-			break;
-		Case 66://Returns MaxHp
-			SetResultValue(GetActorProperty(0, APROP_SPAWNHEALTH));
-			break;
-	}
-
-}
-
-function int min (int a, int b)
-{
-	if (a < b)
-		return a;
-
-	return b;
-}
-
-function int max (int a, int b)
-{
-	if (a > b)
-		return a;
-
-	return b;
-}
-
-function int round(int fixedNumber)
-{
-	return (fixedNumber + 0.5) >> 16;
-}*/
 
 Script "CSACS_HealthSet" (void) CLIENTSIDE
 {

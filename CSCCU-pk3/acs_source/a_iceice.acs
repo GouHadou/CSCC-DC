@@ -1,7 +1,4 @@
-#library "ICEICE"
-//#include "zcommon.acs"
-//#include "8bdmlib.acs"
-#include "BASEC.acs"
+
 
 Script 400 (int i)
 {
