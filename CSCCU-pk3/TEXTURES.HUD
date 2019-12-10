@@ -4045,7 +4045,7 @@ Sprite "RNGHJ0", 320, 200
 	}
 }
 
-Sprite "SHOSA0", 320, 200
+Sprite "LUB1A0", 320, 200
 {
 	Patch "BUSTB0", 184, 94
 	{
@@ -4053,7 +4053,7 @@ Sprite "SHOSA0", 320, 200
 	}
 }
 
-Sprite "SHOSB0", 320, 200
+Sprite "LUB1B0", 320, 200
 {
 	Patch "BUSTC0", 184, 98
 	{
@@ -4061,7 +4061,7 @@ Sprite "SHOSB0", 320, 200
 	}
 }
 
-Sprite "SHOSC0", 320, 200
+Sprite "LUB1C0", 320, 200
 {
 	Patch "BUSTD0", 188, 102
 	{
