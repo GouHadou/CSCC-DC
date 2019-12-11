@@ -15,12 +15,12 @@ Player.StartItem "DMasonPowerItem"
 States
 {
 Spawn: 
-NTIM A 0
-NTIM B 1
-NTIM A 1
+DMSN A 0
+DMSN B 1
+DMSN A 1
 GoTo Spawn+2
 See:
-NTIM BCDE 5
+DMSN BCDE 5
 GoTo Spawn+1
 Missile:
 DMSN F 5
