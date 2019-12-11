@@ -247,7 +247,7 @@ actor BadzShotW : BadzShot{Translation "216:216=41:41", "210:210=171:171"}
 actor BadzShotC : BadzShot{Translation "216:216=128:128", "210:210=101:101"}
 actor BadzShotK : BadzShot{Translation "216:216=232:232", "210:210=215:215"}
 
-actor BadzAmmoCheckerThing : WatcherBase
+actor BadzAmmoCheckerThing : BasicHelper
 {
 States
 {

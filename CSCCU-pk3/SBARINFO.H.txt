@@ -1935,6 +1935,7 @@ IsSelected BurstBlade{
 	}
 
 //====|Voxleator
+/*
 IsSelected VoxleatorGun, VoxleatorGun2
 	{
 	DrawBar"VARAMMO8", "VAREMPTY", Ammo1, horizontal, 58, 184;
@@ -1942,18 +1943,7 @@ IsSelected VoxleatorGun, VoxleatorGun2
 	ininventory VoxleMatter, 50{Drawbar"VARAMM21", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 	//DrawImage "LTSCI", 8, 64;
 	}
-	
-//====|Zaffre
-IsSelected HiPEGunA
-	{
-	Drawbar"VARAMMO2", "VAREMPTY", HiPEGunClip, vertical, 58, 184;
-	InInventory TopGrenadeCooldownItem, 1	{DrawBar"VARFLS1", "VNOBAR", TopGrenadeCooldownItem, vertical, 58, 184;}
-	}
-IsSelected HiPEGunD
-	{
-	Drawbar"VARAMMO2", "VAREMPTY", HiPEGunClip, vertical, 58, 184;
-	InInventory SupplyBagCooldownItem, 1	{DrawBar"VARFLS1", "VNOBAR", SupplyBagCooldownItem, vertical, 58, 184;}
-	}
+	*/
 	
 //====|Edgelord	
 IsSelected EdgeGunBoss{
@@ -2087,11 +2077,12 @@ InInventory ExecuteWeakness3, 1
 {
 DrawBar "VG_A_VAR", "VNOBAR", Ammo2, horizontal, 130, 184;
 }
-
+/*
 IsSelected CrazyWaveWepC
 {
 	Drawbar "VARAMMO67", "VAREMPTY", Ammo1, horizontal, 58, 184;
 }
+*/
 }
 
 //====|Badz
@@ -2132,11 +2123,11 @@ InInventory IsAkane, 1
 	DrawImage "ASWITCH2", 8, 8;
 	}
 }
-
+/*
 IsSelected DarkSplitterWepC{Drawbar"AKACWVAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	InInventory DarkSplitLimit, 1{DrawBar "AKADVAR", "VNOBAR", Ammo1, horizontal, 58, 184;
 	InInventory DarkSplitLimit, 31{DrawBar "AKAVLANK", "VNOBAR", Ammo1, horizontal, 58, 184;}}}
-	
+*/	
 	
 //====|Flameryn
 IsSelected FlamerynThrowerBoss
@@ -2195,12 +2186,13 @@ IsSelected EmberCelica
 	DrawBar "YANGSEMH", "VNOBAR", YangSemblance, horizontal, 58, 184;
 	InInventory BasicArmor, 1{DrawBar "AURABAR2", "VNOBAR", Armor, horizontal, 130, 184;}
 	}
+	/*
 IsSelected EmberCelicaWepCS
 	{
 	DrawBar "YANGBARH", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	DrawBar "YANGSEMH", "VNOBAR", YangSemblance, horizontal, 58, 184;
 	}
-	
+	*/
 //====|Fume
 InInventory IsFume
 	{

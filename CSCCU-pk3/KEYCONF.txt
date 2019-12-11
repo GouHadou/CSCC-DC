@@ -73,7 +73,7 @@ addplayerclass "Missingno" nomenu
 addplayerclass "ToastMan" nomenu 
 addplayerclass "ChaosFantasy" nomenu 
 addplayerclass "Hilman170499" nomenu 
-//addplayerclass "LordDamager" nomenu 
+addplayerclass "LordDamager" nomenu 
 addplayerclass "Jake" nomenu 
 //addplayerclass "Dakutatoru" nomenu 
 addplayerclass NNCReborn nomenu //Neo
@@ -112,7 +112,6 @@ addplayerclass StormConductor
 addplayerclass Hikari
 addplayerclass MasterNinja
 AddPlayerClass BullGator
-addplayerclass Zaffre
 addplayerclass Akane
 AddPlayerClass Aegis
 AddPlayerClass ValkyrieMaiden
@@ -143,7 +142,6 @@ AddPlayerClass IceFurry nomenu //Glace
 AddPlayerClass Darkile nomenu
 AddPlayerClass Lily nomenu
 AddPlayerClass KingBaku nomenu
-AddPlayerClass MagicaClass nomenu
 AddPlayerClass SergeantJohn nomenu
 AddPlayerClass Ignis nomenu
 AddPlayerClass Yumi nomenu
@@ -154,10 +152,7 @@ AddPlayerClass MetalMaiden nomenu
 AddPlayerClass Slick nomenu
 AddPlayerClass Luna nomenu
 AddPlayerClass RinClass nomenu
-AddPlayerClass JadoClass nomenu
-AddPlayerClass GodOfDestruction nomenu //Omega Zero
 AddPlayerClass IceAquoon nomenu
-AddPlayerClass LunaticClass nomenu
 AddPlayerClass Thalo nomenu //Thalo
 //██████████████████████████████████████████Ultimate████████████████████████████████████████
 addplayerclass "BoneheadCSCC" nomenu

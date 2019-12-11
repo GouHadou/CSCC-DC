@@ -146,7 +146,7 @@ actor ScreenManager
 
 //[+]==================================[+]
 //[+]==================================[+]
-actor ScreenSpawner5up_B
+actor F_ScreenSpawner5up_B
 {
   Radius 1
   Height 1
@@ -172,7 +172,7 @@ actor ScreenSpawner5up_B
   }
 }
 
-actor ScreenSpawner5up_R
+actor F_ScreenSpawner5up_R
 {
   Radius 1
   Height 1
@@ -199,7 +199,7 @@ actor ScreenSpawner5up_R
 }
 //[+]==================================[+]
 //[+]==================================[+]
-actor ScreenSpawner4up_B
+actor F_ScreenSpawner4up_B
 {
   Radius 1
   Height 1
@@ -224,7 +224,7 @@ actor ScreenSpawner4up_B
 }
 
 
-actor ScreenSpawner4up_R
+actor F_ScreenSpawner4up_R
 {
   Radius 1
   Height 1
@@ -250,7 +250,7 @@ actor ScreenSpawner4up_R
 
 //[+]========================================================================[+]
 
-actor ScreenSpawnBall 
+actor F_ScreenSpawnBall 
 {
 PROJECTILE
 +SKYEXPLODE
@@ -284,21 +284,21 @@ Deploy:
 SCBL A 0 A_JumpifinTargetInventory("BarricadeActive",1,"Replace")
 TNT1 A 0 A_Givetotarget("BarricadeActive")
 SCBL A 1 //A_GiveInventory("BarricadeProjector")
-TNT1 A 0 A_SpawnitemEx("ScreenSpawnBallStationary",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnitemEx("F_ScreenSpawnBallStationary",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 stop
 Replace:
 SCBL A 6 A_Givetotarget("BarricadeKiller")
 SCBL A 0 //A_GiveInventory("BarricadeProjector")
-TNT1 A 0 A_SpawnitemEx("ScreenSpawnBallStationary",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnitemEx("F_ScreenSpawnBallStationary",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 stop
 }
 }
 
-Actor ScreenSpawnBall_B : ScreenSpawnBall{Designatedteam 0 Species "BLUEMember" }
-Actor ScreenSpawnBall_R : ScreenSpawnBall{Designatedteam 1 Species "REDMember" translation "192:192=173:173", "198:198=42:42" , "196:196=170:170"}
+Actor F_ScreenSpawnBall_B : F_ScreenSpawnBall{Designatedteam 0 Species "BLUEMember" }
+Actor F_ScreenSpawnBall_R : F_ScreenSpawnBall{Designatedteam 1 Species "REDMember" translation "192:192=173:173", "198:198=42:42" , "196:196=170:170"}
 
 
-actor ScreenSpawnBallStationary 
+actor F_ScreenSpawnBallStationary 
 {
 PROJECTILE
 +SKYEXPLODE
@@ -516,14 +516,14 @@ stop
 Pickup:
 BLTR C 0 A_Jumpifinventory("WilyTeamFlag",1,"TeamRedFire")
 BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
-TNT1 A 0 A_FireCustomMissile("ScreenSpawnBall",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("F_ScreenSpawnBall",0,1,8,0,0,0)
 stop
 TeamRedFire:
-TNT1 A 0 A_FireCustomMissile("ScreenSpawnBall_R",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("F_ScreenSpawnBall_R",0,1,8,0,0,0)
 TNT1 A 0
 stop
 TeamBlueFire:
-TNT1 A 0 A_FireCustomMissile("ScreenSpawnBall_B",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("F_ScreenSpawnBall_B",0,1,8,0,0,0)
 TNT1 A 0
 stop
 }
@@ -546,41 +546,41 @@ BLTR C 0 A_Jumpifintargetinventory("LightTeamFlag",1,"TeamBlueFire")
 //BUST B 0 A_SpawnItemEx("ScreenProjector",cos(pitch)*65,0, (sin(pitch)*-65))
   TNT1 A 1 A_GiveToTarget("BarricadeHealth",175)
     //TNT1 A 0 A_SpawnItemEx ("ScreenManager", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
 stop
 TeamRedFire:
   TNT1 A 1 A_GiveToTarget("BarricadeHealth",175)
   //TNT1 A 0 A_SpawnItemEx ("ScreenManager", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_R", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_R", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_R", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_R", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_R", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_R", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_R", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_R", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_R", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_R", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_R", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
 stop
 TeamBlueFire:
   TNT1 A 1 A_GiveToTarget("BarricadeHealth",175)
  // TNT1 A 0 A_SpawnItemEx ("ScreenManager", 0, cos(pitch)*65, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner5up_B", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
-    TNT1 A 0 A_SpawnItemEx ("ScreenSpawner4up_B", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", 0, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", 24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", -24, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", 48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", -48, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", 72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner5up_B", -72, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", 96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEx ("F_ScreenSpawner4up_B", -96, cos(pitch)*10, 0, 0, 0, 0, 90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
 stop
 }
 }

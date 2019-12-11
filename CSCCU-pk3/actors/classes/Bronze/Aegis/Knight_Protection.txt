@@ -219,7 +219,7 @@ stop
 }
 }
 
-actor ProtectionWatcher : WatcherBase
+actor ProtectionWatcher : BasicHelper
 {
 +MISSILE
 Var int User_Timer;
@@ -357,7 +357,7 @@ stop
 }
 
 
-actor ProtectionCooler : WatcherBase 
+actor ProtectionCooler : BasicHelper 
 {
 States
 {
