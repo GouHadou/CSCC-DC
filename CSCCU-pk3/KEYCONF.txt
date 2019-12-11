@@ -102,63 +102,63 @@ addplayerclass NaturesWonder nomenu
 //addplayerclass Zard1084 nomenu
 addplayerclass Zangief nomenu
 //██████████████████████████████████████████CSCC Bronze████████████████████████████████████████
-//addplayerclass EdgeLord
-//AddPlayerClass Pistonman
-//addplayerclass InsanePharaohman
-//AddPlayerClass Badz
-//addplayerclass Flameryn
-//AddPlayerClass Ankhzirus
-//addplayerclass StormConductor
-//addplayerclass Hikari
-//addplayerclass MasterNinja
-//AddPlayerClass BullGator
-//addplayerclass Zaffre
-//addplayerclass Akane
-//AddPlayerClass Aegis
-//AddPlayerClass ValkyrieMaiden
-//addplayerclass Vocalwoman
-//AddPlayerClass TankOperator
+addplayerclass EdgeLord
+AddPlayerClass Pistonman
+addplayerclass InsanePharaohman
+AddPlayerClass Badz
+addplayerclass Flameryn
+AddPlayerClass Ankhzirus
+addplayerclass StormConductor
+addplayerclass Hikari
+addplayerclass MasterNinja
+AddPlayerClass BullGator
+addplayerclass Zaffre
+addplayerclass Akane
+AddPlayerClass Aegis
+AddPlayerClass ValkyrieMaiden
+addplayerclass Vocalwoman
+AddPlayerClass TankOperator
 addplayerclass SnailBreeder
 //addplayerclass Apiarist
 AddPlayerClass Yang
-//AddPlayerClass Fume
-//AddPlayerClass ZenTrainer
-//addplayerclass Undyne
+AddPlayerClass Fume
+AddPlayerClass ZenTrainer
+addplayerclass Undyne
 
 //██████████████████████████████████████████OCBMR████████████████████████████████████████
 //addplayerclass AuronApp nomenu
-//addplayerclass OfficerMagnum nomenu
+addplayerclass OfficerMagnum nomenu
 addplayerclass Arnon nomenu
 AddPlayerClass Mason nomenu
 AddPlayerClass Gaol97 nomenu
-//AddPlayerClass Itolos nomenu
+AddPlayerClass Itolos nomenu
 
 //██████████████████████████████████████████Magicode████████████████████████████████████████
-//AddPlayerClass Zomo.EXE nomenu
-//AddPlayerClass RedMage nomenu
-//AddPlayerClass Sal nomenu
-//AddPlayerClass Devion nomenu
-//AddPlayerClass MetalMaiden nomenu
-//AddPlayerClass IceFurry nomenu //Glace
-//AddPlayerClass Darkile nomenu
-//AddPlayerClass Lily nomenu
-//AddPlayerClass KingBaku nomenu
-//AddPlayerClass MagicaClass nomenu
-//AddPlayerClass SergeantJohn nomenu
-//AddPlayerClass Ignis nomenu
-//AddPlayerClass Yumi nomenu
-//AddPlayerClass Cascara nomenu
-//AddPlayerClass Arsenal nomenu
-//AddPlayerClass KingBaku nomenu
-//AddPlayerClass MetalMaiden nomenu
-//AddPlayerClass Slick nomenu
-//AddPlayerClass Luna nomenu
-//AddPlayerClass RinClass nomenu
-//AddPlayerClass JadoClass nomenu
-//AddPlayerClass GodOfDestruction nomenu //Omega Zero
-//AddPlayerClass IceAquoon nomenu
-//AddPlayerClass LunaticClass nomenu
-//AddPlayerClass Thalo nomenu //Thalo
+AddPlayerClass Zomo.EXE nomenu
+AddPlayerClass RedMage nomenu
+AddPlayerClass Sal nomenu
+AddPlayerClass Devion nomenu
+AddPlayerClass MetalMaiden nomenu
+AddPlayerClass IceFurry nomenu //Glace
+AddPlayerClass Darkile nomenu
+AddPlayerClass Lily nomenu
+AddPlayerClass KingBaku nomenu
+AddPlayerClass MagicaClass nomenu
+AddPlayerClass SergeantJohn nomenu
+AddPlayerClass Ignis nomenu
+AddPlayerClass Yumi nomenu
+AddPlayerClass Cascara nomenu
+AddPlayerClass Arsenal nomenu
+AddPlayerClass KingBaku nomenu
+AddPlayerClass MetalMaiden nomenu
+AddPlayerClass Slick nomenu
+AddPlayerClass Luna nomenu
+AddPlayerClass RinClass nomenu
+AddPlayerClass JadoClass nomenu
+AddPlayerClass GodOfDestruction nomenu //Omega Zero
+AddPlayerClass IceAquoon nomenu
+AddPlayerClass LunaticClass nomenu
+AddPlayerClass Thalo nomenu //Thalo
 //██████████████████████████████████████████Ultimate████████████████████████████████████████
 addplayerclass "BoneheadCSCC" nomenu
 addplayerclass "GeeCSCC" nomenu

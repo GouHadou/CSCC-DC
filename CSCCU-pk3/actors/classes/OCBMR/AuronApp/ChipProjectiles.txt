@@ -36,7 +36,7 @@ actor NSlashHB
 PROJECTILE
 +BLOODSPLATTER
 +DONTBLAST
-damage (225)
+damage (23)
 damagetype "SwordTypeA"
 radius 40
 height 12
@@ -1228,7 +1228,7 @@ PROJECTILE
 +RIPPER
 +THRUGHOST
 +DONTBLAST
-damage (20)
+damage (2)
 damagetype "ElectricTypeC"
 height 32
 radius 16
@@ -1304,7 +1304,7 @@ PROJECTILE
 +BLOODSPLATTER
 +FOILINVUL
 +DONTBLAST
-damage (40)
+damage (4)
 damagetype "GunDelSol"
 height 16
 radius 16
@@ -1325,7 +1325,7 @@ PROJECTILE
 +BLOODSPLATTER
 +FOILINVUL
 +DONTBLAST
-damage (40)
+damage (4)
 damagetype "GunDelSol"
 height 18
 radius 20
@@ -1346,7 +1346,7 @@ PROJECTILE
 +BLOODSPLATTER
 +FOILINVUL
 +DONTBLAST
-damage (40)
+damage (4)
 damagetype "GunDelSol"
 height 20
 radius 24
@@ -1367,7 +1367,7 @@ PROJECTILE
 +BLOODSPLATTER
 +RIPPER
 +THRUGHOST
-damage (20)
+damage (4)
 damagetype "AquaTypeR"
 height 32
 radius 16
@@ -1421,7 +1421,7 @@ PROJECTILE
 +BLOODSPLATTER
 +RIPPER
 +THRUGHOST
-damage (20)
+damage (4)
 damagetype "AquaTypeR"
 height 32
 radius 16
@@ -1475,7 +1475,7 @@ PROJECTILE
 +BLOODSPLATTER
 +RIPPER
 +THRUGHOST
-damage (20)
+damage (4)
 damagetype "AquaTypeR"
 height 32
 radius 16
@@ -1529,7 +1529,7 @@ PROJECTILE
 +BLOODSPLATTER
 +RIPPER
 +THRUGHOST
-damage (20)
+damage (4)
 damagetype "AquaTypeR"
 height 32
 radius 16
@@ -1583,7 +1583,7 @@ PROJECTILE
 +BLOODSPLATTER
 +RIPPER
 +THRUGHOST
-damage (20)
+damage (4)
 damagetype "AquaTypeR"
 height 32
 radius 16
@@ -1648,7 +1648,7 @@ bouncecount 8
 Radius 24
 Height 12
 speed 56
-damage (90)
+damage (9)
 damagetype "BreakTypeAX"
 Obituary "%o was deleted by %k. (AirHoc3)"
 scale 2.5
@@ -1671,7 +1671,7 @@ PROJECTILE
 +NOTIMEFREEZE
 Radius 24
 Height 16
-damage (130)
+damage (13)
 damagetype "SwordTypeA2"
 speed 32
 Obituary "%o was deleted by %k. (StepSword)"
@@ -1694,7 +1694,7 @@ PROJECTILE
 +NOTIMEFREEZE
 Radius 24
 Height 16
-damage (130)
+damage (13)
 damagetype "SwordTypeA2"
 speed 24
 Obituary "%o was deleted by %k. (StepSword)"
@@ -1929,7 +1929,7 @@ PROJECTILE
 +BLOODSPLATTER
 +FOILINVUL
 +DONTBLAST
-damage (30)
+damage (3)
 damagetype "GunDelSol"
 height 22
 radius 28
@@ -1950,7 +1950,7 @@ PROJECTILE
 +BLOODSPLATTER
 +FOILINVUL
 +DONTBLAST
-damage (30)
+damage (3)
 damagetype "GunDelSol"
 height 16
 radius 16
@@ -2712,7 +2712,7 @@ PROJECTILE
 +NOGRAVITY
 radius 32
 height 48
-damage (10)//Because i dont want to just have it be all the damage at once
+damage (2)//Because i dont want to just have it be all the damage at once
 damagetype "HolyTypeC"//But at the same time, if your caught in it your suppose to take all of it.
 Speed 56
 Obituary "%o was deleted by %k. (PileDriver)"
@@ -2746,7 +2746,7 @@ PROJECTILE
 +NOTIMEFREEZE
 radius 32
 height 48
-damage (10)//Because i dont want to just have it be all the damage at once
+damage (2)//Because i dont want to just have it be all the damage at once
 damagetype "HolyTypeC"//But at the same time, if your caught in it your suppose to take all of it.
 Speed 64
 Obituary "%o was deleted by %k. (PileDriver)"
@@ -2951,7 +2951,7 @@ Mass 9999999
 DamageType "AirType"
 //Health 400
 //DamageFactor "AirSpin", 0.0
-Damage (50)
+Damage (5)
 Radius 48
 Height 16
 speed 64
@@ -3416,7 +3416,7 @@ PROJECTILE
 -SOLID
 -NOGRAVITY
 +DONTBLAST
-Damage (190)
+Damage (19)
 damagetype "FireType"
 Height 1
 Radius 6
@@ -3446,7 +3446,7 @@ PROJECTILE
 +BLOODSPLATTER
 -NOGRAVITY
 +DONTBLAST
-Damage (190)
+Damage (19)
 damagetype "FireType"
 Height 40
 Radius 8
@@ -3603,7 +3603,7 @@ PROJECTILE
 +DONTREFLECT
 Radius 16
 Height 24
-damage (100)
+damage (10)
 damagetype "SwordTypeA3"
 speed 32
 Obituary "%o was deleted by %k. (Z-Saver)"
@@ -3625,7 +3625,7 @@ PROJECTILE
 +DONTREFLECT
 Radius 16
 Height 24
-damage (100)
+damage (10)
 damagetype "SwordTypeA3"
 speed 24
 Obituary "%o was deleted by %k. (Z-Saver)"
@@ -3647,7 +3647,7 @@ PROJECTILE
 +DONTREFLECT
 Radius 10
 Height 24
-damage (100)
+damage (10)
 damagetype "SwordTypeA2"
 speed 32
 Obituary "%o was deleted by %k. (Z-Saver)"
@@ -3704,7 +3704,7 @@ actor ZSlash2fFX : ZSlash2aFX
 actor ZSlash3 : NSlashHB
 {
 +BLOODSPLATTER
-damage (100)
+damage (10)
 damagetype "SwordTypeA"
 Obituary "%o was deleted by %k. (Z-Saver)"
 }
@@ -3738,7 +3738,7 @@ PROJECTILE
 +BLOODSPLATTER
 +DONTBLAST
 +THRUGHOST
-damage (100)
+damage (10)
 damagetype "SwordTypeA2"
 radius 52
 height 8
@@ -3761,7 +3761,7 @@ PROJECTILE
 +DONTBLAST
 +PIERCEARMOR
 +THRUGHOST
-damage (240)
+damage (24)
 damagetype "BreakTypeA"
 Obituary "%o got the shit knocked out of them. (GiantHook)"
 radius 64
@@ -3811,7 +3811,7 @@ PROJECTILE
 +DONTBLAST
 +PIERCEARMOR
 +THRUGHOST
-damage (240)
+damage (24)
 damagetype "BreakTypeA"
 Obituary "%o got the shit knocked out of them. (GiantHook)"
 radius 64
@@ -3863,7 +3863,7 @@ PROJECTILE
 +DONTBLAST
 +THRUGHOST
 Damagetype "BreakTypeA"
-damage (280)
+damage (28)
 height 16
 radius 48
 Obituary "%o was deleted by %k. (JusticeOne)"
@@ -4730,7 +4730,7 @@ PROJECTILE
 +DONTBLAST
 Height 16
 Radius 128
-Damage (130)
+Damage (13)
 DamageType "SwordTypeA"
 Obituary "%o was deleted by %k. (MoonBlade3)"
 Scale 2.5
@@ -4782,7 +4782,7 @@ actor CSlash1HB
 PROJECTILE
 +BLOODSPLATTER
 +DONTBLAST
-damage (11)
+damage (2)
 damagetype "SwordTypeA"
 radius 40
 height 12
@@ -4800,19 +4800,19 @@ stop
 }
 
 actor CSlash2HB : CSlash1HB 
-{damage (22)}
+{damage (3)}
 
 actor CSlash3HB : CSlash1HB 
-{damage (45)}
+{damage (5)}
 
 actor CSlash4HB : CSlash1HB 
-{damage (90)}
+{damage (9)}
 
 actor CSlash5HB : CSlash1HB  
-{damage (180)}
+{damage (18)}
 
 actor CSlash6HB : CSlash1HB  
-{damage (360)}
+{damage (36)}
 
 actor BlizzardIcicle
 {
@@ -4827,7 +4827,7 @@ PROJECTILE
 Radius 24
 Height 80
 Speed 1
-Damage (100)
+Damage (10)
 Damagetype "Geyser"
 Obituary "%o was deleted by %k. (Blizzard)"
 Scale 2.5

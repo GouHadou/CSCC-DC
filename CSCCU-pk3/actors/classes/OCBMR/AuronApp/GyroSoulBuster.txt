@@ -2166,7 +2166,7 @@ actor GyroCS1a
 PROJECTILE
 +BLOODSPLATTER
 +RIPPER
-damage (10)
+damage (2)
 damagetype "GyroChargeShot"
 height 16
 radius 32
@@ -2235,7 +2235,7 @@ actor GyroCS2a
 PROJECTILE
 +BLOODSPLATTER
 +RIPPER
-damage (20)
+damage (3)
 damagetype "GyroChargeShot"
 height 20
 radius 32
@@ -2304,7 +2304,7 @@ actor GyroCS3a
 PROJECTILE
 +BLOODSPLATTER
 +RIPPER
-damage (30)
+damage (4)
 damagetype "GyroChargeShot"
 height 24
 radius 32
@@ -2373,7 +2373,7 @@ actor GyroCS4a
 PROJECTILE
 +BLOODSPLATTER
 +RIPPER
-damage (40)
+damage (5)
 damagetype "GyroChargeShot"
 height 28
 radius 32
@@ -2442,7 +2442,7 @@ actor GyroCS5a
 PROJECTILE
 +BLOODSPLATTER
 +RIPPER
-damage (50)
+damage (6)
 damagetype "GyroChargeShot"
 height 32
 radius 32
@@ -2508,38 +2508,38 @@ stop
 
 //Buster+1: +5
 actor GyroCS1a1 : GyroCS1a
-{damage (11)}//10+1
+{damage (4)}//10+1
 actor GyroCS2a1 : GyroCS2a
-{damage (22)}//20+2
+{damage (5)}//20+2
 actor GyroCS3a1 : GyroCS3a
-{damage (33)}//30+3
+{damage (6)}//30+3
 actor GyroCS4a1 : GyroCS4a
-{damage (44)}//40+4
+{damage (7)}//40+4
 actor GyroCS5a1 : GyroCS5a
-{damage (55)}//50+5
+{damage (8)}//50+5
 
 //Buster+2: +10
 actor GyroCS1a2 : GyroCS1a
-{damage (12)}//10+2
+{damage (6)}//10+2
 actor GyroCS2a2 : GyroCS2a
-{damage (24)}//20+4
+{damage (7)}//20+4
 actor GyroCS3a2 : GyroCS3a
-{damage (36)}//30+6
+{damage (8)}//30+6
 actor GyroCS4a2 : GyroCS4a
-{damage (48)}//40+8
+{damage (9)}//40+8
 actor GyroCS5a2 : GyroCS5a
-{damage (60)}//50+10
+{damage (10)}//50+10
 
 //Buster+3: +15
 actor GyroCS1a3 : GyroCS1a
 {damage (13)}//10+3
 actor GyroCS2a3 : GyroCS2a
-{damage (26)}//20+6
+{damage (12)}//20+6
 actor GyroCS3a3 : GyroCS3a
-{damage (39)}//30+9
+{damage (13)}//30+9
 actor GyroCS4a3 : GyroCS4a
-{damage (52)}//40+12
+{damage (14)}//40+12
 actor GyroCS5a3 : GyroCS5a
-{damage (65)}//50+15
+{damage (15)}//50+15
 
 //Buster+4 is just an extra Tornado, so nothing new to define here =P
