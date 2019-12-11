@@ -1,4 +1,4 @@
-/*
+
 //===|Aegis
 #include "actors/Classes/Bronze/Aegis/KnightClass.txt"
 #include "actors/Classes/Bronze/Aegis/KnightMainWep.txt"
@@ -60,18 +60,18 @@
 #include "actors/Classes/Bronze/InsanePharaohman/SetsWatch.txt"
 #include "actors/Classes/Bronze/InsanePharaohman/Ascension.txt"
 #include "actors/Classes/Bronze/InsanePharaohman/Sanctuary.txt"
-/*
+
 //===|Pistonman
 #include "actors/Classes/Bronze/Pistonman/Pistonman.txt"
 #include "actors/Classes/Bronze/Pistonman/PistonTremorBoss.txt"
-*/
+
 //===|Snailz
 #include "actors/Classes/Bronze/Snailz/Snailbreeder.txt"
 #include "actors/Classes/Bronze/Snailz/Snaileffects.txt"
 #include "actors/Classes/Bronze/Snailz/Snailspells.txt"
 #include "actors/Classes/Bronze/Snailz/Snailbody.txt"
 
-/*
+
 //===|StormConductor
 #include "actors/Classes/Bronze/StormConductor/StormConductor.txt"
 #include "actors/Classes/Bronze/StormConductor/StormLightning.txt"
@@ -95,21 +95,21 @@
 #include "actors/Classes/Bronze/ValkyrieMaiden/ValkyrieMaiden.txt"
 #include "actors/Classes/Bronze/ValkyrieMaiden/ValkyrieMaidenWeapons.txt"
 #include "actors/Classes/Bronze/ValkyrieMaiden/ValkyrieMaidenProjectiles.txt"
-*/
+
 //===|VocalWoman
 #include "actors/Classes/Bronze/VocalWoman/VocalWoman.txt"
 #include "actors/Classes/Bronze/VocalWoman/VocalMic.txt"
-/*
+
 //===|Voxleator
 //#include "actors/Classes/Bronze/Voxleator/Voxleator.txt"
 //#include "actors/Classes/Bronze/Voxleator/VoxleatorGun.txt"
 //#include "actors/Classes/Bronze/Voxleator/Reconstructor.txt"
-*/
+
 //===|yang
 #include "actors/classes/Bronze/yang/EmberCelica.txt"
 #include "actors/classes/Bronze/yang/EmberCelicaWep.txt"
 #include "actors/classes/Bronze/yang/Yang.txt"
-/*
+
 //===|Zaffre
 #include "actors/Classes/Bronze/Zaffre/Zaffre.txt"
 #include "actors/Classes/Bronze/Zaffre/HipeGun.txt"
@@ -117,7 +117,7 @@
 #include "actors/Classes/Bronze/Zaffre/HealFlare.txt"
 #include "actors/Classes/Bronze/Zaffre/SupplyBag.txt"
 #include "actors/Classes/Bronze/Zaffre/TopGrenadeBoss.txt"
-*/
+
 //===|ZenTrainer
 #include "actors/Classes/Bronze/ZenTrainer/ZenTrainer.txt"
 #include "actors/Classes/Bronze/ZenTrainer/ZenTrainerWeapon.txt"
