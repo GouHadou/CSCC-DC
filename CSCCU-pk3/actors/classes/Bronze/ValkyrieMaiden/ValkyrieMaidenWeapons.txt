@@ -126,9 +126,9 @@ VMHA A 3
 Goto Active
 AltFire:
 TNT1 A 0 A_JumpIfInventory("MaidenAttackFlag",1,"RisingJavelin")
-TNT1 A 0 A_JumpIfInventory("MaidenDashCooldown",1,"DashCancel")
+TNT1 A 0 A_JumpIfInventory("VMaidenDashCooldown",1,"DashCancel")
 TNT1 A 0 A_GiveInventory("MaidenAttackFlag",1)
-TNT1 A 0 A_GiveInventory("MaidenDashCooldown",1)
+TNT1 A 0 A_GiveInventory("VMaidenDashCooldown",1)
 TNT1 A 0 A_JumpIf(z-floorz>0,"AirDash")
 TNT1 A 0 A_PlaySoundEx("maiden/dash","SoundSlot5")
 TNT1 A 0 SetPlayerProperty(0,1,0)
@@ -282,13 +282,13 @@ actor ShieldRaise : Inventory
 inventory.amount 1
 inventory.maxamount 1
 }
-
+/*
 actor ShieldDamage : Inventory
 {
 inventory.amount 1
 inventory.maxamount 9999
 }
-
+*/
 actor ShieldTimeout : Inventory
 {
 inventory.amount 1
@@ -308,7 +308,7 @@ stop
 }
 }
 
-actor MaidenDashCooldown : Powerup
+actor VMaidenDashCooldown : Powerup
 {
 Powerup.Duration -2
 }

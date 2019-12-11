@@ -336,7 +336,7 @@ stop
 }
 }
 
-actor EdgeBurst : ExplosionBase
+actor EdgeBurst : BasicExplosion
 {
 damagetype "EdgeBurst"
 Obituary "$OB_EDGEBURST"

@@ -232,3 +232,21 @@ pic VARHEALT tics 4
 pic VAROVH1 tics 4
 pic VAROVH2 tics 4
 pic VAROVH1 tics 4
+
+
+//Item System
+Texture ABL1A0
+Pic ABILA0 tics 4
+Pic ABILB0 tics 4
+
+Texture ABL2A0
+Pic ABILC0 tics 4
+Pic ABILD0 tics 4
+
+Texture ABL3A0
+Pic ABILE0 tics 4
+Pic ABILF0 tics 4
+
+Texture ABL4A0
+Pic ABILG0 tics 4
+Pic ABILH0 tics 4

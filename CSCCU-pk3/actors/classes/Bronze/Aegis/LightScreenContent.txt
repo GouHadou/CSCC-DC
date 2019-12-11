@@ -9,14 +9,14 @@ actor LightScreenKiller : powerup {inventory.amount 1 inventory.maxamount 1 Powe
 Actor LightScreenFlag : inventory {inventory.amount 1 inventory.maxamount 2}
 Actor ProjectorCount : inventory {inventory.amount 1 inventory.maxamount 50}
 
-
+/*
 Actor ShieldHitBuffer : Powerup
 {
 inventory.amount 1
 inventory.maxamount 1
 powerup.duration 3
 }
-
+*/
 //[+]========================================================================[+]
 //--------------------------------|Shield Actors|---------------------------
 //[+]========================================================================[+]
@@ -824,7 +824,7 @@ stop
 //[+]========================================================================[+]
 //--------------------------------|Special Actors|------------------------------
 //[+]========================================================================[+]
-actor LightScreenCooler : WatcherBase // Coolers are a type of watcher actor that handle weapon cooldowns
+actor LightScreenCooler : BasicHelper // Coolers are a type of watcher actor that handle weapon cooldowns
 {
 States
 {

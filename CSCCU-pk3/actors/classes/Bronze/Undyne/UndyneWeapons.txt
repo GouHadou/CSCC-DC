@@ -697,7 +697,7 @@ stop
 }
 }
 
-actor UndyneExplosion : ExplosionBase
+actor UndyneExplosion : BasicExplosion
 {
 damagetype "UndyneExplosion"
 Obituary "$OB_UNDYNESD"

@@ -178,7 +178,7 @@ fail
 }
 }
 
-actor AnkhzirusChargeWatcher : WatcherBase {
+actor AnkhzirusChargeWatcher : BasicHelper {
 States
 {
 Spawn:

@@ -4755,4 +4755,253 @@ Graphic "LUNANULX", 32, 32
 	Patch "CSTRN0", 0, 0
 }
 
+
+//=====================|Bronze
+
+
+//InsanePharaohman
+Graphic "TECHHUD", 69, 74{Patch "TECHHUD", 0, 0}
+Graphic "TECHHUD1", 69, 74{Patch "TECHHUD1", 0, 0}
+Graphic "TECHHUD2", 69, 74{Patch "TECHHUD2", 0, 0}
+Graphic "TECHHUD3", 69, 74{Patch "TECHHUD3", 0, 0}
+Graphic "TECHHUD4", 69, 74{Patch "TECHHUD4", 0, 0}
+Graphic "TECHHU5B", 69, 74{Patch "TECHHUD5", 0, 0}
+Graphic "TECHHU5O", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=217:217", "198:198=221:221"}}
+Graphic "TECHHU5Y", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=160:160", "198:198=229:229"}}
+Graphic "TECHHU5R", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=172:172", "198:198=176:176"}}
+Graphic "TECHHU5G", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=109:109", "198:198=111:111"}}
+Graphic "TECHHU5P", 69, 74{Patch "TECHHUD5", 0, 0{Translation "192:192=58:58", "198:198=62:62"}}
+
+
+//Aegis
+Sprite "LTSCI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NPSIA0", 0, 0
+}
+
+Sprite "BARRI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NPSIB0", 0, 0
+}
+//Voxleator
+Sprite "VOXAI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "VXHDA0", 0, 0
+}
+
+Sprite "VOXBI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "VXHDB0", 0, 0
+}
+
+
+//Ankhzirus
+graphic ANSTAFF, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ANKST0, 0, 0
+}
+
+//Hikari
+Graphic PFKO, 128, 56
+{
+ XScale 2.0
+ YScale 2.0
+ Patch PFKO, 0, 0
+}
+
+graphic HIKOK, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HIKOU0, 0, 0
+}
+
+graphic PERFHUD1, 333, 120
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PERFHUD1, 0, 0
+}
+
+graphic PERFHUD2, 333, 120
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PERFHUD2, 0, 0
+}
+
+//EdgeLord
+graphic ItemUse, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch USEIA0, 0, 0
+}
+graphic ItemUseE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch USEIB0, 0, 0
+}
+graphic EdgeGunI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EDGAA0, 0, 0
+}
+graphic EdgeSwdI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EDGAB0, 0, 0
+}
+graphic EdgeBrsI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EDGAC0, 0, 0
+}
+
+//Akane
+graphic DARSPLT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch DKSPI0, 0, 0
+}
+
+graphic SHAPULL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SHPLI0, 0, 0
+}
+
+graphic SUNSPLT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SSPLI0, 0, 0
+}
+
+graphic SHASPH, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch SHSPI0, 0, 0
+}
+
+
+//SuperShinobi
+graphic NINFAN, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch NIWEP0, 0, 0
+}
+
+//Flameryn
+graphic FDECOY, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FLDCI0, 0, 0
+}
+
+//TankOpp
+graphic TANKACTI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TANKICON, 0, 0
+}
+
+graphic TANKDACT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FOOTICON, 0, 0
+}
+
+//Vocalwoman
+graphic VOCAL1, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPA0, 0, 0
+}
+
+graphic VOCAL2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPB0, 0, 0
+}
+
+graphic VOCAL3, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPC0, 0, 0
+}
+
+graphic MUNOZ0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MUNOZ0, 0, 0
+}
+
+
+//Fume
+graphic FICON1, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FUICA0, 0, 0
+}
+
+graphic FICON2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FUICB0, 0, 0
+}
+
+// Zen Trainer
+graphic ClouIcon,30,30{XScale 2.0 YScale 2.0 Patch ZNITA0,0,0}
+
+//Yang 
+graphic EMBCEL, 30, 30 //Yang reload Sprite
+{
+   XScale 2.0
+   YScale 2.0
+   Patch EMCEX0, 0, 0
+}
+
+//ITEM SYSTEM
+Graphic ABL1A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+Graphic ABL2A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+Graphic ABL3A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+Graphic ABL4A0, 32, 32 {XScale 2.0	YScale 2.0	Patch TNT1A0, 0, 0}
+
+Graphic ABILA0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILA0, 0, 0}
+Graphic ABILB0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILB0, 0, 0}
+Graphic ABILC0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILC0, 0, 0}
+Graphic ABILD0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILD0, 0, 0}
+Graphic ABILE0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILE0, 0, 0}
+Graphic ABILF0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILF0, 0, 0}
+Graphic ABILG0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILG0, 0, 0}
+Graphic ABILH0, 32, 32 {XScale 2.0	YScale 2.0	Patch ABILH0, 0, 0}
+
 // End of texture definitions

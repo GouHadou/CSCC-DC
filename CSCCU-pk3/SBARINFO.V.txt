@@ -1899,6 +1899,7 @@ IsSelected BurstBlade
 	}
 
 //====|Voxleator
+/*
 IsSelected VoxleatorGun, VoxleatorGun2
 	{
 	DrawBar"BARAMMO8", "BAREMPTY", Ammo1, vertical, 16, 8;
@@ -1906,18 +1907,8 @@ IsSelected VoxleatorGun, VoxleatorGun2
 	ininventory VoxleMatter, 50{Drawbar"BARAMM21", "BAREMPTY", Ammo1, vertical, 16, 8;}
 	//DrawImage "LTSCI", 8, 64;
 	}
+*/
 
-//====|Zaffre
-IsSelected HiPEGunA
-	{
-	Drawbar"BARAMMO2", "BAREMPTY", HiPEGunClip, vertical, 16, 8;
-	InInventory TopGrenadeCooldownItem, 1	{DrawBar"BARFLS1", "NOBAR", TopGrenadeCooldownItem, vertical, 16, 8;}
-	}
-IsSelected HiPEGunD
-	{
-	Drawbar"BARAMMO2", "BAREMPTY", HiPEGunClip, vertical, 16, 8;
-	InInventory SupplyBagCooldownItem, 1	{DrawBar"BARFLS1", "NOBAR", SupplyBagCooldownItem, vertical, 16, 8;}
-	}
 	
 //====|Edgelord	
 IsSelected EdgeGunBoss{
@@ -2048,10 +2039,12 @@ InInventory ExecuteWeakness3, 1
 DrawBar "E3_A_BAR", "NOBAR", Health, vertical, 24, 8;
 }
 
+/*
 IsSelected CrazyWaveWepC
 {
 	Drawbar "BARAMMO67", "BAREMPTY", Ammo1, vertical, 16, 8;
 }
+*/
 }
 //====|Badz
 IsSelected OrbitalMissileBoss{Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16, 8;
@@ -2169,12 +2162,13 @@ IsSelected EmberCelica
 	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
 	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8;}
 	}
+	/*
 IsSelected EmberCelicaWepC
 	{
 	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
 	}
-
+*/
 
 //====|Fume
 InInventory IsFume

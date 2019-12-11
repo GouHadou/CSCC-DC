@@ -45,7 +45,7 @@
 //===|Hikari
 #include "actors/Classes/Bronze/Hikari/Hikari.txt"
 #include "actors/Classes/Bronze/Hikari/HikariPowers.txt"
-*/
+
 //===|InsanePharaohman
 #include "actors/Classes/Bronze/InsanePharaohman/InsanePharaohman.txt"
 #include "actors/Classes/Bronze/InsanePharaohman/BulletTracer.txt"
@@ -109,14 +109,6 @@
 #include "actors/classes/Bronze/yang/EmberCelica.txt"
 #include "actors/classes/Bronze/yang/EmberCelicaWep.txt"
 #include "actors/classes/Bronze/yang/Yang.txt"
-
-//===|Zaffre
-#include "actors/Classes/Bronze/Zaffre/Zaffre.txt"
-#include "actors/Classes/Bronze/Zaffre/HipeGun.txt"
-#include "actors/Classes/Bronze/Zaffre/FlareGun.txt"
-#include "actors/Classes/Bronze/Zaffre/HealFlare.txt"
-#include "actors/Classes/Bronze/Zaffre/SupplyBag.txt"
-#include "actors/Classes/Bronze/Zaffre/TopGrenadeBoss.txt"
 
 //===|ZenTrainer
 #include "actors/Classes/Bronze/ZenTrainer/ZenTrainer.txt"
