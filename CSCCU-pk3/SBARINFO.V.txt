@@ -2162,13 +2162,12 @@ IsSelected EmberCelica
 	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
 	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8;}
 	}
-	/*
-IsSelected EmberCelicaWepC
+	
+IsSelected EmberCelicaWepCS
 	{
 	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
 	}
-*/
 
 //====|Fume
 InInventory IsFume
