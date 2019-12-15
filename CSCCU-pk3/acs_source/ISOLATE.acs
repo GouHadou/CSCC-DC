@@ -189,16 +189,6 @@ int numfinal;
 return numfinal;
 }
 
-// Returns the closest integer, rounded up
-function int ceil(int fixedIn)
-{
-	if(fixedIn % 65536 != 0)
-	{
-		return (fixedIn >> 16) + 1;
-	}
-	return fixedIn >> 16;
-}
-
 //returns the relative pitch of a thing with tid2, from a thing with tid1.
 function int GetTargetPitch (int tid1, int tid2)
 {

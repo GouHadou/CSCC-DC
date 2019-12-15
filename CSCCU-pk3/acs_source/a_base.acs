@@ -176,14 +176,4 @@ If(CurrentSpeedXYZ(ActivatorTID()) > SpeedLimit)
 	}
 
 }
-
-// Returns the closest integer, rounded up
-function int ceil(int fixedIn)
-{
-	if(fixedIn % 65536 != 0)
-	{
-		return (fixedIn >> 16) + 1;
-	}
-	return fixedIn >> 16;
-}
 //End Common Scripts
