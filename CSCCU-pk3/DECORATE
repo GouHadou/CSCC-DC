@@ -223,7 +223,7 @@ const int DYE_DOCROBOT = 768;
 const int DYE_BRIGHTMAN = 780;
 const int DYE_TOADMAN = 781;
 const int DYE_DRILLMAN = 782;
-const int DYE_PHARAOHMAN = 783;
+const int DYE_PHARAOHMAN = 1783;
 const int DYE_RINGMAN = 784;
 const int DYE_DUSTMAN = 785;
 const int DYE_DIVEMAN = 786;
@@ -462,6 +462,7 @@ const int DYE_FUME = 1002;
 #include "actors/classes/classbaseU.txt"
 #include "actors/classes/Classbasetest.txt"
 #include "actors/classes/Classbasefinal.txt"
+#include "actors/classes/classbaseTID.txt"
 #include "actors/classes/classbaseflags.txt"
 #include "actors/classes/CustomWepMan.txt"
 

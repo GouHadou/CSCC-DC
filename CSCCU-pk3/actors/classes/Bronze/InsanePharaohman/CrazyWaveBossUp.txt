@@ -85,16 +85,18 @@ PROJECTILE
 +DONTREFLECT
 +DONTBLAST
 Translation "192:192=80:80"
-speed 22
+speed 275
 scale 0.8
 states
 {
 Spawn:
 TNT1 A 0
+/*
 TNT1 AA 1 ACS_NamedExecuteAlways("PitchMatch",0)
 TNT1 A 0 A_scalevelocity(3.875)
 TNT1 A 1 //Small distance before tracers appear
 TNT1 A 0 A_scalevelocity(4.0)
+*/
 goto Spawn2
 }
 }

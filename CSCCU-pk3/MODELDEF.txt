@@ -20,7 +20,7 @@ zoffset 9
 frameindex BCRA D 0 0
 }
 
-/*
+
 Model SanctuaryFXM1
 {
 	Path "models/Sanctuary"

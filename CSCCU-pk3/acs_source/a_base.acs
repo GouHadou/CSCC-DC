@@ -93,6 +93,46 @@ script CSACS_WALLKICK (void)
 
 //Common ACS Scripts
 
+
+Script "InputGrab" (int ButtonCheck)
+{
+bool Output;
+int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
+Switch (ButtonCheck)
+	{
+	Case 1:
+	if (InputButtons & Bt_Attack){Output = True;}
+	Break;
+	Case 2:
+	if (InputButtons & Bt_AltAttack){Output = True;}
+	Break;
+	Case 3:
+	if (InputButtons & Bt_Crouch){Output = True;}
+	Break;
+	Case 4:
+	if (InputButtons & Bt_Reload){Output = True;}
+	Break;
+	Case 5:
+	if (InputButtons & Bt_Zoom){Output = True;}
+	Break;
+	Case 6:
+	if (InputButtons & Bt_User1){Output = True;}
+	Break;
+	Case 7:
+	if (InputButtons & Bt_User2){Output = True;}
+	Break;
+	Case 8:
+	if (InputButtons & Bt_User3){Output = True;}
+	Break;
+	Case 9:
+	if (InputButtons & Bt_User4){Output = True;}
+	Break;
+	}
+
+
+SetResultValue(Output);
+}
+
 script "HitKnockBack" (int force)
 {
 int pusher = ACS_NamedExecuteWithResult("GetTarget", AAPTR_TARGET);
@@ -135,5 +175,15 @@ If(CurrentSpeedXYZ(ActivatorTID()) > SpeedLimit)
 	SetActorVelocity(0, FixedMul(GetActorVelX(0), TheLimit), FixedMul(GetActorVelY(0), TheLimit), GetActorVelZ(0),FALSE, FALSE);
 	}
 
+}
+
+// Returns the closest integer, rounded up
+function int ceil(int fixedIn)
+{
+	if(fixedIn % 65536 != 0)
+	{
+		return (fixedIn >> 16) + 1;
+	}
+	return fixedIn >> 16;
 }
 //End Common Scripts

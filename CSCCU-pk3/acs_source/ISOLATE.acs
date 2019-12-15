@@ -188,3 +188,123 @@ int numfinal;
 	else{numfinal = 0;}
 return numfinal;
 }
+
+// Returns the closest integer, rounded up
+function int ceil(int fixedIn)
+{
+	if(fixedIn % 65536 != 0)
+	{
+		return (fixedIn >> 16) + 1;
+	}
+	return fixedIn >> 16;
+}
+
+//returns the relative pitch of a thing with tid2, from a thing with tid1.
+function int GetTargetPitch (int tid1, int tid2)
+{
+    int x, y, z, xy, a;
+    x = GetActorX(tid2) - GetActorX(tid1);
+    y = GetActorY(tid2) - GetActorY(tid1);
+    z = GetActorZ(tid2) - GetActorZ(tid1);
+    a = VectorAngle(x, y);
+
+    if ((a + 0.125) % 0.5 > 0.25)
+        xy = FixedDiv(y, sin(a));
+    else
+        xy = FixedDiv(x, cos(a));
+
+    return -VectorAngle(xy, z);
+}
+
+#DEFINE BASEBLASTMIN 60
+Script "BlastKnockback" (int BlastThrust, int ThrustForceH, int MaxRadius)
+{
+
+int userTID;
+int userTeam;
+Bool SelfThrust = True;
+int ThrustForce = BlastThrust;
+	if(ThrustForce < 0) {SelfThrust = False; ThrustForce = ThrustForce*-1;}
+
+	if(ActivatorTID() == 0)
+	{
+		userTID = ACS_ExecuteWithResult(257, 0);
+		userTeam = GetPlayerInfo(userTID - 1000, PLAYERINFO_TEAM);
+	}
+	else
+	{
+		userTID = ActivatorTID();
+	}
+	
+
+int ActX = GetActorX(0);
+int ActY = GetActorY(0);
+//int ActHeight = GetActorProperty(0,APROP_HEIGHT) >>16;
+int Dist;
+int distdiff;
+int ZThrust;
+int XYThrust;
+int targetTID;
+int PlayerX;
+int PlayerY;
+int pitch;
+
+int FinalForce;
+int FinalForceH;
+//int ThrustDrop = NoNeg( (Dist/10) - MaxRadius) << 16;
+//SetActivatorToTarget(0);
+
+For(int q = 0;q < ServerMax; q++)
+	{
+		targetTID = q+1000;
+		
+		if(!PlayerInGame(q))
+		{
+			continue;
+		}
+		
+		if( (userTID == q) && (SelfThrust == False)){}
+		if(ACS_ExecuteWithResult(975, 1) == 1)
+		{
+			if(userTeam == GetPlayerInfo(q, PLAYERINFO_TEAM) && userTID != targetTID)
+			{
+				continue;
+			}
+		}
+		
+		//log(s:"distance is ",i:xyzDistance(0, targetTID));
+		if(xyzDistance(0, targetTID) < MaxRadius && checksight(0,targetTID,0) == True
+		|| xyzDistance(0, targetTID) <20)
+		{
+		 Dist = xyzDistance(0,targetTID);
+	
+		 distdiff = NoNeg(Dist - MaxRadius);
+		 pitch = GetTargetPitch(targetTID,0);
+		 //VectorAngle(xyDistance(0, targetTID), GetActorZ(0) - GetActorZ(targetTID) >> 16);
+		 //log(s:"pitch relative to player ",i:q,s:" is ", f:pitch);
+		 //log(s:"Height is  ",i:ActHeight);
+		 if(xyzDistance(0, targetTID) > BASEBLASTMIN)
+		 {
+		 FinalForce = ceil(FixedMul(ThrustForce << 16, 1.0 - FixedDiv(Dist, MaxRadius)));
+		 FinalForceH = ceil(FixedMul(ThrustForceH << 16, 1.0 - FixedDiv(Dist, MaxRadius)));
+		 }
+		 Else
+		 {
+		 FinalForce = ThrustForce;
+		 FinalForceH = ThrustForceH;
+		 }
+		 ZThrust = (sin(pitch)*-FinalForce); //GetActorPitch(targetTID)
+		 XYThrust = (cos(pitch)*-FinalForceH);
+		 
+		 if (GetActorZ(targetTID) - GetActorFloorZ (targetTID) == 0){XYThrust = FixedMul(XYThrust,1.0);}
+		 //log(i:GetActorZ(targetTID) - GetActorFloorZ (targetTID));
+		 //log(s:"horizontal thrust is is  ",i:(FixedMul(XYThrust , 1.0 - fixedDiv(distdiff,100)))>> 16);
+		 PlayerX = GetActorX(targetTID);
+		 PlayerY = GetActorY(targetTID);
+		 
+		ThrustThing(VectorAngle(ActX - PlayerX,ActY - PlayerY)>>8,(FixedMul(XYThrust , 1.0 - fixedDiv(distdiff,100)))>> 16,1,targetTID);
+		thrustthingz(targetTID,(FixedMul(ZThrust , 1.0 - fixedDiv(distdiff,100)))>> 16,1,0);
+	}
+}
+
+}
