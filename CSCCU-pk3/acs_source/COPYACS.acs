@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 19
+#define MAX_MORPHS 24
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -29,6 +29,11 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"StaveCannonWep", "Breve", "BreveClassItems"}, //14
 {"IceWep", "Ice", "IceSparkyClassItems"},//15
 {"SparkyWep", "Sparky", "IceSparkyClassItems"},//16
+{"Beed28Weapon1", "Beed28 (Missile Barrage)", "Beed28ClassItems"},//17
+{"Beed28Weapon2", "Beed28 (Hyper Missile)", "Beed28ClassItems"},//18
+{"BlazeCannon", "Blaze", "BlazeClassItems"}, //19
+{"TsukiClassCosmicWeapon", "Tsukiyomaru Zero", "TsukiyomaruZeroClassItems"},//20
+{"TrollSentry", "Fenga Papit", "FengaPapitClassItems"},//21
 {"FIR", "Korby (Fire)", "KorbyClassItems"},//
 {"LIT", "Korby (Lightning)", "KorbyClassItems"},//
 {"ICE", "Korby (Ice)", "KorbyClassItems"}//
@@ -178,7 +183,7 @@ If(TotalHealthAfter > 0){SetActorProperty(0, APROP_HEALTH, TotalHealthAfter);}
 TakeInventory("NoColorFlag", 1);
 //--==Class Specific gives==--
 GiveInventory("KilledMeStock", KilledMeStockNum);
-If(FusionStockNum <= KilledMeStockNum){FusionStockNum++;}
+If(FusionStockNum <= KilledMeStockNum){FusionStockNum=KilledMeStockNum;}
 GiveInventory("FusionStock", FusionStockNum);
 //--==End Gives==--
 GiveInventory("CopyRemover", 1);
