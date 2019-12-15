@@ -12,7 +12,7 @@ player.sidemove 0.80, 0.80
 player.startitem "MetalMaidenArsenal"
 player.startitem "IsMetalMaiden"
 player.startitem "NoIcons"
-Player.StartItem "NoHealthBar"
+Player.StartItem "NoHealthBar2"
 Player.StartItem "NoUltBar"
 player.startitem "CanUseItems"
 player.jumpz 11

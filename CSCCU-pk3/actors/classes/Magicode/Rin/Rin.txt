@@ -29,7 +29,7 @@ Player.ForwardMove 0.9, 0.9
 Player.SideMove 0.92, 0.92
 Player.JumpZ 12
 Player.StartItem "NoIcons"
-Player.StartItem "NoHealthBar"
+Player.StartItem "NoHealthBar2"
 Player.StartItem "NoUltBar"
 Player.StartItem "CanUseItems"
 Player.StartItem "IAmRin"//"IsRin"

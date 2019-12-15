@@ -13,7 +13,7 @@ player.startitem "ShadowBallAmmo", 28
 //player.startitem "ShadowBeamEnergy", 224
 player.startItem "CanUseItems"
 player.startitem "IsSal"
-player.startitem "NoHealthBar"
+player.startitem "NoHealthBar2"
 player.startitem "Over50Percent", 1
 player.startitem "NoIcons", 1
 Player.ForwardMove 0.98, 0.98 //0.9 ~ 1.0

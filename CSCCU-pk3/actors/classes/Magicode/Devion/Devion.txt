@@ -33,7 +33,7 @@ Player.StartItem "IsDevion"
 Player.StartItem "CanUseItems"
 Player.StartItem "DevionPowers"
 Player.StartItem "DevionFistAmmo",5
-Player.StartItem "NoHealthBar"
+Player.StartItem "NoHealthBar2"
 Player.StartItem "NoIcons"
 Player.StartItem "NoUltBar"
 States

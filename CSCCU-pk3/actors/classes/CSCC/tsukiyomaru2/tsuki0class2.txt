@@ -10,7 +10,7 @@ player.startitem "TsukiClassWeapon2"
 player.startitem "TsuRapidChanger",1
 player.startitem "TsuchargeChanger",1
 player.startitem "TsuchargeFlag",1
-player.startitem "NoHealthBar"
+player.startitem "NoHealthBar2"
 player.startitem "TsukiHUD2",1
 +NOTARGET
 Height 28

@@ -11,7 +11,7 @@ player.jumpz 11
 player.startitem "NormalClass"
 player.startitem "JohnGunWep"
 player.startitem "CanUseItems"
-player.startitem "NoHealthBar"
+player.startitem "NoHealthBar2"
 player.startitem "NoIcons"
 Player.StartItem "NoUltBar"
 States

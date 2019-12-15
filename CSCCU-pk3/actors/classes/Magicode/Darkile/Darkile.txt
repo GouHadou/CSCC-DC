@@ -14,7 +14,7 @@ Player.StartItem "DuskVoid1Wep"
 Player.StartItem "DuskVoid2Wep"
 Player.StartItem "DuskVoidAmmo", 100
 Player.StartItem "DuskStormAmmo", 80
-Player.StartItem "NoHealthBar"
+Player.StartItem "NoHealthBar2"
 Player.StartItem "NoIcons"
 Player.StartItem "NoUltBar"
 States
