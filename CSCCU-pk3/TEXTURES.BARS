@@ -110,6 +110,23 @@ texture VGHADBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=93:93", "198:
 texture MESSBAR, 8, 56{patch MESSVSPF, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
 texture VMESSBAR, 56, 8{patch MESSHSPF, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
 
+//PistonMan
+texture PISTNVAR, 56, 8{patch PISTNBAR, 0, 0 {rotate 90}}
+
+texture PISTNBA1, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+texture PISTNVA1, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+
+texture PISTNBA2, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+texture PISTNVA2, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+
+texture PISTNBA3, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+texture PISTNVA3, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+
+texture PISTNBA4, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+texture PISTNVA4, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+
+texture PISTNBA5, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+texture PISTNVA5, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 
 //Ukiyama
 texture METEBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=21:21", "198:198=187:187"}}
