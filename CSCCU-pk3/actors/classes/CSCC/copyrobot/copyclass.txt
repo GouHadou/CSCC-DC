@@ -14,8 +14,8 @@ damagefactor "Dummy", 0.0
 player.maxhealth 80
 health 80
 //damagefactor "Normal", 1.2
-damagefactor "CopyMain", 10.0 //case of best fight ever to the death with no copy weps
-damagefactor "CopyAlt", 10.0 
+damagefactor "CopyMainShot", 10.0 //case of best fight ever to the death with no copy weps
+damagefactor "CopyAltShot", 10.0 
 States
 {
 Spawn:
@@ -271,4 +271,11 @@ stop
 actor CopyRobotUnmorphed : Powerup
 {
 powerup.duration 10
+}
+
+
+Actor CopyMorphTimer : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 99
 }

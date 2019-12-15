@@ -1,6 +1,8 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
+#define MAX_MORPHS 4
+
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
 #DEFINE CSACS_COPYCOLORS 139
@@ -8,1008 +10,161 @@
 #DEFINE CSACS_COPYSPEED 141
 #DEFINE CSACS_TAKEWEAPON 152
 
-//Script for giving Copy Weps to Copy robot
-Script CSACS_COPYCOPYWEP (void)
+
+str CopyMorphs[MAX_MORPHS][3] = 
 {
-Delay(1);
-If(!CheckInventory("CopyWeapon")){terminate;}
-Int CRPlayer = ActivatorTID();
-Int MegaPlayer = CheckInventory("WeaponCopyFlag");
-TakeInventory("WeaponCopyFlag", 9999);
+{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},
+{"FIR", "Korby", "KorbyClassItems"},
+{"LIT", "Korby", "KorbyClassItems"},
+{"ICE", "Korby", "KorbyClassItems"}
+};
 
-int WeaponCopied = -1;
-If(MegaPlayer >= 1000)
+Script "GetPlayerWeapon" (int TargetTID)
+{
+str PlayerWeapon;
+SetActivator(TargetTID);
+PlayerWeapon = GetWeapon();
+int ReturnThis = -1;
+For(int i = 1; i < MAX_WEAPONS_GLOBAL; i++)
 	{
-	SetActivator(MegaPlayer);
-	WeaponCopied = WhichWeapon();
+	//printbold(i:TargetTID, s:" - ", s:weapons_ammo[i][0], s:" - ", s:PlayerWeapon);
+	if(StrIcmp(weapons_ammo[i][0], PlayerWeapon) == 0)
+		{
+		ReturnThis = i;
+		break;
+		}
 	}
-
-
-SetActivator(CRPlayer);
-
-SetHudSize(600,380,0);
-If(WeaponCopied < 0)
-	{
-	HudMessage(s:"\ccUnable to copy weapon from ", n:MegaPlayer - 999, s:"!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	terminate;
-	}
-	
-HudMessage(s:"\cgYou \cicopied \ck", s:weapons_ammo[WeaponCopied][2], s:"\cd from \ch", n:MegaPlayer - 999, s:"\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-
-If(CheckInventory(weapons_ammo[WeaponCopied][0]))
-	{
-	GiveInventory(weapons_ammo[WeaponCopied][1], 255);
-	SetWeapon(weapons_ammo[WeaponCopied][0]);
-	}
-Else
-	{
-	GiveInventory(weapons_ammo[WeaponCopied][0], 1);
-	SetWeapon(weapons_ammo[WeaponCopied][0]);
-	}
+SetResultValue(ReturnThis);
 }
 
-//Script to fix crashing with ZDR with bots
-Script CSACS_COPYBOTFIX UNLOADING
-{
-SetPlayerProperty(1,1,4);
-}
-
-//Best colors ever
-Script CSACS_COPYCOLORS (void)
+Script "CopyMorph" (int MorphMode)
 {
 
-Delay(1);
-Int CopyColor = 402;
-If(ACS_ExecuteWithResult(975, 1)==1){terminate;}
-While(GetActorProperty(0,APROP_HEALTH)>0 && !CheckInventory("IsDead"))
+int CopyPlayer;
+int CopyTarget;
+str CopyClass;
+str CopyWeapon;
+str WeaponCopied; // Mega Man
+str CopyItems;
+str CopyName;
+str FinalMorph;
+bool CopyWepCheck = false;
+Bool MorphCheck = false;
+
+
+
+If(MorphMode == 0)
 	{
-	If(!CheckInventory("NoColorFlag")){Thing_SetTranslation(0, CopyColor);}
-	CopyColor++;
-	If(CopyColor>407){CopyColor = 401;}
-	Delay(4);
+	CopyPlayer = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Target);
+	CopyTarget = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Tracer);
+	if(CopyPlayer == 0 || CopyTarget == 0){terminate;}
+	SetActivator(CopyTarget);
+	CopyWeapon = GetWeapon();
+	FinalMorph = StrParam(s:CopyWeapon, s:"Morph"); 
+	SetActivator(CopyPlayer);
+	for(int i = 0; i < MAX_MORPHS; i++) 
+		{
+		if(StrIcmp(CopyMorphs[i][0], CopyWeapon)==0) 
+			{
+			CopyName = CopyMorphs[i][1];
+			CopyItems = CopyMorphs[i][2];
+			MorphCheck = true;
+			}
+		}
 	}
+If(MorphMode !=1){WeaponCopied = ACS_NamedExecuteWithResult("GetPlayerWeapon", CopyTarget);}
+If(WeaponCopied > 0)
+	{
+	CopyWepCheck = true;
+	MorphMode = 2;
+	}
+if(MorphCheck == False && CopyWepCheck == False){MorphMode = 2;}
 
-}
+int HealthBefore = GetActorProperty(0, APROP_HEALTH);
+int MaxHealthBefore = GetActorProperty(0, APROP_SpawnHealth);
+Int HealthRatio = FixedDiv(HealthBefore<<16, MaxHealthBefore<<16);
+int MaxHealthAfter;
+int TotalHealthAfter;
 
-#DEFINE COPY_MORPHTIME 1050
-
-//Script to handle Copy's morph ability
-Script CSACS_COPYMORPH (int MorphWho)
-{
-If(!CheckInventory("CopyWeapon")){Terminate;}
-Int HealthBefore = GetActorProperty(0, APROP_HEALTH);
 Int PlayerPitch = GetActorPitch(0);
 int KilledMeStockNum = CheckInventory("KilledMeStock");
 int FusionStockNum = CheckInventory("FusionStock");
-int WhichClass;
-int WhichClassB;
-int CopyTimeLeft = 0;
+
 int XVel = GetActorVelX(0);
 int YVel = GetActorVelY(0);
 
 bool UnderwaterFlag = CheckInventory("IsUnderWater");
 If(HealthBefore <= 0){terminate;}
-If(CheckInventory("Morphflag") && (MorphWho != 0 && MorphWho != 999)){Terminate;} 
 If(CheckInventory("PowerInvulnerable")){TakeInventory("PowerInvulnerable", 1);} 
 TakeInventory("CopyRemover", 1);
-SetPlayerProperty(0,1,4);
+If(MorphCheck != 2){SetPlayerProperty(0,1,4);}
 
-SetFont("SMALLFONT");
-Switch(MorphWho)
+
+Switch(MorphMode)
 	{
-	Case 999: //Manual unmorph
-    SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
-    UnmorphActor(ActivatorTID(), 0);
-	Case 0: 
+	Case 0:
 	ClearInventory();
-	SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cd", s:CopyName, s:" \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(CopyPlayer, FinalMorph, "", 0, 258, "", "");
+	GiveInventory(CopyItems, 1);
+	GiveInventory("MorphFlag", 1);
+	GiveInventory("CopyMorphTimer", 35);
+	ACS_NamedExecuteAlways("CopyMorphTimer", 0);
+	break;
+	Case 1:
+	UnmorphActor(ActivatorTID(), 0);
+	ClearInventory();
 	GiveInventory("CanCopyWeapons", 1);
-	//GiveInventory("ResetPlayerStats", 1);
-	GiveInventory("LightHealthBar", 1);
-	
 	TakeInventory("TsuPowerChanger",1);
 	TakeInventory("TsuSpeedChanger",1);
 	TakeInventory("TsuSpreadChanger",1);
 	TakeInventory("LDRamActivator", 1);
 	TakeInventory("SentinelTriggerItem",1);
 	TakeInventory("OilBoat",999);
-	SetActorProperty(ActivatorTID(), APROP_Alpha, 1.0);
 	SetPlayerProperty(0, 0, 16);
 	SetPlayerProperty(0, 0, 3);
 	SetPlayerProperty(0, 0, 4);
 	SetPlayerProperty(0, 0, 0);
 	SetHudSize(600,380,0);
 	HudMessage(s:"\ccCopy ability expired!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-    GiveInventory("CopyRobotUnmorphed", 1);
 	GiveInventory("CopyWeapon", 1);
 	SetWeapon("CopyWeapon");
 	GiveInventory("CopyAmmo", 14);
 	break;
-	
-	Case 1: // ColdFusion
-	ClearInventory();
+	Case 2:
 	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdColdFusion \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "ColdFusionMorph", "", 0, 258, "", "");
-	GiveInventory("FusionShieldStarter", 1);
-	//GiveInventory("ProtoHealthBar", 1);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 2: // Sinkman
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdSinkman \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "SinkManMorph", "", 0, 258, "", "");
-	//GiveInventory("ProtoHealthBar", 1);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 3: //KingYamatoClass
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdKing Yamato \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "KingYamatoMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("HeavyHealthBar",1);
-	GiveInventory("YamatoMeleeSteal",1);
-	break;
-	
-	Case 4: //Finite Zero
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdFinite Zero \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "FiniteZeroMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("GlassHealthBar",1);
-	break;
-	
-	Case 5: //Jack Corvus
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdJack Corvus \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "JackCorvusMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("JcAmmo", 56);
-	GiveInventory("GlassHealthBar",1);
-	break;
-	
-	Case 6: //Yellow Devil
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
+	If(WeaponCopied < 0)
 		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdYellow Devil (Electro Constructs) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "YellowDevilMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdYellow Devil (Electro Kinesis) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "YellowDevilMorph2", "", 0, 258, "", "");
-		break;
+		HudMessage(s:"\ccUnable to copy weapon from ", n:CopyTarget - 999, s:"!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		terminate;
 		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("YellowDevilHUD", 1);
-	GiveInventory("NoHealthBar", 1);
-	GiveInventory("ElectrokinesisAmmo", 28);
-	break;
-	
-	Case 7: //Gummywormz
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdGummywormz \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "GummywormzMorph", "", 0, 258, "", "");
-	GiveInventory("AirTileAmmo",50);
-	GiveInventory("DocToadHealthBar", 1);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 8: //Chimera Man
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdChimera Man \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "ChimeraManMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("ChimeraAmmo", 28);
-	GiveInventory("ChimeraDiceThrow", 3);
-	break;
-	
-	Case 9: //Cut Man Mike
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdCut Man Mike \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "CutManMikeMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("HellfireAmmo", 27);
-	GiveInventory("ProtoHealthBar", 1);
-	break;
-	
-	Case 10: //Laggy Blazko
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdLaggy Blazko \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LaggyBlazkoMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdLaggy Blazko \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LaggyBlazkoMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("FatBullets", 90);
-	GiveInventory("NoMagTommy", 1);
-	GiveInventory("NadeAmmoClass", 16);
-	GiveInventory("CanPickAmmo", 1);
-	GiveInventory("LaggyHUD", 1);
-	GiveInventory("CorpReload", 1);
-	GiveInventory("CorpGrenade", 1);
-	GiveInventory("CorpArsenal", 1);
-	break;
-	
-	Case 11: //Breve
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdBreve \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "BreveMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("StaveAmmo", 28);
-	GiveInventory("BreveItem1", 3);
-	GiveInventory("SturdyHealthBar", 1);
-	break;
-	
-	Case 12: //Ice
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdIce \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "IceMorph", "", 0, 258, "", "");
-	GiveInventory("IsIce", 1);
-	GiveInventory("IceArmor",1);
-	GiveInventory("DocToadHealthBar", 1);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 13: //Sparky
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdSparky \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "SparkyMorph", "", 0, 258, "", "");
-	GiveInventory("IsSparky", 1);
-	GiveInventory("GlassHealthBar",1);
-	ACS_ExecuteAlways(142,0,1);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 14: //Beed28
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdBeed28 \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "Beed28Morph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdBeed28 \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "Beed28Morph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("Beed28Ammo", 28);
-	GiveInventory("CanPickAmmo", 1);
-	GiveInventory("Beed28HUD", 1);
-	GiveInventory("NoHealthBar", 1);
-	break;
-	
-	Case 15: //Blaze
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdBlaze \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "BlazeMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("BlazeCrateWeapon", 28);
-	GiveInventory("BlazeArmorPickup", 1);
-	GiveInventory("CanPickAmmo", 1);
-	break;
-	
-	Case 16: //TsukiyomaruZero
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdTsukiyomaruZero \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "TsukiMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("TsuPowerFlag",1);
-	GiveInventory("TsuPowerChanger",1);
-	GiveInventory("TsuSpeedChanger",1);
-	GiveInventory("TsuSpreadChanger",1);
-	GiveInventory("TsukiHUD",1);
-	GiveInventory("NoHealthBar",1);
-	break;
-	
-	Case 17: //FengaPapit
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdFengaPapit \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "FengaPapitMorph", "", 0, 258, "", "");
-	TakeInventory("TrollAmmo", 28);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 18: //TrollyomaruZero
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdTrollyomaruZero \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "TsukiTrollMorph", "", 0, 258, "", "");
-	TakeInventory("TsukiTrollClassAmmo", 28);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
+		
+	HudMessage(s:"\cgYou \cicopied \ck", s:weapons_ammo[WeaponCopied][2], s:"\cd from \ch", n:CopyTarget - 999, s:"\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
 
-	Case 19: //Messatsu
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdMessatsu \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "MessatsuMorph", "", 0, 258, "", "");
-	GiveInventory("RagingDemonInv", 1);
-	GiveInventory("MisogiInv", 1);
-	GiveInventory("TemaInv", 1);
-	TakeInventory("MessatsuAmmo", 56);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 20: //TheBladeRoden
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
+	If(CheckInventory(weapons_ammo[WeaponCopied][0]))
 		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdTheBladeRoden (Auto Cannon) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "TheBladeRodenMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdTheBladeRoden (Dual Blades) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "TheBladeRodenMorph2", "", 0, 258, "", "");
-		break;
+		GiveInventory(weapons_ammo[WeaponCopied][1], 255);
+		SetWeapon(weapons_ammo[WeaponCopied][0]);
 		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("AutoCannonAmmo", 28);
-	GiveInventory("DuoHealthBar", 1);
-	GiveInventory("DualBladesAmmo", 28);
-	break;
-	
-	Case 21: //Ukiyama
-	//ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdUkiyama \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "UkiyamaMorph", "", 0, 258, "", "");
-	GiveInventory("UpgradeTimer", 200);
-	GiveInventory("UkiHud", 1);
-	GiveInventory("NoHealthBar", 1);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 22: //Travis
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdTravis \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "TravisMorph", "", 0, 258, "", "");
-	TakeInventory("SolarEnergy", 48);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 23: //Michael712
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
+	Else
 		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdMichael712 (Fire Balls) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "M712Morph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdMichael712 (Fire Shot) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "M712Morph2", "", 0, 258, "", "");
-		break;
+		GiveInventory(weapons_ammo[WeaponCopied][0], 1);
+		SetWeapon(weapons_ammo[WeaponCopied][0]);
 		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("M712Wep1Ammo", 14);
-	GiveInventory("M712Wep2Ammo", 14);
-	break;
-	
-	//unix
-	
-	Case 25: //Bikdark
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 2);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdBikdark (Sin) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "BikdarkMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdBikdark (Cosin) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "BikdarkMorph2", "", 0, 258, "", "");
-		break;
-		Case 2:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdBikdark (Tan) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "BikdarkMorph3", "", 0, 258, "", "");
-		break;
-		}
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 26: //Jax
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdJaxOf \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "JaxMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdJaxOf \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "JaxMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("JaxPsychoAmmo", 13);
-	break;
-	
-	Case 27: //Lego
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdLego (Missiles) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LegoMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdLego (Stickies) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LegoMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("LegoHUD", 1);
-	GiveInventory("NoHealthBar", 1);
-	GiveInventory("LegoWeaponAmmo", 10);
-	GiveInventory("LegoStickyAmmo", 10);
-	break;
-	
-	/*Case 28: //Old Yellow Devil
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdYellow Devil \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "YDOldMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("ArmAmmo", 56);
-	GiveInventory("EyeAmmo", 28);
-	GiveInventory("HeavyHealthBar",1);
-	break;*/
-	
-	Case 29: //SaviorSword
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdSaviorSword (Thunder Blade) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "SaviorSwordMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdSaviorSword (Thunder Beam) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "SaviorSwordMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("SturdyHealthBar", 1);
-	GiveInventory("BusterAmmo", 3);
-	GiveInventory("SavGravitySwitchItem", 1);
-	GiveInventory("SavGroundFlag", 1);
-	GiveInventory("SaviorClassAmmo",28);
-	break;
-
-Case 30: //Daveris
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdDaveris \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "DaverisMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("SturdyHealthBar", 1);
-	GiveInventory("DaverisAmmo", 28);
-	break;
-
-Case 31: //Gizmo
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdGizmo (Hand Cannon) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "GizmoMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdGizmo (Claw Gloves) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "GizmoMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("BusterAmmo", 3);
-	GiveInventory("HandCannonAmmo", 3);
-	break;
-
-Case 32: //HumanDestroyer
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdHumanDestroyer \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "HumanDestroyerMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("HDAmmo1", 1);
-	GiveInventory("DuoHealthBar",1);
-	break;
-
-Case 33: //Stonefunk
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdStonefunk \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "StonefunkMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-
-	Case 34: //RedEyes
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdRedEyes (Drain Ball) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "RedEyesMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdRedEyes (Blood Spear) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "RedEyesMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("DocToadHealthBar", 1);
-	GiveInventory("BusterAmmo", 3);
-	break;
-	
-	Case 35: //Sergio
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdSergio \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "SergioMorph", "", 0, 258, "", "");
-	GiveInventory("PsychicAmmo", 28);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 36: //Rozark
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdRozark \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "RozarkMorph", "", 0, 258, "", "");
-	Giveinventory("NoHealthBar", 1);
-	GiveInventory("RozarkHealthBar", 1);
-	GiveInventory("RozarkAmmoRegen", 1);
-	GiveInventory("IsRozark", 1);
-	GiveInventory("OblivionWingsAmmo", 30);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 37: //Knux
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdKnux \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "KnuxMorph", "", 0, 258, "", "");
-	GiveInventory("SturdyHealthBar", 1);
-	GiveInventory("KnuxMineItem", 3);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 38: //Mutant Yoshi
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdMutant Yoshi \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "MutantYoshiMorph", "", 0, 258, "", "");
-	GiveInventory("DuoHealthBar", 1);
-	Giveinventory("EggTossInv", 1);
-	GiveInventory("EggFlag", 3);
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 39: //Adara Mozes
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdAdara Mozes \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "AdaraMorph", "", 0, 258, "", "");
-	GiveInventory("AdagioTrigger", 1);
-
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 40: //Freon
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdFreon\chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "FreonMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("InvisTrigger", 1);
-	GiveInventory("IceShotAmmo", 28);
-	GiveInventory("IceTrapCount", 60);
-	break;
-	
-	Case 41: //Zard1084
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 2);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdZard (Gun) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "ZardMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdZard (Sword) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "ZardMorph2", "", 0, 258, "", "");
-		break;
-		Case 2:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdZard (Boomerang) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "ZardMorph3", "", 0, 258, "", "");
-		break;
-		}
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("IsZardFlag", 1);
-	GiveInventory("ZardAmmo", 60 );
-	break;
-	
-	Case 42: //PrinnyQueen
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdQueen Prinny \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "PrinnyMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	Case 43: //Alicetheicefairy
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdAlice \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "AliceMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 44: //Giantmega.exe
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdGiantmega.exe \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "GiantmegaMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 45: //Lightclass
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdLight (Holy Buster) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LightMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdRedEyes (Holy Sword) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LightMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("BombJump", 3);
-	GiveInventory("LightEnergy", 14);
-	break;
-	
-	Case 46: //Protoman01
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdProtoman (Buster) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "ProtoMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdProtoman (Boomerang) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "ProtoMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("BusterAmmo", 3);
-	GiveInventory("Chakra", 105);
-	GiveInventory("ShieldActivator", 1);
-	break;
-	
-	Case 47: //Clayton
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdClayton \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "ClaytonMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("ClayAmmo", 52);
-	break;
-	
-	Case 48: //Fyone
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdFyone \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "FyoneMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("PhotonCannonWepAmmo", 28);
-	break;
-	
-	Case 49: //Smash
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdSmash \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "SmashMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 50: //Missingno
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe......... \n\cg!!!ERROR!!!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "MissingnoMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("GlitchfieldAmmo", 28 );
-	GiveInventory("WaterLiftUse", 3);
-	break;
-	
-	Case 51: //ToastMan
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdToastManh \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "ToastManMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("ToastAmmo", 56);
-	break;
-	
-	Case 52: //ChaosFantasy
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdChaos Lord Roll (Sword) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "ChaosLordMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdChaos Lord Roll (Magic) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "ChaosLordMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("ChaosStamina", 45);
-	break;
-	
-	Case 53: //Hilman170499
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdHilman (Gun) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "HilMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdHilman (Flash) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "HilMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("HilRayAmmo", 28);
-	GiveInventory("HilItem", 1);
-	GiveInventory("NoHealthBar", 1);
-	break;
-	
-	Case 54: //LordDamager
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdLord Damager (Missile Punch) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LDMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdLord Damager (Laser Cannon) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "LDMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("IsLordDamager", 1);
-	GiveInventory("MissilePunchAmmo", 4);
-	GiveInventory("SmogCannonAmmo", 50);
-	GiveInventory("LDRamActivator", 1);
-	break;
-	
-	Case 55: //Jake
-	ClearInventory();
-	SetHudSize(600,380,0);
-	WhichClass = Random(0, 1);
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdJake (Pyrokinesis) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "JakeMorph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdJake (Nova Bomber) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "JakeMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("AutoFlameAmmo", 112);
-	break;
-	
-		Case 665: //Yang
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdYang \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "YangMorph", "", 0, 258, "", "");
-	GiveInventory("YangClassItems", 1);
-	GiveInventory("MorphFlag", 1);
-	break;
-	
-	Case 667: //Bonehead
-	ClearInventory();
-	SetHudSize(600,380,0);
-	HudMessage(s:"\cgYou \cicopied \ckthe \cdBonehead \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-	MorphActor(ActivatorTID(), "BoneheadMorph", "", 0, 258, "", "");
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("BoneheadClassItems", 1);
-	break;
-
-	Case 668: //Gee
-	ClearInventory();
-	SetHudSize(600,380,0);
-    WhichClass = Random(0, 1);
-    if(ACS_ExecuteWithResult(975, 1)==0){WhichClass = 1;}
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdGee (Healing Burst) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "GeeBurstBoss1Morph", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdGee (Damaging Burst) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "GeeBurstBoss2Morph", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("GeeClassItems",1);
-	break;
-	
-	Case 669: //Spybot
-	ClearInventory();
-	SetHudSize(600,380,0);
-    WhichClass = Random(0, 1);
-    if(ACS_ExecuteWithResult(975, 1)==0){WhichClass = 1;}
-	Switch(WhichClass)
-		{
-		Case 0:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdSpyBot (Concrete Coil) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "SpyBotCopyMorph1", "", 0, 258, "", "");
-		break;
-		Case 1:
-		HudMessage(s:"\cgYou \cicopied \ckthe \cdSpyBot (Knight CrackerBlast) \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
-		MorphActor(ActivatorTID(), "SpyBotCopyMorph2", "", 0, 258, "", "");
-		break;
-		}
-	
-	TakeInventory("CanCopyWeapons", 1);
-	GiveInventory("MorphFlag", 1);
-	GiveInventory("GeeClassItems",1);
 	break;
 	}
-
+	
 
 If(ClassifyActor(0) & ACTOR_BOT)
 	{
 	GiveInventory("Monsterblock", 1);
 	GiveInventory("IsBot", 1);
 	}
-	
-SetActorVelocity(0, XVel/4, YVel/4, GetActorVelZ(0), 0, 0);
-SetActorProperty(0, APROP_HEALTH, HealthBefore);
+MaxHealthAfter = GetActorProperty(0, APROP_SpawnHealth);
+SetActorVelocity(0, XVel/2, YVel/2, GetActorVelZ(0), 0, 0);
+TotalHealthAfter = FixedMul(HealthRatio, MaxHealthAfter);
+If(TotalHealthAfter > 0){SetActorProperty(0, APROP_HEALTH, TotalHealthAfter);}
 TakeInventory("NoColorFlag", 1);
 GiveInventory("KilledMeStock", KilledMeStockNum);
 If(FusionStockNum <= KilledMeStockNum){FusionStockNum++;}
@@ -1023,71 +178,53 @@ Delay(5);
 If((XVel == 0.0 && YVel == 0.0) && GetActorVelZ(0) < 0.0){ThrustThing(GetActorAngle(0) >> 8, 1, 0, 0);} //Protects against getting stuck in walls
 
 SetPlayerProperty(0,0,4);
+}
 
-CopyTimeLeft = COPY_MORPHTIME + 35;
-While(CheckInventory("MorphFlag") && GetActorProperty(0, APROP_HEALTH) > 0)
+Script "CopyMorphTimer" (void)
+{
+int TimerRemaining;
+While(CheckInventory("CopyMorphTimer") && GetActorProperty(0, APROP_HEALTH) > 0)
 	{
-	If(CopyTimeLeft == 0 || GetGamemodeState() == 3)
+	TimerRemaining = CheckInventory("CopyMorphTimer");
+	If(GetGamemodeState() == 3)
 		{
 		If(GetGamemodeState() == 3){Delay(35);}
-		MorphWho = 999;
-		restart;
+		TakeInventory("CopyMorphTimer", 35);
 		}
 	SetFont("BIGFONT");
 	SetHudSize(600,380,0);
-	HudMessage(s:"\cgTime \ciLeft \ck: \cd", i:(CopyTimeLeft/35)%35;HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.5);
-	CopyTimeLeft--;
-	Delay(1);
+	HudMessage(s:"\cgTime \ciLeft \ck: \cd", i:TimerRemaining-1;HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.5);
+	TakeInventory("CopyMorphTimer", 1);
+	Delay(35);
 	}
 HudMessage(s:"";HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.0);
-
+If(!CheckWeapon("CopyWeapon")){ACS_NamedExecuteAlways("CopyMorph", 0, 1);}
 }
-
-//Script to handle Copy's speed modifications when morphed
-Script CSACS_COPYSPEED (int weapon)
+Script "GetTarget2" (int Target)
 {
-int AlreadyShocked = CheckInventory("PowerShock") || CheckInventory("PowerChill");
-int AlreadySlowed = CheckInventory("PowerSlow") || CheckInventory("AdagioSlow");
 
-int SpeedBefore = GetActorProperty(0, APROP_Speed);
+SetActivator(0, Target);
+int ReturnTID = ActivatorTID();
+SetResultValue(ReturnTID);
+}
 
-Switch(Weapon)
+//Best colors ever
+Script "CSACS_COPYCOLORS" (void)
+{
+
+Delay(1);
+Int CopyColor = 402;
+If(ACS_ExecuteWithResult(975, 1)==1){terminate;}
+While(GetActorProperty(0,APROP_HEALTH)>0 && !CheckInventory("IsDead"))
 	{
-	Case 1:
-	GiveInventory("Slowed", 1);
-	If(AlreadySlowed > 0){Terminate;}
-	SetActorProperty(0, APROP_Speed, FixedMul(SpeedBefore,0.67));
-	While(CheckInventory("PowerSlow")){Delay(1);}
-	break;
-	
-	Case 2:
-	GiveInventory("Shocked", 1);
-	If(AlreadyShocked > 0){Terminate;}
-	SetActorProperty(0, APROP_Speed, 0.0);
-	While(CheckInventory("PowerShock")){Delay(1);}
-	break;
-	
-	Case 3:
-	GiveInventory("ChillingCaesuraShocked", 1);
-	If(AlreadyShocked > 0){Terminate;}
-	SetActorProperty(0, APROP_Speed, 0.0);
-	While(CheckInventory("PowerChill")){Delay(1);}
-	break;
-	
-	Case 4:
-	GiveInventory("AdagioSlow", 1);
-	If(AlreadySlowed > 0){Terminate;}
-	SetActorProperty(0, APROP_Speed, FixedMul(SpeedBefore,0.5));
-	While(CheckInventory("AdagioSlow")){Delay(1);}
-	break;
-	}
-If(CheckInventory("MorphFlag"))
-	{
-	SetActorProperty(0, APROP_Speed, SpeedBefore);
+	If(!CheckInventory("NoColorFlag")){Thing_SetTranslation(0, CopyColor);}
+	CopyColor++;
+	If(CopyColor>407){CopyColor = 401;}
+	Delay(4);
 	}
 }
 
-//removes all CopyWep inventory.
+//removes all CopyWep inventory. Used by Korby, should be unneeded
 Script CSACS_TAKEWEAPON (void)
 {
 int wp = 0;
@@ -1095,14 +232,4 @@ For(wp = 0; wp < MAX_WEAPONS_GLOBAL; wp++)
 	{
 	If(CheckInventory(weapons_ammo[wp][0])){/*printbold(s:weapons_ammo[wp][0]);*/TakeInventory(weapons_ammo[wp][0], 1);}
 	}
-}
-
-//Copy Random Wep Giver
-Script "CopyRandomWeapon" (void)
-{
-int RandomSelection = random(2, MAX_WEAPONS_GLOBAL)-1;
-int WeaponName =  Weapons_Ammo[RandomSelection][0];
-int GiverName = StrParam(s:StrLeft(WeaponName, StrLen(WeaponName)-2), s:"Giver");
-SpawnForced(GiverName, GetActorX(0), GetActorY(0), GetActorZ(0), 0);
-
 }
