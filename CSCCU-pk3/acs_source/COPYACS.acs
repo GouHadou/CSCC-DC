@@ -56,9 +56,9 @@ bool CopyWepCheck = false;
 Bool MorphCheck = false;
 
 
-
-If(MorphMode == 0)
+Switch(MorphMode)
 	{
+	Case 0:
 	CopyPlayer = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Target);
 	CopyTarget = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Tracer);
 	if(CopyPlayer == 0 || CopyTarget == 0){terminate;}
@@ -75,9 +75,14 @@ If(MorphMode == 0)
 			MorphCheck = true;
 			}
 		}
+	break;
+	
+	Case 1:
+	MorphCheck=true;
+	break;
 	}
 
-If(MorphMode !=1 && MorphCheck == False){WeaponCopied = ACS_NamedExecuteWithResult("GetPlayerWeapon", CopyTarget);}
+If(MorphCheck == False){WeaponCopied = ACS_NamedExecuteWithResult("GetPlayerWeapon", CopyTarget);}
 
 If(WeaponCopied > 0)
 	{
@@ -140,7 +145,7 @@ Switch(MorphMode)
 	break;
 	Case 2:
 	SetHudSize(600,380,0);
-	If(WeaponCopied < 0)
+	If(WeaponCopied <= 0)
 		{
 		HudMessage(s:"\ccUnable to copy weapon from ", n:CopyTarget - 999, s:"!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
 		terminate;
@@ -168,7 +173,7 @@ If(ClassifyActor(0) & ACTOR_BOT)
 	GiveInventory("IsBot", 1);
 	}
 MaxHealthAfter = GetActorProperty(0, APROP_SpawnHealth);
-//SetActorVelocity(0, XVel/2, YVel/2, GetActorVelZ(0), 0, 0);
+If(MorphCheck != 2){SetActorVelocity(0, XVel/2, YVel/2, GetActorVelZ(0), 0, 0);}
 TotalHealthAfter = FixedMul(HealthRatio, MaxHealthAfter);
 If(TotalHealthAfter > 0){SetActorProperty(0, APROP_HEALTH, TotalHealthAfter);}
 TakeInventory("NoColorFlag", 1);
@@ -185,7 +190,7 @@ Delay(5);
 
 If((XVel == 0.0 && YVel == 0.0) && GetActorVelZ(0) < 0.0){ThrustThing(GetActorAngle(0) >> 8, 1, 0, 0);} //Protects against getting stuck in walls
 
-//SetPlayerProperty(0,0,4);
+SetPlayerProperty(0,0,4);
 }
 
 Script "CopyMorphTimer" (void)
