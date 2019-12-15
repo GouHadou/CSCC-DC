@@ -21,7 +21,7 @@ Spawn:
 WEAP X 1
 stop
 Ready:
-NJSK A 0 //A_GunFlash
+IMKN A 0 //A_GunFlash
 IMKN A 0 A_JumpIfInventory("Once",1,"Ready2")
 IMKN A 0 A_PlaySoundEx("imurkono/taunt2","Weapon")
 IMKN A 0 A_GiveInventory("Once",1)
