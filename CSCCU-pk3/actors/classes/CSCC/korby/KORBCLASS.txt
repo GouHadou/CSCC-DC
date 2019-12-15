@@ -163,7 +163,7 @@ stop
 }
 }
 
-actor KorbyMorphFire : KorbyClass
+actor FirMorph : KorbyClass
 {
 +NOSKIN
 player.morphweapon "FIR"
@@ -177,12 +177,12 @@ Goto "ClassBaseCSCC::Pain+2"
 }
 }
 
-actor KorbyMorphIce : KorbyMorphFire
+actor IceMorph : FirMorph
 {
 player.morphweapon "ICE"
 }
 
-actor KorbyMorphLit : KorbyMorphFire
+actor LitMorph : FirMorph
 {
 player.morphweapon "LIT"
 }
