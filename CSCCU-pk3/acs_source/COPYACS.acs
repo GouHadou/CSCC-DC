@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 8
+#define MAX_MORPHS 19
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -13,32 +13,31 @@
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
-{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},
-{"SinkSprayClassWep", "Sinkman", "SinkmanClassItems"},
-{"KingSpearBoss", "King Yamato", "KingYamatoClassItems"},
-{"SolarLaserBoss", "Finite Zero", "FiniteZeroClassItems"},
-{"JackCorvusClass", "Jack Corvus", "JackCorvusClassItems"},
-{"FIR", "Korby", "KorbyClassItems"},
-{"LIT", "Korby", "KorbyClassItems"},
-{"ICE", "Korby", "KorbyClassItems"}
+{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},//1
+{"SinkSprayClassWep", "Sinkman", "SinkmanClassItems"},//2
+{"KingSpearBoss", "King Yamato", "KingYamatoClassItems"},//3
+{"SolarLaserBoss", "Finite Zero", "FiniteZeroClassItems"},//4
+{"JackCorvusClass", "Jack Corvus", "JackCorvusClassItems"},//5
+{"YDElectrokinesis", "Yellow Devil", "YellowDevilClassItems"},//6
+{"AirTileShotgunWep", "GummyWormz", "GummyWormzClassItems"},//7
+{"ChimeraBuster", "Chimera Man", "ChimeraManClassItems"},//8
+{"HellfireCutterBoss", "Cutman Mike", "CutmanMikeClassItems"},//9
+{"CorpGrandDad", "Corporal (Grand Dad)", "CorporalClassItems"},//10
+{"CorpFragGrenade", "Corporal (Frag Grenade)", "CorporalClassItems"},//11
+{"TommyGun", "Corporal (Tommy Gun)", "CorporalClassItems"},//12
+{"NadeSpam", "Corporal (Nade Spam)", "CorporalClassItems"},//13
+{"StaveCannonWep", "Breve", "BreveClassItems"}, //14
+{"IceWep", "Ice", "IceSparkyClassItems"},//15
+{"SparkyWep", "Sparky", "IceSparkyClassItems"},//16
+{"FIR", "Korby (Fire)", "KorbyClassItems"},//
+{"LIT", "Korby (Lightning)", "KorbyClassItems"},//
+{"ICE", "Korby (Ice)", "KorbyClassItems"}//
 };
 
 Script "GetPlayerWeapon" (int TargetTID)
 {
-str PlayerWeapon;
 SetActivator(TargetTID);
-PlayerWeapon = GetWeapon();
-int ReturnThis = -1;
-For(int i = 1; i < MAX_WEAPONS_GLOBAL; i++)
-	{
-	//printbold(i:TargetTID, s:" - ", s:weapons_ammo[i][0], s:" - ", s:PlayerWeapon);
-	if(StrIcmp(weapons_ammo[i][0], PlayerWeapon) == 0)
-		{
-		ReturnThis = i;
-		break;
-		}
-	}
-SetResultValue(ReturnThis);
+SetResultValue(WhichWeapon());
 }
 
 Script "CopyMorph" (int MorphMode)
@@ -108,7 +107,7 @@ bool UnderwaterFlag = CheckInventory("IsUnderWater");
 If(HealthBefore <= 0){terminate;}
 If(CheckInventory("PowerInvulnerable")){TakeInventory("PowerInvulnerable", 1);} 
 TakeInventory("CopyRemover", 1);
-If(MorphCheck != 2){SetPlayerProperty(0,1,4);}
+If(MorphCheck == True){SetPlayerProperty(0,1,4);}
 
 
 Switch(MorphMode)
