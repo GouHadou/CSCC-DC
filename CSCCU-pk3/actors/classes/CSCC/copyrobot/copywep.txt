@@ -115,6 +115,7 @@ stop
 actor CopyMainShot : Megashot
 {
 +HITTRACER
++DONTREFLECT
 speed 80
 damagetype "CopyMainShot"
 Obituary "%o\c- was killed by %k's\c- Copy Bullet. Seriously? What's wrong with you %o\c-?"
@@ -123,7 +124,7 @@ States
 {
 Crash:
 XDeath:
-TNT1 A 5 ACS_NamedExecute("CopyMorph", 0)
+TNT1 A 5 ACS_NamedExecuteAlways("CopyMorph", 0)
 stop
 }
 }

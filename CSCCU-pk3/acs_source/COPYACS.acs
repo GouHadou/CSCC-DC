@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 4
+#define MAX_MORPHS 8
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -14,6 +14,10 @@
 str CopyMorphs[MAX_MORPHS][3] = 
 {
 {"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},
+{"SinkSprayClassWep", "Sinkman", "SinkmanClassItems"},
+{"KingSpearBoss", "King Yamato", "KingYamatoClassItems"},
+{"SolarLaserBoss", "Finite Zero", "FiniteZeroClassItems"},
+{"JackCorvusClass", "Jack Corvus", "JackCorvusClassItems"},
 {"FIR", "Korby", "KorbyClassItems"},
 {"LIT", "Korby", "KorbyClassItems"},
 {"ICE", "Korby", "KorbyClassItems"}
@@ -72,7 +76,9 @@ If(MorphMode == 0)
 			}
 		}
 	}
-If(MorphMode !=1){WeaponCopied = ACS_NamedExecuteWithResult("GetPlayerWeapon", CopyTarget);}
+
+If(MorphMode !=1 && MorphCheck == False){WeaponCopied = ACS_NamedExecuteWithResult("GetPlayerWeapon", CopyTarget);}
+
 If(WeaponCopied > 0)
 	{
 	CopyWepCheck = true;
@@ -162,13 +168,15 @@ If(ClassifyActor(0) & ACTOR_BOT)
 	GiveInventory("IsBot", 1);
 	}
 MaxHealthAfter = GetActorProperty(0, APROP_SpawnHealth);
-SetActorVelocity(0, XVel/2, YVel/2, GetActorVelZ(0), 0, 0);
+//SetActorVelocity(0, XVel/2, YVel/2, GetActorVelZ(0), 0, 0);
 TotalHealthAfter = FixedMul(HealthRatio, MaxHealthAfter);
 If(TotalHealthAfter > 0){SetActorProperty(0, APROP_HEALTH, TotalHealthAfter);}
 TakeInventory("NoColorFlag", 1);
+//--==Class Specific gives==--
 GiveInventory("KilledMeStock", KilledMeStockNum);
 If(FusionStockNum <= KilledMeStockNum){FusionStockNum++;}
 GiveInventory("FusionStock", FusionStockNum);
+//--==End Gives==--
 GiveInventory("CopyRemover", 1);
 If(UnderWaterFlag == TRUE){GiveInventory("LowGravity", 1);}
 Else{GiveInventory("NormalGravity", 1);}
@@ -177,7 +185,7 @@ Delay(5);
 
 If((XVel == 0.0 && YVel == 0.0) && GetActorVelZ(0) < 0.0){ThrustThing(GetActorAngle(0) >> 8, 1, 0, 0);} //Protects against getting stuck in walls
 
-SetPlayerProperty(0,0,4);
+//SetPlayerProperty(0,0,4);
 }
 
 Script "CopyMorphTimer" (void)
