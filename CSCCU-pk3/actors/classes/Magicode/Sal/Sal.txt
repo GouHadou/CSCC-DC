@@ -5,17 +5,7 @@ player.maxhealth 100
 player.displayname "Sal"
 player.soundclass "ESPEON"
 player.damagescreencolor "black"
-player.startitem "PsychicPower"
-player.startitem "DarkPower"
-//player.startitem "PsychicEnergy",90 //No alt on spawn
-player.startitem "DarkEnergy",0 //No alt on spawn
-player.startitem "ShadowBallAmmo", 28
-//player.startitem "ShadowBeamEnergy", 224
-player.startItem "CanUseItems"
-player.startitem "IsSal"
-player.startitem "NoHealthBar2"
-player.startitem "Over50Percent", 1
-player.startitem "NoIcons", 1
+player.startitem "SalClassItems"
 Player.ForwardMove 0.98, 0.98 //0.9 ~ 1.0
 Player.SideMove 0.9, 0.9 //0.9 ~ 1.0
 player.jumpz 13 //12 ~ 14
@@ -522,6 +512,32 @@ Over50Percent:
 TNT1 A 0 A_GiveInventory("Over50Percent",1)
 TNT1 A 0 A_TakeInventory("Under25Percent",99)
 TNT1 A 0 A_TakeInventory("Over25Percent",99)
+stop
+}
+}
+
+actor SalClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("PsychicPower")
+TNT1 A 0 A_GiveInventory("DarkPower")
+//TNT1 A 0 A_GiveInventory("PsychicEnergy",90) //No alt on spawn
+TNT1 A 0 A_GiveInventory("DarkEnergy”,0) //No alt on spawn
+TNT1 A 0 A_GiveInventory("ShadowBallAmmo", 28)
+//TNT1 A 0 A_GiveInventory("ShadowBeamEnergy", 224)
+TNT1 A 0 A_GiveInventory("CanUseItems")
+TNT1 A 0 A_GiveInventory("IsSal")
+TNT1 A 0 A_GiveInventory("NoHealthBar2")
+TNT1 A 0 A_GiveInventory("Over50Percent", 1)
+TNT1 A 0 A_GiveInventory("NoIcons", 1)
 stop
 }
 }

@@ -8,19 +8,7 @@ Player.MaxHealth 65
 Player.JumpZ 10
 Player.ForwardMove 0.8, 0.8
 Player.SideMove 0.8, 0.8
-//Player.MaxSkinSizeFactor 0, 0
-Player.StartItem "BugTypeWepITLS"
-Player.StartItem "BugAttackPP",256
-Player.StartItem "HolyAttackPP",256
-Player.StartItem "FlyingAttackPP",256
-Player.StartItem "SolarBeamItem"
-Player.StartItem "LifeAmmo", 64
-player.startitem "YesFlightFlag"
-//Player.StartItem "SubWeaponEddie", 1
-//Type Bug/Holy
-//Damagefactor "Normal", 1.2
-//Player.StartItem "BugTypeTag"
-//Player.StartItem "HolyTypeTag"
+Player.StartItem "ItolosClassItems"
 States
 {
 Spawn: 
@@ -175,8 +163,7 @@ Player.JumpZ 10
 Player.ForwardMove 0.6, 0.6
 Player.SideMove 0.6, 0.6
 Player.morphweapon "BugTypeWepIMKN"
-Player.StartItem "BugAttackPP",256
-Player.StartItem "LifeAmmo", 64
+Player.StartItem "ImurkonoClassItems"
 scale 2.5
 States
 {
@@ -385,3 +372,48 @@ WLOW IJKLO 1 A_FadeOut(0.12)
 stop
 }
 }
+
+
+actor ItolosClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("BugTypeWepITLS", 1)
+TNT1 A 0 A_GiveInventory("BugAttackPP", 256)
+TNT1 A 0 A_GiveInventory("HolyAttackPP", 256)
+TNT1 A 0 A_GiveInventory("HolyAttackPP", 256)
+TNT1 A 0 A_GiveInventory("SolarBeamItem", 1)
+TNT1 A 0 A_GiveInventory("LifeAmmo", 64)
+TNT1 A 0 A_GiveInventory("YesFlightFlag", 1)
+stop
+}
+}
+
+
+actor ImurkonoClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("BugTypeWepIMKN", 1)
+TNT1 A 0 A_GiveInventory("BugAttackPP", 256)
+TNT1 A 0 A_GiveInventory("LifeAmmo", 64)
+stop
+}
+}
+

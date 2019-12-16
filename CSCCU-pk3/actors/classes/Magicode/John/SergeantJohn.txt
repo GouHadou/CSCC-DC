@@ -8,12 +8,7 @@ player.damagescreencolor "red"
 player.forwardmove 0.75, 0.75 
 player.sidemove 0.75, 0.75
 player.jumpz 11
-player.startitem "NormalClass"
-player.startitem "JohnGunWep"
-player.startitem "CanUseItems"
-player.startitem "NoHealthBar2"
-player.startitem "NoIcons"
-Player.StartItem "NoUltBar"
+player.startitem "SergeantJohnClassItems"
 States
 {
 Spawn:
@@ -37,5 +32,25 @@ loop
 CreditWalk:
 SGJN BCDE 8
 loop
+}
+}
+
+actor SergeantJohnClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("NormalClass", 1)
+TNT1 A 0 A_GiveInventory("JohnGunWep", 1)
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("NoHealthBar2", 1)
+TNT1 A 0 A_GiveInventory("NoIcons", 1)
+stop
 }
 }

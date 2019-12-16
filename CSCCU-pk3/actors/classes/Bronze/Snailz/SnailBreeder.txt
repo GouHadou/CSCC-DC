@@ -8,11 +8,7 @@ player.sidemove 0.52, 0.52
 player.jumpz 8
 Health 75
 Player.MaxHealth 75
-player.startitem "SnailBreederPets"
-player.startitem "ShellterCall"
-player.startitem "SnailStart"
-player.startitem "SnailerAmmo", 28
-player.startitem "MucusAmmo", 28
+player.startitem "SnailBreederClassItems"
 states
 {
 Spawn:
@@ -31,5 +27,25 @@ Pain.CopyAlt:
 Pain.CopyMain:
 NOIL H 0 A_SpawnItemEx("KnuxCopyHitMain",1)
 goto pain+1
+}
+}
+
+actor SnailBreederClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("SnailBreederPets")
+TNT1 A 0 A_GiveInventory("ShellterCall")
+TNT1 A 0 A_GiveInventory("SnailStart")
+TNT1 A 0 A_GiveInventory("SnailerAmmo", 28)
+TNT1 A 0 A_GiveInventory("MucusAmmo", 28)
+stop
 }
 }

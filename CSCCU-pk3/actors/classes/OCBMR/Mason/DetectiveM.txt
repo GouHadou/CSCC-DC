@@ -7,11 +7,7 @@ Player.SoundClass "Megaman"
 Player.JumpZ 13
 Player.ForwardMove 0.8, 0.8
 Player.SideMove 0.7, 0.7
-Player.StartItem "CanUseItems"
-Player.StartItem "DualPlasmaPistols"
-Player.StartItem "BusterAmmo", 3
-Player.StartItem "PiercingLaserAmmo", 350
-Player.StartItem "DMasonPowerItem"
+Player.StartItem "MasonClassItems"
 States
 {
 Spawn: 
@@ -26,5 +22,23 @@ Missile:
 DMSN F 5
 DMSN F 30
 GoTo Spawn+2
+}
+}
+
+actor MasonClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("DualPlasmaPistols", 1)
+TNT1 A 0 A_GiveInventory("PiercingLaserAmmo", 350)
+TNT1 A 0 A_GiveInventory("DMasonPowerItem", 1)
+stop
 }
 }

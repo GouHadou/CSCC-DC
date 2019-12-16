@@ -5,10 +5,7 @@ player.forwardmove 0.6, 0.6
 player.sidemove 0.6, 0.6
 Health 200
 Player.MaxHealth 200
-player.startitem "BurstBlade"
-player.startitem "LightScreenBossItemFire"
-player.startitem "BurstBladeClip", 6
-player.startitem "ShieldEnergy", 350
+player.startitem "AegisClassItems"
 states
 {
 Spawn:
@@ -23,5 +20,24 @@ Missile:
 KNIM F 5
 KNIM G 4
 goto Spawn
+}
+}
+
+actor AegisClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("BurstBlade")
+TNT1 A 0 A_GiveInventory("LightScreenBossItemFire")
+TNT1 A 0 A_GiveInventory("BurstBladeClip", 6)
+TNT1 A 0 A_GiveInventory("ShieldEnergy", 350)
+stop
 }
 }

@@ -7,12 +7,7 @@ Player.SoundClass "Lily"
 Player.JumpZ 12
 Player.ForwardMove 0.93, 0.93 //Slightly faster
 Player.SideMove 0.88, 0.88
-Player.StartItem "CanUseItems"
-Player.StartItem "Clorophyll",200
-Player.StartItem "RazorLeafWep"
-Player.StartItem "WaterSprayWep"
-player.startitem "CanUseItems"
-player.startitem "IsLily"
+Player.StartItem "LilyClassItems"
 //Species "LilyNature"
 //+MTHRUSPECIES
 Gravity 0.6
@@ -108,3 +103,24 @@ GoTo MegamanErase
 }
 
 Actor IsLily : Inventory{}
+
+actor LilyClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems”)
+TNT1 A 0 A_GiveInventory("Clorophyll",200)
+TNT1 A 0 A_GiveInventory("RazorLeafWep”)
+TNT1 A 0 A_GiveInventory("WaterSprayWep”)
+TNT1 A 0 A_GiveInventory("CanUseItems”)
+TNT1 A 0 A_GiveInventory("IsLily”)
+stop
+}
+}

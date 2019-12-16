@@ -9,10 +9,7 @@ Player.SoundClass "Arsenal"
 player.forwardmove 0.55, 0.55 
 player.sidemove 0.55, 0.55
 Player.JumpZ 10
-Player.StartItem "CanUseItems"
-Player.StartItem "ArsenalGearWep"
-Player.StartItem "ArsenalBlastItem"
-Player.StartItem "IsArsenal"
+Player.StartItem "ArsenalClassItems"
 States
 {
 Spawn: 
@@ -28,5 +25,24 @@ WMCH F 5
 WMCH G 4
 GoTo Spawn+3
 
+}
+}
+
+actor ArsenalClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("ArsenalGearWep", 1)
+TNT1 A 0 A_GiveInventory("ArsenalBlastItem", 1)
+TNT1 A 0 A_GiveInventory("IsArsenal", 1)
+stop
 }
 }

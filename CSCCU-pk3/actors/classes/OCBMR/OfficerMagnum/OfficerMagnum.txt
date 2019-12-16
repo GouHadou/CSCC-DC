@@ -8,20 +8,8 @@ player.sidemove 0.58, 0.58
 player.jumpz 10
 Health 125
 Player.MaxHealth 125
-player.startitem "OMBulletWep"
-player.startitem "OMCannonWep"
-player.startitem "OMBeamWep"
-player.startitem "OMBulletAmmo", 100
-player.startitem "OMCannonAmmo", 100
-player.startitem "OMBeamAmmo", 50
-player.startitem "MagnetRiseItem"
-player.startitem "OMAmmoChangerItem"
-player.startitem "AmmoTypeFlag1"
-player.startitem "YesFlightFlag"
-player.startitem "CanUseItems"
-Player.StartItem "SubWeaponCount", 2
-Player.StartItem "OMRetrieveArms", 1
-Player.StartItem "CanUseBuffs"
+player.startitem "OfficerMagnumClassItems"
+
 
 Player.WeaponSlot 1, "OMBulletWep"
 Player.WeaponSlot 2, "OMCannonWep"
@@ -331,3 +319,34 @@ TNT1 A 1 A_SpawnItemEx("OMLeftArm1",2,22,22,momx,momy,momz,0,SXF_ABsOLUTEMOMENTU
 stop
 }
 }
+
+actor OfficerMagnumClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("OMBulletWep", 1)
+TNT1 A 0 A_GiveInventory("OMCannonWep", 1)
+TNT1 A 0 A_GiveInventory("OMBeamWep", 1)
+TNT1 A 0 A_GiveInventory("OMBulletAmmo", 100)
+TNT1 A 0 A_GiveInventory("OMCannonAmmo", 100)
+TNT1 A 0 A_GiveInventory("OMBeamAmmo", 50)
+
+TNT1 A 0 A_GiveInventory("MagnetRiseItem", 1)
+TNT1 A 0 A_GiveInventory("OMAmmoChangerItem", 1)
+TNT1 A 0 A_GiveInventory("AmmoTypeFlag1", 1)
+TNT1 A 0 A_GiveInventory("YesFlightFlag", 1)
+TNT1 A 0 A_GiveInventory("OMRetrieveArms", 1)
+
+stop
+}
+}
+
+

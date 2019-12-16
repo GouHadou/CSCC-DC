@@ -9,10 +9,7 @@ player.forwardmove 0.82, 0.82
 player.sidemove 0.80, 0.80
 player.jumpz 11
 //Gravity 0.55
-player.startitem "ValkyrieMaidenMoveset"
-player.startitem "IsValkyrieMaiden"
-player.startitem "CanUseItems"
-player.startitem "CanDoubleJump"
+player.startitem "ValkyrieMaidenClassItems"
 States
 {
 Spawn:
@@ -173,6 +170,25 @@ Spawn:
 TNT1 A 0
 SPFX AA 1 bright
 SPFX AAAA 1 bright A_FadeOut
+stop
+}
+}
+
+actor ValkyrieMaidenClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("ValkyrieMaidenMoveset")
+TNT1 A 0 A_GiveInventory("IsValkyrieMaiden")
+TNT1 A 0 A_GiveInventory("CanUseItems")
+TNT1 A 0 A_GiveInventory("CanDoubleJump")
 stop
 }
 }

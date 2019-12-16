@@ -14,20 +14,7 @@ Health 100
 Player.MaxHealth 100
 Player.jumpz 13
 Player.colorrange 0 0
-Player.StartItem "BNFlag"
-Player.StartItem "IsAuron"
-Player.StartItem "EmotionState", 1
-Player.StartItem "CanUseItems"
-Player.StartItem "AuronABCBuster"
-Player.StartItem "AuronBNShieldItem"
-Player.StartItem "UnderShirtFlag"
-Player.StartItem "BusterAmmo",3
-Player.StartItem "DoublePointStock",1
-Player.StartItem "GunDelSolExStock",1
-Player.StartItem "GigaChipStock",1
-Player.StartItem "RegularChipGiver",1 //Regular Chip
-Player.StartItem "MasterOfSubWeapons" //Basically, no carry limit + sub weps cost less 2 use
-//Player.StartItem "SubWeaponEddie", 1
+Player.StartItem "AuronAppClassItems"
 Damagefactor "Normal", 1.375 //for now
 //Type
 mass 9999
@@ -467,4 +454,29 @@ Actor IsAuron : Inventory
 { 
 Inventory.Amount 1
 Inventory.MaxAmount 1
+}
+
+actor AuronAppClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("BNFlag", 1)
+TNT1 A 0 A_GiveInventory("IsAuron", 1)
+TNT1 A 0 A_GiveInventory("EmotionState", 1)
+TNT1 A 0 A_GiveInventory("AuronABCBuster", 1)
+TNT1 A 0 A_GiveInventory("AuronBNShieldItem", 1)
+TNT1 A 0 A_GiveInventory("UnderShirtFlag", 1)
+TNT1 A 0 A_GiveInventory("DoublePointStock", 1)
+TNT1 A 0 A_GiveInventory("GunDelSolExStock", 1)
+TNT1 A 0 A_GiveInventory("GigaChipStock", 1)
+TNT1 A 0 A_GiveInventory("RegularChipGiver", 1)
+stop
+}
 }

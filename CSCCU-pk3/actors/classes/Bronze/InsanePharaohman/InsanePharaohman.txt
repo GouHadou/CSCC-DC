@@ -9,10 +9,7 @@ player.sidemove 0.88, 0.88
 player.jumpz 10
 Health 100
 Player.MaxHealth 100
-player.startitem "IsPharaohman"
-player.startitem "CrazyWaveBoss"
-player.startitem "InsanityAmmo", 60
-player.startitem "CanUseItems"
+player.startitem "InsanePharaohmanClassItems"
 states
 {
 Spawn:
@@ -42,5 +39,24 @@ CustomState2:
 PHAR AA 1
 PHAR BB 1
 goto Spawn+2
+}
+}
+
+actor InsanePharaohmanClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("IsPharaohman")
+TNT1 A 0 A_GiveInventory("CrazyWaveBoss")
+TNT1 A 0 A_GiveInventory("InsanityAmmo”, 60)
+TNT1 A 0 A_GiveInventory("CanUseItems")
+stop
 }
 }

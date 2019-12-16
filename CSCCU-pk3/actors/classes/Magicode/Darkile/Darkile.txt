@@ -8,15 +8,7 @@ Player.DisplayName "Darkile"
 Player.SoundClass "Dusk"
 Player.ForwardMove 0.8, 0.8
 Player.SideMove 0.8, 0.8
-Player.StartItem "CanUseItems"
-Player.StartItem "IsDarkile"
-Player.StartItem "DuskVoid1Wep"
-Player.StartItem "DuskVoid2Wep"
-Player.StartItem "DuskVoidAmmo", 100
-Player.StartItem "DuskStormAmmo", 80
-Player.StartItem "NoHealthBar2"
-Player.StartItem "NoIcons"
-Player.StartItem "NoUltBar"
+Player.StartItem "DarkileClassItems"
 States
 {
 Spawn: 
@@ -583,3 +575,28 @@ XPER A 0 A_Fadeout
 loop
 }
 }
+
+actor DarkileClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("IsDarkile", 1)
+TNT1 A 0 A_GiveInventory("MisogiInv", 1)
+TNT1 A 0 A_GiveInventory("DuskVoid1Wep", 1)
+TNT1 A 0 A_GiveInventory("DuskVoid2Wep", 1)
+TNT1 A 0 A_GiveInventory("DuskVoidAmmo", 100)
+TNT1 A 0 A_GiveInventory("DuskStormAmmo", 80)
+TNT1 A 0 A_GiveInventory("NoHealthBar2", 1)
+TNT1 A 0 A_GiveInventory("NoIcons", 1)
+stop
+}
+}
+

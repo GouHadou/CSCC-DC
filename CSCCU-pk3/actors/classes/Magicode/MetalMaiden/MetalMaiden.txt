@@ -9,12 +9,7 @@ player.soundclass "mmaiden"
 player.damagescreencolor "red"
 player.forwardmove 0.82, 0.82
 player.sidemove 0.80, 0.80
-player.startitem "MetalMaidenArsenal"
-player.startitem "IsMetalMaiden"
-player.startitem "NoIcons"
-Player.StartItem "NoHealthBar2"
-Player.StartItem "NoUltBar"
-player.startitem "CanUseItems"
+player.startitem "MetalMaidenClassItems"
 player.jumpz 11
 //Player.AirCapacity 0 //Not like we'll ever run into such a scenario.
 States
@@ -476,4 +471,25 @@ actor MetalMaidenOverdriveModeCancel : Inventory {} //Shut off
 actor MaidenDoubleJumpTrigger : Powerup
 {
 Powerup.Duration -1
+}
+
+actor MetalMaidenClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("MetalMaidenArsenal")
+TNT1 A 0 A_GiveInventory("IsMetalMaiden")
+TNT1 A 0 A_GiveInventory("NoIcons")
+TNT1 A 0 A_GiveInventory("NoHealthBar2")
+TNT1 A 0 A_GiveInventory("NoUltBar")
+TNT1 A 0 A_GiveInventory("CanUseItems")
+stop
+}
 }
