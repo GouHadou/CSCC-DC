@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 83
+#define MAX_MORPHS 91
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -99,6 +99,16 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"LaserCannonWep", "Lord Damager (Laser Cannon)", "LordDamagerClassItems"},//81
 {"PyrokinesisWep", "Jake (Pyrokinesis)", "JakeClassItems"},//82
 {"NovaBomberWep", "Jake (Nova Bomber)", "JakeClassItems"},//83
+//Ice Ice Baby
+{"WeavileWep", "Weavile", "WeavileClassItems"},//84
+{"BlizzardSwordBoss", "Blizzard Knight", "BlizzardKnightClassItems"},//85
+{"DiamondIceWep", "Diamond IceMan", "DiamondIceManClassItems"},//86
+{"IceMagic", "Ice Mage", "IceMageClassItems"},//87 <---killed the dinosaurs
+{"BlizzardWaveBoss", "Nega Swordman", "NegaSwordManClassItems"},//88
+{"CoolerClassWep", "Weo Weo Ice", "WeoWeoIceClassItems"},//89 (Once again, but why though?)
+{"BozuBallWep", "Bozu", "BozuClassItems"},//90
+{"BoltPistol", "Mech Unit B", "MechUnitBClassItems"},//91
+
 
 };
 
