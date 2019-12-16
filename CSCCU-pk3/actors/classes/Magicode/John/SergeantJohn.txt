@@ -47,7 +47,7 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("NormalClass", 1)
+TNT1 A 0 //A_GiveInventory("NormalClass", 1)
 TNT1 A 0 A_GiveInventory("CanUseItems", 1)
 TNT1 A 0 A_GiveInventory("NoHealthBar2", 1)
 TNT1 A 0 A_GiveInventory("NoIcons", 1)
