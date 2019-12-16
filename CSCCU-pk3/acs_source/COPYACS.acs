@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 19
+#define MAX_MORPHS 34
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -29,6 +29,22 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"StaveCannonWep", "Breve", "BreveClassItems"}, //14
 {"IceWep", "Ice", "IceSparkyClassItems"},//15
 {"SparkyWep", "Sparky", "IceSparkyClassItems"},//16
+{"Beed28Weapon1", "Beed28 (Missile Barrage)", "Beed28ClassItems"},//17
+{"Beed28Weapon2", "Beed28 (Hyper Missile)", "Beed28ClassItems"},//18
+{"BlazeCannon", "Blaze", "BlazeClassItems"}, //19
+{"TsukiClassCosmicWeapon", "Tsukiyomaru Zero", "TsukiyomaruZeroClassItems"},//20
+{"TrollSentry", "Fenga Papit", "FengaPapitClassItems"},//21
+{"TsukiTrollWep", "Troll Tsuki", "TrollTsukiClassItems"},//22
+{"MessatsuWep", "Messatsu", "MessatsuClassItems"},//23
+{"AutocannonWep", "The Blade Roden (Auto Cannon)", "TheBladeRodenClassItems"},//24
+{"DualBladesWep", "The Blade Roden (Dual Blades)", "TheBladeRodenClassItems"},//25
+{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},//26
+{"GunDelSol", "Travis", "TravisClassItems"}, //27
+{"M712Weapon1", "Michael712 (Aura Flame 1)", "Michael712ClassItems"},//28
+{"M712Weapon2", "Michael712 (Aura Flame 2)", "Michael712ClassItems"},//29
+{"BikKnife", "Unix", "UnixClassItems"},//30
+{"BikTriangleSine", "Bikdark", "BikdarkClassItems"},//31
+
 {"FIR", "Korby (Fire)", "KorbyClassItems"},//
 {"LIT", "Korby (Lightning)", "KorbyClassItems"},//
 {"ICE", "Korby (Ice)", "KorbyClassItems"}//
@@ -178,7 +194,7 @@ If(TotalHealthAfter > 0){SetActorProperty(0, APROP_HEALTH, TotalHealthAfter);}
 TakeInventory("NoColorFlag", 1);
 //--==Class Specific gives==--
 GiveInventory("KilledMeStock", KilledMeStockNum);
-If(FusionStockNum <= KilledMeStockNum){FusionStockNum++;}
+If(FusionStockNum <= KilledMeStockNum){FusionStockNum=KilledMeStockNum;}
 GiveInventory("FusionStock", FusionStockNum);
 //--==End Gives==--
 GiveInventory("CopyRemover", 1);

@@ -9,7 +9,7 @@ player.jumpz 13
 Health 75
 Player.MaxHealth 75
 player.startitem "MessatsuWep"
-player.startitem "MessClassItems"
+player.startitem "MessatsuClassItems"
 States
 {
 Spawn:
@@ -23,10 +23,6 @@ Missile:
 MTSU F 5 
 MTSU G 4
 goto Spawn
-Pain.CopyAlt:
-Pain.CopyMain:
-MTSU H 0 A_SpawnItemEx("MessCopyHitMain",1)
-goto pain+1
 ClassPain:
 MTSU H 0 
 MTSU H 0 A_GiveInventory("NoParry", 1)
@@ -101,53 +97,8 @@ fail
 }
 }
 
-actor MessCopyPickupMain : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 A_GiveToTarget("MessatsuMorphItem",1)
-stop
-}
-}
 
-actor MessCopyHitMain
-{
-Height 0
-Radius 0
-+NOINTERACTION
--SOLID
-+NOGRAVITY
-+MISSILE
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_GiveToTarget("MessCopyPickupMain",1)
-stop
-}
-}
-
-
-actor MessatsuMorphItem : CustomInventory
-{
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 19)
-stop
-}
-}
-
-actor MessatsuMorph : Messatsu
+actor MessatsuWepMorph : Messatsu
 {
 +NOSKIN
 player.morphweapon "MessatsuWep"
