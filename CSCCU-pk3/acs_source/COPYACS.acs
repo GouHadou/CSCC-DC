@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 34
+#define MAX_MORPHS 52
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -44,10 +44,28 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"M712Weapon2", "Michael712 (Aura Flame 2)", "Michael712ClassItems"},//29
 {"BikKnife", "Unix", "UnixClassItems"},//30
 {"BikTriangleSine", "Bikdark", "BikdarkClassItems"},//31
-
-{"FIR", "Korby (Fire)", "KorbyClassItems"},//
-{"LIT", "Korby (Lightning)", "KorbyClassItems"},//
-{"ICE", "Korby (Ice)", "KorbyClassItems"}//
+{"JaxPsycho", "JaxOf7", "JaxOf7ClassItems"},//32
+{"LegoMissilesBoss", "Lego (Missiles)", "LegoClassItems"},//33
+{"LegoStickiesBoss", "Lego (Sticky Mines)", "LegoClassItems"},//34
+{"SaviorWeapon1", "SaviorSword (Thunder Blade)", "SaviorSwordClassItems"},//35
+{"SaviorWeapon2", "SaviorSword (Thunder Beam)", "SaviorSwordClassItems"},//36
+{"DaverisClassWep", "Daveris", "DaverisClassItems"},//37
+{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"}, //38
+{"EternalClawsWep", "Gizmo (Eternal Claws", "GizmoClassItems"},//39
+{"HDClassWep1", "Human Destroyer (Destructor 1)", "HumanDestroyerClassItems"},//40
+{"HDClassWep2", "Human Destroyer (Destructor 2)", "HumanDestroyerClassItems"},//41
+{"StoneFunkWep", "Stone Funk", "StoneFunkClassItems"},//42
+//{"CopyWeapon","Copy Robot (OK, but why though?),"CopyClassItems"},
+{"FIR", "Korby (Fire)", "KorbyClassItems"},//43
+{"LIT", "Korby (Lightning)", "KorbyClassItems"},//44
+{"ICE", "Korby (Ice)", "KorbyClassItems"},//45
+{"RedEyesWep", "Red Eyes", "RedEyesClassItems"},//46
+{"PsychicProwess", "Sergio", "SergioClassItems"},//47
+{"OblivionWingsClass", "Rozark (Oblivion Wings)", "RozarkClassItems"},//48
+{"BloodyBatClass", "Rozark (Bloody Bat)", "RozarkClassItems"},//49
+{"MutantYoshiTongue", "Mutant Yoshi", "MutantYoshiClassItems"},//50
+{"AdaraWeapon", "Adara Mozes", "AdaraMozesClassItems"},//51
+{"FreonWeapon", "Freon", "FreonClassItems"},//52
 };
 
 Script "GetPlayerWeapon" (int TargetTID)
