@@ -5,6 +5,8 @@ player.maxhealth 100
 player.displayname "Sal"
 player.soundclass "ESPEON"
 player.damagescreencolor "black"
+player.startitem "PsychicPower"
+player.startitem "DarkPower"
 player.startitem "SalClassItems"
 Player.ForwardMove 0.98, 0.98 //0.9 ~ 1.0
 Player.SideMove 0.9, 0.9 //0.9 ~ 1.0
@@ -527,10 +529,7 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("PsychicPower")
-TNT1 A 0 A_GiveInventory("DarkPower")
 //TNT1 A 0 A_GiveInventory("PsychicEnergy",90) //No alt on spawn
-TNT1 A 0 A_GiveInventory("DarkEnergy”,0) //No alt on spawn
 TNT1 A 0 A_GiveInventory("ShadowBallAmmo", 28)
 //TNT1 A 0 A_GiveInventory("ShadowBeamEnergy", 224)
 TNT1 A 0 A_GiveInventory("CanUseItems")

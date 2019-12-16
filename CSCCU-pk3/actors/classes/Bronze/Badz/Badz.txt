@@ -5,6 +5,7 @@ Player.MaxHealth 120
 player.forwardmove 0.72, 0.72
 player.sidemove 0.7, 0.7
 player.displayname "badz"
+player.startitem "OrbitalMissileBoss"
 player.startitem "BadzClassItems"
 states
 {
@@ -115,7 +116,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("OrbitalMissileBoss")
 TNT1 A 0 A_GiveInventory("BadzWarpItem")
 TNT1 A 0 A_GiveInventory("BadzStuffAmmo", 280)
 TNT1 A 0 A_GiveInventory("BadzWarpAmmo",105)

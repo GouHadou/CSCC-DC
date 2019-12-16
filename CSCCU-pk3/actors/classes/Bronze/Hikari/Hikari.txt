@@ -17,6 +17,8 @@ player.sidemove 0.88, 0.88
 player.jumpz 10
 Health 80
 Player.MaxHealth 80
+player.startitem "HikariArms"
+player.startitem "HikariLegs"
 player.startitem "HikariClassItems"
 states
 {
@@ -186,8 +188,6 @@ stop
 Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("IsHikari")
-TNT1 A 0 A_GiveInventory("HikariArms")
-TNT1 A 0 A_GiveInventory("HikariLegs")
 TNT1 A 0 A_GiveInventory("HikariStamina", 6)
 TNT1 A 0 A_GiveInventory("CanUseItems")
 stop

@@ -28,6 +28,8 @@ Player.DamageScreenColor "Red"
 Player.ForwardMove 0.9, 0.9
 Player.SideMove 0.92, 0.92
 Player.JumpZ 12
+Player.StartItem "RinGougi1"
+Player.StartItem "RinGougi2"
 Player.StartItem "RinClassItems"
 States
 {
@@ -344,8 +346,6 @@ TNT1 A 0 A_GiveInventory("IAmRin")
 TNT1 A 0 A_GiveInventory("HealthManager")
 TNT1 A 0 A_GiveInventory("CanWallJump")
 TNT1 A 0 A_GiveInventory("StaminaFlag", 500)
-TNT1 A 0 A_GiveInventory("RinGougi1")
-TNT1 A 0 A_GiveInventory("RinGougi2")
 stop
 }
 }

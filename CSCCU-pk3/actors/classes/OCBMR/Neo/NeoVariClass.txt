@@ -14,6 +14,13 @@ player.forwardmove 0.8, 0.8
 player.sidemove 0.78, 0.78
 player.jumpz 14
 player.colorrange 0 0
+player.startitem "NeoBlade"
+player.startitem "AuraPalm"
+player.startitem "AuraBow"
+player.startitem "CrystalSpear"
+player.startitem "FireSpell"
+player.startitem "BlizzardSpell"
+player.startitem "ThunderSpell"
 player.startitem "NeoClassItems"
 
 Player.WeaponSlot 1, "NeoBlade"
@@ -249,10 +256,6 @@ TNT1 A 0
 TNT1 A 0 A_GiveInventory("NoHealthBar2", 1)
 TNT1 A 0 A_GiveInventory("CanUseItems", 1)
 TNT1 A 0 A_GiveInventory("NeoVariX", 1)
-TNT1 A 0 A_GiveInventory("NeoBlade", 1)
-TNT1 A 0 A_GiveInventory("AuraPalm", 1)
-TNT1 A 0 A_GiveInventory("AuraBow", 1)
-TNT1 A 0 A_GiveInventory("CrystalSpear", 1)
 
 TNT1 A 0 A_GiveInventory("BowAmmo", 15)
 TNT1 A 0 A_GiveInventory("PalmAmmo", 64)
@@ -261,9 +264,6 @@ TNT1 A 0 A_GiveInventory("SpearAmmo", 8)
 TNT1 A 0 A_GiveInventory("StaminAmmo", 64)
 TNT1 A 0 A_GiveInventory("ManaPoints", 200)
 
-TNT1 A 0 A_GiveInventory("FireSpell", 1)
-TNT1 A 0 A_GiveInventory("BlizzardSpell", 1)
-TNT1 A 0 A_GiveInventory("ThunderSpell", 1)
 TNT1 A 0 A_GiveInventory("MeleeDashTrigger", 1)
 
 stop

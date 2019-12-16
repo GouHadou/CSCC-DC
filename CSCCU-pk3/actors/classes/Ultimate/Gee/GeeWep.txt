@@ -5,7 +5,7 @@ actor GeeBurstBoss1 : BaseCSCCWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 15
-Weapon.SlotNumber 1
+Weapon.SlotNumber 2
 Inventory.Pickupmessage "Gee, how come you get to have two weapons?"
 Obituary "%o was smacked by %k's staff."
 Tag "Healing Burst"
@@ -85,7 +85,7 @@ goto Ready2
 
 actor GeeBurstBoss2 : GeeBurstBoss1
 {
-Weapon.SlotNumber 2
+Weapon.SlotNumber 1 //confusing huh?
 Tag "Damaging Burst"
 States
 {

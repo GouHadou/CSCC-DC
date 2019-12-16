@@ -29,6 +29,7 @@ Player.SoundClass "Devion"
 Player.JumpZ 12
 Player.ForwardMove 0.65, 0.65
 Player.SideMove 0.6, 0.6
+Player.StartItem "DevionPowers"
 Player.StartItem "DevionClassItems"
 States
 {

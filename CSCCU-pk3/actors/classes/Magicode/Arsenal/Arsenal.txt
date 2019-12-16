@@ -9,6 +9,7 @@ Player.SoundClass "Arsenal"
 player.forwardmove 0.55, 0.55 
 player.sidemove 0.55, 0.55
 Player.JumpZ 10
+Player.StartItem "ArsenalGearWep"
 Player.StartItem "ArsenalClassItems"
 States
 {
@@ -40,7 +41,6 @@ stop
 Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("CanUseItems", 1)
-TNT1 A 0 A_GiveInventory("ArsenalGearWep", 1)
 TNT1 A 0 A_GiveInventory("ArsenalBlastItem", 1)
 TNT1 A 0 A_GiveInventory("IsArsenal", 1)
 stop

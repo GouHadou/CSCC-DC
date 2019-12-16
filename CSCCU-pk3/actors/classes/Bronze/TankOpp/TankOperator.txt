@@ -6,6 +6,7 @@ player.forwardmove 0.78, 0.78
 player.sidemove 0.76, 0.76
 Health 200
 Player.MaxHealth 200
+Player.StartItem "ClassicTankWeapon"
 Player.StartItem "TankOppClassItems"
 
 states
@@ -43,7 +44,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("ClassicTankWeapon")
 TNT1 A 0 A_GiveInventory("TankOpAmmo", 70)
 TNT1 A 0 A_GiveInventory("BulkTankActivatorPickup")
 TNT1 A 0 A_GiveInventory("TankRepairAmmo", 175)

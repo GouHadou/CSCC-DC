@@ -9,6 +9,7 @@ player.sidemove 0.88, 0.88
 player.jumpz 10
 Health 100
 Player.MaxHealth 100
+player.startitem "CrazyWaveBoss"
 player.startitem "InsanePharaohmanClassItems"
 states
 {
@@ -54,7 +55,6 @@ stop
 Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("IsPharaohman")
-TNT1 A 0 A_GiveInventory("CrazyWaveBoss")
 TNT1 A 0 A_GiveInventory("InsanityAmmo”, 60)
 TNT1 A 0 A_GiveInventory("CanUseItems")
 stop

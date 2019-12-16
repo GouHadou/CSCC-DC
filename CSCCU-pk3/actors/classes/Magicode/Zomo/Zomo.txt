@@ -4,6 +4,9 @@ Health 100
 Player.MaxHealth 100
 Player.DisplayName "Zomo.EXE"
 Player.SoundClass "ZOMOO"
+Player.StartItem "ZomoBNWep"
+Player.StartItem "ZomoBNWep2"
+Player.StartItem "ZomoBNWep3"
 Player.StartItem "ZomoClassItems"
 Damagefactor "Lava", 20.0
 Damagefactor "Falling", 20.0
@@ -1223,9 +1226,6 @@ TNT1 A 0
 TNT1 A 0 A_GiveInventory("CanUseItems")
 TNT1 A 0 A_GiveInventory("NoIcons")
 TNT1 A 0 A_GiveInventory("NoHealthBar2")
-TNT1 A 0 A_GiveInventory("ZomoBNWep")
-TNT1 A 0 A_GiveInventory("ZomoBNWep2")
-TNT1 A 0 A_GiveInventory("ZomoBNWep3")
 TNT1 A 0 A_GiveInventory("ZomoMemory", 64)
 TNT1 A 0 A_GiveInventory("BNFlag", 1)
 TNT1 A 0 A_GiveInventory("NormalFlag")

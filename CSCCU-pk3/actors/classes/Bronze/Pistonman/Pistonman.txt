@@ -6,6 +6,7 @@ player.forwardmove 0.72, 0.72
 player.sidemove 0.7, 0.7
 player.jumpz 14
 player.displayname "Pistonman"
+player.startitem "PistonTremorBoss"
 player.startitem "PistonManClassItems"
 states
 {
@@ -35,7 +36,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("PistonTremorBoss")
 TNT1 A 0 A_GiveInventory("PistonTremorAmmo", 500)
 stop
 }

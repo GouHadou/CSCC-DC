@@ -970,28 +970,4 @@ wait
 }
 }
 
-actor YangClassItems : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_GiveInventory("EmberCelicaAmmo", 56)
-TNT1 A 0 A_GiveInventory("YangReload", 1)
-TNT1 A 0 A_GiveInventory("YangAuraStart", 1)
-TNT1 A 0 A_GiveInventory("NoArmorBar", 1)
-TNT1 A 0 A_GiveInventory("IsYang", 1)
-TNT1 A 0 A_SpawnItemEx("YangAuraWatcher")
-TNT1 A 0 A_SpawnItemEx("YangSemblanceWatcher")
-TNT1 A 0 ACS_NamedExecuteAlways("YangSemblanceChecker")
-TNT1 A 0 ACS_NamedExecuteAlways("YangBoost", 0)
-stop
-}
-}
-
 actor IsYang : Once {}

@@ -7,6 +7,8 @@ player.forwardmove 0.75, 0.75
 player.sidemove 0.73, 0.73
 Health 65
 Player.MaxHealth 65
+player.startitem "EdgeGunBoss"
+player.startitem "EdgeBladeBoss"
 player.startitem "EdgeLordClassItems"
 states
 {

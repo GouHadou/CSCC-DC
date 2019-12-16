@@ -5,6 +5,8 @@ Player.MaxHealth 75
 player.forwardmove 0.92, 0.92
 player.sidemove 0.92, 0.92
 player.displayname "Ankhzirus"
+player.startitem "AnkhzirusStaffBoss"
+player.startitem "AnkhzirusBandageBoss"
 player.startitem "AnkhzirusClassItems"
 states
 {
@@ -34,8 +36,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("AnkhzirusStaffBoss")
-TNT1 A 0 A_GiveInventory("AnkhzirusBandageBoss")
 TNT1 A 0 A_GiveInventory("AnkhzirusAmmo", 140)
 TNT1 A 0 A_GiveInventory("AnkhzirusAmmo2", 70)
 TNT1 A 0 A_GiveInventory("AnkhzirusItem")

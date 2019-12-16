@@ -6,6 +6,9 @@ player.forwardmove 0.78, 0.78
 player.sidemove 0.76, 0.76
 Health 85
 Player.MaxHealth 85
+player.startitem "BullGatorSleepPierce"
+player.startitem "BullGatorSiphonSplitter"
+player.startitem "BullGatorConfusionBurst"
 Player.StartItem "BullGatorClassItems"
 
 states
@@ -36,9 +39,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("BullGatorSleepPierce")
-TNT1 A 0 A_GiveInventory("BullGatorSiphonSplitter")
-TNT1 A 0 A_GiveInventory("BullGatorConfusionBurst")
 TNT1 A 0 A_GiveInventory("BullScopingItem")
 TNT1 A 0 A_GiveInventory("BullRifleAmmo1", 125)
 TNT1 A 0 A_GiveInventory("BullRifleAmmo2", 150)

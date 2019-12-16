@@ -5,6 +5,8 @@ Player.MaxHealth 85
 player.forwardmove 0.74, 0.74
 player.sidemove 0.71, 0.71
 Health 85
+player.startitem "MedirifleA"
+player.startitem "MedirifleB"
 player.startitem "VoxelatorClassItems"
 states
 {
@@ -53,8 +55,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("MedirifleA")
-TNT1 A 0 A_GiveInventory("MedirifleB")
 TNT1 A 0 A_GiveInventory("VoxleMatter", 100)
 TNT1 A 0 A_GiveInventory("Mediscan")
 TNT1 A 0 A_GiveInventory("RecoveMatterItemFire") 

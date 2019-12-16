@@ -5,6 +5,8 @@ Player.MaxHealth 80
 player.forwardmove 0.8, 0.8
 player.sidemove 0.78, 0.78
 player.displayname "StormConductor"
+player.startitem "StormLightningBoss"
+player.startitem "StormRainBoss"
 player.startitem "StormConductorClassItems"
 states
 {
@@ -34,8 +36,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("StormLightningBoss")
-TNT1 A 0 A_GiveInventory("StormRainBoss")
 TNT1 A 0 A_GiveInventory("StormCFlightItem")
 TNT1 A 0 A_GiveInventory("StormCFlight")
 TNT1 A 0 A_GiveInventory("StormCFlightLimit", 100)

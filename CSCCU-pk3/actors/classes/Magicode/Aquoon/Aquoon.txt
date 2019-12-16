@@ -10,6 +10,8 @@ Player.DamageScreenColor "blue"
 Player.ForwardMove 0.8, 0.8
 Player.SideMove 0.8, 0.8
 Player.JumpZ 11
+Player.StartItem "AquoonWeapon1"
+Player.StartItem "AquoonWeapon2"
 Player.StartItem "AquoonClassItems"
 
 States
@@ -57,8 +59,6 @@ Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("IsAquoon", 1)
 TNT1 A 0 A_GiveInventory("CanUseItems", 1)
-TNT1 A 0 A_GiveInventory("AquoonWeapon1", 1)
-TNT1 A 0 A_GiveInventory("AquoonWeapon2", 1)
 TNT1 A 0 A_GiveInventory("AquoonIceAmmo", 400)
 TNT1 A 0 A_GiveInventory("AquoonWaterAmmo", 400)
 stop

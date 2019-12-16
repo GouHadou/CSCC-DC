@@ -6,6 +6,7 @@ player.damagescreencolor "yellow"
 player.forwardmove 0.76, 0.76
 player.sidemove 0.74, 0.74
 player.jumpz 10
+player.startitem "ZenTrainerWep"
 player.startitem "ZenTrainerClassItems"
 player.maxhealth 65
 health 65
@@ -38,7 +39,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("ZenTrainerWep")
 TNT1 A 0 A_GiveInventory("AuraSwitchItem")
 TNT1 A 0 A_GiveInventory("AuraFlag_heal")
 TNT1 A 0 A_GiveInventory("Mediscan")

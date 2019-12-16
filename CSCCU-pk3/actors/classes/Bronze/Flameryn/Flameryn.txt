@@ -8,6 +8,7 @@ player.forwardmove 0.78, 0.78
 player.sidemove 0.76, 0.76
 Health 90
 Player.MaxHealth 90
+player.startitem "FlamerynthrowerBoss"
 player.startitem "FlamerynClassItems"
 states
 {
@@ -53,7 +54,6 @@ stop
 Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("IsFlameryn")
-TNT1 A 0 A_GiveInventory("FlamerynthrowerBoss")
 TNT1 A 0 A_GiveInventory("FlamerynDecoyItem")
 TNT1 A 0 A_GiveInventory("FlamerynAmmo", 50)
 TNT1 A 0 A_GiveInventory("OilSpillAmmo", 25)

@@ -5,6 +5,7 @@ player.forwardmove 0.6, 0.6
 player.sidemove 0.6, 0.6
 Health 200
 Player.MaxHealth 200
+player.startitem "BurstBlade"
 player.startitem "AegisClassItems"
 states
 {
@@ -34,7 +35,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("BurstBlade")
 TNT1 A 0 A_GiveInventory("LightScreenBossItemFire")
 TNT1 A 0 A_GiveInventory("BurstBladeClip", 6)
 TNT1 A 0 A_GiveInventory("ShieldEnergy", 350)

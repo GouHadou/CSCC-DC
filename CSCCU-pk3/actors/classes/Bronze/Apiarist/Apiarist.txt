@@ -5,6 +5,7 @@ Player.MaxHealth 85
 player.forwardmove 0.74, 0.74
 player.sidemove 0.71, 0.71
 Health 85
+player.startitem "HiveGun"
 player.startitem "ApiaristClassItems"
 states
 {
@@ -34,7 +35,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("HiveGun")
 TNT1 A 0 A_GiveInventory("HiveGunB")
 TNT1 A 0 A_GiveInventory("ApiaryItemFire")
 stop

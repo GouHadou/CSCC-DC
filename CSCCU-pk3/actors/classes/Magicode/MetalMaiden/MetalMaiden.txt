@@ -9,6 +9,7 @@ player.soundclass "mmaiden"
 player.damagescreencolor "red"
 player.forwardmove 0.82, 0.82
 player.sidemove 0.80, 0.80
+player.startitem "MetalMaidenArsenal"
 player.startitem "MetalMaidenClassItems"
 player.jumpz 11
 //Player.AirCapacity 0 //Not like we'll ever run into such a scenario.
@@ -484,7 +485,6 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("MetalMaidenArsenal")
 TNT1 A 0 A_GiveInventory("IsMetalMaiden")
 TNT1 A 0 A_GiveInventory("NoIcons")
 TNT1 A 0 A_GiveInventory("NoHealthBar2")

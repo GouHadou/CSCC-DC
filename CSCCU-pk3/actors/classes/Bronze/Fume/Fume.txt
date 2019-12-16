@@ -9,6 +9,8 @@ player.sidemove 0.5, 0.5
 Health 100
 Player.MaxHealth 100
 player.startitem "FumeClassItems"
+player.startitem "FumeSprayNade"
+player.startitem "FumeSprayWave"
 states
 {
 Spawn:
@@ -38,8 +40,6 @@ stop
 Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("IsFume")
-TNT1 A 0 A_GiveInventory("FumeSprayNade")
-TNT1 A 0 A_GiveInventory("FumeSprayWave")
 stop
 }
 }
