@@ -150,7 +150,7 @@ AddPlayerClass Arsenal nomenu
 AddPlayerClass KingBaku nomenu
 AddPlayerClass MetalMaiden nomenu
 AddPlayerClass Slick nomenu
-AddPlayerClass Luna nomenu
+//AddPlayerClass Luna nomenu
 AddPlayerClass RinClass nomenu
 AddPlayerClass IceAquoon nomenu
 AddPlayerClass Thalo nomenu //Thalo

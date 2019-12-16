@@ -1830,6 +1830,7 @@ Drawbar"BARAMMO1", "BAREMPTY", ArsenalBlastAmmo, vertical, 16, 8;
 }
 
 //
+/*
 //Luna Bar V
 IsSelected CrescentArsenalWepI
 {
@@ -1847,6 +1848,7 @@ InInventory StarBufferFlags, 1
 DrawBar "BARFLS1", "NOBAR", StarBufferFlags, vertical, 16, 8;
 }
 }
+*/
 //
 
 //Cascara

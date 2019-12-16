@@ -115,7 +115,8 @@
 #include "actors/classes/Magicode/Slick/Slick.txt"
 #include "actors/classes/Magicode/Slick/SlickWeps.txt"
 #include "actors/classes/Magicode/Slick/SlickFlags.txt"
-
+/*
 //===|Luna
 #include "actors/classes/Magicode/Luna/Luna.txt"
 #include "actors/classes/Magicode/Luna/CrescentArsenalI.txt"
+*/
