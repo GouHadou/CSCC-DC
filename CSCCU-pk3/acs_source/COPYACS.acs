@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 52
+#define MAX_MORPHS 83
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -13,6 +13,7 @@
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
+//CSCC
 {"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},//1
 {"SinkSprayClassWep", "Sinkman", "SinkmanClassItems"},//2
 {"KingSpearBoss", "King Yamato", "KingYamatoClassItems"},//3
@@ -27,8 +28,8 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"TommyGun", "Corporal (Tommy Gun)", "CorporalClassItems"},//12
 {"NadeSpam", "Corporal (Nade Spam)", "CorporalClassItems"},//13
 {"StaveCannonWep", "Breve", "BreveClassItems"}, //14
-{"IceWep", "Ice", "IceSparkyClassItems"},//15
-{"SparkyWep", "Sparky", "IceSparkyClassItems"},//16
+{"IceWep", "Ice", "IceSparkyClassItems1"},//15
+{"SparkyWep", "Sparky", "IceSparkyClassItems2"},//16
 {"Beed28Weapon1", "Beed28 (Missile Barrage)", "Beed28ClassItems"},//17
 {"Beed28Weapon2", "Beed28 (Hyper Missile)", "Beed28ClassItems"},//18
 {"BlazeCannon", "Blaze", "BlazeClassItems"}, //19
@@ -66,6 +67,39 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"MutantYoshiTongue", "Mutant Yoshi", "MutantYoshiClassItems"},//50
 {"AdaraWeapon", "Adara Mozes", "AdaraMozesClassItems"},//51
 {"FreonWeapon", "Freon", "FreonClassItems"},//52
+//TeaParty
+{"ZardGun", "Zard1084 (Danmaku Gun)", "Zard1084ClassItems"},//53
+{"ZardSword", "Zard1084 (Shifting Sword)", "Zard1084ClassItems"},//54
+{"DanmakuBoomerangWep", "Zard1084 (Danmaku Boomerang)", "Zard1084Classitems"},//55
+{"TrollBuster", "Prinny Queen (dood)", "PrinnyQueenClassItems"},//56
+{"ShurikenBuster", "Alice the Ice Fairy (Shuriken Buster)", "AliceTheIceFairyClassItems"},//57
+{"RocketJumpWep", "Alice the Ice Fairy (Rocket Jump)", "AliceTheIceFairyClassItems"},//58
+{"GemBuster", "Giant Mega.exe (Gem Buster)","GiantMegaEXEClassItems"},//59
+{"GemSniper", "Giant Mega.exe (Gem Sniper)", "GiantMegaEXEClassItems"},//60
+{"HolyBuster", "Light (Holy Buster)", "HolyClassItems"},//61
+{"HolySword", "Light (Holy Sword)", "HolyClassItems"},//62
+{"LightWallWep", "Light (Light Wall)", "HolyClassItems"},//63
+{"Proto01Buster", "Protoman01 (Proto Buster)", "Protoman01ClassItems"},//64
+{"ChidoreWep", "Protoman01 (Chidori)", "Protoman01ClassItems"},//65
+{"ClaytonWep", "Clayton (Clay Balls)", "ClaytonClassItems"},//66
+{"Claytonwep2", "Clayton (Rock Slide)", "ClaytonClassItems"},//67
+{"Claytonwep3", "Clayton (Rock Wrecker)", "ClaytonClassItems"},//68
+{"PhotonCannonWep", "Fyone", "FyoneClassItems"},//69
+{"StandardSpecial", "Smash", "SmashClassItems"},//70
+{"StandardSpecialUSC", "Smash (USC)", "SmashClassItems"},//71
+{"Glitchfield", "Missingno", "MissingNoClassItems"},//72
+{"ToastCannonWep", "Toast Man", "ToastManClassItem"},//73
+{"ChaosSwordWep", "Chaos Lord Roll (Chaos Sword)", "ChaosLordRollClassItems"},//74
+{"ChaosMagicWep", "Chaos Lord Roll (Chaos Magic)", "ChaosLordRollClassItems"},//75
+{"ChaosSword2", "Chaos Lord Roll (Chaos Sword 2)", "ChaosLordRollClassItems"},//76
+{"ChaosSword1", "Chaos Lord Roll (Chaos Sword 1", "ChaosLordRollClassItems"},//77
+{"HilGunWep", "Hilman170499 (HilArrows)", "Hilman170499ClassItems"},//78
+{"HilFlashWep", "Hilman170499 (Flash Field)", "Hilman170499ClassItems"},//79
+{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//80
+{"LaserCannonWep", "Lord Damager (Laser Cannon)", "LordDamagerClassItems"},//81
+{"PyrokinesisWep", "Jake (Pyrokinesis)", "JakeClassItems"},//82
+{"NovaBomberWep", "Jake (Nova Bomber)", "JakeClassItems"},//83
+
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

@@ -76,7 +76,7 @@ addplayerclass "Hilman170499" nomenu
 addplayerclass "LordDamager" nomenu 
 addplayerclass "Jake" nomenu 
 //addplayerclass "Dakutatoru" nomenu 
-addplayerclass NNCReborn nomenu //Neo
+
 
 //██████████████████████████████████████████IceIceBaby████████████████████████████████████████
 
@@ -131,6 +131,7 @@ addplayerclass Arnon nomenu
 AddPlayerClass Mason nomenu
 AddPlayerClass Gaol97 nomenu
 AddPlayerClass Itolos nomenu
+addplayerclass NNCReborn nomenu //Neo
 
 //██████████████████████████████████████████Magicode████████████████████████████████████████
 AddPlayerClass Zomo.EXE nomenu
