@@ -340,7 +340,7 @@ Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("NoIcons")
 TNT1 A 0 A_GiveInventory("NoHealthBar2")
-TNT1 A 0 A_GiveInventory("NoUltBar")
+TNT1 A 0 //A_GiveInventory("NoUltBar")
 TNT1 A 0 A_GiveInventory("CanUseItems")
 TNT1 A 0 A_GiveInventory("IAmRin")
 TNT1 A 0 A_GiveInventory("HealthManager")

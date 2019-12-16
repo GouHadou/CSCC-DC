@@ -399,7 +399,7 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("NormalClass")
+TNT1 A 0 //A_GiveInventory("NormalClass")
 TNT1 A 0 A_GiveInventory("IsRedMage")
 TNT1 A 0 A_GiveInventory("RedMageStarterspells")
 TNT1 A 0 A_GiveInventory("RedMageFusionReader")

@@ -1,5 +1,46 @@
 
 
+//======|Species Script
+
+//Assigns all players a Species so that MTHRUSPECIES can be used to allow
+//allies to shoot past one another
+Script "TeamSpeciesset" ENTER 
+{
+int CheckIsTeamGame = ACS_ExecuteWithResult(975, 1);
+int pln = playerNumber();
+	If(CheckIsTeamGame)
+		{
+		switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
+			{
+		case 0:
+		setactorproperty(0,APROP_SPECIES,"BLUEMember");
+		break;
+		
+		case 1:
+		setactorproperty(0,APROP_SPECIES,"REDMember");
+		break;
+		
+		case 2:
+		setactorproperty(0,APROP_SPECIES,"GREENMember");
+		break;
+		
+		case 3:
+		setactorproperty(0,APROP_SPECIES,"GOLDMember");
+		break;
+			}
+		}
+		Else{setactorproperty(0,APROP_SPECIES,StrParam(s:"Player_",i:pln));}
+		
+// Stores the players starting Jump Height on spawn
+PlayerJumpZ[pln] = GetActorProperty(0, APROP_JumpZ);
+}
+
+script "ScriptReapplicator" RESPAWN
+{
+		ACS_NamedExecuteAlways("TeamSpeciesset",0);
+}
+
+
 Script "CSACS_Heal" (int Mode, int HealAmount)
 {
 int MaxHealth = GetActorProperty(0,APROP_SPAWNHEALTH);

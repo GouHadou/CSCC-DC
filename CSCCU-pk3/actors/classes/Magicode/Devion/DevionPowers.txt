@@ -662,7 +662,7 @@ loop
 Death:
 TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
-TNT1 A 0 A_Explode(8, 360, 0)
+TNT1 A 0 A_Explode(8, 160, 0)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 }
@@ -892,7 +892,7 @@ Death:
 TNT1 A 0 A_JumpIfCloser(180, "Rocketed")
 TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
-TNT1 A 0 A_Explode(23, 360, 0)
+TNT1 A 0 A_Explode(23, 160, 0)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 Rocketed:
@@ -928,7 +928,7 @@ TNT1 AAAAAA 0 A_SpawnItemEx("DevionRock1",0,0,random(4,12),random(-25,25),random
 TNT1 AAAAAA 0 A_SpawnItemEx("DevionRock2",0,0,random(4,12),random(-25,25),random(-25,25),random(5,25))
 TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
-TNT1 A 0 A_Explode(23, 360, 0)
+TNT1 A 0 A_Explode(23, 160, 0)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 }
