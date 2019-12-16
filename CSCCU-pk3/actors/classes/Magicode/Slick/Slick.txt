@@ -9,11 +9,7 @@ Player.SoundClass "Slick"
 Player.ForwardMove 0.82, 0.82
 Player.SideMove 0.75, 0.75
 Player.JumpZ 12
-Player.StartItem "CanUseItems"
-Player.StartItem "IsSlick", 1
-Player.StartItem "SlickWep1"
-Player.StartItem "SlickWep2"
-Player.StartItem "SlickInkAmmo", 30
+Player.StartItem "SlickClassItems"
 States
 {
 Spawn: 
@@ -29,5 +25,25 @@ SPIB F 5
 SPIB G 4
 GoTo Spawn+3
 
+}
+}
+
+actor SlickClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems")
+TNT1 A 0 A_GiveInventory("IsSlick", 1)
+TNT1 A 0 A_GiveInventory("SlickWep1")
+TNT1 A 0 A_GiveInventory("SlickWep2")
+TNT1 A 0 A_GiveInventory("SlickInkAmmo", 30)
+stop
 }
 }

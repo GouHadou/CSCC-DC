@@ -7,10 +7,7 @@ Player.SoundClass "Cascara"
 Player.ForwardMove 1.1, 1.1
 Player.SideMove 1.0, 1.0
 Player.JumpZ 12
-Player.StartItem "IsCascara", 1
-Player.StartItem "CanUseItems"
-Player.StartItem "CascaraShotgunWep"
-Player.StartItem "CascaraAmmo", 4
+Player.StartItem "CascaraClassItems"
 States
 {
 Spawn: 
@@ -30,3 +27,22 @@ GoTo Spawn+3
 }
 
 Actor IsCascara : Inventory{inventory.amount 1 inventory.maxamount 1}
+
+actor CascaraClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("IsCascara", 1)
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("CascaraShotgunWep", 1)
+TNT1 A 0 A_GiveInventory("CascaraAmmo", 4)
+stop
+}
+}

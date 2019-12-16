@@ -7,9 +7,7 @@ Player.SoundClass "Ignis"
 Player.ForwardMove 1.1, 1.1
 Player.SideMove 1.0, 1.0
 Player.JumpZ 12
-Player.StartItem "CanUseItems"
-Player.StartItem "IgnisArsenalWep"
-Player.StartItem "IgnisKickAmmo"
+Player.StartItem "IgnisClassItems"
 States
 {
 Spawn: 
@@ -25,5 +23,23 @@ IGNS F 5
 IGNS G 4
 GoTo Spawn+3
 
+}
+}
+
+actor IgnisClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("IgnisArsenalWep", 1)
+TNT1 A 0 A_GiveInventory("IgnisKickAmmo")
+stop
 }
 }

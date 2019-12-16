@@ -10,12 +10,7 @@ player.sidemove 0.75, 0.75
 player.jumpz 15
 Health 115
 Player.MaxHealth 115
-player.startitem "IsAkane"
-player.startitem "DarknessWithin1"
-player.startitem "DarknessWithin2"
-player.startitem "DarknessWithinAmmo", 32
-player.startitem "ShadowPullItem"
-player.startitem "CanUseItems"
+player.startitem "AkaneClassItems"
 states
 {
 Spawn:
@@ -104,5 +99,26 @@ fail
 Deny:
 TNT1 A 0 A_PlaySoundEx("weapon/noammo","SoundSlot6")
 fail
+}
+}
+
+actor AkaneClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("IsAkane")
+TNT1 A 0 A_GiveInventory("DarknessWithin1")
+TNT1 A 0 A_GiveInventory("DarknessWithin2")
+TNT1 A 0 A_GiveInventory("DarknessWithinAmmo", 32)
+TNT1 A 0 A_GiveInventory("ShadowPullItem")
+TNT1 A 0 A_GiveInventory("CanUseItems")
+stop
 }
 }

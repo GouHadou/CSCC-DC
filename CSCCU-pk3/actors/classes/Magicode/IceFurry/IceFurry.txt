@@ -10,15 +10,7 @@ Player.SoundClass "IceFurry"
 Player.JumpZ 13 //12
 Player.ForwardMove 0.9, 0.9 //.88
 Player.SideMove 0.85, 0.85 //.83
-player.StartItem "IAmGlaceFlag"
-player.StartItem "CanUseItems"
-Player.StartItem "NoHealthBar2"
-Player.StartItem "NoIcons"
-Player.StartItem "NoUltBar"
-player.StartItem "GlazedSet"
-player.startitem "GlaceAmmo",100
-player.startitem "GlaceAmmo2",75
-player.startitem "IceBombCooldown",50
+Player.StartItem "GlaceClassItems"
 States
 {
 Spawn: 
@@ -392,5 +384,28 @@ Spawn:
 TNT1 A 0
 FCRA DE 2 A_Fadeout
 loop
+}
+}
+
+actor GlaceClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("IAmGlaceFlag", 1)
+TNT1 A 0 A_GiveInventory("CanUseItems", 1)
+TNT1 A 0 A_GiveInventory("NoHealthBar2", 1)
+TNT1 A 0 A_GiveInventory("NoIcons", 1)
+TNT1 A 0 A_GiveInventory("GlazedSet", 1)
+TNT1 A 0 A_GiveInventory("GlaceAmmo", 100)
+TNT1 A 0 A_GiveInventory("GlaceAmmo2", 75)
+TNT1 A 0 A_GiveInventory("IceBombCooldown", 50)
+stop
 }
 }

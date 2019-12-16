@@ -8,16 +8,7 @@ player.damagescreencolor "red"
 player.forwardmove 0.70, 0.70 
 player.sidemove 0.70, 0.70
 player.jumpz 11
-player.startitem "IsBaku", 1
-player.startitem "NormalClass", 1
-player.startitem "FireStarterWep"
-player.startitem "MagicPackWep"
-player.startitem "CyberPackWep"
-player.startitem "BombJumperAmmo",300
-player.startitem "FireStarterAmmo", 224
-player.startitem "MagicPackAmmo", 224
-player.startitem "CyberPackAmmo", 280
-player.startitem "CanUseItems"
+player.startitem "KingBakuClassItems", 1
 States
 {
 Spawn:
@@ -203,3 +194,28 @@ stop
 Actor FSActive : Inventory{inventory.amount 1 inventory.maxamount 1}
 Actor MPActive : Inventory{inventory.amount 1 inventory.maxamount 1}
 Actor CPActive : Inventory{inventory.amount 1 inventory.maxamount 1}
+
+actor KingBakuClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("IsBaku",1)
+TNT1 A 0 A_GiveInventory("NormalClass",1)
+TNT1 A 0 A_GiveInventory("FireStarterWep",)
+TNT1 A 0 A_GiveInventory("MagicPackWep",)
+TNT1 A 0 A_GiveInventory("CyberPackWep",)
+TNT1 A 0 A_GiveInventory("BombJumperAmmo",00)
+TNT1 A 0 A_GiveInventory("FireStarterAmmo",224)
+TNT1 A 0 A_GiveInventory("MagicPackAmmo",224)
+TNT1 A 0 A_GiveInventory("CyberPackAmmo",280)
+TNT1 A 0 A_GiveInventory("CanUseItems",)
+stop
+}
+}

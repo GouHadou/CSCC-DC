@@ -17,11 +17,7 @@ player.sidemove 0.88, 0.88
 player.jumpz 10
 Health 80
 Player.MaxHealth 80
-player.startitem "IsHikari"
-player.startitem "HikariArms"
-player.startitem "HikariLegs"
-player.startitem "HikariStamina", 6
-player.startitem "CanUseItems"
+player.startitem "HikariClassItems"
 states
 {
 Spawn:
@@ -174,6 +170,26 @@ TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
 TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
 TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
 TNT1 A 0 A_JumpIfInventory("IsHikari",1,"Default")
+stop
+}
+}
+
+actor HikariClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("IsHikari")
+TNT1 A 0 A_GiveInventory("HikariArms")
+TNT1 A 0 A_GiveInventory("HikariLegs")
+TNT1 A 0 A_GiveInventory("HikariStamina", 6)
+TNT1 A 0 A_GiveInventory("CanUseItems")
 stop
 }
 }

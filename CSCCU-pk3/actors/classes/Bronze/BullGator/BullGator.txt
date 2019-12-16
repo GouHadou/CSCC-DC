@@ -6,12 +6,7 @@ player.forwardmove 0.78, 0.78
 player.sidemove 0.76, 0.76
 Health 85
 Player.MaxHealth 85
-Player.StartItem "BullGatorSleepPierce"
-Player.StartItem "BullGatorSiphonSplitter"
-Player.StartItem "BullGatorConfusionBurst"
-Player.StartItem "BullScopingItem"
-Player.StartItem "BullRifleAmmo1", 125
-Player.StartItem "BullRifleAmmo2", 150
+Player.StartItem "BullGatorClassItems"
 
 states
 {
@@ -27,5 +22,26 @@ Missile:
 DAR3 F 5
 DAR3 G 4
 goto Spawn
+}
+}
+
+actor BullGatorClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("BullGatorSleepPierce")
+TNT1 A 0 A_GiveInventory("BullGatorSiphonSplitter")
+TNT1 A 0 A_GiveInventory("BullGatorConfusionBurst")
+TNT1 A 0 A_GiveInventory("BullScopingItem")
+TNT1 A 0 A_GiveInventory("BullRifleAmmo1", 125)
+TNT1 A 0 A_GiveInventory("BullRifleAmmo2", 150)
+stop
 }
 }
