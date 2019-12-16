@@ -1120,8 +1120,8 @@ texture SLIVMP, 47, 5{patch TNT1A0, 0, 0}
 //
 //
 //Luna Filler Bars
-texture SHOSBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=3:3", "198:198=5:5"}}
-texture SHOSVAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=3:3", "198:198=5:5"}}
+//texture SHOSBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=3:3", "198:198=5:5"}}
+//texture SHOSVAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=3:3", "198:198=5:5"}}
 
 
 // Spybot

@@ -1872,6 +1872,7 @@ Drawbar"VARAMMO1", "VAREMPTY", ArsenalBlastAmmo, horizontal, 58, 184;
 
 //
 //Luna Bar H
+/*
 IsSelected CrescentArsenalWepI
 {
 DrawBar "SHOSVAR", "VAREMPTY", Ammo1, horizontal, 130, 192;
@@ -1889,7 +1890,7 @@ DrawBar "VARFLS1", "VNOBAR", StarBufferFlags, horizontal, 130, 192;
 }	
 }
 //
-
+*/
 //Cascara
 IsSelected CascaraShotgunWep {Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected CascaraShotgunWep {Drawbar"VARAMMO7", "VAREMPTY", Ammo2, horizontal, 58, 176;}
