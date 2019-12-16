@@ -593,6 +593,20 @@ script 1023  (VOID) CLIENTSIDE
        SetActorProperty(0,APROP_ALPHA,0.3);
     }
 }
+
+script "CSCC_GetSpeed" (void)
+{
+  int x, y, z, speed;
+    x = GetActorVelX(0);
+    y = GetActorVelY(0);
+    z = GetActorVelZ(0);
+    speed = FixedMul(x, x) + FixedMul(y, y) + FixedMul(z, z);
+    SetResultValue(FixedSqrt(speed));
+	//PrintBold(f:FixedSqrt(speed));
+	if(speed<5.0){
+	SetActorVelocity (0, 0, 0, 0, 0, 0);}
+}
+
 //██████████████████████████████████████████Undyne████████████████████████████████████████
 
 
@@ -793,3 +807,4 @@ Script "SetActorProperty_Fixed" (int prop, int mult, int div)
 {
 SetActorProperty(0,prop,((1.0)*mult)/div);
 }
+

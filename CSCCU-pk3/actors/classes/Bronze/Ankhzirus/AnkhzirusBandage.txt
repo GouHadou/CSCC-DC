@@ -124,7 +124,7 @@ Grab:
 WADP A 0 A_GiveToTarget("AnkhzirusGrabSelfSlow",1)
 stop
 Death:
-WADP B 0 ACS_NamedExecuteAlways("core_hookshot",0,user_PTID,3,0)
+WADP B 0 ACS_NamedExecuteAlways("core_hookshot",0,user_PTID,18,0)
 WAD1 B 3
 goto DeathLoop1
 DeathLoop1:

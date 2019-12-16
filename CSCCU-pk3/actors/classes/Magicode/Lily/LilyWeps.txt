@@ -943,7 +943,7 @@ GRZN D 3
 GRZN D 0 A_GiveInventory("GrassProxyGive",1)
 GRZN D 0 A_JumpifInventory("LilyWaterItemFlag",1,"Spread")
 GRZN D 0 A_JumpifInventory("LilyPollenItemFlag",1,"Polinate")
-GRZN D 2 A_Jumpifcloser(300,"Spawn2") // so long as you are close to the grass, it will not time down
+GRZN D 2 //A_Jumpifcloser(300,"Spawn2") // so long as you are close to the grass, it will not time down
 GRZN A 0 A_SetUserVar("user_GrassTimer",user_GrassTimer-1)
 GRZN D 0 A_JumpIf(user_GrassTimer <= 0,"Wilt")
 loop

@@ -316,7 +316,7 @@ PROJECTILE
 Radius 18
 Height 21
 alpha 0.95
-damagetype "RNGHammer8"
+damagetype "GlaceIceBomb"
 Obituary "%k realized %o was the sheriff and had to shoot them."
 scale 7.5
 damage (25)

@@ -316,6 +316,8 @@ Graphic "LILHUD2", 68, 18
 
 Graphic "IGNSA0", 32, 32
 {
+	XScale 2.000
+	YScale 2.000
 	Patch "WEA3C0", 0, 0
 	{
 		Translation "64:64=225:225", "62:62=227:227"
