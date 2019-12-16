@@ -151,7 +151,7 @@ Switch(MorphMode)
 	SetHudSize(600,380,0);
 	HudMessage(s:"\cgYou \cicopied \ckthe \cd", s:CopyName, s:" \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
 	MorphActor(CopyPlayer, FinalMorph, "", 0, 258, "", "");
-	GiveInventory(CopyItems, 1);
+	if(StrIcmp(CopyItems, "NONE")!=0){GiveInventory(CopyItems, 1);}//GiveInventory(CopyItems, 1);
 	GiveInventory("MorphFlag", 1);
 	GiveInventory("CopyMorphTimer", 35);
 	ACS_NamedExecuteAlways("CopyMorphTimer", 0);
