@@ -1304,3 +1304,11 @@ SetActivator(0,AAPTR_TARGET);
 //log(i:ActivatorTID());
 SetResultValue(ActivatorTID());
 }
+
+script "TIDCOUNTER" (int Tid)
+{
+int output = 0;
+if (thingcount(T_NONE,Tid) > 0){output = 1;}
+
+setresultvalue(output);
+}

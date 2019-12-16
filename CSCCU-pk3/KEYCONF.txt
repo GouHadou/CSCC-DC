@@ -140,15 +140,13 @@ AddPlayerClass Devion nomenu
 AddPlayerClass MetalMaiden nomenu
 AddPlayerClass IceFurry nomenu //Glace
 AddPlayerClass Darkile nomenu
-AddPlayerClass Lily nomenu
+//AddPlayerClass Lily nomenu //Out Temporarily
 AddPlayerClass KingBaku nomenu
 AddPlayerClass SergeantJohn nomenu
 AddPlayerClass Ignis nomenu
 AddPlayerClass Yumi nomenu
 AddPlayerClass Cascara nomenu
 AddPlayerClass Arsenal nomenu
-AddPlayerClass KingBaku nomenu
-AddPlayerClass MetalMaiden nomenu
 AddPlayerClass Slick nomenu
 //AddPlayerClass Luna nomenu
 AddPlayerClass RinClass nomenu

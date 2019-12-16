@@ -1,4 +1,4 @@
-/*
+
 //Hikari
 Texture HIKSBAR
 pic HIKSBAR1 tics 2
@@ -174,4 +174,3 @@ pic VALTBAR2 tics 2
 Texture VALTVAR
 pic VALTVAR1 tics 2
 pic VALTVAR2 tics 2
-*/

@@ -323,8 +323,14 @@ GoTo Pain+1
 
 //Glace Painstates
 Pain.IceNeedle:
+Pain.GlaceIceBomb:
 "####" H 0 A_GiveInventory("IceBombProtect",1)
-GoTo Pain.RNGHammer8
+IWAL F 0 A_GiveInventory("PowerRNGProtect",1)
+IWAL F 0 A_Stop
+IWAL F 0 SetPlayerProperty(0,1,4)
+IWAL FK 10 ThrustThingZ(0,40,0,0)
+IWAL F 0 SetPlayerProperty(0,0,4)
+GoTo Pain+1
 Pain.GSnowstorm:
 IWAL F 0 A_JumpIfInventory("GlaceSnowstormFlag",1,8)
 IWAL F 0 A_Stop
