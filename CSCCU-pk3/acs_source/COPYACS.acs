@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 24
+#define MAX_MORPHS 34
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -34,6 +34,17 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"BlazeCannon", "Blaze", "BlazeClassItems"}, //19
 {"TsukiClassCosmicWeapon", "Tsukiyomaru Zero", "TsukiyomaruZeroClassItems"},//20
 {"TrollSentry", "Fenga Papit", "FengaPapitClassItems"},//21
+{"TsukiTrollWep", "Troll Tsuki", "TrollTsukiClassItems"},//22
+{"MessatsuWep", "Messatsu", "MessatsuClassItems"},//23
+{"AutocannonWep", "The Blade Roden (Auto Cannon)", "TheBladeRodenClassItems"},//24
+{"DualBladesWep", "The Blade Roden (Dual Blades)", "TheBladeRodenClassItems"},//25
+{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},//26
+{"GunDelSol", "Travis", "TravisClassItems"}, //27
+{"M712Weapon1", "Michael712 (Aura Flame 1)", "Michael712ClassItems"},//28
+{"M712Weapon2", "Michael712 (Aura Flame 2)", "Michael712ClassItems"},//29
+{"BikKnife", "Unix", "UnixClassItems"},//30
+{"BikTriangleSine", "Bikdark", "BikdarkClassItems"},//31
+
 {"FIR", "Korby (Fire)", "KorbyClassItems"},//
 {"LIT", "Korby (Lightning)", "KorbyClassItems"},//
 {"ICE", "Korby (Ice)", "KorbyClassItems"}//

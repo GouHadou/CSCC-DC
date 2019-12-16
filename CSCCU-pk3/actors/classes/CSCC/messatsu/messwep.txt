@@ -1,7 +1,7 @@
 actor MessatsuWep : BaseCSCCWep
 {
 Weapon.AmmoUse 1
-Weapon.AmmoGive 28
+Weapon.AmmoGive 0
 Weapon.SlotNumber 1
 Obituary "%o didn't block %k's Gou Hadouken."
 Inventory.Pickupmessage "You got Messatsu's memory chip! ...Useless!"
@@ -1626,7 +1626,7 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
-actor MessClassItems : CustomInventory
+actor MessatsuClassItems : CustomInventory
 {
 inventory.amount 1
 inventory.maxamount 1
@@ -1648,18 +1648,3 @@ stop
 }
 
 actor IsMessatsu : Once {}
-/*actor MessParryItem : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 ACS_NamedExecuteAlways("MessParryCheck", 0)
-stop
-}
-}
-*/
