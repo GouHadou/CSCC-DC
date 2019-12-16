@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 91
+#define MAX_MORPHS 100
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -108,6 +108,16 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"CoolerClassWep", "Weo Weo Ice", "WeoWeoIceClassItems"},//89 (Once again, but why though?)
 {"BozuBallWep", "Bozu", "BozuClassItems"},//90
 {"BoltPistol", "Mech Unit B", "MechUnitBClassItems"},//91
+//There are no weaknesses
+{"TreoWep", "Treo", "TreoClassItems"},//92
+{"TankSnailWeapon", "TankSnail", "TankSnailClassItems"},//93
+{"EnergyBladeWeapon", "Ceridran (Energy Blade 1)", "CeridranClassItems"},//94
+{"EnergyBladeWeapon2", "Ceridran (Energy Blade 2)", "CeridranClassItems"},//95
+{"VoltLaserWep", "Viz", "VizClassItems"},//96
+{"StormPunchWep", "Tsuyoi", "TsuyoiClassItems"},//97
+{"JuriClassWeapon", "Juri Kitai", "JuriKitaiClassItems"},//98
+{"NatureStaffWep", "Natures Wonder", "NatureswonderClassItems"},//99
+{"AtomicSuplexBoss", "Zangief", "ZangiefClassItems"},//100
 
 
 };
