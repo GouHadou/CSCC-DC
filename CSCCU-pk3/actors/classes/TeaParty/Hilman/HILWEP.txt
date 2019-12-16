@@ -312,7 +312,7 @@ TNT1 A 1
 stop
 Ready:
 HRAY A 1 A_GunFlash
-HRAY A 0 ACS_ExecuteAlways(998,0,433)
+HRAY A 0 ACS_ExecuteAlways(998,0,DYE_HILGUN)
 HRAY A 40 A_WeaponReady(WRF_NOSWITCH)
 HRAY A 0 A_GiveInventory("HilRayAmmo",1)
 Goto Ready+2

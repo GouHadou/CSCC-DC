@@ -17,7 +17,7 @@ TNT1 A 0
 TNT1 A 1// A_SpawnItemEX("GigaDrainWepDropped")
 stop
 Ready:
-COOW B 0 ACS_ExecuteAlways(998,0,300,1)
+COOW B 0 ACS_ExecuteAlways(998,0,DYE_TREO,1)
 TRHU A 3 A_WeaponReady
 COOW B 0 A_GiveInventory("BlueFireAmmo",2)
 SLAH A 0 A_JumpIfInventory("HaveFunPlanting",1,"Planting")

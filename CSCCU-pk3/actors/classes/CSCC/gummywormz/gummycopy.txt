@@ -16,7 +16,7 @@ Spawn:
 AMTI J 1 
 loop
 Ready:
-AMTI C 0 ACS_ExecuteAlways(998,0,374)
+AMTI C 0 ACS_ExecuteAlways(998,0,WCCS_DWINGSCHARGE3)
 AMTI C 1 A_WeaponReady
 Goto Ready+1
 Deselect:

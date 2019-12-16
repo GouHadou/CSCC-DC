@@ -19,7 +19,7 @@ Spawn:
 TNT1 A 1
 stop
 Ready:
-ALBS A 0 ACS_ExecuteAlways(998,0,423)
+ALBS A 0 ACS_ExecuteAlways(998,0,DYE_RocketJumpWep)
 ALBS A 20 A_WeaponReady
 ALBS A 0 A_GiveInventory("RJumpAmmo", 1)
 Goto Ready+1

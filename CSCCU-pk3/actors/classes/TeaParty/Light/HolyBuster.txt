@@ -19,7 +19,7 @@ Spawn:
 KDSW A 1
 stop
 Ready:
-LIBS A 0 ACS_ExecuteAlways(998,0,427)
+LIBS A 0 ACS_ExecuteAlways(998,0,DYE_HolyBuster)
 LIBS A 0 A_JumpIfInventory("Once",1,"Ready2")
 LIBS A 0 A_GiveInventory("Once",1)
 Goto Ready2+1
@@ -127,7 +127,7 @@ Spawn:
 KDSW A 1
 loop
 Ready:
-LISD A 0 ACS_ExecuteAlways(998,0,427)
+LISD A 0 ACS_ExecuteAlways(998,0,DYE_HolyBuster)
 LISD A 1 A_WeaponReady
 Goto Ready+1
 Deselect:
@@ -656,7 +656,7 @@ Spawn:
 KDSW A 1
 stop
 Ready:
-LIBS A 0 ACS_ExecuteAlways(998,0,427)
+LIBS A 0 ACS_ExecuteAlways(998,0,DYE_HolyBuster)
 LIBS A 0 A_TakeInventory("WeaponCharge",999)
 LIBS A 4 A_WeaponReady
 LIBS A 0 A_GiveInventory("LightEnergy",1)

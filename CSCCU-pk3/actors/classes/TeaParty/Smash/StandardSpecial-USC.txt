@@ -18,7 +18,7 @@ Spawn:
 CLWP E 1
 loop
 Ready:
-IDLU C 0 ACS_ExecuteAlways(998,0,432)
+IDLU C 0 ACS_ExecuteAlways(998,0,DYE_SMASHCOLOR)
 IDLU C 1 A_WeaponReady
 IDLU C 3
 IDLU C 1 A_GiveInventory("USCAttack",3)

@@ -16,7 +16,7 @@ Spawn:
 ICBU A 1
 loop
 Ready:
-ICBU B 0 ACS_ExecuteAlways(998,0,376) 
+ICBU B 0 ACS_ExecuteAlways(998,0,WCCS_ICE) 
 ICBU B 1 A_WeaponReady
 Goto Ready+1
 Deselect:
@@ -120,7 +120,7 @@ Spawn:
 SPBU A 1
 loop
 Ready:
-SPBU B 0 ACS_ExecuteAlways(998,0,377) 
+SPBU B 0 ACS_ExecuteAlways(998,0,WCCS_SPARKY) 
 SPBU B 1 A_WeaponReady
 Goto Ready+1
 Deselect:

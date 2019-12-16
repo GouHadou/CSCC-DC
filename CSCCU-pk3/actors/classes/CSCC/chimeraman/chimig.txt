@@ -15,7 +15,7 @@ Scale 2.0
 States
 {
 Ready:
-CHUD A 0 ACS_ExecuteAlways(998,0,372)
+CHUD A 0 ACS_ExecuteAlways(998,0,WCCS_DWINGSCHARGE1)
 CHUD A 5 A_WeaponReady(WRF_NOSWITCH)
 goto Ready+1
 Deselect:

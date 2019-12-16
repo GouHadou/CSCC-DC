@@ -9,7 +9,7 @@ States
 {
 Ready:
 RINH A 0 A_GunFlash
-RINH A 0 ACS_ExecuteAlways(998,0,753)
+RINH A 0 ACS_ExecuteAlways(998,0,DYE_RIN)
 RINH A 1 A_WeaponReady
 RINH A 0 A_JumpIfInventory("UppercutCharged",1,1)
 GoTo Ready+2

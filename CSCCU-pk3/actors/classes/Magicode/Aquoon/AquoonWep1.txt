@@ -13,7 +13,7 @@ States
 {
 Ready:
 TNT1 A 0 A_GunFlash
-TNT1 A 0 ACS_ExecuteAlways(998,0,789)
+TNT1 A 0 ACS_ExecuteAlways(998,0,DYE_AQUOON)
 GoTo Ready2
 Ready2:
 AQBS A 1 A_WeaponReady

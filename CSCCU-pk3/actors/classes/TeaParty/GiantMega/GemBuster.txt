@@ -19,7 +19,7 @@ Spawn:
 GMBS A 1
 stop
 Ready:
-GMBS A 0 ACS_ExecuteAlways(998,0,426)
+GMBS A 0 ACS_ExecuteAlways(998,0,DYE_GemBuster)
 GMBS A 0 A_JumpIfInventory("Once",1,"Ready2")
 GMBS A 0 A_GiveInventory("Once",1)
 Goto Ready2+1
@@ -209,12 +209,12 @@ Spawn:
 GMBS A 1
 stop
 Ready:
-GMBS A 0 ACS_ExecuteAlways(998,0,426)
+GMBS A 0 ACS_ExecuteAlways(998,0,DYE_GemBuster)
 GMBS A 0 A_JumpIfInventory("Once",1,"Ready2")
 GMBS A 0 A_GiveInventory("Once",1)
 Goto Ready2+1
 Ready2:
-GMBS A 0 ACS_ExecuteAlways(998,0,426)
+GMBS A 0 ACS_ExecuteAlways(998,0,DYE_GemBuster)
 GMBS A 32 A_WeaponReady
 GMBS A 0 A_GiveInventory("GemSniperAmmo",1)
 GMBS A 4 A_WeaponReady

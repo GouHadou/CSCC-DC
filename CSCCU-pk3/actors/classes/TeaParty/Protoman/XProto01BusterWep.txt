@@ -22,7 +22,7 @@ TakeBusters:
 TNT1 Q 0 A_GiveInventory("TakeBuster", 1)
 Goto Ready2
 Ready2:
-PRO1 J 0 ACS_ExecuteAlways(998,0,428)
+PRO1 J 0 ACS_ExecuteAlways(998,0,DYE_PROTOMANCSCC)
 PRO1 J 0 A_TakeInventory("WeaponCharge",999)
 PRO1 J 0 A_TakeInventory("StopShield",1)
 PRO1 J 0 A_GunFlash

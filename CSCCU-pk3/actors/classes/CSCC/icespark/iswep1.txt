@@ -15,7 +15,7 @@ Scale 2.0
 States
 {
 Ready:
-ICEH A 0 ACS_ExecuteAlways(998,0,376)
+ICEH A 0 ACS_ExecuteAlways(998,0,WCCS_ICE)
 ICEH A 0 A_Gunflash
 ICEH AA 1 A_WeaponReady
 ICEH A 0 A_JumpIfInventory("IceSparkyFusion", 1, "ShinIceSparky")

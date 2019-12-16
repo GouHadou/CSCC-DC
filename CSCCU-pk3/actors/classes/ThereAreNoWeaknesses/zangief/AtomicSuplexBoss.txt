@@ -20,7 +20,7 @@ TNT1 A 1 A_Raise
 Loop
 
 Ready:
-TNT1 A 0 ACS_ExecuteAlways(998,0,438)
+TNT1 A 0 ACS_ExecuteAlways(998,0,DYE_ZANGIEF)
 Ready2:
 POWS E 1 A_WeaponReady
 POWS E 0 A_GiveInventory("AtomicSuplexAmmo",1)

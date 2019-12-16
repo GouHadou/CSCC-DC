@@ -15,7 +15,7 @@ States
 {
 Ready:
 BOMH J 0 A_GunFlash
-BOMH J 0 ACS_ExecuteAlways(998,0,775)
+BOMH J 0 ACS_ExecuteAlways(998,0,DYE_LILY)
 BOMH J 0 A_JumpIfInventory("User1_Trigger",1,"Grass")
 BOMH J 0 A_JumpIfInventory("User2_Trigger",1,"Plant")
 BOMH J 1 A_WeaponReady

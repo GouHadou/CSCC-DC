@@ -16,7 +16,7 @@ Spawn:
 TNT1 A 0
 stop
 Ready:
-AMTI C 0 ACS_ExecuteAlways(998,0,351)
+AMTI C 0 ACS_ExecuteAlways(998,0,DYE_GUMMYWORMZ)
 AMTI C 0 A_TakeInventory("AirTileCharge",999)
 AMTI C 3 A_WeaponReady
 AMTI C 0 A_GiveInventory("AirTileAmmo",2)

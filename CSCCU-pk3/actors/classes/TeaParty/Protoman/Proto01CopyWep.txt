@@ -17,11 +17,11 @@ PR1S A 1
 loop
 Ready:
 BUST B 0 A_JumpIfInventory("Twice",1,"Ready2")
-BUST B 0 ACS_ExecuteAlways(991,0,428)
+BUST B 0 ACS_ExecuteAlways(991,0,DYE_PROTOMANCSCC)
 BUST B 0 A_GiveInventory("Twice",1)
 Goto Ready2+2
 Ready2:
-PRO1 Q 0 ACS_ExecuteAlways(998,0,428)
+PRO1 Q 0 ACS_ExecuteAlways(998,0,DYE_PROTOMANCSCC)
 PRO1 Q 0 A_TakeInventory("StopShield",1)
 PRO1 Q 0 A_SpawnItemEx("Proto01ShieldX",28,-16,8,0,0,0,0,1)
 PRO1 Q 0 A_SpawnItemEx("Proto01ShieldX",28,-8,8,0,0,0,0,1)

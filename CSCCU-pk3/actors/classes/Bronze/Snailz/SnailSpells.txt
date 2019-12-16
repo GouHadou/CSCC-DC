@@ -18,7 +18,7 @@ Spawn:
 TNT1 A 1
 stop
 Ready:
-SNLB A 0 ACS_ExecuteAlways(998,0,510)
+SNLB A 0 ACS_ExecuteAlways(998,0,DYE_SNAILBREEDER)
 SNLB A 1 A_GunFlash
 SNLB A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
 Goto Ready+2
@@ -105,7 +105,7 @@ inventory.icon "SNELICO2"
 States
 {
 Ready:
-SNLB A 0 ACS_ExecuteAlways(998,0,601)
+SNLB A 0 ACS_ExecuteAlways(998,0,DYE_BOZUCLASS)
 SNLB A 1 A_GunFlash
 SNLB A 1 A_WeaponReady
 Goto Ready+2

@@ -24,7 +24,7 @@ IDLS C 0 ACS_ExecuteAlways(481,0,0)
 IDLS C 0 A_GiveInventory("Once",1)
 Goto Ready2
 Ready2:
-IDLS C 0 ACS_ExecuteAlways(998,0,432)
+IDLS C 0 ACS_ExecuteAlways(998,0,DYE_SMASHCOLOR)
 IDLS C 1 A_WeaponReady
 IDLS C 0 A_JumpIfInventory("NormalAttack",2,"Recharge")
 IDLS C 0 A_JumpIfInventory("NormalAttack",1,"Recharge")

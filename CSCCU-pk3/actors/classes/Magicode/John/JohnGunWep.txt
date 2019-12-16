@@ -18,7 +18,7 @@ Spawn:
 WEA4 H 1
 loop
 Ready:
-JHNH C 0 ACS_ExecuteAlways(998,0,785)
+JHNH C 0 ACS_ExecuteAlways(998,0,DYE_MULTIMISSILE)
 JHNH C 0 A_Jumpifinventory("User1_Trigger",1,"Reload")
 JHNH C 1 A_WeaponReady
 JHNH C 0 A_JumpIfInventory("JohnMainAmmo",1,"readier")

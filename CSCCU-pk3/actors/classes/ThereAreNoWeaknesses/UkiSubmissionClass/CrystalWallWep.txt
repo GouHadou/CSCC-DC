@@ -18,7 +18,7 @@ Spawn:
 CWAL A 1
 loop
 Ready:
-CWAL B 0 ACS_ExecuteAlways(998,0,655) 
+CWAL B 0 ACS_ExecuteAlways(998,0,DYE_CrystalWall) 
 CWAL B 1 A_WeaponReady
 goto Ready+1
 Deselect: 

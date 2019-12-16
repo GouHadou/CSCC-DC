@@ -20,7 +20,7 @@ Spawn:
 FRST I 1
 loop
 Ready:
-FKKB A 0 ACS_ExecuteAlways(998,0,774)
+FKKB A 0 ACS_ExecuteAlways(998,0,DYE_FIRESTARTER)
 FKKB A 0 A_Gunflash
 FKKB A 0 A_JumpIfInventory("User1_Trigger",1,"BombJump")
 FKKB A 1 A_WeaponReady

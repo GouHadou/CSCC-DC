@@ -23,7 +23,7 @@ Spawn:
 TNT1 A 0
 stop
 Ready:
-NATU A 0 ACS_ExecuteAlways(998,0,654) 
+NATU A 0 ACS_ExecuteAlways(998,0,DYE_NaturesWonder) 
 NATU AB 4 A_WeaponReady(WRF_NOSWITCH)
 NATU A 0 A_GiveInventory("NatureStaffAmmo",1)
 NATU AC 4 A_WeaponReady(WRF_NOSWITCH)

@@ -18,7 +18,7 @@ Spawn:
 PQKB A 1
 stop
 Ready:
-PQKB A 0 ACS_ExecuteAlways(998,0,425)
+PQKB A 0 ACS_ExecuteAlways(998,0,DYE_TrollBuster)
 PQKB A 0 A_JumpIfInventory("Once",1,"Ready2")
 PQKB A 0 A_GiveInventory("Once",1)
 Goto Ready2+1

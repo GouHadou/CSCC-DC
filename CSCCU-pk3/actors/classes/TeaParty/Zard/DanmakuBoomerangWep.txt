@@ -20,7 +20,7 @@ Spawn:
 ZDIC A 1
 loop
 Ready:
-ZDBM A 0 ACS_ExecuteAlways(998,0,422)
+ZDBM A 0 ACS_ExecuteAlways(998,0,DYE_SMASHCOLOR)
 ZDBM A 0 A_TakeInventory("KnightFlag",999)
 ZDBM A 0 A_JumpIfInventory("UseTestspellFlag",1,"Testspell")
 ZDBM A 0 A_JumpIfInventory("UseParalizingBeamspellFlag",1,"ParalizingBeamspell")
