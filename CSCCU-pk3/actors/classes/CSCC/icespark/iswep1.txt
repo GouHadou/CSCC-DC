@@ -21,28 +21,28 @@ ICEH AA 1 A_WeaponReady
 ICEH A 0 A_JumpIfInventory("IceSparkyFusion", 1, "ShinIceSparky")
 Goto Ready+2
 ShinIceSparky:
-ICEP A 0 ACS_ExecuteAlways(991,0,378)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX1",4,0,48)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX2",4,0,48)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 0)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 45)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 90)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 135)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 180)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, -45)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, -90)
-ICEP A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, -135)
-ICEP A 0 A_PlaySoundEx("weapon/lightningbolt","Weapon")
-ICEP A 0 ACS_ExecuteAlways(CSACS_ICESPARKSWAP,0,1)
-ICEP A 0 A_GiveInventory("IsIceSparky", 1)
+ISFS A 0 ACS_ExecuteAlways(991,0,378)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX1",4,0,48)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX2",4,0,48)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 0)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 45)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 90)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 135)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, 180)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, -45)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, -90)
+ISFS A 0 A_SpawnItemEx("LightningIceStartFX3",64,0,48,0, 0, 0, -135)
+ISFS A 0 A_PlaySoundEx("weapon/lightningbolt","Weapon")
+ISFS A 0 ACS_ExecuteAlways(CSACS_ICESPARKSWAP,0,1)
+ISFS A 0 A_GiveInventory("IsIceSparky", 1)
 Goto Ready2
 Ready2:
-ICEP A 0 A_JumpIfInventory("IceSparkyFusion", 1, "RealReady2")
-ICEP A 0 ACS_ExecuteAlways(CSACS_ICESPARKSWAP,0,0)
-ICEP A 0 A_TakeInventory("IsIceSparky", 1)
+ISFS A 0 A_JumpIfInventory("IceSparkyFusion", 1, "RealReady2")
+ISFS A 0 ACS_ExecuteAlways(CSACS_ICESPARKSWAP,0,0)
+ISFS A 0 A_TakeInventory("IsIceSparky", 1)
 Goto Ready
 RealReady2:
-ICEP A 1 A_WeaponReady(WRF_NOSWITCH)
+ISFS A 1 A_WeaponReady(WRF_NOSWITCH)
 Goto Ready2
 Deselect:
 TNT1 A 0 A_TakeInventory("IsIce", 1)
@@ -100,46 +100,46 @@ ICEH A 0 A_SelectWeapon("SparkyWep")
 Goto Ready+2
 Fire2:
 /*
-ICEP A 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
-ICEP A 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
-ICEP C 2 A_SpawnItemEx("LightningIceBladeFX", 32, -16, 24)
-ICEP D 2 A_SpawnItemEx("LightningIceBladeFX", 32, -8, 24)
-ICEP E 2 A_SpawnItemEx("LightningIceBladeFX", 32, 8, 24)
-ICEP F 2 A_SpawnItemEx("LightningIceBladeFX", 32, 16, 24)
-ICEP F 0 A_FireCustomMissile("LightningIceBlade",0,0,8,0)
-ICEP GF 2
-ICEP C 2 
-ICEP B 2
-ICEP A 10
+ISFS A 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
+ISFS A 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
+ISFS C 2 A_SpawnItemEx("LightningIceBladeFX", 32, -16, 24)
+ISFS D 2 A_SpawnItemEx("LightningIceBladeFX", 32, -8, 24)
+ISFS E 2 A_SpawnItemEx("LightningIceBladeFX", 32, 8, 24)
+ISFS F 2 A_SpawnItemEx("LightningIceBladeFX", 32, 16, 24)
+ISFS F 0 A_FireCustomMissile("LightningIceBlade",0,0,8,0)
+ISFS GF 2
+ISFS C 2 
+ISFS B 2
+ISFS A 10
 */
-ICEP A 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
-ICEP A 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
-ICEP G 0 A_FireCustomMissile("LightningIceBlade",0,0,8,0)
-ICEP GF 2
-ICEP F 0 A_SpawnItemEx("LightningIceBladeFX", 32, 16, 24)
-ICEP E 2 A_SpawnItemEx("LightningIceBladeFX", 32, 8, 24)
-ICEP D 2 A_SpawnItemEx("LightningIceBladeFX", 32, -8, 24)
-ICEP C 2 A_SpawnItemEx("LightningIceBladeFX", 32, -16, 24)
-ICEP A 10
+ISFS A 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
+ISFS A 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
+ISFS G 0 A_FireCustomMissile("LightningIceBlade",0,0,8,0)
+ISFS GF 2
+ISFS F 0 A_SpawnItemEx("LightningIceBladeFX", 32, 16, 24)
+ISFS E 2 A_SpawnItemEx("LightningIceBladeFX", 32, 8, 24)
+ISFS D 2 A_SpawnItemEx("LightningIceBladeFX", 32, -8, 24)
+ISFS C 2 A_SpawnItemEx("LightningIceBladeFX", 32, -16, 24)
+ISFS A 10
 Goto Ready2
 AltFire:
-ICEP H 0 A_JumpIfInventory("IsIceSparky", 1, "AltFire2")
-ICEP H 0 A_JumpIfInventory("IceClassAmmo",25,"Ball")
+ISFS H 0 A_JumpIfInventory("IsIceSparky", 1, "AltFire2")
+ISFS H 0 A_JumpIfInventory("IceClassAmmo",25,"Ball")
 Goto Ready+2
 AltFire2:
-ICEP H 0 A_JumpIfInventory("IceClassAmmo",15,"1")
+ISFS H 0 A_JumpIfInventory("IceClassAmmo",15,"1")
 Goto NoAmmo
-ICEP H 0 A_JumpIfInventory("SparkyClassAmmo",15,"1")
+ISFS H 0 A_JumpIfInventory("SparkyClassAmmo",15,"1")
 Goto NoAmmo
-ICEP H 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
-ICEP H 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
-ICEP H 0 A_TakeInventory("SparkyClassAmmo",15)
-ICEP H 0 A_TakeInventory("IceClassAmmo",15)
-ICEP H 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
-ICEP H 0 A_FireCustomMissile("LightningIceWaveStart",0,0,8,0)
-ICEP J 3
-ICEP K 10
-ICEP H 21
+ISFS H 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
+ISFS H 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
+ISFS H 0 A_TakeInventory("SparkyClassAmmo",15)
+ISFS H 0 A_TakeInventory("IceClassAmmo",15)
+ISFS H 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
+ISFS H 0 A_FireCustomMissile("LightningIceWaveStart",0,0,8,0)
+ISFS J 3
+ISFS K 10
+ISFS H 21
 Goto Ready2
 Ball:
 ICEH A 0 A_JumpIfNoAmmo("NoAmmo")
@@ -156,7 +156,7 @@ ICEH A 0 A_JumpIfInventory("IceSparkyFusion", 1, "NoAmmo2")
 ICEH A 1 ACS_Execute(979,0)
 Goto Ready+2
 NoAmmo2:
-ICEP A 1 ACS_Execute(979,0)
+ISFS A 1 ACS_Execute(979,0)
 Goto Ready2
 Flash:
 TNT1 A 2 A_GiveInventory("SparkyClassAmmo",1)
