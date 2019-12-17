@@ -102,27 +102,27 @@ addplayerclass NaturesWonder nomenu
 //addplayerclass Zard1084 nomenu
 addplayerclass Zangief nomenu
 //██████████████████████████████████████████CSCC Bronze████████████████████████████████████████
-addplayerclass EdgeLord
-AddPlayerClass Pistonman
-addplayerclass InsanePharaohman
-AddPlayerClass Badz
-addplayerclass Flameryn
-AddPlayerClass Ankhzirus
-addplayerclass StormConductor
-addplayerclass Hikari
-addplayerclass MasterNinja
-AddPlayerClass BullGator
-addplayerclass Akane
-AddPlayerClass Aegis
-AddPlayerClass ValkyrieMaiden
-addplayerclass Vocalwoman
-AddPlayerClass TankOperator
-addplayerclass SnailBreeder
-//addplayerclass Apiarist
-AddPlayerClass Yang
-AddPlayerClass Fume
-AddPlayerClass ZenTrainer
-addplayerclass Undyne
+addplayerclass EdgeLord nomenu
+AddPlayerClass Pistonman nomenu
+addplayerclass InsanePharaohman nomenu
+AddPlayerClass Badz nomenu
+addplayerclass Flameryn nomenu
+AddPlayerClass Ankhzirus nomenu
+addplayerclass StormConductor nomenu
+addplayerclass Hikari nomenu
+addplayerclass MasterNinja nomenu
+AddPlayerClass BullGator nomenu
+addplayerclass Akane nomenu
+AddPlayerClass Aegis nomenu
+AddPlayerClass ValkyrieMaiden nomenu
+addplayerclass Vocalwoman nomenu
+AddPlayerClass TankOperator nomenu
+addplayerclass SnailBreeder nomenu
+//addplayerclass Apiarist nomenu
+AddPlayerClass Yang nomenu
+AddPlayerClass Fume nomenu
+AddPlayerClass ZenTrainer nomenu
+addplayerclass Undyne nomenu
 
 //██████████████████████████████████████████OCBMR████████████████████████████████████████
 //addplayerclass AuronApp nomenu

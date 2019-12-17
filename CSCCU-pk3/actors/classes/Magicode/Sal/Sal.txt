@@ -540,3 +540,22 @@ TNT1 A 0 A_GiveInventory("NoIcons", 1)
 stop
 }
 }
+
+actor PsychicPowerMorph : Sal
+{
++NOSKIN
+player.morphweapon "PsychicPower"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor DarkPowerMorph : PsychicPowerMorph
+{
+player.morphweapon "DarkPower"
+}

@@ -208,7 +208,7 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"ArsenalGearWep", "Arsenal", "ArsenalClassItems"},//185
 {"SlickWep1", "Slick (Ink Shot)", "SlickClassItems"}, //186
 {"SlickWep2", "Slick (Ink Wave/Portal)", "SlickClassItems"}, //187
-{"CrescentArsenalWepI", "Luna", "LunaClassItems"},//188
+//{"CrescentArsenalWepI", "Luna", "LunaClassItems"},//188
 {"RinGougi1", "Rin (Shot Putt)", "RinClassItems"}, //189
 {"RinGougi2", "Rin (Punch Charge)", "RinClassItems"}, //190
 {"AquoonWeapon1", "Aquoon (Shotgun)", "AquoonClassItems"},//191

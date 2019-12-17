@@ -562,3 +562,16 @@ stop
 }
 }
 
+actor DevionPowersMorph : Devion
+{
++NOSKIN
+player.morphweapon "DevionPowers"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

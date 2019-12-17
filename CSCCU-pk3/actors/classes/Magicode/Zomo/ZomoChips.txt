@@ -8,7 +8,7 @@ inventory.pickupmessage "You got a useless Battlechip... How did you get this?"
 inventory.icon "WEAPQ0"
 Inventory.PickupSound "item/1up"
 scale 2.0
-+INVENTORY.UNDROPPABLE
+//+INVENTORY.UNDROPPABLE breaks copy robot, servers don't enable dropping anyway
 +COUNTITEM
 +INVBAR
 states

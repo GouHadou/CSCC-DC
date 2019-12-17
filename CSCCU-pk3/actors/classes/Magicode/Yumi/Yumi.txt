@@ -84,3 +84,17 @@ TNT1 A 0 A_GiveInventory("CanUseItems")
 stop
 }
 }
+
+actor YumiSingingWepMorph : Yumi
+{
++NOSKIN
+player.morphweapon "YumiSingingWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}

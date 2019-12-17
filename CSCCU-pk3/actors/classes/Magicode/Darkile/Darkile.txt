@@ -599,3 +599,23 @@ stop
 }
 }
 
+actor DuskVoid1WepMorph : Darkile
+{
++NOSKIN
+player.morphweapon "DuskVoid1Wep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor DuskVoid2WepMorph : DuskVoid1WepMorph
+{
+player.morphweapon "DuskVoid2Wep"
+}
+
+
