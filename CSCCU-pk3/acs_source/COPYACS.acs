@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 146 //+2
+#define MAX_MORPHS 197 //+2
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -71,7 +71,7 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"ZardGun", "Zard1084 (Danmaku Gun)", "Zard1084ClassItems"},//53
 {"ZardSword", "Zard1084 (Shifting Sword)", "Zard1084ClassItems"},//54
 {"DanmakuBoomerangWep", "Zard1084 (Danmaku Boomerang)", "Zard1084Classitems"},//55
-{"TrollBuster", "Prinny Queen (dood)", "PrinnyQueenClassItems"},//56
+{"TrollBuster", "Prinny Queen", "PrinnyQueenClassItems"},//56
 {"ShurikenBuster", "Alice the Ice Fairy (Shuriken Buster)", "AliceTheIceFairyClassItems"},//57
 {"RocketJumpWep", "Alice the Ice Fairy (Rocket Jump)", "AliceTheIceFairyClassItems"},//58
 {"GemBuster", "Giant Mega.exe (Gem Buster)","GiantMegaEXEClassItems"},//59
@@ -168,6 +168,59 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"StarRevolverWep", "G97", "G97ClassItems"},//146
 //{"BugTypeWepITLS", "Itolos", "ItolosClassItems"}, //147
 //{"BugTypeWepIMKN", "Imurkono", "ImurkonoClassItems"}, //148
+{"NeoBlade", "Neo (Neo Blade)", "NeoClassItems"},//149
+{"AuraPalm", "Neo (Aura Palm)", "NeoClassItems"},//150
+{"AuraBow", "Neo (Aura Bow)", "NeoClassItems"},//151
+{"CrystalSpear", "Neo (Crystal Spear)", "NeoClassItems"},//152
+{"FireSpell", "Neo (Fire Spell)", "NeoClassItems"},//153
+{"BlizzardSpell", "Neo (Blizzard Spell)", "NeoClassItems"},//154
+{"ThunderSpell", "Neo (Thunder Spell)", "NeoClassItems"},//155
+//Magicode
+{"ZomoBNWep", "Zomo.exe (Slot 1)", "ZomoClassItems"},//156
+{"ZomoBNWep2", "Zomo.exe (Slot 2)", "ZomoClassItems"},//157
+{"ZomoBNWep3", "Zomo.exe (Slot 3)", "ZomoClassItems"},//158
+{"RedMageDiaraWep", "Red Mage (Diara)", "RedMageClassItems"},//159
+{"RedMageFiraWep", "Red Mage (Fira)", "RedMageClassItems"},//160
+{"RedMageAeroraWep", "Red Mage (Aerora)", "RedMageClassItems"},//161
+{"RedMageBlizzaraWep", "Red Mage (Blizara)", "RedMageClassItems"},//162
+{"RedMageSlowWep", "Red Mage (Slow)", "RedMageClassItems"},//163
+{"RedMageWateraWep", "Red Mage (Watera)", "RedMageClassItems"},//164
+{"RedMageThundaraWep", "Red Mage (Thundara)", "RedMageClassItems"},//165
+{"RedMageBlinkWep", "Red Mage (Blink)", "RedMageClassItems"},//166
+{"RedMageTemperWep", "Red Mage (Temper)", "RedMageClassItems"},//167
+{"RedMageFocusWep", "Red Mage (Focus)", "RedMageClassItems"},//168
+{"PsychicPower", "Sal (Psychic Power)", "SalClassItems"},//169
+{"DarkPower", "Sal (Dark Power)", "SalClassItems"},//170
+{"DevionPowers", "Devion", "DevionClassItems"},//171
+{"MetalMaidenArsenal", "Metal Maiden", "MetalMaidenClassItems"},//172
+{"GlazedSet", "Glace", "GlaceClassItems"},//173
+{"DuskVoid1Wep", "Darkile (Void 1)", "DarkileClassItems"},//174
+{"DuskVoid2Wep", "Darkile (void 2)", "DarkileClassItems"},//175
+{"RazorLeafWep", "Lily (Razor Leaf)", "LilyClassItems"},//176
+{"WaterSprayWep", "Lily (Water Spray", "LilyClassItems"},//177
+{"FireStarterWep", "King Baku (Fire)","KingBakuClassItems"},//178
+{"MagicPackWep", "King Baku (Magic)","KingBakuClassItems"},//179
+{"CyberPackWep", "King Baku (Cyber)","KingBakuClassItems"},//180
+{"JohnGunWep", "Sergeant John", "SergeantJohnClassItems"},//181
+{"IgnisArsenalWep", "Ignis", "IgnisClassItems"},//182
+{"YumiSingingWep", "Yumi", "YumiClassItems"}, //183
+{"CascaraShotgunWep", "Cascara", "CascaraClassItems"},//184
+{"ArsenalGearWep", "Arsenal", "ArsenalClassItems"},//185
+{"SlickWep1", "Slick (Ink Shot)", "SlickClassItems"}, //186
+{"SlickWep2", "Slick (Ink Wave/Portal)", "SlickClassItems"}, //187
+{"CrescentArsenalWepI", "Luna", "LunaClassItems"},//188
+{"RinGougi1", "Rin (Shot Putt)", "RinClassItems"}, //189
+{"RinGougi2", "Rin (Punch Charge)", "RinClassItems"}, //190
+{"AquoonWeapon1", "Aquoon (Shotgun)", "AquoonClassItems"},//191
+{"AquoonWeapon2", "Aquoon (Oceanado)", "AquoonClassItems"},//192
+{"HiPEgun", "Thalo", "ThaloClassItems"},//193
+//Ultimate
+{"MissedMemoBoss", "Bonehead", "BoneheadClassItems"},//194
+{"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},//195
+{"GeeBurstBoss1", "Gee (Healing Burst)", "GeeClassItems"},//196
+{"Psybeamwep", "Abra", "NONE"},//197
+{"WeedEater1", "Spybot (Concrete Coil)", "SpybotClassItems"},//198
+{"WeedEater2", "Spybot (Knight CrackerBlast)", "SpybotClassItems"},//199
 
 };
 
