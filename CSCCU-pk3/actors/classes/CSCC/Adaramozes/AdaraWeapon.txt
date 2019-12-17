@@ -145,7 +145,7 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
-actor FrozenCapella
+actor FrozenCapella : ProjectileBase
 {
 Obituary "%o was attuned by %k's Frozen Capella."
 PROJECTILE
@@ -176,7 +176,7 @@ stop
 }
 }
 
-actor ChillingCaesuraExplosion
+actor ChillingCaesuraExplosion : BasicExplosion
 {
 PROJECTILE
 +RIPPER
@@ -196,7 +196,7 @@ stop
 }
 }
 
-actor ChillingCaesura
+actor ChillingCaesura : ProjectileBase
 {
 PROJECTILE
 +NOINTERACTION
@@ -240,7 +240,7 @@ stop
 }
 }
 
-actor ArcticAdagio //: MageStaffFX2
+actor ArcticAdagio : ProjectileBase//: MageStaffFX2
 {
 PROJECTILE
 +SEEKERMISSILE
@@ -280,7 +280,7 @@ stop
 }
 }
 
-actor ArcticAdagioSnowflake
+actor ArcticAdagioSnowflake : BasicClientside
 {
 PROJECTILE
 +NOINTERACTION

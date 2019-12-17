@@ -189,7 +189,7 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
-actor FusionBombClass
+actor FusionBombClass : ProjectileBase
 {
 Obituary "%o was fused by %k's Fusion Bomb."
 PROJECTILE
@@ -226,7 +226,7 @@ stop
 }
 }
 
-Actor FusionBombFusion
+Actor FusionBombFusion : ProjectileBase
 {
 Obituary "%o was fused by %k's Fusion Bomb."
 PROJECTILE
@@ -273,7 +273,7 @@ Loop
 }
 }
 
-Actor FusionShatterClass
+Actor FusionShatterClass : BasicExplosion
 {
 Obituary "%o was fused by %k's Fusion Bomb."
 PROJECTILE
@@ -369,7 +369,7 @@ stop
 }
 
 
-actor FusionBrake
+actor FusionBrake : ProjectileBase
 {
 PROJECTILE
 Radius 8

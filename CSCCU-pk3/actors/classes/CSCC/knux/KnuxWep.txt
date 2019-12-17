@@ -209,6 +209,7 @@ actor BubbleArrow
 {
 Obituary "%o was sabotaged by %k's Bubble Arrow."
 PROJECTILE
++MTHRUSPECIES
 +FORCEXYBILLBOARD
 //+DONTBLAST
 damagetype "BubbleArrow"
@@ -363,6 +364,7 @@ Powerup.Duration 5
 actor KnuxBouncer
 {
 //PROJECTILE
++MTHRUSPECIES
 +MISSILE
 +NOGRAVITY
 //+NOTARGETSWITCH
@@ -496,6 +498,7 @@ stop
 actor KnuxMine
 {
 PROJECTILE
++MTHRUSPECIES
 +FLOORHUGGER
 damagetype "KnuxMine"
 damage(0)
@@ -533,6 +536,7 @@ stop
 actor KnuxMineShot //For Later
 {
 PROJECTILE
++MTHRUSPECIES
 -NOGRAVITY
 scale 2.5
 radius 8

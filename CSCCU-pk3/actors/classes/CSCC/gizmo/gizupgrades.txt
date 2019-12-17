@@ -356,7 +356,7 @@ stop
 }
 }
 
-actor KittyClaws
+actor KittyClaws : BasicExplosion
 {
 PROJECTILE
 +DONTREFLECT

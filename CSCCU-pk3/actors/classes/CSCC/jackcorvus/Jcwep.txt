@@ -102,7 +102,7 @@ inventory.amount 1
 inventory.maxamount 56
 }
 
-actor FireBurst
+actor FireBurst : ProjectileBase
 {
 Obituary "%o was roasted alive by %k's Fire Burst."
 PROJECTILE
@@ -125,7 +125,7 @@ stop
 }
 }
 
-actor JcPillar
+actor JcPillar : ProjectileBase
 {
 Obituary "%o was roasted alive by %k's Fire Burst."
 PROJECTILE
@@ -249,7 +249,7 @@ Loop
 }
 }
 
-actor JcBawmb
+actor JcBawmb : ProjectileBase
 {
 Obituary "%o was cooked by %k's Fire Bawmb."
 PROJECTILE
@@ -290,7 +290,7 @@ stop
 }
 }
 
-actor JcBlast // : MaceFX1
+actor JcBlast : ProjectileBase// : MaceFX1
 {
 Obituary "%o was cooked by %k's Fire Bawmb."
 PROJECTILE

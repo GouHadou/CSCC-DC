@@ -63,7 +63,7 @@ Goto Ready+1
 }
 }
 
-actor Pokeball
+actor Pokeball : ProjectileBase
 {
 PROJECTILE
 -NOGRAVITY
@@ -94,7 +94,7 @@ stop
 }
 }
 
-actor PokeFall
+actor PokeFall : ProjectileBase
 {
 PROJECTILE
 +HEXENBOUNCE

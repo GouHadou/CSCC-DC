@@ -48,6 +48,7 @@ Goto Ready+1
 actor MeteorStaff 
 {
 PROJECTILE
++MTHRUSPECIES
 +SHOOTABLE
 -NOBLOCKMAP
 +RIPPER
@@ -118,6 +119,7 @@ actor Meteor
 {
 Obituary "%o was turned into a crater by %k's Meteors."
 Projectile
++MTHRUSPECIES
 -FORCEXYBILLBOARD
 Damagetype "Meteor"
 +DontBlast

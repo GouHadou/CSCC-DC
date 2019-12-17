@@ -757,7 +757,7 @@ stop
 }
 }*/
 
-actor SpiritEcho : FastProjectile
+actor SpiritEcho : FastProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -879,6 +879,7 @@ inventory.maxamount 5
 actor SpiritBlast1
 {
 PROJECTILE
++MTHRUSPECIES
 +LOOKALLAROUND
 +SKYEXPLODE
 +DONTBLAST
@@ -1031,6 +1032,7 @@ stop
 actor EnergyCannon
 {
 PROJECTILE
++MTHRUSPECIES
 +LOOKALLAROUND
 +SKYEXPLODE
 +FORCEXYBILLBOARD
@@ -1227,6 +1229,7 @@ PROJECTILE
 +SKYEXPLODE
 +DONTBLAST
 +RIPPER
++MTHRUSPECIES
 -EXTREMEDEATH
 Speed 1
 Damage (0)
@@ -1265,7 +1268,7 @@ goto NoZSet
 }
 }
 
-actor LightComet1 : FastProjectile
+actor LightComet1 : FastProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -1426,6 +1429,7 @@ stop
 actor TerrorStopper1
 {
 PROJECTILE
++MTHRUSPECIES
 +LOOKALLAROUND
 +SKYEXPLODE
 +DONTBLAST

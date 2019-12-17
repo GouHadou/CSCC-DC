@@ -179,6 +179,7 @@ inventory.maxamount 1
 actor YellowCube
 {
 PROJECTILE
++MTHRUSPECIES
 -NOGRAVITY
 Radius 25
 Height 20 
@@ -206,6 +207,7 @@ stop
 actor YellowBlob
 {
 PROJECTILE
++MTHRUSPECIES
 -NOGRAVITY
 Radius 25
 Height 20 
@@ -296,6 +298,7 @@ Goto Ready+1
 actor YellowLaser
 {
 PROJECTILE
++MTHRUSPECIES
 +NOGRAVITY
 +RIPPER
 Radius 2
@@ -315,6 +318,7 @@ loop
 actor YellowPart
 {
 PROJECTILE
++MTHRUSPECIES
 Scale 2.5
 Height 16
 Radius 32

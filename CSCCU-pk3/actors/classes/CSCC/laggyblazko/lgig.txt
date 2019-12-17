@@ -100,6 +100,7 @@ WallBounceFactor 0.0
 Mass 10
 Speed 8
 Projectile
++MTHRUSPECIES
 bouncecount 5
 -Nogravity
 States

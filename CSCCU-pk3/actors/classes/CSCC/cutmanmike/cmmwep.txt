@@ -80,7 +80,7 @@ inventory.amount 1
 inventory.maxamount 28
 }
 
-actor HellfireCutter
+actor HellfireCutter : ProjectileBase
 {
 Obituary "%o had %p soul sliced by %k's Hellfire Cutter."
 PROJECTILE
@@ -166,7 +166,7 @@ stop
 }
 }
 
-actor HellfireDamager1
+actor HellfireDamager1 : ProjectileBase
 {
 Obituary "%o had %p soul sliced by %k's Hellfire Cutter."
 PROJECTILE
@@ -216,7 +216,7 @@ loop
 }
 
 
-actor 8BHexenFireStorm : FastProjectile
+actor 8BHexenFireStorm : FastProjectileBase
 {
 PROJECTILE
 damagetype "FireStorm"

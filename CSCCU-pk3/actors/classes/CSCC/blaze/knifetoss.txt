@@ -102,7 +102,7 @@ inventory.amount 1
 inventory.maxamount 150
 }
 
-actor KnifeShort
+actor KnifeShort : ProjectileBase
 {
 PROJECTILE 
 Radius 2 
@@ -137,7 +137,7 @@ speed 90
 damage (45)
 }
 
-actor KnifeSlash
+actor KnifeSlash : ProjectileBase
 {
 PROJECTILE 
 Radius 30

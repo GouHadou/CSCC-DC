@@ -103,6 +103,7 @@ stop
 actor SockSwing
 {
 PROJECTILE
++MTHRUSPECIES
 +DONTBLAST
 Radius 16
 Height 16

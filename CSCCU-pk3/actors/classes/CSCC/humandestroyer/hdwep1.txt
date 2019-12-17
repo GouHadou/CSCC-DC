@@ -90,7 +90,7 @@ inventory.amount 1
 inventory.maxamount 28
 }
 
-actor DestructorStart
+actor DestructorStart : ProjectileBase
 {
 Obituary "%o was ripped apart by %k's Destructor."
 PROJECTILE
@@ -117,7 +117,7 @@ stop
 }
 }
 
-actor Destructor// : MaceFX1
+actor Destructor : ProjectileBase// : MaceFX1
 {
 -SOLID
 PROJECTILE
@@ -142,7 +142,7 @@ loop
 }
 }
 
-actor DestructorTrail
+actor DestructorTrail : ProjectileBase
 {
 Obituary "%o was ripped apart by %k's Destructor."
 PROJECTILE
@@ -256,7 +256,7 @@ stop
 }
 }
 
-actor EarthShakerSpawner
+actor EarthShakerSpawner : ProjectileBase
 {
 PROJECTILE
 +FLOORHUGGER

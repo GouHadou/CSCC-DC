@@ -64,7 +64,7 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
-Actor SolarMineShot
+Actor SolarMineShot : ProjectileBase
 {
 PROJECTILE
 +FORCEXYBILLBOARD
@@ -109,7 +109,7 @@ stop
 }
 }
 
-Actor SolarBombShot
+Actor SolarBombShot : ProjectileBase
 {
 PROJECTILE
 +FORCEXYBILLBOARD
@@ -135,7 +135,7 @@ stop
 }
 
 
-actor Solarball
+actor Solarball : ProjectileBase
 {
 PROJECTILE
 +FORCEXYBILLBOARD

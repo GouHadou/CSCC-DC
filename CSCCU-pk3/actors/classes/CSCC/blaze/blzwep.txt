@@ -89,7 +89,7 @@ inventory.amount 1
 inventory.maxamount 108
 }
 
-actor BlazeCannonShot
+actor BlazeCannonShot : ProjectileBase
 {
 Obituary "%o was wrecked by %k's Hand Cannon."
 PROJECTILE 
@@ -229,7 +229,7 @@ Goto Ready+1
 }
 }
 
-actor BlazeRevolverShot : FastProjectile
+actor BlazeRevolverShot : FastProjectileBase
 {
 PROJECTILE 
 +HEXENBOUNCE
@@ -254,7 +254,7 @@ stop
 }
 }
 
-actor BlazeRevolverTrail
+actor BlazeRevolverTrail : BasicClientside
 {
 PROJECTILE
 +NOINTERACTION
@@ -312,7 +312,7 @@ Goto Ready+1
 }
 }
 
-actor BlazeCryoShot
+actor BlazeCryoShot : ProjectileBase
 {
 PROJECTILE 
 Radius 2
@@ -375,7 +375,7 @@ Goto Ready+1
 }
 }
 
-actor BlazeRPGShot
+actor BlazeRPGShot : ProjectileBase
 {
 PROJECTILE
 -NOGRAVITY
@@ -505,7 +505,7 @@ Goto Deselect
 }
 }
 
-actor BlazeSMGShot : FastProjectile
+actor BlazeSMGShot : FastProjectileBase
 {
 PROJECTILE 
 Radius 5
@@ -597,7 +597,7 @@ inventory.amount 1
 inventory.maxamount 28
 }
 
-actor FlareRocket
+actor FlareRocket : ProjectileBase
 {
 Obituary "%o didn't take caution around %k's Flare Rocket."
 PROJECTILE

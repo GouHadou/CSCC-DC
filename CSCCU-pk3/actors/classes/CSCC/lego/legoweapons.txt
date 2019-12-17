@@ -111,6 +111,7 @@ actor LegoMissile1
 {
 Obituary "%o was obliterated by %k's Missile Launcher."
 PROJECTILE
++MTHRUSPECIES
 +FORCEYBILLBOARD
 Radius 6
 Height 7
@@ -258,6 +259,7 @@ scale 2.5
 +RIPPER
 +FORCEXYBILLBOARD
 +SKYEXPLODE
++MTHRUSPECIES
 speed 60
 damage (0)
 gravity 1.5
@@ -277,6 +279,7 @@ actor LegoStickyMine : LegoStickyBomb
 {
 +NOGRAVITY
 +NOEXPLODEFLOOR
++MTHRUSPECIES
 Reactiontime 65
 damagetype "LegoStickyBomb"
 States

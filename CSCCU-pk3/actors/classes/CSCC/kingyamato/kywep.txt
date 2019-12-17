@@ -180,6 +180,7 @@ stop
 actor YamatoTornadoSpawner
 {
 PROJECTILE
++MTHRUSPECIES
 Speed 1
 Reactiontime 10
 states
@@ -194,6 +195,7 @@ loop
 actor YamatoTornado
 {
 PROJECTILE
++MTHRUSPECIES
 Radius 5
 Height 5
 scale 1.0
@@ -232,6 +234,7 @@ loop
 actor YamatoMelee
 {
 PROJECTILE
++MTHRUSPECIES
 +DONTBLAST
 Damagetype "SpearBarrage"
 Obituary "%o was stabbed fiercely by %k's Spear Barrage."
@@ -304,6 +307,7 @@ inventory.maxamount 1
 actor YamatoJetStealer
 {
 PROJECTILE
++MTHRUSPECIES
 Speed 60
 Radius 5
 Height 5

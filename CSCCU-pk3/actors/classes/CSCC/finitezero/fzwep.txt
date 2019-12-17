@@ -148,7 +148,7 @@ stop
 }
 }
 
-actor SolarLaser 
+actor SolarLaser : ProjectileBase
 {
 Obituary "%o was PEW PEW'D by %k's Solar Laser."
 PROJECTILE 

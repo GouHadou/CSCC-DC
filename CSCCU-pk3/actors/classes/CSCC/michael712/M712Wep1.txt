@@ -83,6 +83,7 @@ actor M712Flame1
 {
 Obituary "%o was burnt to ash by %k's Aura Flame."
 PROJECTILE 
++MTHRUSPECIES
 Radius 12 
 Height 9 
 scale 2.5 
@@ -111,6 +112,7 @@ actor M712Flame2
 {
 Obituary "%o was burnt to ash by %k's Aura Flame."
 PROJECTILE 
++MTHRUSPECIES
 Radius 10 
 Height 7 
 scale 2

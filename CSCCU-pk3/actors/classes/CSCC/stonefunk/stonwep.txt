@@ -235,6 +235,7 @@ actor StoneRockToss1
 {
 Obituary "%o was buried alive by %k's Funky Stones."
 PROJECTILE
++MTHRUSPECIES
 +LOOKALLAROUND
 +SKYEXPLODE
 +FORCEXYBILLBOARD

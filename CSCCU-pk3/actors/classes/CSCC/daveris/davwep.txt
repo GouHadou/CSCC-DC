@@ -96,7 +96,7 @@ Goto Ready+1
 }
 
 
-actor IceShardShot 
+actor IceShardShot : ProjectileBase
 {
 Obituary "%o was suddenly frozen by %k's Ice Shards."
 PROJECTILE
@@ -123,7 +123,7 @@ stop
 
 
 
-actor IceShard1 
+actor IceShard1 : ProjectileBase
 {
 Obituary "%o was suddenly frozen by %k's Ice Shards."
 PROJECTILE
@@ -150,7 +150,7 @@ stop
 
 
 
-actor IceShard2 
+actor IceShard2 : ProjectileBase
 {
 Obituary "%o was suddenly frozen by %k's Ice Shards."
 PROJECTILE
@@ -175,7 +175,7 @@ stop
 }
 }
 
-actor IceShard3 
+actor IceShard3 : ProjectileBase
 {
 Obituary "%o was suddenly frozen by %k's Ice Shards."
 PROJECTILE
@@ -200,7 +200,7 @@ stop
 }
 }
 
-actor IceShards
+actor IceShards: ProjectileBase
 {
 Obituary "%o was suddenly frozen by %k's Ice Shards."
 PROJECTILE
@@ -220,7 +220,7 @@ loop
 }
 }
 
-actor CoolestGuy
+actor CoolestGuy : ProjectileBase
 {
 PROJECTILE
 scale 2.5
@@ -307,7 +307,7 @@ stop
 }
 
 
-actor IceFlurryLauncher
+actor IceFlurryLauncher 
 {
 scale 2.5
 PROJECTILE

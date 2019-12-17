@@ -219,6 +219,7 @@ stop
 actor JaxPsychoBase
 {
 PROJECTILE
++MTHRUSPECIES
 Damage (0)
 scale 2.5
 States
@@ -396,6 +397,7 @@ stop
 actor JaxHolder
 {
 PROJECTILE
++MTHRUSPECIES
 Damage (0)
 scale 2.5
 +NOINTERACTION

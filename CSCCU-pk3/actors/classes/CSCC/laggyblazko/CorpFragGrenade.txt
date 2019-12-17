@@ -92,6 +92,7 @@ Radius 2
 scale 2.5
 Damage (0)
 -NOGRAVITY
++MTHRUSPECIES
 -NOTELEPORT
 speed 20
 +HEXENBOUNCE

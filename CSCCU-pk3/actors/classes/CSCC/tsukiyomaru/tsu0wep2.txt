@@ -65,6 +65,7 @@ inventory.maxamount 175
 actor CosmicPulse1
 {
 PROJECTILE
++MTHRUSPECIES
 +LOOKALLAROUND
 +SKYEXPLODE
 +FORCEXYBILLBOARD
@@ -147,6 +148,7 @@ PROJECTILE
 +DONTBLAST
 +FORCEXYBILLBOARD
 +RIPPER
++MTHRUSPECIES
 Speed 60
 damagetype "LightTackle" //This damage type should cause players to be tossed about, like old Gravity Hold, except with less height.
 Obituary "%o has been tackled to the sun by %k's Light Tackle."

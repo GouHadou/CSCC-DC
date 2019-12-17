@@ -119,6 +119,7 @@ inventory.maxamount 56
 actor WindTornadoSpawnerStart 
 {
 PROJECTILE 
++MTHRUSPECIES
 Radius 35 
 Height 5 
 scale 2.5
@@ -138,6 +139,7 @@ stop
 actor WindTornadoSpawnerMoving 
 {
 PROJECTILE 
++MTHRUSPECIES
 Radius 35 
 Height 5 
 scale 2.5 
@@ -165,6 +167,7 @@ stop
 actor WindTornadoAttack1 
 {
 PROJECTILE 
++MTHRUSPECIES
 Radius 35 
 Height 30 
 Yscale 2.5
@@ -215,6 +218,7 @@ stop
 actor WindTornadoAttack2 
 {
 PROJECTILE 
++MTHRUSPECIES
 Radius 35 
 Height 30 
 Yscale 2.5
@@ -265,6 +269,7 @@ stop
 actor WindTornadoAttack3
 {
 PROJECTILE 
++MTHRUSPECIES
 Radius 35 
 Height 30 
 Yscale 2.5
@@ -314,7 +319,8 @@ stop
 
 actor WindTornadoAttack4 
 {
-PROJECTILE 
+PROJECTILE
++MTHRUSPECIES 
 Radius 35 
 Height 30 
 Yscale 2.5
@@ -377,6 +383,7 @@ stop
 actor MeteorStaffOld
 {
 PROJECTILE
++MTHRUSPECIES
 translation "192:192=23:23", "198:198=43:43"
 +SHOOTABLE
 -NOBLOCKMAP

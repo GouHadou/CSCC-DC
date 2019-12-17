@@ -55,6 +55,7 @@ actor CopyLightning
 {
 Obituary "%o was overloaded by %k's Static Shock."
 PROJECTILE
++MTHRUSPECIES
 damagetype "StaticShock"
 +PIERCEARMOR
 scale 2.5

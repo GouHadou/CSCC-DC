@@ -410,6 +410,7 @@ actor BikClawShot
 {
 Obituary "%o was facestabbed by %k's Eternal Torment."
 PROJECTILE
++MTHRUSPECIES
 Damage (0)
 +RIPPER
 +DONTBLAST

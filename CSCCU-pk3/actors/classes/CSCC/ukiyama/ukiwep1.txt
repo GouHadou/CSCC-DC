@@ -725,6 +725,7 @@ actor UkiShot
 {
 Obituary "%o got modified by %k's *insert name here*." 
 PROJECTILE 
++MTHRUSPECIES
 Gravity 0.5
 Radius 7 
 Height 7 

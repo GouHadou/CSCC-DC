@@ -625,6 +625,7 @@ damagetype "SavRush"
 Obituary "%o was trampled over by %k's Thunder Rush."
 +RIPPER
 +PIERCEARMOR
++MTHRUSPECIES
 speed 0
 States
 {

@@ -211,7 +211,7 @@ Goto Ready
 }
 }
 
-actor BikSine
+actor BikSine : ProjectileBase
 {
 Obituary "%o was corrected by %k's Trigonometrical Functions."
 PROJECTILE
@@ -270,7 +270,7 @@ stop
 }
 }
 
-actor BikCosine
+actor BikCosine : ProjectileBase
 {
 Obituary "%o was corrected by %k's Trigonometrical Functions."
 PROJECTILE
@@ -313,7 +313,7 @@ stop
 }
 }
 
-actor BikCosineSpread
+actor BikCosineSpread : ProjectileBase
 {
 Obituary "%o was corrected by %k's Trigonometrical Functions."
 PROJECTILE
@@ -330,7 +330,7 @@ SHOS CDCDCDCDCDCDCD 3
 stop
 }
 }
-actor BikTangent
+actor BikTangent : ProjectileBase
 {
 PROJECTILE
 Radius 16
