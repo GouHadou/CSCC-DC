@@ -206,15 +206,17 @@ function int GetTargetPitch (int tid1, int tid2)
     return -VectorAngle(xy, z);
 }
 
-#DEFINE BASEBLASTMIN 60
+#DEFINE BASEBLASTMIN 120
 Script "BlastKnockback" (int BlastThrust, int ThrustForceH, int MaxRadius)
 {
 
 int userTID;
 int userTeam;
-Bool SelfThrust = True;
+Bool SelfThrustOnly = False;
 int ThrustForce = BlastThrust;
-	if(ThrustForce < 0) {SelfThrust = False; ThrustForce = ThrustForce*-1;}
+	if(ThrustForce < 0) {SelfThrustOnly = true; ThrustForce = ThrustForce*-1;}
+int AdditiveForce;
+	if(MaxRadius < 0) {AdditiveForce = 1; MaxRadius = MaxRadius*-1;}
 
 	if(ActivatorTID() == 0)
 	{
@@ -241,6 +243,7 @@ int pitch;
 
 int FinalForce;
 int FinalForceH;
+
 //int ThrustDrop = NoNeg( (Dist/10) - MaxRadius) << 16;
 //SetActivatorToTarget(0);
 
@@ -253,7 +256,7 @@ For(int q = 0;q < ServerMax; q++)
 			continue;
 		}
 		
-		if( (userTID == q) && (SelfThrust == False)){}
+		if( (userTID != targetTID) && (SelfThrustOnly == True)){continue;}
 		if(ACS_ExecuteWithResult(975, 1) == 1)
 		{
 			if(userTeam == GetPlayerInfo(q, PLAYERINFO_TEAM) && userTID != targetTID)
@@ -261,6 +264,8 @@ For(int q = 0;q < ServerMax; q++)
 				continue;
 			}
 		}
+		
+		//if()
 		
 		//log(s:"distance is ",i:xyzDistance(0, targetTID));
 		if(xyzDistance(0, targetTID) < MaxRadius && checksight(0,targetTID,0) == True
@@ -293,8 +298,9 @@ For(int q = 0;q < ServerMax; q++)
 		 PlayerY = GetActorY(targetTID);
 		 
 		ThrustThing(VectorAngle(ActX - PlayerX,ActY - PlayerY)>>8,(FixedMul(XYThrust , 1.0 - fixedDiv(distdiff,100)))>> 16,1,targetTID);
-		thrustthingz(targetTID,(FixedMul(ZThrust , 1.0 - fixedDiv(distdiff,100)))>> 16,1,0);
+		thrustthingz(targetTID,(FixedMul(ZThrust , 1.0 - fixedDiv(distdiff,100)))>> 16,1,AdditiveForce);
 	}
 }
 
 }
+
