@@ -49,6 +49,7 @@ Goto FireRight
 FireRightCharge:
 YNGF A 0 A_GiveInventory("WeaponCharge", 1)
 YNGF A 1 A_JumpIfInventory("WeaponCharge", 20, "FireRightCharge2a")
+YNGF A 0 A_JumpIfInventory("Isbot", 1, "FireRight")
 YNGF A 0 A_Refire("FireRightCharge")
 Goto FireRight
 FireRight:
@@ -78,6 +79,7 @@ Goto FireFinish
 FireLeftCharge:
 YNGF A 0 A_GiveInventory("WeaponCharge", 1)
 YNGF A 1 A_JumpIfInventory("WeaponCharge", 20, "FireLeftCharge2a")
+YNGF A 0 A_JumpIfInventory("Isbot", 1, "FireLeft")
 YNGF A 0 A_Refire("FireLeftCharge")
 Goto FireLeft
 FireLeft:
@@ -88,6 +90,7 @@ YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
 Goto LeftFinish
 FireLeftCharge2a:
 YNGF BC 1
+
 Goto FireLeftCharge2b
 FireLeftCharge2b:
 YNGF C 1

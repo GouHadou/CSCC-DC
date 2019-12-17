@@ -7,7 +7,7 @@ player.sidemove 0.76, 0.76
 Health 200
 Player.MaxHealth 200
 Player.StartItem "ClassicTankWeapon"
-Player.StartItem "TankOppClassItems"
+Player.StartItem "TankOperatorClassItems"
 
 states
 {
@@ -33,7 +33,7 @@ goto Spawn
 }
 }
 
-actor TankOppClassItems : CustomInventory
+actor TankOperatorClassItems : CustomInventory
 {
 inventory.amount 1
 inventory.maxamount 1

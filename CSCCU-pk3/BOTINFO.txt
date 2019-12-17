@@ -1436,3 +1436,22 @@
 	script = "humanbot"
 	chatfrequency = 50
 }
+
+{
+	name = "\ckYang"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "EmberCelica"
+	color = "00 00 00"
+	gender = "Female"
+	skin = "Base"
+	class = "Yang"
+	revealed = true
+	script = "humanbot"
+	
+	chatfrequency = 50
+}
