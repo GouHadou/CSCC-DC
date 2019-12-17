@@ -120,7 +120,7 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"AtomicSuplexBoss", "Zangief", "ZangiefClassItems"},//100
 //Bronze
 {"EdgeGunBoss", "EdgeLord (Gun)", "EdgeLordClassItems"},//101
-{"EdgeBladeBoss", "EdgeLord (Katana", "EdgeLordClassItems"},//102
+{"EdgeBladeBoss", "EdgeLord (Katana)", "EdgeLordClassItems"},//102
 {"PistonTremorBoss", "Pistonman", "PistonmanClassItems"},//103
 {"CrazyWaveBoss", "Insane Pharaohman", "InanePharaohmanClassItems"},//104
 {"SanctuaryTech", "Insane Pharaohman", "InanePharaohmanClassItems"},//105
@@ -140,7 +140,7 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"HikariArms", "Hikari (Punch Style)", "HikariClassItems"},//119
 {"HikariLegs", "Hikari (Kick Style)", "HikariClassItems"},//120
 {"NinjaArts", "Super Shinobi", "SuperShinobiClassItems"}, //121
-{"BullGatorSleepPierce", "Bull Gator (Pierce)", "BullGatorClassItems"},//122
+{"BullGatorSleepPierce", "Bull Gator (Sleep Pierce)", "BullGatorClassItems"},//122
 {"BullGatorSiphonSplitter", "Bull Gator (Siphon Splitter)", "BullGatorClassItems"},//123
 {"BullGatorConfusionBurst", "Bull Gator (Confusion Burst)", "BullGatorClassItems"},//124
 {"DarknessWithin1", "Akane (Sun Splitter)", "AkaneClassItems"},//125
@@ -219,8 +219,8 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},//195
 {"GeeBurstBoss1", "Gee (Healing Burst)", "GeeClassItems"},//196
 {"Psybeamwep", "Abra", "NONE"},//197
-{"WeedEater1", "Spybot (Concrete Coil)", "SpybotClassItems"},//198
-{"WeedEater2", "Spybot (Knight CrackerBlast)", "SpybotClassItems"},//199
+{"WeedEater1", "Spybot (Concrete Coil)", "NONE"},//198
+{"WeedEater2", "Spybot (Knight CrackerBlast)", "NONE"},//199
 
 };
 
