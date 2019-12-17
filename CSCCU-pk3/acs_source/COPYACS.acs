@@ -316,12 +316,6 @@ Switch(MorphMode)
 	UnmorphActor(ActivatorTID(), 0);
 	ClearInventory();
 	GiveInventory("CanCopyWeapons", 1);
-	TakeInventory("TsuPowerChanger",1);
-	TakeInventory("TsuSpeedChanger",1);
-	TakeInventory("TsuSpreadChanger",1);
-	TakeInventory("LDRamActivator", 1);
-	TakeInventory("SentinelTriggerItem",1);
-	TakeInventory("OilBoat",999);
 	SetPlayerProperty(0, 0, 16);
 	SetPlayerProperty(0, 0, 3);
 	SetPlayerProperty(0, 0, 4);
