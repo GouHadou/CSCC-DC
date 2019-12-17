@@ -33,20 +33,22 @@ Pain.CopyAlt:
 Pain.CopyMain:
 BAS3 H 0 A_SpawnItemEx("LegoCopyHitMain",1)
 goto pain+1
+/*
 Pain.LegoMissile:
 Pain.LegoStickyBomb:
-BLZE H 0 A_JumpIf(momz>0, "Launch")
+BLZE H 0 //A_JumpIf(momz>0, "Launch")
 goto Pain+1
 Launch:
-BLZE H 0 ThrustThingZ(0,90,0,0)
-BLZE H 0 A_SpawnItemEx("RocketJumper")
+BLZE H 0 //ThrustThingZ(0,90,0,0)
+BLZE H 0 //A_SpawnItemEx("RocketJumper")
 goto Pain+1
+*/
 Pain.Gravity:
-PLAY H 0 ThrustThingZ(0,150,1,0)//Strong against Gravity
+PLAY H 0 //ThrustThingZ(0,150,1,0)//Strong against Gravity
 Goto Pain
 Pain.Drill:
 Pain.Burst:
-PLAY H 0 A_SpawnItemEx("RocketJumper")
+PLAY H 0 //A_SpawnItemEx("RocketJumper")
 Pain:
 BAS3 H  0 //A_Stop
 BAS3 H  0 A_ClearTarget

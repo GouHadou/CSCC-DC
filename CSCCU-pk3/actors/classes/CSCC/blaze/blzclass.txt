@@ -26,13 +26,15 @@ Pain.CopyAlt:
 Pain.CopyMain:
 BLZE H 0 A_SpawnItemEx("BlazeCopyHitMain",1)
 goto pain+1
+/*
 Pain.Flare:
-BLZE H 0 A_JumpIf(momz>0, "Launch")
+BLZE H 0 //A_JumpIf(momz>0, "Launch")
 goto Pain+1
 Launch:
-BLZE H 0 ThrustThingZ(0,90,0,0)
-BLZE H 0 A_SpawnItemEx("RocketJumper")
+BLZE H 0 //ThrustThingZ(0,90,0,0)
+BLZE H 0 //A_SpawnItemEx("RocketJumper")
 goto Pain+1
+*/
 Death.Backstab:
 BLZE H 0 SetPlayerProperty(0, 0, 4)
 BLZE H 0 A_TakeInventory("PharaohCharge",999)   

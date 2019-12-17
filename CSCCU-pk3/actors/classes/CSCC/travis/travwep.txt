@@ -60,16 +60,33 @@ GDSW A 1 A_Raise
 Loop
 Fire:
 GDSW A 0 A_JumpIfInventory("IsBot", 1, "BotFire")
-GDSW A 0 A_JumpIfNoAmmo(4)
+GDSW A 0 A_JumpIfNoAmmo("Hold")
 GDSW A 0 A_PlaySoundEx("weapon/solshot","Weapon")
 GDSW B 0 A_FireCustomMissile("SolShot",0,0,8,0)
 GDSW B 0 A_TakeInventory("SolarEnergy",4)
-GDSW B 12
-Goto Hold+17
+GDSW B 2
+Goto Hold
 Hold:
+GDSW B 1 
+GDSW A 0 A_GiveInventory("WeaponCharge",1)
+GDSW A 0 A_JumpIfInventory("WeaponCharge", 8, "Hold.Wave")
+GDSW B 0 A_Refire("hold")
+Goto Fire.After
+
+Hold.WaveStart:
+GDSW B 0
+Goto Hold.Wave+17
+
+Hold.Wave:
 GDSW A 0 A_JumpIfInventory("IsBot", 1, "BotHold")
 GDSW A 0 A_JumpIfNoAmmo("NoAmmo")
 GDSW A 0 A_PlaySoundEx("weapon/solwave","Weapon")
+GDSW B 0 A_FireCustomMissile("SolWave",32,0,4,0)
+GDSW B 0 A_FireCustomMissile("SolWave",18,0,4,0)
+GDSW B 0 A_FireCustomMissile("SolWave",0,0,4,0)
+GDSW B 0 A_FireCustomMissile("SolWave",-18,0,4,0)
+GDSW B 0 A_FireCustomMissile("SolWave",-32,0,4,0)
+/*
 GDSW B 0 A_SpawnItemEx("SolWave",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 0, 0, 0)
 GDSW B 0 //A_SpawnItemEx("SolWave",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 30, 0, 0)
 GDSW B 0 //A_SpawnItemEx("SolWave",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, -30, 0, 0)
@@ -83,10 +100,16 @@ GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, 
 GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 30, 0, 0)
 GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, -30, 0, 0)
 GDSW B 0 A_TakeInventory("SolarEnergy",1)
+*/
+GDSW B 0 A_TakeInventory("SolarEnergy",1)
 GDSW B 2
-GDSW B 0 A_Refire
+GDSW B 0 A_Refire("Hold.Wave")
+Goto Fire.After
+
+Fire.After:
+GDSW A 0 A_TakeInventory("WeaponCharge",999)
 GDSW A 0 A_StopSound(CHAN_WEAPON)
-GDSW B 2
+//GDSW B 2
 Goto Ready+1
 AltFire:
 AltHold: 
@@ -103,6 +126,8 @@ GDSW A 0 A_StopSound(CHAN_WEAPON)
 NoAmmo:
 GDSW A 0 A_StopSound(CHAN_WEAPON)
 GDSW A 1 //ACS_Execute(979,0)
+GDSW B 0 A_Refire("NoAmmo")
+GDSW A 0 A_TakeInventory("WeaponCharge",999)
 GDSW A 0 A_JumpIfInventory("IsBot", 1, "AltFire")
 Goto Ready+1
 BotFire:
@@ -120,17 +145,20 @@ BotHold2:
 GDSW A 0 A_JumpIfNoAmmo("NoAmmo")
 GDSW A 0 A_Recoil(-3)
 GDSW A 0 A_PlaySoundEx("weapon/solwave","Weapon")
-GDSW B 0 A_SpawnItemEx("SolWave",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 0, 0, 0)
+GDSW B 0 A_FireCustomMissile("SolWave",15,0,4,0)
+GDSW B 0 A_FireCustomMissile("SolWave",0,0,4,0)
+GDSW B 0 A_FireCustomMissile("SolWave",-15,0,4,0)
+GDSW B 0 //A_SpawnItemEx("SolWave",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 0, 0, 0)
 GDSW B 0 //A_SpawnItemEx("SolWave",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 30, 0, 0)
 GDSW B 0 //A_SpawnItemEx("SolWave",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, -30, 0, 0)
-GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 0, 0, 0)
-GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 30, 0, 0)
-GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, -30, 0, 0)
+GDSW B 0 //A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 0, 0, 0)
+GDSW B 0 //A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 30, 0, 0)
+GDSW B 0 //A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, -30, 0, 0)
 GDSW B 0 A_TakeInventory("SolarEnergy",1)
 GDSW B 2
-GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 0, 0, 0)
-GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 30, 0, 0)
-GDSW B 0 A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, -30, 0, 0)
+GDSW B 0 //A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 0, 0, 0)
+GDSW B 0 //A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, 30, 0, 0)
+GDSW B 0 //A_SpawnItemEx("SolWaveFX",cos(-pitch)*48,-2,28+(sin(-pitch)*48), momx, momy, momz, -30, 0, 0)
 GDSW B 2
 GDSW B 0 A_Refire
 GDSW A 0 A_StopSound(CHAN_WEAPON)
@@ -184,21 +212,62 @@ bloodtype ""
 +GHOST
 +NORADIUSDMG
 +THRUGHOST
-Speed 0
-Damage (12)//12
+Speed 35
+Damage (3)//12
 Height 5//5
-Radius 36//5
+Radius 9//5
 damagetype "GDSWave"
 painchance 256
 States
 {
 Spawn:
-TNT1 A 6
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEX("SolWave2",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_Stop
+TNT1 A 2 A_SpawnItemEX("SolWaveFX",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
 stop
 }
 }
 
-actor SolWaveFX
+actor SolWave2 : SolWave
+{
+    States
+    {
+    Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEX("SolWave3",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+    TNT1 A 0 A_Stop
+    TNT1 A 2 A_SpawnItemEX("SolWaveFX2",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+    stop
+    }
+}
+
+actor SolWave3 : SolWave
+{
+    States
+    {
+    Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEX("SolWave4",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+    TNT1 A 0 A_Stop
+    TNT1 A 2 A_SpawnItemEX("SolWaveFX3",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+    stop
+    }
+}
+
+actor SolWave4 : SolWave
+{
+    States
+    {
+    Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_Stop
+    TNT1 A 2 A_SpawnItemEX("SolWaveFX3",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION)
+    stop
+    }
+}
+
+actor SolWaveFX : FXActor_B
 {
 Projectile
 +NOINTERACTION
@@ -208,13 +277,26 @@ Speed 0
 Damage (0)
 Height 0
 Radius 0
-scale 2.5
+scale 0.5
+Alpha 0.9
 States
 {
 Spawn:
-GDSW DWD 2
+GDSW DWD 2 A_Fadeout(0.2)
 stop
 }
+}
+
+actor SolWaveFX2 : SolWaveFX
+{
+scale 1.5
+Alpha 0.9
+}
+
+actor SolWaveFX3 : SolWaveFX
+{
+scale 2.5
+Alpha 0.9
 }
 
 actor SolCharge

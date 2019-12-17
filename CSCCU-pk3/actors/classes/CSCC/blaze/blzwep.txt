@@ -615,13 +615,29 @@ loop
 Death:
 BLZC D 0 A_Stop  
 BLZC D 0 A_PlaySoundEx("weapon/crackerexplode", "Weapon")
-BLZC D 0 A_Explode(10, 128,0)
-BLZB D 0 A_CustomMissile("FlareRocketJump")
+BLZC D 0 A_Explode(35, 128,0)
+BLZC D 0 A_Spawnitemex("FlareRocketJump",0,0,-10)
 NAPA EFGHIJKLMNOPQRS 1 Bright
 stop
 }
 }
 
+actor FlareRocketJump : BasicExplosion //
+{
++NOINTERACTION
++NOCLIP
+States
+{
+Spawn:
+MINB A 0 
+NAPC D 0 //A_Explode(35, 350, 1,0,36)
+MINB A 0 ACS_NamedExecuteAlways("BlastKnockBack",0,-90,50,200) //Negative value on 1st arg means only the owner is effected
+TNT1 AA 1 
+stop
+}
+}
+
+/*
 actor FlareRocketJump
 {
 PROJECTILE
@@ -642,7 +658,7 @@ TNT1 A 1
 stop
 }
 }
-
+*/
 
 
 
