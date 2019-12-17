@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 83
+#define MAX_MORPHS 138
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -99,7 +99,64 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"LaserCannonWep", "Lord Damager (Laser Cannon)", "LordDamagerClassItems"},//81
 {"PyrokinesisWep", "Jake (Pyrokinesis)", "JakeClassItems"},//82
 {"NovaBomberWep", "Jake (Nova Bomber)", "JakeClassItems"},//83
-
+//Ice Ice Baby
+{"WeavileWep", "Weavile", "WeavileClassItems"},//84
+{"BlizzardSwordBoss", "Blizzard Knight", "BlizzardKnightClassItems"},//85
+{"DiamondIceWep", "Diamond IceMan", "DiamondIceManClassItems"},//86
+{"IceMagic", "Ice Mage", "IceMageClassItems"},//87 <---killed the dinosaurs
+{"BlizzardWaveBoss", "Nega Swordman", "NegaSwordManClassItems"},//88
+{"CoolerClassWep", "Weo Weo Ice", "WeoWeoIceClassItems"},//89 (Once again, but why though?)
+{"BozuBallWep", "Bozu", "BozuClassItems"},//90
+{"BoltPistol", "Mech Unit B", "MechUnitBClassItems"},//91
+//There are no weaknesses
+{"TreoWep", "Treo", "TreoClassItems"},//92
+{"TankSnailWeapon", "TankSnail", "TankSnailClassItems"},//93
+{"EnergyBladeWeapon", "Ceridran (Energy Blade 1)", "CeridranClassItems"},//94
+{"EnergyBladeWeapon2", "Ceridran (Energy Blade 2)", "CeridranClassItems"},//95
+{"VoltLaserWep", "Viz", "VizClassItems"},//96
+{"StormPunchWep", "Tsuyoi", "TsuyoiClassItems"},//97
+{"JuriClassWeapon", "Juri Kitai", "JuriKitaiClassItems"},//98
+{"NatureStaffWep", "Natures Wonder", "NatureswonderClassItems"},//99
+{"AtomicSuplexBoss", "Zangief", "ZangiefClassItems"},//100
+//Bronze
+{"EdgeGunBoss", "EdgeLord (Gun)", "EdgeLordClassItems"},//101
+{"EdgeBladeBoss", "EdgeLord (Katana", "EdgeLordClassItems"},//102
+{"PistonTremorBoss", "Pistonman", "PistonmanClassItems"},//103
+{"CrazyWaveBoss", "Insane Pharaohman", "InanePharaohmanClassItems"},//104
+{"SanctuaryTech", "Insane Pharaohman", "InanePharaohmanClassItems"},//105
+{"FireBoltTech", "Insane Pharaohman", "InanePharaohmanClassItems"},//106
+{"SetsWatchTech", "Insane Pharaohman", "InanePharaohmanClassItems"},//107
+{"ExecuteTech1", "Insane Pharaohman", "InanePharaohmanClassItems"},//108
+{"AscensionTech", "Insane Pharaohman", "InanePharaohmanClassItems"},//109
+{"ExecuteTech2", "Insane Pharaohman", "InanePharaohmanClassItems"},//110
+{"ExecuteTech3", "Insane Pharaohman", "InanePharaohmanClassItems"},//111
+{"CrazyWaveBossUp", "Insane Pharaohman", "InanePharaohmanClassItems"},//112
+{"OrbitalMissileBoss", "Badz", "BadzClassItems"},//113
+{"FlamerynthrowerBoss", "Flamryn", "FlamerynClassItems"},//114
+{"AnkhzirusStaffBoss",  "Ankhzirus (Sand Staff)", "AnkhzirusClassItems"},//115
+{"AnkhzirusBandageBoss",  "Ankhzirus (Ancient Bindings)", "AnkhzirusClassItems"},//116
+{"StormLightningBoss", "Storm Conductor (Spark Marker)", "StormConductorClassItems"},//117
+{"StormRainBoss", "Storm Conductor (Rain Parade)", "StormConductorClassItems"}, //118
+{"HikariArms", "Hikari (Punch Style)", "HikariClassItems"},//119
+{"HikariLegs", "Hikari (Kick Style)", "HikariClassItems"},//120
+{"NinjaArts", "Super Shinobi", "SuperShinobiClassItems"}, //121
+{"BullGatorSleepPierce", "Bull Gator (Pierce)", "BullGatorClassItems"},//122
+{"BullGatorSiphonSplitter", "Bull Gator (Siphon Splitter)", "BullGatorClassItems"},//123
+{"BullGatorConfusionBurst", "Bull Gator (Confusion Burst)", "BullGatorClassItems"},//124
+{"DarknessWithin1", "Akane (Sun Splitter)", "AkaneClassItems"},//125
+{"DarknessWithin2", "Akane (Darkness Spheres)", "AkaneClassItems"},//126
+{"BurstBlade", "Aegis", "AegisClassItems"},//127
+{"ValkyrieMaidenMoveset", "Valkyrie Maiden", "ValkyrieMaidenClassItems"},//128
+{"VocalMicBoss1", "Vocal Woman (Offense)", "VocalWomanClassItems"},//129
+{"VocalMicBoss2", "Vocal Woman (Support)", "VocalWomanClassItems"},//130
+{"ClassicTankWeapon", "Tank Operator", "TankOperatorClassItems"},//131
+{"SnailBreederPets", "Snail Breeder", "SnailBreederClassItems"},//132
+{"EmberCelica", "Yang", "YangClassItems"},//133
+{"FumeSprayNade", "Fume (Grenade)", "FumeClassItems"},//134
+{"FumeSprayWave", "Fume (Wave)", "FumeClassItems"},//135
+{"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//136
+{"UndyneSpearBoss", "Undyne", "UndyneStats"},//"UndyneClassItems"},//137
+{"UndyingSpearBoss", "Undying", "UndyingClassItems"},//138
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

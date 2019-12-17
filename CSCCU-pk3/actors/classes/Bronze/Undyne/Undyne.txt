@@ -8,7 +8,10 @@ Player.MaxHealth 65
 //Player.MaxHealth 200
 player.forwardmove 0.6, 0.6
 player.sidemove 0.58, 0.58
-player.startitem "UndyneClassItems"
+//player.startitem "UndyneClassItems"
+player.startitem "UndyneStats"
+player.startitem "UndyneSelfDestructItem"
+player.startitem "UndyneSelfDestruct", 1
 states
 {
 Spawn:
@@ -235,9 +238,60 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("UndyneStats")
-TNT1 A 0 A_GiveInventory("UndyneSelfDestructItem")
-TNT1 A 0 A_GiveInventory("UndyneSelfDestruct")
+TNT1 A 0 A_GiveInventory("UndyneSpearAmmo",999)
+//TNT1 A 0 A_GiveInventory("UndyneSelfDestructItem")
+//TNT1 A 0 A_GiveInventory("UndyneSelfDestruct")
+TNT1 A 0 ACS_NamedExecuteWithResult("SetActorProperty_Fixed",APROP_SPEED,1,1)
+TNT1 A 0 ACS_NamedExecuteWithResult("SetActorProperty_Int",APROP_SpawnHealth,65)
 stop
+}
+}
+
+actor UndyingClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveInventory("UndyingFlag",1)
+//TNT1 A 0 A_GiveInventory("UndyneSelfDestructItem")
+//TNT1 A 0 A_GiveInventory("UndyneSelfDestruct")
+TNT1 A 0 ACS_NamedExecuteWithResult("SetActorProperty_Fixed",APROP_SPEED,2,5)
+TNT1 A 0 ACS_NamedExecuteWithResult("SetActorProperty_Int",APROP_SpawnHealth,CallACS("Undyne_Min",50+30*CallACS("Undyne_Enemy_Vicinity_Count",1500,1),200))
+TNT1 A 0 A_GiveInventory("DecayFlag",1)
+TNT1 A 0 ACS_NamedExecuteAlways("Undyne_Decay_Script",0,5,35)
+
+stop
+}
+}
+actor UndyneSpearBossMorph : Undyne
+{
++NOSKIN
+player.morphweapon "UndyneSpearBoss"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
+}
+}
+
+actor UndyingSpearBossMorph : UndyneSpearBossMorph
+{
++NOSKIN
+player.morphweapon "UndyingSpearBoss"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBaseCSCC::Pain+2"
 }
 }
