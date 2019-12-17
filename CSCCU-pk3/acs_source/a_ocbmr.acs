@@ -511,7 +511,7 @@ function int GetTargetPitch (int tid1, int tid2)
     int x, y, z, xy, a;
     x = GetActorX(tid2) - GetActorX(tid1);
     y = GetActorY(tid2) - GetActorY(tid1);
-    z = GetActorZ(tid2) - GetActorZ(tid1);
+    z = GetActorZ(tid2)+GetActorProperty(tid2,APROP_HEIGHT) - GetActorZ(tid1);
     a = VectorAngle(x, y);
 
     if ((a + 0.125) % 0.5 > 0.25)

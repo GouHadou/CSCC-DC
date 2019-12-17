@@ -1146,15 +1146,14 @@ IsSelected NinjaWep // The weapon's name needs to be here. Might be case sensiti
 	DrawBar "BARAMM31", "BAREMPTY", Ammo1, vertical, 16, 8; // You need to put the bar graphic here.
 	}		
 
-IsSelected MucusCopyWep
+	IsSelected BallisticMucusWep
 	{
 	DrawBar "BLMUBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	}
 	
-IsSelected TankSnailWeapon{
-   DrawBar "TSNAMF", "TSNAME", Ammo1, horizontal, 235, 174;
-   DrawBar "TSNHEF", "TSNHEE", Ammo2, horizontal, 235, 157;
-}
+IsSelected TankSnailWeapon{Drawbar"BARAMM13", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory HotSnail, 1{DrawBar "BARFLS2", "BAREMPTY", Ammo1, vertical, 16, 8;}}
+
 
 IsSelected EnergyBladeWeapon // The weapon's name needs to be here. Might be case sensitive so be careful.
 	{
@@ -2154,7 +2153,12 @@ InInventory IsVocalWoman
 	}
 	
 //====|Snail Breeder
-IsSelected SnailBreederPets{Drawbar"SNAILBAR", "BAREMPTY", Ammo1, vertical, 16, 8; Drawbar"SHELLBAR", "BAREMPTY", Ammo2, vertical, 32, 8;}
+IsSelected SnailBreederPets
+	{
+	Drawbar"SNAILBAR", "BAREMPTY", Ammo1, vertical, 16, 8; 
+	Drawbar"BARAMMO1", "BAREMPTY", Ammo2, vertical, 32, 8;
+	InInventory ShellAmmo, 28 {Drawbar"SHELLBAR", "BAREMPTY", Ammo2, vertical, 32, 8;}
+	}
 	InInventory ShellterFlag, 1{DrawImage "SNSHX0", 298,16;}
 	
 //====|Yang

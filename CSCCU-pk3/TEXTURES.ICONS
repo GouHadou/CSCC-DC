@@ -1409,11 +1409,12 @@ Graphic "TREID", 30, 30
 	Patch "TREIB0", 0, 0
 }
 
-Graphic "BLMUI", 30, 30
+//TankSnail
+graphic BLMUICO, 30, 30
 {
-	XScale 2.000
-	YScale 2.000
-	Patch "BLMUX0", 0, 0
+   XScale 2.0
+   YScale 2.0
+   Patch BLMUY0, 0, 0
 }
 
 Graphic "TSNLIGH", 32, 32

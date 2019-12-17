@@ -83,7 +83,8 @@ script "snailz_trailchecker" (void) //Check if player is walking.
 {
 int buttons = GetPlayerInput(-1, INPUT_BUTTONS);
 if (buttons & (BT_FORWARD|BT_BACK|BT_MOVELEFT|BT_MOVERIGHT))
-{GiveInventory("YesToTrail",1);}
+{if(CheckInventory("SnailBreederPets")>=1){GiveInventory("YesToTrail",1);}
+if(CheckInventory("TankSnailWeapon")>=1){GiveInventory("YesTankTrail",1);}}
 }
 
 script "snailz_climbchecker" (void) //Spawn checker in any of the 8 directions.

@@ -718,6 +718,9 @@ texture SNAILBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=110:110", "19
 texture SHELLBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=220:220"}}
 texture SHELLBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=220:220"}}
 
+texture BLMUBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=110:110"}}
+texture BLMUBAR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=110:110"}}
+
 //Yang
 
 texture AURABAR, 8, 56{patch AURBAR, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}

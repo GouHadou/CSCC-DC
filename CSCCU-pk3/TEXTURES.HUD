@@ -644,123 +644,23 @@ Sprite "CGHUD0", 320, 200
 		Translation "192:192=5:5", "198:198=6:6"
 	}
 }
-
-Sprite "SNLBA0", 148, 80
-{
-	Offset -202, -103
-	Patch "HSPRE0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBB0", 308, 204
-{
-	Offset -272, 46
-	Patch "HSPRF0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBC0", 308, 204
-{
-	Offset -202, 4
-	Patch "HSPRG0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBD0", 308, 204
-{
-	Offset -151, -36
-	Patch "HSPRH0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBE0", 308, 204
-{
-	Offset -126, -123
-	Patch "HSPRI0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBF0", 308, 204
-{
-	Offset -105, -147
-	Patch "HSPRJ0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBG0", 312, 108
-{
-	Offset -193, -175
-	Patch "HSPRK0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBI0", 115, 96
-{
-	Offset -210, -96
-	Patch "HSPRB0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBJ0", 115, 96
-{
-	Offset -190, -82
-	Patch "HSPRC0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "SNLBK0", 128, 128
-{
-	Offset -177, -50
-	Patch "HSPRD0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "BLMUA0", 320, 200
-{
-	Offset -184, -94
-	Patch "BUSTB0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "BLMUB0", 320, 200
-{
-	Offset -184, -98
-	Patch "BUSTC0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
-
-Sprite "BLMUC0", 320, 200
-{
-	Offset -188, -102
-	Patch "BUSTD0", 0, 0
-	{
-		Translation "192:192=110:110", "198:198=220:220"
-	}
-}
+//Snail Breeder
+sprite SNLBA0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+//throw
+sprite SNLBB0, 308, 204 {Offset -272, 46 Patch HSPRF0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite SNLBC0, 308, 204 {Offset -202, 4 Patch HSPRG0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite SNLBD0, 308, 204 {Offset -151, -36 Patch HSPRH0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite SNLBE0, 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite SNLBF0, 308, 204 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite SNLBG0, 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+//palm
+sprite SNLBI0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite SNLBJ0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite SNLBK0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+//cannon
+sprite BLMUI0, 320, 200 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite BLMUJ0, 320, 200 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
+sprite BLMUK0, 320, 200 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=110:110", "198:198=220:220"}}
 
 Sprite "EMCEA0", 320, 200
 {

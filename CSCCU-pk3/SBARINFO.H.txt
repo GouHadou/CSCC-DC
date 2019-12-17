@@ -1167,10 +1167,6 @@ IsSelected BoltPistol
 	}
 
 //███████████████████████████████████████No Weaknesses██████████████████████████████████████
-IsSelected TankSnailWeapon{
-   DrawBar "TSNAMF", "TSNAME", Ammo1, horizontal, 235, 174;
-   DrawBar "TSNHEF", "TSNHEE", Ammo2, horizontal, 235, 157;
-	}
 	
 IsSelected TreoWep // Weapon name here.
 	{
@@ -1193,10 +1189,14 @@ IsSelected NinjaWep // Weapon name here.
 	Drawbar "VARAMM31", "VAREMPTY", Ammo1, horizontal, 130, 192; // This graphic is defined in the TEXTURES lump!
 	}		
 	
-IsSelected MucusCopyWep
+	IsSelected BallisticMucusWep
 	{
 	Drawbar "BLMUBAR2", "VAREMPTY", Ammo1, horizontal, 130, 192;
 	}
+
+	IsSelected TankSnailWeapon{Drawbar"VARAMM13", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	InInventory HotSnail, 1{DrawBar "VARFLS2", "VAREMPTY", Ammo1, horizontal, 58, 184;}}
+
 	
 IsSelected EnergyBladeWeapon // Weapon name here.
 	{
@@ -2176,7 +2176,12 @@ InInventory IsVocalWoman
 	}
 	
 //====|SnailBreeder
-IsSelected SnailBreederPets{Drawbar"SNAILBR2", "VAREMPTY", Ammo1, horizontal, 58, 184; Drawbar"SHELLBR2", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+IsSelected SnailBreederPets
+	{
+	Drawbar"SNAILBR2", "VAREMPTY", Ammo1, horizontal, 58, 184; 
+	Drawbar"VARAMMO1", "VAREMPTY", Ammo2, horizontal, 58, 176;
+	InInventory ShellAmmo, 28 {Drawbar"SHELLBR2", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+	}
 	InInventory ShellterFlag, 1{DrawImage "SNSHX0", 298,16;}
 	
 

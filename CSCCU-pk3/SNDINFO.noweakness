@@ -12,18 +12,19 @@ $playersound	treocls	male	*land		FATLAND
 $playersound	treocls	male	*fist		dsnone
 $playersound	treocls	male	*usefail	LAND
 
-$playersound	snail	male	*death		DRILLBOM
-$playersound	snail	male	*xdeath		DRILLBOM
-$playersound	snail	male	*gibbed		DRILLBOM
-$playersound	snail	male	*pain100	MM4PAIN
-$playersound	snail	male	*pain75		MM4PAIN
-$playersound	snail	male	*pain50		MM4PAIN
-$playersound	snail	male	*pain25		MM4PAIN
-$playersound	snail	male	*grunt		FATLAND
-$playersound	snail	male	*land		FATLAND
-$playersound	snail	male	*fist		dsnone
-$playersound	snail	male	*usefail	FATLAND
-$playersound	snail	male	*taunt		dsnone
+//Tank Snail
+$playersound	tanksnail	male	*death		DRILLBOM
+$playersound	tanksnail	male	*xdeath		DRILLBOM
+$playersound	tanksnail	male	*gibbed		DRILLBOM
+$playersound	tanksnail	male	*pain100	MM4PAIN
+$playersound	tanksnail	male	*pain75		MM4PAIN
+$playersound	tanksnail	male	*pain50		MM4PAIN
+$playersound	tanksnail	male	*pain25		MM4PAIN
+$playersound	tanksnail	male	*grunt		quake
+$playersound	tanksnail	male	*land		quake
+$playersound	tanksnail	male	*fist		dsnone
+$playersound	tanksnail	male	*usefail	quake
+$playersound	tanksnail	male	*taunt		dsnone
 
 $playersound	sndviz	male	*death		MEGADEAT
 $playersound	sndviz	male	*xdeath		MEGADEAT
@@ -107,3 +108,5 @@ $playersound	zangiefc	male	*fist		dsnone
 $playersound	zangiefc	male	*usefail	FATLAND
 
 $playersound	zangiefc	male	*taunt	zangtau
+
+misc/slugoof SNAILPOP

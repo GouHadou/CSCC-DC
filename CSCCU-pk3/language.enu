@@ -70,7 +70,7 @@ TAG_SANCTUARY = "\cu[\c[s8]S\cu] \c[c0]Sanctuary\cu [\c[s8]S\cu]";
 TAG_ASCENSION = "\c[c9][\c[y9]SS\c[c9]] \c[n2]Ascension\cu \c[c9][\c[y9]SS\c[c9]]";
 TAG_PHARAOHBUSTERPLUS = "\c[c9][\c[y9]0\c[c9]] \cjAscended Insanity Buster\cu \c[c9][\c[y9]0\c[c9]]";
 
-//===|Snailz
+//===|Snail Breeder
 PU_SNAILBREEDER = "You get a bag of snails.";
 PU_SNAILSHELL = "You get a Shellter.";
 
@@ -83,9 +83,8 @@ OB_SNAILMAGNET = "%o was run down by %k's Homing Snails.";
 
 OB_SNAILSHELL = "%o was left shell-shocked a splint of %k's Shellter.";
 
-OB_SNAILBOMB = "%o was slugged to submission by %k's Ballistic Mucus."; //The legend returns
-
 TAG_SNAILBREEDER1 = "A bag of snails";
+TAG_SNAILSHELL = "Shellter";
 
 
 //===|Undyne
@@ -101,3 +100,14 @@ OB_UNDYINGSD = "%o was struck down %k's Dying Shout.";
 TAG_WEEDEATER = "\cgWEED EATER";
 
 MENU_MEGANAME = "Megaman";
+
+//===|Tank Snail
+PU_TANKSNAIL = "Power up! Ballistic Mucus!";
+
+OB_TANKSNAIL = "%o was slugged by %k.";
+OB_SNAILBOMB = "%o was slugged to submission by %k's Ballistic Mucus."; //The legend returns
+OB_SNAILFLY = "%o was poked out by %k's Support Glaucus.";
+OB_SNAILDASH = "%o was utterly sickened by %k's exhaust-infused slime.";
+
+TAG_TANKSNAIL = "Tank Snail Controls";
+TAG_SNAILBOMB = "Ballistic Mucus";
