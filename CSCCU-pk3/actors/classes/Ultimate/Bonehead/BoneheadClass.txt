@@ -26,12 +26,6 @@ CVSK F 5
 CVSK G 4 
 goto Spawn
 
-Pain.CopyAlt:
-Pain.CopyMain:
-CVSK H 0 A_SpawnItemEx("BoneheadCopyHitMain",1) //good luck with this hell of a class
-goto pain+1
-
-
 Death.Fanfare:
 PLAY Z 0 A_PlaySound("weapon/MachinaMult",0,1.0,0,ATTN_NONE)
 Death.Beam:
@@ -105,53 +99,7 @@ stop
 }
 }
 
-actor BoneheadCopyPickupMain : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 A_GiveToTarget("BoneheadMorphItem",1)
-stop
-}
-}
-
-actor BoneheadCopyHitMain
-{
-Height 0
-Radius 0
-+NOINTERACTION
--SOLID
-+NOGRAVITY
-+MISSILE
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_GiveToTarget("BoneheadCopyPickupMain",1)
-stop
-}
-}
-
-
-actor BoneheadMorphItem : CustomInventory
-{
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 667)
-stop
-}
-}
-
-actor BoneheadMorph : BoneheadCSCC
+actor MissedMemoBossMorph : BoneheadCSCC
 {
 +NOSKIN
 player.morphweapon "MissedMemoBoss"

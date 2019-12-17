@@ -1404,7 +1404,7 @@
 }
 
 {
-	name = "Bonehead"
+	name = "\cjBonehead"
 	accuracy = 3
 	intellect = 2
 	evade = 1
@@ -1432,6 +1432,40 @@
 	color = "00 00 00"
 	gender = "male"
 	class = "Gee"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\ckAbra"
+	accuracy = 3
+	intellect = 2
+	evade = 4
+	anticipation = 2
+	reactiontime = 4
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Abra"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cqSpybot"
+	accuracy = 3
+	intellect = 2
+	evade = 3
+	anticipation = 3
+	reactiontime = 3
+	perception = 1
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Spybot"
 	revealed = true
 	script = "humanbot"
 	chatfrequency = 50
