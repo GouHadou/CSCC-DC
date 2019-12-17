@@ -1,17 +1,12 @@
 actor YDElectrokinesis : BaseCSCCWep
 {
-//$Category MM8BDM-Weapons
 Weapon.AmmoUse 1
 Weapon.AmmoGive 0
 Weapon.SlotNumber 1
 Obituary "%o was zapped into submission by %k's Electrokinesis."
 Inventory.Pickupmessage "Power Up! Static Shock!"
 weapon.ammotype "ElectrokinesisAmmo"
-inventory.pickupsound "weapon/weaponup"
 dropitem "StaticShockWepGiver"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.CHEATNOTWEAPON
-Scale 2.0
 States
 {
 Ready:
@@ -66,12 +61,16 @@ YDHD DBC 2
 TBOL S 0 A_Refire
 Goto Ready+1
 FireBig:
+TBOL S 0 A_JumpifInventory("ElectroKinesisAmmo",4,"FireBigFire")
+goto FireSmall
+FireBigFire:
 YDHD S 0 A_TakeInventory("WeaponCharge",999)
 YDHD S 0 A_JumpIfInventory("ElectricCharge",5,"FireHUEGCharged")
 YDHD S 0 A_JumpIfInventory("ElectricCharge",1,"FireBigCharged")
 YDHD S 0 A_PlaySoundEx("weapon/thunderbolt","Weapon")
 YDHD S 0 A_SpawnItemEx("YDBoltFX2",-1,8,32,0,0,0)
-YDHD S 0 A_FireCustomMissile("StaticLightning",0,1,8,0)
+YDHD S 0 A_FireCustomMissile("StaticLightning",0,0,8,0)
+TBOL S 0 A_TakeInventory("ElectroKinesisAmmo",4)
 YDHD DBC 2
 TBOL S 0 A_Refire
 Goto Ready+1
@@ -126,6 +125,7 @@ YDHD D 0 A_JumpIfInventory("ElectroKinesisAmmo",14,"FullFire")
 goto MidCharge
 FullFire:
 VLBL A 0 A_SetTranslucent (0.0, 0) 
+TBOL A 0 A_TakeInventory("ElectroKinesisAmmo",14)
 TBOL S 0 A_TakeInventory("WeaponCharge",999)
 TBOL A 0 A_Recoil(-150)
 TBOL C 0 A_ChangeFlag("SOLID",0)
@@ -145,13 +145,13 @@ TBOL C 0 SetPlayerProperty(0,0,3)
 TBOL A 0 A_ChangeFlag("INVULNERABLE",0)
 TBOL C 0 A_ChangeFlag("SOLID",1)
 VLBL A 0 A_SetTranslucent (1.0, 0) 
-TBOL A 0 A_TakeInventory("ElectroKinesisAmmo",14)
 goto Ready+1
 MidCharge:
 TBOL S 0 A_JumpIfInventory("ElectroKinesisAmmo",7,"MidFire")
 goto NoCharge
 MidFire:
 VLBL A 0 A_SetTranslucent (0.0, 0) 
+TBOL A 0 A_TakeInventory("ElectrokinesisAmmo",7)
 TBOL S 0 A_TakeInventory("WeaponCharge",999)
 TBOL A 0 A_Recoil(-50)
 TBOL C 0 A_ChangeFlag("SOLID",0)
@@ -171,12 +171,12 @@ TBOL C 0 SetPlayerProperty(0,0,3)
 TBOL A 0 A_ChangeFlag("INVULNERABLE",0)
 TBOL C 0 A_ChangeFlag("SOLID",1)
 VLBL A 0 A_SetTranslucent (1.0, 0) 
-TBOL A 0 A_TakeInventory("ElectrokinesisAmmo",7)
 goto Ready+1
 NoCharge:
 TBOL S 0 A_JumpIfInventory("ElectroKinesisAmmo",4,"SmallFire")
 goto YourDum
 SmallFire:
+TBOL A 0 A_TakeInventory("ElectrokinesisAmmo",4)
 TBOL S 0 A_TakeInventory("WeaponCharge",999)
 TBOL A 0 A_Recoil(-20)
 //TBOL C 0 A_ChangeFlag("SOLID",0)
@@ -195,7 +195,6 @@ TBOL A 0 SetPlayerProperty(0,0,0)
 TBOL C 0 //SetPlayerProperty(0,0,3)
 //TBOL A 0 A_ChangeFlag("INVULNERABLE",0)
 //TBOL C 0 A_ChangeFlag("SOLID",1)
-TBOL A 0 A_TakeInventory("ElectrokinesisAmmo",4)
 goto Ready+1
 NoAmmo:
 TBOL S 0 ACS_Execute(979,0)

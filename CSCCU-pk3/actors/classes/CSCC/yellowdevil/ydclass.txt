@@ -29,14 +29,7 @@ YDSK B 1
 YDSK A 1
 Goto Spawn+2
 See:
-YDSK B 5
-YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
-YDSK C 5
-YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
-YDSK D 5
-YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
-YDSK E 5
-YDSK A 0 A_GiveInventory("ElectroKinesisAmmo",2)
+YDSK BCDE 5
 Goto Spawn
 Missile:
 YDSK FFFFF 1
