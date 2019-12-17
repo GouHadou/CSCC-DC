@@ -59,11 +59,10 @@ Goto NoAmmo
 Wall:
 SERG B 5
 SERG A 0 A_TakeInventory("PsychicAmmo",14)
-SERG D 0 A_SpawnItemEX("PsyWallPiece",42,64,0,0,0,0,0,SXF_NOCHECKPOSITION)
-SERG A 0 A_SpawnItemEX("PsyWallPiece",42,-64,0,0,0,0,0,SXF_NOCHECKPOSITION)
-SERG A 0 A_SpawnItemEX("PsyWallPiece",42,128,0,0,0,0,0,SXF_NOCHECKPOSITION)
-SERG A 0 A_SpawnItemEX("PsyWallPiece",42,-128,0,0,0,0,0,SXF_NOCHECKPOSITION)
-SERG A 0 A_SpawnItemEX("PsyWallPiece",42,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+SERG A 0 A_SpawnItemEX("PsyWallLayerSpawn",120,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+SERG A 0 A_SpawnItemEX("PsyWallLayerSpawn",120,0,68,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+SERG A 0 A_SpawnItemEX("PsyWallLayerSpawn",120,0,132,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+SERG A 0 A_SpawnItemEX("PsyWallLayerSpawn",120,0,204,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
 SERG D 5
 SERG B 5
 goto Ready+2
@@ -148,21 +147,12 @@ stop
 
 actor PsyWallPiece : HexBarrierBase
 {
-//PROJECTILE
 +SOLID
-//+SHOOTABLE
-//+DONTBLAST
-//+DONTRIP
-//+GHOST
-//+THRUGHOST
-//painchance 256
-//+noblood
-//+noblooddecals
-//+NoTargetSwitch
-mass 0x7ffffffff
-health 50
-Radius 16
-Height 128
++THRUACTORS
++RIPPER
+health 100
+Radius 24
+Height 48
 alpha 0.9
 damagefactor "ShunGokuSatsu", 100.0
 renderstyle Translucent
@@ -173,24 +163,43 @@ speed 0
 States
 {
 Spawn:
-PSHH A 1 
-PSHH A 0 A_GiveToTarget("SergioWallChecker",1)
-PSHH A 0 A_JumpIfInventory("WallDeathCounter",898,"Death")
-PSHH A 1 A_GiveInventory("WallDeathCounter",2)
-PSHH A 0 A_Stop
-PSHH A 0 A_FadeOut(0.002)
-goto Spawn+2
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("PlayerSpeciesSynch",0)
+SGWS CBA 2 
+SGWL ABAB 2
+SGWL A 0 A_ChangeFlag("THRUACTORS", 0)
+Spawn2:
+SGWL D 0 A_JumpIFHealthLower(50,3)
+SGWL C 0 A_JumpIFHealthLower(75,2)
+SGWL B 0
+SGWL "#" 0
+SGWL "#" 1
+SGWL "#" 0 A_GiveToTarget("SergioWallChecker",1)
+SGWL "#" 0 A_JumpIfInventory("WallDeathCounter",898,"Expire")
+SGWL "#" 0 A_GiveInventory("WallDeathCounter",2)
+SGWL "#" 0 A_Stop
+SGWL "#" 0 //A_FadeOut(0.002)
+goto Spawn2
 Pain:
-PSHH A 0 A_PlaySoundEx("weapon/mirrorabsorb","Auto")
-PSHH A 0 A_ChangeFlag("INVULNERABLE", 1)
-PSHH A 2
-PSHH A 0 A_ChangeFlag("INVULNERABLE", 0)
-goto Spawn+2
+SGWL A 0 A_PlaySoundEx("weapon/mirrorabsorb","Auto")
+SGWL A 0 A_ChangeFlag("INVULNERABLE", 1)
+SGWL A 2
+SGWL A 0 A_ChangeFlag("INVULNERABLE", 0)
+goto Spawn2
 GoToSpawn:
 PSHH A 0
-goto Spawn+2
+goto Spawn2
 Death:
+PSHH A 0 A_JumpIf(Health >= 100, "Death2")
+TNT1 A 1 A_PlaySoundEx("weapon/CentaurFlash","Weapon")
+TNT1 AAAAA 0 A_SpawnItemEx("LightScreenSpark", 0, 0, 28, 256/24, 256/24, random2(256/24), random(0, 359))
+Death2:
 PSHH A 0 A_TakeFromTarget("SergioWallChecker",1)
+stop
+Expire:
+SGWL A 0 A_ChangeFlag("SHOOTABLE", 0)
+SGWS A 0 A_TakeFromTarget("SergioWallChecker",1)
+SGWS ABC 2 
 stop
 }
 }
@@ -212,4 +221,25 @@ GDSW A 0 A_StopSound(CHAN_WEAPON)
 GDSW A 1 A_Raise
 Loop
 }
+}
+
+actor PsyWallLayerSpawn
+{
+  Radius 1
+  Height 1
+  +MISSILE
+  +NOGRAVITY
+  +NOINTERACTION
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 D 0 A_SpawnItemEX("PsyWallPiece",0,68,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEX("PsyWallPiece",0,-68,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEX("PsyWallPiece",0,136,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEX("PsyWallPiece",0,-136,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    TNT1 A 0 A_SpawnItemEX("PsyWallPiece",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+    stop
+  }
 }
