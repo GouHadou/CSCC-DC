@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 138
+#define MAX_MORPHS 146 //+2
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -155,8 +155,20 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"FumeSprayNade", "Fume (Grenade)", "FumeClassItems"},//134
 {"FumeSprayWave", "Fume (Wave)", "FumeClassItems"},//135
 {"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//136
-{"UndyneSpearBoss", "Undyne", "UndyneStats"},//"UndyneClassItems"},//137
+{"UndyneSpearBoss", "Undyne", "UndyneClassItems"},//137
 {"UndyingSpearBoss", "Undying", "UndyingClassItems"},//138
+//OCMBR
+{"OMBulletWep", "Officer Magnum (Bullets)","OfficerMagnumClassItems"},//139
+{"OMCannonWep", "Officer Magnum (Cannon)","OfficerMagnumClassItems"},//140
+{"OMBeamWep", "Officer Magnum (Beam)","OfficerMagnumClassItems"},//141
+{"ATBSubMachineGun", "Arnon (Machine Gun)", "ArnonClassItems"},//142
+{"ATBSemiAutoRifle", "Arnon (Semi Automatic Rifle)", "ArnonClassItems"},//143
+{"ATBSniper", "Arnon (Sniper)", "ArnonClassItems"},//144
+{"DualPlasmaPistols", "Mason", "MasonClassItems"},//145
+{"StarRevolverWep", "G97", "G97ClassItems"},//146
+//{"BugTypeWepITLS", "Itolos", "ItolosClassItems"}, //147
+//{"BugTypeWepIMKN", "Imurkono", "ImurkonoClassItems"}, //148
+
 };
 
 Script "GetPlayerWeapon" (int TargetTID)
