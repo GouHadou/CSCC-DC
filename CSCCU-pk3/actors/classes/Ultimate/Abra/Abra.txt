@@ -40,8 +40,8 @@ wait
 actor PsybeamWepMorph : Abra
 {
 +NOSKIN
-player.morphweapon "Abra"
-player.soundclass "PsybeamWep"
+player.morphweapon "PsybeamWep"
+player.soundclass "BestClassEver"
 States
 {
 Pain:

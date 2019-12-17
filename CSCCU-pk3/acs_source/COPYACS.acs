@@ -316,15 +316,18 @@ Switch(MorphMode)
 	UnmorphActor(ActivatorTID(), 0);
 	ClearInventory();
 	GiveInventory("CanCopyWeapons", 1);
+    GiveInventory("CopyRobotUnmorphed", 1);
 	SetPlayerProperty(0, 0, 16);
 	SetPlayerProperty(0, 0, 3);
 	SetPlayerProperty(0, 0, 4);
 	SetPlayerProperty(0, 0, 0);
 	SetHudSize(600,380,0);
 	HudMessage(s:"\ccCopy ability expired!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	HudMessage(s:"";HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.0);
 	GiveInventory("CopyWeapon", 1);
 	SetWeapon("CopyWeapon");
-	GiveInventory("CopyAmmo", 14);
+	GiveInventory("CopyAmmo", 28);
+	GiveInventory("BusterAmmo", 3);
 	break;
 	Case 2:
 	SetHudSize(600,380,0);
@@ -366,6 +369,21 @@ If(FusionStockNum <= KilledMeStockNum){FusionStockNum=KilledMeStockNum;}
 GiveInventory("FusionStock", FusionStockNum);
 //--==End Gives==--
 GiveInventory("CopyRemover", 1);
+Switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
+{
+Case 0:
+GiveInventory("LightTeamFlag", 1);
+break;
+Case 1:
+GiveInventory("WilyTeamFlag", 1);
+break;
+Case 2:
+GiveInventory("CossackTeamFlag", 1);
+break;
+Case 3:
+GiveInventory("KingTeamFlag", 1);
+break;
+}
 If(UnderWaterFlag == TRUE){GiveInventory("LowGravity", 1);}
 Else{GiveInventory("NormalGravity", 1);}
 SetActorPitch(0, PlayerPitch);
@@ -389,11 +407,10 @@ While(CheckInventory("CopyMorphTimer") && GetActorProperty(0, APROP_HEALTH) > 0)
 		}
 	SetFont("BIGFONT");
 	SetHudSize(600,380,0);
-	HudMessage(s:"\cgTime \ciLeft \ck: \cd", i:TimerRemaining-1;HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.5);
+	HudMessage(s:"\cgTime \ciLeft \ck: \cd", i:TimerRemaining;HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.5);
 	TakeInventory("CopyMorphTimer", 1);
 	Delay(35);
 	}
-HudMessage(s:"";HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.0);
 If(!CheckWeapon("CopyWeapon")){ACS_NamedExecuteAlways("CopyMorph", 0, 1);}
 }
 Script "GetTarget2" (int Target)
