@@ -1,7 +1,7 @@
 #library "COPYACS"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 197 //+2
+#define MAX_MORPHS 199
 
 #DEFINE CSACS_COPYCOPYWEP 137
 #DEFINE CSACS_COPYBOTFIX 138
@@ -166,8 +166,8 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"ATBSniper", "Arnon (Sniper)", "ArnonClassItems"},//144
 {"DualPlasmaPistols", "Mason", "MasonClassItems"},//145
 {"StarRevolverWep", "G97", "G97ClassItems"},//146
-//{"BugTypeWepITLS", "Itolos", "ItolosClassItems"}, //147
-//{"BugTypeWepIMKN", "Imurkono", "ImurkonoClassItems"}, //148
+{"BugTypeWepITLS", "Itolos", "ItolosClassItems"}, //147
+{"BugTypeWepIMKN", "Imurkono", "ImurkonoClassItems"}, //148
 {"NeoBlade", "Neo (Neo Blade)", "NeoClassItems"},//149
 {"AuraPalm", "Neo (Aura Palm)", "NeoClassItems"},//150
 {"AuraBow", "Neo (Aura Bow)", "NeoClassItems"},//151
@@ -348,7 +348,6 @@ Switch(MorphMode)
 		}
 	break;
 	}
-	
 
 If(ClassifyActor(0) & ACTOR_BOT)
 	{
