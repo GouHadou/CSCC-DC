@@ -369,6 +369,7 @@ If(FusionStockNum <= KilledMeStockNum){FusionStockNum=KilledMeStockNum;}
 GiveInventory("FusionStock", FusionStockNum);
 //--==End Gives==--
 GiveInventory("CopyRemover", 1);
+ACS_NamedExecuteAlways("HUD_NUMBER_VAR_CHECK_RESPAWN",0);
 Switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
 {
 Case 0:
