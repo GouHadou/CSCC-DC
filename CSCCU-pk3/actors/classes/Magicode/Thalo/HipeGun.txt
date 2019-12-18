@@ -27,20 +27,16 @@ SNPR B 0
 "####" B 0 A_JumpIfInventory("PanicPower",1,"PanicReady") 
  
 "####" B 0 A_Jumpifinventory("ZoomMode",1,"Ready2")
-"####" A 1 A_WeaponReady(WRF_ALLOWZOOM)
-"####" A 0 A_Jumpifinventory("User1_Trigger",1,"User1")
-"####" A 0 A_Jumpifinventory("User2_Trigger",1,"User2")
-"####" B 0 A_Jumpifinventory("Reload_Trigger",1,"Reload")
-"####" B 0 A_Jumpifinventory("User3_Trigger",1,"Reload")
+"####" A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
+"####" B 0 A_Jumpif(CallACS("InputGrab",6) == True,"User1")
+"####" B 0 A_Jumpif(CallACS("InputGrab",7) == True,"User2")
 "####" B 0 A_Jumpifinventory("HiPEgunClip",1,"Ready")
 Goto Reload
 
 	Ready2:  //zooom ready
-	"####" A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_NOSWITCH|WRF_NOSECONDARY)
+	"####" A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD|WRF_NOSWITCH|WRF_NOSECONDARY)
 	"####" A 0 A_Giveinventory("FocusSpeedDown",1)
 	"####" A 0 A_ZoomFactor(4.5)
-	"####" A 0 A_Jumpifinventory("Reload_Trigger",1,"Reload")
-	"####" B 0 A_Jumpifinventory("User3_Trigger",1,"Reload")
 	"####" A 0 A_Jumpifinventory("HiPEgunClip",1,"Ready")
 	Goto Reload
 
@@ -262,18 +258,18 @@ stop
 //[+]========================================================================[+]
 //--------------------------------|Projectiles |--------------------------------
 //[+]========================================================================[+]
-actor HiPEgunShot : Fastprojectile
+actor HiPEgunShot : FastprojectileBase
 {
 Obituary "$OB_HIPEGUN"
 DamageType "Buster"
 PROJECTILE
 +SKYEXPLODE
 +DONTBLAST
-+THRUSPECIES
+//+THRUSPECIES
 +BLOODSPLATTER
 MissileHeight 8
 Species "HiPE"
-Speed 425
+Speed 95
 Damage (35)
 radius 8
 height 10
@@ -334,7 +330,7 @@ stop
 }
 }
 
-actor HiPEgunTrail : HiPEgunPuff1
+actor HiPEgunTrail : FXActor_B//HiPEgunPuff1
 {
 scale 2.5
 Alpha 0.8

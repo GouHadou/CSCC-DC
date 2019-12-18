@@ -269,7 +269,7 @@ scale 1.75
 +LOOKALLAROUND
 +SKYEXPLODE
 +DONTBLAST
-Speed 60
+Speed 40//60
 Radius 5
 Height 5
 Damage (0)
@@ -288,7 +288,7 @@ stop
 }
 }
 
-actor DarkStorm2 : DarkStorm { Speed 100 }
+actor DarkStorm2 : DarkStorm { Speed 50 }
 
 Actor WhipBoom
 {

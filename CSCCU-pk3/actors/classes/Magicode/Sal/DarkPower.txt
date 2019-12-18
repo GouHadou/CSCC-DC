@@ -242,7 +242,7 @@ Radius 8 //12
 Height 8 //12
 Damage(9)
 Damagetype "GhostTypeX1"
-Speed 36
+Speed 25
 scale 1.0
 States
 {
@@ -259,10 +259,10 @@ actor ShadowBall2 : ShadowBall1
 {
 Radius 16 //20
 Height 16 //20
-Damage(20)
+Damage(15)
 damagetype "GhostTypeX2"
 Obituary "%k sent %o to the Shadow Realm with a moderate dose of their shadow energy."
-Speed 48
+Speed 35
 Scale 2.0
 States
 {
@@ -280,11 +280,11 @@ actor ShadowBall3 : ShadowBall1
 Translation "209:215=6:6", "208:208=63:63", "4:4=63:63"
 Radius 28
 Height 28 
-Damage(23)
+Damage(20)
 damagetype "GhostTypeX3"
 Obituary "%k sent %o to the Shadow Realm with a \crYOU DIE \c-dose of their shadow energy."
 Scale 3.5
-Speed 60
+Speed 40
 States
 {
 Spawn:
@@ -295,17 +295,17 @@ Death:
 BOMB AAAAAAAAAA 0 A_SpawnItemEx("ShadowBallFXX",0,0,8,random(-10,10),random(-10,10),random(5,15),0,0,0)
 BOMB AAAA 0 A_SpawnItemEx("SBallDeathFX",0,0,4,random(-13,13),random(-13,13),random(5,15),0,0,0)
 BOMB A 0 A_PlaySoundEx("weapon/hyperbomb","Weapon")
-BOMB A 0 A_Explode(10,100,0)
+BOMB A 0 A_Explode(5,100,0)
 ASEX AB 3
 BOMB AAAAAAAAAA 0 A_SpawnItemEx("ShadowBallFXX",0,0,8,random(-10,10),random(-10,10),random(5,15),0,0,0)
 BOMB AAAAAA 0 A_SpawnItemEx("SBallDeathFX",0,0,4,random(-13,13),random(-13,13),random(5,15),0,0,0)
 BOMB A 0 A_PlaySoundEx("weapon/hyperbomb","Weapon")
-BOMB A 0 A_Explode(13,125,0)
+BOMB A 0 A_Explode(8,125,0)
 ASEX CD 3
 BOMB AAAAAAAAAA 0 A_SpawnItemEx("ShadowBallFXX",0,0,8,random(-10,10),random(-10,10),random(5,15),0,0,0)
 BOMB AAAAAAAA 0 A_SpawnItemEx("SBallDeathFX",0,0,4,random(-13,13),random(-13,13),random(5,15),0,0,0)
 BOMB A 0 A_PlaySoundEx("weapon/hyperbomb","Weapon")
-BOMB A 0 A_Explode(15,150,0,0,25)
+BOMB A 0 A_Explode(10,150,0,0,25)
 ASEX EF 3 
 stop
 }
@@ -356,11 +356,11 @@ Height 20
 scale 3
 Renderstyle "Translucent"
 Alpha 0.8
-Damage(13)
+Damage(10)
 Translation "209:248=6:6", "208:208=63:63", "4:4=63:63", "168:168=63:63", "4:4=63:63"
 Damagetype "DarkPulse"
 Obituary "Well, at least %o didn't have to put up with %k's Dark Pulse Danmaku."
-speed 46
+speed 35
 States
 {
 Spawn:
@@ -475,7 +475,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_Explode(8,150,0)
+TNT1 A 1 A_Explode(5,150,0)
 stop
 }
 }
@@ -488,7 +488,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_Explode(18,250,0)
+TNT1 A 1 A_Explode(10,250,0)
 stop
 }
 }

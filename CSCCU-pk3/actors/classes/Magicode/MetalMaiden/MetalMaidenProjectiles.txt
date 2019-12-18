@@ -10,7 +10,7 @@ Height 5
 Radius 5
 Damage (10)
 DamageType "Buster"
-Speed 75
+Speed 25
 Scale 2.5
 Obituary "%o was shot down by %k's Plasma Energy Cannon."
 Translation "215:215=79:79", "208:208=236:236"
@@ -58,7 +58,7 @@ actor MaidenBusterShotStrong : MaidenBusterShotWeak
 Height 15
 Radius 15
 Damage (20) //Unchanged
-Speed 85
+Speed 35
 Obituary "%o was shot down by %k's Heavily Charged Plasma Energy Cannon."
 States
 {
@@ -71,7 +71,7 @@ FrameLoop:
 FLEX EF 1 bright A_SpawnItemEx("MaidenBusterShotStrongParticle",random(-50,50),random(-50,50),random(-50,50))
 loop
 Death:
-TNT1 A 0 A_Explode(15,100,0,0,75)
+TNT1 A 0 A_Explode(5,100,0,0,75)
 TNT1 A 0 A_PlaySoundEx("misc/boomcrash","Weapon")
 ASEX ABCDEF 1 bright
 stop
@@ -101,8 +101,8 @@ actor MaidenBusterShotMax : MaidenBusterShotWeak
 +PIERCEARMOR
 Height 20
 Radius 20
-Damage (30) //Previously 300
-Speed 95
+Damage (20) //Previously 300
+Speed 45
 Obituary "%o was shot down by %k's Fully Charged Plasma Energy Cannon."
 Scale 3.5
 States
@@ -116,7 +116,7 @@ FLEX DEFG 1 bright A_SpawnItemEx("MaxMaidenBusterShotFX")
 loop
 Death:
 TNT1 A 0 Radius_Quake(6,17,0,64,0)
-TNT1 A 0 A_Explode(20,100,0,0,75)
+TNT1 A 0 A_Explode(15,100,0,0,75)
 TNT1 A 0 A_PlaySound("misc/boomcrash")
 ASEX A 1 bright
 TNT1 A 0 A_SpawnItemEx("ThunderTrail",random(-100,100),random(-100,100),random(0,100))
@@ -144,15 +144,15 @@ Actor MaidenBusterShotMax_U : MaidenBusterShotMax
 {
 +SPECTRAL
 +FOILINVUL
-Speed 200
-Damage (50) //Previously 325
+Speed 45
+Damage (25) //Previously 325
 Scale 5.5
 Obituary "%o was shot down by %k's Fully Charged Plasma Energy Cannon!"
 states
 {
 Death:
 TNT1 A 0 Radius_Quake(6,17,0,64,0)
-TNT1 A 0 A_Explode(30,100,0,0,85)
+TNT1 A 0 A_Explode(15,100,0,0,85)
 TNT1 A 0 A_PlaySound("maiden/chargedbusterfire_o")
 ASEX A 1 bright
 TNT1 A 0 A_SpawnItemEx("ThunderTrail",random(-100,100),random(-100,100),random(0,100))
@@ -293,7 +293,7 @@ PROJECTILE
 Translation "210:210=200:200", "217:217=194:194", "47:47=195:195", "247:247=199:199"
 Radius 10
 Height 10
-Damage (5) //Previously 35
+Damage (3) //Previously 35
 Scale 1.5
 Speed 100
 Obituary "%o was pierced by %k Plasma Laser."
@@ -396,7 +396,7 @@ actor MaidenBladeBeam : ChargeKick
 +PIERCEARMOR
 +DONTBLAST
 +NOTIMEFREEZE
-Speed 65
+Speed 25
 Damage (5) //Previously 35
 Translation "225:225=246:346", "208:208=71:71"
 Obituary "%o was sliced by %k's Phantom Slash."
@@ -487,8 +487,8 @@ actor MaidenBladeCharged : ChargeKick
 Translation "80:95=79:79", "208:208=60:60"
 Obituary "%o was cut in half by %k's Charged Plasma Katana!"
 DamageType "BeamSword"
-Damage (25)
-Speed 90
+Damage (15)
+Speed 40
 Height 50
 Height 20
 Scale 2.5
@@ -577,8 +577,8 @@ actor MaidenBladeCharged_U : MaidenBladeCharged
 Translation "80:95=79:79", "208:208=60:60"
 Obituary "%o was cut in half by %k's Charged Plasma Katana!"
 DamageType "BeamSword"
-Damage (33) 
-Speed 180
+Damage (20) 
+Speed 50
 Scale 4.5
 Height 100
 Height 40
@@ -1187,7 +1187,7 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("maiden/tornadoslashblow","Weapon")
-TNT1 A 0 A_Explode(20,200,0,0,100)
+TNT1 A 0 A_Explode(5,200,0,0,100)
 TNT1 A 0 A_SpawnItemEx("MaidenTornadoSlashHitbox",0,0,0,18,0,0,0)
 TNT1 A 0 A_SpawnItemEx("MaidenTornadoSlashHitbox",0,0,0,18,0,0,15)
 TNT1 A 0 A_SpawnItemEx("MaidenTornadoSlashHitbox",0,0,0,18,0,0,30)

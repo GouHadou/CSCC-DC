@@ -259,12 +259,12 @@ Height 7
 damagetype "HomingSniper"
 Obituary "%k fed %o full of shotgun shells."
 scale 2.5
-damage (5)
-speed 120
+damage (3)
+speed 50//120
 States
 {
 Spawn:
-LASH B 8
+LASH B 24
 stop
 Death:
 BIM1 BCD 2
@@ -274,7 +274,7 @@ stop
 
 actor CascaraShellX : CascaraShell
 {
-damage (4)
+damage (2)
 }
 
 Actor SmokeEffect : LightningStartFX1

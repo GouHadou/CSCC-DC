@@ -699,7 +699,7 @@ Spawn:
 TNT1 A 0
 TNT1 A 0 A_SpawnItemEx("DevionShockwaveFX")
 TNT1 A 0 A_SpawnItemEx("DevionShockwaveCircleFX")
-TNT1 A 0 A_Explode(30,220,0,0,110)
+TNT1 A 0 A_Explode(15,220,0,0,110)
 Stop
 }
 }
@@ -878,7 +878,7 @@ translation "80:95=206:206","199:199=207:207","209:215=204:204"
 scale 5
 damagetype "FistRevolver"
 Obituary "%o was knuckled so hard they were turned into a sandwich by %k."
-Speed 65
+Speed 40//65
 Radius 24
 Height 20
 Damage (5)
@@ -892,7 +892,7 @@ Death:
 TNT1 A 0 A_JumpIfCloser(180, "Rocketed")
 TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
-TNT1 A 0 A_Explode(23, 160, 0)
+TNT1 A 0 A_Explode(23, 120, 0)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 Rocketed:

@@ -313,11 +313,11 @@ Translation "220:223=253:253", "209:215=237:237"
 +DONTBLAST
 Radius 9
 Height 9
-Damage (3)
+Damage (2)
 Damagetype "Swift"
 Obituary "%o saw %k's stars in their eyes."
 scale 2.0
-Speed 55
+Speed 35
 States
 {
 Spawn:
@@ -922,6 +922,8 @@ NCRU G 0
 NCRU G 1 A_CountDown
 NCRU H 0 A_Explode(4,80,0)
 NCRU H 1 A_CountDown
+//RepeteWithoutExplosion
+NCRU GHGH 1 A_CountDown
 loop
 Death:
 TNT1 A 1

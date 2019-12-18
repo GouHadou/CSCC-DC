@@ -356,6 +356,14 @@ Pain.BakuFire2:
 GoTo Pain+1
 
 //Thalo Painstates:
+Pain.ThaloForceField:
+	"####" H 0 A_GiveInventory("ThaloForceFieldProtect",1)
+GoTo Pain
+
+//Slick Painstates
+Pain.SlickInk2:
+	"####" H 0 A_GiveInventory("SlickInkBubbleProtect",1)
+GoTo Pain
 
 
 //TheMod CopyWep Painstates
