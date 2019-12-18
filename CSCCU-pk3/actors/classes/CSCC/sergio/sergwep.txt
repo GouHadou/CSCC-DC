@@ -27,7 +27,6 @@ TNT1 A 10
 TNT1 A 0 A_GiveInventory("PsychicAmmo", 1)
 loop
 Deselect:
-TNT1 A 0 A_SelectWeapon("PsychicProwessX")
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 TNT1 A 1 A_Lower
 Loop
@@ -187,25 +186,6 @@ SGWL A 0 A_ChangeFlag("SHOOTABLE", 0)
 SGWS A 0 A_TakeFromTarget("SergioWallChecker",1)
 SGWS ABC 2 
 stop
-}
-}
-
-actor PsychicProwessX : PsychicProwess
-{
-States
-{
-Deselect:
-TNT1 A 0 A_SelectWeapon("PsychicProwess")
-TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
-TNT1 A 0 A_StopSound(CHAN_WEAPON)
-TNT1 A 1 A_Lower
-Loop
-Select:
-TNT1 A 0 A_SelectWeapon("PsychicProwess")
-TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-GDSW A 0 A_StopSound(CHAN_WEAPON)
-GDSW A 1 A_Raise
-Loop
 }
 }
 

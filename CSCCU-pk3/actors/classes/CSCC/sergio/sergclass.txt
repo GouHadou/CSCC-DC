@@ -3,7 +3,6 @@ actor Sergio : ClassBaseCSCC
 player.displayname "Sergio"
 player.soundclass "megaman"
 player.startitem "PsychicProwess"
-player.startitem "PsychicProwessX"
 //player.startitem "GlassHealthBar"
 player.startitem "PsychicAmmo", 28
 //damagefactor "Normal", 1.5
