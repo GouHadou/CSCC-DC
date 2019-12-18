@@ -46,10 +46,23 @@ Delay(3);
 terminate;
 }
 
-
+//Itolos
+Script "ItolosMorphCheck" (void)
+{
+While(!CheckInventory("IsDead") && CheckWeapon("BugTypeWepITLS"))
+	{
+	If(GetActorProperty(0, APROP_HEALTH) <= 0){terminate;}
+	If(GetActorProperty(0, APROP_HEALTH) < 2)
+		{
+		SetActorState(0, "Morph");
+		terminate;
+		}
+	Delay(1);
+	}
+}
 Script "ImurkonoMorph" (void)
 {
-MorphActor(ActivatorTID(),"Imurkono","",0x7FFFFFFF,514,"","");
+MorphActor(ActivatorTID(),"Imurkono","",0x7FFFFFFF,414,"","");
 terminate;
 }
 
@@ -723,3 +736,4 @@ int output = (HealMax*(100 - rampPerc))/100;
 if (output < HealMin){output = HealMin;}
 SetResultValue(output);
 }
+
