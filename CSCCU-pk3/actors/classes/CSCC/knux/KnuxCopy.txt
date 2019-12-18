@@ -65,6 +65,7 @@ inventory.maxamount 28
 actor BubbleArrowShot : BubbleArrow2
 {
 PROJECTILE
++MTHRUSPECIES
 damagetype "BubbleArrow"
 Speed 45
 scale 2.5

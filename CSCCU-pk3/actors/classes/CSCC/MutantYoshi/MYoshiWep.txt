@@ -432,6 +432,7 @@ PROJECTILE
 +DONTSPLASH
 +NOINTERACTION
 +THRUSPECIES
++MTHRUSPECIES
 +NOTARGETSWITCH
 +DONTBLAST
 states
@@ -563,7 +564,7 @@ stop
 }
 }
 
-actor YoshiEgg : FastProjectile
+actor YoshiEgg : FastProjectileBase
 {
 PROJECTILE
 damagetype "YoshiEgg"
@@ -640,6 +641,7 @@ stop
 actor YoshiBeam
 {
 PROJECTILE
++MTHRUSPECIES
 Damage (20)
 +RIPPER
 damagetype "Beam"
@@ -701,6 +703,7 @@ actor HeartBurnStorm
 {
 PROJECTILE
 +DONTBLAST
++MTHRUSPECIES
 damagetype "YoshiStorm"
 Obituary "%o was melted by %k's Heartburn Storm."
 Translation "227:227 = 110:110", "229:229 = 138:138"
@@ -724,6 +727,7 @@ stop
 actor RoaderTire
 {
 PROJECTILE
++MTHRUSPECIES
 +DOOMBOUNCE
 +CANBOUNCEWATER
 SeeSound "weapon/coilbounce1"
@@ -754,6 +758,7 @@ stop
 actor YoshiSpike
 {
 +DONTBLAST
++MTHRUSPECIES
 PROJECTILE
 -NOGRAVITY
 +THRUGHOST
@@ -800,6 +805,7 @@ stop
 actor YoshiMine
 {
 PROJECTILE
++MTHRUSPECIES
 Radius 32
 Height 32
 scale 2.5
@@ -825,6 +831,7 @@ stop
 actor YoshiIceBlock
 {
 PROJECTILE
++MTHRUSPECIES
 Damage (70)
 damagetype "YoshiIceblock"
 Obituary "%o was crushed by %k's Ice block."
@@ -864,6 +871,7 @@ Damage(45)
 actor YoshiPressBall
 {
 PROJECTILE
++MTHRUSPECIES
 Damage (70)
 damagetype "YoshiPressBall"
 Obituary "%o was crushed by %k's Press Ball."
@@ -891,6 +899,7 @@ stop
 actor YoshiMetalPress
 {
 PROJECTILE
++MTHRUSPECIES
 Damage (70)
 damagetype "YoshiMetalPress"
 Obituary "%o was crushed by %k's Metal Press."

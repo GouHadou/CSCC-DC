@@ -68,7 +68,7 @@ Inventory.Amount 1
 Inventory.MaxAmount 28
 }
 
-actor DiscordNeedle
+actor DiscordNeedle : ProjectileBase
 {
 PROJECTILE
 Radius 6
@@ -93,7 +93,7 @@ stop
 }
 }
 
-actor GemExplode1
+actor GemExplode1 : ProjectileBase
 {
 PROJECTILE
 Radius 15
@@ -118,7 +118,7 @@ stop
 }
 }
 
-actor GemExplode2
+actor GemExplode2 : ProjectileBase
 {
 PROJECTILE
 Damagetype "Instagib"

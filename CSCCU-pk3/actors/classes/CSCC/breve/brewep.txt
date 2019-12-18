@@ -166,7 +166,7 @@ inventory.amount 1
 inventory.maxamount 150
 }
 
-actor StaveCannonShot 
+actor StaveCannonShot : ProjectileBase
 {
 PROJECTILE
 Obituary "%o was gunned down by %k's Stave Cannon."
@@ -196,7 +196,7 @@ stop
 }
 }
 
-actor StaveCannonCeilingSpike 
+actor StaveCannonCeilingSpike : ProjectileBase
 {
 PROJECTILE
 -FLOORHUGGER
@@ -225,7 +225,7 @@ stop
 }
 }
 
-actor StaveCannonGroundSpike 
+actor StaveCannonGroundSpike : ProjectileBase
 {
 PROJECTILE
 +FLOORHUGGER
@@ -250,7 +250,7 @@ stop
 
 
 
-actor LagSpikePointer : FastProjectile
+actor LagSpikePointer : FastProjectileBase
 {
 PROJECTILE
 +NoTargetSwitch
@@ -274,7 +274,7 @@ stop
 }
 }
 
-actor LagSpike
+actor LagSpike : ProjectileBase
 {
 Projectile
 +FloorHugger
@@ -297,7 +297,7 @@ stop
 }
 }
 
-actor LagSpikeDamager
+actor LagSpikeDamager : ProjectileBase
 {
 PROJECTILE
 +DontBlast

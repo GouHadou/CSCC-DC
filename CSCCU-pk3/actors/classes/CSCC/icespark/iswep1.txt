@@ -176,7 +176,7 @@ inventory.amount 1
 inventory.maxamount 100
 }
 
-actor IceBlade
+actor IceBlade : ProjectileBase
 {
 PROJECTILE
 Radius 15
@@ -301,7 +301,7 @@ wait
 
 
 
-actor IceBall
+actor IceBall : ProjectileBase
 {
 PROJECTILE
 -NOGRAVITY
@@ -330,7 +330,7 @@ stop
 }
 }
 
-actor IceBit
+actor IceBit : ProjectileBase
 {
 PROJECTILE
 -NOGRAVITY
@@ -361,7 +361,7 @@ stop
 }
 }
 
-actor IceSpike
+actor IceSpike : ProjectileBase
 {
 PROJECTILE
 +FLOORHUGGER

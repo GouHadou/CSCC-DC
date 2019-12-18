@@ -217,6 +217,7 @@ actor YDLightning
 {
 Obituary "%o was zapped into submission by %k's Electrokinesis."
 PROJECTILE
++MTHRUSPECIES
 damagetype "YellowDevil"
 +PIERCEARMOR
 +RIPPER
@@ -264,6 +265,7 @@ actor StaticLightning : MageStaffFX2
 {
 Obituary "%o was zapped into submission by %k's Electrokinesis."
 PROJECTILE
++MTHRUSPECIES
 -RIPPER
 -EXTREMEDEATH
 damagetype "YellowDevil"
@@ -307,6 +309,7 @@ actor StaticBall : MageStaffFX2
 {
 Obituary "%o was zapped into submission by %k's Electrokinesis."
 PROJECTILE
++MTHRUSPECIES
 damagetype "YellowDevil"
 scale 2.5
 Speed 34
@@ -512,6 +515,7 @@ damagetype "YellowDevil"
 +HEXENBOUNCE
 -NOGRAVITY
 +RIPPER
++MTHRUSPECIES
 scale 2.5
 Speed 36
 Radius 24
@@ -597,6 +601,7 @@ actor YDBomb2 : YDBomb
 {
 Obituary "%o was zapped into submission by %k's Electrokinesis."
 PROJECTILE
++MTHRUSPECIES
 damagetype "YellowDevil"
 -NOGRAVITY
 -RIPPER
@@ -703,6 +708,7 @@ actor LightningLine
 {
 Obituary "%o was zapped into submission by %k's Electrokinesis."
 PROJECTILE
++MTHRUSPECIES
 speed 26
 radius 32
 height 6
@@ -741,6 +747,7 @@ PROJECTILE
 +SEEKERMISSILE
 -RIPPER
 +HEXENBOUNCE
++MTHRUSPECIES
 damagetype "YellowDevil"
 scale 2.5
 Speed 34
@@ -788,6 +795,7 @@ Obituary "%o was zapped into submission by %k's Electrokinesis."
 PROJECTILE
 +SEEKERMISSILE
 +RIPPER
++MTHRUSPECIES
 damagetype "YellowDevil"
 scale 2.5
 Speed 34

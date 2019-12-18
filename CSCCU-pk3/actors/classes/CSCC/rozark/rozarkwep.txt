@@ -274,6 +274,7 @@ actor OblivionWings
 {
 Obituary "%o was taken away by %k's Oblivion Wings."
 PROJECTILE
++MTHRUSPECIES
 Radius 8
 Height 12
 scale 2.5
@@ -433,6 +434,7 @@ Obituary "%o was taken away by %k's Oblivion Wings."
 damagetype "OblivionWings"
 damage (10)
 PROJECTILE
++MTHRUSPECIES
 radius 8
 height 8
 States
@@ -504,7 +506,7 @@ fail
 }
 }
 
-actor RozarkTracer : FastProjectile
+actor RozarkTracer : FastProjectileBase
 {
 PROJECTILE
 +RIPPER

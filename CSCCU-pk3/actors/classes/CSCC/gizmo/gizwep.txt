@@ -137,7 +137,7 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
-actor ClawGloves
+actor ClawGloves : ProjectileBase
 {
 Obituary "%o was scratched up by %k"
 PROJECTILE
@@ -158,7 +158,7 @@ stop
 }
 }
 
-actor ClawGlovesStrong
+actor ClawGlovesStrong : ProjectileBase
 {
 Obituary "%o was scratched up by %k"
 PROJECTILE
@@ -301,7 +301,7 @@ inventory.maxamount 32
 }
 
 
-actor FrostCannon
+actor FrostCannon : ProjectileBase
 {
 Obituary "%o was frozen solid by %k's Frost Cannon."
 PROJECTILE
@@ -320,7 +320,7 @@ stop
 }
 }
 
-actor FrostCannon2
+actor FrostCannon2 : ProjectileBase
 {
 Obituary "%o was frozen solid by %k's Frost Cannon."
 PROJECTILE
@@ -398,7 +398,7 @@ inventory.amount 1
 inventory.maxamount 28 
 }
 
-actor LightningCannonShot
+actor LightningCannonShot : ProjectileBase
 {
 Obituary "%o was electrocuted by %k's Lightning Cannon."
 PROJECTILE
@@ -421,7 +421,7 @@ loop
 }
 }
 
-actor LightningCannonFX
+actor LightningCannonFX 
 {
 PROJECTILE
 +RIPPER
@@ -537,7 +537,7 @@ stop
 }
 }
 
-actor GizmoFlameThrower
+actor GizmoFlameThrower : ProjectileBase
 {
 PROJECTILE
 +DONTBLAST
@@ -561,7 +561,7 @@ stop
 }
 }
 
-actor GizmoFlameThrower2
+actor GizmoFlameThrower2 : ProjectileBase
 {
 PROJECTILE
 +DONTBLAST
@@ -705,7 +705,7 @@ inventory.amount 1
 inventory.maxamount 32//52
 }
 
-actor GizmoChargeShot2
+actor GizmoChargeShot2 : ProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -728,7 +728,7 @@ loop
 }
 
 
-actor GizmoChargeShot3
+actor GizmoChargeShot3 : ProjectileBase
 {
 Obituary "%o was blasted by %k's Plasma Cannon."
 PROJECTILE
@@ -1066,7 +1066,7 @@ inventory.amount 1
 inventory.maxamount 100
 }
 
-actor ChaosShot1
+actor ChaosShot1 : ProjectileBase
 {
 scale 2.5
 PROJECTILE
@@ -1185,6 +1185,7 @@ actor FusilladeParticle : MageStaffFX2
 {
 PROJECTILE
 +SEEKERMISSILE
++MTHRUSPECIES
 -EXTREMEDEATH
 Radius 5
 Height 5
@@ -1208,6 +1209,7 @@ actor FusilladeParticle2 : MageStaffFX2
 {
 PROJECTILE
 +SEEKERMISSILE
++MTHRUSPECIES
 -EXTREMEDEATH
 Radius 5
 Height 5
@@ -1231,6 +1233,7 @@ stop
 actor FusilladeParticle3 : MageStaffFX2
 {
 PROJECTILE
++MTHRUSPECIES
 +SEEKERMISSILE
 -EXTREMEDEATH
 Radius 5
@@ -1382,7 +1385,7 @@ stop
 }
 }
 
-actor EternalClaws
+actor EternalClaws : ProjectileBase
 {
 Obituary "%o was torn to shreds by %k's Eternal Claws"
 PROJECTILE
@@ -1404,7 +1407,7 @@ stop
 }
 }
 
-actor LimitStun
+actor LimitStun : ProjectileBase
 {
 PROJECTILE
 +MISSILE
@@ -1447,7 +1450,7 @@ stop
 }
 }
 
-actor EternalBlast
+actor EternalBlast : BasicExplosion
 {
 PROJECTILE
 +MISSILE
@@ -1588,7 +1591,7 @@ inventory.amount 1
 inventory.maxamount 28 
 }
 
-actor RFMissile
+actor RFMissile : ProjectileBase
 {
 PROJECTILE
 +SHOOTABLE
@@ -1617,7 +1620,7 @@ stop
 }
 }
 
-actor RFMissile2
+actor RFMissile2 : ProjectileBase
 {
 PROJECTILE
 +SHOOTABLE
@@ -1646,7 +1649,7 @@ stop
 }
 }
 
-actor RFRocket
+actor RFRocket : ProjectileBase
 {
 PROJECTILE
 +SHOOTABLE
@@ -1684,7 +1687,7 @@ stop
 }
 }
 
-actor RocketExplode
+actor RocketExplode : BasicExplosion
 {
 Speed 0
 Damage 0
@@ -1759,7 +1762,7 @@ inventory.amount 1
 inventory.maxamount 28 
 }
 
-actor StoneCannonShot
+actor StoneCannonShot : ProjectileBase
 {
 Obituary "%o was bashed by %k's Stone Cannon."
 PROJECTILE
@@ -1785,7 +1788,7 @@ stop
 }
 }
 
-actor StoneBit
+actor StoneBit 
 {
 Obituary "%o was bashed by %k's Stone Cannon."
 damage 1
@@ -1874,7 +1877,7 @@ inventory.amount 1
 inventory.maxamount 28 
 }
 
-actor HydroCannonShot1
+actor HydroCannonShot1 : ProjectileBase
 {
 Obituary "%o was hosed down by %k's Hydro Cannon."
 PROJECTILE
@@ -1899,7 +1902,7 @@ stop
 }
 }
 
-actor HydroCannonShot2
+actor HydroCannonShot2 : ProjectileBase
 {
 Obituary "%o was hosed down by %k's Hydro Cannon."
 PROJECTILE
@@ -1924,7 +1927,7 @@ stop
 }
 }
 
-actor HydroCannonShot3
+actor HydroCannonShot3 : ProjectileBase
 {
 Obituary "%o was hosed down by %k's Hydro Cannon."
 PROJECTILE

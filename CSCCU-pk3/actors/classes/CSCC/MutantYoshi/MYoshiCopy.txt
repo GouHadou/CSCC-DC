@@ -54,6 +54,7 @@ actor YoshiEgg2
 {
 PROJECTILE
 -NOGRAVITY
++MTHRUSPECIES
 damagetype "YoshiEgg"
 Speed 35
 Damage (0)

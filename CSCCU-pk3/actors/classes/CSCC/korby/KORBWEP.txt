@@ -681,6 +681,7 @@ actor FIR1
 Obituary "%o WAS SLAIN BY %k's FIR."
 PROJECTILE
 +RIPPER
++MTHRUSPECIES
 damagetype "KFIR"
 Radius 16
 Height 16
@@ -787,6 +788,7 @@ actor FIR3TRAIL : FIR3
 -NOGRAVITY
 -RIPPER
 -HEXENBOUNCE
++MTHRUSPECIES
 speed 0
 renderstyle add
 damage (10)
@@ -816,6 +818,7 @@ damagetype "KLIGHT"
 PROJECTILE
 -FORCEXYBILLBOARD
 +FORCEYBILLBOARD
++MTHRUSPECIES
 Damage (0)
 Height 1
 Radius 1
@@ -842,6 +845,7 @@ actor LIT2T : LIT1T
 Obituary "%o WAS SLAIN BY %k'S LIT2."
 speed 90
 +PIERCEARMOR
++MTHRUSPECIES
 States
 {
 Crash:
@@ -858,6 +862,7 @@ actor LIT3T : LIT1T
 {
 Obituary "%o WAS SLAIN BY %k'S LIT3."
 +PIERCEARMOR
++MTHRUSPECIES
 speed 110
 States
 {
@@ -989,6 +994,7 @@ PROJECTILE
 +DONTSPLASH
 +HEXENBOUNCE
 +CANBOUNCEWATER
++MTHRUSPECIES
 damagetype "KICE"
 RenderStyle "Translucent"
 Alpha 0.9
@@ -1211,6 +1217,7 @@ actor ICE3FLAKE
 PROJECTILE
 +HEXENBOUNCE
 -BOUNCEONACTORS
++MTHRUSPECIES
 RenderStyle "Translucent"
 Alpha 0.9
 bouncecount 5
@@ -1302,6 +1309,7 @@ actor BadBreath
 PROJECTILE
 +FORCEXYBILLBOARD
 +RIPPER
++MTHRUSPECIES
 damagetype "BadBreath"
 Obituary "%o WAS SLAIN %k's BAD BREATH."
 Radius 16
@@ -1375,6 +1383,7 @@ stop
 actor KNeedle
 {
 PROJECTILE
++MTHRUSPECIES
 +FORCEXYBILLBOARD
 Obituary "%o WAS SLAIN BY %k's THOUSAND NEEDLES."
 damagetype "ThousandNeedle"
@@ -1406,6 +1415,7 @@ Obituary "%o WAS SLAIN BY BY %k's SLOWGA."
 -SOLID
 +NOGRAVITY
 +DONTBLAST
++MTHRUSPECIES
 PROJECTILE
 damage 0
 radius 1
@@ -1516,6 +1526,7 @@ stop
 actor KBlaster
 {
 PROJECTILE
++MTHRUSPECIES
 +FORCEXYBILLBOARD
 +RIPPER
 Obituary "%o WAS SLAIN BY %k's BLASTER."
@@ -1579,6 +1590,7 @@ stop
 actor LimitGlove
 {
 PROJECTILE
++MTHRUSPECIES
 +FORCEXYBILLBOARD
 +DONTBLAST
 Obituary "%o WAS SLAIN BY %k's LIMIT GLOVE."

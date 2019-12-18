@@ -194,7 +194,7 @@ Goto Ready+1
 }
 }
 
-actor MachinaShotLV0 : FastProjectile
+actor MachinaShotLV0 : FastProjectileBase
 {
 PROJECTILE
 +DONTBLAST
@@ -289,6 +289,7 @@ PROJECTILE
 +FORCEXYBILLBOARD
 +SKYEXPLODE
 +DONTBLAST
++MTHRUSPECIES
 Obituary "%o felt the shock of %k' Electric Machina."
 damagetype "Instagib"
 Speed 10
@@ -326,7 +327,7 @@ stop
 }
 }
 
-Actor TotallyOriginalTracer : FastProjectile
+Actor TotallyOriginalTracer : FastProjectileBase
 {
 PROJECTILE
 +DONTBLAST
@@ -365,6 +366,7 @@ Actor StaticShorter
 PROJECTILE
 +DONTBLAST
 +Ripper
++MTHRUSPECIES
 Height 1
 Radius 1
 Speed 0

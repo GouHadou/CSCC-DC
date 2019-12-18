@@ -87,7 +87,7 @@ wallbouncefactor 0.4 //Faku
 reactiontime 15
 bouncecount 5
 damagetype "NadeSpam"
-//+MTHRUSPECIES
++MTHRUSPECIES
 States
 {
 Spawn:

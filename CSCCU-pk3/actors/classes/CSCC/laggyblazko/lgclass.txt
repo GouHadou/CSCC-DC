@@ -382,6 +382,7 @@ WallBounceFactor 0.6
 Mass 10
 Speed 0
 Projectile
++MTHRUSPECIES
 -Nogravity
 States
 {
@@ -419,6 +420,7 @@ Stop
 actor LaggyIceCube
 {
 PROJECTILE
++MTHRUSPECIES
 Radius 1
 Height 1
 scale 2.5

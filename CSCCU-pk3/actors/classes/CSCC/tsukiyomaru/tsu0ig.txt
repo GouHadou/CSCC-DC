@@ -275,7 +275,7 @@ inventory.maxamount 1
 }
 
 
-actor EndOfAllShot : FastProjectile
+actor EndOfAllShot : FastProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -415,6 +415,7 @@ PROJECTILE
 +DONTBLAST
 +FORCEXYBILLBOARD
 +RIPPER
++MTHRUSPECIES
 Speed 0
 Obituary "%o had his soul completely devoured by %k's Soul Eater."
 Damage (200)

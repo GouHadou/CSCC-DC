@@ -50,6 +50,7 @@ stop
 actor StrongMuru
 {
 PROJECTILE
++MTHRUSPECIES
 Radius 10
 +RIPPER
 +DONTBLAST

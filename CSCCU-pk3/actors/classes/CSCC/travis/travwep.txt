@@ -178,6 +178,7 @@ actor SolShot
 {
 Obituary "%o was Scorched by %k's Solar Gun."
 PROJECTILE
++MTHRUSPECIES
 +FORCEXYBILLBOARD
 +NOBLOOD
 +NOTARGETSWITCH

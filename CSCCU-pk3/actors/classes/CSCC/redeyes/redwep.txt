@@ -208,6 +208,7 @@ actor DrainBall : MageStaffFX2
 {
 Obituary "%o had his life force stolen by %k's Hemomancy."
 PROJECTILE
++MTHRUSPECIES
 +DONTBLAST
 +SEEKERMISSILE
 -EXTREMEDEATH
@@ -280,6 +281,7 @@ actor SanguinePool
 PROJECTILE
 +RIPPER
 +NOINTERACTION
++MTHRUSPECIES
 damagetype "Blood"
 Speed 0
 Damage (0)
@@ -313,6 +315,7 @@ actor BloodSpear //: MageStaffFX2
 Obituary "%o was speared by %k The Impaler."
 PROJECTILE
 +DONTBLAST
++MTHRUSPECIES
 //+SEEKERMISSILE
 damagetype "Blood"
 Speed 64

@@ -55,7 +55,7 @@ Goto Ready+1
 }
 }
 
-actor RedRing
+actor RedRing : ProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND

@@ -53,7 +53,7 @@ Goto Ready+1
 }
 
 
-actor IGIcePulse
+actor IGIcePulse : ProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -128,7 +128,7 @@ stop
 }
 }
 
-actor CounterIG
+actor CounterIG : ProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND

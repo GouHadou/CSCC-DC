@@ -47,11 +47,12 @@ Goto Flash
 }
 }
 
-actor Telekenesis
+actor Telekenesis 
 {
 PROJECTILE
 +RIPPER
 +DONTBLAST
++MTHRUSPECIES
 Obituary "%k's telekenisis was too strong for %o!"
 damagetype "Instagib"
 Radius 6

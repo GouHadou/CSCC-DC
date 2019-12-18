@@ -52,6 +52,7 @@ goto Ready+1
 actor TrueYamatoSpear : FastProjectile
 {
 PROJECTILE
++MTHRUSPECIES
 Radius 16
 Height 5
 scale 2.5
@@ -72,6 +73,7 @@ loop
 actor CampTower
 {
 PROJECTILE
++MTHRUSPECIES
 +NOTARGETSWITCH
 +DONTBLAST
 -SOLID
@@ -268,6 +270,7 @@ stop
 actor YamatoFingerDamager
 {
 PROJECTILE
++MTHRUSPECIES
 +DONTSPLASH
 Damagetype "Yamato"
 Damage 0

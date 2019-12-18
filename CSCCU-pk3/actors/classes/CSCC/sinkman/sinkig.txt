@@ -50,6 +50,7 @@ PROJECTILE
 scale 2.5
 +RIPPER
 +DONTBLAST
++MTHRUSPECIES
 Speed 15
 Radius 16
 Height 16

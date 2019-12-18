@@ -67,6 +67,7 @@ PROJECTILE
 +SHOOTABLE
 +NOGRAVITY
 +CANPASS
++MTHRUSPECIES
 Damage (900)
 Height 20
 Radius 20
@@ -136,6 +137,7 @@ stop
 actor MegaPwner
 {
 PROJECTILE
++MTHRUSPECIES
 +RIPPER
 Damage (900)
 Height 30

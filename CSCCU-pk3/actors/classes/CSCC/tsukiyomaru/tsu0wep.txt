@@ -394,6 +394,7 @@ stop
 actor FoxFirePower1
 {
 PROJECTILE
++MTHRUSPECIES
 +LOOKALLAROUND
 +SKYEXPLODE
 +FORCEXYBILLBOARD
@@ -475,7 +476,7 @@ actor FoxFireBurn2 : FoxFireBurn1
 Damage (10)
 }
 
-actor FoxFireSpeed1 : FastProjectile
+actor FoxFireSpeed1 : FastProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND
@@ -510,7 +511,7 @@ damage (25)
 speed 480
 }
 
-actor FoxFireSpread1 : FastProjectile
+actor FoxFireSpread1 : FastProjectileBase
 {
 PROJECTILE
 +LOOKALLAROUND

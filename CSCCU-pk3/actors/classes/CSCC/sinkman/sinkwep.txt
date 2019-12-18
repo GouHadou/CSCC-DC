@@ -97,6 +97,7 @@ Obituary "%o was scalded by %k's Sink Spray."
 PROJECTILE
 scale 2.5
 //+RIPPER
++MTHRUSPECIES
 +DONTBLAST
 Speed 30
 Radius 16

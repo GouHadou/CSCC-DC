@@ -92,6 +92,7 @@ inventory.maxamount 30
 actor UkiRevolverProjectile 
 {
 PROJECTILE 
++MTHRUSPECIES
 Radius 5 
 Height 5 
 scale 0.5 

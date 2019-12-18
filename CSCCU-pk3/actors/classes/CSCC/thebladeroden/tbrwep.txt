@@ -121,6 +121,7 @@ actor CannonShell
 {
 Obituary "%o was pow-pow'd by %k's Autocannon"
 PROJECTILE
++MTHRUSPECIES
 //-NOGRAVITY
 Radius 6
 Height 6

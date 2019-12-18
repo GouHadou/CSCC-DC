@@ -86,7 +86,7 @@ inventory.amount 1
 inventory.maxamount 28
 }
 
-actor EarthGift
+actor EarthGift : ProjectileBase
 {
 Obituary "%o was ripped apart by %k's Destructor."
 PROJECTILE

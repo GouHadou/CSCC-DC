@@ -119,7 +119,7 @@ inventory.maxamount 90
 actor TommyPuff // : HitscanPuffBase //breaks things somehow.
 {
 	+NOGRAVITY
-	//+MTHRUSPECIES
+	+MTHRUSPECIES
 	+PUFFONACTORS
 	+PUFFGETSOWNER
 	Damagetype "TommyGun"
