@@ -150,7 +150,7 @@ SetResultValue(ReturnValue);
 
 
 #DEFINE DashWait 10
-#DEFINE DashForce 25
+#DEFINE DashForce 21
 
 script "YangBoost" (Void)
 {
@@ -233,8 +233,8 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 		{
 		GiveActorInventory(ActivatorTID(), "BoostExplodeItem", 1);
 		TakeActorInventory(ActivatorTID(), "EmberCelicaAmmo", 2);
+		LimitSpeed(35);
 		}
-	LimitSpeed(35);
     delay(1);	
 	InputOldButtons = InputButtons; // More reliable than INPUT_OLDBUTTONS ....Go figure.
 	}
