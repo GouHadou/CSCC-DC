@@ -25,6 +25,7 @@ NIRO G 4
 goto Spawn
 ClassPain:
 NIRO H 0
+NIRO H 0 A_GiveInventory("AuraWait", 1)
 NIRO H 0 A_JumpIfInventory("GravityHoldPainPower",1,"GravityHoldWait")
 NIRO H 0 A_JumpIfInventory("WilyIcePainPower",1,"WilyIceWait")
 NIRO H 0 A_Pain
