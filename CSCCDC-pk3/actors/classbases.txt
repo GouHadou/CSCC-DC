@@ -1,0 +1,6 @@
+#include "actors/classbase0.txt"
+#include "actors/classbase1.txt"
+#include "actors/classbase2.txt"
+#include "actors/classbase.txt"
+
+#include "actors/classbase-flags.txt"

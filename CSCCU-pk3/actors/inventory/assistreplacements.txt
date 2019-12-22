@@ -1,4 +1,0 @@
-#include "actors/inventory/items/assistutility.txt"
-#include "actors/inventory/items/assistwep.txt"
-#include "actors/inventory/items/assiststanks.txt"
-#include "actors/inventory/items/misc.txt"

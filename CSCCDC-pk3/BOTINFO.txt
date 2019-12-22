@@ -1,0 +1,52 @@
+{
+	name = "\crC\cno\cvp\cry"
+	accuracy = 3
+	intellect = 4
+	evade = 1
+	anticipation = 1
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "TimeStopperWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "CopyRobot"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/COPYBOT"
+	chatfrequency = 50
+}
+
+{
+	name = "\cvUnix"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ShadowBladeWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Unix"
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	name = "\cmC\ccutman\cmM\ccike"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "RollingCutterWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "cutman"
+	class = "CutmanMike"
+	revealed = true
+	script = "humanbot"
+}

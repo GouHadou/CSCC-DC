@@ -1,3 +1,0 @@
-#include "actors/inventory/weapons/csweapons.txt"
-#include "actors/inventory/weapons/wepgiver.txt"
-

@@ -1,0 +1,374 @@
+actor UnixKnife : CSCCWepBase
+{
+weapon.ammotype "UnixRevolverAmmo"
+weapon.ammouse 1
+weapon.ammotype2 "UnixCloakAmmo"
+Weapon.SlotNumber 1
+Obituary "$OB_UNIXKNIFE"
+Tag "$TAG_UNIXKNIFE"
+inventory.icon "UNXICON"
+DropItem "SlashClawWep"
+States
+{
+Spawn:
+WEA3 Q 1
+loop
+Ready:
+BIKD J 1 ACS_ExecuteAlways(998,0,DYE_UNIX)
+BIKD J 0 A_GunFlash
+Ready2:
+BIKD J 1 A_WeaponReady
+Goto Ready2
+Deselect:
+TNT1 A 0 A_GunFlash("NoFlash")
+Deselect2:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+SCLA A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+SCLA A 1 A_Raise
+Loop
+Fire:
+"----" A 0 A_JumpIfInventory("UnixCloakFlag",1,"CloakFire")
+"----" A 0 A_JumpIfInventory("UnixNoAttack",1,"CloakFire2")
+//SCLA A 0 A_JumpIfNoAmmo("NoAmmo")
+SCLA A 0 A_GiveInventory("UnixClearDisguise",1)
+BIKD B 2
+TNT1 A 0 A_PlaySound("weapon/slashclaw", CHAN_WEAPON , 0.3)
+BIKD CCDD 1 A_GiveInventory("UnixMainfire1",1)
+BIKD EFG 2
+BIKD KL 2
+BIKD J 6
+BIKD J 0 A_Refire
+Goto Ready2
+CloakFire:
+"----" A 0 A_GiveInventory("UnixCloakOffFunc",1)
+goto CloakFire2
+AltFire:
+"----" A 0 A_GiveInventory("UnixCloakToggleFunc",1)
+AltHold:
+CloakFire2:
+"----" A 1 A_RailWait
+"----" A 0 A_Refire
+"----" A 0 A_ClearRefire
+goto Ready2
+NoAmmo:
+BIKD J 1 ACS_Execute(979,0)
+Goto Ready2
+Flash:
+TNT1 A 1
+TNT1 A 0 A_GiveInventory("UnixCloakFunc",1)
+TNT1 A 0 A_GiveInventory("UnixTeamVisual",1)
+loop
+NoFlash:
+TNT1 A 0
+stop
+}
+}
+
+actor UnixBlade : UnixKnife
+{
+Weapon.SlotNumber 2
+Obituary "$OB_UNIXBLADE"
+Tag "$TAG_UNIXBLADE"
+inventory.icon "SHADI"
+DropItem "ShadowBladeWep"
+States
+{
+Spawn:
+WEAP A 1
+loop
+Ready:
+BIKD A 0 A_JumpIfNoAmmo("Ready1NoAmmo")
+BIKD A 1 ACS_ExecuteAlways(998,0,DYE_UNIX)
+BIKD A 0 A_GunFlash
+goto Ready2
+Ready1NoAmmo:
+BIKD J 1 ACS_ExecuteAlways(998,0,DYE_UNIX)
+BIKD A 0 A_GunFlash
+goto Ready2
+Ready2:
+BIKD A 0 A_JumpIfNoAmmo("ReadyNoAmmo")
+BIKD A 0 A_JumpIfInventory("UnixRevolverAmmo",6,"Ready4")
+Ready3:
+BIKD A 0 A_JumpIfInventory("UnixCloakFlag",1,"Ready3Cloak")
+BIKD A 0 A_JumpIfInventory("UnixNoAttack",1,"Ready3Cloak")
+BIKD A 26 A_WeaponReady
+BIKD IH 3 A_WeaponReady
+TNT1 A 10 A_WeaponReady
+BIKD HI 3 A_WeaponReady
+BUS2 D 0 A_GiveInventory("UnixRevolverAmmo",6)
+Ready4:
+BIKD A 1 A_WeaponReady
+loop
+ReadyNoAmmo:
+SCLA A 0 A_JumpIfInventory("UnixCloakFlag",1,"ReadyNoAmmoCloak")
+SCLA A 0 A_JumpIfInventory("UnixNoAttack",1,"ReadyNoAmmoCloak")
+BIKD J 26 A_WeaponReady(WRF_NOPRIMARY)
+BIKD LK 3 A_WeaponReady(WRF_NOPRIMARY)
+TNT1 A 10 A_WeaponReady(WRF_NOPRIMARY)
+BIKD HI 3 A_WeaponReady(WRF_NOPRIMARY)
+BUS2 D 0 A_GiveInventory("UnixRevolverAmmo",6)
+Goto Ready4
+Ready3Cloak:
+BIKD A 1 A_WeaponReady
+goto Ready3
+ReadyNoAmmoCloak:
+BIKD J 1 A_WeaponReady
+goto ReadyNoAmmo
+Deselect:
+TNT1 A 0 A_GunFlash("NoFlash")
+Deselect2:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+BUSH A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BUSH A 1 A_Raise
+Loop
+Fire:
+"----" A 0 A_JumpIfInventory("UnixCloakFlag",1,"CloakFire")
+"----" A 0 A_JumpIfInventory("UnixNoAttack",1,"CloakFire2")
+BUSH A 0 A_JumpIfNoAmmo("NoAmmo")
+SCLA A 0 A_GiveInventory("UnixClearDisguise",1)
+BUSH A 0 A_PlaySoundEx("weapon/shadow","Weapon")
+SHAH A 0 A_GiveInventory("UnixMainfire2",1)
+BIKD BCDEFG 2
+BIKD A 0 A_JumpIfNoAmmo("ThrowEndNoAmmo")
+BIKD HI 1
+BIKD I 0 A_Refire
+Goto Ready3
+ThrowEndNoAmmo:
+BIKD KL 1
+Goto ReadyNoAmmo
+CloakFire:
+"----" A 0 A_GiveInventory("UnixCloakOffFunc",1)
+goto CloakFire2
+AltFire:
+"----" A 0 A_GiveInventory("UnixCloakToggleFunc",1)
+AltHold:
+CloakFire2:
+"----" A 1 A_RailWait
+"----" A 0 A_Refire
+"----" A 0 A_ClearRefire
+goto Ready2
+NoAmmo:
+BIKD J 1 A_RailWait
+//BIKD J 1 ACS_Execute(979,0)
+Goto ReadyNoAmmo
+}
+}
+
+actor UnixSapper : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "SAPICON"
+scale 2.0
++INVBAR
+states
+{
+Spawn:
+BIKD O 1
+loop
+Use:
+SCLA A 0 A_JumpIfInventory("UnixCloakFlag",1,"No")
+SCLA A 0 A_JumpIfInventory("UnixNoAttack",1,"No")
+TNT1 A 0 A_JumpIfInventory("UnixCloakAmmo",750,"Success")
+No:
+TNT1 A 0
+fail
+Success:
+TNT1 A 0 A_TakeInventory("UnixCloakAmmo",750)
+TNT1 A 0 A_PlaySoundEx("weapon/sparkshock","Auto")
+BUSH A 0 A_FireCustomMissile("SapperRadius",0,0,8,0)
+TNT1 A 0 ACS_ExecuteAlways(976,0)
+fail
+}
+}
+
+actor UnixRevolverAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 6
+}
+
+actor UnixKnifeShot : BasicProjectile
+{
+Obituary "$OB_UNIXFACESTAB"
+damagetype "UnixKnife"
+translation "198:198=93:93", "192:192=87:87"
+reactiontime 1
+damage (5)
+Radius 20
+Height 20
+speed 60
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+Spawn2:
+TNT1 A 1 A_CountDown
+loop
+Death:
+TNT1 A 1
+MUR2 B 1
+stop
+}
+}
+actor UnixKnifeShotB : UnixKnifeShot {translation "198:198=74:74", "192:192=205:205"} 
+actor UnixKnifeShotR : UnixKnifeShot {translation "198:198=41:41", "192:192=171:171"}
+actor UnixKnifeShotG : UnixKnifeShot {translation "198:198=128:128", "192:192=104:104"}
+actor UnixKnifeShotY : UnixKnifeShot {translation "198:198=232:232", "192:192=229:229"}
+
+actor UnixBackstabItem : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEX("UnixBackstabber")
+stop
+}
+}
+
+actor UnixBackstabber
+{
+var int user_angle;
+Height 0
+Radius 0
++NOINTERACTION
++NOCLIP
+damagetype "UnixBackstab"
+Obituary "$OB_UNIXBACKSTAB"
+PROJECTILE
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_RearrangePointers(AAPTR_DEFAULT, AAPTR_DEFAULT, AAPTR_TARGET)
+TNT1 A 0 A_TransferPointer(AAPTR_TARGET, AAPTR_DEFAULT, AAPTR_TARGET, AAPTR_TARGET)
+TNT1 A 0 A_SetUserVar("user_angle", angle)
+TNT1 A 0 A_FaceTarget
+TNT1 A 0 A_SetUserVar("user_angle", angle-user_angle)
+TNT1 A 0 A_JumpIf((user_angle>90&&user_angle<270)||(user_angle<-90&&user_angle>-270),"DoBackstab")
+//TNT1 A 0 A_Log("Facestab")
+stop
+DoBackstab:
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,ACS_NamedExecuteWithResult("TracerHeightGet")/2,0,0)
+TNT1 A 0 A_RadiusGive("UnixBackStabImmune",1000,RGF_PLAYERS|RGF_MONSTERS|RGF_OBJECTS)
+TNT1 A 0 A_TakeInventory("UnixBackStabImmune",1,0,AAPTR_TRACER)
+TNT1 A 0 A_Explode(200,1,0,0,1)
+//TNT1 A 0 A_Log("Backstab")
+stop
+}
+}
+
+actor UnixBackstabImmune : PowerProtection
+{
+//Powerup.Duration 0x7FFFFFFF
+Powerup.Duration 3
+damagefactor "Normal", 1.0
+damagefactor "UnixBackstab", 0.0
+}
+
+actor RevolverShadowBlade : BasicProjectile
+{
+Obituary "$OB_UNIXBLADE"
+Speed 40
+Damage (12)
+Damagetype "RevolverBlade"
++RIPPER
+Radius 7
+Height 7
+scale 2.5
+States
+{
+Spawn:
+SBLA ABAB 3
+loop
+Death:
+TNT1 A 0 A_SpawnItemEx("RevolverBladeLand",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+actor RevolverShadowBladeB : RevolverShadowBlade {translation "210:210=205:205"}
+actor RevolverShadowBladeR : RevolverShadowBlade {translation "210:210=171:171"}
+actor RevolverShadowBladeG : RevolverShadowBlade {translation "210:210=104:104"}
+actor RevolverShadowBladeY : RevolverShadowBlade {translation "210:210=229:229"}
+
+actor RevolverBladeLand : RevolverShadowBlade
+{
+-RIPPER
++CLIENTSIDEONLY
++NOINTERACTION
+damage 0
+States
+{
+Spawn:
+SBLA B 50
+SBLA B 1 A_FadeOut
+goto Spawn+1
+Death:
+stop
+}
+}
+
+actor SapperRadius : BasicExplosion
+{
+damagetype "SparkShock"
+Obituary "$OB_UNIXSAPPER"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Explode(5,300,0)
+stop
+}
+}
+
+actor UnixMainfire1 : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TST1 A 0 A_FireCustomMissile("UnixKnifeShot",0,0,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("UnixKnifeShotB",0,0,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("UnixKnifeShotR",0,0,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("UnixKnifeShotG",0,0,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("UnixKnifeShotY",0,0,8,0)
+stop
+}
+}
+
+actor UnixMainfire2 : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TST1 A 0 A_FireCustomMissile("RevolverShadowBlade",0,1,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("RevolverShadowBladeB",0,1,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("RevolverShadowBladeR",0,1,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("RevolverShadowBladeG",0,1,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("RevolverShadowBladeY",0,1,8,0)
+stop
+}
+}

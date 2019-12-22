@@ -1,0 +1,48 @@
+actor CutmanMikeClass : CustomWepMan
+{
+player.displayname "cutmanmike"
+player.jumpz 12
+player.startitem "HellfireCutterBoss"
+player.startitem "CutmanMikeClassItems", 1
+player.maxhealth 75
+health 75
+States
+{
+Spawn:
+GOTH A 0
+GOTH B 1
+GOTH A 1 
+Goto Spawn+2
+See:
+GOTH BCDE 5 
+Goto Spawn
+Missile:
+GOTH F 5 
+GOTH G 4 
+goto Spawn
+}
+}
+
+actor CutmanMikeClassItems : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("HellfireAmmo", 28)
+stop
+}
+}
+
+actor HellfireCutterBossMorph : CutmanMikeClass
+{
++NOSKIN
+player.morphweapon "HellfireCutterBoss"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}

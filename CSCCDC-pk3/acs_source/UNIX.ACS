@@ -1,0 +1,194 @@
+#library "Unix"
+#include "zcommon.acs"
+#include "CSCCLIB.acs"
+
+Script "TracerHeightGet" (void)
+{
+SetActivator(0,AAPTR_TRACER);
+SetResultValue(GetActorProperty(0,APROP_Height)>>16);
+}
+
+#DEFINE MAX_DISGUISES 4
+
+//#DEFINE MEGACOL 0.0 //String arrays do not like 0.0...
+#DEFINE MEGACOL -1.0
+#DEFINE COPYCOL -5.0
+#DEFINE UNIXCOL 16.0
+#DEFINE CMMCOL 25.0
+
+str DisguiseInfo[MAX_DISGUISES][4] = {
+//Actor, Skin, Color, Special Disguise Pickup
+{"Megaman", "MegamanDisguise", MEGACOL, ""},
+{"BestClassEver", "CopyRobotDisguise", COPYCOL, "CopyPrismDisguisePickup"},
+{"UnixClass", "Base", UNIXCOL, ""},
+{"CutmanMikeClass", "CutmanMikeDisguise", CMMCOL, ""},
+};
+
+function int FindDisguise(void) {
+	for(int i = 0; i<MAX_DISGUISES; i++) {
+		if(CheckActorClass(0,DisguiseInfo[i][0])) return i;
+	}
+	//return -1;
+	return 0;
+}
+
+function int FindColor(int disguise) {
+		Switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
+		{
+			Case 0:
+				return COLOR_LIGHT;
+				break;
+			Case 1:
+				return COLOR_WILY;
+				break;
+			Case 2:
+				return COLOR_COSSACK;
+				break;
+			Case 3:
+				return COLOR_KING;
+				break;
+			default:
+				break;
+		}
+		int num = DisguiseInfo[disguise][2];
+		num>>=16;
+		if(num<0&&num>-2) num = 0;
+		return num;
+}
+
+script "UnixBackstabDeathScript" (void)
+{
+str TeamPickup = "";
+Switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
+	{
+	Case 0:
+		TeamPickup = "FakeLightAllyPickup";
+		break;
+	Case 1:
+		TeamPickup = "FakeWilyAllyPickup";
+		break;
+	Case 2:
+		TeamPickup = "FakeCossackAllyPickup";
+		break;
+	Case 3:
+		TeamPickup = "FakeKingAllyPickup";
+		break;
+	default:
+		break;
+	}
+int CopyRobot = CheckInventory("CopyWeapon");
+int disguise = FindDisguise();
+if(CopyRobot == 1){disguise = 1;}
+int color = FindColor(disguise);
+SetActivatorToTarget(0);
+//if(CheckInventory("UnixKnife")) {
+if(CheckInventory("UnixKnife")&&!CheckInventory("UnixDisguiseFlag")) {
+	GiveInventory("UnixDisguiseFlag",1);
+	GiveInventory("YesSkinPickup",1);
+	GiveInventory("NoWeaponTranslation", 1);
+	GiveInventory("NoTeamTranslation", 1);
+	
+	//PrintBold(i:color);
+	if(disguise == 1 && ACS_ExecuteWithResult(975, 1)!=1 && !CheckInventory("CopyWeapon")){ACS_NamedExecuteAlways("CSACS_COPYCOLORS",0,1);}
+	else{ACS_NamedExecuteAlways("CSACS_UnixColors",0,color);}//have to refer to a separate script in GLOBAL for PlayerTranslation
+	
+	str thePickup = DisguiseInfo[disguise][3];
+	
+	if(thePickup!="" && !CheckInventory("CopyWeapon")){GiveInventory(thePickup,1);}
+	if(teamPickup!=""){GiveInventory(teamPickup,1);}
+	ACS_NamedExecuteAlways("SetUnixDisguiseC",0,disguise);
+}
+}
+
+script "UnixClearDisguiseScript" (void)
+{
+//if(CheckInventory("UnixKnife")) {
+if(CheckInventory("UnixKnife")&&CheckInventory("UnixDisguiseFlag")) {
+	TakeInventory("UnixDisguiseFlag",1);
+	GiveInventory("NoSkinPickup",1);
+	TakeInventory("NoWeaponTranslation", 1);
+	TakeInventory("NoTeamTranslation", 1);
+	GiveInventory("UnixTranslation",1);
+	ACS_NamedExecuteAlways("SetUnixDisguiseC",0,-1);
+	Delay(2);
+}
+}
+
+script "UnixDeath" DEATH
+{
+if(CheckInventory("UnixKnife")) GiveInventory("UnixClearDisguise",1);
+}
+
+Script "DisguisePropWarper" (int Copy) CLIENTSIDE
+{
+	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+	while(CheckActorInventory(Player,"UnixDisguiseFlag")) {
+		SyncInvisibleTo(Player);
+		if(Copy==1){Thing_SetTranslation(0,ACS_NamedExecuteWithResult("core_copytranslation",0));}
+		Delay(1);
+	}
+	Thing_Remove(0);
+}
+
+int yourDisguise;
+
+script "SetUnixDisguiseC" (int skin) CLIENTSIDE
+{
+if(PlayerNumber()==ConsolePlayerNumber()) yourDisguise = skin;
+}
+
+//#DEFINE THE_COOLDOWN 35 //too short
+#DEFINE THE_COOLDOWN 40
+//#DEFINE THE_COOLDOWN 70
+
+Script "UnixDisguiserScript" (void) CLIENTSIDE
+{
+if(PlayerNumber()==ConsolePlayerNumber()) {
+	int cooldown = THE_COOLDOWN;
+	yourDisguise = -1;
+	int lastDisguise = yourDisguise;
+	int skin = GetCVar("Skin");
+	int lastSkin;
+	int disguiseSkin;
+	while(PlayerHealth()>0) {
+		lastSkin = skin;
+		skin = GetCVar("Skin");
+		if(skin!=lastSkin) cooldown = THE_COOLDOWN;
+		if((cooldown<1)&&(yourDisguise>-1)) {
+			if(yourDisguise!=lastDisguise) {
+				//log(s:"new disguise");
+				ConsoleCommand(strparam(s:"Skin ",s:DisguiseInfo[yourDisguise][1]));
+				cooldown = THE_COOLDOWN;
+				skin = GetCVar("Skin");
+				disguiseSkin = skin;
+				lastDisguise = yourDisguise;
+			} else if(skin!=disguiseSkin) {
+				//log(s:"new skin");
+				ConsoleCommand(strparam(s:"Skin ",s:DisguiseInfo[yourDisguise][1]));
+				cooldown = THE_COOLDOWN;
+				skin = GetCVar("Skin");
+				disguiseSkin = skin;
+			}
+		}
+		if(cooldown>0) cooldown--;
+		delay(1);
+	}
+}
+}
+
+function void ConsoleCommandP(str cmd)
+{
+ConsoleCommand(cmd);
+Log(s:cmd);
+}
+
+Script "ForceSkins" OPEN CLIENTSIDE
+{
+while(true) {
+	if(!GetCvar("CL_Skins")) {
+		ConsoleCommand("CL_Skins 1");
+		//Log(s:"CL_Skins forced to 1 due to disguise class");
+	}
+	delay(1);
+}
+}

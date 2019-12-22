@@ -1,0 +1,2 @@
+const int DYE_UNIX = 16;
+const int DYE_CUTMANMIKE = 25;

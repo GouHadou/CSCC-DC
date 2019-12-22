@@ -1,8 +1,0 @@
-//[+]========================================================================[+]
-//--------------------------------|Targeting Script|---------------------------
-//[+]========================================================================[+]
-actor TargetingFlag : Inventory{inventory.amount 1 inventory.maxamount 64}
-actor TargetingRangeFlag : Inventory{inventory.amount 1 inventory.maxamount 3000}
-Actor TargActive : Powerup{inventory.amount 1 powerup.duration 0x7FFFFFFF}
-Actor TargScriptActive : Powerup{inventory.amount 1 powerup.duration 3}
-Actor TargHolder : Powerup{inventory.amount 1 powerup.duration 7}

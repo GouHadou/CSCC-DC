@@ -1,0 +1,255 @@
+#library "COPY"
+#include "wepacs.acs"
+
+#define MAX_MORPHS 3
+
+str CopyMorphs[MAX_MORPHS][3] = 
+{
+{"UnixKnife", "Unix", "UnixClassItems"},//1
+{"UnixBlade", "Unix", "UnixClassItems"},//2
+{"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},//3
+};
+
+Script "GetPlayerWeapon" (int TargetTID)
+{
+SetActivator(TargetTID);
+SetResultValue(WhichWeapon());
+}
+
+Script "CopyMorph" (int MorphMode)
+{
+
+int CopyPlayer;
+int CopyTarget;
+str CopyClass;
+str CopyWeapon;
+str WeaponCopied; // Mega Man
+str CopyItems;
+str CopyName;
+str FinalMorph;
+bool CopyWepCheck = false;
+Bool MorphCheck = false;
+
+
+Switch(MorphMode)
+	{
+	Case 0:
+	CopyPlayer = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Target);
+	CopyTarget = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Tracer);
+	if(CopyPlayer == 0 || CopyTarget == 0){terminate;}
+	SetActivator(CopyTarget);
+	CopyWeapon = GetWeapon();
+	FinalMorph = StrParam(s:CopyWeapon, s:"Morph"); 
+	SetActivator(CopyPlayer);
+	for(int i = 0; i < MAX_MORPHS; i++) 
+		{
+		if(StrIcmp(CopyMorphs[i][0], CopyWeapon)==0) 
+			{
+			CopyName = CopyMorphs[i][1];
+			CopyItems = CopyMorphs[i][2];
+			MorphCheck = true;
+			}
+		}
+	break;
+	
+	Case 1:
+	MorphCheck=true;
+	break;
+	}
+
+If(MorphCheck == False){WeaponCopied = ACS_NamedExecuteWithResult("GetPlayerWeapon", CopyTarget);}
+
+If(WeaponCopied > 0)
+	{
+	CopyWepCheck = true;
+	MorphMode = 2;
+	}
+if(MorphCheck == False && CopyWepCheck == False){MorphMode = 2;}
+
+int HealthBefore = GetActorProperty(0, APROP_HEALTH);
+int MaxHealthBefore = GetActorProperty(0, APROP_SpawnHealth);
+Int HealthRatio = FixedDiv(HealthBefore<<16, MaxHealthBefore<<16);
+int MaxHealthAfter;
+int TotalHealthAfter;
+
+Int PlayerPitch = GetActorPitch(0);
+int KilledMeStockNum = CheckInventory("KilledMeStock");
+int FusionStockNum = CheckInventory("FusionStock");
+
+int XVel = GetActorVelX(0);
+int YVel = GetActorVelY(0);
+
+bool UnderwaterFlag = CheckInventory("IsUnderWater");
+If(HealthBefore <= 0){terminate;}
+If(CheckInventory("PowerInvulnerable")){TakeInventory("PowerInvulnerable", 1);} 
+TakeInventory("CopyRemover", 1);
+If(MorphCheck == True){SetPlayerProperty(0,1,4);}
+
+
+Switch(MorphMode)
+	{
+	Case 0:
+	ClearInventory();
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgYou \cicopied \ckthe \cd", s:CopyName, s:" \chclass\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	MorphActor(CopyPlayer, FinalMorph, "", 0, 258, "", "");
+	if(StrIcmp(CopyItems, "NONE")!=0){GiveInventory(CopyItems, 1);}//GiveInventory(CopyItems, 1);
+	GiveInventory("MorphFlag", 1);
+	TakeInventory("NoColorFlag",999);
+	GiveInventory("CopyMorphTimer", 35);
+	ACS_NamedExecuteAlways("CopyMorphTimer", 0);
+	break;
+	Case 1:
+	UnmorphActor(ActivatorTID(), 0);
+    SetActorProperty(ActivatorTID(), APROP_Invulnerable, FALSE);
+	SetActorProperty(ActivatorTID(), APROP_Alpha, 1.0);
+	ClearInventory();
+	TakeInventory("NoColorFlag",999);
+	GiveInventory("CutterFlag",999);
+    GiveInventory("CopyRobotUnmorphed", 1);
+	SetPlayerProperty(0, 0, 16);
+	SetPlayerProperty(0, 0, 3);
+	SetPlayerProperty(0, 0, 4);
+	SetPlayerProperty(0, 0, 0);
+	SetHudSize(600,380,0);
+	HudMessage(s:"\ccCopy ability expired!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+	HudMessage(s:"";HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.0);
+	GiveInventory("CopyWeapon", 1);
+	SetWeapon("CopyWeapon");
+	GiveInventory("CopyAmmo", 28);
+	GiveInventory("BusterAmmo", 3);
+	break;
+	Case 2:
+	SetHudSize(600,380,0);
+	If(WeaponCopied <= 0)
+		{
+		HudMessage(s:"\ccUnable to copy weapon from ", n:CopyTarget - 999, s:"!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+		terminate;
+		}
+		
+	HudMessage(s:"\cgYou \cicopied \ck", s:weapons_ammo[WeaponCopied][2], s:"\cd from \ch", n:CopyTarget - 999, s:"\ct!";HUDMSG_FADEOUT,2,CR_ORANGE,300.4,50.0,2.0,0.5);
+
+	If(CheckInventory(weapons_ammo[WeaponCopied][0]))
+		{
+		GiveInventory(weapons_ammo[WeaponCopied][1], 255);
+		SetWeapon(weapons_ammo[WeaponCopied][0]);
+		}
+	Else
+		{
+		GiveInventory(weapons_ammo[WeaponCopied][0], 1);
+		SetWeapon(weapons_ammo[WeaponCopied][0]);
+		}
+	break;
+	}
+
+If(ClassifyActor(0) & ACTOR_BOT)
+	{
+	GiveInventory("Monsterblock", 1);
+	GiveInventory("IsBot", 1);
+	}
+MaxHealthAfter = GetActorProperty(0, APROP_SpawnHealth);
+If(MorphCheck != 2){SetActorVelocity(0, XVel/2, YVel/2, GetActorVelZ(0), 0, 0);}
+TotalHealthAfter = FixedMul(HealthRatio, MaxHealthAfter);
+If(TotalHealthAfter > 0){SetActorProperty(0, APROP_HEALTH, TotalHealthAfter);}
+TakeInventory("NoColorFlag", 1);
+//--==Class Specific gives==--
+GiveInventory("KilledMeStock", KilledMeStockNum);
+//--==End Gives==--
+GiveInventory("CopyRemover", 1);
+ACS_NamedExecuteAlways("HUD_NUMBER_VAR_CHECK_RESPAWN",0);
+Switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
+{
+Case 0:
+GiveInventory("LightTeamFlag", 1);
+break;
+Case 1:
+GiveInventory("WilyTeamFlag", 1);
+break;
+Case 2:
+GiveInventory("CossackTeamFlag", 1);
+break;
+Case 3:
+GiveInventory("KingTeamFlag", 1);
+break;
+}
+If(UnderWaterFlag == TRUE){GiveInventory("LowGravity", 1);}
+Else{GiveInventory("NormalGravity", 1);}
+ACS_NamedExecuteAlways("CSACS_TeamSpecies",0);
+SetActorPitch(0, PlayerPitch);
+Delay(5);
+
+If((XVel == 0.0 && YVel == 0.0) && GetActorVelZ(0) < 0.0){ThrustThing(GetActorAngle(0) >> 8, 1, 0, 0);} //Protects against getting stuck in walls
+
+SetPlayerProperty(0,0,4);
+}
+
+Script "CopyMorphTimer" (void)
+{
+int TimerRemaining;
+While(CheckInventory("CopyMorphTimer") && GetActorProperty(0, APROP_HEALTH) > 0)
+	{
+	TimerRemaining = CheckInventory("CopyMorphTimer");
+	If(GetGamemodeState() == 3)
+		{
+		If(GetGamemodeState() == 3){Delay(35);}
+		TakeInventory("CopyMorphTimer", 35);
+		}
+	SetFont("BIGFONT");
+	SetHudSize(600,380,0);
+	HudMessage(s:"\cgTime \ciLeft \ck: \cd", i:TimerRemaining;HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.5);
+	TakeInventory("CopyMorphTimer", 1);
+	Delay(35);
+	}
+If(!CheckWeapon("CopyWeapon")){ACS_NamedExecuteAlways("CopyMorph", 0, 1);}
+}
+Script "GetTarget2" (int Target)
+{
+
+SetActivator(0, Target);
+int ReturnTID = ActivatorTID();
+SetResultValue(ReturnTID);
+}
+
+//Script to handle Copy's speed modifications when morphed
+Script "CSACS_CopySpeed" (int weapon)
+{
+int AlreadyShocked = CheckInventory("PowerShock");
+int AlreadySlowed = CheckInventory("PowerSlow");
+
+int SpeedBefore = GetActorProperty(0, APROP_Speed);
+
+Switch(Weapon)
+	{
+	Case 1:
+	GiveInventory("Slowed", 1);
+	If(AlreadySlowed > 0){Terminate;}
+	SetActorProperty(0, APROP_Speed, FixedMul(SpeedBefore,0.67));
+	While(CheckInventory("PowerSlow")){Delay(1);}
+	break;
+	
+	Case 2:
+	GiveInventory("Shocked", 1);
+	If(AlreadyShocked > 0){Terminate;}
+	SetActorProperty(0, APROP_Speed, 0.0);
+	While(CheckInventory("PowerShock")){Delay(1);}
+	break;
+	}
+If(CheckInventory("MorphFlag"))
+	{
+	SetActorProperty(0, APROP_Speed, SpeedBefore);
+	}
+}
+
+//Copy Cube stuff
+Script "CopyCubeWarper" (void) CLIENTSIDE
+{
+	Delay(1);
+	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+	while(GetActorProperty(Player, APROP_HEALTH)>0
+	&& CheckActorInventory(Player, "CopyWeapon")) {
+		SyncInvisibleTo(Player);
+		Thing_SetTranslation(0,ACS_NamedExecuteWithResult("core_copytranslation",0));
+		Delay(1);
+	}
+	Thing_Remove(0);
+}

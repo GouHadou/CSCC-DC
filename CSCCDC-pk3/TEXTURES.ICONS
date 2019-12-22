@@ -1,0 +1,28 @@
+graphic M_DOOM, 1000, 1000
+{
+	Offset 5, 0
+    XScale 1.0
+    YScale 1.0
+    Patch CSCCLOGO, 0, 0
+}
+
+Graphic "BANISHI", 30, 30 //Copy Banish
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BANUA0", 0, 0
+}
+
+graphic UNXICON, 30, 30 //Unix Knife
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MUR2A0, 0, 0
+}
+
+graphic SAPICON, 30, 30 //Unix Sapper
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BIKDO0, 0, 0
+}

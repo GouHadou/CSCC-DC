@@ -1,8 +1,0 @@
-actor ClassBaseTest : ClassBaseU 
-{
-States
-{
-//custom stuff goes here
-
-}
-}

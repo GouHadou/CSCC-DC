@@ -1,0 +1,35 @@
+//Copy Robot
+misc/CopyPain MEGAPAIN
+
+$playersound	BestClassEver	male	*death		MEGADEAT
+$playersound	BestClassEver	male	*xdeath		MEGADEAT
+$playersound	BestClassEver	male	*gibbed		MEGADEAT
+$playersound	BestClassEver	male	*pain100	MEGAPAIN
+$playersound	BestClassEver	male	*pain75		MEGAPAIN
+$playersound	BestClassEver	male	*pain50		MEGAPAIN
+$playersound	BestClassEver	male	*pain25		MEGAPAIN
+$playersound	BestClassEver	male	*grunt		LAND
+$playersound	BestClassEver	male	*land		LAND
+$playersound	BestClassEver	male	*fist		dsnone
+$playersound	BestClassEver	male	*usefail	LAND
+$playersound	BestClassEver	male	*taunt		BCETAUNT
+
+//Unix
+weapon/unixcloak teleout2 $volume weapon/unixcloak 0.90
+
+$playersound	unixclass	male	*death		MEGADEAT
+$playersound	unixclass	male	*xdeath		MEGADEAT
+$playersound	unixclass	male	*gibbed		MEGADEAT
+$playersound	unixclass	male	*pain100	MEGAPAIN
+$playersound	unixclass	male	*pain75		MEGAPAIN
+$playersound	unixclass	male	*pain50		MEGAPAIN
+$playersound	unixclass	male	*pain25		MEGAPAIN
+$playersound	unixclass	male	*grunt		LAND
+$playersound	unixclass	male	*land		LAND
+$playersound	unixclass	male	*fist		dsnone
+$playersound	unixclass	male	*usefail	LAND
+$playersound	unixclass	male	*taunt		UNIXTAU
+
+
+//CutmanMike
+weapons/lightningstrike WOOLSHOT

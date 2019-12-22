@@ -1,0 +1,30 @@
+actor InvisibleFlag : Once {}
+actor CannotUseHealing : Once {}
+Actor JumpCanclerDisable : Once {}
+Actor StaminaFlag : Ammo {+INVENTORY.IGNORESKILL Inventory.MaxAmount 500}
+actor CanWallJump : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+actor NoJump : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+actor NoWallJump : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+actor WallJump : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor WallJumpCount : Inventory
+{
+inventory.amount 1
+inventory.maxamount 30
+}

@@ -1,0 +1,284 @@
+actor UnixClass : CustomWepMan
+{
+player.displayname "Unix"
+player.soundclass "UnixClass"
+Health 75
+Player.Maxhealth 75
+player.startitem "UnixKnife"
+player.startitem "UnixBlade"
+player.startitem "UnixClassItems"
+states
+{
+Spawn:
+SHAM A 0
+SHAM B 1
+SHAM A 1
+Goto Spawn+2
+See:
+SHAM BCDE 5
+Goto Spawn
+Missile:
+SHAM F 5
+SHAM G 4
+goto Spawn
+
+ClassPain:
+"----" A 0 A_JumpIfInventory("UnixDisguiseFlag",1,"Spawn")
+goto "Super::ClassPain"
+}
+}
+
+actor UnixClassItems : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("UnixDisguiserStart",1)
+TNT1 A 0 A_GiveInventory("UnixCloakAmmo", 1000)
+TNT1 A 0 A_GiveInventory("UnixRevolverAmmo", 6)
+TNT1 A 0 A_GiveInventory("UnixSapper",1)
+stop
+}
+}
+
+//Disguise
+
+actor UnixDisguiserStart : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_ChangeFlag("NOSKIN",1)
+TNT1 A 0 ACS_NamedExecuteAlways("UnixDisguiserScript",0)
+stop
+}
+}
+
+actor UnixDisguiseFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor NoSkinPickup : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_ChangeFlag("NOSKIN",1)
+stop
+}
+}
+
+actor YesSkinPickup : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_ChangeFlag("NOSKIN",0)
+stop
+}
+}
+
+actor UnixBackstabDeath : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 ACS_NamedExecuteAlways("UnixBackstabDeathScript",0)
+stop
+}
+}
+
+actor UnixClearDisguise : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 ACS_NamedExecuteAlways("UnixClearDisguiseScript",0)
+stop
+}
+}
+
+actor UnixTranslation : CustomInventory
+{
+states
+{
+Pickup:
+SCLA A 0 ACS_ExecuteAlways(991,0,DYE_UNIX)
+stop
+}
+}
+
+//Cloak
+actor UnixCloakAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 1000
+}
+
+actor UnixCloakFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("UnixCloakFlag",1,"Pickup2")
+PickupB:
+TNT1 A 0 A_GiveInventory("UnixCloakAmmo",1)
+TNT1 A 0 A_FadeTo(1.0,0.02,false)
+//TNT1 A 0 A_FadeIn(0.02,FTF_CLAMP)
+stop
+Pickup2:
+TNT1 A 0 A_JumpIfInventory("UnixCloakAmmo",1,"Pickup3")
+TNT1 A 0 A_GiveInventory("UnixCloakOffFunc",1)
+goto PickupB
+Pickup3:
+TNT1 A 0 A_TakeInventory("UnixCloakAmmo",3)
+//TNT1 A 0 A_FadeOut(0.04,FTF_CLAMP)
+TNT1 A 0 A_FadeTo(0.0,0.04,false)
+stop
+}
+}
+
+actor UnixCloakFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor UnixCloakToggleFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("UnixCloakFlag",1,"Pickup2")
+TNT1 A 0 A_GiveInventory("UnixCloakOnFunc",1)
+stop
+Pickup2:
+TNT1 A 0 A_GiveInventory("UnixCloakOffFunc",1)
+stop
+}
+}
+
+actor UnixCloakOnFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_PlaySoundEx("weapon/unixcloak", "weapon")
+TNT1 A 0 A_GiveInventory("InvisibleFlag",1)
+TNT1 A 0 A_GiveInventory("UnixCloakFlag",1)
+stop
+}
+}
+
+actor UnixCloakOffFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_PlaySoundEx("weapon/centauruncloak", "weapon")
+TNT1 A 0 A_TakeInventory("InvisibleFlag",999)
+TNT1 A 0 A_TakeInventory("UnixCloakFlag",1)
+TNT1 A 0 A_GiveInventory("UnixNoAttack",1)
+stop
+}
+}
+
+actor UnixNoAttack : Powerup
+{
+Powerup.Duration 70
+}
+
+//Team Visual
+actor UnixTeamVisual : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("UnixCloakFlag",1,"Pickup2")
+TNT1 A 0 A_JumpIfInventory("UnixDisguiseFlag",1,"Pickup2")
+stop
+Pickup2:
+LEHU D 0 A_JumpIfInventory("LightTeamFlag",1,"PLight")
+LEHU D 0 A_JumpIfInventory("WilyTeamFlag",1,"PWily")
+LEHU D 0 A_JumpIfInventory("CossackTeamFlag",1,"PCossack")
+LEHU D 0 A_JumpIfInventory("KingTeamFlag",1,"PKing")
+stop
+PLight:
+TNT1 A 0 A_SpawnItemEx("UnixVisualLight", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_TRANSFERTRANSLATION*//*|SXF_CLIENTSIDE*/, 0)
+stop
+PWily:
+TNT1 A 0 A_SpawnItemEx("UnixVisualWily", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_TRANSFERTRANSLATION*//*|SXF_CLIENTSIDE*/, 0)
+stop
+PCossack:
+TNT1 A 0 A_SpawnItemEx("UnixVisualCossack", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_TRANSFERTRANSLATION*//*|SXF_CLIENTSIDE*/, 0)
+stop
+PKing:
+TNT1 A 0 A_SpawnItemEx("UnixVisualKing", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_TRANSFERTRANSLATION*//*|SXF_CLIENTSIDE*/, 0)
+stop
+}
+}
+
+actor UnixVisualBase
+{
+scale 2.5
+-SOLID
++NOGRAVITY
++NOINTERACTION
+RenderStyle "Translucent"
+Alpha 0.6
++CLIENTSIDEONLY
+states
+{
+Spawn:
+BIKD N 0
+BIKD N 1
+stop
+}
+}
+
+actor UnixVisualLight : UnixVisualBase
+{
+Translation "192:192=205:205", "198:198=74:74"
+VisibleToTeam 0
+}
+
+actor UnixVisualWily : UnixVisualBase
+{
+Translation "192:192=171:171", "198:198=41:41"
+VisibleToTeam 1
+}
+
+actor UnixVisualCossack : UnixVisualBase
+{
+Translation "192:192=104:104", "98:198=128:128"
+VisibleToTeam 2
+}
+
+actor UnixVisualKing : UnixVisualBase
+{
+Translation "192:192=229:229", "198:198=232:232"
+VisibleToTeam 3
+}
+
+//Copy
+actor UnixKnifeMorph : UnixClass
+{
++NOSKIN
+player.morphweapon "UnixKnife"
+player.soundclass "BestClassEver"
+States
+{
+ClassPain:
+"----" A 0 A_JumpIfInventory("UnixDisguiseFlag",1,"Spawn")
+YOKM H 0
+goto "Super::ClassPain"
+}
+}
+
+actor UnixBladeMorph : UnixKnifeMorph
+{
+player.morphweapon "UnixBlade"
+}

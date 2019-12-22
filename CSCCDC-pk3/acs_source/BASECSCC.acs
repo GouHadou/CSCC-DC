@@ -1,0 +1,39 @@
+#library "BASECSCC"
+#include "zcommon.acs"
+#include "CSCCLIB.acs"
+
+Script "CSACS_TeamSpecies" ENTER 
+{
+int pln = PlayerNumber();
+if(IsTeamGame)
+	{
+	switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
+		{
+		Case 0:
+		SetActorProperty(0,APROP_SPECIES,"LightMember");
+		break;
+		Case 1:
+		SetActorProperty(0,APROP_SPECIES,"WilyMember");
+		break;
+		Case 2:
+		SetActorProperty(0,APROP_SPECIES,"CossackMember");
+		break;
+		Case 3:
+		SetActorProperty(0,APROP_SPECIES,"KingMember");
+		break;
+		}
+	}
+else{setactorproperty(0,APROP_SPECIES,StrParam(s:"Player_",i:pln));}
+}
+
+script "CSACS_TSRespawn" RESPAWN
+{
+ACS_NamedExecuteAlways("CSACS_TeamSpecies",0);
+}
+
+Script "CSACS_HealthSet" (void) CLIENTSIDE
+{
+int StateSet = 0;
+If(CheckActorInventory(consolePlayerNumber()+1000,"CannotUseHealing")){SetActorState(0,"TranslucentSpawn"); StateSet=1;}
+If(StateSet==0){SetActorState(0,"NormalSpawn");}
+}

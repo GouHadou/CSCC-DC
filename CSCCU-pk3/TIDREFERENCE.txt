@@ -1,5 +1,0 @@
-silly reference file for TIDs
-
--Bonehead
---Bone Shot initial, 7000-7232
---Bone Shot filler, 7300-7332

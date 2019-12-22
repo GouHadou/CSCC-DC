@@ -1,0 +1,8 @@
+//Copy Robot
+texture BESTBAR, 8, 56
+{
+}
+
+texture VESTBAR, 56, 8 
+{
+}

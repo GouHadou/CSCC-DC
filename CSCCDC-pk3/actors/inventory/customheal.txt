@@ -1,0 +1,78 @@
+actor SmallHealthH : SmallHealth replaces SmallHealth 
+{
+inventory.maxamount 0 
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"HeldReady")
+TNT1 A 1 ACS_NamedExecuteAlways("CSACS_HealthSet",0)
+wait
+NormalSpawn:
+HBAL A 0 A_SetTranslucent(1.0)
+goto Animation
+TranslucentSpawn:
+HBAL A 0 A_SetTranslucent(0.5)
+goto Animation
+Animation:
+HBAL AB 6
+goto Spawn+2
+HeldReady:
+TNT1 A 0 A_ChangeFlag("SPECIAL",0)
+TNT1 A 0 A_ChangeFlag("INVISIBLE",1) 
+goto Held
+}
+}
+
+actor BigHealthH : BigHealth replaces BigHealth 
+{
+inventory.maxamount 0 
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"HeldReady")
+TNT1 A 1 ACS_NamedExecuteAlways("CSACS_HealthSet",0)
+wait
+NormalSpawn:
+HBAL A 0 A_SetTranslucent(1.0)
+goto Animation
+TranslucentSpawn:
+HBAL A 0 A_SetTranslucent(0.5)
+goto Animation
+Animation:
+HBAL CD 6
+goto Spawn+2
+HeldReady:
+TNT1 A 0 A_ChangeFlag("SPECIAL",0)
+TNT1 A 0 A_ChangeFlag("INVISIBLE",1) 
+goto Held
+}
+}
+
+actor MegaHealthH : MegaHealth replaces MegaHealth 
+{
+inventory.maxamount 0 
+States
+{
+Spawn:
+TNT1 A 0
+HBAL E 0 Thing_ChangeTID(0, 999)
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"HeldReady")
+TNT1 A 1 ACS_NamedExecuteAlways("CSACS_HealthSet",0)
+wait
+NormalSpawn:
+HBAL A 0 A_SetTranslucent(1.0)
+goto Animation
+TranslucentSpawn:
+HBAL A 0 A_SetTranslucent(0.5)
+goto Animation
+Animation:
+HBAL EF 6
+goto Spawn+3
+HeldReady:
+TNT1 A 0 A_ChangeFlag("SPECIAL",0)
+TNT1 A 0 A_ChangeFlag("INVISIBLE",1) 
+goto Held
+}
+}

@@ -1,0 +1,38 @@
+{
+name = "MegamanDisguise"
+sprite = MEGM
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}
+
+{
+name = "CopyRobotDisguise"
+sprite = YOKM
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}
+
+{
+name = "CutmanMikeDisguise"
+sprite = GOTH
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}

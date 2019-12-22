@@ -1,0 +1,262 @@
+actor CopyRobot : ClassBase
+{
+player.displayname "CopyRobot"
+player.soundclass "BestClassEver"
+player.startitem "CopyWeapon"
+player.startitem "CopyRemover", 1
+player.startitem "CopyAmmo", 28
+player.startitem "BusterAmmo", 3
+player.maxhealth 80
+health 80
+damagefactor "CopyMainShot", 10.0 //case of best fight ever to the death with no copy weps
+damagefactor "CopyAltShot", 10.0 
+States
+{
+Spawn:
+YOKM A 0
+YOKM B 1
+YOKM A 1
+Goto Spawn+2
+See:
+YOKM BCDE 5
+Goto Spawn
+Missile:
+YOKM F 5 
+YOKM G 4 
+Goto Spawn+2
+}
+}
+
+actor YokuPrismWatcher : BaseShieldWarper
+{
+renderstyle "translucent"
+alpha 1.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CopyCubeWarper", 0)
+TNT1 A 0 A_Jump(256, "Shield")
+Goto Shield
+Shield:
+YOKM LLLL 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+YOKM MMMM 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+YOKM NNNN 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+YOKM OOOO 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+YOKM PPPP 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+YOKM QQQQ 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+loop
+}
+}
+
+/*
+actor YokuPrismWatcher
+{
+Height 0
+Radius 0
++NOINTERACTION
++NOCLIP
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("InvisibleFlag",1,"Hide")
+TNT1 AAAA 1 A_GiveToTarget("YokuGiveFX1",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("InvisibleFlag",1,"Hide")
+TNT1 AAAA 1 A_GiveToTarget("YokuGiveFX2",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("InvisibleFlag",1,"Hide")
+TNT1 AAAA 1 A_GiveToTarget("YokuGiveFX3",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("InvisibleFlag",1,"Hide")
+TNT1 AAAA 1 A_GiveToTarget("YokuGiveFX4",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("InvisibleFlag",1,"Hide")
+TNT1 AAAA 1 A_GiveToTarget("YokuGiveFX5",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("InvisibleFlag",1,"Hide")
+TNT1 AAAA 1 A_GiveToTarget("YokuGiveFX6",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",998,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("InvisibleFlag",1,"Hide")
+TNT1 A 0 A_JumpIfInTargetInventory("CopyWeapon",1,"Spawn")
+Goto Death
+Hide:
+TNT1 A 2
+Goto Spawn
+Death:
+TNT1 A 1 
+stop
+}
+}
+
+actor YokuGiveFX1 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_SpawnItemEx("YokuPrism1",0,0,108,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM | SXF_TRANSFERTRANSLATION, 0)
+stop
+}
+}
+
+
+actor YokuGiveFX2 : YokuGiveFX1
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_SpawnItemEx("YokuPrism2",0,0,108,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM | SXF_TRANSFERTRANSLATION, 0)
+stop
+}
+}
+
+actor YokuGiveFX3 : YokuGiveFX1
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_SpawnItemEx("YokuPrism3",0,0,108,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM | SXF_TRANSFERTRANSLATION, 0)
+stop
+}
+}
+
+actor YokuGiveFX4 : YokuGiveFX1
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_SpawnItemEx("YokuPrism4",0,0,108,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM | SXF_TRANSFERTRANSLATION, 0)
+stop
+}
+}
+
+actor YokuGiveFX5 : YokuGiveFX1
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_SpawnItemEx("YokuPrism5",0,0,108,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM | SXF_TRANSFERTRANSLATION, 0)
+stop
+}
+}
+
+actor YokuGiveFX6 : YokuGiveFX1
+{
+States
+{
+Spawn:
+TNT1 A 1
+loop
+Use:
+TNT1 A 0 A_SpawnItemEx("YokuPrism6",0,0,108,momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM | SXF_TRANSFERTRANSLATION, 0)
+stop
+}
+}
+
+
+
+actor YokuPrism1
+{
+scale 2.5
+-SOLID
++NOGRAVITY
++NOINTERACTION
++NOCLIP
++NOTIMEFREEZE
++CLIENTSIDEONLY
+States
+{
+Spawn:
+YOKM L 1
+YOKM L 1
+stop
+}
+}
+
+actor YokuPrism2 : YokuPrism1
+{
+States
+{
+Spawn:
+YOKM M 1
+YOKM M 1
+stop
+}
+}
+
+actor YokuPrism3 : YokuPrism1
+{
+States
+{
+Spawn:
+YOKM N 1
+YOKM N 1
+stop
+}
+}
+
+
+actor YokuPrism4 : YokuPrism1
+{
+States
+{
+Spawn:
+YOKM O 1
+YOKM O 1
+stop
+}
+}
+
+actor YokuPrism5 : YokuPrism1
+{
+States
+{
+Spawn:
+YOKM P 1
+YOKM P 1
+stop
+}
+}
+
+actor YokuPrism6 : YokuPrism1
+{
+States
+{
+Spawn:
+YOKM Q 1
+YOKM Q 1
+stop
+}
+}*/
+
+actor CopyRobotUnmorphed : Powerup
+{
+powerup.duration 10
+}
+
+Actor CopyMorphTimer : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 99
+}
