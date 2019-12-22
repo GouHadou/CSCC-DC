@@ -1,0 +1,4 @@
+Line 70 in file "CSCCU-pk3/acs_source/a_magicode.acs" ...
+CSCCU-pk3/acs_source/a_magicode.acs:70: input_buttons : Identifier has not been declared.
+> Int Buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+>                                               ^

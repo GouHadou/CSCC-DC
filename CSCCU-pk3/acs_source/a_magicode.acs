@@ -29,6 +29,7 @@ str ZomoChipList[ZomoChips]={
 "SeekBomb",
 "TimeBomb",
 "TreeBomb",
+"Meteors",
 "Boomerang",
 "HiBoomerang",
 "MBoomerang",
@@ -40,25 +41,24 @@ str ZomoChipList[ZomoChips]={
 "Muramasa",
 "FlashBomb",
 "DashAttack",
-"FastGauge",
 "AttackPlus",
 "RedApple",
 "GreenApple",
 "YellowApple",//
 "MagBolt",
 "AntiDamage",
-"Recover300",
-"Invisible"
+"Recov30",
+"Invis"
 };
 
 str MegaChipList[7]={
-"FlashmanMega",
-"WoodmanMega",
-"FreezemanMega",
-"BubblemanMega",
-"NapalmmanMega",
-"ProtomanEXEMega",
-"Meteors"
+"FastGauge",
+"Flashman",
+"Woodman",
+"Freezeman",
+"Protoman",
+"Napalmman",
+"Bubbleman"
 };
 
 str GigaChipList[1]={
@@ -551,14 +551,16 @@ GiveInventory( StrParam(s:ZomoChipList[ChipX1],s:"Chip") ,1);
 GiveInventory( StrParam(s:ZomoChipList[ChipX2],s:"Chip") ,1);
 GiveInventory( StrParam(s:ZomoChipList[ChipX3],s:"Chip") ,1);
 
-HudMessage(s:ZomoChipList[ChipX1],s:" has been given!"; HUDMSG_FADEOUT, 67, CR_WHITE,0.1, 0.51, 2.0,0.5);
-HudMessage(s:ZomoChipList[ChipX2],s:" has been given!"; HUDMSG_FADEOUT, 68, CR_WHITE,0.1, 0.54, 2.0,0.5);
-HudMessage(s:ZomoChipList[ChipX3],s:" has been given!"; HUDMSG_FADEOUT, 69, CR_WHITE,0.1, 0.57, 2.0,0.5);
+HudMessage(s:ZomoChipList[ChipX1],s:" has been given!"; HUDMSG_FADEOUT, 67, CR_WHITE,0.1, 0.50, 2.0,0.5);
+HudMessage(s:ZomoChipList[ChipX2],s:" has been given!"; HUDMSG_FADEOUT, 68, CR_WHITE,0.1, 0.53, 2.0,0.5);
+HudMessage(s:ZomoChipList[ChipX3],s:" has been given!"; HUDMSG_FADEOUT, 69, CR_WHITE,0.1, 0.56, 2.0,0.5);
 
-if(GetCvar("lastmanstanding")==1 || GetCvar("teamlms")){terminate;}
+//if(GetCvar("lastmanstanding")==1 || GetCvar("teamlms")){terminate;}
 if(!CheckInventory("MegaChipFlag")&&random(0,100)>=85){
-	if(random(0,100)>=90){GiveInventory( StrParam(s:GigaChipList[0],s:"Chip") ,1);}
-	else{GiveInventory( StrParam(s:MegaChipList[random(0,6)],s:"Chip") ,1);}
+	HudMessage(s:"Special chip rolled; check items!"; HUDMSG_FADEOUT, 70, CR_RED,0.1, 0.59, 2.0,0.5);
+	if(random(0,100)>=90){GiveInventory( StrParam(s:GigaChipList[0],s:"Pickup") ,1);}
+	else{GiveInventory( StrParam(s:MegaChipList[random(0,6)],s:"Pickup") ,1);}
+	GiveInventory("MegaChipFlag",1);
 }}
 
 //End of green fairy magic

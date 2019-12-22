@@ -7,7 +7,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_Explode(2,180,0,0,30)
+TNT1 A 1 A_Explode(19,175,0,0,25)
 stop
 }
 }
@@ -99,7 +99,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 ACS_ExecuteAlways(247,0,40,500)
+TNT1 A 1 ACS_ExecuteAlways(247,0,45,450)
 stop
 }
 }
@@ -186,8 +186,13 @@ Spawn:
 RAPL A 2
 loop
 Pickup:
+TNT1 A 0 A_JumpIfInventory("IsZomo",1,"ZomoHeal")
 TNT1 A 0 A_SpawnItemEx("Recov300FX",0,0,5,momx,momy,momz,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
-TNT1 A 0 HealThing(75)
+TNT1 A 0 HealThing(500)
+stop
+ZomoHeal: //The class already can be a bit BS so by default any person being it regardless of dropping it or not should not get the full effect
+TNT1 A 0 A_SpawnItemEx("Recov300FX",0,0,5,momx,momy,momz,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
+TNT1 A 0 HealThing(375)
 stop
 }
 }
@@ -203,7 +208,6 @@ Spawn:
 GAPL A 2
 loop
 Pickup:
-TNT1 A 0 A_ChangeFlag("REFLECTIVE",1)
 TNT1 A 0 A_SpawnItemEx("Recov300FX",0,0,5,momx,momy,momz,0,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
 TNT1 A 0 A_SpawnItemEx("GAppleWatcher",0,0,28)
 TNT1 A 0 A_GiveInventory("GAppleInvul",1)
@@ -249,7 +253,7 @@ TNT1 A 4 A_GiveToTarget("InvulFXSpawner",1)
 TNT1 A 0 A_JumpIfInTargetInventory("PowerTotalDefense",1,"Spawn2")
 goto Death
 Death:
-TNT1 A 0 A_GiveToTarget("GAppleReset",1)
+TNT1 A 0
 stop
 }
 }
@@ -280,17 +284,6 @@ stop
 }
 }
 
-Actor GAppleReset : CustomInventory
-{
-States
-{
-Pickup:
-TNT1 A 0 A_ChangeFlag("REFLECTIVE",0)
-TNT1 A 0 A_TakeInventory("PowerTotalDefense",99)
-stop
-}
-}
-
 Actor SynchroFXSpawner : CustomInventory
 {
 States
@@ -317,7 +310,7 @@ stop
 }
 }
 
-actor PowerTotalDefense : PowerProtection{powerup.duration -15 Damagefactor "Normal", 0.0 Damagefactor "BNUninstall", 1.0}
+actor PowerTotalDefense : PowerProtection{powerup.duration -8 Damagefactor "Normal", 0.1 Damagefactor "BNUninstall", 1.0}
 
 actor YAppleDamage : PowerUpGiver
 {
@@ -335,7 +328,7 @@ stop
 }
 }
 
-actor PowerFullSynchro : PowerDamage{powerup.duration -20 Damagefactor "Normal", 2.0}
+actor PowerFullSynchro : PowerDamage{powerup.duration -15 Damagefactor "Normal", 1.3}
 
 actor InvisTaker : CustomInventory
 {
@@ -359,7 +352,6 @@ Use:
 TNT1 A 0 A_SetTranslucent(1.0)
 TNT1 A 0 A_TakeInventory("PowerInvisArmor",1)
 TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
-TNT1 A 0 A_ChangeFlag("CANTSEEK",0)
 TNT1 A 0 SetPlayerProperty(0,0,5)
 TNT1 A 0 SetPlayerProperty(0,0,4)
 TNT1 A 0 SetPlayerProperty(0,0,0)
@@ -386,7 +378,6 @@ TNT1 A 0 A_TakeInventory("AntiDamageTime",999)
 TNT1 A 0 A_TakeInventory("AntiWindTime",999)
 TNT1 A 0 A_TakeInventory("AntiBreakTime",999)
 TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
-TNT1 A 0 A_ChangeFlag("CANTSEEK",0)
 TNT1 A 0 SetPlayerProperty(0,0,5)
 TNT1 A 0 SetPlayerProperty(0,0,4)
 TNT1 A 0 SetPlayerProperty(0,0,0)
@@ -540,7 +531,7 @@ Height 10
 Scale 1.5
 Damagetype "BNNormal"
 Speed 40
-Damage(6)
+Damage(60)
 States
 {
 Spawn:
@@ -552,7 +543,7 @@ Death:
 MBMB A 0 A_Stop
 MBMB A 0 A_PlaySoundEx("weapon/BNMBombBoom","Weapon")
 MBMB A 0 A_NoGravity
-MBMB A 0 A_Explode(8,125,0)
+MBMB A 0 A_Explode(80,125,0)
 RSEX ABCDEF 2
 stop
 }
@@ -565,14 +556,14 @@ Translation "193:193=170:170", "194:194=179:179"
 Radius 12
 Height 12
 Speed 45
-Damage(9)
+Damage(90)
 States
 {
 Death:
 TNT1 A 0 A_Stop
 TNT1 A 0 A_PlaySoundEx("weapon/BNMBombBoom","Weapon")
 TNT1 A 0 A_NoGravity 
-TNT1 A 0 A_Explode(12,150,0)
+TNT1 A 0 A_Explode(115,150,0)
 TNT1 A 0 A_SpawnItemEx("BNBombExplosionM",0,-150,0,0,0,0,0,SXF_NOCHECKPOSITION)
 TNT1 A 0 A_SpawnItemEx("BNBombExplosionM",0,150,0,0,0,0,SXF_NOCHECKPOSITION)
 RSEX BCDEF 2
@@ -588,14 +579,14 @@ Translation "193:193=107:107", "194:194=112:112"
 Radius 14
 Height 14
 Speed 50
-Damage(10)
+Damage(100)
 States
 {
 Death:
 TNT1 A 0 A_Stop
 TNT1 A 0 A_PlaySoundEx("weapon/BNMBombBoom","Weapon")
 TNT1 A 0 A_NoGravity 
-TNT1 A 0 A_Explode(15,175,0)
+TNT1 A 0 A_Explode(150,175,0)
 TNT1 A 0 A_SpawnItemEx("BNBombExplosionC",0,-150,0,0,0,0,0,SXF_NOCHECKPOSITION)
 TNT1 A 0 A_SpawnItemEx("BNBombExplosionC",0,150,0,0,0,0,0,SXF_NOCHECKPOSITION)
 TNT1 A 0 A_SpawnItemEx("BNBombExplosionC",150,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
@@ -613,7 +604,7 @@ Translation "193:193=152:152", "194:194=151:151"
 Radius 18
 Height 18
 Speed 65
-Damage(35)
+Damage(250)
 Scale 2.0
 States
 {
@@ -633,7 +624,7 @@ Death:
 MBMB A 0 A_Stop
 MBMB A 0 A_PlaySoundEx("weapon/BNMBombBoom","Weapon")
 MBMB A 0 A_NoGravity
-MBMB A 0 A_Explode(25,500,0)
+MBMB A 0 A_Explode(250,500,0)
 MBMB A 0 A_SpawnItemEx("BNBombExplosionO",0,-64,0,0,0,0,0,SXF_NOCHECKPOSITION)
 MBMB A 0 A_SpawnItemEx("BNBombExplosionO",0,64,0,0,0,0,0,SXF_NOCHECKPOSITION)
 MBMB A 0 A_SpawnItemEx("BNBombExplosionO",64,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
@@ -643,9 +634,9 @@ MBMB A 0 A_SpawnItemEx("BNBombExplosionO",-64,64,0,0,0,0,0,SXF_NOCHECKPOSITION)
 MBMB A 0 A_SpawnItemEx("BNBombExplosionO",64,-64,0,0,0,0,0,SXF_NOCHECKPOSITION)
 MBMB A 0 A_SpawnItemEx("BNBombExplosionO",-64,-64,0,0,0,0,0,SXF_NOCHECKPOSITION)
 RSEX AB 2
-MBMB A 0 A_Explode(25,500,0)
+MBMB A 0 A_Explode(250,500,0)
 RSEX CD 2
-MBMB A 0 A_Explode(25,500,0)
+MBMB A 0 A_Explode(250,500,0)
 RSEX EF 2
 stop
 }
@@ -659,7 +650,7 @@ Translation "193:193=249:249", "194:194=5:5", "209:215=0:0", "208:208=3:3", "4:4
 Radius 16
 Height 16
 Speed 65
-Damage(20)
+Damage(125)
 Scale 1.5
 States
 {
@@ -680,7 +671,7 @@ TNT1 A 0 A_Stop
 TNT1 A 0 A_PlaySoundEx("weapon/BNMBombBoom","Weapon")
 TNT1 A 0 Radius_Quake(5,45,0,50,0)
 TNT1 A 0 A_NoGravity 
-TNT1 A 0 A_Explode(20,200,0)
+TNT1 A 0 A_Explode(100,200,0)
 ASEX A 2 A_SpawnItemEx("DarkBombExplosion",random(-150,150),random(-150,150),5,0,0,0,0,SXF_NOCHECKPOSITION)
 ASEX B 2 A_SpawnItemEx("DarkBombExplosion",random(-150,150),random(-150,150),5,0,0,0,0,SXF_NOCHECKPOSITION)
 ASEX C 2 A_SpawnItemEx("DarkBombExplosion",random(-150,150),random(-150,150),5,0,0,0,0,SXF_NOCHECKPOSITION)
@@ -919,7 +910,7 @@ States
 {
 Spawn:
 RSEX B 0
-RSEX B 0 A_Explode(6,90,0)
+RSEX B 0 A_Explode(50,90,0)
 RSEX BCDEF 2
 stop
 }
@@ -932,7 +923,7 @@ States
 {
 Spawn:
 RSEX B 0
-RSEX B 0 A_Explode(7,125,0)
+RSEX B 0 A_Explode(50,120,0)
 RSEX BCDEF 2
 stop
 }
@@ -945,7 +936,7 @@ States
 {
 Spawn:
 RSEX B 0
-RSEX B 0 A_Explode(10,165,0)
+RSEX B 0 A_Explode(80,150,0)
 RSEX BCDEF 2
 stop
 }
@@ -961,7 +952,7 @@ States
 Spawn:
 ASEX A 0
 ASEX A 0 A_PlaySoundEx("misc/mm3explosion","Voice")
-ASEX A 0 A_Explode(8,150,0,0,30)
+ASEX A 0 A_Explode(70,150,0,0,30)
 ASEX ABCDEF 1
 stop
 }
@@ -977,7 +968,7 @@ Radius 24
 Height 24
 Speed 50
 Scale 3.0
-Damage(5)
+Damage(300)
 States
 {
 Spawn:
@@ -1016,7 +1007,7 @@ scale 1.5
 Obituary "%o got a bit of dirt stuck in their crack."
 Damagetype "BNNormal"
 Speed 20
-Damage(5)
+Damage(35)
 States
 {
 Spawn:
@@ -1038,7 +1029,7 @@ Height 8
 scale 2.0
 Bouncecount 4
 Damagetype "BNFBomb"
-Damage(5)
+Damage(25)
 States
 {
 Spawn:
@@ -1051,7 +1042,7 @@ XDeath:
 FBMB A 0 A_Stop
 FBMB A 0 A_NoGravity
 FBMB A 0 A_PlaySoundEx("weapon/BNFlashBoom","SoundSlot5")
-FBMB A 0 A_Explode(15,1000,0,0,1000)
+FBMB A 0 A_Explode(75,600,0,0,600)
 RSEX BCDEF 2
 stop
 Death:
@@ -1059,7 +1050,7 @@ FBMB A 0 A_Stop
 FBMB A 0 A_NoGravity
 FBMB BABABABABABABABABABABABA 2
 FBMB A 0 A_PlaySoundEx("weapon/BNFlashBoom","SoundSlot5")
-FBMB A 0 A_Explode(15,1000,0,0,1000)
+FBMB A 0 A_Explode(75,600,0,0,600)
 RSEX BCDEF 2
 stop
 }
@@ -1134,13 +1125,13 @@ goto DeathNormal
 TNT1 A 0 A_RearrangePointers(AAPTR_TRACER)
 TBMB D 1 A_Stop
 TBMB D 0 A_PlaySoundEx("misc/BNBombBoom","SoundSlot7")
-TBMB D 0 A_Explode(45,750,0,0,75)
+TBMB D 0 A_Explode(375,625,0,0,125)
 TNT1 A 0 Radius_Quake(4,45,0,45,0)
 TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("TimeBombExplosionFX",random(-256,256),random(-256,256),random(-256,256))
 stop
 Boom:
 TNT1 A 0 A_PlaySoundEx("misc/BNBombBoom","SoundSlot7")
-TNT1 A 0 A_Explode(60,750,0,0,750)
+TNT1 A 0 A_Explode(450,625,0,0,125)
 TNT1 A 0 Radius_Quake(5,50,0,50,0)
 TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("TimeBombExplosionFX",random(-256,256),random(-256,256),random(-256,256))
 stop
@@ -1193,14 +1184,13 @@ TNT1 A 0 A_RearrangePointers(AAPTR_TRACER)
 TPLS D 0 A_NoGravity
 TPLS D 1 A_Stop
 TPLS D 0 A_PlaySoundEx("misc/BNBombBoom","SoundSlot7")
-TPLS D 0 A_Explode(30,1500,0,0,300)
-TNT1 A 0 Radius_Quake(10,65,0,200,0)
+TPLS D 0 A_Explode(1000,800,0,0,275)
 TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("TimeBombExplosionFX",random(-256,256),random(-256,256),random(-256,256))
 stop
 Boom:
 TNT1 A 0 A_PlaySoundEx("misc/BNBombBoom","SoundSlot7")
-TNT1 A 0 A_Explode(45,1500,0,0,300)
-TNT1 A 0 Radius_Quake(10,65,0,200,0)
+TNT1 A 0 A_Explode(1500,1000,0,0,350)
+TNT1 A 0 Radius_Quake(10,65,0,125,0)
 TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("TimeBombExplosionFX",random(-256,256),random(-256,256),random(-256,256))
 stop
 }
@@ -1216,7 +1206,6 @@ States
 {
 Spawn:
 RSEX B 0
-RSEX B 0 A_PlaySoundEx("weapon/drillexplode","Voice")
 RSEX BCDEF 2
 stop
 }
@@ -1241,7 +1230,7 @@ PROJECTILE
 Height 16
 Radius 32
 Speed 30
-Damage(30)
+Damage(225)
 Damagetype "BNSword"
 Translation "35:39=205:205", "33:33=204:204", "32:32=203:203"
 Obituary "%k turned %o into shreds with their Sword."
@@ -1260,7 +1249,7 @@ actor SwordHitbox2 : SwordHitbox
 Radius 96
 Height 16
 Scale 2.5
-Damage(30)
+Damage(225)
 Translation "35:39=205:205", "33:33=204:204", "32:32=203:203"
 Obituary "%k turned %o into shreds with their WideSword."
 States
@@ -1276,7 +1265,7 @@ actor SwordHitbox3 : SwordHitbox
 {
 +RIPPER
 Damagetype "BNLong"
-Damage(30)
+Damage(225)
 Obituary "%k turned %o into shreds with their LongSword."
 States
 {
@@ -1291,7 +1280,7 @@ stop
 
 actor SwordHitbox3E : SwordHitbox
 {
-Damage(30)
+Damage(180)
 Obituary "%k turned %o into shreds with their LongSword."
 States
 {
@@ -1336,7 +1325,7 @@ Radius 96
 Height 32
 Speed 5
 Damagetype "BNLifeSword"
-Damage(30)
+Damage(200)
 Obituary "%o's life was extinguished by %k's LifeSword."
 States
 {
@@ -1400,7 +1389,7 @@ Translation "35:39=184:184", "33:33=178:178", "32:32=42:42"
 Height 18
 Radius 52
 Speed 32
-Damage(11)
+Damage(105)
 Damagetype "BNFireSword"
 Obituary "%k roasted %o with their FireSword."
 Scale 3.5
@@ -1419,53 +1408,12 @@ stop
 }
 }
 
-actor FireSwordHeatWave
-{
-PROJECTILE
-+RIPPER
-Radius 8
-Height 8
-Scale 5.0
-Damage(0)
-Speed 50
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_PlaySoundEx("weapon/firestorm","Voice")
-TNT1 AAAAA 0 A_SpawnItemEx("FireSwordHeatBlast",random(-36,36),random(-256,256),random(-24,24))
-TNT1 A 2
-goto Spawn+1
-Death:
-TNT1 A 0
-stop
-}
-}
-
-Actor FireSwordHeatBlast
-{
-PROJECTILE
-Radius 8
-Height 8
-Scale 2.0
-Damage(0)
-Obituary "%k torched %o with a fiery sword's heat wave."
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_Explode(13,160,0,0,20)
-BNXL ABCDEFGHI 1 bright
-stop
-}
-}
-
 actor FireSwordSlash2 : FireSwordSlash
 {
 +RIPPER
 Translation "35:39=184:184", "33:33=178:178", "32:32=42:42"
 Speed 55
-Damage(14)
+Damage(135)
 Obituary "%o was caught by %k's ElemSword combo."
 States
 {
@@ -1482,7 +1430,7 @@ stop
 actor AquaSwordSlash : FireSwordSlash
 {
 Translation "35:39=198:198", "33:33=207:207", "32:32=206:206"
-Damage(33)
+Damage(325)
 Damagetype "BNAqua3"
 Obituary "%k drenched %o with their AquaSword."
 States
@@ -1503,7 +1451,7 @@ actor AquaSwordSlash2 : FireSwordSlash
 {
 Translation "35:39=198:198", "33:33=207:207", "32:32=206:206"
 Speed 55
-Damage(40)
+Damage(400)
 Damagetype "BNAqua4"
 Obituary "%o was caught by %k's ElemSword combo."
 States
@@ -1521,7 +1469,7 @@ stop
 actor ElecSwordSlash : FireSwordSlash
 {
 Translation "35:39=228:228", "33:33=229:229", "32:32=160:160"
-Damage(30)
+Damage(300)
 Damagetype "BNESword"
 Obituary "%k electrocuted %o with their ElecSword."
 States
@@ -1538,62 +1486,11 @@ stop
 }
 }
 
-actor ElecSwordShockwave
-{
-PROJECTILE
-+SPECTRAL
-+RIPPER
-Radius 6
-Height 6
-scale 5.0
-Translation "225:225=228:228", "208:208=229:229"
-Damagetype "BNESword"
-Obituary "%o was fried by %k's ElecSword shockwave." 
-Damage (0)
-Speed 35
-RenderStyle "Add"
-Alpha 0.85
-States
-{
-Spawn:
-TNT1 A 0
-CKIC D 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,10,0)
-CKIC D 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,-10,0)
-TNT1 A 1 A_PlaySoundEx("weapon/thunderspark","SoundSlot5")
-CKIC D 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,40,0)
-CKIC D 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,-40,0)
-TNT1 A 1 A_PlaySoundEx("weapon/thunderspark","SoundSlot5")
-CKIC E 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,70,0)
-CKIC E 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,70,0)
-TNT1 A 1 A_PlaySoundEx("weapon/thunderspark","SoundSlot5")
-CKIC D 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,100,0)
-CKIC D 0 A_SpawnItemEx("ElecSwordShockwavePart",-10,-100,0)
-TNT1 A 1 A_PlaySoundEx("weapon/thunderspark","SoundSlot5")
-goto Spawn+1
-}
-}
-
-actor ElecSwordShockwavePart : ElecSwordShockwave
-{
-Radius 24
-Height 42
-Damage(8)
-scale 2.5
-Translation "215:215=228:228", "208:208=229:229", "247:247=218:218"
-States
-{
-Spawn:
-THUN ABC 2 bright ThrustThingZ(0,50,0,0)
-THUN DEFG 1 bright ThrustThingZ(0,50,0,0)
-stop
-}
-}
-
 actor ElecSwordSlash2 : FireSwordSlash
 {
 Translation "35:39=228:228", "33:33=229:229", "32:32=160:160"
 Speed 55
-Damage(38)
+Damage(375)
 Damagetype "BNESword"
 Obituary "%o was caught by %k's ElemSword combo."
 States
@@ -1611,8 +1508,8 @@ stop
 actor WoodSwordSlash : FireSwordSlash
 {
 Translation "35:39=110:110", "33:33=111:111", "32:32=106:106"
-Damage(45)
-Damagetype "BNNormal"
+Damage(375)
+Damagetype "BNWood2"
 Obituary "%k demonstrated to %o that Wood Swords can actually hurt."
 States
 {
@@ -1628,72 +1525,11 @@ stop
 }
 }
 
-Actor WoodSwordTwister
-{
-PROJECTILE
-+RIPPER
--NOGRAVITY
-+FLOORHUGGER
-Radius 14
-Height 32
-Damage(2)
-Scale 2.5
-Speed 15
-Reactiontime 10
-Damagetype "WSTwister"
-Obituary "%o was thrown aside by %k's Wood Twister."
-States
-{
-Spawn:
-TNT1 A 0
-TRND A 0 A_PlaySoundEx("weapon/BNTornado","Voice")
-TRND A 2 A_Explode(6,100,0)
-TRND A 0 A_ScaleVelocity(0.9)
-TRND B 2 A_Explode(6,100,0)
-TRND A 0 A_ScaleVelocity(0.9)
-TRND C 2 A_Explode(6,100,0)
-TRND A 0 A_ScaleVelocity(0.9)
-TRND AA 0 A_SpawnItemEx("WSLeaf",0,0,18,random(10,30),0,0,random(0,359))
-TRND A 0 A_Countdown
-TRND A 2 A_Explode(6,100,0)
-TRND A 0 A_ScaleVelocity(0.9)
-TRND B 2 A_Explode(6,100,0)
-TRND A 0 A_ScaleVelocity(0.9)
-TRND C 2 A_Explode(6,100,0)
-TRND A 0 A_ScaleVelocity(0.9)
-TRND AA 0 A_SpawnItemEx("WSLeaf",0,0,18,random(10,30),0,0,random(0,359))
-TRND A 0 A_Countdown
-goto Spawn+2
-}
-}
-
-Actor WSLeaf
-{
-PROJECTILE
-Damagetype "Normal"
-Obituary "%k got razor leafed by %k."
-Damage(10)
-Radius 12
-Height 12
-Scale 1.5
-States
-{
-Spawn:
-LEAF W 0
-LEAF W 0 A_PlaySoundEx("weapon/leafshield","SoundSlot7")
-LEAF WXYZ 3
-goto Spawn+2
-Death:
-TNT1 A 0
-stop
-}
-}
-
 actor WoodSwordSlash2 : FireSwordSlash
 {
 Translation "35:39=110:110", "33:33=111:111", "32:32=106:106"
 Speed 55
-Damage(45)
+Damage(450)
 Damagetype "BNWood3"
 Obituary "%o was caught by %k's ElemSword combo."
 States
@@ -1720,8 +1556,8 @@ Height 1
 States
 {
 Spawn:
-FSWD DEF 2 A_Fadeout(0.12)
-loop
+FSWD DEF 2 A_Fadeout(0.08)
+stop
 }
 }
 
@@ -1787,7 +1623,7 @@ Speed 40
 Bouncecount 4
 Obituary "%o got a heavy concussion from %k's TreeBomb."
 Damagetype "BNWoodTower"
-Damage(25)
+Damage(250)
 States
 {
 Spawn:
@@ -1854,7 +1690,7 @@ Radius 4
 Height 4
 Damagetype "BNWoodTower"
 Obituary "%o felt the seed of Nature's Wrath planted inside them by %k."
-Damage(2)
+Damage(15)
 Scale 1.5
 Reactiontime 15
 States
@@ -1906,9 +1742,9 @@ PROJECTILE
 Scale 3.0
 DamageType "BNWoodTower"
 Obituary "%k's WoodTower is the WoodTower that pierced %o's ass."
-Height 64
-Radius 28
-Damage(3)
+Height 58
+Radius 24
+Damage(20)
 Speed 0
 States
 {
@@ -1935,7 +1771,7 @@ Obituary "%o was nailed in the head by %k's Boomerang."
 Radius 28
 Height 16
 Scale 2.0
-Damage(5)
+Damage(50)
 Speed 45
 Reactiontime 6
 Bouncefactor 1.0
@@ -1962,7 +1798,7 @@ Actor BoomerangP1 : Boomerang1
 +HEXENBOUNCE
 Bouncecount 4
 Speed 35
-Damage(4)
+Damage(40)
 Reactiontime 8
 States
 {
@@ -1981,11 +1817,11 @@ actor BoomerangEX : Boomerang1
 Damagetype "BNBoomerEX"
 Translation "210:215=95:95", "80:94=3:3", "144:159=3:3", "4:4=95:95", "168:168=95:95", "96:103=95:95", "116:119=3:3" 
 Obituary "%o was brutalized by %k's flurry of Omega Boomerangs."
-Damage(10)
+Damage(80)
 Speed 60
 Radius 42
 Height 24
-Reactiontime 50
+Reactiontime 40
 Bouncecount 12
 States
 {
@@ -2017,7 +1853,7 @@ actor Boomerang2 : Boomerang1
 {
 Obituary "%o was nailed in the head by %k's Hi-Boomerang."
 Speed 50
-Damage(7)
+Damage(65)
 States
 {
 Spawn:
@@ -2037,7 +1873,7 @@ Actor BoomerangP2 : BoomerangP1
 {
 Bouncecount 5
 Speed 40
-Damage(5)
+Damage(50)
 Reactiontime 10
 States
 {
@@ -2054,7 +1890,7 @@ actor Boomerang3 : Boomerang1
 {
 Obituary "%o was nailed in the head by %k's M-Boomerang."
 Speed 55
-Damage(8)
+Damage(80)
 States
 {
 Spawn:
@@ -2074,7 +1910,7 @@ Actor BoomerangP3 : Boomerang1
 {
 Bouncecount 6
 Speed 50
-Damage(7)
+Damage(65)
 Reactiontime 13
 States
 {
@@ -2097,7 +1933,7 @@ PROJECTILE
 Obituary "%o passed out from the toxic fumes of %k's Boomerang Pollen."
 Translation "192:192=108:108", "198:198=110:110"
 Damagetype "BNPollen"
-Damage(3)
+Damage(50)
 Speed 20
 Radius 7
 Height 7
@@ -2110,7 +1946,7 @@ GPNT AB 3
 goto Spawn+1
 Death:
 GPNT C 0 A_PlaySoundEx("weapon/solarshoot","Voice")
-GPNT CDCDCDCDCDCDCDCD 4 A_Explode(2,75,0)
+GPNT CDCDCDCDCDCDCDCD 4 A_Explode(20,75,0)
 GPNT C 0 A_SetTranslucent(0.75)
 GPNT C 4 A_SetScale(0.75)
 GPNT D 0 A_SetTranslucent(0.5)
@@ -2130,10 +1966,10 @@ actor DarkBoomerang : Boomerang1
 +SEEKERMISSILE
 Translation "210:215=249:249", "80:94=79:79", "144:159=79:79", "4:4=249:249", "168:168=249:249", "96:103=249:249", "116:119=79:79" 
 Obituary "%o got chased down by %k's Dark Boomerang."
-Damage(8)
+Damage(75)
 Speed 60
-Radius 32
-Height 20
+Radius 28
+Height 16
 Damagetype "BNDBoomer"
 Reactiontime 30
 Bouncecount 10
@@ -2142,21 +1978,21 @@ States
 Spawn:
 BOMR A 0
 BOMR A 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR A 0 A_ScaleVelocity(0.8)
+BOMR A 0 A_ScaleVelocity(0.75)
 BOMR B 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR B 0 A_ScaleVelocity(0.8)
+BOMR B 0 A_ScaleVelocity(0.75)
 BOMR C 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR C 0 A_ScaleVelocity(0.8)
+BOMR C 0 A_ScaleVelocity(0.75)
 BOMR D 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR D 0 A_ScaleVelocity(0.8)
+BOMR D 0 A_ScaleVelocity(0.75)
 BOMR A 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR A 0 A_ScaleVelocity(0.8)
+BOMR A 0 A_ScaleVelocity(0.75)
 BOMR B 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR B 0 A_ScaleVelocity(0.8)
+BOMR B 0 A_ScaleVelocity(0.75)
 BOMR C 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR C 0 A_ScaleVelocity(0.8)
+BOMR C 0 A_ScaleVelocity(0.75)
 BOMR D 2 A_SpawnItemEx("DarkBoomerangFX")
-BOMR D 0 A_ScaleVelocity(0.8)
+BOMR D 0 A_ScaleVelocity(0.75)
 BOMR ABCD 2
 HomeTime:
 BOMR A 0 A_SpawnItemEx("DarkBoomerangFX")
@@ -2202,14 +2038,14 @@ stop
 
 Actor MeteorsSpawner : AstroCrushSpawner
 {
-Reactiontime 35
+Reactiontime 30
 States
 {
 Spawn:
 TNT1 A 0
-TNT1 AA 0 A_SpawnItemEx("BNMeteor",random(-1000,1000),random(-1000,1000),400,0,0,random(-50,-70),0)
+TNT1 AA 0 A_SpawnItemEx("BNMeteor",random(-800,800),random(-800,800),400,0,0,random(-50,-70),0)
 TNT1 A 4 A_Countdown
-TNT1 AA 0 A_SpawnItemEx("BNMeteor",random(-1000,1000),random(-1000,1000),400,0,0,random(-50,-70),0)
+TNT1 AA 0 A_SpawnItemEx("BNMeteor",random(-800,800),random(-800,800),400,0,0,random(-50,-70),0)
 TNT1 A 4 A_Countdown
 loop
 Death:
@@ -2223,7 +2059,7 @@ Actor BNMeteor : AstroCrush
 +DONTSPLASH
 Damagetype "BNMeteor"
 Obituary "%k's Meteors turned %o into the dusty air that %k breathes. What a badass."
-Damage(7)
+Damage(65)
 Height 12
 Radius 12
 Scale 2.0
@@ -2247,7 +2083,7 @@ Goto Spawn2+2
 Death:
 RSEX A 0 A_PlaySoundEx("weapon/BNMBombBoom","Weapon")
 RSEX A 0 A_NoGravity
-RSEX A 0 A_Explode(15,275,0)
+RSEX A 0 A_Explode(135,256,0)
 RSEX BCDEF 2
 stop
 }
@@ -2306,12 +2142,12 @@ States
 Spawn:
 FLEX AB 1 bright 
 FLEX CD 1 bright
-FLEX A 0 A_Explode(7,128,0)
+FLEX A 0 A_Explode(35,128,0)
 FLEX EE 0 A_SpawnItemEx("FlashBombFX2",Random(-16,16),Random(-40,40),Random(-32,32),0,0,0,0)
 FLEX EF 1 bright A_SpawnItemEx("FlashBombFX1",0,0,0,random(-7,7),random(-7,7),random(-7,7),random(0,360))
 FLEX EE 0 A_SpawnItemEx("FlashBombFX2",Random(-16,16),Random(-40,40),Random(-32,32),0,0,0,0)
 FLEX GF 1 bright A_SpawnItemEx("FlashBombFX1",0,0,0,random(-7,7),random(-7,7),random(-7,7),random(0,360))
-FLEX A 0 A_Explode(7,175,0)
+FLEX A 0 A_Explode(35,128,0)
 Goto Pattern1
 Pattern1:
 FLEX EF 1 bright A_SpawnItemEx("FlashBombFX1",0,0,0,random(-7,7),random(-7,7),random(-7,7),random(0,360))
@@ -2329,13 +2165,13 @@ Goto DamageNow
 DamageNow:
 FLEX A 0 A_JumpIfInventory("CutterFlag",9,"Damage3")
 FLEX A 0 A_JumpIfInventory("CutterFlag",3,"Damage2")
-FLEX A 0 A_Explode(7,175,0)
+FLEX A 0 A_Explode(35,128,0)
 Goto Continue
 Damage2:
-FLEX A 0 A_Explode(6,175,0)
+FLEX A 0 A_Explode(30,128,0)
 Goto Continue
 Damage3:
-FLEX A 0 A_Explode(5,175,0)
+FLEX A 0 A_Explode(25,128,0)
 Goto Continue
 Continue:
 FLEX G 0 A_CountDown
@@ -2365,12 +2201,12 @@ States
 Spawn:
 FLEX AB 1 bright 
 FLEX CD 1 bright
-FLEX A 0 A_Explode(10,200,0)
+FLEX A 0 A_Explode(50,150,0)
 FLEX EE 0 A_SpawnItemEx("MegaEBombFX2",Random(-16,16),Random(-40,40),Random(-32,32),0,0,0,0)
 FLEX EF 1 bright A_SpawnItemEx("MegaEBombFX1",0,0,0,random(-7,7),random(-7,7),random(-7,7),random(0,360))
 FLEX EE 0 A_SpawnItemEx("MegaEBombFX2",Random(-16,16),Random(-40,40),Random(-32,32),0,0,0,0)
 FLEX GF 1 bright A_SpawnItemEx("MegaEBombFX1",0,0,0,random(-7,7),random(-7,7),random(-7,7),random(0,360))
-FLEX A 0 A_Explode(10,200,0)
+FLEX A 0 A_Explode(50,150,0)
 Goto Pattern1
 Pattern1:
 FLEX EF 1 bright A_SpawnItemEx("MegaEBombFX1",0,0,0,random(-7,7),random(-7,7),random(-7,7),random(0,360))
@@ -2388,13 +2224,13 @@ Goto DamageNow
 DamageNow:
 FLEX A 0 A_JumpIfInventory("CutterFlag",9,"Damage3")
 FLEX A 0 A_JumpIfInventory("CutterFlag",3,"Damage2")
-FLEX A 0 A_Explode(10,200,0)
+FLEX A 0 A_Explode(50,150,0)
 Goto Continue
 Damage2:
-FLEX A 0 A_Explode(9,200,0)
+FLEX A 0 A_Explode(45,150,0)
 Goto Continue
 Damage3:
-FLEX A 0 A_Explode(7,200,0)
+FLEX A 0 A_Explode(40,150,0)
 Goto Continue
 Continue:
 FLEX G 0 A_CountDown
@@ -2427,8 +2263,8 @@ Obituary "%o was ruptured by %k's Harpoon."
 Radius 14
 Height 14
 Scale 2.0
-Damage(5)
-Speed 125
+Damage(80)
+Speed 120
 States
 {
 Spawn:
@@ -2441,16 +2277,16 @@ stop
 }
 }
 
-actor Harpoon2 : Harpoon {Speed 150 Damage(10)}
-actor Harpoon3 : Harpoon {Speed 175 Damage(15)}
+actor Harpoon2 : Harpoon {Speed 150 Damage(90)}
+actor Harpoon3 : Harpoon {Speed 180 Damage(100)}
 
 actor HarpoonPA : Harpoon
 {
 Radius 16
 Height 16
-Damage(20)
+Damage(120)
 Damagetype "BNAqua5"
-Speed 250
+Speed 180
 Obituary "%o was made into swiss cheese by %k's volley of Harpoons."
 States
 {
@@ -2482,25 +2318,28 @@ Actor UninstallShot : FastProjectile
 {
 PROJECTILE
 +DONTBLAST
-Obituary "%o was uninstalled by %k. Now they weren't just killed, this person literally no longer exists."
+Obituary "%o was erased from the system by %k."
 Translation "192:192=110:110", "198:198=114:114"
 Damagetype "BNUninstall"
 Renderstyle "Add"
-Radius 13
-Height 13
-Damage(9999)
-Speed 65
-ReactionTime 10 //now times out after traveling 650 map units ~Bika
-//var int user_USPower;
+Radius 16
+Height 16
+Damage(50)
+Speed 100
+var int user_USPower;
 Scale 2.5
 States
 {
 Spawn:
 MBUS B 0
-MBUS BZ 1 A_Countdown  // ~Bika
+MBUS B 0 A_SetUserVar("user_USPower",15)
+Spawn2:
+MBUS BZ 1
+MBUS B 0 A_SetUserVar("user_USPower",user_USPower+15)
 loop
 Death:
-TNT1 A 0
+TNT1 A 0 A_Explode(user_USPower,165,0)
+X_8B ABCDEF 2 bright
 stop
 }
 }
@@ -2524,7 +2363,7 @@ stop
 actor PowerAttackPlus : PowerDamage
 {
 powerup.duration -10
-Damagefactor "Normal", 1.5
+Damagefactor "Normal", 1.2
 }
 
 actor AttackDebuffU : PowerUpGiver
@@ -2593,365 +2432,10 @@ powerup.duration -15 //-10
 Damagefactor "Normal", 1.2
 }
 
-Actor NaviCooldown : Powerup {powerup.duration -15}
-Actor AntiDamageCooldown : Powerup{powerup.duration -10}
-Actor AttackPlusCooldown : Powerup{powerup.duration -10}
-Actor GigaCooldown : Powerup {powerup.duration -45}
-
-Actor WoodmanTeleport
-{
-PROJECTILE
-+NOINTERACTION
-+DONTBLAST
-+NOTARGETSWITCH
-Radius 8
-Height 8
-ReactionTime 70
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 9 
-TNT1 AAAAAAAAAA 1 A_CheckFloor("Next")
-Goto Next
-Next:
-TNT1 A 0 A_ChangeFlag("NOINTERACTION",0)
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
-Goto Death
-Death:
-TNT1 A 40
-TNT1 A 0 A_SpawnItemEx("WoodmanNavi",0,0,0,0,0,momz,0,SXF_NOCHECKPOSITION,0)
-stop
-}
-}
-
-Actor WoodmanNavi //Probably want to use this guy in open areas
-{
--SOLID
-MONSTER
-//+NOCLIP
-+MISSILE
-+DONTBLAST
-+SKYEXPLODE
--SOLID
--COUNTKILL
-+FRIENDLY
--SHOOTABLE
-+MISSILEMORE
-+MISSILEEVENMORE
-+LOOKALLAROUND
-+NOEXPLODEFLOOR
-Renderstyle "Translucent"
-Alpha 0.7
-Translation "192:192=211:211", "198:198=220:220"
-Obituary "%o met the \cqIncredible Woodman\c-! \cvWoosh\c-!"
-Damage(0)
-Radius 10
-Height 10
-Mass 9999
-Scale 2.0
-Reactiontime 200
-MeleeRange 20
-States
-{
-Spawn:
-WODM A 0
-WODM A 0 A_PlaySoundEx("misc/BNAppear","SoundSlot5")
-WODM A 0 A_ChangeFlag("MISSILE",0)
-WODM A 1 A_JumpIf(momz>=0,"Look")
-Goto Spawn+3
-Look:
-WODM A 0 A_Stop
-WODM A 0 A_ChangeFlag("NOCLIP",0)
-WODM A 0 A_ClearTarget
-WODM A 2
-Goto See
-See:
-WODM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-WODM AAAA 1 A_Chase
-WODM A 0 A_JumpIfTargetInLOS("Missile",0,0)
-WODM A 0 A_Jump(32,"LetUsMove")
-WODM AAAA 1 A_Chase
-WODM A 0 A_JumpIfTargetInLOS("JumpItUp",0,0)
-WODM A 0 A_Jump(48,"LetUsMove")
-WODM A 0 A_Countdown
-loop
-LetUsMove:
-WODM A 0 A_TakeInventory("ExistCount",999)
-WODM A 0 A_ChangeFlag("THRUACTORS",1)
-WODM A 0 A_ChangeFlag("FLOORHUGGER",1)
-WODM A 0 A_ChangeFlag("NOCLIP",1)
-WODM A 0 A_FaceTarget
-WODM A 1 A_SetTranslucent(0.6)
-WODM A 1 A_SetTranslucent(0.5)
-WODM A 1 A_SetTranslucent(0.3)
-WODM A 1 A_SetTranslucent(0.2)
-WODM A 1 A_SetTranslucent(0.0)
-WODM A 0 A_PlaySoundEx("weapon/ncrush3","Voice")
-goto CloserLoop
-CloserLoop:
-TNT1 A 0 A_JumpIfCloser(64,"CloserEnd")
-TNT1 A 0 A_JumpIfInventory("WeaponCharge",35,"CloserEndCheck")
-TNT1 A 0 A_FaceTarget
-TNT1 A 2 A_ChangeVelocity(20,0,0,CVF_RELATIVE|CVF_REPLACE)
-TNT1 A 0 A_GiveInventory("WeaponCharge",1)
-loop
-CloserEndCheck:
-TNT1 A 1 A_TakeInventory("WeaponCharge",999)
-TNT1 A 0 A_JumpIf(momx<=0,"CloserEnd") //failsafe to prevent a potential permanent teleport loop
-TNT1 A 0 A_JumpIf(momy<=0,"CloserEnd")
-goto CloserLoop
-CloserEnd:
-WODM A 0 A_Stop
-WODM A 0 ThrustThing(angle*256/360,0)
-WODM A 0 ThrustThingZ(0,0,0,1)
-WODM AAAAA 1 A_FaceTarget
-WODM A 0 A_PlaySoundEx("weapon/ncrushfinal","Voice")
-WODM A 1 A_SetTranslucent(0.2)
-WODM A 1 A_SetTranslucent(0.3)
-WODM A 1 A_SetTranslucent(0.4)
-WODM A 1 A_SetTranslucent(0.5)
-WODM A 1 A_SetTranslucent(0.7)
-WODM AAAAA 1 A_FaceTarget
-WODM A 0 A_ChangeFlag("THRUACTORS",0)
-WODM A 0 A_ChangeFlag("FLOORHUGGER",0)
-WODM A 60 A_ChangeFlag("NOCLIP",0)
-WODM A 0 A_Jump(192,"THESEEDS","AoEWood","JumpCombo")
-goto See
-JumpItUp: //Single jump to try to get Woodman more towards a target
-WODM A 0 A_FaceTarget //A_SetAngle(angle+random(-60,60))
-WODM F 4 A_ChangeVelocity(random(15,25),0,15,CVF_RELATIVE|CVF_REPLACE)
-goto FallingX
-FallingX:
-WODM AA 1 A_JumpIf(z==floorz, "LandX")
-WODM A 0 A_SpawnItemEx("WoodmanNaviDamager",0,0,-16)
-loop
-LandX:
-WODM A 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET)
-WODM A 1 A_Stop
-WODM A 0 ThrustThing(angle*256/360,0)
-WODM A 0 ThrustThingZ(0,0,0,1)
-WODM A 0 A_SpawnItemEx("WoodmanNaviShockwaveSpawner")
-WODM A 1 A_RearrangePointers(AAPTR_TRACER, AAPTR_DEFAULT, AAPTR_DEFAULT)
-WODM AAAAAAAAAA 2 A_FaceTarget
-WODM A 0 A_Jump(196,"AoEWood","THESEEDS","JumpCombo")
-Goto See
-Missile:
-WODM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-WODM A 0 A_Jump(256,"JumpCombo","AoEWood","THESEEDS","LetUsMove")
-goto THESEEDS
-THESEEDS:
-WODM A 0 A_JumpIfInventory("KnightFlag",3,"SeedsEnd")
-WODM F 5 A_FaceTarget
-WODM G 4 A_CustomMissile("WoodmanBulletSeed",24,0,0,0,0)
-WODM A 0 A_FaceTarget
-WODM G 4 A_CustomMissile("WoodmanBulletSeed",24,0,0,0,0)
-WODM A 0 A_FaceTarget
-WODM G 4 A_CustomMissile("WoodmanBulletSeed",24,0,0,0,0)
-WODM A 0 A_FaceTarget
-WODM G 4 A_CustomMissile("WoodmanBulletSeed",24,0,0,0,0)
-WODM A 0 A_FaceTarget
-WODM G 4 A_CustomMissile("WoodmanBulletSeed",24,0,0,0,0)
-WODM F 25
-WODM A 0 A_GiveInventory("KnightFlag",1)
-loop
-SeedsEnd:
-WODM A 0 A_TakeInventory("KnightFlag",999)
-WODM A 35 A_GiveInventory("CutterFlag",1)
-goto See
-AoEWood:
-WODM A 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET)
-WODM A 0 A_FaceTarget
-WODM FG 5
-WODM GGGGGGGGGGGGGGG 0 A_SpawnItemEx("WoodmanTower",random(-400,400),random(-400,400),0,0,0,0,0,SXF_NOCHECKPOSITION)
-WODM G 20
-WODM AFG 5
-WODM GGGGGGGGGGGGGGG 0 A_SpawnItemEx("WoodmanTower",random(-400,400),random(-400,400),0,0,0,0,0,SXF_NOCHECKPOSITION)
-WODM G 20
-WODM AFG 5
-WODM GGGGGGGGGGGGGGG 0 A_SpawnItemEx("WoodmanTower",random(-400,400),random(-400,400),0,0,0,0,0,SXF_NOCHECKPOSITION)
-WODM A 0 A_RearrangePointers(AAPTR_TRACER, AAPTR_DEFAULT, AAPTR_DEFAULT)
-WODM G 50 A_GiveInventory("CutterFlag",1)
-goto See
-JumpCombo:
-WODM A 0 A_FaceTarget //A_SetAngle(angle+random(-60,60))
-WODM F 2 A_ChangeVelocity(random(10,20),0,random(7,14),CVF_RELATIVE|CVF_REPLACE)
-goto Falling
-JumpA:
-WODM A 0 A_FaceTarget //A_SetAngle(angle+random(-60,60))
-WODM A 2 A_ChangeVelocity(12,0,15,CVF_RELATIVE|CVF_REPLACE)
-Goto Falling2
-JumpB:
-WODM A 0 A_FaceTarget //A_SetAngle(angle+random(-60,60))
-WODM A 2 A_ChangeVelocity(15,0,25,CVF_RELATIVE|CVF_REPLACE)
-Goto Falling3
-Falling:
-WODM AA 1 A_JumpIf(z==floorz, "Land")
-WODM A 0 A_SpawnItemEx("WoodmanNaviDamager",0,0,-16)
-loop
-Falling2:
-WODM AA 1 A_JumpIf(z==floorz, "Land2")
-WODM A 0 A_SpawnItemEx("WoodmanNaviDamager",0,0,-16)
-loop
-Falling3:
-WODM AA 1 A_JumpIf(z==floorz, "Land3")
-WODM A 0 A_SpawnItemEx("WoodmanNaviDamager",0,0,-16)
-loop
-Land:
-WODM A 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET)
-WODM A 1 A_Stop
-WODM A 0 ThrustThing(angle*256/360,0)
-WODM A 0 ThrustThingZ(0,0,0,1)
-WODM A 0 A_SpawnItemEx("WoodmanNaviShockwaveSpawner")
-WODM A 1 A_RearrangePointers(AAPTR_TRACER, AAPTR_DEFAULT, AAPTR_DEFAULT)
-WODM AAAAAAAAAA 2 A_FaceTarget
-Goto JumpA
-Land2:
-WODM A 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET)
-WODM A 1 A_Stop
-WODM A 0 ThrustThing(angle*256/360,0)
-WODM A 0 ThrustThingZ(0,0,0,1)
-WODM A 0 A_SpawnItemEx("WoodmanNaviShockwaveSpawner")
-WODM A 1 A_RearrangePointers(AAPTR_TRACER, AAPTR_DEFAULT, AAPTR_DEFAULT)
-WODM AAAAAAAAAA 1 A_FaceTarget
-Goto JumpB
-Land3:
-WODM A 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET)
-WODM A 1 A_Stop
-WODM A 0 ThrustThing(angle*256/360,0)
-WODM A 0 ThrustThingZ(0,0,0,1)
-WODM A 0 A_SpawnItemEx("WoodmanNaviShockwaveSpawner")
-WODM A 1 A_RearrangePointers(AAPTR_TRACER, AAPTR_DEFAULT, AAPTR_DEFAULT)
-WODM AAAAAAAAAA 2 A_FaceTarget
-WODM A 0 A_GiveInventory("CutterFlag",1)
-WODM A 0 A_Jump(196,"Missile")
-Goto See
-Death:
-WODM A 1 A_Fadeout(0.1)
-loop
-Idle:
-WODM A 15 A_SetAngle(angle+random(0,359))
-loop
-}
-}
-
-actor WoodmanTower : WoodTower
-{
-PROJECTILE
-+DONTSPLASH
--RIPPER
-+DONTBLAST
-Damagetype "BNWoodman"
-Obituary "%o was not prepared for wood."
-Height 64
-Radius 28
-Damage(15)
-States
-{
-Spawn:
-WTWR A 0
-WTWR A 0 A_PlaySoundEx("weapon/woodtower","SoundSlot7")
-WTWR ABCD 2
-WTWR E 20
-WTWR DCBA 2
-stop
-Death:
-TNT1 A 0
-Stop
-}
-}
-
-actor WoodmanNaviDamager
-{
-PROJECTILE
-+DONTSPLASH
-+DONTBLAST
-+THRUGHOST
-Damagetype "BNNormal" 
-Obituary "%o was sat on by a giant living log doll."
-radius 32
-height 32
-Damage(4)
-States
-{
-Spawn:
-TNT1 A 2
-stop
-}
-}
-
-actor WoodmanNaviShockwaveSpawner
-{
-PROJECTILE
-+DONTBLAST
-+THRUGHOST
-+RIPPER
-Obituary "Woodman came down hard on %o, too bad they didn't move out of the way."
-Radius 8
-Height 8
-Damage(0)
-Radius 5
-Height 5
-Speed 0
-Scale 2.0
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 1 A_Explode(20,300,0)
-TNT1 A 0 Radius_Quake(5,35,0,35,0)
-TNT1 A 0 A_PlaySoundEx("misc/hugequake2","Voice")
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,0)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,15)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,30)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,45)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,60)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,75)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,90)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,105)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,120)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,135)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,150)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,165)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,180)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,195)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,210)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,225)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,240)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,255)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,270)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,285)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,300)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,315)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,330)
-TNT1 A 0 A_SpawnItemEx("WoodmanNaviShockwave",0,0,0,20,0,0,345)
-stop
-}
-}
-
-actor WoodmanNaviShockwave
-{
-PROJECTILE
-+DONTBLAST
--NOGRAVITY
-+FLOORHUGGER
-+CLIENTSIDEONLY
-+DONTSPLASH
-Damage(0)
-Renderstyle "Translucent"
-Alpha 0.75
-Scale 2.0
-Speed 5
-Radius 16
-Height 16
-States
-{
-Spawn:
-DUOR T 0
-DUOR T 1 A_FadeOut(0.07)
-goto Spawn+1
-}
-}
+Actor NaviCooldown : Powerup {powerup.duration -45}
+Actor AntiDamageCooldown : Powerup{powerup.duration -25}
+Actor AttackPlusCooldown : Powerup{powerup.duration -25}
+Actor GigaCooldown : Powerup {powerup.duration -75} //Now try spamming Bass you shits
 
 actor WoodmanBulletSeed : FastProjectile
 {
@@ -2962,7 +2446,7 @@ Radius 12
 Speed 80
 Obituary "%o found that Woodman is the best Pokemon."
 Damagetype "BNWood4"
-Damage(5)
+Damage(50)
 Scale 1.0
 States
 {
@@ -3007,344 +2491,8 @@ loop
 }
 }
 
-Actor BassEXETeleport
-{
-PROJECTILE
-+NOINTERACTION
-+DONTBLAST
-Radius 8
-Height 8
-ReactionTime 70
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 9 
-TNT1 AAAAAAAAAA 1 A_CheckFloor("Next")
-Goto Next
-Next:
-TNT1 A 0 A_ChangeFlag("NOINTERACTION",0)
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
-Goto Death
-Death:
-TNT1 A 40 
-TNT1 A 0 A_SpawnItemEx("BassEXENavi",0,0,0,0,0,momz,0,SXF_NOCHECKPOSITION,0)
-stop
-}
-}
-
-actor BassEXENavi
-{
--SOLID
-MONSTER
-+MISSILE
-+DONTBLAST
-+SKYEXPLODE
--SOLID
--COUNTKILL
-+FRIENDLY
--SHOOTABLE
-+MISSILEMORE
-+MISSILEEVENMORE
-+LOOKALLAROUND
-Renderstyle "Translucent"
-Alpha 0.7
-Translation "192:192=228:228", "198:198=229:229"
-Speed 0
-Scale 2.5
-Radius 10
-Height 10
-Reactiontime 200
-MaxTargetRange 768
-MeleeRange 20
-States
-{
-Spawn:
-BEXE A 0
-BEXE A 0 A_PlaySound("misc/BNAppear")
-BEXE A 1 A_ChangeFlag("MISSILE",0)
-BEXE A 1
-BEXE A 1
-BEXE A 1 A_JumpIf(momz>=0,"Look")
-Goto Spawn+5
-Look:
-BEXE A 0 A_Stop
-BEXE A 0 A_ChangeFlag("NOCLIP",0)
-BEXE A 0 A_ClearTarget
-BEXE A 2
-Goto See
-See:
-BEXE A 0 A_JumpIfInventory("CutterFlag",6,"Death")
-BEXE AAAA 1 A_Chase
-BEXE A 0 A_JumpIfTargetInLOS("Missile",0,0)
-BEXE A 0 A_Jump(32,"LetUsMove","DarkSword")
-BEXE AAAA 1 A_Chase
-BEXE A 0 A_JumpIfTargetInLOS("LetUsMove",0,0)
-BEXE A 0 A_Jump(64,"LetUsMove","DarkSword")
-BEXE A 0 A_Countdown
-loop
-LetUsMove:
-BEXE A 0 A_TakeInventory("ExistCount",999)
-BEXE A 0 A_ChangeFlag("THRUACTORS",1)
-BEXE A 0 A_ChangeFlag("FLOORHUGGER",1)
-BEXE A 0 A_ChangeFlag("NOCLIP",1)
-BEXE A 0 A_FaceTarget
-BEXE A 1 A_SetTranslucent(0.6)
-BEXE A 1 A_SetTranslucent(0.5)
-BEXE A 1 A_SetTranslucent(0.3)
-BEXE A 1 A_SetTranslucent(0.2)
-BEXE A 1 A_SetTranslucent(0.0)
-BEXE A 0 A_PlaySoundEx("weapon/ncrush3","Voice")
-goto CloserLoop
-CloserLoop:
-TNT1 A 0 A_JumpIfCloser(64,"CloserEnd")
-TNT1 A 0 A_JumpIfInventory("WeaponCharge",35,"CloserEndCheck")
-TNT1 A 0 A_FaceTarget
-TNT1 A 2 A_ChangeVelocity(20,0,0,CVF_RELATIVE|CVF_REPLACE)
-TNT1 A 0 A_GiveInventory("WeaponCharge",1)
-loop
-CloserEndCheck:
-TNT1 A 1 A_TakeInventory("WeaponCharge",999)
-TNT1 A 0 A_JumpIf(momx<=0,"CloserEnd") //failsafe to prevent a potential permanent teleport loop
-TNT1 A 0 A_JumpIf(momy<=0,"CloserEnd")
-goto CloserLoop
-CloserEnd:
-BEXE A 0 A_Stop
-BEXE A 0 ThrustThing(angle*256/360,0)
-BEXE A 0 ThrustThingZ(0,0,0,1)
-BEXE AAAAA 1 A_FaceTarget
-BEXE A 0 A_PlaySoundEx("weapon/ncrushfinal","Voice")
-BEXE A 1 A_SetTranslucent(0.2)
-BEXE A 1 A_SetTranslucent(0.3)
-BEXE A 1 A_SetTranslucent(0.4)
-BEXE A 1 A_SetTranslucent(0.5)
-BEXE A 1 A_SetTranslucent(0.7)
-BEXE AAAAA 1 A_FaceTarget
-BEXE A 0 A_ChangeFlag("THRUACTORS",0)
-BEXE A 0 A_ChangeFlag("FLOORHUGGER",0)
-BEXE A 25 A_ChangeFlag("NOCLIP",0)
-BEXE A 0 A_Jump(84,"Wheels")
-BEXE A 0 A_Jump(256,"BurstRake")
-goto See
-Missile:
-BEXE A 0 A_JumpIfInventory("CutterFlag",6,"Death")
-BEXE A 0 A_Jump(84,"Wheels")
-BEXE A 0 A_Jump(256,"DarkSword","BurstRake","LetUsMove")
-goto DarkSword
-Wheels:
-BEXE AAAAA 3 A_FaceTarget
-BEXE G 13 A_CustomMissile("HellsRollingWheel",36,0,0,0,0)
-BEXE A 0 A_FaceTarget
-BEXE G 13 A_CustomMissile("HellsRollingWheel",36,0,0,0,0)
-BEXE A 0 A_FaceTarget
-BEXE G 13 A_CustomMissile("HellsRollingWheel",36,0,0,0,0)
-BEXE A 0 A_FaceTarget
-BEXE G 13 A_CustomMissile("HellsRollingWheel",36,0,0,0,0)
-BEXE A 25 A_GiveInventory("CutterFlag",1) //1
-goto See
-DarkSword:
-BEXE A 0 A_TakeInventory("ExistCount",999)
-BEXE A 0 A_ChangeFlag("THRUACTORS",1)
-BEXE A 0 A_ChangeFlag("FLOORHUGGER",1)
-BEXE A 0 A_ChangeFlag("NOCLIP",1)
-BEXE A 0 A_FaceTarget
-BEXE A 1 A_SetTranslucent(0.7)
-BEXE A 1 A_SetTranslucent(0.4)
-BEXE A 1 A_SetTranslucent(0.0)
-BEXE A 0 A_PlaySoundEx("weapon/ncrush3","Voice")
-goto DSLoop
-DSLoop:
-TNT1 A 0 A_JumpIfCloser(72,"DSEnd")
-TNT1 A 0 A_JumpIfInventory("WeaponCharge",70,"DSEndCheck")
-TNT1 A 0 A_FaceTarget
-TNT1 A 2 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
-TNT1 A 0 A_GiveInventory("WeaponCharge",1)
-loop
-DSEndCheck:
-TNT1 A 1 A_TakeInventory("WeaponCharge",999)
-TNT1 A 0 A_JumpIf(momx<=0,"DSEnd2") //failsafe to prevent a potential permanent teleport loop
-TNT1 A 0 A_JumpIf(momy<=0,"DSEnd2")
-goto DSLoop
-DSEnd:
-BEXE A 0 A_Stop
-BEXE A 0 ThrustThing(angle*256/360,0)
-BEXE A 0 ThrustThingZ(0,0,0,1)
-BEXE A 0 A_PlaySoundEx("weapon/ncrushfinal","Voice")
-BEXE A 1 A_SetTranslucent(0.2)
-BEXE A 1 A_SetTranslucent(0.4)
-BEXE A 1 A_SetTranslucent(0.7)
-BEXE AAAAAAAA 2 A_FaceTarget
-BEXE J 0 A_PlaySoundEx("weapon/BNLSwordSwing","SoundSlot6")
-BEXE J 0 A_CustomMissile("BassDarkSwordSlash",42,0,0,0,0)
-BEXE JK 5
-DSEnd2:
-BEXE A 0 A_ChangeFlag("THRUACTORS",0)
-BEXE A 0 A_ChangeFlag("FLOORHUGGER",0)
-BEXE A 25 A_ChangeFlag("NOCLIP",0)
-BEXE A 0 A_GiveInventory("CutterFlag",1)
-goto See
-BurstRake:
-BEXE A 0 A_PlaySound("weapon/pharaoh1")
-BEXE LMNLMNLMNLMNLMN 2
-BEXE A 0 A_JumpIfInventory("KnightFlag",5,"StopRake")
-BEXE F 2 A_FaceTarget
-BEXE G 2 A_CustomMissile("BassAirBurst2",36,random(-88,88),0,0,0)
-BEXE F 1
-BEXE G 2 A_CustomMissile("BassAirBurst2",36,random(-88,88),0,0,0)
-BEXE F 1
-BEXE G 2 A_CustomMissile("BassAirBurst2",36,random(-88,88),0,0,0)
-BEXE F 1 A_FaceTarget
-BEXE G 2 A_CustomMissile("BassAirBurst2",36,random(-88,88),0,0,0)
-BEXE F 1
-BEXE G 2 A_CustomMissile("BassAirBurst2",36,random(-88,88),0,0,0)
-BEXE A 0 A_GiveInventory("KnightFlag",1)
-goto BurstRake+16
-StopRake:
-BEXE A 0 A_TakeInventory("KnightFlag",999)
-BEXE A 20 A_GiveInventory("CutterFlag",1)
-goto See
-Death:
-BEXE A 1 A_Fadeout(0.1)
-loop
-}
-}
-
-Actor HellsRollingWheel
-{
-PROJECTILE
-+LOOKALLAROUND
--NOGRAVITY
-+SEEKERMISSILE
-+FLOORHUGGER
-+RIPPER
-+THRUGHOST
-+DONTBLAST
-+DONTREFLECT
-+DONTSPLASH
-Translation "42:47=0:0", "210:215=3:3", "208:208=95:95"
-Obituary "%o was returned to the darkness by a Hell Wheel from %k's partner, Bass.EXE."
-Damagetype "BNBass"
-Damage(10)
-Speed 50
-MaxTargetRange 12
-Reactiontime 25
-Radius 16
-Height 32
-Scale 3.0
-States
-{
-Spawn:
-SWHE A 0
-SWHE A 0 A_PlaySoundEx("weapon/hellwheel","SoundSlot6")
-SWHE A 2 A_SpawnItemEx("HellsRollingWheelFXA",0,0,0)
-SWHE B 2 A_SpawnItemEx("HellsRollingWheelFXB",0,0,0)
-SWHE C 2 A_SpawnItemEx("HellsRollingWheelFXC",0,0,0)
-SWHE A 0 A_SeekerMissile(15,20,SMF_LOOK,128,11)
-SWHE D 2 A_SpawnItemEx("HellsRollingWheelFXD",0,0,0)
-SWHE E 2 A_SpawnItemEx("HellsRollingWheelFXE",0,0,0)
-SWHE F 2 A_SpawnItemEx("HellsRollingWheelFXF",0,0,0)
-SWHE A 0 A_SeekerMissile(15,20,SMF_LOOK,128,11)
-SWHE A 0 A_Countdown
-goto Spawn+2
-Death:
-TNT1 A 0
-stop
-}
-}
-
-Actor HellsRollingWheelFXA
-{
-+CLIENTSIDEONLY
-+NOINTERACTION
--SOLID
-Translation "42:47=0:0", "210:215=3:3", "208:208=95:95"
-Renderstyle "Translucent" 
-Alpha 0.7
-Scale 3.0
-States
-{
-Spawn:
-SWHE A 0
-SWHE A 4
-goto Death
-Death:
-SWHE A 2 A_Fadeout(0.12)
-loop
-}
-}
-
-Actor HellsRollingWheelFXB : HellsRollingWheelFXA
-{
-States
-{
-Spawn:
-SWHE B 0
-SWHE B 4
-goto Death
-Death:
-SWHE B 2 A_Fadeout(0.12)
-loop
-}
-}
-
-Actor HellsRollingWheelFXC : HellsRollingWheelFXA
-{
-States
-{
-Spawn:
-SWHE C 0
-SWHE C 4 
-goto Death
-Death:
-SWHE C 2 A_Fadeout(0.12)
-loop
-}
-}
-
-Actor HellsRollingWheelFXD : HellsRollingWheelFXA
-{
-States
-{
-Spawn:
-SWHE D 0
-SWHE D 4
-goto Death
-Death:
-SWHE D 2 A_Fadeout(0.12)
-loop
-}
-}
-
-Actor HellsRollingWheelFXE : HellsRollingWheelFXA
-{
-States
-{
-Spawn:
-SWHE E 0
-SWHE E 4
-goto Death
-Death:
-SWHE E 2 A_Fadeout(0.12)
-loop
-}
-}
-
-Actor HellsRollingWheelFXF : HellsRollingWheelFXA
-{
-States
-{
-Spawn:
-SWHE F 0
-SWHE F 4
-goto Death
-Death:
-SWHE A 2 A_Fadeout(0.12)
-loop
-}
-}
-
 Actor BassAirBurst : FastProjectile
-{PROJECTILE +DONTBLAST +THRUGHOST +DONTREFLECT +DONTSPLASH Damagetype "BNBass" Obituary "%o was whooshed out of the arena by Bass.EXE's Air Burst Shot." Damage(13) Speed 90 Radius 16 Height 16 Scale 1.5
+{PROJECTILE +DONTBLAST +THRUGHOST +DONTREFLECT +DONTSPLASH Damagetype "BNBass" Obituary "%o was whooshed out of the arena by Bass.EXE's Air Burst Shot." Damage(125) Speed 90 Radius 16 Height 16 Scale 1.5
 States{Spawn:
 ARBS A 0
 ARBS A 0 A_PlaySoundEx("weapon/bassexebuster","Voice")
@@ -3364,12 +2512,12 @@ ARBS G 3
 TNT1 A 1
 goto Spawn+2
 Death:
-TNT1 A 0 A_Explode(5,96,0)
+TNT1 A 0 A_Explode(50,96,0)
 MMFX BCDE 2
 stop}}
 
 Actor BassAirBurst2 : BassAirBurst
-{Obituary "%o was blown away by Bass.EXE's Air Buster Rake." Damage(6) Speed 100
+{Obituary "%o was blown away by Bass.EXE's Air Buster Rake." Damage(60) Speed 100
 States{Spawn:
 ARBS A 0
 ARBS A 0 A_PlaySoundEx("weapon/bassexebuster","Voice")
@@ -3389,7 +2537,7 @@ ARBS G 2
 TNT1 A 1
 goto Spawn+2
 Death:
-TNT1 A 0 A_Explode(4,125,0)
+TNT1 A 0 A_Explode(40,125,0)
 MMFX BCDE 2
 stop}}
 
@@ -3427,7 +2575,7 @@ Renderstyle "Add"
 Radius 96
 Height 24
 Speed 5
-Damage(10)
+Damage(100)
 Obituary "%o's soul was rent into nothing by Bass.EXE's DarkSword, courtesy of %k."
 States
 {
@@ -3462,184 +2610,11 @@ stop
 }
 }
 
-Actor FreezemanTeleport
-{
-PROJECTILE
-+NOINTERACTION
-+DONTBLAST
-Radius 8
-Height 8
-ReactionTime 70
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 9 
-TNT1 AAAAAAAAAA 1 A_CheckFloor("Next")
-Goto Next
-Next:
-TNT1 A 0 A_ChangeFlag("NOINTERACTION",0)
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
-Goto Death
-Death:
-TNT1 A 40
-TNT1 A 0 A_SpawnItemEx("FreezemanNavi",0,0,0,0,0,momz,0,SXF_NOCHECKPOSITION,0)
-stop
-}
-}
-
-Actor FreezemanNavi
-{
--SOLID
-MONSTER
-+MISSILE
-+DONTBLAST
-+SKYEXPLODE
--SOLID
--COUNTKILL
-+FRIENDLY
--SHOOTABLE
-+MISSILEMORE
-+MISSILEEVENMORE
-+LOOKALLAROUND
-Renderstyle "Translucent"
-Alpha 0.7
-Translation "192:192=108:108", "198:198=249:249"
-Damage(0)
-speed 0
-scale 2.5
-Radius 10
-Height 10
-Reactiontime 180
-MaxTargetRange 768 //Keep an eye on this
-MeleeRange 20
-States
-{
-Spawn:
-FREX A 0
-FREX A 1 A_ChangeFlag("MISSILE",0)
-FREX A 1 A_JumpIf(momz>=0,"Look")
-Goto Spawn+2
-Look:
-FREX A 0 A_Stop
-FREX A 0 A_ChangeFlag("NOCLIP",0)
-FREX A 2 A_ClearTarget
-Goto See
-See:
-FREX A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-FREX AAAA 1 A_Chase
-FREX A 0 A_JumpIfTargetInLOS("Missile",0,0)
-FREX A 0 A_Jump(32,"LetUsMove")
-FREX AAAA 1 A_Chase
-FREX A 0 A_JumpIfTargetInLOS("LetUsMove",0,0)
-FREX A 0 A_Jump(64,"LetUsMove")
-FREX A 0 A_Countdown
-loop
-LetUsMove:
-FREX A 0 A_TakeInventory("ExistCount",999)
-FREX A 0 A_ChangeFlag("THRUACTORS",1)
-FREX A 0 A_ChangeFlag("FLOORHUGGER",1)
-FREX A 0 A_ChangeFlag("NOCLIP",1)
-FREX A 0 A_FaceTarget
-FREX A 1 A_SetTranslucent(0.7)
-FREX A 1 A_SetTranslucent(0.5)
-FREX A 1 A_SetTranslucent(0.3)
-FREX A 1 A_SetTranslucent(0.2)
-FREX A 1 A_SetTranslucent(0.0)
-FREX A 0 A_PlaySoundEx("weapon/ncrush3","Voice")
-goto CloserLoop
-CloserLoop:
-TNT1 A 0 A_JumpIfCloser(96,"CloserEnd")
-TNT1 A 0 A_JumpIfInventory("WeaponCharge",35,"CloserEndCheck")
-TNT1 A 0 A_FaceTarget
-TNT1 A 2 A_ChangeVelocity(20,0,0,CVF_RELATIVE|CVF_REPLACE)
-TNT1 A 0 A_GiveInventory("WeaponCharge",1)
-loop
-CloserEndCheck:
-TNT1 A 1 A_TakeInventory("WeaponCharge",999)
-TNT1 A 0 A_JumpIf(momx<=0,"CloserEnd") //failsafe to prevent a potential permanent teleport loop
-TNT1 A 0 A_JumpIf(momy<=0,"CloserEnd")
-goto CloserLoop
-CloserEnd:
-FREX A 0 A_Stop
-FREX A 0 ThrustThing(angle*256/360,0)
-FREX A 0 ThrustThingZ(0,0,0,1)
-FREX AAAAA 1 A_FaceTarget
-FREX A 0 A_PlaySoundEx("weapon/ncrushfinal","Voice")
-FREX A 1 A_SetTranslucent(0.2)
-FREX A 1 A_SetTranslucent(0.3)
-FREX A 1 A_SetTranslucent(0.4)
-FREX A 1 A_SetTranslucent(0.5)
-FREX A 1 A_SetTranslucent(0.7)
-FREX AAAAA 1 A_FaceTarget
-FREX A 0 A_ChangeFlag("THRUACTORS",0)
-FREX A 0 A_ChangeFlag("FLOORHUGGER",0)
-FREX A 60 A_ChangeFlag("NOCLIP",0)
-FREX A 0 A_Jump(192,"IcicleAir","IcicleGround","Blizzard")
-goto See
-Missile:
-FREX A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-FREX A 0 A_Jump(64,"LetUsMove")
-FREX A 0 A_Jump(256,"IcicleAir","IcicleGround","Blizzard") //"IceShards"
-goto IcicleAir
-IcicleAir:
-FREX C 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET)
-FREX C 0 A_JumpIfInventory("ExistCount",10,"StopRain")
-FREX C 10 A_SpawnItemEx("FreezemanIcicle",random(-1000,1000),random(-1000,1000),600,0,0,-45)
-FREX CC 0 A_SpawnItemEx("FreezemanIcicle",random(-1000,1000),random(-1000,1000),600,0,0,-45)
-FREX C 10 A_GiveInventory("ExistCount",1)
-goto IcicleAir+1
-StopRain:
-FREX C 30 A_TakeInventory("ExistCount",999)
-FREX C 0 A_RearrangePointers(AAPTR_TRACER, AAPTR_DEFAULT, AAPTR_DEFAULT)
-FREX C 0 A_Jump(24,"LetUsMove")
-FREX C 0 A_Jump(48,"Blizzard")
-goto See
-IcicleGround:
-FREX C 30 A_SpawnItemEx("IceBallChargeFX",0,0,28)
-FREX A 0 A_JumpIfInventory("KnightFlag",4,"StopThis")
-FREX A 0 A_SetAngle(angle+random(0,359))
-FREX C 0 A_RearrangePointers(AAPTR_MASTER, AAPTR_DEFAULT, AAPTR_TARGET)
-FREX C 0 A_CustomMissile("FreezemanGroundIcicleSpawner",0,0,0,2,0)
-FREX C 0 A_CustomMissile("FreezemanGroundIcicleSpawner",0,0,72,2,0)
-FREX C 0 A_CustomMissile("FreezemanGroundIcicleSpawner",0,0,144,2,0)
-FREX C 0 A_CustomMissile("FreezemanGroundIcicleSpawner",0,0,216,2,0)
-FREX C 0 A_CustomMissile("FreezemanGroundIcicleSpawner",0,0,288,2,0)
-FREX C 50 A_GiveInventory("KnightFlag",1)
-goto IcicleGround+1
-StopThis:
-FREX C 0 A_TakeInventory("KnightFlag",999)
-FREX C 35 A_GiveInventory("CutterFlag",1)
-FREX C 0 A_RearrangePointers(AAPTR_TRACER, AAPTR_DEFAULT, AAPTR_DEFAULT)
-FREX C 0 A_Jump(24,"LetUsMove")
-FREX C 0 A_Jump(48,"Blizzard")
-goto See
-Blizzard:
-FREX C 0 A_JumpIfInventory("KnightFlag",3,"BlizzardEnd")
-FREX C 0 A_PlaySoundEx("misc/icemachinecharge","Voice")
-//FREX C 2 ACS_ExecuteAlways(247,0,25,750)
-FREX CCCCCCCCCCCCCCCCCCCCCCCCC 1 A_CustomMissile("FreezemanBlizzardShot",28,0,random(0,359),2,random(-5,5))
-FREX C 0 A_PlaySoundEx("misc/icemachinecharge","Voice")
-//FREX C 2 ACS_ExecuteAlways(247,0,-15,750)
-FREX CCCCCCCCCCCCCCCCCCCCCCCCC 1 A_CustomMissile("FreezemanBlizzardShot",28,0,random(0,359),2,random(-5,5))
-FREX C 0 A_GiveInventory("KnightFlag",1)
-loop
-BlizzardEnd:
-FREX C 0 A_TakeInventory("KnightFlag",999)
-FREX C 30 A_GiveInventory("CutterFlag",1)
-FREX C 0 A_Jump(24,"LetUsMove")
-goto See
-Death:
-FREX A 1 A_Fadeout(0.1)
-loop
-}
-}
-
 Actor FreezemanBlizzardShot
 {
 PROJECTILE
 +DONTBLAST
-Damage(4)
+Damage(40)
 damagetype "BNFreezeman"
 Obituary "%o succumbed to Freezeman's Blizzard Storm."
 Scale 2.0
@@ -3696,7 +2671,7 @@ DamageType "BNFreezeman"
 Obituary "%o was violated by one of Freezeman's ground icicles."
 Height 72
 Radius 32
-Damage(10)
+Damage(100)
 States
 {
 Spawn:
@@ -3724,7 +2699,7 @@ PROJECTILE
 +DONTSPLASH
 Damagetype "BNFreezeman"
 Obituary "%o was crushed by one of Freezeman's sharp, heavy icicles."
-Damage(10)
+Damage(100)
 Height 64
 Radius 32
 Scale 2.5
@@ -3749,194 +2724,13 @@ Goto Spawn2+2
 Death:
 ICCL A 0 A_PlaySoundEx("weapon/icewavespawn","SoundSlot7")
 ICCL A 0 A_ChangeFlag(NOGRAVITY,1)
-ICCL A 0 A_Explode(10,150,0)
+ICCL A 0 A_Explode(95,150,0)
 ICEW FGH 3
 stop
 }
 }
 
 actor IceBallChargeFX : IceWaveCharging{translation "209:218=202:202"}
-
-Actor BubblemanTeleport
-{
-PROJECTILE
-+NOINTERACTION
-+DONTBLAST
-Radius 8
-Height 8
-ReactionTime 70
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 9 
-TNT1 AAAAAAAAAA 1 A_CheckFloor("Next")
-Goto Next
-Next:
-TNT1 A 0 A_ChangeFlag("NOINTERACTION",0)
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
-Goto Death
-Death:
-TNT1 A 40
-TNT1 A 0 A_SpawnItemEx("BubblemanNavi",0,0,0,0,0,momz,0,SXF_NOCHECKPOSITION,0)
-stop
-}
-}
-
-actor BubblemanNavi
-{
--SOLID
-MONSTER
-+MISSILE
-+DONTBLAST
-+SKYEXPLODE
--SOLID
--COUNTKILL
-+FRIENDLY
--SHOOTABLE
-+MISSILEMORE
-+MISSILEEVENMORE
-+LOOKALLAROUND
-Renderstyle "Translucent"
-Alpha 0.7
-Translation "192:192=205:205", "198:198=229:229"
-speed 0
-scale 2.5
-Radius 10
-Height 10
-Reactiontime 180
-MaxTargetRange 768 //Keep an eye on this
-MeleeRange 20
-States
-{
-Spawn:
-BBLE A 0
-BBLE A 0 A_PlaySoundEx("misc/BNAppear","Voice")
-BBLE A 1 A_ChangeFlag("MISSILE",0)
-BBLE A 1 A_JumpIf(momz>=0,"Look")
-Goto Spawn+3
-Look:
-BBLE A 0 A_Stop
-BBLE A 0 A_ChangeFlag("NOCLIP",0)
-BBLE A 2 A_ClearTarget
-Goto See
-See:
-BBLE A 0 A_JumpIfInventory("CutterFlag",5,"Death")
-BBLE AAAA 1 A_Chase
-BBLE A 0 A_JumpIfTargetInLOS("Missile",0,0)
-BBLE A 0 A_Jump(32,"LetUsMove")
-BBLE AAAA 1 A_Chase
-BBLE A 0 A_JumpIfTargetInLOS("LetUsMove",0,0)
-BBLE A 0 A_Jump(64,"LetUsMove")
-BBLE A 0 A_Countdown
-loop
-LetUsMove:
-BBLE A 0 A_TakeInventory("ExistCount",999)
-BBLE A 0 A_ChangeFlag("THRUACTORS",1)
-BBLE A 0 A_ChangeFlag("FLOORHUGGER",1)
-BBLE A 0 A_ChangeFlag("NOCLIP",1)
-BBLE A 0 A_FaceTarget
-BBLE A 1 A_SetTranslucent(0.7)
-BBLE A 1 A_SetTranslucent(0.5)
-BBLE A 1 A_SetTranslucent(0.3)
-BBLE A 1 A_SetTranslucent(0.2)
-BBLE A 1 A_SetTranslucent(0.0)
-BBLE A 0 A_PlaySoundEx("weapon/ncrush3","Voice")
-goto CloserLoop
-CloserLoop:
-TNT1 A 0 A_JumpIfCloser(96,"CloserEnd")
-TNT1 A 0 A_JumpIfInventory("WeaponCharge",35,"CloserEndCheck")
-TNT1 A 0 A_FaceTarget
-TNT1 A 2 A_ChangeVelocity(20,0,0,CVF_RELATIVE|CVF_REPLACE)
-TNT1 A 0 A_GiveInventory("WeaponCharge",1)
-loop
-CloserEndCheck:
-TNT1 A 1 A_TakeInventory("WeaponCharge",999)
-TNT1 A 0 A_JumpIf(momx<=0,"CloserEnd") //failsafe to prevent a potential permanent teleport loop
-TNT1 A 0 A_JumpIf(momy<=0,"CloserEnd")
-goto CloserLoop
-CloserEnd:
-BBLE A 0 A_Stop
-BBLE A 0 ThrustThing(angle*256/360,0)
-BBLE A 0 ThrustThingZ(0,0,0,1)
-BBLE AAAAA 1 A_FaceTarget
-BBLE A 0 A_PlaySoundEx("weapon/ncrushfinal","Voice")
-BBLE A 1 A_SetTranslucent(0.2)
-BBLE A 1 A_SetTranslucent(0.3)
-BBLE A 1 A_SetTranslucent(0.4)
-BBLE A 1 A_SetTranslucent(0.5)
-BBLE A 1 A_SetTranslucent(0.7)
-BBLE AAAAA 1 A_FaceTarget
-BBLE A 0 A_ChangeFlag("THRUACTORS",0)
-BBLE A 0 A_ChangeFlag("FLOORHUGGER",0)
-BBLE A 60 A_ChangeFlag("NOCLIP",0)
-BBLE A 0 A_Jump(192,"Harpoons","BubbleBombs","BubbleMines")
-goto See
-Missile:
-BBLE A 0 A_Jump(256,"Harpoons","BubbleBombs","BubbleMines","LetUsMove")
-goto Harpoons
-Harpoons:
-BBLE A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-BBLE A 0 A_JumpIfInventory("KnightFlag",3,"StopHarpoons")
-BBLE A 0 A_FaceTarget
-BBLE BB 7 A_CustomMissile("BubblemanHarpoon",24,0,0,0,0)
-BBLE A 0 A_FaceTarget
-BBLE BB 7 A_CustomMissile("BubblemanHarpoon",24,0,0,0,0)
-BBLE A 30 A_GiveInventory("KnightFlag",1)
-goto Harpoons+1
-StopHarpoons:
-BUBM A 0 A_TakeInventory("KnightFlag",999)
-BUBM A 0 A_GiveInventory("CutterFlag",1)
-goto See
-BubbleBombs:
-BBLE B 0 A_JumpIfInventory("CutterFlag",2,"Death")
-BBLE BBBBB 2 A_FaceTarget
-BBLE B 0 A_CustomMissile("BubblemanBomb",24,0,0,2,random(-3,3))
-BBLE B 0 A_CustomMissile("BubblemanBomb",24,0,90,2,random(-3,3))
-BBLE B 0 A_CustomMissile("BubblemanBomb",24,0,180,2,random(-3,3))
-BBLE B 35 A_CustomMissile("BubblemanBomb",24,0,270,2,random(-3,3))
-BBLE B 0 A_CustomMissile("BubblemanBomb",24,0,45,2,random(-3,3))
-BBLE B 0 A_CustomMissile("BubblemanBomb",24,0,135,2,random(-3,3))
-BBLE B 0 A_CustomMissile("BubblemanBomb",24,0,225,2,random(-3,3))
-BBLE B 55 A_CustomMissile("BubblemanBomb",24,0,315,2,random(-3,3))
-BBLE B 0 A_GiveInventory("CutterFlag",1)
-goto See
-BubbleMines:
-BBLE B 0 A_JumpIfInventory("CutterFlag",3,"Death")
-BBLE BBBBB 2 A_FaceTarget
-BBLE BBB 15 A_CustomMissile("BubblemanMine",24,0,random(-25,25),2,0)
-BBLE A 50 A_GiveInventory("CutterFlag",1)
-goto See
-Death:
-BBLE A 1 A_Fadeout(0.1)
-loop
-}
-}
-
-Actor BubblemanHarpoon : Harpoon
-{
-PROJECTILE
--RIPPER
-//+DONTBLAST
-Damagetype "BNAquaman"
-Obituary "%o was stabbed by one of Bubbleman's harpoons."
-Radius 16
-Height 16
-Scale 2.5
-Damage(6)
-Speed 110
-States
-{
-Spawn:
-HRPN A 0
-HRPN A 0 A_PlaySoundEx("weapon/magnetmissile","SoundSlot6")
-HRPN A 2 A_SpawnItemEx("BubbleHarpoonTrail",0,0,0,0,0,0,0)
-goto Spawn+2
-Death:
-TNT1 A 0
-stop
-}
-}
 
 Actor BubbleHarpoonTrail
 {
@@ -3966,7 +2760,7 @@ Translation "3:3=205:205", "93:159=205:205"
 -THRUGHOST
 Obituary "%o let Bubbleman catch them with a Bubble Bomb."
 Damagetype "BNAqua"
-Damage(8)
+Damage(75)
 Speed 20
 Radius 24
 Height 24
@@ -3983,7 +2777,7 @@ goto Spawn+2
 Death:
 BUBB A 0 A_Stop
 BUBB A 0 A_PlaySoundEx("misc/splash","Voice")
-BUBB A 0 A_Explode(8,128,0)
+BUBB A 0 A_Explode(75,128,0)
 NAPA EFGHIJKLMNOPQRS 1
 stop
 }
@@ -3993,7 +2787,7 @@ Actor BubblemanMine : DangerWrap
 {
 Speed 20
 Obituary "%o's body was torn up by an incoming Bubble Mine."
-Damage(9)
+Damage(85)
 Translation "160:167=205:205", "216:235=205:205"
 States
 {
@@ -4015,7 +2809,7 @@ Crash:
 XDeath:
 NAPA A 0 A_Stop
 NAPA A 0 A_PlaySoundEx("weapon/wrapexplode","Voice")
-NAPA A 0 A_Explode(9,150,0)
+NAPA A 0 A_Explode(85,150,0)
 NAPA EFGHIJKLMNOPQRS 1
 stop
 SpawnMine:
@@ -4047,241 +2841,9 @@ Death:
 TNT1 A 0 A_Stop
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
 TNT1 A 0 A_PlaySoundEx("weapon/wrapexplode","Weapon")
-TNT1 A 0 A_Explode(10,128,0)
+TNT1 A 0 A_Explode(100,128,0)
 NAPA EFGHIJKLMNOPQRS 1
 stop
-}
-}
-
-Actor FlashmanTeleport
-{
-PROJECTILE
-+NOINTERACTION
-+DONTBLAST
-Radius 8
-Height 8
-ReactionTime 70
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 9 
-TNT1 AAAAAAAAAA 1 A_CheckFloor("Next")
-Goto Next
-Next:
-TNT1 A 0 A_ChangeFlag("NOINTERACTION",0)
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
-Goto Death
-Death:
-TNT1 A 40
-TNT1 A 0 A_SpawnItemEx("FlashmanNavi",0,0,0,0,0,momz,0,SXF_NOCHECKPOSITION,0)
-stop
-}
-}
-
-actor FlashmanNavi
-{
-+NOEXPLODEFLOOR
-+RIPPER
-+MISSILE
-+THRUGHOST
--SOLID
-+NOCLIP
-+DONTBLAST
-+DONTREFLECT
-Renderstyle "Translucent"
-Alpha 0.7
-Translation "192:192=229:229", "198:198=75:75"
-Speed 0
-Scale 2.5
-Radius 10
-Height 10
-States
-{
-Spawn:
-TNT1 A 0
-FLSE A 0 A_PlaySoundEx("misc/BNAppear","SoundSlot5")
-FLSE A 30
-FLSE B 5
-FLSE B 0 A_SpawnItemEx("FlashmanBlindingFlash",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION)
-FLSE C 50
-goto Death
-Death:
-FLSE A 1 A_Fadeout(0.1)
-loop
-}
-}
-
-Actor FlashmanBlindingFlash
-{PROJECTILE +THRUGHOST +DONTREFLECT +DONTBLAST +FOILINVUL Damagetype "BNFlashman" Obituary "%o was absolutely stunned by Flashman's power." Speed 0 Radius 8 Height 8 Scale 2.0
-States{Spawn:
-TNT1 A 0
-TNT1 A 0 A_PlaySound("weapon/BNFlashBoom")
-TNT1 A 0 A_Explode(12,1000,0,0,1000)
-stop}}
-
-Actor NapalmmanTeleport
-{
-PROJECTILE
-+NOTARGETSWITCH //Let's do it for science
-+NOINTERACTION
-+DONTBLAST
-Radius 8
-Height 8
-ReactionTime 70
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 9 
-TNT1 AAAAAAAAAA 1 A_CheckFloor("Next")
-Goto Next
-Next:
-TNT1 A 0 A_ChangeFlag("NOINTERACTION",0)
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
-Goto Death
-Death:
-TNT1 A 0 A_JumpIfInTargetInventory("PowerAttackPlus",1,"PlusDeath")
-TNT1 A 40
-TNT1 A 0 A_SpawnItemEx("NapalmmanNavi",0,0,0,0,0,momz,0,SXF_NOCHECKPOSITION,0)
-stop
-PlusDeath:
-TNT1 A 40
-TNT1 A 0 A_SpawnItemEx("NapalmmanNaviPlus",0,0,0,0,0,momz,0,SXF_NOCHECKPOSITION,0)
-TNT1 A 0 A_TakeFromTarget("PowerAttackPlus",99)
-stop
-}
-}
-
-Actor NapalmmanNavi
-{
--SOLID
-MONSTER
-//+NOCLIP
-+MISSILE
-+DONTBLAST
-+SKYEXPLODE
--SOLID
--COUNTKILL
-+FRIENDLY
--SHOOTABLE
-+MISSILEMORE
-+MISSILEEVENMORE
-+LOOKALLAROUND
-Renderstyle "Translucent"
-Alpha 0.7
-Translation "192:192=249:249", "198:198=245:245"
-speed 0
-scale 2.5
-Radius 10
-Height 10
-Reactiontime 180
-MaxTargetRange 768
-MeleeRange 20
-States
-{
-Spawn:
-NAPM A 0
-NAPM A 1 A_ChangeFlag("MISSILE",0)
-NAPM A 1
-NAPM A 1
-NAPM A 1 A_JumpIf(momz>=0,"Look")
-Goto Spawn+4
-Look:
-NAPM A 0 A_Stop
-NAPM A 0 A_ChangeFlag("NOCLIP",0)
-NAPM A 0 A_ClearTarget
-NAPM A 2
-Goto See
-See:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM AAAA 1 A_Chase
-NAPM A 0 A_JumpIfTargetInLOS("Missile",0,0)
-NAPM A 0 A_Jump(32,"LetUsMove")
-NAPM AAAA 1 A_Chase
-NAPM A 0 A_JumpIfTargetInLOS("LetUsMove",0,0)
-NAPM A 0 A_Jump(64,"LetUsMove")
-NAPM A 0 A_Countdown
-loop
-LetUsMove:
-NAPM A 0 A_TakeInventory("ExistCount",999)
-NAPM A 0 A_ChangeFlag("THRUACTORS",1)
-NAPM A 0 A_ChangeFlag("FLOORHUGGER",1)
-NAPM A 0 A_ChangeFlag("NOCLIP",1)
-NAPM A 0 A_FaceTarget
-NAPM A 1 A_SetTranslucent(0.7)
-NAPM A 1 A_SetTranslucent(0.5)
-NAPM A 1 A_SetTranslucent(0.3)
-NAPM A 1 A_SetTranslucent(0.2)
-NAPM A 1 A_SetTranslucent(0.0)
-NAPM A 0 A_PlaySoundEx("weapon/ncrush3","Voice")
-goto CloserLoop
-CloserLoop:
-TNT1 A 0 A_JumpIfCloser(96,"CloserEnd")
-TNT1 A 0 A_JumpIfInventory("WeaponCharge",35,"CloserEndCheck")
-TNT1 A 0 A_FaceTarget
-TNT1 A 2 A_ChangeVelocity(20,0,0,CVF_RELATIVE|CVF_REPLACE)
-TNT1 A 0 A_GiveInventory("WeaponCharge",1)
-loop
-CloserEndCheck:
-TNT1 A 1 A_TakeInventory("WeaponCharge",999)
-TNT1 A 0 A_JumpIf(momx<=0,"CloserEnd") //failsafe to prevent a potential permanent teleport loop
-TNT1 A 0 A_JumpIf(momy<=0,"CloserEnd")
-goto CloserLoop
-CloserEnd:
-NAPM A 0 A_Stop
-NAPM A 0 ThrustThing(angle*256/360,0)
-NAPM A 0 ThrustThingZ(0,0,0,1)
-NAPM AAAAA 1 A_FaceTarget
-NAPM A 0 A_PlaySoundEx("weapon/ncrushfinal","Voice")
-NAPM A 1 A_SetTranslucent(0.2)
-NAPM A 1 A_SetTranslucent(0.3)
-NAPM A 1 A_SetTranslucent(0.4)
-NAPM A 1 A_SetTranslucent(0.5)
-NAPM A 1 A_SetTranslucent(0.7)
-NAPM AAAAA 1 A_FaceTarget
-NAPM A 0 A_ChangeFlag("THRUACTORS",0)
-NAPM A 0 A_ChangeFlag("FLOORHUGGER",0)
-NAPM A 60 A_ChangeFlag("NOCLIP",0)
-NAPM A 0 A_Jump(192,"NapalmSpray","BigNapalm","Eruption")
-goto See
-Missile:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM A 0 A_Jump(256,"NapalmSpray","BigNapalm","LetUsMove","Eruption")
-goto NapalmSpray
-Eruption:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM A 0 A_JumpIfInventory("KnightFlag",2,"StopThisMess")
-NAPM AAAAA 3 A_FaceTarget
-NAPM F 0 A_CustomMissile("NapalmFireLineSpawner",0,0,0,0,0)
-NAPM F 0 A_CustomMissile("NapalmFireLineSpawner",0,0,-30,0,0)
-NAPM F 0 A_CustomMissile("NapalmFireLineSpawner",0,0,30,0,0)
-NAPM FFFFF 0 A_CustomMissile("NapalmPillarSpawner",24,0,random(0,359),2,random(20,30))
-NAPM F 50 A_GiveInventory("KnightFlag",1)
-loop
-StopThisMess:
-NAPM A 0 A_TakeInventory("KnightFlag",999)
-NAPM A 50 A_GiveInventory("CutterFlag",1)
-goto See
-NapalmSpray:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM AAAAA 4 A_FaceTarget
-NAPM FFFFF 7 A_CustomMissile("NapalmBombSpray",24,0,random(-20,20),0,random(4,8))
-NAPM AAAAA 4 A_FaceTarget
-NAPM FFFFF 7 A_CustomMissile("NapalmBombSpray",24,0,random(-20,20),0,random(4,8))
-NAPM A 35 A_GiveInventory("CutterFlag",1)
-goto See
-BigNapalm:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM AAAAA 3 A_FaceTarget
-NAPM F 20 A_CustomMissile("NapalmMissile",24,0,random(-15,15),2,random(50,75))
-NAPM AAAA 2 A_FaceTarget
-NAPM F 25 A_CustomMissile("NapalmMissile",24,0,random(-15,15),2,random(50,75))
-NAPM A 40 A_GiveInventory("CutterFlag",1)
-goto See
-Death:
-NAPM A 1 A_Fadeout(0.1)
-loop
 }
 }
 
@@ -4296,7 +2858,7 @@ Translation "225:225=186:186", "208:215=220:220"
 Obituary "%o got torched by a Napalm Shot."
 Damagetype "BNNapalmman"
 Speed 18
-Damage(4)
+Damage(35)
 States
 {
 Spawn:
@@ -4309,11 +2871,11 @@ XDeath:
 FLMB H 0 A_Stop
 FLMB H 0 A_PlaySoundEx("weapon/napalm","Weapon")
 FLMB H 0 A_ChangeFlag("NOGRAVITY",1)
-FLMB H 0 A_Explode(4,75,0)
+FLMB H 0 A_Explode(35,75,0)
 NAPA EFGHI 1
-FLMB H 0 A_Explode(4,75,0)
+FLMB H 0 A_Explode(35,75,0)
 NAPA JKLMN 1
-FLMB H 0 A_Explode(4,75,0)
+FLMB H 0 A_Explode(35,75,0)
 NAPA OPQRS 1
 stop
 Death:
@@ -4321,32 +2883,6 @@ FLMB H 0 A_Stop
 FLMB H 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
 FLMB H 0 A_ChangeFlag("NOGRAVITY",1) 
 FLMB H 0 A_SpawnItemEx("NapalmPillar",0,0,8,0,0,0,0,SXF_TRANSFERPOINTERS)
-stop
-}
-}
-
-Actor NapalmPillarSpawnerPlus : NapalmPillarSpawner
-{
-Damage(7)
-States
-{
-Crash:
-XDeath:
-FLMB H 0 A_Stop
-FLMB H 0 A_PlaySoundEx("weapon/napalm","Weapon")
-FLMB H 0 A_ChangeFlag("NOGRAVITY",1)
-FLMB H 0 A_Explode(7,75,0)
-NAPA EFGHI 1
-FLMB H 0 A_Explode(7,75,0)
-NAPA JKLMN 1
-FLMB H 0 A_Explode(7,75,0)
-NAPA OPQRS 1
-stop
-Death:
-FLMB H 0 A_Stop
-FLMB H 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
-FLMB H 0 A_ChangeFlag("NOGRAVITY",1) 
-FLMB H 0 A_SpawnItemEx("NapalmPillarPlus",0,0,8,0,0,0,0,SXF_TRANSFERPOINTERS)
 stop
 }
 }
@@ -4380,25 +2916,7 @@ goto BurnTime
 BurnTime:
 FLMB F 0 A_PlaySoundEx("weapon/atomicfire","Voice")
 FLMB F 0 A_ChangeVelocity(7,0,0,CVF_RELATIVE|CVF_REPLACE)
-FLMB F 0 A_Explode(3,70,0)
-FLMB FGFGFG 2
-FLMB F 0 A_SetAngle(angle+random(0,359))
-FLMB F 0 A_CountDown
-loop
-Death:
-FLMB EDCBA 2
-stop
-}
-}
-
-Actor NapalmPillarPlus : NapalmPillar
-{
-States
-{
-BurnTime:
-FLMB F 0 A_PlaySoundEx("weapon/atomicfire","Voice")
-FLMB F 0 A_ChangeVelocity(7,0,0,CVF_RELATIVE|CVF_REPLACE)
-FLMB F 0 A_Explode(6,70,0)
+FLMB F 0 A_Explode(30,70,0)
 FLMB FGFGFG 2
 FLMB F 0 A_SetAngle(angle+random(0,359))
 FLMB F 0 A_CountDown
@@ -4437,22 +2955,6 @@ stop
 }
 }
 
-Actor NapalmFireLineSpawnerPlus : NapalmFireLineSpawner
-{
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 18
-TNT1 A 0 A_SpawnItemEx("NapalmFlamePlus",0,0,5,0,0,0,0,SXF_TRANSFERPOINTERS)
-TNT1 A 0 A_Countdown
-goto Spawn+1
-Death:
-TNT1 A 0
-stop
-}
-}
-
 Actor NapalmFlame
 {
 PROJECTILE
@@ -4475,72 +2977,13 @@ Spawn:
 FRNG A 0
 TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
 FRNG AB 4
-FRNG A 0 A_Explode(3,65,0)
+FRNG A 0 A_Explode(30,65,0)
 FRNG CD 4
-FRNG A 0 A_Explode(3,65,0)
+FRNG A 0 A_Explode(30,65,0)
 FRNG A 0 A_Countdown
 goto Spawn+1
 Death:
 FRNG ABCD 3 A_Fadeout(0.3)
-loop
-}
-}
-
-Actor NapalmFlamePlus : NapalmFlame
-{
-States
-{
-Spawn:
-FRNG A 0
-TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
-FRNG AB 4
-FRNG A 0 A_Explode(6,65,0)
-FRNG CD 4
-FRNG A 0 A_Explode(6,65,0)
-FRNG A 0 A_Countdown
-goto Spawn+1
-Death:
-FRNG ABCD 3 A_Fadeout(0.3)
-loop
-}
-}
-
-Actor NapalmmanNaviPlus : NapalmmanNavi
-{
-States
-{
-Eruption:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM A 0 A_JumpIfInventory("KnightFlag",2,"StopThisMess")
-NAPM AAAAA 3 A_FaceTarget
-NAPM F 0 A_CustomMissile("NapalmFireLineSpawnerPlus",0,0,0,0,0)
-NAPM F 0 A_CustomMissile("NapalmFireLineSpawnerPlus",0,0,-30,0,0)
-NAPM F 0 A_CustomMissile("NapalmFireLineSpawnerPlus",0,0,30,0,0)
-NAPM FFFFF 0 A_CustomMissile("NapalmPillarSpawnerPlus",24,0,random(0,359),2,random(20,30))
-NAPM F 50 A_GiveInventory("KnightFlag",1)
-loop
-StopThisMess:
-NAPM A 0 A_TakeInventory("KnightFlag",999)
-NAPM A 50 A_GiveInventory("CutterFlag",1)
-goto See
-NapalmSpray:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM AAAAA 4 A_FaceTarget
-NAPM FFFFF 7 A_CustomMissile("NapalmBombSprayPlus",24,0,random(-20,20),0,random(4,8))
-NAPM AAAAA 4 A_FaceTarget
-NAPM FFFFF 7 A_CustomMissile("NapalmBombSprayPlus",24,0,random(-20,20),0,random(4,8))
-NAPM A 35 A_GiveInventory("CutterFlag",1)
-goto See
-BigNapalm:
-NAPM A 0 A_JumpIfInventory("CutterFlag",3,"Death")
-NAPM AAAAA 3 A_FaceTarget
-NAPM F 20 A_CustomMissile("NapalmMissilePlus",24,0,random(-15,15),2,random(50,75))
-NAPM AAAA 2 A_FaceTarget
-NAPM F 25 A_CustomMissile("NapalmMissilePlus",24,0,random(-15,15),2,random(50,75))
-NAPM A 35 A_GiveInventory("CutterFlag",1)
-goto See
-Death:
-NAPM A 1 A_Fadeout(0.1)
 loop
 }
 }
@@ -4550,8 +2993,8 @@ Actor NapalmBombSpray
 PROJECTILE
 +DONTSPLASH
 -NOGRAVITY
-//+DONTBLAST
-//+DONTREFLECT
++DONTBLAST
++DONTREFLECT
 +HEXENBOUNCE
 Bouncecount 2
 Bouncefactor 0.6
@@ -4561,7 +3004,7 @@ Damagetype "BNNapalmman"
 Translation "16:223=183:183", "4:4=221:221", "168:168=221:221", "208:208=221:221"
 Radius 10
 Height 10
-Damage(7)
+Damage(70)
 Speed 40
 Scale 1.5
 States
@@ -4576,47 +3019,20 @@ Crash:
 XDeath:
 NAPA A 0 A_Stop
 NAPA A 0 A_ChangeFlag("NOGRAVITY",1)
-NAPA A 0 A_Explode(8,128,0)
+NAPA A 0 A_Explode(80,128,0)
 NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
 NAPA EFGHIJKLMNOPQRS 2
 stop
 Death:
 NAPA A 0 A_Stop
 NAPA A 0 A_ChangeFlag("NOGRAVITY",1)
-NAPA A 0 A_Explode(8,128,0)
+NAPA A 0 A_Explode(80,128,0)
 NAPA A 0 A_SpawnItemEx("NapalmFlame",0,0,5,0,0,0,0,SXF_TRANSFERPOINTERS)
 NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
 NAPA EFGHIJKLMNOPQRS 2
 stop
 }
 }
-
-Actor NapalmBombSprayPlus : NapalmBombSpray
-{
-Damage(10)
-Speed 40
-Scale 2.0
-States
-{
-Crash:
-XDeath:
-NAPA A 0 A_Stop
-NAPA A 0 A_ChangeFlag("NOGRAVITY",1)
-NAPA A 0 A_Explode(11,128,0)
-NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
-NAPA EFGHIJKLMNOPQRS 2
-stop
-Death:
-NAPA A 0 A_Stop
-NAPA A 0 A_ChangeFlag("NOGRAVITY",1)
-NAPA A 0 A_Explode(11,128,0)
-NAPA A 0 A_SpawnItemEx("NapalmFlamePlus",0,0,5,0,0,0,0,SXF_TRANSFERPOINTERS)
-NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,5)
-NAPA EFGHIJKLMNOPQRS 2
-stop
-}
-}
-
 
 Actor NapalmTurretTele
 {
@@ -4718,7 +3134,7 @@ Translation "214:215=5:5"
 Obituary "%o was filled with shrapnel by one of Napalmman's turrets."
 Height 12
 Radius 12
-Damage(3)
+Damage(30)
 Damagetype "BNNormal"
 Speed 95
 Scale 1.75
@@ -4730,24 +3146,11 @@ BASB A 0 A_PlaySoundEx("weapon/bassexebuster","SoundSlot7")
 BASB A 1
 goto Spawn+2
 Death:
-TNT1 A 0 A_Explode(3,70,0) 
+TNT1 A 0 A_Explode(25,70,0) 
 MMFX BCDE 2
 stop
 }
 }
-
-Actor NapalmTurretShotPlus : NapalmTurretShot
-{
-Damage(6)
-States
-{
-Death:
-TNT1 A 0 A_Explode(6,70,0) 
-MMFX BCDE 2
-stop
-}
-}
-
 
 Actor NapalmMissile : NapalmBombSpray
 {
@@ -4758,7 +3161,7 @@ Translation "16:223=185:185"
 Bouncecount 3
 Radius 28
 Height 28
-Damage(12)
+Damage(120)
 Speed 30
 Scale 5.0
 States
@@ -4774,32 +3177,11 @@ NAPA A 0 A_ChangeFlag("NOGRAVITY",1)
 NAPA A 0 Radius_Quake(5,45,0,75,0)
 TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
 NAPA A 0 A_PlaySoundEx("misc/mm3explosion","Voice")
-NAPA A 0 A_Explode(9,325,0)
+NAPA A 0 A_Explode(85,325,0)
 TNT1 AAAAA 2 A_SpawnItemEx("DrillExplode",random(-250,250),random(-250,250),random(5,125))
-NAPA A 0 A_Explode(9,325,0)
+NAPA A 0 A_Explode(85,325,0)
 TNT1 AAAAA 2 A_SpawnItemEx("DrillExplode",random(-250,250),random(-250,250),random(5,125))
-NAPA A 0 A_Explode(9,325,0)
-TNT1 AAAAA 2 A_SpawnItemEx("DrillExplode",random(-250,250),random(-250,250),random(5,125))
-stop
-}
-}
-
-Actor NapalmMissilePlus : NapalmMissile
-{
-Damage(2)
-States
-{
-Death:
-NAPA A 0 A_Stop
-NAPA A 0 A_ChangeFlag("NOGRAVITY",1)
-NAPA A 0 Radius_Quake(7,45,0,100,0)
-TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
-NAPA A 0 A_PlaySoundEx("misc/mm3explosion","Voice")
-NAPA A 0 A_Explode(12,325,0)
-TNT1 AAAAA 2 A_SpawnItemEx("DrillExplode",random(-250,250),random(-250,250),random(5,125))
-NAPA A 0 A_Explode(12,325,0)
-TNT1 AAAAA 2 A_SpawnItemEx("DrillExplode",random(-250,250),random(-250,250),random(5,125))
-NAPA A 0 A_Explode(12,325,0)
+NAPA A 0 A_Explode(85,325,0)
 TNT1 AAAAA 2 A_SpawnItemEx("DrillExplode",random(-250,250),random(-250,250),random(5,125))
 stop
 }
@@ -4828,13 +3210,13 @@ PROJECTILE
 Translation "210:210=3:3"
 Obituary "%o was faked out by %k through the art of Anti-Damage."
 Damagetype "BNNormal"
-Damage(12) //May not go any lower considering that unless it's a duel then it's almost impossible to get all 3 to target the same enemy.
-Speed 35
-Bouncecount 4
+Damage(100) //May not go any lower considering that unless it's a duel then it's almost impossible to get all 3 to target the same enemy.
+Speed 45
+Bouncecount 6
 Bouncefactor 1.0
 WallBounceFactor 1.0
 MaxTargetRange 20
-Reactiontime 150
+Reactiontime 180
 Radius 12
 Height 12
 Scale 2.0
@@ -4846,7 +3228,7 @@ SBLA A 0 A_PlaySoundEx("weapon/mirrordeflect","SoundSlot6")
 SBLA ABAB 2 A_SpawnItemEx("ADShurikenFX")
 goto Homing
 Homing:
-SBLA A 0 A_SeekerMissile(15,25,SMF_LOOK|SMF_PRECISE,128,10)
+SBLA A 0 A_SeekerMissile(20,30,SMF_LOOK|SMF_PRECISE,128,12)
 SBLA AB 2 A_SpawnItemEx("ADShurikenFX")
 SBLA A 0 A_Countdown
 goto Homing
@@ -4873,7 +3255,7 @@ Reactiontime 35
 Obituary "%o wasn't able to counter %k's Anti-Wind Tornado."
 Translation "192:207=88:88"
 Damagetype "NoCounter"
-Damage(5)
+Damage(50)
 Radius 13
 Height 13
 Scale 2.0
@@ -4905,10 +3287,10 @@ PROJECTILE
 WallBounceFactor 0.9
 BounceFactor 0.9
 Bouncecount 6
-Reactiontime 30
+Reactiontime 25
 Obituary "%o wasn't able to counter %k's Anti-Break Scrap Metal."
 Damagetype "NoCounter"
-Damage(10)
+Damage(90)
 Radius 14
 Height 14
 Scale 2.0
@@ -4929,11 +3311,11 @@ loop
 
 Actor AntiBreakScrap : AntiBreakScrapMetal
 {
-WallBounceFactor 0.8
-BounceFactor 0.8
+WallBounceFactor 0.75
+BounceFactor 0.75
 Bouncecount 4
 Reactiontime 15
-Damage(8)
+Damage(55)
 Radius 8
 Height 8
 Scale 1.5
@@ -5004,7 +3386,7 @@ PROJECTILE
 +THRUGHOST
 Obituary "%o got spun right round inside %k's Anti-Wind Vortex."
 Damagetype "NoCounter"
-Damage (35)
+Damage (20)
 Radius 54
 Height 76
 States
@@ -5085,8 +3467,8 @@ PROJECTILE
 +THRUGHOST
 Obituary "%o couldn't outrun %k's SeekBomb."
 Damagetype "BNNormal"
-Damage(15)
-Speed 35
+Damage(80)
+Speed 28
 Radius 8
 Height 8
 Scale 1.5
@@ -5094,18 +3476,18 @@ States
 {
 Spawn:
 SKBM A 0
-SKBM ABCDEFGH 2 A_SeekerMissile(15,20,SMF_LOOK|SMF_PRECISE,192,12)
+SKBM ABCDEFGH 2 A_SeekerMissile(10,15,SMF_LOOK|SMF_PRECISE,128,12)
 goto Spawn+1
 Death:
 TNT1 A 0 A_PlaySoundEx("weapon/BNMBombBoom","SoundSlot6")
-TNT1 A 0 A_Explode(10,125,0)
+TNT1 A 0 A_Explode(80,150,0)
 RSEX ABCDEF 2
 stop
 }
 }
 
 Actor TestExplosion
-{ //Oh, so this was where this was, other weapons inherited from this, namely from king baku and rin ~Bika 
+{
 PROJECTILE
 +DONTBLAST
 +THRUGHOST
@@ -5123,7 +3505,7 @@ States
 {
 Spawn:
 ASEX A 0
-ASEX A 0 A_Explode(10,768,69,0,768)
+ASEX A 0 A_Explode(1000,768,69,0,768)
 ASEX ABCDEF 2
 stop
 }
@@ -5136,7 +3518,7 @@ States
 {
 Spawn:
 ASEX A 0
-ASEX A 0 A_Explode(80,768,69,0,768)
+ASEX A 0 A_Explode(800,768,69,0,768)
 ASEX ABCDEF 2
 stop
 }
@@ -5149,7 +3531,7 @@ States
 {
 Spawn:
 ASEX A 0
-ASEX A 0 A_Explode(80,768,69,0,768)
+ASEX A 0 A_Explode(800,768,69,0,768)
 ASEX ABCDEF 2
 stop
 }
@@ -5161,28 +3543,28 @@ PROJECTILE
 +DONTBLAST
 Damagetype "BNMura"
 Translation "35:39=8:8", "33:33=189:189", "32:32=187:187"
-Damage(60)
+Damage(50 + ACS_ExecuteWithResult(890,0))
 Obituary "%k swiftly assassinated %o with their Muramasa."
-Speed 35
-Radius 42
-Height 16
+Speed 30
+Radius 36
+Height 18
 Scale 2.5
 States
 {
 Spawn:
 TNT1 A 0
 PSLH A 0 A_SpawnItemEx("MuramasaImage")
-PSLH A 1 A_ScaleVelocity(1.25)
+PSLH A 1 A_ScaleVelocity(1.2)
 PSLH A 0 A_SpawnItemEx("MuramasaImage")
-PSLH A 1 A_ScaleVelocity(1.25)
+PSLH A 1 A_ScaleVelocity(1.2)
 PSLH A 0 A_SpawnItemEx("MuramasaImage")
-PSLH B 1 A_ScaleVelocity(1.25)
+PSLH B 1 A_ScaleVelocity(1.2)
 PSLH A 0 A_SpawnItemEx("MuramasaImage")
-PSLH B 1 A_ScaleVelocity(1.25)
+PSLH B 1 A_ScaleVelocity(1.2)
 PSLH A 0 A_SpawnItemEx("MuramasaImage")
-PSLH C 1 A_ScaleVelocity(1.25)
+PSLH C 1 A_ScaleVelocity(1.2)
 PSLH A 0 A_SpawnItemEx("MuramasaImage")
-PSLH C 1 A_ScaleVelocity(1.25)
+PSLH C 1 A_ScaleVelocity(1.2)
 stop
 }
 }
@@ -5208,8 +3590,7 @@ stop
 actor MuraHitboxE : SwordHitbox
 {
 Damagetype "BNMura"
-Damage(6 + CallACS("MuramasaScript",0))
-//Again, better check that script ~Bika
+Damage(60 + ACS_ExecuteWithResult(890,0))
 Obituary "%k swiftly assassinated %o with their Muramasa."
 States
 {
@@ -5247,7 +3628,7 @@ actor RedSunMeteor : AstroCrush
 {
 Damagetype "BNSun"
 Obituary "%o was buried six-feet over by a Red Sun meteor."
-damage(10)
+damage(100)
 height 18
 radius 18
 Scale 2.0
@@ -5270,7 +3651,7 @@ Death:
 RSEX A 0 A_Stop
 RSEX A 0 A_PlaySoundEx("weapon/crackerexplode","Weapon")
 TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
-RSEX A 0 A_Explode(18,256,0)
+RSEX A 0 A_Explode(175,256,0)
 RSEX ABCDEF 1
 stop
 }
@@ -5320,7 +3701,7 @@ Goto Spawn+1
 Spawn2:
 GEMI A 0 A_ChangeFlag("NOINTERACTION",0)
 GEMI A 0 A_SpawnItemEx("BMLaserTrail",0,0,0,0,0,0,0)
-GEMI A 1 A_Explode(8,125,0)
+GEMI A 1 A_Explode(80,125,0)
 GEMI A 0 A_CountDown
 GEMI A 0 A_JumpIf(momz==0,"Death")
 goto Spawn2+1
@@ -5349,7 +3730,7 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_JumpIfInventory("CutterFlag",4,"Death")
-TNT1 A 0 A_Explode(15,300,0)
+TNT1 A 0 A_Explode(150,300,0)
 TNT1 A 0 A_SpawnItemEx("BMLaserShockwaveBit",0,0,0,25,0,0,0)
 TNT1 A 0 A_SpawnItemEx("BMLaserShockwaveBit",0,0,0,25,0,0,20)
 TNT1 A 0 A_SpawnItemEx("BMLaserShockwaveBit",0,0,0,25,0,0,40)
@@ -5409,7 +3790,7 @@ States
 {
 Spawn:
 GEMI A 0
-GEMI A 1 A_Explode(8,125,0)
+GEMI A 1 A_Explode(80,125,0)
 GEMI A 0 A_Countdown
 loop
 Death:
@@ -5422,7 +3803,7 @@ Actor SunMoonFinal : AstroCrush
 {
 Damagetype "BNNormal"
 Obituary "A celestial body was dropped onto %o by %k."
-damage(50)
+damage(500)
 height 48
 radius 48
 Scale 4.5
@@ -5445,7 +3826,7 @@ Death:
 TNT1 A 0 A_Stop
 TNT1 A 0 A_NoGravity
 TNT1 A 0 Radius_Quake(10,65,0,100,0)
-TNT1 A 0 A_Explode(150,2000,0,0,500)
+TNT1 A 0 A_Explode(750,1200,0,0,300)
 TNT1 A 0 A_PlaySound("misc/BNBombBoom",0,1.0,0,ATTN_NONE)
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("TimeBombExplosionFX",random(-375,375),random(-375,375),random(-375,375))
 stop
@@ -5464,7 +3845,7 @@ States
 {
 Spawn:
 TBLA H 0
-TBLA H 0 A_Explode(9,150,0)
+TBLA H 0 A_Explode(90,150,0)
 TBLA HI 2
 goto Death
 Death:
@@ -5485,7 +3866,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_Explode(2,250,0)
+TNT1 A 1 A_Explode(10,250,0)
 stop
 }
 }
@@ -5520,7 +3901,7 @@ Damagetype "BNDrillArm"
 Height 32
 Radius 32
 Speed 0
-Damage(10)
+Damage(100)
 Obituary "%o felt the tip of %k's DrillArm."
 States
 {
@@ -5542,7 +3923,7 @@ Damagetype "BNAirShot"
 Translation "192:192=92:92", "198:198=3:3"
 Obituary "%o was air-blasted by %k."
 Scale 2.0
-Damage(3)
+Damage(25)
 speed 32
 reactiontime 20
 States
@@ -5583,9 +3964,9 @@ States
 {
 Spawn:
 6P27 AB 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 6P27 CD 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 loop
 }
 }
@@ -5596,9 +3977,9 @@ States
 {
 Spawn:
 6P27 BC 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 6P27 DA 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 loop
 }
 }
@@ -5609,9 +3990,9 @@ States
 {
 Spawn:
 6P27 CD 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 6P27 AB 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 loop
 }
 }
@@ -5622,9 +4003,9 @@ States
 {
 Spawn:
 6P27 DA 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 6P27 BC 1 A_Countdown
-6P27 A 0 A_Explode(2,85,0)
+6P27 A 0 A_Explode(18,80,0)
 loop
 }
 }
@@ -5679,9 +4060,9 @@ stop
 Actor DarkWideHitbox : SwordHitboxLS2
 {
 Obituary "%o drank too much of %k's tainted WideShot."
-Height 32
-Radius 96
-Damage(18)
+Height 28
+Radius 84
+Damage(100)
 }
 
 Actor DarkDrillFXActorA : MagBoltFXActor
@@ -5716,7 +4097,7 @@ Damagetype "BNDrillArm"
 Height 40
 Radius 40
 Speed 0
-Damage(20)
+Damage(125)
 Obituary "Open wide, %o. %k's DarkDrill won't hurt you... much."
 States
 {
@@ -5734,7 +4115,7 @@ PROJECTILE
 +EXPLODEONWATER
 +RIPPER
 Speed 16
-Damage(10)
+Damage(80)
 damagetype "BNNormal"
 Translation "220:227=249:249", "4:4=59:59", "168:168=59:59", "208:208=59:59", "210:210=249:249", "41:41=61:61"
 Obituary "%o went for a spin on %k's Dark Drill Bomb."
@@ -5752,39 +4133,39 @@ goto Spawn+1
 Death:
 TNT1 A 0 A_Stop
 REME A 0 A_PlaySoundEx("weapon/rmineexplode","Voice")
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME B 1 
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME C 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME D 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME F 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME G 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME H 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME I 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME J 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME K 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME L 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME M 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME B 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME C 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME D 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME F 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME G 1
-REME A 1 A_Explode(6,100,0)
+REME A 1 A_Explode(40,90,0)
 REME H 1
 REME ANAPOPO 1
 stop
@@ -5809,7 +4190,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_Explode(15,200,0,0,40)
+TNT1 A 1 A_Explode(75,150,0,0,30)
 stop
 }
 }

@@ -1646,9 +1646,9 @@ InInventory CBallFlag3, 1{DrawImage "CBALI0", 39, 157;}
 InInventory FlashBombFlag, 1{DrawImage "FBMBI0", 39, 135;}
 InInventory FlashBombFlag2, 1{DrawImage "FBMBI0", 39, 146;}
 InInventory FlashBombFlag3, 1{DrawImage "FBMBI0", 39, 157;}
-InInventory Recov300Flag, 1{DrawImage "RCOVI0", 39, 135;}
-InInventory Recov300Flag2, 1{DrawImage "RCOVI0", 39, 146;}
-InInventory Recov300Flag3, 1{DrawImage "RCOVI0", 39, 157;}
+InInventory Recov30Flag, 1{DrawImage "RCOVI0", 39, 135;}
+InInventory Recov30Flag2, 1{DrawImage "RCOVI0", 39, 146;}
+InInventory Recov30Flag3, 1{DrawImage "RCOVI0", 39, 157;}
 InInventory GreenAppleFlag, 1{DrawImage "GAPLI0", 39, 135;}
 InInventory GreenAppleFlag2, 1{DrawImage "GAPLI0", 39, 146;}
 InInventory GreenAppleFlag3, 1{DrawImage "GAPLI0", 39, 157;}
@@ -1758,7 +1758,7 @@ InInventory ProtoEXEFlag3, 1{DrawImage "PEX1I0", 39, 157; DrawImage "PEX2I0", 53
 DrawSelectedInventory INDEXFONT, 16, 81, 14, 82, White;
 Drawbar "BARENERG", "BAREMPTY", Ammo1, vertical, 16, 25;
 Drawbar "CUSTFULL", "CUSTBAR", ZomoCustomAmmo, horizontal, 120, 18;
-InInventory ZomoCustomAmmo, 300{DrawBar "BNCSBAR", "CUSTBAR", ZomoCustomAmmo, horizontal, 120, 18;}
+InInventory ZomoCustomAmmo, 250{DrawBar "BNCSBAR", "CUSTBAR", ZomoCustomAmmo, horizontal, 120, 18;}
 }
 
 

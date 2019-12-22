@@ -50,6 +50,13 @@ Actor WoodFlag3 : Once{}
 
 Actor DarkSoulFlag : Once{}
 
+Actor ChargeFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 2
++INVENTORY.IGNORESKILL
+}
+
 Actor WindFlag : Once{}
 Actor WindFlag2 : Once{}
 Actor WindFlag3 : Once{}
@@ -58,19 +65,26 @@ Actor BreakFlag : Once{}
 Actor BreakFlag2 : Once{}
 Actor BreakFlag3 : Once{}
 
-actor UsingSlot1 : Once {}
-actor UsingSlot2 : Once {}
-actor UsingSlot3 : Once {}
-
-Actor Recov300Flag : Inventory
+Actor BNFlag : Inventory
 {
 inventory.amount 1
 inventory.maxamount 1
 +INVENTORY.IGNORESKILL
 }
 
-Actor Recov300Flag2 : Recov300Flag {}
-Actor Recov300Flag3 : Recov300Flag {}
+actor UsingSlot1 : Once {}
+actor UsingSlot2 : Once {}
+actor UsingSlot3 : Once {}
+
+Actor Recov30Flag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
++INVENTORY.IGNORESKILL
+}
+
+Actor Recov30Flag2 : Recov30Flag {}
+Actor Recov30Flag3 : Recov30Flag {}
 
 Actor FlashBombFlag : Inventory
 {
@@ -298,6 +312,13 @@ inventory.maxamount 1
 
 Actor TreeBombFlag2 : Once {}
 Actor TreeBombFlag3 : Once {}
+
+actor InvisibleFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
++INVENTORY.IGNORESKILL
+}
 
 Actor InvisibleFlag2 : Once {}
 Actor InvisibleFlag3 : Once {}
@@ -543,9 +564,10 @@ Actor DashAttackFlag : Once {}
 Actor DashAttackFlag2 : Once {}
 Actor DashAttackFlag3 : Once {}
 
-Actor DarkSoulCounter : Inventory{inventory.amount 1 inventory.maxamount 250 +INVENTORY.IGNORESKILL}
+Actor MegaChipFlag : Once{}
 Actor SCCollided : Once{}
 Actor SCActive : Once{inventory.amount 1 inventory.maxamount 2}
+Actor DarkSoulCounter : Inventory{inventory.amount 1 inventory.maxamount 250 +INVENTORY.IGNORESKILL}
 
 Actor ProtoEXEPowerup : PowerDamage
 {
