@@ -9,7 +9,6 @@ texture UKIBARW2, 56, 8{patch UKIBARW, 0, 0 {rotate 90}}
 texture UKIBARE2, 56, 8{patch UKIBARE, 0, 0 {rotate 90}}
 
 //Cold Fusion
-
 texture BARSHLD, 8, 56{patch MIDBAR, 0, 0 {Translation "192:192=202:202"}}
 texture VARSHLD, 56, 8{patch VIDBAR, 0, 0 {Translation "192:192=202:202"}}
 texture CFWPBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=228:228", "198:198=199:199"}}

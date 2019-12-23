@@ -1,6 +1,5 @@
 #library "BASECSCC"
 #import "WEPACS.acs"
-#import "COLORS.acs"
 
 #include "zcommon.acs"
 #include "8BDMLIB.ACS"
