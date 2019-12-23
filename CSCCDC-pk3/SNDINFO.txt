@@ -49,3 +49,19 @@ $playersound	Ukiyamac	male	*taunt	    UKIYTAUN
 
 weapon/UkiRevolverShot   UKIYSHOT
 weapon/UkiRevolverReload UKIRELOAD
+
+//Messatsu
+weapon/supermove SUPACT
+weapon/parry PARRY
+
+$playersound	MessClass	male	*death		MEGADEAT
+$playersound	MessClass	male	*xdeath		MEGADEAT
+$playersound	MessClass	male	*gibbed		MEGADEAT
+$playersound	MessClass	male	*pain100	MEGAPAIN
+$playersound	MessClass	male	*pain75		MEGAPAIN
+$playersound	MessClass	male	*pain50		MEGAPAIN
+$playersound	MessClass	male	*pain25		MEGAPAIN
+$playersound	MessClass	male	*grunt		LAND
+$playersound	MessClass	male	*land		LAND
+$playersound	MessClass	male	*fist		dsnone
+$playersound	MessClass	male	*usefail	LAND

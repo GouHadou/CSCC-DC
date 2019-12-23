@@ -1,0 +1,88 @@
+//Messatsu
+Sprite "GHADA0", 400, 200
+{
+	Patch "HSPRA0", 202, 103
+	{
+		Translation "192:192=93:93", "198:198=189:189"
+	}
+}
+
+Sprite "GHADB0", 400, 200
+{
+	Patch "HSPRB0", 210, 96
+	{
+		Translation "192:192=93:93", "198:198=189:189"
+	}
+}
+
+Sprite "GHADC0", 400, 200
+{
+	Patch "HSPRC0", 190, 82
+	{
+		Translation "192:192=93:93", "198:198=189:189"
+	}
+}
+
+Sprite "GHADD0", 400, 200
+{
+	Patch "HSPRD0", 177, 50
+	{
+		Translation "192:192=93:93", "198:198=189:189"
+	}
+}
+
+Sprite "GHADF0", 400, 200
+{
+	Patch "HSPRA0", 202, 103
+	{
+		Translation "192:192=93:93", "198:198=189:189", "244:247=42:42"
+	}
+}
+
+Sprite "GHADS0", 400, 200
+{
+	Patch "HSPRA0", 202, 103
+	{
+		Translation "192:192=93:93", "198:198=189:189", "244:247=4:4"
+	}
+}
+
+Sprite "HADOA0", 320, 200
+{
+	Patch "BUSTB0", 184, 94
+	{
+		Translation "192:192=93:93", "198:198=189:189"
+	}
+}
+
+Sprite "HADOB0", 320, 200
+{
+	Patch "BUSTC0", 184, 98
+	{
+		Translation "192:192=93:93", "198:198=189:189"
+	}
+}
+
+Sprite "HADOC0", 320, 200
+{
+	Patch "BUSTD0", 188, 102
+	{
+		Translation "192:192=93:93", "198:198=189:189"
+	}
+}
+
+Sprite "HADOD0", 320, 200
+{
+	Patch "BUSTB0", 184, 94
+	{
+		Translation "192:192=93:93", "198:198=189:189", "244:247=42:42"
+	}
+}
+
+Sprite "HADOE0", 320, 200
+{
+	Patch "BUSTB0", 184, 94
+	{
+		Translation "192:192=93:93", "198:198=189:189", "244:247=4:4"
+	}
+}

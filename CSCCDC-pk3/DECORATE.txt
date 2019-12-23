@@ -20,3 +20,9 @@
 
 #include "actors/classes/Ukiyama/UkiClass.txt"
 #include "actors/classes/Ukiyama/UkiWep.txt"
+
+//===|Messatsu
+#include "actors/classes/messatsu/messclass.txt"
+#include "actors/classes/messatsu/messwep.txt"
+//#include "actors/classes/messatsu/messig.txt"
+#include "actors/classes/messatsu/messcopy.txt"

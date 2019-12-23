@@ -37,3 +37,23 @@ int StateSet = 0;
 If(CheckActorInventory(consolePlayerNumber()+1000,"CannotUseHealing")){SetActorState(0,"TranslucentSpawn"); StateSet=1;}
 If(StateSet==0){SetActorState(0,"NormalSpawn");}
 }
+
+//Common ACS Scripts
+
+
+script "HitKnockBack" (int force)
+{
+int pusher = ACS_NamedExecuteWithResult("GetTarget", AAPTR_TARGET);
+int Vang = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActorY(pusher)) >> 8;
+ThrustThing(Vang, force, 1, 0);
+}
+
+Script "GetTarget" (int Target)
+{
+SetActivator(0, Target);
+int ReturnTID = ActivatorTID();
+SetResultValue(ReturnTID);
+}
+
+
+//End Common Scripts

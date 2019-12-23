@@ -5,7 +5,7 @@
 #include "cscclib.acs"// included with MM8BDM under acs_source.
 					  // See 8bdmlib.acs for details.
 
-#DEFINE MAX_WEAPONS_GLOBAL 90
+#DEFINE MAX_WEAPONS_GLOBAL 91
 //#DEFINE MAX_WEAPONS_GLOBAL 87 // Maximum number of weapons for the following arrays
 // v6's weapon total would be 94
 // v7's weapon total would be 103
@@ -141,12 +141,12 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"SakugarneWep", "SakugarneAmmo", "Sakugarne", 1.0, "YES", "YES", "SLOT_CLOSE"},
 {"BalladeCrackerWep", "BalladeCrackerAmmo", "Ballade Cracker", 1.0, "YES", "YES", "SLOT_POWER"},
 {"ScrewCrusherWep", "ScrewCrusherAmmo", "Screw Crusher", 1.0, "YES", "YES", "SLOT_RAPID"},
-{"MirrorBusterWep", "MirrorBusterAmmo", "Mirror Buster", 1.0, "YES", "YES", "SLOT_SHIELD"}
+{"MirrorBusterWep", "MirrorBusterAmmo", "Mirror Buster", 1.0, "YES", "YES", "SLOT_SHIELD"},
 
-,
+
 {"UnixKnife", "UnixCloakAmmo", "", 0.5, "NO", "NO", "SLOT_NONE"},
 {"UnixBlade", "UnixCloakAmmo", "", 0.5, "NO", "NO", "SLOT_NONE"},
-
+{"GouhadouWep", "GouhadouAmmo", "Gouhadou", 1.0, "YES", "YES", "SLOT_RANGED"},
 {"UkiyamaClassWep", "UpgradeTimer", "", 0.5, "NO", "NO", "SLOT_NONE"}
 };
 

@@ -76,6 +76,34 @@ Drawbar"MODBAR", "MODBARE", UpgradeTimer, vertical, 15, 26;
 InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertical, 15, 26;}
 }
 
+//Messatsu
+IsSelected MessatsuWep
+	{
+	Drawbar "MESSHFUL", "MESSHEMT", Health, horizontal, 130, 184;
+	Drawbar"VMESSBAR", "MESSHSPE", Ammo1, horizontal, 58, 184;
+	DrawBar "MESSHSPS", "MESSHSPE", MessSuperFlag, horizontal, 58, 184;
+	InInventory MessatsuCharge, 4
+	{
+	DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 130, 184;
+	}
+	InInventory MessatsuAmmo, 56
+	{
+	DrawImage "RDEMON", 116, 196, center;
+	}
+	InInventory MessatsuAmmo, 36
+	{
+	DrawImage "MISOGI", 98, 196, center;
+	}
+	InInventory MessatsuAmmo, 18
+	{
+	DrawImage "TEMAGOU", 80, 196, center;
+	}
+	}
+//Messatsu Copy Wep
+IsSelected GouhadouWep{Drawbar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	InInventory MessatsuCharge, 4
+	{DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 58, 184;}}	
+
 //MM1 Bars
 IsSelected RollingCutterWep{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected SuperArmWep{Drawbar"VARAMMO2", "VAREMPTY", Ammo1, horizontal, 58, 184;}

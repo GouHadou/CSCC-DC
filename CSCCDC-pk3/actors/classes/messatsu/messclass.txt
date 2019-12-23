@@ -1,0 +1,113 @@
+actor Messatsu : CustomWepMan
+{
+player.displayname "Messatsu"
+player.soundclass "MessClass"
+player.damagescreencolor "black"
+player.forwardmove 0.95, 0.95
+player.sidemove 0.95, 0.95
+player.jumpz 13
+Health 75
+Player.MaxHealth 75
+player.startitem "MessatsuWep"
+player.startitem "MessatsuClassItems"
+States
+{
+Spawn:
+MTSU A 0
+MTSU BA 1
+Goto Spawn+2
+See:
+MTSU BCDE 5
+Goto Spawn
+Missile:
+MTSU F 5 
+MTSU G 4
+goto Spawn
+ClassPain:
+MTSU H 0 
+MTSU H 0 A_GiveInventory("NoParry", 1)
+MTSU H 0 A_JumpIfInventory("GravityHoldPainPower",1,"GravityHoldWait")
+MTSU H 0 A_JumpIfInventory("WilyIcePainPower",1,"WilyIceWait")
+MTSU H 0 A_Pain
+MTSU H 1 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+MTSU H 1 A_Recoil(1)
+MTSU HHHHHHHHH 2 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+MTSU H 1
+goto SuperSpawn
+}
+}
+
+actor RagingDemonInv : CustomInventory 
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "RDEMON"
+Tag "Raging Demon"
+Inventory.PickupSound "item/1up"
++INVBAR
++COUNTITEM
+scale 2.0
+States
+{
+Spawn:
+SGST A 1 
+loop
+Use:
+SGST A 0 A_JumpIfInventory("MessatsuAmmo", 56, "Success")
+fail
+Success:
+//SGST A 0 A_TakeInventory("MessatsuAmmo", 56)
+SGST A 0 A_GiveInventory("RagingDemonFlag", 1)
+fail
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor MisogiInv : RagingDemonInv 
+{
+inventory.icon "MISOGI"
+Tag "Misogi"
+States
+{
+Use:
+SGST A 0 A_JumpIfInventory("MessatsuAmmo", 36, "Success")
+fail
+Success:
+//SGST A 0 A_TakeInventory("MessatsuAmmo", 36)
+SGST A 0 A_GiveInventory("MisogiFlag", 1)
+fail
+}
+}
+
+actor TemaInv : RagingDemonInv 
+{
+inventory.icon "TEMAGOU"
+Tag "Messatsu Gouhadou / Tenma Gozanku"
+States
+{
+Use:
+SGST A 0 A_JumpIfInventory("MessatsuAmmo", 18, "Success")
+fail
+Success:
+//SGST A 0 A_TakeInventory("MessatsuAmmo", 18)
+SGST A 0 A_GiveInventory("TemaFlag", 1)
+fail
+}
+}
+
+
+actor MessatsuWepMorph : Messatsu
+{
++NOSKIN
+player.morphweapon "MessatsuWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "ClassBase::Pain+2"
+}
+}
