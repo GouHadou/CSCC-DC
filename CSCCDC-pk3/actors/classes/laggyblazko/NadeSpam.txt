@@ -38,7 +38,7 @@ goto KnifeEnd
 Fire: 
 NADE B 0 A_JumpIfNoAmmo("NoAmmo") 
 NADE B 0 A_AlertMonsters
-NADE B 0 A_FireCustomMissile ("NadeBall", 0, 1, -8, 0)
+NADE B 0 A_GiveInventory ("NadeSpamM1")
 NADE B 0 A_PlaySoundEx("weapon/crackerthrow","Weapon")
 NADE CDEFGH 1
 NADE H 0 A_JumpIfInventory("NadeAmmoClass",1,"NadeRefire")
@@ -100,6 +100,34 @@ NADE Z 0 A_PlaySoundEx("weapon/napalm", "Weapon")
 NADE Z 0 A_ChangeFlag("NOGRAVITY",1)
 NADE Z 0 A_Explode(9, 128, 0)
 NAPA EFGHIJKLMNOPQRS 2
+stop
+}
+}
+
+actor NadeBall_BLUE : NadeBall {translation "128:128=205:205", "132:132=74:74"}
+actor NadeBall_RED : NadeBall {translation "128:128=171:171", "132:132=41:41"}
+actor NadeBall_GREEN : NadeBall {translation "128:128=104:104", "132:132=128:128"}
+actor NadeBall_GOLD : NadeBall {translation "128:128=229:229", "132:132=232:232"}
+
+actor NadeSpamM1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("NadeBall", 0, 1, -8, 0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("NadeBall_BLUE", 0, 1, -8, 0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("NadeBall_RED", 0, 1, -8, 0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("NadeBall_GREEN", 0, 1, -8, 0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("NadeBall_GOLD", 0, 1, -8, 0)
 stop
 }
 }

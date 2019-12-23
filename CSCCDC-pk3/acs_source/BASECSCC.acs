@@ -62,5 +62,11 @@ int ReturnTID = ActivatorTID();
 SetResultValue(ReturnTID);
 }
 
-
+script "PitchGrab" (Void)
+{
+int FiringPlayer= ACS_ExecuteWithResult(257, 0);
+int Output = 360 * (GetActorPitch(FiringPlayer));
+Setresultvalue(Output >> 16);
+//--
+}
 //End Common Scripts
