@@ -9,6 +9,7 @@ weapon.ammotype "IceBladeAmmo"
 inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 inventory.icon "ICBUI"
+Tag "Ice Blade"
 Scale 2.0
 States
 {
@@ -96,7 +97,7 @@ inventory.amount 1
 inventory.maxamount 28
 }
 
-Actor IceBladeWepCS : IceBladeWep
+Actor IceBladeWepCS : IceBladeWep replaces IceBladeWep
 {
 }
 
@@ -113,6 +114,7 @@ weapon.ammotype "LightningWaveAmmo"
 inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 inventory.icon "SPBUI"
+Tag "Lightning Wave"
 Scale 2.0
 States
 {
@@ -156,7 +158,7 @@ inventory.amount 1
 inventory.maxamount 28
 }
 
-Actor LightningWaveWepCS : LightningWaveWep
+Actor LightningWaveWepCS : LightningWaveWep replaces LightningWaveWep
 {
 }
 
