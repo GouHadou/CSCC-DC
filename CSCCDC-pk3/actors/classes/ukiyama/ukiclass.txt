@@ -1,0 +1,53 @@
+actor UkiyamaClass : CustomWepMan
+{
+player.displayname "Ukiyama"
+player.soundclass "Ukiyamac"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+player.startitem "UkiyamaClassWep"
+player.startitem "UkiyamaClassItems"
+States
+{
+Spawn:
+UKIS A 0
+UKIS B 1 
+UKIS A 1 
+Goto Spawn+2
+See:
+UKIS BCDE 5 
+Goto Spawn
+Missile:
+UKIS F 3 
+UKIS G 2 
+UKIS G 0 A_JumpIfInventory("CutterFlag",1,"Missile")
+goto Spawn
+}
+}
+
+actor UkiyamaClassItems : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("UkiHud",1)
+TNT1 A 0 A_GiveInventory("AbnormalItemPosition",1)
+TNT1 A 0 A_GIveInventory("NoHealthBar",1)
+TNT1 A 0 A_GiveInventory("UkiAmmo",28)
+stop
+}
+}
+
+actor UkiyamaClassWepMorph : UkiyamaClass
+{
++NOSKIN
+player.morphweapon "UkiyamaClassWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}

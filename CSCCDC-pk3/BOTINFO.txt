@@ -50,3 +50,22 @@
 	revealed = true
 	script = "humanbot"
 }
+
+{
+	name = "\ceUkiyama"
+	accuracy = 2
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "Crystal Hunter... I mean RainFlushWep" //huehuehue
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Ukiyama"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTUKIY"
+	chatfrequency = 50
+}

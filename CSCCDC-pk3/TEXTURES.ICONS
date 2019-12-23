@@ -26,3 +26,98 @@ graphic SAPICON, 30, 30 //Unix Sapper
    YScale 2.0
    Patch BIKDO0, 0, 0
 }
+
+//Ukiyama
+graphic UKIREM, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHL0, 0, 0
+}
+
+graphic UKIUPG, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHK0, 0, 0
+}
+
+graphic UKISNI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHB0, 0, 0
+}
+
+graphic UKIRPD, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHC0, 0, 0
+}
+
+graphic UKISHT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHD0, 0, 0
+}
+
+graphic UKIARC, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHG0, 0, 0
+}
+
+graphic UKIAMP, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHF0, 0, 0
+}
+
+graphic UKIVEL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHE0, 0, 0
+}
+
+graphic UKINER, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHH0, 0, 0
+}
+
+graphic UKIEXP, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHJ0, 0, 0
+}
+
+graphic UKIBOU, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch UKIHI0, 0, 0
+}
+
+graphic UKIRTE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CJOYA0, 0, 0
+}
+graphic UKIRTE2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CJOYB0, 0, 0
+}
+
+graphic UKIFULL, 9, 29
+{
+}

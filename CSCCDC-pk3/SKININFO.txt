@@ -36,3 +36,16 @@ dsplpain = MEGAPAIN
 dstaunt = dsnone
 gender = male
 }
+
+{
+name = "UkiyamaDisguise"
+sprite = UKIS
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}

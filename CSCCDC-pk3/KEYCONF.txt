@@ -3,3 +3,4 @@ addplayerclass MegamanC nomenu
 addplayerclass CopyRobot nomenu
 addplayerclass UnixClass nomenu
 addplayerclass CutmanMikeClass nomenu
+addplayerclass UkiyamaClass nomenu

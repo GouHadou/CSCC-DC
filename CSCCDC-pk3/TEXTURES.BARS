@@ -1,8 +1,9 @@
 //Copy Robot
-texture BESTBAR, 8, 56
-{
-}
+texture BESTBAR, 8, 56 {}
+texture VESTBAR, 56, 8 {}
 
-texture VESTBAR, 56, 8 
-{
-}
+//Ukiyama
+texture UKIBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=21:21", "198:198=187:187"}}
+texture UKIBARM2, 56, 8{patch UKIBARM, 0, 0 {rotate 90}}
+texture UKIBARW2, 56, 8{patch UKIBARW, 0, 0 {rotate 90}}
+texture UKIBARE2, 56, 8{patch UKIBARE, 0, 0 {rotate 90}}

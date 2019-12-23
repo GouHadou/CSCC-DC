@@ -17,6 +17,9 @@ InInventory SkullShieldCheck, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, ve
 InInventory SkullBarrierProtection, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, vertical, 24, 8;}
 InInventory BasicArmor, 1{DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
 
+//classes
+InInventory PowerNerf{DrawImage "UKIHM0", 260,16,center;}
+
 //IfCVarInt mm8bdm_ammonumber, 1
 //ha ha ha end me
 InInventory AmmoNumberFlag, 1
@@ -37,7 +40,10 @@ InInventory HealthNumberFlag, 1
 }
 }
 
+InInventory not AbnormalItemPosition, 1 
+{
 DrawSelectedInventory INDEXFONT ,24, 64, 37, 64, white;
+}
 DrawImage weaponicon, 16, 64;
 
 }
@@ -57,6 +63,25 @@ DrawBar "BARAMMO6", "BAREMPTY", Ammo1, vertical, 16, 8;
 InInventory UnixDisguiseFlag, 1{DrawImage "UNIXDIS", 267, 10;}	
 }
 IsSelected HellfireCutterBoss{DrawBar "BARAMM13", "BAREMPTY", Ammo1, vertical, 16, 8;}
+InInventory UkiHud, 1
+{
+DrawImage "HEALBOX", 15,12;
+DrawImage "MODBOX", 15,5;
+Drawbar"UkiBar", "BAREMPTY", Ammo1, horizontal, 24, 52;
+DrawNumber 3, UKINUM, UNTRANSLATED, health, 50, 13;
+DrawSwitchableImage SnipeFlag, "TNT1A0", "SNIMOD", 29, 36;
+DrawSwitchableImage RapidFlag, "TNT1A0", "RAPMOD", 29, 36;
+DrawSwitchableImage ShotgunFlag, "TNT1A0", "SHTMOD", 29, 36;
+DrawSwitchableImage ArcingFlag, "TNT1A0", "ARCMOD", 44, 36;
+DrawSwitchableImage HomingFlag, "TNT1A0", "SLIMOD", 44, 36;
+DrawSwitchableImage VelocityFlag, "TNT1A0", "VELMOD", 44, 36;
+DrawSwitchableImage NerfFlag, "TNT1A0", "NERMOD", 59, 36;
+DrawSwitchableImage ExplodingFlag, "TNT1A0", "EXPMOD", 59, 36;
+DrawSwitchableImage BouncingFlag, "TNT1A0", "BOUMOD", 59, 36;
+DrawSelectedInventory INDEXFONT ,80, 52, 90, 55, white;
+Drawbar"MODBAR", "MODBARE", UpgradeTimer, vertical, 15, 26;
+InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertical, 15, 26;}
+}
 
 //MM1 Bars
 IsSelected RollingCutterWep{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}

@@ -8,13 +8,14 @@ SetActivator(0,AAPTR_TRACER);
 SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 }
 
-#DEFINE MAX_DISGUISES 4
+#DEFINE MAX_DISGUISES 5
 
 //#DEFINE MEGACOL 0.0 //String arrays do not like 0.0...
 #DEFINE MEGACOL -1.0
 #DEFINE COPYCOL -5.0
 #DEFINE UNIXCOL 16.0
 #DEFINE CMMCOL 25.0
+#DEFINE UKICOL 409.0
 
 str DisguiseInfo[MAX_DISGUISES][4] = {
 //Actor, Skin, Color, Special Disguise Pickup
@@ -22,6 +23,7 @@ str DisguiseInfo[MAX_DISGUISES][4] = {
 {"BestClassEver", "CopyRobotDisguise", COPYCOL, "CopyPrismDisguisePickup"},
 {"UnixClass", "Base", UNIXCOL, ""},
 {"CutmanMikeClass", "CutmanMikeDisguise", CMMCOL, ""},
+{"UkiyamaClass", "UkiyamaDisguise", UKICOL, ""},
 };
 
 function int FindDisguise(void) {

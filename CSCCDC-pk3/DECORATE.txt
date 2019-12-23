@@ -17,3 +17,6 @@
 
 #include "actors/classes/CutmanMike/CMMClass.txt"
 #include "actors/classes/CutmanMike/CMMWep.txt"
+
+#include "actors/classes/Ukiyama/UkiClass.txt"
+#include "actors/classes/Ukiyama/UkiWep.txt"

@@ -30,6 +30,22 @@ $playersound	unixclass	male	*fist		dsnone
 $playersound	unixclass	male	*usefail	LAND
 $playersound	unixclass	male	*taunt		UNIXTAU
 
-
 //CutmanMike
 weapons/lightningstrike WOOLSHOT
+
+//Ukiyama
+$playersound	Ukiyamac	male	*death		MEGADEAT
+$playersound	Ukiyamac	male	*xdeath		MEGADEAT
+$playersound	Ukiyamac	male	*gibbed		MEGADEAT
+$playersound	Ukiyamac	male	*pain100	MEGAPAIN
+$playersound	Ukiyamac	male	*pain75		MEGAPAIN
+$playersound	Ukiyamac	male	*pain50		MEGAPAIN
+$playersound	Ukiyamac	male	*pain25		MEGAPAIN
+$playersound    Ukiyamac	male	*grunt		LAND
+$playersound	Ukiyamac	male	*land		LAND
+$playersound	Ukiyamac	male	*fist		dsnone
+$playersound	Ukiyamac	male	*usefail	LAND
+$playersound	Ukiyamac	male	*taunt	    UKIYTAUN
+
+weapon/UkiRevolverShot   UKIS
+weapon/UkiRevolverReload UKIR

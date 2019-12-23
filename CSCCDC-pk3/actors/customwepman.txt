@@ -28,6 +28,7 @@ inventory.icon "NULLICON"
 Dropitem ""
 Inventory.ForbiddenTo ""
 +INVENTORY.UNDROPPABLE
++WEAPON.NOAUTOAIM
 states
 {
 Spawn:

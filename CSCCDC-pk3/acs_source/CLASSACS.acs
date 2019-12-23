@@ -1,0 +1,113 @@
+#library "classacs"
+
+#include "zcommon.acs"
+#include "cscclib.acs"
+
+Script "CSACS_UKIINFO" (int IsExplosion)
+{
+int ThePlayer = ActivatorTID();
+//SetActivatorToTarget(0);
+int TotalDamage = 15;
+
+If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage = 35;}
+If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
+If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 2;}
+If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
+If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
+If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 5;}
+	
+SetHudSize(800, 680, True);
+SetFont("SMALLFONT");
+HudMessage(d:(TotalDamage),s:" damage";
+HUDMSG_FADEOUT, 1, CR_GOLD, 60.1, 205.1, 5<<16);
+SetFont("SMALLFONT");
+HudMessage(s:"";
+HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 940.1, 5<<16);
+SetFont("SMALLFONT");
+HudMessage(s:"";
+HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 920.1, 5<<16);
+SetFont("SMALLFONT");
+HudMessage(s:"";
+HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 900.1, 5<<16);
+
+If(CheckActorInventory(ThePlayer, "SnipeFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Shot Size -Fire Rate"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 215.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "RapidFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Fire Rate -Spread"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 215.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "ShotgunFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Projectiles Fired -Spread -Fire Rate"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.5, 215.5, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "HomingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Homing"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "ArcingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Arc"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.5, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "VelocityFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Speed +Ripper"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "NerfFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Damage Debuff"; HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 235.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "BouncingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Bouncing"; HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 235.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "ExplodingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+EXPLOSIONS?!"; HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 235.1, 5<<16);;}
+}
+
+//Script to handle aiming of Uki's vision
+Script "CSACS_UKIREMOTE" (void)
+{
+int UkiVisionTID = ActivatorTID() - 100;
+If(ThingCount(T_NONE, UkiVisionTID))
+	{
+	ACS_ExecuteAlways(976,0);
+	//SetActorState(UkiVisionTID, "RemoteControl");
+	SetPlayerProperty(0, 1, 0);
+	ChangeCamera(UkiVisionTID, 0, 0);
+	Spawnspot("RemoteSFX", UkiVisionTID);
+	While(CheckInventory("UkiRemoteFlag"))
+		{
+		If(GetPlayerInput(-1 , INPUT_BUTTONS) & BT_ATTACK)
+			{
+			//GiveActorInventory(UkiVisionTID, "UkiAttackFlag", 1);
+			GiveInventory("UkiAttackFlag", 1);
+			}
+		Delay(1);
+		}
+	}
+TakeInventory("UkiRemoteFlag", 1);
+SetPlayerProperty(0, 0, 0);
+ACS_ExecuteAlways(976,0);
+ChangeCamera(0, 0, 0);
+Spawnspot("RemoteSFX", 0);
+}
+
+//Script for Uki's weapon damage
+Script "CSACS_UKIDAMAGE" (int IsExplosion)
+{
+int x = GetActorX(0);
+int y = GetActorY(0);
+int z = GetActorZ(0);
+int ThePlayer = ACS_NamedExecuteWithResult("core_gettarget");
+//SetActivatorToTarget(0);
+If(ThePlayer < 1000){SetResultValue(10);terminate;}
+int TotalDamage = 15;
+If(IsExplosion == 0)
+	{
+	If(CheckActorInventory(ThePlayer, "ExplodingFlag") && !CheckActorInventory(ThePlayer, "VelocityFlag")){SetResultValue(0);terminate;}
+	}
+
+If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage = 35;}
+If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
+If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 2;}
+
+If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
+If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
+If(IsExplosion == 0)
+	{
+	If(CheckActorInventory(ThePlayer, "ExplodingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+	}
+//printbold(i:TotalDamage);
+
+If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 5;}
+SetResultValue(TotalDamage);
+}
+
+//Script for the camera for Uki's vision
+Script "CSACS_UKIREMOTEAIM" (void) CLIENTSIDE
+{
+int TargetPlayer= ActivatorTID() + 100;//ACS_ExecuteWithResult(257);
+int PlayerPitch = GetActorPitch(TargetPlayer);
+int PlayerAngle = GetActorAngle(TargetPlayer);
+SetActorPitch(0, PlayerPitch);
+SetActorAngle(0, PlayerAngle);
+}

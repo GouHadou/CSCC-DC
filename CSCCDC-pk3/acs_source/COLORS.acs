@@ -340,6 +340,7 @@
 #DEFINE COPY6 406
 #DEFINE COPY7 407
 #DEFINE COPY8 408
+#DEFINE UKIYAMA 409
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
 
@@ -640,4 +641,5 @@ Script "core_translations" OPEN CLIENTSIDE
 	CreateTranslation (COPY6, 192:192=75:75, 198:198=241:241);
 	CreateTranslation (COPY7, 192:192=239:239, 198:198=253:253);
 	CreateTranslation (COPY8, 192:192=86:86, 198:198=95:95);
+	CreateTranslation (UKIYAMA, 192:192=21:21, 198:198=187:187);
 }

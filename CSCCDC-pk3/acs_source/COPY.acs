@@ -1,13 +1,14 @@
 #library "COPY"
 #include "wepacs.acs"
 
-#define MAX_MORPHS 3
+#define MAX_MORPHS 4
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
 {"UnixKnife", "Unix", "UnixClassItems"},//1
 {"UnixBlade", "Unix", "UnixClassItems"},//2
 {"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},//3
+{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},//4
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

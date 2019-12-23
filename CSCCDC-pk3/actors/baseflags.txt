@@ -1,3 +1,5 @@
+actor AbnormalItemPosition : Once {}
+
 actor InvisibleFlag : Once {}
 actor CannotUseHealing : Once {}
 Actor JumpCanclerDisable : Once {}
