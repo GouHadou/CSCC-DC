@@ -1,6 +1,6 @@
 #library "colors"
 #include "zcommon.acs"
-#include "cscclib.acs"
+#include "8bdmlib.acs"
 
 // Weapon Colors
 #DEFINE MEGABUSTER 0

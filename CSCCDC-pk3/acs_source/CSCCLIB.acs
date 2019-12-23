@@ -1,5 +1,6 @@
-#library "CSCCLIB"
-#include "8BDMLIB.ACS"
+//#library "CSCCLIB"
+//#include "zcommon.acs"
+//#include "8BDMLIB.ACS"
 
 function void SyncInvisibleTo (int Player)
 {

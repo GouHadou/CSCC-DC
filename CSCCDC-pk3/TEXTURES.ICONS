@@ -121,3 +121,63 @@ graphic UKIRTE2, 30, 30
 graphic UKIFULL, 9, 29
 {
 }
+
+//Corporal
+
+Graphic "TOMMYI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "TOMYA0", 0, 0
+}
+
+Graphic "NADEI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NADEA0", 0, 0
+}
+
+Graphic "COG1I", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "COG1A0", 0, 0
+}
+
+Graphic "COW1I", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "COW1A0", 0, 0
+}
+
+Graphic "MAGAICON", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "TOMYR0", 0, 0
+}
+
+//Korby
+Graphic "COMETIC", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "COMZZ0", 0, 0
+}
+
+Graphic "KORBTRSH", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "KBHUX0", 0, 0
+}
+
+//ColdFusion
+Graphic "CFWPI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "CFWPA0", 0, 0
+}

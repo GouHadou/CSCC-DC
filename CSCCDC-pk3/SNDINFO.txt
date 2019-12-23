@@ -49,3 +49,118 @@ $playersound	Ukiyamac	male	*taunt	    UKIYTAUN
 
 weapon/UkiRevolverShot   UKIYSHOT
 weapon/UkiRevolverReload UKIRELOAD
+
+//ColdFusion
+
+//Cold Fusion
+$playersound	coldfus	male	*death		MEGADEAT
+$playersound	coldfus	male	*xdeath		MEGADEAT
+$playersound	coldfus	male	*gibbed		MEGADEAT
+$playersound	coldfus	male	*pain100	MEGAPAIN
+$playersound	coldfus	male	*pain75		MEGAPAIN
+$playersound	coldfus	male	*pain50		MEGAPAIN
+$playersound	coldfus	male	*pain25		MEGAPAIN
+$playersound	coldfus	male	*grunt		LAND
+$playersound	coldfus	male	*land		LAND
+$playersound	coldfus	male	*fist		dsnone
+$playersound	coldfus	male	*usefail	LAND
+
+
+weapon/fusionreaction CRKFUSE
+$volume weapon/fusionreaction 2.0
+weapon/lasersight CFIGLSR
+
+//Corporal | Laggy Blazko
+$playersound	"Laggy" 	male	*taunt		STATIK
+$playersound	"Laggy" 	male	*death		DSLGYDIE
+$playersound    "Laggy" 	male    *xdeath     DSLGYDIH
+$playeralias	"Laggy" 	male	*pain100	Laggy/Pain
+$playeralias    "Laggy" 	male	*pain75		Laggy/Pain
+$playeralias    "Laggy" 	male	*pain50		Laggy/Pain
+$playeralias    "Laggy"  	male	*pain25		Laggy/Pain
+$playersound	"Laggy" 	male	*land		DSLGYOOF
+$playersound	"Laggy" 	male	*usefail	DSLGYNWY
+$playersound 	"Laggy"	    male	*gibbed		DSLGYGIB
+$playersound	"Laggy" 	male	*grunt		DSLGYOOF
+$playersound	"Laggy"		male	*fist		dsnone
+
+$random Laggy/Pain {Laggy/Pain1 Laggy/Pain2 Laggy/Pain2 Laggy/Pain2 Laggy/Pain2}
+Blazko/Burn2 DSLGYDIH
+Laggy/Pain1 DSLGYPAI
+Laggy/Pain2 DSLGYPA2
+Laggy/Gibbed DSLGYGIB
+Laggy/Ice1 DSLBFREZ
+Laggy/Ice2 DSLBICBR
+Laggy/Head MEGAPAIN
+Laggy/Explode DSLGYEXP
+weapon/TommyFire    TOMMYBWM
+$random Weapon/TommyRicochet {Rico1 Rico2 Rico3 Rico4 Rico5}
+Rico1 Ricoc1
+Rico2 Ricoc2
+Rico3 Ricoc3
+Rico4 Ricoc4
+Rico5 Ricoc5
+Weapon/TommyClip Tomclip
+Weapon/TommyLoad Tomload
+Weapon/knife				bjknife
+weapon/RifleFire DSRIFLE
+weapon/RifleLoad DSRIFLE2
+
+Blazko/Burn1 AHEAT4
+Blazko/Burn2 DSLGYGIB
+
+
+Corp/FragPin CORG1PIN
+Corp/FragBounce CORG1BOU
+Corp/FragExplode CORG1EXP
+Corp/Fragment1 CORG1FG1
+Corp/Fragment2 CORG1FG2
+Corp/Fragment3 CORG1FG3
+$random Corp/Fragment {Corp/Fragment1 Corp/Fragment2 Corp/Fragment3}
+
+Silence DSNONE
+
+Corp/GrandChamber CORW1CBR
+Corp/GrandClip CORW1CLP
+Corp/GrandEject CORW1EJT
+Corp/GrandFire CORW1FIR
+Corp/GrandLoad CORW1LOD
+Corp/GrandUnload TomClip
+
+Corp/Casing0 CASING00
+Corp/Casing1 CASING01
+Corp/Casing2 CASING02
+Corp/Casing3 CASING03
+Corp/Casing4 CASING04
+Corp/Casing5 CASING05
+Corp/Casing6 CASING06
+Corp/Casing7 CASING07
+$random Corp/CasingEnd1 {Corp/Casing1 Corp/Casing2 Corp/Casing3}
+$random Corp/CasingEnd2 {Corp/Casing5 Corp/Casing6 Corp/Casing7}
+
+//Korby
+$playersound	korby	male	*death		MEGADEAT
+$playersound	korby	male	*xdeath		MEGADEAT
+$playersound	korby	male	*gibbed		MEGADEAT
+$playersound	korby	male	*pain100	MEGAPAIN
+$playersound	korby	male	*pain75		MEGAPAIN
+$playersound	korby	male	*pain50		MEGAPAIN
+$playersound	korby	male	*pain25		MEGAPAIN
+$playersound	korby	male	*grunt		LAND
+$playersound	korby	male	*land		LAND
+$playersound	korby	male	*fist		dsnone
+$playersound	korby	male	*usefail	LAND
+$playersound	korby	male	*taunt		KORTAUNT
+
+Weapon/BadBreath	BADBRTH
+Weapon/CometFall	COMET
+Weapon/WaterDrop	WATRDROP
+
+//--In Gizmo's sound folder--
+Korby/Needle1      ATTACK11
+Korby/Needle2      ATTACK12
+Korby/Needle3      ATTACK13
+Korby/Needle4      claw
+Korby/Needle5      claw
+
+$random Korby/Needle { Korby/Needle1 Korby/Needle2 Korby/Needle3 Korby/Needle4 Korby/Needle5 }

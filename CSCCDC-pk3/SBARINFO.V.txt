@@ -48,7 +48,7 @@ DrawImage weaponicon, 16, 64;
 
 }
 
-//Classes
+//██████████████████████████████████████████Classes████████████████████████████████████████
 IsSelected CopyWeapon{DrawBar "BESTBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected UnixKnife
 {
@@ -82,6 +82,75 @@ DrawSelectedInventory INDEXFONT ,80, 52, 90, 55, white;
 Drawbar"MODBAR", "MODBARE", UpgradeTimer, vertical, 15, 26;
 InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertical, 15, 26;}
 }
+
+//Coldfusion
+IsSelected FusionBombClassWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
+IsSelected FusionBombWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+
+//====|Corporal
+InInventory LaggyHUD //It will have more stuff later.
+{
+	IsSelected TommyGun
+	{
+	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 32, 8;
+	}
+	IsSelected NadeSpam{Drawbar"NADEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+	IsSelected CorpFragGrenade
+	{
+		Drawbar"NADEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+		InInventory GrenadeForce, 1{DrawBar "BARFLS1", "NOBAR", GrenadeForce, vertical, 16, 8;}
+	}
+	IsSelected CorpGrandDad
+	{
+	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 32, 8;
+	}
+}
+
+//Korby
+InInventory KorbyHUD, 1{
+	DrawImage "KHUDE",72,32,center;
+	//DrawImage "KHUDE2", 290,28,center;
+DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
+	//Team Stuff
+	InInventory LightTeamFlag, 1{
+		DrawImage "KHULI", 72,32,center;}
+	InInventory WilyTeamFlag, 1{
+		DrawImage "KHUWI", 72,32,center;}
+	InInventory CossackTeamFlag, 1{
+		DrawImage "KHUCO", 72,32,center;}
+	InInventory KingTeamFlag, 1{
+		DrawImage "KHUKI", 72,32,center;}
+	//Yes it's placed there for a reason
+	InInventory NOT BMHoldFlag, 1 {DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 63, 10;}
+	InInventory BMHoldFlag, 1 {DrawString KORBYFONT, UNTRANSLATED, "???", 63, 10;}
+	DrawNumber 3, KORBYFONT, UNTRANSLATED, MP,63, 29;
+	
+	InInventory NOT BMFLAG, 1 {DrawImage "KORHE0", 97,15,center;}
+	//DrawImage "KORHQ0", 290,40,center;
+
+	IsSelected FIR{DrawImage "KORHB0",26,52,center;}
+	IsSelected ICE{DrawImage "KORHC0",26,52,center;}
+	IsSelected LIT{DrawImage "KORHD0",26,52,center;}
+	InInventory BLASF{DrawImage "KORHF0", 97,15,center;}
+	InInventory MANTF{DrawImage "KORHG0", 97,15,center;}
+	InInventory AQUAF{DrawImage "KORHH0", 97,15,center;}
+	InInventory WHITF{DrawImage "KORHI0", 97,15,center;}
+	InInventory THOUF{DrawImage "KORHJ0", 97,15,center;}
+	InInventory FLAMF{DrawImage "KORHK0", 97,15,center;}
+	InInventory TIMEF{DrawImage "KORHL0", 97,15,center;}
+	InInventory SELFF{DrawImage "KORHM0", 97,15,center;}
+	InInventory FLASF{DrawImage "KORHN0", 97,15,center;}
+	InInventory BADBF{DrawImage "KORHO0", 97,15,center;}
+	InInventory LIMIF{DrawImage "KORHP0", 97,15,center;}}
+	//InInventory BeatSupport{DrawImage "KORHR0", 290,40,center;}
+	//InInventory ExitUnit{DrawImage "KORHS0", 290,40,center;}}
+
+IsSelected CometWepCS{Drawbar"COMETBAR", "BAREMPTY", Ammo1, Vertical, 16, 8;}
+
+//██████████████████████████████████████████Megaman████████████████████████████████████████
 
 //MM1 Bars
 IsSelected RollingCutterWep{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}

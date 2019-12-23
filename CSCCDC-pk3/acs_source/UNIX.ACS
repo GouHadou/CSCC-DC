@@ -1,6 +1,6 @@
-#library "Unix"
-#include "zcommon.acs"
-#include "CSCCLIB.acs"
+//#library "Unix"
+//#include "zcommon.acs"
+//#include "CSCCLIB.acs"
 
 Script "TracerHeightGet" (void)
 {

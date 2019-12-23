@@ -1,6 +1,14 @@
 #library "BASECSCC"
+#import "WEPACS.acs"
+#import "COLORS.acs"
+
 #include "zcommon.acs"
+#include "8BDMLIB.ACS"
 #include "CSCCLIB.acs"
+#include "CLASSACS.acs"
+#include "COPY.acs"
+#include "Unix.acs"
+
 
 Script "CSACS_TeamSpecies" ENTER 
 {

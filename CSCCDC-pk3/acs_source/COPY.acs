@@ -1,5 +1,5 @@
-#library "COPY"
-#include "wepacs.acs"
+//#library "COPY"
+//#import "wepacs.acs"
 
 #define MAX_MORPHS 4
 
