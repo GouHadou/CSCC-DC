@@ -3,6 +3,7 @@
 //#include "zcommon.acs"
 //#include "cscclib.acs"
 
+//Ukiyama Scripts
 Script "CSACS_UKIINFO" (int IsExplosion)
 {
 int ThePlayer = ActivatorTID();
@@ -111,6 +112,7 @@ int PlayerAngle = GetActorAngle(TargetPlayer);
 SetActorPitch(0, PlayerPitch);
 SetActorAngle(0, PlayerAngle);
 }
+//End Ukiyama
 
 ////////////////////////////////////LaggyCorperal stuff
 script "ReloadWeapon" (int ammoTypes, int maxAmmo)  //Reload script.
@@ -326,3 +328,150 @@ for (i = 1; i <= duration; i++)
 }
 
 //////////////////////////////////////Corporal Over and out//////////////////////////////////
+
+//Messatsu Scripts
+Script "MessParryCheck" (void)
+{
+int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
+int InputOldButtons = InputButtons;
+while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsMessatsu"))
+	{
+	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1 )
+		{
+		If(!CheckInventory("NoParry")){GiveInventory("MessParryFlag", 1);}
+		}
+	Delay(1);
+	InputOldButtons = InputButtons;
+	}
+
+}
+Script "DemonFlipCheck" (void)
+{
+int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
+int InputOldButtons = InputButtons;
+while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("DemonFlipActive"))
+	{
+	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_ATTACK) == 1 )
+		{
+		GiveInventory("MessPalm", 1);
+		terminate;
+		}
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_ALTATTACK) == 1 )
+		{
+		GiveInventory("MessKick", 1);
+		terminate;
+		}
+	Delay(1);
+	InputOldButtons = InputButtons;
+	}
+
+}
+
+
+Script "MessParryHealth" (int CurrentHealth)
+{
+int PlayerTID = ActivatorTID();
+
+Do
+	{
+	If(CurrentHealth < GetActorProperty(PlayerTID, APROP_HEALTH)){CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);}
+	If(CurrentHealth > GetActorProperty(PlayerTID, APROP_HEALTH))
+		{
+		If(CheckInventory("OverhealValue") && (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH))<5)
+			{
+			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+			}
+		Else
+			{
+			GiveInventory("MessParrySuccess", 1);
+			SetActorProperty(0,APROP_HEALTH,(CurrentHealth));
+			}
+		}
+	Delay(1);
+	}
+While(CheckInventory("MessParry") || CheckInventory("ParryBlock"));
+}
+
+Script "EnemyProximity" (int distance)
+{
+int ReturnValue = 0;
+int PlayerTID = ActivatorTID();
+int CurrentTeam = GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM);
+For(int i = 0; i < 64; i++)
+	{
+	If(PlayerInGame(i))
+		{
+		If(i==PlayerNumber()){continue;}
+		Switch(ACS_ExecuteWithResult(975, 1))
+			{
+			Case 0:
+			If(XYZDistance(PlayerTID, i+1000) < distance)
+				{
+				If(CheckSight(PlayerTID, i+1000, 0))
+					{
+					ReturnValue=1; 
+					i=64;
+					GiveInventory("MessMeterOkay", 1);
+					}
+				Else
+					{
+					If(CheckInventory("MessMeterOkay"))
+						{
+						ReturnValue=1; 
+						i=64;
+						}
+					}
+				}
+			break;
+			Case 1:
+			If(CurrentTeam == GetPlayerInfo(i, PLAYERINFO_TEAM)){continue;}
+			If(XYZDistance(PlayerTID, i+1000) < distance)
+				{
+				If(CheckSight(PlayerTID, i+1000, 0))
+					{
+					ReturnValue=1; 
+					i=64;
+					GiveInventory("MessMeterOkay", 1);
+					}
+				Else
+					{
+					If(CheckInventory("MessMeterOkay"))
+						{
+						ReturnValue=1; 
+						i=64;
+						}
+					}
+				}
+			break;
+			}
+		}
+	}
+SetResultValue(ReturnValue);
+}
+
+Script "MessDamageAmmo" (void)
+{
+Delay(1);
+int PlayerTID = ActivatorTID();
+int CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+
+while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckInventory("MessatsuWep"))
+	{
+	While(CurrentHealth <= GetActorProperty(PlayerTID, APROP_HEALTH))
+		{
+		Delay(1);
+		If(GetActorProperty(PlayerTID, APROP_HEALTH) > CurrentHealth)
+			{
+			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+			}
+		}
+	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
+		{
+		GiveActorInventory(PlayerTID, "MessatsuAmmo", (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH))/3);
+		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+		}
+	}
+}
+//End Messatsu Scripts

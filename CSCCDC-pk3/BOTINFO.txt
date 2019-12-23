@@ -71,6 +71,24 @@
 }
 
 {
+	name = "\cgMessatsu"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "MessatsuWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Messatsu"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTMESS"
+	chatfrequency = 50
+}
+	
 	name = "\cvxCold\c-x\ciFusionx"
 	accuracy = 3
 	intellect = 2
@@ -124,5 +142,5 @@
     revealed = true
     script = "humanbot"
     chatlump = "botchats/KORBOT"
-    chatfrequency = 50
+	chatfrequency = 50
 }

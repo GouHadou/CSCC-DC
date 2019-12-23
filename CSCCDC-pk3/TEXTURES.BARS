@@ -18,3 +18,8 @@ texture VCFWPBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=228:228", "19
 texture NADEBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=128:128", "198:198=132:132"}}
 texture VNADEBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=128:128", "198:198=132:132"}}
 
+//Messatsu
+texture GHADBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
+texture VGHADBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
+texture MESSBAR, 8, 56{patch MESSVSPF, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
+texture VMESSBAR, 56, 8{patch MESSHSPF, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}

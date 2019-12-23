@@ -21,7 +21,7 @@ Spawn:
 TNT1 A 0
 stop
 Ready:
-KBHU A 0 ACS_ExecuteAlways(998,0,WCCS_KORBY) 
+KBHU A 0 ACS_ExecuteAlways(998,0,DYE_KORBY) 
 KBHU A 0 
 KBHU A 0 A_JumpIfInventory("CD",1,"CD")
 KBHU AAAAA 1 A_WeaponReady

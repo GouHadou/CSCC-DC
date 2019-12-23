@@ -41,3 +41,9 @@
 #include "actors/classes/laggyblazko/CorpFragGrenade.txt"
 #include "actors/classes/laggyblazko/CorpGrandDad.txt"
 #include "actors/classes/laggyblazko/lgcopy.txt"
+
+//===|Messatsu
+#include "actors/classes/messatsu/messclass.txt"
+#include "actors/classes/messatsu/messwep.txt"
+//#include "actors/classes/messatsu/messig.txt"
+#include "actors/classes/messatsu/messcopy.txt"

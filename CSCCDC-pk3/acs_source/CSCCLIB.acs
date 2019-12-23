@@ -11,3 +11,33 @@ if(GetActorProperty(Player,APROP_Alpha)<=0.0) {
 	SetActorProperty(0,APROP_RenderStyle,STYLE_Translucent);
 }
 }
+
+Function int CSCCButtonCheck (int NewButtons, int OldButtons, int Which)
+{
+	int ButtonNow = NewButtons & Which;
+	int ButtonOld = OldButtons & Which;
+	If(ButtonNow > ButtonOld){Return 1;}
+	If(ButtonNow < ButtonOld){Return 2;}
+	If(ButtonNow > 0 &&  ButtonOld > 0){Return 3;}
+	Return 0;
+}
+
+Function int CurrentSpeedXYZ (int Target)
+{
+int VelX = GetActorVelX(Target) >> 16;
+int VelY = GetActorVelY(Target) >> 16;
+int VelZ = GetActorVelZ(Target) >> 16;
+int Travel = sqrt8(VelX*VelX + VelY*VelY + VelZ*VelZ);
+return Travel;
+}
+
+Function void LimitSpeed (int SpeedLimit)
+{
+int TheLimit;
+If(CurrentSpeedXYZ(ActivatorTID()) > SpeedLimit)
+	{
+	TheLimit = FixedDiv(SpeedLimit, CurrentSpeedXYZ(ActivatorTID()));	
+	SetActorVelocity(0, FixedMul(GetActorVelX(0), TheLimit), FixedMul(GetActorVelY(0), TheLimit), GetActorVelZ(0),FALSE, FALSE);
+	}
+
+}

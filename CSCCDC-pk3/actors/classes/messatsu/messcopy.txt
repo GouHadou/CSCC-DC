@@ -1,0 +1,153 @@
+actor GouhadouWep : BaseMM8BDMWep
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 28
+Weapon.SlotNumber 2
+Scale 2.0
+Obituary "%o didn't block %k's Gou Hadouken."
+weapon.ammotype "GouhadouAmmo"
+Inventory.Pickupmessage "Power up! Gou Hadouken!"
+Tag "Gou Hadouken"
+inventory.icon "TEMAGOU"
+States
+{
+Spawn:
+MESU B 1
+Loop
+Ready:
+HADO A 0 ACS_ExecuteAlways(998,0,DYE_MESSATSU)
+HADO A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+HADO A 1 A_Raise
+Loop
+Fire:
+HADO A 0 A_JumpIfNoAmmo("NoAmmo")
+HADO A 0 ACS_ExecuteAlways(991,0,DYE_MESSATSU)
+HADO A 0 A_TakeInventory("MessatsuCharge",999)
+HADO A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+HADO A 0 A_FireCustomMissile("Gouhadou",0,1,8,0)
+HADO BCCBBA 2
+HADO A 0 A_Refire
+goto Ready+1
+ReleaseCharge:
+HADO A 0 ACS_ExecuteAlways(991,0,DYE_MESSATSU)
+HADO A 0 A_TakeInventory("MessatsuFlag", 50)
+HADO A 0 A_JumpIfInventory("MessatsuCharge", 35, "Fire4")
+HADO A 0 A_JumpIfInventory("MessatsuCharge", 25, "Fire3")
+HADO A 0 A_JumpIfInventory("MessatsuCharge", 15, "Fire2")
+Goto Fire
+Fire2:
+HADO A 0 A_FireCustomMissile("Shakunetsu",0,1,8,0)
+HADO A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+HADO A 0 A_GiveInventory("MessatsuFlag", 2)
+HADO A 0 A_TakeInventory("MessatsuCharge", 35)
+HADO BC 3
+goto Cooldown
+Fire3:
+HADO A 0 A_FireCustomMissile("Shakunetsu",0,1,8,0)
+HADO A 0 A_FireCustomMissile("Shakunetsu2",0,1,8,0)
+HADO A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+HADO A 0 A_GiveInventory("MessatsuFlag", 4)
+HADO A 0 A_TakeInventory("MessatsuCharge", 35)
+HADO BC 3
+goto Cooldown
+Fire4:
+HADO A 0 A_FireCustomMissile("Shakunetsu",0,1,8,0)
+HADO A 0 A_FireCustomMissile("Shakunetsu2",0,1,8,0)
+HADO A 0 A_FireCustomMissile("Shakunetsu3",0,1,8,0)
+HADO A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+HADO A 0 A_GiveInventory("MessatsuFlag", 6)
+HADO A 0 A_TakeInventory("MessatsuCharge", 35)
+HADO BC 3
+goto Cooldown
+CoolDown:
+HADO B 3 A_TakeInventory("MessatsuFlag", 1)
+HADO B 0 A_JumpIfInventory("MessatsuFlag", 1, "CoolDown")
+HADO B 5
+HADO B 0 A_Refire
+goto Ready+1
+Hold:
+HADO A 0 A_JumpIfNoAmmo("NoAmmo") 
+HADO A 0 A_JumpIfInventory("MessatsuCharge",19,"Charge1")
+HADO A 0 A_JumpIfInventory("MessatsuCharge",18,"Charge")
+HADO A 1 A_GiveInventory("MessatsuCharge",1)
+HADO A 0 A_Refire
+Goto Fire
+Charge:
+HADO A 0 A_JumpIfInventory("MessatsuCharge",19,"Charge1")
+HADO A 0 A_PlaySoundEx("weapon/coilstart","Weapon")
+Goto Charge1
+Charge1:
+HADO A 0 A_JumpIfInventory("MessatsuCharge",35,"Charge2Start")
+HADO D 1 ACS_ExecuteAlways(991,0,DYE_MESSCHARGE)
+HADO A 0 A_Refire("Charge1.a")
+Goto ReleaseCharge
+Charge1.a:
+HADO A 1 ACS_ExecuteAlways(991,0,DYE_MESSATSU)
+HADO A 0 A_GiveInventory("MessatsuCharge",1)
+HADO A 0 A_Refire("Charge1")
+Goto ReleaseCharge
+BotFire:
+HADO A 0 A_Jump(16, "ReleaseCharge")
+HADO A 0 A_Refire("Charge2Start")
+Goto ReleaseCharge
+Charge2Start:
+HADO A 0 A_GunFlash("Sound.MessCharge", GFF_NOEXTCHANGE)
+Charge2:
+HADO E 1 ACS_ExecuteAlways(991,0,DYE_MESSCHARGE2)
+HADO A 0 A_Refire("Charge2.a")
+Goto ReleaseCharge
+Charge2.a:
+HADO A 1 ACS_ExecuteAlways(991,0,DYE_MESSATSU)
+HADO A 0 A_JumpIfInventory("IsBot", 1, "BotFire")
+HADO A 0 A_JumpIfInventory("MessatsuCharge", 35, 2)
+HADO A 0 A_GiveInventory("MessatsuCharge",1)
+HADO A 0 A_Refire("Charge2")
+Goto ReleaseCharge
+NoAmmo:
+HADO A 1 ACS_Execute(979,0)
+Goto Ready+1
+Sound.MessCharge:
+TNT1 A 9 A_PlaySoundEx("weapon/adapterchargeloop","Weapon",0)
+TNT1 A 1 A_JumpIfInventory("MessatsuCharge",1,"Sound.MessCharge")
+stop
+}
+}
+/*
+actor GouhadouWepCS : GouhadouWep
+{
+}
+
+actor GouhadouWepGiver : WepGiver replaces GouhadouWep
+{
+inventory.pickupmessage "Power up! Gou Hadouken!"
+States
+{
+Spawn:
+MESU B 0
+Goto "WepGiver::Spawn+1"
+Pickup:
+DUST B 0 A_JumpIfInventory("GouhadouWepCS", 1, "WFail")
+DUST B 0 A_JumpIfInventory("CanCopyWeapons", 1, "Mega")
+DUST B 0 
+fail
+WFail:
+TNT1 A 0 
+fail
+Mega:
+DUST B 0 A_GiveInventory("GouhadouWepCS",1)
+stop
+}
+}
+*/
+actor GouhadouAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
+}

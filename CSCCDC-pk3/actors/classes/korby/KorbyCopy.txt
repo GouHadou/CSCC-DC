@@ -18,7 +18,7 @@ Spawn:
 COMZ Z 1
 loop
 Ready:
-COME Q 0 ACS_ExecuteAlways(998,0,WCCS_KORBY) 
+COME Q 0 ACS_ExecuteAlways(998,0,DYE_KORBY) 
 COME Q 1 A_WeaponReady
 Goto Ready+1
 Deselect:

@@ -50,8 +50,6 @@ $playersound	Ukiyamac	male	*taunt	    UKIYTAUN
 weapon/UkiRevolverShot   UKIYSHOT
 weapon/UkiRevolverReload UKIRELOAD
 
-//ColdFusion
-
 //Cold Fusion
 $playersound	coldfus	male	*death		MEGADEAT
 $playersound	coldfus	male	*xdeath		MEGADEAT
@@ -64,7 +62,6 @@ $playersound	coldfus	male	*grunt		LAND
 $playersound	coldfus	male	*land		LAND
 $playersound	coldfus	male	*fist		dsnone
 $playersound	coldfus	male	*usefail	LAND
-
 
 weapon/fusionreaction CRKFUSE
 $volume weapon/fusionreaction 2.0
@@ -108,7 +105,6 @@ weapon/RifleLoad DSRIFLE2
 
 Blazko/Burn1 AHEAT4
 Blazko/Burn2 DSLGYGIB
-
 
 Corp/FragPin CORG1PIN
 Corp/FragBounce CORG1BOU
@@ -164,3 +160,19 @@ Korby/Needle4      claw
 Korby/Needle5      claw
 
 $random Korby/Needle { Korby/Needle1 Korby/Needle2 Korby/Needle3 Korby/Needle4 Korby/Needle5 }
+
+//Messatsu
+weapon/supermove SUPACT
+weapon/parry PARRY
+
+$playersound	MessClass	male	*death		MEGADEAT
+$playersound	MessClass	male	*xdeath		MEGADEAT
+$playersound	MessClass	male	*gibbed		MEGADEAT
+$playersound	MessClass	male	*pain100	MEGAPAIN
+$playersound	MessClass	male	*pain75		MEGAPAIN
+$playersound	MessClass	male	*pain50		MEGAPAIN
+$playersound	MessClass	male	*pain25		MEGAPAIN
+$playersound	MessClass	male	*grunt		LAND
+$playersound	MessClass	male	*land		LAND
+$playersound	MessClass	male	*fist		dsnone
+$playersound	MessClass	male	*usefail	LAND

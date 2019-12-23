@@ -123,7 +123,6 @@ graphic UKIFULL, 9, 29
 }
 
 //Corporal
-
 Graphic "TOMMYI", 30, 30
 {
 	XScale 2.000
@@ -179,5 +178,26 @@ Graphic "CFWPI", 30, 30
 {
 	XScale 2.000
 	YScale 2.000
-	Patch "CFWPA0", 0, 0
+   Patch "CFWPA0", 0, 0
+   
+//Messatsu
+Graphic "RDEMON", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MESUA0", 0, 0
+}
+
+Graphic "TEMAGOU", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MESUB0", 0, 0
+}
+
+Graphic "MISOGI", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MESUC0", 0, 0
 }

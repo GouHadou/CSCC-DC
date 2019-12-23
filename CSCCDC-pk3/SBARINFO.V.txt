@@ -150,8 +150,40 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 
 IsSelected CometWepCS{Drawbar"COMETBAR", "BAREMPTY", Ammo1, Vertical, 16, 8;}
 
-//██████████████████████████████████████████Megaman████████████████████████████████████████
-
+//Messatsu
+IsSelected MessatsuWep
+	{
+	DrawBar "MESSVFUL", "MESSVEMT", Health, vertical, 24, 8;
+	DrawBar "MESSBAR", "MESSVSPE", Ammo1, vertical, 16, 8;
+	DrawBar "MESSVSPS", "MESSVSPE", MessSuperFlag, vertical, 16, 8;
+	InInventory MessatsuCharge, 4
+	{
+	DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 24, 8;
+	}
+	InInventory MessatsuAmmo, 56
+	{
+	DrawImage "RDEMON", 16, 20, center;
+	}
+	InInventory MessatsuAmmo, 36
+	{
+	DrawImage "MISOGI", 16, 35, center;
+	}
+	InInventory MessatsuAmmo, 18
+	{
+	DrawImage "TEMAGOU", 16, 50, center;
+	}
+	}
+//Messatsu Copy Wep
+IsSelected GouhadouWep
+	{
+	DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory MessatsuCharge, 4
+	{
+	DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 16, 8;
+	}
+	}
+	
+	
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SuperArmWepCS{Drawbar"BARAMMO2", "BAREMPTY", Ammo1, vertical, 16, 8;}
