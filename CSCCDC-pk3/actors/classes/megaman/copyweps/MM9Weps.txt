@@ -1,0 +1,88 @@
+
+actor ConcreteShotWepCS : ConcreteShotWep replaces ConcreteShotWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor TornadoBlowWepCS : TornadoBlowWep replaces TornadoBlowWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor LaserTridentWepCS : LaserTridentWep replaces LaserTridentWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor PlugBallWepCS : PlugBallWep replaces PlugBallWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor HornetChaserWepCS : HornetChaserWep replaces HornetChaserWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor MagmaBazookaWepCS : MagmaBazookaWep replaces MagmaBazookaWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor BlackHoleBombWepCS : BlackHoleBombWep replaces BlackHoleBombWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor JewelSatelliteWepCS : JewelSatelliteWep replaces JewelSatelliteWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}

@@ -1,0 +1,88 @@
+
+actor SolarBlazeWepCS : SolarBlazeWep replaces SolarBlazeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ChillSpikeWepCS : ChillSpikeWep replaces ChillSpikeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor WheelCutterWepCS : WheelCutterWep replaces WheelCutterWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor CommandoBombWepCS : CommandoBombWep replaces CommandoBombWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor TripleBladeWepCS : TripleBladeWep replaces TripleBladeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ReboundStrikerWepCS : ReboundStrikerWep replaces ReboundStrikerWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ThunderWoolWepCS : ThunderWoolWep replaces ThunderWoolWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor WaterShieldWepCS : WaterShieldWep replaces WaterShieldWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}

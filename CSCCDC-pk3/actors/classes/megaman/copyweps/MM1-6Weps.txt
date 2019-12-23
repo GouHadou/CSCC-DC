@@ -1,0 +1,571 @@
+actor AirShooterWepCS : AirShooterWep replaces AirShooterWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor AtomicFireWepCS : AtomicFireWep replaces AtomicFireWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor BalladeCrackerWepCS : BalladeCrackerWep replaces BalladeCrackerWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor BlizzardAttackWepCS : BlizzardAttackWep replaces BlizzardAttackWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor BubbleLeadWepCS : BubbleLeadWep replaces BubbleLeadWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor CentaurFlashWepCS : CentaurFlashWep replaces CentaurFlashWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ChargeKickWepCS : ChargeKickWep replaces ChargeKickWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor CrashBombWepCS : CrashBombWep replaces CrashBombWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor CrystalEyeWepCS : CrystalEyeWep replaces CrystalEyeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor DiveMissileWepCS : DiveMissileWep replaces DiveMissileWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor DrillBombWepCS : DrillBombWep replaces DrillBombWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor DustCrusherWepCS : DustCrusherWep replaces DustCrusherWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor FireStormWepCS : FireStormWep replaces FireStormWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor FlameBlastWepCS : FlameBlastWep replaces FlameBlastWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor FlashStopperWepCS : FlashStopperWep replaces FlashStopperWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor GeminiLaserWepCS : GeminiLaserWep replaces GeminiLaserWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor GravityHoldWepCS : GravityHoldWep replaces GravityHoldWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor GyroAttackWepCS : GyroAttackWep replaces GyroAttackWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor HardKnuckleWepCS : HardKnuckleWep replaces HardKnuckleWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor HyperBombWepCS : HyperBombWep replaces HyperBombWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor IceSlasherWepCS : IceSlasherWep replaces IceSlasherWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor KnightCrushWepCS : KnightCrushWep replaces KnightCrushWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor LeafShieldWepCS : LeafShieldWep replaces LeafShieldWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor MagnetMissileWepCS : MagnetMissileWep replaces MagnetMissileWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor MetalBladeWepCS : MetalBladeWep replaces MetalBladeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor MirrorBusterWepCS : MirrorBusterWep replaces MirrorBusterWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor NapalmBombWepCS : NapalmBombWep replaces NapalmBombWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor NeedleCannonWepCS : NeedleCannonWep replaces NeedleCannonWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor PharaohShotWepCS : PharaohShotWep replaces PharaohShotWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor PlantBarrierWepCS : PlantBarrierWep replaces PlantBarrierWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor PowerStoneWepCS : PowerStoneWep replaces PowerStoneWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor QuickBoomerangWepCS : QuickBoomerangWep replaces QuickBoomerangWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor RainFlushWepCS : RainFlushWep replaces RainFlushWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor RingBoomerangWepCS : RingBoomerangWep replaces RingBoomerangWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor RollingCutterWepCS : RollingCutterWep replaces RollingCutterWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SakugarneWepCS : SakugarneWep replaces SakugarneWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ScrewCrusherWepCS : ScrewCrusherWep replaces ScrewCrusherWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SearchSnakeWepCS : SearchSnakeWep replaces SearchSnakeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ShadowBladeWepCS : ShadowBladeWep replaces ShadowBladeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SilverTomahawkWepCS : SilverTomahawkWep replaces SilverTomahawkWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SkullBarrierWepCS : SkullBarrierWep replaces SkullBarrierWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SparkShockWepCS : SparkShockWep replaces SparkShockWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor StarCrashWepCS : StarCrashWep replaces StarCrashWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SuperArmWepCS : SuperArmWep replaces SuperArmWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ThunderBeamWepCS : ThunderBeamWep replaces ThunderBeamWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor TimeStopperWepCS : TimeStopperWep replaces TimeStopperWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor TopSpinWepCS : TopSpinWep replaces TopSpinWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor WaterWaveWepCS : WaterWaveWep replaces WaterWaveWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor WindStormWepCS : WindStormWep replaces WindStormWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor YamatoSpearWepCS : YamatoSpearWep replaces YamatoSpearWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor OilSliderWepCS : OilSliderWep replaces OilSliderWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor TimeSlowWepCS : TimeSlowWep replaces TimeSlowWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}

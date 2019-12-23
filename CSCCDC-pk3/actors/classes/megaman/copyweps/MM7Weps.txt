@@ -1,0 +1,87 @@
+actor DangerWrapWepCS : DangerWrapWep replaces DangerWrapWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor JunkShieldWepCS : JunkShieldWep replaces JunkShieldWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor NoiseCrushWepCS : NoiseCrushWep replaces NoiseCrushWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ScorchWheelWepCS : ScorchWheelWep replaces ScorchWheelWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor ThunderBoltWepCS : ThunderBoltWep replaces ThunderBoltWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor WildCoilWepCS : WildCoilWep replaces WildCoilWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SlashClawWepCS : SlashClawWep replaces SlashClawWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor FreezeCrackerWepCS : FreezeCrackerWep replaces FreezeCrackerWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}

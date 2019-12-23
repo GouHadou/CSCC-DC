@@ -1,0 +1,88 @@
+
+actor IceWallWepCS : IceWallWep replaces IceWallWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor WaveBurnerWepCS : WaveBurnerWep replaces WaveBurnerWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor RemoteMineWepCS : RemoteMineWep replaces RemoteMineWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor SpreadDrillWepCS : SpreadDrillWep replaces SpreadDrillWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor TenguBladeWepCS : TenguBladeWep replaces TenguBladeWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor MagicCardWepCS : MagicCardWep replaces MagicCardWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor CopyVisionWepCS : CopyVisionWep replaces CopyVisionWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}
+
+actor LightningBoltWepCS : LightningBoltWep replaces LightningBoltWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("I did a thing!")
+goto "Super::Spawn"
+}
+}

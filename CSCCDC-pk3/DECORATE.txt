@@ -7,6 +7,7 @@
 #include "actors/inventory/CustomHeal.txt"
 
 #include "actors/classes/Megaman/MegamanClass.txt"
+#include "actors/classes/Megaman/Copyweps/Copyweps.txt"
 
 #include "actors/classes/CopyRobot/CopyClass.txt"
 #include "actors/classes/CopyRobot/CopyWep.txt"

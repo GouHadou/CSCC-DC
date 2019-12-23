@@ -1,0 +1,8 @@
+#include "actors/classes/Megaman/copyweps/MM1-6Weps.txt"
+#include "actors/classes/Megaman/copyweps/MM7Weps.txt"
+#include "actors/classes/Megaman/copyweps/MM8Weps.txt"
+#include "actors/classes/Megaman/copyweps/MMBWeps.txt"
+#include "actors/classes/Megaman/copyweps/MM9Weps.txt"
+#include "actors/classes/Megaman/copyweps/MM10Weps.txt"
+//#include "actors/classes/Megaman/copyweps/MMVWeps.txt"
+//#include "actors/classes/Megaman/copyweps/MM11Weps.txt"
