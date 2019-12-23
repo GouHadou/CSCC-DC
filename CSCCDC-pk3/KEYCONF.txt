@@ -8,3 +8,4 @@ addplayerclass MessatsuClass nomenu
 addplayerclass ColdFusionClass nomenu
 addplayerclass LaggyBlazkoClass nomenu
 addplayerclass KorbyClass nomenu
+addplayerclass IceSparky nomenu 

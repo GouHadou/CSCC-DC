@@ -15,8 +15,17 @@ Drawbar "VARHEALT", "VAREMPTY", Health, horizontal, 130, 184;
 
 InInventory SkullShieldCheck, 1{DrawBar "VARFLS5", "VNOBAR", SkullShieldCheck, horizontal, 130, 184;}
 InInventory SkullBarrierProtection, 1{DrawBar "VARFLS5", "VNOBAR", SkullShieldCheck, horizontal, 130, 184;}
-InInventory BasicArmor, 1{DrawBar "VARAMT31", "VNOBAR", Armor, horizontal, 130, 184;}
+InInventory not NoArmorBar, 1
+	{
+	InInventory BasicArmor, 1{DrawBar "VARAMT31", "VNOBAR", Armor, horizontal, 130, 184;}
+	}
+InInventory DocToadHealthBar, 1{DrawBar "VARHEADO", "VNOBAR", Health, horizontal, 130, 184;}	
+InInventory GlassHealthBar, 1{DrawBar "VARHEALG", "VNOBAR", Health, horizontal, 130, 184;}
+
+//Classes
 InInventory PowerNerf{DrawImage "UKIHM0", 260,16,center;}
+
+
 
 //IfCVarInt mm8bdm_healthnumber, 1
 InInventory AmmoNumberFlag, 1
@@ -79,7 +88,7 @@ InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertica
 
 //ColdFusion
 IsSelected FusionBombClassWep{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
-	DrawBar "VARAMT31", "VNOBAR", Armor, horizontal, 130, 184;}
+	DrawBar "VARSHLD", "VNOBAR", Armor, horizontal, 130, 184;}
 	IsSelected FusionBombWepCS{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 
 //Corporal
@@ -174,6 +183,39 @@ IsSelected MessatsuWep
 	DrawImage "TEMAGOU", 80, 196, center;
 	}
 	}
+	
+//Ice / Sparky
+IsSelected IceWep
+	{
+	DrawBar "ICEBAR2", "VAREMPTY", Ammo1, horizontal, 58,184;
+	DrawBar "SPARKBR2", "VAREMPTY", SparkyClassAmmo, horizontal, 58,176;
+	DrawBar "VFUSIS", "VNOBAR", FusionMeter, horizontal, 130, 184;
+	InInventory FusionStock, 1
+		{
+		InInventory NOT IceSparkyCombine || IceSparkyFusion
+			{
+			DrawNumber 1, SMALLFONT, LIGHTBLUE, FusionStock, 112, 185;
+			DrawString SMALLFONT, LIGHTBLUE, "x", 120, 185;
+			}
+		}
+	}
+	
+IsSelected SparkyWep
+	{
+	DrawBar "SPARKBR2", "VAREMPTY", Ammo1, horizontal, 58,184;
+	DrawBar "ICEBAR2", "VAREMPTY", IceClassAmmo, horizontal, 58,176;
+	DrawBar "VFUSSI", "VNOBAR", FusionMeter, horizontal, 130, 184;
+	InInventory FusionStock, 1
+		{
+		InInventory NOT IceSparkyCombine || IceSparkyFusion
+			{
+			DrawNumber 1, SMALLFONT, GOLD, FusionStock, 112, 185;
+			DrawString SMALLFONT, GOLD, "x", 120, 185;
+			}
+		}
+	}
+
+	
 
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
@@ -182,6 +224,8 @@ IsSelected GouhadouWepCS{DrawBar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 
 IsSelected CometWepCS{Drawbar"COMETVAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected NadeSpamWepCS{Drawbar"VARAMMO4", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected FusionBombWepCS{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected IceBladeWepCS{DrawBar "ICEBAR2", "VAREMPTY", IceBladeAmmo, horizontal, 58, 184;}	
+IsSelected LightningWaveWepCS{DrawBar "SPARKBR2", "VAREMPTY", LightningWaveAmmo, horizontal, 58, 184;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}

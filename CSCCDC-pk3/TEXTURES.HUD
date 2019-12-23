@@ -86,3 +86,53 @@ Sprite "HADOE0", 320, 200
 		Translation "192:192=93:93", "198:198=189:189", "244:247=4:4"
 	}
 }
+
+//Ice / Sparky
+
+Sprite "ICBUB0", 320, 200
+{
+	Patch "BUSTB0", 184, 94
+	{
+		Translation "192:192=196:196", "198:198=95:95"
+	}
+}
+
+Sprite "ICBUC0", 320, 200
+{
+	Patch "BUSTC0", 184, 98
+	{
+		Translation "192:192=196:196", "198:198=95:95"
+	}
+}
+
+Sprite "ICBUD0", 320, 200
+{
+	Patch "BUSTD0", 188, 102
+	{
+		Translation "192:192=196:196", "198:198=95:95"
+	}
+}
+
+Sprite "SPBUB0", 320, 200
+{
+	Patch "BUSTB0", 184, 94
+	{
+		Translation "192:192=228:228", "198:198=95:95"
+	}
+}
+
+Sprite "SPBUC0", 320, 200
+{
+	Patch "BUSTC0", 184, 98
+	{
+		Translation "192:192=228:228", "198:198=95:95"
+	}
+}
+
+Sprite "SPBUD0", 320, 200
+{
+	Patch "BUSTD0", 188, 102
+	{
+		Translation "192:192=228:228", "198:198=95:95"
+	}
+}

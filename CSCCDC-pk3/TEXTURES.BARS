@@ -1,3 +1,10 @@
+//Health Bars
+texture BARHEADO, 8, 56{patch HBARC, 0, 0 {Translation "192:192=110:110"}}//DocToad
+texture VARHEADO, 56, 8{patch VBARC, 0, 0 {Translation "192:192=110:110"}}//DocToad
+texture BARHEALG, 8, 56{patch HBARC, 0, 0 {Translation "192:192=227:227"}}//Glass
+texture VARHEALG, 56, 8{patch VBARC, 0, 0 {Translation "192:192=227:227"}}//Glass
+
+
 //Copy Robot
 texture BESTBAR, 8, 56 {}
 texture VESTBAR, 56, 8 {}
@@ -32,3 +39,13 @@ texture GHADBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=93:93", "198:1
 texture VGHADBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
 texture MESSBAR, 8, 56{patch MESSVSPF, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
 texture VMESSBAR, 56, 8{patch MESSHSPF, 0, 0 {Translation "192:192=93:93", "198:198=189:189"}}
+
+//Ice / Sparky
+texture SPARKBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=228:228", "198:198=95:95"}}
+texture SPARKBR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=228:228", "198:198=95:95"}}
+texture ICEBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=196:196", "198:198=95:95"}}
+texture ICEBAR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=196:196", "198:198=95:95"}}
+texture FUSIS, 8, 56{patch TWBAR, 0, 0 {Translation "192:192=228:228", "198:198=196:196"}}
+texture FUSSI, 8, 56{patch TWBAR, 0, 0 {Translation "192:192=196:196", "198:198=228:228"}}
+texture VFUSIS, 56, 8{patch VTWBAR, 0, 0 {Translation "192:192=228:228", "198:198=196:196"}}
+texture VFUSSI, 56, 8{patch VTWBAR, 0, 0 {Translation "192:192=196:196", "198:198=228:228"}}

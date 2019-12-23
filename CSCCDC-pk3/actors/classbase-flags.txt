@@ -40,3 +40,36 @@ actor RiseMyMegamanFlag : Inventory
 inventory.amount 1
 inventory.maxamount 35
 }
+
+actor GlassHealthBar : Inventory //1.5x or more
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+actor ProtoHealthBar : GlassHealthBar //1.3 - 1.499
+{
+}
+actor LightHealthBar : GlassHealthBar //1.2 - 1.299
+{
+}
+actor MegaHealthBar : GlassHealthBar //1.1 - 1.199
+{
+}
+actor DuoHealthBar : GlassHealthBar //0.9 - 0.999
+{
+}
+actor SturdyHealthBar : GlassHealthBar //0.8 - 0.899
+{
+}
+actor DocToadHealthBar : GlassHealthBar //0.7 - 0.799
+{
+}
+actor ToadHealthBar : GlassHealthBar //.6 - .699
+{
+}
+actor HeavyHealthBar : GlassHealthBar //.55 - .6 most useful bar ever >_>
+{
+}
+actor HardHealthBar : GlassHealthBar //.5 nuff said
+{
+}

@@ -30,3 +30,9 @@ actor WallJumpCount : Inventory
 inventory.amount 1
 inventory.maxamount 30
 }
+
+Actor NoArmorBar : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}

@@ -656,7 +656,7 @@ inventory.amount 1
 inventory.maxamount 100
 }
 
-actor Gouhadou : CSCCWepBase
+actor Gouhadou : BasicProjectile
 {
 PROJECTILE
 +LOOKALLAROUND
