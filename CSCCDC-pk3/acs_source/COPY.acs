@@ -248,7 +248,7 @@ Script "CopyCubeWarper" (void) CLIENTSIDE
 	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
 	while(GetActorProperty(Player, APROP_HEALTH)>0
 	&& CheckActorInventory(Player, "CopyWeapon")) {
-		SyncInvisibleTo(Player);
+		SetActorProperty(0,APROP_Alpha,GetActorProperty(Player,APROP_Alpha));
 		Thing_SetTranslation(0,ACS_NamedExecuteWithResult("core_copytranslation",0));
 		Delay(1);
 	}

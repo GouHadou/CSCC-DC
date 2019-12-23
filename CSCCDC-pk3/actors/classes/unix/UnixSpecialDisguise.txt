@@ -2,6 +2,8 @@
 
 actor BaseDisguisePropWarper : BaseShieldWarper
 {
+renderstyle "translucent"
+alpha 1.0
 States
 {
 Spawn:

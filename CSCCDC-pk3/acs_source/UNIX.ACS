@@ -133,7 +133,7 @@ Script "DisguisePropWarper" (int Copy) CLIENTSIDE
 {
 	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
 	while(CheckActorInventory(Player,"UnixDisguiseFlag")) {
-		SyncInvisibleTo(Player);
+		SetActorProperty(0,APROP_Alpha,GetActorProperty(Player,APROP_Alpha));
 		if(Copy==1){Thing_SetTranslation(0,ACS_NamedExecuteWithResult("core_copytranslation",0));}
 		Delay(1);
 	}
