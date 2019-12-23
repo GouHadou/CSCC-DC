@@ -47,5 +47,5 @@ $playersound	Ukiyamac	male	*fist		dsnone
 $playersound	Ukiyamac	male	*usefail	LAND
 $playersound	Ukiyamac	male	*taunt	    UKIYTAUN
 
-weapon/UkiRevolverShot   UKIS
-weapon/UkiRevolverReload UKIR
+weapon/UkiRevolverShot   UKIYSHOT
+weapon/UkiRevolverReload UKIRELOAD
