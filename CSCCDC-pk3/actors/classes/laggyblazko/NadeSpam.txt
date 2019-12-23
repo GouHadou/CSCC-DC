@@ -2,14 +2,13 @@
 actor NadeSpam : CorporalWeaponBase
 {
 Tag "Nade Spam"
-
 Weapon.AmmoUse 1
 Weapon.AmmoGive 16
 weapon.ammotype "NadeAmmoClass"
 Weapon.SlotNumber 3
 inventory.icon "NADEI"
 //Obituary "$OB_NADESPAM"
-dropitem "NadeSpamWepGiver"
+dropitem "NadeSpamWepCS"
 
 States
 {

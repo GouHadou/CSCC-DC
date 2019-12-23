@@ -80,7 +80,7 @@ InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertica
 //ColdFusion
 IsSelected FusionBombClassWep{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	DrawBar "VARAMT31", "VNOBAR", Armor, horizontal, 130, 184;}
-	IsSelected FusionBombWep{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+	IsSelected FusionBombWepCS{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 
 //Corporal
 	InInventory LaggyHUD, 1{drawimage "LGYSTBAR", 0, 168;
@@ -174,10 +174,14 @@ IsSelected MessatsuWep
 	DrawImage "TEMAGOU", 80, 196, center;
 	}
 	}
-//Messatsu Copy Wep
-IsSelected GouhadouWep{Drawbar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
-	InInventory MessatsuCharge, 4
-	{DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 58, 184;}}	
+
+//CSCC Copywep Bars
+IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected GouhadouWepCS{DrawBar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	InInventory MessatsuCharge, 4{DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 58, 184;}}
+IsSelected CometWepCS{Drawbar"COMETVAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected NadeSpamWepCS{Drawbar"VARAMMO4", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected FusionBombWepCS{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}

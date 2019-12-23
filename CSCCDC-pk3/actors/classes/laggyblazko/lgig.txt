@@ -1,11 +1,7 @@
-actor Springfield: CSCCWepBase
+actor Springfield : CSCCWepBase
 {
 Weapon.SlotNumber 2
 Obituary "%o stood in the sights of %k's Springfield."
-Scale 2.0
-+WEAPON.NOAUTOAIM
-+INVENTORY.UNDROPPABLE
-+WEAPON.CHEATNOTWEAPON
 +NOALERT
 States
 {

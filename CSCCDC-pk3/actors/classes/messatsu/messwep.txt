@@ -7,8 +7,7 @@ Obituary "%o didn't block %k's Gou Hadouken."
 Inventory.Pickupmessage "You got Messatsu's memory chip! ...Useless!"
 Tag "Messatsu"
 weapon.ammotype "MessatsuAmmo"
-inventory.icon "NULLICON"
-dropitem "GouhadouWep"
+dropitem "GouhadouWepCS"
 +WEAPON.WIMPY_WEAPON
 +WEAPON.ALLOW_WITH_RESPAWN_INVUL
 States

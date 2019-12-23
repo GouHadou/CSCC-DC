@@ -1,23 +1,20 @@
-actor NadeSpamWep : CSCCWepBase 19010
+actor NadeSpamWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 20
 Weapon.SlotNumber 5
 Obituary "%o was blasted by %k's nadespam."
 Inventory.Pickupmessage "Power up! Nade Spam!"
-inventory.pickupsound "weapon/weaponup"
-+WEAPON.AMMO_OPTIONAL 
 inventory.icon "NADEI" 
 weapon.ammotype "NadeAmmo"
-Scale 2.0
-
+tag "Nade Spam"
 States
 {
 Spawn: 
 NADE A 1
 loop
 Ready:
-NADE O 0 ACS_ExecuteAlways(998,0,413)
+NADE O 0 ACS_ExecuteAlways(998,0,DYE_LAGGYBLAZKO)
 NADE O 4 A_WeaponReady
 Goto Ready+1
 Deselect:
@@ -62,5 +59,13 @@ inventory.amount 1
 inventory.maxamount 20
 }
 
-
-
+actor NadeSpamWepCS : NadeSpamWep replaces NadeSpamWep
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Log("Copywep did a thing!")
+goto "Super::Spawn"
+}
+}

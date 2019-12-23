@@ -62,7 +62,7 @@ Obituary "%o got modified by %k's *insert name here*."
 Inventory.Pickupmessage "Snipe Up! Meteor!"
 Tag "*Insert Name Here*"
 weapon.ammotype "UkiAmmo" 
-//DropItem "MeteorWepGiver"
+DropItem "MeteorWep"
 States
 {
 Ready:

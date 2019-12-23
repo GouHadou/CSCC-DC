@@ -50,6 +50,8 @@ $playersound	Ukiyamac	male	*taunt	    UKIYTAUN
 weapon/UkiRevolverShot   UKIYSHOT
 weapon/UkiRevolverReload UKIRELOAD
 
+weapon/MeteorLand smash
+
 //Cold Fusion
 $playersound	coldfus	male	*death		MEGADEAT
 $playersound	coldfus	male	*xdeath		MEGADEAT

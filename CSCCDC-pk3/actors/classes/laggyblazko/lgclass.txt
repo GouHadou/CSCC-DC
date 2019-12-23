@@ -1,4 +1,4 @@
-actor LaggyBlazko : CustomWepMan
+actor LaggyBlazkoClass : CustomWepMan
 {
 player.displayname "Corporal"
 Player.Face "LGY"
@@ -513,42 +513,7 @@ actor MFWFrozen : Inventory
 	inventory.maxamount 1
 }
 
-/*
-actor LaggyBlazkoCopyPickupMain : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 A_GiveToTarget("LaggyBlazkoMorphItem",1)
-stop
-}
-}
-
-actor LaggyBlazkoCopyHitMain
-{
-Height 0
-Radius 0
-+NOINTERACTION
--SOLID
-+NOGRAVITY
-+MISSILE
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_GiveToTarget("LaggyBlazkoCopyPickupMain",1)
-stop
-}
-}
-*/
-
-
-actor LaggyBlazkoMorph : LaggyBlazko
+actor NadeSpamMorph : LaggyBlazkoClass
 {
 +NOSKIN
 player.morphweapon "NadeSpam"
@@ -562,7 +527,7 @@ Goto "CustomWepMan::Pain+2"
 }
 }
 
-actor LaggyBlazkoMorph2 : LaggyBlazko
+actor TommyGunMorph : LaggyBlazkoClass
 {
 +NOSKIN
 player.morphweapon "TommyGun"

@@ -105,18 +105,22 @@ actor FusionWingsDisguisePickup : CustomInventory
 States
 {
 Pickup:
-SAPT A 0 A_SpawnItemEx("FusionWingsDisguise",-12,0,18,0,0,0,0,0)
+CFWP W 0 A_SpawnItemEx("FusionWingsDisguise",-8,0,12,0,0,0,0,0)
 stop
 }
 }
 
 actor FusionWingsDisguise : BaseDisguisePropWarper
 {
-translation "192:192=4:4", "198:198=42:42"
 States
 {
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("DisguisePropWarper", 0, 1)
+TNT1 A 0 A_Jump(256, "Shield")
+Goto Shield
 Shield:
-SAPT F 1 A_Warp(AAPTR_TARGET, -12, 0, 18, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+CFWP W 1 A_Warp(AAPTR_TARGET,-8,0,12, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
 loop
 }
 }

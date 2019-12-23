@@ -49,3 +49,55 @@ dsplpain = MEGAPAIN
 dstaunt = dsnone
 gender = male
 }
+
+{
+name = "ColdFusionDisguise"
+sprite = CFSK
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}
+
+{
+name = "KorbyDisguise"
+sprite = BLMG
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}
+
+{
+name = "LaggyBlazkoDisguise"
+sprite = LGY2
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}
+
+{
+name = "MessatsuDisguise"
+sprite = MTSU
+class = Unix
+dsnoway = LAND
+dsoof = LAND
+dspldeth = MEGADEAT
+dspdiehi = MEGADEAT
+dsplpain = MEGAPAIN
+dstaunt = dsnone
+gender = male
+}

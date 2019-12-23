@@ -8,9 +8,8 @@ Weapon.SlotNumber 1
 Obituary "%o was put to sleep with the fishes by %k's Tommy Gun."
 weapon.ammotype1 "TommyAmmo"
 weapon.ammotype2 "FatBullets"
-+WEAPON.NOAUTOAIM
 inventory.icon "TOMMYI" 
-dropitem "NadeSpamWepGiver"
+dropitem "NadeSpamWepCS"
 States
 {
 Ready:
@@ -96,8 +95,8 @@ TOMY E 3 ACS_NamedExecuteAlways("ReloadWeapon",0,1)
 TOMY K 3
 Goto Ready2+5
 NoFire:
-TOMY K 1
-Goto Ready2+3
+TOMY C 1
+Goto Ready2+5
 }
 }
 

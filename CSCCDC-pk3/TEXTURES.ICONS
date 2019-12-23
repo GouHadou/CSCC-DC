@@ -122,6 +122,13 @@ graphic UKIFULL, 9, 29
 {
 }
 
+graphic METEI, 30, 30//Meteor Stick
+{
+   XScale 2.0
+   YScale 2.0
+   Patch METEA0, 0, 0
+}
+
 //Corporal
 Graphic "TOMMYI", 30, 30
 {
@@ -179,6 +186,7 @@ Graphic "CFWPI", 30, 30
 	XScale 2.000
 	YScale 2.000
    Patch "CFWPA0", 0, 0
+}
    
 //Messatsu
 Graphic "RDEMON", 30, 30

@@ -4,7 +4,7 @@ addplayerclass CopyRobot nomenu
 addplayerclass UnixClass nomenu
 addplayerclass CutmanMikeClass nomenu
 addplayerclass UkiyamaClass nomenu
-addplayerclass Messatsu nomenu  
-addplayerclass ColdFusion nomenu
-addplayerclass LaggyBlazko nomenu
+addplayerclass MessatsuClass nomenu  
+addplayerclass ColdFusionClass nomenu
+addplayerclass LaggyBlazkoClass nomenu
 addplayerclass KorbyClass nomenu

@@ -9,9 +9,8 @@ Weapon.AmmoGive2 24
 Weapon.SlotNumber 2
 weapon.ammotype1 "GrandAmmo"
 weapon.ammotype2 "ShelbyvilleRound"
-+WEAPON.NOAUTOAIM
 inventory.icon "COW1I" //Must replace
-dropitem "NadeSpamWepGiver"
+dropitem "NadeSpamWepCS"
 states
 {
 Ready:

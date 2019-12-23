@@ -1,4 +1,4 @@
-actor FIR : Weapon
+actor FIR : CSCCWepBase 
 {
 Weapon.AmmoUse 5
 Weapon.AmmoGive 100
@@ -6,15 +6,7 @@ Weapon.SlotNumber 1
 weapon.ammotype "MP"
 Obituary "%o WAS SLAIN BY %k's FIRE."
 Inventory.Pickupmessage "FIR TREE"
-inventory.pickupsound "weapon/weaponup"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.NOAUTOAIM
-+WEAPON.CHEATNOTWEAPON
-+WEAPON.DONTBOB
-+INVENTORY.UNDROPPABLE
-inventory.icon "TNT1A0"
-DropItem "CometWepGiver"
-Scale 2.0
+DropItem "CometWepCS"
 States
 {
 Spawn:

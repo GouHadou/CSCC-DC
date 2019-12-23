@@ -1,4 +1,4 @@
-actor Messatsu : CustomWepMan
+actor MessatsuClass : CustomWepMan
 {
 player.displayname "Messatsu"
 player.soundclass "MessClass"
@@ -24,16 +24,8 @@ MTSU F 5
 MTSU G 4
 goto Spawn
 ClassPain:
-MTSU H 0 
-MTSU H 0 A_GiveInventory("NoParry", 1)
-MTSU H 0 A_JumpIfInventory("GravityHoldPainPower",1,"GravityHoldWait")
-MTSU H 0 A_JumpIfInventory("WilyIcePainPower",1,"WilyIceWait")
-MTSU H 0 A_Pain
-MTSU H 1 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
-MTSU H 1 A_Recoil(1)
-MTSU HHHHHHHHH 2 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
-MTSU H 1
-goto SuperSpawn
+"####" H 0 A_GiveInventory("NoParry", 1)
+goto MegamanPain
 }
 }
 
@@ -98,7 +90,7 @@ fail
 }
 
 
-actor MessatsuWepMorph : Messatsu
+actor MessatsuWepMorph : MessatsuClass
 {
 +NOSKIN
 player.morphweapon "MessatsuWep"
@@ -108,6 +100,6 @@ States
 Pain:
 YOKM H 0 A_ScaleVelocity(0.75)
 YOKM H 0 
-Goto "ClassBase::Pain+2"
+Goto "CustomWepMan::Pain+2"
 }
 }

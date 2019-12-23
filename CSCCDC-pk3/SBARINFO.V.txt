@@ -86,7 +86,6 @@ InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertica
 //Coldfusion
 IsSelected FusionBombClassWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
-IsSelected FusionBombWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 
 //====|Corporal
 InInventory LaggyHUD //It will have more stuff later.
@@ -94,7 +93,7 @@ InInventory LaggyHUD //It will have more stuff later.
 	IsSelected TommyGun
 	{
 	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
-	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 32, 8;
+	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 8, 8;
 	}
 	IsSelected NadeSpam{Drawbar"NADEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 	IsSelected CorpFragGrenade
@@ -105,7 +104,7 @@ InInventory LaggyHUD //It will have more stuff later.
 	IsSelected CorpGrandDad
 	{
 	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
-	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 32, 8;
+	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 8, 8;
 	}
 }
 
@@ -148,8 +147,6 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	//InInventory BeatSupport{DrawImage "KORHR0", 290,40,center;}
 	//InInventory ExitUnit{DrawImage "KORHS0", 290,40,center;}}
 
-IsSelected CometWepCS{Drawbar"COMETBAR", "BAREMPTY", Ammo1, Vertical, 16, 8;}
-
 //Messatsu
 IsSelected MessatsuWep
 	{
@@ -173,17 +170,15 @@ IsSelected MessatsuWep
 	DrawImage "TEMAGOU", 16, 50, center;
 	}
 	}
-//Messatsu Copy Wep
-IsSelected GouhadouWep
-	{
-	DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory MessatsuCharge, 4
-	{
-	DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 16, 8;
-	}
-	}
-	
-	
+
+//CSCC Copywep Bars
+IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory MessatsuCharge, 4{DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 16, 8;}}
+IsSelected CometWepCS{Drawbar"COMETBAR", "BAREMPTY", Ammo1, Vertical, 16, 8;}
+IsSelected NadeSpamWepCS{Drawbar"BARAMMO4", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected FusionBombWepCS{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SuperArmWepCS{Drawbar"BARAMMO2", "BAREMPTY", Ammo1, vertical, 16, 8;}

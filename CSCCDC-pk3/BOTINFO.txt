@@ -6,7 +6,6 @@
 	anticipation = 1
 	reactiontime = 1
 	perception = 1
-	favoriteweapon = "TimeStopperWep"
 	color = "00 00 00"
 	gender = "male"
 	skin = "base"
@@ -25,7 +24,6 @@
 	anticipation = 2
 	reactiontime = 2
 	perception = 1
-	favoriteweapon = "ShadowBladeWep"
 	color = "00 00 00"
 	gender = "male"
 	skin = "Base"
@@ -42,7 +40,6 @@
 	anticipation = 2
 	reactiontime = 2
 	perception = 1
-	favoriteweapon = "RollingCutterWep"
 	color = "00 00 00"
 	gender = "male"
 	skin = "cutman"
@@ -59,7 +56,6 @@
 	anticipation = 2
 	reactiontime = 1
 	perception = 1
-	favoriteweapon = "Crystal Hunter... I mean RainFlushWep" //huehuehue
 	color = "00 00 00"
 	gender = "male"
 	skin = "Base"
@@ -78,7 +74,6 @@
 	anticipation = 2
 	reactiontime = 2
 	perception = 1
-	favoriteweapon = "MessatsuWep"
 	color = "00 00 00"
 	gender = "male"
 	skin = "Base"
@@ -88,7 +83,8 @@
 	chatlump = "botchats/BOTMESS"
 	chatfrequency = 50
 }
-	
+
+{
 	name = "\cvxCold\c-x\ciFusionx"
 	accuracy = 3
 	intellect = 2
@@ -96,7 +92,6 @@
 	anticipation = 2
 	reactiontime = 2
 	perception = 1
-	favoriteweapon = "FusionBombWep"
 	color = "00 00 00"
 	gender = "male"
 	skin = "gyroman"
@@ -115,15 +110,12 @@
 	anticipation = 2
 	reactiontime = 2
 	perception = 1
-	favoriteweapon = "NapalmBombWep"
 	color = "00 00 00"
 	gender = "male"
 	skin = "Blazko"
 	class = "Corporal"
 	revealed = true
 	script = "humanbot"
-	chatlump = "botchats/BOTLGBZ"
-	chatfrequency = 50
 }
 
 {
@@ -134,7 +126,6 @@
     anticipation = 1
     reactiontime = 1
     perception = 1
-    favoriteweapon = "PharaohShotWep"
     color = "00 00 00"
     gender = "male"
     skin = "base"

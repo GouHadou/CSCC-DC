@@ -335,7 +335,6 @@
 #DEFINE MESSATSU 379
 #DEFINE MESSCHARGE 380
 #DEFINE MESSCHARGE2 389
-
 #DEFINE COPY1 401
 #DEFINE COPY2 402
 #DEFINE COPY3 403
@@ -345,6 +344,9 @@
 #DEFINE COPY7 407
 #DEFINE COPY8 408
 #DEFINE UKIYAMA 409
+#DEFINE KORBY 384
+#DEFINE COLDFUSION 370
+#DEFINE LAGGYBLAZKO 413
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
 
@@ -649,4 +651,7 @@ Script "core_translations" OPEN CLIENTSIDE
 	CreateTranslation (COPY7, 192:192=239:239, 198:198=253:253);
 	CreateTranslation (COPY8, 192:192=86:86, 198:198=95:95);
 	CreateTranslation (UKIYAMA, 192:192=21:21, 198:198=187:187);
+	CreateTranslation (KORBY, 192:192=123:123, 198:198=62:62);
+	CreateTranslation (COLDFUSION, 192:192=228:228, 198:198=199:199);
+	CreateTranslation (LAGGYBLAZKO, 192:192=132:132, 198:198=95:95);
 }

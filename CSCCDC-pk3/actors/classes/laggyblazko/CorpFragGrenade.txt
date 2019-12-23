@@ -6,7 +6,7 @@ Weapon.AmmoGive 10
 weapon.ammotype "FragGrenadeAmmo"
 Weapon.SlotNumber 4
 inventory.icon "COG1I"
-dropitem "NadeSpamWepGiver"
+dropitem "NadeSpamWepCS"
 States
 {
 Ready:
