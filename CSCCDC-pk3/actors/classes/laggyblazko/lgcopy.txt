@@ -1,0 +1,66 @@
+actor NadeSpamWep : CSCCWepBase 19010
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 20
+Weapon.SlotNumber 5
+Obituary "%o was blasted by %k's nadespam."
+Inventory.Pickupmessage "Power up! Nade Spam!"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL 
+inventory.icon "NADEI" 
+weapon.ammotype "NadeAmmo"
+Scale 2.0
+
+States
+{
+Spawn: 
+NADE A 1
+loop
+Ready:
+NADE O 0 ACS_ExecuteAlways(998,0,413)
+NADE O 4 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+NADE O 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+NADE O 1 A_Raise
+Loop
+Fire: 
+NADE O 0 A_JumpIfNoAmmo("NoAmmo") 
+NADE O 0 A_FireCustomMissile ("NadeBall2", 0, 1, 8, 0)
+NADE O 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+NADE PQ 3
+NADE O 5 A_Refire 
+Goto Ready+1
+NoAmmo:
+NADE O 1
+Goto Ready+1
+}
+}
+actor NadeBall2 : NadeBall
+{
+speed 50
+Obituary "%o was blasted by %k's nadespam."
+States
+{
+Death:
+NADE Z 0 A_Stop
+NADE Z 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+NADE Z 0 A_ChangeFlag("NOGRAVITY",1)
+NADE Z 0 A_Explode(5, 128, 0)
+NAPA EFGHIJKLMNOPQRS 2
+stop
+}
+}
+
+actor NadeAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 20
+}
+
+
+

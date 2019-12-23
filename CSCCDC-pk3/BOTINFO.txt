@@ -69,3 +69,60 @@
 	chatlump = "botchats/BOTUKIY"
 	chatfrequency = 50
 }
+
+{
+	name = "\cvxCold\c-x\ciFusionx"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "FusionBombWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "gyroman"
+	class = "ColdFusion"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTXCFX"
+	chatfrequency = 50
+}
+
+{
+	name = "\cqCorporal"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "NapalmBombWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Blazko"
+	class = "Corporal"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTLGBZ"
+	chatfrequency = 50
+}
+
+{
+    name = "\cqK\cto\cqr\ctb\cqy"
+    accuracy = 1
+    intellect = 4
+    evade = 1
+    anticipation = 1
+    reactiontime = 1
+    perception = 1
+    favoriteweapon = "PharaohShotWep"
+    color = "00 00 00"
+    gender = "male"
+    skin = "base"
+    class = "Korby"
+    revealed = true
+    script = "humanbot"
+    chatlump = "botchats/KORBOT"
+    chatfrequency = 50
+}

@@ -1,4 +1,1 @@
-basecscc
-classacs
-unix
-copy
+BASECSCC

@@ -7,3 +7,15 @@ texture UKIBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=21:21", "198:19
 texture UKIBARM2, 56, 8{patch UKIBARM, 0, 0 {rotate 90}}
 texture UKIBARW2, 56, 8{patch UKIBARW, 0, 0 {rotate 90}}
 texture UKIBARE2, 56, 8{patch UKIBARE, 0, 0 {rotate 90}}
+
+//Cold Fusion
+
+texture BARSHLD, 8, 56{patch MIDBAR, 0, 0 {Translation "192:192=202:202"}}
+texture VARSHLD, 56, 8{patch VIDBAR, 0, 0 {Translation "192:192=202:202"}}
+texture CFWPBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=228:228", "198:198=199:199"}}
+texture VCFWPBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=228:228", "198:198=199:199"}}
+
+//Nadespam copywep
+texture NADEBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=128:128", "198:198=132:132"}}
+texture VNADEBAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=128:128", "198:198=132:132"}}
+

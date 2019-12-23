@@ -41,7 +41,8 @@ DrawImage weaponicon, 50, 184;
 
 }
 
-//Classes
+//██████████████████████████████████████████Classes████████████████████████████████████████
+
 IsSelected CopyWeapon{DrawBar "VESTBAR", "VAREMPTY", Ammo1, horizontal, 58,184;}
 IsSelected UnixKnife
 {
@@ -75,6 +76,81 @@ DrawSelectedInventory INDEXFONT ,80, 52, 90, 55, white;
 Drawbar"MODBAR", "MODBARE", UpgradeTimer, vertical, 15, 26;
 InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertical, 15, 26;}
 }
+
+//ColdFusion
+IsSelected FusionBombClassWep{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	DrawBar "VARAMT31", "VNOBAR", Armor, horizontal, 130, 184;}
+	IsSelected FusionBombWep{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+
+//Corporal
+	InInventory LaggyHUD, 1{drawimage "LGYSTBAR", 0, 168;
+	InInventory Not MFWIHaveNoFace{InInventory Not MFWKicked{InInventory Not MFWBurning{InInventory Not MFWFrozen{
+	drawmugshot 5, 144, 168;}}}}
+	
+	InInventory MFWBurning{drawimage "LGYBURN0", 144, 168;}
+	InInventory MFWKicked{drawimage "LGYKICK0", 144, 168;}
+	InInventory MFWFrozen{drawimage "LGYICE0", 144, 168;}
+	
+	//IsSelected not Springfield{drawnumber 3, LAGFONT, untranslated, ammo1, 110, 186;}
+	
+	drawnumber 3, LAGFONT, untranslated, frags, 46, 186;
+	drawnumber 3, LAGFONT, untranslated, health, 238, 186;
+	Drawbar"LGYNADBR", "", NadeAmmoClass, horizontal, 240, 184;
+	
+	IsSelected NadeSpam{DrawBar "LGYNADBR", "", Ammo1, horizontal, 240, 184;}
+	IsSelected TommyGun{DrawBar "LGYTOMBR", "", Ammo1, horizontal, 272, 184;
+		DrawBar "LGYMAGBR", "", Ammo2, horizontal, 240, 168;}
+	IsSelected CorpFragGrenade{Drawbar"LGYTOMBR", "", Ammo1, horizontal, 272, 184;
+		InInventory GrenadeForce, 1{DrawBar "LGYMAGBR", "", GrenadeForce, horizontal, 240, 168;}}
+	IsSelected CorpGrandDad{DrawBar "LGYTOMBR", "", Ammo1, horizontal, 272, 184;
+		DrawBar "LGYMAGBR", "", Ammo2, horizontal, 240, 168;}
+	
+	
+	//Useless armor
+	drawimage armoricon, 280, 20;
+	drawnumber 3, LAGFONT, untranslated, armor, whennotzero, 290, 32;}
+	
+//Korby
+InInventory KorbyHUD, 1{
+	//DrawImage "KHUDE",32,48,center;
+	DrawImage "KHUDE2", 160,180,center;
+	DrawSelectedInventory INDEXFONT,215, 167, 226, 167, white;
+//Team Stuff
+InInventory LightTeamFlag, 1{
+	DrawImage "KHULI2", 160,180,center;}
+InInventory WilyTeamFlag, 1{
+	DrawImage "KHUWI2", 160,180,center;}
+InInventory CossackTeamFlag, 1{
+	DrawImage "KHUCO2", 160,180,center;}
+InInventory KingTeamFlag, 1{
+	DrawImage "KHUKI2", 160,180,center;}
+//Yes it's placed there for a reason
+	InInventory Not BMHoldFlag, 1 {DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 151, 167;}
+	InInventory BMHoldFlag, 1 {DrawString KORBYFONT, UNTRANSLATED, "???", 151, 167;}
+	DrawNumber 3, KORBYFONT, UNTRANSLATED, MP, 151, 186;
+	//DrawImage "KORHE0", 290,19,center;
+	//DrawImage "KORHQ0", 290,40,center;
+	
+InInventory NOT BMFlag, 1 {DrawImage "KORHE0", 185,171,center;}
+
+IsSelected FIR{DrawImage "KORHB0",185,193,center;}
+IsSelected ICE{DrawImage "KORHC0",185,193,center;}
+IsSelected LIT{DrawImage "KORHD0",185,193,center;}
+InInventory BLASF{DrawImage "KORHF0", 185,171,center;}
+InInventory MANTF{DrawImage "KORHG0", 185,171,center;}
+InInventory AQUAF{DrawImage "KORHH0", 185,171,center;}
+InInventory WHITF{DrawImage "KORHI0", 185,171,center;}
+InInventory THOUF{DrawImage "KORHJ0", 185,171,center;}
+InInventory FLAMF{DrawImage "KORHK0", 185,171,center;}
+InInventory TIMEF{DrawImage "KORHL0", 185,171,center;}
+InInventory SELFF{DrawImage "KORHM0", 185,171,center;}
+InInventory FLASF{DrawImage "KORHN0", 185,171,center;}
+InInventory BADBF{DrawImage "KORHO0", 185,171,center;}
+InInventory LIMIF{DrawImage "KORHP0", 185,171,center;}
+//InInventory BeatSupport{DrawImage "KORHR0", 290,40,center;}
+//InInventory ExitUnit{DrawImage "KORHS0", 290,40,center;}
+}
+//██████████████████████████████████████████Megaman████████████████████████████████████████
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}

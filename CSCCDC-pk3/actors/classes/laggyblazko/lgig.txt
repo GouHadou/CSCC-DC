@@ -1,0 +1,120 @@
+actor Springfield: CSCCWepBase
+{
+Weapon.SlotNumber 2
+Obituary "%o stood in the sights of %k's Springfield."
+Scale 2.0
++WEAPON.NOAUTOAIM
++INVENTORY.UNDROPPABLE
++WEAPON.CHEATNOTWEAPON
++NOALERT
+States
+{
+Ready:
+SNPR A 0 ACS_ExecuteAlways(998,0,WCCS_ADARA)
+SNPR A 0 A_JumpIfInventory ("Scope",1,"Ready2")
+SNPR A 0 A_JumpIfInventory ("CanZoomButCantFire",1,"Readyb")
+SNPR A 1 A_WeaponReady(WRF_NOSWITCH)
+Goto Ready+2
+Readyb:
+SNPR A 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+Goto Ready+1
+Ready2:
+SNPR A 0 A_JumpIfInventory ("CanZoomButCantFire",1,"Ready2b")
+SNPR O 1 A_WeaponReady(WRF_NOSWITCH)
+Loop
+Ready2b:
+SNPR O 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+Goto Ready2
+Deselect:
+TNT1 A 0 A_ZoomFactor (1,ZOOM_INSTANT)
+SNPR E 0 A_TakeInventory("Scope",1)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+SNPR B 1 A_Lower
+Loop
+Select:
+SNPR AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+SNPR B 1 A_Raise
+Loop
+Fire: 
+SNPR A 0 A_AlertMonsters
+SNPR A 0 ACS_ExecuteAlways (719,0,50)
+SNPR A 0 A_JumpIfInventory ("Scope",1,"Fire2")
+SNPR A 0 A_PlaySoundEx("weapon/RifleFire","Weapon")
+SNPR B 1 Bright A_FireBullets(0,0,1,500,"SniperPuff") 
+SNPR J 7 Bright
+SNPR K 4
+SNPR A 20
+Bolt:
+SNPR I 4
+SNPR C 4 A_PlaySoundEx("weapon/RifleLoad","Weapon")
+SNPR D 4 A_FireCustomMissile ("RifleBullet",-10,0,2,2)
+SNPR F 4 
+SNPR H 4
+SNPR G 4 A_PlaySoundEx("weapon/RifleLoad","Weapon")
+//The real cooldown is in "RECOIL".
+Goto Ready+1
+Fire2: 
+SNPR A 0 ACS_ExecuteAlways (719,0,50)
+TNT1 A 0 A_PlaySoundEx("weapon/RifleFire","Weapon")
+SNPR O 28 A_FireBullets(0,0,1,500,"SniperPuff") 
+SNPR O 0 ACS_ExecuteAlways(777,0,0)
+SNPR O 0 A_ZoomFactor (1,ZOOM_INSTANT)
+SNPR E 4 A_TakeInventory("Scope",1)
+Goto Bolt
+AltFire:
+SNPR A 0 ACS_ExecuteAlways(777,0,5)
+SNPR A 0 A_JumpIfInventory("Scope",1,"Altfire2")
+SNPR I 4
+SNPR E 4
+TNT1 A 0 A_GiveInventory("Scope",1)
+SNPR O 4 A_ZoomFactor (4,ZOOM_INSTANT)
+SNPR A 0 A_Refire
+Goto Ready2
+AltFire2:
+SNPR O 0 A_ZoomFactor (1,ZOOM_INSTANT)
+SNPR E 4 A_TakeInventory("Scope",1)
+SNPR A 0 ACS_ExecuteAlways(777,0,0)
+SNPR I 4
+SNPR A 4
+SNPR A 0 A_Refire 
+Goto Ready+1
+}
+}
+
+actor Scope : Inventory
+{
+inventory.maxamount 1
+}
+actor CanZoomButCantFire : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor RifleBullet
+{
+SeeSound "weapon/RifleBullet"
+Scale 2.5
+Bouncefactor 0.5
+WallBounceFactor 0.0
++DoomBounce
+Mass 10
+Speed 8
+Projectile
++MTHRUSPECIES
+bouncecount 5
+-Nogravity
+States
+{
+spawn:
+SNPR P 1
+Loop
+Death:
+SNPR P 300 A_PlaySound("weapon/RifleBullet")
+Stop
+}
+}
+
+actor SniperPuff : TommyPuff
+{
+damagetype "Instagib"
+}

@@ -1,13 +1,3 @@
-// [Lego] In your source code, always include "zcommon.acs" before this file.
-// This was done for clarity and organizational purposes.
-
-// This file contains a number of variables added to make expanding 8BDM easier.
-// If using SLADE 3.1.0.5 or later, include this file in the same directory
-// as your source ACS before compiling. 
-// Otherwise, extract it to the same folder as your acc.exe.
-// Note that this file SHOULD NOT be compiled on its own.
-
-//#library "8BDMLIB"
 
 #DEFINE TEAM_LIGHT 0
 #DEFINE TEAM_WILY 1
@@ -198,7 +188,18 @@ function int abs (int x)
 	}
     return x;
 }
+/*
+// Returns the closest integer, rounded up
 
+function int ceil (int fixedIn)
+{
+	if(fixedIn % 65536 != 0)
+	{
+		return (fixedIn >> 16) + 1;
+	}
+	return fixedIn >> 16;
+}
+*/
 function int max(int x, int y)
 {
 	if(x > y)

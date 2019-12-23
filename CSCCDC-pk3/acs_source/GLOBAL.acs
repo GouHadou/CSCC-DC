@@ -2,8 +2,8 @@
 
 #library "global"
 #include "zcommon.acs"// [Lego] Always include this before 8bdmlib
-#include "cscclib.acs"// included with MM8BDM under acs_source.
-					  // See 8bdmlib.acs for details
+#include "8bdmlib.acs"// included with MM8BDM under acs_source.
+	 // See 8bdmlib.acs for details
 
 // Empty script, legacy
 Script 999 OPEN
@@ -493,6 +493,19 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 					}
 				}
 			}
+		//ColdFusion
+				if(CheckWeapon("FusionBombClassWep")==1 || CheckInventory("ColdCopyAlt")==1 )
+			{
+			if(CheckInventory("JumpCancler")==0)
+				{
+				if (CheckInventory("BoostFlag")==1 && CheckInventory("RushJetCounter")<1)
+					{
+					TakeInventory("BoostFlag", 1);
+					GiveInventory("CFBoosting",1);
+					}
+				}
+			}
+		//End
 		Grounded = 0;
 		break;
 		Case 2: // You Released Jump
@@ -505,11 +518,21 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 			Grounded = 0;
 			}
 		break;
+		Case 3:
+		if((CheckWeapon("FusionBombClassWep")==1 || CheckInventory ("ColdCopyAlt")==1) && CheckInventory("HoverFlag")==1 && CheckInventory("RushJetCounter")<1)
+			{
+			GiveInventory("CFSputtering",1);
+			TakeInventory("BoostFlag", 1);
+			Delay(4);
+			}
+		//break;
 		Default: //Holding Jump OR not holding Jump
 		if((GetActorZ (0) - GetActorFloorZ (0)==0.0) || Grounded == 3)
 			{
 			GiveInventory("JumpCancler",1);
 			GiveInventory("BoostFlag", 1);
+			TakeInventory("Hoverflag", 1);
+			TakeInventory("NoJump",999);
 			//print(s:"You're grounded!");
 			}
 		if(GetActorVelZ(0)==0.0 && Grounded < 3 && GetActorCeilingZ(0) - GetActorZ(0) > 64.0 ){Grounded++;}
