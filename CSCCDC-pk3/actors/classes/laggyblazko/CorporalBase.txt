@@ -23,8 +23,8 @@ goto Ready
 Knife:
 NADE KL 2
 NADE M 0 A_PlaySoundEx("Weapon/knife","Weapon")
-NADE M 2 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuff",128)
-NADE N 2 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuff",192)
+NADE M 2 A_GiveInventory("CorpKnifePuffShot1",1)
+NADE N 2 A_GiveInventory("CorpKnifePuffShot2",1)
 TNT1 A 16
 NADE N 0 A_Refire("Knife")
 goto KnifeEndJump
@@ -32,5 +32,51 @@ KnifeEndJump:
 TNT1 A 1 A_JumpIfInventory("LaggyHUD",1,"KnifeEnd")
 //TNT1 A 1 A_Jump(256,"Ready2")
 loop
+}
+}
+
+actor CorpKnifePuffShot1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuff",128)
+stop
+//---
+FireB:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffB",128)
+stop
+FireR:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffR",128)
+stop
+FireG:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffG",128)
+stop
+FireY:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffY",128)
+stop
+}
+}
+
+actor CorpKnifePuffShot2 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuff",192)
+stop
+//---
+FireB:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffB",192)
+stop
+FireR:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffR",192)
+stop
+FireG:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffG",192)
+stop
+FireY:
+TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffY",192)
+stop
 }
 }

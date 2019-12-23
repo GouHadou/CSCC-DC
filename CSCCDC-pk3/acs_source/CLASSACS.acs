@@ -475,3 +475,59 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckInventory("MessatsuW
 	}
 }
 //End Messatsu Scripts
+
+//Ice / Sparky script
+Script "IceSparkyFusion" (void)
+{
+Delay(1);
+int PlayerTID = ActivatorTID();
+int FusionStock = CheckInventory("FusionStock");
+If(FusionStock < 1){FusionStock = 1;}
+int CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+
+while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && (CheckInventory("IceWep") || CheckInventory("SparkyWep")))
+	{
+	While(CurrentHealth <= GetActorProperty(PlayerTID, APROP_HEALTH))
+		{
+		Delay(1);
+		If(CheckInventory("FusionMeter")>=250)
+			{
+			TakeInventory("FusionMeter", 999);
+			GiveInventory("IceSparkyCombine", 1);
+			}
+		If(GetActorProperty(PlayerTID, APROP_HEALTH) > CurrentHealth)
+			{
+			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+			}
+		}
+	FusionStock = CheckInventory("FusionStock");
+	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
+		{
+		If(!CheckInventory("IceSparkyFusion") && !CheckInventory("IceSparkyCombine"))
+			{
+			GiveActorInventory(PlayerTID, "FusionMeter", (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH))*FusionStock);
+			}
+		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+		}
+	}
+}
+
+//speed / jump changing
+script "IceSparkSwap" (int speed)
+{
+
+Switch(speed)
+	{
+	Case 0:
+	SetActorProperty(0,APROP_SPEED,1.0);
+	SetActorProperty(0,APROP_JUMPZ,10.0);
+	break;
+	
+	Case 1:
+	SetActorProperty(0,APROP_SPEED,1.6);
+	SetActorProperty(0,APROP_JUMPZ,15.0);
+	break;
+	}
+
+}
+//End Ice Sparky

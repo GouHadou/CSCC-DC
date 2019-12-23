@@ -545,9 +545,7 @@ TNT1 A 0 A_GiveInventory("NadeSpam", 1)
 TNT1 A 0 A_GiveInventory("NoMagTommy", 1)
 TNT1 A 0 A_GiveInventory("FatBullets", 90)
 TNT1 A 0 A_GiveInventory("TommyAmmo", 30)
-TNT1 A 0 A_GiveInventory("FatBulletNadeAmmoClasss", 16)
 TNT1 A 0 A_GiveInventory("CorpReload", 1)
-TNT1 A 0 A_GiveInventory("CanUseWTanks", 1)
 TNT1 A 0 A_GiveInventory("CorpArsenal", 1)
 
 stop

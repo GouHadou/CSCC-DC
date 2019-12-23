@@ -43,4 +43,10 @@
 #include "actors/classes/messatsu/messwep.txt"
 //#include "actors/classes/messatsu/messig.txt"
 
+//===|icespark
+#include "actors/classes/icespark/isclass.txt"
+#include "actors/classes/icespark/iswep1.txt"
+#include "actors/classes/icespark/iswep2.txt"
+
+//Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

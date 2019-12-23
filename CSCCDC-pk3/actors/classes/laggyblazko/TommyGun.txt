@@ -39,7 +39,7 @@ TOMY D 0 A_GiveInventory("FakeTommyTracerShot_1")//First tracer is accurate
 TOMY C 0 A_AlertMonsters
 TOMY C 0 A_PlaySoundEx("weapon/TommyFire","Weapon")
 TOMY C 0 A_light2
-TOMY D 2 Bright A_FireBullets(2.5,2.5,1,4,"TommyPuff",FBF_NORANDOM|FBF_USEAMMO)
+TOMY D 2 Bright A_GiveInventory("TommyPuffShot",1)
 TOMY D 0 A_FireCustomMissile("FatBulletCasing",random(-65,-55),0,2,4,0,random(0,15))
 TOMY C 1 A_light0
 TOMY C 0 A_Refire
@@ -133,7 +133,10 @@ actor TommyPuff // : HitscanPuffBase //breaks things somehow.
 			Stop
 	}
 }
-
+actor TommyPuffB : TommyPuff {translation "210:215=205:205"}
+actor TommyPuffR : TommyPuff {translation "210:215=171:171"}
+actor TommyPuffG : TommyPuff {translation "210:215=104:104"}
+actor TommyPuffY : TommyPuff {translation "210:215=229:229"}
 
 actor CorpKnifePuff : TommyPuff
 {
@@ -147,10 +150,10 @@ Obituary "%o got shut up by %k."
 //Obituary "$OB_CORPKNIFE"
 DamageType "CorpKnife"
 }
-
-
-
-
+actor CorpKnifePuffB : CorpKnifePuff {translation "210:215=205:205"}
+actor CorpKnifePuffR : CorpKnifePuff {translation "210:215=171:171"}
+actor CorpKnifePuffG : CorpKnifePuff {translation "210:215=104:104"}
+actor CorpKnifePuffY : CorpKnifePuff {translation "210:215=229:229"}
 
 actor TommyFlag : Inventory
 {
@@ -307,6 +310,29 @@ TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_GREEN",fRandom(-2.5,2.5),0,3,4,0,f
 stop
 FireY:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_GOLD",fRandom(-2.5,2.5),0,3,4,0,fRandom(-2.5,2.5))
+stop
+}
+}
+
+actor TommyPuffShot : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuff",FBF_NORANDOM|FBF_USEAMMO)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffB",FBF_NORANDOM|FBF_USEAMMO)
+stop
+FireR:
+TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffR",FBF_NORANDOM|FBF_USEAMMO)
+stop
+FireG:
+TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffG",FBF_NORANDOM|FBF_USEAMMO)
+stop
+FireY:
+TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffY",FBF_NORANDOM|FBF_USEAMMO)
 stop
 }
 }

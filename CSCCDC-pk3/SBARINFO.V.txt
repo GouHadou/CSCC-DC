@@ -15,9 +15,14 @@ DrawBar "BARHEALT", "BAREMPTY", Health, vertical, 24, 8;
 
 InInventory SkullShieldCheck, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, vertical, 24, 8;}
 InInventory SkullBarrierProtection, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, vertical, 24, 8;}
-InInventory BasicArmor, 1{DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
-
-//classes
+InInventory not NoArmorBar, 1
+	{
+	InInventory BasicArmor, 1{DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
+	}
+InInventory DocToadHealthBar, 1{DrawBar "BARHEADO", "NOBAR", Health, vertical, 24, 8;}
+InInventory GlassHealthBar, 1{DrawBar "BARHEALG", "NOBAR", Health, vertical, 24, 8;}
+	
+//Classes
 InInventory PowerNerf{DrawImage "UKIHM0", 260,16,center;}
 
 //IfCVarInt mm8bdm_ammonumber, 1
@@ -85,7 +90,7 @@ InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertica
 
 //Coldfusion
 IsSelected FusionBombClassWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
+	DrawBar "BARSHLD", "NOBAR", Armor, vertical, 24, 8;}
 
 //====|Corporal
 InInventory LaggyHUD //It will have more stuff later.
@@ -170,6 +175,27 @@ IsSelected MessatsuWep
 	DrawImage "TEMAGOU", 16, 50, center;
 	}
 	}
+//Ice / Sparky
+IsSelected IceWep{DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "SPARKBAR", "BAREMPTY", SparkyClassAmmo, vertical, 8, 8;
+	DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;
+	InInventory FusionStock, 1
+		{
+		InInventory NOT IceSparkyCombine || IceSparkyFusion
+			{
+			DrawNumber 1, SMALLFONT, LIGHTBLUE, FusionStock, 26, 72;
+			DrawString SMALLFONT, LIGHTBLUE, "x", 34, 72;}}}
+	
+IsSelected SparkyWep{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "ICEBAR", "BAREMPTY", IceClassAmmo, vertical, 8, 8;
+	DrawBar "FUSIS", "NOBAR", FusionMeter, vertical, 24, 8;
+	InInventory FusionStock, 1
+		{
+		InInventory NOT IceSparkyCombine || IceSparkyFusion
+			{
+			DrawNumber 1, SMALLFONT, GOLD, FusionStock, 26, 72;
+			DrawString SMALLFONT, GOLD, "x", 34, 72;}}}
+
 
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
@@ -178,6 +204,8 @@ IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 IsSelected CometWepCS{Drawbar"COMETBAR", "BAREMPTY", Ammo1, Vertical, 16, 8;}
 IsSelected NadeSpamWepCS{Drawbar"BARAMMO4", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected FusionBombWepCS{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected IceBladeWepCS{DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected LightningWaveWepCS{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}

@@ -103,11 +103,10 @@ NAPA EFGHIJKLMNOPQRS 2
 stop
 }
 }
-
-actor NadeBall_BLUE : NadeBall {translation "128:128=205:205", "132:132=74:74"}
-actor NadeBall_RED : NadeBall {translation "128:128=171:171", "132:132=41:41"}
-actor NadeBall_GREEN : NadeBall {translation "128:128=104:104", "132:132=128:128"}
-actor NadeBall_GOLD : NadeBall {translation "128:128=229:229", "132:132=232:232"}
+actor NadeBall_BLUE : NadeBall {translation "128:128=205:205", "132:132=74:74", "210:210=205:205"}
+actor NadeBall_RED : NadeBall {translation "128:128=171:171", "132:132=41:41", "210:210=171:171"}
+actor NadeBall_GREEN : NadeBall {translation "128:128=104:104", "132:132=128:128", "210:210=104:104"}
+actor NadeBall_GOLD : NadeBall {translation "128:128=229:229", "132:132=232:232", "210:210=229:229"}
 
 actor NadeSpamM1 : BasicTeamColorPickup
 {
