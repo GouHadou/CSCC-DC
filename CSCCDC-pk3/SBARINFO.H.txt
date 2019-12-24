@@ -216,6 +216,55 @@ IsSelected SparkyWep
 	}
 
 	
+//====| Tank Operator
+IsSelected ClassicTankWeapon {
+	DrawBar"VARAMM23","VAREMPTY",Ammo1,horizontal,58,184;
+	DrawBar"VARAMM48","VAREMPTY",TankRepairAmmo,horizontal,58,184;
+	InInventory Tank_NotOnFoot, 1{DrawBar"TANK_VAR","NOBAR",health,horizontal,130,184;}
+	InInventory TankRepairAmmo, 350{DrawBar"VARFLS1","NOBAR",TankRepairAmmo,horizontal,58,184;}
+	}
+
+//====|Vocalwoman
+InInventory IsVocalWoman
+	{
+	Drawbar"BLL2_VAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	
+	IsSelected VocalMicBoss1
+	{
+	InInventory VocalAmmo2, 1{Drawbar"VOCAVAR3", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+	InInventory VocalAmmo2, 25{Drawbar"VOCAVAR1", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+	}
+	
+	IsSelected VocalMicBoss2
+	{
+	InInventory VocalAmmo2, 1{Drawbar"VOCAVAR4", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+	InInventory VocalAmmo2, 50{Drawbar"VOCAVAR2", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+	InInventory NoteLimiter, 1{Drawbar"VOCAVAR4", "VAREMPTY", Ammo2, horizontal, 58, 176;}
+	}
+	
+	InInventory NoteBombFlag, 1{DrawImage "VALTVAR", 58, 176;}
+	}
+	
+
+//===| Zen Trainer
+InInventory Zen_Heal1PU, 1 {Drawimage"ZTBF04",290,8;}
+InInventory Zen_Heal2PU, 1 {Drawimage"ZTBF05",290,8;}
+InInventory Zen_Power150, 1 {Drawimage"ZTBF00",290,8;}
+InInventory Zen_Power200, 1 {Drawimage"ZTBF01",290,8;}
+InInventory Zen_Defense150, 1 {Drawimage"ZTBF02",290,8;}
+InInventory Zen_Defense200, 1 {Drawimage"ZTBF03",290,8;}
+InInventory Zen_Haste110, 1 {Drawimage"ZTBF06",290,8;}
+InInventory Zen_Haste125, 1 {Drawimage"ZTBF07",290,8;}
+
+IsSelected ZenTrainerWep{
+	InInventory ZenTrainerAmmo1, 140 {
+		InInventory AuraFlag_heal, 1 {Drawbar"VZNTRA01","VAREMPTY",Ammo2,horizontal,16,8;}
+		InInventory AuraFlag_power, 1 {Drawbar"VZNTRA02","VAREMPTY",Ammo2,horizontal,16,8;}
+		InInventory AuraFlag_defense, 1 {Drawbar"VZNTRA03","VAREMPTY",Ammo2,horizontal,16,8;}
+		InInventory AuraFlag_haste, 1 {Drawbar"VZNTRA04","VAREMPTY",Ammo2,horizontal,16,8;}
+		InInventory AuraFlag_rage, 1 {Drawbar"VZNTRA05","VAREMPTY",Ammo2,horizontal,16,8;}
+	}else{ Drawbar"VZNTRA00","VAREMPTY",Ammo2,horizontal,16,8;}
+	}
 
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}

@@ -182,3 +182,35 @@ $playersound	MessClass	male	*usefail	LAND
 //Ice-Spark
 weapon/lightningfall	WILYBEAM
 weapon/warp	DSITMBK
+
+
+//Vocalwoman
+$playersound	vocalwomanc	male	*death		VOCADETH
+$playersound	vocalwomanc	male	*xdeath		VOCADETH
+$playersound	vocalwomanc	male	*gibbed		VOCADETH
+$playersound	vocalwomanc	male	*pain100	BOSSPAIN
+$playersound	vocalwomanc	male	*pain75		BOSSPAIN
+$playersound	vocalwomanc	male	*pain50		BOSSPAIN
+$playersound	vocalwomanc	male	*pain25		BOSSPAIN
+$playersound	vocalwomanc	male	*grunt		MM6LAND
+$playersound	vocalwomanc	male	*land		MM6LAND
+$playersound	vocalwomanc	male	*fist		dsnone
+$playersound	vocalwomanc	male	*usefail	MM6LAND
+
+$random vocal/song { vocal/song1 vocal/song2 vocal/song3 vocal/song4 }
+vocal/song1 VSONG1
+vocal/song2 VSONG2
+vocal/song3 VSONG3
+vocal/song4 VSONG4
+
+$random vocal/note { vocal/note1 vocal/note2 vocal/note3 vocal/note4 vocal/note5 vocal/note6 vocal/note7 vocal/note8 }
+vocal/note1 VNOTE1
+vocal/note2 VNOTE
+vocal/note3 VNOTE3
+vocal/note4 VNOTE4
+vocal/note5 VNOTE5
+vocal/note6 VNOTE6
+vocal/note7 VNOTE7
+vocal/note8 VNOTE8
+
+vocal/heal ROLLHEA1

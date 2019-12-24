@@ -9,3 +9,6 @@ addplayerclass ColdFusionClass nomenu
 addplayerclass LaggyBlazkoClass nomenu
 addplayerclass KorbyClass nomenu
 addplayerclass IceSparky nomenu 
+addplayerclass VocalWoman nomenu 
+addplayerclass ZenTrainer nomenu 
+addplayerclass TankOperator nomenu 
