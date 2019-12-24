@@ -3,10 +3,10 @@ addplayerclass MegamanC nomenu
 addplayerclass CopyRobot nomenu
 addplayerclass UnixClass nomenu
 addplayerclass CutmanMikeClass nomenu
+addplayerclass IceSparkyClass nomenu 
 addplayerclass UkiyamaClass nomenu
 addplayerclass MessatsuClass nomenu  
 addplayerclass ColdFusionClass nomenu
+addplayerclass LordDamagerClass nomenu 
 addplayerclass LaggyBlazkoClass nomenu
 addplayerclass KorbyClass nomenu
-addplayerclass IceSparky nomenu 
-addplayerclass LordDamager nomenu 

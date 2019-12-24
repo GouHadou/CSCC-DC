@@ -61,7 +61,7 @@ goto Ready+1
 }
 }
 
-Actor DarkLaserBuffer : PowerProtection
+Actor DarkLaserProtect : PowerProtection
 {
 powerup.duration 3
 DamageFactor "DarkLaser", 0.0

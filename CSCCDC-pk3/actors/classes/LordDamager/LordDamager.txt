@@ -1,6 +1,6 @@
 Actor IsLordDamager : Inventory{}
 
-actor LordDamager : CustomWepMan
+actor LordDamagerClass : CustomWepMan
 {
 Health 150
 player.MaxHealth 150
@@ -65,7 +65,7 @@ stop
 }
 }
 
-actor MissilePunchWepMorph : LordDamager
+actor MissilePunchWepMorph : LordDamagerClass
 {
 +NOSKIN
 player.morphweapon "MissilePunchWep"
@@ -79,18 +79,9 @@ Goto "CustomWepMan::Pain+2"
 }
 }
 
-actor LaserCannonWepMorph : LordDamager
+actor LaserCannonWepMorph : MissilePunchWepMorph
 {
-+NOSKIN
 player.morphweapon "LaserCannonWep"
-player.soundclass "BestClassEver"
-States
-{
-Pain:
-YOKM H 0 A_ScaleVelocity(0.75)
-YOKM H 0 
-Goto "CustomWepMan::Pain+2"
-}
 }
 
 actor LordDamagerClassItems: CustomInventory

@@ -30,6 +30,7 @@
 	class = "Unix"
 	revealed = true
 	script = "humanbot"
+	chatfrequency = 50
 }
 
 {
@@ -46,6 +47,7 @@
 	class = "CutmanMike"
 	revealed = true
 	script = "humanbot"
+	chatfrequency = 50
 }
 
 {
@@ -116,6 +118,7 @@
 	class = "Corporal"
 	revealed = true
 	script = "humanbot"
+	chatfrequency = 50
 }
 
 {
@@ -133,5 +136,41 @@
     revealed = true
     script = "humanbot"
     chatlump = "botchats/KORBOT"
+	chatfrequency = 50
+}
+
+{
+	name = "\chLordDamager"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "LordDamager"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cvIce \c-/ \cfSparky"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "plantman"
+	class = "Ice/Sparky"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTICSP"
 	chatfrequency = 50
 }

@@ -1,4 +1,4 @@
-actor IceSparky : CustomWepMan
+actor IceSparkyClass : CustomWepMan
 {
 player.displayname "Ice/Sparky"
 player.soundclass "megaman"
@@ -168,7 +168,7 @@ stop
 }
 
 
-actor IceWepMorph : IceSparky
+actor IceWepMorph : IceSparkyClass
 {
 +NOSKIN
 player.morphweapon "IceWep"
@@ -184,18 +184,9 @@ Goto "CustomWepMan::Pain+2"
 
 //Sparky Morph Actors
 
-actor SparkyWepMorph : IceSparky
+actor SparkyWepMorph : IceWepMorph
 {
-+NOSKIN
 player.morphweapon "SparkyWep"
-player.soundclass "BestClassEver"
-States
-{
-Pain:
-YOKM H 0 A_ScaleVelocity(0.75)
-YOKM H 0 
-Goto "CustomWepMan::Pain+2"
-}
 }
 
 actor FusionMeter : Inventory
