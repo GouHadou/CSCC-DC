@@ -9,3 +9,4 @@ addplayerclass ColdFusionClass nomenu
 addplayerclass LaggyBlazkoClass nomenu
 addplayerclass KorbyClass nomenu
 addplayerclass IceSparky nomenu 
+addplayerclass LordDamager nomenu 

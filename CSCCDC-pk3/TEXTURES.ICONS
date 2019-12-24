@@ -231,3 +231,29 @@ Graphic "ICSPFUS", 30, 30
 	YScale 2.000
 	Patch "ISFUA0", 0, 0
 }
+//Lord Damager
+Graphic "LOSICA0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LOSICC0", 0, 0
+}
+
+Graphic "LWEPB0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LWEPB0", 0, 0
+}
+Graphic "STPUNCH", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDSPI0", 0, 0
+}
+Graphic "LDRMI0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDRMI0", 0, 0
+}

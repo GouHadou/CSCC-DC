@@ -350,7 +350,7 @@
 #DEFINE KORBY 384
 #DEFINE COLDFUSION 370
 #DEFINE LAGGYBLAZKO 413
-
+#DEFINE LORDDAMAGERCOL 437
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
 
@@ -661,4 +661,5 @@ Script "core_translations" OPEN CLIENTSIDE
 	CreateTranslation (KORBY, 192:192=123:123, 198:198=62:62);
 	CreateTranslation (COLDFUSION, 192:192=228:228, 198:198=199:199);
 	CreateTranslation (LAGGYBLAZKO, 192:192=132:132, 198:198=95:95);
+	CreateTranslation (LORDDAMAGERCOL, 192:192=194:194, 198:198=241:241);
 }

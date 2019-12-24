@@ -116,6 +116,10 @@ Pain.Afterburner:
 "----" H 0 ThrustThing(random(0,255),5*random(3,4),0,0)
 "----" H 0 ThrustThingZ(0,50,0,0)
 Goto pain+1
+//Lord Damager
+Pain.DarkLaser:
+"----" H 0 //A_GiveInventory("DarkLaserBuffer")
+Goto Pain+1
 
 //PowerProtect Pain
 //Korby

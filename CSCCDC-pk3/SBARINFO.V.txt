@@ -196,6 +196,21 @@ IsSelected SparkyWep{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 			DrawNumber 1, SMALLFONT, GOLD, FusionStock, 26, 72;
 			DrawString SMALLFONT, GOLD, "x", 34, 72;}}}
 
+//====|LordDamager
+IsSelected MissilePunchWep
+	{
+	Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
+	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
+	}
+
+IsSelected LaserCannonWep
+	{
+	Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory LaserCannonAmmo, 35{Drawbar"BARAMM51", "BAREMPTY", Ammo1, vertical, 16, 8;}
+	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
+	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
+	}
 
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
@@ -207,6 +222,7 @@ IsSelected FusionBombWepCS{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8
 IsSelected IceBladeWepCS{DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected LightningWaveWepCS{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 
+IsSelected SteelPunchWepCS{Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SuperArmWepCS{Drawbar"BARAMMO2", "BAREMPTY", Ammo1, vertical, 16, 8;}

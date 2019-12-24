@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 15
+#define MAX_MORPHS 17
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -20,6 +20,8 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"TommyGun", "Corporal (Tommy Gun)", "CorporalClassItems"},//13
 {"NadeSpam", "Corporal (Nade Spam)", "CorporalClassItems"},//14
 {"MessatsuWep", "Messatsu", "MessatsuClassItems"},//15
+{"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},//16
+{"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},//17
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

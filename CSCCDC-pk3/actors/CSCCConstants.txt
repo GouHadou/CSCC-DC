@@ -10,3 +10,4 @@ const int WCCS_ICESPARKY = 378;
 const int DYE_MESSATSU = 379;
 const int DYE_MESSCHARGE = 380;
 const int DYE_MESSCHARGE2 = 389;
+const int DYE_LORDDAMAGERCOL = 437;
