@@ -230,7 +230,7 @@ PROJECTILE
 +DONTBLAST
 +PIERCEARMOR
 Obituary "%o was zapped by %k's lighting wave."
-Translation "215:215=228:228"
+Translation "192:192=228:228"
 +RIPPER
 Scale 2.0
 Height 48
@@ -241,8 +241,30 @@ damagetype "LightningWave"
 States
 {
 Spawn:
-THUN B 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
-THUN ABCDEFG 1
+TNT1 A 0
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
+Goto LoopJump
+BFire:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto LoopJump
+RFire:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto LoopJump
+GFire:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto LoopJump
+YFire:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto LoopJump
+LoopJump:
+TNT1 A 0 A_Jump(256, "Spawn2")
+Goto Spawn2
+Spawn2:
+LIWA B 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
+LIWA ABCDEFG 1
 stop
 }
 }
@@ -283,6 +305,7 @@ PROJECTILE
 +RIPPER
 +PIERCEARMOR
 damagetype "LightningShot"
+Translation "192:192=228:228" 
 scale 2.5
 Speed 80
 Radius 15
@@ -291,7 +314,29 @@ Damage (15)
 States
 {
 Spawn:
-ZABO AB 1 A_SpawnItemEx("LightningIceBladeFX", -8, Random(-16, 16), random(0, -8))
+TNT1 A 0
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
+Goto LoopJump
+BFire:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto LoopJump
+RFire:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto LoopJump
+GFire:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto LoopJump
+YFire:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto LoopJump
+LoopJump:
+TNT1 A 0 A_Jump(256, "Spawn2")
+Goto Spawn2
+Spawn2:
+ZABO AB 1 A_SpawnItemEx("LightningFX", -8, Random(-16, 16), random(0, -8))
 loop
 Death:
 TNT1 A 1 A_PlaySoundEx("weapon/lightningfall","weapon")
@@ -348,15 +393,18 @@ loop
 actor LightningIceWaveTrail : LightningWaveTrail
 {
 Obituary "%o was zapped by %k's Lightning Ice Wave."
-Translation "215:215=137:137"
+Translation "192:192=137:137"
 damagetype "LightningWave"
 States
 {
 Spawn:
-THUN B 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
-THUN BBB 0 A_SpawnItemEx("LightningIceBit",5,0,0,7,0,10,Random(0, 180))
-THUN BBB 0 A_SpawnItemEx("LightningIceBit",5,0,0,7,0,10,Random(0, -180))
-THUN ABCDEFG 1
+TNT1 A 0
+Goto "Super::Spawn"
+Spawn2:
+LIWA B 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
+LIWA BBB 0 A_SpawnItemEx("LightningIceBit",5,0,0,7,0,10,Random(0, 180))
+LIWA BBB 0 A_SpawnItemEx("LightningIceBit",5,0,0,7,0,10,Random(0, -180))
+LIWA ABCDEFG 1
 stop
 }
 }
@@ -365,13 +413,16 @@ actor LightningIceBit : IceBit
 {
 +PIERCEARMOR
 damagetype "IceShard"
-Translation "203:203=137:137"
+Translation "192:192=137:137"
 speed 5
 Obituary "%o was Conked on the head by one of %k's Lightning Ice chunks."
 states
 {
 Spawn:
-FCRA E 4
+TNT1 A 0
+Goto "Super::Spawn"
+Spawn2:
+ICBL F 4
 loop
 Death:
 TNT1 A 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
@@ -387,17 +438,7 @@ actor LightningIceSpike : IceSpike
 {
 +PIERCEARMOR
 Obituary "%o stepped on one of %k's Lightning Ice spikes."
-Translation "197:197=137:137", "74:74=95:95"
+Translation "192:192=137:137", "198:198=95:95"
 Reactiontime 10
-states
-{
-Spawn:
-HAZA C 4
-HAZA C 0 A_Countdown
-Loop
-Death:
-TNT1 A 0
-Stop
-}
 }
 

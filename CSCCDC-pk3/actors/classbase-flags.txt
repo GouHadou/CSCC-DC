@@ -12,6 +12,7 @@ TNT1 A 0 A_GiveInventory("IsDead",1)
 TNT1 A 0 A_Stop
 TNT1 A 0 A_GiveToTarget("KilledMeStock",1)
 TNT1 A 0 A_GiveToTarget("KilledMe",1)
+TNT1 A 0 A_GiveToTarget("FusionStock",1)
 stop
 }
 }
