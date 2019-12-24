@@ -160,11 +160,11 @@ Sprite ZNTNP0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=2
 Sprite ZNTNQ0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=150:150"}}
 Sprite ZNTNR0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=151:151"}}
 
-Graphic "ZTBF00",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF00",0,0}
-Graphic "ZTBF01",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF01",0,0}
-Graphic "ZTBF02",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF02",0,0}
-Graphic "ZTBF03",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF03",0,0}
-Graphic "ZTBF04",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF04",0,0}
-Graphic "ZTBF05",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF05",0,0}
-Graphic "ZTBF06",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF06",0,0}
-Graphic "ZTBF07",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF07",0,0}
+Graphic "ZENBF00",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF00",0,0}
+Graphic "ZENBF01",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF01",0,0}
+Graphic "ZENBF02",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF02",0,0}
+Graphic "ZENBF03",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF03",0,0}
+Graphic "ZENBF04",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF04",0,0}
+Graphic "ZENBF05",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF05",0,0}
+Graphic "ZENBF06",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF06",0,0}
+Graphic "ZENBF07",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF07",0,0}

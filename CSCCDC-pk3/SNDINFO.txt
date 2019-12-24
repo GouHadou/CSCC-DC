@@ -214,3 +214,6 @@ vocal/note7 VNOTE7
 vocal/note8 VNOTE8
 
 vocal/heal ROLLHEA1
+
+//TankOpp
+weapon/HardBuster1 SKULSHOT

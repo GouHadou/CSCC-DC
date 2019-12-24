@@ -1,4 +1,4 @@
-actor ZenTrainer : ClassBase
+actor ZenTrainer : CustomWepMan
 {
 player.displayname "Zen Trainer"
 player.soundclass "megaman"

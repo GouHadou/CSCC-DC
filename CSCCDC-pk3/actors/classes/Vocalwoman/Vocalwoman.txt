@@ -1,6 +1,6 @@
 Actor IsVocalwoman : Inventory{}
 
-actor Vocalwoman : ClassBase
+actor Vocalwoman : CustomWepMan
 {
 player.displayname "vocalwoman"
 player.soundclass "vocalwomanc"

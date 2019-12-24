@@ -287,10 +287,10 @@ Speed 75
 Obituary "%o tried to stand against %k's machinegun but failed."
 }
 
-actor TankOperatorMachinegunShotL : TankOperatorMachinegunShot {}
-actor TankOperatorMachinegunShotR : TankOperatorMachinegunShot {}
-actor TankOperatorMachinegunShotC : TankOperatorMachinegunShot {}
-actor TankOperatorMachinegunShotK : TankOperatorMachinegunShot {}
+actor TankOperatorMachinegunShotL : TankOperatorMachinegunShot {MissileType "TankMachinegunShotFXL"}
+actor TankOperatorMachinegunShotR : TankOperatorMachinegunShot {MissileType "TankMachinegunShotFXR"}
+actor TankOperatorMachinegunShotC : TankOperatorMachinegunShot {MissileType "TankMachinegunShotFXC"}
+actor TankOperatorMachinegunShotK : TankOperatorMachinegunShot {MissileType "TankMachinegunShotFXK"}
 
 
 actor TankOperatorShotGunBullet : ClassicTankMachinegunShot

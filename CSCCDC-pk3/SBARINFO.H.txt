@@ -247,14 +247,14 @@ InInventory IsVocalWoman
 	
 
 //===| Zen Trainer
-InInventory Zen_Heal1PU, 1 {Drawimage"ZTBF04",290,8;}
-InInventory Zen_Heal2PU, 1 {Drawimage"ZTBF05",290,8;}
-InInventory Zen_Power150, 1 {Drawimage"ZTBF00",290,8;}
-InInventory Zen_Power200, 1 {Drawimage"ZTBF01",290,8;}
-InInventory Zen_Defense150, 1 {Drawimage"ZTBF02",290,8;}
-InInventory Zen_Defense200, 1 {Drawimage"ZTBF03",290,8;}
-InInventory Zen_Haste110, 1 {Drawimage"ZTBF06",290,8;}
-InInventory Zen_Haste125, 1 {Drawimage"ZTBF07",290,8;}
+InInventory Zen_Heal1PU, 1 {Drawimage"ZENBF04",290,8;}
+InInventory Zen_Heal2PU, 1 {Drawimage"ZENBF05",290,8;}
+InInventory Zen_Power150, 1 {Drawimage"ZENBF00",290,8;}
+InInventory Zen_Power200, 1 {Drawimage"ZENBF01",290,8;}
+InInventory Zen_Defense150, 1 {Drawimage"ZENBF02",290,8;}
+InInventory Zen_Defense200, 1 {Drawimage"ZENBF03",290,8;}
+InInventory Zen_Haste110, 1 {Drawimage"ZENBF06",290,8;}
+InInventory Zen_Haste125, 1 {Drawimage"ZENBF07",290,8;}
 
 IsSelected ZenTrainerWep{
 	InInventory ZenTrainerAmmo1, 140 {

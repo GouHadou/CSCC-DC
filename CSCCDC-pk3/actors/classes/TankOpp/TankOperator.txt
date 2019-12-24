@@ -1,4 +1,4 @@
-actor TankOperator : ClassBase
+actor TankOperator : CustomWepMan
 {
 Player.DamageScreenColor "Black"
 Player.DisplayName "TankOperator"
