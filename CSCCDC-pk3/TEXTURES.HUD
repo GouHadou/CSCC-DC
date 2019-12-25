@@ -136,3 +136,35 @@ Sprite "SPBUD0", 320, 200
 		Translation "192:192=228:228", "198:198=95:95"
 	}
 }
+
+//Tank opp
+sprite T1BSA0,120,100{Offset -184,-94 Patch B_HNA0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
+sprite T1BSB0,140,116{Offset -184,-98 Patch B_HNB0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
+sprite T1BSC0,144,112{Offset -187,-102 Patch B_HNC0,0,0{Translation "192:192=85:85", "198:198=92:92", "199:199=143:143", "202:202=140:140", "119:119=92:92", "248:248=92:92", "195:195=4:4", "95:95=147:147", "89:89=144:144"}}
+
+//ZenTrainer HUD
+Sprite ZNTNA0, 148, 80 {OffSet -202, -103 Patch ZNTRA0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTNB0, 115, 96 {OffSet -210, -96 Patch ZNTRB0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTNC0, 115, 96 {OffSet -190, -82 Patch ZNTRC0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTND0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTNE0, 148, 80 {OffSet 30, -103 Patch ZNTRE0, 0, 0 {Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTNF0, 156, 148 {OffSet 34, -84 Patch ZNTRF0, 0, 0 {Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTNG0, 156, 148 {OffSet 50, -54 Patch ZNTRG0, 0, 0 {Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTNH0, 80, 200 {OffSet 26, -13 Patch ZNTRH0, 0, 0 {Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+Sprite ZNTNI0, 80, 200 {OffSet 48, 0 Patch ZNTRI0, 0, 0 {Translation"192:192=232:232", "198:198=233:233", "199:199=232:232"}}
+//Glowing hands
+Sprite ZNTNM0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=146:146"}}
+Sprite ZNTNN0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=147:147"}}
+Sprite ZNTNO0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=148:148"}}
+Sprite ZNTNP0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=149:149"}}
+Sprite ZNTNQ0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=150:150"}}
+Sprite ZNTNR0, 128, 128 {OffSet -177, -59 Patch ZNTRD0,0,0{Translation"192:192=232:232", "198:198=233:233", "199:199=232:232", "0:0=151:151"}}
+
+Graphic "ZENBF00",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF00",0,0}
+Graphic "ZENBF01",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF01",0,0}
+Graphic "ZENBF02",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF02",0,0}
+Graphic "ZENBF03",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF03",0,0}
+Graphic "ZENBF04",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF04",0,0}
+Graphic "ZENBF05",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF05",0,0}
+Graphic "ZENBF06",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF06",0,0}
+Graphic "ZENBF07",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF07",0,0}

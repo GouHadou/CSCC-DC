@@ -19,3 +19,12 @@ texture VESTBAR //Copy horizontal bar animated, doesn't work :(
 	pic RAINBAI5 tics 4
 	pic RAINBAI6 tics 4
 	pic RAINBAI7 tics 4
+
+//Vocalwoman
+Texture VALTBAR
+pic VALTBAR1 tics 2
+pic VALTBAR2 tics 2
+
+Texture VALTVAR
+pic VALTVAR1 tics 2
+pic VALTVAR2 tics 2

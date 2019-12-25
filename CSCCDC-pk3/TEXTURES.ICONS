@@ -257,3 +257,52 @@ Graphic "LDRMI0", 30, 30
 	YScale 2.000
 	Patch "LDRMI0", 0, 0
 }
+
+
+//TankOpp
+graphic TANKACTI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch TANKICON, 0, 0
+}
+
+graphic TANKDACT, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch FOOTICON, 0, 0
+}
+
+//Vocalwoman
+graphic VOCAL1, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPA0, 0, 0
+}
+
+graphic VOCAL2, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPB0, 0, 0
+}
+
+graphic VOCAL3, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch VWEPC0, 0, 0
+}
+
+graphic MUNOZ0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MUNOZ0, 0, 0
+}
+
+
+// Zen Trainer
+graphic ClouIcon,30,30{XScale 2.0 YScale 2.0 Patch ZNITA0,0,0}

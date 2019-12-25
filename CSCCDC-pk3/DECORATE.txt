@@ -5,6 +5,8 @@
 #include "actors/baseactors.txt"
 
 #include "actors/inventory/CustomHeal.txt"
+#include "actors/inventory/GiverPackage.txt"
+#include "actors/inventory/HealerUtilities.txt"
 
 #include "actors/classes/Megaman/MegamanClass.txt"
 
@@ -37,6 +39,20 @@
 #include "actors/classes/laggyblazko/Tommygun.txt"
 #include "actors/classes/laggyblazko/CorpFragGrenade.txt"
 #include "actors/classes/laggyblazko/CorpGrandDad.txt"
+
+//===|VocalWoman
+#include "actors/Classes/VocalWoman/VocalWoman.txt"
+#include "actors/Classes/VocalWoman/VocalMic.txt"
+
+//===|ZenTrainer
+#include "actors/Classes/ZenTrainer/ZenTrainer.txt"
+#include "actors/Classes/ZenTrainer/ZenTrainerWeapon.txt"
+
+//===|TankOpp
+#include "actors/Classes/TankOpp/TankOperator.txt"
+#include "actors/Classes/TankOpp/TankOperatorParts.txt"
+#include "actors/Classes/TankOpp/TankOperatorWeapon.txt"
+
 
 //===|Messatsu
 #include "actors/classes/messatsu/messclass.txt"
