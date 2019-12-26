@@ -933,3 +933,51 @@ Script "OverhealDrain" (Int Tick)
 {
 if(GetActorProperty(0,APROP_HEALTH) > Tick){SetActorProperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH)-Tick));}
 }
+
+
+//Korby
+Script "KorbyBlueMagicAbsorb" (void)
+{
+int PlayerTID = ActivatorTID();
+int BeforeHealth = CheckInventory("KorbyHealthFlag");
+If (BeforeHealth <= 0){Terminate;}
+SetPlayerProperty(0, 1, PROP_BUDDHA);
+int BMHealth = 999;
+int CurrentHealth = BMHealth;
+int Diff= 0;
+int BMValue = 0;
+SetActorProperty(PlayerTID, APROP_Health, BMHealth);
+TakeActorInventory(PlayerTID, "KorbyHealthFlag", 999);
+While(CheckInventory("BMHoldFlag"))
+	{
+	Diff = CurrentHealth - GetActorProperty(PlayerTID, APROP_Health);
+	If(BMValue > 0 && Diff == 0){break;}
+	If(Diff > 0)
+		{
+		BMValue+=Diff;
+		CurrentHealth = GetActorProperty(PlayerTID, APROP_Health);
+		If(BMValue > 100){break;} //Can't absorb pits or quickbeams.
+		Delay(5);
+		}
+	Delay(1);
+	}
+If(BMValue > 0)
+	{
+	//PrintBold(i:BMValue);
+	GiveActorInventory(PlayerTID, "BMFlag", 1);
+	If(BMValue >= 2 && BMValue < 10){GiveActorInventory(PlayerTID, "THOUF", 1);}
+	If(BMValue >= 10 && BMValue < 20){GiveActorInventory(PlayerTID, "AQUAF", 1);}
+	If(BMValue >= 20 && BMValue < 30){GiveActorInventory(PlayerTID, "LIMIF", 1);}
+	If(BMValue >= 30 && BMValue < 40){GiveActorInventory(PlayerTID, "FLAMF", 1);}
+	If(BMValue >= 40 && BMValue < 50){GiveActorInventory(PlayerTID, "BLASF", 1);}
+	If(BMValue >= 50 && BMValue < 60){GiveActorInventory(PlayerTID, "FLASF", 1);}
+	If(BMValue >= 60 && BMValue < 70){GiveActorInventory(PlayerTID, "TIMEF", 1);}
+	If(BMValue >= 70 && BMValue < 80){GiveActorInventory(PlayerTID, "WHITF", 1);}
+	If(BMValue >= 80 && BMValue < 90){GiveActorInventory(PlayerTID, "MANTF", 1);}
+	If(BMValue >= 90 && BMValue < 100){GiveActorInventory(PlayerTID, "SELFFGive", 1);}
+	If(BMValue >= 100){GiveActorInventory(PlayerTID, "BADBF", 1);}
+	If(BMValue == 1){GiveActorInventory(PlayerTID, "SELFF", 1);} //Korby, WHY?!
+	}
+SetActorProperty(PlayerTID, APROP_Health, BeforeHealth);
+SetPlayerProperty(0, 0, PROP_BUDDHA);
+}

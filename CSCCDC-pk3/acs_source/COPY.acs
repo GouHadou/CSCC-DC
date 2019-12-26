@@ -44,6 +44,12 @@ str FinalMorph;
 bool CopyWepCheck = false;
 Bool MorphCheck = false;
 
+If(CheckInventory("BMHoldFlag"))
+	{
+	TakeInventory("BMHoldFlag", 1);
+	//While(GetActorProperty(0, APROP_HEALTH)==999){Delay(1);}
+	Delay(3);
+	}
 
 Switch(MorphMode)
 	{
