@@ -54,8 +54,8 @@ If(CheckInventory("BMHoldFlag"))
 Switch(MorphMode)
 	{
 	Case 0:
-	CopyPlayer = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Target);
-	CopyTarget = ACS_NamedExecuteWithResult("GetTarget2", AAPTR_Tracer);
+	CopyPlayer = ACS_NamedExecuteWithResult("core_gettarget");
+	CopyTarget = ACS_NamedExecuteWithResult("core_gettracer");
 	if(CopyPlayer == 0 || CopyTarget == 0){terminate;}
 	SetActivator(CopyTarget);
 	CopyWeapon = GetWeapon();
@@ -221,13 +221,6 @@ While(CheckInventory("CopyMorphTimer") && GetActorProperty(0, APROP_HEALTH) > 0)
 	Delay(35);
 	}
 If(!CheckWeapon("CopyWeapon")){ACS_NamedExecuteAlways("CopyMorph", 0, 1);}
-}
-Script "GetTarget2" (int Target)
-{
-
-SetActivator(0, Target);
-int ReturnTID = ActivatorTID();
-SetResultValue(ReturnTID);
 }
 
 //Script to handle Copy's speed modifications when morphed

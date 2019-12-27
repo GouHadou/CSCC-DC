@@ -31,6 +31,7 @@ Obituary "$OB_COPYCLOSE"
 Tag "$TAG_COPYBUSTER"
 Inventory.Pickupmessage "THE ULTIMATE IN COPY TECHNOLOGY!" 
 dropitem "CopyRandomWeapon"
+inventory.icon "COPYWPI"
 States
 {
 Spawn:
@@ -105,12 +106,13 @@ stop
 
 actor CopyMainShot : BasicFastProjectile
 {
+-MTHRUSPECIES
 radius 5
 height 5
 +HITTRACER
 +DONTREFLECT
 speed 80
-damagetype "CopyMainShot"
+damagetype "Buster"
 Obituary "$OB_COPYSHOT"
 damage (2)
 scale 2.5
@@ -128,7 +130,6 @@ stop
 
 actor CopyAltShot : CopyMainShot
 {
-damagetype "CopyAltShot"
 speed 40
 +SEEKERMISSILE
 reactiontime 60

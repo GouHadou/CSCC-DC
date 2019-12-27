@@ -281,22 +281,14 @@ ACS_NamedExecuteAlways("CorpWeaponCooldown",0);
 
 //View recoil script
 Script "CorpRecoil" (int horiz, int vert, int duration) CLIENTSIDE
-//Horizontal angle, vertical angle and duration in tics
-//(not counting 1 pause tic and comeback)
-//MUST BE CLIENTSIDE IF ALL IT DOES IS MOVE PLAYER VIEW!
 {
-int i, theHecc, oldMove, moveGen, moveAngle, movePitch; //bullcrap
-//Note to self: define behavior for 0 duration
+int i, theHecc, oldMove, moveGen, moveAngle, movePitch; 
 moveGen = 0;
 for (i = 1; i <= duration; i++)
 {
 	oldMove = moveGen;
-	//What is trigonometry iunno
 	theHecc = sin(((i*0.5)/duration) - 0.25);
-	//log(f:theHecc);
-	//More math bullcrap
 	moveGen = ((theHecc) + 1.0)/2;
-	//log(f:moveGen, s:" ", f:theHecc, s:" ", f:oldMove);
 	moveAngle = fixedmul(horiz, moveGen - oldMove);
 	movePitch = fixedmul(vert, moveGen - oldMove);
 	
@@ -305,8 +297,6 @@ for (i = 1; i <= duration; i++)
 	delay(1);
 }
 if (getCVAR("CSCCB_CL_RecoilReset") == false) terminate;
-//view reset
-//print(s:"lol");
 delay(1);
 moveGen = 0;
 horiz = horiz*(-1);
@@ -324,13 +314,10 @@ for (i = 1; i <= duration; i++)
 	setActorPitch(0, getActorPitch(0) + moveAngle);
 	delay(1);
 }
-
 }
 
-//////////////////////////////////////Corporal Over and out//////////////////////////////////
-
-//Messatsu Scripts
-Script "MessParryCheck" (void)
+//Messatsu
+Script "CSACS_MessParryCheck" (void)
 {
 int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
 int InputOldButtons = InputButtons;
@@ -346,7 +333,7 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsM
 	}
 
 }
-Script "DemonFlipCheck" (void)
+Script "CSACS_DemonFlipCheck" (void)
 {
 int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
 int InputOldButtons = InputButtons;
@@ -370,7 +357,7 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("Dem
 }
 
 
-Script "MessParryHealth" (int CurrentHealth)
+Script "CSACS_MessParryHealth" (int CurrentHealth)
 {
 int PlayerTID = ActivatorTID();
 
@@ -394,7 +381,7 @@ Do
 While(CheckInventory("MessParry") || CheckInventory("ParryBlock"));
 }
 
-Script "EnemyProximity" (int distance)
+Script "CSACS_MessEnemyProximity" (int distance)
 {
 int ReturnValue = 0;
 int PlayerTID = ActivatorTID();
@@ -451,7 +438,7 @@ For(int i = 0; i < 64; i++)
 SetResultValue(ReturnValue);
 }
 
-Script "MessDamageAmmo" (void)
+Script "CSACS_MessDamageAmmo" (void)
 {
 Delay(1);
 int PlayerTID = ActivatorTID();
@@ -474,10 +461,9 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckInventory("MessatsuW
 		}
 	}
 }
-//End Messatsu Scripts
 
-//Ice / Sparky script
-Script "IceSparkyFusion" (void)
+//Ice/Sparky
+Script "CSACS_IceSparkyFusion" (void)
 {
 Delay(1);
 int PlayerTID = ActivatorTID();
@@ -512,8 +498,7 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && (CheckInventory("IceWep")
 	}
 }
 
-//speed / jump changing
-script "IceSparkSwap" (int speed)
+script "CSACS_IceSparkSwap" (int speed)
 {
 
 Switch(speed)
@@ -530,13 +515,8 @@ Switch(speed)
 	}
 
 }
-//End Ice Sparky
 
-//██████████████████████████████████████████TankLib████████████████████████████████████████
-
-//int ServerMAX = 32;
-
-
+//Tank Operator
 function bool checkForMovement(int buttons) {
 	int result = 1;
 
@@ -571,26 +551,7 @@ function int fdistanceVal (int x, int y, int z)
 	return len;
 }
 
-//██████████████████████████████████████████TankTools████████████████████████████████████████
-
-
-
-script "TANKT_SetProp" (int prop, int val) {SetActorProperty(0,prop,val);}
-script "TANKT_GetProp" (int TID, int prop) {SetResultValue(GetActorProperty(TID,prop));}
-script "TANKT_GetDistanceFromOwner" (void) {SetResultValue( xyzDistance(0,ACS_ExecuteWithResult(257)) );}
-
-script "TANKT_ChangeUserVar" (int Which, int Value) {
-	Switch(Which) {
-	Case 1:
-	SetUserVariable(0,"user_TV",GetUserVariable(0,"user_TV")+Value);
-	break;
-	Case 2:
-	SetUserVariable(0,"user_TTSPD",GetUserVariable(0,"user_TTSPD")+Value);
-	break;
-	}
-}
-
-script "TANKT_ProjectilePort" (int maxDist) //Borrowed from cbm
+script "CSACS_Tank_ProjectilePort" (int maxDist) //Borrowed from cbm
 {
 int target = ACS_ExecuteWithResult(257);
 
@@ -638,17 +599,11 @@ while (true) {
 }
 }
 
-//██████████████████████████████████████████Tank████████████████████████████████████████
+script "CSACS_Tank_CheckButtons" (void) {SetResultValue(checkForMovement(GetPlayerInput(-1, INPUT_BUTTONS)));}
+script "CSACS_Tank_ChangeAngle" (int tid, int newangle) {SetActorAngle(tid,GetActorAngle(tid)+newangle);}
 
-//====================
-script "TANK_CHECKBUTTONS" (void) {SetResultValue(checkForMovement(GetPlayerInput(-1, INPUT_BUTTONS)));}
-script "TANK_CHANGEANGLE" (int tid, int newangle) {SetActorAngle(tid,GetActorAngle(tid)+newangle);}
-
-script "TANK_SETTANKSPECIES" (int enable)
+script "CSACS_Tank_SetTankSpecies" (int enable)
 {
-	//int zview = GetActorProperty(0,APROP_ViewHeight) >> 16;
-	//Log(i:zview); //Original ZView is 41 and not 42... derp. 
-	
 	Switch(enable) {
 	Case 1:
 	SetActorProperty(0,APROP_ViewHeight,64.0);
@@ -659,18 +614,7 @@ script "TANK_SETTANKSPECIES" (int enable)
 	}
 }
 
-script "TANK_CHECKTARGET" (void)//This is for projectiles to check if their owner spectated, disconnected, or is dead.
-{
-	SetActivatorToTarget(0);
-	//log(s:"Player #? ",i:PlayerInGame(PlayerNumber()));
-	//log(s:"Is Dead? ",i:CheckInventory("IsDead"));
-	//log(s:"In Game? ",i:PlayerInGame(PlayerNumber()));
-	if(PlayerNumber() == -1 || CheckInventory("IsDead") || !PlayerInGame(PlayerNumber())){
-		SetResultValue(0);
-	}
-}
-
-script "TANK_SPEEDSTER" (int tid, int tspeed)
+script "CSACS_Tank_Speedster" (int tid, int tspeed)
 {
 	Switch(tspeed) {
 	
@@ -682,258 +626,6 @@ script "TANK_SPEEDSTER" (int tid, int tspeed)
 	break;
 	}
 }
-
-
-//██████████████████████████████████████████|RadiusGive|████████████████████████████████████████
-
-script "RadiusGiveCSCC" (int GiveID, int GiveRadius, int GiveType)
-{ 
-int Target_TID;
-int Target_Distance;
-int FiringPlayer;
-int PlayersTeam;
-Bool GiveClearance;
-//int IsTeamGame = ACS_ExecuteWithResult(975, 1);
-//if(GiveRadius == 0){terminate;}
-
-// GiveType 1 = self + Friendlies
-// GiveType 2 = Friendlies only
-// GiveType 3 = Self only
-// GiveType 4 = Enemies only
-// GiveType 5 = self + Enemies
-// GiveType 6 = All but self
-// GiveType 7 = All
-//if(GiveType << 1){GiveType = 1;}
-//if(GiveType >> 7){GiveType = 7;}
-If(ActivatorTID() <= 999)
-	{
-	FiringPlayer= ACS_ExecuteWithResult(257, 0); //Returns the target of the activator
-	}
-else
-	{
-	FiringPlayer=ActivatorTID();
-	}
-PlayersTeam = GetPlayerInfo(FiringPlayer-1000, PLAYERINFO_TEAM);
-For(int i = 0;i < ServerMax; i++)
-	{
-	GiveClearance = True;
-	If(!PlayerInGame(i)){Continue;}
-	If(ACS_ExecuteWithResult(975, 1))
-		{
-		switch(GiveType)
-			{
-			case 1:
-			If(PlayersTeam != GetPlayerInfo(i, PLAYERINFO_TEAM)){Continue;}
-			Break;
-			
-			case 2:
-			If(PlayersTeam != GetPlayerInfo(i, PLAYERINFO_TEAM) || (PlayersTeam == GetPlayerInfo(i, PLAYERINFO_TEAM) && i == FiringPlayer-1000)){Continue;}
-			Break;
-			
-			case 3:
-			If(PlayersTeam != GetPlayerInfo(i, PLAYERINFO_TEAM) || (i != FiringPlayer-1000)){Continue;}
-			Break;
-
-			case 4:
-			If(PlayersTeam == GetPlayerInfo(i, PLAYERINFO_TEAM) || i == FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 5:
-			If(PlayersTeam == GetPlayerInfo(i, PLAYERINFO_TEAM) && i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 6:
-			If(i == FiringPlayer-1000){Continue;}	
-			Break;
-			}
-		}
-	else
-		{
-		switch(GiveType)
-			{
-			case 1:
-			If(i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 2:
-			If(i == FiringPlayer-1000 || i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 3:
-			If(i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 4:
-			If(i == FiringPlayer-1000){Continue;}
-			Break;
-			
-			Default:
-			//If(i == FiringPlayer-1000 || i != FiringPlayer-1000){Continue;}
-			Break;
-			}
-		}
-	Target_TID = i+1000;
-		If(xyzDistance(0,Target_TID) < GiveRadius) // && FiringPlayer!=Target_TID
-			{
-			GiveActorInventory(Target_TID,"PackageID", GiveID);
-			GiveActorInventory(Target_TID,"GivePackage", 1);
-			}
-		}
-	
-}
-//██████████████████████████████████████████|Healer Utilities|████████████████████████████████████████
-
-script "MedivisionScript" (VOID) CLIENTSIDE
-{ 
-int Target_TID;
-//int Target_Distance;
-//int Activeplayer;
-int PlayersTeam;
-str TeamTag; 
-
-Switch(PlayerTeam())
-	{
-	Case 0: TeamTag = "_BLUE"; Break;
-	Case 1: TeamTag = "_RED"; Break;
-	}
-
-while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
-	{
-	Delay(1);
-PlayersTeam = GetPlayerInfo(ActivatorTID()-1000, PLAYERINFO_TEAM);
-For(int p = 0;p < ServerMax; p++)
-	{
-	If(!PlayerInGame(p)){continue;}
-	if(p+1000 == ActivatorTID()){continue;}
-	if(checkWeapon("RespawnCamera")&&GetActorProperty(0,APROP_HEALTH)>0){continue;}
-	If(PlayersTeam != GetPlayerInfo(p, PLAYERINFO_TEAM)){continue;}
-	
-	Target_TID = p+1000;
-	If((xyzDistance(0,Target_TID) < 900) && Checksight(0,Target_TID,0))
-		{
-		SpawnForced(strparam(s:TinyBarHealth(Target_TID),s:TeamTag),GetActorX(Target_TID),GetActorY(Target_TID),GetActorZ(Target_TID) + (65 << 16));
-		//GiveActorInventory(Target_TID,"Tinybarspawner", 1);
-		}
-	}
-	}
-}
-
-
-Str TinyBarSprite[21] = {
-"Tinybar0",
-"Tinybar1",
-"Tinybar2",
-"Tinybar3",
-"Tinybar4",
-"Tinybar5",
-"Tinybar6",
-"Tinybar7",
-"Tinybar8",
-"Tinybar9",
-"TinyBar10",
-"Tinybar11",
-"Tinybar12",
-"Tinybar13",
-"Tinybar14",
-"Tinybar15",
-"Tinybar16",
-"Tinybar17",
-"Tinybar18",
-"Tinybar19",
-"TinyBar20"
-};
-
-function str TinyBarHealth (int TargTID)
-{
-int output;
-int HealthPercent;
-int PlayerCurrentHealth;// = GetActorProperty(0,APROP_Health);
-int PlayerMaxHealth;// = GetActorProperty(0,APROP_SpawnHealth);
-int OverHealth;
-
-	if(GetActorProperty(TargTID,APROP_HEALTH)<=0){PlayerCurrentHealth = 1; }
-		Else{PlayerCurrentHealth = GetActorProperty(TargTID,APROP_Health);}
-	if(GetActorProperty(TargTID,APROP_SpawnHealth)<=0){PlayerMaxHealth = 100; }
-		Else{PlayerMaxHealth = GetActorProperty(TargTID,APROP_SpawnHealth);}
-		
-HealthPercent = ((PlayerCurrentHealth*100)/PlayerMaxHealth);
-OverHealth = HealthPercent-100;
- if(OverHealth < 0){OverHealth = 0;}
-  if(HealthPercent > 100){HealthPercent = 100;}
-
-HealthPercent = HealthPercent / 10;
-OverHealth = OverHealth / 5;
-
-HealthPercent =  HealthPercent + OverHealth;
-if(HealthPercent > 20){HealthPercent = 20;}
-if(HealthPercent < 0){HealthPercent = 0;}
-return (TinyBarSprite[HealthPercent]);
-}
-
-Script "HealRamp" (Int HealMin, Int HealMax)
-{
-int timeMax = 175;
-int rampPerc = (GetActorPowerupTics(0,"HealStall_A")*100)/timeMax;
-//log(i:GetActorPowerupTics(0,"HealStall_A"));
-//log(i:rampPerc);
-int output = (HealMax*(100 - rampPerc))/100;
-//log(i:output);
-
-if (output < HealMin){output = HealMin;}
-SetResultValue(output);
-}
-
-
-Script "Actor_Classifier" (int TID, int CheckType)
-{
-bool output;
-
-switch(CheckType)
-	{
-	case 0: if ((ClassifyActor(TID) & ACTOR_NONE)){output = true;} break;
-	case 1: if ((ClassifyActor(TID) & ACTOR_WORLD)){output = true;} break;
-	case 2: if ((ClassifyActor(TID) & ACTOR_PLAYER)){output = true;} break;
-	case 3: if ((ClassifyActor(TID) & ACTOR_BOT)){output = true;} break;
-	case 4: if ((ClassifyActor(TID) & ACTOR_VOODOODOLL)){output = true;} break;
-	case 5: if ((ClassifyActor(TID) & ACTOR_MONSTER)){output = true;} break;
-	case 6: if ((ClassifyActor(TID) & ACTOR_ALIVE)){output = true;} break;
-	case 7: if ((ClassifyActor(TID) & ACTOR_DEAD)){output = true;} break;
-	case 8: if ((ClassifyActor(TID) & ACTOR_MISSILE)){output = true;} break;
-	case 9: if ((ClassifyActor(TID) & ACTOR_GENERIC)){output = true;} break;
-	}
-
-setresultvalue(output);
-}
-
-Script "HealthPercent" (int TargTID, int Type, int perval)
-{
-int HealthPercent;
-int PlayerCurrentHealth;
-int PlayerMaxHealth;
-
-	if(GetActorProperty(TargTID,APROP_HEALTH)<=0){PlayerCurrentHealth = 1; }
-		Else{PlayerCurrentHealth = GetActorProperty(TargTID,APROP_Health);}
-	if(GetActorProperty(TargTID,APROP_SpawnHealth)<=0){PlayerMaxHealth = 1; }
-		Else{PlayerMaxHealth = GetActorProperty(TargTID,APROP_SpawnHealth);}
-		
-
-// Type 0 = current percentage of health
-// Type 1 = Value of Health at that percentage
-
-Switch (Type)
-	{
-	default : HealthPercent = ((PlayerCurrentHealth*100)/PlayerMaxHealth); Break;
-	Case 1 : HealthPercent = (fixeddiv(PlayerMaxHealth,100)*perval) >> 16; Break;
-	}
-
-SetResultValue(HealthPercent);
-}
-
-Script "OverhealDrain" (Int Tick)
-{
-if(GetActorProperty(0,APROP_HEALTH) > Tick){SetActorProperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH)-Tick));}
-}
-
 
 //Korby
 Script "KorbyBlueMagicAbsorb" (void)

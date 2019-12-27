@@ -13,6 +13,13 @@ Graphic "BANISHI", 30, 30 //Copy Banish
 	Patch "BANUA0", 0, 0
 }
 
+graphic COPYWPI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch WEAPX0, 0, 0
+}
+
 graphic UNXICON, 30, 30 //Unix Knife
 {
    XScale 2.0

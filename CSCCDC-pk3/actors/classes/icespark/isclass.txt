@@ -222,7 +222,7 @@ TNT1 A 0
 TNT1 A 0 A_GiveInventory("IceClassAmmo", 100)
 TNT1 A 0 A_GiveInventory("SparkyClassAmmo", 100)
 TNT1 A 0 A_GiveInventory("FusionStock", 1)
-TNT1 A 0 ACS_NamedExecuteAlways("IceSparkyFusion", 0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_IceSparkyFusion", 0)
 stop
 }
 }
@@ -241,8 +241,8 @@ TNT1 A 0 A_GiveInventory("IceSparkyClassItems", 1)
 TNT1 A 0 A_GiveInventory("DocToadHealthBar",1)
 TNT1 A 0 A_GiveInventory("IsIce", 1)
 TNT1 A 0 A_GiveInventory("IceArmor",1)
-TNT1 A 0 ACS_NamedExecuteAlways("IceSparkSwap",0,0)
-TNT1 A 0 ACS_NamedExecuteAlways("IceSparkyFusion", 0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_IceSparkSwap",0,0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_IceSparkyFusion", 0)
 stop
 }
 }
@@ -261,8 +261,8 @@ Pickup:
 TNT1 A 0 A_GiveInventory("IceSparkyClassItems", 1)
 TNT1 A 0 A_GiveInventory("IsSparky", 1)
 TNT1 A 0 A_GiveInventory("GlassHealthBar",1)
-TNT1 A 0 ACS_NamedExecuteAlways("IceSparkSwap",0,1)
-TNT1 A 0 ACS_NamedExecuteAlways("IceSparkyFusion", 0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_IceSparkSwap",0,1)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_IceSparkyFusion", 0)
 stop
 }
 }

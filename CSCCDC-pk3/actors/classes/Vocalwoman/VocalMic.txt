@@ -13,9 +13,8 @@ Weapon.AmmoGive2 100
 
 Weapon.SlotNumber 1
 Obituary "%o was struck by %k's powerful voice."
-Tag "Microphone [Offense]"
+Tag "Offense Microphone"
 inventory.icon "VOCAL1"
-//Dropitem ""
 States
 {
 Ready:
@@ -92,7 +91,7 @@ loop
 actor VocalMicBoss2 : VocalMicBoss1
 {
 Weapon.SlotNumber 2
-Tag "Microphone [Support]"
+Tag "Support Microphone"
 inventory.icon "VOCAL2"
 States
 {
@@ -347,8 +346,8 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("vocal/song","Vocal",1)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalHeal,VocHealRad,2)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalSelfHeal,VocHealRad,3)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalHeal,VocHealRad,2)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalSelfHeal,VocHealRad,3)
 TNT1 A 0 A_SpawnItemEx("VocalHealTrail")
 TNT1 A 0 A_SpawnItemEx("VocalHealFX")
 VWMN E 1 A_Countdown
@@ -377,8 +376,8 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("vocal/song","Vocal",1)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalHeal,VocHealRad,2)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalSelfHeal,VocHealRad,3)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalHeal,VocHealRad,2)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalSelfHeal,VocHealRad,3)
 TNT1 A 0 A_SpawnItemEx("VocalHealTrailB")
 TNT1 A 0 A_SpawnItemEx("VocalHealFXB")
 VWMN E 1 A_Countdown
@@ -403,8 +402,8 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("vocal/song","Vocal",1)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalHeal,VocHealRad,2)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalSelfHeal,VocHealRad,3)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalHeal,VocHealRad,2)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalSelfHeal,VocHealRad,3)
 TNT1 A 0 A_SpawnItemEx("VocalHealTrailR")
 TNT1 A 0 A_SpawnItemEx("VocalHealFXR")
 VWMN E 1 A_Countdown
@@ -429,8 +428,8 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("vocal/song","Vocal",1)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalHeal,VocHealRad,2)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalSelfHeal,VocHealRad,3)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalHeal,VocHealRad,2)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalSelfHeal,VocHealRad,3)
 TNT1 A 0 A_SpawnItemEx("VocalHealTrailG")
 TNT1 A 0 A_SpawnItemEx("VocalHealFXG")
 VWMN E 1 A_Countdown
@@ -455,8 +454,8 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("vocal/song","Vocal",1)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalHeal,VocHealRad,2)
-TNT1 A 0 ACS_NamedExecuteAlways("RadiusGiveCSCC",0,Item_VocalSelfHeal,VocHealRad,3)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalHeal,VocHealRad,2)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_VocalSelfHeal,VocHealRad,3)
 TNT1 A 0 A_SpawnItemEx("VocalHealTrailY")
 TNT1 A 0 A_SpawnItemEx("VocalHealFXY")
 VWMN E 1 A_Countdown
@@ -528,7 +527,7 @@ Spawn:
 TNT1 A 0
 stop
 Pickup:
-TNT1 A 0 A_JumpIf(CallACS("HealthPercent",0)>=100,"Nope")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=100,"Nope")
 
 TNT1 A 0 A_Jumpifinventory("VocalHealTimer",1,2)
 TNT1 A 0 A_SpawnItemEx("VocalHealWatcher")
@@ -548,7 +547,7 @@ actor VocalHealerSelf : VocalHealer
 States
 {
 Pickup:
-TNT1 A 0 A_JumpIf(CallACS("HealthPercent",0)>=100,"Nope")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=100,"Nope")
 
 TNT1 A 0 A_Jumpifinventory("VocalHealTimer",1,2)
 TNT1 A 0 A_SpawnItemEx("VocalHealWatcherSelf")
@@ -610,8 +609,8 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0 A_Jumpifinventory("CutterFlag",999,"Nope")
-TNT1 A 0 A_JumpIf(CallACS("HealthPercent",0)>=100,"Nope")
-LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("Actor_Classifier",0,2) == TRUE, "HealMe")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=100,"Nope")
+LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_ActorClassifier",0,2) == TRUE, "HealMe")
 stop
 HealMe:
 TNT1 A 0 A_Jumpifinventory("Vocalhealdelay",1,"Nope")
@@ -635,8 +634,8 @@ States
 {
 Pickup:
 TNT1 A 0 A_Jumpifinventory("CutterFlag",999,"Nope")
-TNT1 A 0 A_JumpIf(CallACS("HealthPercent",0)>=100,"Nope")
-LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("Actor_Classifier",0,2) == TRUE, "HealMe")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=100,"Nope")
+LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_ActorClassifier",0,2) == TRUE, "HealMe")
 stop
 HealMe:
 TNT1 A 0 A_Jumpifinventory("Vocalhealdelay",1,"Nope")
