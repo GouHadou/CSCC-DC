@@ -26,10 +26,16 @@ Goto Ready+1
 ParryAttempt:
 GHAD A 0 A_GiveInventory("MessParry", 1)
 GHAD A 0 A_ChangeVelocity(0.25*momx, 0.25*momy, 0.5*momz, CVF_REPLACE)
-GHAD A 0 SetPlayerProperty(0, 1, 4)
+GHAD A 0 SetPlayerProperty(0, 1, 1)
 GHAD A 0 A_GiveInventory("MessParryAttempt", 1)
 GHPA AC  1
-GHAD A 0 A_SpawnItemEx("GouShoryuFX", 48, -12, 32)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 252)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 288)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 324)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 0)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 36)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 72)
+
 Goto ParryWait
 ParryWait:
 GHPA D 1 
@@ -38,7 +44,7 @@ GHPA D 1
 GHPA D 1 A_JumpIfInventory("ParryStrength", 1, 2)
 GHPA D 7
 GHPA CBA 1
-GHAD A 0 SetPlayerProperty(0, 0, 4)
+GHAD A 0 SetPlayerProperty(0, 0, 1)
 GHAD A 0 A_TakeInventory("MessParryFlag", 1)
 GHAD A 0 A_ClearRefire
 Goto Ready+1
@@ -1043,6 +1049,45 @@ wait
 }
 }
 
+actor ParryFX : Gouhadou
+{
++THRUACTORS
++CLIENTSIDEONLY
+Scale 1.5
+States
+{
+Spawn:
+TNT1 A 0 
+Goto "Super::Spawn+1"
+SpawnLoop:
+GHFX A 1 A_Warp(AAPTR_TARGET, 48, -12, 32, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION|WARPF_USECALLERANGLE)
+GHFX A 0 A_JumpIfInventory("MessParry", 1,1, AAPTR_TARGET)
+Goto Death
+GHFX A 1 A_Warp(AAPTR_TARGET, 48, -12, 32, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION|WARPF_USECALLERANGLE)
+GHFX A 0 A_JumpIfInventory("MessParry", 1,1, AAPTR_TARGET)
+Goto Death
+GHFX B 1 A_Warp(AAPTR_TARGET, 48, -12, 32, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION|WARPF_USECALLERANGLE)
+GHFX B 0 A_JumpIfInventory("MessParry", 1,1, AAPTR_TARGET)
+Goto Death
+GHFX B 1 A_Warp(AAPTR_TARGET, 48, -12, 32, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION|WARPF_USECALLERANGLE)
+GHFX B 0 A_JumpIfInventory("MessParry", 1,1, AAPTR_TARGET)
+Goto Death
+GHFX C 1 A_Warp(AAPTR_TARGET, 48, -12, 32, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION|WARPF_USECALLERANGLE)
+GHFX C 0 A_JumpIfInventory("MessParry", 1,1, AAPTR_TARGET)
+Goto Death
+GHFX C 1 A_Warp(AAPTR_TARGET, 48, -12, 32, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION|WARPF_USECALLERANGLE)
+GHFX C 0 A_JumpIfInventory("MessParry", 1,1, AAPTR_TARGET)
+Goto Death
+GHFX C 0
+loop
+Death:
+"----" A 0 A_Warp(AAPTR_TARGET, 48, -12, 32, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION|WARPF_USECALLERANGLE)
+"----" A 0 A_ChangeFlag("NOGRAVITY", 0)
+"----" A 1 A_Fadeout
+Goto Death+1
+
+}
+}
 actor MessatsuGouhadou : Gouhadou
 {
 damagetype "GouZankuu"
