@@ -40,7 +40,7 @@ TNT1 A 0 A_GiveToTarget("OverHealerUpdate",1)
 TNT1 A 1 A_Setuservar("user_Decay",user_Decay+1)
 TNT1 A 0 A_JumpIfintargetinventory("OverhealDelay",1,2)
 TNT1 A 0 A_Jumpif(user_Decay >= 5, "DownTick")
-TNT1 A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",0,1)==0,"Death")
 goto Spawn+2
 DownTick:
 TNT1 A 0 A_Setuservar("user_Decay",0)

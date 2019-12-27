@@ -241,7 +241,7 @@ script "core_disconnectmusic" (int player) DISCONNECT
 }
 
 //Check if Target is out of commision
-script "core_targetexists" (int tracer)//This is for projectiles to check if their owner spectated, disconnected, or is dead.
+script "core_targetexists" (int tracer, int IgnoreCopy)//This is for projectiles to check if their owner spectated, disconnected, or is dead.
 {
 	bool result = 1;
 	
@@ -252,7 +252,10 @@ script "core_targetexists" (int tracer)//This is for projectiles to check if the
 	//log(s:"Is Dead? ",i:CheckInventory("IsDead"));
 	//log(s:"In Game? ",i:PlayerInGame(PlayerNumber()));
 	if(ClassifyActor(0) & ACTOR_PLAYER){
-		if(PlayerNumber() == -1 || CheckInventory("IsDead") || !PlayerInGame(PlayerNumber()) || CheckInventory("CopyRobotUnmorphed")){
+		if(PlayerNumber() == -1 || CheckInventory("IsDead") || !PlayerInGame(PlayerNumber())){
+			result = 0; 
+		}
+		if(IgnoreCopy == 0 && CheckInventory("CopyRobotUnmorphed")){
 			result = 0; 
 		}
 	}
