@@ -31,6 +31,7 @@ Obituary "$OB_COPYCLOSE"
 Tag "$TAG_COPYBUSTER"
 Inventory.Pickupmessage "THE ULTIMATE IN COPY TECHNOLOGY!" 
 dropitem "CopyRandomWeapon"
+inventory.icon "COPYWPI"
 States
 {
 Spawn:

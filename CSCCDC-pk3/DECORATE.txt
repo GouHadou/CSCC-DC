@@ -1,5 +1,4 @@
 #include "actors/classbases.txt"
-#include "actors/CustomWepMan.txt"
 #include "actors/CSCCConstants.txt"
 #include "actors/baseflags.txt"
 #include "actors/baseactors.txt"
@@ -69,6 +68,10 @@
 #include "actors/classes/LordDamager/MissilePunch.txt"
 #include "actors/classes/LordDamager/LaserCannon.txt"
 #include "actors/classes/LordDamager/SmogCannon.txt" //inactive
+
+//==|Gee
+#include "actors/classes/Gee/GeeClass.txt"
+#include "actors/classes/Gee/GeeWep.txt"
 
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

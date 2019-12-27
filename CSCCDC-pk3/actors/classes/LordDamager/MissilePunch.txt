@@ -104,6 +104,7 @@ MSPN A 1
 Goto Reload
 Flash:
 TNT1 A 7
+TNT1 A 0 A_GiveInventory("LaserCannonAmmo",3)
 TNT1 A 0 A_JumpIfInventory("RamAmmoBuffer",1,2)
 TNT1 A 0 A_GiveInventory("LDRamEnergy",1)
 TNT1 A 0
@@ -246,7 +247,7 @@ damagetype "PMissile"
 Speed 0
 radius 8
 height 8
-scale 4.5
+scale 2.5
 States
 {
 Spawn:
@@ -389,7 +390,7 @@ actor LDRamActivator : CustomInventory
 inventory.amount 1
 inventory.maxamount 1
 inventory.icon "LDRMI0"
-+INVENTORY.UNDROPPABLE
+//+INVENTORY.UNDROPPABLE copy robot wills it this way
 +COUNTITEM
 +INVBAR
 states

@@ -1,0 +1,87 @@
+actor GeeClass : CustomWepMan
+{
+player.displayname "Gee"
+player.soundclass  "gee"
+
+player.startitem "GeeBurstBoss2"
+player.startitem "GeeWeaponPackage"
+player.startitem "GeeClassItems"
+
+player.forwardmove 0.6, 0.6
+player.sidemove 0.58, 0.58
+player.jumpz 14
+
+player.maxhealth 85
+health 85
+
+States
+{
+Spawn:
+WIZD A 0
+WIZD B 1
+WIZD A 1 
+Goto Spawn+2
+See:
+WIZD BCDE 5
+Goto Spawn
+Missile:
+WIZD FFFFFFFFF 1 A_JumpIfInventory("GeeFire2",1,"Missile2") 
+goto Spawn
+Missile2:
+WIZD G 9 
+goto Spawn
+}
+}
+
+actor GeeWeaponPackage : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,1)==1,"TeamGame")
+stop
+Teamgame:
+TNT1 A 0 A_GiveInventory("GeeBurstBoss1",1)
+stop
+}
+}
+
+actor GeeClassItems : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEX("GeeAmmoWatcher",0,0,20)
+TNT1 A 0 A_GiveInventory("GeeAmmo",10)
+TNT1 A 0 A_GiveInventory("GeeDamagingAmmo",132)
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,1)==1,"TeamGame")
+TNT1 A 0 A_GiveInventory("GeeDMPackage",1)
+stop
+Teamgame:
+TNT1 A 0 ACS_NamedExecutealways("CSACS_MedivisionScript",0)
+TNT1 A 0 A_GiveInventory("GeeHealingAmmo",132)
+stop
+}
+}
+actor GeeDMPackage : Once {}
+
+actor GeeBurstBoss1Morph : GeeClass
+{
++NOSKIN
+player.morphweapon "GeeBurstBoss1"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}
+
+actor GeeBurstBoss2Morph : GeeBurstBoss1Morph
+{
+player.morphweapon "GeeBurstBoss2"
+}

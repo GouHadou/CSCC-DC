@@ -12,6 +12,7 @@ Drawbar "VARHEALT", "VAREMPTY", Health, horizontal, 130, 184;
 	InInventory WilyTeamFlag, 1{DrawImage "WBARH", 130, 179;}
 	InInventory CossackTeamFlag, 1{DrawImage "CBARH", 130, 179;}
 	InInventory KingTeamFlag, 1{DrawImage "KBARH", 130, 179;}
+	InInventory OverhealValue, 1 {DrawBar "VARFLS12", "VNOBAR", OverhealValue, horizontal, 130, 184;}
 
 InInventory SkullShieldCheck, 1{DrawBar "VARFLS5", "VNOBAR", SkullShieldCheck, horizontal, 130, 184;}
 InInventory SkullBarrierProtection, 1{DrawBar "VARFLS5", "VNOBAR", SkullShieldCheck, horizontal, 130, 184;}
@@ -241,7 +242,7 @@ IsSelected ClassicTankWeapon {
 //====|Vocalwoman
 InInventory IsVocalWoman
 	{
-	Drawbar"BLL2_VAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	Drawbar"VOCAVAR0", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	
 	IsSelected VocalMicBoss1
 	{
@@ -258,7 +259,6 @@ InInventory IsVocalWoman
 	
 	InInventory NoteBombFlag, 1{DrawImage "VALTVAR", 58, 176;}
 	}
-	
 
 //===| Zen Trainer
 InInventory Zen_Heal1PU, 1 {Drawimage"ZENBF04",290,8;}
@@ -279,6 +279,33 @@ IsSelected ZenTrainerWep{
 		InInventory AuraFlag_rage, 1 {Drawbar"VZNTRA05","VAREMPTY",Ammo2,horizontal,16,8;}
 	}else{ Drawbar"VZNTRA00","VAREMPTY",Ammo2,horizontal,16,8;}
 	}
+
+IsSelected GeeBurstBoss1
+{
+InInventory GeeHealingAmmo, 132{Drawbar "GEEVMMO1", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
+else{Drawbar "VARAMM32", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
+else{Drawbar "VARAMM32", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
+DrawImage "GEEGRPH1", 29, 176;
+DrawNumber 2, "GEEFONT1", Untranslated, Ammo1, alignment(center), 49, 184;
+}
+IsSelected GeeBurstBoss2
+{
+InInventory not GeeDMPackage, 1
+{
+InInventory GeeHealingAmmo, 132{Drawbar "GEEVMMO1", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
+else{Drawbar "VARAMM32", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
+else{Drawbar "VARAMM32", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
+}
+else
+{
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 184;}
+else{Drawbar "VARAMM32", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 184;}
+}
+DrawImage "GEEGRPH2", 29, 176;
+DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 49, 184;
+}
 	
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}

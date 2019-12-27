@@ -1,5 +1,5 @@
 const int DYE_UNIX = 16;
-const int DYE_CUTMANMIKE = 25;
+const int DYE_CUTMANMIKE = 440;
 const int DYE_UKIYAMA = 409;
 const int DYE_COLDFUSION = 370;
 const int DYE_LAGGYBLAZKO = 413;
@@ -14,3 +14,4 @@ const int DYE_LORDDAMAGERCOL = 437;
 const int DYE_VOCALWOMAN = 996;
 const int DYE_IDOLWAVE = 997;
 const int DYE_ZENTRAINER = 804;
+const int DYE_GEE = 439;

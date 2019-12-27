@@ -12,6 +12,7 @@ DrawBar "BARHEALT", "BAREMPTY", Health, vertical, 24, 8;
 	InInventory WilyTeamFlag, 1{DrawImage "WBAR", 24, 3;}
 	InInventory CossackTeamFlag, 1{DrawImage "CBAR", 24, 3;}
 	InInventory KingTeamFlag, 1{DrawImage "KBAR", 24, 3;}
+InInventory OverhealValue, 1 {DrawBar "BARFLS12", "NOBAR", OverhealValue, vertical, 24, 8;}
 
 InInventory SkullShieldCheck, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, vertical, 24, 8;}
 InInventory SkullBarrierProtection, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, vertical, 24, 8;}
@@ -53,8 +54,11 @@ DrawImage weaponicon, 16, 64;
 
 }
 
-//██████████████████████████████████████████Classes████████████████████████████████████████
+//Classes
+//====|CopyRobot
 IsSelected CopyWeapon{DrawBar "BESTBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+
+//====|Unix
 IsSelected UnixKnife
 {
 DrawBar "BARAMM16", "BAREMPTY", Ammo2, vertical, 8, 8;
@@ -67,7 +71,11 @@ DrawBar "BARAMM16", "BAREMPTY", Ammo2, vertical, 8, 8;
 DrawBar "BARAMMO6", "BAREMPTY", Ammo1, vertical, 16, 8;
 InInventory UnixDisguiseFlag, 1{DrawImage "UNIXDIS", 267, 10;}	
 }
+
+//====|CutmanMike
 IsSelected HellfireCutterBoss{DrawBar "BARAMM13", "BAREMPTY", Ammo1, vertical, 16, 8;}
+
+//====|Ukiyama
 InInventory UkiHud, 1
 {
 DrawImage "HEALBOX", 15,12;
@@ -88,7 +96,7 @@ Drawbar"MODBAR", "MODBARE", UpgradeTimer, vertical, 15, 26;
 InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertical, 15, 26;}
 }
 
-//Coldfusion
+//====|ColdFusion
 IsSelected FusionBombClassWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "BARSHLD", "NOBAR", Armor, vertical, 24, 8;}
 
@@ -113,7 +121,7 @@ InInventory LaggyHUD //It will have more stuff later.
 	}
 }
 
-//Korby
+//====|Korby
 InInventory KorbyHUD, 1{
 	DrawImage "KHUDE",72,32,center;
 	//DrawImage "KHUDE2", 290,28,center;
@@ -148,53 +156,51 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	InInventory SELFF{DrawImage "KORHM0", 97,15,center;}
 	InInventory FLASF{DrawImage "KORHN0", 97,15,center;}
 	InInventory BADBF{DrawImage "KORHO0", 97,15,center;}
-	InInventory LIMIF{DrawImage "KORHP0", 97,15,center;}}
-	//InInventory BeatSupport{DrawImage "KORHR0", 290,40,center;}
-	//InInventory ExitUnit{DrawImage "KORHS0", 290,40,center;}}
+	InInventory LIMIF{DrawImage "KORHP0", 97,15,center;}
+}
 
-//Messatsu
+//====|Messatsu
 IsSelected MessatsuWep
+{
+DrawBar "MESSVFUL", "MESSVEMT", Health, vertical, 24, 8;
+DrawBar "MESSBAR", "MESSVSPE", Ammo1, vertical, 16, 8;
+DrawBar "MESSVSPS", "MESSVSPE", MessSuperFlag, vertical, 16, 8;
+
+InInventory MessatsuCharge, 4{DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 24, 8;}
+InInventory MessatsuAmmo, 56{DrawImage "RDEMON", 16, 20, center;}
+InInventory MessatsuAmmo, 36{DrawImage "MISOGI", 16, 35, center;}
+InInventory MessatsuAmmo, 18{DrawImage "TEMAGOU", 16, 50, center;}
+}
+
+//====|Ice/Sparky
+IsSelected IceWep
+{
+DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+DrawBar "SPARKBAR", "BAREMPTY", SparkyClassAmmo, vertical, 8, 8;
+DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;
+InInventory FusionStock, 1
 	{
-	DrawBar "MESSVFUL", "MESSVEMT", Health, vertical, 24, 8;
-	DrawBar "MESSBAR", "MESSVSPE", Ammo1, vertical, 16, 8;
-	DrawBar "MESSVSPS", "MESSVSPE", MessSuperFlag, vertical, 16, 8;
-	InInventory MessatsuCharge, 4
-	{
-	DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 24, 8;
-	}
-	InInventory MessatsuAmmo, 56
-	{
-	DrawImage "RDEMON", 16, 20, center;
-	}
-	InInventory MessatsuAmmo, 36
-	{
-	DrawImage "MISOGI", 16, 35, center;
-	}
-	InInventory MessatsuAmmo, 18
-	{
-	DrawImage "TEMAGOU", 16, 50, center;
-	}
-	}
-//Ice / Sparky
-IsSelected IceWep{DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	DrawBar "SPARKBAR", "BAREMPTY", SparkyClassAmmo, vertical, 8, 8;
-	DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;
-	InInventory FusionStock, 1
+	InInventory NOT IceSparkyCombine || IceSparkyFusion
 		{
-		InInventory NOT IceSparkyCombine || IceSparkyFusion
-			{
-			DrawNumber 1, SMALLFONT, LIGHTBLUE, FusionStock, 26, 72;
-			DrawString SMALLFONT, LIGHTBLUE, "x", 34, 72;}}}
-	
-IsSelected SparkyWep{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	DrawBar "ICEBAR", "BAREMPTY", IceClassAmmo, vertical, 8, 8;
-	DrawBar "FUSIS", "NOBAR", FusionMeter, vertical, 24, 8;
-	InInventory FusionStock, 1
+		DrawNumber 1, SMALLFONT, LIGHTBLUE, FusionStock, 26, 72;
+		DrawString SMALLFONT, LIGHTBLUE, "x", 34, 72;
+		}
+	}
+}
+IsSelected SparkyWep
+{
+DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+DrawBar "ICEBAR", "BAREMPTY", IceClassAmmo, vertical, 8, 8;
+DrawBar "FUSIS", "NOBAR", FusionMeter, vertical, 24, 8;
+InInventory FusionStock, 1
+	{
+	InInventory NOT IceSparkyCombine || IceSparkyFusion
 		{
-		InInventory NOT IceSparkyCombine || IceSparkyFusion
-			{
-			DrawNumber 1, SMALLFONT, GOLD, FusionStock, 26, 72;
-			DrawString SMALLFONT, GOLD, "x", 34, 72;}}}
+		DrawNumber 1, SMALLFONT, GOLD, FusionStock, 26, 72;
+		DrawString SMALLFONT, GOLD, "x", 34, 72;
+		}
+	}
+}
 
 //====|LordDamager
 IsSelected MissilePunchWep
@@ -211,7 +217,6 @@ IsSelected LaserCannonWep
 	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
 	}
 
-
 //====| Tank Operator
 IsSelected ClassicTankWeapon {
 	DrawBar"BARAMM23","BAREMPTY",Ammo1,vertical,16,8;
@@ -223,7 +228,7 @@ IsSelected ClassicTankWeapon {
 //====|Vocalwoman
 InInventory IsVocalWoman
 	{
-	Drawbar"BLL2_BAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	Drawbar"VOCABAR0", "BAREMPTY", Ammo1, vertical, 16, 8;
 	
 	IsSelected VocalMicBoss1
 	{
@@ -261,6 +266,34 @@ IsSelected ZenTrainerWep{
 	}else{ Drawbar"BZNTRA00","BAREMPTY",Ammo2,vertical,16,8;}
 	}
 
+//Gee
+IsSelected GeeBurstBoss1
+{
+InInventory GeeHealingAmmo, 132{Drawbar "GEEAMMO1", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+DrawImage "GEEGRPH1", 6, 65;
+DrawNumber 2, "GEEFONT1", Untranslated, Ammo1, alignment(center), 26, 73;
+}
+IsSelected GeeBurstBoss2
+{
+InInventory not GeeDMPackage, 1
+{
+InInventory GeeHealingAmmo, 132{Drawbar "GEEAMMO1", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+}
+else
+{
+InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
+}
+DrawImage "GEEGRPH2", 6, 65;
+DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 26, 73;
+}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
@@ -270,8 +303,8 @@ IsSelected NadeSpamWepCS{Drawbar"BARAMMO4", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected FusionBombWepCS{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected IceBladeWepCS{DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected LightningWaveWepCS{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
-
 IsSelected SteelPunchWepCS{Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SuperArmWepCS{Drawbar"BARAMMO2", "BAREMPTY", Ammo1, vertical, 16, 8;}

@@ -8,8 +8,9 @@ addplayerclass UkiyamaClass nomenu
 addplayerclass MessatsuClass nomenu  
 addplayerclass ColdFusionClass nomenu
 addplayerclass LordDamagerClass nomenu 
-addplayerclass TankOperator nomenu 
+addplayerclass TankOperatorClass nomenu 
 addplayerclass LaggyBlazkoClass nomenu
 addplayerclass KorbyClass nomenu
-addplayerclass VocalWoman nomenu 
-addplayerclass ZenTrainer nomenu 
+addplayerclass VocalWomanClass nomenu 
+addplayerclass ZenTrainerClass nomenu 
+addplayerclass GeeClass nomenu 

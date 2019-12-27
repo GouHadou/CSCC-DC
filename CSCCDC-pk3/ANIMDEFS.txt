@@ -1,24 +1,36 @@
-//Copy Robot
-texture BESTBAR //Copy vertical bar animated
-	allowdecals
-	pic RAINBAR1 tics 4
-	pic RAINBAR2 tics 4
-	pic RAINBAR3 tics 4
-	pic RAINBAR4 tics 4
-	pic RAINBAR5 tics 4
-	pic RAINBAR6 tics 4
-	pic RAINBAR7 tics 4
-	
+//Overheal
+texture BARFLS12
+pic BARHEALT tics 4
+pic BAROVH1 tics 4
+pic BAROVH2 tics 4
+pic BAROVH1 tics 4
 
-texture VESTBAR //Copy horizontal bar animated, doesn't work :(
-	allowdecals
-	pic RAINBAI1 tics 4
-	pic RAINBAI2 tics 4
-	pic RAINBAI3 tics 4
-	pic RAINBAI4 tics 4
-	pic RAINBAI5 tics 4
-	pic RAINBAI6 tics 4
-	pic RAINBAI7 tics 4
+texture VARFLS12
+pic VARHEALT tics 4
+pic VAROVH1 tics 4
+pic VAROVH2 tics 4
+pic VAROVH1 tics 4
+
+//Copy Robot
+texture BESTBAR 
+allowdecals
+pic RAINBAR1 tics 4
+pic RAINBAR2 tics 4
+pic RAINBAR3 tics 4
+pic RAINBAR4 tics 4
+pic RAINBAR5 tics 4
+pic RAINBAR6 tics 4
+pic RAINBAR7 tics 4	
+
+texture VESTBAR
+allowdecals
+pic RAINBAI1 tics 4
+pic RAINBAI2 tics 4
+pic RAINBAI3 tics 4
+pic RAINBAI4 tics 4
+pic RAINBAI5 tics 4
+pic RAINBAI6 tics 4
+pic RAINBAI7 tics 4
 
 //Vocalwoman
 Texture VALTBAR
