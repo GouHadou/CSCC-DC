@@ -206,8 +206,7 @@ IsSelected MissilePunchWep
 
 IsSelected LaserCannonWep
 	{
-	Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory LaserCannonAmmo, 35{Drawbar"BARAMM51", "BAREMPTY", Ammo1, vertical, 16, 8;}
+	Drawbar"BARAMM51", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
 	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
 	}

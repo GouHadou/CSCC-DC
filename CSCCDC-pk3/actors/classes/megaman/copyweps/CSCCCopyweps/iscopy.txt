@@ -121,9 +121,14 @@ inventory.maxamount 28
 
 Actor IceBladeWepCS : IceBladeWep replaces IceBladeWep
 {
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+goto "Super::Spawn"
 }
-
-
+}
 
 actor LightningWaveWep : BaseMM8BDMWep 
 {
@@ -182,6 +187,13 @@ inventory.maxamount 28
 
 Actor LightningWaveWepCS : LightningWaveWep replaces LightningWaveWep
 {
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+goto "Super::Spawn"
+}
 }
 
 

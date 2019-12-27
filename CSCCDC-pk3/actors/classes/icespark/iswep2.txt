@@ -6,13 +6,7 @@ Weapon.SlotNumber 2
 Obituary "%o was zapped by %k's lightning shot."
 Inventory.Pickupmessage "Power up! Thunder Bolt!"
 weapon.ammotype "SparkyClassAmmo"
-inventory.pickupsound "weapon/weaponup"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.CHEATNOTWEAPON
-+INVENTORY.UNDROPPABLE
-//inventory.icon "SPBUSI"
 DropItem "LightningWaveWepGiver"
-Scale 2.0
 States
 {
 Ready:

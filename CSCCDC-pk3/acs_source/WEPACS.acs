@@ -150,6 +150,11 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"UkiyamaClassWep", "UpgradeTimer", "", 0.5, "NO", "NO", "SLOT_NONE"},
 {"TommyGun", "FatBullets", "", 1.0, "", "", "SLOT_NONE"},
 {"CorpGrandDad", "FatBullets", "", 1.0, "", "", "SLOT_NONE"},
+{"FusionBombClassWep", "FusionClassAmmo", "FusionBombClass", 0.25, "NO", "NO", "SLOT_NONE"},
+{"FIR", "MP", "Korby Fire", 1.0, "NO", "NO", "SLOT_NONE"},
+{"ICE", "MP", "Korby Ice", 1.0, "NO", "NO", "SLOT_NONE"},
+{"LIT", "MP", "Korby Lightning", 1.0, "NO", "NO", "SLOT_NONE"},
+
 {"IceBladeWepCS", "IceBladeAmmo", "Ice Blade", 1.0, "YES", "YES", "SLOT_RANGED"},
 {"LightningWaveWepCS", "LightningWaveAmmo", "LightningWave", 1.0, "YES", "YES", "SLOT_RANGED"},
 {"GouhadouWepCS", "GouhadouAmmo", "Gouhadou", 1.0, "YES", "YES", "SLOT_RANGED"},
@@ -157,13 +162,6 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"CometWepCS", "CometAmmo", "Comet", 1.0, "YES", "YES", "SLOT_RANGED"},
 {"FusionBombWepCS", "FusionBombAmmo", "Fusion Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
 {"MeteorWepCS", "MeteorAmmo", "Meteor", 1.0, "YES", "YES", "SLOT_POWER"},
-{"FusionBombClassWep", "FusionClassAmmo", "FusionBombClass", 1.0, "YES", "YES", "SLOT_POWER"},
-
-{"FIR", "MP", "Korby Fire", 1.0, "YES", "YES", "SLOT_POWER"},
-{"ICE", "MP", "Korby Ice", 1.0, "YES", "YES", "SLOT_POWER"},
-{"LIT", "MP", "Korby Lightning", 1.0, "YES", "YES", "SLOT_POWER"},
-
-
 };
 
 str BusterUpgrades[MAX_BUSTERS] =

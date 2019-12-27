@@ -5,14 +5,15 @@
 #include "8BDMLIB.ACS"
 #include "CSCCLIB.acs"
 #include "CLASSACS.acs"
-#include "COPY.acs"
-#include "Unix.acs"
+#include "COPY.ACS"
+#include "UNIX.ACS"
+#include "COPYWEP.ACS"
 
 
 Script "CSACS_TeamSpecies" ENTER 
 {
 int pln = PlayerNumber();
-if(IsTeamGame)
+if(IsTeamGame == 1)
 	{
 	switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
 		{

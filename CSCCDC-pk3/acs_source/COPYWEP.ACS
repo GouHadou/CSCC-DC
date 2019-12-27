@@ -1,0 +1,15 @@
+//#library "Copywep"
+//#include "zcommon.acs"
+//#include "CSCCLIB.acs"
+
+#DEFINE MAX_FAKEWEPS 1
+
+str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
+//Actor, CorporalDisplay, CorporalWep, CorporalAmmo, GizmoDisplay, GizmoWep, GizmoAmmo
+{"FireStormWepCS", "CorpGrandDad", "CorpGrandDad", "FatBulletAmmo", "GizmoFlame", "FlameCannonWep", "FlameCannonAmmo"},
+};
+
+script "CSACS_WeaponDisplay" (int JumpDelay)
+{
+Log(s:GetActorClass(0));
+}

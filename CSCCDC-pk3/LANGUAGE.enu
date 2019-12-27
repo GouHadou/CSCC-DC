@@ -24,3 +24,8 @@ OB_MIKECUTTER = "%o had %p soul sliced by %k's Hellfire Cutter.";
 OB_MIKEFLAME = "%o was brutally roasted by %k's Firestorm.";
 
 TAG_MIKECUTTER = "Hellfire Cutter";
+
+OB_UKIMODIFY = "%o got modified by %k's *insert name here*.";
+
+TAG_UKIWEP = "*Insert Name Here*";
+TAG_UKIWEP = "*Insert Name Here*";

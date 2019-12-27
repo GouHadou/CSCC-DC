@@ -6,12 +6,7 @@ Weapon.SlotNumber 3
 Obituary "%o was sliced by %k's Ice blade."
 Inventory.Pickupmessage "Power up! Freeze Cracker!"
 weapon.ammotype "IceClassAmmo"
-inventory.pickupsound "weapon/weaponup"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.CHEATNOTWEAPON
-+INVENTORY.UNDROPPABLE
 DropItem "IceBladeWepGiver"
-Scale 2.0
 States
 {
 Ready:

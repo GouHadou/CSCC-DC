@@ -1,4 +1,4 @@
-actor SteelPunchWep : CSCCWepBase
+actor SteelPunchWep : BaseMM8BDMWep
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28
@@ -77,4 +77,11 @@ stop
 
 actor SteelPunchWepCS : SteelPunchWep
 {
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+goto "Super::Spawn"
+}
 }

@@ -96,6 +96,8 @@ stop
 Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("MissilePunchAmmo", 5)
+TNT1 A 0 A_GiveInventory("LaserCannonAmmo", 150)
+TNT1 A 0 A_GiveInventory("LDRamEnergy", 56)
 TNT1 A 0 A_GiveInventory("LDRamActivator", 1)
 TNT1 A 0 A_GiveInventory("IsLordDamager",1)
 stop
