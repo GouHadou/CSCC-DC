@@ -1,0 +1,985 @@
+actor BullGatorSleepPierce : Weapon //Waiting for a weapon base
+{
+
+//====================
+dropitem "RailBusterUpgradeCDropped"
+Inventory.Pickupmessage "Wait, how did you get this????"
+inventory.pickupsound ""
+Scale 2.0
++WEAPON.AMMO_OPTIONAL
++WEAPON.DONTBOB
++WEAPON.ALLOW_WITH_RESPAWN_INVUL
+Weapon.SlotNumber 1
+//====================
+
+Weapon.AmmoType "BullRifleAmmo1"
+Weapon.AmmoType2 "BullRifleAmmo2"
+Inventory.Icon "BullMn1"
+Obituary "%o was pierced by %k's \ccpiercing bullet\c-."
+Weapon.AmmoUse 1
++WEAPON.NOAUTOAIM
+
+Tag "Piercing / Sleeping dart"
+
+States
+{
+Spawn:
+SPMY Z 1
+loop
+
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+B1GA A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+B1GA A 1 A_Raise
+Loop
+
+Flash:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("FovFlag",1,"FovActivate")
+TNT1 A 0 A_ZoomFactor(1.0,ZOOM_INSTANT)
+goto Flash
+FovActivate:
+TNT1 A 0 A_ZoomFactor(2.0,ZOOM_INSTANT)
+goto Flash
+
+Ready:
+B1GA A 1
+B1GA A 0 ACS_ExecuteAlways(998,0,5000)
+B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
+B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
+Ready1:
+B1GA A 0 A_GunFlash
+goto Ready2
+Ready2:
+B1GA A 0 A_WeaponReady(WRF_NOSECONDARY)
+B1GA A 1
+B1GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+goto Ready2
+Ready2X:
+B1GA A 0 A_WeaponReady
+B1GA A 1
+B1GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+goto Ready2
+
+Fire:
+B1GA A 0 A_JumpIfInventory("BullAmmoFlag",1,"NoAmmo")
+B1GA A 0 A_JumpIfNoAmmo("NoAmmo")
+B1GA A 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+B1GA A 0 A_GiveInventory("PiercingSleep_M1")
+B1GA A 1
+B1GA A 0 A_TakeInventory("BullRifleAmmo1",60)
+B1GA BCCCCCCCBBA 3
+goto Ready2
+AltFire:
+B1GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+B1GA A 0 A_GiveInventory("PiercingSleep_M2")
+B1GA A 0 A_TakeInventory("BullRifleAmmo2",175)
+B1GA B 1
+B1GA BCCCCCCCCBBBA 3
+goto Ready2
+
+NoAmmo:
+B1GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+B1GA A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
+B1GA A 1
+B1GA BCCBA 3
+B1GA A 0 A_Refire
+goto Ready2
+}
+}
+
+actor BullRifleAmmo1 : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.maxamount 120
+inventory.amount 1
+}
+actor BullRifleAmmo2 : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.maxamount 140
+inventory.amount 1
+}
+
+actor FovFlag : Inventory {inventory.maxamount 1}
+actor AmmoManagementWatcherFlag : FovFlag {}
+actor BullAmmoFlag : FovFlag {}
+actor Bull_AmmoManagerWatcher 
+{
++MISSILE
++NOINTERACTION
++NOGRAVITY
++DONTBLAST
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_TakeFromTarget("BullAmmoFlag",99)
+TNT1 A 1 A_GiveToTarget("AmmoManagementWatcherFlag")
+TNT1 A 0 A_JumpIfInTargetInventory("BullRifleAmmo1",1,"DontGive")
+goto GiveAmmo
+DontGive:
+TNT1 A 0 A_GiveToTarget("BullRifleAmmo2",1)
+goto Spawn
+
+GiveAmmo:
+TNT1 A 1 A_GiveToTarget("BullAmmoFlag",1)
+TNT1 A 0 A_GiveToTarget("BullRifleAmmo1",1)
+TNT1 A 0 A_GiveToTarget("BullRifleAmmo2",1)
+TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"Death")
+TNT1 A 0 A_JumpIfInTargetInventory("BullRifleAmmo1",0,"Spawn")
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+//Enables scoping
+actor BullScopingItem : CustomInventory
+{
+inventory.icon "BullItem"
+inventory.maxamount 1
+inventory.amount 1
++COUNTITEM
++INVBAR
+States
+{
+Use:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("FovFlag",1,"Fov90")
+TNT1 A 0 A_GiveInventory("FovFlag",1)
+fail
+Fov90:
+TNT1 A 0 A_TakeInventory("FovFlag",1)
+fail
+}
+}
+
+actor BullBasicBullet : FastProjectile //Almost all the bullets in this file are inerhited from this
+{
+PROJECTILE
++MTHRUSPECIES
+//+THRUGHOST
++DONTBLAST
+DamageType "Bull_RailAttack"
+Speed 1000
+Radius 8
+Height 8
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+NEDC A 1
+loop
+}
+}
+
+actor Bull_RailAttackProtection : PowerProtection
+{
+DamageFactor "Bull_RailAttack", 0.5
+Powerup.duration 175
+}
+
+actor BullWeakBullet
+{
+Obituary "%o was shot down by one of %k's weaker bullets."
+PROJECTILE
+Speed 45
+Radius 8
+Height 6
+Damage (6)
+Scale 2.5
+States
+{
+Spawn:
+BASB A 1
+loop
+}
+}
+
+actor PiercingRailPuff : BulletPuff
+{
++PUFFONACTORS
++ALWAYSPUFF
++PUFFGETSOWNER
+DamageType "Bull_RailAttack"
+Translation"194:194=92:92", "192:192=85:85"
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+GIGF I 2 A_SetScale(ScaleX + 0.075)
+GIGF I 0 A_Stop
+GIGF I 0 A_Fadeout
+loop
+}
+}
+
+actor PiercingRailPuffB : PiercingRailPuff {Translation "192:192=205:205","194:194=74:74"}
+actor PiercingRailPuffR : PiercingRailPuff {Translation "192:192=171:171","194:194=41:41"}
+actor PiercingRailPuffO : PiercingRailPuff {Translation "192:192=104:104","194:194=128:128"}
+actor PiercingRailPuffP : PiercingRailPuff {Translation "192:192=229:229","194:194=232:232"}
+
+actor PiercingRailGoFX : BasicClientside //The outer ring of the railgun
+{
+Translation"194:194=92:92", "192:192=85:85"
+Scale 1
+States
+{
+Spawn:
+TNT1 A 0
+GIGF H 2 A_SetScale(ScaleX + 0.025)
+GIGF H 0 A_Stop
+GIGF H 0 A_Fadeout
+loop
+}
+}
+
+actor PiercingRailGoFXB : PiercingRailGoFX {Translation "192:192=205:205","194:194=74:74"}
+actor PiercingRailGoFXR : PiercingRailGoFX {Translation "192:192=171:171","194:194=41:41"}
+actor PiercingRailGoFXO : PiercingRailGoFX {Translation "192:192=104:104","194:194=128:128"}
+actor PiercingRailGoFXP : PiercingRailGoFX {Translation "192:192=229:229","194:194=232:232"}
+
+actor PiercingBulletTrail //The trail of the railgun, spawns an outer ring.
+{
+PROJECTILE
+Translation  "220:220=92:92", "4:4=85:85"
+Renderstyle Add
+Scale 1.25
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIf(Mass == 1,"B")
+TNT1 A 0 A_JumpIf(Mass == 2,"R")
+TNT1 A 0 A_JumpIf(Mass == 3,"O")
+TNT1 A 0 A_JumpIf(Mass == 4,"P")
+TNT1 A 0 A_SpawnItemEx("PiercingRailGoFX",0,0,0)
+SpawnWait:
+NEDC A 2 A_Fadeout(0.05)
+loop
+B: TNT1 A 0 A_SpawnItemEx("PiercingRailGoFXB",0,0,0) goto SpawnWait
+R: TNT1 A 0 A_SpawnItemEx("PiercingRailGoFXR",0,0,0) goto SpawnWait
+O: TNT1 A 0 A_SpawnItemEx("PiercingRailGoFXO",0,0,0) goto SpawnWait
+P: TNT1 A 0 A_SpawnItemEx("PiercingRailGoFXP",0,0,0) goto SpawnWait
+}
+}
+
+actor PiercingBulletTrailB : PiercingBulletTrail {Mass 1 Translation "220:220=205:205","4:4=74:74"}
+actor PiercingBulletTrailR : PiercingBulletTrail {Mass 2 Translation "220:220=171:171","4:4=41:41"}
+actor PiercingBulletTrailO : PiercingBulletTrail {Mass 3 Translation "220:220=104:104","4:4=128:128"}
+actor PiercingBulletTrailP : PiercingBulletTrail {Mass 4 Translation "220:220=229:229","4:4=232:232"}
+
+actor BullSleeperBullet : BullBasicBullet
+{
+Translation "220:220=217:217", "4:4=215:215"
+Obituary "%o was put to sleep by %k's \ctsleeping bullet\c-."
+Speed 800
+Radius 6
+Height 6
+Damage(8)
++HITTRACER
+MissileType "SleeperBulletTrail"
+States
+{
+Death:
+TNT1 A 0
+stop
+XDeath:
+TNT1 A 0 A_GiveInventory("SleeperTAG",1,AAPTR_Tracer) //Gives a pickup to whoever it hit (via HITTRACER)
+TNT1 A 0 A_GiveInventory("Bull_RailAttackProtection",1,AAPTR_Tracer)
+TNT1 A 0 A_GiveInventory("SleeperTagChecker",1,AAPTR_Tracer) //Starts the acs to check if the TRACER got hit
+TNT1 AAAAAAAAAAAAAAA 5 A_GiveInventory("SleepingTagPickup",1,AAPTR_Tracer) //Spawns the 'Z' gfx
+TNT1 A 0 A_GiveInventory("UnSleeperTAG",1,AAPTR_Tracer) //Reenables the TRACER's controls if the ACS failed
+stop
+}
+}
+
+actor BullSleeperBulletB : BullSleeperBullet {MissileType "SleeperBulletTrailB" Translation "220:220=205:205","4:4=74:74"}
+actor BullSleeperBulletR : BullSleeperBullet {MissileType "SleeperBulletTrailR" Translation "220:220=171:171","4:4=41:41"}
+actor BullSleeperBulletO : BullSleeperBullet {MissileType "SleeperBulletTrailO" Translation "220:220=104:104","4:4=128:128"}
+actor BullSleeperBulletP : BullSleeperBullet {MissileType "SleeperBulletTrailP" Translation "220:220=229:229","4:4=232:232"}
+
+actor SleeperBulletTrail : BasicClientSide
+{
+Translation "220:220=217:217", "4:4=215:215"
+Renderstyle Add
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+NEDC AAAAAAAAAA 1 A_Fadeout
+stop
+}
+}
+
+actor SleeperBulletTrailB : SleeperBulletTrail {Translation "220:220=205:205","4:4=74:74"}
+actor SleeperBulletTrailR : SleeperBulletTrail {Translation "220:220=171:171","4:4=41:41"}
+actor SleeperBulletTrailO : SleeperBulletTrail {Translation "220:220=104:104","4:4=128:128"}
+actor SleeperBulletTrailP : SleeperBulletTrail {Translation "220:220=229:229","4:4=232:232"}
+
+actor SleeperTagChecker : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("BULL_SLEEPER",0,70)
+stop
+}
+}
+
+actor SleepingTagPickup : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SleepingEffectFX",0,24,64,0,4,4,0)
+stop
+}
+}
+
+actor SleepingEffectFX: BasicClientside
+{
+Scale 2
+States
+{
+Spawn:
+TNT1 A 0
+ZSLP A 0 A_SetScale(ScaleX + 0.07)
+ZSLP A 1 A_FadeOut(0.05)
+loop
+}
+}
+
+actor SleeperTAG : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_ScaleVelocity(3)
+TNT1 A 0 A_GiveInventory("SleepingPowerGo")
+TNT1 A 0 SetPlayerProperty(0,1,4)
+stop
+}
+}
+
+actor UnSleeperTAG : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 SetPlayerProperty(0,0,4)
+stop
+}
+}
+
+//== MISC STUFF ==
+
+actor SleepingPowerGo : PowerUpGiver //This is just the blackscreen gfx
+{ 
+powerup.duration 70
+powerup.color "00 00 00", 0.6
+powerup.type "SleeperBullet"
+}
+actor PowerSleeperBullet : Powerup {powerup.duration 70}
+
+//=====================
+//=====================
+//=====================
+
+actor BullGatorSiphonSplitter : BullGatorSleepPierce
+{
+Weapon.SlotNumber 2
+Inventory.Icon "BullMn2"
+Obituary "%o's life was drained completely by %k's \cgSiphon bolt\c-."
+Tag "Splitter / Siphon (Drain)"
+
+States
+{
+Ready:
+B2GA A 1
+B1GA A 0 ACS_ExecuteAlways(998,0,5000)
+B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
+B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
+Ready1:
+B2GA A 0 A_GunFlash
+goto Ready2
+Ready2:
+B2GA A 0 A_WeaponReady(WRF_NOSECONDARY)
+B2GA A 1
+B2GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+goto Ready2
+Ready2X:
+B2GA A 0 A_WeaponReady
+B2GA A 1
+B2GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+goto Ready2
+
+Fire:
+B2GA A 0 A_JumpIfInventory("BullAmmoFlag",1,"NoAmmo")
+B2GA A 0 A_JumpIfNoAmmo("NoAmmo")
+B2GA A 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+B2GA A 0 A_SpawnItemEx("BullSplitterBullet",cos(pitch)*8,0,32,cos(pitch)*600,0,sin(-pitch)*600,0,1)
+B2GA A 1
+B2GA A 0 A_TakeInventory("BullRifleAmmo1",120)
+B2GA BCCCCCCCCBBBA 3
+goto Ready2
+AltFire:
+B2GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+B2GA A 0 A_TakeInventory("BullRifleAmmo2",175)
+B2GA A 0 A_GiveInventory("SplitterSiphon_M2")//A_FireCustomMissile("BullSiphonBullet",0,0,8)
+B2GA B 1
+B2GA BCCCCCCCCBBBA 3
+goto Ready2
+
+NoAmmo:
+B2GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+B2GA A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
+B2GA A 1
+B2GA BCCBA 3
+B2GA A 0 A_Refire
+goto Ready2
+}
+}
+
+actor BullSplitterBullet : BullBasicBullet
+{
+Translation "220:220=206:206", "4:4=202:202"
++HITTRACER
++SKYEXPLODE
+Damage (15)
+Speed 700
+Obituary "%o didn't avoid %k's \cvsplitter bullet\c-."
+//MissileType "SplitterBulletTrail"
+States
+{
+Spawn:
+TNT1 A 0
+NEDP T 1 A_SpawnITemEx("SplitterBulletTrail",0,0,0,0,0,0,0,1)
+wait
+XDeath:
+TNT1 A 0
+TNT1 A 1 A_GiveInventory("SplittedProtection",1,AAPTR_Tracer) //Gives protection for 5 tics to prevent meatshots for 50~ damage
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,0,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,15,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,30,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,-15,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,-30,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,45,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,-45,1)
+stop
+Death:
+TNT1 A 0 A_CheckFloor("Floor")
+TNT1 A 0 A_CheckCeiling("Ceiling")
+TNT1 A 0 //If it hits a wall spawn them backwards
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,180,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,180+15,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,180+30,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,180-15,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,180-30,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,180+40,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,0,180-45,1)
+stop
+Floor:
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,20,360/7*1,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,20,360/7*2,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,20,360/7*3,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,20,360/7*4,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,20,360/7*5,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,20,360/7*6,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,20,360/7*7,1)
+stop
+Ceiling:
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,-20,360/7*1,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,-20,360/7*2,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,-20,360/7*3,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,-20,360/7*4,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,-20,360/7*5,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,-20,360/7*6,1)
+TNT1 A 0 A_SpawnItemEx("BullSplittedBullet",0,0,2,40,0,-20,360/7*7,1)
+stop
+}
+}
+
+actor BullSplittedBullet
+{
+Translation "220:220=206:206", "4:4=202:202"
+PROJECTILE
+Obituary "%o didn't avoid %k's \cvsplitter bullet\c-."
+DamageType "BullSplitBullet"
++HEXENBOUNCE
++FORCEXYBILLBOARD
++BOUNCEONACTORS
++USEBOUNCESTATE
+BounceFactor 0.999
+WallBounceFactor 0.999
+BounceCount 50
+Radius 6
+Height 6
+Damage (8)
+Speed 10
+Scale 2.5
+ReactionTime 175
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnITemEx("SplitterBulletTrail",0,0,0,0,0,0,0,1)
+NEDP T 1 A_Countdown
+TNT1 A 0 A_ChangeFlag(THRUACTORS,false) //Can damage players now
+loop
+
+Bounce.Actor:
+NEDP A 0 A_ChangeFlag("THRUACTORS", 1)
+NEDP T 1 A_ChangeVelocity(40.0, 0, velz, CVF_RELATIVE|CVF_REPLACE)
+NEDP TTT 1
+NEDP A 0 A_ChangeFlag("THRUACTORS", 0)
+goto Spawn
+XDeath:
+Death:
+TNT1 A 0
+stop
+}
+}
+
+actor SplittedProtection : PowerProtection
+{
+DamageFactor "BullSplitBullet", 0.0
+Powerup.Duration 5
+}
+
+actor SplitterBulletTrail : BasicClientSide
+{
+Translation "220:220=206:206", "4:4=202:202"
+Renderstyle Add
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+NEDP TTTTTTTT 1 A_Fadeout
+stop
+}
+}
+
+actor BullSiphonBullet : BullBasicBullet
+{
+Obituary "%o's life was drained completely by %k's \cgSiphon bolt\c-."
+MissileType "BullSiphonRail"
+Damage (20)
+Speed 500
+States
+{
+XDeath:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("BullHealthPackage",1)
+stop
+}
+}
+
+actor BullSiphonBulletB : BullSiphonBullet {MissileType "BullSiphonRailB"}
+actor BullSiphonBulletR : BullSiphonBullet {MissileType "BullSiphonRailR"}
+actor BullSiphonBulletO : BullSiphonBullet {MissileType "BullSiphonRailO"}
+actor BullSiphonBulletP : BullSiphonBullet {MissileType "BullSiphonRailP"}
+
+actor BullHealthPackage : CustomInventory {States{pickup:TNT1 A 0 HealThing(30) stop}}
+
+actor BullSiphonRail : BasicClientside
+{
+Translation"194:194=172:172", "192:192=171:171"
+Scale 1
+States
+{
+Spawn:
+TNT1 A 0
+GIGF H 2 A_SetScale(ScaleX - 0.05)
+GIGF H 0 A_Stop
+GIGF H 0 A_Fadeout
+loop
+}
+}
+
+actor BullSiphonRailB : BullSiphonRail {Translation "192:192=205:205","194:194=74:74"}
+actor BullSiphonRailR : BullSiphonRail {Translation "192:192=171:171","194:194=41:41"}
+actor BullSiphonRailO : BullSiphonRail {Translation "192:192=104:104","194:194=128:128"}
+actor BullSiphonRailP : BullSiphonRail {Translation "192:192=229:229","194:194=232:232"}
+
+
+actor BullSiphonPuff
+{
++NOINTERACTION
++NOGRAVITY
++THRUGHOST
++NOGRAVITY
+Translation"194:194=92:92", "192:192=85:85"
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,0,8)
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,0,-8)
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,8,0)
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,-8,0)
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,4,4)
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,4,-4)
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,-4,4)
+TNT1 A 0 A_SpawnItemEx("SiphonPuffParticles",0,0,0,0,-4,-4)
+stop
+}
+}
+
+actor SiphonPuffParticles : BasicClientside
+{
+Translation "4:214=174:174", "215:215=186:186"
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+MMFX CDE 4
+stop
+}
+}
+
+//=====================
+//=====================
+//=====================
+
+actor BullGatorConfusionBurst : BullGatorSleepPierce
+{
+Weapon.AmmoUse 20
+Weapon.SlotNumber 3
+Inventory.Icon "BullMn3"
+Obituary "%o was confused about %k's \cmConfusion bolt\c-."
+Tag "Burst / Confusion"
+States
+{
+Ready:
+B3GA A 1
+B1GA A 0 ACS_ExecuteAlways(998,0,5000)
+B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
+B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
+Ready1:
+B3GA A 0 A_GunFlash
+goto Ready2
+Ready2:
+B3GA A 0 A_WeaponReady(WRF_NOSECONDARY)
+B3GA A 1
+B3GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+goto Ready2
+Ready2X:
+B3GA A 0 A_WeaponReady
+B3GA A 1
+B3GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+goto Ready2
+
+Fire:
+B3GA A 0 A_JumpIfInventory("BullAmmoFlag",1,"NoAmmo")
+B3GA A 0 A_JumpIfNoAmmo("NoAmmo")
+B3GA A 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
+B3GA A 1 A_GiveInventory("BurstConfusion_M1")
+B3GA BC 2
+B3GA A 0 A_Refire
+B3GA CBA 2
+goto Ready2
+AltFire:
+B3GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+B3GA A 0 A_TakeInventory("BullRifleAmmo2",175)
+B3GA A 0 A_GiveInventory("BurstConfusion_M2")
+B3GA A 0
+B3GA B 1
+B3GA BCCCCCCCCBBBA 3
+goto Ready2
+
+NoAmmo:
+B3GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+B3GA A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
+B3GA A 1
+B3GA BCCBA 3
+B3GA A 0 A_Refire
+goto Ready2
+}
+}
+
+actor BullBurstBullet : BullBasicBullet
+{
+Translation "230:230=103:103", "193:193=109:109"
+Speed 800
+Damage (10)
+Obituary "%o had multiple holes in %p chest due to %k's \cdBurst of bullets\c-."
+MissileType "BurstBulletTrail"
+States
+{
+Spawn:
+TNT1 A 0
+HSNM BC 4
+loop
+}
+}
+
+actor BullBurstBulletB : BullBurstBullet {MissileType "BurstBulletTrailB" Translation "193:193=205:205","230:230=74:74"}
+actor BullBurstBulletR : BullBurstBullet {MissileType "BurstBulletTrailR" Translation "193:193=171:171","230:230=41:41"}
+actor BullBurstBulletO : BullBurstBullet {MissileType "BurstBulletTrailO" Translation "193:193=104:104","230:230=128:128"}
+actor BullBurstBulletP : BullBurstBullet {MissileType "BurstBulletTrailP" Translation "193:193=229:229","230:230=232:232"}
+
+actor BurstBulletTrail : BasicClientside
+{
+Renderstyle Add
+Scale 2.5
+Translation "230:230=103:103", "193:193=109:109", "4:4=96:96"
+States
+{
+Spawn:
+TNT1 A 0
+HSNM BC 2 A_Fadeout
+loop
+}
+}
+
+actor BurstBulletTrailB : BurstBulletTrail {Translation "193:193=205:205","230:230=74:74"}
+actor BurstBulletTrailR : BurstBulletTrail {Translation "193:193=171:171","230:230=41:41"}
+actor BurstBulletTrailO : BurstBulletTrail {Translation "193:193=104:104","230:230=128:128"}
+actor BurstBulletTrailP : BurstBulletTrail {Translation "193:193=229:229","230:230=232:232"}
+
+actor BullConfussionBullet : BullBasicBullet
+{
++HITTRACER
+Speed 900
+Obituary "%o didn't get how %k's \cuConfusion Bullet\c- worked."
+Damage (12)
+Radius 6
+Height 6
+MissileType "ConfussionTrail"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+loop
+XDeath:
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_GiveInventory("ConfusionPickup",1,AAPTR_Tracer) //Gives whoever it hits a pickup
+TNT1 AAAAAA 1 A_GiveInventory("ConfusionPickup",1,AAPTR_Tracer) //Gives whoever it hits a pickup
+//I dont want to mess with painstates, thank you.
+stop
+}
+}
+
+actor BullConfussionBulletB : BullConfussionBullet {MissileType "ConfussionTrailB"}
+actor BullConfussionBulletR : BullConfussionBullet {MissileType "ConfussionTrailR"}
+actor BullConfussionBulletO : BullConfussionBullet {MissileType "ConfussionTrailO"}
+actor BullConfussionBulletP : BullConfussionBullet {MissileType "ConfussionTrailP"}
+
+actor ConfussionTrail : BasicClientside
+{
+Translation "61:61=248:248", "204:204=215:215"
+Renderstyle Add
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 0
+NCRU EFGH 1 A_Fadeout
+loop
+}
+}
+
+actor ConfussionTrailB : ConfussionTrail {Translation "61:61=205:205","204:204=74:74"}
+actor ConfussionTrailR : ConfussionTrail {Translation "61:61=171:171","204:204=41:41"}
+actor ConfussionTrailO : ConfussionTrail {Translation "61:61=104:104","204:204=128:128"}
+actor ConfussionTrailP : ConfussionTrail {Translation "61:61=229:229","204:204=232:232"}
+
+actor ConfusionPickup : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_SetAngle(angle+random(36,48))
+stop
+}
+}
+
+//Team color stuff
+
+actor PiercingSleep_M1 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+goto Default
+Default:
+TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuff",0,0,0,140,48,0,"PiercingBulletTrail")
+stop
+LightFire:
+TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffB",0,0,0,140,48,0,"PiercingBulletTrailB")
+stop
+WilyFire:
+TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffR",0,0,0,140,48,0,"PiercingBulletTrailR")
+stop
+CossackFire:
+TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffO",0,0,0,140,48,0,"PiercingBulletTrailO")
+stop
+KingFire:
+TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffP",0,0,0,140,48,0,"PiercingBulletTrailP")
+stop
+}
+}
+
+actor PiercingSleep_M2 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+goto Default
+Default:
+TNT1 A 0 A_FireCustomMissile("BullSleeperBullet",0,0,8)
+stop
+LightFire:
+TNT1 A 0 A_FireCustomMissile("BullSleeperBulletB",0,0,8)
+stop
+WilyFire:
+TNT1 A 0 A_FireCustomMissile("BullSleeperBulletR",0,0,8)
+stop
+CossackFire:
+TNT1 A 0 A_FireCustomMissile("BullSleeperBulletO",0,0,8)
+stop
+KingFire:
+TNT1 A 0 A_FireCustomMissile("BullSleeperBulletP",0,0,8)
+stop
+}
+}
+
+actor SplitterSiphon_M2 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+goto Default
+Default:
+TNT1 A 0 A_FireCustomMissile("BullSiphonBullet",0,0,8)
+stop
+LightFire:
+TNT1 A 0 A_FireCustomMissile("BullSiphonBulletB",0,0,8)
+stop
+WilyFire:
+TNT1 A 0 A_FireCustomMissile("BullSiphonBulletR",0,0,8)
+stop
+CossackFire:
+TNT1 A 0 A_FireCustomMissile("BullSiphonBulletO",0,0,8)
+stop
+KingFire:
+TNT1 A 0 A_FireCustomMissile("BullSiphonBulletP",0,0,8)
+stop
+}
+}
+
+actor BurstConfusion_M1 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+goto Default
+Default:
+TNT1 A 0 A_FireCustomMissile("BullBurstBullet",0,1,8)
+stop
+LightFire:
+TNT1 A 0 A_FireCustomMissile("BullBurstBulletB",0,1,8)
+stop
+WilyFire:
+TNT1 A 0 A_FireCustomMissile("BullBurstBulletR",0,1,8)
+stop
+CossackFire:
+TNT1 A 0 A_FireCustomMissile("BullBurstBulletO",0,1,8)
+stop
+KingFire:
+TNT1 A 0 A_FireCustomMissile("BullBurstBulletP",0,1,8)
+stop
+}
+}
+
+actor BurstConfusion_M2 : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
+goto Default
+Default:
+TNT1 A 0 A_FireCustomMissile("BullConfussionBullet",0,1,8)
+stop
+LightFire:
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletB",0,1,8)
+stop
+WilyFire:
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletR",0,1,8)
+stop
+CossackFire:
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletO",0,1,8)
+stop
+KingFire:
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletP",0,1,8)
+stop
+}
+}

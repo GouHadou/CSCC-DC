@@ -872,3 +872,37 @@ Script "CSACS_PistonFistFX" (int playerTid, int arm) CLIENTSIDE
 		Delay(1);
 	}
 }
+
+
+
+script "BadzWarp" (void){
+	int xspeed = GetActorVelX(ActivatorTID());
+	int yspeed = GetActorVelY(ActivatorTID());
+	int zspeed = GetActorVelZ(ActivatorTID());
+	ThrustThing(GetActorAngle(ActivatorTID()) >> 8,128,1,0);
+	Delay(1);
+	SetActorVelocity(0,xspeed,yspeed,zspeed,false,false);
+}
+
+
+script "BULL_SLEEPER" (int time)
+{
+	int CurrentHP = GetActorProperty(0,APROP_Health);
+	int RegHP = GetActorProperty(0,APROP_Health);
+	
+	while(CurrentHP > 0) {
+		CurrentHP = GetActorProperty(0,APROP_Health);
+		if(CurrentHP < RegHP) {
+			GiveActorInventory(0,"UnSleeperTag",1);
+			//Log(s:"UnSleeperTag given");
+			terminate;
+		}
+		Delay(1);
+		if(time <= 0) {
+			GiveActorInventory(0,"UnSleeperTag",1);
+			//Log(s:"UnSleeperTag given - timed");
+			terminate;
+		}
+		time--;
+	}
+}
