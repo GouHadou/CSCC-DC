@@ -120,133 +120,6 @@ function bool PressingButton2 (int buttons, int theButton)
 return ((buttons&theButton)>0);
 }
 
-script "CSACS_RadiusGive" (int GiveID, int GiveRadius, int GiveType)
-{ 
-int Target_TID;
-int Target_Distance;
-int FiringPlayer;
-int PlayersTeam;
-Bool GiveClearance;
-
-// GiveType 1 = self + Friendlies
-// GiveType 2 = Friendlies only
-// GiveType 3 = Self only
-// GiveType 4 = Enemies only
-// GiveType 5 = self + Enemies
-// GiveType 6 = All but self
-// GiveType 7 = All
-
-If(ActivatorTID() <= 999)
-	{
-	FiringPlayer= ACS_ExecuteWithResult(257, 0); //Returns the target of the activator
-	}
-else
-	{
-	FiringPlayer=ActivatorTID();
-	}
-PlayersTeam = GetPlayerInfo(FiringPlayer-1000, PLAYERINFO_TEAM);
-For(int i = 0;i < ServerMax; i++)
-	{
-	GiveClearance = True;
-	If(!PlayerInGame(i)){Continue;}
-	If(ACS_ExecuteWithResult(975, 1))
-		{
-		switch(GiveType)
-			{
-			case 1:
-			If(PlayersTeam != GetPlayerInfo(i, PLAYERINFO_TEAM)){Continue;}
-			Break;
-			
-			case 2:
-			If(PlayersTeam != GetPlayerInfo(i, PLAYERINFO_TEAM) || (PlayersTeam == GetPlayerInfo(i, PLAYERINFO_TEAM) && i == FiringPlayer-1000)){Continue;}
-			Break;
-			
-			case 3:
-			If(PlayersTeam != GetPlayerInfo(i, PLAYERINFO_TEAM) || (i != FiringPlayer-1000)){Continue;}
-			Break;
-
-			case 4:
-			If(PlayersTeam == GetPlayerInfo(i, PLAYERINFO_TEAM) || i == FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 5:
-			If(PlayersTeam == GetPlayerInfo(i, PLAYERINFO_TEAM) && i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 6:
-			If(i == FiringPlayer-1000){Continue;}	
-			Break;
-			}
-		}
-	else
-		{
-		switch(GiveType)
-			{
-			case 1:
-			If(i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 2:
-			If(i == FiringPlayer-1000 || i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 3:
-			If(i != FiringPlayer-1000){Continue;}
-			Break;
-			
-			case 4:
-			If(i == FiringPlayer-1000){Continue;}
-			Break;
-			
-			Default:
-			//If(i == FiringPlayer-1000 || i != FiringPlayer-1000){Continue;}
-			Break;
-			}
-		}
-	Target_TID = i+1000;
-	If(xyzDistance(0,Target_TID) < GiveRadius) // && FiringPlayer!=Target_TID
-		{
-		GiveActorInventory(Target_TID,"PackageID", GiveID);
-		GiveActorInventory(Target_TID,"GivePackage", 1);
-		}
-	}
-}
-
-script "CSACS_MedivisionScript" (void) CLIENTSIDE
-{ 
-int Target_TID;
-int PlayersTeam;
-str TeamTag; 
-
-if(ACS_ExecuteWithResult(975,1)!=1){terminate;}
-
-Switch(PlayerTeam())
-	{
-	Case 0: TeamTag = "_Light"; Break;
-	Case 1: TeamTag = "_Wily"; Break;
-	Case 2: TeamTag = "_Cossack"; Break;
-	Case 3: TeamTag = "_King"; Break;
-	}
-
-while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
-	{
-	Delay(1);
-	PlayersTeam = GetPlayerInfo(ActivatorTID()-1000, PLAYERINFO_TEAM);
-	For(int p = 0; p < ServerMax; p++)
-		{
-		If(!PlayerInGame(p)){continue;}
-		if(p+1000 == ActivatorTID()){continue;}
-		If(PlayersTeam != GetPlayerInfo(p, PLAYERINFO_TEAM)){continue;}
-	
-		Target_TID = p+1000;
-		If((xyzDistance(0,Target_TID) < 900) && Checksight(0,Target_TID,0))
-			{
-			SpawnForced(StrParam(s:TinyBarHealth(Target_TID),s:TeamTag),GetActorX(Target_TID),GetActorY(Target_TID),GetActorZ(Target_TID) + (65 << 16));
-			}
-		}
-	}
-}
-
 Str TinyBarSprite[21] = {
 "TinyBar0",
 "TinyBar1",
@@ -340,3 +213,7 @@ for(int g=1;g<=HealAmount;g++)
     else if(ACS_NamedExecuteWithResult("CSACS_HealthPercent",0)<OverhealMax && Overheal==1){GiveInventory("BasicOverhealItem",1);}
     }
 }
+
+
+
+
