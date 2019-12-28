@@ -154,6 +154,17 @@ Pain.DarkLaser:
 "----" H 0 //A_GiveInventory("DarkLaserProtect")
 Goto Pain+1
 
+//Gizmo
+Pain.GizmoClaws:
+"----" H 0 
+Goto pain+1
+Pain.GizmoIce:
+"----" H 0 A_GiveInventory("GizmoSlow",1)
+goto Pain+1
+Pain.GizmoWater:
+"----" H 0 A_SpawnItemEx("SavHit")
+goto Pain+1
+
 //Special Death
 //Unix
 Death.UnixBackstab:
