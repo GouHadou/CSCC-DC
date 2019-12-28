@@ -514,18 +514,19 @@ Goto "CustomWepMan::Pain+2"
 }
 }
 
-actor TommyGunMorph : LaggyBlazkoClass
+actor TommyGunMorph : NadeSpamMorph
 {
-+NOSKIN
 player.morphweapon "TommyGun"
-player.soundclass "BestClassEver"
-States
-{
-Pain:
-YOKM H 0 A_ScaleVelocity(0.75)
-YOKM H 0 
-Goto "CustomWepMan::Pain+2"
 }
+
+actor CorpGrandDadMorph : NadeSpamMorph
+{
+player.morphweapon "CorpGrandDad"
+}
+
+actor CorpFragGrenadeMorph : NadeSpamMorph
+{
+player.morphweapon "CorpFragGrenade"
 }
 
 actor LaggyClassItems : CustomInventory

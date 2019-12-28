@@ -1,12 +1,12 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 17
+#define MAX_MORPHS 18
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
-{"UnixKnife", "Unix", "UnixClassItems"},//1
-{"UnixBlade", "Unix", "UnixClassItems"},//2
+{"UnixKnife", "Unix (Eternal Torment)", "UnixClassItems"},//1
+{"UnixBlade", "Unix (Revolver Blade)", "UnixClassItems"},//2
 {"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},//3
 {"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},//4
 {"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},//5
@@ -15,13 +15,14 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"FIR", "Korby (Fire)", "KorbyClassItems"},//8
 {"LIT", "Korby (Lightning)", "KorbyClassItems"},//9
 {"ICE", "Korby (Ice)", "KorbyClassItems"},//10
-{"CorpGrandDad", "Corporal (Grand Dad)", "CorporalClassItems"},//11
-{"CorpFragGrenade", "Corporal (Frag Grenade)", "CorporalClassItems"},//12
-{"TommyGun", "Corporal (Tommy Gun)", "CorporalClassItems"},//13
-{"NadeSpam", "Corporal (Nade Spam)", "CorporalClassItems"},//14
+{"CorpGrandDad", "Corporal (Grand Dad)", "LaggyClassItems"},//11
+{"CorpFragGrenade", "Corporal (Frag Grenade)", "LaggyClassItems"},//12
+{"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},//13
+{"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},//14
 {"MessatsuWep", "Messatsu", "MessatsuClassItems"},//15
 {"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},//16
 {"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},//17
+{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//18
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

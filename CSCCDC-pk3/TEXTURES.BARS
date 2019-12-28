@@ -116,3 +116,21 @@ texture GEEAMMO1, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=229:229", "19
 texture GEEVMMO1, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=229:229", "198:198=220:220"}}
 texture GEEAMMO2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=76:76", "198:198=243:243"}}
 texture GEEVMMO2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=76:76", "198:198=243:243"}}
+
+//PistonMan
+texture PISTNVAR, 56, 8{patch PISTNBAR, 0, 0 {rotate 90}}
+
+texture PISTBA1, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+texture PISTVA1, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+
+texture PISTBA2, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+texture PISTVA2, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+
+texture PISTBA3, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+texture PISTVA3, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+
+texture PISTBA4, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+texture PISTVA4, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+
+texture PISTBA5, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+texture PISTVA5, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}

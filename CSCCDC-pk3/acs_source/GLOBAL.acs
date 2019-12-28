@@ -145,8 +145,11 @@ script 998 (int weap, int nosound)
 			}
 		}
 	
+	If(IsTeamGame!=1 && !CheckInventory("CopyWeapon")
+	{
 	Thing_SetTranslation(0, weap);
-	PlayerTranslation[PlayerNumber()] = weap;
+	PlayerTranslation[PlayerNumber()] = weap;}
+	}
 }
 
 //Best colors ever

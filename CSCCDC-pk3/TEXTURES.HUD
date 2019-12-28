@@ -168,3 +168,51 @@ Graphic "ZENBF04",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF04",0,0}
 Graphic "ZENBF05",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF05",0,0}
 Graphic "ZENBF06",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF06",0,0}
 Graphic "ZENBF07",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF07",0,0}
+
+
+//Pistonman
+//Default
+Sprite PST1A0, 136, 116 {Offset -190, -94  Patch PSTNA0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+Sprite PST1B0, 136, 116 {Offset -180, -85  Patch PSTNB0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+Sprite PST1C0, 136, 116 {Offset -170, -76  Patch PSTNC0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+Sprite PST1D0, 136, 116 {Offset -170, -76 Patch PSTND0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+Sprite PST1E0, 132, 112 {Offset 6, -98  Patch PSTNE0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+Sprite PST1F0, 132, 112 {Offset -5, -89  Patch PSTNF0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+Sprite PST1G0, 132, 112 {Offset -14, -80  Patch PSTNG0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+Sprite PST1H0, 132, 112 {Offset -14, -80  Patch PSTNH0, 0, 0 {Translation "192:192=87:87", "198:198=95:95"}}
+//Light
+Sprite PST2A0, 136, 116 {Offset -190, -94  Patch PSTNA0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+Sprite PST2B0, 136, 116 {Offset -180, -85  Patch PSTNB0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+Sprite PST2C0, 136, 116 {Offset -170, -76  Patch PSTNC0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+Sprite PST2D0, 136, 116 {Offset -170, -76  Patch PSTND0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+Sprite PST2E0, 132, 112 {Offset 6, -98  Patch PSTNE0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+Sprite PST2F0, 132, 112 {Offset -5, -89  Patch PSTNF0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+Sprite PST2G0, 132, 112 {Offset -14, -80  Patch PSTNG0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+Sprite PST2H0, 132, 112 {Offset -14, -80  Patch PSTNH0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+//Wily
+Sprite PST3A0, 136, 116 {Offset -190, -94  Patch PSTNA0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+Sprite PST3B0, 136, 116 {Offset -180, -85  Patch PSTNB0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+Sprite PST3C0, 136, 116 {Offset -170, -76  Patch PSTNC0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+Sprite PST3D0, 136, 116 {Offset -170, -76  Patch PSTND0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+Sprite PST3E0, 132, 112 {Offset 6, -98  Patch PSTNE0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+Sprite PST3F0, 132, 112 {Offset -5, -89  Patch PSTNF0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+Sprite PST3G0, 132, 112 {Offset -14, -80  Patch PSTNG0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+Sprite PST3H0, 132, 112 {Offset -14, -80  Patch PSTNH0, 0, 0 {Translation "192:192=171:171", "198:198=41:41"}}
+//Cossack
+Sprite PST4A0, 136, 116 {Offset -190, -94  Patch PSTNA0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+Sprite PST4B0, 136, 116 {Offset -180, -85  Patch PSTNB0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+Sprite PST4C0, 136, 116 {Offset -170, -76  Patch PSTNC0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+Sprite PST4D0, 136, 116 {Offset -170, -76  Patch PSTND0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+Sprite PST4E0, 132, 112 {Offset 6, -98  Patch PSTNE0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+Sprite PST4F0, 132, 112 {Offset -5, -89  Patch PSTNF0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+Sprite PST4G0, 132, 112 {Offset -14, -80  Patch PSTNG0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+Sprite PST4H0, 132, 112 {Offset -14, -80  Patch PSTNH0, 0, 0 {Translation "192:192=104:104", "198:198=128:128"}}
+//King
+Sprite PST5A0, 136, 116 {Offset -190, -94  Patch PSTNA0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+Sprite PST5B0, 136, 116 {Offset -180, -85  Patch PSTNB0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+Sprite PST5C0, 136, 116 {Offset -170, -76  Patch PSTNC0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+Sprite PST5D0, 136, 116 {Offset -170, -76  Patch PSTND0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+Sprite PST5E0, 132, 112 {Offset 6, -98  Patch PSTNE0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+Sprite PST5F0, 132, 112 {Offset -5, -89  Patch PSTNF0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+Sprite PST5G0, 132, 112 {Offset -14, -80  Patch PSTNG0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+Sprite PST5H0, 132, 112 {Offset -14, -80  Patch PSTNH0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}

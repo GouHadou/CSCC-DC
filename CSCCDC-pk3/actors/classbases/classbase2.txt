@@ -2,6 +2,10 @@ actor ClassBase2 : ClassBase1
 {
 States
 {
+//A_Stop Hitstun Pain
+
+//Core Hitstun Pain
+
 //Minimal Hitstun Pain
 Pain.FusionBomb:
 Pain.TommyGun:
@@ -116,6 +120,22 @@ Pain.Afterburner:
 "----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,3*random(3,4))
 "----" H 0 ThrustThingZ(0,30,0,0)
 Goto pain+1
+//Pistonman
+Pain.PistonPunch:
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,15)
+goto Pain+1
+Pain.PistonPunchStun:
+"----" A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,4,0,SXF_TRANSFERTRANSLATION)
+"----" A 0 A_JumpIf(velz>8,2)
+"----" A 0 A_ChangeVelocity(momx, momy, 8,CVF_RELATIVE|CVF_REPLACE)
+"----" A 0
+goto Pain+1
+Pain.PistonPunchStun2:
+"----" A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,6,0,SXF_TRANSFERTRANSLATION)
+"----" A 0 A_JumpIf(velz>12,2)
+"----" A 0 A_ChangeVelocity(momx, momy, 12,CVF_RELATIVE|CVF_REPLACE)
+"----" A 0
+goto Pain+1
 
 //PowerProtect Pain
 //Korby

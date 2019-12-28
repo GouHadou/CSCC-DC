@@ -272,3 +272,7 @@ weapon/geedamg1 GEEDAMG1
 weapon/geedamg2 GEEDAMG2
 weapon/geedamg3 GEEDAMG3
 weapon/geecharge GEECHRGE
+
+//Pistonman
+cscc/pistonhit	PISTHIT
+cscc/pistonfail	PISTFAIL

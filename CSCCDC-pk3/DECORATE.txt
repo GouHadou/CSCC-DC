@@ -73,5 +73,9 @@
 #include "actors/classes/Gee/GeeClass.txt"
 #include "actors/classes/Gee/GeeWep.txt"
 
+//==|Gee
+#include "actors/classes/Pistonman/PistonClass.txt"
+#include "actors/classes/Pistonman/PistonWep.txt"
+
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

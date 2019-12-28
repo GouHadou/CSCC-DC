@@ -7,6 +7,7 @@ addplayerclass IceSparkyClass nomenu
 addplayerclass UkiyamaClass nomenu
 addplayerclass MessatsuClass nomenu  
 addplayerclass ColdFusionClass nomenu
+addplayerclass PistonmanClass nomenu 
 addplayerclass LordDamagerClass nomenu 
 addplayerclass TankOperatorClass nomenu 
 addplayerclass LaggyBlazkoClass nomenu

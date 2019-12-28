@@ -89,6 +89,37 @@ int Result = GetPlayerInfo(PlayerNumber(),PLAYERINFO_TEAM);
 SetResultValue(Result);
 }
 
+Script "CSACS_ButtonCheck" (int theButton)
+{
+SetResultValue(PressingButton(theButton));
+}
+
+Script "CSACS_PressingAttack" (void)
+{
+SetResultValue(PressingButton(BT_ATTACK));
+}
+
+Script "CSACS_PressingAltAttack" (void)
+{
+SetResultValue(PressingButton(BT_ALTATTACK));
+}
+
+Script "CSACS_PressingBothAttack" (void)
+{
+int buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+SetResultValue(PressingButton2(buttons,BT_ATTACK)&&PressingButton2(buttons,BT_ALTATTACK));
+}
+
+function bool PressingButton (int theButton)
+{
+return PressingButton2(GetPlayerInput(-1, INPUT_BUTTONS),theButton);
+}
+
+function bool PressingButton2 (int buttons, int theButton)
+{
+return ((buttons&theButton)>0);
+}
+
 script "CSACS_RadiusGive" (int GiveID, int GiveRadius, int GiveType)
 { 
 int Target_TID;

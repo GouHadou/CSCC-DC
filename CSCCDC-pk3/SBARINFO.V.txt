@@ -294,6 +294,16 @@ DrawImage "GEEGRPH2", 6, 65;
 DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 26, 73;
 }
 
+//====|PistonMan
+IsSelected PistonTremorBoss
+{
+Drawbar"PISTBA1", "BAREMPTY", Ammo1, vertical, 16, 8;
+InInventory LightTeamFlag,1{Drawbar"PISTBA2", "BAREMPTY", Ammo1, vertical, 16, 8;}
+InInventory WilyTeamFlag,1{Drawbar"PISTBA3", "BAREMPTY", Ammo1, vertical, 16, 8;}
+InInventory CossackTeamFlag,1{Drawbar"PISTBA4", "BAREMPTY", Ammo1, vertical, 16, 8;}
+InInventory KingTeamFlag,1{Drawbar"PISTBA5", "BAREMPTY", Ammo1, vertical, 16, 8;}
+}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;

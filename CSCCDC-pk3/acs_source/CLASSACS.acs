@@ -673,3 +673,73 @@ If(BMValue > 0)
 SetActorProperty(PlayerTID, APROP_Health, BeforeHealth);
 SetPlayerProperty(0, 0, PROP_BUDDHA);
 }
+
+//Pistonman
+Script "CSACS_PistonFistFX" (int playerTid, int arm) CLIENTSIDE
+{
+	str P_team = "";
+	str ArmType = "";
+	if(arm==2){ArmType = "2";}
+	if(arm==1){ArmType = "1";}
+    int plX; int plY;  int plZ;
+    int grX; int grY;  int grZ;
+    int vX;  int vY;   int vZ;
+    int nX;  int nY;   int nZ;
+    int bX;  int bY;   int bZ;
+    int magnitude;
+    int pointCount;
+    int pointOffset;
+	int density = 24;
+	switch(GetPlayerInfo(playerTID-1000, PLAYERINFO_TEAM))
+		{
+		Case 0:
+		P_team = "B";
+		break;
+		Case 1:
+		P_team = "R";
+		break;
+		Case 2:
+		P_team = "G";
+		break;
+		Case 3:
+		P_team = "Y";
+		break;
+		}
+
+	str SpawnName = StrParam(s:"PistonCoilFX", s:ArmType, s:P_team);
+
+	while((ClassifyActor(0) == 128||ClassifyActor(0) == 256) && GetActorProperty(playerTid, APROP_HEALTH)>0){
+
+		plX = GetActorX(playerTid); grX = GetActorX(0);
+		plY = GetActorY(playerTid); grY  = GetActorY(0);
+		plZ = GetActorZ(playerTid)+(14 << 16); grZ  = GetActorZ(0);
+		//+14 to the spawn height of ^the player so the chain doesn't spawn from their feet.
+		vX = grX - plX;   vY = grY - plY;   vZ = grZ - plZ;
+
+		magnitude = magnitudeThree(vX >> 16, vY >> 16, vZ >> 16);
+
+		pointCount  = magnitude / density;
+		pointOffset = magnitude - (pointCount * density);
+
+
+		//if(grX == 0 && grY == 0 && grZ == 0){terminate;} 
+
+		if (magnitude != 0)
+		{
+			nX = vX / magnitude; nY = vY / magnitude; nZ = vZ / magnitude;
+
+			int i; int j;
+			for (i = 0; i < pointCount; i++)
+			{
+				j = (i * density) + pointOffset;
+
+				bX = (nX * j) + plX;
+				bY = (nY * j) + plY;
+				bZ = (nZ * j) + plZ;//+(16 << 16);
+
+				Spawn(SpawnName, bX, bY, bZ);
+			}
+		}
+		Delay(1);
+	}
+}
