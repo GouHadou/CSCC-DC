@@ -167,22 +167,14 @@ IsSelected MessatsuWep
 	Drawbar "MESSHFUL", "MESSHEMT", Health, horizontal, 130, 184;
 	Drawbar"VMESSBAR", "MESSHSPE", Ammo1, horizontal, 58, 184;
 	DrawBar "MESSHSPS", "MESSHSPE", MessSuperFlag, horizontal, 58, 184;
+	InInventory OverhealValue, 1 {DrawBar "MESSHOVR", "VNOBAR", OverhealValue, horizontal, 130, 184;}
 	InInventory MessatsuCharge, 4
 	{
 	DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 130, 184;
 	}
-	InInventory MessatsuAmmo, 56
-	{
-	DrawImage "RDEMON", 116, 196, center;
-	}
-	InInventory MessatsuAmmo, 36
-	{
-	DrawImage "MISOGI", 98, 196, center;
-	}
-	InInventory MessatsuAmmo, 18
-	{
-	DrawImage "TEMAGOU", 80, 196, center;
-	}
+	InInventory MessatsuAmmo, 56 {DrawImage "RDEMON", 116, 196, center;}
+	InInventory MessatsuAmmo, 36 {DrawImage "MISOGI", 98, 196, center;}
+	InInventory MessatsuAmmo, 18 {DrawImage "TEMAGOU", 80, 196, center;}
 	}
 	
 //Ice / Sparky
