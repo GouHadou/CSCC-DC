@@ -1053,6 +1053,7 @@ actor ParryFX : Gouhadou
 {
 +THRUACTORS
 +CLIENTSIDEONLY
+renderstyle "add"
 Scale 1.5
 States
 {
@@ -1685,6 +1686,7 @@ TNT1 A 0 A_GiveInventory("TemaInv", 1)
 TNT1 A 0 A_GiveInventory("RagingDemonInv", 1)
 TNT1 A 0 A_GiveInventory("MisogiInv", 1)
 TNT1 A 0 A_GiveInventory("IsMessatsu", 1)
+TNT1 A 0 A_GiveInventory("NoHealthBar", 1)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_MessParryCheck", 0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_MessDamageAmmo", 0)
 stop

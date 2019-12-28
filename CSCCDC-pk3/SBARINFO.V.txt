@@ -166,6 +166,8 @@ DrawBar "MESSVFUL", "MESSVEMT", Health, vertical, 24, 8;
 DrawBar "MESSBAR", "MESSVSPE", Ammo1, vertical, 16, 8;
 DrawBar "MESSVSPS", "MESSVSPE", MessSuperFlag, vertical, 16, 8;
 
+InInventory OverhealValue, 1 {DrawBar "MESSVOVR", "NOBAR", OverhealValue, vertical, 24, 8;}
+
 InInventory MessatsuCharge, 4{DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 24, 8;}
 InInventory MessatsuAmmo, 56{DrawImage "RDEMON", 16, 20, center;}
 InInventory MessatsuAmmo, 36{DrawImage "MISOGI", 16, 35, center;}
