@@ -138,3 +138,49 @@ texture PISTVA4, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=104:104", "198
 
 texture PISTBA5, 8, 56{patch PISTNBAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 texture PISTVA5, 56, 8{patch PISTNVAR, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+
+//BullBars
+graphic BUL1_BAR,8,56{patch BARENERG,0,0{Translation "192:192=85:85","198:198=92:92"}}
+graphic BUL1_VAR,56,8{patch BUL1_BAR,0,0{rotate 90}}
+graphic BLL1_BAR,8,56{patch BARENERG,0,0{Translation "192:192=216:216","198:198=220:220"}}
+graphic BLL1_VAR,56,8{patch BLL1_BAR,0,0{rotate 90}}
+
+graphic BUL2_BAR,8,56{patch BARENERG,0,0{Translation "192:192=202:202","198:198=206:206"}}
+graphic BUL2_VAR,56,8{patch BUL2_BAR,0,0{rotate 90}}
+graphic BLL2_BAR,8,56{patch BARENERG,0,0{Translation "192:192=42:42","198:198=45:45"}}
+graphic BLL2_VAR,56,8{patch BLL2_BAR,0,0{rotate 90}}
+
+graphic BUL3_BAR,8,56{patch BARENERG,0,0{Translation "192:192=96:96","198:198=103:103"}}
+graphic BUL3_VAR,56,8{patch BUL3_BAR,0,0{rotate 90}}
+graphic BLL3_BAR,8,56{patch BARENERG,0,0{Translation "192:192=215:215","198:198=248:248"}}
+graphic BLL3_VAR,56,8{patch BLL3_BAR,0,0{rotate 90}}
+
+// =[BullGator]=
+sprite B1GAA0,120,100{Offset -184,-94 Patch B_HNA0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=218:218", "202:202=215:215", "119:119=130:130", "248:248=130:130", "195:195=218:218"}}
+sprite B1GAB0,140,116{Offset -184,-98 Patch B_HNB0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=218:218", "202:202=215:215", "119:119=130:130", "248:248=130:130", "195:195=218:218"}}
+sprite B1GAC0,144,112{Offset -187,-102 Patch B_HNC0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=218:218", "202:202=215:215", "119:119=130:130", "248:248=130:130", "195:195=218:218"}}
+
+sprite B2GAA0,120,100{Offset -184,-94 Patch B_HNA0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=206:206", "202:202=202:202", "119:119=130:130", "248:248=130:130", "195:195=206:206"}}
+sprite B2GAB0,140,116{Offset -184,-98 Patch B_HNB0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=206:206", "202:202=202:202", "119:119=130:130", "248:248=130:130", "195:195=206:206"}}
+sprite B2GAC0,144,112{Offset -187,-102 Patch B_HNC0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=206:206", "202:202=202:202", "119:119=130:130", "248:248=130:130", "195:195=206:206"}}
+
+sprite B3GAA0,120,100{Offset -184,-94 Patch B_HNA0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=103:103", "202:202=96:96", "119:119=130:130", "248:248=130:130", "195:195=103:103"}}
+sprite B3GAB0,140,116{Offset -184,-98 Patch B_HNB0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=103:103", "202:202=96:96", "119:119=130:130", "248:248=130:130", "195:195=103:103"}}
+sprite B3GAC0,144,112{Offset -187,-102 Patch B_HNC0,0,0{Translation "192:192=129:129", "198:198=130:130", "199:199=103:103", "202:202=96:96", "119:119=130:130", "248:248=130:130", "195:195=103:103"}}
+
+
+graphic BullItem, 32, 32
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BULLITEM, 0, 0
+}
+
+graphic BullMn1,32,32 {XScale 2.0 YScale 2.0 Patch BULL1,0,0}
+graphic BullMn2,32,32 {XScale 2.0 YScale 2.0 Patch BULL3,0,0}
+graphic BullMn3,32,32 {XScale 2.0 YScale 2.0 Patch BULL5,0,0}
+
+graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL2,0,0}
+graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL4,0,0}
+graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL6,0,0}
+// =[=========]=

@@ -317,6 +317,24 @@ IsSelected HydroCannonWep{DrawBar "HYDRBAR1", "BAREMPTY", Ammo1, vertical, 16, 8
 IsSelected ChaosCannonWep{DrawBar "CHAOBAR1", "BAREMPTY", Ammo1, vertical, 16, 8; }
 IsSelected RFMissileWep{DrawBar "BARAMMO6", "BAREMPTY", Ammo1, vertical, 16, 8; }
 
+//====|BullGator
+IsSelected BullGatorSleepPierce{
+	DrawBar"BUL1_BAR","BAREMPTY",Ammo1,vertical,16,8;
+	DrawBar"BLL1_BAR","BAREMPTY",Ammo2,vertical,8,8;
+	}
+IsSelected BullGatorSiphonSplitter{
+	DrawBar"BUL2_BAR","BAREMPTY",Ammo1,vertical,16,8;
+	DrawBar"BLL2_BAR","BAREMPTY",Ammo2,vertical,8,8;
+	}
+IsSelected BullGatorConfusionBurst{
+	DrawBar"BUL3_BAR","BAREMPTY",Ammo1,vertical,16,8;
+	DrawBar"BLL3_BAR","BAREMPTY",Ammo2,vertical,8,8;
+	}
+
+//====|Badz
+IsSelected OrbitalMissileBoss{Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar"BARAMM51","BAREMPTY",Ammo2,vertical,8,8;}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;

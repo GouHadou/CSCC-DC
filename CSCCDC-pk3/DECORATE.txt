@@ -73,9 +73,17 @@
 #include "actors/classes/Gee/GeeClass.txt"
 #include "actors/classes/Gee/GeeWep.txt"
 
-//==|Gee
+//==|PistonMan
 #include "actors/classes/Pistonman/PistonClass.txt"
 #include "actors/classes/Pistonman/PistonWep.txt"
+
+//===|BadZ
+#include "actors/Classes/BadZ/BadZ.txt"
+#include "actors/Classes/BadZ/BadZWep.txt"
+
+//===|BullGator
+#include "actors/Classes/BullGator/BullGator.txt"
+#include "actors/Classes/BullGator/BullGatorRifles.txt"
 
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

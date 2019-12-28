@@ -15,3 +15,5 @@ addplayerclass KorbyClass nomenu
 addplayerclass VocalWomanClass nomenu 
 addplayerclass ZenTrainerClass nomenu 
 addplayerclass GeeClass nomenu 
+AddPlayerClass BullGator nomenu
+AddPlayerClass Badz nomenu
