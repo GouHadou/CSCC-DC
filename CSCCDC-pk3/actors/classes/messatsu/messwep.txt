@@ -29,13 +29,16 @@ GHAD A 0 A_ChangeVelocity(0.25*momx, 0.25*momy, 0.5*momz, CVF_REPLACE)
 GHAD A 0 SetPlayerProperty(0, 1, 1)
 GHAD A 0 A_GiveInventory("MessParryAttempt", 1)
 GHPA AC  1
-GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 252)
-GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 288)
-GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 324)
 GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 0)
 GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 36)
 GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 72)
-
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 108)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 144)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 180)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 216)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 252)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 288)
+GHAD A 0 A_SpawnItemEx("ParryFX", 48, -12, 32, 0, 0, 0, 324)
 Goto ParryWait
 ParryWait:
 GHPA D 1 
