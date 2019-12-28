@@ -1,4 +1,4 @@
-actor Gizmo : ClassBaseCSCC 
+actor Gizmo : CustomWepMan 
 {
 player.displayname "Gizmo" 
 player.soundclass "Gizmo"
@@ -285,7 +285,7 @@ TNT1 A 0 A_GiveToTarget("GizmoMorphItem",1)
 stop
 }
 }
-
+/*
 actor GizmoCopyHitMain
 {
 Height 0
@@ -316,7 +316,7 @@ TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 30)
 stop
 }
 }
-
+*/
 actor GizmoMorph : Gizmo
 {
 +NOSKIN
@@ -327,7 +327,7 @@ States
 Pain:
 YOKM H 0 A_ScaleVelocity(0.75)
 YOKM H 0 
-Goto "ClassBaseCSCC::Pain+2"
+Goto "CustomWepMan::Pain+2"
 }
 }
 
@@ -341,6 +341,6 @@ States
 Pain:
 YOKM H 0 A_ScaleVelocity(0.75)
 YOKM H 0 
-Goto "ClassBaseCSCC::Pain+2"
+Goto "CustomWepMan::Pain+2"
 }
 }

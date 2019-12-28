@@ -17,3 +17,4 @@ addplayerclass ZenTrainerClass nomenu
 addplayerclass GeeClass nomenu 
 AddPlayerClass BullGator nomenu
 AddPlayerClass Badz nomenu
+AddPlayerClass Gizmo nomenu
