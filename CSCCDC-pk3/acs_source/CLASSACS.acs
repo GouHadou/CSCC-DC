@@ -446,7 +446,7 @@ for (i = 1; i <= duration; i++)
 }
 
 //Messatsu
-Script "CSACS_MessParryCheck" (void)
+Script "CSACS_MessAbilityCheck" (void)
 {
 int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;
 int InputOldButtons = InputButtons;
@@ -456,6 +456,10 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsM
 	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1 )
 		{
 		If(!CheckInventory("NoParry")){GiveInventory("MessParryFlag", 1);}
+		}
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP)==3)
+		{
+		GiveInventory("MessAirMod", 1);
 		}
 	Delay(1);
 	InputOldButtons = InputButtons;
