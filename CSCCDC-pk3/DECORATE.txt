@@ -77,12 +77,6 @@
 #include "actors/classes/Pistonman/PistonClass.txt"
 #include "actors/classes/Pistonman/PistonWep.txt"
 
-//===|gizmo
-#include "actors/classes/gizmo/gizclass.txt"
-#include "actors/classes/gizmo/gizwep.txt"
-#include "actors/classes/gizmo/gizupgrades.txt"
-#include "actors/classes/gizmo/gizig.txt"
-
 //===|BadZ
 #include "actors/Classes/BadZ/BadZ.txt"
 #include "actors/Classes/BadZ/BadZWep.txt"
@@ -90,6 +84,11 @@
 //===|BullGator
 #include "actors/Classes/BullGator/BullGator.txt"
 #include "actors/Classes/BullGator/BullGatorRifles.txt"
+
+//===|gizmo
+#include "actors/classes/gizmo/gizclass.txt"
+#include "actors/classes/gizmo/gizwep.txt"
+#include "actors/classes/gizmo/gizupgrades.txt"
 
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

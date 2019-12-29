@@ -6,18 +6,11 @@ Weapon.SlotNumber 2
 Obituary "%o was scratched up by %k"
 Inventory.Pickupmessage "Power Up! Slash Claw!"
 weapon.ammotype "ClawGlovesAmmo"
-inventory.pickupsound "weapon/weaponup"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.CHEATNOTWEAPON
-+WEAPON.DONTBOB
-DropItem "SlashClawWepGiver"
-//inventory.icon "CLAWGI"
-Scale 2.0
+DropItem "SlashClawWepCS"
 States
 {
 Spawn:
-CLWP E 0
-TNT1 A 1 //A_SpawnItemEx("SlashClawWepDropped")
+TNT1 A 1
 stop
 Ready:
 IDLE C 0 ACS_ExecuteAlways(998,0,DYE_GIZMO)
@@ -241,20 +234,16 @@ stop
 
 
 //===Frost Cannon===----------------------------------------------------
-actor FrostCannonWep : Weapon
+actor FrostCannonWep : CSCCWepBase
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 32
 Weapon.SlotNumber 3
 scale 6.0
 Obituary "%o was frozen solid by %k's Frost Cannon."
-Inventory.Pickupmessage "Power Up! Bizzard Attack!"
 weapon.ammotype "FrostCannonAmmo"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
-+WEAPON.CHEATNOTWEAPON
 inventory.icon "FROSTI"
-DropItem "BlizzardAttackWep"
+DropItem "BlizzardAttackWepCS"
 States
 {
 Spawn:
@@ -340,7 +329,7 @@ stop
 }
 
 //===Lightning Cannon===----------------------------------------------------
-actor LightningCannonWep : Weapon
+actor LightningCannonWep : CSCCWepBase
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28
@@ -349,10 +338,8 @@ scale 6.0
 Obituary "%o was electrocuted by %k's Lightning Cannon."
 Inventory.Pickupmessage "You got the Hand Cannon!"
 weapon.ammotype "LightningCannonAmmo"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
 inventory.icon "LIGHTI"
-DropItem "ThunderBoltWep"
+DropItem "ThunderBoltWepCS"
 States
 {
 Spawn:
@@ -442,7 +429,7 @@ stop
 
 
 //===Flame Cannon===----------------------------------------------------
-actor FlameCannonWep : Weapon
+actor FlameCannonWep : CSCCWepBase
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -451,11 +438,8 @@ scale 6.0
 Obituary "%o was burned up by %k's Flame Cannon."
 Inventory.Pickupmessage "Power Up! Fire Storm!"
 weapon.ammotype "FlameCannonAmmo"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
-+WEAPON.CHEATNOTWEAPON
 inventory.icon "FLAMEI"
-DropItem "FireStormWep"
+DropItem "FireStormWepCS"
 States
 {
 Spawn:
@@ -587,7 +571,7 @@ stop
 
 
 //===Plasma Cannon===----------------------------------------------------
-actor HandCannon : Weapon
+actor HandCannon : CSCCWepBase
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -596,9 +580,6 @@ scale 6.0
 Obituary "%o was blasted by %k's Plasma Cannon."
 Inventory.Pickupmessage "Support Item! Proto Upgrade!"
 weapon.ammotype "HandCannonAmmo"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
-+WEAPON.CHEATNOTWEAPON
 inventory.icon "PLASMI"
 States
 {
@@ -780,7 +761,7 @@ stop
 }
 
 //===Chaos Cannon===-----------------===UNUSED===----------------------------
-actor ChaosCannonWep : Weapon
+actor ChaosCannonWep : CSCCWepBase
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -789,9 +770,6 @@ scale 6.0
 Obituary "%o was blasted by %k's Chaos Cannon."
 Inventory.Pickupmessage "Support Item! Proto Upgrade!"
 weapon.ammotype "ChaosCannonAmmo"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
-+WEAPON.CHEATNOTWEAPON
 inventory.icon "CHAOSI"
 States
 {
@@ -1269,12 +1247,8 @@ Weapon.SlotNumber 1
 Obituary "%o was torn to shreds by %k's Eternal Claws"
 Inventory.Pickupmessage "You powered up the Claw Gloves! Now they're the Eternal Claws!"
 weapon.ammotype "EternalClawsAmmo"
-inventory.pickupsound "weapon/weaponup"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
 inventory.icon "ETERNI"
-DropItem "SlashClawWep"
-Scale 2.0
+DropItem "SlashClawWepCS"
 States
 {
 Spawn:
@@ -1513,7 +1487,7 @@ stop
 }
 
 //===R.F. Missile Launcher===----------------------------------------------------
-actor RFMissileWep : Weapon
+actor RFMissileWep : CSCCWepBase
 {
 Weapon.AmmoUse 6
 Weapon.AmmoGive 28
@@ -1522,10 +1496,8 @@ scale 6.0
 Obituary "%o was blown up by %k's R.F. Missile Launcher."
 Inventory.Pickupmessage "Holy Mackerel! You got an R.F. Missile Launcher!!"
 weapon.ammotype "RFMissileAmmo"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
 inventory.icon "MISSLI"
-DropItem "BalladeCrackerWep"
+DropItem "BalladeCrackerWepCS"
 States
 {
 Spawn:
@@ -1818,7 +1790,7 @@ stop
 
 
 //===Hydro Cannon===----------------------------------------------------
-actor HydroCannonWep : Weapon
+actor HydroCannonWep : CSCCWepBase
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
@@ -1827,11 +1799,8 @@ scale 6.0
 Obituary "%o was hosed down by %k's Hydro Cannon."
 Inventory.Pickupmessage "Power Up! Water Wave!"
 weapon.ammotype "HydroCannonAmmo"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
-+WEAPON.CHEATNOTWEAPON
 inventory.icon "HYDROI"
-DropItem "WaterWaveWep"
+DropItem "WaterWaveWepCS"
 States
 {
 Spawn:
