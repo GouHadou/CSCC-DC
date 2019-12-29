@@ -358,6 +358,7 @@
 #DEFINE IDOLWAVE 997
 #DEFINE ZENTRAINER 804
 #DEFINE BADZCOLOR 280
+#DEFINE GIZMO 385
 
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
@@ -677,5 +678,6 @@ Script "core_translations" OPEN CLIENTSIDE
 	CreateTranslation (CUTMANMIKE, 192:192=4:4, 198:198=94:94, 249:249=94:94);
 	CreateTranslation (PISTONMAN, 192:192=87:87, 198:198=95:95);
 	CreateTranslation (BADZCOLOR, 192:192=4:4, 198:198=204:204, 226:226=197:197, 43:43=198:198);
+	CreateTranslation (GIZMO, 192:192=4:4, 198:198=241:241);
 
 }

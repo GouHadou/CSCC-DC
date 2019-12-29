@@ -276,3 +276,110 @@ weapon/geecharge GEECHRGE
 //Pistonman
 cscc/pistonhit	PISTHIT
 cscc/pistonfail	PISTFAIL
+
+//Gizmo
+Gizmo/death1      SONICDE1
+Gizmo/death2      SONICDE2
+
+$random Gizmo/death { Gizmo/death1 Gizmo/death2 }
+
+Gizmo/cpain1      SONICHR4
+Gizmo/cpain2      SONICHR5
+
+$random Gizmo/cpain { Gizmo/cpain1 Gizmo/cpain2 }
+
+
+
+Gizmo/attack1      ATTACK11
+Gizmo/attack2      ATTACK12
+Gizmo/attack3      ATTACK13
+Gizmo/attack4      claw
+Gizmo/attack5      claw
+
+$random Gizmo/attack { Gizmo/attack1 Gizmo/attack2 Gizmo/attack3 Gizmo/attack4 Gizmo/attack5 }
+
+Gizmo/strong1      ATTACK14
+Gizmo/strong2      ATTACK15
+Gizmo/strong3      ATTACK16
+Gizmo/strong4      claw
+Gizmo/strong5      claw
+
+$random Gizmo/strong { Gizmo/strong1 Gizmo/strong2 Gizmo/strong3 Gizmo/strong4 Gizmo/strong5 }
+
+
+$playeralias	"Gizmo" 	male	*death		Gizmo/death
+$playersound    "Gizmo" 	male    *xdeath     SONICDE1
+$playersound	"Gizmo" 	male	*pain100	SONICHR1
+$playersound    "Gizmo" 	male	*pain75		SONICHR2
+$playersound    "Gizmo" 	male	*pain50		SONICHR3
+$playeralias    "Gizmo"  	male	*pain25		Gizmo/cpain
+$playersound	"Gizmo" 	male	*land		SONICLND
+$playersound	"Gizmo" 	male	*usefail	SONICLND
+$playersound	"Gizmo" 	male	*jump   	SONICJMP
+$playersound	"Gizmo"	    male	*gibbed		SONICDE1
+$playersound	"Gizmo" 	male	*grunt		NONE
+$playeralias	"Gizmo" 	male	*taunt		Gizmo/taunt
+
+$random Gizmo/taunt { Gizmo/taunt1 Gizmo/taunt2 Gizmo/taunt3 Gizmo/taunt4 Gizmo/taunt6 }
+
+
+Gizmo/taunt1      GIZMOLGO
+Gizmo/taunt2      GIZMOHAH
+Gizmo/taunt3      GIZMOSEE
+Gizmo/taunt4      GIZMOLGO
+Gizmo/taunt5      GIZMOFIR
+Gizmo/taunt6      GIZMOCOM
+
+weapon/gizchrg	GIZCHARG
+weapon/gizchrgloop	GIZLOOP
+weapon/gizfire	CHARGFIR
+weapon/clawg	CLAWGLOV
+weapon/frostc	FROST
+weapon/flamet	fire4
+weapon/plasma	PLASMA
+weapon/lightc	bolt04
+weapon/stonec	stone1
+weapon/hydroc	HYDRO1
+weapon/hydrocharge	HYDRCHRG
+weapon/rfmissile	RFMISS1
+weapon/rfrocket	RFMISS3
+weapon/blastcannonhit	CHAOSHIT
+weapon/blastcannonhit2	CHAOHIT2
+weapon/eternalshield	BARRIER
+
+chaos/blastcannon	BLASTCAN
+
+misc/jump   	SONICJMP
+misc/eterup 	ETERNUPG
+misc/cfire2 	HITHARD
+misc/cfire3 	FALLING
+misc/bigpain 	INSTAGIZ
+misc/click		SONICGUN
+misc/click2		SONICRFM
+misc/rfexplode	RFMISS2
+misc/rfblast	RFMISS4
+
+Gizmo/torrent1	TORRENT1
+Gizmo/torrent2	TORRENT2
+Gizmo/torrent3	TORRENT3
+Gizmo/torrent4	TORRENT4
+
+misc/Ring	Ring
+misc/Ring2	Ringhit
+misc/Ringthrow	Thok
+
+$random Gizmo/torrent { Gizmo/torrent1 Gizmo/torrent2 Gizmo/torrent3 Gizmo/torrent4 }
+
+
+Kitty/Hurt1	CATHIT1
+Kitty/Hurt2	CATHIT3
+Kitty/Hurt3	CATHIT4
+Kitty/Hurt4	CATHIT6
+
+$random Kitty/Hurt { Kitty/Hurt1 Kitty/Hurt2 Kitty/Hurt3 Kitty/Hurt4 }
+
+Kitty/Attack1	CHAJUMP1
+Kitty/Attack2	CHAJUMP3
+Kitty/Attack3	CHAJUMP4
+
+$random Kitty/Attack { Kitty/Attack1 Kitty/Attack2 Kitty/Attack3 Kitty/Attack4 }

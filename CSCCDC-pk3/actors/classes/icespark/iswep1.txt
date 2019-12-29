@@ -170,7 +170,7 @@ inventory.amount 1
 inventory.maxamount 100
 }
 
-actor IceBlade : BasicProjectile//ProjectileBase
+actor IceBlade : BasicProjectile//BasicProjectile
 {
 PROJECTILE
 Radius 15
@@ -387,7 +387,7 @@ Translation "192:192=137:137"
 
 
 
-actor IceBall : BasicProjectile//ProjectileBase
+actor IceBall : BasicProjectile//BasicProjectile
 {
 PROJECTILE
 -NOGRAVITY
@@ -439,7 +439,7 @@ stop
 }
 }
 
-actor IceBit : BasicProjectile//ProjectileBase
+actor IceBit : BasicProjectile//BasicProjectile
 {
 PROJECTILE
 -NOGRAVITY
@@ -493,7 +493,7 @@ stop
 }
 }
 
-actor IceSpike : BasicProjectile//ProjectileBase
+actor IceSpike : BasicProjectile//BasicProjectile
 {
 PROJECTILE
 +FLOORHUGGER

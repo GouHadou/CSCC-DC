@@ -85,5 +85,10 @@
 #include "actors/Classes/BullGator/BullGator.txt"
 #include "actors/Classes/BullGator/BullGatorRifles.txt"
 
+//===|gizmo
+#include "actors/classes/gizmo/gizclass.txt"
+#include "actors/classes/gizmo/gizwep.txt"
+#include "actors/classes/gizmo/gizupgrades.txt"
+
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

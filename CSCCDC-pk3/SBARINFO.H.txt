@@ -307,6 +307,16 @@ IsSelected PistonTremorBoss{Drawbar"PISTVA1", "VAREMPTY", Ammo1, horizontal, 58,
 	InInventory CossackTeamFlag,1{Drawbar"PISTVA4", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 	InInventory KingTeamFlag,1{Drawbar"PISTVA5", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 }
+//====|Gizmo
+IsSelected EternalClawsWep{Drawbar "ETERBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184; }
+IsSelected FlameCannonWep{Drawbar "FLMEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184; }
+IsSelected LightningCannonWep{DrawBar "ELECBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184; }
+IsSelected HandCannon {Drawbar "PLASBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184; }
+IsSelected FrostCannonWep{DrawBar "FRSTBAR2", "BAREMPTY", Ammo1, horizontal, 58, 184; }
+IsSelected StoneCannonWep{Drawbar"STNEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected HydroCannonWep{Drawbar"HYDRBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected ChaosCannonWep{DrawBar "CHAOBAR2", "BAREMPTY", Ammo1, horizontal, 58, 184; }
+IsSelected RFMissileWep{DrawBar "VARAMMO6", "VAREMPTY", Ammo1, horizontal, 58, 184; }
 
 //====|BullGator
 IsSelected BullGatorSleepPierce{

@@ -16,6 +16,7 @@ const int DYE_IDOLWAVE = 997;
 const int DYE_ZENTRAINER = 804;
 const int DYE_GEE = 439;
 const int DYE_PISTONMAN = 441;
+const int DYE_GIZMO = 385;
 const Int DYE_BADZCOLOR = 280;
 //const int DYE_BULL_COLOR = 974;
 

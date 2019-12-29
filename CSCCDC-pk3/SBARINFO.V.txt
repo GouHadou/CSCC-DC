@@ -307,6 +307,17 @@ InInventory CossackTeamFlag,1{Drawbar"PISTBA4", "BAREMPTY", Ammo1, vertical, 16,
 InInventory KingTeamFlag,1{Drawbar"PISTBA5", "BAREMPTY", Ammo1, vertical, 16, 8;}
 }
 
+//====|Gizmo
+IsSelected EternalClawsWep{Drawbar "ETERBAR1", "BAREMPTY", Ammo1, vertical, 16, 8; }
+IsSelected FlameCannonWep{DrawBar "FLMEBAR1", "BAREMPTY", Ammo1, vertical, 16, 8; }
+IsSelected LightningCannonWep{DrawBar "ELECBAR1", "BAREMPTY", Ammo1, vertical, 16, 8; }
+IsSelected HandCannon{DrawBar "PLASBAR1", "BAREMPTY", Ammo1, vertical, 16, 8; }
+IsSelected FrostCannonWep{DrawBar "FRSTBAR1", "BAREMPTY", Ammo1, vertical, 16, 8; }
+IsSelected StoneCannonWep{DrawBar "STNEBAR1", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected HydroCannonWep{DrawBar "HYDRBAR1", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected ChaosCannonWep{DrawBar "CHAOBAR1", "BAREMPTY", Ammo1, vertical, 16, 8; }
+IsSelected RFMissileWep{DrawBar "BARAMMO6", "BAREMPTY", Ammo1, vertical, 16, 8; }
+
 //====|BullGator
 IsSelected BullGatorSleepPierce{
 	DrawBar"BUL1_BAR","BAREMPTY",Ammo1,vertical,16,8;

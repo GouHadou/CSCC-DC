@@ -1,6 +1,7 @@
 clearplayerclasses
 addplayerclass MegamanC nomenu
 addplayerclass CopyRobot nomenu
+AddPlayerClass Gizmo nomenu
 addplayerclass UnixClass nomenu
 addplayerclass CutmanMikeClass nomenu
 addplayerclass IceSparkyClass nomenu 
@@ -9,11 +10,11 @@ addplayerclass MessatsuClass nomenu
 addplayerclass ColdFusionClass nomenu
 addplayerclass PistonmanClass nomenu 
 addplayerclass LordDamagerClass nomenu 
-addplayerclass TankOperatorClass nomenu 
+addplayerclass TankOperatorClass nomenu
+AddPlayerClass Badz nomenu 
 addplayerclass LaggyBlazkoClass nomenu
+AddPlayerClass BullGator nomenu
 addplayerclass KorbyClass nomenu
 addplayerclass VocalWomanClass nomenu 
 addplayerclass ZenTrainerClass nomenu 
 addplayerclass GeeClass nomenu 
-AddPlayerClass BullGator nomenu
-AddPlayerClass Badz nomenu
