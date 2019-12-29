@@ -268,9 +268,9 @@ Fire:
 HCAN B 0 A_JumpIfNoAmmo("NoAmmo")
 HCAN B 0 A_PlaySoundEx("weapon/frostc","Weapon")
 HCAN B 0 A_TakeInventory("FrostCannonAmmo",1)
-PLAS J 0 A_FireCustomMissile("FrostCannon",random(-3,9),0,8,0)
-PLAS J 0 A_FireCustomMissile("FrostCannon2",random(-3,3),0,8,0)
-PLAS J 0 A_FireCustomMissile("FrostCannon2",random(-9,3),0,8,0)
+PLAS J 0 A_GiveInventory("FrostCannon_M1")
+PLAS J 0 A_GiveInventory("FrostCannon2_M1_A")
+PLAS J 0 A_GiveInventory("FrostCannon2_M1_B")
 PLAS J 2
 HCAN B 0 A_Refire
 Goto Ready+1
@@ -309,6 +309,36 @@ stop
 }
 }
 
+
+actor FrostCannon_B : FrostCannon {Translation  "4:4=196:196", "64:64=205:205", "69:69=74:74"}
+actor FrostCannon_R : FrostCannon {Translation  "4:4=170:170", "64:64=171:171", "69:69=41:41"}
+actor FrostCannon_G : FrostCannon {Translation  "4:4=138:138", "64:64=104:104", "69:69=128:128"}
+actor FrostCannon_Y : FrostCannon {Translation  "4:4=214:214", "64:64=229:229", "69:69=232:232"}
+
+
+actor FrostCannon_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FrostCannon",random(-3,9),0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FrostCannon_B",random(-3,9),0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FrostCannon_R",random(-3,9),0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FrostCannon_G",random(-3,9),0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FrostCannon_Y",random(-3,9),0,8,0)
+stop
+}
+}
+
 actor FrostCannon2 : BasicProjectile
 {
 Obituary "%o was frozen solid by %k's Frost Cannon."
@@ -324,6 +354,59 @@ States
 {
 Spawn:
 FRST HIJKLMN 1 A_SetTranslucent (0.5, 0)
+stop
+}
+}
+
+
+actor FrostCannon2_B : FrostCannon2 {Translation  "4:4=196:196", "64:64=205:205", "69:69=74:74"}
+actor FrostCannon2_R : FrostCannon2 {Translation  "4:4=170:170", "64:64=171:171", "69:69=41:41"}
+actor FrostCannon2_G : FrostCannon2 {Translation  "4:4=138:138", "64:64=104:104", "69:69=128:128"}
+actor FrostCannon2_Y : FrostCannon2 {Translation  "4:4=214:214", "64:64=229:229", "69:69=232:232"}
+
+
+actor FrostCannon2_M1_A : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2",random(-3,3),0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_B",random(-3,3),0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_R",random(-3,3),0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_G",random(-3,3),0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_Y",random(-3,3),0,8,0)
+stop
+}
+}
+
+actor FrostCannon2_M1_B : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2",random(-9,3),0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_B",random(-9,3),0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_R",random(-9,3),0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_G",random(-9,3),0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FrostCannon2_Y",random(-9,3),0,8,0)
 stop
 }
 }
@@ -363,10 +446,10 @@ Fire:
 HCAN B 0 A_JumpIfNoAmmo("NoAmmo")
 HCAN B 0 A_PlaySoundEx("weapon/lightc","Weapon")
 HCAN B 0 A_TakeInventory("LightningCannonAmmo",2)
-HCAN H 1 A_FireCustomMissile("LightningCannonShot",0,0,8,0)
-HCAN H 1 A_FireCustomMissile("LightningCannonShot",0,0,8,0)
-HCAN H 1 A_FireCustomMissile("LightningCannonShot",0,0,8,0)
-HCAN H 1 A_FireCustomMissile("LightningCannonShot",0,0,8,0)
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1")
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1")
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1")
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1")
 HCAN HI 4
 HCAN B 10
 HCAN B 0 A_Refire
@@ -405,6 +488,36 @@ LIGC ABCD 1
 LIGC ABCD 1
 LIGC ABCD 3
 loop
+}
+}
+
+
+actor LightningCannonShot_B : LightningCannonShot {Translation  "229:229=205:205", "210:210=196:196"}
+actor LightningCannonShot_R : LightningCannonShot {Translation  "229:229=171:171", "210:210=170:170"}
+actor LightningCannonShot_G : LightningCannonShot {Translation  "229:229=104:104", "210:210=138:138"}
+actor LightningCannonShot_Y : LightningCannonShot {Translation  "229:229=229:229", "210:210=210:210"}
+
+
+actor LightningCannonShot_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_Y",0,0,8,0)
+stop
 }
 }
 
@@ -465,8 +578,8 @@ HCAN B 0 A_JumpIfNoAmmo("NoAmmo")
 HCAN B 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
 HCAN B 0 A_PlaySoundEx("weapon/firestorm","Weapon")
 HCAN B 0 A_TakeInventory("FlameCannonAmmo",1)
-HCAN F 0 A_FireCustomMissile("FlameCannonShot",random(-3,3),0,8,0)
-HCAN FG 0 A_FireCustomMissile("FlameCannonShot",random(-3,3),0,8,0)
+HCAN F 0 A_GiveInventory("FlameCannonShot_M1")
+HCAN FG 0 A_GiveInventory("FlameCannonShot_M1")
 HCAN FG 2
 HCAN B 0 A_Refire
 Goto Ready+1
@@ -477,9 +590,9 @@ goto Ready+1
 FlameThrower:
 HCAN B 0 A_PlaySoundEx("weapon/flamet","Weapon")
 HCAN B 0 A_TakeInventory("FlameCannonAmmo",2)
-HCAN F 0 A_FireCustomMissile("GizmoFlameThrower",random(-3,3),0,8,0)
-HCAN G 0 A_FireCustomMissile("GizmoFlameThrower2",random(-3,3),0,8,0)
-HCAN F 0 A_FireCustomMissile("GizmoFlameThrower",random(-3,3),0,8,0)
+HCAN F 0 A_GiveInventory("GizmoFlameThrower_M1")
+HCAN G 0 A_GiveInventory("GizmoFlameThrower2_M1")
+HCAN F 0 A_GiveInventory("GizmoFlameThrower_M1")
 HCAN FG 2
 HCAN B 0 A_Refire
 Goto Ready+1
@@ -521,6 +634,36 @@ stop
 }
 }
 
+actor FlameCannonShot_B : FlameCannonShot {Translation  "227:227=74:74", "229:229=205:205"}
+actor FlameCannonShot_R : FlameCannonShot {Translation  "227:227=41:41", "229:229=171:171"}
+actor FlameCannonShot_G : FlameCannonShot {Translation  "227:227=128:128", "229:229=104:104"}
+actor FlameCannonShot_Y : FlameCannonShot {Translation  "227:227=232:232", "229:229=229:229"}
+
+
+actor FlameCannonShot_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FlameCannonShot",random(-3,3),0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FlameCannonShot_B",random(-3,3),0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FlameCannonShot_R",random(-3,3),0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FlameCannonShot_G",random(-3,3),0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FlameCannonShot_Y",random(-3,3),0,8,0)
+stop
+}
+}
+
+
 actor GizmoFlameThrower : BasicProjectile
 {
 PROJECTILE
@@ -541,6 +684,35 @@ stop
 Death:
 TNT1 A 0
 TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+stop
+}
+}
+
+actor GizmoFlameThrower_B : GizmoFlameThrower {Translation  "160:160=196:196", "218:218=205:205", "227:227=74:74", "42:42=244:244"}
+actor GizmoFlameThrower_R : GizmoFlameThrower {Translation  "160:160=170:170", "218:218=171:171", "227:227=41:41", "42:42=191:191"}
+actor GizmoFlameThrower_G : GizmoFlameThrower {Translation  "160:160=138:138", "218:218=104:104", "227:227=128:128", "42:42=135:135"}
+actor GizmoFlameThrower_Y : GizmoFlameThrower {Translation  "160:160=214:214", "218:218=229:229", "227:227=232:232", "42:42=234:234"}
+
+
+actor GizmoFlameThrower_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower",random(-3,3),0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower_B",random(-3,3),0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower_R",random(-3,3),0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower_G",random(-3,3),0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower_Y",random(-3,3),0,8,0)
 stop
 }
 }
@@ -569,7 +741,34 @@ stop
 }
 }
 
+actor GizmoFlameThrower2_B : GizmoFlameThrower2 {Translation  "160:160=196:196", "218:218=205:205", "227:227=74:74", "42:42=244:244"}
+actor GizmoFlameThrower2_R : GizmoFlameThrower2 {Translation  "160:160=170:170", "218:218=171:171", "227:227=41:41", "42:42=191:191"}
+actor GizmoFlameThrower2_G : GizmoFlameThrower2 {Translation  "160:160=138:138", "218:218=104:104", "227:227=128:128", "42:42=135:135"}
+actor GizmoFlameThrower2_Y : GizmoFlameThrower2 {Translation  "160:160=214:214", "218:218=229:229", "227:227=232:232", "42:42=234:234"}
 
+
+actor GizmoFlameThrower2_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower2",random(-3,3),0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower2_B",random(-3,3),0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower2_R",random(-3,3),0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower2_G",random(-3,3),0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("GizmoFlameThrower2_Y",random(-3,3),0,8,0)
+stop
+}
+}
 //===Plasma Cannon===----------------------------------------------------
 actor HandCannon : CSCCWepBase
 {
@@ -615,7 +814,7 @@ goto Ready2+1
 Fire2:
 HCAN B 0 A_TakeInventory("HandCannonAmmo",999)
 HCAN E 3 A_PlaySoundEx("weapon/pshot","Weapon")
-HCAN C 3 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
+HCAN C 3 A_GiveInventory("GizmoChargeShot2_M1")
 HCAN EB 3 
 HCAN E 0
 HCAN B 0 A_Refire
@@ -626,7 +825,7 @@ HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
 HCAN B 3 
 HCAN B 0 ACS_ExecuteAlways(991,0,385)
 HCAN B 0 A_Recoil(5)
-HCAN B 1 A_FireCustomMissile("GizmoChargeShot3",0,0,8,0)
+HCAN B 1 A_GiveInventory("GizmoChargeShot3_M1")
 HCAN ECEB 3 
 HCAN B 9
 HCAN B 0 A_Refire
@@ -709,6 +908,35 @@ loop
 }
 
 
+actor GizmoChargeShot2_B : GizmoChargeShot2 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor GizmoChargeShot2_R : GizmoChargeShot2 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor GizmoChargeShot2_G : GizmoChargeShot2 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor GizmoChargeShot2_Y : GizmoChargeShot2 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+actor GizmoChargeShot2_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_Y",0,0,8,0)
+stop
+}
+}
+
+
 actor GizmoChargeShot3 : BasicProjectile
 {
 Obituary "%o was blasted by %k's Plasma Cannon."
@@ -745,6 +973,34 @@ stop
 }
 }
 
+actor GizmoChargeShot3_B : GizmoChargeShot3 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor GizmoChargeShot3_R : GizmoChargeShot3 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor GizmoChargeShot3_G : GizmoChargeShot3 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor GizmoChargeShot3_Y : GizmoChargeShot3 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+
+actor GizmoChargeShot3_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_Y",0,0,8,0)
+stop
+}
+}
 
 actor GizmoChargeShotFX
 {
@@ -841,7 +1097,7 @@ HCAN B 0 A_TakeInventory("WeaponCharge",500)
 HCAN B 0 A_ClearRefire
 HCAN B 0 A_PlaySoundEx("weapon/pshot","Weapon")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
+HCAN B 0 A_GiveInventory("GizmoChargeShot2_M1")
 HCAN EB 2
 Goto Ready+1
 Fire2:
@@ -850,13 +1106,13 @@ HCAN B 0 A_TakeInventory("WeaponCharge",500)
 HCAN B 0 A_ClearRefire
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 5, "Fire2r")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",5)
-HCAN B 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
+HCAN B 0 A_GiveInventory("GizmoChargeShot2_M1")
 HCAN EB 3
 Goto Ready+1
 Fire2r:
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("ChaosShot2",0,0,8,0)
+HCAN B 0 A_GiveInventory("ChaosShot2_M1")
 HCAN B 0 A_Recoil(5)
 HCAN EB 2
 Goto Ready+1
@@ -867,7 +1123,7 @@ HCAN B 0 A_ClearRefire
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 10, "Fire3r")
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 5, "Fire2r")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
+HCAN B 0 A_GiveInventory("GizmoChargeShot2_M1")
 HCAN ECEB 3 
 HCAN B 9
 Goto Ready+1
@@ -875,53 +1131,53 @@ Fire3r:
 HCAN B 0 SetPlayerProperty(0,1,4)
 HCAN B 0 A_PlaySoundEx("chaos/blastcannon","Chaos")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN B 0 A_GiveInventory("ChaosShot3_M1")
 HCAN B 0 A_GiveInventory("Repulsion",1)
 HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
 HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
 HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
 HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
 HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
-HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
 HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
 HCAN ECEB 1 A_Recoil(1)
-HCAN ECEB 1 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
+HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
+HCAN ECEB 1 A_Recoil(1)
+HCAN ECEB 1 A_GiveInventory("ChaosShot3_M1")
 HCAN ECEB 0 A_FireCustomMissile("ChaosShotExplode",0,0,8,0)
 HCAN B 0 A_TakeInventory("Repulsion",1)
 HCAN B 9
@@ -975,7 +1231,7 @@ HCAN B 0 A_TakeInventory("WeaponCharge",500)
 HCAN B 0 A_ClearRefire
 HCAN B 0 A_PlaySoundEx("weapon/pshot","Weapon")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("FusilladeParticle",0,0,8,0)
+HCAN B 0 A_GiveInventory("FusilladeParticle_M1")
 HCAN EB 2
 Goto Ready+1
 Fire2a:
@@ -984,13 +1240,13 @@ HCAN B 0 A_TakeInventory("WeaponCharge",500)
 HCAN B 0 A_ClearRefire
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 5, "Fire2ra")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("FusilladeParticle",0,0,8,0)
+HCAN B 0 A_GiveInventory("FusilladeParticle_M1")
 HCAN EB 3
 Goto Ready+1
 Fire2ra:
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("FusilladeParticle2",0,0,8,0)
+HCAN B 0 A_GiveInventory("FusilladeParticle2_M1")
 HCAN B 0 A_Recoil(5)
 HCAN EB 2
 Goto Ready+1
@@ -1001,7 +1257,7 @@ HCAN B 0 A_ClearRefire
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 100, "Fire4alt")
 HCAN B 0 A_JumpIfInventory("ChaosCannonAmmo", 50, "Fire2ra")
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
-HCAN B 0 A_FireCustomMissile("FusilladeParticle2",0,0,8,0)
+HCAN B 0 A_GiveInventory("FusilladeParticle2_M1")
 HCAN ECEB 3 
 HCAN B 9
 Goto Ready+1
@@ -1012,19 +1268,19 @@ HCAN B 0 ThrustThingZ(0,70,0,0)
 HCAN B 4 A_ChangeFlag("NOGRAVITY",1)
 HCAN B 0 A_TakeInventory("ChaosCannonAmmo",999)
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
-HCAN B 0 A_FireCustomMissile("FusilladeParticle3",0,0,8,0)
+HCAN B 0 A_GiveInventory("FusilladeParticle3_M1_A")
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
-HCAN ECEB 1 A_FireCustomMissile("FusilladeParticle3",12,0,12,0)
+HCAN ECEB 1 A_GiveInventory("FusilladeParticle3_M1_C")
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
-HCAN ECEB 1 A_FireCustomMissile("FusilladeParticle3",-12,0,-12,0)
+HCAN ECEB 1 A_GiveInventory("FusilladeParticle3_M1_B")
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
-HCAN ECEB 1 A_FireCustomMissile("FusilladeParticle3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("FusilladeParticle3_M1_A")
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
-HCAN ECEB 1 A_FireCustomMissile("FusilladeParticle3",12,0,12,0)
+HCAN ECEB 1 A_GiveInventory("FusilladeParticle3_M1_C")
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
-HCAN ECEB 1 A_FireCustomMissile("FusilladeParticle3",-12,0,-12,0)
+HCAN ECEB 1 A_GiveInventory("FusilladeParticle3_M1_B")
 HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
-HCAN ECEB 1 A_FireCustomMissile("FusilladeParticle3",0,0,8,0)
+HCAN ECEB 1 A_GiveInventory("FusilladeParticle3_M1_A")
 HCAN B 0 A_ChangeFlag("NOGRAVITY",0)
 HCAN B 9
 HCAN B 0 SetPlayerProperty(0,0,4)
@@ -1063,6 +1319,36 @@ loop
 }
 }
 
+actor ChaosShot1_B : ChaosShot1 {Translation  "41:41=74:74", "229:229=205:205"}
+actor ChaosShot1_R : ChaosShot1 {Translation  "41:41=41:41", "229:229=171:171"}
+actor ChaosShot1_G : ChaosShot1 {Translation  "41:41=128:128", "229:229=104:104"}
+actor ChaosShot1_Y : ChaosShot1 {Translation  "41:41=232:232", "229:229=229:229"}
+
+
+actor ChaosShot1_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("ChaosShot1",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("ChaosShot1_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("ChaosShot1_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("ChaosShot1_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("ChaosShot1_Y",0,0,8,0)
+stop
+}
+}
+
+
 actor ChaosShot2 : ChaosShot1
 {
 PROJECTILE
@@ -1086,6 +1372,35 @@ loop
 death:
 PLEX K 2 BRIGHT A_Explode(20,64,0)
 PLEX LM 3 A_PlaySound("weapon/blastcannonhit")
+stop
+}
+}
+
+actor ChaosShot2_B : ChaosShot2 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor ChaosShot2_R : ChaosShot2 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor ChaosShot2_G : ChaosShot2 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor ChaosShot2_Y : ChaosShot2 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+
+actor ChaosShot2_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("ChaosShot2",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("ChaosShot2_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("ChaosShot2_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("ChaosShot2_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("ChaosShot2_Y",0,0,8,0)
 stop
 }
 }
@@ -1117,6 +1432,36 @@ PLEX LM 3 A_PlaySound("weapon/blastcannonhit2")
 stop
 }
 }
+
+actor ChaosShot3_B : ChaosShot3 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor ChaosShot3_R : ChaosShot3 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor ChaosShot3_G : ChaosShot3 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor ChaosShot3_Y : ChaosShot3 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+
+actor ChaosShot3_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("ChaosShot3",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("ChaosShot3_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("ChaosShot3_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("ChaosShot3_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("ChaosShot3_Y",0,0,8,0)
+stop
+}
+}
+
 
 actor ChaosShotExplode : ChaosShot1
 {
@@ -1183,6 +1528,35 @@ stop
 }
 }
 
+actor FusilladeParticle_B : FusilladeParticle {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor FusilladeParticle_R : FusilladeParticle {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor FusilladeParticle_G : FusilladeParticle {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor FusilladeParticle_Y : FusilladeParticle {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+
+actor FusilladeParticle_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle_Y",0,0,8,0)
+stop
+}
+}
+
 actor FusilladeParticle2 : MageStaffFX2
 {
 PROJECTILE
@@ -1204,6 +1578,35 @@ loop
 Death:
 PLEX K 2 BRIGHT A_Explode(20,64,0)
 PLEX LM 3 A_PlaySound("weapon/blastcannonhit")
+stop
+}
+}
+
+actor FusilladeParticle2_B : FusilladeParticle2 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor FusilladeParticle2_R : FusilladeParticle2 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor FusilladeParticle2_G : FusilladeParticle2 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor FusilladeParticle2_Y : FusilladeParticle2 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+
+actor FusilladeParticle2_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle2",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle2_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle2_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle2_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle2_Y",0,0,8,0)
 stop
 }
 }
@@ -1238,6 +1641,81 @@ stop
 }
 }
 
+actor FusilladeParticle3_B : FusilladeParticle3 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor FusilladeParticle3_R : FusilladeParticle3 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor FusilladeParticle3_G : FusilladeParticle3 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor FusilladeParticle3_Y : FusilladeParticle3 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+
+actor FusilladeParticle3_M1_A : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_Y",0,0,8,0)
+stop
+}
+}
+
+
+actor FusilladeParticle3_M1_B : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3",-12,0,-12,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_B",-12,0,-12,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_R",-12,0,-12,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_G",-12,0,-12,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_Y",-12,0,-12,0)
+stop
+}
+}
+
+actor FusilladeParticle3_M1_C : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3",12,0,12,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_B",12,0,12,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_R",12,0,12,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_G",12,0,12,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("FusilladeParticle3_Y",12,0,12,0)
+stop
+}
+}
 //===Eternal Claws===----------------------------------------------------
 actor EternalClawsWep : CSCCWepBase 
 {
@@ -1525,10 +2003,10 @@ RFLN A 0 A_JumpIfNoAmmo("NoAmmo")
 RFLN A 0 A_PlaySoundEx("misc/click2","misc")
 RFLN A 8 SetPlayerProperty(0,1,0)
 RFLN A 0 A_PlaySoundEx("weapon/rfmissile","Weapon")
-RFLN B 0 A_FireCustomMissile("RFMissile",-25,0,8,0)
-RFLN C 0 A_FireCustomMissile("RFMissile",0,19,8,0)
-RFLN C 0 A_FireCustomMissile("RFMissile",25,0,8,0)
-RFLN C 0 A_FireCustomMissile("RFMissile2",0,50,8,35)
+RFLN B 0 A_GiveInventory("RFMissile_M1")
+//RFLN C 0 A_FireCustomMissile("RFMissile",0,19,8,0)
+//RFLN C 0 A_FireCustomMissile("RFMissile",25,0,8,0)
+//RFLN C 0 A_FireCustomMissile("RFMissile2",0,50,8,35)
 RFLN C 0 A_Recoil(10)
 RFLN CDE 2 SetPlayerProperty(0,0,0)
 RFLN A 37
@@ -1592,6 +2070,11 @@ stop
 }
 }
 
+actor RFMissile_B : RFMissile {Translation  "9:9=74:74" , "3:3=205:205"}
+actor RFMissile_R : RFMissile {Translation  "9:9=41:41", "3:3=171:171"}
+actor RFMissile_G : RFMissile {Translation  "9:9=128:128", "3:3=104:104"}
+actor RFMissile_Y : RFMissile {Translation  "9:9=232:232", "3:3=229:229"}
+
 actor RFMissile2 : BasicProjectile
 {
 PROJECTILE
@@ -1620,6 +2103,51 @@ TNT1 A 2 A_SpawnItem("DrillExplode")
 stop
 }
 }
+
+actor RFMissile2_B : RFMissile2 {Translation  "9:9=74:74", "3:3=205:205"}
+actor RFMissile2_R : RFMissile2 {Translation  "9:9=41:41", "3:3=171:171"}
+actor RFMissile2_G : RFMissile2 {Translation  "9:9=128:128", "3:3=104:104"}
+actor RFMissile2_Y : RFMissile2 {Translation  "9:9=232:232", "3:3=229:229"}
+
+
+actor RFMissile_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("RFMissile",-25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile",0,19,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile",25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile2",0,50,8,35)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("RFMissile_B",-25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_B",0,19,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_B",25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile2_B",0,50,8,35)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("RFMissile_R",-25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_R",0,19,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_R",25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile2_R",0,50,8,35)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("RFMissile_G",-25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_G",0,19,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_G",25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile2_G",0,50,8,35)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("RFMissile_Y",-25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_Y",0,19,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile_Y",25,0,8,0)
+TNT1 A 0 A_FireCustomMissile("RFMissile2_Y",0,50,8,35)
+stop
+}
+}
+
 
 actor RFRocket : BasicProjectile
 {
@@ -1714,7 +2242,7 @@ Fire:
 HCAN B 0 A_JumpIfNoAmmo("NoAmmo")
 HCAN B 0 A_PlaySoundEx("weapon/stonec","Weapon")
 HCAN B 0 A_TakeInventory("StoneCannonAmmo",2)
-HCAN J 1 A_FireCustomMissile("StoneCannonShot",0,0,8,0)
+HCAN J 1 A_GiveInventory("StoneCannonShot_M1")
 HCAN J 0 A_Recoil(7)
 HCAN J 4
 HCAN B 26
@@ -1747,18 +2275,50 @@ damagetype "PowerStone"
 States
 {
 Spawn:
-POWS D 4
+STCN D 4
 loop
 Death:
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
+MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
+MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
+MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
+MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
+MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
 MMFX BCDE 2
 stop
 }
 }
+
+
+actor StoneCannonShot_B : StoneCannonShot {Translation  "46:46=244:244", "4:4=205:205"}
+actor StoneCannonShot_R : StoneCannonShot {Translation  "46:46=191:191", "4:4=171:171"}
+actor StoneCannonShot_G : StoneCannonShot {Translation  "46:46=135:135", "4:4=104:104"}
+actor StoneCannonShot_Y : StoneCannonShot {Translation  "46:46=234:234", "4:4=229:229"}
+
+
+actor StoneCannonShot_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("StoneCannonShot",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("StoneCannonShot_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("StoneCannonShot_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("StoneCannonShot_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("StoneCannonShot_Y",0,0,8,0)
+stop
+}
+}
+
+
 
 actor StoneBit 
 {
@@ -1774,15 +2334,15 @@ Radius 2
 States
 {
 Spawn:
-POWS A 2
+STCN A 2
 TNT1 A 2
-POWS B 2
+STCN B 2
 TNT1 A 2
-POWS C 2
+STCN C 2
 TNT1 A 2
-POWS B 2
+STCN B 2
 TNT1 A 2
-POWS A 2
+STCN A 2
 TNT1 A 2
 stop
 }
@@ -1825,9 +2385,9 @@ Fire:
 HCAN B 0 A_JumpIfNoAmmo("NoAmmo")
 HCAN B 0 A_PlaySoundEx("weapon/rainflush","Weapon")
 HCAN B 0 A_TakeInventory("HydroCannonAmmo",1)
-HCAN B 0 A_FireCustomMissile("HydroCannonShot1",0,0,8,0)
-HCAN B 0 A_SpawnItemEx("HydroSplashFX",0,0,8,0)
-HCAN KL 1 A_FireCustomMissile("HydroCannonShot1",0,0,8,0)
+HCAN B 0 A_GiveInventory("HydroCannonShot1_M1")
+HCAN B 0 //A_SpawnItemEx("HydroSplashFX",0,0,8,0)
+HCAN KL 1 A_GiveInventory("HydroCannonShot1_M1")
 HCAN L 0 A_ChangeVelocity(-Cos(pitch)*2, 0, sin(pitch)*2,CVF_RELATIVE)
 HCAN B 0 A_Refire
 Goto Ready+1
@@ -1862,11 +2422,42 @@ speed 100
 States
 {
 Spawn:
+WTRB O 0
+WTRB O 0 A_SpawnItemEx("HydroSplashFX",0,0,8,0,0,0,0,SXF_TRANSFERTRANSLATION)
 HYDR BCD 4
-HYDR BCD 0 A_SpawnItemEx("HydroCannonShot2",0,0,0,18,0,0,0,0,0)
+HYDR BCD 0 A_SpawnItemEx("HydroCannonShot2",0,0,0,18,0,0,0,SXF_TRANSFERTRANSLATION,0)
 Death:
 WTRB O 0
 WTRB OPQR 2
+stop
+}
+}
+
+actor HydroCannonShot1_B : HydroCannonShot1 {Translation  "193:193=205:205", "192:192=205:205", "198:198=74:74"}
+actor HydroCannonShot1_R : HydroCannonShot1 {Translation  "193:193=171:171", "192:192=171:171", "198:198=41:41"}
+actor HydroCannonShot1_G : HydroCannonShot1 {Translation  "193:193=104:104", "192:192=104:104", "198:198=128:128"}
+actor HydroCannonShot1_Y : HydroCannonShot1 {Translation  "193:193=229:229", "192:192=229:229", "198:198=232:232"}
+
+
+actor HydroCannonShot1_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("HydroCannonShot1",0,0,8,0)
+stop
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("HydroCannonShot1_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("HydroCannonShot1_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("HydroCannonShot1_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("HydroCannonShot1_Y",0,0,8,0)
 stop
 }
 }
@@ -1888,7 +2479,7 @@ States
 {
 Spawn:
 HYDR BCD 6
-HYDR BCD 0 A_SpawnItemEx("HydroCannonShot3",0,0,0,18,0,0,0,0,0)
+HYDR BCD 0 A_SpawnItemEx("HydroCannonShot3",0,0,0,18,0,0,0,SXF_TRANSFERTRANSLATION,0)
 Death:
 WTRB O 0
 WTRB OPQR 2
