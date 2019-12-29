@@ -248,10 +248,12 @@ Goto ReleaseCharge
 AltFire:
 GHAD A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
 GSHR A 0 A_GiveInventory("MessatsuAmmo", 2)
-GSHR A 0 A_CheckFloor("Shoryu")
-GSHR A 0 A_JumpIf(momz == 0 && z-floorz <= 56, "Shoryu")
+//GSHR A 0 A_CheckFloor("Shoryu")
+//GSHR A 0 A_JumpIf(momz == 0 && z-floorz <= 56, "Shoryu")
 //Goto Tatsumaki
-Goto DemonFlip
+GSHR A 0 A_JumpIfInventory("MessAirMod", 1, "DemonFlip")
+//Goto DemonFlip
+Goto Shoryu
 Shoryu:
 GHAD A 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
 GSHR A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
@@ -277,7 +279,7 @@ Goto EndShoryu
 EndShoryu:
 GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 10, "EndShoryu2")
 GSHR D 0 A_ClearRefire
-GSHR D 2 A_ScaleVelocity(0.5)
+GSHR DD 1 A_ScaleVelocity(0.5)
 GSHR D 2 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
 GSHR C 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
 GSHR CC 1 //A_SetAngle(angle+30)
@@ -471,11 +473,14 @@ GHAD A 0 SetPlayerProperty(0,1,4)
 GHAD A 0 A_Stop
 GHAD A 0 A_TakeInventory("TemaReady", 1)
 GHAD A 0 A_TakeInventory("MessatsuAmmo", 18)
-TNT1 A 0 A_TakeInventory("MessSuperFlag", 56)
+GHAD A 0 A_TakeInventory("MessSuperFlag", 56)
 GHAD G 0 A_PlaySoundEx("weapon/supermove","Auto")
-GHAD G 0 A_JumpIf(z-floorz==0,"Messatsu")
+//GHAD G 0 A_JumpIf(z-floorz==0,"Messatsu")
 GHAD G 0 A_GiveInventory("MessatsuFlag", 56)
 GHAD G 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
+GHAD G 0 A_JumpIfInventory("MessAirMod", 1, "Tema1")
+Goto Messatsu
+Tema1:
 GHAD H 0 A_ChangeVelocity(-Cos(pitch)*3, 0, sin(pitch)*2,CVF_RELATIVE)
 Tema2:
 GHAD H 0 A_PlaySoundEx("weapon/mbuster","Weapon")
@@ -502,7 +507,9 @@ GHAD H 0 A_FireCustomMissile("MessatsuGouHadou3",0,0,0,0)
 GHAD H 0 A_FireCustomMissile("MessatsuGouHadou4",0,0,0,0)
 GHAD H 0 A_FireCustomMissile("MessatsuGouHadou5",0,0,0,0)
 GHAD H 0 //A_Stop
-GHAD HHHHHHHHHH 2 A_SpawnItemEx("MessShadow", -8, 0, 0, -2, Random(-1, 1))
+GHAD HHHHH 2 A_SpawnItemEx("MessShadow", -8, 0, 0, -2, Random(-1, 1))
+GHAD H 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
+GHAD HHHHH 2 A_SpawnItemEx("MessShadow", -8, 0, 0, -2, Random(-1, 1))
 GHAD A 0 SetPlayerProperty(0,0,4)
 Goto Ready+1
 
@@ -1668,6 +1675,11 @@ Powerup.Duration 15
 
 Actor MessKick : MessPalm {}
 
+actor MessAirMod : Powerup
+{
+Powerup.Duration 4
+}
+
 Actor DemonFlipActive : Inventory
 {
 inventory.amount 1
@@ -1689,8 +1701,7 @@ TNT1 A 0 A_GiveInventory("TemaInv", 1)
 TNT1 A 0 A_GiveInventory("RagingDemonInv", 1)
 TNT1 A 0 A_GiveInventory("MisogiInv", 1)
 TNT1 A 0 A_GiveInventory("IsMessatsu", 1)
-TNT1 A 0 A_GiveInventory("NoHealthBar", 1)
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_MessParryCheck", 0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_MessAbilityCheck", 0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_MessDamageAmmo", 0)
 stop
 }

@@ -217,6 +217,13 @@ Graphic "MISOGI", 30, 30
 	Patch "MESUC0", 0, 0
 }
 
+Graphic "MESPARY", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "MESPAR0", 0, 0
+}
+
 //Ice / Sparky
 Graphic "ICBUI", 30, 30
 {
