@@ -1,28 +1,36 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 18
+#define MAX_MORPHS 26
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
-{"UnixKnife", "Unix (Eternal Torment)", "UnixClassItems"},//1
-{"UnixBlade", "Unix (Revolver Blade)", "UnixClassItems"},//2
-{"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},//3
-{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},//4
-{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},//5
-{"IceWep", "Ice", "IceSparkyClassItems1"},//6
-{"SparkyWep", "Sparky", "IceSparkyClassItems2"},//7
-{"FIR", "Korby (Fire)", "KorbyClassItems"},//8
-{"LIT", "Korby (Lightning)", "KorbyClassItems"},//9
-{"ICE", "Korby (Ice)", "KorbyClassItems"},//10
-{"CorpGrandDad", "Corporal (Grand Dad)", "LaggyClassItems"},//11
-{"CorpFragGrenade", "Corporal (Frag Grenade)", "LaggyClassItems"},//12
-{"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},//13
-{"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},//14
-{"MessatsuWep", "Messatsu", "MessatsuClassItems"},//15
-{"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},//16
-{"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},//17
-{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//18
+{"UnixKnife", "Unix (Eternal Torment)", "UnixClassItems"},
+{"UnixBlade", "Unix (Revolver Blade)", "UnixClassItems"},
+{"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},
+{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},
+{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},
+{"IceWep", "Ice", "IceSparkyClassItems1"},
+{"SparkyWep", "Sparky", "IceSparkyClassItems2"},
+{"FIR", "Korby (Fire)", "KorbyClassItems"},
+{"LIT", "Korby (Lightning)", "KorbyClassItems"},
+{"ICE", "Korby (Ice)", "KorbyClassItems"},
+{"CorpGrandDad", "Corporal (Grand Dad)", "LaggyClassItems"},
+{"CorpFragGrenade", "Corporal (Frag Grenade)", "LaggyClassItems"},
+{"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},
+{"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},
+{"MessatsuWep", "Messatsu", "MessatsuClassItems"},
+{"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},
+{"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},
+{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},
+{"HandCannon", "Gizmo (Hand Cannon)", "GizmoClassItems"},
+{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},
+{"EternalClawsWep", "Gizmo (Eternal Claws)", "GizmoClassItems"},
+{"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},
+{"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},
+{"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},
+{"StoneCannonWep", "Gizmo (Stone Cannon)", "GizmoClassItems"},
+{"HydroCannonWep", "Gizmo (Hydro Cannon)", "GizmoClassItems"},
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

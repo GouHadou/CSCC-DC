@@ -4,9 +4,9 @@ Inventory.RespawnTics 350
 inventory.amount 1
 inventory.maxamount 1
 inventory.pickupmessage "Support Item! Claw Gloves Upgrade!"
-inventory.icon "ETERUI"
+inventory.icon "ETERNI"
 Inventory.PickupSound "item/1up"
-scale 1.8
+scale 2.0
 +COUNTITEM
 +INVBAR
 states
@@ -30,37 +30,8 @@ Stop
 }
 }
 
-actor RFMissileUpgrade : CustomInventory 
+actor ItemG : CustomInventory
 {
-Inventory.RespawnTics 350
-inventory.amount 1
-inventory.maxamount 1
-inventory.pickupmessage "Holy Mackerel! You got an R.F. Missile Launcher!!"
-inventory.icon "MISSLI"
-Inventory.PickupSound "item/1up"
-scale 1.8
-+COUNTITEM
-+INVBAR
-states
-{
-Spawn:
-RFMS A 0 A_GiveInventory("RFMissileWep",1)
-RFMS A 1 A_JumpIf(ACS_ExecuteWithResult(975,0)==3,"Death")
-RFMS A 1
-loop
-pickup:
-RFMS A 0 A_GiveInventory("RFMissileWep",1)
-WEA3 A 0 A_TakeInventory("RFMissileUpgrade",1)
-stop
-Death:
-TNT1 A 0
-Stop
-}
-}
-
-actor ItemG : CustomInventory //10147
-{
-//$Category MM8BDM-Assists
 Inventory.RespawnTics 210
 inventory.amount 3
 inventory.maxamount 3
@@ -80,7 +51,6 @@ WEA2 A 0 A_SpawnItemEx("ItemGPlatform", 56, 0, 38, 0, 1, 0, 0, 0, 0)
 stop
 }
 }
-
 
 actor ItemGPlatform
 {
@@ -111,38 +81,6 @@ MMFX BCDE 2
 stop
 }
 }
-/*
-actor GoldRing : CustomInventory 
-{
-+NOGRAVITY
-Inventory.RespawnTics 350
-inventory.amount 1
-inventory.maxamount 1
-inventory.pickupmessage "Picked up a Gold Ring."
-inventory.icon "MISSLI"
-Inventory.PickupSound "misc/Ring"
-reactiontime 15
-scale 1.8
-+COUNTITEM
-+INVBAR
-states
-{
-Spawn:
-RING A 0 A_GiveInventory("RingCount",1)
-RING AAABBB 1 A_JumpIf(ACS_ExecuteWithResult(975,0)==3,"Death")
-RING CCCDDD 1
-RING A 0 A_CountDown
-loop
-pickup:
-RNFX ABCD 0 A_GiveInventory("RingCount",1)
-WEA3 A 0 A_TakeInventory("GoldRing",1)
-stop
-Death:
-RNFX ABCD 0
-TNT1 A 0
-Stop
-}
-}*/
 
 actor KittyItem : CustomInventory 
 {
@@ -151,7 +89,7 @@ inventory.maxamount 1
 inventory.pickupmessage "Support Item! Kitty Item Call!"
 inventory.icon "KITTYI"
 Inventory.PickupSound "item/1up"
-scale 1.0
+scale 2.0
 +COUNTITEM
 +INVBAR
 states
@@ -178,7 +116,7 @@ inventory.maxamount 1
 inventory.pickupmessage "Support Item! Kitty Helper Call!"
 inventory.icon "KITTHI"
 Inventory.PickupSound "item/1up"
-scale 1.0
+scale 2.0
 +COUNTITEM
 +INVBAR
 states
@@ -231,12 +169,9 @@ KITY A 0 A_CountDown
 Goto Search+3
 Melee:
 KITY I 4 A_FaceTarget
-KITY J 18 A_SpawnItemEx("RandomWeaponK",0,0,32,0,0,0)
+KITY J 18 A_SpawnItemEx("RandomItemK",0,0,32,0,0,0)
 KITY I 4 A_FaceTarget
-KITY J 18 A_SpawnItemEx("RandomWeaponK",0,0,32,0,0,0)
-KITY I 4 A_FaceTarget
-KITY J 18 A_SpawnItemEx("RandomWeaponK",0,0,32,0,0,0)
-KITY K 4 A_FaceTarget
+KITY J 18 A_SpawnItemEx("RandomItemK",0,0,32,0,0,0)
 KITY L 18
 KITY G 0 A_Die
 Goto Death
@@ -250,40 +185,19 @@ stop
 }
 }
 
-actor RandomWeaponK
+actor RandomItemK
 {
 States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_Jump(256, 
-"SmallHealth",
-"BigHealth",
-"SmallHealth",
-"BigHealth",
-"SmallHealth",
-"BigHealth",
-"SmallHealth",
-"BigHealth",
-"SmallHealth",
-"BigHealth",
-"SmallHealth",
-"BigHealth",
-"EternalClawsUpgrade",
-"RFMissileUpgrade"
-)
+TNT1 A 1 A_Jump(256,"SmallHealth","BigHealth")
 stop
 SmallHealth:
 TNT1 A 1 A_SpawnItemEx("SmallHealth",0,0,0,10,0,5)
 stop
 BigHealth:
 TNT1 A 1 A_SpawnItemEx("BigHealth",0,0,0,10,0,5)
-stop
-EternalClawsUpgrade:
-TNT1 A 1 A_SpawnItemEx("EternalClawsUpgrade",0,0,0,10,0,5)
-stop
-RFMissileUpgrade:
-TNT1 A 1 A_SpawnItemEx("RFMissileUpgrade",0,0,0,10,0,5)
 stop
 }
 }

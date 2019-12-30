@@ -174,3 +174,22 @@
 	chatlump = "botchats/BOTICSP"
 	chatfrequency = 50
 }
+
+{
+	name = "\cgGizmo the Cat"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "AtomicFireWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "Gizmo"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTHGIZ"
+	chatfrequency = 50
+}

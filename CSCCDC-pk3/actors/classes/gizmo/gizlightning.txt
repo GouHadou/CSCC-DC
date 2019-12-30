@@ -1,0 +1,145 @@
+actor LightningCannonWep : CSCCWepBase
+{
+Weapon.AmmoUse 2
+Weapon.AmmoGive 28
+Weapon.SlotNumber 4
+Obituary "%o was electrocuted by %k's Lightning Cannon."
+weapon.ammotype "LightningCannonAmmo"
+inventory.icon "LIGHTI"
+DropItem "ThunderBoltWepCS"
+States
+{
+Spawn:
+HNCN E 1
+stop
+Ready:
+HCAN B 0 ACS_ExecuteAlways(998,0,DYE_GIZMO)
+Ready2:
+HCAN B 0 A_JumpIfNoAmmo("Ready3")
+HCAN B 7 A_WeaponReady
+HCAN B 0 A_GiveInventory("GizmoAllGiver",1)
+Goto Ready2
+Ready3:
+HCAN B 7 A_WeaponReady(WRF_NOFIRE)
+HCAN B 0 A_GiveInventory("GizmoAllGiver",1)
+HCAN B 0 A_JumpIfNoAmmo("Ready3")
+Goto Ready2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+HCAN B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+HCAN B 1 A_Raise
+Loop
+Altfire:
+Fire:
+HCAN B 0 A_JumpIfNoAmmo("NoAmmo")
+HCAN B 0 A_PlaySoundEx("weapon/lightc","Weapon")
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1_Ammo")
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1")
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1")
+HCAN H 1 A_GiveInventory("LightningCannonShot_M1")
+HCAN HI 4
+HCAN B 10
+HCAN B 0 A_Refire
+Goto Ready2
+NoAmmo:
+HCAN B 1 //ACS_Execute(979,0)
+Goto Ready2
+}
+}
+
+actor LightningCannonAmmo : Ammo 
+{
+inventory.amount 1
+inventory.maxamount 28 
+}
+
+actor LightningCannonShot : BasicProjectile
+{
+Obituary "%o was electrocuted by %k's Lightning Cannon."
+PROJECTILE
++RIPPER
+Radius 10
+Height 5
+scale 1.5
+damagetype "GizmoLightning"
+damage (6)
+speed 70
+States
+{
+Spawn:
+LIGC ABCD 1
+LIGC ABCD 1
+LIGC ABCD 1
+LIGC ABCD 3
+loop
+}
+}
+actor LightningCannonShot_B : LightningCannonShot {Translation  "229:229=205:205", "210:210=196:196"}
+actor LightningCannonShot_R : LightningCannonShot {Translation  "229:229=171:171", "210:210=170:170"}
+actor LightningCannonShot_G : LightningCannonShot {Translation  "229:229=104:104", "210:210=138:138"}
+actor LightningCannonShot_Y : LightningCannonShot {Translation  "229:229=229:229", "210:210=210:210"}
+
+actor LightningCannonShot_M1_Ammo : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot",0,1,8,0)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_B",0,1,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_R",0,1,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_G",0,1,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_Y",0,1,8,0)
+stop
+}
+}
+
+actor LightningCannonShot_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot",0,0,8,0)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("LightningCannonShot_Y",0,0,8,0)
+stop
+}
+}
+
+actor LightningCannonFX : BasicClientside
+{
+PROJECTILE
++RIPPER
+Height 5
+scale 2.5
+-SOLID
++NOGRAVITY
+height 0
+radius 0
+States
+{
+Spawn:
+TBOL IJKL 2
+stop
+}
+}

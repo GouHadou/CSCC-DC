@@ -184,3 +184,11 @@ graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL2,0,0}
 graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL4,0,0}
 graphic BullAt1,32,32 {XScale 2.0 YScale 2.0 Patch BULL6,0,0}
 // =[=========]=
+
+//Gizmo
+Texture "ETERBAR2", 56, 8{Patch "ETERBAR1", 0, 0{Rotate 90}}
+Texture "PLASBAR2", 56, 8{Patch "PLASBAR1", 0, 0{Rotate 90}}
+Texture "FLMEBAR2", 56, 8{Patch "FLMEBAR1", 0, 0{Rotate 90}}
+Texture "FRSTBAR2", 56, 8{Patch "FRSTBAR1", 0, 0{Rotate 90}}
+Texture "ELECBAR2", 56, 8{Patch "ELECBAR1", 0, 0{Rotate 90}}
+Texture "HYDRBAR2", 56, 8{Patch "HYDRBAR1", 0, 0{Rotate 90}}

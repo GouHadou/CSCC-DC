@@ -1,4 +1,4 @@
-actor Gizmo : CustomWepMan 
+actor GizmoClass : CustomWepMan 
 {
 player.displayname "Gizmo" 
 player.soundclass "Gizmo"
@@ -8,13 +8,7 @@ player.sidemove 0.78, 0.78
 player.jumpz 13
 player.startitem "HandCannon"
 player.startitem "ClawGlovesWep"
-player.startitem "BusterAmmo", 3
-player.startitem "HandCannonAmmo", 3
-player.startitem "FlameCannonAmmo", 14
-player.startitem "LightningCannonAmmo", 14
-player.startitem "FrostCannonAmmo", 14
-player.startitem "GizmoCopy"
-
+player.startitem "GizmoClassItems"
 States
 {
 Spawn:
@@ -48,13 +42,57 @@ GIZM KKKKKKKKKK 1 A_CheckFloor("DeathFinal")
 GIZM KKKKKKKKKK 1 A_CheckFloor("DeathFinal")
 Goto DeathFinal
 DeathFinal:
-PLAY Z 0 //A_JumpIfInventory("TsukiHit", 1, "TsukiSoulDrop")
 PLAY Z 1 A_CheckPlayerDone
 wait
 }
 }
 
-actor GizmoMorph : Gizmo
+actor GizmoAllGiver : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("FrostCannonAmmo",1)
+TNT1 A 0 A_GiveInventory("LightningCannonAmmo",1)
+TNT1 A 0 A_GiveInventory("FlameCannonAmmo",1)
+TNT1 A 0 A_GiveInventory("StoneCannonAmmo",1)
+TNT1 A 0 A_GiveInventory("HydroCannonAmmo",1)
+TNT1 A 0 A_GiveInventory("EternalClawsAmmo",1)
+stop
+}
+}
+
+actor GizmoAllWeps : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("FrostCannonWep",1)
+TNT1 A 0 A_GiveInventory("LightningCannonWep",1)
+TNT1 A 0 A_GiveInventory("FlameCannonWep",1)
+TNT1 A 0 A_GiveInventory("StoneCannonWep",1)
+TNT1 A 0 A_GiveInventory("HydroCannonWep",1)
+TNT1 A 0 A_GiveInventory("EternalClawsUpgrade",1)
+stop
+}
+}
+
+actor GizmoClassItems : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("FrostCannonAmmo",28)
+TNT1 A 0 A_GiveInventory("LightningCannonAmmo",28)
+TNT1 A 0 A_GiveInventory("FlameCannonAmmo",28)
+TNT1 A 0 A_GiveInventory("StoneCannonAmmo",28)
+TNT1 A 0 A_GiveInventory("HydroCannonAmmo",28)
+TNT1 A 0 A_GiveInventory("EternalClawsAmmo",28)
+stop
+}
+}
+
+actor HandCannonMorph : GizmoClass
 {
 +NOSKIN
 player.morphweapon "HandCannon"
@@ -68,16 +106,37 @@ Goto "CustomWepMan::Pain+2"
 }
 }
 
-actor GizmoMorph2 : Gizmo
+actor ClawGlovesWepMorph : HandCannonMorph
 {
-+NOSKIN
 player.morphweapon "ClawGlovesWep"
-player.soundclass "BestClassEver"
-States
-{
-Pain:
-YOKM H 0 A_ScaleVelocity(0.75)
-YOKM H 0 
-Goto "CustomWepMan::Pain+2"
 }
+
+actor EternalClawsWepMorph : HandCannonMorph
+{
+player.morphweapon "ClawGlovesWep"
+}
+
+actor FrostCannonWepMorph : HandCannonMorph
+{
+player.morphweapon "FrostCannonWep"
+}
+
+actor LightningCannonWepMorph : HandCannonMorph
+{
+player.morphweapon "LightningCannonWep"
+}
+
+actor FlameCannonWepMorph : HandCannonMorph
+{
+player.morphweapon "FlameCannonWep"
+}
+
+actor StoneCannonWepMorph : HandCannonMorph
+{
+player.morphweapon "StoneCannonWep"
+}
+
+actor HydroCannonWepMorph : HandCannonMorph
+{
+player.morphweapon "HydroCannonWep"
 }

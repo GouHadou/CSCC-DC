@@ -1,0 +1,201 @@
+actor HandCannon : CSCCWepBase
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 0
+Weapon.SlotNumber 1
+Obituary "%o was blasted by %k's Plasma Cannon."
+weapon.ammotype "HandCannonAmmo"
+inventory.icon "PLASMI"
+States
+{
+Spawn:
+TNT1 A 1 
+stop
+Ready:
+HCAN B 0 ACS_ExecuteAlways(998,0,DYE_GIZMO)
+Ready2:
+HCAN B 7 A_WeaponReady
+HCAN B 0 A_GiveInventory("GizmoAllGiver",1)
+Goto Ready2
+Deselect:
+TNT1 A 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+HCAN B 1 A_Lower
+Loop
+Select:
+TNT1 A 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+HCAN B 1 A_Raise
+Loop
+Altfire:
+Fire:
+HCAN B 0 A_ClearRefire
+HCAN B 0 A_TakeInventory("HandCannonAmmo",999)
+HCAN E 0 A_PlaySoundEx("weapon/pshot","Weapon")
+HCAN E 3 A_GiveInventory("GizmoChargeShot2_M1")
+HCAN CEB 3 
+HCAN B 0 A_Refire
+goto Ready2
+Fire2:
+HCAN B 0 A_ClearRefire
+HCAN B 0 A_TakeInventory("HandCannonAmmo",999)
+HCAN B 0 A_ChangeVelocity(-Cos(pitch)*5, 0, sin(pitch)*5,CVF_RELATIVE)
+HCAN B 0 A_PlaySoundEx("weapon/gizfire","Weapon")
+HCAN B 3 A_GiveInventory("GizmoChargeShot3_M1")
+HCAN ECEB 3 
+HCAN B 9
+HCAN B 0 A_Refire
+goto Ready2
+Hold:
+HCAN B 0 A_JumpIfInventory("HandCannonAmmo",4,"Charge")
+HCAN B 1 A_GiveInventory("HandCannonAmmo",1)
+HCAN B 0 A_Refire
+Goto Fire
+Charge:
+HCAN B 0 A_JumpIfInventory("HandCannonAmmo",5,"Charge1")
+HCAN B 0 A_PlaySoundEx("weapon/gizchrg","Weapon")
+HCAN B 1 
+Goto Charge1
+Charge1:
+HCAN B 0 A_JumpIfInventory("HandCannonAmmo",32,"BotCheck")
+HCAN B 1 A_GiveInventory("HandCannonAmmo",1)
+PLAS H 0 A_Refire("Charge1.b")
+Goto Fire
+Charge1.b:
+HCAN B 0 A_JumpIfInventory("HandCannonAmmo",32,"BotCheck")
+PLAS H 1 A_GiveInventory("HandCannonAmmo",1)
+PLAS H 0 A_Refire("Charge1")
+Goto Fire
+BotCheck:
+KBHF G 0 ACS_ExecuteAlways(974,0)
+Goto Charge2
+Charge2:
+HCAN B 0 A_PlaySoundEx("weapon/gizchrgloop","Weapon")
+HCAN B 1 
+PLAS K 0 A_Refire("Charge2.b")
+Goto Fire2
+Charge2.b:
+PLAS J 1 
+PLAS K 0 A_Refire("Charge2.c")
+Goto Fire2
+Charge2.c:
+PLAS K 1 
+PLAS K 0 A_Refire("Charge2")
+Goto Fire2
+}
+}
+
+actor HandCannonAmmo : Ammo 
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 32
+}
+
+actor GizmoChargeShot2 : BasicProjectile
+{
+PROJECTILE
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
+damagetype "GizmoPlasma"
+Speed 26
+Damage (20)
+radius 10
+height 10
+scale 1.0
+Obituary "%o somehow died by %k's weak plasma spark."
+States
+{
+Spawn:
+PLAS EFGF 2
+loop
+}
+}
+actor GizmoChargeShot2_B : GizmoChargeShot2 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor GizmoChargeShot2_R : GizmoChargeShot2 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor GizmoChargeShot2_G : GizmoChargeShot2 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor GizmoChargeShot2_Y : GizmoChargeShot2 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+actor GizmoChargeShot2_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2",0,0,8,0)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot2_Y",0,0,8,0)
+stop
+}
+}
+
+actor GizmoChargeShot3 : BasicProjectile
+{
+Obituary "%o was blasted by %k's Plasma Cannon."
+PROJECTILE
++BRIGHT
++LOOKALLAROUND
++SKYEXPLODE
++DONTBLAST
+damagetype "GizmoPlasma"
+Speed 66
+Damage (30)
+radius 18
+height 15
+scale 1.3
+States
+{
+Spawn:
+PLAG ABCD 2 BRIGHT
+loop
+Death:
+PLEX A 0 A_PlaySound("weapon/plasma")
+PLEX K 3 BRIGHT A_Explode(15,64,0)
+PLEX LM 3 BRIGHT
+PLEX N 3 BRIGHT A_Explode(15,64,0)
+PLEX OP 3 BRIGHT
+PLEX Q 3 BRIGHT A_Explode(15,64,0)
+PLEX RS 3 BRIGHT
+PLEX T 3 BRIGHT A_Explode(15,64,0)
+PLEX VW 3 BRIGHT
+PLEX K 3 BRIGHT A_Explode(15,64,0)
+PLEX LM 3 BRIGHT
+stop
+}
+}
+actor GizmoChargeShot3_B : GizmoChargeShot3 {Translation  "130:130=74:74", "110:110=205:205", "102:102=196:196", "138:138=4:4","96:96=196:196"}
+actor GizmoChargeShot3_R : GizmoChargeShot3 {Translation  "130:130=41:41", "110:110=171:171", "102:102=170:170", "138:138=4:4","96:96=170:170"}
+actor GizmoChargeShot3_G : GizmoChargeShot3 {Translation  "130:130=130:130", "110:110=110:110", "102:102=102:102", "138:138=138:138","96:96=102:102"}
+actor GizmoChargeShot3_Y : GizmoChargeShot3 {Translation  "130:130=232:232", "110:110=229:229", "102:102=214:214", "138:138=4:4","96:96=214:214"}
+
+actor GizmoChargeShot3_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3",0,0,8,0)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("GizmoChargeShot3_Y",0,0,8,0)
+stop
+}
+}

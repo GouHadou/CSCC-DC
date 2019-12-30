@@ -1,7 +1,7 @@
 clearplayerclasses
 addplayerclass MegamanC nomenu
 addplayerclass CopyRobot nomenu
-AddPlayerClass Gizmo nomenu
+AddPlayerClass GizmoClass nomenu
 addplayerclass UnixClass nomenu
 addplayerclass CutmanMikeClass nomenu
 addplayerclass IceSparkyClass nomenu 

@@ -288,8 +288,6 @@ Gizmo/cpain2      SONICHR5
 
 $random Gizmo/cpain { Gizmo/cpain1 Gizmo/cpain2 }
 
-
-
 Gizmo/attack1      ATTACK11
 Gizmo/attack2      ATTACK12
 Gizmo/attack3      ATTACK13
@@ -306,7 +304,6 @@ Gizmo/strong5      claw
 
 $random Gizmo/strong { Gizmo/strong1 Gizmo/strong2 Gizmo/strong3 Gizmo/strong4 Gizmo/strong5 }
 
-
 $playeralias	"Gizmo" 	male	*death		Gizmo/death
 $playersound    "Gizmo" 	male    *xdeath     SONICDE1
 $playersound	"Gizmo" 	male	*pain100	SONICHR1
@@ -321,7 +318,6 @@ $playersound	"Gizmo" 	male	*grunt		NONE
 $playeralias	"Gizmo" 	male	*taunt		Gizmo/taunt
 
 $random Gizmo/taunt { Gizmo/taunt1 Gizmo/taunt2 Gizmo/taunt3 Gizmo/taunt4 Gizmo/taunt6 }
-
 
 Gizmo/taunt1      GIZMOLGO
 Gizmo/taunt2      GIZMOHAH
@@ -369,7 +365,6 @@ misc/Ring2	Ringhit
 misc/Ringthrow	Thok
 
 $random Gizmo/torrent { Gizmo/torrent1 Gizmo/torrent2 Gizmo/torrent3 Gizmo/torrent4 }
-
 
 Kitty/Hurt1	CATHIT1
 Kitty/Hurt2	CATHIT3

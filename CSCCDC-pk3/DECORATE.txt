@@ -87,7 +87,13 @@
 
 //===|gizmo
 #include "actors/classes/gizmo/gizclass.txt"
-#include "actors/classes/gizmo/gizwep.txt"
+#include "actors/classes/gizmo/gizplasma.txt"
+#include "actors/classes/gizmo/gizclaw.txt"
+#include "actors/classes/gizmo/gizfrost.txt"
+#include "actors/classes/gizmo/gizlightning.txt"
+#include "actors/classes/gizmo/gizflame.txt"
+#include "actors/classes/gizmo/gizhydro.txt"
+#include "actors/classes/gizmo/gizstone.txt"
 #include "actors/classes/gizmo/gizupgrades.txt"
 
 //Copy Weps
