@@ -136,17 +136,8 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 Script "CSACS_UKIINFO" (int IsExplosion)
 {
 int ThePlayer = ActivatorTID();
-//SetActivatorToTarget(0);
-int TotalDamage = 15;
+int TotalDamage = ACS_NamedExecuteWithResult("CSACS_UKIDAMAGE", 0);
 
-If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage = 35;}
-If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
-If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 2;}
-If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
-If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
-If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
-If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 5;}
-	
 SetHudSize(800, 680, True);
 SetFont("SMALLFONT");
 HudMessage(d:(TotalDamage),s:" damage";
@@ -203,25 +194,26 @@ Spawnspot("RemoteSFX", 0);
 //Script for Uki's weapon damage
 Script "CSACS_UKIDAMAGE" (int IsExplosion)
 {
-int x = GetActorX(0);
-int y = GetActorY(0);
-int z = GetActorZ(0);
-int ThePlayer = ACS_NamedExecuteWithResult("core_gettarget");
-//SetActivatorToTarget(0);
+int ThePlayer;
+If(ActivatorTID() >=1000){ThePlayer = ActivatorTID();}
+Else {ThePlayer = ACS_NamedExecuteWithResult("core_gettarget");}
+
 If(ThePlayer < 1000){SetResultValue(10);terminate;}
 int TotalDamage = 15;
 If(IsExplosion == 0)
 	{
 	If(CheckActorInventory(ThePlayer, "ExplodingFlag") && !CheckActorInventory(ThePlayer, "VelocityFlag")){SetResultValue(0);terminate;}
 	}
+//int TotalDamage = UkiDamageValue(ThePlayer, IsExplosion);
 
-If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage = 35;}
+If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage += 20;}
 If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
 If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 2;}
 
 If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
 If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
 If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
+
 If(IsExplosion == 0)
 	{
 	If(CheckActorInventory(ThePlayer, "ExplodingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
@@ -229,6 +221,7 @@ If(IsExplosion == 0)
 //printbold(i:TotalDamage);
 
 If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 5;}
+
 SetResultValue(TotalDamage);
 }
 
@@ -241,6 +234,7 @@ int PlayerAngle = GetActorAngle(TargetPlayer);
 SetActorPitch(0, PlayerPitch);
 SetActorAngle(0, PlayerAngle);
 }
+
 //End Ukiyama
 
 ////////////////////////////////////LaggyCorperal stuff

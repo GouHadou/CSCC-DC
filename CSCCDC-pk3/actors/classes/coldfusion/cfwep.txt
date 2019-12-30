@@ -312,6 +312,7 @@ Obituary "%o was fused by %k's Fusion Bomb."
 PROJECTILE
 +HEXENBOUNCE
 -NOGRAVITY
++THRUACTORS
 Radius 4
 Height 4
 Scale 2.5
@@ -323,6 +324,9 @@ States
 Spawn:
 CFWP M 3
 CFWP M 0 A_ChangeFlag("HEXENBOUNCE", 0)
+CFWP M 0 A_ChangeFlag("THRUACTORS", 0)
+Spawn2:
+CFWP M 3
 loop
 Death:
 CFWP M 0 A_Stop
