@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 18
+#define MAX_MORPHS 38
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -23,6 +23,32 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},//16
 {"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},//17
 {"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//18
+
+{"VocalMicBoss1", "VocalWoman (Offense)", "VocalWomanClassItems"},//19
+{"VocalMicBoss2", "VocalWoman (Support)", "VocalWomanClassItems"},//20
+
+{"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//21
+
+{"GeeBurstBoss1", "Gee (heal Burst)", "GeeClassItems"},//22
+{"GeeBurstBoss2", "Gee (Damage Burst)", "GeeClassItems"},//23
+
+{"ClawGlovesWep", "Gizmo Claws", "GizmoClassItems"},//24
+{"HandCannon", "Gizmo PlasmaCannon", "GizmoClassItems"},//25
+{"FrostCannonWep", "Gizmo FrostCannon", "GizmoClassItems"},//26
+{"LightningCannonWep", "Gizmo LightningCannon", "GizmoClassItems"},//27
+{"FlameCannonWep", "Gizmo FlameCannon", "GizmoClassItems"},//28
+{"ChaosCannonWep", "Gizmo ChaosCannon", "GizmoClassItems"},//29
+{"EternalClawsWep", "Gizmo EternalClaws", "GizmoClassItems"},//30
+{"RFMissileWep", "Gizmo RFMissile", "GizmoClassItems"},//31
+{"StoneCannonWep", "Gizmo StoneCannon", "GizmoClassItems"},//32
+{"HydroCannonWep", "Gizmo HydroCannon", "GizmoClassItems"},//33
+
+{"BullGatorSleepPierce", "BullGator Sleep/Pierce", "BullGatorClassItems"},//34
+{"BullGatorSiphonSplitter", "BullGator Siphon/Splitter", "BullGatorClassItems"},//35
+{"BullGatorConfusionBurst", "BullGator Confusion/Burst", "BullGatorClassItems"},//36
+
+{"OrbitalMissileBoss", "Badz", "BadzClassItems"},//37
+{"ClassicTankWeapon", "TankOperator", "TankOperatorClassItems"},//38
 };
 
 Script "GetPlayerWeapon" (int TargetTID)
