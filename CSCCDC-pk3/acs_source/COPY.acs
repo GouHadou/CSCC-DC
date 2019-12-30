@@ -1,36 +1,52 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 26
+#define MAX_MORPHS 36
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
-{"UnixKnife", "Unix (Eternal Torment)", "UnixClassItems"},
-{"UnixBlade", "Unix (Revolver Blade)", "UnixClassItems"},
-{"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},
-{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},
-{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},
-{"IceWep", "Ice", "IceSparkyClassItems1"},
-{"SparkyWep", "Sparky", "IceSparkyClassItems2"},
-{"FIR", "Korby (Fire)", "KorbyClassItems"},
-{"LIT", "Korby (Lightning)", "KorbyClassItems"},
-{"ICE", "Korby (Ice)", "KorbyClassItems"},
-{"CorpGrandDad", "Corporal (Grand Dad)", "LaggyClassItems"},
-{"CorpFragGrenade", "Corporal (Frag Grenade)", "LaggyClassItems"},
-{"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},
-{"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},
-{"MessatsuWep", "Messatsu", "MessatsuClassItems"},
-{"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},
-{"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},
-{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},
-{"HandCannon", "Gizmo (Hand Cannon)", "GizmoClassItems"},
-{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},
-{"EternalClawsWep", "Gizmo (Eternal Claws)", "GizmoClassItems"},
-{"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},
-{"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},
-{"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},
-{"StoneCannonWep", "Gizmo (Stone Cannon)", "GizmoClassItems"},
-{"HydroCannonWep", "Gizmo (Hydro Cannon)", "GizmoClassItems"},
+{"UnixKnife", "Unix (Eternal Torment)", "UnixClassItems"},//1
+{"UnixBlade", "Unix (Revolver Blade)", "UnixClassItems"},//2
+{"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},//3
+{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},//4
+{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},//5
+{"IceWep", "Ice", "IceSparkyClassItems1"},//6
+{"SparkyWep", "Sparky", "IceSparkyClassItems2"},//7
+{"FIR", "Korby (Fire)", "KorbyClassItems"},//8
+{"LIT", "Korby (Lightning)", "KorbyClassItems"},//9
+{"ICE", "Korby (Ice)", "KorbyClassItems"},//10
+{"CorpGrandDad", "Corporal (Grand Dad)", "LaggyClassItems"},//11
+{"CorpFragGrenade", "Corporal (Frag Grenade)", "LaggyClassItems"},//12
+{"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},//13
+{"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},//14
+{"MessatsuWep", "Messatsu", "MessatsuClassItems"},//15
+{"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},//16
+{"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},//17
+{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//18
+
+{"VocalMicBoss1", "Vocal Woman (Offense)", "VocalWomanClassItems"},//19
+{"VocalMicBoss2", "Vocal Woman (Support)", "VocalWomanClassItems"},//20
+
+{"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//21
+
+{"GeeBurstBoss1", "Gee (Healing Burst)", "GeeClassItems"},//22
+{"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},//23
+
+{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},//24
+{"HandCannon", "Gizmo (Hand Cannon)", "GizmoClassItems"},//25
+{"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},//26
+{"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},//27
+{"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},//28
+{"EternalClawsWep", "Gizmo (Eternal Claws)", "GizmoClassItems"},//29
+{"StoneCannonWep", "Gizmo (Stone Cannon)", "GizmoClassItems"},//30
+{"HydroCannonWep", "Gizmo (Hydro Cannon)", "GizmoClassItems"},//31
+
+{"BullGatorSleepPierce", "BullGator (Sleep / Pierce)", "BullGatorClassItems"},//32
+{"BullGatorSiphonSplitter", "BullGator (Siphon / Splitter)", "BullGatorClassItems"},//33
+{"BullGatorConfusionBurst", "BullGator (Confusion / Burst)", "BullGatorClassItems"},//34
+
+{"OrbitalMissileBoss", "Badz", "BadzClassItems"},//35
+{"ClassicTankWeapon", "Tank Operator", "TankOperatorClassItems"},//36
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

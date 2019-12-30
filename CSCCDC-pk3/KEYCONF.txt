@@ -11,10 +11,11 @@ addplayerclass ColdFusionClass nomenu
 addplayerclass PistonmanClass nomenu 
 addplayerclass LordDamagerClass nomenu 
 addplayerclass TankOperatorClass nomenu
-AddPlayerClass Badz nomenu 
+AddPlayerClass BadzClass nomenu 
 addplayerclass LaggyBlazkoClass nomenu
-AddPlayerClass BullGator nomenu
+AddPlayerClass BullGatorClass nomenu
 addplayerclass KorbyClass nomenu
 addplayerclass VocalWomanClass nomenu 
 addplayerclass ZenTrainerClass nomenu 
 addplayerclass GeeClass nomenu 
+ 

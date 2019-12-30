@@ -38,7 +38,7 @@ Loop
 
 Ready:
 TNT1 A 0 
-ZNTN A 0 ACS_ExecuteAlways(998,0,DYE_ZENTRAINER,1)
+ZNTN A 1 ACS_ExecuteAlways(998,0,DYE_ZENTRAINER)
 ZNTN A 0 A_GunFlash("Flash")
 goto Ready2
 Ready2:

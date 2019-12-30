@@ -1,14 +1,10 @@
 actor OrbitalMissileBoss : CSCCWepBase
 {
 Inventory.Pickupmessage "Satellite Sign \"Orbital Missile\""
-dropitem "OrbitalMissileWepCDropped"
+dropitem "OrbitalMissileWepCS"
 Obituary "$OB_ORBITALMISSILE"
 weapon.ammotype "BadzStuffAmmo"
 weapon.ammotype2 "BadzWarpAmmo"
-inventory.pickupsound "weapon/weaponup"
-+WEAPON.AMMO_OPTIONAL
-inventory.icon "NULLICON"
-Scale 2.0
 States
 {
 Spawn:

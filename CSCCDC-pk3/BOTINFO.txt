@@ -193,3 +193,122 @@
 	chatlump = "botchats/BOTHGIZ"
 	chatfrequency = 50
 }
+
+{
+	name = "\cnGee"
+	accuracy = 2
+	intellect = 2
+	evade = 4
+	anticipation = 4
+	reactiontime = 2
+	perception = 4
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Gee"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cuPistonman"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Pistonman"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\crVocalwoman"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "VocalWoman"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\ciZen Trainer"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Zen Trainer"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\ctBadz"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Badz"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cuTank Operator"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "TankOperator"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cqBull Gator"
+	accuracy = 4
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Bull Gator"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}

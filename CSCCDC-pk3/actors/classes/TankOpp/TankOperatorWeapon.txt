@@ -73,7 +73,7 @@ stop
 
 Ready:
 TNT1 A 0
-TNT1 A 0 ACS_ExecuteAlways(998,0,30)
+T1BS A 1 ACS_ExecuteAlways(998,0,DYE_TANKOP)
 TNT1 A 0 A_GunFlash
 Goto Ready2
 Deselect:

@@ -8,7 +8,7 @@ SetActivator(0,AAPTR_TRACER);
 SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 }
 
-#DEFINE MAX_DISGUISES 12
+#DEFINE MAX_DISGUISES 19
 
 //#DEFINE MEGACOL 0.0 //String arrays do not like 0.0...
 #DEFINE MEGACOL -1.0
@@ -23,6 +23,14 @@ SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 #DEFINE ICECOL 376.0
 #DEFINE LDCOL 437.0
 #DEFINE GIZCOL 385.0
+#DEFINE VOCCOL 996.0
+#DEFINE ZENCOL 804.0
+#DEFINE GEECOL 439.0
+#DEFINE PISTCOL 441.0
+#DEFINE GISMOCOL 385.0
+#DEFINE BADZCOL 280.0
+#DEFINE TANKCOL 30.0
+#DEFINE BULLCOL 395.0
 
 str DisguiseInfo[MAX_DISGUISES][4] = {
 //Actor, Skin, Color, Special Disguise Pickup
@@ -38,6 +46,14 @@ str DisguiseInfo[MAX_DISGUISES][4] = {
 {"LordDamagerClass", "LDDisguise", LDCOL, ""},
 {"IceSparkyClass", "IceDisguise", ICECOL, ""},
 {"GizmoClass", "GizmoDisguise", GIZCOL, ""},
+{"VocalwomanClass", "VocalWomanDisguise", VOCCOL, ""},
+{"ZenTrainerClass", "ZenTrainerDisguise", ZENCOL, ""},
+{"GeeClass", "GeeDisguise", GEECOL, ""},
+{"PistonmanClass", "PistonManDisguise", PISTCOL, ""},
+{"BadzClass", "BadzDisguise", BADZCOL, ""},
+{"BullGatorClass", "BullGatorDisguise", BULLCOL, ""},
+{"TankOperatorClass", "TankOppDisguise", TANKCOL, ""},
+
 };
 
 function int FindDisguise(void) {

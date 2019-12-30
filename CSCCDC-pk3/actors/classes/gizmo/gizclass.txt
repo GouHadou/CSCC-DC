@@ -106,37 +106,10 @@ Goto "CustomWepMan::Pain+2"
 }
 }
 
-actor ClawGlovesWepMorph : HandCannonMorph
-{
-player.morphweapon "ClawGlovesWep"
-}
-
-actor EternalClawsWepMorph : HandCannonMorph
-{
-player.morphweapon "ClawGlovesWep"
-}
-
-actor FrostCannonWepMorph : HandCannonMorph
-{
-player.morphweapon "FrostCannonWep"
-}
-
-actor LightningCannonWepMorph : HandCannonMorph
-{
-player.morphweapon "LightningCannonWep"
-}
-
-actor FlameCannonWepMorph : HandCannonMorph
-{
-player.morphweapon "FlameCannonWep"
-}
-
-actor StoneCannonWepMorph : HandCannonMorph
-{
-player.morphweapon "StoneCannonWep"
-}
-
-actor HydroCannonWepMorph : HandCannonMorph
-{
-player.morphweapon "HydroCannonWep"
-}
+actor ClawGlovesWepMorph : HandCannonMorph {player.morphweapon "ClawGlovesWep"}
+actor FrostCannonWepMorph : HandCannonMorph {player.morphweapon "FrostCannonWep"}
+actor FlameCannonWepMorph : HandCannonMorph {player.morphweapon "FlameCannonWep"}
+actor LightningCannonWepMorph : HandCannonMorph {player.morphweapon "LightningCannonWep"}
+actor StoneCannonWepMorph : HandCannonMorph {player.morphweapon "StoneCannonWep"}
+actor HydroCannonWepMorph : HandCannonMorph {player.morphweapon "HydroCannonWep"}
+actor EternalClawsWepMorph : HandCannonMorph {player.morphweapon "EternalClawsWep"}

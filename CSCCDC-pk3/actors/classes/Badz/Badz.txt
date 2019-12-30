@@ -1,7 +1,7 @@
-actor Badz : CustomWepMan
+actor BadzClass : CustomWepMan
 {
-Health 120
-Player.MaxHealth 120
+Health 135
+Player.MaxHealth 135
 player.forwardmove 0.72, 0.72
 player.sidemove 0.7, 0.7
 player.displayname "badz"
@@ -118,7 +118,21 @@ Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("BadzWarpItem")
 TNT1 A 0 A_GiveInventory("BadzStuffAmmo", 280)
-TNT1 A 0 A_GiveInventory("BadzWarpAmmo",105)
+TNT1 A 0 A_GiveInventory("BadzWarpAmmo",210)
 stop
+}
+}
+
+actor OrbitalMissileBossMorph : BadzClass
+{
++NOSKIN
+player.morphweapon "OrbitalMissileBoss"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
 }
 }

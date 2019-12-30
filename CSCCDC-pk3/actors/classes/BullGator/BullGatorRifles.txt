@@ -47,7 +47,7 @@ goto Flash
 
 Ready:
 B1GA A 1
-B1GA A 0 ACS_ExecuteAlways(998,0,5000)
+B1GA A 0 ACS_ExecuteAlways(998,0,DYE_BULLGATOR)
 B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
 B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
 Ready1:
@@ -83,7 +83,7 @@ goto Ready2
 
 NoAmmo:
 B1GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
-B1GA A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
+B1GA A 0 A_GiveInventory("BullGatorWeakBulletPickup",1)
 B1GA A 1
 B1GA BCCBA 3
 B1GA A 0 A_Refire
@@ -201,6 +201,33 @@ BASB A 1
 loop
 }
 }
+actor BullWeakBulletB : BullWeakBullet {translation "215:215=205:205"}
+actor BullWeakBulletR : BullWeakBullet {translation "215:215=171:171"}
+actor BullWeakBulletG : BullWeakBullet {translation "215:215=104:104"}
+actor BullWeakBulletY : BullWeakBullet {translation "215:215=229:229"}
+
+actor BullGatorWeakBulletPickup : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("BullWeakBulletB",0,0,8)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("BullWeakBulletR",0,0,8)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("BullWeakBulletG",0,0,8)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("BullWeakBulletY",0,0,8)
+stop
+}
+}
+
 
 actor PiercingRailPuff : BulletPuff
 {
@@ -409,7 +436,7 @@ States
 {
 Ready:
 B2GA A 1
-B1GA A 0 ACS_ExecuteAlways(998,0,5000)
+B1GA A 0 ACS_ExecuteAlways(998,0,DYE_BULLGATOR)
 B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
 B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
 Ready1:
@@ -445,7 +472,7 @@ goto Ready2
 
 NoAmmo:
 B2GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
-B2GA A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
+B2GA A 0 A_GiveInventory("BullGatorWeakBulletPickup",1)
 B2GA A 1
 B2GA BCCBA 3
 B2GA A 0 A_Refire
@@ -668,7 +695,7 @@ States
 {
 Ready:
 B3GA A 1
-B1GA A 0 ACS_ExecuteAlways(998,0,5000)
+B1GA A 0 ACS_ExecuteAlways(998,0,DYE_BULLGATOR)
 B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
 B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
 Ready1:
@@ -705,7 +732,7 @@ goto Ready2
 
 NoAmmo:
 B3GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
-B3GA A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
+B3GA A 0 A_GiveInventory("BullGatorWeakBulletPickup",1)
 B3GA A 1
 B3GA BCCBA 3
 B3GA A 0 A_Refire
