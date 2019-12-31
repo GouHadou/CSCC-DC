@@ -332,3 +332,12 @@ Graphic "HYDROI", 30, 30{XScale 2.0 YScale 2.0 Patch "HYDRE0", 0, 0}
 Graphic "KITTHI", 30, 30{XScale 2.0 YScale 2.0 Patch "HELPR0", 0, 0}
 Graphic "KITTYI", 30, 30{XScale 2.0 YScale 2.0 Patch "HELPS0", 0, 0}
 Graphic "GITEMI", 30, 30{XScale 2.0 YScale 2.0 Patch "GITME0", 0, 0}
+
+//Megmman CopyWeps
+
+graphic PISTRE, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PTREA0, 0, 0
+}

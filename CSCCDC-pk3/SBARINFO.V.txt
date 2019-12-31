@@ -344,6 +344,13 @@ IsSelected FusionBombWepCS{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8
 IsSelected IceBladeWepCS{DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected LightningWaveWepCS{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SteelPunchWepCS{Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected PistonTremorWepCS{Drawbar"BARAMMOT", "BAREMPTY", Ammo1, vertical, 16, 8;}	
+IsSelected IdolWaveWepCS{Drawbar"IWAVEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected RailBusterWepCS
+	{
+		Drawbar"BARAMMO4","BAREMPTY",Ammo1,vertical,16,8;
+		InInventory RailBusterCharge, 1	{DrawBar"BARFLS1", "NOBAR", RailBusterCharge, vertical, 16, 8;}
+	}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
