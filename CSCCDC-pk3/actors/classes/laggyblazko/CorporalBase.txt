@@ -41,20 +41,20 @@ states
 {
 FireX:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuff",128)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffB",128)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffR",128)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffG",128)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffY",128)
-stop
+goto Done
 }
 }
 
@@ -64,19 +64,19 @@ states
 {
 FireX:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuff",192)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffB",192)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffR",192)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffG",192)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_CustomPunch(20,1,CPF_PULLIN,"CorpKnifePuffY",192)
-stop
+goto Done
 }
 }

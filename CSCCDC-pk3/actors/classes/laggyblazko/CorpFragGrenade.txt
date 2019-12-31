@@ -216,19 +216,19 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FragGrenade", 0, 1, -8, 0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FragGrenade_BLUE", 0, 1, -8, 0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FragGrenade_RED", 0, 1, -8, 0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FragGrenade_GREEN", 0, 1, -8, 0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FragGrenade_GOLD", 0, 1, -8, 0)
-stop
+goto Done
 }
 }

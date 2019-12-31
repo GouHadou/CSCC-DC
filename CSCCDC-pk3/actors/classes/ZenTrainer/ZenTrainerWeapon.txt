@@ -387,20 +387,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("ZTPsychicBall",0,0,8)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("ZTPsychicBall_B",0,0,8)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("ZTPsychicBall_R",0,0,8)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("ZTPsychicBall_G",0,0,8)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("ZTPsychicBall_Y",0,0,8)
-stop
+goto Done
 }
 }
 

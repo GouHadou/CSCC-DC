@@ -42,6 +42,7 @@ Switch(GetPlayerInfo(pln, PLAYERINFO_TEAM))
 	GiveInventory("KingTeamFlag", 1);
 	break;
 	}
+	GiveInventory("IsInGame",1); //Trill
 
 	// [Mess] Spawns an object to spawn other items at (Terminator, Possession etc)
 	If(ThingCount(0,pln+2000)==0)

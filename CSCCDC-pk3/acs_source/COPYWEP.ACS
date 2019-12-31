@@ -2,11 +2,135 @@
 //#include "zcommon.acs"
 //#include "CSCCLIB.acs"
 
-#DEFINE MAX_FAKEWEPS 1
+#DEFINE MAX_FAKEWEPS 94
 
 str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 //Actor, GizmoDisplay, GizmoWep, GizmoAmmo, CorpDisplay, CorpWep, CorpAmmo
-{"FireStormWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "FlameCannonAmmo", "CSCC_CorpGrandDad", "FlameCannonWep", "FlameCannonAmmo"},
+{"SuperArmWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"HyperBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"IceSlasherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"ThunderBeamWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"FireStormWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"RollingCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"TimeSlowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+{"OilSliderWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+
+{"BubbleLeadWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"MetalBladeWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"AtomicFireWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"LeafShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"AirShooterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"QuickBoomerangWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"CrashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"TimeStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL 
+
+{"MagnetMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"TopSpinWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"NeedleCannonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"ShadowBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"GeminiLaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"SearchSnakeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"HardKnuckleWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"SparkShockWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+
+{"DrillBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"RingBoomerangWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"DustCrusherWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"PharaohShotWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"SkullBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"DiveMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"RainFlushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+{"FlashStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+
+{"NapalmBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"ChargeKickWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"GyroAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED       
+{"PowerStoneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"WaterWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"CrystalEyeWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"StarCrashWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"GravityHoldWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+
+{"BlizzardAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"FlameBlastWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"YamatoSpearWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"PlantBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"SilverTomahawkWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"WindStormWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"KnightCrushWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"CentaurFlashWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+
+{"FreezeCrackerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"NoiseCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"WildCoilWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"DangerWrapWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"ScorchWheelWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"JunkShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"SlashClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"ThunderBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+
+{"AstroCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+{"FlameSwordWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"ThunderClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"HomingSniperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"WaterBalloonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"MegaBallWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"FlashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"IceWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"TornadoHoldWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+
+{"TenguBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"WaveBurnerWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"SpreadDrillWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"MagicCardWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"RemoteMineWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"CopyVisionWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"IceWallWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"LightningBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+
+{"PlugBallWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"LaserTridentWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"BlackHoleBombWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+{"JewelSatelliteWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"ConcreteShotWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"TornadoBlowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+{"HornetChaserWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"MagmaBazookaWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+ 
+{"SolarBlazeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
+
+/*
+{"WheelCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"ReboundStrikerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"ThunderWoolWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"CommandoBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"ChillSpikeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"WaterShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+{"TripleBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE",}, //CLOSE
+
+{"GrabBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"BubbleBombWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"PhotonMissileWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"SaltWaterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"ElectricShockWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"BlackHoleWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"DeepDiggerWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"BreakDashWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"SparkChaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+*/
+
+{"SakugarneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE"}, //CLOSE
+{"BalladeCrackerWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"ScrewCrusherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"MirrorBusterWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE"}, //SHIELD
+
+{"IceBladeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"LightningWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"GouhadouWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"NadeSpamWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE"}, //RAPID
+{"CometWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //RANGED
+{"FusionBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE"}, //POWER
+{"MeteorWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE"}, //SPECIAL
 };
 
 script "CSACS_WeaponDisplay" (void) CLIENTSIDE
@@ -24,8 +148,11 @@ for(int i = 0; i < MAX_FAKEWEPS; i++)
     {
     if(StrIcmp(FakeWeaponInfo[i][0], GetActorClass(0))==0) 
         {
-        SetActorState(0,FakeWeaponInfo[i][StateSet]);
-        terminate;
+        if(StrIcmp(FakeWeaponInfo[i][StateSet], "")!=0)
+            {
+            SetActorState(0,FakeWeaponInfo[i][StateSet]);
+            terminate;
+            }
         }
     }
 }

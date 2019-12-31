@@ -816,20 +816,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FIR1",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FIR1_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FIR1_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FIR1_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FIR1_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -846,20 +846,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FIR2",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FIR2_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FIR2_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FIR2_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FIR2_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -875,20 +875,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FIR3",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FIR3_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FIR3_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FIR3_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FIR3_Y",0,0,0,0)
-stop
+goto Done
 }
 }
  // ====| Lightning
@@ -1081,20 +1081,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("LIT1T",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("LIT1T_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("LIT1T_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("LIT1T_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("LIT1T_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -1110,20 +1110,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("LIT2T",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("LIT2T_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("LIT2T_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("LIT2T_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("LIT2T_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -1139,20 +1139,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("LIT3T",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("LIT3T_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("LIT3T_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("LIT3T_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("LIT3T_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -1455,20 +1455,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("ICE1",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("ICE1_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("ICE1_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("ICE1_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("ICE1_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -1484,20 +1484,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("ICE2",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("ICE2_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("ICE2_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("ICE2_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("ICE2_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -1513,20 +1513,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("ICE3",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("ICE3_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("ICE3_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("ICE3_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("ICE3_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 //██████████████████████████████████████████BLUE Magic████████████████████████████████████████
@@ -1572,20 +1572,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("BadBreath",random(-20,20),0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("BadBreath_B",random(-20,20),0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("BadBreath_R",random(-20,20),0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("BadBreath_G",random(-20,20),0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("BadBreath_Y",random(-20,20),0,0,0)
-stop
+goto Done
 }
 }
 //████████████|Flash|██████████████
@@ -1637,20 +1637,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FlamethrowerK",random(-10,10),0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FlamethrowerK_B",random(-10,10),0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FlamethrowerK_R",random(-10,10),0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FlamethrowerK_G",random(-10,10),0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FlamethrowerK_Y",random(-10,10),0,0,0)
-stop
+goto Done
 }
 }
 //████████████|Self Destruct|██████████████
@@ -1714,20 +1714,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("KNeedle",0,0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("KNeedle_B",0,0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("KNeedle_R",0,0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("KNeedle_G",0,0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("KNeedle_Y",0,0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 }
 }
 
@@ -1737,20 +1737,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("KNeedle",Random(-4, 0),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("KNeedle_B",Random(-4, 0),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("KNeedle_R",Random(-4, 0),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("KNeedle_G",Random(-4, 0),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("KNeedle_Y",Random(-4, 0),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 }
 }
 
@@ -1760,20 +1760,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("KNeedle",Random(0, 4),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("KNeedle_B",Random(0, 4),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("KNeedle_R",Random(0, 4),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("KNeedle_G",Random(0, 4),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("KNeedle_Y",Random(0, 4),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 }
 }
 
@@ -1783,20 +1783,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("KNeedle",Random(-3, 3),0,random(0,16),random(-8,8),0,Random(-2, 2))
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("KNeedle_B",Random(-3, 3),0,random(0,16),random(-8,8),0,Random(-2, 2))
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("KNeedle_R",Random(-3, 3),0,random(0,16),random(-8,8),0,Random(-2, 2))
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("KNeedle_G",Random(-3, 3),0,random(0,16),random(-8,8),0,Random(-2, 2))
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("KNeedle_Y",Random(-3, 3),0,random(0,16),random(-8,8),0,Random(-2, 2))
-stop
+goto Done
 }
 }
 //████████████|Slowga|██████████████
@@ -1932,20 +1932,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("AquaBreath",random(-12,12),0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("AquaBreath_B",random(-12,12),0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("AquaBreath_R",random(-12,12),0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("AquaBreath_G",random(-12,12),0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("AquaBreath_Y",random(-12,12),0,0,0)
-stop
+goto Done
 }
 }
 
@@ -2010,20 +2010,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("KBlaster",0,0,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("KBlaster_B",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("KBlaster_R",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("KBlaster_G",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("KBlaster_Y",0,0,0,0)
-stop
+goto Done
 }
 }
 //████████████|MatraMagic|██████████████
@@ -2058,20 +2058,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("MatraMagic",random(-16,16),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("MatraMagic_B",random(-16,16),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("MatraMagic_R",random(-16,16),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("MatraMagic_G",random(-16,16),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("MatraMagic_Y",random(-16,16),0,random(0,16),random(-8,8),0,0)
-stop
+goto Done
 }
 }
 //████████████|Limit Glove|██████████████

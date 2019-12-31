@@ -809,7 +809,7 @@ SetPlayerProperty(0, 0, PROP_BUDDHA);
 }
 
 //Pistonman
-Script "CSACS_PistonFistFX" (int playerTid, int arm) CLIENTSIDE
+Script "CSACS_PistonFistFX" (int playerTid, int arm, int Player_Team) CLIENTSIDE
 {
 	str P_team = "";
 	str ArmType = "";
@@ -824,7 +824,7 @@ Script "CSACS_PistonFistFX" (int playerTid, int arm) CLIENTSIDE
     int pointCount;
     int pointOffset;
 	int density = 24;
-	switch(GetPlayerInfo(playerTID-1000, PLAYERINFO_TEAM))
+	switch(Player_Team)
 		{
 		Case 0:
 		P_team = "B";

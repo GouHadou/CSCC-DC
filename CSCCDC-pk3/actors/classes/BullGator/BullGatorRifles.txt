@@ -213,19 +213,19 @@ States
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("BullWeakBullet",0,0,8)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("BullWeakBulletB",0,0,8)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("BullWeakBulletR",0,0,8)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("BullWeakBulletG",0,0,8)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("BullWeakBulletY",0,0,8)
-stop
+goto Done
 }
 }
 

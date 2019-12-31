@@ -113,19 +113,19 @@ States
 {
 FireX:
 TNT1 A 0 A_RailAttack( (2), -3, 5, "purple", "purple", RGF_NOPIERCING|RGF_SILENT, 0, "DarkLaser", 0, 0, 600, 10, 5, 0, "DarkLaser", 1)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_RailAttack( (2), -3, 5, "purple", "purple", RGF_NOPIERCING|RGF_SILENT, 0, "DarkLaserB", 0, 0, 600, 10, 5, 0, "DarkLaserB", 1)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_RailAttack( (2), -3, 5, "purple", "purple", RGF_NOPIERCING|RGF_SILENT, 0, "DarkLaserR", 0, 0, 600, 10, 5, 0, "DarkLaserR", 1)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_RailAttack( (2), -3, 5, "purple", "purple", RGF_NOPIERCING|RGF_SILENT, 0, "DarkLaserG", 0, 0, 600, 10, 5, 0, "DarkLaserG", 1)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_RailAttack( (2), -3, 5, "purple", "purple", RGF_NOPIERCING|RGF_SILENT, 0, "DarkLaserY", 0, 0, 600, 10, 5, 0, "DarkLaserY", 1)
-stop
+goto Done
 }
 }
 

@@ -335,19 +335,19 @@ States
 {
 FireX:
 TST1 A 0 A_FireCustomMissile("UnixKnifeShot",0,0,8,0)
-stop
+goto Done
 FireB:
 TST1 A 0 A_FireCustomMissile("UnixKnifeShotB",0,0,8,0)
-stop
+goto Done
 FireR:
 TST1 A 0 A_FireCustomMissile("UnixKnifeShotR",0,0,8,0)
-stop
+goto Done
 FireG:
 TST1 A 0 A_FireCustomMissile("UnixKnifeShotG",0,0,8,0)
-stop
+goto Done
 FireY:
 TST1 A 0 A_FireCustomMissile("UnixKnifeShotY",0,0,8,0)
-stop
+goto Done
 }
 }
 
@@ -357,18 +357,18 @@ States
 {
 FireX:
 TST1 A 0 A_FireCustomMissile("RevolverShadowBlade",0,1,8,0)
-stop
+goto Done
 FireB:
 TST1 A 0 A_FireCustomMissile("RevolverShadowBladeB",0,1,8,0)
-stop
+goto Done
 FireR:
 TST1 A 0 A_FireCustomMissile("RevolverShadowBladeR",0,1,8,0)
-stop
+goto Done
 FireG:
 TST1 A 0 A_FireCustomMissile("RevolverShadowBladeG",0,1,8,0)
-stop
+goto Done
 FireY:
 TST1 A 0 A_FireCustomMissile("RevolverShadowBladeY",0,1,8,0)
-stop
+goto Done
 }
 }

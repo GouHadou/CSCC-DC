@@ -274,20 +274,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet",0,0,3,4,0,0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_BLUE",0,0,3,4,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_RED",0,0,3,4,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_GREEN",0,0,3,4,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_GOLD",0,0,3,4,0,0)
-stop
+goto Done
 }
 }
 
@@ -297,20 +297,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet",fRandom(-2.5,2.5),0,3,4,0,fRandom(-2.5,2.5))
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_BLUE",fRandom(-2.5,2.5),0,3,4,0,fRandom(-2.5,2.5))
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_RED",fRandom(-2.5,2.5),0,3,4,0,fRandom(-2.5,2.5))
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_GREEN",fRandom(-2.5,2.5),0,3,4,0,fRandom(-2.5,2.5))
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FakeTommyBullet_GOLD",fRandom(-2.5,2.5),0,3,4,0,fRandom(-2.5,2.5))
-stop
+goto Done
 }
 }
 
@@ -320,19 +320,19 @@ states
 {
 FireX:
 TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuff",FBF_NORANDOM|FBF_USEAMMO)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffB",FBF_NORANDOM|FBF_USEAMMO)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffR",FBF_NORANDOM|FBF_USEAMMO)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffG",FBF_NORANDOM|FBF_USEAMMO)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireBullets(2.5,2.5,1,4,"TommyPuffY",FBF_NORANDOM|FBF_USEAMMO)
-stop
+goto Done
 }
 }

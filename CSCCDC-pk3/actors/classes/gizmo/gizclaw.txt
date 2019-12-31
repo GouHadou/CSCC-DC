@@ -120,19 +120,19 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("ClawGloves",0,0,0,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("ClawGlovesB",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("ClawGlovesR",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("ClawGlovesG",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("ClawGlovesY",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -153,13 +153,13 @@ states
 {
 FireX:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,Cos(pitch)*15, 0, -sin(pitch)*15,0) 
-stop
+goto Done
 FireB:
 FireR:
 FireG:
 FireY:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,Cos(pitch)*15, 0, -sin(pitch)*15,0,SXF_TRANSFERTRANSLATION) 
-stop
+goto Done
 }
 }
 actor GizmoClawGlovesStrongPickup60 : BasicTeamColorPickup
@@ -168,13 +168,13 @@ states
 {
 FireX:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,60) 
-stop
+goto Done
 FireB:
 FireR:
 FireG:
 FireY:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,60,SXF_TRANSFERTRANSLATION) 
-stop
+goto Done
 }
 }
 actor GizmoClawGlovesStrongPickup120 : BasicTeamColorPickup
@@ -183,13 +183,13 @@ states
 {
 FireX:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,120) 
-stop
+goto Done
 FireB:
 FireR:
 FireG:
 FireY:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,120,SXF_TRANSFERTRANSLATION) 
-stop
+goto Done
 }
 }
 actor GizmoClawGlovesStrongPickup180 : BasicTeamColorPickup
@@ -198,13 +198,13 @@ states
 {
 FireX:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,180) 
-stop
+goto Done
 FireB:
 FireR:
 FireG:
 FireY:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,180,SXF_TRANSFERTRANSLATION) 
-stop
+goto Done
 }
 }
 actor GizmoClawGlovesStrongPickup240 : BasicTeamColorPickup
@@ -213,13 +213,13 @@ states
 {
 FireX:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,240) 
-stop
+goto Done
 FireB:
 FireR:
 FireG:
 FireY:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,240,SXF_TRANSFERTRANSLATION) 
-stop
+goto Done
 }
 }
 actor GizmoClawGlovesStrongPickup300 : BasicTeamColorPickup
@@ -228,13 +228,13 @@ states
 {
 FireX:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,300) 
-stop
+goto Done
 FireB:
 FireR:
 FireG:
 FireY:
 TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,300,SXF_TRANSFERTRANSLATION) 
-stop
+goto Done
 }
 }
 
@@ -356,18 +356,18 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("EternalClaws",0,1,0,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("EternalClawsB",0,1,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("EternalClawsR",0,1,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("EternalClawsG",0,1,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("EternalClawsY",0,1,0,0)
-stop
+goto Done
 }
 }

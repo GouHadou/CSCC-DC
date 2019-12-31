@@ -220,20 +220,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FusionBombClass", 0, 1, 8, 0)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FusionBombClass_B", 0, 1, 8, 0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FusionBombClass_R", 0, 1, 8, 0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FusionBombClass_G", 0, 1, 8, 0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FusionBombClass_Y", 0, 1, 8, 0)
-stop
+goto Done
 }
 }
 
@@ -243,20 +243,20 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FusionBrake", 0, 0, 0, 0, 30)
-stop
+goto Done
 //---
 FireB:
 TNT1 A 0 A_FireCustomMissile("FusionBrakeB", 0, 0, 0, 0, 30)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FusionBrakeR", 0, 0, 0, 0, 30)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FusionBrakeG", 0, 0, 0, 0, 30)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FusionBrakeY", 0, 0, 0, 0, 30)
-stop
+goto Done
 }
 }
 

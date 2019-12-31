@@ -269,7 +269,7 @@ States
 {
 Spawn:
 PSTP A 0
-PSTP A 0 ACS_NamedExecuteAlways("CSACS_PistonFistFX",0,CallACS("core_gettarget"),1)
+PSTP A 0 ACS_NamedExecuteAlways("CSACS_PistonFistFX",0,CallACS("core_gettarget"),1,CallACS("CSACS_GetTeamPointer",AAPTR_TARGET))
 PSTP A 0 A_TakeFromTarget("MainFistTimer",999)
 PSTP A 1 A_JumpIf(CallACS("core_targetexists")==0,"TrueDeath")
 goto Spawn+2
@@ -316,7 +316,7 @@ States
 {
 Spawn:
 PSTP A 0
-PSTP A 0 ACS_NamedExecuteAlways("CSACS_PistonFistFX",0,CallACS("core_gettarget"),2)
+PSTP A 0 ACS_NamedExecuteAlways("CSACS_PistonFistFX",0,CallACS("core_gettarget"),2,CallACS("CSACS_GetTeamPointer",AAPTR_TARGET))
 PSTP A 0 A_TakeFromTarget("AltFistTimer",999)
 PSTP A 1 A_JumpIf(CallACS("core_targetexists")==0,"TrueDeath")
 goto Spawn+2
@@ -522,19 +522,19 @@ States
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("PistonFist",0,0,-8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("PistonFistL",0,0,-8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("PistonFistW",0,0,-8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("PistonFistC",0,0,-8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("PistonFistK",0,0,-8,0)
-stop
+goto Done
 }
 }
 
@@ -544,19 +544,19 @@ States
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("PistonFist2",0,0,8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("PistonFist2L",0,0,8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("PistonFist2W",0,0,8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("PistonFist2C",0,0,8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("PistonFist2K",0,0,8,0)
-stop
+goto Done
 }
 }
 
@@ -567,19 +567,19 @@ States
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("PistonPunch",0,0,-8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("PistonPunchL",0,0,-8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("PistonPunchW",0,0,-8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("PistonPunchC",0,0,-8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("PistonPunchK",0,0,-8,0)
-stop
+goto Done
 }
 }
 
@@ -589,19 +589,19 @@ States
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("PistonPunch2",0,0,8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("PistonPunch2L",0,0,8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("PistonPunch2W",0,0,8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("PistonPunch2C",0,0,8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("PistonPunch2K",0,0,8,0)
-stop
+goto Done
 }
 }
 

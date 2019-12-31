@@ -308,19 +308,19 @@ States
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("8BHexenFireStorm",0,0,0,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("8BHexenFireStormB",0,0,0,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("8BHexenFireStormR",0,0,0,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("8BHexenFireStormG",0,0,0,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("8BHexenFireStormY",0,0,0,0)
-stop
+goto Done
 }
 }
 
@@ -330,18 +330,18 @@ States
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("HellfireCutter",0,1,8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("HellfireCutterB",0,1,8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("HellfireCutterR",0,1,8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("HellfireCutterG",0,1,8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("HellfireCutterY",0,1,8,0)
-stop
+goto Done
 }
 }

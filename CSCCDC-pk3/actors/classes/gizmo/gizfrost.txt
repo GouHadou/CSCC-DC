@@ -85,19 +85,19 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FrostCannon",random(-3,9),0,8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("FrostCannon_B",random(-3,9),0,8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FrostCannon_R",random(-3,9),0,8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FrostCannon_G",random(-3,9),0,8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FrostCannon_Y",random(-3,9),0,8,0)
-stop
+goto Done
 }
 }
 
@@ -130,19 +130,19 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2",random(-3,3),0,8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_B",random(-3,3),0,8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_R",random(-3,3),0,8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_G",random(-3,3),0,8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_Y",random(-3,3),0,8,0)
-stop
+goto Done
 }
 }
 
@@ -152,18 +152,18 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2",random(-9,9),0,8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_B",random(-9,9),0,8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_R",random(-9,9),0,8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_G",random(-9,9),0,8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FrostCannon2_Y",random(-9,9),0,8,0)
-stop
+goto Done
 }
 }

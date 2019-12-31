@@ -89,18 +89,18 @@ states
 {
 FireX:
 TNT1 A 0 A_FireCustomMissile("FlameCannonShot",random(-3,3),0,8,0)
-stop
+goto Done
 FireB:
 TNT1 A 0 A_FireCustomMissile("FlameCannonShot_B",random(-3,3),0,8,0)
-stop
+goto Done
 FireR:
 TNT1 A 0 A_FireCustomMissile("FlameCannonShot_R",random(-3,3),0,8,0)
-stop
+goto Done
 FireG:
 TNT1 A 0 A_FireCustomMissile("FlameCannonShot_G",random(-3,3),0,8,0)
-stop
+goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("FlameCannonShot_Y",random(-3,3),0,8,0)
-stop
+goto Done
 }
 }

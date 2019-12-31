@@ -601,19 +601,19 @@ States
 {
 FireX:
 TST1 A 0 A_FireCustomMissile("GeeBurst",0,1,8,0)
-stop
+goto Done
 FireB:
 TST1 A 0 A_FireCustomMissile("GeeBurstB",0,1,8,0)
-stop
+goto Done
 FireR:
 TST1 A 0 A_FireCustomMissile("GeeBurstR",0,1,8,0)
-stop
+goto Done
 FireG:
 TST1 A 0 A_FireCustomMissile("GeeBurstG",0,1,8,0)
-stop
+goto Done
 FireY:
 TST1 A 0 A_FireCustomMissile("GeeBurstY",0,1,8,0)
-stop
+goto Done
 }
 }
 
@@ -623,19 +623,19 @@ States
 {
 FireX:
 TST1 A 0 A_FireCustomMissile("GeeBurstHeal",0,1,8,0)
-stop
+goto Done
 FireB:
 TST1 A 0 A_FireCustomMissile("GeeBurstHealB",0,1,8,0)
-stop
+goto Done
 FireR:
 TST1 A 0 A_FireCustomMissile("GeeBurstHealR",0,1,8,0)
-stop
+goto Done
 FireG:
 TST1 A 0 A_FireCustomMissile("GeeBurstHealG",0,1,8,0)
-stop
+goto Done
 FireY:
 TST1 A 0 A_FireCustomMissile("GeeBurstHealY",0,1,8,0)
-stop
+goto Done
 }
 }
 
@@ -645,19 +645,19 @@ States
 {
 FireX:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamage",0,1,8,0)
-stop
+goto Done
 FireB:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamageB",0,1,8,0)
-stop
+goto Done
 FireR:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamageR",0,1,8,0)
-stop
+goto Done
 FireG:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamageG",0,1,8,0)
-stop
+goto Done
 FireY:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamageY",0,1,8,0)
-stop
+goto Done
 }
 }
 
@@ -667,19 +667,19 @@ States
 {
 FireX:
 TST1 A 0 A_FireCustomMissile("GeeBurstHeal2",0,0,8,0)
-stop
+goto Done
 FireB:
 TST1 A 0 A_FireCustomMissile("GeeBurstHeal2B",0,0,8,0)
-stop
+goto Done
 FireR:
 TST1 A 0 A_FireCustomMissile("GeeBurstHeal2R",0,0,8,0)
-stop
+goto Done
 FireG:
 TST1 A 0 A_FireCustomMissile("GeeBurstHeal2G",0,0,8,0)
-stop
+goto Done
 FireY:
 TST1 A 0 A_FireCustomMissile("GeeBurstHeal2Y",0,0,8,0)
-stop
+goto Done
 }
 }
 
@@ -689,18 +689,18 @@ States
 {
 FireX:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamage2",0,0,8,0)
-stop
+goto Done
 FireB:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamage2B",0,0,8,0)
-stop
+goto Done
 FireR:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamage2R",0,0,8,0)
-stop
+goto Done
 FireG:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamage2G",0,0,8,0)
-stop
+goto Done
 FireY:
 TST1 A 0 A_FireCustomMissile("GeeBurstDamage2Y",0,0,8,0)
-stop
+goto Done
 }
 }
