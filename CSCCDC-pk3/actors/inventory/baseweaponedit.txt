@@ -1,5 +1,16 @@
 actor BaseMM8BDMWep : BaseMM8BDMWep0
 {
-	Inventory.ForbiddenTo "CustomWepMan"
-	+INVENTORY.RESTRICTABSOLUTELY
+Inventory.ForbiddenTo "CustomWepMan"
++INVENTORY.RESTRICTABSOLUTELY
+States
+{
+CSCC_GizmoFlame:
+FLME E 5 A_SetTranslucent(1.0, 0)
+FLME E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_CorpGrandDad:
+COW1 A 5 A_SetTranslucent(1.0, 0)
+COW1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+}
 }

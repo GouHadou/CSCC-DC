@@ -5,11 +5,31 @@
 #DEFINE MAX_FAKEWEPS 1
 
 str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
-//Actor, CorporalDisplay, CorporalWep, CorporalAmmo, GizmoDisplay, GizmoWep, GizmoAmmo
-{"FireStormWepCS", "CorpGrandDad", "CorpGrandDad", "FatBulletAmmo", "GizmoFlame", "FlameCannonWep", "FlameCannonAmmo"},
+//Actor, GizmoDisplay, GizmoWep, GizmoAmmo, CorpDisplay, CorpWep, CorpAmmo
+{"FireStormWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "FlameCannonAmmo", "CSCC_CorpGrandDad", "FlameCannonWep", "FlameCannonAmmo"},
 };
 
-script "CSACS_WeaponDisplay" (int JumpDelay)
+script "CSACS_WeaponDisplay" (void) CLIENTSIDE
 {
-Log(s:GetActorClass(0));
+str CSCCWeaponName = "";
+int StateSet = 0;
+
+if(CheckActorClass(consolePlayerNumber()+1000,"MegamanC")){SetActorState(0,"CSCC_DefaultSpawn"); PrintBold(s:"Megaman"); terminate;}
+if(CheckActorClass(consolePlayerNumber()+1000,"CopyRobot")){SetActorState(0,"CSCC_DefaultSpawn"); PrintBold(s:"Copy Robot"); terminate;} 
+if(CheckActorClass(consolePlayerNumber()+1000,"GizmoClass")){StateSet = 1;} 
+if(CheckActorClass(consolePlayerNumber()+1000,"LaggyBlazkoClass")){StateSet = 4;}
+if(StateSet!=0)
+{
+for(int i = 0; i < MAX_FAKEWEPS; i++) 
+    {
+    if(StrIcmp(FakeWeaponInfo[i][0], GetActorClass(0))==0) 
+        {
+        SetActorState(0,FakeWeaponInfo[i][StateSet]);
+        terminate;
+        }
+    }
+}
+
+SetActorState(0,"CSCC_TranslucentSpawn");
+terminate;
 }
