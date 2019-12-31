@@ -35,7 +35,7 @@ COW1 B 0 A_PlaySoundEx("Corp/GrandFire","Weapon")
 COW1 B 0 A_light2
 COW1 C 0 A_GiveInventory("FakeLongTracerShot_1")
 COW1 C 2 Bright A_GiveInventory("GrandDadPuffShot",1)
-COW1 C 0 ACS_NamedExecuteAlways("CorpRecoil",0, random(-1*grandRecoil,grandRecoil) , random(-1*grandRecoil,grandRecoil) ,3) 
+COW1 C 0 ACS_NamedExecuteAlways("CSACS_CorpRecoil",0, random(-1*grandRecoil,grandRecoil) , random(-1*grandRecoil,grandRecoil) ,3) 
 COW1 B 0 A_JumpIfNoAmmo("NoAmmo")
 COW1 B 0 A_FireCustomMissile("ShelbyvilleCasing",random(-25,-40),0,2,4,0,random(30,60))
 COW1 D 2 A_light0
@@ -78,7 +78,7 @@ TNT1 A 10 A_WeaponReady(WRF_NOPRIMARY)
 TNT1 A 0 A_GiveInventory("ReloadGrand")
 TNT1 A 0 A_TakeInventory("GrandUnloaded")
 SlowReload:
-TNT1 A 0 ACS_NamedExecuteAlways("ReloadWeapon",0,2,1)//Reloads one by one
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_CorpReload",0,2,1)//Reloads one by one
 TNT1 A 0 A_PlaySound("Corp/GrandLoad","Weapon")
 TNT1 A 20 A_WeaponReady
 //Keep until no spare rounds are left
@@ -115,7 +115,7 @@ COW1 D 4 A_WeaponReady(WRF_NOPRIMARY)
 COW1 EF 3 
 TNT1 A 0 A_TakeInventory("GrandUnloaded")
 COW1 G 6 A_PlaySound("Corp/GrandLoad","Weapon")
-COW1 H 6 ACS_NamedExecuteAlways("ReloadWeapon",0,2)
+COW1 H 6 ACS_NamedExecuteAlways("CSACS_CorpReload",0,2)
 COW1 I 3 A_PlaySound("Corp/GrandChamber","Weapon")
 Goto Hold
 NoAmmo:
@@ -199,11 +199,6 @@ COW1 KZKZKZKZ 4
 Stop
 }
 }
-
-actor GrandDadCooldown : Inventory
-{
-}
-
 
 //Copied code from the original fakeBullet
 

@@ -6,7 +6,7 @@ Weapon.SlotNumber 7
 Obituary "%o was hosed down by %k's Hydro Cannon."
 weapon.ammotype "HydroCannonAmmo"
 inventory.icon "HYDROI"
-DropItem "WaterWaveWepCS"
+DropItem "WaterBalloonWepCS"
 States
 {
 Spawn:

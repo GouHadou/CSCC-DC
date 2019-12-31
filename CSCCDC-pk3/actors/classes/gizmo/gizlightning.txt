@@ -6,7 +6,7 @@ Weapon.SlotNumber 4
 Obituary "%o was electrocuted by %k's Lightning Cannon."
 weapon.ammotype "LightningCannonAmmo"
 inventory.icon "LIGHTI"
-DropItem "ThunderBoltWepCS"
+DropItem "ThunderBeamWepCS"
 States
 {
 Spawn:

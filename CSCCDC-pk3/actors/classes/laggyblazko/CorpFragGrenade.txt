@@ -200,11 +200,6 @@ bouncecount 2
 Speed 40
 }
 
-actor FragGrenadeCooldown : Inventory
-{
-}
-
-
 actor FragGrenade_BLUE : FragGrenade {translation "128:128=205:205", "132:132=74:74","192:192=205:205", "198:198=74:74"}
 actor FragGrenade_RED : FragGrenade {translation "128:128=171:171", "132:132=41:41","192:192=171:171", "198:198=41:41"}
 actor FragGrenade_GREEN : FragGrenade {translation "128:128=104:104", "132:132=128:128","192:192=104:104", "198:198=128:128"}

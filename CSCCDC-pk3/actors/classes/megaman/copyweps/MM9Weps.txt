@@ -5,15 +5,16 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-CONC A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 CONC A 5
-loop
+goto Spawn+2
 }
 }
 
@@ -23,15 +24,16 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-TBLO A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 TBLO A 5
-loop
+goto Spawn+2
 }
 }
 
@@ -41,15 +43,16 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-LTRI A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 LTRI A 5
-loop
+goto Spawn+2
 }
 }
 
@@ -59,15 +62,16 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-PBAL A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 PBAL A 5
-loop
+goto Spawn+2
 }
 }
 
@@ -77,15 +81,16 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-HCHS A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 HCHS A 5
-loop
+goto Spawn+2
 }
 }
 
@@ -95,15 +100,16 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-MGM1 A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 MGM1 A 5
-loop
+goto Spawn+2
 }
 }
 
@@ -113,15 +119,16 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-BLKH A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 BLKH A 5
-loop
+goto Spawn+2
 }
 }
 
@@ -131,14 +138,15 @@ States
 {
 CSCC_DefaultSpawn:
 TNT1 A 0 A_SetTranslucent(1.0, 0)
-goto Spawn
+goto Spawn+3
 CSCC_TranslucentSpawn:
 TNT1 A 0 A_SetTranslucent(0.5, 0)
-goto Spawn
+goto Spawn+3
 Spawn:
-JEWE A 5
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 JEWE A 5
-loop
+goto Spawn+2
 }
 }

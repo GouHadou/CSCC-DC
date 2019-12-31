@@ -85,12 +85,12 @@ Cocking:
 TOMY F 4 A_WeaponReady(WRF_NOPRIMARY)
 TOMY H 6 
 TOMY I 3 A_PlaySoundEx("weapon/TommyLoad","Weapon")
-TOMY F 3 ACS_NamedExecuteAlways("ReloadWeapon",0,1)
+TOMY F 3 ACS_NamedExecuteAlways("CSACS_CorpReload",0,1)
 TOMY EK 3
 TOMY H 0 A_TakeInventory("CockTommy")
 Goto Ready2+5
 NoCocking:
-TOMY E 3 ACS_NamedExecuteAlways("ReloadWeapon",0,1)
+TOMY E 3 ACS_NamedExecuteAlways("CSACS_CorpReload",0,1)
 TOMY K 3
 Goto Ready2+5
 NoFire:

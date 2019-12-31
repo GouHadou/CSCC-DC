@@ -6,135 +6,147 @@
 
 str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 //Actor, GizmoDisplay, GizmoWep, GizmoItem, CorpDisplay, CorpWep, CorpItem
-{"SuperArmWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"HyperBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"IceSlasherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"ThunderBeamWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"FireStormWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"RollingCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"TimeSlowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
-{"OilSliderWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
+{"SuperArmWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"HyperBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"IceSlasherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"ThunderBeamWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"FireStormWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"RollingCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"TimeSlowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
+{"OilSliderWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
 
-{"BubbleLeadWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"MetalBladeWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"AtomicFireWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"LeafShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"AirShooterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"QuickBoomerangWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"CrashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"TimeStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL 
+{"BubbleLeadWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"MetalBladeWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"AtomicFireWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"LeafShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"AirShooterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"QuickBoomerangWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"CrashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"TimeStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL 
 
-{"MagnetMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"TopSpinWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"NeedleCannonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"ShadowBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"GeminiLaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"SearchSnakeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"HardKnuckleWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"SparkShockWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
+{"MagnetMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"TopSpinWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"NeedleCannonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"ShadowBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"GeminiLaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"SearchSnakeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"HardKnuckleWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"SparkShockWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
 
-{"DrillBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"RingBoomerangWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"DustCrusherWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"PharaohShotWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"SkullBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"DiveMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"RainFlushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
-{"FlashStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
+{"DrillBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"RingBoomerangWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"DustCrusherWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"PharaohShotWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"SkullBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"DiveMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"RainFlushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
+{"FlashStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
 
-{"NapalmBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"ChargeKickWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"GyroAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED       
-{"PowerStoneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"WaterWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"CrystalEyeWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"StarCrashWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"GravityHoldWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
+{"NapalmBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"ChargeKickWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"GyroAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED       
+{"PowerStoneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"WaterWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"CrystalEyeWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"StarCrashWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"GravityHoldWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
 
-{"BlizzardAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"FlameBlastWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"YamatoSpearWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"PlantBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"SilverTomahawkWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"WindStormWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"KnightCrushWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"CentaurFlashWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
+{"BlizzardAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"FlameBlastWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"YamatoSpearWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"PlantBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"SilverTomahawkWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"WindStormWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"KnightCrushWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"CentaurFlashWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
 
-{"FreezeCrackerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"NoiseCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"WildCoilWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"DangerWrapWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"ScorchWheelWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"JunkShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"SlashClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"ThunderBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
+{"FreezeCrackerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"NoiseCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"WildCoilWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"DangerWrapWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"ScorchWheelWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"JunkShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"SlashClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"ThunderBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
 
-{"AstroCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
-{"FlameSwordWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"ThunderClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"HomingSniperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"WaterBalloonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"MegaBallWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"FlashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"IceWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"TornadoHoldWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
+{"AstroCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
+{"FlameSwordWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"ThunderClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"HomingSniperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"WaterBalloonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"MegaBallWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"FlashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"IceWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"TornadoHoldWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
 
-{"TenguBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"WaveBurnerWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"SpreadDrillWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"MagicCardWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"RemoteMineWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"CopyVisionWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"IceWallWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"LightningBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
+{"TenguBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"WaveBurnerWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"SpreadDrillWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"MagicCardWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"RemoteMineWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"CopyVisionWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"IceWallWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"LightningBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
 
-{"PlugBallWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"LaserTridentWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"BlackHoleBombWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
-{"JewelSatelliteWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"ConcreteShotWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"TornadoBlowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
-{"HornetChaserWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"MagmaBazookaWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
+{"PlugBallWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"LaserTridentWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"BlackHoleBombWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
+{"JewelSatelliteWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"ConcreteShotWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"TornadoBlowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
+{"HornetChaserWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"MagmaBazookaWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
  
-{"SolarBlazeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
+{"SolarBlazeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
 
 /*
-{"WheelCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"ReboundStrikerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"ThunderWoolWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"CommandoBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"ChillSpikeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"WaterShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
-{"TripleBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE",, "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
+{"WheelCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"ReboundStrikerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"ThunderWoolWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"CommandoBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"ChillSpikeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"WaterShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
+{"TripleBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE",, "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
 
-{"GrabBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"BubbleBombWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"PhotonMissileWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"SaltWaterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"ElectricShockWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"BlackHoleWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"DeepDiggerWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"BreakDashWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"SparkChaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
+{"GrabBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"BubbleBombWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"PhotonMissileWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"SaltWaterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"ElectricShockWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"BlackHoleWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"DeepDiggerWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"BreakDashWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"SparkChaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
 */
 
-{"SakugarneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"BalladeCrackerWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"ScrewCrusherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"MirrorBusterWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SHIELD
+{"SakugarneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"BalladeCrackerWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"ScrewCrusherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"MirrorBusterWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SHIELD
 
-{"IceBladeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"LightningWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"GouhadouWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"NadeSpamWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"CometWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"FusionBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
-{"MeteorWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
-{"RailBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
-{"PistonTremorWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
-{"IdolWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-{"SteelPunchWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
+{"IceBladeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"LightningWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"GouhadouWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"NadeSpamWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"CometWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"FusionBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //POWER
+{"MeteorWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "NONE"}, //SPECIAL
+{"RailBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RANGED
+{"PistonTremorWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+{"IdolWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //RAPID
+{"SteelPunchWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "NONE"}, //CLOSE
+};
+
+#DEFINE MAX_FAKEMESSAGES 7
+
+str FakeWeaponMessage[MAX_FAKEMESSAGES][2] = {
+{"FlameCannonWep", "\cgPower Up! Flame Cannon!"},
+{"FrostCannonWep", "\cgPower Up! Frost Cannon!"},
+{"StoneCannonWep", "\cgPower Up! Stone Cannon!"},
+{"LightningCannonWep", "\cgPower Up! Lightning Cannon!"},
+{"HydroCannonWep", "\cgPower Up! Hydro Cannon!"},
+{"CorpFragGrenade", "\cgYou got the Fragmentation Grenade!"},
+{"CorpGrandDad", "\cgYou got the Grand Dad!"},
 };
 
 script "CSACS_WeaponDisplay" (void) CLIENTSIDE
@@ -142,8 +154,7 @@ script "CSACS_WeaponDisplay" (void) CLIENTSIDE
 str CSCCWeaponName = "";
 int StateSet = 0;
 
-if(CheckActorClass(consolePlayerNumber()+1000,"MegamanC")){SetActorState(0,"CSCC_DefaultSpawn"); terminate;}
-if(CheckActorClass(consolePlayerNumber()+1000,"CopyRobot")){SetActorState(0,"CSCC_DefaultSpawn"); terminate;} 
+if(CheckActorClass(consolePlayerNumber()+1000,"MegamanC") || CheckActorClass(consolePlayerNumber()+1000,"CopyRobot")){SetActorState(0,"CSCC_DefaultSpawn"); terminate;}
 if(CheckActorClass(consolePlayerNumber()+1000,"GizmoClass")){StateSet = 1;} 
 if(CheckActorClass(consolePlayerNumber()+1000,"LaggyBlazkoClass")){StateSet = 4;}
 if(StateSet!=0)
@@ -154,7 +165,10 @@ for(int i = 0; i < MAX_FAKEWEPS; i++)
         {
         if(StrIcmp(FakeWeaponInfo[i][StateSet], "")!=0)
             {
-            SetActorState(0,FakeWeaponInfo[i][StateSet]);
+            str WeaponToGivePowerup = StrParam(s:FakeWeaponInfo[i][StateSet+1],s:"DelayPickup");
+            str NopeState = StrParam(s:FakeWeaponInfo[i][StateSet],s:"Translucent");
+            if(CheckActorInventory(consolePlayerNumber()+1000,WeaponToGivePowerup)){SetActorState(0,NopeState);}
+            else{SetActorState(0,FakeWeaponInfo[i][StateSet]);}
             terminate;
             }
         }
@@ -162,4 +176,110 @@ for(int i = 0; i < MAX_FAKEWEPS; i++)
 }
 SetActorState(0,"CSCC_TranslucentSpawn");
 terminate;
+}
+
+script "CSACS_FakeWeaponPickup" (void)
+{
+ServerMAX = GetMaxPlayers();
+int WeaponStatus = 0;
+str WeaponToGive = "";
+while(CheckFlag(0,"SPECIAL"))
+    {
+    for(int p = 0; p < ServerMAX; p++)
+        {
+        if(xyDistance(0, p+1000)<47 && zDistance(0, p+1000)<12)
+            {
+            if(!CheckActorInventory(p+1000,"IsDead") && PlayerInGame(p) && GetActorProperty(p+1000,APROP_Health)>0)
+                {
+                if(ValidForWeapon(p+1000)>0)
+                    {
+                    for(int i = 0; i < MAX_FAKEWEPS; i++) 
+                        {
+                        if(StrIcmp(FakeWeaponInfo[i][0], GetActorClass(0))==0) 
+                            {
+                            WeaponToGive = FakeWeaponInfo[i][ValidForWeapon(p+1000)];
+                            }
+                        }
+                    AttemptToGiveWeapon(p+1000,WeaponToGive);
+                    }
+                }
+            }
+        }
+    Delay(1);
+    }
+}
+
+function int ValidForWeapon (int tid)
+{
+	int r = 0;
+	if(CheckActorClass(tid,"GizmoClass")){r = 2;}
+	if(CheckActorClass(tid,"LaggyBlazkoClass")){r = 5;}
+	return r;
+}
+
+function void AttemptToGiveWeapon (int tid, str WeaponToGive)
+{
+//Gizmo Handler
+if(ValidForWeapon(tid)==2)
+    {
+    if(CheckFlag(0,"DROPPED") || !CheckActorInventory(tid,WeaponToGive))
+        {
+        ACS_NamedExecuteAlways("CSACS_CustomPickupMessage",0,tid,WeaponToGive);
+        ACS_NamedExecuteAlways("CSACS_CustomPickupSound",0,tid);
+        GiveActorInventory(tid,WeaponToGive,1); 
+        ToStayOrNotToStay();
+        }
+    }
+
+//Gizmo Handler
+if(ValidForWeapon(tid)==5)
+    {
+    str WeaponToGivePowerup = StrParam(s:WeaponToGive,s:"DelayPickup");
+    if(CheckFlag(0,"DROPPED"))
+        {
+        ACS_NamedExecuteAlways("CSACS_CustomPickupMessage",0,tid,WeaponToGive);
+        ACS_NamedExecuteAlways("CSACS_CustomPickupSound",0,tid,1);
+        GiveActorInventory(tid,WeaponToGivePowerup,1); 
+        GiveActorInventory(tid,WeaponToGive,1); 
+        ToStayOrNotToStay();
+        }
+    else if(!CheckActorInventory(tid,WeaponToGivePowerup) && !CheckActorInventory(tid,WeaponToGive))
+        {
+        ACS_NamedExecuteAlways("CSACS_CustomPickupMessage",0,tid,WeaponToGive);
+        ACS_NamedExecuteAlways("CSACS_CustomPickupSound",0,tid,1);
+        GiveActorInventory(tid,WeaponToGivePowerup,1); 
+        GiveActorInventory(tid,WeaponToGive,1); 
+        ToStayOrNotToStay();
+        }
+    }
+}
+
+function void ToStayOrNotToStay (void)
+{
+if(CheckFlag(0,"DROPPED")||!GetCvar("SV_WeaponStay")){GiveInventory("CSCC_CustomPickupFunc",1);}
+}
+
+Script "CSACS_CustomPickupSound" (int pickupTID, int Type)
+{
+SetActivator(pickupTID);
+if(Type==0){LocalAmbientSound("weapon/weaponup",127);}
+if(Type==1){SetMugshotState("Grin"); LocalAmbientSound("weapon/tommyload",127);}
+}
+
+Script "CSACS_CustomPickupMessage" (int pickupTID, int pickupType) CLIENTSIDE
+{
+str PickupString;
+for(int i = 0; i < MAX_FAKEMESSAGES; i++) 
+    {
+    if(StrIcmp(FakeWeaponMessage[i][0], pickupType)==0) 
+        {
+        PickupString = FakeWeaponMessage[i][1];
+        }
+    }
+if(pickupTID==CheckPlayerCamera(ConsolePlayerNumber()))Log(s:PickupString);
+}
+
+Script "CSACS_CustomPickupChange" (void)
+{
+SetActorState(0,"CSCC_CustomPickup");
 }

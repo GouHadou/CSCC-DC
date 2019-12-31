@@ -4,6 +4,9 @@ Inventory.ForbiddenTo "CustomWepMan"
 +INVENTORY.RESTRICTABSOLUTELY
 States
 {
+CSCC_CustomPickup:
+TNT1 A 0
+goto HideDoomish
 CSCC_GizmoFlame:
 FLME E 5 A_SetTranslucent(1.0, 0)
 FLME E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
@@ -17,20 +20,55 @@ LGHT E 5 A_SetTranslucent(1.0, 0)
 LGHT E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 wait
 CSCC_GizmoStone:
-WEA2 J 5 A_SetTranslucent(1.0, 0)
+WEA2 J 0 A_SetTranslucent(1.0, 0)
+WEA2 J 5 
 WEA2 J 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 wait
 CSCC_GizmoFrost:
 FRST E 5 A_SetTranslucent(1.0, 0)
 FRST E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 wait
+CSCC_CorpGrandDadTranslucent:
+COW1 A 5 A_SetTranslucent(0.5, 0)
+COW1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
 CSCC_CorpGrandDad:
 COW1 A 5 A_SetTranslucent(1.0, 0)
 COW1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_CorpFragGrenadeTranslucent:
+COG1 A 5 A_SetTranslucent(0.5, 0)
+COG1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 wait
 CSCC_CorpFragGrenade:
 COG1 A 5 A_SetTranslucent(1.0, 0)
 COG1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 wait
 }
+}
+
+Actor CSCC_CustomPickupFunc : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_CheckFlag("DROPPED","Pickup2")
+TNT1 A 0 A_ChangeFlag("SPECIAL",0)
+TNT1 A 0 A_ChangeFlag("INVISIBLE",1)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_CustomPickupChange",0)
+stop
+Pickup2:
+TNT1 A 0 Thing_Remove(0)
+stop
+}
+}
+
+actor CorpGrandDadDelayPickup : Powerup
+{
+Powerup.Duration -60
+}
+
+actor CorpFragGrenadeDelayPickup : Powerup
+{
+Powerup.Duration -60
 }

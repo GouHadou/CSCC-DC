@@ -6,7 +6,6 @@ Weapon.SlotNumber 2
 Obituary "%o was scratched up by %k"
 Inventory.Pickupmessage "Power Up! Slash Claw!"
 weapon.ammotype "ClawGlovesAmmo"
-DropItem "SlashClawWepCS"
 States
 {
 Spawn:

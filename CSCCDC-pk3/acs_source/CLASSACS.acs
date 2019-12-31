@@ -245,7 +245,7 @@ SetActorAngle(0, PlayerAngle);
 //End Ukiyama
 
 ////////////////////////////////////LaggyCorperal stuff
-script "ReloadWeapon" (int ammoTypes, int maxAmmo)  //Reload script.
+script "CSACS_CorpReload" (int ammoTypes, int maxAmmo)  //Reload script.
 {
 	
 	//Ammo types inside and outside the weapon.
@@ -297,112 +297,8 @@ script "ReloadWeapon" (int ammoTypes, int maxAmmo)  //Reload script.
 	
 }
 
-Script "CorpWeaponPickup" (int wep, int dropped)
-{
-//print(d:wep, s: " ", d: dropped); 
-
-
-str giveWep; //Weapon's name
-int coolDown;//Time before picking a weapon from map pickups again.
-int coolDownActor; //Time before picking a weapon from map pickups again.
-str wepTag; //Weapon's tag
-str pickupMessage; //Something iunno
-bool isGrenade; //Whenever it uses the grenade slot or the secondary weapon slot.
-
-switch (wep)
-{
-	case 1:
-		giveWep = "CorpFragGrenade";
-		coolDown = 60;
-		coolDownActor = "FragGrenadeCooldown";
-		wepTag = "Fragmentation Grenade";
-		pickupMessage = "You got the Fragmentation Grenade!\nNow with more fragmentation.\nDon't blow it up in front of your own face.";
-		isGrenade = false;
-		break;
-	case 2:
-		giveWep = "CorpGrandDad";
-		coolDown = 60;
-		coolDownActor = "GrandDadCooldown";
-		wepTag = "Grand Dad";
-		pickupMessage = "You got the Grand Dad semiautomatic rifle!\nReloading before firing all rounds is not recommended.";
-		isGrenade = true;
-		break;
-	default:
-		print(s:"no");
-		break;
-}
-
-
-
-
-//if (!dropped) //cooldown check (temorarily removed)
-//{
-	if (CheckInventory(cooldownActor))
-	{
-		SetHudSize(256,224,0);
-		setFont("SMALLFONT");
-		HudMessage(s:wepTag, s:" cooldown: ",d:CheckInventory(cooldownActor);
-		HUDMSG_FADEOUT, 1, CR_DARKGREEN, 128.0, 32.0, 1.0, 0.5);
-		terminate;
-	}
-	else
-	{
-		giveInventory(cooldownActor, coolDown);
-	}
-//}
-
-//Take any other weapon in the same slot.
-//Not the same weapon because the player might be using it
-//and that would deselect it?
-if (isGrenade)
-{
-	takeUnlessItsThis("CorpFragGrenade",giveWep);
-}
-else
-{
-	takeUnlessItsThis("GrandDad",giveWep);
-}
-
-
-//Finally gibe weapon
-GiveInventory(giveWep, 1);
-Print(s:pickupMessage);
-SetMugshotState("Grin");
-localAmbientSound("Weapon/TommyLoad",127);//Might have different sounds for each weapon, eventually.
-}
-
-//This function takes items unless it's the right one.
-function void takeUnlessItsThis (str takeThis, str unless)
-{
-	if (takeThis != unless)
-	{
-		takeInventory("takeThis",1);
-	}
-}
-
-Script "CorpWeaponCooldown" ENTER
-{
-If (!CheckInventory("CorpArsenal"))
-{
-	//print(s:"ur not corperel");
-	terminate;
-}
-While (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
-{
-	//print(s:"tictoc");
-	TakeInventory("FragGrenadeCooldown",1);
-	TakeInventory("GrandDadCooldown",1);
-	delay(35);
-}
-}
-
-Script "CorpWeaponCooldownRespawn" RESPAWN
-{
-ACS_NamedExecuteAlways("CorpWeaponCooldown",0);
-}
-
 //View recoil script
-Script "CorpRecoil" (int horiz, int vert, int duration) CLIENTSIDE
+Script "CSACS_CorpRecoil" (int horiz, int vert, int duration) CLIENTSIDE
 {
 int i, theHecc, oldMove, moveGen, moveAngle, movePitch; 
 moveGen = 0;
