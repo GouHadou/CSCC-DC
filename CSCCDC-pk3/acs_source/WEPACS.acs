@@ -152,8 +152,9 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"FusionBombWepCS", "FusionBombAmmo", "Fusion Bomb", 1.0, "YES", "YES", "SLOT_POWER"},
 {"MeteorWepCS", "MeteorAmmo", "Meteor", 1.0, "YES", "YES", "SLOT_NONE"},
 {"RailBusterWepCS", "RailBusterAmmo", "Rail Buster", 1.0, "YES", "YES", "SLOT_RANGED"},
-{"PistonTremorWepCS", "PistonTremorCopyAmmo", "Pistol Tremor", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"PistonTremorWepCS", "PistonTremorCopyAmmo", "Piston Tremor", 1.0, "YES", "YES", "SLOT_CLOSE"},
 {"IdolWaveWepCS", "IdolWaveAmmo", "Idol Wave", 1.0, "YES", "YES", "SLOT_RAPID"},
+{"SteelPunchWepCS", "SteelPunchAmmo", "Steel Punch", 1.0, "YES", "YES", "SLOT_CLOSE"},
 
 {"UnixKnife", "UnixCloakAmmo", "", 0.5, "NO", "NO", "SLOT_NONE"},
 {"UnixBlade", "UnixCloakAmmo", "", 0.5, "NO", "NO", "SLOT_NONE"},

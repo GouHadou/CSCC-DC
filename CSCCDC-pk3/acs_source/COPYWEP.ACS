@@ -134,8 +134,7 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"RailBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
 {"PistonTremorWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
 {"IdolWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
-
-
+{"SteelPunchWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
 };
 
 script "CSACS_WeaponDisplay" (void) CLIENTSIDE
