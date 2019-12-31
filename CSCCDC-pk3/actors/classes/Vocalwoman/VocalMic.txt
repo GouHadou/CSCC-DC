@@ -18,7 +18,7 @@ inventory.icon "VOCAL1"
 States
 {
 Ready:
-VOST B 0 ACS_ExecuteAlways(998,0,DYE_VOCALWOMAN)
+VOST B 1 ACS_ExecuteAlways(998,0,DYE_VOCALWOMAN)
 "####" B 0 A_GunFlash
 goto Ready2
 Ready2:
@@ -96,7 +96,7 @@ inventory.icon "VOCAL2"
 States
 {
 Ready:
-WOST B 0 ACS_ExecuteAlways(998,0,DYE_VOCALWOMAN)
+WOST B 1 ACS_ExecuteAlways(998,0,DYE_VOCALWOMAN)
 "####" B 0 A_GunFlash
 goto Ready2
 

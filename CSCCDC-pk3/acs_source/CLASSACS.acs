@@ -121,11 +121,11 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 		If(!PlayerInGame(p)){continue;}
 		if(p+1000 == ActivatorTID()){continue;}
 		If(PlayersTeam != GetPlayerInfo(p, PLAYERINFO_TEAM)){continue;}
-	
 		Target_TID = p+1000;
 		If((xyzDistance(0,Target_TID) < 900) && Checksight(0,Target_TID,0))
 			{
-			SpawnForced(StrParam(s:TinyBarHealth(Target_TID),s:TeamTag),GetActorX(Target_TID),GetActorY(Target_TID),GetActorZ(Target_TID) + (65 << 16));
+			if(CheckActorInventory(Target_TID,"CannotUseHealing")){SpawnForced(StrParam(s:TinyBarHealth(Target_TID),s:TeamTag,s:"_NoHeal"),GetActorX(Target_TID),GetActorY(Target_TID),GetActorZ(Target_TID) + (65 << 16));}
+			else{SpawnForced(StrParam(s:TinyBarHealth(Target_TID),s:TeamTag),GetActorX(Target_TID),GetActorY(Target_TID),GetActorZ(Target_TID) + (65 << 16));}
 			}
 		}
 	}

@@ -119,6 +119,7 @@ Spawn:
 TNT1 A 0
 TNT1 A 0 A_TakeFromTarget("BullAmmoFlag",99)
 TNT1 A 1 A_GiveToTarget("AmmoManagementWatcherFlag")
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
 TNT1 A 0 A_JumpIfInTargetInventory("BullRifleAmmo1",1,"DontGive")
 goto GiveAmmo
 DontGive:
@@ -129,7 +130,7 @@ GiveAmmo:
 TNT1 A 1 A_GiveToTarget("BullAmmoFlag",1)
 TNT1 A 0 A_GiveToTarget("BullRifleAmmo1",1)
 TNT1 A 0 A_GiveToTarget("BullRifleAmmo2",1)
-TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"Death")
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
 TNT1 A 0 A_JumpIfInTargetInventory("BullRifleAmmo1",0,"Spawn")
 loop
 Death:

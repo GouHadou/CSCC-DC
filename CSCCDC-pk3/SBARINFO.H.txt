@@ -46,7 +46,10 @@ InInventory HealthNumberFlag, 1
 }
 }
 
+InInventory not AbnormalItemPosition, 1 
+{
 DrawSelectedInventory INDEXFONT ,122, 184, 120, 185, white;
+}
 DrawImage weaponicon, 50, 184;
 
 }
@@ -172,7 +175,7 @@ IsSelected MessatsuWep
 	{
 	DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 130, 184;
 	}
-	InInventory NOT MessParry, 1 {DrawImage "MESPARY", 150, 183, center;}
+	InInventory NOT MessParry, 1 {DrawImage "MESPARY", 130, 176;}
 	InInventory MessatsuAmmo, 56 {DrawImage "RDEMON", 116, 196, center;}
 	InInventory MessatsuAmmo, 36 {DrawImage "MISOGI", 98, 196, center;}
 	InInventory MessatsuAmmo, 18 {DrawImage "TEMAGOU", 80, 196, center;}

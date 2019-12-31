@@ -449,3 +449,95 @@ actor TinyBar3_King : TinyBar3{translation "198:198=232:232", "192:192=229:229" 
 actor TinyBar2_King : TinyBar2{translation "198:198=232:232", "192:192=229:229" visibletoteam 3}
 actor TinyBar1_King : TinyBar1{translation "198:198=232:232", "192:192=229:229" visibletoteam 3}
 actor TinyBar0_King : TinyBar0{translation "198:198=232:232", "192:192=229:229" visibletoteam 3}
+
+actor TinyBar20_Light_NoHeal : TinyBar20{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar19_Light_NoHeal : TinyBar19{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar18_Light_NoHeal : TinyBar18{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar17_Light_NoHeal : TinyBar17{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar16_Light_NoHeal : TinyBar16{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar15_Light_NoHeal : TinyBar15{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar14_Light_NoHeal : TinyBar14{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar13_Light_NoHeal : TinyBar13{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar12_Light_NoHeal : TinyBar12{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar11_Light_NoHeal : TinyBar11{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+
+actor TinyBar10_Light_NoHeal : TinyBar10{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar9_Light_NoHeal : TinyBar9{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar8_Light_NoHeal : TinyBar8{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar7_Light_NoHeal : TinyBar7{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar6_Light_NoHeal : TinyBar6{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar5_Light_NoHeal : TinyBar5{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar4_Light_NoHeal : TinyBar4{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar3_Light_NoHeal : TinyBar3{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar2_Light_NoHeal : TinyBar2{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar1_Light_NoHeal : TinyBar1{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+actor TinyBar0_Light_NoHeal : TinyBar0{translation "192:192=88:88", "198:198=95:95" visibletoteam 0}
+
+actor TinyBar20_Wily_NoHeal : TinyBar20{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar19_Wily_NoHeal : TinyBar19{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar18_Wily_NoHeal : TinyBar18{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar17_Wily_NoHeal : TinyBar17{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar16_Wily_NoHeal : TinyBar16{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar15_Wily_NoHeal : TinyBar15{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar14_Wily_NoHeal : TinyBar14{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar13_Wily_NoHeal : TinyBar13{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar12_Wily_NoHeal : TinyBar12{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar11_Wily_NoHeal : TinyBar11{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+
+actor TinyBar10_Wily_NoHeal : TinyBar10{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar9_Wily_NoHeal : TinyBar9{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar8_Wily_NoHeal : TinyBar8{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar7_Wily_NoHeal : TinyBar7{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar6_Wily_NoHeal : TinyBar6{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar5_Wily_NoHeal : TinyBar5{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar4_Wily_NoHeal : TinyBar4{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar3_Wily_NoHeal : TinyBar3{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar2_Wily_NoHeal : TinyBar2{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar1_Wily_NoHeal : TinyBar1{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+actor TinyBar0_Wily_NoHeal : TinyBar0{translation "192:192=88:88", "198:198=95:95" visibletoteam 1}
+
+actor TinyBar20_Cossack_NoHeal : TinyBar20{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar19_Cossack_NoHeal : TinyBar19{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar18_Cossack_NoHeal : TinyBar18{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar17_Cossack_NoHeal : TinyBar17{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar16_Cossack_NoHeal : TinyBar16{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar15_Cossack_NoHeal : TinyBar15{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar14_Cossack_NoHeal : TinyBar14{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar13_Cossack_NoHeal : TinyBar13{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar12_Cossack_NoHeal : TinyBar12{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar11_Cossack_NoHeal : TinyBar11{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+
+actor TinyBar10_Cossack_NoHeal : TinyBar10{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar9_Cossack_NoHeal : TinyBar9{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar8_Cossack_NoHeal : TinyBar8{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar7_Cossack_NoHeal : TinyBar7{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar6_Cossack_NoHeal : TinyBar6{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar5_Cossack_NoHeal : TinyBar5{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar4_Cossack_NoHeal : TinyBar4{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar3_Cossack_NoHeal : TinyBar3{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar2_Cossack_NoHeal : TinyBar2{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar1_Cossack_NoHeal : TinyBar1{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+actor TinyBar0_Cossack_NoHeal : TinyBar0{translation "192:192=88:88", "198:198=95:95" visibletoteam 2}
+
+actor TinyBar20_King_NoHeal : TinyBar20{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar19_King_NoHeal : TinyBar19{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar18_King_NoHeal : TinyBar18{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar17_King_NoHeal : TinyBar17{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar16_King_NoHeal : TinyBar16{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar15_King_NoHeal : TinyBar15{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar14_King_NoHeal : TinyBar14{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar13_King_NoHeal : TinyBar13{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar12_King_NoHeal : TinyBar12{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar11_King_NoHeal : TinyBar11{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+
+actor TinyBar10_King_NoHeal : TinyBar10{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar9_King_NoHeal : TinyBar9{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar8_King_NoHeal : TinyBar8{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar7_King_NoHeal : TinyBar7{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar6_King_NoHeal : TinyBar6{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar5_King_NoHeal : TinyBar5{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar4_King_NoHeal : TinyBar4{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar3_King_NoHeal : TinyBar3{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar2_King_NoHeal : TinyBar2{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar1_King_NoHeal : TinyBar1{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}
+actor TinyBar0_King_NoHeal : TinyBar0{translation "192:192=88:88", "198:198=95:95" visibletoteam 3}

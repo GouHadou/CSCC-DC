@@ -16,8 +16,12 @@ loop
 Ready:
 MSPN A 1 ACS_ExecuteAlways(998,0,DYE_LORDDAMAGERCOL)
 MSPN A 0 A_GunFlash
-Ready2:
+goto Ready2
+ReadyWait:
 MSPN A 1 A_WeaponReady
+goto Ready2
+Ready2:
+MSPN A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 MSPN A 0 A_JumpIfInventory("LDRamming",1,"PreRamming")
 MSPN A 0 A_jumpifinventory("MissilePunchAmmo",1,"Ready2")
 Goto Reload
@@ -52,22 +56,23 @@ MSPN BCCCCCBAAAAA 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
 Goto Ready2
 
 Reload:
-"####" B 1 Offset(0,32)
-"####" B 1 Offset(0,46)
-"####" B 1 Offset(0,58)
-"####" B 1 Offset(0,70)
-"####" B 1 Offset(0,82)
-"####" A 0 A_PlaySoundEx("weapon/rminestick","Weapon")
-"####" B 45 A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
-"####" B 0 A_Giveinventory("MissilePunchAmmo",5)
-"####" B 0 A_PlaySoundEx("weapon/Crashland","Weapon")
-"####" B 1 Offset(0,82)
-"####" B 1 Offset(0,70)
-"####" B 1 Offset(0,58)
-"####" B 1 Offset(0,46)
-"####" B 1 Offset(0,32)
-"####" B 0 A_TakeInventory("LDRamming",99)
-"####" B 1 A_Refire("Fire")
+MSPN B 0 A_JumpIfInventory("MissilePunchAmmo",0,"ReadyWait")
+MSPN B 1 Offset(0,32)
+MSPN B 1 Offset(0,46)
+MSPN B 1 Offset(0,58)
+MSPN B 1 Offset(0,70)
+MSPN B 1 Offset(0,82)
+MSPN A 0 A_PlaySoundEx("weapon/rminestick","Weapon")
+MSPN B 45 A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+MSPN B 0 A_Giveinventory("MissilePunchAmmo",5)
+MSPN B 0 A_PlaySoundEx("weapon/Crashland","Weapon")
+MSPN B 1 Offset(0,82)
+MSPN B 1 Offset(0,70)
+MSPN B 1 Offset(0,58)
+MSPN B 1 Offset(0,46)
+MSPN B 1 Offset(0,32)
+MSPN B 0 A_TakeInventory("LDRamming",99)
+MSPN B 1 A_Refire("Fire")
 Goto Ready2
 
 PreRamming:
