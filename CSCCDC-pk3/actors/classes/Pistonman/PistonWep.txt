@@ -3,7 +3,7 @@ actor PistonTremorBoss : CSCCWepBase
 weapon.ammotype "PistonTremorAmmo"
 Inventory.Pickupmessage "Power up! Car Engine-wait."
 tag "Piston Tremor"
-//dropitem "PistonTremorWepCS"
+dropitem "PistonTremorWepCS"
 Obituary "%o couldn't comprehend why exactly he got killed by running straight into %k's fist."
 States
 {

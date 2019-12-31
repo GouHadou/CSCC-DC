@@ -1,26 +1,14 @@
-actor BullGatorSleepPierce : Weapon //Waiting for a weapon base
+actor BullGatorSleepPierce : CSCCWepBase
 {
-
-//====================
-dropitem "RailBusterUpgradeCDropped"
+dropitem "RailBusterWepCS"
 Inventory.Pickupmessage "Wait, how did you get this????"
-inventory.pickupsound ""
-Scale 2.0
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.DONTBOB
-+WEAPON.ALLOW_WITH_RESPAWN_INVUL
 Weapon.SlotNumber 1
-//====================
-
 Weapon.AmmoType "BullRifleAmmo1"
 Weapon.AmmoType2 "BullRifleAmmo2"
 Inventory.Icon "BullMn1"
 Obituary "%o was pierced by %k's \ccpiercing bullet\c-."
 Weapon.AmmoUse 1
-+WEAPON.NOAUTOAIM
-
 Tag "Piercing / Sleeping dart"
-
 States
 {
 Spawn:
@@ -432,7 +420,6 @@ Weapon.SlotNumber 2
 Inventory.Icon "BullMn2"
 Obituary "%o's life was drained completely by %k's \cgSiphon bolt\c-."
 Tag "Splitter / Siphon (Drain)"
-
 States
 {
 Ready:

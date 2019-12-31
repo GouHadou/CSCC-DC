@@ -2,7 +2,7 @@
 //#include "zcommon.acs"
 //#include "CSCCLIB.acs"
 
-#DEFINE MAX_FAKEWEPS 94
+#DEFINE MAX_FAKEWEPS 97
 
 str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 //Actor, GizmoDisplay, GizmoWep, GizmoItem, CorpDisplay, CorpWep, CorpItem
@@ -131,6 +131,11 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"CometWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
 {"FusionBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //POWER
 {"MeteorWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpFragGrenade", "CorpFragGrenade", "CorpFragGrenadePickup"}, //SPECIAL
+{"RailBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RANGED
+{"PistonTremorWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //CLOSE
+{"IdolWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "NONE", "CSCC_CorpGrandDad", "CorpGrandDad", "CorpGrandDadPickup"}, //RAPID
+
+
 };
 
 script "CSACS_WeaponDisplay" (void) CLIENTSIDE

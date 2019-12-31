@@ -216,3 +216,17 @@ Sprite PST5E0, 132, 112 {Offset 6, -98  Patch PSTNE0, 0, 0 {Translation "192:192
 Sprite PST5F0, 132, 112 {Offset -5, -89  Patch PSTNF0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 Sprite PST5G0, 132, 112 {Offset -14, -80  Patch PSTNG0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 Sprite PST5H0, 132, 112 {Offset -14, -80  Patch PSTNH0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
+
+//Megaman Copywep Huds
+
+//RailBuster
+sprite BWEPB0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=109:109", "198:198=110:110"}}
+sprite BWEPC0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=109:109", "198:198=110:110"}}
+sprite BWEPD0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=109:109", "198:198=110:110"}}
+
+//Idol Wave
+sprite IDWAH0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=239:239", "198:198=44:44"}}
+sprite IDWAI0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=239:239", "198:198=44:44"}}
+sprite IDWAJ0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=239:239", "198:198=44:44"}}
+
+
