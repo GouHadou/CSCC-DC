@@ -297,14 +297,6 @@ script "ReloadWeapon" (int ammoTypes, int maxAmmo)  //Reload script.
 	
 }
 
-
-Script "ForceReload"(void) NET //Reload using an item instead of +RELOAD
-{
-GiveInventory("ForceReload",1);
-delay(1);
-TakeInventory("ForceReload",1);
-}
-
 Script "CorpWeaponPickup" (int wep, int dropped)
 {
 //print(d:wep, s: " ", d: dropped); 

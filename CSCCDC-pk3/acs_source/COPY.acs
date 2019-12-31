@@ -20,12 +20,12 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},//13
 {"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},//14
 {"MessatsuWep", "Messatsu", "MessatsuClassItems"},//15
-{"LaserCannonWep", "Lord Damager (Laser)", "LordDamagerClassItems"},//16
-{"MissilePunchWep", "Lord Damager (Missile)", "LordDamagerClassItems"},//17
+{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//16
+{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//17
 {"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//18
 
-{"VocalMicBoss1", "Vocal Woman (Offense)", "VocalWomanClassItems"},//19
-{"VocalMicBoss2", "Vocal Woman (Support)", "VocalWomanClassItems"},//20
+{"VocalMicBoss1", "Vocal Woman (Offense Mic)", "VocalWomanClassItems"},//19
+{"VocalMicBoss2", "Vocal Woman (Support Mic)", "VocalWomanClassItems"},//20
 
 {"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//21
 

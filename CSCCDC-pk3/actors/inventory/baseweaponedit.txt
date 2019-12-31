@@ -28,5 +28,9 @@ CSCC_CorpGrandDad:
 COW1 A 5 A_SetTranslucent(1.0, 0)
 COW1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 wait
+CSCC_CorpFragGrenade:
+COG1 A 5 A_SetTranslucent(1.0, 0)
+COG1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
 }
 }

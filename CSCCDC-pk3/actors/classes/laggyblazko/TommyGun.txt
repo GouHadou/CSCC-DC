@@ -31,7 +31,6 @@ TOMY B 3 A_WeaponReady(WRF_NOPRIMARY)
 TNT1 A 0 A_JumpIfInventory("CockTommy",1,"Cocking")
 TOMY K 2 A_WeaponReady(WRF_NOPRIMARY)
 TOMY C 1 A_WeaponReady(WRF_ALLOWRELOAD)
-TOMY C 0 A_JumpIfInventory ("ForceReload",1,"Reload")
 Goto Ready2+5
 Fire: 
 TOMY C 0 A_JumpIfNoAmmo("YesReload")
@@ -182,28 +181,6 @@ actor CorpHUD : Inventory
 	inventory.amount 1
 	inventory.maxamount 1
 }
-
-actor CorpReload : CustomInventory
-{
-+INVBAR
-inventory.amount 1
-inventory.maxamount 1
-inventory.pickupmessage "Cover me, I'm reloading."
-inventory.icon "MAGAICON"
-Inventory.PickupSound "item/1up"
-states{
-Use:
-TNT1 A 0
-TNT1 A 0 ACS_NamedExecuteAlways("ForceReload")
-fail
-}
-}
-
-actor ForceReload : Once
-{
-}
-
-
 
 actor NoMagTommy : Inventory
 {
