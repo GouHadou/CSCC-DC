@@ -12,8 +12,8 @@ weapon.ammotype2 "VocalAmmo2"
 Weapon.AmmoGive2 100
 
 Weapon.SlotNumber 1
-Obituary "%o was struck by %k's powerful voice."
-Tag "Offense Microphone"
+Obituary "$OB_VocalMicBoss"
+Tag "$TAG_VocalMicBoss1"
 inventory.icon "VOCAL1"
 
 dropitem "IdolWaveWepCS"
@@ -186,7 +186,7 @@ actor VocalNote
 PROJECTILE
 translation "192:192=42:42", "198:198=46:46"
 damagetype "Music"
-Obituary "%o was struck by %k's powerful voice."
+Obituary "$OB_VocalMicBoss"
 Speed 20
 Damage (10)
 radius 8
@@ -255,7 +255,7 @@ PROJECTILE
 -SKYEXPLODE
 translation "192:198=35:35", "0:3=39:39", "4:4=35:35", "209:215=39:39"
 damagetype "Music"
-Obituary "%o had their ears blown out by %k's \caNote Bomb\c-."
+Obituary "$OB_VocalMicBoss1"
 Speed 50
 Damage (0)
 radius 14
@@ -571,7 +571,6 @@ Actor VocalHealWatcher
 +NOGRAVITY
 +NOINTERACTION
 Reactiontime 5
-Obituary "%0 succumed to poison"
 States
 {
 Spawn:
@@ -728,7 +727,6 @@ Actor HealEffectWatcher
 +NOGRAVITY
 +NOINTERACTION
 Reactiontime 7
-Obituary "%0 succumed to poison"
 States
 {
 Spawn:

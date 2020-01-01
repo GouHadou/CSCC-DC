@@ -1,11 +1,18 @@
 [enu default]
 
+//===|CopyRobot
 OB_COPYCLOSE = "%k won by defeating %o!";
 OB_COPYSHOT = "%o\c- was killed by %k's\c- Copy Bullet. Seriously? What's wrong with you %o\c-?";
 
 TAG_COPYBUSTER = "Copy Buster";
 TAG_COPYITEM = "Copy Banish";
 
+OB_COPYCLOSE = "%k won by defeating %o!";
+OB_COPYSHOT = "%o\c- was killed by %k's\c- Copy Bullet. Seriously? What's wrong with you %o\c-?";
+
+TAG_COPYBUSTER = "Copy Buster";
+
+//===|Unix
 OB_UNIXFACESTAB = "%o was facestabbed by %k's Eternal Torment.";
 OB_UNIXBACKSTAB = "%o died.";
 OB_UNIXBLADE = "%o was cut up by %k's Revolver Blade.";
@@ -15,17 +22,200 @@ TAG_UNIXBLADE = "Revolver Blade";
 TAG_UNIXKNIFE = "Eternal Torment";
 TAG_UNIXSAPPER = "Sapper";
 
-OB_COPYCLOSE = "%k won by defeating %o!";
-OB_COPYSHOT = "%o\c- was killed by %k's\c- Copy Bullet. Seriously? What's wrong with you %o\c-?";
-
-TAG_COPYBUSTER = "Copy Buster";
-
+//===|CutmanMike
 OB_MIKECUTTER = "%o had %p soul sliced by %k's Hellfire Cutter.";
 OB_MIKEFLAME = "%o was brutally roasted by %k's Firestorm.";
 
 TAG_MIKECUTTER = "Hellfire Cutter";
 
+//===|Ukiyama
 OB_UKIMODIFY = "%o got modified by %k's *insert name here*.";
 
 TAG_UKIWEP = "*Insert Name Here*";
 TAG_UKIWEP = "*Insert Name Here*";
+
+//===|Corporal
+OB_TOMMYGUN = "%o was put to sleep with the fishes by %k's Tommy Gun.";
+OB_CORPKNIFE = "%o was shut up by %k.";
+OB_NADESPAM = "%o was blasted by %k's Nadespam.";
+OB_FRAGGRENADE = "%o was fragmented by %k's fragmentation grenade.";
+OB_GRANDDAD = "%o met %k's Grand Dad.";
+
+TAG_NADESPAM = "Nade Spam";
+TAG_TOMMYGUN = "TommyGun";
+TAG_FRAGGRENADE = "Fragmentation Grenade";
+TAG_GRANDDAD = "Grand Dad";
+
+PU_NADESPAM = "Power up! Nade Spam!";
+
+//===|Badz
+OB_BADZBUSTER = "%o was worsened by %k's Badz Buster.";
+OB_ORBITALMISSILE = "%o collided with %k's Orbital Missile.";
+PU_ORBITALMISSILE = "Power up! Orbital Missile!";
+TAG_ORBITALMISSILE = "Orbital Missile";
+
+//===|ZenTrainer
+
+OB_ZENPSYCHICBALL = "%o couldn't get %k off %p mind.";
+OB_ZENTRAINERWEP = "%o's mind was freed from %k's control, but died afterwards.";
+
+PU_ZENTRAINERWEP = "Oh noes";
+
+//===|VocalWoman
+
+OB_VocalMicBoss = "%o was struck by %k's powerful voice.";
+OB_VocalMicBoss1 = "%o had their ears blown out by %k's \caNote Bomb\c-.";
+
+TAG_VocalMicBoss1 = "Offense Microphone";
+
+
+//===|TankOperator
+
+OB_CLASSICTANK = "%o < [ Cannon shot ] < %k";
+PU_CLASSICTANK = "Pootis";
+
+OB_CLASSICTANKCANNON = "%o was blown up by %k's cannon shot.";
+OB_CLASSICTANKMACHINEGUN = "%o was pelted down by %k's tank machinegun.";
+
+OB_TANKOPPMACHINEGUN = "%o tried to stand against %k's machinegun but failed.";
+OB_TANKOPPSHOTGUN = "%o tried to stand against %k's shotgun but failed.";
+
+//===|PistonMan
+
+PU_PISTONTREMORBOSS = "Power up! Car Engine-wait.";
+TAG_PISTONTREMORBOSS = "Piston Tremor";
+OB_PISTONTREMORBOSS = "%o couldn't comprehend why exactly he got killed by running straight into %k's fist.";
+
+OB_PISTONPUNCH = "%o felt the epicenter of %k's Piston Punch";
+OB_PISTONPUNCHSTUN = "%o couldn't stand their ground against %k's Piston Tremor.";
+
+//===|Messatsu
+
+OB_GOUHADOUBOSS = "%o didn't block %k's Gou Hadouken.";
+TAG_GOUHADOUBOSS = "Messatsu";
+PU_GOUHADOUBOSS = "You got Messatsu's memory chip! ...Useless!";
+
+OB_GOUZANKUU = "%o couldn't slip through %k's deluge of Zanku Hadoukens.";
+OB_SHANKUNETSU = "%o didn't block %k's Shakunetsu Hadouken.";
+OB_SHUNGOKUSATSU = "%o was instantly defeated by %k's Lagless Hell Frag.";
+OB_GOJIN = "%o was kicked out by %k's Hyakki Gojin.";
+OB_GOZAN = "%o was tripped up by %k's Hyakki Gozan.";
+OB_GOUSHORYUKEN = "%o was punched skyward by %k's GouShoryuKen.";
+OB_MESSATSUPARRY = "%o couldn't parry %k's Messatsu Gouhadou.";
+OB_MISONGIIMPACT = "%o was shattered in pieces by %k's Misogi.";
+OB_MISONGI = "%o just couldn't defend against %k's Misogi.";
+OB_GOUSHORYUKEN = "%o was spiked by %k's GouShoryuKen.";
+OB_GOSHO = "%o was face palmed by %k's Hyakki Gosho.";
+
+
+//===|LordDamager
+OB_LASERCANNON = "\ct%k left a darkened hole in %o's heart.";
+PU_LASERCANNON = "Power up! Dark Laser Cannon!";
+TAG_LASERCANNON = "DarkLaser Cannon";
+
+OB_MISSILEPUNCH = "%o was destroyed by %k's \chPower Missiles\c-.";
+PU_MISSILEPUNCH = "Power up! Missile Punch!";
+TAG_MISSILEPUNCH = "Missile Punch";
+
+OB_MISSILEPUNCH2 = "%o was crushed by %k's \chMissile Punch\c-.";
+OB_LDRAM = "%o was knocked down by %k's \chRam\c-.";
+
+OB_SMOGCANNON = "%o was choked by %k's \ctSmog Cannon\c-.";
+PU_SMOGCANNON = "Power up! Smog Cannon!";
+TAG_SMOGCANNON = "Smog Cannon";
+
+
+//===|Korby
+OB_KORBYFIRE = "%o WAS SLAIN BY %k's FIRE.";
+OB_KORBYFIRE1 = "%o WAS SLAIN BY %k's FIR1.";
+OB_KORBYFIRE2 = "%o WAS SLAIN BY %k's FIR2.";
+OB_KORBYFIRE3 = "%o WAS SLAIN BY %k's FIR3.";
+PU_KORBYFIRE = "FIR TREE";
+
+OB_KORBYLIGHTNING = "%o WAS SLAIN BY %k's LIT.";
+OB_KORBYLIGHTNING1 = "%o WAS SLAIN BY %k's LIT1.";
+OB_KORBYLIGHTNING2 = "%o WAS SLAIN BY %k's LIT2.";
+OB_KORBYLIGHTNING3 = "%o WAS SLAIN BY %k's LIT3.";
+PU_KORBYLIGHTNING = "LITLITLITLITLITLITLITLITLIT";
+
+OB_KORBYICE = "%o WAS SLAIN BY %k's ICE.";
+OB_KORBYICE1 = "%o WAS SLAIN BY %k's ICE1.";
+OB_KORBYICE2 = "%o WAS SLAIN BY %k's ICE2.";
+OB_KORBYICE3 = "%o WAS SLAIN BY %k's ICE3.";
+PU_KORBYICE = "INTERNAL COMBUSTION ENGINE";
+
+OB_BADBREATH = "%o WAS SLAIN %k's BAD BREATH.";
+OB_FLASH = "%o WAS HUMILIATED BY %k's FLASH.":
+OB_KFLAMETHROWER = "%o WAS SLAIN BY %k's FLAMETHROWER.";
+OB_SELFDESTRUCT = "%o WAS SLAIN BY %k's SELF-DESTRUCT.";
+OB_THOUSANDNEEDLES = "%o WAS SLAIN BY %k's THOUSAND NEEDLES.";
+OB_SLOWGA = "%o WAS SLAIN BY BY %k's SLOWGA.";
+OB_AQUABREATH = "%o WAS SLAIN BY %k's AQUA BREATH.";
+OB_KBLASTER = "%o WAS SLAIN BY %k's BLASTER.";
+OB_MATRAMAGIC = "%o WAS SLAIN BY %k's MATRA MAGIC.";
+OB_LIMITGLOVE = "%o WAS SLAIN BY %k's LIMIT GLOVE.";
+
+//===|IceSparky
+
+OB_ICEBLADEBOSS = "%o was sliced by %k's Ice blade.";
+PU_ICEBLADEBOSS = "Power up! Freeze Cracker!";
+
+OB_LIGHTNINGICEBLADEBOSS = "%o was sliced by %k's Lightning Ice blade.";
+OB_ICEBALL = "%o was Conked on the head by %k's Ice ball.";
+OB_ICEBIT = "%o was Conked on the head by one of %k's Ice chunks.";
+OB_ICESPIKE = "%o stepped on one of %k's Ice spikes.";
+
+OB_LIGHTNINGWAVEBOSS = "%o was zapped by %k's lightning shot.";
+PU_LIGHTNINGWAVEBOSS = "Power up! Thunder Bolt!"
+
+OB_LIGHTNINGWAVEBOSS2 = "%o was zapped by %k's lighting wave.";
+
+OB_LIGHTNINGICEWAVEBOSS = "%o was zapped by %k's Lightning Ice Wave.";
+OB_LIGHTNINGICEBIT = "%o was Conked on the head by one of %k's Lightning Ice chunks.";
+OB_LIGHTNINGICESPIKE = "%o stepped on one of %k's Lightning Ice spikes.";
+
+//===|Gizmo
+
+OB_CLAWGLOVES = "%o was scratched up by %k";
+PU_CLAWGLOVES = "Power Up! Slash Claw!";
+OB_ETERNALCLAWS = "%o was torn to shreds by %k's Eternal Claws"
+
+OB_FLAMECANNON = "%o was burned up by %k's Flame Cannon.";
+OB_FROSTCANNON = "%o was frozen solid by %k's Frost Cannon.";
+OB_HYDROCANON = "%o was hosed down by %k's Hydro Cannon.";
+OB_LIGHTNINGCANNON = "%o was electrocuted by %k's Lightning Cannon.";
+OB_PLASMACANNON = "%o was blasted by %k's Plasma Cannon.";
+OB_STONECANNON = "%o was bashed by %k's Stone Cannon.";
+
+//===|Gee
+
+PU_GEEBURSTBOSS1 = "Gee, how come you get to have two weapons?";
+OB_GEEBURSTBOSS1 = "%o was smacked by %k's staff.";
+TAG_GEEBURSTBOSS1 = "Healing Burst";
+
+OB_GEEBURSTBOSS2 = "%o was bursted down by %k's magic burst.";
+
+//===|Corporal
+OB_FUSIONBOMBBOSS = "%o was fused by %k's Fusion Bomb.";
+PU_FUSIONBOMBBOSS = "Power Up! Fusion Bomb!";
+TAG_FUSIONBOMBBOSS = "Fusion Bomb";
+OB_FUSIONBREAK = "%o was trampled by %k's Afterburner.";
+
+//===|Bullgator
+OB_PIERCERIFLE = "%o was pierced by %k's \ccpiercing bullet\c-.";
+PU_PIERCERIFLE = "Wait, how did you get this????";
+TAG_PIERCERIFLE = "Piercing / Sleeping dart";
+
+OB_BULLWEAKBULLET = "%o was shot down by one of %k's weaker bullets.";
+OB_BULLSLEEPBULLET = "%o was put to sleep by %k's \ctsleeping bullet\c-."
+
+OB_SIPHONRIFLE = "%o's life was drained completely by %k's \cgSiphon bolt\c-.";
+TAG_SIPHONRIFLE = "Splitter / Siphon (Drain)";
+
+OB_BULLSPLITTERBULLET = "%o didn't avoid %k's \cvsplitter bullet\c-.";
+
+OB_CONFUSIONRIFLE = "%o was confused about %k's \cmConfusion bolt\c-.";
+TAG_CONFUSIONRIFLE = "Burst / Confusion";
+
+OB_BULLBURSTBULLET = "%o had multiple holes in %p chest due to %k's \cdBurst of bullets\c-.";
+OB_BULLCONFUSEBULLET = "%o didn't get how %k's \cuConfusion Bullet\c- worked.";

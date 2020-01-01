@@ -53,13 +53,13 @@ TNT1 A 0 A_Jump(256,"UseX") goto UseX}}
 actor ClassicTankWeapon : Weapon
 {
 Weapon.SlotNumber 2
-Inventory.Pickupmessage "Pootis"
+Inventory.Pickupmessage "$PU_CLASSICTANK"
 Weapon.AmmoType "TankOpAmmo"
 Weapon.AmmoType2 "TankOpAmmo"
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 15
 dropitem ""
-Obituary "%o < [ Cannon shot ] < %k"
+Obituary "$OB_CLASSICTANK"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.ALT_AMMO_OPTIONAL
 +WEAPON.ALT_USES_BOTH
@@ -184,7 +184,7 @@ actor ClassicTankShot : FastProjectile
 {
 PROJECTILE
 Translation "4:214=86:86", "215:215=95:95"
-Obituary "%o was blown up by %k's cannon shot."
+Obituary "$OB_CLASSICTANKCANNON"
 Missiletype "TankShotFX"
 Speed 100
 Radius 14
@@ -242,7 +242,7 @@ actor TankShotFXK : TankShotFX {Translation "4:214=229:229", "215:215=232:232"}
 actor ClassicTankMachinegunShot : FastProjectile
 {
 PROJECTILE
-Obituary "%o was pelted down by %k's tank machinegun."
+Obituary "$OB_CLASSICTANKMACHINEGUN"
 +MTHRUSPECIES
 Speed 80
 Radius 4
@@ -287,7 +287,7 @@ actor TankMachinegunShotFXK : TankMachinegunShotFX {Translation "215:215=232:232
 actor TankOperatorMachinegunShot : ClassicTankMachinegunShot {
 Damage (4) 
 Speed 75
-Obituary "%o tried to stand against %k's machinegun but failed."
+Obituary "$OB_TANKOPPMACHINEGUN"
 }
 
 actor TankOperatorMachinegunShotL : TankOperatorMachinegunShot {MissileType "TankMachinegunShotFXL"}
@@ -298,7 +298,7 @@ actor TankOperatorMachinegunShotK : TankOperatorMachinegunShot {MissileType "Tan
 
 actor TankOperatorShotGunBullet : ClassicTankMachinegunShot
 {
-Obituary "%o tried to stand against %k's shotgun but failed."
+Obituary "$OB_TANKOPPSHOTGUN"
 Damage (3)
 Speed 70
 States

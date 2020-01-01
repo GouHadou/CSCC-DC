@@ -3,7 +3,7 @@ actor FlameCannonWep : CSCCWepBase
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
 Weapon.SlotNumber 5
-Obituary "%o was burned up by %k's Flame Cannon."
+Obituary "$OB_FLAMECANNON"
 weapon.ammotype "FlameCannonAmmo"
 inventory.icon "FLAMEI"
 DropItem "FireStormWepCS"
@@ -58,7 +58,7 @@ inventory.maxamount 28
 
 actor FlameCannonShot
 {
-Obituary "%o was burned up by %k's Flame Cannon."
+Obituary "$OB_FLAMECANNON"
 PROJECTILE
 +DONTBLAST
 Radius 5

@@ -3,9 +3,9 @@ actor MessatsuWep : CSCCWepBase
 Weapon.AmmoUse 1
 Weapon.AmmoGive 0
 Weapon.SlotNumber 1
-Obituary "%o didn't block %k's Gou Hadouken."
-Inventory.Pickupmessage "You got Messatsu's memory chip! ...Useless!"
-Tag "Messatsu"
+Obituary "$OB_GOUHADOUBOSS"
+Inventory.Pickupmessage "$PU_GOUHADOUBOSS"
+Tag "$TAG_GOUHADOUBOSS"
 weapon.ammotype "MessatsuAmmo"
 dropitem "GouhadouWepCS"
 +WEAPON.WIMPY_WEAPON
@@ -679,7 +679,7 @@ PROJECTILE
 +SKYEXPLODE
 +MTHRUSPECIES
 Translation "192:192=59:59", "198:198=61:61"
-Obituary "%o didn't block %k's Gou Hadouken."
+Obituary "$OB_GOUHADOUBOSS"
 damagetype "GouHadou"
 Damage (18)
 RenderStyle "translucent"
@@ -727,7 +727,7 @@ loop
 actor GouZankuu : Gouhadou
 {
 damagetype "GouZankuu"
-Obituary "%o couldn't slip through %k's deluge of Zanku Hadoukens."
+Obituary "$OB_GOUZANKUU"
 Damage (12)
 scale 1.5
 States
@@ -752,7 +752,7 @@ actor Shakunetsu : Gouhadou
 +DONTBLAST
 //+RIPPER
 Translation "192:192=43:43", "198:198=189:189", "168:168=174:174"
-Obituary "%o didn't block %k's Shakunetsu Hadouken."
+Obituary "$OB_SHANKUNETSU"
 damagetype "Shakunetsu"
 //RenderStyle "add"
 Alpha 0.75
@@ -847,7 +847,7 @@ powerup.duration 20
 
 actor ShunGokuSatsu
 {
-Obituary "%o was instantly defeated by %k's Lagless Hell Frag."
+Obituary "$OB_SHUNGOKUSATSU"
 PROJECTILE
 +LOOKALLAROUND
 +SKYEXPLODE
@@ -895,7 +895,7 @@ PROJECTILE
 +RIPPER
 +DONTBLAST
 Damage (0)
-Obituary "%o was kicked out by %k's Hyakki Gojin."
+Obituary "$OB_GOJIN"
 scale 2.5
 damagetype "Gojin"
 Translation "192:192=59:59", "198:198=61:61"
@@ -924,7 +924,7 @@ PROJECTILE
 +RIPPER
 +DONTBLAST
 Damage (0)
-Obituary "%o was tripped up by %k's Hyakki Gozan."
+Obituary "$OB_GOZAN"
 scale 2.5
 damagetype "Gozan"
 Translation "192:192=59:59", "198:198=61:61"
@@ -1009,7 +1009,7 @@ wait
 }
 actor GouShoryu1 : Gouhadou
 {
-Obituary "%o was punched skyward by %k's GouShoryuKen."
+Obituary "$OB_GOUSHORYUKEN"
 PROJECTILE
 Translation "192:192=59:59", "198:198=61:61"
 Renderstyle "Add"
@@ -1102,7 +1102,7 @@ Goto Death+1
 actor MessatsuGouhadou : Gouhadou
 {
 damagetype "GouZankuu"
-Obituary "%o couldn't parry %k's Messatsu Gouhadou."
+Obituary "$OB_MESSATSUPARRY"
 Damage (25)
 Alpha 0.4
 scale 4.0
@@ -1180,7 +1180,7 @@ damagetype "MisogiImpact"
 Scale 2.0
 Radius 1
 Height 1
-Obituary "%o was shattered in pieces by %k's Misogi."
+Obituary "$OB_MISONGIIMPACT"
 var int user_MisogiAngle;
 Translation "192:192=43:43"
 States
@@ -1227,7 +1227,7 @@ stop
 actor MisogiPart : Gouhadou
 {
 PROJECTILE
-Obituary "%o just couldn't defend against %k's Misogi."
+Obituary "$OB_MISONGI"
 Scale 2.0
 //Translation "192:192=43:43"
 +NOEXPLODEFLOOR
@@ -1424,7 +1424,7 @@ actor GouShoryuSpike
 PROJECTILE
 +NOINTERACTION
 damagetype "GouShoryuSpike"
-Obituary "%o was spiked by %k's GouShoryuKen."
+Obituary "$OB_GOUSHORYUKEN"
 Radius 1
 Height 1
 scale 2.5
@@ -1459,7 +1459,7 @@ stop
 Actor GoshoAttack : Gouhadou
 {
 Damagetype "GoSho"
-Obituary "%o was face palmed by %k's Hyakki Gosho."
+Obituary "$OB_GOSHO"
 Damage (0)
 +THRUACTORS
 States

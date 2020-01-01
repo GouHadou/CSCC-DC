@@ -3,7 +3,7 @@ actor HandCannon : CSCCWepBase
 Weapon.AmmoUse 1
 Weapon.AmmoGive 0
 Weapon.SlotNumber 1
-Obituary "%o was blasted by %k's Plasma Cannon."
+Obituary "$OB_PLASMACANNON"
 weapon.ammotype "HandCannonAmmo"
 inventory.icon "PLASMI"
 States
@@ -141,7 +141,7 @@ goto Done
 
 actor GizmoChargeShot3 : BasicProjectile
 {
-Obituary "%o was blasted by %k's Plasma Cannon."
+Obituary "$OB_PLASMACANNON"
 PROJECTILE
 +BRIGHT
 +LOOKALLAROUND

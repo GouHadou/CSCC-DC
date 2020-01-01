@@ -3,7 +3,7 @@ actor LightningCannonWep : CSCCWepBase
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28
 Weapon.SlotNumber 4
-Obituary "%o was electrocuted by %k's Lightning Cannon."
+Obituary "$OB_LIGHTNINGCANNON"
 weapon.ammotype "LightningCannonAmmo"
 inventory.icon "LIGHTI"
 DropItem "ThunderBeamWepCS"
@@ -58,7 +58,7 @@ inventory.maxamount 28
 
 actor LightningCannonShot : BasicProjectile
 {
-Obituary "%o was electrocuted by %k's Lightning Cannon."
+Obituary "$OB_LIGHTNINGCANNON"
 PROJECTILE
 +RIPPER
 Radius 10

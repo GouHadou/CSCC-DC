@@ -1,14 +1,14 @@
 actor BullGatorSleepPierce : CSCCWepBase
 {
 dropitem "RailBusterWepCS"
-Inventory.Pickupmessage "Wait, how did you get this????"
+Inventory.Pickupmessage "$PU_PIERCERIFLE"
 Weapon.SlotNumber 1
 Weapon.AmmoType "BullRifleAmmo1"
 Weapon.AmmoType2 "BullRifleAmmo2"
 Inventory.Icon "BullMn1"
-Obituary "%o was pierced by %k's \ccpiercing bullet\c-."
+Obituary "$OB_PIERCERIFLE"
 Weapon.AmmoUse 1
-Tag "Piercing / Sleeping dart"
+Tag "$TAG_PIERCERIFLE"
 States
 {
 Spawn:
@@ -176,7 +176,7 @@ Powerup.duration 175
 
 actor BullWeakBullet
 {
-Obituary "%o was shot down by one of %k's weaker bullets."
+Obituary "$OB_BULLWEAKBULLET"
 PROJECTILE
 Speed 45
 Radius 8
@@ -295,7 +295,7 @@ actor PiercingBulletTrailP : PiercingBulletTrail {Mass 4 Translation "220:220=22
 actor BullSleeperBullet : BullBasicBullet
 {
 Translation "220:220=217:217", "4:4=215:215"
-Obituary "%o was put to sleep by %k's \ctsleeping bullet\c-."
+Obituary "$OB_BULLSLEEPBULLET"
 Speed 800
 Radius 6
 Height 6
@@ -418,8 +418,8 @@ actor BullGatorSiphonSplitter : BullGatorSleepPierce
 {
 Weapon.SlotNumber 2
 Inventory.Icon "BullMn2"
-Obituary "%o's life was drained completely by %k's \cgSiphon bolt\c-."
-Tag "Splitter / Siphon (Drain)"
+Obituary "$OB_SIPHONRIFLE"
+Tag "$TAG_SIPHONRIFLE"
 States
 {
 Ready:
@@ -475,7 +475,7 @@ Translation "220:220=206:206", "4:4=202:202"
 +SKYEXPLODE
 Damage (15)
 Speed 700
-Obituary "%o didn't avoid %k's \cvsplitter bullet\c-."
+Obituary "$OB_BULLSPLITTERBULLET"
 //MissileType "SplitterBulletTrail"
 States
 {
@@ -531,7 +531,7 @@ actor BullSplittedBullet
 {
 Translation "220:220=206:206", "4:4=202:202"
 PROJECTILE
-Obituary "%o didn't avoid %k's \cvsplitter bullet\c-."
+Obituary "$OB_BULLSPLITTERBULLET"
 DamageType "BullSplitBullet"
 +HEXENBOUNCE
 +FORCEXYBILLBOARD
@@ -590,7 +590,7 @@ stop
 
 actor BullSiphonBullet : BullBasicBullet
 {
-Obituary "%o's life was drained completely by %k's \cgSiphon bolt\c-."
+Obituary "$OB_SIPHONRIFLE"
 MissileType "BullSiphonRail"
 Damage (20)
 Speed 500
@@ -677,8 +677,8 @@ actor BullGatorConfusionBurst : BullGatorSleepPierce
 Weapon.AmmoUse 20
 Weapon.SlotNumber 3
 Inventory.Icon "BullMn3"
-Obituary "%o was confused about %k's \cmConfusion bolt\c-."
-Tag "Burst / Confusion"
+Obituary "$OB_CONFUSIONRIFLE"
+Tag "$TAG_CONFUSIONRIFLE"
 States
 {
 Ready:
@@ -733,7 +733,7 @@ actor BullBurstBullet : BullBasicBullet
 Translation "230:230=103:103", "193:193=109:109"
 Speed 800
 Damage (10)
-Obituary "%o had multiple holes in %p chest due to %k's \cdBurst of bullets\c-."
+Obituary "$OB_BULLBURSTBULLET"
 MissileType "BurstBulletTrail"
 States
 {
@@ -772,7 +772,7 @@ actor BullConfussionBullet : BullBasicBullet
 {
 +HITTRACER
 Speed 900
-Obituary "%o didn't get how %k's \cuConfusion Bullet\c- worked."
+Obituary "$OB_BULLCONFUSEBULLET"
 Damage (12)
 Radius 6
 Height 6

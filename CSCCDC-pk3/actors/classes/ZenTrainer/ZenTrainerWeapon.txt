@@ -17,8 +17,8 @@ actor ZenTrainerWep : CSCCWepBase
 {
 Weapon.AmmoUse 0
 Weapon.AmmoUse2 2
-Inventory.Pickupmessage "Oh noes"
-Obituary "%o's mind was freed from %k's control, but died afterwards."
+Inventory.Pickupmessage "$PU_ZENTRAINERWEP"
+Obituary "$OB_ZENTRAINERWEP"
 weapon.ammotype "ZenTrainerAmmo1"
 weapon.ammotype2 "ZenTrainerAmmo1"
 States
@@ -267,7 +267,7 @@ actor ZTPsychicBall
 {
 PROJECTILE
 Translation "192:192=228:228","198:198=229:229","0:0=167:167"
-Obituary "%o couldn't get %k off %p mind."
+Obituary "$OB_ZENPSYCHICBALL"
 DamageType "ZTPsychicBall"
 Radius 12
 Height 12

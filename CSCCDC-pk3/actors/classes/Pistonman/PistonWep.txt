@@ -1,10 +1,10 @@
 actor PistonTremorBoss : CSCCWepBase
 {
 weapon.ammotype "PistonTremorAmmo"
-Inventory.Pickupmessage "Power up! Car Engine-wait."
-tag "Piston Tremor"
+Inventory.Pickupmessage "$PU_PISTONTREMORBOSS"
+tag "$TAG_PISTONTREMORBOSS"
 dropitem "PistonTremorWepCS"
-Obituary "%o couldn't comprehend why exactly he got killed by running straight into %k's fist."
+Obituary "OB_PISTONTREMORBOSS"
 States
 {
 Spawn:
@@ -151,7 +151,7 @@ actor PistonPunch
 translation "202:202=87:87"
 PROJECTILE
 damagetype "PistonPunch"
-Obituary "%o felt the epicenter of %k's Piston Punch"
+Obituary "$OB_PISTONPUNCH"
 +DONTBLAST
 +MTHRUSPECIES
 damage (13)
@@ -256,7 +256,7 @@ Speed 50
 Damage (15)
 translation "192:192=87:87", "198:198=95:95"
 damagetype "PistonPunchStun"
-Obituary "%o couldn't stand their ground against %k's Piston Tremor."
+Obituary "$OB_PISTONPUNCHSTUN"
 Radius 7
 Height 7
 +NOTARGETSWITCH

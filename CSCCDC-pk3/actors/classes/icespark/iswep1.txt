@@ -3,8 +3,8 @@ actor IceWep : CSCCWepBase
 Weapon.AmmoUse 25
 Weapon.AmmoGive 100
 Weapon.SlotNumber 3
-Obituary "%o was sliced by %k's Ice blade."
-Inventory.Pickupmessage "Power up! Freeze Cracker!"
+Obituary "$OB_ICEBLADEBOSS"
+Inventory.Pickupmessage "$PU_ICEBLADEBOSS"
 weapon.ammotype "IceClassAmmo"
 DropItem "IceBladeWepCS"
 States
@@ -178,7 +178,7 @@ Height 8
 scale 2.5
 damage (20)
 damagetype "IceBlade"
-Obituary "%o was sliced by %k's Ice blade."
+Obituary "$OB_ICEBLADEBOSS"
 speed 40
 Translation "192:192=196:196" 
 States
@@ -227,7 +227,7 @@ Height 8
 scale 2.5
 damage (0)
 damagetype "IceMelee"
-Obituary "%o was sliced by %k's Ice blade."
+Obituary "$OB_ICEBLADEBOSS"
 speed 0
 Translation "192:192=196:196" 
 States
@@ -253,7 +253,7 @@ actor LightningIceBlade : IceBlade
 +PIERCEARMOR
 damagetype "LightningShot"
 Translation "192:192=137:137" 
-Obituary "%o was sliced by %k's Lightning Ice blade."
+Obituary "OB_LIGHTNINGICEBLADEBOSS"
 damage (30)
 speed 65
 States
@@ -397,7 +397,7 @@ scale 2.5
 damage (20)
 speed 32
 damagetype "IceBall"
-Obituary "%o was Conked on the head by %k's Ice ball."
+Obituary "$OB_ICEBALL"
 Translation "192:192=196:196" 
 States
 {
@@ -449,7 +449,7 @@ scale 2.5
 damage (5)
 damagetype "IceShard"
 speed 5
-Obituary "%o was Conked on the head by one of %k's Ice chunks."
+Obituary "$OB_ICEBIT"
 Translation "192:192=196:196" 
 states
 {
@@ -505,7 +505,7 @@ damage (10)
 damagetype "IceShard"
 speed 0
 reactiontime 40
-Obituary "%o stepped on one of %k's Ice spikes."
+Obituary "$OB_ICESPIKE"
 Translation "192:192=196:196", "198:198=95:95"
 states
 {

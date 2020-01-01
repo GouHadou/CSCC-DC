@@ -6,9 +6,9 @@ actor GeeBurstBoss1 : CSCCWepBase
 Weapon.AmmoUse 1
 Weapon.AmmoGive 15
 Weapon.SlotNumber 2
-Inventory.Pickupmessage "Gee, how come you get to have two weapons?"
-Obituary "%o was smacked by %k's staff."
-Tag "Healing Burst"
+Inventory.Pickupmessage "$PU_GEEBURSTBOSS1"
+Obituary "$OB_GEEBURSTBOSS1"
+Tag "$TAG_GEEBURSTBOSS1"
 weapon.ammotype "GeeAmmo"
 States
 {
@@ -317,7 +317,7 @@ PROJECTILE
 renderstyle none
 damagetype "GeeBurst"
 translation "195:195=243:243", "249:249=76:76", "199:199=70:70", "198:198=220:220", "192:192=229:229", "250:250=215:215"
-Obituary "%o was bursted down by %k's magic burst."
+Obituary "$OB_GEEBURSTBOSS2"
 Speed 80
 Damage (0)
 radius 15

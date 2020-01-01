@@ -4,9 +4,9 @@ Weapon.AmmoUse 4
 Weapon.AmmoGive 28
 Weapon.SlotNumber 5
 weapon.ammotype "FusionClassAmmo"
-Obituary "%o was fused by %k's Fusion Bomb."
-Inventory.Pickupmessage "Power Up! Fusion Bomb!"
-tag "Fusion Bomb"
+Obituary "$OB_FUSIONBOMBBOSS"
+Inventory.Pickupmessage "$PU_FUSIONBOMBBOSS"
+tag "$TAG_FUSIONBOMBBOSS"
 dropitem "FusionBombWepCS"
 States
 {
@@ -173,7 +173,7 @@ inventory.maxamount 1
 
 actor FusionBombClass : BasicProjectile
 {
-Obituary "%o was fused by %k's Fusion Bomb."
+Obituary "$OB_FUSIONBOMBBOSS"
 PROJECTILE
 -NOGRAVITY
 Gravity 0.2
@@ -262,7 +262,7 @@ goto Done
 
 Actor FusionBombFusion : BasicProjectile
 {
-Obituary "%o was fused by %k's Fusion Bomb."
+Obituary "$OB_FUSIONBOMBBOSS"
 PROJECTILE
 +NOCLIP
 +NOINTERACTION
@@ -308,7 +308,7 @@ Loop
 
 Actor FusionShatterClass : BasicProjectile
 {
-Obituary "%o was fused by %k's Fusion Bomb."
+Obituary "$OB_FUSIONBOMBBOSS"
 PROJECTILE
 +HEXENBOUNCE
 -NOGRAVITY
@@ -417,7 +417,7 @@ Alpha 0.75
 Damage (6)
 Damagetype "Afterburner"
 translation "198:198=41:41", "192:192=216:216"
-Obituary "%o was trampled by %k's Afterburner."
+Obituary "$OB_FUSIONBREAK"
 Speed 50
 scale 2.5 
 States

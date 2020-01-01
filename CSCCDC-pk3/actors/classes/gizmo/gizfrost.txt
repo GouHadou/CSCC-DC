@@ -3,7 +3,7 @@ actor FrostCannonWep : CSCCWepBase
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
 Weapon.SlotNumber 3
-Obituary "%o was frozen solid by %k's Frost Cannon."
+Obituary "$OB_FROSTCANNON"
 weapon.ammotype "FrostCannonAmmo"
 inventory.icon "FROSTI"
 DropItem "BlizzardAttackWepCS"
@@ -58,7 +58,7 @@ inventory.maxamount 28
 
 actor FrostCannon : BasicProjectile
 {
-Obituary "%o was frozen solid by %k's Frost Cannon."
+Obituary "$OB_FROSTCANNON"
 PROJECTILE
 +RIPPER
 Radius 7
@@ -103,7 +103,7 @@ goto Done
 
 actor FrostCannon2 : BasicProjectile
 {
-Obituary "%o was frozen solid by %k's Frost Cannon."
+Obituary "$OB_FROSTCANNON"
 PROJECTILE
 +RIPPER
 Radius 7
