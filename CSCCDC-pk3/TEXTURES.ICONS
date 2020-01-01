@@ -341,3 +341,24 @@ graphic PISTRE, 30, 30
    YScale 2.0
    Patch PTREA0, 0, 0
 }
+
+graphic ORBMSL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ORBDX0, 0, 0
+}
+
+graphic ZENSPI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ZSPHA0, 0, 0
+}
+
+graphic HELFCI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch HFCWA0, 0, 0
+}

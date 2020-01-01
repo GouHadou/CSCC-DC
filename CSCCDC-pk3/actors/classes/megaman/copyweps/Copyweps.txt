@@ -17,3 +17,7 @@
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/VocalCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/BullCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/PistonCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/BadzCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/ZenCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/TankOppCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/CMMCopy.txt"

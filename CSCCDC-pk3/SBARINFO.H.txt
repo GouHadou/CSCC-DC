@@ -356,6 +356,11 @@ IsSelected RailBusterWepCS
 		InInventory RailBusterCharge, 1	{DrawBar"VARFLS1", "VNOBAR", RailBusterCharge, horizontal, 58, 184;}
 	} 
 
+	IsSelected ZenSphereWepCS{Drawbar"VARAM100", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+	IsSelected OrbitalMissileWepCS{Drawbar"VARAMMOM", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+	IsSelected TankCannonWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+	IsSelected HellFireCutterWepCS{Drawbar"VARAM101", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected SuperArmWepCS{Drawbar"VARAMMO2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
