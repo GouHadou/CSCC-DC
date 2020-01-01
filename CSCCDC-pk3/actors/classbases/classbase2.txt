@@ -5,10 +5,14 @@ States
 //A_Stop Hitstun Pain
 
 //Core Hitstun Pain
+Pain.KLIGHT:
+Pain.GeeBurst:
+"----" H 0
+Goto Pain
 
 //Minimal Hitstun Pain
 Pain.FusionBomb:
-Pain.TommyGun:  //Seriously!? it's a freaking rapid hitscan! ~Bika
+Pain.TommyGun:
 "----" H 0 A_ScaleVelocity(0.9)
 Goto Pain+1
 
@@ -22,8 +26,7 @@ Pain.Bull_RailAttack:
 Pain.BullSplitBullet:
 Pain.FusionBit:
 Pain.HellfireCutterBurn:
-Pain.8BHexenFire:
-Pain.GeeBurst:
+Pain.EBHexenFire:
 Pain.GizmoFire:
 Pain.GizmoLightning:
 Pain.GizmoPlasma:
@@ -34,7 +37,6 @@ Pain.IceBall:
 Pain.IceShard:
 Pain.LightningWave:
 Pain.KFIR:
-Pain.KLIGHT:
 Pain.KICE:
 Pain.KAquaBreath:
 Pain.KMatraMagic:

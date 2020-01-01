@@ -32,13 +32,8 @@ Pain.ThunderClaw:
 Pain.LightningBolt:
 Pain.PlugBall:
 Pain.Electric:
-Pain.YellowDevil:
 Pain.LightningWave:
 Pain.LightningShot:
-pain.BlazeTesla:
-pain.ThunderBlade:
-pain.SavRush:
-pain.SaviorThunder:
 pain.GizmoLightning:
 pain.KLIGHT:
 LGY2 H 0 A_ScaleVelocity(0.75)
@@ -101,32 +96,21 @@ Death.MagmaBazooka:
 Death.KFIR:
 Death.KFlamethrower:
 Death.GizmoFire:
-Death.AuraFlame:
-Death.FoxFirePower:
-Death.FoxFireSpread:
 Death.HellfireCutter:
 Death.HellfireCutterBurn:
-Death.JCFlameThrower:
-Death.JCFirePillar:
-Death.JCFireBomb:
-Death.KFlamethrower:
-Death.GDSShot:
-Death.GDSWave:
 Death.Shakunetsu:
-Death.AutoFlame:
 LGY2 H 0 A_GiveInventory("MFWBurning",1)
 LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
 PLAY Z 0 A_SpawnItemEx("BurnBlazko",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 LGY2 Z 75
 LGY2 Z 0 A_TakeInventory("MFWBurning",1)
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 
 Death.MirrorBuster:
 Death.MirrorBuster1:
 Death.MirrorBuster2:
 Death.GeminiLaser:
-Death.Starcrash: //dunno
+Death.Starcrash:
 Death.CentaurFlash:
 Death.AstroCrush:
 Death.BlackHoleBomb:
@@ -134,27 +118,17 @@ Death.Beam:
 Death.BFGSplash:
 Death.telefrag:
 Death.Railgun:
-Death.Disintegrate:
-Death.SolarLaser:
-Death.JaxFlash:
 Death.GizmoPlasma:
-Death.GDSShot:
-Death.GDSWave:
 LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)
 LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
 PLAY H 0 A_PlaySoundEx("Laggy/Gibbed","Body")
 LGY2 O 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
 LGY2 OPQRZ 5
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 Death.RollingCutter:
 Death.GyroAttack:
 Death.SilverTomahawk:
-Death.DualBlade:
 Death.IceBlade:
-Death.ZardSword:
-Death.HolySword:
-Death.ChaosSlash:
 LGY2 O 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
 LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)
 LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
@@ -164,12 +138,10 @@ LGY4 DDEEFEEDEE 6
 LGY4 GH 6
 LGY4 I 21 ThrustThingZ(0, 10, 0, 1)
 LGY4 IZIZIZI 3
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 Death.ChargeKick:
 Death.MegaBall:
 Death.GouShoryuPush:
-Death.RendingKick:
 LGY2 H 0 A_GiveInventory("MFWKicked",1)
 LGY2 H 0 A_NoBlocking
 LGY3 Q 1 A_facetarget
@@ -181,7 +153,6 @@ LGY3 R 10
 LGY3 S 35
 LGY3 T 10
 LGY3 UVUVUVUVUVUVUVUVUVUVUVVVVVVVVVVVVVVVVVVVVVZVZVZV 3
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 Death.WindStorm:
 "----" H 0
@@ -192,11 +163,7 @@ LGY2 H 0 A_GiveInventory("CutterFlag",999)
 LGY2 H 0 A_NoBlocking
 LGY2 H 0 A_GiveInventory("IsDead",1)
 Death.HD:
-//Death:
 ClassDeath:
-//MegamanDeath:
-//DeathFrames:
-LGY2 H 0 //A_GiveInventory("ClassDeathPickup",1)
 "----" H 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
 GenDeath1:
 LGY2 O 0 SetPlayerProperty(0, 0, 4)
@@ -208,7 +175,6 @@ LGY2 I 0 ThrustThingZ(0, 25, 0, 1)
 LGY2 IJJ 5
 LGY2 K 70
 LGY2 KZKZKZK 3
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 GenDeath2:
 LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
@@ -219,7 +185,6 @@ LGY2 L 0 A_PlayerScream
 LGY2 LMM 5
 LGY2 N 70
 LGY2 NZNZNZN 3
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 Death.GravityHold:
 Death.Crush:
@@ -229,7 +194,6 @@ LGY2 H 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,
 LGY2 M 5
 LGY2 N 70
 LGY2 NZNZNZN 3
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 Death.Electric:
 Death.ThunderBolt:
@@ -238,13 +202,8 @@ Death.ThunderBeam:
 Death.SparkShock:
 Death.LightningBolt:
 Death.PlugBall:
-Death.YellowDevil:
 Death.LightningWave:
 Death.LightningShot:
-Death.BlazeTesla:
-Death.ThunderBlade:
-Death.SavRush:
-Death.SaviorThunder:
 Death.GizmoLightning:
 Death.KLIGHT:
 LGY2 H 1 A_GiveInventory("ClassDeathPickup",1)
@@ -261,31 +220,19 @@ LGY2 STSTST 2 A_SpawnItem("PainFX",0,3)
 PLAY Z 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
 LGY7 P 70
 LGY7 PZPZPZP 3
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 Death.HyperBomb:
 Death.CrashBomb:
 Death.DrillBomb:
 Death.NapalmBomb:
-Death.DangerWrap://ZOMG not a bomb
+Death.DangerWrap:
 Death.FlashBomb:
 Death.RemoteMine:
 Death.FusionBomb:
-Death.FusionFuseBlast:
 Death.Bomb:
-Death.FuseBlast:
-Death.Flare:
-Death.BlazeRPG:
-Death.RageSeeker:
-Death.Meteor:
-Death.AutoCannon:
-Death.LegoMissile:
-Death.LegoMissile2:
-Death.StickyBomb:
-Death.StickyBomb2:
 Death.KSD:
-Death.Protorang:
-LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)//Must make a face later
+Death.Meteor:
+LGY2 H 0 A_GiveInventory("MFWIHaveNoFace",1)
 LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
 LGY2 O 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
 LGY2 O 0 A_SpawnItemEx("CorpEye",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
@@ -293,7 +240,7 @@ LGY2 O 0 A_SpawnItemEx("CorpEye2",0,0,56,Random(-8,8),Random(-8,8),Random(0,8))
 LGY2 O 0 A_SpawnItemEx("CorpExplosionFX")
 LGY4 I 3 A_PlaySoundEx("Laggy/Explode","Body")
 LGY4 J 3 bright Radius_Quake (2,20,0,32,0)
-LGY4 NNNNNNNNNNNNNNNNNNNNNNNNNZNZNZN 3 //Yeah, I was kind of lazy here. Thanks to Max for the last sprite.
+LGY4 NNNNNNNNNNNNNNNNNNNNNNNNNZNZNZN 3 
 Goto DeathFinal
 Death.Ice:
 Death.Ice2:
@@ -304,15 +251,8 @@ Death.IceWave:
 Death.IceSpike:
 Death.IceBall:
 Death.IceShard:
-Death.BlazeCyro:
 Death.GizmoIce:
-Death.IcePulse:
 Death.KICE:
-Death.ChillingCaesura:
-Death.ArcticAdagio:
-Death.FrozenCapella:
-Death.FreonIceShot:
-Death.FreonIceTrap:
 LGY2 H 0 A_GiveInventory("MFWFrozen",1)
 LGY4 P 60 A_PlaySoundEx("Laggy/Ice1","Body")
 Death.IceSlasher:
@@ -325,24 +265,16 @@ PLAY Z 0 A_SpawnItemEx("BlazkoHelmet",0,0,56,Random(-8,8),Random(-8,8),Random(0,
 LGY4 Z 10 ThrustThingZ(0, 25, 0, 1)
 Goto DeathFinal
 Death.BlizzardAttack:
-Death.RefrainFlurry:
-Death.NegativeBreath:
 LGY2 H 0 A_GiveInventory("ClassDeathPickup",1)
 LGY2 H 0 A_GiveInventory("MFWFrozen",1)
 LGY4 P 4 A_PlaySoundEx("weapon/napalm","Body") 
 LGY5 ABCDEFGGGGGGGGGGGGHI 4
 LGY5 J 35
 LGY5 ZJZJZJ 3
-//PLAY Z 1 A_CheckPlayerDone
 Goto DeathFinal
 DeathFinal:
-//PLAY Z 0 A_JumpIfInventory("TsukiHit", 1, "TsukiSoulDrop")
 PLAY Z 1 A_CheckPlayerDone
 wait
-/*TsukiSoulDrop:
-"----" H 0 A_SpawnItemEx("TsukiSoul", 0, 0, 32)
-"----" H 0 A_TakeInventory("TsukiHit",999)
-Goto DeathFinal+1*/
 }
 }
 
