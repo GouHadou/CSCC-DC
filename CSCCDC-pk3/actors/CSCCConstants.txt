@@ -21,6 +21,11 @@ const Int DYE_BADZCOLOR = 280;
 const Int DYE_TANKOP = 30;
 const int DYE_BULLGATOR = 395;
 
+const int DYE_ZENSPHERE = 1100;
+const int DYE_HELLFIRECUTTER = 1101;
+const int DYE_ORBITALMISSILE = 1102;
+
+
 const int BT_ATTACK	= 1;
 const int BT_USE = 2;
 const int BT_JUMP = 4;

@@ -1,0 +1,132 @@
+actor TankCannonWep : BaseMM8BDMWep
+{
+Weapon.AmmoUse 7
+Weapon.AmmoGive 30
+Weapon.SlotNumber 2
+Inventory.Pickupmessage "Power Up! Tank Cannon!"
+Obituary "%o had their ears destroyed by %k's \ctIdol \crWave\c-."
+Tag "Tank Cannon"
+weapon.ammotype "TankCannonAmmo"
+inventory.icon "TANKACTI"
+States
+{
+Spawn:
+TNCC A 1
+loop
+Ready:
+DSTS B 0 ACS_ExecuteAlways(998,0,DYE_TANKOP)
+DSTS B 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+DSTS B 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+DSTS B 1 A_Raise
+Loop
+Fire:
+DSTS B 0 A_JumpIfNoAmmo("NoAmmo")
+DSTS B 0 A_PlaySoundEx("weapon/napalm","Weapon")
+DSTS B 0 A_SpawnItemEx("TankShootingFX",48,0,48)
+DSTS B 0 A_GiveInventory("TankCannon_M1",1)//A_FireCustomMissile("MegaTankCannonShot",0,0,0,30)
+DSTS B 0 A_ChangeVelocity(cos(pitch)*-35,0,sin(pitch)*20,CVF_RELATIVE)
+DSTS CDDDDDD 5
+TNT1 A 0 A_PlaySoundEx("misc/gravitywarn","Weapon")
+DSTS B 5
+Goto Ready+1
+
+NoAmmo:
+DSTS B 0 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor TankCannonAmmo : Ammo
+{
+inventory.amount 7
+inventory.maxamount 28
+}
+
+
+actor MegaTankCannonShot : ClassicTankShot
+{
+PROJECTILE
+Translation "4:214=86:86", "215:215=95:95"
+Obituary "%o was blown up by %k's cannon shot."
+Missiletype "TankShotFX"
+Speed 100
+Radius 14
+Height 14
++MTHRUSPECIES
+Damage (20)
+Scale 2.5
++THRUSPECIES
+Species "TankyTankSpecies"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 ThrustThingZ(0,30,0,1)
+SpawnX:
+TNT1 AAA 1 A_ChangeVelocity(0,0,-2,CVF_RELATIVE)
+loop
+Death:
+TNT1 A 0 A_PlaySoundEx("weapon/drillexplode", "Weapon")
+TNT1 A 0 A_SetScale(3.5)
+TNT1 A 0 A_Explode(35,128,0,0,96)
+TNT1 A 0 A_Quake(12,35,0,312)
+TNT1 A 0 //ACS_NamedExecuteAlways("BlastKnockback",0,25,25,140)
+ASEX ABCDEF 1
+TNT1 A 20
+stop
+}
+}
+
+actor MegaTankCannonShotL : MegaTankCannonShot {Translation "4:214=205:205", "215:215=74:74" MissileType "TankShotFXL"}
+actor MegaTankCannonShotR : MegaTankCannonShot {Translation "4:214=171:171", "215:215=41:41" MissileType "TankShotFXR"}
+actor MegaTankCannonShotC : MegaTankCannonShot {Translation "4:214=104:104", "215:215=128:128" MissileType "TankShotFXC"}
+actor MegaTankCannonShotK : MegaTankCannonShot {Translation "4:214=229:229", "215:215=232:232" MissileType "TankShotFXK"}
+
+
+
+actor TankCannon_M1 : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("MegaTankCannonShot",0,1,0,4)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("MegaTankCannonShotL",0,1,0,4)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("MegaTankCannonShotR",0,1,0,4)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("MegaTankCannonShotC",0,1,0,4)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("MegaTankCannonShotK",0,1,0,4)
+stop
+}
+}
+
+actor TankCannonWepCS : TankCannonWep replaces TankCannonWep
+{
+States
+{
+CSCC_DefaultSpawn:
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+goto Spawn+3
+CSCC_TranslucentSpawn:
+TNT1 A 0 A_SetTranslucent(0.5, 0)
+goto Spawn+3
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+TNCC A 5
+goto Spawn+2
+}
+}

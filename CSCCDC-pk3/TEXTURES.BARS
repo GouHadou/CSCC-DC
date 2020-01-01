@@ -197,3 +197,16 @@ Texture "HYDRBAR2", 56, 8{Patch "HYDRBAR1", 0, 0{Rotate 90}}
 //Megaman Copyweps
 graphic BARAMMOT, 8, 56{patch BARENERG,0,0{Translation "192:192=87:87","198:198=95:95"}}
 graphic VARAMMOT, 56, 8{patch BARAMMOT,0,0{rotate 90}}
+
+
+//ZenSphere
+graphic BARAM100, 8, 56{patch BARENERG,0,0{Translation "192:192=232:232", "198:198=233:233"}}
+graphic VARAM100, 56, 8{patch BARAM100,0,0{rotate 90}}
+
+//HellFireCutter
+graphic BARAM101, 8, 56{patch BARENERG,0,0{Translation "192:192=43:43", "198:198=189:189"}}
+graphic VARAM101, 56, 8{patch BARAM101,0,0{rotate 90}}
+
+//Orbital Missile 
+texture BARAMMOM, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}
+texture VARAMMOM, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}

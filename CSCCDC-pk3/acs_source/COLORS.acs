@@ -361,6 +361,9 @@
 #DEFINE GIZMO 385
 #DEFINE BULLGATOR 395
 
+#DEFINE ZENSPHERE 1100
+#DEFINE HELLFIRECUTTER 1101
+#DEFINE ORBITALMISSILE 1102
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
 
@@ -681,4 +684,8 @@ Script "core_translations" OPEN CLIENTSIDE
 	CreateTranslation (BADZCOLOR, 192:192=236:236, 198:198=3:3, 226:226=197:197, 43:43=198:198);
 	CreateTranslation (GIZMO, 192:192=241:241, 198:198=176:176);
 	CreateTranslation (BULLGATOR, 192:192=4:4, 198:198=110:110);
+
+	CreateTranslation (ZENSPHERE, 192:192=228:228, 198:198=229:229);
+	CreateTranslation (HELLFIRECUTTER, 192:192=43:43, 198:198=189:189);
+	CreateTranslation (ORBITALMISSILE, 192:192=204:204, 198:198=132:132);
 }
