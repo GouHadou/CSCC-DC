@@ -213,7 +213,7 @@ loop
 
 actor 8BHexenFireStorm : BasicFastProjectile
 {
-damagetype "FireStorm"
+damagetype "8BHexenFire" //FireStorm
 Obituary "$OB_MIKEFLAME" 
 Speed 200
 Radius 14

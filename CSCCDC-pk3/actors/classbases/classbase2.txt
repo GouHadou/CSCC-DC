@@ -8,7 +8,7 @@ States
 
 //Minimal Hitstun Pain
 Pain.FusionBomb:
-Pain.TommyGun:
+Pain.TommyGun:  //Seriously!? it's a freaking rapid hitscan! ~Bika
 "----" H 0 A_ScaleVelocity(0.9)
 Goto Pain+1
 
@@ -16,8 +16,44 @@ Goto Pain+1
 Pain.GizmoClaws:
 Pain.HellfireCutter:
 Pain.UkiRevolver:
-Pain.KIce:
+Pain.BadzBuster:
+Pain.OrbitalMissile:
+Pain.Bull_RailAttack:
+Pain.BullSplitBullet:
 Pain.FusionBit:
+Pain.HellfireCutterBurn:
+Pain.8BHexenFire:
+Pain.GeeBurst:
+Pain.GizmoFire:
+Pain.GizmoLightning:
+Pain.GizmoPlasma:
+Pain.GizmoStone:
+Pain.KittyClaw:
+Pain.IceBlade:
+Pain.IceBall:
+Pain.IceShard:
+Pain.LightningWave:
+Pain.KFIR:
+Pain.KLIGHT:
+Pain.KICE:
+Pain.KAquaBreath:
+Pain.KMatraMagic:
+Pain.KFlamethrower:
+Pain.KSD:
+Pain.FragGrenade:
+Pain.GrenadeFragment:
+Pain.GrandDad:
+Pain.NadeSpam:
+Pain.CorpKnife:
+Pain.PMissile:
+Pain.DamagerFist:
+Pain.LDRam:
+Pain.SmogThrower:
+Pain.Comet:
+Pain.Meteor:
+Pain.Music:
+Pain.Note:
+Pain.ZTPsychicBall:
 "----" H 0 
 Goto Pain+1
 

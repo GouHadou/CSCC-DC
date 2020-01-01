@@ -279,7 +279,7 @@ Height 5
 scale 2.5
 damage (0)
 +RIPPER
-damagetype "Cat"
+damagetype "KittyClaw"
 obituary "\cvKitty \cftook out %o for %k."
 speed 8
 States
@@ -295,7 +295,7 @@ actor KittyDeath
 {
 PROJECTILE
 +RIPPER
-Damagetype "Cat"
+Damagetype "KittyClaw"
 +DONTBLAST
 +BLOODLESSIMPACT
 +CLIENTSIDEONLY
