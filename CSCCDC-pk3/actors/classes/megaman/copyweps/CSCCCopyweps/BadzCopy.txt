@@ -68,6 +68,7 @@ Goto Ready+1
 
 actor OrbitalMissileAmmo : Ammo
 {
++INVENTORY.IGNORESKILL
 inventory.amount 1
 inventory.maxamount 28
 }

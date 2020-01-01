@@ -3,8 +3,8 @@ const int GEECOPY_DMG = 20;
 
 actor HybridBurstWep : BaseMM8BDMWep
 {
-Weapon.AmmoUse 14
-Weapon.AmmoGive 56
+Weapon.AmmoUse 4
+Weapon.AmmoGive 28
 Weapon.SlotNumber 7
 Inventory.Pickupmessage "$PU_HYBRIDBURST"
 Obituary "$OB_HYBRIDBURST"
@@ -32,12 +32,12 @@ Loop
 Fire:
 GEE7 B 0 A_JumpIfNoAmmo("NoAmmo")
 GEE7 B 0 A_PlaySoundEx("weapon/geefire1","Weapon")
-GEE7 B 0 A_TakeInventory("HybridBurstAmmo",7)
+GEE7 B 0 A_TakeInventory("HybridBurstAmmo",2)
 GEE7 B 0 A_FireCustomMissile("HybridBurstHeal",0,0,8,0)
 GEE7 BCD 3
 GEE7 B 6
 GEE7 B 0 A_PlaySoundEx("weapon/geefire2","Weapon")
-GEE7 B 0 A_TakeInventory("HybridBurstAmmo",7)
+GEE7 B 0 A_TakeInventory("HybridBurstAmmo",2)
 GEE7 B 0 A_FireCustomMissile("HybridBurstDamage",0,0,8,0)
 GEE7 BCD 3
 GEE7 B 11
@@ -50,8 +50,9 @@ Goto Ready+2
 
 actor HybridBurstAmmo : Ammo
 {
++INVENTORY.IGNORESKILL
 inventory.amount 1
-inventory.maxamount 56
+inventory.maxamount 28
 }
 
 actor HybridBurstDamage : FastProjectile

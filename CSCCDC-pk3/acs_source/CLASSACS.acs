@@ -113,7 +113,7 @@ Switch(PlayerTeam())
 	Case 3: TeamTag = "_King"; Break;
 	}
 
-while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
+while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && !CheckActorInventory(ActivatorTID(),"CopyRobotUnmorphed"))
 	{
 	Delay(1);
 	if(Weapon==1 && StrIcmp(GetWeapon(),WeaponRequired)!=0){terminate;}
