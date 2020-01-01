@@ -7,7 +7,7 @@ Weapon.SlotNumber 1
 Obituary "$OB_UNIXKNIFE"
 Tag "$TAG_UNIXKNIFE"
 inventory.icon "UNXICON"
-DropItem "SlashClawWep"
+DropItem "ShadowBladeWep"
 States
 {
 Spawn:
@@ -73,7 +73,6 @@ Weapon.SlotNumber 2
 Obituary "$OB_UNIXBLADE"
 Tag "$TAG_UNIXBLADE"
 inventory.icon "SHADI"
-DropItem "ShadowBladeWep"
 States
 {
 Spawn:

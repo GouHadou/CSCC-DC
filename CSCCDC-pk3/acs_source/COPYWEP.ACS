@@ -38,7 +38,7 @@ if(Check != 1 || DroppedStateRefresh==1)
     }
 }
 
-#DEFINE MAX_FAKEWEPS 97
+#DEFINE MAX_FAKEWEPS 101
 
 str FakeWeaponInfo[MAX_FAKEWEPS][5] = {
 //Actor, GizmoDisplay, GizmoWep, GizmoItem, CorpDisplay, CorpWep, CorpItem
@@ -171,6 +171,10 @@ str FakeWeaponInfo[MAX_FAKEWEPS][5] = {
 {"PistonTremorWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"IdolWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
 {"SteelPunchWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
+{"OrbitalMissileWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
+{"HellfireCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
+{"ZenSphereWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
+{"TankCannonWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 };
 
 #DEFINE MAX_FAKEMESSAGES 7
@@ -202,10 +206,6 @@ for(int i = 0; i < MAX_FAKEWEPS; i++)
         if(StrIcmp(FakeWeaponInfo[i][StateSet], "")!=0)
             {
             WeaponPickupStateSet(consolePlayerNumber()+1000,FakeWeaponInfo[i][StateSet],FakeWeaponInfo[i][StateSet+1],StateSet);
-            /*str WeaponToGivePowerup = StrParam(s:FakeWeaponInfo[i][StateSet+1],s:"DelayPickup");
-            str NopeState = StrParam(s:FakeWeaponInfo[i][StateSet],s:"Translucent");
-            if(CheckActorInventory(consolePlayerNumber()+1000,WeaponToGivePowerup)){SetActorState(0,NopeState);}
-            else{SetActorState(0,FakeWeaponInfo[i][StateSet]);}*/
             terminate;
             }
         }
@@ -281,8 +281,8 @@ while(CheckFlag(0,"SPECIAL"))
     CSCC_SyncDropped(1);
     if(CheckFlag(0,"DROPPED"))
         {
-        if(WeaponTimer<CSCC_WEAPONTIMER-1){WeaponTimer++; Log(i:WeaponTimer);}
-        else{Log(i:WeaponTimer); Thing_Remove(0);}
+        if(WeaponTimer<CSCC_WEAPONTIMER-1){WeaponTimer++;}
+        else{Thing_Remove(0);}
         }
     Delay(1);
     }

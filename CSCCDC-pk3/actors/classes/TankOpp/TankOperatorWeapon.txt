@@ -58,7 +58,7 @@ Weapon.AmmoType "TankOpAmmo"
 Weapon.AmmoType2 "TankOpAmmo"
 Weapon.AmmoUse 1
 Weapon.AmmoUse2 15
-dropitem ""
+dropitem "TankCannonWepCS"
 Obituary "%o < [ Cannon shot ] < %k"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.ALT_AMMO_OPTIONAL

@@ -1,7 +1,7 @@
 actor ZenSphereWep : BaseMM8BDMWep
 {
-Weapon.AmmoUse 3
-Weapon.AmmoGive 30
+Weapon.AmmoUse 2
+Weapon.AmmoGive 28
 Weapon.SlotNumber 2
 Inventory.Pickupmessage "Power Up! Zen Sphere!"
 Obituary "%o's mind was freed from %k's control, but died afterwards."
@@ -26,11 +26,10 @@ TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
 ZSPH B 1 A_Raise
 Loop
 
-
 Fire:
 ZSPH B 0 A_JumpIfNoAmmo("NoAmmo")
 ZSPH B 1
-ZSPH B 0 A_GiveInventory("ZenSphereBall_M1")
+ZSPH B 0 A_FireCustomMissile("ZenSphereBall",0,1,8,0)
 ZSPH CD 2
 ZSPH D 0 A_Refire("Hold")
 ZSPH DDCCBBBB 2
@@ -90,21 +89,30 @@ ZSPH D 0 A_Refire("Hold")
 goto HoldEnd
 
 HoldEnd:
+ZSPH H 0 A_ClearRefire
 ZSPH DDCCBBBB 2 A_TakeInventory("PsychicBallHold",999)
 goto Ready+1
 
+Altfire:
+ZSPH B 0 A_JumpIfNoAmmo("NoAmmo")
+ZSPH B 1
+ZSPH B 0 A_FireCustomMissile("ZenSphereBall",0,1,8,0)
+ZSPH CDDDCCBBBB 2
+Goto Ready+1
+
 NoAmmo:
-ZSPH B 0 ACS_Execute(979,0)
+ZSPH H 0 A_ClearRefire
+ZSPH B 1 ACS_Execute(979,0)
 Goto Ready+1
 }
 }
 
 actor ZenSphereAmmo : Ammo
 {
++INVENTORY.IGNORESKILL
 inventory.amount 1
-inventory.maxamount 30
+inventory.maxamount 28
 }
-
 
 actor ZenSphereBall : ZTPsychicBall
 {
@@ -144,7 +152,7 @@ TNT1 A 0 A_JumpIfInventory("IsDead",1,"StopNow",AAPTR_Tracer)
 TNT1 A 0 A_PlaySoundEx("weapon/blackholebombdetonate", "body", 1)
 TNT1 AAAAAAAA 0 A_SpawnItemEx("ZTPsychicBallGFX2",32,0,random(0,40),random(6,12),0,random(-6,6),random(0,360),1)
 TNT1 A 0 A_Explode(10,64,0,0,42)
-TNT1 A 0 A_TakeFromTarget("ZenSphereAmmo",3)
+TNT1 A 0 A_TakeFromTarget("ZenSphereAmmo",2)
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"StopNow",AAPTR_Tracer)
 TNT1 A 0 A_Warp(AAPTR_Tracer,0,0,0,0,WARPF_NoCheckPosition)
 TNT1 A 7 A_SpawnItemEx("ZTPsychicBallGFX2",32,0,random(0,40),0,0,8,random(0,360),1)
@@ -171,35 +179,6 @@ goto Exploding
 StopNow:
 TNT1 A 0
 stop
-}
-}
-
-
-actor ZenSphereBall_B : ZenSphereBall {Translation "192:192=205:205","198:198=74:74","0:0=244:244"}
-actor ZenSphereBall_R : ZenSphereBall {Translation "192:192=171:171","198:198=41:41","0:0=191:191"}
-actor ZenSphereBall_G : ZenSphereBall {Translation "192:192=104:104","198:198=128:128","0:0=135:135"}
-actor ZenSphereBall_Y : ZenSphereBall {Translation "192:192=229:229","198:198=232:232","0:0=234:234"}
-
-actor ZenSphereBall_M1 : BasicTeamColorPickup
-{
-states
-{
-FireX:
-TNT1 A 0 A_FireCustomMissile("ZenSphereBall",0,1,8)
-goto Done
-//---
-FireB:
-TNT1 A 0 A_FireCustomMissile("ZenSphereBall_B",0,1,8)
-goto Done
-FireR:
-TNT1 A 0 A_FireCustomMissile("ZenSphereBall_R",0,1,8)
-goto Done
-FireG:
-TNT1 A 0 A_FireCustomMissile("ZenSphereBall_G",0,1,8)
-goto Done
-FireY:
-TNT1 A 0 A_FireCustomMissile("ZenSphereBall_Y",0,1,8)
-goto Done
 }
 }
 

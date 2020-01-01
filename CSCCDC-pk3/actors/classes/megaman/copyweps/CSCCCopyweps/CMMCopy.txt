@@ -1,9 +1,8 @@
 actor HellfireCutterWep : BaseMM8BDMWep
 {
-Weapon.AmmoUse 7
-Weapon.AmmoGive 30
+Weapon.AmmoUse 14
+Weapon.AmmoGive 28
 Weapon.SlotNumber 2
-Inventory.Pickupmessage "Power Up! Tank Cannon!"
 Obituary "$OB_MIKECUTTER"
 Tag "$TAG_MIKECUTTER"
 weapon.ammotype "HellfireCutterAmmo"
@@ -35,7 +34,7 @@ Loop
 Fire:
 HFCH S 0 A_JumpIfNoAmmo("NoAmmo")
 HFCH T 0 A_TakeInventory("RollingCutterFlag", 1)
-HFCH T 2 A_GiveInventory("HellFireCutter_M1",1)
+HFCH T 2 A_FireCustomMissile("HellfireCutterCopy",0,1,8,0)
 HFCH UVWXY 2
 Goto Check
 Check:
@@ -52,13 +51,13 @@ Goto Ready+1
 NoAmmo:
 HFCH B 1 ACS_Execute(979,0)
 Goto ReadyNoAmmo
-
 }
 }
 
 actor HellfireCutterAmmo : Ammo
 {
-inventory.amount 3
++INVENTORY.IGNORESKILL
+inventory.amount 1
 inventory.maxamount 28
 }
 
@@ -96,11 +95,6 @@ stop
 }
 }
 
-actor HellfireCutterCopyB : HellfireCutterCopy {translation "208:224=74:74"}
-actor HellfireCutterCopyR : HellfireCutterCopy {translation "208:224=41:41"}
-actor HellfireCutterCopyG : HellfireCutterCopy {translation "208:224=128:128"}
-actor HellfireCutterCopyY : HellfireCutterCopy {translation "208:224=232:232"}
-
 actor ReturningHFCutterCopy : HellfireCutterCopy
 {
 +NOINTERACTION
@@ -130,28 +124,6 @@ RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",300,"SuperDeath")
 RCUT A 0 A_FaceTarget(0,0)
 RCUT A 0 A_SpawnItemEx("ReturningHFCutterCopy",0,0,0,cos(pitch)*24,0,sin(pitch)*24,0,SXF_TRANSFERTRANSLATION)
 stop
-}
-}
-
-actor HellFireCutter_M1 : BasicTeamColorPickup
-{
-States
-{
-FireX:
-TNT1 A 0 A_FireCustomMissile("HellfireCutterCopy",0,1,8,0)
-goto Done
-FireB:
-TNT1 A 0 A_FireCustomMissile("HellfireCutterCopyB",0,1,8,0)
-goto Done
-FireR:
-TNT1 A 0 A_FireCustomMissile("HellfireCutterCopyR",0,1,8,0)
-goto Done
-FireG:
-TNT1 A 0 A_FireCustomMissile("HellfireCutterCopyG",0,1,8,0)
-goto Done
-FireY:
-TNT1 A 0 A_FireCustomMissile("HellfireCutterCopyY",0,1,8,0)
-goto Done
 }
 }
 

@@ -7,7 +7,7 @@ Weapon.SlotNumber 1
 Obituary "$OB_MIKECUTTER"
 Tag "$TAG_MIKECUTTER"
 Inventory.Pickupmessage "Power Up! Hellfire Cutter!"
-DropItem "RollingCutterWep"
+DropItem "HellfireCutterWepCS"
 States
 {
 Ready:

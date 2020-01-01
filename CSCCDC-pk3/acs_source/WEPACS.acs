@@ -155,9 +155,8 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"PistonTremorWepCS", "PistonTremorCopyAmmo", "Piston Tremor", 1.0, "YES", "YES", "SLOT_CLOSE"},
 {"IdolWaveWepCS", "IdolWaveAmmo", "Idol Wave", 1.0, "YES", "YES", "SLOT_RAPID"},
 {"SteelPunchWepCS", "SteelPunchAmmo", "Steel Punch", 1.0, "YES", "YES", "SLOT_CLOSE"},
-
 {"OrbitalMissileWepCS", "OrbitalMissileammo", "Orbital Missile", 1.0, "YES", "YES", "SLOT_CLOSE"},
-{"HellfireCutterWepCS", "HellfireCutterAmmo", "Hellfire Cutter", 1.0, "YES", "YES", "SLOT_CLOSE"},
+{"HellfireCutterWepCS", "HellfireCutterAmmo", "Hellfire Cutter", 0.5, "YES", "YES", "SLOT_CLOSE"},
 {"ZenSphereWepCS", "ZenSphereAmmo", "Zen Sphere", 1.0, "YES", "YES", "SLOT_CLOSE"},
 {"TankCannonWepCS", "TankCannonAmmo", "Tank Cannon", 1.0, "YES", "YES", "SLOT_POWER"},
 

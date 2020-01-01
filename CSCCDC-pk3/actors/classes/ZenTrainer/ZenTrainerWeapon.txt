@@ -21,6 +21,7 @@ Inventory.Pickupmessage "Oh noes"
 Obituary "%o's mind was freed from %k's control, but died afterwards."
 weapon.ammotype "ZenTrainerAmmo1"
 weapon.ammotype2 "ZenTrainerAmmo1"
+DropItem "ZenSphereWepCS"
 States
 {
 Spawn:
