@@ -114,7 +114,7 @@ actor TinyBar : BasicClientside
 {
 +MISSILE
 +FORCEXYBILLBOARD
-VisibleToPlayerClass MegamanC, VocalWomanClass, ZenTrainerClass, GeeClass
+VisibleToPlayerClass MegamanC, CopyRobot, VocalWomanClass, ZenTrainerClass, GeeClass
 xscale 2.5
 yscale 1.5
 States
