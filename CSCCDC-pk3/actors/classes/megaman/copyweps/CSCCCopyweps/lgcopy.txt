@@ -3,11 +3,11 @@ actor NadeSpamWep : BaseMM8BDMWep
 Weapon.AmmoUse 1
 Weapon.AmmoGive 20
 Weapon.SlotNumber 5
-Obituary "%o was blasted by %k's nadespam."
-Inventory.Pickupmessage "Power up! Nade Spam!"
+Obituary "$OB_NADESPAM"
+Inventory.Pickupmessage "$PU_NADESPAM"
 inventory.icon "NADEI" 
 weapon.ammotype "NadeAmmo"
-tag "Nade Spam"
+tag "$TAG_NADESPAM"
 States
 {
 Spawn: 

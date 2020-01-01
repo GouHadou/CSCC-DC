@@ -352,16 +352,13 @@ IsSelected LightningWaveWepCS{DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 1
 IsSelected SteelPunchWepCS{Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected PistonTremorWepCS{Drawbar"BARAMMOT", "BAREMPTY", Ammo1, vertical, 16, 8;}	
 IsSelected IdolWaveWepCS{Drawbar"IWAVEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
-IsSelected RailBusterWepCS
-	{
-		Drawbar"BARAMMO4","BAREMPTY",Ammo1,vertical,16,8;
-		InInventory RailBusterCharge, 1	{DrawBar"BARFLS1", "NOBAR", RailBusterCharge, vertical, 16, 8;}
-	}
-
-	IsSelected ZenSphereWepCS{Drawbar"BARAM100", "BAREMPTY", Ammo1, vertical, 16, 8;}
-	IsSelected OrbitalMissileWepCS{Drawbar"BARAMMOM", "BAREMPTY", Ammo1, vertical, 16, 8;}
-	IsSelected TankCannonWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
-	IsSelected HellFireCutterWepCS{Drawbar"BARAM101", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected RailBusterWepCS{Drawbar"BARAMMO4","BAREMPTY",Ammo1,vertical,16,8;
+	InInventory RailBusterCharge, 1	{DrawBar"BARFLS1", "NOBAR", RailBusterCharge, vertical, 16, 8;}}
+IsSelected ZenSphereWepCS{Drawbar"BARAM100", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected OrbitalMissileWepCS{Drawbar"BARAMMOM", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected TankCannonWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected HellFireCutterWepCS{Drawbar"BARAM101", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected HybridBurstWepCS{Drawbar"GEEAMMO3", "BAREMPTY", Ammo1, vertical, 16, 8;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}

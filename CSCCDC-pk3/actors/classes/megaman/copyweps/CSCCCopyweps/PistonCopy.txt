@@ -3,9 +3,9 @@ actor PistonTremorWep : BaseMM8BDMWep
 Weapon.AmmoUse 4
 Weapon.AmmoGive 28
 Weapon.SlotNumber 6
-Inventory.Pickupmessage "Power Up! Piston Tremor!"
-Obituary "%o couldn't stand their ground against %k's Piston Tremor."
-Tag "Piston Tremor"
+Inventory.Pickupmessage "$PU_PISTONTREMORWEP"
+Obituary "$OB_PISTONPUNCHSTUN"
+Tag "$TAG_PISTONTREMORBOSS"
 weapon.ammotype "PistonTremorCopyAmmo"
 inventory.icon "PISTRE"
 States
@@ -51,7 +51,7 @@ actor PistonExplodeCopy : PistonExplode
 {
 translation "192:192=87:87", "198:198=95:95"
 damagetype "PistonPunchStun2"
-Obituary "%o couldn't stand their ground against %k's Piston Tremor."
+Obituary "$OB_PISTONPUNCHSTUN"
 States
 {
 Spawn:

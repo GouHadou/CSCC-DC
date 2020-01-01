@@ -3,9 +3,9 @@ actor TankCannonWep : BaseMM8BDMWep
 Weapon.AmmoUse 7
 Weapon.AmmoGive 28
 Weapon.SlotNumber 2
-Inventory.Pickupmessage "Power Up! Tank Cannon!"
-Obituary "%o was shell shocked by %k's Tank Cannon."
-Tag "Tank Cannon"
+Inventory.Pickupmessage "$PU_TANKCANNONWEP"
+Obituary "$OB_CLASSICTANKCANNON"
+Tag "$TAG_TANKCANNONWEP"
 weapon.ammotype "TankCannonAmmo"
 inventory.icon "TANKACTI"
 States

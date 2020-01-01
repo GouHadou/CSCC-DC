@@ -159,7 +159,7 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"HellfireCutterWepCS", "HellfireCutterAmmo", "Hellfire Cutter", 0.5, "YES", "YES", "SLOT_CLOSE"},
 {"ZenSphereWepCS", "ZenSphereAmmo", "Zen Sphere", 1.0, "YES", "YES", "SLOT_CLOSE"},
 {"TankCannonWepCS", "TankCannonAmmo", "Tank Cannon", 1.0, "YES", "YES", "SLOT_POWER"},
-
+{"HybridBurstWepCS", "HybridBurstAmmo", "Hybrid Burst", 1.0, "YES", "YES", "SLOT_POWER"},
 
 {"UnixKnife", "UnixCloakAmmo", "", 0.5, "NO", "NO", "SLOT_NONE"},
 {"UnixBlade", "UnixCloakAmmo", "", 0.5, "NO", "NO", "SLOT_NONE"},

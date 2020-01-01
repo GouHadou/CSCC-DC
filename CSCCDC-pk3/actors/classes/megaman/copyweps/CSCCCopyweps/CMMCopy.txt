@@ -6,7 +6,7 @@ Weapon.SlotNumber 2
 Obituary "$OB_MIKECUTTER"
 Tag "$TAG_MIKECUTTER"
 weapon.ammotype "HellfireCutterAmmo"
-Inventory.Pickupmessage "Power Up! Hellfire Cutter!"
+Inventory.Pickupmessage "$PU_HFCUTTER"
 inventory.icon "HELFCI"
 States
 {

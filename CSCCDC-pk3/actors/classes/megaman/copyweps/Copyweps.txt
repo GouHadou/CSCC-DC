@@ -21,3 +21,4 @@
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/ZenCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/TankOppCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/CMMCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/GeeCopy.txt"

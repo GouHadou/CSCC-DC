@@ -342,6 +342,13 @@ graphic PISTRE, 30, 30
    Patch PTREA0, 0, 0
 }
 
+graphic HYBRBI, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch GEE7A0, 0, 0
+}
+
 graphic ORBMSL, 30, 30
 {
    XScale 2.0

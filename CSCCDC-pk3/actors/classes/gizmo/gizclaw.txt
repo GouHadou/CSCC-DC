@@ -3,8 +3,9 @@ actor ClawGlovesWep : CSCCWepBase
 Weapon.AmmoUse 0
 Weapon.AmmoGive 112
 Weapon.SlotNumber 2
-Obituary "%o was scratched up by %k"
-Inventory.Pickupmessage "Power Up! Slash Claw!"
+Obituary "$OB_CLAWGLOVES"
+Inventory.Pickupmessage "$PU_CLAWGLOVES"
+tag "$TAG_CLAWGLOVES"
 weapon.ammotype "ClawGlovesAmmo"
 States
 {
@@ -90,7 +91,7 @@ inventory.maxamount 1
 actor ClawGloves : BasicProjectile
 {
 translation "192:192=88:88", "198:198=95:95"
-Obituary "%o was scratched up by %k"
+Obituary "$OB_CLAWGLOVES"
 PROJECTILE
 +DONTREFLECT
 Radius 3
@@ -242,10 +243,11 @@ actor EternalClawsWep : CSCCWepBase
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28
 Weapon.SlotNumber 1
-Obituary "%o was torn to shreds by %k's Eternal Claws"
+Obituary "$OB_ETERNALCLAWS"
 Inventory.Pickupmessage "You powered up the Claw Gloves! Now they're the Eternal Claws!"
 weapon.ammotype "EternalClawsAmmo"
 inventory.icon "ETERNI"
+tag "$TAG_ETERNALCLAWS"
 DropItem "SlashClawWepCS"
 States
 {
@@ -327,7 +329,7 @@ stop
 actor EternalClaws : BasicProjectile
 {
 translation "192:192=88:88", "198:198=95:95"
-Obituary "%o was torn to shreds by %k's Eternal Claws"
+Obituary "$OB_ETERNALCLAWS"
 PROJECTILE
 +LOOKALLAROUND
 Radius 25

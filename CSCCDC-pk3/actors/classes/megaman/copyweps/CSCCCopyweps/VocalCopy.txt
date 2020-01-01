@@ -3,9 +3,9 @@ actor IdolWaveWep : BaseMM8BDMWep
 Weapon.AmmoUse 2
 Weapon.AmmoGive 30
 Weapon.SlotNumber 2
-Inventory.Pickupmessage "Power Up! Idol Wave!"
-Obituary "%o had their ears destroyed by %k's \ctIdol \crWave\c-."
-Tag "Idol Wave"
+Inventory.Pickupmessage "$PU_IDOLWAVE"
+Obituary "$OB_IDOLWAVE"
+Tag "$TAG_IDOLWAVE"
 weapon.ammotype "IdolWaveAmmo"
 inventory.icon "MUNOZ0"
 States
@@ -68,7 +68,7 @@ PROJECTILE
 +SKYEXPLODE
 +NOGRAVITY
 DamageType "Note"
-Obituary "%o had their ears destroyed by %k's \ctIdol \crWave\c-."
+Obituary "$OB_IDOLWAVE"
 Speed 15
 Damage (8)
 Radius 8

@@ -3,10 +3,11 @@ actor SparkyWep : CSCCWepBase
 Weapon.AmmoUse 25
 Weapon.AmmoGive 100
 Weapon.SlotNumber 2
-Obituary "%o was zapped by %k's lightning shot."
-Inventory.Pickupmessage "Power up! Thunder Bolt!"
+Obituary "$OB_LIGHTNINGWAVEBOSS"
+Inventory.Pickupmessage "$PU_LIGHTNINGWAVEBOSS"
 weapon.ammotype "SparkyClassAmmo"
 DropItem "LightningWaveWepCS"
+tag "$TAG_LIGHTNINGWAVE"
 States
 {
 Ready:
@@ -193,7 +194,7 @@ inventory.maxamount 100
 
 actor LightningWaveStart : BasicProjectile
 {
-Obituary "%o was zapped by %k's lighting wave."
+Obituary "$OB_LIGHTNINGWAVEBOSS2"
 PROJECTILE
 -NOGRAVITY
 +PIERCEARMOR
@@ -223,7 +224,7 @@ actor LightningWaveTrail : BasicProjectile
 PROJECTILE
 +DONTBLAST
 +PIERCEARMOR
-Obituary "%o was zapped by %k's lighting wave."
+Obituary "$OB_LIGHTNINGWAVEBOSS2"
 Translation "192:192=228:228"
 +RIPPER
 Scale 2.0
@@ -294,7 +295,7 @@ Goto Spawn+3
 
 actor LightningShot : BasicFastProjectile
 {
-Obituary "%o was zapped by %k's lightning shot."
+Obituary "$OB_LIGHTNINGWAVEBOSS"
 PROJECTILE
 +RIPPER
 +PIERCEARMOR
@@ -386,7 +387,7 @@ loop
 
 actor LightningIceWaveTrail : LightningWaveTrail
 {
-Obituary "%o was zapped by %k's Lightning Ice Wave."
+Obituary "$OB_LIGHTNINGICEWAVEBOSS"
 Translation "192:192=137:137"
 damagetype "LightningWave"
 States
@@ -409,7 +410,7 @@ actor LightningIceBit : IceBit
 damagetype "IceShard"
 Translation "192:192=137:137"
 speed 5
-Obituary "%o was Conked on the head by one of %k's Lightning Ice chunks."
+Obituary "$OB_LIGHTNINGICEBIT"
 states
 {
 Spawn:
@@ -431,7 +432,7 @@ stop
 actor LightningIceSpike : IceSpike
 {
 +PIERCEARMOR
-Obituary "%o stepped on one of %k's Lightning Ice spikes."
+Obituary "$OB_LIGHTNINGICESPIKE"
 Translation "192:192=137:137", "198:198=95:95"
 Reactiontime 10
 }

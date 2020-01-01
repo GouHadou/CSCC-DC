@@ -3,9 +3,10 @@ actor HydroCannonWep : CSCCWepBase
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
 Weapon.SlotNumber 7
-Obituary "%o was hosed down by %k's Hydro Cannon."
+Obituary "$OB_HYDROCANON"
 weapon.ammotype "HydroCannonAmmo"
 inventory.icon "HYDROI"
+tag "$TAG_HYDROCANNON"
 DropItem "WaterBalloonWepCS"
 States
 {
@@ -56,7 +57,7 @@ inventory.maxamount 28
 actor HydroCannonShot : BasicProjectile
 {
 var int user_damage;
-Obituary "%o was hosed down by %k's Hydro Cannon."
+Obituary "$OB_HYDROCANON"
 PROJECTILE
 +DONTBLAST
 -NOGRAVITY

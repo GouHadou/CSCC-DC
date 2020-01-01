@@ -270,3 +270,8 @@ sprite HFCHV0, 308, 204 {Offset -151, -36 Patch HSPRH0, 0, 0 {Translation "192:1
 sprite HFCHW0, 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "192:192=43:43", "198:198=189:189"}}
 sprite HFCHX0, 312, 108 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "192:192=43:43", "198:198=189:189"}}
 sprite HFCHY0, 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "192:192=43:43", "198:198=189:189"}}
+
+//Hybrid Burst
+sprite GEE7B0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=215:215", "198:198=243:243"}}
+sprite GEE7C0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=215:215", "198:198=243:243"}}
+sprite GEE7D0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=215:215", "198:198=243:243"}}

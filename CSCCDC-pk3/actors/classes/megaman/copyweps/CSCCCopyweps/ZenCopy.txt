@@ -3,9 +3,9 @@ actor ZenSphereWep : BaseMM8BDMWep
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28
 Weapon.SlotNumber 2
-Inventory.Pickupmessage "Power Up! Zen Sphere!"
-Obituary "%o's mind was freed from %k's control, but died afterwards."
-Tag "Zen Sphere"
+Inventory.Pickupmessage "$PU_ZENSPHERE"
+Obituary "$OB_ZENTRAINERWEP"
+Tag "$TAG_ZENSPHERE"
 weapon.ammotype "ZenSphereAmmo"
 inventory.icon "ZENSPI"
 States

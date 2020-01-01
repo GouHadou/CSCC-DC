@@ -210,3 +210,7 @@ graphic VARAM101, 56, 8{patch BARAM101,0,0{rotate 90}}
 //Orbital Missile 
 texture BARAMMOM, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}
 texture VARAMMOM, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}
+
+//Hybrid Burst
+texture GEEAMMO3, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=215:215", "198:198=243:243"}}
+texture GEEVMMO3, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=215:215", "198:198=243:243"}}

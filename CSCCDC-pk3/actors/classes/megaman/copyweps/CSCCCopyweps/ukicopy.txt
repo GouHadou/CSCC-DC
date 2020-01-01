@@ -3,10 +3,10 @@ actor MeteorWep : BaseMM8BDMWep
 Weapon.AmmoUse 28 
 Weapon.AmmoGive 56
 Weapon.SlotNumber 6  
-Inventory.Pickupmessage "Battle Chip slot in! Meteor!"
+Inventory.Pickupmessage "$PU_METEOR"
 weapon.ammotype "MeteorAmmo" 
 inventory.icon "METEI"
-tag "Meteor"
+tag "$TAG_METEOR"
 States
 {
 Spawn:
@@ -114,7 +114,7 @@ stop
 
 actor Meteor
 {
-Obituary "%o was turned into a crater by %k's Meteors."
+Obituary "$OB_METEOR"
 Projectile
 -FORCEXYBILLBOARD
 Damagetype "Meteor"

@@ -2,11 +2,11 @@ actor LaserCannonWep : MissilePunchWep
 {
 Weapon.AmmoUse 1
 Weapon.SlotNumber 2
-Obituary "\ct%k left a darkened hole in %o's heart."
-Inventory.Pickupmessage "Power up! Dark Laser Cannon!"
+Obituary "$OB_LASERCANNON"
+Inventory.Pickupmessage "$PU_LASERCANNON"
 weapon.ammotype "LaserCannonAmmo"
 inventory.icon "LWEPB0"
-Tag "DarkLaser Cannon"
+Tag "$TAG_LASERCANNON"
 damagetype "DarkLaser"
 dropitem "SteelPunchWepCS"
 States

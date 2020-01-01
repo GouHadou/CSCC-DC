@@ -2,11 +2,11 @@ actor MissilePunchWep : CSCCWepBase
 {
 Weapon.AmmoUse 1
 Weapon.SlotNumber 1
-Obituary "%o was destroyed by %k's \chPower Missiles\c-."
-Inventory.Pickupmessage "Power up! Missile Punch!"
+Obituary "$OB_MISSILEPUNCH"
+Inventory.Pickupmessage "$PU_MISSILEPUNCH"
 weapon.ammotype "MissilePunchAmmo"
 inventory.icon "LOSICA0"
-Tag "Missile Punch"
+Tag "$TAG_MISSILEPUNCH"
 dropitem "SteelPunchWepCS"
 States
 {
@@ -167,7 +167,7 @@ stop
 
 actor PowerMissile : BasicFastProjectile
 {
-Obituary "%o was destroyed by %k's \chPower Missiles\c-."
+Obituary "$OB_MISSILEPUNCH"
 PROJECTILE
 +SKYEXPLODE
 +DONTBLAST
@@ -240,7 +240,7 @@ stop
 
 actor PMissileExplosion 
 {
-Obituary "%o was destroyed by %k's \chPower Missiles\c-."
+Obituary "$OB_MISSILEPUNCH"
 PROJECTILE
 +NOINTERACTION
 +NOCLIP
@@ -273,7 +273,7 @@ actor PMissileExplosionY : PMissileExplosion{translation "4:208=229:229", "209:2
 actor MissilePunch : BasicProjectile
 {
 PROJECTILE
-Obituary "%o was crushed by %k's \chMissile Punch\c-."
+Obituary "$OB_MISSILEPUNCH2"
 //+MTHRUSPECIES
 +DONTBLAST
 +THRUGHOST
@@ -443,7 +443,7 @@ actor LDRamAttack
 PROJECTILE
 translation "4:4=194:194", "225:225=241:241"
 +MTHRUSPECIES
-Obituary "%o was knocked down by %k's \chRam\c-."
+Obituary "$OB_LDRAM"
 radius 1
 height 1
 speed 80

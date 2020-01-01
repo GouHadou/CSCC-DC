@@ -1,11 +1,11 @@
 actor TommyGun : CorporalWeaponBase
 {
-Tag "TommyGun"
+Tag "$TAG_TOMMYGUN"
 Weapon.AmmoUse1 1
 Weapon.AmmoGive1 30
 Weapon.AmmoGive2 90
 Weapon.SlotNumber 1
-Obituary "%o was put to sleep with the fishes by %k's Tommy Gun."
+Obituary "$OB_TOMMYGUN"
 weapon.ammotype1 "TommyAmmo"
 weapon.ammotype2 "FatBullets"
 inventory.icon "TOMMYI" 

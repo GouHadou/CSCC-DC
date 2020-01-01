@@ -4,8 +4,8 @@ Weapon.AmmoUse 5
 Weapon.AmmoGive 100
 Weapon.SlotNumber 1
 weapon.ammotype "MP"
-Obituary "%o WAS SLAIN BY %k's FIRE."
-Inventory.Pickupmessage "FIR TREE"
+Obituary "$OB_KORBYFIRE"
+Inventory.Pickupmessage "$PU_KORBYFIRE"
 DropItem "CometWepCS"
 States
 {
@@ -404,8 +404,8 @@ Goto Ready+2
 actor LIT : FIR
 {
 Weapon.SlotNumber 2
-Obituary "%o WAS SLAIN BY %k's LIT."
-Inventory.Pickupmessage "LITLITLITLITLITLITLITLITLIT"
+Obituary "$OB_KORBYLIGHTNING"
+Inventory.Pickupmessage "$PU_KORBYLIGHTNING"
 States
 {
 Deselect:
@@ -525,8 +525,8 @@ actor ICE : FIR
 {
 Weapon.AmmoUse 8
 Weapon.SlotNumber 3
-Obituary "%o WAS SLAIN BY %k's ICE."
-Inventory.Pickupmessage "INTERNAL COMBUSTION ENGINE"
+Obituary "$OB_KORBYICE"
+Inventory.Pickupmessage "$PU_KORBYICE"
 States
 {
 Deselect:
@@ -673,7 +673,7 @@ inventory.maxamount 1000
 
 actor FIR1
 {
-Obituary "%o WAS SLAIN BY %k's FIR."
+Obituary "$OB_KORBYFIRE1"
 PROJECTILE
 +RIPPER
 +MTHRUSPECIES
@@ -704,7 +704,7 @@ stop
 
 actor FIR2 : FIR1
 {
-Obituary "%o WAS SLAIN BY %k's FIR2."
+Obituary "$OB_KORBYFIRE2"
 Radius 32
 Height 32
 damage (20)
@@ -735,7 +735,7 @@ stop
 
 actor FIR3 : FIR2
 {
-Obituary "%o WAS SLAIN BY %k's FIR3."
+Obituary "$OB_KORBYFIRE3"
 Radius 50
 Height 50
 Damage (10)
@@ -894,7 +894,7 @@ goto Done
  // ====| Lightning
 actor LIT1T : BasicFastProjectile
 {
-Obituary "%o WAS SLAIN BY %k'S LIT1."
+Obituary "$OB_KORBYLIGHTNING1"
 damagetype "KLIGHT"
 +PIERCEARMOR
 -SOLID
@@ -925,7 +925,7 @@ stop
 
 actor LIT2T : LIT1T
 {
-Obituary "%o WAS SLAIN BY %k'S LIT2."
+Obituary "$OB_KORBYLIGHTNING2"
 speed 90
 +PIERCEARMOR
 +MTHRUSPECIES
@@ -943,7 +943,7 @@ stop
 
 actor LIT3T : LIT1T
 {
-Obituary "%o WAS SLAIN BY %k'S LIT3."
+Obituary "$OB_KORBYLIGHTNING3."
 +PIERCEARMOR
 +MTHRUSPECIES
 speed 110
@@ -978,7 +978,7 @@ stop
 
 actor LIT1FX 
 {
-Obituary "%o WAS SLAIN BY %k'S LIT1."
+Obituary "$OB_KORBYLIGHTNING1"
 +FORCEYBILLBOARD
 PROJECTILE
 Radius 1
@@ -1004,7 +1004,7 @@ stop
 actor LIT1FXX : LIT1FX
 {
 +DONTBLAST
-Obituary "%o WAS SLAIN BY %k'S LIT1."
+Obituary "$OB_KORBYLIGHTNING1"
 States
 {
 Spawn:
@@ -1017,7 +1017,7 @@ stop
 
 actor LIT2FXX : LIT1FXX
 {
-Obituary "%o WAS SLAIN BY %k'S LIT2."
+Obituary "$OB_KORBYLIGHTNING2"
 States
 {
 Spawn:
@@ -1030,7 +1030,7 @@ stop
 
 actor LIT3FXX : LIT1FXX
 {
-Obituary "%o WAS SLAIN BY %k'S LIT3."
+Obituary "$OB_KORBYLIGHTNING3"
 States
 {
 Spawn:
@@ -1043,7 +1043,7 @@ stop
 
 actor LIT2FX : LIT1FX
 {
-Obituary "%o WAS SLAIN BY %k'S LIT2."
+Obituary "$OB_KORBYLIGHTNING2"
 States
 {
 Spawn:
@@ -1057,7 +1057,7 @@ stop
 
 actor LIT3FX : LIT1FX
 {
-Obituary "%o WAS SLAIN BY %k'S LIT3."
+Obituary "$OB_KORBYLIGHTNING3"
 States
 {
 Spawn:
@@ -1231,7 +1231,7 @@ actor ICE1SPAWNER : ICE1
 +RIPPER
 +THRUGHOST
 damage (1)
-obituary "%o WAS SLAIN BY %k'S ICE."
+obituary "$OB_KORBYICE"
 reactiontime 2
 States
 {
@@ -1265,7 +1265,7 @@ actor ICE2SPAWNER : ICE1
 +THRUGHOST
 -DONTBLAST
 damage (1)
-obituary "%o WAS SLAIN BY %k'S ICE2."
+obituary "$OB_KORBYICE2"
 reactiontime 4
 States
 {
@@ -1299,7 +1299,7 @@ actor ICE3SPAWNER : ICE1
 +THRUGHOST
 -DONTBLAST
 damage (1)
-obituary "%o WAS SLAIN BY %k'S ICE3."
+obituary "$OB_KORBYICE3"
 reactiontime 6
 States
 {
@@ -1334,7 +1334,7 @@ RenderStyle "Translucent"
 Alpha 0.9
 bouncecount 5
 damagetype "KICE"
-obituary "%o WAS SLAIN BY %k'S ICE."
+obituary "$OB_KORBYICE"
 radius 16
 height 16
 damage (6)
@@ -1393,7 +1393,7 @@ RenderStyle "Translucent"
 Alpha 0.9
 bouncecount 5
 damagetype "KICE"
-obituary "%o WAS SLAIN BY %k'S ICE3."
+obituary "$OB_KORBYICE3"
 radius 16
 speed 0
 height 16
@@ -1540,7 +1540,7 @@ PROJECTILE
 +RIPPER
 +MTHRUSPECIES
 damagetype "BadBreath"
-Obituary "%o WAS SLAIN %k's BAD BREATH."
+Obituary "$OB_BADBREATH"
 Radius 16
 Height 16
 scale 2.5
@@ -1593,7 +1593,7 @@ goto Done
 actor KFLASH : FlashStopper
 {
 damagetype "KFLASH"
-Obituary "%o WAS HUMILIATED BY %k's FLASH."
+Obituary "$OB_FLASH"
 States
 {
 Spawn:
@@ -1608,7 +1608,7 @@ stop
 actor FlamethrowerK : BadBreath
 {
 damagetype "KFlamethrower"
-Obituary "%o WAS SLAIN BY %k's FLAMETHROWER."
+Obituary "$OB_KFLAMETHROWER"
 speed 25
 Radius 8
 Height 8
@@ -1657,7 +1657,7 @@ goto Done
 
 actor KSD
 {
-Obituary "%o WAS SLAIN BY %k's SELF-DESTRUCT."
+Obituary "$OB_SELFDESTRUCT"
 damagetype "KSD"
 speed 0
 damage 0
@@ -1678,7 +1678,7 @@ actor KNeedle
 PROJECTILE
 +MTHRUSPECIES
 +FORCEXYBILLBOARD
-Obituary "%o WAS SLAIN BY %k's THOUSAND NEEDLES."
+Obituary "$OB_THOUSANDNEEDLES"
 damagetype "ThousandNeedle"
 Radius 8
 Height 2
@@ -1803,7 +1803,7 @@ goto Done
 
 actor Slowga
 {
-Obituary "%o WAS SLAIN BY BY %k's SLOWGA."
+Obituary "$OB_SLOWGA"
 -SOLID
 +NOGRAVITY
 +DONTBLAST
@@ -1893,7 +1893,7 @@ actor AquaBreath : FlamethrowerK
 {
 -RIPPER
 damagetype "KAquaBreath"
-Obituary "%o WAS SLAIN BY %k's AQUA BREATH."
+Obituary "$OB_AQUABREATH"
 speed 25
 damage (7)
 States
@@ -1957,7 +1957,7 @@ PROJECTILE
 +MTHRUSPECIES
 +FORCEXYBILLBOARD
 +RIPPER
-Obituary "%o WAS SLAIN BY %k's BLASTER."
+Obituary "OB_KBLASTER"
 damagetype "KBlaster"
 Radius 16
 Height 16
@@ -2031,7 +2031,7 @@ goto Done
 actor MatraMagic : DiveMissile
 {
 damagetype "KMatraMagic"
-obituary "%o WAS SLAIN BY %k's MATRA MAGIC."
+obituary "$OB_MATRAMAGIC"
 damage (8)
 ReactionTime 175
 States
@@ -2082,7 +2082,7 @@ PROJECTILE
 +MTHRUSPECIES
 +FORCEXYBILLBOARD
 +DONTBLAST
-Obituary "%o WAS SLAIN BY %k's LIMIT GLOVE."
+Obituary "$OB_LIMITGLOVE"
 damagetype "KLimitGlove"
 Radius 40
 Height 40

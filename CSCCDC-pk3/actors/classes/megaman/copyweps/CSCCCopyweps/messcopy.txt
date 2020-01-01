@@ -3,10 +3,10 @@ actor GouhadouWep : BaseMM8BDMWep
 Weapon.AmmoUse 1
 Weapon.AmmoGive 28
 Weapon.SlotNumber 2
-Obituary "%o didn't block %k's Gou Hadouken."
+Obituary "$OB_GOUHADOUBOSS"
 weapon.ammotype "GouhadouAmmo"
-Inventory.Pickupmessage "Power up! Gou Hadouken!"
-Tag "Gou Hadouken"
+Inventory.Pickupmessage "$PU_GOUHADOUWEP"
+Tag "$TAG_GOUHADOUWEP"
 inventory.icon "TEMAGOU"
 States
 {

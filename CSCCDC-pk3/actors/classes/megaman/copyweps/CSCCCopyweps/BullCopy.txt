@@ -3,12 +3,12 @@ actor RailBusterWep : BaseMM8BDMWep
 Weapon.AmmoUse 7
 Weapon.AmmoGive 28
 Weapon.SlotNumber 3
-Inventory.Pickupmessage "Picked up a weird sniper rifle! jeez."
+Inventory.Pickupmessage "$PU_RAILBUSTER"
 Weapon.AmmoType "RailBusterAmmo"
 Inventory.Icon "BullItem"
-Obituary "%o was sniped by %k's sniper rifle."
+Obituary "$OB_RAILBUSTER"
 +WEAPON.NOAUTOAIM
-Tag "Sniper Rifle"
+Tag "$TAG_RAILBUSTER"
 States
 {
 Spawn:
@@ -50,6 +50,11 @@ RailPower300: BWEP B 0 A_RailAttack(24,8,0,"DarkGreen","Yellow") goto FireReleas
 RailPower400: BWEP B 0 A_RailAttack(30,8,0,"DarkGreen","Orange") goto FireRelease
 RailPower500: BWEP B 0 A_RailAttack(36,8,0,"DarkGreen","Red") goto FireRelease
 
+Altfire:
+BWEP B 0 A_JumpIfNoAmmo("NoAmmo")
+BWEP B 1 A_GiveInventory("RailBusterCharge",3)
+BWEP B 0 A_RailAttack(4,8,0,"Gray","White")
+goto FireRelease
 FireRelease:
 BWEP B 0 A_TakeInventory("RailBusterAmmo",7)
 BWEP CDDDDDDCCB 3 A_TakeInventory("RailBusterCharge",999)

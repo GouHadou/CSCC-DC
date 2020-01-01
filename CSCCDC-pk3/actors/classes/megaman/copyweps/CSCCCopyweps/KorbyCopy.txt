@@ -4,10 +4,10 @@ Weapon.AmmoUse 5
 Weapon.AmmoGive 28
 Weapon.SlotNumber 5
 weapon.ammotype "CometAmmo"
-Obituary "%o was impacted by %k's comet."
-Inventory.Pickupmessage "Power Up! Comet!"
+Obituary "$OB_COMET"
+Inventory.Pickupmessage "$PU_COMET"
 inventory.icon "COMETIC"
-tag "Comet"
+tag "$TAG_COMET"
 States
 {
 Spawn:

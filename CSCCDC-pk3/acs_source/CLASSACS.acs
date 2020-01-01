@@ -96,8 +96,9 @@ For(int i = 0;i < ServerMax; i++)
 	}
 }
 
-script "CSACS_MedivisionScript" (void) CLIENTSIDE
+script "CSACS_MedivisionScript" (int Weapon) CLIENTSIDE
 { 
+if(Weapon==1){str WeaponRequired = GetWeapon();}
 int Target_TID;
 int PlayersTeam;
 str TeamTag; 
@@ -115,6 +116,7 @@ Switch(PlayerTeam())
 while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 	{
 	Delay(1);
+	if(Weapon==1 && StrIcmp(GetWeapon(),WeaponRequired)!=0){terminate;}
 	PlayersTeam = GetPlayerInfo(ActivatorTID()-1000, PLAYERINFO_TEAM);
 	For(int p = 0; p < ServerMax; p++)
 		{
