@@ -64,7 +64,7 @@ Height 10
 scale 2.5
 damage (35)
 speed 77
-damagetype "PowerStone"
+damagetype "GizmoStone"
 States
 {
 Spawn:
