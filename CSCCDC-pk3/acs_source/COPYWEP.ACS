@@ -2,6 +2,42 @@
 //#include "zcommon.acs"
 //#include "CSCCLIB.acs"
 
+#DEFINE CSCC_WEAPONTIMER 1050 //30 seconds
+
+int DroppedStateRefresh = 0;
+
+script "CSACS_DroppedStateRefreshScript_O" OPEN 
+{
+while(true) 
+    {
+    if(DroppedStateRefresh>0) 
+        {
+        DroppedStateRefresh--;
+        }
+    Delay(1);
+	}
+}
+
+script "CSACS_DroppedStateRefreshScript_E" ENTER 
+{
+DroppedStateRefresh = 2;
+}
+
+script "CSACS_DroppedStateRefreshScript_R" RESPAWN 
+{
+DroppedStateRefresh = 2;
+}
+
+function void CSCC_SyncDropped (int Check)
+{
+if(Check != 1 || DroppedStateRefresh==1)
+    {
+    bool i = CheckFlag(0,"DROPPED");
+    GiveInventory(StrParam(s:"CSCC_ChangeFlagDropped",i:!i),1);
+    GiveInventory(StrParam(s:"CSCC_ChangeFlagDropped",i:i),1);
+    }
+}
+
 #DEFINE MAX_FAKEWEPS 97
 
 str FakeWeaponInfo[MAX_FAKEWEPS][5] = {
@@ -186,14 +222,14 @@ str NopeState = StrParam(s:WeaponSet,s:"Translucent");
 //Normal Handler
 if(StateSet == 0)
 {
-if(!CheckActorInventory(pickupTID,WeaponType)||CheckInventory("CSCC_ChangeFlagDropped")){SetActorState(0,"CSCC_DefaultSpawn");}
+if(!CheckActorInventory(pickupTID,WeaponType)||OpaqueCheck()){SetActorState(0,"CSCC_DefaultSpawn");}
 else{SetActorState(0,"CSCC_TranslucentSpawn");} 
 }
 
 //Gizmo Handler
 if(StateSet == 1)
 {
-if(!CheckActorInventory(pickupTID,WeaponType)||CheckInventory("CSCC_ChangeFlagDropped")){SetActorState(0,WeaponSet);}
+if(!CheckActorInventory(pickupTID,WeaponType)||OpaqueCheck()){SetActorState(0,WeaponSet);}
 else{SetActorState(0,NopeState);}
 }
 
@@ -202,7 +238,7 @@ if(StateSet == 3)
 {
 str WeaponToGivePowerup = StrParam(s:WeaponType,s:"DelayPickup");
 if(!CheckActorInventory(pickupTID,WeaponType) && !CheckActorInventory(pickupTID,WeaponToGivePowerup)){SetActorState(0,WeaponSet);}
-else if(CheckInventory("CSCC_ChangeFlagDropped")){SetActorState(0,WeaponSet);}
+else if(OpaqueCheck()){SetActorState(0,WeaponSet);}
 else{SetActorState(0,NopeState);}
 }
 
@@ -210,15 +246,16 @@ else{SetActorState(0,NopeState);}
 
 function bool OpaqueCheck (void)
 {
-return (CheckInventory("CSCC_ChangeFlagDropped"));
+return (CheckFlag(0,"DROPPED"));
 }
 
 script "CSACS_FakeWeaponPickup" (void)
 {
+int WeaponTimer = 0;
+CSCC_SyncDropped(0);
 ServerMAX = GetMaxPlayers();
 int WeaponStatus = 0;
 str WeaponToGive = "";
-if(CheckFlag(0,"DROPPED")){GiveInventory("CSCC_ChangeFlagDropped",1);}
 while(CheckFlag(0,"SPECIAL"))
     {
     for(int p = 0; p < ServerMAX; p++)
@@ -241,6 +278,12 @@ while(CheckFlag(0,"SPECIAL"))
                 }
             }
         }
+    CSCC_SyncDropped(1);
+    if(CheckFlag(0,"DROPPED"))
+        {
+        if(WeaponTimer<CSCC_WEAPONTIMER-1){WeaponTimer++; Log(i:WeaponTimer);}
+        else{Log(i:WeaponTimer); Thing_Remove(0);}
+        }
     Delay(1);
     }
 }
@@ -261,7 +304,7 @@ if(ValidForWeapon(tid)==2)
     if(CheckFlag(0,"DROPPED") || !CheckActorInventory(tid,WeaponToGive))
         {
         ACS_NamedExecuteAlways("CSACS_CustomPickupMessage",0,tid,WeaponToGive);
-        ACS_NamedExecuteAlways("CSACS_CustomPickupSound",0,tid);
+        PlaySound(0,"weapon/weaponup");
         GiveActorInventory(tid,WeaponToGive,1); 
         ToStayOrNotToStay();
         }
@@ -274,7 +317,8 @@ if(ValidForWeapon(tid)==4)
     if(CheckFlag(0,"DROPPED"))
         {
         ACS_NamedExecuteAlways("CSACS_CustomPickupMessage",0,tid,WeaponToGive);
-        ACS_NamedExecuteAlways("CSACS_CustomPickupSound",0,tid,1);
+        SetMugshotState("Grin");
+        PlaySound(0,"weapon/weaponup");
         GiveActorInventory(tid,WeaponToGivePowerup,1); 
         GiveActorInventory(tid,WeaponToGive,1); 
         ToStayOrNotToStay();
@@ -282,7 +326,8 @@ if(ValidForWeapon(tid)==4)
     else if(!CheckActorInventory(tid,WeaponToGivePowerup) && !CheckActorInventory(tid,WeaponToGive))
         {
         ACS_NamedExecuteAlways("CSACS_CustomPickupMessage",0,tid,WeaponToGive);
-        ACS_NamedExecuteAlways("CSACS_CustomPickupSound",0,tid,1);
+        SetMugshotState("Grin");
+        PlaySound(0,"weapon/weaponup");
         GiveActorInventory(tid,WeaponToGivePowerup,1); 
         GiveActorInventory(tid,WeaponToGive,1); 
         ToStayOrNotToStay();

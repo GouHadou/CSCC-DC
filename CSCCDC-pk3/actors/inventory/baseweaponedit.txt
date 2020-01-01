@@ -93,3 +93,23 @@ actor CorpFragGrenadeDelayPickup : Powerup
 {
 Powerup.Duration -60
 }
+
+actor CSCC_ChangeFlagDropped1 : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_ChangeFlag("DROPPED",1)
+stop
+}
+}
+
+actor CSCC_ChangeFlagDropped0 : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_ChangeFlag("DROPPED",0)
+stop
+}
+}

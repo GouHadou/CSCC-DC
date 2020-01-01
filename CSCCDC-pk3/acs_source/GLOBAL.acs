@@ -147,7 +147,7 @@ script 998 (int weap, int nosound)
 		}
 	
 	If(IsTeamGame==0 && CheckInventory("MorphFlag")==1){terminate;}
-	else{Thing_SetTranslation(0, weap); PlayerTranslation[PlayerNumber()] = weap;}
+	else{Thing_SetTranslation(0, weap); PlayerTranslation[PlayerNumber()] = weap; SetCvar(StrParam(s:"SV_TRANSLATION",i:PlayerNumber()),weap);}
 }
 
 //Best colors ever
@@ -162,11 +162,11 @@ While(GetActorProperty(0,APROP_HEALTH)>0 && !CheckInventory("IsDead"))
 	If(Unix==1)
 	{
 	If(CheckInventory("UnixKnife")&&!CheckInventory("UnixDisguiseFlag")){terminate;} 
-	else{Thing_SetTranslation(0, CopyColor); PlayerTranslation[PlayerNumber()] = CopyColor;}
+	else{Thing_SetTranslation(0, CopyColor); PlayerTranslation[PlayerNumber()] = CopyColor; SetCvar(StrParam(s:"SV_TRANSLATION",i:PlayerNumber()),CopyColor);}
 	}
 	else
 	{
-	If(!CheckInventory("NoColorFlag")){Thing_SetTranslation(0, CopyColor); PlayerTranslation[PlayerNumber()] = CopyColor;}
+	If(!CheckInventory("NoColorFlag")){Thing_SetTranslation(0, CopyColor); PlayerTranslation[PlayerNumber()] = CopyColor; SetCvar(StrParam(s:"SV_TRANSLATION",i:PlayerNumber()),CopyColor);}
 	}
 	CopyColor++;
 	If(CopyColor>407){CopyColor = 401;}
@@ -178,6 +178,7 @@ Script "CSACS_UnixColors" (int color)
 {
 Thing_SetTranslation(0,color);
 PlayerTranslation[PlayerNumber()] = color;
+SetCvar(StrParam(s:"SV_TRANSLATION",i:PlayerNumber()),color);
 }
 
 // Various per player scripts

@@ -1,4 +1,4 @@
-actor StoneCannonWep : Weapon
+actor StoneCannonWep : CSCCWepBase
 {
 Weapon.AmmoUse 2
 Weapon.AmmoGive 28

@@ -151,12 +151,12 @@ script "UnixDeath" DEATH
 if(CheckInventory("UnixKnife")) GiveInventory("UnixClearDisguise",1);
 }
 
-Script "DisguisePropWarper" (int Copy) CLIENTSIDE
+Script "DisguisePropWarper" (void) CLIENTSIDE
 {
 	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
 	while(CheckActorInventory(Player,"UnixDisguiseFlag")) {
 		SetActorProperty(0,APROP_Alpha,GetActorProperty(Player,APROP_Alpha));
-		if(Copy==1){Thing_SetTranslation(0,ACS_NamedExecuteWithResult("core_copytranslation",0));}
+		Thing_SetTranslation(0,GetCvar(strParam(s:"SV_TRANSLATION",i:Player-1000)));
 		Delay(1);
 	}
 	Thing_Remove(0);
