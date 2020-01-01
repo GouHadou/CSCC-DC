@@ -7,6 +7,26 @@ States
 CSCC_CustomPickup:
 TNT1 A 0
 goto HideDoomish
+CSCC_GizmoFlameTranslucent:
+FLME E 5 A_SetTranslucent(0.5, 0)
+FLME E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_GizmoHydroTranslucent:
+HYDR E 5 A_SetTranslucent(0.5, 0)
+HYDR E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_GizmoLightningTranslucent:
+LGHT E 5 A_SetTranslucent(0.5, 0)
+LGHT E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_GizmoStoneTranslucent:
+WEA2 J 5 A_SetTranslucent(0.5, 0)
+WEA2 J 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_GizmoFrostTranslucent:
+FRST E 5 A_SetTranslucent(0.5, 0)
+FRST E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
 CSCC_GizmoFlame:
 FLME E 5 A_SetTranslucent(1.0, 0)
 FLME E 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
@@ -61,6 +81,8 @@ TNT1 A 0 Thing_Remove(0)
 stop
 }
 }
+
+actor CSCC_ChangeFlagDropped : Once {}
 
 actor CorpGrandDadDelayPickup : Powerup
 {

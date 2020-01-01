@@ -202,6 +202,7 @@ GiveInventory("KilledMeStock", KilledMeStockNum);
 //--==End Gives==--
 GiveInventory("CopyRemover", 1);
 ACS_NamedExecuteAlways("HUD_NUMBER_VAR_CHECK_RESPAWN",0);
+GiveInventory("IsInGame",1);
 Switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
 {
 Case 0:
