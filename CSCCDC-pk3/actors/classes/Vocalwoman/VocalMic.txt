@@ -271,22 +271,22 @@ goto One
 One:
 VWMN A 1
 VWMN A 0 A_Countdown
-VWMN A 0 A_JumpIfInTargetInventory("NoteBombFlag",1,"One")
+VWMN A 1 A_JumpIfInTargetInventory("NoteBombFlag",1,"One")
 goto Death2
 Two:
 VWMN B 1
 VWMN B 0 A_Countdown
-VWMN B 0 A_JumpIfInTargetInventory("NoteBombFlag",1,"Two")
+VWMN B 1 A_JumpIfInTargetInventory("NoteBombFlag",1,"Two")
 goto Death2
 Three:
 VWMN C 1
 VWMN C 0 A_Countdown
-VWMN C 0 A_JumpIfInTargetInventory("NoteBombFlag",1,"Three")
+VWMN C 1 A_JumpIfInTargetInventory("NoteBombFlag",1,"Three")
 goto Death2
 Four:
 VWMN D 1
 VWMN D 0 A_Countdown
-VWMN D 0 A_JumpIfInTargetInventory("NoteBombFlag",1,"Four")
+VWMN D 1 A_JumpIfInTargetInventory("NoteBombFlag",1,"Four")
 goto Death2
 Death:
 TNT1 A 0 A_TakeFromTarget("NoteBombFlag",1)
