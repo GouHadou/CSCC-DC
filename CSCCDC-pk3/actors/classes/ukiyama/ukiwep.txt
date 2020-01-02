@@ -836,19 +836,11 @@ actor UkiShotgunShotR : UkiShotgunShot {translation "192:192=171:171", "198:198=
 actor UkiShotgunShotG : UkiShotgunShot {translation "192:192=104:104", "198:198=128:128", "210:210=104:104"}
 actor UkiShotgunShotY : UkiShotgunShot {translation "192:192=229:229", "198:198=232:232", "210:210=229:229"}
 
-actor UkiShotMainFire : CustomInventory
+actor UkiShotMainFire : BasicTeamColorPickup
 {
 States
 {
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
-TNT1 A 0 A_Jump(256,"ShotChosen")
-goto ShotChosen
-ShotChosen:
+FireX:
 TST1 A 0 A_FireCustomMissile("UkiShot",0,0,8,0)
 stop
 FireB:
@@ -870,7 +862,7 @@ actor UkiSnipeShotMainFire : UkiShotMainFire
 {
 States
 {
-ShotChosen:
+FireX:
 TST1 A 0 A_FireCustomMissile("UkiSnipeShot",0,0,8,0)
 stop
 FireB:
@@ -892,7 +884,7 @@ actor UkiRapidShotMainFire : UkiShotMainFire
 {
 States
 {
-ShotChosen:
+FireX:
 TST1 A 0 A_FireCustomMissile("UkiRapidShot",random2(3),1,8,0)
 stop
 FireB:
@@ -914,7 +906,7 @@ actor UkiShotgunShotMainFire : UkiShotMainFire
 {
 States
 {
-ShotChosen:
+FireX:
 UKIQ B 0 A_FireCustomMissile("UkiShotgunShot",Random(-1, 1),0,8,0,0,0) 
 UKIQ B 0 A_FireCustomMissile("UkiShotgunShot",random(5,-5),0,8,0,0,random(1,-1))
 UKIQ B 0 A_FireCustomMissile("UkiShotgunShot",random(5,-5),0,8,0,0,random(3,-3))

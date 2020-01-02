@@ -829,171 +829,121 @@ stop
 
 //Team color stuff
 
-actor PiercingSleep_M1 : CustomInventory
+actor PiercingSleep_M1 : BasicTeamColorPickup
 {
 inventory.amount 1
 inventory.maxamount 1
 States
 {
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
-goto Default
-Default:
+FireX:
 TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuff",0,0,0,140,48,0,"PiercingBulletTrail")
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffB",0,0,0,140,48,0,"PiercingBulletTrailB")
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffR",0,0,0,140,48,0,"PiercingBulletTrailR")
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffO",0,0,0,140,48,0,"PiercingBulletTrailO")
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_RailAttack(40,8,0,0,0,0,0,"PiercingRailPuffP",0,0,0,140,48,0,"PiercingBulletTrailP")
 stop
 }
 }
 
-actor PiercingSleep_M2 : CustomInventory
+actor PiercingSleep_M2 : BasicTeamColorPickup
 {
 inventory.amount 1
 inventory.maxamount 1
 States
 {
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
-goto Default
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("BullSleeperBullet",0,0,8)
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("BullSleeperBulletB",0,0,8)
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("BullSleeperBulletR",0,0,8)
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("BullSleeperBulletO",0,0,8)
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("BullSleeperBulletP",0,0,8)
 stop
 }
 }
 
-actor SplitterSiphon_M2 : CustomInventory
+actor SplitterSiphon_M2 : BasicTeamColorPickup
 {
 inventory.amount 1
 inventory.maxamount 1
 States
 {
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
-goto Default
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("BullSiphonBullet",0,0,8)
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("BullSiphonBulletB",0,0,8)
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("BullSiphonBulletR",0,0,8)
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("BullSiphonBulletO",0,0,8)
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("BullSiphonBulletP",0,0,8)
 stop
 }
 }
 
-actor BurstConfusion_M1 : CustomInventory
+actor BurstConfusion_M1 : BasicTeamColorPickup
 {
 inventory.amount 1
 inventory.maxamount 1
 States
 {
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
-goto Default
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("BullBurstBullet",0,1,8)
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("BullBurstBulletB",0,1,8)
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("BullBurstBulletR",0,1,8)
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("BullBurstBulletO",0,1,8)
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("BullBurstBulletP",0,1,8)
 stop
 }
 }
 
-actor BurstConfusion_M2 : CustomInventory
+actor BurstConfusion_M2 : BasicTeamColorPickup
 {
 inventory.amount 1
 inventory.maxamount 1
 States
 {
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
-goto Default
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("BullConfussionBullet",0,1,8)
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("BullConfussionBulletB",0,1,8)
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("BullConfussionBulletR",0,1,8)
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("BullConfussionBulletO",0,1,8)
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("BullConfussionBulletP",0,1,8)
 stop
 }

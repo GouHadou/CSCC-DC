@@ -318,31 +318,23 @@ actor TankOperatorShotGunBulletR : TankOperatorShotGunBullet {Translation "4:214
 actor TankOperatorShotGunBulletC : TankOperatorShotGunBullet {Translation "4:214=104:104", "215:215=128:128" MissileType "TankMachinegunShotFXC"}
 actor TankOperatorShotGunBulletK : TankOperatorShotGunBullet {Translation "4:214=229:229", "215:215=232:232" MissileType "TankMachinegunShotFXK"}
 
-actor TankOperator_FootMPickup : CustomInventory
+actor TankOperator_FootMPickup : BasicTeamColorPickup
 {
 States
 {
-Pickup:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"LightFire")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"WilyFire")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"CossackFire")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"KingFire")
-TNT1 A 0 A_Jump(256,"Default")
-goto Default
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("TankOperatorMachinegunShot",random(-2,2),1,8,0,0,random(-1,1))
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("TankOperatorMachinegunShotL",random(-2,2),1,8,0,0,random(-1,1))
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("TankOperatorMachinegunShotR",random(-2,2),1,8,0,0,random(-1,1))
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("TankOperatorMachinegunShotC",random(-2,2),1,8,0,0,random(-1,1))
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("TankOperatorMachinegunShotK",random(-2,2),1,8,0,0,random(-1,1))
 stop
 }
@@ -352,19 +344,19 @@ actor TankOperator_FootAPickup : TankOperator_FootMPickup
 {
 States
 {
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("TankOperatorShotGunBullet",random(-6,6),0,8,0,0,random(-4,4))
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("TankOperatorShotGunBulletL",random(-6,6),0,8,0,0,random(-4,4))
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("TankOperatorShotGunBulletR",random(-6,6),0,8,0,0,random(-4,4))
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("TankOperatorShotGunBulletC",random(-6,6),0,8,0,0,random(-4,4))
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("TankOperatorShotGunBulletK",random(-6,6),0,8,0,0,random(-4,4))
 stop
 }
@@ -374,19 +366,19 @@ actor TankOperator_TankMPickup : TankOperator_FootMPickup
 {
 States
 {
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("ClassicTankShot",0,0,0,30)
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("ClassicTankShotL",0,0,0,30)
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("ClassicTankShotR",0,0,0,30)
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("ClassicTankShotC",0,0,0,30)
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("ClassicTankShotK",0,0,0,30)
 stop
 }
@@ -396,19 +388,19 @@ actor TankOperator_TankAPickup : TankOperator_FootMPickup
 {
 States
 {
-Default:
+FireX:
 TNT1 A 0 A_FireCustomMissile("ClassicTankMachinegunShot",0,0,0,24)
 stop
-LightFire:
+FireB:
 TNT1 A 0 A_FireCustomMissile("ClassicTankMachinegunShotL",0,0,0,24)
 stop
-WilyFire:
+FireR:
 TNT1 A 0 A_FireCustomMissile("ClassicTankMachinegunShotR",0,0,0,24)
 stop
-CossackFire:
+FireG:
 TNT1 A 0 A_FireCustomMissile("ClassicTankMachinegunShotC",0,0,0,24)
 stop
-KingFire:
+FireY:
 TNT1 A 0 A_FireCustomMissile("ClassicTankMachinegunShotK",0,0,0,24)
 stop
 }
