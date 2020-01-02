@@ -4,6 +4,7 @@
 #include "actors/baseactors.txt"
 
 #include "actors/inventory/CustomRecover.txt"
+#include "actors/inventory/CustomItem.txt"
 #include "actors/inventory/GiverPackage.txt"
 #include "actors/inventory/HealerUtilities.txt"
 

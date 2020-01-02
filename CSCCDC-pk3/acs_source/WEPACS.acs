@@ -535,6 +535,7 @@ Script "CSACS_ItemSet" (void) CLIENTSIDE
 {
 int StateSet = 0;
 SetActivator(consolePlayerNumber()+1000);
+if(CheckActorClass(0,"MegamanC")||CheckActorClass(0,"CopyRobot")){SetActorState(999,"DefaultSpawn"); StateSet=1;}//Energy balancer bonus
 if(CheckActorClass(0,"KorbyClass")){SetActorState(999,"KorbySpawn"); StateSet=1;}
 for(int i = 0; i < MAX_WEAPONS_GLOBAL; i++)
 	{
