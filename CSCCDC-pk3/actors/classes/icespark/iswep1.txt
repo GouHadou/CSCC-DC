@@ -71,7 +71,7 @@ Goto Select+1
 Fire:
 ICEH A 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
 ICEH A 0 A_JumpIfInventory("IsIceSparky", 1, "Fire2")
-ICEH C 0 A_SpawnItemEx ("IceBladeSlash",cos(-pitch)*32,-16,24+(sin(-pitch)*32))
+ICEH C 0 A_SpawnItemEx ("IceBladeSlash",cos(-pitch)*32,-16,24+(sin(-pitch)*32), 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 ICEH C 2 A_SpawnItemEx ("IceBladeFX2",cos(-pitch)*32,-16,24+(sin(-pitch)*32), 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 ICEH D 0 A_SpawnItemEx ("IceBladeSlash",cos(-pitch)*32,-8,24+(sin(-pitch)*32), 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 ICEH D 2 A_SpawnItemEx ("IceBladeFX2",cos(-pitch)*32,-8,24+(sin(-pitch)*32), 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
@@ -95,21 +95,8 @@ SPHA A 0 A_JumpIfInventory("IceSparkyFusion", 1, "Fire2")
 ICEH A 0 A_SelectWeapon("SparkyWep")
 Goto Ready+2
 Fire2:
-/*
-ISFS A 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
-ISFS A 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
-ISFS C 2 A_SpawnItemEx("LightningIceBladeFX", 32, -16, 24)
-ISFS D 2 A_SpawnItemEx("LightningIceBladeFX", 32, -8, 24)
-ISFS E 2 A_SpawnItemEx("LightningIceBladeFX", 32, 8, 24)
-ISFS F 2 A_SpawnItemEx("LightningIceBladeFX", 32, 16, 24)
-ISFS F 0 A_FireCustomMissile("LightningIceBlade",0,0,8,0)
-ISFS GF 2
-ISFS C 2 
-ISFS B 2
-ISFS A 10
-*/
-ISFS A 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
-ISFS A 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
+ISFS A 0 A_SpawnItemEx("IceShadow", -8, -8, 0, 0, 1)
+ISFS A 0 A_SpawnItemEx("SparkyShadow", -8, 8, 0, 0, -1)
 ISFS G 0 A_FireCustomMissile("LightningIceBlade",0,0,8,0)
 ISFS GF 2
 ISFS F 0 A_SpawnItemEx("LightningIceBladeFX", 32, 16, 24, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
