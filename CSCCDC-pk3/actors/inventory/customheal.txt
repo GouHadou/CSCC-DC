@@ -102,3 +102,82 @@ TNT1 A 0 A_ChangeFlag("INVISIBLE",1)
 goto Held
 }
 }
+
+
+actor WeaponEnergyCS : WeaponEnergy replaces WeaponEnergy
+{
+States
+{
+Spawn:
+EBAL A 0
+EBAL A 0 Thing_ChangeTID(0,999)
+EBAL A 1 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+DefaultSpawn:
+EBAL AB 6 A_SetTranslucent(1.0)
+EBAL B 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+TranslucentSpawn:
+EBAL AB 6 A_SetTranslucent(0.5)
+EBAL B 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+KorbySpawn:
+KMAG AA 6 A_SetTranslucent(1.0)
+EBAL B 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+Pickup:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0),"Success")
+fail
+}
+}
+
+actor BigWeaponEnergyCS : BigWeaponEnergy replaces BigWeaponEnergy
+{
+States
+{
+Spawn:
+EBAL C 0
+EBAL C 0 Thing_ChangeTID(0,999)
+EBAL C 1 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+DefaultSpawn:
+EBAL CD 6 A_SetTranslucent(1.0)
+EBAL D 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+TranslucentSpawn:
+EBAL CD 6 A_SetTranslucent(0.5)
+EBAL C 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+KorbySpawn:
+KMAG CC 6 A_SetTranslucent(1.0)
+EBAL C 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+Pickup:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0),"Success")
+fail
+}
+}
+
+actor MegaWeaponEnergyCS : MegaWeaponEnergy replaces MegaWeaponEnergy
+{
+States
+{
+Spawn:
+EBAL I 0
+EBAL I 0 Thing_ChangeTID(0,999)
+EBAL I 1 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+DefaultSpawn:
+EBAL IJ 6 A_SetTranslucent(1.0)
+EBAL J 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+TranslucentSpawn:
+EBAL IJ 6 A_SetTranslucent(0.5)
+EBAL J 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+KorbySpawn:
+EBAL IJ 6 A_SetTranslucent(1.0)
+EBAL J 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
+loop
+Pickup:
+TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(984,0),"Success")
+fail
+}
+}

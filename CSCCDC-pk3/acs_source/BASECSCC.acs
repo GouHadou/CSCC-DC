@@ -66,6 +66,8 @@ If(CheckActorInventory(consolePlayerNumber()+1000,"CannotUseHealing")){SetActorS
 If(StateSet==0){SetActorState(0,"NormalSpawn");}
 }
 
+//See WEPACS for CSACS_ItemSet [Trill]
+
 script "CSACS_HitKnockback" (int force)
 {
 int pusher = ACS_NamedExecuteWithResult("core_gettarget");

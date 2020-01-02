@@ -79,7 +79,7 @@ NoteBomb2:
 goto AltHold
 
 NoAmmo:
-"####" B 1 ACS_Execute(979,0)
+"####" B 1 //ACS_Execute(979,0)
 Goto Ready2
 
 Flash:
@@ -129,7 +129,7 @@ WOST B 1 Offset(0,92)
 Goto Ready2
 
 NoAmmo:
-"####" B 1 ACS_Execute(979,0)
+"####" B 1 //ACS_Execute(979,0)
 Goto Ready2
 }
 }
