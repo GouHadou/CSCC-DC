@@ -148,10 +148,10 @@ ICEH A 0 A_Refire
 Goto Ready+2
 NoAmmo:
 ICEH A 0 A_JumpIfInventory("IceSparkyFusion", 1, "NoAmmo2")
-ICEH A 1 ACS_Execute(979,0)
+ICEH A 1 //ACS_Execute(979,0)
 Goto Ready+2
 NoAmmo2:
-ISFS A 1 ACS_Execute(979,0)
+ISFS A 1 //ACS_Execute(979,0)
 Goto Ready2
 Flash:
 TNT1 A 2 A_GiveInventory("SparkyClassAmmo",1)

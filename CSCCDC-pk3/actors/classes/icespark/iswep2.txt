@@ -168,10 +168,10 @@ ISFS H 21
 Goto Ready2
 NoAmmo:
 SPHA A 0 A_JumpIfInventory("IceSparkyFusion", 1, "NoAmmo2")
-SPHA A 1 ACS_Execute(979,0)
+SPHA A 1 //ACS_Execute(979,0)
 Goto Ready+2
 NoAmmo2:
-ISFS A 1 ACS_Execute(979,0)
+ISFS A 1 //ACS_Execute(979,0)
 Goto Ready2
 Flash:
 TNT1 A 2 A_GiveInventory("IceClassAmmo",1)
