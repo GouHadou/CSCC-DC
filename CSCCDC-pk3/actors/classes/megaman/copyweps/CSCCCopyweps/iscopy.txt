@@ -178,7 +178,7 @@ Goto Ready+1
 
 actor LightningShot2 : LightningShot
 {
-Damage (12)
+Damage (16)
 }
 
 actor LightningWaveAmmo : Ammo
