@@ -1,0 +1,84 @@
+#library "ITEMGIVE"
+#import "WEPACS.acs"
+#include "zcommon.acs"
+#include "8BDMLIB.ACS"
+
+#DEFINE MAX_WEPCLASS 2
+#DEFINE MAX_ITEMS 2
+
+str wep_classes[MAX_WEPCLASS]=
+{
+"MegamanC", //0
+"GizmoClass", //1
+};
+
+str item_pickups[MAX_ITEMS][3]=
+{
+{"NONE", "ProtoUpgrade", "EternalClawsUpgrade"},
+{"NONE", "BassUpgrade", "EternalClawsUpgrade"},
+};
+
+Script "CSCC_ItemSpriteSpawn" (void) ClientSide
+{
+SetSprite(995, CheckClassList(0));
+}
+
+Script "CSCC_ItemSprite" OPEN ClientSide
+{
+int CapsuleSprite = CheckClassList(0);
+int OldClass = CapsuleSprite;
+SetSprite(995, CapsuleSprite);
+While(CapsuleSprite == OldClass)
+	{
+	CapsuleSprite = CheckClassList(0);
+	Delay(3);
+	}
+restart;
+}
+
+Script "CSCC_ItemToGive" (int ItemSlot) 
+{
+int Class = CheckClassList(1)+1;
+If(item_pickups[itemslot][class] == "NONE"){SetResultValue(FALSE);terminate;}
+If(CheckInventory(item_pickups[itemslot][class])){SetResultValue(FALSE);terminate;}
+GiveInventory(item_pickups[itemslot][class], 1);
+}
+
+Function int CheckClassList (int Mode)
+{
+int UseSprite = -1;
+Int PlrNum;
+Switch(Mode)
+	{
+	Case 1:
+	PlrNum = PlayerNumber();
+	break;
+	Default:
+	PlrNum = ConsolePlayerNumber();
+	break;
+	}
+for(int i = 0; i < MAX_WEPCLASS; i++)
+	{
+	If(CheckActorClass(PlrNum+1000,wep_classes[i]))
+		{
+		UseSprite = i;
+		}
+	}
+Return (UseSprite);
+}
+
+function void SetSprite (int ID,int SpriteUse)
+{
+Switch(SpriteUse)
+	{
+	Case 0: //Mega Man
+	SetActorState(ID, "CSCC_DefaultSpawn");
+	break;
+	Case 1: //Gizmo
+	SetActorState(ID, "CSCC_Gizmo");
+	break;
+	Default:
+	SetActorState(ID, "CSCC_OtherSpawn");
+	break;
+	}
+}
