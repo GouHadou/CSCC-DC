@@ -178,7 +178,7 @@ OB_LIGHTNINGICESPIKE = "%o stepped on one of %k's Lightning Ice spikes.";
 OB_CLAWGLOVES = "%o was scratched up by %k";
 PU_CLAWGLOVES = "Power Up! Claw Gloves!";
 TAG_CLAWGLOVES = "Claw Gloves";
-OB_ETERNALCLAWS = "%o was torn to shreds by %k's Eternal Claws"
+OB_ETERNALCLAWS = "%o was torn to shreds by %k's Eternal Claws";
 TAG_ETERNALCLAWS = "Eternal Claws";
 
 OB_FLAMECANNON = "%o was burned up by %k's Flame Cannon.";
@@ -278,21 +278,35 @@ PU_ZENSPHERE = "Power Up! Zen Sphere!";
 TAG_ZENSPHERE = "Zen Sphere";
 
 //CLASS HELP
-CSCC_CH_MAINFIRES = "\cvMainfires : ";
-CSCC_CH_ALTFIRES = "\cvAltfires : ";
-CSCC_CH_RELOADS = "\cvReloads : ";
-CSCC_CH_USER1S = "\cvUser 1 Keys : ";
-CSCC_CH_USER2S = "\cvUser 2 Keys : ";
-CSCC_CH_USER3S = "\cvUser 3 Keys : ";
-CSCC_CH_USER4S = "\cvUser 4 Keys : ";
-CSCC_CH_ITEMS = "\cvItems : ";
+CSCC_TITLE = "\cvCSCC Options";
+
+CSCC_CTRL_RELOAD = "\cvReload";
+CSCC_CTRL_USER1 = "\cvUser Key 1";
+CSCC_CTRL_USER2 = "\cvUser Key 2";
+CSCC_CTRL_USER3 = "\cvUser Key 3";
+CSCC_CTRL_USER4 = "\cvUser Key 4";
+
+CSCC_CH_TITLE = "\cvCHOOSE YOUR CLASS";
+
+CSCC_CH_MAINFIRES = "\cvMainfire : ";
+CSCC_CH_ALTFIRES = "\cvAltfire : ";
+CSCC_CH_RELOADS = "\cvReload : ";
+CSCC_CH_USER1S = "\cvUser Key 1 : ";
+CSCC_CH_USER2S = "\cvUser Key 2 : ";
+CSCC_CH_USER3S = "\cvUser Key 3 : ";
+CSCC_CH_USER4S = "\cvUser Key 4 : ";
+CSCC_CH_ITEMS = "\cvItem : ";
 
 UKIYAMA_CH_TITLE = "\cvUKIYAMA";
-UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfForward / Back Speed : \cj0.8\n\cfSide Speed  : \cj0.78\n\cfJump Speed : \cj10";
+UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
 UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based on the mods acquired.";
 UKIYAMA_CH_ALTFIRE = "\cfAltfire : \cjUses the upgrade gauge to \ntoss out a turret that shoots a copy \nof your shot where you are aiming.";
 UKIYAMA_CH_MODS = "\cvMods : ";
 
 GEE_CH_TITLE = "\cvGEE";
-GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfForward / Back Speed : \cj0.6\n\cfSide Speed  : \cj0.58\n\cfJump Speed : \cj14";
+GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj140%";
 GEE_CH_MAINFIRE = "\cfMainfire : \cjShoots a magic burst \ncomposed of the attributes he has \navailable, healing if it hits an ally \nand damaging if it hits a foe.";
+
+BG_CH_TITLE = "\cvBULL GATOR";
+BG_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
+BG_CH_ITEM = "\cfItem : \cjScopes in and out.";

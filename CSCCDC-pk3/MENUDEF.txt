@@ -464,18 +464,18 @@ ListMenu "PlayerMenu"
 
 OptionMenu "CSCC"
 {
-	Title "CSCC Options"
+	Title "$CSCC_TITLE"
 	StaticText "===============================================================",1
 	StaticText ""
-	Submenu "Class Information",		"ClassInfo"
+	Submenu "      Class Information",		"ClassInfo"
 	StaticText ""
 	StaticText	"CSCC Controls", 1
 	StaticText ""
-	Control	    "                   		Reload",		"+reload"
-	Control 	"                   		User Key 1",		"+user1"
-	Control 	"                   		User Key 2",		"+user2"
-	Control 	"                   		User Key 3",		"+user3"
-	Control 	"                   		User Key 4",		"+user4"
+	Control	    "$CSCC_CTRL_RELOAD",		"+reload"
+	Control 	"$CSCC_CTRL_USER1",		"+user1"
+	Control 	"$CSCC_CTRL_USER2",		"+user2"
+	Control 	"$CSCC_CTRL_USER3",		"+user3"
+	Control 	"$CSCC_CTRL_USER4",		"+user4"
 	StaticText ""
 	StaticText"===============================================================",1
 
@@ -484,28 +484,28 @@ OptionMenu "CSCC"
 
 OptionMenu "ClassInfo"
 {
-	Title "Choose Your Class"
+	Title "$CSCC_CH_TITLE"
 	StaticText "===============================================================",1
 	StaticText ""
-	Submenu	    "                   Megaman",		"UkiyamaInfo"
-	Submenu	    "                   CopyRobot",		"UkiyamaInfo"
-	Submenu	    "                   Gizmo",		"UkiyamaInfo"
-	Submenu	    "                  	Unix",		"UkiyamaInfo"
-	Submenu	    "                  	CutmanMike",		"UkiyamaInfo"
-	Submenu	    "                  	Ice/Sparky",		"UkiyamaInfo"
-	Submenu	    "                  	Ukiyama",		"UkiyamaInfo"
-	Submenu	    "                  	Messatsu",		"UkiyamaInfo"  
-	Submenu	    "                  	ColdFusion",		"UkiyamaInfo"
-	Submenu	    "                  	Pistonman", 		"UkiyamaInfo"
-	Submenu	    "                  	LordDamager",		"UkiyamaInfo" 
-	Submenu	    "                  	Tank Operator",		"UkiyamaInfo"
-	Submenu	    "                  	Badz", 		"UkiyamaInfo"
-	Submenu	    "                 	Corporal",		"UkiyamaInfo"
-	Submenu	    "                	Bull Gator",		"UkiyamaInfo"
-	Submenu	    "                  	Korby",		"UkiyamaInfo"
-	Submenu	    "                  	VocalWoman", 		"UkiyamaInfo"
-	Submenu	    "                  	Zen Trainer", 		"UkiyamaInfo"
-	Submenu	    "                  	Gee", 		"GeeInfo"
+	Submenu	    "Megaman",		"UkiyamaInfo"
+	Submenu	    "CopyRobot",		"UkiyamaInfo"
+	Submenu	    "Gizmo",		"UkiyamaInfo"
+	Submenu	    "Unix",		"UkiyamaInfo"
+	Submenu	    "CutmanMike",		"UkiyamaInfo"
+	Submenu	    "Ice/Sparky",		"UkiyamaInfo"
+	Submenu	    "Ukiyama",		"UkiyamaInfo"
+	Submenu	    "Messatsu",		"UkiyamaInfo"  
+	Submenu	    "ColdFusion",		"UkiyamaInfo"
+	Submenu	    "Pistonman", 		"UkiyamaInfo"
+	Submenu	    "LordDamager",		"UkiyamaInfo" 
+	Submenu	    "         	  Tank Operator",		"UkiyamaInfo"
+	Submenu	    "Badz", 		"UkiyamaInfo"
+	Submenu	    "Corporal",		"UkiyamaInfo"
+	Submenu	    "Bull Gator",		"BullGatorInfo"
+	Submenu	    "Korby",		"UkiyamaInfo"
+	Submenu	    "VocalWoman", 		"UkiyamaInfo"
+	Submenu	    "Zen Trainer", 		"UkiyamaInfo"
+	Submenu	    "Gee", 		"GeeInfo"
 	StaticText ""
 	StaticText"===============================================================",1
 
@@ -520,7 +520,6 @@ OptionMenu "UkiyamaInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
-	StaticText ""//strafe speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
@@ -533,7 +532,7 @@ OptionMenu "UkiyamaInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_ITEMS", "CSCC_ClassHelp_Item", "UkiyamaItems"
+	Option "$CSCC_CH_ITEMS", "Ukiyama_ClassHelp_Item", "UkiyamaItems"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -541,7 +540,7 @@ OptionMenu "UkiyamaInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$UKIYAMA_CH_MODS", "CSCC_ClassHelp_Extra1", "UkiyamaMods"
+	Option "$UKIYAMA_CH_MODS", "Ukiyama_ClassHelp_Mods", "UkiyamaMods"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -570,6 +569,46 @@ OptionValue UkiyamaMods
 	8, "\cfNerf\n\cjMakes the shot have \na 50% damage debuff \napplied on contact, \nalso gives a 5 damage \nboost."
 }
 
+OptionMenu "BullGatorInfo"
+{
+	Title "$BG_CH_TITLE"
+	StaticText ""
+	StaticText "$BG_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "BG_ClassHelp_Weapon", "BGMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "BG_ClassHelp_Weapon", "BGAltfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$BG_CH_ITEM"
+}
+
+OptionValue BGMainfires
+{
+	0, "\cfPiercing\n\cjFires a piercing \nrailgun. Fires basic \nshots without ammo."
+	1, "\cfSplitter\n\cjShoots a bullet that \nsplits. Fires basic \nshots without ammo."
+	2, "\cfBurst\n\cjStarts a volley of 4 \nbullets. Fires basic \nshots without ammo."
+}
+
+OptionValue BGAltfires
+{
+	0, "\cfSleep\n\cjForces the enemy to \nfall asleep."
+	1, "\cfSiphon\n\cjCan restore HP if the \nrailgun hits."
+	2, "\cfConfusion\n\cjInflicts confusion \nonto the enemy."
+}
+
 OptionMenu "GeeInfo"
 {
 	Title "$GEE_CH_TITLE"
@@ -578,7 +617,6 @@ OptionMenu "GeeInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
-	StaticText ""//strafe speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
@@ -588,7 +626,7 @@ OptionMenu "GeeInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_ALTFIRES", "CSCC_ClassHelp_Weapon", "GeeAltfires"
+	Option "$CSCC_CH_ALTFIRES", "Gee_ClassHelp_Weapon", "GeeAltfires"
 	StaticText ""
 	StaticText ""
 	StaticText ""

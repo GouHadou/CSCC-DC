@@ -1,9 +1,7 @@
-user noarchive int CSCC_ClassHelp_Weapon = 0;
-user noarchive int CSCC_ClassHelp_Item = 0;
-user noarchive int CSCC_ClassHelp_Extra1 = 0;
-user noarchive int CSCC_ClassHelp_Extra2 = 0;
-user noarchive int CSCC_ClassHelp_Extra3 = 0;
-user noarchive int CSCC_ClassHelp_Extra4 = 0;
+user noarchive int Ukiyama_ClassHelp_Item = 0;
+user noarchive int Ukiyama_ClassHelp_Mods = 0;
+user noarchive int Gee_ClassHelp_Weapon = 0;
+user noarchive int BG_ClassHelp_Weapon = 0;
 
 //Allows translation to be copied on the client's end
 server noarchive int SV_TRANSLATION0 = 0;
