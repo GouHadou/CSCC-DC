@@ -3,19 +3,20 @@
 #include "zcommon.acs"
 #include "8BDMLIB.ACS"
 
-#DEFINE MAX_WEPCLASS 2
+#DEFINE MAX_WEPCLASS 3
 #DEFINE MAX_ITEMS 2
 
 str wep_classes[MAX_WEPCLASS]=
 {
 "MegamanC", //0
 "GizmoClass", //1
+"HandCannonMorph", //2
 };
 
-str item_pickups[MAX_ITEMS][3]=
+str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]=
 {
-{"NONE", "ProtoUpgrade", "EternalClawsUpgrade"},
-{"NONE", "BassUpgrade", "EternalClawsUpgrade"},
+{"NONE", "ProtoUpgrade", "EternalClawsUpgrade", "NONE"},
+{"ITEM1", "ITEM1", "ItemG", "ItemG"},
 };
 
 Script "CSCC_ItemSpriteSpawn" (void) ClientSide
@@ -36,12 +37,12 @@ While(CapsuleSprite == OldClass)
 restart;
 }
 
-Script "CSCC_ItemToGive" (int ItemSlot) 
+Script "CSCC_ItemToGive" (int ItemSlot, int Quantity) 
 {
 int Class = CheckClassList(1)+1;
 If(item_pickups[itemslot][class] == "NONE"){SetResultValue(FALSE);terminate;}
-If(CheckInventory(item_pickups[itemslot][class])){SetResultValue(FALSE);terminate;}
-GiveInventory(item_pickups[itemslot][class], 1);
+If(CheckInventory(item_pickups[itemslot][class])==Quantity){SetResultValue(FALSE);terminate;}
+GiveInventory(item_pickups[itemslot][class], Quantity);
 }
 
 Function int CheckClassList (int Mode)
@@ -76,6 +77,9 @@ Switch(SpriteUse)
 	break;
 	Case 1: //Gizmo
 	SetActorState(ID, "CSCC_Gizmo");
+	break;
+	Case 2: //Copy Gizmo Plasma
+	SetActorState(ID, "CSCC_GizmoMorph");
 	break;
 	Default:
 	SetActorState(ID, "CSCC_OtherSpawn");
