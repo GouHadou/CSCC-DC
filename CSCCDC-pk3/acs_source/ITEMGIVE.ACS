@@ -4,7 +4,7 @@
 #include "8BDMLIB.ACS"
 
 #DEFINE MAX_WEPCLASS 3
-#DEFINE MAX_ITEMS 2
+#DEFINE MAX_ITEMS 8
 
 str wep_classes[MAX_WEPCLASS]=
 {
@@ -15,8 +15,14 @@ str wep_classes[MAX_WEPCLASS]=
 
 str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]=
 {
-{"NONE", "ProtoUpgrade", "EternalClawsUpgrade", "NONE"},
-{"ITEM1", "ITEM1", "ItemG", "ItemG"},
+{"NONE", "ProtoUpgrade", "EternalClawsUpgrade", "NONE"},//0
+{"NONE","ArrowBusterUpgrade", "EternalClawsUpgrade", "NONE"},//1
+{"NONE","LaserBusterUpgrade", "EternalClawsUpgrade", "NONE"},//2
+{"NONE","BassUpgrade", "EternalClawsUpgrade", "NONE"},//3
+{"NONE","DuoFistUpgrade", "EternalClawsUpgrade", "NONE"},//4
+{"NONE","AdaptorUpgrade", "EternalClawsUpgrade", "NONE"},//5
+{"NONE","TrebleBoostUpgrade", "EternalClawsUpgrade", "NONE"},//6
+{"ITEM1", "ITEM1", "ItemG", "ItemG"},//7
 };
 
 Script "CSCC_ItemSpriteSpawn" (void) ClientSide
