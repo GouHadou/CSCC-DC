@@ -37,18 +37,19 @@ Script "CSCC_ItemSpriteSpawn" (void) ClientSide
 {
 int CapsuleSprite = CheckClassList(0);
 if(CapsuleSprite == -1){CapsuleSprite = 999;}
-SetSprite(995, CapsuleSprite);
+SetSprite(0, CapsuleSprite);
 }
 
 Script "CSCC_ItemSprite" OPEN ClientSide
 {
 int CapsuleSprite = CheckClassList(0);
-if(CapsuleSprite == -1){CapsuleSprite = 999;}
+if(CapsuleSprite == -1){CapsuleSprite = 999;} //Fix since S/C don't like -1
 int OldClass = CapsuleSprite;
 SetSprite(995, CapsuleSprite);
 While(CapsuleSprite == OldClass)
 	{
 	CapsuleSprite = CheckClassList(0);
+	if(CapsuleSprite == -1){CapsuleSprite = 999;}
 	Delay(3);
 	}
 restart;
@@ -60,6 +61,7 @@ int Class = CheckClassList(1)+1;
 If(item_pickups[itemslot][class] == "NONE"){SetResultValue(FALSE);terminate;}
 If(CheckInventory(item_pickups[itemslot][class])==Quantity){SetResultValue(FALSE);terminate;}
 GiveInventory(item_pickups[itemslot][class], Quantity);
+SetResultValue(TRUE);
 }
 
 Function int CheckClassList (int Mode)
