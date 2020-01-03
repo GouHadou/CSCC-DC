@@ -64,7 +64,7 @@ actor MissilePunchFX2C : MissilePunchFX2
 Speed 100
 }
 
-actor SteelPunchWepCS : SteelPunchWep
+actor SteelPunchWepCS : SteelPunchWep replaces SteelPunchWep
 {
 States
 {
