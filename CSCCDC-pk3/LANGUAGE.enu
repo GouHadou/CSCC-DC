@@ -276,3 +276,11 @@ TAG_IDOLWAVE = "Idol Wave";
 //Zen Sphere
 PU_ZENSPHERE = "Power Up! Zen Sphere!";
 TAG_ZENSPHERE = "Zen Sphere";
+
+//CLASS HELP
+UKIYAMA_CH_TITLE = "\cvUKIYAMA";
+UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfForward / Back Speed : \cj0.8\n\cfSide Speed  : \cj0.78\n\cfJump Speed : \cj10";
+UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based on the mods acquired.";
+UKIYAMA_CH_ALTFIRE = "\cfAltfire : \cjUses the upgrade gauge to \ntoss out a turret that shoots a copy \nof your shot where you are aiming.";
+UKIYAMA_CH_ITEMS = "\cvItems : ";
+UKIYAMA_CH_MODS = "\cvMods : ";

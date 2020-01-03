@@ -484,14 +484,90 @@ OptionMenu "CSCC"
 
 OptionMenu "ClassInfo"
 {
-	Title "Class Information"
+	Title "Choose Your Class"
 	StaticText "===============================================================",1
 	StaticText ""
-	StaticText "UNDER CONSTRUCTION!", 1
+	Submenu	    "                   Megaman",		"UkiyamaInfo"
+	Submenu	    "                   CopyRobot",		"UkiyamaInfo"
+	Submenu	    "                   Gizmo",		"UkiyamaInfo"
+	Submenu	    "                  	Unix",		"UkiyamaInfo"
+	Submenu	    "                  	CutmanMike",		"UkiyamaInfo"
+	Submenu	    "                  	Ice/Sparky",		"UkiyamaInfo"
+	Submenu	    "                  	Ukiyama",		"UkiyamaInfo"
+	Submenu	    "                  	Messatsu",		"UkiyamaInfo"  
+	Submenu	    "                  	ColdFusion",		"UkiyamaInfo"
+	Submenu	    "                  	Pistonman", 		"UkiyamaInfo"
+	Submenu	    "                  	LordDamager",		"UkiyamaInfo" 
+	Submenu	    "                  	Tank Operator",		"UkiyamaInfo"
+	Submenu	    "                  	Badz", 		"UkiyamaInfo"
+	Submenu	    "                 	Corporal",		"UkiyamaInfo"
+	Submenu	    "                	Bull Gator",		"UkiyamaInfo"
+	Submenu	    "                  	Korby",		"UkiyamaInfo"
+	Submenu	    "                  	VocalWoman", 		"UkiyamaInfo"
+	Submenu	    "                  	Zen Trainer", 		"UkiyamaInfo"
+	Submenu	    "                  	Gee", 		"UkiyamaInfo"
 	StaticText ""
 	StaticText"===============================================================",1
 
 	StaticText ""
+}
+
+OptionMenu "UkiyamaInfo"
+{
+	Title "$UKIYAMA_CH_TITLE"
+	StaticText ""
+	StaticText "$UKIYAMA_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//strafe speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$UKIYAMA_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$UKIYAMA_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$UKIYAMA_CH_ITEMS", "CSCC_ClassHelp_Item", "UkiyamaItems"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$UKIYAMA_CH_MODS", "CSCC_ClassHelp_Extra1", "UkiyamaMods"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue UkiyamaItems
+{
+	0, "\cfMod Applicator\n\cjWhen at full guage, \ncan add a mod which \nchanges how your \nmainfire works."
+	1, "\cfMod Remover\n\cjWhen at full guage, \ncan remove all mods, \ngives a boost to the \nupgrade meter's regen \nfor 15 seconds"
+	2, "\cfTurret Controller\n\cjWhen turret is out \nallows remote control \naccess, letting you \naim and fire manually."
+}
+
+OptionValue UkiyamaMods
+{
+	0, "\cfSnipe\n\cjMakes the shot move \nfaster, bigger and \nmore powerful, but \nwith less fire rate."
+	1, "\cfRapid\n\cjMakes the weapon fire \nfaster, but with less \npower and a slight \nspread."
+	2, "\cfShotgun\n\cjMakes the shot into \n5 projectiles, but \nwith incredible spread \nand low fire rate."
+	3, "\cfHoming\n\cjMakes the shot have \nminor homing capability, \nbut loses a quarter \nof damage on the shot."
+	4, "\cfArcing\n\cjMakes the shot affected \nby gravity, but gives a 7 \ndamage boost to the \nshot."
+	5, "\cfVelocity\n\cjMakes the shot travel \nfaster the longer \nit's out and become \na ripper with damage \nreduced."
+	6, "\cfExplosive\n\cjMakes the shot convert \nits damage into an \nexplosion."
+	7, "\cfBounce\n\cjMakes the shot able to \nbounce off walls and \nfloors 3 times."
+	8, "\cfNerf\n\cjMakes the shot have \na 50% damage debuff \napplied on contact, \nalso gives a 5 damage \nboost."
 }
 
 //-------------------------------------------------------------------------------------------
