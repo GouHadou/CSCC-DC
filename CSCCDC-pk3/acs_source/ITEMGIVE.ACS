@@ -3,34 +3,37 @@
 //#include "zcommon.acs"
 //#include "8BDMLIB.ACS"
 
-#DEFINE MAX_WEPCLASS 10
-#DEFINE MAX_ITEMS 9
+#DEFINE MAX_WEPCLASS 11
+#DEFINE MAX_ITEMS 11
 
 str wep_classes[MAX_WEPCLASS]=
 {//Default 0
 "MegamanC", //1
-"GizmoClass", //2
-"HandCannonMorph", //3
-"ClawGlovesWepMorph",//4
-"FrostCannonWepMorph",//5
-"FlameCannonWepMorph",//6
-"LightningCannonWepMorph",//7
-"StoneCannonWepMorph",//8
-"HydroCannonWepMorph",//9
-"EternalClawsWepMorph"//10
+"CopyRobot", //2
+"GizmoClass", //3
+"HandCannonMorph", //4
+"ClawGlovesWepMorph",//5
+"FrostCannonWepMorph",//6
+"FlameCannonWepMorph",//7
+"LightningCannonWepMorph",//8
+"StoneCannonWepMorph",//9
+"HydroCannonWepMorph",//10
+"EternalClawsWepMorph"//11
 };
 
-str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]=
-{//Default, MegaMan, Gizmo, Copy(Columns 3-10)
-{"NONE", "ProtoUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//0
-{"NONE","ArrowBusterUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//1
-{"NONE","LaserBusterUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//2
-{"NONE","BassUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//3
-{"NONE","DuoFistUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//4
-{"NONE","AdaptorUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
-{"NONE","TrebleBoostUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
-{"ITEM1", "ITEM1", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG"},//7
-{"ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2"},//8
+str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]= //Add 1 for default behavior
+{//Default, MegaMan, , Copy, Gizmo, Copy(Columns 4-11)
+{"NONE", "ProtoUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//0
+{"NONE","ArrowBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//1
+{"NONE","LaserBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//2
+{"NONE","BassUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//3
+{"NONE","DuoFistUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//4
+{"NONE","AdaptorUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
+{"NONE","TrebleBoostUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
+{"ITEM1", "ITEM1", "ITEM1", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG"},//7
+{"ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2"},//8
+{"NONE", "EDDIESUMMON", "EDDIESUMMON", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem"},//9
+{"NONE", "EDDIEBOMBER", "NONE", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//1
 };
 
 Script "CSCC_ItemSpriteSpawn" (void) ClientSide
@@ -94,7 +97,10 @@ Switch(SpriteUse)
 	Case 0: //Mega Man
 	SetActorState(ID, "CSCC_DefaultSpawn");
 	break;
-	Case 1: //Gizmo
+	Case 1: //Copy
+	SetActorState(ID, "CSCC_Copy");
+	break;
+	Case 2: //Gizmo
 	SetActorState(ID, "CSCC_Gizmo");
 	break;
 	Case 3: 
@@ -104,8 +110,7 @@ Switch(SpriteUse)
 	Case 7:
 	Case 8:
 	Case 9:
-	Case 10:
-	Case 2: //Copy Gizmo Plasma
+	Case 10://Copy Gizmo
 	SetActorState(ID, "CSCC_GizmoMorph");
 	break;
 	Default:
