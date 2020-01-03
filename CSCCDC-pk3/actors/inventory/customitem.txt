@@ -298,7 +298,7 @@ Pickup:
 fail
 }
 }
-
+/*
 actor Item2Giver : ItemGiver replaces Item2
 {
 inventory.pickupmessage "$PU_ITEM2"
@@ -320,6 +320,33 @@ WEA2 D 35
 wait
 Pickup:
 "----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 8, 2), "Give")
+fail
+}
+}
+*/
+
+actor TangoSummonGiver : ItemGiver replaces TangoSummon
+{
+inventory.pickupmessage "$PU_TANGOROLL"
+States
+{
+Spawn:
+WEA3 B 0
+Goto "Super::Spawn+1"
+CSCC_DefaultSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+"----" A 0 A_Jump(256, "Animation") 
+Goto Animation
+CSCC_GizmoMorph:
+CSCC_Gizmo:
+HELP R 0 A_SetTranslucent(1.0, 0)
+HELP R 35
+wait
+Animation:
+WEA3 B 35
+wait
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 8, 1), "Give")
 fail
 }
 }
@@ -373,6 +400,32 @@ EDDI Q 35
 wait
 Pickup:
 "----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 10, 1), "Give")
+fail
+}
+}
+
+actor ReggaeCallGiver : ItemGiver replaces ReggaeCall
+{
+inventory.pickupmessage "$PU_REGGAECALL"
+States
+{
+Spawn:
+WEA9 Z 0
+Goto "Super::Spawn+1"
+CSCC_DefaultSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+"----" A 0 A_Jump(256, "Animation") 
+Goto Animation
+CSCC_GizmoMorph:
+CSCC_Gizmo:
+HELP R 0 A_SetTranslucent(1.0, 0)
+HELP R 35
+wait
+Animation:
+WEA9 Z 35
+wait
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 11, 1), "Give")
 fail
 }
 }

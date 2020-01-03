@@ -4,7 +4,7 @@
 //#include "8BDMLIB.ACS"
 
 #DEFINE MAX_WEPCLASS 11
-#DEFINE MAX_ITEMS 11
+#DEFINE MAX_ITEMS 12
 
 str wep_classes[MAX_WEPCLASS]=
 {//Default 0
@@ -31,9 +31,11 @@ str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]= //Add 1 for default behavior
 {"NONE","AdaptorUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
 {"NONE","TrebleBoostUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
 {"ITEM1", "ITEM1", "ITEM1", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG"},//7
-{"ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2"},//8
+//{"ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2"},//8
+{"NONE", "TangoSummon", "NONE", , "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//8
 {"NONE", "EDDIESUMMON", "EDDIESUMMON", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem"},//9
-{"NONE", "EDDIEBOMBER", "NONE", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//1
+{"NONE", "EDDIEBOMBER", "NONE", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//10
+{"NONE", "ReggaeCall", "NONE", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//11
 };
 
 Script "CSCC_ItemSpriteSpawn" (void) ClientSide
