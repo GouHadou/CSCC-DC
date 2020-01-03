@@ -505,7 +505,7 @@ OptionMenu "ClassInfo"
 	Submenu	    "                  	Korby",		"UkiyamaInfo"
 	Submenu	    "                  	VocalWoman", 		"UkiyamaInfo"
 	Submenu	    "                  	Zen Trainer", 		"UkiyamaInfo"
-	Submenu	    "                  	Gee", 		"UkiyamaInfo"
+	Submenu	    "                  	Gee", 		"GeeInfo"
 	StaticText ""
 	StaticText"===============================================================",1
 
@@ -533,7 +533,7 @@ OptionMenu "UkiyamaInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$UKIYAMA_CH_ITEMS", "CSCC_ClassHelp_Item", "UkiyamaItems"
+	Option "$CSCC_CH_ITEMS", "CSCC_ClassHelp_Item", "UkiyamaItems"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -568,6 +568,38 @@ OptionValue UkiyamaMods
 	6, "\cfExplosive\n\cjMakes the shot convert \nits damage into an \nexplosion."
 	7, "\cfBounce\n\cjMakes the shot able to \nbounce off walls and \nfloors 3 times."
 	8, "\cfNerf\n\cjMakes the shot have \na 50% damage debuff \napplied on contact, \nalso gives a 5 damage \nboost."
+}
+
+OptionMenu "GeeInfo"
+{
+	Title "$GEE_CH_TITLE"
+	StaticText ""
+	StaticText "$GEE_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//strafe speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$GEE_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "CSCC_ClassHelp_Weapon", "GeeAltfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue GeeAltfires
+{
+	0, "\cfDamaging Burst\n\cjShoots an overcharged \ndamage burst, but \ntemporarily removes \nyour damage attribute."
+	1, "\cfHealing Burst\n\cjShoots an overcharged \nhealing burst that \napplies overheal, but \ntemporarily removes \nyour healing attribute."
 }
 
 //-------------------------------------------------------------------------------------------

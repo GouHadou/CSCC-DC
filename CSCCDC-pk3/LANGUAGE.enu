@@ -278,9 +278,21 @@ PU_ZENSPHERE = "Power Up! Zen Sphere!";
 TAG_ZENSPHERE = "Zen Sphere";
 
 //CLASS HELP
+CSCC_CH_MAINFIRES = "\cvMainfires : ";
+CSCC_CH_ALTFIRES = "\cvAltfires : ";
+CSCC_CH_RELOADS = "\cvReloads : ";
+CSCC_CH_USER1S = "\cvUser 1 Keys : ";
+CSCC_CH_USER2S = "\cvUser 2 Keys : ";
+CSCC_CH_USER3S = "\cvUser 3 Keys : ";
+CSCC_CH_USER4S = "\cvUser 4 Keys : ";
+CSCC_CH_ITEMS = "\cvItems : ";
+
 UKIYAMA_CH_TITLE = "\cvUKIYAMA";
 UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfForward / Back Speed : \cj0.8\n\cfSide Speed  : \cj0.78\n\cfJump Speed : \cj10";
 UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based on the mods acquired.";
 UKIYAMA_CH_ALTFIRE = "\cfAltfire : \cjUses the upgrade gauge to \ntoss out a turret that shoots a copy \nof your shot where you are aiming.";
-UKIYAMA_CH_ITEMS = "\cvItems : ";
 UKIYAMA_CH_MODS = "\cvMods : ";
+
+GEE_CH_TITLE = "\cvGEE";
+GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfForward / Back Speed : \cj0.6\n\cfSide Speed  : \cj0.58\n\cfJump Speed : \cj14";
+GEE_CH_MAINFIRE = "\cfMainfire : \cjShoots a magic burst \ncomposed of the attributes he has \navailable, healing if it hits an ally \nand damaging if it hits a foe.";
