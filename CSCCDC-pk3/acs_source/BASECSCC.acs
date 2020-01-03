@@ -8,6 +8,7 @@
 #include "COPY.ACS"
 #include "UNIX.ACS"
 #include "COPYWEP.ACS"
+#include "ITEMGIVE.ACS"
 
 Script "CSACS_TeamSpecies" ENTER 
 {

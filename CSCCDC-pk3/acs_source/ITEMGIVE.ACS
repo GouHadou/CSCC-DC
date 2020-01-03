@@ -1,7 +1,7 @@
-#library "ITEMGIVE"
-#import "WEPACS.acs"
-#include "zcommon.acs"
-#include "8BDMLIB.ACS"
+//#library "ITEMGIVE"
+//#import "WEPACS.acs"
+//#include "zcommon.acs"
+//#include "8BDMLIB.ACS"
 
 #DEFINE MAX_WEPCLASS 10
 #DEFINE MAX_ITEMS 9
