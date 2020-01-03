@@ -3,26 +3,34 @@
 #include "zcommon.acs"
 #include "8BDMLIB.ACS"
 
-#DEFINE MAX_WEPCLASS 3
-#DEFINE MAX_ITEMS 8
+#DEFINE MAX_WEPCLASS 10
+#DEFINE MAX_ITEMS 9
 
 str wep_classes[MAX_WEPCLASS]=
-{
-"MegamanC", //0
-"GizmoClass", //1
-"HandCannonMorph", //2
+{//Default 0
+"MegamanC", //1
+"GizmoClass", //2
+"HandCannonMorph", //3
+"ClawGlovesWepMorph",//4
+"FrostCannonWepMorph",//5
+"FlameCannonWepMorph",//6
+"LightningCannonWepMorph",//7
+"StoneCannonWepMorph",//8
+"HydroCannonWepMorph",//9
+"EternalClawsWepMorph"//10
 };
 
 str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]=
-{
-{"NONE", "ProtoUpgrade", "EternalClawsUpgrade", "NONE"},//0
-{"NONE","ArrowBusterUpgrade", "EternalClawsUpgrade", "NONE"},//1
-{"NONE","LaserBusterUpgrade", "EternalClawsUpgrade", "NONE"},//2
-{"NONE","BassUpgrade", "EternalClawsUpgrade", "NONE"},//3
-{"NONE","DuoFistUpgrade", "EternalClawsUpgrade", "NONE"},//4
-{"NONE","AdaptorUpgrade", "EternalClawsUpgrade", "NONE"},//5
-{"NONE","TrebleBoostUpgrade", "EternalClawsUpgrade", "NONE"},//6
-{"ITEM1", "ITEM1", "ItemG", "ItemG"},//7
+{//Default, MegaMan, Gizmo, Copy(Columns 3-10)
+{"NONE", "ProtoUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//0
+{"NONE","ArrowBusterUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//1
+{"NONE","LaserBusterUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//2
+{"NONE","BassUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//3
+{"NONE","DuoFistUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//4
+{"NONE","AdaptorUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
+{"NONE","TrebleBoostUpgrade", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
+{"ITEM1", "ITEM1", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG"},//7
+{"ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2"},//8
 };
 
 Script "CSCC_ItemSpriteSpawn" (void) ClientSide
