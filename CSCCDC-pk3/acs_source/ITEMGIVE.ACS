@@ -35,12 +35,15 @@ str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]=
 
 Script "CSCC_ItemSpriteSpawn" (void) ClientSide
 {
-SetSprite(995, CheckClassList(0));
+int CapsuleSprite = CheckClassList(0);
+if(CapsuleSprite == -1){CapsuleSprite = 999;}
+SetSprite(995, CapsuleSprite);
 }
 
 Script "CSCC_ItemSprite" OPEN ClientSide
 {
 int CapsuleSprite = CheckClassList(0);
+if(CapsuleSprite == -1){CapsuleSprite = 999;}
 int OldClass = CapsuleSprite;
 SetSprite(995, CapsuleSprite);
 While(CapsuleSprite == OldClass)
@@ -92,6 +95,14 @@ Switch(SpriteUse)
 	Case 1: //Gizmo
 	SetActorState(ID, "CSCC_Gizmo");
 	break;
+	Case 3: 
+	Case 4:
+	Case 5:
+	Case 6:
+	Case 7:
+	Case 8:
+	Case 9:
+	Case 10:
 	Case 2: //Copy Gizmo Plasma
 	SetActorState(ID, "CSCC_GizmoMorph");
 	break;

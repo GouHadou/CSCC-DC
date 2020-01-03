@@ -15,7 +15,7 @@ States
 {
 Spawn:
 "----" A 0
-"----" A 0 A_JumpIf(TID == 995, "Spawn2")
+//"----" A 0 A_JumpIf(TID == 995, "Spawn2")
 "----" A 0 ACS_NamedExecuteAlways("CSCC_ItemSpriteSpawn", 0)
 "----" A 0 Thing_ChangeTID(0,995)
 Spawn2:
