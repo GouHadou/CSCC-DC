@@ -68,7 +68,7 @@ States
 Ready:
 UKIQ B 0
 UKIQ B 0 ACS_ExecuteAlways(998,0,DYE_UKIYAMA) 
-UKIQ A 0 A_GiveInventory("IsUki")
+UKIQ A 0 //A_GiveInventory("IsUki")
 UKIQ A 0 A_JumpIfInventory("Once",1,"Ready2")
 UKIQ A 0 A_GiveInventory("Once")
 DOCR A 0 A_SpawnItemEX("UpgradeTimerGiver")
@@ -77,7 +77,7 @@ UKIQ B 5 A_WeaponReady(WRF_NOSWITCH)
 UKIQ B 0 A_GiveInventory("UkiAmmo",1)
 loop
 Deselect: 
-UKIQ B 0 A_TakeInventory("IsUki",1)
+UKIQ B 0 //A_TakeInventory("IsUki",1)
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 UKIQ B 1 A_Lower
 Loop

@@ -7,6 +7,7 @@ player.startitem "CopyRemover", 1
 player.startitem "CopyAmmo", 28
 player.startitem "BusterAmmo", 3
 player.startitem "EnergyBalancerActive",1
+player.startitem "IsCopy", 1
 player.maxhealth 80
 health 80
 damagefactor "CopyMainShot", 10.0 //case of best fight ever to the death with no copy weps
@@ -27,6 +28,8 @@ YOKM G 4
 Goto Spawn+2
 }
 }
+
+actor IsCopy : Once {}
 
 actor YokuPrismWatcher : BaseShieldWarper
 {

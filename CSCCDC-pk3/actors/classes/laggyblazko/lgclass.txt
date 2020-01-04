@@ -479,7 +479,9 @@ TNT1 A 0 A_GiveInventory("NoMagTommy", 1)
 TNT1 A 0 A_GiveInventory("FatBullets", 90)
 TNT1 A 0 A_GiveInventory("TommyAmmo", 30)
 TNT1 A 0 A_GiveInventory("CorpArsenal", 1)
-
+TNT1 A 0 A_GiveInventory("IsCorporal", 1)
 stop
 }
 }
+
+actor IsCorporal : Once {}

@@ -88,9 +88,12 @@ TNT1 A 0 A_GiveInventory("FlameCannonAmmo",28)
 TNT1 A 0 A_GiveInventory("StoneCannonAmmo",28)
 TNT1 A 0 A_GiveInventory("HydroCannonAmmo",28)
 TNT1 A 0 A_GiveInventory("EternalClawsAmmo",28)
+TNT1 A 0 A_GiveInventory("IsGizmo",1)
 stop
 }
 }
+
+actor IsGizmo : Once {}
 
 actor HandCannonMorph : GizmoClass
 {

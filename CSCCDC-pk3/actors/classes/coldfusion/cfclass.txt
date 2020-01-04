@@ -38,10 +38,13 @@ Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("FusionClassAmmo", 28)
 TNT1 A 0 A_GiveInventory("FusionShieldStarter", 1)
+TNT1 A 0 A_GiveInventory("IsColdFusion", 1)
 TNT1 A 0 A_GiveInventory("NoArmorBar", 1)
 stop
 }
 }
+
+actor IsColdFusion : Once {}
 
 actor FusionBombClassWepMorph : ColdFusionClass
 {

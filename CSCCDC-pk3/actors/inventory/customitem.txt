@@ -26,8 +26,18 @@ CSCC_DefaultSpawn:
 "----" A 0 A_Jump(256, "Animation") 
 goto Animation
 CSCC_Copy:
+CSCC_ColdFusion:
+CSCC_ColdFusionMorph:
+CSCC_Ukiyama:
+CSCC_UkiyamaMorph:
+CSCC_Corporal:
+CSCC_CorporalMorph:
 CSCC_Gizmo:
 CSCC_GizmoMorph:
+CSCC_Korby:
+CSCC_KorbyMorph:
+"----" A 0 A_Jump(256, "CSCC_OtherSpawn")
+Goto CSCC_OtherSpawn
 CSCC_OtherSpawn:
 "----" A 0 A_SetTranslucent(0.5, 0)
 "----" A 0 A_Jump(256, "Animation") 
@@ -74,8 +84,11 @@ Animation:
 WEA2 Q 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 0, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 0, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 0, 1)
+stop
 }
 } 
 
@@ -106,8 +119,11 @@ Animation:
 WEA3 P 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 5, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 5, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 5, 1)
+stop
 }
 } 
 
@@ -138,8 +154,11 @@ Animation:
 WEA4 K 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 2, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 2, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 2, 1)
+stop
 }
 } 
 
@@ -170,8 +189,11 @@ Animation:
 WEA4 L 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 1, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 1, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 1, 1)
+stop
 }
 } 
 
@@ -202,8 +224,11 @@ Animation:
 DUOF A 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 4, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 4, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 4, 1)
+stop
 }
 } 
 
@@ -234,8 +259,11 @@ Animation:
 TRBB I 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 6, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 6, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 6, 1)
+stop
 }
 } 
 
@@ -266,8 +294,11 @@ Animation:
 WEA3 A 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 3, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 3, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 3, 1)
+stop
 }
 } 
 
@@ -281,10 +312,16 @@ WEA2 A 0
 Goto "Super::Spawn+1"
 CSCC_DefaultSpawn:
 CSCC_OtherSpawn:
+CSCC_ColdFusion:
+CSCC_ColdFusionMorph:
+CSCC_Ukiyama:
+CSCC_UkiyamaMorph:
+CSCC_Corporal:
+CSCC_CorporalMorph:
+CSCC_Copy:
 "----" A 0 A_SetTranslucent(1.0, 0)
 "----" A 0 A_Jump(256, "Animation") 
 Goto Animation
-CSCC_Copy:
 CSCC_GizmoMorph:
 CSCC_Gizmo:
 GITM E 0 A_SetTranslucent(1.0, 0)
@@ -294,36 +331,13 @@ Animation:
 WEA2 A 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 7, 3), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 7, 3), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 7, 3)
+stop
 }
 }
-/*
-actor Item2Giver : ItemGiver replaces Item2
-{
-inventory.pickupmessage "$PU_ITEM2"
-States
-{
-Spawn:
-WEA2 D 0
-Goto "Super::Spawn+1"
-CSCC_Copy:
-CSCC_GizmoMorph:
-CSCC_Gizmo:
-CSCC_DefaultSpawn:
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-Animation:
-WEA2 D 35
-wait
-Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 8, 2), "Give")
-fail
-}
-}
-*/
 
 actor TangoSummonGiver : ItemGiver replaces TangoSummon
 {
@@ -333,6 +347,14 @@ States
 Spawn:
 WEA3 B 0
 Goto "Super::Spawn+1"
+CSCC_Copy:
+CSCC_ColdFusion:
+CSCC_ColdFusionMorph:
+CSCC_Ukiyama:
+CSCC_UkiyamaMorph:
+CSCC_Corporal:
+CSCC_CorporalMorph:
+CSCC_OtherSpawn:
 CSCC_DefaultSpawn:
 "----" A 0 A_SetTranslucent(1.0, 0)
 "----" A 0 A_Jump(256, "Animation") 
@@ -346,8 +368,11 @@ Animation:
 WEA3 B 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 8, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 8, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 8, 1)
+stop
 }
 }
 
@@ -373,8 +398,11 @@ Animation:
 WEAP Q 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 9, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 9, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 9, 1)
+stop
 }
 }
 
@@ -386,6 +414,14 @@ States
 Spawn:
 EDDI Q 0
 Goto "Super::Spawn+1"
+CSCC_Copy:
+CSCC_ColdFusion:
+CSCC_ColdFusionMorph:
+CSCC_Ukiyama:
+CSCC_UkiyamaMorph:
+CSCC_Corporal:
+CSCC_CorporalMorph:
+CSCC_OtherSpawn:
 CSCC_DefaultSpawn:
 "----" A 0 A_SetTranslucent(1.0, 0)
 "----" A 0 A_Jump(256, "Animation") 
@@ -399,8 +435,11 @@ Animation:
 EDDI Q 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 10, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 10, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 10, 1)
+stop
 }
 }
 
@@ -412,6 +451,14 @@ States
 Spawn:
 WEA9 Z 0
 Goto "Super::Spawn+1"
+CSCC_Copy:
+CSCC_ColdFusion:
+CSCC_ColdFusionMorph:
+CSCC_Ukiyama:
+CSCC_UkiyamaMorph:
+CSCC_Corporal:
+CSCC_CorporalMorph:
+CSCC_OtherSpawn:
 CSCC_DefaultSpawn:
 "----" A 0 A_SetTranslucent(1.0, 0)
 "----" A 0 A_Jump(256, "Animation") 
@@ -425,7 +472,45 @@ Animation:
 WEA9 Z 35
 wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemToGive", 11, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 11, 1), "Give")
 fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 11, 1)
+stop
 }
 }
+
+actor WTankGiver : ItemGiver replaces WTank
+{
+inventory.pickupmessage "$PU_WTANK"
+States
+{
+Spawn:
+EBAL H 0
+Goto "Super::Spawn+1"
+CSCC_Copy:
+CSCC_ColdFusion:
+CSCC_ColdFusionMorph:
+CSCC_Ukiyama:
+CSCC_UkiyamaMorph:
+CSCC_Corporal:
+CSCC_CorporalMorph:
+CSCC_Korby:
+CSCC_KorbyMorph:
+CSCC_DefaultSpawn:
+"----" A 0 A_SetTranslucent(1.0, 0)
+"----" A 0 A_Jump(256, "Animation") 
+Goto Animation
+Animation:
+EBAL HE 6
+loop
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 12, 5), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 12, 1)
+stop
+}
+}
+
+

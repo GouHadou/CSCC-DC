@@ -3,26 +3,30 @@
 //#include "zcommon.acs"
 //#include "8BDMLIB.ACS"
 
-#DEFINE MAX_WEPCLASS 11
-#DEFINE MAX_ITEMS 12
+#DEFINE MAX_WEPCLASS 12
+#DEFINE CLASSLIST 12
+#DEFINE MAX_ITEMS 13
 
-str wep_classes[MAX_WEPCLASS]=
+str wep_check[CLASSLIST][2]=
 {//Default 0
-"MegamanC", //1
-"CopyRobot", //2
-"GizmoClass", //3
-"HandCannonMorph", //4
-"ClawGlovesWepMorph",//5
-"FrostCannonWepMorph",//6
-"FlameCannonWepMorph",//7
-"LightningCannonWepMorph",//8
-"StoneCannonWepMorph",//9
-"HydroCannonWepMorph",//10
-"EternalClawsWepMorph"//11
+{"IsMegaMan", "CSCC_DefaultSpawn"},//1
+{"IsCopy", "CSCC_Copy"},//2
+{"IsGizmo", "CSCC_Gizmo"},//3
+{"NONE", "CSCC_GizmoMorph"},//4
+{"IsColdFusion", "CSCC_ColdFusion"},//5
+{"NONE", "CSCC_ColdFusionMorph"},//6
+{"IsUki", "CSCC_Ukiyama"},//7
+{"NONE", "CSCC_UkiyamaMorph"},//8
+{"IsCorporal", "CSCC_Corporal"},//9
+{"NONE", "CSCC_CorporalMorph"},//10
+{"IsKorby", "CSCC_Korby"}, //11
+{"NONE", "CSCC_KorbyMorph"},//12
 };
 
-str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]= //Add 1 for default behavior
-{//Default, MegaMan, , Copy, Gizmo, Copy(Columns 4-11)
+
+
+str item_pickups[MAX_ITEMS][MAX_WEPCLASS]= 
+{//Default, MegaMan, , Copy, Gizmo, Gizmo Morph, Cold Fusion, CF Morph, Ukiyama, Uki Morph, Corporal, Corporal Morph, Korby, Korby Morph
 {"NONE", "ProtoUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//0
 {"NONE","ArrowBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//1
 {"NONE","LaserBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//2
@@ -30,12 +34,13 @@ str item_pickups[MAX_ITEMS][MAX_WEPCLASS+1]= //Add 1 for default behavior
 {"NONE","DuoFistUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//4
 {"NONE","AdaptorUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
 {"NONE","TrebleBoostUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
-{"ITEM1", "ITEM1", "ITEM1", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG", "ITEMG"},//7
-//{"ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2", "ITEM2"},//8
-{"NONE", "TangoSummon", "NONE", , "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//8
-{"NONE", "EDDIESUMMON", "EDDIESUMMON", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem", "KittyItem"},//9
-{"NONE", "EDDIEBOMBER", "NONE", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//10
-{"NONE", "ReggaeCall", "NONE", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper", "KittyHelper"},//11
+{"ITEM1", "ITEM1", "ITEM1", "ITEMG", "ITEMG", "ITEM1", "ITEM1", "ITEM1", "ITEM1", "ITEM1", "ITEM1", "ITEM1"},//7
+{"TangoSummon", "TangoSummon", "TangoSummon", "KittyHelper", "KittyHelper", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon"},//8
+{"NONE", "EDDIESUMMON", "EDDIESUMMON", "KittyItem", "KittyItem", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//9
+{"EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "KittyHelper", "KittyHelper", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER"},//10
+{"REGGAECALL", "REGGAECALL", "REGGAECALL", "KittyHelper", "KittyHelper", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL"},//11
+{"NONE", "Wtank", "WTank", "NONE", "NONE", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank"},//12
+
 };
 
 Script "CSCC_ItemSpriteSpawn" (void) ClientSide
@@ -60,13 +65,20 @@ While(CapsuleSprite == OldClass)
 restart;
 }
 
+Script "CSCC_ItemCheck" (int ItemSlot, int MaxItem)
+{
+int Class = CheckClassList(1)+1;
+int Item = item_pickups[itemslot][class];
+int ResultValue = TRUE;
+If(StrIcmp(item_pickups[itemslot][class], "NONE")==0){ResultValue = FALSE;}
+If(CheckActorInventory(ActivatorTID(), Item)>=MaxItem){ResultValue = FALSE;}
+SetResultValue(ResultValue);
+}
 Script "CSCC_ItemToGive" (int ItemSlot, int Quantity) 
 {
 int Class = CheckClassList(1)+1;
-If(item_pickups[itemslot][class] == "NONE"){SetResultValue(FALSE);terminate;}
-If(CheckInventory(item_pickups[itemslot][class])==Quantity){SetResultValue(FALSE);terminate;}
-GiveInventory(item_pickups[itemslot][class], Quantity);
-SetResultValue(TRUE);
+int Item = item_pickups[itemslot][class];
+GiveActorInventory(ActivatorTID(), Item, Quantity);
 }
 
 Function int CheckClassList (int Mode)
@@ -84,9 +96,10 @@ Switch(Mode)
 	}
 for(int i = 0; i < MAX_WEPCLASS; i++)
 	{
-	If(CheckActorClass(PlrNum+1000,wep_classes[i]))
+	If(CheckActorInventory(PlrNum+1000, wep_check[i][0]))
 		{
 		UseSprite = i;
+		If(CheckActorInventory(PlrNum+1000, "MorphFlag")){UseSprite++;}
 		}
 	}
 Return (UseSprite);
@@ -96,27 +109,11 @@ function void SetSprite (int ID,int SpriteUse)
 {
 Switch(SpriteUse)
 	{
-	Case 0: //Mega Man
-	SetActorState(ID, "CSCC_DefaultSpawn");
-	break;
-	Case 1: //Copy
-	SetActorState(ID, "CSCC_Copy");
-	break;
-	Case 2: //Gizmo
-	SetActorState(ID, "CSCC_Gizmo");
-	break;
-	Case 3: 
-	Case 4:
-	Case 5:
-	Case 6:
-	Case 7:
-	Case 8:
-	Case 9:
-	Case 10://Copy Gizmo
-	SetActorState(ID, "CSCC_GizmoMorph");
+	Case 999:
+	SetActorState(ID, "CSCC_OtherSpawn");
 	break;
 	Default:
-	SetActorState(ID, "CSCC_OtherSpawn");
+	SetActorState(ID, wep_check[SpriteUse][1]);
 	break;
 	}
 }

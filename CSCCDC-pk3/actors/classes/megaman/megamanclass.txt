@@ -4,6 +4,7 @@ player.startitem "MegaBuster"
 player.startitem "BusterAmmo", 3
 player.startitem "Once", 1
 player.startitem "EnergyBalancerActive", 1
+player.startitem "IsMegaMan", 1
 +NOSKIN
 states
 {
@@ -21,3 +22,5 @@ PLAY G 4
 goto Spawn
 }
 }
+
+actor IsMegaMan : Once {}
