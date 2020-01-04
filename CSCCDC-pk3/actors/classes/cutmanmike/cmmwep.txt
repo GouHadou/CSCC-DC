@@ -41,7 +41,7 @@ Goto Ready2
 Altfire:
 CMMW A 0 A_JumpIfNoAmmo("NoAmmo")
 CMMW B 0 A_GiveInventory("CMMAltfire",1)
-CMMW BCDEFGH 2
+CMMW BCDEFG 2
 Goto Check
 Check:
 TNT1 A 1 A_GiveInventory("CutterFlag",1)
@@ -51,7 +51,7 @@ Goto Check
 Return:
 CMMW A 0 A_TakeInventory("HellfireCutterFlag",999)
 CMMW A 0 A_TakeInventory("CutterFlag",999)
-CMMW IJ 2 
+CMMW HI 2 
 Goto Ready2
 NoAmmo:
 CMMW A 1 //ACS_Execute(979,0)
