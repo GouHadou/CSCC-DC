@@ -79,6 +79,8 @@ Pain.MisogiImpact:
 goto pain+1
 Pain.Shakunetsu:
 "----" HH 0 A_SpawnItemEx("ScorchBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
+"----" H 0 A_ChangeVelocity(momx*0.5, momy*0.5, momz, CVF_REPLACE)
+"----" H 0 ThrustThingZ(0, 34, 0, 0)
 Goto Pain.GouHadou
 Pain.GouZankuu:
 "----" H 0 A_ScaleVelocity(0.85)

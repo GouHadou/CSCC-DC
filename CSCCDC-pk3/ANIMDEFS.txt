@@ -40,3 +40,12 @@ pic VALTBAR2 tics 2
 Texture VALTVAR
 pic VALTVAR1 tics 2
 pic VALTVAR2 tics 2
+
+//Ukiyama
+texture UKIFULL
+allowdecals
+pic ModBar2 tics 3
+pic ModBar3 tics 3
+pic ModBar2 tics 3
+pic ModBar tics 10
+	
