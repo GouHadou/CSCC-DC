@@ -1,6 +1,7 @@
 user noarchive int Ukiyama_ClassHelp_Item = 0;
 user noarchive int Ukiyama_ClassHelp_Mods = 0;
 user noarchive int Gee_ClassHelp_Weapon = 0;
+user noarchive int TankOp_ClassHelp_Weapon = 0;
 user noarchive int BG_ClassHelp_Weapon = 0;
 
 //Allows translation to be copied on the client's end

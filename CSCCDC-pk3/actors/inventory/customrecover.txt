@@ -121,7 +121,7 @@ EBAL AB 6 A_SetTranslucent(0.5)
 EBAL B 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
 loop
 KorbySpawn:
-KMAG AA 6 A_SetTranslucent(1.0)
+KMAG AB 6 A_SetTranslucent(1.0)
 EBAL B 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
 loop
 Pickup:
@@ -147,7 +147,7 @@ EBAL CD 6 A_SetTranslucent(0.5)
 EBAL C 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
 loop
 KorbySpawn:
-KMAG CC 6 A_SetTranslucent(1.0)
+KMAG CD 6 A_SetTranslucent(1.0)
 EBAL C 0 ACS_NamedExecuteAlways("CSACS_ItemSet", 0)
 loop
 Pickup:

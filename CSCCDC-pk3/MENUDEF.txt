@@ -498,8 +498,8 @@ OptionMenu "ClassInfo"
 	Submenu	    "ColdFusion",		"UkiyamaInfo"
 	Submenu	    "Pistonman", 		"UkiyamaInfo"
 	Submenu	    "LordDamager",		"UkiyamaInfo" 
-	Submenu	    "         	  Tank Operator",		"UkiyamaInfo"
-	Submenu	    "Badz", 		"UkiyamaInfo"
+	Submenu	    "         	  Tank Operator",		"TankOpInfo"
+	Submenu	    "Badz", 		"BadzInfo"
 	Submenu	    "Corporal",		"UkiyamaInfo"
 	Submenu	    "Bull Gator",		"BullGatorInfo"
 	Submenu	    "Korby",		"UkiyamaInfo"
@@ -607,6 +607,93 @@ OptionValue BGAltfires
 	0, "\cfSleep\n\cjForces the enemy to \nfall asleep."
 	1, "\cfSiphon\n\cjCan restore HP if the \nrailgun hits."
 	2, "\cfConfusion\n\cjInflicts confusion \nonto the enemy."
+}
+
+OptionMenu "TankOpInfo"
+{
+	Title "$TANKOP_CH_TITLE"
+	StaticText ""
+	StaticText "$TANKOP_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "TankOp_ClassHelp_Weapon", "TankOpMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "TankOp_ClassHelp_Weapon", "TankOpAltfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_RELOADS", "TankOp_ClassHelp_Weapon", "TankOpReloads"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_PASSIVES", "TankOp_ClassHelp_Weapon", "TankOpPassives"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$TANKOP_CH_ITEM"
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue TankOpMainfires
+{
+	0, "\cfFoot Form\n\cjFires machine gun shots \nwith large spread."
+	1, "\cfTank Mode\n\cjFires a tank mortar with \na huge explosion."
+}
+
+OptionValue TankOpAltfires
+{
+	0, "\cfFoot Form\n\cjFires a shotgun that burns \na larger chunk of ammo."
+	1, "\cfTank Mode\n\cjFires the tank's machine \ngun with no spread and \nprecise shots."
+}
+
+OptionValue TankOpReloads
+{
+	0, "\cfFoot Form\n\cjReloads your weapon, \nrecovering its entire \nammo pool."
+	1, "\cfTank Mode\n\cjNone."
+}
+
+OptionValue TankOpPassives
+{
+	0, "\cfFoot Form\n\cjYou take 80% increased \ndamage while on foot!"
+	1, "\cfTank Mode\n\cjYou're immune to hitstuns\nand crowd controls!"
+}
+
+OptionMenu "BadzInfo"
+{
+	Title "$BADZ_CH_TITLE"
+	StaticText ""
+	StaticText "$BADZ_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$BADZ_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$BADZ_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$BADZ_CH_ITEM"
+	StaticText ""
+	StaticText ""
 }
 
 OptionMenu "GeeInfo"

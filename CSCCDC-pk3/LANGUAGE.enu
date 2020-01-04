@@ -296,6 +296,7 @@ CSCC_CH_USER2S = "\cvUser Key 2 : ";
 CSCC_CH_USER3S = "\cvUser Key 3 : ";
 CSCC_CH_USER4S = "\cvUser Key 4 : ";
 CSCC_CH_ITEMS = "\cvItem : ";
+CSCC_CH_PASSIVES = "\cvPassive : ";
 
 UKIYAMA_CH_TITLE = "\cvUKIYAMA";
 UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
@@ -310,3 +311,13 @@ GEE_CH_MAINFIRE = "\cfMainfire : \cjShoots a magic burst \ncomposed of the attri
 BG_CH_TITLE = "\cvBULL GATOR";
 BG_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
 BG_CH_ITEM = "\cfItem : \cjScopes in and out.";
+
+BADZ_CH_TITLE = "\cvBADZ";
+BADZ_CH_STATS = "\cfHealth : \cj135\n\n\cfSpeed : \cj90%\n\cfJump : \cj100%";
+BADZ_CH_MAINFIRE = "\cfMainfire : \cjFires a buster shot. \nIf missiles are active, launches \nthem to fly in circles";
+BADZ_CH_ALTFIRE = "\cfAltfire : \cjDeploys up to five \nmissiles that circle the user.";
+BADZ_CH_ITEM = "\cfItem : \cjTeleports forward a short \ndistance.";
+
+TANKOP_CH_TITLE = "\cvTANK OPERATOR";
+TANKOP_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
+TANKOP_CH_ITEM = "\cfItem : \cjActivates and deactivates \ntank formation.";
