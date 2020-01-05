@@ -3,13 +3,10 @@ const int ZEN_ARANGEX = 768;
 
 const int Item_ZenHeal = 3;
 const int Item_ZenPower = 4;
-const int Item_ZenDefense = 5;
 const int Item_ZenHaste = 6;
-const int Item_ZenRage = 7;
 
 const int Item_ZenHealEX = 8;
 const int Item_ZenPowerEX = 9;
-const int Item_ZenDefenseEX = 10;
 const int Item_ZenHasteEX = 11;
 
 
@@ -19,6 +16,7 @@ Weapon.AmmoUse 0
 Weapon.AmmoUse2 2
 Inventory.Pickupmessage "$PU_ZENTRAINERWEP"
 Obituary "$OB_ZENTRAINERWEP"
+Tag "$TAG_ZENSPHERE"
 weapon.ammotype "ZenTrainerAmmo1"
 weapon.ammotype2 "ZenTrainerAmmo1"
 DropItem "ZenSphereWepCS"
@@ -57,9 +55,7 @@ TNT1 A 0 A_GiveInventory("ZenTrainerAmmo1",4)
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_heal",1,"HealAura")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"PowerAura")
-TNT1 A 0 A_JumpIfInventory("AuraFlag_defense",1,"DefenseAura")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_haste",1,"HasteAura")
-//TNT1 A 0 A_JumpIfInventory("AuraFlag_rage",1,"RageAura")
 loop
 HealAura:
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHeal,ZEN_ARANGE,1)
@@ -69,17 +65,9 @@ PowerAura:
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenPower,ZEN_ARANGE,1)
 TNT1 AAAAA 2 A_SpawnItemEx("ZNAura_Attack",ZEN_ARANGE,0,0,0,0,8,random(0,360),1)
 goto Flash
-DefenseAura:
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenDefense,ZEN_ARANGE,1)
-TNT1 AAAAA 2 A_SpawnItemEx("ZNAura_Defense",ZEN_ARANGE,0,0,0,0,8,random(0,360),1)
-goto Flash
 HasteAura:
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHaste,ZEN_ARANGE,1)
 TNT1 AAAAA 2 A_SpawnItemEx("ZNAura_Haste",ZEN_ARANGE,0,0,0,0,8,random(0,360),1)
-goto Flash
-RageAura:
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenRage,ZEN_ARANGE,1)
-TNT1 AAAAA 2 A_SpawnItemEx("ZNAura_Rage",ZEN_ARANGE,0,0,0,0,8,random(0,360),1)
 goto Flash
 
 AltFlash:
@@ -87,9 +75,7 @@ TNT1 A 1
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_heal",1,"HealAuraEX")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"PowerAuraEX")
-TNT1 A 0 A_JumpIfInventory("AuraFlag_defense",1,"DefenseAuraEX")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_haste",1,"HasteAuraEX")
-//TNT1 A 0 A_JumpIfInventory("AuraFlag_rage",1,"RageAuraEX")
 stop
 HealAuraEX:
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHealEX,ZEN_ARANGEX,1)
@@ -101,20 +87,10 @@ TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenPowerEX,ZEN_ARANGEX
 TNT1 A 0 A_SpawnItemEx("ZNAura_Attack",ZEN_ARANGEX,0,0,0,0,8,random(0,360),1)
 TNT1 AAA 0 A_SpawnItemEx("ZNAura_Attack",0,0,64,random(2,4),0,4,random(0,360),1)
 goto AltFlashEnd
-DefenseAuraEX:
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenDefenseEX,ZEN_ARANGEX,1)
-TNT1 A 0 A_SpawnItemEx("ZNAura_Defense",ZEN_ARANGEX,0,0,0,0,8,random(0,360),1)
-TNT1 AAA 0 A_SpawnItemEx("ZNAura_Defense",0,0,64,random(2,4),0,4,random(0,360),1)
-goto AltFlashEnd
 HasteAuraEX:
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHasteEX,ZEN_ARANGEX,1)
 TNT1 A 0 A_SpawnItemEx("ZNAura_Haste",ZEN_ARANGEX,0,0,0,0,8,random(0,360),1)
 TNT1 AAA 0 A_SpawnItemEx("ZNAura_Haste",0,0,64,random(2,4),0,4,random(0,360),1)
-goto AltFlashEnd
-RageAuraEX:
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenPower,ZEN_ARANGEX,1)
-TNT1 A 0 A_SpawnItemEx("ZNAura_Rage",ZEN_ARANGEX,0,0,0,0,8,random(0,360),1)
-TNT1 AAA 0 A_SpawnItemEx("ZNAura_Rage",0,0,64,random(2,4),0,4,random(0,360),1)
 goto AltFlashEnd
 
 AltFlashEnd:
@@ -203,16 +179,14 @@ inventory.amount 1
 
 actor ZenTrainerAuraDelay : Powerup {powerup.duration 50}
 
-actor BFlag : Inventory {inventory.maxamount 1}
+actor BFlag : Once {}
 
-actor PsychicBallHold : BFlag {}
-actor ZenAltFlashFlag : BFlag {}
+actor PsychicBallHold : Once {}
+actor ZenAltFlashFlag : Once {}
 
-actor AuraFlag_heal : BFlag {}
-actor AuraFlag_power : BFlag {}
-actor AuraFlag_defense : BFlag {}
-actor AuraFlag_haste : BFlag {}
-actor AuraFlag_rage : BFlag {}
+actor AuraFlag_heal : Once {}
+actor AuraFlag_power : Once {}
+actor AuraFlag_haste : Once {}
 
 actor AuraSwitchItem : CustomInventory
 {
@@ -229,38 +203,27 @@ TNT1 A 0
 TNT1 A 0 A_JumpIfInventory("ZenTrainerAuraDelay",1,"nope")
 TNT1 A 0 A_GiveInventory("ZenTrainerAuraDelay")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_heal",1,"TakeHealGivePower")
-TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"TakePowerGiveDefense")
-TNT1 A 0 A_JumpIfInventory("AuraFlag_defense",1,"TakeDefenseGiveHaste")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"TakePowerGiveHaste")
 TNT1 A 0 A_JumpIfInventory("AuraFlag_haste",1,"TakeHasteGiveHeal")
-TNT1 A 0 //A_JumpIfInventory("AuraFlag_rage",1,"TakeRageGiveHeal")
 fail
 TakeHealGivePower:
+TNT1 A 0 A_PlaySoundEx("misc/gravitywarn","SoundSlot5")
 TNT1 A 0 A_TakeInventory("AuraFlag_heal")
 TNT1 A 0 A_GiveInventory("AuraFlag_power")
 fail
-TakePowerGiveDefense:
+TakePowerGiveHaste:
+TNT1 A 0 A_PlaySoundEx("misc/gravitywarn","SoundSlot5")
 TNT1 A 0 A_TakeInventory("AuraFlag_power")
-TNT1 A 0 A_GiveInventory("AuraFlag_defense")
-fail
-TakeDefenseGiveHaste:
-TNT1 A 0 A_TakeInventory("AuraFlag_defense")
 TNT1 A 0 A_GiveInventory("AuraFlag_haste")
 fail
 TakeHasteGiveHeal:
+TNT1 A 0 A_PlaySoundEx("misc/gravitywarn","SoundSlot5")
 TNT1 A 0 A_TakeInventory("AuraFlag_haste")
 TNT1 A 0 A_GiveInventory("AuraFlag_heal")
 fail
 nope:
 TNT1 A 0
 fail
-/*TakeHasteGiveRage:
-TNT1 A 0 A_TakeInventory("AuraFlag_haste")
-TNT1 A 0 A_GiveInventory("AuraFlag_rage")
-fail
-TakeRageGiveHeal:
-TNT1 A 0 A_TakeInventory("AuraFlag_rage")
-TNT1 A 0 A_GiveInventory("AuraFlag_heal")
-fail*/
 }
 }
 
@@ -289,11 +252,11 @@ TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("weapon/blackholebomb","Weapon",1)
 BLKH BCDEBCDEBC 1 A_SpawnItemEx("ZTPsychicBallGFX2",0,random(-6,6),random(-6,6),0,0,0,0,1)
 SpawnC:
-BLKH BCDEBCDEBCDEBCDEBCDE 1 A_ScaleVelocity(0.05)
+BLKH BCDEBCDEBCDEBCDEBCDE 1 A_Stop
 SpawnC2:
 BLKH BCDE 2 A_PlaySoundEx("weapon/blackholebomb","Weapon",1)
 BLKH B 0 A_SpawnItemEx("ZTPsychicBallGFX",0,0,0,0,0,0,0,1)
-BLKH B 0 A_JumpIfInTargetInventory("PsychicBallHold",1,"SpawnC2")
+TNT1 A 3 A_JumpIfInTargetInventory("PsychicBallHold",1,"SpawnC2")
 stop
 Crash:XDeath:Death:
 TNT1 A 0 A_Warp(AAPTR_Tracer,0,0,0,0,WARPF_NoCheckPosition,"Exploding")
@@ -431,18 +394,6 @@ loop
 }
 }
 
-actor ZNAura_Defense : BasicClientside
-{
-Scale 2.65
-States
-{
-Spawn:
-TNT1 A 0
-ZNDF A 2 A_Fadeout
-loop
-}
-}
-
 actor ZNAura_Haste : BasicClientside
 {
 Scale 2.65
@@ -451,18 +402,6 @@ States
 Spawn:
 TNT1 A 0
 ZNHS A 2 A_Fadeout
-loop
-}
-}
-
-actor ZNAura_Rage : BasicClientside
-{
-Scale 2.65
-States
-{
-Spawn:
-TNT1 A 0
-ZNRG A 2 A_Fadeout
 loop
 }
 }
@@ -486,18 +425,6 @@ powerup.duration 35
 damagefactor "normal", 2
 }
 
-actor Zen_Defense150 : PowerProtection
-{
-powerup.duration 35
-damagefactor "normal", 0.75
-}
-
-actor Zen_Defense200 : PowerProtection
-{
-powerup.duration 35
-damagefactor "normal", 0.25
-}
-
 actor Zen_Haste110 : Powerspeed
 {
 +POWERSPEED.NOTRAIL
@@ -509,5 +436,3 @@ actor Zen_Haste125 : Powerspeed
 powerup.duration 35
 speed 1.35
 }
-
-actor Zen_Rage : PowerDoubleFiringSpeed {powerup.duration 35}

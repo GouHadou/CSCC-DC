@@ -70,6 +70,7 @@ TAG_VocalMicBoss2 = "Support Microphone";
 //===|TankOperator
 OB_CLASSICTANK = "%o < [ Cannon shot ] < %k";
 PU_CLASSICTANK = "Pootis";
+TAG_CLASSICTANK = "Classic Tank";
 
 OB_CLASSICTANKCANNON = "%o was blown up by %k's cannon shot.";
 OB_CLASSICTANKMACHINEGUN = "%o was pelted down by %k's tank machinegun.";

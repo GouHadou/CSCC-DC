@@ -3,6 +3,7 @@ actor OrbitalMissileBoss : CSCCWepBase
 Inventory.Pickupmessage "Satellite Sign \"Orbital Missile\""
 dropitem "OrbitalMissileWepCS"
 Obituary "$OB_ORBITALMISSILE"
+tag "$TAG_ORBITALMISSILE"
 weapon.ammotype "BadzStuffAmmo"
 weapon.ammotype2 "BadzWarpAmmo"
 States

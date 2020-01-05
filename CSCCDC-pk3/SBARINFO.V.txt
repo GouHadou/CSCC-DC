@@ -108,11 +108,13 @@ InInventory LaggyHUD //It will have more stuff later.
 	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 8, 8;
 	DrawImage "MAGAICON", 32, 48;
+	DrawImage "VERICONR", 40, 48;
 	}
 	IsSelected NadeSpam
 	{
 	Drawbar"NADEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawImage "MAGAICON", 32, 48;
+	DrawImage "VERICONR", 40, 48;
 	}
 	IsSelected CorpFragGrenade
 	{
@@ -124,6 +126,7 @@ InInventory LaggyHUD //It will have more stuff later.
 	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 8, 8;
 	DrawImage "MAGAICON", 32, 48;
+	DrawImage "VERICONR", 40, 48;
 	}
 }
 
@@ -175,7 +178,7 @@ DrawBar "MESSVSPS", "MESSVSPE", MessSuperFlag, vertical, 16, 8;
 InInventory OverhealValue, 1 {DrawBar "MESSVOVR", "NOBAR", OverhealValue, vertical, 24, 8;}
 
 InInventory MessatsuCharge, 4{DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 24, 8;}
-InInventory NOT MessParry, 1 {DrawImage "MESPARY", 32, 56;}
+InInventory NOT MessParry, 1 {DrawImage "MESPARY", 32, 56; DrawImage "VERICON1", 40, 56;}
 InInventory MessatsuAmmo, 56{DrawImage "RDEMON", 16, 20, center;}
 InInventory MessatsuAmmo, 36{DrawImage "MISOGI", 16, 35, center;}
 InInventory MessatsuAmmo, 18{DrawImage "TEMAGOU", 16, 50, center;}
@@ -217,6 +220,8 @@ IsSelected MissilePunchWep
 	Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
 	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
+	DrawImage "LDRELOAD", 32, 48;
+	DrawImage "VERICONR", 40, 48;
 	}
 
 IsSelected LaserCannonWep
@@ -230,6 +235,7 @@ IsSelected LaserCannonWep
 IsSelected ClassicTankWeapon {
 	DrawBar"BARAMM23","BAREMPTY",Ammo1,vertical,16,8;
 	DrawBar"BARAMM48","BAREMPTY",TankRepairAmmo,vertical,8,8;
+	InInventory not Tank_NotOnFoot, 1{DrawImage "TNKRLOAD", 32, 48; DrawImage "VERICONR", 40, 48;}
 	InInventory Tank_NotOnFoot, 1{DrawBar"TANK_BAR","NOBAR",health,vertical,24,8;}
 	InInventory TankRepairAmmo, 350{DrawBar"BARFLS1","NOBAR",TankRepairAmmo,vertical,8,8;}
 	}
@@ -258,20 +264,16 @@ InInventory IsVocalWoman
 //===| Zen Trainer
 InInventory Zen_Heal1PU, 1 {Drawimage"ZENBF04",290,8;}
 InInventory Zen_Heal2PU, 1 {Drawimage"ZENBF05",290,8;}
-InInventory Zen_Power150, 1 {Drawimage"ZENBF00",290,8;}
-InInventory Zen_Power200, 1 {Drawimage"ZENBF01",290,8;}
-InInventory Zen_Defense150, 1 {Drawimage"ZENBF02",290,8;}
-InInventory Zen_Defense200, 1 {Drawimage"ZENBF03",290,8;}
-InInventory Zen_Haste110, 1 {Drawimage"ZENBF06",290,8;}
-InInventory Zen_Haste125, 1 {Drawimage"ZENBF07",290,8;}
+InInventory Zen_Power150, 1 {Drawimage"ZENBF00",290,30;}
+InInventory Zen_Power200, 1 {Drawimage"ZENBF01",290,30;}
+InInventory Zen_Haste110, 1 {Drawimage"ZENBF06",290,52;}
+InInventory Zen_Haste125, 1 {Drawimage"ZENBF07",290,52;}
 
 IsSelected ZenTrainerWep{
 	InInventory ZenTrainerAmmo1, 140 {
 		InInventory AuraFlag_heal, 1 {Drawbar"BZNTRA01","BAREMPTY",Ammo2,vertical,16,8;}
 		InInventory AuraFlag_power, 1 {Drawbar"BZNTRA02","BAREMPTY",Ammo2,vertical,16,8;}
-		InInventory AuraFlag_defense, 1 {Drawbar"BZNTRA03","BAREMPTY",Ammo2,vertical,16,8;}
 		InInventory AuraFlag_haste, 1 {Drawbar"BZNTRA04","BAREMPTY",Ammo2,vertical,16,8;}
-		InInventory AuraFlag_rage, 1 {Drawbar"BZNTRA05","BAREMPTY",Ammo2,vertical,16,8;}
 	}else{ Drawbar"BZNTRA00","BAREMPTY",Ammo2,vertical,16,8;}
 	}
 

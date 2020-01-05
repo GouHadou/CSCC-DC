@@ -237,7 +237,7 @@ goto Done
 
 actor EternalClawsWep : CSCCWepBase 
 {
-Weapon.AmmoUse 2
+Weapon.AmmoUse 4
 Weapon.AmmoGive 28
 Weapon.SlotNumber 1
 Obituary "$OB_ETERNALCLAWS"
@@ -277,10 +277,12 @@ Altfire:
 Fire:
 IDLE C 0 A_JumpIfNoAmmo("NoAmmo")
 IDLE C 0 A_PlaySoundEx("weapon/clawg","Weapon")
+CLAW A 0 A_TakeInventory("EternalClawsAmmo",2)
 CLAW A 0 A_GiveInventory("GizmoEternalClawsPickup",1)
 CLAW A 0 A_GiveInventory("GizmoClawGlovesPickup",1)
 CLAW ABCDEF 1 A_FireBullets (0, 0, 1, 0, "ClimbChecker", 0, 43) 
 IDLE C 0 A_PlaySoundEx("weapon/clawg","Weapon")
+CLAW A 0 A_TakeInventory("EternalClawsAmmo",2)
 CLAW A 0 A_GiveInventory("GizmoEternalClawsPickup",1)
 CLAW A 0 A_GiveInventory("GizmoClawGlovesPickup",1)
 CLAW GHIJKL 1 A_FireBullets (0, 0, 1, 0, "ClimbChecker", 0, 43) 
@@ -353,19 +355,19 @@ actor GizmoEternalClawsPickup : BasicTeamColorPickup
 states
 {
 FireX:
-TNT1 A 0 A_FireCustomMissile("EternalClaws",0,1,0,0)
+TNT1 A 0 A_FireCustomMissile("EternalClaws",0,0,0,0)
 goto Done
 FireB:
-TNT1 A 0 A_FireCustomMissile("EternalClawsB",0,1,0,0)
+TNT1 A 0 A_FireCustomMissile("EternalClawsB",0,0,0,0)
 goto Done
 FireR:
-TNT1 A 0 A_FireCustomMissile("EternalClawsR",0,1,0,0)
+TNT1 A 0 A_FireCustomMissile("EternalClawsR",0,0,0,0)
 goto Done
 FireG:
-TNT1 A 0 A_FireCustomMissile("EternalClawsG",0,1,0,0)
+TNT1 A 0 A_FireCustomMissile("EternalClawsG",0,0,0,0)
 goto Done
 FireY:
-TNT1 A 0 A_FireCustomMissile("EternalClawsY",0,1,0,0)
+TNT1 A 0 A_FireCustomMissile("EternalClawsY",0,0,0,0)
 goto Done
 }
 }

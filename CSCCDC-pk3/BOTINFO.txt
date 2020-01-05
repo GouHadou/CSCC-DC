@@ -17,6 +17,25 @@
 }
 
 {
+	name = "\cgGizmo the Cat"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "AtomicFireWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "base"
+	class = "Gizmo"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTHGIZ"
+	chatfrequency = 50
+}
+
+{
 	name = "\cvUnix"
 	accuracy = 3
 	intellect = 2
@@ -47,6 +66,25 @@
 	class = "CutmanMike"
 	revealed = true
 	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cvIce \c-/ \cfSparky"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "IceSlasherWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "plantman"
+	class = "Ice/Sparky"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTICSP"
 	chatfrequency = 50
 }
 
@@ -105,37 +143,19 @@
 }
 
 {
-	name = "\cqCorporal"
+	name = "\cuPistonman"
 	accuracy = 3
-	intellect = 2
+	intellect = 3
 	evade = 1
-	anticipation = 2
+	anticipation = 1
 	reactiontime = 2
 	perception = 1
+	favoriteweapon = "ProtoBuster"
 	color = "00 00 00"
 	gender = "male"
-	skin = "Blazko"
-	class = "Corporal"
+	class = "Pistonman"
 	revealed = true
 	script = "humanbot"
-	chatfrequency = 50
-}
-
-{
-    name = "\cqK\cto\cqr\ctb\cqy"
-    accuracy = 1
-    intellect = 4
-    evade = 1
-    anticipation = 1
-    reactiontime = 1
-    perception = 1
-    color = "00 00 00"
-    gender = "male"
-    skin = "base"
-    class = "Korby"
-    revealed = true
-    script = "humanbot"
-    chatlump = "botchats/KORBOT"
 	chatfrequency = 50
 }
 
@@ -157,62 +177,7 @@
 }
 
 {
-	name = "\cvIce \c-/ \cfSparky"
-	accuracy = 3
-	intellect = 3
-	evade = 1
-	anticipation = 2
-	reactiontime = 2
-	perception = 1
-	favoriteweapon = "IceSlasherWep"
-	color = "00 00 00"
-	gender = "male"
-	skin = "plantman"
-	class = "Ice/Sparky"
-	revealed = true
-	script = "humanbot"
-	chatlump = "botchats/BOTICSP"
-	chatfrequency = 50
-}
-
-{
-	name = "\cgGizmo the Cat"
-	accuracy = 3
-	intellect = 2
-	evade = 2
-	anticipation = 2
-	reactiontime = 2
-	perception = 1
-	favoriteweapon = "AtomicFireWep"
-	color = "00 00 00"
-	gender = "male"
-	skin = "base"
-	class = "Gizmo"
-	revealed = true
-	script = "humanbot"
-	chatlump = "botchats/BOTHGIZ"
-	chatfrequency = 50
-}
-
-{
-	name = "\cnGee"
-	accuracy = 2
-	intellect = 2
-	evade = 4
-	anticipation = 4
-	reactiontime = 2
-	perception = 4
-	favoriteweapon = "MegaBuster"
-	color = "00 00 00"
-	gender = "male"
-	class = "Gee"
-	revealed = true
-	script = "humanbot"
-	chatfrequency = 50
-}
-
-{
-	name = "\cuPistonman"
+	name = "\ctBadz"
 	accuracy = 3
 	intellect = 3
 	evade = 1
@@ -222,9 +187,78 @@
 	favoriteweapon = "ProtoBuster"
 	color = "00 00 00"
 	gender = "male"
-	class = "Pistonman"
+	class = "Badz"
 	revealed = true
 	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cuTank Operator"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Tank Operator"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cqCorporal"
+	accuracy = 3
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	color = "00 00 00"
+	gender = "male"
+	skin = "Blazko"
+	class = "Corporal"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cqBull Gator"
+	accuracy = 4
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Bull Gator"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+    name = "\cqK\cto\cqr\ctb\cqy"
+    accuracy = 1
+    intellect = 4
+    evade = 1
+    anticipation = 1
+    reactiontime = 1
+    perception = 1
+    color = "00 00 00"
+    gender = "male"
+    skin = "base"
+    class = "Korby"
+    revealed = true
+    script = "humanbot"
+    chatlump = "botchats/KORBOT"
 	chatfrequency = 50
 }
 
@@ -263,51 +297,17 @@
 }
 
 {
-	name = "\ctBadz"
-	accuracy = 3
-	intellect = 3
-	evade = 1
-	anticipation = 1
+	name = "\cnGee"
+	accuracy = 2
+	intellect = 2
+	evade = 4
+	anticipation = 4
 	reactiontime = 2
-	perception = 1
-	favoriteweapon = "ProtoBuster"
+	perception = 4
+	favoriteweapon = "MegaBuster"
 	color = "00 00 00"
 	gender = "male"
-	class = "Badz"
-	revealed = true
-	script = "humanbot"
-	chatfrequency = 50
-}
-
-{
-	name = "\cuTank Operator"
-	accuracy = 3
-	intellect = 3
-	evade = 1
-	anticipation = 1
-	reactiontime = 2
-	perception = 1
-	favoriteweapon = "ProtoBuster"
-	color = "00 00 00"
-	gender = "male"
-	class = "TankOperator"
-	revealed = true
-	script = "humanbot"
-	chatfrequency = 50
-}
-
-{
-	name = "\cqBull Gator"
-	accuracy = 4
-	intellect = 3
-	evade = 1
-	anticipation = 1
-	reactiontime = 2
-	perception = 1
-	favoriteweapon = "ProtoBuster"
-	color = "00 00 00"
-	gender = "male"
-	class = "Bull Gator"
+	class = "Gee"
 	revealed = true
 	script = "humanbot"
 	chatfrequency = 50

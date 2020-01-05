@@ -13,12 +13,9 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0 A_Jumpifinventory("PackageID",11,"Zen_HasteEx") 
-TNT1 A 0 A_Jumpifinventory("PackageID",10,"Zen_DefenseEX") 
 TNT1 A 0 A_Jumpifinventory("PackageID",9,"Zen_PowerEX") 
 TNT1 A 0 A_Jumpifinventory("PackageID",8,"Zen_HealEX") 
-TNT1 A 0 A_Jumpifinventory("PackageID",7,"Zen_Rage") 
 TNT1 A 0 A_Jumpifinventory("PackageID",6,"Zen_Haste") 
-TNT1 A 0 A_Jumpifinventory("PackageID",5,"Zen_Defense") 
 TNT1 A 0 A_Jumpifinventory("PackageID",4,"Zen_Power") 
 TNT1 A 0 A_Jumpifinventory("PackageID",3,"Zen_Heal") 
 
@@ -46,20 +43,11 @@ Goto Pickup.After
 Zen_PowerEX:
 TNT1 A 0 A_GiveInventory("Zen_Power200")
 Goto Pickup.After
-Zen_Defense:
-TNT1 A 0 A_GiveInventory("Zen_Defense150")
-Goto Pickup.After
-Zen_DefenseEX:
-TNT1 A 0 A_GiveInventory("Zen_Defense200")
-Goto Pickup.After
 Zen_Haste:
 TNT1 A 0 A_GiveInventory("Zen_Haste110")
 Goto Pickup.After
 Zen_HasteEX:
 TNT1 A 0 A_GiveInventory("Zen_Haste125")
-Goto Pickup.After
-Zen_Rage:
-TNT1 A 0 A_GiveInventory("Zen_Rage")
 Goto Pickup.After
 
 VocalHealSelf:

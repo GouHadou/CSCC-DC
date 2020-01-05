@@ -5,6 +5,7 @@ inventory.amount 1
 inventory.maxamount 1
 inventory.pickupmessage "Support Item! Claw Gloves Upgrade!"
 inventory.icon "ETERNI"
+tag "Eternal Claws Upgrade"
 Inventory.PickupSound "item/1up"
 scale 2.0
 +COUNTITEM
@@ -37,6 +38,7 @@ inventory.amount 3
 inventory.maxamount 3
 inventory.pickupmessage "Support Item! G-Platform!"
 inventory.icon "GITEMI"
+tag "Item-G"
 Inventory.PickupSound "item/1up"
 scale 2.0
 +COUNTITEM
@@ -88,6 +90,7 @@ inventory.amount 1
 inventory.maxamount 1
 inventory.pickupmessage "Support Item! Kitty Item Call!"
 inventory.icon "KITTYI"
+tag "Kitty Item"
 Inventory.PickupSound "item/1up"
 scale 2.0
 +COUNTITEM
@@ -115,6 +118,7 @@ inventory.amount 1
 inventory.maxamount 1
 inventory.pickupmessage "Support Item! Kitty Helper Call!"
 inventory.icon "KITTHI"
+tag "Kitty Helper"
 Inventory.PickupSound "item/1up"
 scale 2.0
 +COUNTITEM
