@@ -214,7 +214,7 @@ If(IsExplosion == 0)
 
 If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage += 20;}
 If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
-If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 5;}
+If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 6;}
 
 If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
 If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
