@@ -33,6 +33,7 @@ For(int i = 0;i < ServerMax; i++)
 	{
 	GiveClearance = True;
 	If(!PlayerInGame(i)){Continue;}
+	if(!CheckSight(0,i+1000,0)){Continue;}
 	If(ACS_ExecuteWithResult(975, 1))
 		{
 		switch(GiveType)

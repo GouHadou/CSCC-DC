@@ -1,5 +1,5 @@
-const int ZEN_ARANGE = 512;
-const int ZEN_ARANGEX = 768;
+const int ZEN_ARANGE = 300; //512
+const int ZEN_ARANGEX = 350; //768
 
 const int Item_ZenHeal = 3;
 const int Item_ZenPower = 4;
