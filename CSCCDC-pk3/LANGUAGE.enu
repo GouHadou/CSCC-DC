@@ -213,13 +213,13 @@ OB_FUSIONBREAK = "%o was trampled by %k's Afterburner.";
 //===|Bullgator
 OB_PIERCERIFLE = "%o was pierced by %k's \ccpiercing bullet\c-.";
 PU_PIERCERIFLE = "Wait, how did you get this????";
-TAG_PIERCERIFLE = "Piercing / Sleeping dart";
+TAG_PIERCERIFLE = "Piercing / Sleep";
 
 OB_BULLWEAKBULLET = "%o was shot down by one of %k's weaker bullets.";
 OB_BULLSLEEPBULLET = "%o was put to sleep by %k's \ctsleeping bullet\c-."
 
 OB_SIPHONRIFLE = "%o's life was drained completely by %k's \cgSiphon bolt\c-.";
-TAG_SIPHONRIFLE = "Splitter / Siphon (Drain)";
+TAG_SIPHONRIFLE = "Splitter / Siphon";
 
 OB_BULLSPLITTERBULLET = "%o didn't avoid %k's \cvsplitter bullet\c-.";
 
@@ -299,6 +299,13 @@ CSCC_CH_USER4S = "\cvUser Key 4 : ";
 CSCC_CH_ITEMS = "\cvItem : ";
 CSCC_CH_PASSIVES = "\cvPassive : ";
 
+COPY_CH_TITLE = "\cvCOPY ROBOT";
+COPY_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+COPY_CH_MAINFIRE = "\cfMainfire : \cjFires a basic, quick \nmoving projectile.";
+COPY_CH_ALTFIRE = "\cfAltfire : \cjFires a slower, but \nhoming, basic projectile.";
+COPY_CH_ITEM = "\cfItem : \cjReverts you back to your \nbase kit.";
+COPY_CH_PASSIVE = "\cfPassive : \cjCopies the class of \nwhatever class you hit, including \nallies.";
+
 UKIYAMA_CH_TITLE = "\cvUKIYAMA";
 UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
 UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based on the mods acquired.";
@@ -315,7 +322,7 @@ BG_CH_ITEM = "\cfItem : \cjScopes in and out.";
 
 BADZ_CH_TITLE = "\cvBADZ";
 BADZ_CH_STATS = "\cfHealth : \cj135\n\n\cfSpeed : \cj90%\n\cfJump : \cj100%";
-BADZ_CH_MAINFIRE = "\cfMainfire : \cjFires a buster shot. \nIf missiles are active, launches \nthem to fly in circles";
+BADZ_CH_MAINFIRE = "\cfMainfire : \cjFires a buster shot. \nIf missiles are active, launches \nthem to fly in circles.";
 BADZ_CH_ALTFIRE = "\cfAltfire : \cjDeploys up to five \nmissiles that circle the user.";
 BADZ_CH_ITEM = "\cfItem : \cjTeleports forward a short \ndistance.";
 

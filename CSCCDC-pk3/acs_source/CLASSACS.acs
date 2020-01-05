@@ -229,7 +229,7 @@ If(IsExplosion == 0)
 }
 //printbold(i:TotalDamage);
 
-If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 5;}
+If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 3;}
 
 SetResultValue(TotalDamage);
 }
