@@ -139,7 +139,7 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && !CheckActorInventory
 Script "CSACS_UKIINFO" (int IsExplosion)
 {
 int ThePlayer = ActivatorTID();
-int TotalDamage = ACS_NamedExecuteWithResult("CSACS_UKIDAMAGE", 0, 0, 1);
+int TotalDamage = ACS_NamedExecuteWithResult("CSACS_UKIDAMAGE", 0, 1);
 
 SetHudSize(800, 680, True);
 SetFont("SMALLFONT");
@@ -204,13 +204,10 @@ Else {ThePlayer = ACS_NamedExecuteWithResult("core_gettarget");}
 If(ThePlayer < 1000){SetResultValue(10);terminate;}
 int TotalDamage = 15;
 
-if(Info!=0)
-{
-If(IsExplosion == 0)
+If(IsExplosion == 0 && Info == 0)
 	{
-	If(CheckActorInventory(ThePlayer, "ExplodingFlag") && !CheckActorInventory(ThePlayer, "VelocityFlag")){SetResultValue(0);terminate;}
+	If(Info!=1){If(CheckActorInventory(ThePlayer, "ExplodingFlag") && !CheckActorInventory(ThePlayer, "VelocityFlag")){SetResultValue(0);terminate;}}
 	}
-}
 //int TotalDamage = UkiDamageValue(ThePlayer, IsExplosion);
 
 If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage += 20;}
@@ -221,13 +218,10 @@ If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.
 If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
 If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
 
-if(Info!=0)
-{
-If(IsExplosion == 0)
+If(IsExplosion == 0 && Info == 0)
 	{
 	If(CheckActorInventory(ThePlayer, "ExplodingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
 	}
-}
 //printbold(i:TotalDamage);
 
 If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 3;}
