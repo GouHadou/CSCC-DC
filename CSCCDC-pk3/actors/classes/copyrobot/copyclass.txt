@@ -4,10 +4,7 @@ player.displayname "CopyRobot"
 player.soundclass "BestClassEver"
 player.startitem "CopyWeapon"
 player.startitem "CopyRemover", 1
-player.startitem "CopyAmmo", 28
-player.startitem "BusterAmmo", 3
-player.startitem "EnergyBalancerActive",1
-player.startitem "IsCopy", 1
+player.startitem "CopyRobotClassItems", 1
 player.maxhealth 80
 health 80
 damagefactor "CopyMainShot", 10.0 //case of best fight ever to the death with no copy weps
@@ -50,6 +47,25 @@ YOKM OOOO 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOC
 YOKM PPPP 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
 YOKM QQQQ 1 A_Warp(AAPTR_TARGET, 0, 0, 108, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
 loop
+}
+}
+
+actor CopyRobotClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("CopyAmmo", 28)
+TNT1 A 0 A_GiveInventory("BusterAmmo", 3)
+TNT1 A 0 A_GiveInventory("IsCopy", 1)
+TNT1 A 0 A_GiveInventory("EnergyBalancerActive", 1)
+stop
 }
 }
 

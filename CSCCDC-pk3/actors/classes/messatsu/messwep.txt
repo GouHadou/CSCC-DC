@@ -148,6 +148,7 @@ GHAD A 0 A_StopSound(CHAN_WEAPON)
 GHAD A 0 A_JumpIfInventory("MessatsuCharge", 35, "Fire4")
 GHAD A 0 A_JumpIfInventory("MessatsuCharge", 25, "Fire3")
 GHAD A 0 A_JumpIfInventory("MessatsuCharge", 15, "Fire2")
+GHAD A 1 A_Jump(256, "Fire")
 Goto Fire
 Fire4:
 GHAD A 0 A_FireCustomMissile("Shakunetsu3",0,0,8,0)
@@ -218,6 +219,7 @@ AltFire:
 GHAD A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
 GSHR A 0 A_GiveInventory("MessatsuAmmo", 2)
 GSHR A 0 A_JumpIfInventory("MessAirMod", 1, "DemonFlip")
+GSHR A 1 A_Jump(256, "Shoryu")
 Goto Shoryu
 Shoryu:
 GHAD A 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
@@ -228,7 +230,7 @@ GSHR C 0 A_SpawnItemEx("GouShoryu1", 48,8+Random(-8, 8),32, 0,0,0,0, SXF_ABSOLUT
 //GSHR C 0 SetPlayerProperty(0,1,0)
 GSHR C 3 A_ScaleVelocity(0.50)
 GSHR C 0 A_SetArg(4, 15)
-GSHR C 0 A_ChangeVelocity(10, 0, 30, CVF_RELATIVE)
+GSHR C 0 A_ChangeVelocity(10, 0, 22, CVF_RELATIVE)
 Goto AltHold
 AltHold:
 GSHR D 1 A_SpawnItemEx("GouShoryu2", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
@@ -244,7 +246,9 @@ Goto EndShoryu
 EndShoryu:
 GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 10, "EndShoryu2")
 GSHR D 0 A_ClearRefire
-GSHR DDD 1 A_ScaleVelocity(0.7)
+GSHR D 1 A_ScaleVelocity(0.9)
+GSHR D 1 A_ScaleVelocity(0.75)
+GSHR D 1 A_ScaleVelocity(0.6)
 GSHR D 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
 GSHR C 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
 GSHR CC 1 //A_SetAngle(angle+30)
@@ -294,7 +298,6 @@ GHAD KLMN 1
 GHAD B 0 SetPlayerProperty(0,0,0)
 TNT1 A 5 A_TakeInventory("MessatsuFlag", 999)
 GHAD NML 2
-
 Goto Ready+1
 DemonFlip:
 GHAD O 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
@@ -317,12 +320,16 @@ GHAD O 0 A_JumpIfInventory("MessPalm", 1, "DemonFlipEnd")
 GHAD O 0 A_JumpIfInventory("MessKick", 1, "DemonFlipEnd")
 GHAD O 1 
 GHAD O 0 A_CheckFloor("Gozan")
-GHAD O 0 A_JumpIf(momz == 0, "DemonFlipEnd")
+GHAD O 0 A_JumpIf(momz == 0, "GoshoCheck")
 GHAD O 0 A_JumpIfInventory("IsBot", 1, "DemonFlipOpt")
 loop
 DemonFlipOpt:
 GHAD O 0 A_Jump(32, "Gosho", "HyakkiGojin")
 Goto DemonFlipLoop2
+GoshoCheck:
+GHAD R 0 A_JumpIf(z-floorz==56, "Gosho")
+Goto DemonFlipEnd
+
 DemonFlipEnd:
 GHAD A 0 A_TakeInventory("DemonFlipActive", 1)
 GHAD A 0 A_ClearRefire
@@ -377,7 +384,7 @@ GHAD RQPO 1
 Goto Ready+1
 
 Gosho:
-GHAD B 1 A_ChangeVelocity(momx*0.25, momy*0.25, 0, CVF_REPLACE)//A_ScaleVelocity(0.25)
+GHAD B 1 A_ChangeVelocity(momx*0.25, momy*0.25, momz*0.10, CVF_REPLACE)//A_ScaleVelocity(0.25)
 GHAD C 1
 GHAD C 0 A_PlaySoundEx("weapon/cfire","Weapon")
 GHAD D 5 A_SpawnItemEx("GoshoAttack", Cos(-pitch)*48, 12, 32+sin(-pitch)*48)
@@ -993,7 +1000,7 @@ Spawn:
 TNT1 A 0
 Goto Super::Spawn+1
 SpawnLoop:
-TNT1 A 1 A_Explode(6,48,0, 0, 48)
+TNT1 A 1 A_Explode(5,48,0, 0, 48)
 GHFX ABC 1 
 Goto Death
 Death:
@@ -1303,7 +1310,7 @@ States
 Spawn:
 TNT1 A 5
 MTSU FFFFF 1 A_FadeIn(0.08)
-MTSU F 1 A_Fadeout(0.025)
+MTSU F 1 A_Fadeout(0.05)
 wait
 }
 }
@@ -1465,8 +1472,8 @@ Death:
 TNT1 A 0
 stop
 }
-
 }
+
 actor SlamFX : Gouhadou
 {
 +THRUACTORS
