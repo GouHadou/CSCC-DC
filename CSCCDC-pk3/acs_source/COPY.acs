@@ -81,6 +81,7 @@ Switch(MorphMode)
 	Case 0:
 	CopyPlayer = ACS_NamedExecuteWithResult("core_gettarget");
 	CopyTarget = ACS_NamedExecuteWithResult("core_gettracer");
+	If(!CheckActorInventory(CopyPlayer, "IsCopy")){Terminate;}
 	if(CopyPlayer == 0 || CopyTarget == 0){terminate;}
 	SetActivator(CopyTarget);
 	CopyWeapon = GetWeapon();
@@ -161,8 +162,7 @@ Switch(MorphMode)
 	HudMessage(s:"";HUDMSG_FADEOUT,3,CR_ORANGE,300.4,10.0,2.0,0.0);
 	GiveInventory("CopyWeapon", 1);
 	SetWeapon("CopyWeapon");
-	GiveInventory("CopyAmmo", 28);
-	GiveInventory("BusterAmmo", 3);
+	GiveInventory("CopyRobotClassItems", 1);
 	break;
 	Case 2:
 	SetHudSize(600,380,0);
