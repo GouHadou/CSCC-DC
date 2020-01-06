@@ -329,3 +329,27 @@ BADZ_CH_ITEM = "\cfItem : \cjTeleports forward a short \ndistance.";
 TANKOP_CH_TITLE = "\cvTANK OPERATOR";
 TANKOP_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
 TANKOP_CH_ITEM = "\cfItem : \cjActivates and deactivates \ntank formation.";
+
+VOCALWOMAN_CH_TITLE = "\cvVOCALWOMAN";
+VOCALWOMAN_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj65%\n\cfJump : \cj100%";
+VOCALWOMAN_CH_MAINFIRE = "\cfMainfire : \cjUnleash a volley of music \nnotes.";
+
+
+ZENTRAINER_CH_AURAS = "\cvAuras : ";
+
+ZENTRAINER_CH_TITLE = "\cvZENTRAINER";
+ZENTRAINER_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj76%\n\cfJump : \cj100%";
+ZENTRAINER_CH_MAINFIRE = "\cfMainfire : \cjChannel a mysterious \npsychic orb that remains \nas long as mainfire is \nheld, can latch onto \nenemies and deal \nconstant damage.";
+ZENTRAINER_CH_ALTFIRE = "\cfMainfire : \cjAmplify the current Aura, \nincreasing it’s range \nand potency.";
+
+COLDFUSION_CH_TITLE = "\cvCOLDFUSION";
+COLDFUSION_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj76%\n\cfJump : \cj100%";
+COLDFUSION_CH_MAINFIRE = "\cfMainfire : \cjToss a Cluster \nbomb that Detonates and \nscatters smaller explosives \naround it's landing point.";
+COLDFUSION_CH_ALTFIRE = "\cfAltfire : \cjrapidly propel \nyourself forward and \ndownwards, dealing damage to \nanything in your way.";
+COLDFUSION_CH_PASSIVE = "\cfPassive : \cjDouble Jump to \nengage your thrusters, hold \njump to slow your descent. \nCan Collect Ammo Pickups.";
+
+
+CUTMANMIKE_CH_TITLE = "\cvCUTMANMIKE";
+CUTMANMIKE_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj76%\n\cfJump : \cj100%";
+CUTMANMIKE_CH_MAINFIRE = "\cfMainfire : \cjCast a Hexen \nstyle Fire spell that travels \nquickly and deals damage in a \nsmall area.";
+CUTMANMIKE_CH_ALTFIRE = "\cfMainfire : \cjToss a \nHellFire Cutter, a slower but \nespecially deadlier rolling \ncutter.";
