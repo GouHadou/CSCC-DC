@@ -118,7 +118,7 @@ Goto Spawn
 BeatCall_Spawn:
 WEA3 I 35
 Goto Spawn
-ETank_Spawn:
+ETankCS_Spawn:
 EBAL FEFEFE 6
 Goto Spawn
 MTank_Spawn:
@@ -511,7 +511,22 @@ stop
 }
 }
 
-actor ETankGiver : ItemGiver replaces Etank
+actor ETankCS : Etank
+{
+States
+{
+Use:
+TNT1 A 0 A_JumpIfInventory("CannotUseHealing",1,"No")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent")>=100,"No")
+EBAL E 0 A_PlaySoundEx("item/refill","Voice")
+EBAL E 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,100)
+stop
+No:
+TNT1 A 0
+fail
+}
+}
+actor ETankCSGiver : ItemGiver replaces Etank
 {
 inventory.pickupmessage "$PU_ETANK"
 States
@@ -527,6 +542,9 @@ Give:
 stop
 }
 }
+
+
+
 
 actor MTankGiver : ItemGiver replaces MTank
 {

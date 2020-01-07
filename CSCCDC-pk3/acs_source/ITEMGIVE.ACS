@@ -48,7 +48,7 @@ str item_pickups[MAX_ITEMS][MAX_WEPCLASS]=
 {"RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet"},//18
 {"RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine"},//19
 {"WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor"},//20
-{"ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank"},//21
+{"ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS"},//21
 {"MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank"},//22
 {"BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall"},//23
 };
