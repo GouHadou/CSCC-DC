@@ -335,7 +335,7 @@ Spawn:
 TNT1 A 0
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
-WEA2 J 5
+WEA2 I 5
 goto Spawn+2
 }
 }

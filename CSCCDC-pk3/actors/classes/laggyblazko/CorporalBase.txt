@@ -1,6 +1,6 @@
 actor CorporalWeaponBase : CSCCWepBase
 {
-DropItem "NadeSpamWep"
+DropItem "NadeSpamWepCS"
 Obituary "$OB_CORPKNIFE"
 Inventory.Pickupmessage "Power Up! Nade Spam!"
 +NOALERT //Using the knife should not alert monsters.

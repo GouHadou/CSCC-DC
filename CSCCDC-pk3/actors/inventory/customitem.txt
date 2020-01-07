@@ -98,7 +98,7 @@ TrebleSentry_Spawn:
 TRBI A 35
 Goto Spawn
 Item2_Spawn:
-ITEM C 35
+WEA2 D 35
 Goto Spawn
 ExitUnit_Spawn:
 EXIT BCBCBC 6
