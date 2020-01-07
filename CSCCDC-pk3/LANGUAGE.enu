@@ -353,20 +353,20 @@ CUTMANMIKE_CH_MAINFIRE = "\cfMainfire : \cjCast a Hexen \nstyle Fire spell that 
 CUTMANMIKE_CH_ALTFIRE = "\cfAltfire : \cjToss a \nHellFire Cutter, a slower but \nespecially deadlier rolling \ncutter.";
 
 LORDDAMAGER_CH_TITLE = "\cvLORDDAMAGER";
-LORDDAMAGER_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj55%\n\cfJump : \cj100%";
+LORDDAMAGER_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
 LORDDAMAGER_CH_ALTFIRE = "\cfAltfire : \cjPunch any fool \nthat dared to come within \nrange of your fists.";
 LORDDAMAGER_CH_ITEM = "\cfItem : \cjInitiate a ramming attack.";
 
-
 PISTONMAN_CH_TITLE = "\cvPISTONMAN";
-PISTONMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj72%\n\cfJump : \cj100%";
-PISTONMAN_CH_MAINFIRE = "\cfMainfire : \cjLaunch the \nlighter Right piston, which \nsports great reach.";
-PISTONMAN_CH_ALTFIRE = "\cfAltfire : \cjLaunch the \nHeavier left piston, which \nsports greater power and \nstronger shockwaves.";
+PISTONMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj90%\n\cfJump : \cj140%";
+PISTONMAN_CH_MAINFIRE = "\cfMainfire : \cjLaunches the \nlighter Right piston, which \nsports great reach.";
+PISTONMAN_CH_ALTFIRE = "\cfAltfire : \cjLaunches the \nHeavier left piston, which \nsports greater power and \nstronger shockwaves.";
 PISTONMAN_CH_PASSIVE = "\cfPassive: \cjStriking the \nwalls or ground you are on \ncan send you flying in the \nopposite direction.";
 
 KORBY_CH_TITLE = "\cvKORBY";
-KORBY_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj60%\n\cfJump : \cj100%";
-KORBY_CH_MAINFIRE = "\cfMainfire : \cj Cast spells or \nhold to charge up to 3 levels for \nmore potent effects.";
+KORBY_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
+KORBY_CH_MAINFIRE = "\cfMainfire : \cjCast spells or hold to \ncharge up to 3 levels for more \npotent effects.";
 KORBY_CH_ALTFIRE = "\cfAltfire : \cjHold to absorb \ndamage and transmutate it \ninto a new spell, the amount \nof damage recieved determines \nwhat spell you get.";
 KORBY_CH_ITEM = "\cfItem : \cjPurge the current \nBlue Magic spell you \ncurrently have.";
-KORBY_CH_BLUEMAGIC = "\cvBlue Magic:";
+KORBY_CH_BLUEMAGIC = "\cvBlue Magic : ";
+KORBY_CH_SPELLS = "\cvSpells : ";

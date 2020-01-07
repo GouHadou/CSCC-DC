@@ -909,9 +909,13 @@ OptionMenu "LordDamagerInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
 	StaticText "$LORDDAMAGER_CH_ALTFIRE"
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_RELOADS", "LD_ClassHelp_Weapon", "LordDamagerReloads"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -927,10 +931,15 @@ OptionMenu "LordDamagerInfo"
 
 OptionValue LordDamagerMainfires
 {
-	0, "\cfPower Missile\n\cjFires potent missiles with a \nreservoir of 4 shots before \nneeding to reload."
-	1, "\cfLaserCannon\n\cjunleashe a long reaching dark \nlaser after a brief warmup, \nAmmo restores passively."
+	0, "\cfMissile Punch\n\cjFires potent missiles with a \nreservoir of 5 shots before \nneeding to reload."
+	1, "\cfDark Laser\n\cjUnleash a long reaching \nlaser after a brief warmup. \nAmmo restores passively."
 }
 
+OptionValue LordDamagerReloads
+{
+	0, "\cfMissile Punch\n\cjInitiates the reload \nsequence early."
+	1, "\cfDark Laser\n\cjNone."
+}
 
 OptionMenu "PistonmanInfo"
 {
@@ -974,16 +983,13 @@ OptionMenu "KorbyInfo"
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
+	StaticText ""
 	StaticText "$KORBY_CH_MAINFIRE"
 	StaticText ""	
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_MAINFIRES", "Korby_ClassHelp_Weapon", "KorbyMainFires"
 	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
+	Option "$KORBY_CH_SPELLS", "Korby_ClassHelp_Weapon", "KorbyMainFires"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -1003,31 +1009,29 @@ OptionMenu "KorbyInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
 }
 
 OptionValue KorbyMainFires
 {
-	0, "\cfFire\n\cjLob an \nexploding \nfireball, higher \nlevels unleash \nlarger fireballs \nthat bounce and \ndrop exploding \nembers."
-	1, "\cfLightning\n\cjLaunch a \nprojectile that \ncalls lightning to \nstrike at it’s \nlocation, Higher \nlevels cover a \nlarger area at the \nimpact site."
-	2, "\cfIce\n\cjconjure \na pillar of ice \nthat unleashes \nswirls of ice \nchunks. Higher \nlevels increase \nthe size and \nquantity of the \nice swirls."
+	0, "\cfFire\n\cjLob an exploding \nfireball, higher levels \nunleash larger fireballs \nthat bounce and drop \nexploding embers."
+	1, "\cfLightning\n\cjLaunch a projectile \nthat calls lightning \nto strike at its location. \nHigher levels cover a \nlarger area."
+	2, "\cfIce\n\cjConjure a pillar of \nice that unleashes \nswirls of ice chunks. \nHigher levels increase \nthe size and quantity."
 }
 
 OptionValue KorbyBlueMagic
 {
-	0, "\cfBadBreath|100\n\cjInflict all \nStatus Effects at \nonce."
-	1, "\cfKamikazi|90\n\cjgo out in a blast\n of glory."
-	2, "\cfMantraMagic|80\n\cjcast homing magic \nmissiles."
-	3, "\cfWhiteWind|70\n\cjrapidly restore \nhealth."
-	4, "\cfSlow|60\n\cjcast slow on all \nsurrounding foes."
-	5, "\cfFlash|50\n\cjcast blind on all \nsurrounding foes."
-	6, "\cfBlaster|40\n\cjunleash a magical \nbeam."
-	7, "\cfFlamethrower|30\n\cjunleash waves of \nfire.	"
-	8, "\cfLimit Glove|20\n\cjpunch to the \nlimit."
-	9, "\cfAquaBreath|20\n\cjunleash waves of \nmoisture."
-	10, "\cfThousand Needles|10\n\cjFire 1,000 needles \nin one go."
+	0, "\cfBad Breath (100+)\n\cjInflict all status \neffects at once."
+	1, "\cfBoom (90+)\n\cjGo out in a blast \nof glory."
+	2, "\cfMantra Magic (80+)\n\cjCast homing magic \nmissiles."
+	3, "\cfWhite Wind (70+)\n\cjRapidly restore \nhealth."
+	4, "\cfSlow (60+)\n\cjCast slow on all \nsurrounding foes."
+	5, "\cfFlash (50+)\n\cjCast blind on all \nsurrounding foes."
+	6, "\cfBlaster (40+)\n\cjUnleash a magical \nbeam."
+	7, "\cfFlamethrower (30+)\n\cjUnleash waves of \nfire."
+	8, "\cfLimit Glove (20+)\n\cjPunch to the \nlimit."
+	9, "\cfAqua Breath (10+)\n\cjUnleash waves of \nmoisture."
+	10, "\cfThousand Needles (2+)\n\cjFire 1,000 needles \nin one go."
+	11, "\cfBoom (1)\n\cjGo out in a blast \nof glory."
 }
 
 //-------------------------------------------------------------------------------------------

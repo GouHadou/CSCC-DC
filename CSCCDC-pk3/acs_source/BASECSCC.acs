@@ -205,7 +205,7 @@ if(GetActorProperty(0,APROP_HEALTH) > Tick){SetActorProperty(0,APROP_HEALTH,(Get
 
 Script "CSACS_Basic(Over)Heal" (int Pointer, int HealAmount, int Overheal, int OverhealMax)
 {
-if(OverhealMax<=0){OverhealMax=150;}
+if(OverhealMax<=100){OverhealMax=101;}
 if(OverhealMax>150){OverhealMax=150;}
 if(Pointer!=0){SetActivator(0,Pointer);}
 int MaxHealth = GetActorProperty(0,APROP_SPAWNHEALTH);
