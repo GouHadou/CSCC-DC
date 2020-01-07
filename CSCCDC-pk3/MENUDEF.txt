@@ -496,13 +496,13 @@ OptionMenu "ClassInfo"
 	Submenu	    "Ukiyama",		"UkiyamaInfo"
 	Submenu	    "Messatsu",		"ChangeThisMenu!"  
 	Submenu	    "ColdFusion",		"ColdFusionInfo"
-	Submenu	    "Pistonman", 		"ChangeThisMenu!"
-	Submenu	    "LordDamager",		"ChangeThisMenu!" 
+	Submenu	    "Pistonman", 		"PistonmanInfo"
+	Submenu	    "LordDamager",		"LordDamagerInfo" 
 	Submenu	    "         	  Tank Operator",		"TankOpInfo"
 	Submenu	    "Badz", 		"BadzInfo"
 	Submenu	    "Corporal",		"ChangeThisMenu!"
 	Submenu	    "Bull Gator",		"BullGatorInfo"
-	Submenu	    "Korby",		"ChangeThisMenu!"
+	Submenu	    "Korby",		"KorbyInfo"
 	Submenu	    "VocalWoman", 		"VocalWomanInfo"
 	Submenu	    "Zen Trainer", 		"ZenTrainerInfo"
 	Submenu	    "Gee", 		"GeeInfo"
@@ -890,6 +890,146 @@ OptionMenu "CutmanMikeInfo"
 	StaticText ""
 	StaticText ""
 }
+
+OptionMenu "LordDamagerInfo"
+{
+	Title "$LORDDAMAGER_CH_TITLE"
+	StaticText ""
+	StaticText "$LORDDAMAGER_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "LD_ClassHelp_Weapon", "LordDamagerMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$LORDDAMAGER_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$LORDDAMAGER_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue LordDamagerMainfires
+{
+	0, "\cfPower Missile\n\cjFires potent missiles with a \nreservoir of 4 shots before \nneeding to reload."
+	1, "\cfLaserCannon\n\cjunleashe a long reaching dark \nlaser after a brief warmup, \nAmmo restores passively."
+}
+
+
+OptionMenu "PistonmanInfo"
+{
+	Title "$PISTONMAN_CH_TITLE"
+	StaticText ""
+	StaticText "$PISTONMAN_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$PISTONMAN_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$PISTONMAN_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$PISTONMAN_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+
+OptionMenu "KorbyInfo"
+{
+	Title "$KORBY_CH_TITLE"
+	StaticText ""
+	StaticText "$KORBY_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText "$KORBY_CH_MAINFIRE"
+	StaticText ""	
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "Korby_ClassHelp_Weapon", "KorbyMainFires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$KORBY_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$KORBY_CH_BLUEMAGIC", "Korby_ClassHelp_BlueMagic", "KorbyBlueMagic"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue KorbyMainFires
+{
+	0, "\cfFire\n\cjLob an \nexploding \nfireball, higher \nlevels unleash \nlarger fireballs \nthat bounce and \ndrop exploding \nembers."
+	1, "\cfLightning\n\cjLaunch a \nprojectile that \ncalls lightning to \nstrike at it’s \nlocation, Higher \nlevels cover a \nlarger area at the \nimpact site."
+	2, "\cfIce\n\cjconjure \na pillar of ice \nthat unleashes \nswirls of ice \nchunks. Higher \nlevels increase \nthe size and \nquantity of the \nice swirls."
+}
+
+OptionValue KorbyBlueMagic
+{
+	0, "\cfBadBreath|100\n\cjInflict all \nStatus Effects at \nonce."
+	1, "\cfKamikazi|90\n\cjgo out in a blast\n of glory."
+	2, "\cfMantraMagic|80\n\cjcast homing magic \nmissiles."
+	3, "\cfWhiteWind|70\n\cjrapidly restore \nhealth."
+	4, "\cfSlow|60\n\cjcast slow on all \nsurrounding foes."
+	5, "\cfFlash|50\n\cjcast blind on all \nsurrounding foes."
+	6, "\cfBlaster|40\n\cjunleash a magical \nbeam."
+	7, "\cfFlamethrower|30\n\cjunleash waves of \nfire.	"
+	8, "\cfLimit Glove|20\n\cjpunch to the \nlimit."
+	9, "\cfAquaBreath|20\n\cjunleash waves of \nmoisture."
+	10, "\cfThousand Needles|10\n\cjFire 1,000 needles \nin one go."
+}
+
 //-------------------------------------------------------------------------------------------
 //
 // Controls Menu
