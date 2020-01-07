@@ -1,11 +1,11 @@
-//#library "ITEMGIVE"
+//#library "ItemGIVE"
 //#import "WEPACS.acs"
 //#include "zcommon.acs"
 //#include "8BDMLIB.ACS"
 
 #DEFINE MAX_WEPCLASS 12
 #DEFINE CLASSLIST 12
-#DEFINE MAX_ITEMS 13
+#DEFINE MAX_ITEMS 24
 
 str wep_check[CLASSLIST][2]=
 {//Default 0
@@ -34,35 +34,50 @@ str item_pickups[MAX_ITEMS][MAX_WEPCLASS]=
 {"NONE","DuoFistUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//4
 {"NONE","AdaptorUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
 {"NONE","TrebleBoostUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
-{"ITEM1", "ITEM1", "ITEM1", "ITEMG", "ITEMG", "ITEM1", "ITEM1", "ITEM1", "ITEM1", "ITEM1", "ITEM1", "ITEM1"},//7
+{"Item1", "Item1", "Item1", "ItemG", "ItemG", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1"},//7
 {"TangoSummon", "TangoSummon", "TangoSummon", "KittyHelper", "KittyHelper", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon"},//8
-{"NONE", "EDDIESUMMON", "EDDIESUMMON", "KittyItem", "KittyItem", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//9
-{"EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "KittyHelper", "KittyHelper", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER", "EDDIEBOMBER"},//10
-{"REGGAECALL", "REGGAECALL", "REGGAECALL", "KittyHelper", "KittyHelper", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL", "REGGAECALL"},//11
+{"NONE", "EddieSummon", "EddieSummon", "KittyItem", "KittyItem", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//9
+{"EddieBomber", "EddieBomber", "EddieBomber", "KittyHelper", "KittyHelper", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber"},//10
+{"ReggaeCall", "ReggaeCall", "ReggaeCall", "KittyHelper", "KittyHelper", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall"},//11
 {"NONE", "Wtank", "WTank", "NONE", "NONE", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank"},//12
-
+{"TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry"},//13
+{"BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport"},//14
+{"Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2"},//15
+{"ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit"},//16
+{"RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil"},//17
+{"RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet"},//18
+{"RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine"},//19
+{"WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor"},//20
+{"ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank", "ETank"},//21
+{"MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank"},//22
+{"BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall", "BeatCall"},//23
 };
 
-Script "CSCC_ItemSpriteSpawn" (void) ClientSide
+Script "CSCC_ItemName" (void) ClientSide
 {
-int CapsuleSprite = CheckClassList(0);
-if(CapsuleSprite == -1){CapsuleSprite = 999;}
-SetSprite(0, CapsuleSprite);
-}
-
-Script "CSCC_ItemSprite" OPEN ClientSide
-{
-int CapsuleSprite = CheckClassList(0);
-if(CapsuleSprite == -1){CapsuleSprite = 999;} //Fix since S/C don't like -1
-int OldClass = CapsuleSprite;
-SetSprite(995, CapsuleSprite);
-While(CapsuleSprite == OldClass)
+int TheGiver = GetActorClass(0);
+int TheClass = StrLeft(TheGiver, StrLen(TheGiver)-5);
+int StateSet;
+int ItemName;
+For(int i = 0; i < MAX_ITEMS; i++)
 	{
-	CapsuleSprite = CheckClassList(0);
-	if(CapsuleSprite == -1){CapsuleSprite = 999;}
-	Delay(3);
+	If(StrIcmp(TheClass, item_pickups[i][1])==0)
+		{
+		ItemName = item_pickups[i][CheckClassList(0)+1];
+		
+		If(StrIcmp(ItemName, "NONE")==0)
+			{
+			SetActorProperty(0, APROP_Alpha, 0.5);
+			ItemName = item_pickups[i][1];
+			}
+		Else
+			{
+			SetActorProperty(0, APROP_Alpha, 1.0);
+			}
+		StateSet = StrParam(s:ItemName, s:"_Spawn");
+		}
 	}
-restart;
+SetActorState(0, StateSet);
 }
 
 Script "CSCC_ItemCheck" (int ItemSlot, int MaxItem)

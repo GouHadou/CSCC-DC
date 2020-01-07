@@ -1,4 +1,28 @@
 actor EnergyBalancerCS : BigWeaponEnergyCS replaces EnergyBalancer {}
+CONST INT PROTOITEM = 0;
+CONST INT ARROWITEM = 1;
+CONST INT LASERITEM = 2;
+CONST INT BASSITEM = 3;
+CONST INT DUOFISTITEM = 4;
+CONST INT ADAPTORITEM = 5;
+CONST INT TREBLEBOOSTITEM = 6;
+CONST INT ITEM1ITEM = 7;
+CONST INT TANGOITEM = 8;
+CONST INT EDDIESUMMONITEM = 9;
+CONST INT EDDIEBOMBERITEM = 10;
+CONST INT REGGAEITEM = 11;
+CONST INT WTANKITEM = 12;
+CONST INT TREBLESENTRYITEM = 13;
+CONST INT BEATSUPPORTITEM = 14;
+CONST INT ITEM2ITEM = 15;
+CONST INT EXITITEM = 16;
+CONST INT RUSHCOILITEM = 17;
+CONST INT RUSHJETITEM = 18;
+CONST INT RUSHMARINEITEM = 19;
+CONST INT WIREITEM = 20;
+CONST INT ETANKITEM = 21;
+CONST INT MTANKITEM = 22;
+CONST INT BEATCALLITEM= 23;
 
 actor ItemGiver : CustomInventory
 {
@@ -11,40 +35,95 @@ scale 2.0
 +COUNTITEM
 -FLOATBOB
 +INVBAR
+Renderstyle "Translucent"
+Alpha 1.0
 States
 {
 Spawn:
 "----" A 0
-//"----" A 0 A_JumpIf(TID == 995, "Spawn2")
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemSpriteSpawn", 0)
-"----" A 0 Thing_ChangeTID(0,995)
-Spawn2:
-"----" A 35 
+"----" A 35 ACS_NamedExecuteAlways("CSCC_ItemName", 0)
 loop
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-CSCC_Copy:
-CSCC_ColdFusion:
-CSCC_ColdFusionMorph:
-CSCC_Ukiyama:
-CSCC_UkiyamaMorph:
-CSCC_Corporal:
-CSCC_CorporalMorph:
-CSCC_Gizmo:
-CSCC_GizmoMorph:
-CSCC_Korby:
-CSCC_KorbyMorph:
-"----" A 0 A_Jump(256, "CSCC_OtherSpawn")
-Goto CSCC_OtherSpawn
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-"----" A 35 
-loop
+ProtoUpgrade_Spawn:
+WEA2 Q 35
+Goto Spawn
+AdaptorUpgrade_Spawn:
+WEA3 P 35
+Goto Spawn
+LaserBusterUpgrade_Spawn:
+WEA3 P 35
+Goto Spawn
+ArrowBusterUpgrade_Spawn:
+WEA4 L 35
+Goto Spawn
+DuoFistUpgrade_Spawn:
+DUOF A 35
+Goto Spawn
+TrebleBoostUpgrade_Spawn:
+TRBB I 35
+Goto Spawn
+BassUpgrade_Spawn:
+WEA3 A 35
+Goto Spawn
+Item1_Spawn:
+WEA2 A 35
+Goto Spawn
+ItemG_Spawn:
+GITM E 35
+Goto Spawn
+TangoSummon_Spawn:
+WEA3 B 35
+Goto Spawn
+KittyHelper_Spawn:
+HELP R 35
+Goto Spawn
+EddieSummon_Spawn:
+WEAP Q 35
+Goto Spawn
+KittyItem_Spawn:
+HELP S 35
+Goto Spawn
+EddieBomber_Spawn:
+EDDI Q 35
+Goto Spawn
+ReggaeCall_Spawn:
+WEA9 Z 35
+Goto Spawn
+WTank_Spawn:
+EBAL HEHEHE 6
+Goto Spawn
+EternalClawsUpgrade_Spawn:
+ETER N 35
+Goto Spawn
+TrebleSentry_Spawn:
+TRBI A 35
+Goto Spawn
+Item2_Spawn:
+ITEM C 35
+Goto Spawn
+ExitUnit_Spawn:
+EXIT BCBCBC 6
+Goto Spawn
+RushCoil_Spawn:
+WEAP B 35
+Goto Spawn
+RushJet_Spawn:
+WEA2 B 35
+Goto Spawn
+RushMarine_Spawn:
+RUSH N 35
+Goto Spawn
+WireAdaptor_Spawn:
+WADP A 35
+Goto Spawn
+BeatCall_Spawn:
+WEA3 I 35
+Goto Spawn
+ETank_Spawn:
+EBAL FEFEFE 6
+Goto Spawn
+MTank_Spawn:
+EBAL GEGEGE 6
+Goto Spawn
 Pickup:
 DUST B 0 
 fail
@@ -57,7 +136,7 @@ loop
 }
 }
 
-actor ProtoGiver : ItemGiver replaces ProtoUpgrade
+actor ProtoUpgradeGiver : ItemGiver replaces ProtoUpgrade
 {
 inventory.pickupmessage "$PU_PROTOBUSTER"
 States
@@ -65,34 +144,16 @@ States
 Spawn:
 WEA2 Q 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-"----" A 0 A_SetTranslucent(0.5, 0)
-Goto CSCC_Gizmo+1
-CSCC_Gizmo:
-"----" A 0 A_SetTranslucent(1.0, 0)
-ETER N 35
-wait
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-WEA2 Q 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 0, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", PROTOITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 0, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, PROTOITEM, 1)
 stop
 }
 } 
 
-actor AdaptorGiver : ItemGiver replaces AdaptorUpgrade 
+actor AdaptorUpgradeGiver : ItemGiver replaces AdaptorUpgrade 
 {
 inventory.pickupmessage "$PU_SUPERADAPTOR"
 States
@@ -100,34 +161,16 @@ States
 Spawn:
 WEA3 P 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-"----" A 0 A_SetTranslucent(0.5, 0)
-Goto CSCC_Gizmo+1
-CSCC_Gizmo:
-"----" A 0 A_SetTranslucent(1.0, 0)
-ETER N 35
-wait
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-WEA3 P 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 5, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", ADAPTORITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 5, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, ADAPTORITEM, 1)
 stop
 }
 } 
 
-actor LaserBusterGiver : ItemGiver replaces LaserBusterUpgrade  
+actor LaserBusterUpgradeGiver : ItemGiver replaces LaserBusterUpgrade  
 {
 inventory.pickupmessage "$PU_LASERBUSTER"
 States
@@ -135,34 +178,16 @@ States
 Spawn:
 WEA4 K 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-"----" A 0 A_SetTranslucent(0.5, 0)
-Goto CSCC_Gizmo+1
-CSCC_Gizmo:
-"----" A 0 A_SetTranslucent(1.0, 0)
-ETER N 35
-wait
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-WEA4 K 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 2, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", LASERITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 2, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, LASERITEM, 1)
 stop
 }
 } 
 
-actor ArrowBusterGiver  : ItemGiver replaces ArrowBusterUpgrade   
+actor ArrowBusterUpgradeGiver  : ItemGiver replaces ArrowBusterUpgrade   
 {
 inventory.pickupmessage "$PU_ARROWBUSTER"
 States
@@ -170,34 +195,16 @@ States
 Spawn:
 WEA4 L 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-"----" A 0 A_SetTranslucent(0.5, 0)
-Goto CSCC_Gizmo+1
-CSCC_Gizmo:
-"----" A 0 A_SetTranslucent(1.0, 0)
-ETER N 35
-wait
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-WEA4 L 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 1, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", ARROWITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 1, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, ARROWITEM, 1)
 stop
 }
 } 
 
-actor DuoFistGiver  : ItemGiver replaces DuoFistUpgrade    
+actor DuoFistUpgradeGiver  : ItemGiver replaces DuoFistUpgrade    
 {
 inventory.pickupmessage "$PU_DUOFIST"
 States
@@ -205,34 +212,16 @@ States
 Spawn:
 DUOF A 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-"----" A 0 A_SetTranslucent(0.5, 0)
-Goto CSCC_Gizmo+1
-CSCC_Gizmo:
-"----" A 0 A_SetTranslucent(1.0, 0)
-ETER N 35
-wait
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-DUOF A 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 4, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", DUOFISTITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 4, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, DUOFISTITEM, 1)
 stop
 }
 } 
 
-actor TrebleBoostGiver : ItemGiver replaces TrebleBoostUpgrade     
+actor TrebleBoostUpgradeGiver : ItemGiver replaces TrebleBoostUpgrade     
 {
 inventory.pickupmessage "$PU_TREBLEBOOST"
 States
@@ -240,34 +229,16 @@ States
 Spawn:
 TRBB I 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-"----" A 0 A_SetTranslucent(0.5, 0)
-Goto CSCC_Gizmo+1
-CSCC_Gizmo:
-"----" A 0 A_SetTranslucent(1.0, 0)
-ETER N 35
-wait
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-TRBB I 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 6, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", TREBLEBOOSTITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 6, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, TREBLEBOOSTITEM, 1)
 stop
 }
 } 
 
-actor BassGiver : ItemGiver replaces BassUpgrade      
+actor BassUpgradeGiver : ItemGiver replaces BassUpgrade      
 {
 inventory.pickupmessage "$PU_BASSBUSTER"
 States
@@ -275,29 +246,11 @@ States
 Spawn:
 WEA3 A 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-"----" A 0 A_SetTranslucent(0.5, 0)
-Goto CSCC_Gizmo+1
-CSCC_Gizmo:
-"----" A 0 A_SetTranslucent(1.0, 0)
-ETER N 35
-wait
-CSCC_OtherSpawn:
-"----" A 0 A_SetTranslucent(0.5, 0)
-"----" A 0 A_Jump(256, "Animation") 
-goto Animation
-Animation:
-WEA3 A 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 3, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", BASSITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 3, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, BASSITEM, 1)
 stop
 }
 } 
@@ -310,31 +263,11 @@ States
 Spawn:
 WEA2 A 0
 Goto "Super::Spawn+1"
-CSCC_DefaultSpawn:
-CSCC_OtherSpawn:
-CSCC_ColdFusion:
-CSCC_ColdFusionMorph:
-CSCC_Ukiyama:
-CSCC_UkiyamaMorph:
-CSCC_Corporal:
-CSCC_CorporalMorph:
-CSCC_Copy:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-CSCC_Gizmo:
-GITM E 0 A_SetTranslucent(1.0, 0)
-GITM E 35
-wait
-Animation:
-WEA2 A 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 7, 3), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", ITEM1ITEM, 3), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 7, 3)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, ITEM1ITEM, 3)
 stop
 }
 }
@@ -347,31 +280,11 @@ States
 Spawn:
 WEA3 B 0
 Goto "Super::Spawn+1"
-CSCC_Copy:
-CSCC_ColdFusion:
-CSCC_ColdFusionMorph:
-CSCC_Ukiyama:
-CSCC_UkiyamaMorph:
-CSCC_Corporal:
-CSCC_CorporalMorph:
-CSCC_OtherSpawn:
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-CSCC_Gizmo:
-HELP R 0 A_SetTranslucent(1.0, 0)
-HELP R 35
-wait
-Animation:
-WEA3 B 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 8, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", TANGOITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 8, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, TANGOITEM, 1)
 stop
 }
 }
@@ -384,24 +297,11 @@ States
 Spawn:
 WEAP Q 0
 Goto "Super::Spawn+1"
-CSCC_Copy:
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-CSCC_Gizmo:
-HELP S 0 A_SetTranslucent(1.0, 0)
-HELP S 35
-wait
-Animation:
-WEAP Q 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 9, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", EDDIESUMMONITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 9, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, EDDIESUMMONITEM, 1)
 stop
 }
 }
@@ -414,31 +314,11 @@ States
 Spawn:
 EDDI Q 0
 Goto "Super::Spawn+1"
-CSCC_Copy:
-CSCC_ColdFusion:
-CSCC_ColdFusionMorph:
-CSCC_Ukiyama:
-CSCC_UkiyamaMorph:
-CSCC_Corporal:
-CSCC_CorporalMorph:
-CSCC_OtherSpawn:
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-CSCC_Gizmo:
-HELP R 0 A_SetTranslucent(1.0, 0)
-HELP R 35
-wait
-Animation:
-EDDI Q 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 10, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", EDDIEBOMBERITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 10, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, EDDIEBOMBERITEM, 1)
 stop
 }
 }
@@ -451,31 +331,11 @@ States
 Spawn:
 WEA9 Z 0
 Goto "Super::Spawn+1"
-CSCC_Copy:
-CSCC_ColdFusion:
-CSCC_ColdFusionMorph:
-CSCC_Ukiyama:
-CSCC_UkiyamaMorph:
-CSCC_Corporal:
-CSCC_CorporalMorph:
-CSCC_OtherSpawn:
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-CSCC_GizmoMorph:
-CSCC_Gizmo:
-HELP R 0 A_SetTranslucent(1.0, 0)
-HELP R 35
-wait
-Animation:
-WEA9 Z 35
-wait
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 11, 1), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", REGGAEITEM, 1), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 11, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, REGGAEITEM, 1)
 stop
 }
 }
@@ -488,29 +348,199 @@ States
 Spawn:
 EBAL H 0
 Goto "Super::Spawn+1"
-CSCC_Copy:
-CSCC_ColdFusion:
-CSCC_ColdFusionMorph:
-CSCC_Ukiyama:
-CSCC_UkiyamaMorph:
-CSCC_Corporal:
-CSCC_CorporalMorph:
-CSCC_Korby:
-CSCC_KorbyMorph:
-CSCC_DefaultSpawn:
-"----" A 0 A_SetTranslucent(1.0, 0)
-"----" A 0 A_Jump(256, "Animation") 
-Goto Animation
-Animation:
-EBAL HE 6
-loop
 Pickup:
-"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", 12, 5), "Give")
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", WTANKITEM, 5), "Give")
 fail
 Give:
-"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, 12, 1)
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, WTANKITEM, 1)
+stop
+}
+}
+
+actor TrebleSentryGiver : ItemGiver replaces TrebleSentry
+{
+inventory.pickupmessage "$PU_TREBLESENTRY"
+States
+{
+Spawn:
+TRBI A 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", TREBLESENTRYITEM, 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, TREBLESENTRYITEM, 1)
+stop
+}
+}
+
+actor BeatSupportGiver : ItemGiver replaces BeatSupport
+{
+inventory.pickupmessage "$PU_BEATSUPPORT"
+States
+{
+Spawn:
+WEA4 O 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", BEATSUPPORTITEM, 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, BEATSUPPORTITEM, 1)
+stop
+}
+}
+
+actor Item2Giver : ItemGiver replaces Item2
+{
+inventory.pickupmessage "$PU_ITEM2"
+States
+{
+Spawn:
+WEA2 D 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", ITEM2ITEM, 2), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, ITEM2ITEM, 2)
+stop
+}
+}
+
+actor ExitUnitGiver : ItemGiver replaces ExitUnit
+{
+inventory.pickupmessage "$PU_EXITUNIT"
+States
+{
+Spawn:
+EXIT B 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", EXITITEM , 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, EXITITEM, 1)
+stop
+}
+}
+
+actor RushCoilGiver : ItemGiver replaces RushCoil
+{
+inventory.pickupmessage "$PU_RUSHCOIL"
+States
+{
+Spawn:
+WEAP B 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", RUSHCOILITEM , 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, RUSHCOILITEM, 1)
 stop
 }
 }
 
 
+actor RushJetGiver : ItemGiver replaces RushJet
+{
+inventory.pickupmessage "$PU_RUSHJET"
+States
+{
+Spawn:
+WEA2 B 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", RUSHJETITEM , 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, RUSHJETITEM, 1)
+stop
+}
+}
+
+actor RushMarineGiver : ItemGiver replaces RushMarine
+{
+inventory.pickupmessage "$PU_RUSHMARINE"
+States
+{
+Spawn:
+RUSH N 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", RUSHMARINEITEM , 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, RUSHMARINEITEM, 1)
+stop
+}
+}
+
+actor WireAdaptorGiver : ItemGiver replaces WireAdaptor
+{
+inventory.pickupmessage "$PU_WIREADAPTOR"
+States
+{
+Spawn:
+WADP A 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", WIREITEM, 2), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, WIREITEM, 2)
+stop
+}
+}
+
+actor BeatCallGiver : ItemGiver replaces BeatCall
+{
+inventory.pickupmessage "$PU_BEATCALL"
+States
+{
+Spawn:
+WEA3 I 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", BEATCALLITEM , 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, BEATCALLITEM, 1)
+stop
+}
+}
+
+actor ETankGiver : ItemGiver replaces Etank
+{
+inventory.pickupmessage "$PU_ETANK"
+States
+{
+Spawn:
+EBAL F 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", ETANKITEM , 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, ETANKITEM, 1)
+stop
+}
+}
+
+actor MTankGiver : ItemGiver replaces MTank
+{
+inventory.pickupmessage "$PU_ETANK"
+States
+{
+Spawn:
+EBAL G 0
+Goto "Super::Spawn+1"
+Pickup:
+"----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", MTANKITEM , 1), "Give")
+fail
+Give:
+"----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, MTANKITEM, 1)
+stop
+}
+}
