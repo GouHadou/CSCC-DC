@@ -261,7 +261,7 @@ while(CheckFlag(0,"SPECIAL"))
     {
     for(int p = 0; p < ServerMAX; p++)
         {
-        if(xyDistance(0, p+1000)<47 && zDistance(0, p+1000)<12)
+        if(xyDistance(0, p+1000)<47 && zDistance(0, p+1000)>-32 && zDistance(0, p+1000)<=0)
             {
             if(!CheckActorInventory(p+1000,"IsDead") && PlayerInGame(p) && GetActorProperty(p+1000,APROP_Health)>0)
                 {

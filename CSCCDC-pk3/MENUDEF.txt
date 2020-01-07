@@ -769,6 +769,7 @@ OptionMenu "VocalWomanInfo"
 	StaticText "$VOCALWOMAN_CH_MAINFIRE"
 	StaticText ""
 	StaticText ""
+	StaticText ""
 	Option "$CSCC_CH_ALTFIRES", "VocalWoman_ClassHelp_Weapon", "VocalWomanAltfires"
 	StaticText ""
 	StaticText ""
@@ -801,10 +802,11 @@ OptionMenu "ZenTrainerInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
-	StaticText ""
 	StaticText "$ZENTRAINER_CH_ALTFIRE"
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ZENTRAINER_CH_ITEM"
 	StaticText ""
 	StaticText ""
 	Option "$ZENTRAINER_CH_AURAS", "ZenTrainer_ClassHelp_auras", "ZenTrainerAuras"
@@ -819,11 +821,10 @@ OptionMenu "ZenTrainerInfo"
 
 OptionValue ZenTrainerAuras
 {
-	0, "\cfRecovery\n\cjGradually Restore Health \nfor self and allies \novertime."
-	1, "\cfPower\n\cjincrease weapon damage \nfor self and allies."
-	2, "\cfSpeed\n\cjincrease movement speed \nfor self and allies."
+	0, "\cfRecovery\n\cjGradually restore \nhealth for self and \nallies overtime."
+	1, "\cfPower\n\cjIncreases weapon \ndamage for self and \nallies."
+	2, "\cfSpeed\n\cjIncreases movement \nspeed for self and \nallies."
 }
-
 
 OptionMenu "ColdFusionInfo"
 {
@@ -835,14 +836,13 @@ OptionMenu "ColdFusionInfo"
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
+	StaticText ""
 	StaticText "$COLDFUSION_CH_MAINFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
 	StaticText "$COLDFUSION_CH_ALTFIRE"
-	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -860,7 +860,6 @@ OptionMenu "ColdFusionInfo"
 	StaticText ""
 
 }
-
 
 OptionMenu "CutmanMikeInfo"
 {
