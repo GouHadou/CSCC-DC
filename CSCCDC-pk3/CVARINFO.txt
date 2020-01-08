@@ -1,3 +1,4 @@
+user noarchive int Megaman_ClassHelp_Weapons = 0;
 user noarchive int Ukiyama_ClassHelp_Item = 0;
 user noarchive int Ukiyama_ClassHelp_Mods = 0;
 user noarchive int Gee_ClassHelp_Weapon = 0;
@@ -8,6 +9,7 @@ user noarchive int BG_ClassHelp_Weapon = 0;
 user noarchive int LD_ClassHelp_Weapon = 0;
 user noarchive int Korby_ClassHelp_Weapon = 0;
 user noarchive int Korby_ClassHelp_BlueMagic = 0;
+user noarchive int Corporal_ClassHelp_Weapon = 0;
 
 
 //Allows translation to be copied on the client's end
