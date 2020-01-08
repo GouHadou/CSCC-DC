@@ -26,7 +26,7 @@ str wep_check[CLASSLIST][2]=
 
 
 str item_pickups[MAX_ITEMS][MAX_WEPCLASS]= 
-{//Default, MegaMan, , Copy, Gizmo, Gizmo Morph, Cold Fusion, CF Morph, Ukiyama, Uki Morph, Corporal, Corporal Morph, Korby, Korby Morph
+{//Default, MegaMan (Required), Copy, Gizmo, Gizmo Morph, Cold Fusion, CF Morph, Ukiyama, Uki Morph, Corporal, Corporal Morph, Korby, Korby Morph
 {"NONE", "ProtoUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//0
 {"NONE","ArrowBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//1
 {"NONE","LaserBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//2
@@ -35,13 +35,13 @@ str item_pickups[MAX_ITEMS][MAX_WEPCLASS]=
 {"NONE","AdaptorUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
 {"NONE","TrebleBoostUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
 {"Item1", "Item1", "Item1", "ItemG", "ItemG", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1"},//7
-{"TangoSummon", "TangoSummon", "TangoSummon", "KittyHelper", "KittyHelper", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon", "TangoSummon"},//8
+{"NONE", "TangoSummon", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//8
 {"NONE", "EddieSummon", "EddieSummon", "KittyItem", "KittyItem", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//9
-{"EddieBomber", "EddieBomber", "EddieBomber", "KittyHelper", "KittyHelper", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber", "EddieBomber"},//10
-{"ReggaeCall", "ReggaeCall", "ReggaeCall", "KittyHelper", "KittyHelper", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall", "ReggaeCall"},//11
+{"NONE", "EddieBomber", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//10
+{"NONE", "ReggaeCall", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//11
 {"NONE", "Wtank", "WTank", "NONE", "NONE", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank"},//12
-{"TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry", "TrebleSentry"},//13
-{"BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport", "BeatSupport"},//14
+{"NONE", "TrebleSentry", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//13
+{"NONE", "BeatSupport", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//14
 {"Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2"},//15
 {"ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit"},//16
 {"RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil"},//17
