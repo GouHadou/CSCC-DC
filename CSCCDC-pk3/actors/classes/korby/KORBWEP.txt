@@ -280,10 +280,10 @@ KBHU D 0 A_TakeInventory("MP",25)
 ThousandNeedles2:
 KBHU D 0 A_TakeInventory("NeedleFlag",4)
 KBHU D 0 A_PlaySoundEx("Korby/Needle","Weapon")
-KBHU D 1 A_GiveInventory("KNeedle_M1_A")
+KBHU D 0 A_GiveInventory("KNeedle_M1_A")
 KBHU D 0 A_GiveInventory("KNeedle_M1_B")
 KBHU D 0 A_GiveInventory("KNeedle_M1_C")
-KBHU D 0 A_GiveInventory("KNeedle_M1_D")
+KBHU D 1 A_GiveInventory("KNeedle_M1_D")
 KBHU D 0 A_JumpIfInventory("NeedleFlag",1,"ThousandNeedles2")
 KBHU D 2
 KBHU DCB 2
