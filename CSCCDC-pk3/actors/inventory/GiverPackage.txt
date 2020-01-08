@@ -26,14 +26,14 @@ Goto Pickup.After
 
 Zen_Heal:
 TNT1 A 0 A_GiveInventory("Zen_Heal1PU")
-TNT1 A 0 A_JumpIfInventory("Zen_Heal1",1,2)
+TNT1 A 0 A_JumpIfInventory("Zen_Heal1",1,"Pickup.After")
 TNT1 A 0 A_GiveInventory("Zen_Heal1",1)
 TNT1 A 0 HealThing(1)
 Goto Pickup.After
 
 Zen_HealEx:
 TNT1 A 0 A_GiveInventory("Zen_Heal2PU")
-TNT1 A 0 A_JumpIfInventory("Zen_Heal2",1,2)
+TNT1 A 0 A_JumpIfInventory("Zen_Heal2",1,"Pickup.After")
 TNT1 A 0 A_GiveInventory("Zen_Heal2",1)
 TNT1 A 0 HealThing(1)
 Goto Pickup.After
