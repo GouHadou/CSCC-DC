@@ -395,11 +395,12 @@ States
 {
 Pickup:
 TNT1 A 0
+TNT1 A 0 A_TakeInventory("PowerSleeperBullet", 999)
 TNT1 A 0 SetPlayerProperty(0,0,4)
 stop
 }
 }
-actor PowerSleeperBullet : Powerup {powerup.duration 70 powerup.color "00 00 00", 0.6}
+actor PowerSleeperBullet : Powerup {powerup.duration 280 powerup.color "00 00 00", 0.6}
 
 //=====================
 //=====================
