@@ -487,7 +487,7 @@ OptionMenu "ClassInfo"
 	Title "$CSCC_CH_TITLE"
 	StaticText "===============================================================",1
 	StaticText ""
-	Submenu	    "Megaman",		"ChangeThisMenu!"
+	Submenu	    "Megaman",		"MegamanInfo"
 	Submenu	    "Copy Robot",		"CopyInfo"
 	Submenu	    "Gizmo",		"ChangeThisMenu!"
 	Submenu	    "Unix",		"ChangeThisMenu!"
@@ -500,7 +500,7 @@ OptionMenu "ClassInfo"
 	Submenu	    "LordDamager",		"LordDamagerInfo" 
 	Submenu	    "         	  Tank Operator",		"TankOpInfo"
 	Submenu	    "Badz", 		"BadzInfo"
-	Submenu	    "Corporal",		"ChangeThisMenu!"
+	Submenu	    "Corporal",		"CorporalInfo"
 	Submenu	    "Bull Gator",		"BullGatorInfo"
 	Submenu	    "Korby",		"KorbyInfo"
 	Submenu	    "VocalWoman", 		"VocalWomanInfo"
@@ -510,6 +510,58 @@ OptionMenu "ClassInfo"
 	StaticText"===============================================================",1
 
 	StaticText ""
+}
+
+OptionMenu "MegamanInfo"
+{
+	Title "$MEGAMAN_CH_TITLE"
+	StaticText ""
+	StaticText "$MEGAMAN_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$MEGAMAN_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$MEGAMAN_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText "$MEGAMAN_CH_WEAPONS"
+	Option "|||||||||", "Megaman_ClassHelp_Weapons", "MegaCSCCWeps"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue MegaCSCCWeps
+{
+	//None from mega
+	//None from Copy
+	//None from Gizmo
+	//None from Unix
+	0, "\cfHellFire Cutter :: CutmanMike\n\cjUnleash a Deadlier version of \nRolling Cutter."
+	1, "\cfIceBlade :: Ice\n\cjToss a whirling blade of ice."
+	2, "\cfLightningWave :: Sparky\n\cjLaunch a fast-moving \nelectrical pulse."
+	3, "\cfComet :: Ukiyama\n\cjErect a staff that calls forth \nprojectiles from the heavens"
+	4, "\cfGouhadou :: Messatsu\n\cjExpel fireballs from your palm, \ncan be charged."
+	5, "\cfFusionBomb :: ColdFusion\n\cjThrow a multi-exploding \ncluster bomb."
+	6, "\cfPistonTremor :: PistonMan\n\cjSlam the ground with force \ngreat enough to launch you \nand foes upwards."
+	7, "\cfSteelPunch :: LordDamager\n\cjSlug an opponent with fists of \nsteel."
+	8, "\cfTankCannon :: Tank Opp\n\cjLaunch heavy ballistics with \nimmense kickback."
+	9, "\cfOrbitalMissile :: Badz\n\cjdeploy orbiting missiles that \nstay at your command."
+	10, "\cfNadeSpam :: Corporal\n\cjLob a volley of bouncing \nimpact bombs."
+	11, "\cfRailBuster :: BullGator\n\cjA chargeable RailCannon."
+	12, "\cfMeteor :: Korby\n\cjHold to guide a marker and \nrelease to call meteors upon \nit."
+	13, "\cfIdolWave :: VocalWoman\n\cjSpray a volley of music notes."
+	14, "\cfZenSphere :: Zen Trainer\n\cjLaunch a mysterious orb that \ncan latch onto foes when \nheld."
+	15, "\cfHybridBurst :: Gee\n\cjcast a healing and harming \nspell in order, the healing \nspell only effects allies."
+
 }
 
 OptionMenu "CopyInfo"
@@ -560,6 +612,7 @@ OptionMenu "UkiyamaInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText "$UKIYAMA_CH_ALTFIRE"
 	Option "$CSCC_CH_ITEMS", "Ukiyama_ClassHelp_Item", "UkiyamaItems"
 	StaticText ""
 	StaticText ""
@@ -1032,6 +1085,51 @@ OptionValue KorbyBlueMagic
 	9, "\cfAqua Breath (10+)\n\cjUnleash waves of \nmoisture."
 	10, "\cfThousand Needles (2+)\n\cjFire 1,000 needles \nin one go."
 	11, "\cfBoom (1)\n\cjGo out in a blast \nof glory."
+}
+
+
+OptionMenu "CorporalInfo"
+{
+	Title "$CORPORAL_CH_TITLE"
+	StaticText ""
+	StaticText "$CORPORAL_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$CORPORAL_CH_MAINFIRE"
+	StaticText ""
+	StaticText "$CORPORAL_CH_ALTFIRE"
+	StaticText ""
+	StaticText "$CORPORAL_CH_RELOAD"
+	StaticText ""
+	StaticText "$CORPORAL_CH_WEAPONS"
+	Option "|||||||||||||", "Corporal_ClassHelp_Weapon", "CorporalWeapons"
+	StaticText ""
+	Option "|", "Corporal_ClassHelp_Weapon", "CorporalWepDetail"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue CorporalWeapons
+{
+	0, "\cfTommyGun :: Permanent"
+	1, "\cfNadeSpam :: Permanent"
+	2, "\cfGrand Dad :: Temporary"
+	3, "\cfFrag Grenade :: Temporary"
+}
+
+OptionValue CorporalWepDetail
+{
+	0, "\cjRapid Fire assault weapon \nthat deals low hitscan \ndamage. Uses map Ammo."
+	1, "\cjChuck a seemingly endless \nsupply of bouncing nades \nthat explode upon hitting a \ntarget."
+	2, "\cjA highly accurate semi \nautomatic rifle that deals \nconsiderable hitscan \ndamage as fast as you can \npull the trigger, accuracy \nsuffers when fired rapidly."
+	3, "\cjToss a grenade that explodes \nin a mess of bouncing \nshrapnel, hold to cook it and \nincrease the number of \nshrapnel."
 }
 
 //-------------------------------------------------------------------------------------------
