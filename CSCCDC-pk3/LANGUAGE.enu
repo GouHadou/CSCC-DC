@@ -103,24 +103,6 @@ OB_MISONGI = "%o just couldn't defend against %k's Misogi.";
 OB_GOUSHORYUKEN = "%o was spiked by %k's GouShoryuKen.";
 OB_GOSHO = "%o was face palmed by %k's Hyakki Gosho.";
 
-
-//===|LordDamager
-OB_LASERCANNON = "\ct%k left a darkened hole in %o's heart.";
-PU_LASERCANNON = "Power up! Dark Laser Cannon!";
-TAG_LASERCANNON = "Dark Laser";
-
-OB_MISSILEPUNCH = "%o was destroyed by %k's \chPower Missiles\c-.";
-PU_MISSILEPUNCH = "Power up! Missile Punch!";
-TAG_MISSILEPUNCH = "Missile Punch";
-
-OB_MISSILEPUNCH2 = "%o was crushed by %k's \chMissile Punch\c-.";
-OB_LDRAM = "%o was knocked down by %k's \chRam\c-.";
-
-OB_SMOGCANNON = "%o was choked by %k's \ctSmog Cannon\c-.";
-PU_SMOGCANNON = "Power up! Smog Cannon!";
-TAG_SMOGCANNON = "Smog Cannon";
-
-
 //===|Korby
 OB_KORBYFIRE = "%o WAS SLAIN BY %k's FIRE.";
 OB_KORBYFIRE1 = "%o WAS SLAIN BY %k's FIR1.";
@@ -248,11 +230,6 @@ PU_COMET = "Power Up! Comet!";
 OB_COMET = "%o was impacted by %k's comet.";
 TAG_COMET = "Comet";
 
-//Steel Punch
-PU_STEELPUNCH = "Power Up! Steel Punch!";
-OB_STEELPUNCH = "%o was crushed by %k's Steel Punch.";
-TAG_STEELPUNCH = "Steel Punch";
-
 //Gouhadou
 PU_GOUHADOUWEP = "Power up! Gou Hadouken!";
 TAG_GOUHADOUWEP = "Gou Hadouken";
@@ -302,8 +279,9 @@ CSCC_CH_PASSIVES = "\cvPassive : ";
 MEGAMAN_CH_TITLE = "\cvMEGAMAN";
 MEGAMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
 MEGAMAN_CH_MAINFIRE = "\cfMainfire : \cjPrimary fire of \ncurrent weapon.";
-MEGAMAN_CH_ALTFIRE = "\cfAltfire : \cjAlternative fire of \nCurrent Weapon";
-MEGAMAN_CH_WEAPONS = "\cv--New Copyweps--";
+MEGAMAN_CH_ALTFIRE = "\cfAltfire : \cjAlternative fire of \ncurrent Weapon";
+MEGAMAN_CH_PASSIVE = "\cfPassive : \cjCan pick up all weapons \nand items.";
+MEGAMAN_CH_WEAPONS = "\cvNew Weapons : ";
 
 COPY_CH_TITLE = "\cvCOPY ROBOT";
 COPY_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
@@ -357,11 +335,6 @@ CUTMANMIKE_CH_TITLE = "\cvCUTMANMIKE";
 CUTMANMIKE_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj120%";
 CUTMANMIKE_CH_MAINFIRE = "\cfMainfire : \cjCast a Hexen \nstyle Fire spell that travels \nquickly and deals damage in a \nsmall area.";
 CUTMANMIKE_CH_ALTFIRE = "\cfAltfire : \cjToss a \nHellFire Cutter, a slower but \nespecially deadlier rolling \ncutter.";
-
-LORDDAMAGER_CH_TITLE = "\cvLORDDAMAGER";
-LORDDAMAGER_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
-LORDDAMAGER_CH_ALTFIRE = "\cfAltfire : \cjPunch any fool \nthat dared to come within \nrange of your fists.";
-LORDDAMAGER_CH_ITEM = "\cfItem : \cjInitiate a ramming attack.";
 
 PISTONMAN_CH_TITLE = "\cvPISTONMAN";
 PISTONMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj90%\n\cfJump : \cj140%";

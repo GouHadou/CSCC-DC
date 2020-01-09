@@ -61,15 +61,6 @@ texture FUSSI, 8, 56{patch TWBAR, 0, 0 {Translation "192:192=196:196", "198:198=
 texture VFUSIS, 56, 8{patch VTWBAR, 0, 0 {Translation "192:192=228:228", "198:198=196:196"}}
 texture VFUSSI, 56, 8{patch VTWBAR, 0, 0 {Translation "192:192=196:196", "198:198=228:228"}}
 
-//LordDamager
-graphic LDMBAR,8,56{patch BARENERG,0,0{Translation "192:192=194:194","198:198=241:241"}}
-graphic LDMVAR,56,8{patch LDMBAR,0,0{rotate 90}}
-graphic LDRBAR,8,56{patch BARENERG,0,0{Translation "192:192=42:42","198:198=47:47"}}
-graphic LDRVAR,56,8{patch LDRBAR,0,0{rotate 90}}
-
-texture LDBAR,8,56{patch TNT1A0,0,0}
-texture LDVAR,56,8{patch TNT1A0,0,0}
-
 //Tank Operator
 graphic TANK_BAR,8,56{patch BARENERG,0,0{Translation "192:192=4:4", "198:198=218:218"}}
 graphic TANK_VAR,56,8{patch TANK_BAR,0,0{rotate 90}}

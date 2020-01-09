@@ -1,7 +1,7 @@
 actor TankOperatorClass : CustomWepMan
 {
 Player.DamageScreenColor "Black"
-Player.DisplayName "Tank Operator"
+Player.DisplayName "TankOperator"
 player.forwardmove 0.78, 0.78
 player.sidemove 0.76, 0.76
 Health 200

@@ -229,11 +229,6 @@ sprite IDWAH0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:1
 sprite IDWAI0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=239:239", "198:198=44:44"}}
 sprite IDWAJ0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=239:239", "198:198=44:44"}}
 
-//Steel Punch
-sprite STPHA0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
-sprite STPHB0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
-sprite STPHC0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
-
 //Orbital Missile copywep (secretly wave burner bass colors)
 sprite ORBDA0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}
 sprite ORBDB0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=204:204", "198:198=132:132"}}

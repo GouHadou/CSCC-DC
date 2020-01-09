@@ -64,12 +64,6 @@
 #include "actors/classes/icespark/iswep1.txt"
 #include "actors/classes/icespark/iswep2.txt"
 
-//==|LordDamager
-#include "actors/classes/LordDamager/LordDamager.txt"
-#include "actors/classes/LordDamager/MissilePunch.txt"
-#include "actors/classes/LordDamager/LaserCannon.txt"
-#include "actors/classes/LordDamager/SmogCannon.txt" //inactive
-
 //==|Gee
 #include "actors/classes/Gee/GeeClass.txt"
 #include "actors/classes/Gee/GeeWep.txt"

@@ -2413,7 +2413,6 @@ actor BMHoldFlag : Once {}
 
 actor KorbyHealthFlag : Inventory
 {
-+INVENTORY.UNDROPPABLE
 Inventory.Amount 1
 Inventory.MaxAmount 999
 }

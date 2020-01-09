@@ -328,7 +328,6 @@ inventory.amount 1
 inventory.maxamount 1
 inventory.icon "TNT1A0"
 scale 2.0
-//+INVENTORY.UNDROPPABLE
 +COUNTITEM
 +INVBAR
 states

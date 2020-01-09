@@ -160,23 +160,6 @@
 }
 
 {
-	name = "\chLordDamager"
-	accuracy = 3
-	intellect = 3
-	evade = 1
-	anticipation = 1
-	reactiontime = 2
-	perception = 1
-	favoriteweapon = "ProtoBuster"
-	color = "00 00 00"
-	gender = "male"
-	class = "LordDamager"
-	revealed = true
-	script = "humanbot"
-	chatfrequency = 50
-}
-
-{
 	name = "\ctBadz"
 	accuracy = 3
 	intellect = 3
@@ -204,7 +187,7 @@
 	favoriteweapon = "ProtoBuster"
 	color = "00 00 00"
 	gender = "male"
-	class = "Tank Operator"
+	class = "TankOperator"
 	revealed = true
 	script = "humanbot"
 	chatfrequency = 50
@@ -238,7 +221,7 @@
 	favoriteweapon = "ProtoBuster"
 	color = "00 00 00"
 	gender = "male"
-	class = "Bull Gator"
+	class = "BullGator"
 	revealed = true
 	script = "humanbot"
 	chatfrequency = 50
@@ -290,7 +273,7 @@
 	favoriteweapon = "ProtoBuster"
 	color = "00 00 00"
 	gender = "male"
-	class = "Zen Trainer"
+	class = "ZenTrainer"
 	revealed = true
 	script = "humanbot"
 	chatfrequency = 50
