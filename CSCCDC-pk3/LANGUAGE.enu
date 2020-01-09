@@ -288,7 +288,7 @@ COPY_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
 COPY_CH_MAINFIRE = "\cfMainfire : \cjFires a basic, quick \nmoving projectile.";
 COPY_CH_ALTFIRE = "\cfAltfire : \cjFires a slower, but \nhoming, basic projectile.";
 COPY_CH_ITEM = "\cfItem : \cjReverts you back to your \nbase kit.";
-COPY_CH_PASSIVE = "\cfPassive : \cjCopies the class of \nwhatever class you hit, including \nallies.";
+COPY_CH_PASSIVE = "\cfPassive : \cjCopies the class of \nwhatever class you hit, including \nallies. Can pick up all weapons and \ncollect ammo pickups.";
 
 UKIYAMA_CH_TITLE = "\cvUKIYAMA";
 UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
@@ -299,6 +299,7 @@ UKIYAMA_CH_MODS = "\cvMods : ";
 GEE_CH_TITLE = "\cvGEE";
 GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj140%";
 GEE_CH_MAINFIRE = "\cfMainfire : \cjShoots a magic burst \ncomposed of the attributes he has \navailable, healing if it hits an ally \nand damaging if it hits a foe.";
+GEE_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
 
 BG_CH_TITLE = "\cvBULL GATOR";
 BG_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
@@ -317,6 +318,7 @@ TANKOP_CH_ITEM = "\cfItem : \cjActivates and deactivates \ntank formation.";
 VOCALWOMAN_CH_TITLE = "\cvVOCALWOMAN";
 VOCALWOMAN_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj81%\n\cfJump : \cj100%";
 VOCALWOMAN_CH_MAINFIRE = "\cfMainfire : \cjUnleash a volley of \nmusic notes.";
+VOCALWOMAN_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
 
 ZENTRAINER_CH_TITLE = "\cvZEN TRAINER";
 ZENTRAINER_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj95%\n\cfJump : \cj100%";
@@ -324,6 +326,7 @@ ZENTRAINER_CH_MAINFIRE = "\cfMainfire : \cjChannel a mysterious \npsychic orb th
 ZENTRAINER_CH_ALTFIRE = "\cfAltfire : \cjAmplify the current aura, \nincreasing its range and potency.";
 ZENTRAINER_CH_ITEM = "\cfItem : \cjSwaps between various auras.";
 ZENTRAINER_CH_AURAS = "\cvAuras : ";
+ZENTRAINER_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
 
 COLDFUSION_CH_TITLE = "\cvCOLDFUSION";
 COLDFUSION_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
@@ -349,10 +352,9 @@ KORBY_CH_ALTFIRE = "\cfAltfire : \cjHold to absorb \ndamage and transmutate it \
 KORBY_CH_ITEM = "\cfItem : \cjPurge the current \nBlue Magic spell you \ncurrently have.";
 KORBY_CH_BLUEMAGIC = "\cvBlue Magic : ";
 KORBY_CH_SPELLS = "\cvSpells : ";
+KORBY_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups.";
 
 CORPORAL_CH_TITLE = "\cvCORPORAL";
 CORPORAL_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
-CORPORAL_CH_MAINFIRE = "\cfMainfire : \cjFire the current weapon.";
 CORPORAL_CH_ALTFIRE = "\cfAltfire : \cjSlash with a combat Knife.";
-CORPORAL_CH_RELOAD = "\cvReload : \cjReloads the current Firearm";
-CORPORAL_CH_WEAPONS = "\cvWeapons : ";
+CORPORAL_CH_PASSIVE = "\cfPassive : \cjCan pick up weapons, but \nhas a timer for repeated pickups. \nCan collect ammo pickups.";

@@ -721,12 +721,15 @@ OptionMenu "TankOpInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText "$TANKOP_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	Option "$CSCC_CH_PASSIVES", "TankOp_ClassHelp_Weapon", "TankOpPassives"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$TANKOP_CH_ITEM"
 	StaticText ""
 	StaticText ""
 }
@@ -803,6 +806,10 @@ OptionMenu "GeeInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$GEE_CH_PASSIVE"
+	StaticText ""
 }
 
 OptionValue GeeAltfires
@@ -832,6 +839,9 @@ OptionMenu "VocalWomanInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$VOCALWOMAN_CH_PASSIVE"
 	StaticText ""
 }
 
@@ -872,7 +882,7 @@ OptionMenu "ZenTrainerInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
+	StaticText "$ZENTRAINER_CH_PASSIVE"
 	StaticText ""
 }
 
@@ -1016,6 +1026,10 @@ OptionMenu "KorbyInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText "$KORBY_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
 }
 
 OptionValue KorbyMainFires
@@ -1053,37 +1067,46 @@ OptionMenu "CorporalInfo"
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	StaticText "$CORPORAL_CH_MAINFIRE"
+	Option "$CSCC_CH_MAINFIRES", "Corporal_ClassHelp_Weapon", "CorporalMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	StaticText ""
 	StaticText "$CORPORAL_CH_ALTFIRE"
 	StaticText ""
-	StaticText "$CORPORAL_CH_RELOAD"
 	StaticText ""
-	StaticText "$CORPORAL_CH_WEAPONS"
-	Option "|||||||||||||", "Corporal_ClassHelp_Weapon", "CorporalWeapons"
-	StaticText ""
-	Option "|", "Corporal_ClassHelp_Weapon", "CorporalWepDetail"
+	Option "$CSCC_CH_RELOADS", "Corporal_ClassHelp_Weapon", "CorporalReloads"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$CORPORAL_CH_PASSIVE"
 	StaticText ""
 	StaticText ""
 }
 
-OptionValue CorporalWeapons
+OptionValue CorporalMainfires
 {
-	0, "\cfTommyGun :: Permanent"
-	1, "\cfNadeSpam :: Permanent"
-	2, "\cfGrand Dad :: Temporary"
-	3, "\cfFrag Grenade :: Temporary"
+	0, "\cfTommy Gun\n\cjRapid fire assault \nweapon that deals low \nhitscan damage."
+	1, "\cfNade Spam\n\cjChuck a seemingly \nendless supply of \nbouncing nades that \nexplode."
+	2, "\cfGrand Dad\n\cjA highly accurate semi \nautomatic rifle that \ndeals hitscan damage \nas fast as you can \npull the trigger. \nAccuracy suffers when \nfired rapidly."
+	3, "\cfFrag Grenade \n\cjToss a grenade that \nexplodes in a mess of \nbouncing shrapnel. \nHold to cook it and \nincrease the distance \nthrown."
 }
 
-OptionValue CorporalWepDetail
+OptionValue CorporalReloads
 {
-	0, "\cjRapid Fire assault weapon \nthat deals low hitscan \ndamage. Uses map Ammo."
-	1, "\cjChuck a seemingly endless \nsupply of bouncing nades \nthat explode upon hitting a \ntarget."
-	2, "\cjA highly accurate semi \nautomatic rifle that deals \nconsiderable hitscan \ndamage as fast as you can \npull the trigger, accuracy \nsuffers when fired rapidly."
-	3, "\cjToss a grenade that explodes \nin a mess of bouncing \nshrapnel, hold to cook it and \nincrease the number of \nshrapnel."
+	0, "\cfTommy Gun\n\cjUses map ammo to reload \nits clip."
+	1, "\cfNade Spam\n\cjStarts recovering \ngrenades one by one."
+	2, "\cfGrand Dad\n\cjUses non replenishing \nammo to reload its \nclip. Less efficient \nreloading manually."
+	3, "\cfFrag Grenade \n\cjNone."
 }
 
 //-------------------------------------------------------------------------------------------
