@@ -560,7 +560,7 @@ OptionValue MegaCSCCWeps
 	8, "\cfTank Cannon - Tank Opp\n\cjLaunch heavy ballistics \nwith immense kickback."
 	9, "\cfOrbital Missile - Badz\n\cjDeploy orbiting missiles \nthat stay at your \ncommand."
 	10, "\cfNade Spam - Corporal\n\cjLob a volley of \nbouncing grenades."
-	11, "\cfRail Buster - BullGator\n\cjA chargeable railgun."
+	11, "\cfRail Buster - Bull Gator\n\cjA chargeable railgun."
 	12, "\cfMeteor - Korby\n\cjHold to guide a marker \nand release to call \nmeteors upon it."
 	13, "\cfIdol Wave - VocalWoman\n\cjSpray a volley of \nmusic notes."
 	14, "\cfZen Sphere - Zen Trainer\n\cjLaunch a mysterious \norb that can latch \nonto foes when held."
