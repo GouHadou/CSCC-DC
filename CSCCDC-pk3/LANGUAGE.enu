@@ -352,7 +352,7 @@ KORBY_CH_ALTFIRE = "\cfAltfire : \cjHold to absorb \ndamage and transmutate it \
 KORBY_CH_ITEM = "\cfItem : \cjPurge the current \nBlue Magic spell you \ncurrently have.";
 KORBY_CH_BLUEMAGIC = "\cvBlue Magic : ";
 KORBY_CH_SPELLS = "\cvSpells : ";
-KORBY_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups.";
+KORBY_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups. \nRegenerates ammo quicker and charges \nfaster if standing still.";
 
 CORPORAL_CH_TITLE = "\cvCORPORAL";
 CORPORAL_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
