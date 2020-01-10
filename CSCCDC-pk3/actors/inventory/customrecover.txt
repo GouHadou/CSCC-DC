@@ -70,7 +70,7 @@ goto Held
 
 actor MegaHealthCS : CustomInventory replaces MegaHealth
 {
-inventory.pickupmessage "Picked up a Mega Health Capsule."
+inventory.pickupmessage "Picked up a mega health capsule."
 +COUNTITEM
 Scale 2.0
 States
@@ -106,6 +106,7 @@ goto Held
 
 actor WeaponEnergyCS : WeaponEnergy replaces WeaponEnergy
 {
+inventory.pickupmessage "Picked up a small ammo pickup."
 States
 {
 Spawn:
@@ -132,6 +133,7 @@ fail
 
 actor BigWeaponEnergyCS : BigWeaponEnergy replaces BigWeaponEnergy
 {
+    inventory.pickupmessage "Picked up a large ammo pickup."
 States
 {
 Spawn:
@@ -158,6 +160,7 @@ fail
 
 actor MegaWeaponEnergyCS : MegaWeaponEnergy replaces MegaWeaponEnergy
 {
+inventory.pickupmessage "Picked up a mega ammo pickup."
 States
 {
 Spawn:

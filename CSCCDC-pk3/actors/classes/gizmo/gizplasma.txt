@@ -101,7 +101,7 @@ PROJECTILE
 +DONTBLAST
 damagetype "GizmoPlasma"
 Speed 26
-Damage (20)
+Damage (13)
 radius 10
 height 10
 scale 1.0
