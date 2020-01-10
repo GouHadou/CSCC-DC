@@ -21,7 +21,7 @@ SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 #DEFINE KORBCOL 384.0
 #DEFINE MESSCOL 379.0
 #DEFINE ICECOL 376.0
-#DEFINE LDCOL 437.0
+#DEFINE AEGCOL 437.0
 #DEFINE GIZCOL 385.0
 #DEFINE VOCCOL 996.0
 #DEFINE ZENCOL 804.0
@@ -43,7 +43,7 @@ str DisguiseInfo[MAX_DISGUISES][4] = {
 {"LaggyBlazkoClass", "LaggyBlazkoDisguise", LAGGYCOL, ""},
 {"KorbyClass", "KorbyDisguise", KORBCOL, ""},
 {"MessatsuClass", "MessatsuDisguise", MESSCOL, ""},
-{"LordDamagerClass", "LDDisguise", LDCOL, ""},
+//{"AegisDamagerClass", "AegisDisguise", AEGCOL, ""},
 {"IceSparkyClass", "IceDisguise", ICECOL, ""},
 {"GizmoClass", "GizmoDisguise", GIZCOL, ""},
 {"VocalwomanClass", "VocalWomanDisguise", VOCCOL, ""},

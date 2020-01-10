@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 36
+#define MAX_MORPHS 35
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -20,33 +20,32 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},//13
 {"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},//14
 {"MessatsuWep", "Messatsu", "MessatsuClassItems"},//15
-{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//16
-{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//17
-{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//18
+{"BurstBlade", "Aegis", "AegisClassItems"},//16
+{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//17
 
-{"VocalMicBoss1", "Vocal Woman (Offense Mic)", "VocalWomanClassItems"},//19
-{"VocalMicBoss2", "Vocal Woman (Support Mic)", "VocalWomanClassItems"},//20
+{"VocalMicBoss1", "Vocal Woman (Offense Mic)", "VocalWomanClassItems"},//18
+{"VocalMicBoss2", "Vocal Woman (Support Mic)", "VocalWomanClassItems"},//19
 
-{"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//21
+{"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//20
 
-{"GeeBurstBoss1", "Gee (Healing Burst)", "GeeClassItems"},//22
-{"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},//23
+{"GeeBurstBoss1", "Gee (Healing Burst)", "GeeClassItems"},//21
+{"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},//22
 
-{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},//24
-{"HandCannon", "Gizmo (Hand Cannon)", "GizmoClassItems"},//25
-{"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},//26
-{"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},//27
-{"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},//28
-{"EternalClawsWep", "Gizmo (Eternal Claws)", "GizmoClassItems"},//29
-{"StoneCannonWep", "Gizmo (Stone Cannon)", "GizmoClassItems"},//30
-{"HydroCannonWep", "Gizmo (Hydro Cannon)", "GizmoClassItems"},//31
+{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},//23
+{"HandCannon", "Gizmo (Hand Cannon)", "GizmoClassItems"},//24
+{"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},//25
+{"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},//26
+{"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},//27
+{"EternalClawsWep", "Gizmo (Eternal Claws)", "GizmoClassItems"},//28
+{"StoneCannonWep", "Gizmo (Stone Cannon)", "GizmoClassItems"},//29
+{"HydroCannonWep", "Gizmo (Hydro Cannon)", "GizmoClassItems"},//30
 
-{"BullGatorSleepPierce", "BullGator (Sleep / Pierce)", "BullGatorClassItems"},//32
-{"BullGatorSiphonSplitter", "BullGator (Siphon / Splitter)", "BullGatorClassItems"},//33
-{"BullGatorConfusionBurst", "BullGator (Confusion / Burst)", "BullGatorClassItems"},//34
+{"BullGatorSleepPierce", "BullGator (Sleep / Pierce)", "BullGatorClassItems"},//31
+{"BullGatorSiphonSplitter", "BullGator (Siphon / Splitter)", "BullGatorClassItems"},//32
+{"BullGatorConfusionBurst", "BullGator (Confusion / Burst)", "BullGatorClassItems"},//33
 
-{"OrbitalMissileBoss", "Badz", "BadzClassItems"},//35
-{"ClassicTankWeapon", "Tank Operator", "TankOperatorClassItems"},//36
+{"OrbitalMissileBoss", "Badz", "BadzClassItems"},//34
+{"ClassicTankWeapon", "Tank Operator", "TankOperatorClassItems"},//35
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

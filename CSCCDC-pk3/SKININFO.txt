@@ -116,8 +116,8 @@ gender = male
 }
 
 {
-name = "LDDisguise"
-sprite = LDMG
+name = "AegisDisguise"
+sprite = KNIM
 class = Unix
 dsnoway = LAND
 dsoof = LAND

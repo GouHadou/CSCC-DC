@@ -183,37 +183,6 @@ $playersound	MessClass	male	*usefail	LAND
 weapon/lightningfall	WILYBEAM
 weapon/warp	DSITMBK
 
-//LordDamager
-$playeralias	lorddc	male	*death		lordd/death1
-$playeralias	lorddc	male	*xdeath		lordd/death1
-$playeralias	lorddc	male	*gibbed		lordd/death1
-$playersound	lorddc	male	*pain100	MEGAPAIN
-$playersound	lorddc	male	*pain75		MEGAPAIN
-$playersound	lorddc	male	*pain50		MEGAPAIN
-$playersound	lorddc	male	*pain25		MEGAPAIN
-$playersound	lorddc	male	*grunt		YDSTOMP
-$playersound	lorddc	male	*land		YDSTOMP
-$playersound	lorddc	male	*jump		dsnone
-$playersound	lorddc	male	*fist		dsnone
-$playersound	lorddc	male	*usefail	dsnone
-$playeralias	lorddc	male	*taunt		LordD/Taunt
-
-lordd/death1 LDDED1
-lordd/death2 LDDED2
-$random LordD/Death { LordD/Death1 LordD/Death2 }
-
-LordD/Stun LDSTN1
-
-LordD/Taunt1 LDTAU1
-LordD/Taunt2 LDTAU2
-LordD/Taunt3 LDTAU3
-LordD/Taunt4 LDTAU4
-LordD/Taunt5 LDTAU5
-LordD/Taunt6 LDTAU6
-LordD/Taunt7 LDTAU7
-LordD/Taunt8 LDTAU8
-$random LordD/Taunt {LordD/Taunt1 LordD/Taunt2 LordD/Taunt3 LordD/Taunt4 LordD/Taunt5 LordD/Taunt6 LordD/Taunt7 LordD/Taunt8}
-
 //Vocalwoman
 $playersound	vocalwomanc	male	*death		VOCADETH
 $playersound	vocalwomanc	male	*xdeath		VOCADETH

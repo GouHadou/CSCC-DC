@@ -97,16 +97,6 @@ Script "CSACS_ButtonCheck" (int theButton)
 SetResultValue(PressingButton(theButton));
 }
 
-Script "CSACS_PressingAttack" (void)
-{
-SetResultValue(PressingButton(BT_ATTACK));
-}
-
-Script "CSACS_PressingAltAttack" (void)
-{
-SetResultValue(PressingButton(BT_ALTATTACK));
-}
-
 Script "CSACS_PressingBothAttack" (void)
 {
 int buttons = GetPlayerInput(-1, INPUT_BUTTONS);

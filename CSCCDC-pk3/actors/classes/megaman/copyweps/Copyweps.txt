@@ -13,7 +13,6 @@
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/messcopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/ukicopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/iscopy.txt"
-#include "actors/classes/Megaman/copyweps/CSCCCopyweps/ldcopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/VocalCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/BullCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/PistonCopy.txt"

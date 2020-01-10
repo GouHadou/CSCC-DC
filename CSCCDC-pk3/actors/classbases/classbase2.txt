@@ -46,10 +46,6 @@ Pain.GrenadeFragment:
 Pain.GrandDad:
 Pain.NadeSpam:
 Pain.CorpKnife:
-Pain.PMissile:
-Pain.DamagerFist:
-Pain.LDRam:
-Pain.SmogThrower:
 Pain.Comet:
 Pain.Meteor:
 Pain.Music:
@@ -198,10 +194,6 @@ Goto pain+1
 Pain.LightningShot:
 "----" H 0 A_GiveInventory("LightningShotProtect", 1)
 Goto pain+1
-//Lord Damager
-Pain.DarkLaser:
-"----" H 0 //A_GiveInventory("DarkLaserProtect")
-Goto Pain+1
 //Gizmo
 Pain.GizmoLightning:
 "----" H 0 A_GiveInventory("GizmoLightningProtect")

@@ -1,7 +1,7 @@
 actor BullGatorClass : CustomWepMan 
 {
 Player.DamageScreenColor "DarkGreen"
-Player.DisplayName "Bull Gator"
+Player.DisplayName "BullGator"
 player.forwardmove 0.78, 0.78
 player.sidemove 0.76, 0.76
 Health 85

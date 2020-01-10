@@ -494,7 +494,6 @@ Translation "192:192=137:137"
 
 actor IceSparkyFusion : PowerUp
 {
-+INVENTORY.UNDROPPABLE
 Powerup.Duration -30
 }
 

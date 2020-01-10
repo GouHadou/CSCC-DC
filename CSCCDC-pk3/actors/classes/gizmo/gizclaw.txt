@@ -102,7 +102,7 @@ States
 {
 Spawn:
 CCLA H 0
-CCLA HIJKL 1 A_Explode(8,40,0)
+CCLA HIJKL 1 A_Explode(5,40,0)
 stop
 }
 }
@@ -133,29 +133,18 @@ goto Done
 }
 }
 
-actor ClawGlovesStrong : ClawGloves
-{
-States
-{
-Spawn:
-CCLA H 0
-CCLA HIJKL 1 A_Explode(10,40,0)
-stop
-}
-}
-
 actor GizmoClawGlovesStrongPickup : BasicTeamColorPickup
 {
 states
 {
 FireX:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,Cos(pitch)*15, 0, -sin(pitch)*15,0) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,Cos(pitch)*15, 0, -sin(pitch)*15,0) 
 goto Done
 FireB:
 FireR:
 FireG:
 FireY:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,Cos(pitch)*15, 0, -sin(pitch)*15,0,SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,Cos(pitch)*15, 0, -sin(pitch)*15,0,SXF_TRANSFERTRANSLATION) 
 goto Done
 }
 }
@@ -164,13 +153,13 @@ actor GizmoClawGlovesStrongPickup60 : BasicTeamColorPickup
 states
 {
 FireX:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,60) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,60) 
 goto Done
 FireB:
 FireR:
 FireG:
 FireY:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,60,SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,60,SXF_TRANSFERTRANSLATION) 
 goto Done
 }
 }
@@ -179,13 +168,13 @@ actor GizmoClawGlovesStrongPickup120 : BasicTeamColorPickup
 states
 {
 FireX:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,120) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,120) 
 goto Done
 FireB:
 FireR:
 FireG:
 FireY:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,120,SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,120,SXF_TRANSFERTRANSLATION) 
 goto Done
 }
 }
@@ -194,13 +183,13 @@ actor GizmoClawGlovesStrongPickup180 : BasicTeamColorPickup
 states
 {
 FireX:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,180) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,180) 
 goto Done
 FireB:
 FireR:
 FireG:
 FireY:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,180,SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,180,SXF_TRANSFERTRANSLATION) 
 goto Done
 }
 }
@@ -209,13 +198,13 @@ actor GizmoClawGlovesStrongPickup240 : BasicTeamColorPickup
 states
 {
 FireX:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,240) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,240) 
 goto Done
 FireB:
 FireR:
 FireG:
 FireY:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,240,SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,240,SXF_TRANSFERTRANSLATION) 
 goto Done
 }
 }
@@ -224,13 +213,50 @@ actor GizmoClawGlovesStrongPickup300 : BasicTeamColorPickup
 states
 {
 FireX:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,300) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,300) 
 goto Done
 FireB:
 FireR:
 FireG:
 FireY:
-TNT1 A 0 A_SpawnItemEx("ClawGlovesStrong",0,0,32,15,0,0,300,SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("ClawGloves",0,0,32,15,0,0,300,SXF_TRANSFERTRANSLATION) 
+goto Done
+}
+}
+
+actor ClawGlovesWeak : ClawGloves
+{
+States
+{
+Spawn:
+CCLA H 0
+CCLA HIJKL 1 A_Explode(3,40,0)
+stop
+}
+}
+actor ClawGlovesWeakB : ClawGlovesWeak {translation "198:198=74:74", "192:192=205:205"}
+actor ClawGlovesWeakR : ClawGlovesWeak {translation "198:198=41:41", "192:192=171:171"}
+actor ClawGlovesWeakG : ClawGlovesWeak {translation "198:198=128:128", "192:192=104:104"}
+actor ClawGlovesWeakY : ClawGlovesWeak {translation "198:198=232:232", "192:192=229:229"}
+
+actor GizmoClawGlovesWeakPickup : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("ClawGlovesWeak",0,0,0,0)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("ClawGlovesWeakB",0,0,0,0)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("ClawGlovesWeakR",0,0,0,0)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("ClawGlovesWeakG",0,0,0,0)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("ClawGlovesWeakY",0,0,0,0)
 goto Done
 }
 }
@@ -279,12 +305,12 @@ IDLE C 0 A_JumpIfNoAmmo("NoAmmo")
 IDLE C 0 A_PlaySoundEx("weapon/clawg","Weapon")
 CLAW A 0 A_TakeInventory("EternalClawsAmmo",2)
 CLAW A 0 A_GiveInventory("GizmoEternalClawsPickup",1)
-CLAW A 0 A_GiveInventory("GizmoClawGlovesPickup",1)
+CLAW A 0 A_GiveInventory("GizmoClawGlovesWeakPickup",1)
 CLAW ABCDEF 1 A_FireBullets (0, 0, 1, 0, "ClimbChecker", 0, 43) 
 IDLE C 0 A_PlaySoundEx("weapon/clawg","Weapon")
 CLAW A 0 A_TakeInventory("EternalClawsAmmo",2)
 CLAW A 0 A_GiveInventory("GizmoEternalClawsPickup",1)
-CLAW A 0 A_GiveInventory("GizmoClawGlovesPickup",1)
+CLAW A 0 A_GiveInventory("GizmoClawGlovesWeakPickup",1)
 CLAW GHIJKL 1 A_FireBullets (0, 0, 1, 0, "ClimbChecker", 0, 43) 
 IDLE C 0 A_Refire
 Goto Ready2
@@ -334,7 +360,7 @@ PROJECTILE
 Radius 25
 Height 25
 scale 2.5
-damage (6)
+damage (2)
 +RIPPER
 damagetype "GizmoClaw"
 speed 80

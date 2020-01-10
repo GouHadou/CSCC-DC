@@ -1,6 +1,6 @@
 actor ZenTrainerClass : CustomWepMan
 {
-player.displayname "Zen Trainer"
+player.displayname "ZenTrainer"
 player.forwardmove 0.76, 0.76
 player.sidemove 0.74, 0.74
 player.jumpz 10

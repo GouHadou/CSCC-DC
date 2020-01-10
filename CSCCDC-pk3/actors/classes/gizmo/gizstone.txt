@@ -1,6 +1,6 @@
 actor StoneCannonWep : CSCCWepBase
 {
-Weapon.AmmoUse 2
+Weapon.AmmoUse 7
 Weapon.AmmoGive 28
 Weapon.SlotNumber 6
 Obituary "$OB_STONECANNON"
@@ -59,31 +59,72 @@ actor StoneCannonShot : BasicProjectile
 {
 Obituary "$OB_STONECANNON"
 PROJECTILE
-Radius 38
-Height 10
-scale 2.5
-damage (35)
-speed 77
+Radius 30
+Height 30
+scale 3.5
+damage (33)
+speed 35
+-NOGRAVITY
 damagetype "GizmoStone"
 States
 {
 Spawn:
-STCN D 4
-loop
+TNT1 A 0
+STCN D 0 ThrustThingZ(0,20,0,1)
+STCN D 1
+goto Spawn+2
 Death:
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
-MMFX B 0 A_SpawnItemEx("StoneBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360),SXF_TRANSFERTRANSLATION)
+MMFX B 0 A_Stop
+MMFX B 0 A_ChangeFlag("NOGRAVITY",1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*1,1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*2,1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*3,1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*4,1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*5,1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*6,1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*7,1)
+MMFX B 0 A_SpawnItemEx("StoneCannonBit",0,0,0,28,0,0,45*8,1)
 MMFX BCDE 2
 stop
 }
 }
-actor StoneCannonShot_B : StoneCannonShot {Translation  "46:46=244:244", "4:4=205:205"}
-actor StoneCannonShot_R : StoneCannonShot {Translation  "46:46=191:191", "4:4=171:171"}
-actor StoneCannonShot_G : StoneCannonShot {Translation  "46:46=135:135", "4:4=104:104"}
-actor StoneCannonShot_Y : StoneCannonShot {Translation  "46:46=234:234", "4:4=229:229"}
+actor StoneCannonShot_B : StoneCannonShot {Translation  "46:46=244:244", "4:4=205:205", "210:215=205:205"}
+actor StoneCannonShot_R : StoneCannonShot {Translation  "46:46=191:191", "4:4=171:171", "210:215=171:171"}
+actor StoneCannonShot_G : StoneCannonShot {Translation  "46:46=135:135", "4:4=104:104", "210:215=104:104"}
+actor StoneCannonShot_Y : StoneCannonShot {Translation  "46:46=234:234", "4:4=229:229", "210:215=229:229"}
+
+actor StoneCannonBit : BasicProjectile
+{
+PROJECTILE
++THRUACTORS
+Radius 6
+Height 6
+damage (10)
+scale 2.5
+damagetype "GizmoStone"
+Obituary "$OB_STONECANNON"
+speed 28
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Jump(256,"Look1","Look2","Look3")
+Look1:
+STCN A 0
+goto Continue
+Look2:
+STCN B 0
+goto Continue
+Look3:
+STCN C 0
+goto Continue
+Continue:
+"####" "#" 3
+"####" "#" 0 A_ChangeFlag(THRUACTORS, false)
+"####" "#" 4 
+goto Continue+2
+}
+}
 
 actor StoneCannonShot_M1 : BasicTeamColorPickup
 {
@@ -104,31 +145,5 @@ goto Done
 FireY:
 TNT1 A 0 A_FireCustomMissile("StoneCannonShot_Y",0,1,8,0)
 goto Done
-}
-}
-
-actor StoneBit
-{
-+RIPPER
--NOGRAVITY
-+CLIENTSIDEONLY
--SOLID
-scale 1.5
-Height 2
-Radius 2
-States
-{
-Spawn:
-STCN A 2
-TNT1 A 2
-STCN B 2
-TNT1 A 2
-STCN C 2
-TNT1 A 2
-STCN B 2
-TNT1 A 2
-STCN A 2
-TNT1 A 2
-stop
 }
 }

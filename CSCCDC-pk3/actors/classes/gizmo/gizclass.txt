@@ -3,8 +3,6 @@ actor GizmoClass : CustomWepMan
 player.displayname "Gizmo" 
 player.soundclass "Gizmo"
 player.damagescreencolor "red"
-player.forwardmove 0.8, 0.8
-player.sidemove 0.78, 0.78
 player.jumpz 13
 player.startitem "HandCannon"
 player.startitem "ClawGlovesWep"
