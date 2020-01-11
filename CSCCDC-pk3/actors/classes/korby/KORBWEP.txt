@@ -751,12 +751,12 @@ KFIB EFEFEF 1 A_SpawnItemEx("OilPitIgnite",0,0,8)
 //NAPA A 0 A_SpawnItemEX("FIR3TRAIL",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 Goto Spawn+2
 Death:
-NAPA A 0 A_SpawnItemEx("KorbyFireTower3")
+NAPA A 0 A_SpawnItemEx("FIR3Flame")
 NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
 NAPA A 0 A_ChangeFlag(NOGRAVITY,1)
 TNT1 A 1 A_Explode(10, 128, 0)
-TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
-NAPA EFGHIJKLMNOPQRS 2
+//TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+//NAPA EFGHIJKLMNOPQRS 2
 stop
 }
 }
@@ -2442,88 +2442,17 @@ stop
 }
 }
 
-actor KorbyFireTower3
+actor KorbyFlameFX
 {
 PROJECTILE
 +THRUACTORS
 +CLIENTSIDEONLY
-+FLOORHUGGER
-Scale 2.0
-Speed 0
-Damage (0)
 Radius 1
 Height 1
-States
-{
-Spawn:
-DUOR T 0
-DUOR T 0 A_SpawnItemEx("FIR3Rising", 0, 0, 0, 0, 0, 24, 0)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 0, 0, 0, 0, 0, 24, 0)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 0)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 15)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 30)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 45)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 60)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 75)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 90)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 105)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 120)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 135)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 150)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 165)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 180)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 195)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 210)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 225)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 240)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 255)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 270)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 285)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 300)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 315)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 330)
-DUOR T 0 A_SpawnItemEx("KorbyFireTowerFX", 96, 0, 0, 0, 0, 24, 345)
-stop
-}
-}
-
-
-actor KorbyFireTowerFX
-{
-PROJECTILE
-+THRUACTORS
-+CLIENTSIDEONLY
-Renderstyle "Translucent"
-Alpha 0.2
-Scale 2.0
-Speed 0
-Damage (0)
-Radius 1
-Height 1
-States
-{
-Spawn:
-KFIR T 0
-KFIR T 1 A_SpawnItemEx("KorbyFireTowerFX2")
-loop
-}
-}
-
-actor KorbyFireTowerFX2 : KorbyFireTowerFX
-{
-States
-{
-Spawn:
-KFIR T 1 A_FadeOut(0.005)
-loop
-}
-}
-
-actor KorbyFlameFX : KorbyFireTowerFX
-{
 Renderstyle "Add"
 Alpha 0.75
--NOGRAVITY
+Scale 2.5
+
 States
 {
 Spawn:
@@ -2533,24 +2462,89 @@ loop
 }
 }
 
-actor FIR3Rising : FIR2
+actor FIR3Flame 
 {
-Obituary "$OB_KORBYFIRE3"
-Radius 50
-Height 50
-Damage (0)
+Radius 1
+Height 1
+PROJECTILE
 +THRUACTORS
-+NOGRAVITY
-RenderStyle "Translucent"
-Alpha 0.5
-speed 0
-scale 2.5
+Renderstyle "Translucent"
+Speed 0
+Scale 2.5
+Alpha 0.75
+Damage (0)
 States
 {
 Spawn:
-KFIB E 0
-KFIB E 0 A_Explode(10, 128, 0, 0)
-KFIB EF 1 A_SpawnItemEx("KorbyFlameFX", Random(25, 50), 0, Random(-16, 16), Random(5, 15), 0, 0, Random(0,360))
+KFIR G 0
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 4, 0, 20, 0)
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 4, 0, 20, 45)
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 4, 0, 20, 90)
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 4, 0, 20, 135)
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 4, 0, 20, 180)
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 4, 0, 20, 225)
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 4, 0, 20, 270)
+KFIR G 0 A_SpawnItemEx("KorbyFlame", 32, 0, 0, 5, 0, 20, 315)
+KFIR GHIJKL 3 A_Explode(5, 128, 0, 0, 64)
+stop
+}
+}
+actor KorbyFlame
+{
+PROJECTILE
++THRUACTORS
+Radius 16
+Height 8
+Renderstyle "Translucent"
+Alpha 0.75
+Scale 2.5
+-NOGRAVITY
+States
+{
+Spawn:
+KFIR L 0
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_ChangeFlag("THRUACTORS", FALSE)
+Spawn2: 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX")
 loop
+Death:
+NAPA E 0 A_Explode(15, 96, 0, 0, 64)
+NAPA EFGHIJKLMNOPQRS 2
+stop
 }
 }
