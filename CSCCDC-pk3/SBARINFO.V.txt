@@ -325,6 +325,18 @@ IsSelected BullGatorConfusionBurst{
 IsSelected OrbitalMissileBoss{Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar"BARAMM51","BAREMPTY",Ammo2,vertical,8,8;}
 
+
+//====|Aegis
+IsSelected BurstBlade
+	{
+	//DrawBar"BAREMPTY", "BARAMMO8", ShieldWaveCooldownItem, vertical,Reverse, 16, 8;
+	Drawbar"BARAMM21", "BAREMPTY", ShieldEnergy, vertical, 16, 8;
+	InInventory LightScreenActive, 1	{Drawbar"BARAMM21", "BAREMPTY", LightScreenHealth, vertical, 16, 8;}
+	InInventory LightScreenBossCooldownItem, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenBossCooldownItem, vertical, 16, 8;}
+	ininventory ShieldBreak, 1{Drawbar"BARAMMO8", "BAREMPTY", ShieldEnergy, vertical, 16, 8;}
+	//DrawImage "LTSCI", 16, 64;
+	}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;

@@ -319,6 +319,14 @@ IsSelected BullGatorConfusionBurst{
 IsSelected OrbitalMissileBoss{Drawbar"VARAMM58", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	Drawbar"VARAMM51", "VAREMPTY", Ammo2, horizontal, 58, 176;}
 
+//====|Aegis
+IsSelected BurstBlade{
+	//DrawBar"VAREMPTY", "VARAMMO8", ShieldWaveCooldownItem, horizontal,reverse, 58, 184;
+	Drawbar "VARAMM21", "VAREMPTY", ShieldEnergy, horizontal, 58, 184;
+		InInventory ShieldWaveCooldownItem, 1	{DrawBar"VARFLS1", "VNOBAR", ShieldWaveCooldownItem, horizontal, 58, 184;}
+	ininventory ShieldBreak, 1{Drawbar"VARAMMO8", "VAREMPTY", ShieldEnergy, horizontal, 58, 184;}
+	//DrawImage "LTSCI", 50, 184;
+	}
 
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}

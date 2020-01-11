@@ -9,7 +9,7 @@ addplayerclass UkiyamaClass nomenu
 addplayerclass MessatsuClass nomenu  
 addplayerclass ColdFusionClass nomenu
 addplayerclass PistonmanClass nomenu 
-//addplayerclass AegisClass nomenu 
+addplayerclass AegisClass nomenu 
 addplayerclass TankOperatorClass nomenu
 AddPlayerClass BadzClass nomenu 
 addplayerclass LaggyBlazkoClass nomenu
