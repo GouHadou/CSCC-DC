@@ -87,9 +87,6 @@ graphic IWAVEBAR,8,56{patch BARENERG,0,0{Translation "192:192=239:239", "198:198
 graphic IWAVEVAR,56,8{patch IWAVEBAR,0,0{rotate 90}}
 
 //Zen Trainer
-//NoammoBAR
-Texture BZNTRA00, 8, 56{Patch BARENERG, 0, 0{Translation "192:192=95:95", "198:198=3:3"}}
-Texture VZNTRA00, 56, 8{Patch BZNTRA00, 0, 0{Rotate 90}}
 //Shealing
 Texture BZNTRA01, 8, 56{Patch BARENERG, 0, 0{Translation "192:192=103:103", "198:198=117:117"}}
 Texture VZNTRA01, 56, 8{Patch BZNTRA01, 0, 0{Rotate 90}}
