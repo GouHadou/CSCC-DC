@@ -567,7 +567,7 @@ actor HexBarrierBase  //for multipart hexagon barriers
   RenderStyle None
   Alpha 0.25
   //Bloodtype "ShieldHit"
-  //Species "BLUEMember"
+  //Species "LightMember"
   Health 900
   Painchance 256
   //Designatedteam 0

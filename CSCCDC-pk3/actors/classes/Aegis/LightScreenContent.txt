@@ -56,22 +56,22 @@ DamageFactor "Explsion" , 0.0
 }
 
 Actor LightScreenPart1 : LightScreenPart{+NORADIUSDMG}
-Actor LightScreenPart_B : LightScreenPart{Designatedteam 0 Species "BLUEMember" +NORADIUSDMG}
-Actor LightScreenPart_R : LightScreenPart{Designatedteam 1 Species "REDMember" +NORADIUSDMG}
-Actor LightScreenPart_G : LightScreenPart{Designatedteam 2 Species "GREENMember" +NORADIUSDMG}
-Actor LightScreenPart_O : LightScreenPart{Designatedteam 3 Species "GOLDMember" +NORADIUSDMG}
+Actor LightScreenPart_B : LightScreenPart{Designatedteam 0 Species "LightMember" +NORADIUSDMG}
+Actor LightScreenPart_R : LightScreenPart{Designatedteam 1 Species "WilyMember" +NORADIUSDMG}
+Actor LightScreenPart_G : LightScreenPart{Designatedteam 2 Species "CossackMember" +NORADIUSDMG}
+Actor LightScreenPart_O : LightScreenPart{Designatedteam 3 Species "KingMember" +NORADIUSDMG}
 
 Actor LightScreenPart2 : LightScreenPart{+NORADIUSDMG Alpha 0.85}
-Actor LightScreenPart2_B : LightScreenPart{Designatedteam 0 Species "BLUEMember" +NORADIUSDMG Alpha 0.85}
-Actor LightScreenPart2_R : LightScreenPart{Designatedteam 1 Species "REDMember" +NORADIUSDMG Alpha 0.85}
-Actor LightScreenPart2_G : LightScreenPart{Designatedteam 2 Species "GREENMember" +NORADIUSDMG Alpha 0.85}
-Actor LightScreenPart2_O : LightScreenPart{Designatedteam 3 Species "GOLDMember" +NORADIUSDMG Alpha 0.85}
+Actor LightScreenPart2_B : LightScreenPart{Designatedteam 0 Species "LightMember" +NORADIUSDMG Alpha 0.85}
+Actor LightScreenPart2_R : LightScreenPart{Designatedteam 1 Species "WilyMember" +NORADIUSDMG Alpha 0.85}
+Actor LightScreenPart2_G : LightScreenPart{Designatedteam 2 Species "CossackMember" +NORADIUSDMG Alpha 0.85}
+Actor LightScreenPart2_O : LightScreenPart{Designatedteam 3 Species "KingMember" +NORADIUSDMG Alpha 0.85}
 
 Actor LightScreenPartCore : LightScreenPart{}
-Actor LightScreenPartCore_B : LightScreenPart{Designatedteam 0 Species "BLUEMember" }
-Actor LightScreenPartCore_R : LightScreenPart{Designatedteam 1 Species "REDMember" }
-Actor LightScreenPartCore_G : LightScreenPart{Designatedteam 2 Species "GREENMember" }
-Actor LightScreenPartCore_O : LightScreenPart{Designatedteam 3 Species "GOLDMember" }
+Actor LightScreenPartCore_B : LightScreenPart{Designatedteam 0 Species "LightMember" }
+Actor LightScreenPartCore_R : LightScreenPart{Designatedteam 1 Species "WilyMember" }
+Actor LightScreenPartCore_G : LightScreenPart{Designatedteam 2 Species "CossackMember" }
+Actor LightScreenPartCore_O : LightScreenPart{Designatedteam 3 Species "KingMember" }
 
 
 //[+]==================================[+]
@@ -430,10 +430,10 @@ stop
 }
 }
 
-Actor ScreenSpawnBall_B : ScreenSpawnBall{Designatedteam 0 Species "BLUEMember" translation "192:192=205:205", "198:198=74:74"}
-Actor ScreenSpawnBall_R : ScreenSpawnBall{Designatedteam 1 Species "REDMember" Translation "192:192=171:171", "198:198=41:41"}
-Actor ScreenSpawnBall_G : ScreenSpawnBall{Designatedteam 1 Species "GREENMember" Translation "192:192=104:104", "198:198=128:128"}
-Actor ScreenSpawnBall_O : ScreenSpawnBall{Designatedteam 1 Species "GOLDMember"  Translation "192:192=229:229", "198:198=232:232"}
+Actor ScreenSpawnBall_B : ScreenSpawnBall{Designatedteam 0 Species "LightMember" translation "192:192=205:205", "198:198=74:74"}
+Actor ScreenSpawnBall_R : ScreenSpawnBall{Designatedteam 1 Species "WilyMember" Translation "192:192=171:171", "198:198=41:41"}
+Actor ScreenSpawnBall_G : ScreenSpawnBall{Designatedteam 1 Species "CossackMember" Translation "192:192=104:104", "198:198=128:128"}
+Actor ScreenSpawnBall_O : ScreenSpawnBall{Designatedteam 1 Species "KingMember"  Translation "192:192=229:229", "198:198=232:232"}
 
 
 

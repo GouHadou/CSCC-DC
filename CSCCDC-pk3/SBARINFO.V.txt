@@ -355,6 +355,8 @@ IsSelected OrbitalMissileWepCS{Drawbar"BARAMMOM", "BAREMPTY", Ammo1, vertical, 1
 IsSelected TankCannonWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected HellFireCutterWepCS{Drawbar"BARAM101", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected HybridBurstWepCS{Drawbar"GEEAMMO3", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected LightScreenWepC{Drawbar"BARAMMOS", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory LightScreenActive, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenHealth, vertical, 16, 8;}}	
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}

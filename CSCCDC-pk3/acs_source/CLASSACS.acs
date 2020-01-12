@@ -884,9 +884,9 @@ int TargetTID = ACS_ExecuteWithResult(257,0);
 int ScreenHealth = (GetUserVariable(BaseTID, "User_ScreenHP") - 200);
 
 TakeActorInventory(TargetTID,"ShieldEnergy",999);
-log(i:ScreenHealth); 
+//log(i:ScreenHealth); 
 if (ScreenHealth > 0){GiveActorInventory(TargetTID,"ShieldEnergy",ScreenHealth);}
-	Else{GiveActorInventory(TargetTID,"ShieldBreak",1);}
+	Else{GiveActorInventory(TargetTID,"K_ShieldBreak",1);}
 }
 
 
