@@ -333,7 +333,7 @@ IsSelected BurstBlade
 	Drawbar"BARAMM21", "BAREMPTY", ShieldEnergy, vertical, 16, 8;
 	InInventory LightScreenActive, 1	{Drawbar"BARAMM21", "BAREMPTY", LightScreenHealth, vertical, 16, 8;}
 	InInventory LightScreenBossCooldownItem, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenBossCooldownItem, vertical, 16, 8;}
-	ininventory ShieldBreak, 1{Drawbar"BARAMMO8", "BAREMPTY", ShieldEnergy, vertical, 16, 8;}
+	ininventory K_ShieldBreak, 1{Drawbar"BARAMMO8", "BAREMPTY", ShieldEnergy, vertical, 16, 8;}
 	//DrawImage "LTSCI", 16, 64;
 	}
 

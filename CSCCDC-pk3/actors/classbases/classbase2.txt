@@ -200,7 +200,6 @@ Goto Pain+1
 Pain.ShieldWave:
 "----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,20)
 "----" H 0 ThrustThingZ(0,40,0,0)
-"----" H 0 A_GiveInventory("TempPitProtect")
 "----" H 0
 Goto Pain+3
 

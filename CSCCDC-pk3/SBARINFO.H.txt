@@ -324,7 +324,7 @@ IsSelected BurstBlade{
 	//DrawBar"VAREMPTY", "VARAMMO8", ShieldWaveCooldownItem, horizontal,reverse, 58, 184;
 	Drawbar "VARAMM21", "VAREMPTY", ShieldEnergy, horizontal, 58, 184;
 		InInventory ShieldWaveCooldownItem, 1	{DrawBar"VARFLS1", "VNOBAR", ShieldWaveCooldownItem, horizontal, 58, 184;}
-	ininventory ShieldBreak, 1{Drawbar"VARAMMO8", "VAREMPTY", ShieldEnergy, horizontal, 58, 184;}
+	ininventory K_ShieldBreak, 1{Drawbar"VARAMMO8", "VAREMPTY", ShieldEnergy, horizontal, 58, 184;}
 	//DrawImage "LTSCI", 50, 184;
 	}
 
