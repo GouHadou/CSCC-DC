@@ -211,6 +211,13 @@ TAG_CONFUSIONRIFLE = "Burst / Confusion";
 OB_BULLBURSTBULLET = "%o had multiple holes in %p chest due to %k's \cdBurst of bullets\c-.";
 OB_BULLCONFUSEBULLET = "%o didn't get how %k's \cuConfusion Bullet\c- worked.";
 
+//===|Aegis
+OB_BURSTBLADE = "%o was vanquished by %k's Burst Blade.";
+TAG_BURSTBLADE = "BurstBlade";
+PU_BURSTBLADE = "Aquired the BurstBlade";
+
+OB_SHIELDWAVE = "%o was Smeared by %k's ShieldWave.";
+
 //COPYWEPS
 //RailBuster
 PU_RAILBUSTER = "Picked up a weird sniper rifle! jeez.";
@@ -254,6 +261,11 @@ TAG_IDOLWAVE = "Idol Wave";
 //Zen Sphere
 PU_ZENSPHERE = "Power Up! Zen Sphere!";
 TAG_ZENSPHERE = "Zen Sphere";
+
+//Light Screen
+PU_LIGHTSCREEN = "Power Up! Light Screen!";
+OB_LIGHTSCREEN = "%o Couldn't get through %k's Light Screen";
+TAG_LIGHTSCREEN = "Zen Sphere";
 
 //CLASS HELP
 CSCC_TITLE = "\cvCSCC Options";
@@ -344,6 +356,13 @@ PISTONMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj90%\n\cfJump : \cj140%
 PISTONMAN_CH_MAINFIRE = "\cfMainfire : \cjLaunches the \nlighter Right piston, which \nsports great reach.";
 PISTONMAN_CH_ALTFIRE = "\cfAltfire : \cjLaunches the \nHeavier left piston, which \nsports greater power and \nstronger shockwaves.";
 PISTONMAN_CH_PASSIVE = "\cfPassive: \cjStriking the \nwalls or ground you are on \ncan send you flying in the \nopposite direction.";
+
+AEGIS_CH_TITLE = "\cvAEGIS";
+AEGIS_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj60%\n\cfJump : \cj100%";
+AEGIS_CH_MAINFIRE = "\cfMainfire : \cjFire a Shotgun round, rate of fire \nincreases without the shield in hand.";
+AEGIS_CH_ALTFIRE = "\cfAltfire : \cjIf at hand, hold up a wide shield with \nfinite health to block hits, allies can \nshoot through it.";
+AEGIS_CH_RELOAD = "\cfReload: \cjToss out the shield and have it \nbecome a deployable bunker, \ncovering a larger area and sporting \nslightly more health. Use again to \nremotely recall the shield (after \ncooldown)";
+AEGIS_CH_USER1 = "\cfUser1 : \cjuse shield Health to launch a \nshockwave from your on-hand shield \nto force opponents backwards.";
 
 KORBY_CH_TITLE = "\cvKORBY";
 KORBY_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";

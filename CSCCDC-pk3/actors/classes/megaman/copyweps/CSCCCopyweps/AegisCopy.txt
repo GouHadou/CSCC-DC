@@ -8,9 +8,9 @@ actor LightScreenWep : BaseMM8BDMWep
 Weapon.AmmoUse 9
 Weapon.AmmoGive 28
 Weapon.SlotNumber 6
-Inventory.Pickupmessage "Power Up! Light Screen!"
-Obituary "%o tresspassed onto %k's Light Screen."
-Tag "Light Screen"
+Inventory.Pickupmessage "$PU_LIGHTSCREEN"
+Obituary "$OB_LIGHTSCREEN"
+Tag "$TAG_LIGHTSCREEN"
 weapon.ammotype "LightScreenAmmo"
 inventory.icon "LTSCI"
 States
@@ -19,7 +19,7 @@ Spawn:
 LTSR R 1
 loop
 Ready:
-LTSR D 0 ACS_ExecuteAlways(998,0,DYE_AEGISCOLOR)
+LTSR D 0 ACS_ExecuteAlways(998,0,DYE_AEGIS)
 LTSR A 1 A_WeaponReady
 Goto Ready+1
 Deselect:
@@ -71,7 +71,7 @@ Spawn:
 TNT1 A 0
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
-ORBD X 5
+LTSR R 5
 goto Spawn+2
 }
 }

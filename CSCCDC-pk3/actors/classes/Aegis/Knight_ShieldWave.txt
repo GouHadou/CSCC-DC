@@ -39,7 +39,7 @@ Height 5
 scale 2.5
 damage (0)
 reactiontime 5
-Obituary "%o was Crushed by %k's ShieldWave"
+Obituary "$OB_SHIELDWAVE"
 DamageType "ShieldWave"
 speed 0
 States
