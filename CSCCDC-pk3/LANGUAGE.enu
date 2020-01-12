@@ -213,8 +213,8 @@ OB_BULLCONFUSEBULLET = "%o didn't get how %k's \cuConfusion Bullet\c- worked.";
 
 //===|Aegis
 OB_BURSTBLADE = "%o was vanquished by %k's Burst Blade.";
-TAG_BURSTBLADE = "BurstBlade";
-PU_BURSTBLADE = "Aquired the BurstBlade";
+TAG_BURSTBLADE = "Burst Blade";
+PU_BURSTBLADE = "Acquired the Burst Blade";
 
 OB_SHIELDWAVE = "%o was Smeared by %k's ShieldWave.";
 
@@ -265,7 +265,7 @@ TAG_ZENSPHERE = "Zen Sphere";
 //Light Screen
 PU_LIGHTSCREEN = "Power Up! Light Screen!";
 OB_LIGHTSCREEN = "%o Couldn't get through %k's Light Screen";
-TAG_LIGHTSCREEN = "Zen Sphere";
+TAG_LIGHTSCREEN = "Light Screen";
 
 //CLASS HELP
 CSCC_TITLE = "\cvCSCC Options";
