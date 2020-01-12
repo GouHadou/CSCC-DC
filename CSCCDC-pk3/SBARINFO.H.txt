@@ -323,9 +323,10 @@ IsSelected OrbitalMissileBoss{Drawbar"VARAMM58", "VAREMPTY", Ammo1, horizontal, 
 IsSelected BurstBlade{
 	//DrawBar"VAREMPTY", "VARAMMO8", ShieldWaveCooldownItem, horizontal,reverse, 58, 184;
 	Drawbar "VARAMM21", "VAREMPTY", ShieldEnergy, horizontal, 58, 184;
-		InInventory ShieldWaveCooldownItem, 1	{DrawBar"VARFLS1", "VNOBAR", ShieldWaveCooldownItem, horizontal, 58, 184;}
+		InInventory LightScreenBossCooldownItem, 1	{DrawBar"VARFLS1", "VNOBAR", LightScreenBossCooldownItem, horizontal, 58, 184;}
 	ininventory K_ShieldBreak, 1{Drawbar"VARAMMO8", "VAREMPTY", ShieldEnergy, horizontal, 58, 184;}
-	//DrawImage "LTSCI", 50, 184;
+	InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 138, 176; DrawImage "HORICONR", 138, 168;}
+	InInventory not ShieldWaveCooldownItem, 1{DrawImage "CHARSI", 130, 176; DrawImage "HORICON1", 130, 168;}
 	}
 
 //CSCC Copywep Bars

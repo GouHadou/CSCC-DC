@@ -329,12 +329,12 @@ IsSelected OrbitalMissileBoss{Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16
 //====|Aegis
 IsSelected BurstBlade
 	{
-	//DrawBar"BAREMPTY", "BARAMMO8", ShieldWaveCooldownItem, vertical,Reverse, 16, 8;
 	Drawbar"BARAMM21", "BAREMPTY", ShieldEnergy, vertical, 16, 8;
 	InInventory LightScreenActive, 1	{Drawbar"BARAMM21", "BAREMPTY", LightScreenHealth, vertical, 16, 8;}
 	InInventory LightScreenBossCooldownItem, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenBossCooldownItem, vertical, 16, 8;}
 	ininventory K_ShieldBreak, 1{Drawbar"BARAMMO8", "BAREMPTY", ShieldEnergy, vertical, 16, 8;}
-	//DrawImage "LTSCI", 16, 64;
+	InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 32, 48; DrawImage "VERICONR", 40, 48;}
+	InInventory not ShieldWaveCooldownItem, 1{DrawImage "CHARSI", 32, 56; DrawImage "VERICON1", 40, 56;}
 	}
 
 //CSCC Copywep Bars
