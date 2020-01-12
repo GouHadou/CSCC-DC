@@ -199,6 +199,13 @@ Pain.GizmoLightning:
 "----" H 0 A_GiveInventory("GizmoLightningProtect")
 Goto Pain+1
 
+//Aegis
+Pain.ShieldWave:
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,20)
+"----" H 0 ThrustThingZ(0,40,0,0)
+"----" H 0
+Goto Pain+3
+
 //Special Death
 //Unix
 Death.UnixBackstab:

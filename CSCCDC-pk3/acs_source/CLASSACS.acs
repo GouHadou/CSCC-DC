@@ -796,3 +796,114 @@ script "BULL_SLEEPER" (int time)
 		time--;
 	}
 }
+
+//======|Damage Faloff Formula Script
+Script "DamageRate" (int ModDamage, int DistStart, int RampRate) //DamageDropoff Script
+{
+int Damage = NoNeg(ModDamage - NoNeg(xyzdistance(0, ACS_ExecuteWithResult(257, 0))-DistStart)/RampRate);
+SetResultValue(Damage);
+}
+
+// Returns a number below 0 as 0
+Function int NoNeg (int Numb)
+{
+Int Output;
+
+if(Numb > 0){Output = Numb;}
+else{Output = 0;}
+return Output;
+}
+
+
+Script "LightScreenSyncher" (void) 
+{
+	//int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+	int BaseTID = ActivatorTID()-1000;
+	int Deduction;
+	// Loop if the base is active still
+	while(GetUserVariable(BaseTID, "User_ScreenHP")>0
+	&& ThingCount(T_NONE,BaseTID) > 0
+	){
+	if (GetActorProperty(0, APROP_HEALTH) != GetActorProperty(0, APROP_SPAWNHEALTH))
+		{
+		Deduction = GetActorProperty(0, APROP_SPAWNHEALTH) - GetActorProperty(0, APROP_HEALTH);
+		Healthing(9999);
+		SetUserVariable(BaseTID, "User_ScreenHP",GetUserVariable(BaseTID, "User_ScreenHP")-Deduction);
+		}
+		//TakeActorInventory(Player,"LightScreenHealth",999);
+		//GiveActorInventory(Player,"LightScreenHealth",GetUserVariable(BaseTID, "User_ScreenHP"));
+		Delay(1);
+	}
+	
+	// Remove
+	Thing_Remove(0);
+}
+
+Script "LightScreenKiller" (Void)
+{
+int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+
+	//While(ThingCount(T_NONE,4000+(Player))
+	//||ThingCount(T_NONE,5000+(Player))
+	//)
+	//{
+	SetActorState (4000+(Player), "Perish");
+	SetActorState (5000+(Player), "Perish");
+	//}
+}
+
+Script "ScreenHealthSynch" (VOID)
+{
+int BaseTID = ActivatorTID();
+int TargetTID = ACS_ExecuteWithResult(257,0);
+
+	while(GetUserVariable(BaseTID, "User_ScreenHP")>0
+	&& ThingCount(T_NONE,BaseTID) > 0
+	){
+		TakeActorInventory(TargetTID,"LightScreenHealth",999);
+		GiveActorInventory(TargetTID,"LightScreenHealth",GetUserVariable(BaseTID, "User_ScreenHP"));
+		Delay(1);
+	}
+}
+
+
+Script "Aegis_ShieldCheck" (int on_self)
+{
+int TargetTID;
+// for the deploy shield, check how much shield energy the player has
+if(on_self > 0){TargetTID = ActivatorTID();}
+	Else{TargetTID = ACS_ExecuteWithResult(257,0);}
+SetResultValue(CheckActorInventory(TargetTID,"ShieldEnergy"));
+}
+
+Script "Aegis_ShieldEnergySynch" (void)
+{
+
+int BaseTID = ActivatorTID();
+int TargetTID = ACS_ExecuteWithResult(257,0);
+int ScreenHealth = (GetUserVariable(BaseTID, "User_ScreenHP") - 200);
+
+TakeActorInventory(TargetTID,"ShieldEnergy",999);
+//log(i:ScreenHealth); 
+if (ScreenHealth > 0){GiveActorInventory(TargetTID,"ShieldEnergy",ScreenHealth);}
+	Else{GiveActorInventory(TargetTID,"K_ShieldBreak",1);}
+}
+
+
+
+Script "WepBloomStat" (void)
+{
+int FiringPlayer= ACS_ExecuteWithResult(257, 0);
+SetResultValue(checkactorinventory(FiringPlayer,"WepBloomItem"));
+}
+
+Script "PlayerSpeciesSynch" (VOID)
+{
+int TargetTID = ACS_ExecuteWithResult(257,0);
+//int IsTeamGame = ACS_ExecuteWithResult(975, 1);
+
+	if(!IsTeamGame)
+	{
+		setactorproperty(0,APROP_SPECIES,Getactorproperty(TargetTID,APROP_SPECIES));
+	}
+}

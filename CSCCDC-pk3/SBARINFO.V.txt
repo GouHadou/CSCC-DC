@@ -257,16 +257,16 @@ IsSelected ZenTrainerWep{
 		InInventory AuraFlag_heal, 1 {Drawbar"BZNTRA01","BAREMPTY",Ammo2,vertical,16,8;}
 		InInventory AuraFlag_power, 1 {Drawbar"BZNTRA02","BAREMPTY",Ammo2,vertical,16,8;}
 		InInventory AuraFlag_haste, 1 {Drawbar"BZNTRA04","BAREMPTY",Ammo2,vertical,16,8;}
-	}else{ Drawbar"BZNTRA00","BAREMPTY",Ammo2,vertical,16,8;}
+	}else{ Drawbar"BARAMM65","BAREMPTY",Ammo2,vertical,16,8;}
 	}
 
 //Gee
 IsSelected GeeBurstBoss1
 {
 InInventory GeeHealingAmmo, 132{Drawbar "GEEAMMO1", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
-else{Drawbar "BARAMM32", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM65", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
 InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
-else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+else{Drawbar "BARAMM65", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
 DrawImage "GEEGRPH1", 6, 65;
 DrawNumber 2, "GEEFONT1", Untranslated, Ammo1, alignment(center), 26, 73;
 }
@@ -275,14 +275,14 @@ IsSelected GeeBurstBoss2
 InInventory not GeeDMPackage, 1
 {
 InInventory GeeHealingAmmo, 132{Drawbar "GEEAMMO1", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
-else{Drawbar "BARAMM32", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM65", "BAREMPTY", GeeHealingAmmo, vertical, 16, 8;}
 InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
-else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
+else{Drawbar "BARAMM65", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
 }
 else
 {
 InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
-else{Drawbar "BARAMM32", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
+else{Drawbar "BARAMM65", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
 }
 DrawImage "GEEGRPH2", 6, 65;
 DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 26, 73;
@@ -325,6 +325,18 @@ IsSelected BullGatorConfusionBurst{
 IsSelected OrbitalMissileBoss{Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar"BARAMM51","BAREMPTY",Ammo2,vertical,8,8;}
 
+
+//====|Aegis
+IsSelected BurstBlade
+	{
+	Drawbar"BARAMM21", "BAREMPTY", ShieldEnergy, vertical, 16, 8;
+	InInventory LightScreenActive, 1	{Drawbar"BARAMM21", "BAREMPTY", LightScreenHealth, vertical, 16, 8;}
+	InInventory LightScreenBossCooldownItem, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenBossCooldownItem, vertical, 16, 8;}
+	ininventory K_ShieldBreak, 1{Drawbar"BARAMM65", "BAREMPTY", ShieldEnergy, vertical, 16, 8;}
+	InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 32, 48; DrawImage "VERICONR", 40, 48;}
+	InInventory not K_ShieldBreak, 1{InInventory not LightScreenActive, 1{InInventory not ShieldWaveCooldownItem, 1{DrawImage "CHARSI", 32, 56; DrawImage "VERICON1", 40, 56;}}}
+	}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
@@ -343,6 +355,8 @@ IsSelected OrbitalMissileWepCS{Drawbar"BARAMMOM", "BAREMPTY", Ammo1, vertical, 1
 IsSelected TankCannonWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected HellFireCutterWepCS{Drawbar"BARAM101", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected HybridBurstWepCS{Drawbar"GEEAMMO3", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected LightScreenWepCS{Drawbar"BARAMMOS", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory LightScreenActive, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenHealth, vertical, 16, 8;}}	
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}

@@ -4,6 +4,7 @@
 #include "actors/classes/Megaman/copyweps/MMBWeps.txt"
 #include "actors/classes/Megaman/copyweps/MM9Weps.txt"
 #include "actors/classes/Megaman/copyweps/MM10Weps.txt"
+#include "actors/classes/Megaman/copyweps/BulletRewrite.txt"
 //#include "actors/classes/Megaman/copyweps/MMVWeps.txt"
 //#include "actors/classes/Megaman/copyweps/MM11Weps.txt"
 
@@ -21,3 +22,4 @@
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/TankOppCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/CMMCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/GeeCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/AegisCopy.txt"

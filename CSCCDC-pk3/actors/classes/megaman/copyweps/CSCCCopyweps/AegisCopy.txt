@@ -1,0 +1,77 @@
+//[+]========================================================================[+]
+//------------------------------|Primary Weapon|--------------------------------
+//[+]========================================================================[+]
+//
+//[+]========================================================================[+]
+actor LightScreenWep : BaseMM8BDMWep
+{
+Weapon.AmmoUse 9
+Weapon.AmmoGive 28
+Weapon.SlotNumber 6
+Inventory.Pickupmessage "$PU_LIGHTSCREEN"
+Obituary "$OB_LIGHTSCREEN"
+Tag "$TAG_LIGHTSCREEN"
+weapon.ammotype "LightScreenAmmo"
+inventory.icon "LTSCI"
+States
+{
+Spawn:
+LTSR R 1
+loop
+Ready:
+LTSR D 0 ACS_ExecuteAlways(998,0,DYE_AEGIS)
+LTSR A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+LTSR A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+LTSR A 1 A_Raise
+Loop
+Fire:
+LTSR A 0 A_JumpIfNoAmmo("NoAmmo")
+LTSR A 0 A_JumpIfinventory("LightScreenCooldownItem",1,"NoAmmo")
+
+LTSR A 0 
+LTSR A 0
+LTSR BCD 2
+LTSR A 0 A_PlaySoundEx("weapon/mirroractivate","Weapon")
+LTSR A 0 A_GiveInventory("LightScreenShooter")
+LTSR A 0 A_Giveinventory("LightScreenCooldown")
+LTSR EFG 2
+Goto Ready+1
+NoAmmo:
+LTSR A 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor LightScreenAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 28
++INVENTORY.IGNORESKILL
+}
+
+
+//======================
+actor LightScreenWepCS : LightScreenWep replaces LightScreenWep
+{
+States
+{
+CSCC_DefaultSpawn:
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+goto Spawn+3
+CSCC_TranslucentSpawn:
+TNT1 A 0 A_SetTranslucent(0.5, 0)
+goto Spawn+3
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+LTSR R 5
+goto Spawn+2
+}
+}
