@@ -550,5 +550,12 @@ Translation "192:192=228:228", "198:198=95:95"
 actor IceArmor : PowerProtection
 {
 Powerup.Duration 0x7FFFFFFF
-damagefactor "Normal", 0.5
+damagefactor "Normal", 0.75
 }
+
+actor SparkyArmor : PowerProtection
+{
+Powerup.Duration 0x7FFFFFFF
+damagefactor "Normal", 1.35
+}
+
