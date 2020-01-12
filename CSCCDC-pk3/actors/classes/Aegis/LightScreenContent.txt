@@ -398,7 +398,7 @@ actor ScreenSpawnBall : BasicProjectile
 +NOTARGETSWITCH
 //-NOGRAVITY
 Damage (0)
-Translation "198:198=103:103", "192:192=196:196"
+Translation "198:198=194:194"," 192:192=96:96"
 speed 30
 Scale 1.6
 Gravity 2.3

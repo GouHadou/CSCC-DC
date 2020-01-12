@@ -8,7 +8,7 @@ actor DeployShield : BasicProjectile
 +NOTARGETSWITCH
 //-NOGRAVITY
 Damage (0)
-Translation "198:198=103:103", "192:192=196:196"
+Translation "198:198=194:194"," 192:192=96:96"
 speed 30
 Scale 3.0
 Gravity 2.3
@@ -56,7 +56,7 @@ actor ScreenKillerActor : BasicProjectile
 +NOTARGETSWITCH
 //-NOGRAVITY
 Damage (0)
-Translation "198:198=103:103", "192:192=196:196"
+Translation "198:198=194:194"," 192:192=96:96"
 speed 0
 Scale 3.0
 Gravity 4.3
@@ -65,8 +65,8 @@ States
 {
 Spawn:
 TNT1 A 0 
-TNT1 A 1 A_TakeFromTarget("LightScreenActive",99)
 TNT1 A 5 ACS_NamedExecuteAlways("LightScreenKiller",0)//
+TNT1 A 1 A_TakeFromTarget("LightScreenActive",99)
 stop
 }
 }
