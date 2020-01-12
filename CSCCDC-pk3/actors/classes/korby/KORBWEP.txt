@@ -2451,11 +2451,12 @@ Obituary "$OB_KORBYFIRE1"
 States
 {
 Spawn:
-KFIR E 0
-KFIR E 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 0, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 90, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
+KFIR G 0
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 0, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 90, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 0, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
 KFIR GLG 4 A_Explode(5, 64, 0, 0, 64)
 KFIR L 1 A_FadeOut
 wait
@@ -2469,13 +2470,14 @@ Obituary "$OB_KORBYFIRE2"
 States
 {
 Spawn:
-KFIR E 0
-KFIR E 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 0, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 60, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 120, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 240, SXF_TRANSFERTRANSLATION)
-KFIR E 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 300, SXF_TRANSFERTRANSLATION)
+KFIR A 0
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 0, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 60, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 120, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 240, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 0, 4, 0, 20, 300, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
 KFIR ABCDE 4 A_Explode(6, 96, 0, 0, 96)
 KFIR F 1 A_FadeOut
 wait
@@ -2497,6 +2499,7 @@ KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 0, 4, 0, 20, 180, SXF_TRANSFERTRANS
 KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 0, 4, 0, 20, 225, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 0, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 0, 5, 0, 20, 315, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
 KFIR GHIJKL 4 A_Explode(10, 128, 0, 0, 128)
 KFIR L 1 A_FadeOut
 wait
@@ -2573,16 +2576,20 @@ KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLAT
 loop
 Bounce.Ceiling:
 "----" A 0 
-Goto Death
+Goto FadeDeath
 Bounce.Wall: 
 "----" A 0 A_ScaleVelocity(0.5)
 Goto Spawn2
 Bounce.Floor:
-"----" A 0 A_Stop
+"----" A 0 
 Goto Death
+FadeDeath:
+"----" A 1 A_FadeOut
+wait
 Death:
-NAPA E 0 A_Stop
 NAPA E 0 A_ChangeFlag("NOGRAVITY", TRUE)
+NAPA E 0 A_Stop
+NAPA E 0 A_PlaySoundEx("weapon/napalm", "Weapon")
 NAPA E 0 A_Explode(15, 96, 0, 0, 64)
 NAPA EFGHIJKLMNOPQRS 2
 stop
@@ -2645,12 +2652,7 @@ Bounce.Wall:
 "----" A 0 A_ScaleVelocity(0.5)
 Goto Spawn2
 Bounce.Floor:
-"----" A 0 A_Stop
+"----" A 0 
 Goto Death
-Death:
-NAPA E 0 A_ChangeFlag("NOGRAVITY", TRUE)
-NAPA E 0 A_Explode(15, 96, 0, 0, 64)
-NAPA EFGHIJKLMNOPQRS 2
-stop
 }
 }
