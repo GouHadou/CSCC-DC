@@ -556,6 +556,6 @@ damagefactor "Normal", 0.75
 actor SparkyArmor : PowerProtection
 {
 Powerup.Duration 0x7FFFFFFF
-damagefactor "Normal", 1.35
+damagefactor "Normal", 1.5
 }
 
