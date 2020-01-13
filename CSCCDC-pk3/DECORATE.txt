@@ -94,7 +94,6 @@
 //===|Aegis
 #include "actors/Classes/Aegis/KnightClass.txt"
 #include "actors/Classes/Aegis/KnightMainWep.txt"
-#include "actors/Classes/Aegis/Knight_Protection.txt"
 #include "actors/Classes/Aegis/Knight_ShieldWave.txt"
 #include "actors/Classes/Aegis/Knight_LightScreen.txt"
 #include "actors/Classes/Aegis/LightScreenContent.txt"
