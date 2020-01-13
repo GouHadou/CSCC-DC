@@ -533,6 +533,7 @@ States
 {
 Spawn:
 EBAL F 0
+EBAL F 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"NoSpawn")
 Goto "Super::Spawn+1"
 Pickup:
 "----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", ETANKITEM , 1), "Give")
@@ -540,6 +541,11 @@ fail
 Give:
 "----" A 0 ACS_NamedExecuteAlways("CSCC_ItemToGive", 0, ETANKITEM, 1)
 stop
+NoSpawn:
+TNT1 A 0 A_ChangeFlag("SPECIAL", FALSE)
+TNT1 A 0 A_ChangeFlag("INVISIBLE", TRUE)
+TNT1 A -1
+wait
 }
 }
 
