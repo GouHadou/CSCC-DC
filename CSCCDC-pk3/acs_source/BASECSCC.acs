@@ -193,8 +193,9 @@ Script "CSACS_OverhealDrain" (Int Tick)
 if(GetActorProperty(0,APROP_HEALTH) > Tick){SetActorProperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH)-Tick));}
 }
 
-Script "CSACS_Basic(Over)Heal" (int Pointer, int HealAmount, int Overheal, int OverhealMax)
+Script "CSACS_Basic(Over)Heal" (int Pointer, int HealAmount, int Overheal )
 {
+int OverhealMax = Overheal+100;
 if(OverhealMax<=100){OverhealMax=101;}
 if(OverhealMax>150){OverhealMax=150;}
 if(Pointer!=0){SetActivator(0,Pointer);}
@@ -203,7 +204,7 @@ if(MaxHealth==0){MaxHealth=100;}
 for(int g=1;g<=HealAmount;g++)
     {
     if(GetActorProperty(0,APROP_Health)<MaxHealth){HealThing(1,MaxHealth);}
-    else if(ACS_NamedExecuteWithResult("CSACS_HealthPercent",0)<OverhealMax && Overheal==1){GiveInventory("BasicOverhealItem",1);}
+    else if(ACS_NamedExecuteWithResult("CSACS_HealthPercent",0)<OverhealMax && Overheal>=1){GiveInventory("BasicOverhealItem",1);}
     }
 }
 
