@@ -50,6 +50,7 @@ TeamReady:
 "####" D 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"User1")
 Goto Ready+1
 Ready2:
+"####" A 0 A_JumpIfinventory("K_ShieldBreak",1,"Ready2_2")
 "####" A 0 A_JumpIfinventory("LightScreenBossCooldownItem",1,"Ready2_2")
 "####" DDD 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_NOSECONDARY)
 "####" HHH 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_NOSECONDARY)

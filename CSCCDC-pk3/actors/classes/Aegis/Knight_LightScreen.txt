@@ -100,7 +100,7 @@ BLTR C 0 A_Jumpifintargetinventory("WilyTeamFlag",1,"ScreenRED")
 BLTR C 0 A_Jumpifintargetinventory("CossackTeamFlag",1,"ScreenGREEN")
 BLTR C 0 A_Jumpifintargetinventory("KingTeamFlag",1,"ScreenGOLD")
 
-  AGSH A 1 A_SetUserVar("User_ScreenHP",150 + CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
+  AGSH A 1 A_SetUserVar("User_ScreenHP",CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
   TNT1 A 0 A_TakeFromTarget("ShieldEnergy",999)
   TNT1 A 0 ACS_NamedExecuteAlways("ScreenHealthSynch",0)
   TNT1 A 0 A_PlaySoundEx("misc/astroplatformappear","SoundSlot6")
@@ -109,7 +109,7 @@ AGSH A 8
 Goto Spawn1
 
 ScreenBLUE:
-  AGSH A 1 A_SetUserVar("User_ScreenHP",150 + CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
+  AGSH A 1 A_SetUserVar("User_ScreenHP",CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
   TNT1 A 0 A_TakeFromTarget("ShieldEnergy",999)
   TNT1 A 0 ACS_NamedExecuteAlways("ScreenHealthSynch",0)
   TNT1 A 0 A_PlaySoundEx("misc/astroplatformappear","SoundSlot6")
@@ -118,7 +118,7 @@ AGSH A 8
 Goto Spawn1
 
 ScreenRED:
-  AGSH A 1 A_SetUserVar("User_ScreenHP",150 + CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
+  AGSH A 1 A_SetUserVar("User_ScreenHP",CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
   TNT1 A 0 A_TakeFromTarget("ShieldEnergy",999)
   TNT1 A 0 ACS_NamedExecuteAlways("ScreenHealthSynch",0)
   TNT1 A 0 A_PlaySoundEx("misc/astroplatformappear","SoundSlot6")
@@ -127,7 +127,7 @@ ScreenRED:
 Goto Spawn1
 
 ScreenGREEN:
-  AGSH A 1 A_SetUserVar("User_ScreenHP",150 + CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
+  AGSH A 1 A_SetUserVar("User_ScreenHP",CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
   TNT1 A 0 A_TakeFromTarget("ShieldEnergy",999)
   TNT1 A 0 ACS_NamedExecuteAlways("ScreenHealthSynch",0)
   TNT1 A 0 A_PlaySoundEx("misc/astroplatformappear","SoundSlot6")
@@ -136,7 +136,7 @@ ScreenGREEN:
 Goto Spawn1
 
 ScreenGOLD:
-  AGSH A 1 A_SetUserVar("User_ScreenHP",150 + CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
+  AGSH A 1 A_SetUserVar("User_ScreenHP",CallACS("Aegis_ShieldCheck",0))//A_GiveToTarget("LightScreenHealth",500)
   TNT1 A 0 A_TakeFromTarget("ShieldEnergy",999)
   TNT1 A 0 ACS_NamedExecuteAlways("ScreenHealthSynch",0)
   TNT1 A 0 A_PlaySoundEx("misc/astroplatformappear","SoundSlot6")

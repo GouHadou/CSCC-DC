@@ -870,10 +870,16 @@ int TargetTID = ACS_ExecuteWithResult(257,0);
 Script "Aegis_ShieldCheck" (int on_self)
 {
 int TargetTID;
+int TargShieldEnergy;
+int HealthReturn;
 // for the deploy shield, check how much shield energy the player has
 if(on_self > 0){TargetTID = ActivatorTID();}
 	Else{TargetTID = ACS_ExecuteWithResult(257,0);}
-SetResultValue(CheckActorInventory(TargetTID,"ShieldEnergy"));
+
+	TargShieldEnergy = CheckActorInventory(TargetTID,"ShieldEnergy");
+	HealthReturn = ValueMap(TargShieldEnergy,350,1,500,1);
+	//log(i:TargShieldEnergy,s:" to ",i:HealthReturn); 
+SetResultValue(HealthReturn);
 }
 
 Script "Aegis_ShieldEnergySynch" (void)
@@ -881,11 +887,17 @@ Script "Aegis_ShieldEnergySynch" (void)
 
 int BaseTID = ActivatorTID();
 int TargetTID = ACS_ExecuteWithResult(257,0);
-int ScreenHealth = (GetUserVariable(BaseTID, "User_ScreenHP") - 200);
+int ScreenHealth = (GetUserVariable(BaseTID, "User_ScreenHP") ); //- 200
+
+int ShieldReturn; 
 
 TakeActorInventory(TargetTID,"ShieldEnergy",999);
-//log(i:ScreenHealth); 
-if (ScreenHealth > 0){GiveActorInventory(TargetTID,"ShieldEnergy",ScreenHealth);}
+if (ScreenHealth > 0)
+	{
+		ShieldReturn = ValueMap(ScreenHealth,500,1,350,1);
+		GiveActorInventory(TargetTID,"ShieldEnergy",ShieldReturn);
+		//log(i:ScreenHealth,s:" to ",i:ShieldReturn);
+	}
 	Else{GiveActorInventory(TargetTID,"K_ShieldBreak",1);}
 }
 
@@ -906,4 +918,27 @@ int TargetTID = ACS_ExecuteWithResult(257,0);
 	{
 		setactorproperty(0,APROP_SPECIES,Getactorproperty(TargetTID,APROP_SPECIES));
 	}
+}
+
+Function Int ValueMap (int Input, int InputHigh, int InputLow, int OutputHigh, int OutputLow)
+{
+
+int FinalOut;
+int A;
+int B;
+Int C;
+
+int AB;
+int ABC;
+
+A = (Input - InputLow)<<16;
+B = (InputHigh - InputLow)<<16;
+C = (OutputHigh - OutputLow);
+
+AB = fixedDiv(A,B);
+ABC = (AB * C) >> 16;
+FinalOut = ABC + OutputLow;
+//FinalOut = ( ((Input - InputLow)/(InputHigh - InputLow))*(OutputHigh - OutputLow) + OutputLow);
+
+return FinalOut;
 }
