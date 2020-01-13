@@ -891,12 +891,12 @@ int ScreenHealth = (GetUserVariable(BaseTID, "User_ScreenHP") ); //- 200
 
 int ShieldReturn; 
 
+TakeActorInventory(TargetTID,"LightScreenHealth",9999);
 TakeActorInventory(TargetTID,"ShieldEnergy",999);
 if (ScreenHealth > 0)
 	{
 		ShieldReturn = ValueMap(ScreenHealth,500,1,350,1);
 		GiveActorInventory(TargetTID,"ShieldEnergy",ShieldReturn);
-		//log(i:ScreenHealth,s:" to ",i:ShieldReturn);
 	}
 	Else{GiveActorInventory(TargetTID,"K_ShieldBreak",1);}
 }
@@ -918,27 +918,4 @@ int TargetTID = ACS_ExecuteWithResult(257,0);
 	{
 		setactorproperty(0,APROP_SPECIES,Getactorproperty(TargetTID,APROP_SPECIES));
 	}
-}
-
-Function Int ValueMap (int Input, int InputHigh, int InputLow, int OutputHigh, int OutputLow)
-{
-
-int FinalOut;
-int A;
-int B;
-Int C;
-
-int AB;
-int ABC;
-
-A = (Input - InputLow)<<16;
-B = (InputHigh - InputLow)<<16;
-C = (OutputHigh - OutputLow);
-
-AB = fixedDiv(A,B);
-ABC = (AB * C) >> 16;
-FinalOut = ABC + OutputLow;
-//FinalOut = ( ((Input - InputLow)/(InputHigh - InputLow))*(OutputHigh - OutputLow) + OutputLow);
-
-return FinalOut;
 }

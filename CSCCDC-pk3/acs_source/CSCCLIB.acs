@@ -41,3 +41,26 @@ If(CurrentSpeedXYZ(ActivatorTID()) > SpeedLimit)
 	}
 
 }
+
+Function Int ValueMap (int Input, int InputHigh, int InputLow, int OutputHigh, int OutputLow)
+{
+
+int FinalOut;
+int A;
+int B;
+Int C;
+
+int AB;
+int ABC;
+
+A = (Input - InputLow)<<16;
+B = (InputHigh - InputLow)<<16;
+C = (OutputHigh - OutputLow);
+
+AB = fixedDiv(A,B);
+ABC = (AB * C) >> 16;
+FinalOut = ABC + OutputLow;
+//FinalOut = ( ((Input - InputLow)/(InputHigh - InputLow))*(OutputHigh - OutputLow) + OutputLow);
+
+return FinalOut;
+}

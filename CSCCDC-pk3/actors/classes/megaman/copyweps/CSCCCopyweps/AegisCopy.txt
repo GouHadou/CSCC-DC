@@ -16,7 +16,7 @@ inventory.icon "LTSCI"
 States
 {
 Spawn:
-LTSR R 1
+NPSI A 1
 loop
 Ready:
 LTSR D 0 ACS_ExecuteAlways(998,0,DYE_AEGIS)
@@ -71,7 +71,7 @@ Spawn:
 TNT1 A 0
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
-LTSR R 5
+NPSI A 5
 goto Spawn+2
 }
 }

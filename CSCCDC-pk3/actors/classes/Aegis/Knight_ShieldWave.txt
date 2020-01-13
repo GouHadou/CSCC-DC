@@ -18,17 +18,22 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 2 A_SpawnitemEx("ShieldWaveShock",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+BEWA F 2 A_SpawnitemEx("ShieldWaveShock",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+BEWA F 0 A_Fadeout
 TNT1 A 0 A_Countdown
 TNT1 A 0 A_ChangeFlag("THRUGHOST",0)
 Goto Spawn2
 Spawn2:
 TNT1 A 0
-TNT1 A 2 A_SpawnitemEx("ShieldWaveShock",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+BEWA G 2 A_SpawnitemEx("ShieldWaveShock",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+BEWA F 0 A_Fadeout
+TNT1 A 0 A_Countdown
+BEWA F 2 A_SpawnitemEx("ShieldWaveShock",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+BEWA F 0 A_Fadeout
 TNT1 A 0 A_Countdown
 loop
 Death:
-TNT1 A 0
+TNT1 A 0 
 stop
 }
 }

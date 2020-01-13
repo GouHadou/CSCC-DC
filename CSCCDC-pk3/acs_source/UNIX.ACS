@@ -43,7 +43,7 @@ str DisguiseInfo[MAX_DISGUISES][4] = {
 {"LaggyBlazkoClass", "LaggyBlazkoDisguise", LAGGYCOL, ""},
 {"KorbyClass", "KorbyDisguise", KORBCOL, ""},
 {"MessatsuClass", "MessatsuDisguise", MESSCOL, ""},
-//{"AegisDamagerClass", "AegisDisguise", AEGCOL, ""},
+{"AegisClass", "AegisDisguise", AEGCOL, ""},
 {"IceSparkyClass", "IceDisguise", ICECOL, ""},
 {"GizmoClass", "GizmoDisguise", GIZCOL, ""},
 {"VocalwomanClass", "VocalWomanDisguise", VOCCOL, ""},

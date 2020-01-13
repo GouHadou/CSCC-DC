@@ -25,10 +25,11 @@ Obituary "$OB_BURSTBLADE"
 tag "$TAG_BURSTBLADE"
 Inventory.Pickupmessage "$PU_BURSTBLADE"
 weapon.ammotype "BurstBladeClip"
+dropitem "LightScreenWepCS"
 States
 {
 Spawn:
-WEAP X 1
+NPSI A 1
 loop
 Ready:
 TNT1 A 3 
@@ -1067,42 +1068,5 @@ TeamGoldFire:
 BUST B 0 bright A_SpawnItemEx ("ShieldSpawner_GOLD", 0, cos(pitch)*75, (sin(pitch)*-75), Momx, Momy, 0, 90,SXF_NOCHECKPOSITION|SXF_ABSOLUTEMOMENTUM)
 TNT1 A 0
 stop
-}
-}
-
-actor LightScreenBossItemFire : CustomInventory 
-{
-Tag "Deploy Shield"
-inventory.amount 1
-inventory.maxamount 1
-inventory.pickupmessage "$PU_ETANK"
-
-inventory.icon "BARRI"
-Inventory.PickupSound "item/1up"
-+INVBAR
-+COUNTITEM
-scale 2.2
-Radius 30
-States
-{
-Spawn:
-EBAL F 0 
-EBAL F 0 Thing_ChangeTID(0,999)
-EBAL FE 6
-Goto Spawn+2
-Use:
-TNT1 A 0 A_JumpIfInventory("LightScreenBossCooldownItem",1,"Nope")
-TNT1 A 0 A_JumpIfInventory("LightScreenActive",1,"Use2")
-TNT1 A 0 A_Giveinventory("LightScreenTrigger")
-fail
-Use2:
-TNT1 A 0 A_SpawnItemEX("ScreenKillerActor")
-fail
-Death:
-TNT1 A 0
-stop
-Nope:
-TNT1 A 0 //A_Giveinventory("ErrorSoundCue")
-fail
 }
 }

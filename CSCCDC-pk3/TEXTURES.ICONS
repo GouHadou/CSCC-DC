@@ -391,11 +391,11 @@ graphic LTSCI, 30, 30
 	Patch NPSIA0, 0, 0
 }
 
-graphic BARRI, 30, 30
+graphic AEGFIST, 30, 30
 {
 	XScale 2.0
 	YScale 2.0
-	Patch NPSIB0, 0, 0
+	Patch AEGFA0, 0, 0
 }
 
 //Megmman CopyWeps
