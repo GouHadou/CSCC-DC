@@ -308,6 +308,15 @@ UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based
 UKIYAMA_CH_ALTFIRE = "\cfAltfire : \cjUses the upgrade gauge to \ntoss out a turret that shoots a copy \nof your shot where you are aiming.";
 UKIYAMA_CH_MODS = "\cvMods : ";
 
+MESSATSU_CH_TITLE = "\cvMessatsu";
+MESSATSU_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj119%\n\cfJump : \cj130%";
+MESSATSU_CH_MAINFIRE = "\cfMainfire : \cjExpel fireballs from \nyour palm, can be charged.";
+MESSATSU_CH_PARRY = "\cvAbility 1 : \cfParry - \cjDeflect attacks and gain an \n stat boost for a limited time. Requires precise timing.";
+MESSATSU_CH_ALTFIRE = "\cfAltfires :";
+MESSATSU_CH_SUPER_I = "\cvItem: \cfSuper Moves - \cjUse item to select which super \nto use instead of next mainfire.";
+MESSATSU_CH_SUPER = "\cfSupers";
+
+
 GEE_CH_TITLE = "\cvGEE";
 GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj140%";
 GEE_CH_MAINFIRE = "\cfMainfire : \cjShoots a magic burst \ncomposed of the attributes he has \navailable, healing if it hits an ally \nand damaging if it hits a foe.";

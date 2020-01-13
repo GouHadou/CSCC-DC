@@ -1,6 +1,8 @@
 user noarchive int Megaman_ClassHelp_Weapons = 0;
 user noarchive int Ukiyama_ClassHelp_Item = 0;
 user noarchive int Ukiyama_ClassHelp_Mods = 0;
+user noarchive int Messatsu_ClassHelp_AltFire = 0;
+user noarchive int Messatsu_ClassHelp_Supers = 0;
 user noarchive int Gee_ClassHelp_Weapon = 0;
 user noarchive int Vocalwoman_ClassHelp_Weapon = 0;
 user noarchive int ZenTrainer_ClassHelp_auras = 0;
