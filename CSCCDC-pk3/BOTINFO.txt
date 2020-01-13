@@ -295,3 +295,20 @@
 	script = "humanbot"
 	chatfrequency = 50
 }
+
+{
+	name = "\cnAegis"
+	accuracy = 2
+	intellect = 2
+	evade = 4
+	anticipation = 4
+	reactiontime = 2
+	perception = 4
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "AegisClass"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
