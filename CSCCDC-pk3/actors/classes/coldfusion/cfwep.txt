@@ -18,12 +18,12 @@ CFGV B 0 A_TakeInventory("CFDashFlag", 10)
 Ready2:
 CFGV B 0 A_JumpIfInventory("FusionClassAmmo",4,"Ready3")
 CFGV B 5 A_WeaponReady(WRF_NOFIRE)
-CFGV B 0 A_GiveInventory("FusionClassAmmo", 1)
+CFGV B 0 //A_GiveInventory("FusionClassAmmo", 1)
 CFGV B 0 A_GiveInventory("FusionShield", 1)
 loop
 Ready3:
 CFGV B 5 A_WeaponReady
-CFGV B 0 A_GiveInventory("FusionClassAmmo", 1)
+CFGV B 0 //A_GiveInventory("FusionClassAmmo", 1)
 CFGV B 0 A_GiveInventory("FusionShield", 1)
 loop
 Deselect:
@@ -113,6 +113,7 @@ Goto Ready2
 Flash:
 TNT1 A 0 A_JumpIfInventory("Isdead",1,"NoFlash") 
 TNT1 A 0 A_JumpIfInventory("AltFlag",1,"AltFlash")
+TNT1 A 0 A_GiveInventory("FusionBombAmmoRegen")
 TNT1 A 1 A_SpawnItemEx("CFWingFX1",-8,0,12,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
 loop
 AltFlash:
@@ -150,6 +151,35 @@ Debug:
 CFGV A 2
 Goto Ready2
 }
+}
+
+actor FusionBombAmmoRegen : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Jumpifinventory("FusionBombAmmoRegenBuffer",1,"Nope")
+TNT1 A 0 A_GiveInventory("FusionClassAmmo",1)
+TNT1 A 0 A_GiveInventory("FusionBombAmmoRegenBuffer",1)
+TNT1 A 0
+TNT1 A 0
+stop
+Nope:
+TNT1 A 0
+stop
+}
+}
+
+actor FusionBombAmmoRegenBuffer: Powerup
+{
+inventory.amount 1
+Powerup.Duration 7
 }
 
 actor FusionClassAmmo : Ammo
@@ -219,20 +249,20 @@ actor FusionBombClass_M1 : BasicTeamColorPickup
 states
 {
 FireX:
-TNT1 A 0 A_FireCustomMissile("FusionBombClass", 0, 1, 8, 0)
+TNT1 A 0 A_FireCustomMissile("FusionBombClass", 0, 0, 8, 0)
 goto Done
 //---
 FireB:
-TNT1 A 0 A_FireCustomMissile("FusionBombClass_B", 0, 1, 8, 0)
+TNT1 A 0 A_FireCustomMissile("FusionBombClass_B", 0, 0, 8, 0)
 goto Done
 FireR:
-TNT1 A 0 A_FireCustomMissile("FusionBombClass_R", 0, 1, 8, 0)
+TNT1 A 0 A_FireCustomMissile("FusionBombClass_R", 0, 0, 8, 0)
 goto Done
 FireG:
-TNT1 A 0 A_FireCustomMissile("FusionBombClass_G", 0, 1, 8, 0)
+TNT1 A 0 A_FireCustomMissile("FusionBombClass_G", 0, 0, 8, 0)
 goto Done
 FireY:
-TNT1 A 0 A_FireCustomMissile("FusionBombClass_Y", 0, 1, 8, 0)
+TNT1 A 0 A_FireCustomMissile("FusionBombClass_Y", 0, 0, 8, 0)
 goto Done
 }
 }

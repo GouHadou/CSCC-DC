@@ -2,6 +2,9 @@
 //#include "zcommon.acs"
 //#include "8BDMLIB.ACS"
 
+int PlayerJumpZ[64];
+
+
 function void SyncInvisibleTo (int Player)
 {
 //if(CheckActorProperty(Player,APROP_Alpha,0.0)) { 

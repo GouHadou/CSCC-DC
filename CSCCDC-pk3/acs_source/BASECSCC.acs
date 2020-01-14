@@ -10,6 +10,7 @@
 #include "COPYWEP.ACS"
 #include "ITEMGIVE.ACS"
 
+
 Script "CSACS_TeamSpecies" ENTER 
 {
 int pln = PlayerNumber();
@@ -32,6 +33,9 @@ if(ACS_ExecuteWithResult(975,1)==1)
 		}
 	}
 else{setactorproperty(0,APROP_SPECIES,StrParam(s:"Player_",i:pln));}
+
+// Stores the players starting Jump Height on spawn
+PlayerJumpZ[pln] = GetActorProperty(0, APROP_JumpZ);
 }
 
 script "CSACS_TSRespawn" RESPAWN
@@ -208,6 +212,25 @@ for(int g=1;g<=HealAmount;g++)
     }
 }
 
+/*
+//Turns Jumping On or Off
+script "CSCC_JumpToggle" (Int Toggle)
+{
+
+int pln = ActivatorTID() - 1000;
+
+if (Toggle >= 1){SetActorProperty(ActivatorTID(),APROP_JUMPZ,PlayerJumpZ[pln]);}
+Else {SetActorProperty(ActivatorTID(),APROP_JUMPZ,0);}
+}
 
 
+//Turns Gravity On or Off
+script "CSCC_GravityToggle" (Int Toggle)
+{
 
+int pln = ActivatorTID() - 1000;
+
+if (Toggle >= 1){SetActorProperty(ActivatorTID(),APROP_Gravity,1.0);} 
+Else {SetActorProperty(ActivatorTID(),APROP_Gravity,0.1);}
+}
+*/

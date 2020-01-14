@@ -901,7 +901,15 @@ if (ScreenHealth > 0)
 	Else{GiveActorInventory(TargetTID,"K_ShieldBreak",1);}
 }
 
+Script "Aegis_ShieldLifeSap" (void)
+{
 
+int BaseTID = ActivatorTID();
+int TargetTID = ACS_ExecuteWithResult(257,0);
+
+If(!PlayerInGame(TargetTID-1000)){SetUserVariable(BaseTID, "User_ScreenHP",GetUserVariable(BaseTID, "User_ScreenHP")-5);}
+
+}
 
 Script "WepBloomStat" (void)
 {
