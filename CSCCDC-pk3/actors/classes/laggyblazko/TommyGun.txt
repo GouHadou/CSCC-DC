@@ -49,6 +49,7 @@ TOMY D 0 A_GiveInventory("FakeTommyTracerShot_2")
 goto Fire+2
 Altfire:
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
+TNT1 A 0 A_JumpIfInventory("CorpKnifeCooldown",1,"NoFire")
 TOMY L 0 A_JumpIfInventory("NoMagTommy",1,"MidRelPreKnife")
 TOMY L 0 A_JumpIfInventory("CockTommy",1,"MidRelPreKnife")
 TOMY LZ 2
