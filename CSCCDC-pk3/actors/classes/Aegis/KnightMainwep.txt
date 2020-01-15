@@ -218,24 +218,23 @@ NoAmmo:
 goto Reload
 
 Reload:
-	"####" B 0 A_ZoomFactor(1.0,0)
-	"####" B 0 A_TakeInventory("ZoomMode")
+"####" B 0 A_Jumpifinventory("BurstBladeClip",6,"TeamReady")
 "####" D 1 Offset(0,32)
 "####" D 1 Offset(0,46)
 "####" D 1 Offset(0,58)
 "####" D 1 Offset(0,70)
 "####" D 1 Offset(0,82)
-"####" D 0 A_Giveinventory("InputClearer")
 "####" D 0 A_Giveinventory("HiPEReloadTimer_A")
 "####" B 0 A_Jumpifinventory("BurstBladeClip",1,"Reload2")
 "####" D 8 A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
 goto Reloadloop
 Reload2:
 	"####" D 1 A_WeaponReady(WRF_NOBOB)
-	"####" D 0 A_Jumpifinventory("BarricadeCooldownItem",1,2)
-	"####" D 0 A_Jumpifinventory("User1_Trigger",1,"User1")
-	"####" D 0 A_Jumpifinventory("HealthGeneratorCooldownItem",1,2)
-	"####" D 0 A_Jumpifinventory("User2_Trigger",1,"User2")
+	"####" D 0 A_Jumpifinventory("K_ShieldBreak",1,2)
+	"####" D 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"User1")
+  "####" D 0 A_Jumpifinventory("ShieldEnergy",50,2)
+  "####" D 0 A_Jump(256,2)
+  "####" D 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User2) == True,"User2")
 	"####" B 0 A_Jumpifinventory("HiPEReloadTimer_A",1,"Reload2") //8 frames
 
 goto Reloadloop
@@ -246,7 +245,6 @@ Reloadloop:
 "####" B 0 A_Jumpifinventory("BurstBladeClip",6,"ReloadLoopEnd")
 "####" B 0 A_Jumpifinventory("BurstBladeClip",1,2)
 "####" D 19 Offset(0,82)
-"####" D 0 A_Giveinventory("InputClearer")
 "####" D 0 A_Giveinventory("HiPEReloadTimer_B")
 //Goto Reloadloop
 	ReloadWait:
@@ -264,7 +262,6 @@ ReloadLoopEnd:
 "####" D 1 Offset(0,58)
 "####" D 1 Offset(0,46)
 "####" D 1 Offset(0,32)
-"####" D 0 A_Giveinventory("InputClearer")
 "####" D 0 A_PlaySoundEx("weapon/Crashland","Weapon")
 "####" D 1 A_Refire("Fire")
 Goto Ready+1
