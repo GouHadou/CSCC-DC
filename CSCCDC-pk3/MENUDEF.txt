@@ -489,10 +489,10 @@ OptionMenu "ClassInfo"
 	StaticText ""
 	Submenu	    "Megaman",		"MegamanInfo"
 	Submenu	    "Copy Robot",		"CopyInfo"
-	Submenu	    "Gizmo",		"ChangeThisMenu!"
-	Submenu	    "Unix",		"ChangeThisMenu!"
+	Submenu	    "Gizmo",		"GizmoInfo"
+	Submenu	    "Unix",		"UnixInfo"
 	Submenu	    "CutmanMike",		"CutmanMikeInfo"
-	Submenu	    "Ice/Sparky",		"ChangeThisMenu!"
+	Submenu	    "Ice/Sparky",		"IceSparkInfo"
 	Submenu	    "Ukiyama",		"UkiyamaInfo"
 	Submenu	    "Messatsu",		"MessatsuInfo"  
 	Submenu	    "ColdFusion",		"ColdFusionInfo"
@@ -1205,6 +1205,167 @@ OptionValue CorporalReloads
 	2, "\cfGrand Dad\n\cjUses non replenishing \nammo to reload its \nclip. Less efficient \nreloading manually."
 	3, "\cfFrag Grenade \n\cjNone."
 }
+
+
+OptionMenu "GizmoInfo"
+{
+	Title "$GIZMO_CH_TITLE"
+	StaticText ""
+	StaticText "$GIZMO_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "Gizmo_ClassHelp_Weapon", "GizmoMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_ITEMS", "Gizmo_ClassHelp_Items", "GizmoItems"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue GizmoMainfires
+{
+	0, "\cfPlasma Cannon\n\cjBasic Plasma cannon, \ncharge shots to leave \nlingering explosions."
+	1, "\cfClaw Gloves\n\cjBasic melee weapon."
+	2, "\cfFire Cannon\n\cjLaunch a long reaching \nstream of fire."
+	4, "\cfFrost Cannon\n\cjA close ranged, highly \nlethal spray of cold."
+	5, "\cfLightning Cannon\n\cjFire a burst of ripping \nelectrical projectiles."
+	6, "\cfWater Cannon\n\cjLaunch a jet stream of \nwater that repels foes."
+	7, "\cfStone Cannon\n\cjFire High impact Arching \nProjectile stones that \nbreak into smaller rock \nprojectiles."
+	8, "\cfEternal Claws\n\cjImproved Claw Cloves with \ngreater reach and the \nability to scale walls."
+}
+
+OptionValue GizmoItems
+{
+	0, "\cfKitty Helper\n\cjSummon a Chao to help you \nin battle."
+	8, "\cfEternal Claws\n\cjUpgrades the Claw Gloves."
+}
+
+OptionMenu "UnixInfo"
+{
+	Title "$UNIX_CH_TITLE"
+	StaticText ""
+	StaticText "$UNIX_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "Unix_ClassHelp_Weapon", "UnixMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""	
+	StaticText ""
+	StaticText ""
+	StaticText "$UNIX_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText "$UNIX_CH_ITEM"
+	StaticText ""
+	StaticText "$UNIX_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue UnixMainfires
+{
+	0, "\cfEternal Torment\n\cjMelee that can backstab, \nKilling the foe \ninstantly and assuming \ntheir appearance, \ndisguise is shed upon \nattacking."
+	1, "\cfRevolver Blades\n\cjThrow up to six on hand \nshurikens that rip \nthrough opponents, \nreloads passively."
+}
+
+OptionMenu "IceSparkInfo"
+{
+	Title "$ICESPARKY_CH_TITLE"
+	StaticText ""
+	Option "____", "IceSparky_ClassHelp_Forms", "IceSparkNames"
+	StaticText ""
+	Option "|", "IceSparky_ClassHelp_Forms", "IceSparkStats"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText "$CSCC_CH_MAINFIRES"
+	Option "|", "IceSparky_ClassHelp_Forms", "IceSparkMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$CSCC_CH_ALTFIRES"
+	Option "|", "IceSparky_ClassHelp_Forms", "IceSparkAltfires"
+	StaticText ""
+	StaticText ""	
+	StaticText ""
+	StaticText ""
+	StaticText "$ICESPARKY_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ICESPARKY_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "|", "ClassHelp_Blank", "Blank" //just so the cursor lands here
+
+}
+
+OptionValue IceSparkNames
+{
+	0, "\cfIce"
+	1, "\cfSparky"
+	2, "\cfIceSparky"
+}
+
+OptionValue IceSparkStats
+{
+	0, "\cfHealth : \cj75\n\n\cfSpeed : \cj80%\n\cfJump : \cj100%"
+	1, "\cfHealth : \cj150\n\n\cfSpeed : \cj120%\n\cfJump : \cj150%"
+	2, "\cfHealth : \cj150\n\n\cfSpeed : \cj120%\n\cfJump : \cj150%"
+}
+
+OptionValue IceSparkMainfires
+{
+	0, "\cjToss a whirling blade of \nice"
+	1, "\cjLaunch fast moving \nelectrical projectiles"
+	2, "\cjLaunch an electrically \ncharged whirling blade \nof ice"
+}
+
+OptionValue IceSparkAltfires
+{
+	0, "\cjScatter ice spikes all \nover the ground"
+	1, "\cjlaunch an electrical pulse \nthat creeps along the \nfloor, can scale up walls."
+	2, "\cjLaunch a massive energy \nwave that scatters ice \nspikes along it’s path."
+}
+
+OptionValue Blank
+{
+	0, ""
+	1, ""
+	2, ""
+}
+
 
 //-------------------------------------------------------------------------------------------
 //

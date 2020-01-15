@@ -386,3 +386,16 @@ CORPORAL_CH_TITLE = "\cvCORPORAL";
 CORPORAL_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
 CORPORAL_CH_ALTFIRE = "\cfAltfire : \cjSlash with a combat Knife.";
 CORPORAL_CH_PASSIVE = "\cfPassive : \cjCan pick up weapons, but \nhas a timer for repeated pickups. \nCan collect ammo pickups.";
+
+GIZMO_CH_TITLE = "\cvGIZMO";
+GIZMO_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+
+UNIX_CH_TITLE = "\cvUNIX";
+UNIX_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+UNIX_CH_ALTFIRE = "\cfAltfire : \cjEngage cloaking and turn \ninvisible.";
+UNIX_CH_ITEM = "\cfItem : \cjTrigger an AOE stun.";
+UNIX_CH_PASSIVE = "\cfPassive : \cjCan Pick up ammo to \nsustain Cloak.";
+
+ICESPARKY_CH_TITLE = "\cvICESPARKY";
+ICESPARKY_CH_ITEM = "\cfItem : \cjWhen Fusion meter is full, \nengage fusion.";
+ICESPARKY_CH_PASSIVE = "\cfPassive : \cjGains fusion meter upon \ntaking damage, \nsuccessive kills \nincreases the rate at \nwhich meter is gained.";
