@@ -398,6 +398,22 @@ graphic AEGFIST, 30, 30
 	Patch AEGFA0, 0, 0
 }
 
+graphic AEGRELD, 30, 30
+{
+	XScale 2.0
+	YScale 2.0
+	Patch AEGFB0, 0, 0
+}
+
+//Badz
+
+graphic BADZMSL, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch ORBDY0, 0, 0
+}
+
 //Megmman CopyWeps
 
 graphic PISTRE, 30, 30

@@ -170,33 +170,6 @@ TNT1 A 0 A_SpawnItemEx("OrbitalMissileK",0,0,0)
 stop
 }}
 
-
-actor BadzWarpItem : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-inventory.pickupmessage "badz doesn't exist"
-inventory.icon "JSHISI"
-Inventory.PickupSound "item/1up"
-scale 2.0
-+COUNTITEM
-+INVBAR
-states
-{
-Spawn:
-WEA3 N 1
-loop
-Use:
-WEA3 N 0 A_JumpIfInventory("BadzWarpAmmo",52,1)
-fail
-WEA3 N 0 A_TakeInventory("BadzWarpAmmo",52)
-WEA3 N 0 A_PlaySoundEx("misc/gravitywarn","Weapon")
-WEA3 N 0 A_SpawnItemEx("BadzWarpFX",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
-WEA3 N 0 ACS_NamedExecute("BadzWarp",0)
-fail
-}
-}
-
 actor BadzWarpFX : GeminiTrail{
 States{
 Spawn:
