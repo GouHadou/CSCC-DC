@@ -96,6 +96,14 @@ int Item = item_pickups[itemslot][class];
 GiveActorInventory(ActivatorTID(), Item, Quantity);
 }
 
+Script "CSCC_SpawnWtank" (void)
+{
+SpawnForced("WtankGiver", GetActorX(0), GetActorY(0), GetActorZ(0), 993, GetActorAngle(0));
+SetActorProperty(993, APROP_DROPPED, FALSE);
+Delay(1);
+Thing_ChangeTID(993, 0);
+}
+
 Function int CheckClassList (int Mode)
 {
 int UseSprite = -1;
