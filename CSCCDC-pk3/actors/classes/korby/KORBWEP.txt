@@ -218,7 +218,10 @@ BMAbsorbEnd:
 KBHU D 3
 KBHU D 0 A_TakeInventory("BMHoldFlag", 1)
 KBHU CB 3
-KBHU BBBBBBBB 1 A_WeaponReady(WRF_NOSECONDARY)
+KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
+BMHolding:
+KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
+KBHU B 1 A_Refire("BMHolding")
 Goto Ready+2
 KFlash:
 KBHU D 0 A_JumpIfInventory("MP",7,"KFlashR")
