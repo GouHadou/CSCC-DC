@@ -2593,7 +2593,7 @@ Death:
 NAPA E 0 A_ChangeFlag("NOGRAVITY", TRUE)
 NAPA E 0 A_Stop
 NAPA E 0 A_PlaySoundEx("weapon/napalm", "Weapon")
-NAPA E 0 A_Explode(15, 96, 0, 0, 64)
+NAPA E 0 A_Explode(15, 96, 0, 0, 96)
 NAPA EFGHIJKLMNOPQRS 2
 stop
 }
