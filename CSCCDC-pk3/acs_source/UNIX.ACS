@@ -216,6 +216,7 @@ Log(s:cmd);
 
 Script "ForceSkins" OPEN CLIENTSIDE
 {
+Delay(3);
 while(true) {
 	if(!GetCvar("CL_Skins")) {
 		ConsoleCommand("CL_Skins 1");

@@ -23,60 +23,7 @@ LGY2 F 2
 LGY2 G 2 
 LGY2 F 2
 goto Spawn
-Pain.SparkShock:
-"----" H 0 A_SpawnItemEx("ShockFX",4,0,32)
-"----" H 0 A_GiveInventory("Shocked",1)
-Pain.ThunderBeam:
-Pain.ThunderBolt:
-Pain.ThunderClaw:
-Pain.LightningBolt:
-Pain.PlugBall:
-Pain.Electric:
-Pain.LightningWave:
-Pain.LightningShot:
-pain.GizmoLightning:
-pain.KLIGHT:
-LGY2 H 0 A_ScaleVelocity(0.75)
-LGY2 H 0
-LGY2 H 0 A_Pain
-LGY2 H 0 //A_GiveInventory("TempInvince",1)
-LGY2 H 0 //SetPlayerProperty(0, 1, 4)
-Skeleton:
-LGY2 S 1 A_SpawnItem("PainFX",0,3)
-LGY2 S 1 A_Recoil(1)
-LGY2 S 1 A_SpawnItem("PainFX",0,3)
-LGY2 S 1 //A_Recoil(1)
-LGY2 T 1 A_SpawnItem("PainFX",0,3)
-LGY2 T 1 //A_Recoil(1)
-LGY2 T 1 A_SpawnItem("PainFX",0,3)
-LGY2 T 1 //A_Recoil(1)
-LGY2 S 1 A_SpawnItem("PainFX",0,3)
-LGY2 S 1 //A_Recoil(1)
-LGY2 S 1 A_SpawnItem("PainFX",0,3)
-LGY2 S 1 //A_Recoil(1)
-LGY2 T 1 A_SpawnItem("PainFX",0,3)
-LGY2 T 1 //A_Recoil(1)
-LGY2 T 1 A_SpawnItem("PainFX",0,3)
-LGY2 T 1 //A_Recoil(1)
-LGY2 H 1 A_SpawnItem("PainFX",0,3)
-LGY2 H 1 //A_Recoil(1)
-LGY2 H 1 A_SpawnItem("PainFX",0,3)
-LGY2 H 1 //A_Recoil(1)
-LGY2 H 0 //SetPlayerProperty(0, 0, 4)
-LGY2 H 0//SetPlayerProperty(0,0,1)
-goto Spawn
-Pain.WilyIce:
-LGY2 H 0
-goto WilyIceFrames
-TheEnd:
-LGY2 G 4
-loop
-CreditWalk:
-LGY2 BCDE 8
-loop
-CreditRun:
-LGY2 BCDE 5
-loop
+
 Death.Fire:
 Death.OilCanister:
 Death.WeaponShot1:

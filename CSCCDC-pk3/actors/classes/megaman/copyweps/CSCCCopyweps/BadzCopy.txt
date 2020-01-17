@@ -24,6 +24,7 @@ ORBD A 1 A_Lower
 Loop
 RemoveShield:
 ORBD A 0 A_TakeInventory("ShieldCheck", 1)
+ORBD A 0 A_TakeInventory("BadzStackCount",999)
 ORBD A 0 A_TakeInventory("OrbitalMissileAmmo",5)
 Goto Deselect+1
 Select:
@@ -55,7 +56,7 @@ ORBD A 0 A_SpawnItemEx("OrbitalMissileCopy",0,0,32,0,0,0,225)
 goto FireEnd
 Release:
 ORBD A 0 A_TakeInventory("ShieldCheck",1)
-ORBD A 0 A_TakeInventory("BadzStackCount",1)
+ORBD A 0 A_TakeInventory("BadzStackCount",999)
 ORBD A 0 A_TakeInventory("OrbitalMissileAmmo",5)
 ORBD ABC 3
 ORBD A 30

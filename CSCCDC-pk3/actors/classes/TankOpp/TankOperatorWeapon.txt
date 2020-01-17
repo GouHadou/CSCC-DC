@@ -192,6 +192,7 @@ Height 14
 Damage (15)
 Scale 2.5
 +THRUSPECIES
+damagetype "TankClassic"
 Species "TankyTankSpecies"
 States
 {
@@ -245,6 +246,7 @@ Obituary "$OB_CLASSICTANKMACHINEGUN"
 Speed 80
 Radius 4
 Height 4
+damagetype "TankMachineGun"
 MissileType "TankMachinegunShotFX"
 Damage (6)
 MissileHeight 8
