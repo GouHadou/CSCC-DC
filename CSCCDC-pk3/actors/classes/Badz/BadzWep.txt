@@ -316,6 +316,7 @@ TNT1 A 0 A_SetUserVar("user_dist",user_dist+5)
 TNT1 A 0 A_JumpIf(user_dist >= user_stack, "RangeSet")
 SPRE E 1 A_Warp(AAPTR_TARGET,0,user_dist,32,angle,WARPF_ABSOLUTEANGLE|WARPF_NOCHECKPOSITION)
 TNT1 A 0 A_SetAngle(angle+12)
+TNT1 A 0 A_Explode(7,20,0,0,20)
 TNT1 A 0 A_SpawnItemEx("OrbitalMissileTrail",-5,0,0,0,2,0,0,SXF_TRANSFERTRANSLATION)
 TNT1 A 0 A_SetUserVar("user_dist",user_dist+5)
 TNT1 A 0 A_JumpIf(user_dist >= user_stack, "RangeSet")
@@ -329,12 +330,14 @@ SPRE D 1 A_Warp(AAPTR_TARGET,0,user_dist,32,angle,WARPF_ABSOLUTEANGLE|WARPF_NOCH
 TNT1 A 0 A_SetAngle(angle+12)
 SPRE E 1 A_Warp(AAPTR_TARGET,0,user_dist,32,angle,WARPF_ABSOLUTEANGLE|WARPF_NOCHECKPOSITION)
 TNT1 A 0 A_SetAngle(angle+12)
+TNT1 A 0 A_Explode(7,20,0,0,20)
 TNT1 A 0 A_SpawnItemEx("OrbitalMissileTrail",-5,0,0,0,2,0,0,SXF_TRANSFERTRANSLATION)
 TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"Death")
 SPRE D 1 A_Warp(AAPTR_TARGET,0,user_dist,32,angle,WARPF_ABSOLUTEANGLE|WARPF_NOCHECKPOSITION)
 TNT1 A 0 A_SetAngle(angle+12)
 SPRE E 1 A_Warp(AAPTR_TARGET,0,user_dist,32,angle,WARPF_ABSOLUTEANGLE|WARPF_NOCHECKPOSITION)
 TNT1 A 0 A_SetAngle(angle+12)
+TNT1 A 0 A_Explode(7,20,0,0,20)
 TNT1 A 0 A_SpawnItemEx("OrbitalMissileTrail",-5,0,0,0,2,0,0,SXF_TRANSFERTRANSLATION)
 TNT1 A 0 A_TakeFromTarget("BadzStuffAmmo",1)
 SPRE E 1 A_JumpIfInTargetInventory("ShieldCheck",1,"OkPerfect")
@@ -362,16 +365,13 @@ stop
 }
 }
 
-actor OrbitalMissileTrail
+actor OrbitalMissileTrail : BasicClientside
 {
 PROJECTILE
-+MTHRUSPECIES
-DamageType "OrbitalMissile"
-Obituary "$OB_ORBITALMISSILE"
 Radius 8
 Height 12
 Scale 2.5
-Damage (7)
+Damage (0)
 renderstyle "translucent"
 alpha 0.7
 States
@@ -381,12 +381,20 @@ ORBD DDD 3 A_FadeOut(0.2)
 stop
 }}
 
-actor OrbitalMissileRelease : OrbitalMissileTrail
+actor OrbitalMissileRelease
 {
 var int user_thatfast;
+PROJECTILE
++MTHRUSPECIES
+DamageType "OrbitalMissile"
+Obituary "$OB_ORBITALMISSILE"
+Radius 8
+Height 12
+Scale 2.5
+Damage (0)
+renderstyle "translucent"
 Alpha 1.0
 +RIPPER
-Damage (0)
 states
 {
 Spawn:
@@ -402,6 +410,7 @@ SPRE D 0 A_SetAngle(angle+12)
 SPRE D 0 A_GiveInventory("CutterFlag",1)
 SPRE E 1 A_ChangeVelocity(user_thatfast,0,0,CVF_RELATIVE|CVF_REPLACE)
 SPRE D 0 A_SetAngle(angle+12)
+SPRE D 0 A_Explode(7,20,0,0,20)
 SPRE D 0 A_SpawnItemEx("OrbitalMissileTrail",0,0,0,0,2,0,0,SXF_TRANSFERTRANSLATION)
 SPRE D 0 A_JumpIfInventory("CutterFlag",52,"OkBye")
 loop
