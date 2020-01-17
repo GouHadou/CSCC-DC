@@ -685,7 +685,7 @@ If(BMValue > 0)
 	If(BMValue >= 60 && BMValue < 70){GiveActorInventory(PlayerTID, "TIMEF", 1);}
 	If(BMValue >= 70 && BMValue < 80){GiveActorInventory(PlayerTID, "WHITF", 1);}
 	If(BMValue >= 80 && BMValue < 90){GiveActorInventory(PlayerTID, "MANTF", 1);}
-	If(BMValue >= 90 && BMValue < 100){GiveActorInventory(PlayerTID, "SELFFGive", 1);}
+	If(BMValue >= 90 && BMValue < 100){GiveActorInventory(PlayerTID, "SELFF", 1);}
 	If(BMValue >= 100){GiveActorInventory(PlayerTID, "BADBF", 1);}
 	If(BMValue == 1){GiveActorInventory(PlayerTID, "SELFF", 1);} //Korby, WHY?!
 	}

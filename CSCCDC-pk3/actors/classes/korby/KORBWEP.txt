@@ -219,6 +219,8 @@ KBHU D 3
 KBHU D 0 A_TakeInventory("BMHoldFlag", 1)
 KBHU CB 3
 KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
+KBHU B 0 A_JumpIfInventory("BMFlag", 1, "BMHolding")
+Goto Ready+2
 BMHolding:
 KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
 KBHU B 1 A_Refire("BMHolding")
