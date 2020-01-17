@@ -324,7 +324,9 @@ IsSelected BullGatorConfusionBurst{
 //====|Badz
 IsSelected OrbitalMissileBoss
 	{
-	Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16, 8;
+	InInventory ShieldCheck, 1{Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16, 8;}
+	else InInventory BadzStuffAmmo, 140{Drawbar"BARAMM58", "BAREMPTY", Ammo1, vertical, 16, 8;}
+	else{DrawBar"BARAMM65", "BAREMPTY", Ammo1, vertical, 16, 8;}
 	DrawBar"BARAMM51","BAREMPTY",Ammo2,vertical,8,8;
 	DrawImage "BADZMSL", 32, 56; DrawImage "VERICON1", 40, 56;
 	DrawImage "JSHISI", 32, 64; DrawImage "VERICON2", 40, 64;
