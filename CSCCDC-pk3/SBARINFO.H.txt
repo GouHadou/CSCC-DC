@@ -322,8 +322,8 @@ IsSelected OrbitalMissileBoss
 	else InInventory BadzStuffAmmo, 140{Drawbar"VARAMM58", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 	else{DrawBar"VARAMM65", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 	Drawbar"VARAMM51", "VAREMPTY", Ammo2, horizontal, 58, 176;
-	DrawImage "BADZMSL", 130, 176; DrawImage "HORICON1", 130, 168;
-	DrawImage "JSHISI", 122, 176; DrawImage "HORICON2", 122, 168;
+	DrawImage "BADZMSL", 138, 176; DrawImage "HORICONR", 138, 168;
+	DrawImage "JSHISI", 130, 176; DrawImage "HORICON1", 130, 168;
 	}
 
 //====|Aegis

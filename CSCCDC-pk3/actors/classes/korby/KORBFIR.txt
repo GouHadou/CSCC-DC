@@ -1,0 +1,866 @@
+actor FIR : CSCCWepBase 
+{
+Weapon.AmmoUse 5
+Weapon.AmmoGive 100
+Weapon.SlotNumber 1
+weapon.ammotype "MP"
+Obituary "$OB_KORBYFIRE"
+tag "FIRE"
+Inventory.Pickupmessage "$PU_KORBYFIRE"
+DropItem "CometWepCS"
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Ready:
+KBHU A 0 ACS_ExecuteAlways(998,0,DYE_KORBY) 
+KBHU A 0 
+KBHU A 0 A_JumpIfInventory("CD",1,"CD")
+KBHU AAAAA 1 A_WeaponReady
+KBHU A 0 A_JumpIfInventory("MP",100,2)
+KBHU A 0 A_JumpIf(momx == 0 && momy == 0, "SecondCharge")
+KBHU A 0 A_GiveInventory("MP", 1)
+KBHU A 0 A_JumpIfInventory("IsBot", 1, "BotSwap")
+Goto Ready+2
+BotSwap:
+//KBHU A 0 A_Jump(128, "AltFire") //Dealing with this later.  Bots are weird.
+KBHU A 0 A_Jump(8, "ChooseFire", "ChooseIce", "ChooseLit")
+Goto Ready+2
+ChooseFire:
+KBHU A 0 A_SelectWeapon("FIR")
+Goto Ready+2
+ChooseIce:
+KBHU A 0 A_SelectWeapon("ICE")
+Goto Ready+2
+ChooseLit:
+KBHU A 0 A_SelectWeapon("LIT")
+Goto Ready+2
+SecondCharge:
+TNT1 A 0 A_GiveInventory("MP", 1)
+TNT1 A 0 A_SpawnItemEX("KManaBubbles",random(32,-32),random(32,-32),random(8,16),0,0,3,0)
+TNT1 A 0 A_JumpIfInventory("MP",100,"ReadyFull")
+KBHU A 1 A_WeaponReady
+TNT1 A 0 A_SpawnItemEX("KManaBubbles",random(32,-32),random(32,-32),random(8,16),0,0,3,0)
+TNT1 A 0 A_JumpIfInventory("MP",100,"ReadyFull")
+KBHU A 1 A_WeaponReady
+TNT1 A 0 A_GiveInventory("MP", 1)
+TNT1 A 0 A_SpawnItemEX("KManaBubbles",random(32,-32),random(32,-32),random(8,16),0,0,3,0)
+TNT1 A 0 A_JumpIfInventory("MP",100,"ReadyFull")
+KBHU A 1 A_WeaponReady
+TNT1 A 0 A_SpawnItemEX("KManaBubbles",random(32,-32),random(32,-32),random(8,16),0,0,3,0)
+TNT1 A 0 A_JumpIfInventory("MP",100,"ReadyFull")
+KBHU A 1 A_WeaponReady
+TNT1 A 0 A_GiveInventory("MP", 1)
+TNT1 A 0 A_SpawnItemEX("KManaBubbles",random(32,-32),random(32,-32),random(8,16),0,0,3,0)
+TNT1 A 0 A_JumpIfInventory("MP",100,"ReadyFull")
+KBHU A 1 A_WeaponReady
+TNT1 A 0 A_SpawnItemEX("KManaBubbles",random(32,-32),random(32,-32),random(8,16),0,0,3,0)
+TNT1 A 0 A_JumpIfInventory("MP",100,"ReadyFull")
+KBHU A 1 A_WeaponReady
+TNT1 A 0 A_JumpIf(momx == 0 && momy == 0, "SecondCharge")
+Goto Ready+2
+ReadyFull:
+KBHU A 0
+Goto Ready+3
+CD:
+KBHU Z 0 A_WeaponReady(WRF_NOPRIMARY)
+KBHU Z 3 A_TakeInventory("CD",1)
+KBHU Z 0 A_JumpIfInventory("CD", 1, "CD")
+
+KBHU A 0 A_TakeInventory("KWeaponGet",999)
+
+KBHU A 0 A_TakeInventory("TMFLAG",999)
+goto Ready+2
+WG:
+KBHU Z 10
+KBHU A 0 A_TakeInventory("TMFLAG",999)
+goto Ready+2
+Deselect:
+TNT1 A 0 A_TakeInventory("WeaponCharge",999)
+//TNT1 A 0 A_SelectWeapon("LIT")
+//TNT1 A 0 ACS_ExecuteAlways(CSACS_TAKEWEAPON, 0)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+KBHF A 1 A_Raise
+Loop
+Fire:
+KBHU A 0 A_JumpIfNoAmmo("NoAmmo")
+KBHU EF 1
+goto Hold
+Hold:
+KBHF G 0 A_JumpIfNoAmmo("NoAmmo")
+KBHF G 0 A_JumpIfInventory("WeaponCharge",1,"Hold2")
+KBHF G 0 A_JumpIf(momx == 0 && momy == 0, "HoldD")
+KBHF F 2 A_GiveInventory("WeaponCharge",1)
+//KBHF G 0 ACS_ExecuteAlways(994,0)
+KBHF G 0 A_Refire
+Goto Fire1
+HoldD:
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 0 A_GiveInventory("WeaponCharge",2)
+//KBHF G 0 ACS_ExecuteAlways(994,0)
+KBHF G 0 A_Refire
+Goto Fire1
+Hold2:
+KBHF G 0 //A_StopSoundEx ("Weapon") 
+KBHF G 0 
+KBHF G 0 A_JumpIfInventory("WeaponCharge",11,"Hold3")
+KBHF G 0 A_JumpIf(momx == 0 && momy == 0, "Hold2D")
+KBHF FF 2
+KBHF F 0 A_GiveInventory("WeaponCharge",1)
+KBHF G 0 A_Refire
+Goto Fire1
+Hold2D:
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 0 A_GiveInventory("WeaponCharge",2)
+KBHF G 0 A_Refire
+Goto Fire1
+Hold3:
+KBHF G 0 //A_StopSoundEx ("Weapon") 
+KBHF G 0 
+KBHF G 0 A_JumpIfInventory("WeaponCharge",26,"BotCheck")
+KBHF G 0 A_JumpIf(momx == 0 && momy == 0, "Hold3D")
+KBHF FG 2
+KBHF F 0 A_GiveInventory("WeaponCharge",1)
+KBHF G 0 A_Refire
+Goto Fire2
+Hold3D:
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF G 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF G 1 A_SpawnItemEX("ChargeEffectFire")
+KBHF F 0 A_GiveInventory("WeaponCharge",2)
+KBHF G 0 A_Refire
+Goto Fire2
+BotCheck:
+KBHF G 0 A_JumpIfInventory("IsBot", 1, "BotRelease")
+Goto Hold4
+BotRelease:
+KBHF G 0 A_Jump(32, "Fire3")
+Goto Hold4
+Hold4:
+KBHF F 0 A_StopSoundEx ("Weapon")
+KBHF GH 2
+KBHF J 0 
+KBHF G 0 A_Refire
+Goto Fire3
+Fire1:
+KBHF F 0 A_JumpIfNoAmmo("NoAmmo")
+KBHF F 0 A_TakeInventory("WeaponCharge",999)
+KBHF F 0 A_TakeInventory("MP",5)
+KBHU D 0 A_PlaySoundEx("weapon/Firestorm","Weapon")
+KBHF F 4 A_GiveInventory("FIR1_M1")
+KBHU FE 2
+//KBHF A 0 A_GiveInventory("CD",1)
+goto Ready+2
+Fire2R:
+KBHF F 0 A_TakeInventory("WeaponCharge",999)
+KBHF F 0 A_TakeInventory("MP",15)
+KBHU D 0 A_PlaySoundEx("weapon/Firestorm","Weapon")
+KBHF F 0 A_GiveInventory("FIR2_M1")
+KBHU FE 2
+//KBHF A 0 A_GiveInventory("CD",2)
+goto Ready+2
+Fire3R:
+KBHF F 0 A_TakeInventory("WeaponCharge",999)
+KBHF F 0 A_TakeInventory("MP",30)
+KBHU D 0 A_PlaySoundEx("weapon/Firestorm","Weapon")
+KBHF F 0 A_GiveInventory("FIR3_M1")
+KBHF F 8
+KBHU FE 4
+KBHF A 0 A_GiveInventory("CD",8)
+goto Ready+2
+Fire2:
+KBHF F 0 A_JumpIfInventory("MP", 15, "Fire2R")
+goto Fire1
+Fire3:
+KBHF F 0 A_JumpIfInventory("MP", 30, "Fire3R")
+goto Fire2
+AltFire:
+KBHU A 0 A_JumpIfInventory("TMFLAG",1,"WG")
+KBHU A 0 A_JumpIfInventory("LIMIF",1 , "LimitGlove")
+KBHU BCD 2
+KBHU D 0 A_JumpIfInventory("BADBF", 1, "BadBreath")
+KBHU D 0 A_JumpIfInventory("FLASF", 1, "KFlash")
+KBHU D 0 A_JumpIfInventory("FLAMF", 1, "Flamethrower")
+KBHU D 0 A_JumpIfInventory("SELFF", 1, "SelfDestruct")
+KBHU D 0 A_JumpIfInventory("THOUF", 1, "BLAMELEGO")
+KBHU D 0 A_JumpIfInventory("WHITF", 1, "Whitewind")
+KBHU D 0 A_JumpIfInventory("TIMEF",1, "TimeMagic")
+KBHU D 0 A_JumpIfInventory("AQUAF", 1, "AquaBreath")
+KBHU D 0 A_JumpIfInventory("BLASF", 1, "Blaster")
+KBHU D 0 A_JumpIfInventory("MANTF", 1, "MatraMagic")
+AltFireH:
+KBHU D 0 A_GiveInventory("BMHoldFlag", 1)
+KBHU D 0 A_TakeInventory("KorbyHealthFlag", 999)
+KBHU D 0 A_GiveInventory("KorbyHealthFlag", health)
+KBHU D 0 ACS_NamedExecuteAlways("KorbyBlueMagicAbsorb", 0)
+AltfireH2:
+KBHU D 0 A_JumpIfInventory("BMFlag", 1, "BMAcquired")
+KBHU D 1 A_SpawnItemEx("KorbyBMFX", Cos(-pitch)*48, 12, 32+sin(-pitch)*48, Random(-1, 2), Random(-1, 1), Random(1,3))
+KBHU D 1 A_Refire("AltFireH2")
+//KBHU DCB 2
+//Goto Ready+2
+Goto BMAbsorbEnd
+BMAcquired:
+KBHU D 0 A_PlaySoundEX("weapon/timestopper","Weapon")
+Goto BMAbsorbEnd
+BMAbsorbEnd:
+KBHU D 3
+KBHU D 0 A_TakeInventory("BMHoldFlag", 1)
+KBHU CB 3
+KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
+KBHU B 0 A_JumpIfInventory("BMFlag", 1, "BMHolding")
+Goto Ready+2
+BMHolding:
+KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
+KBHU B 1 A_Refire("BMHolding")
+Goto Ready+2
+KFlash:
+KBHU D 0 A_JumpIfInventory("MP",7,"KFlashR")
+KBHU D 2 
+KBHU DCB 2
+Goto NoAmmo
+KFlashR:
+KBHU D 0 A_TakeInventory("MP",7)
+KBHU D 0 A_FireCustomMissile("KFLASH",0,0,0,0)
+KBHU D 0 A_PlaySoundEx("weapon/FlashStopper","Weapon")
+KBHU D 20 A_SetBlend("99 99 99", 0.95, 10)
+KBHU DCB 2
+goto Ready+2
+BadBreath:
+KBHU D 0 A_JumpIfInventory("MP",8,"BadBreathR")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+BadBreathR:
+KBHU D 0 A_TakeInventory("MP",8)
+KBHU D 0 A_PlaySoundEx("Weapon/BadBreath","Weapon")
+KBHU D 2 A_GiveInventory("BadBreath_M1")
+KBHU D 2 A_GiveInventory("BadBreath_M1")
+KBHU D 2 A_GiveInventory("BadBreath_M1")
+KBHU D 2 A_GiveInventory("BadBreath_M1")
+KBHU D 2 A_GiveInventory("BadBreath_M1")
+KBHU D 0
+KBHU D 2
+KBHU DCB 2
+goto Ready+2
+Flamethrower:
+KBHU D 0 A_JumpIfInventory("MP",2,"FlamethrowerR")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+FlameThrowerR:
+KBHU D 0 A_TakeInventory("MP",2)
+KBHU D 0 A_PlaySoundEx("weapon/AtomicFire","Weapon")
+KBHU D 2 A_GiveInventory("FlamethrowerK_M1")
+KBHU D 2 A_GiveInventory("FlamethrowerK_M1")
+KBHU D 2 A_GiveInventory("FlamethrowerK_M1")
+KBHU D 0 A_ReFire("Flamethrower")
+KBHU D 2
+KBHU DCB 2
+Goto Ready+2
+SelfDestruct:
+KBHU D 0 A_SpawnItemEx("KorbySelfDestructFX")
+KBHU D 0 A_SpawnItemEX("KSD")
+goto Ready+2
+BLAMELEGO:
+KBHU D 0 A_GiveInventory("NeedleFlag",1000)
+KBHU D 0 A_JumpIfInventory("MP",25,"ThousandNeedles")
+KBHU D 0 A_TakeInventory("NeedleFlag",1000)
+KBHU D 2
+KBHU DCB 2
+goto NoAmmo
+ThousandNeedles:
+KBHU D 0 A_TakeInventory("MP",25)
+ThousandNeedles2:
+KBHU D 0 A_TakeInventory("NeedleFlag",4)
+KBHU D 0 A_PlaySoundEx("Korby/Needle","Weapon")
+KBHU D 0 A_GiveInventory("KNeedle_M1_A")
+KBHU D 0 A_GiveInventory("KNeedle_M1_B")
+KBHU D 0 A_GiveInventory("KNeedle_M1_C")
+KBHU D 1 A_GiveInventory("KNeedle_M1_D")
+KBHU D 0 A_JumpIfInventory("NeedleFlag",1,"ThousandNeedles2")
+KBHU D 2
+KBHU DCB 2
+goto Ready+2
+WhiteWind:
+KBHU D 0 A_JumpIfHealthLower(100,"WhiteWindZ")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+WhiteWindz:
+KBHU D 0 A_JumpIfInventory("MP",1,"WhiteWindR")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+WhiteWindR:
+KBHU D 0 A_PlaySoundEx("weapon/GyroAttack","Weapon")
+KBHU D 0 A_TakeInventory("MP",1)
+KBHU D 0 A_SpawnItemEX("KWhiteWindFX",random(32,-32),random(32,-32),random(8,32),0,0,3,0)
+KBHU D 1 A_GiveInventory("Health",2) // Update to AOE heal ~Bika
+KBHU D 0 A_ReFire("WhiteWind")
+KBHU D 2
+KBHU DCB 2
+Goto Ready+2
+TimeMagic:
+KBHU D 0 A_JumpIfInventory("MP",16,"TimeMagicR")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+TimeMagicR:
+KBHU D 0 A_TakeInventory("MP",16)
+KBHU D 0 A_PlaySoundEx("weapon/Slow","Weapon")
+KBHU D 0 A_FireCustomMissile("Slowga",0,0,0,0)
+KBHU D 0 A_GiveInventory("HasteITEM",1)
+KBHU D 10
+KBHU DCB 2
+goto Ready+2
+AquaBreath:
+KBHU D 0 A_JumpIfInventory("MP",4,"AquaBreathR")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+AquaBreathR:
+KBHU D 0 A_TakeInventory("MP",4)
+KBHU D 0 A_PlaySoundEx("weapon/RainFlush","Weapon")
+KBHU D 2 A_GiveInventory("AquaBreath_M1")
+KBHU D 0 A_PlaySoundEx("weapon/RainFlush","Weapon")
+KBHU D 2 A_GiveInventory("AquaBreath_M1")
+KBHU D 0 A_PlaySoundEx("weapon/RainFlush","Weapon")
+KBHU D 2 A_GiveInventory("AquaBreath_M1")
+KBHU D 0 A_ReFire("AquaBreath")
+KBHU D 2
+KBHU DCB 2
+Goto Ready+2
+Blaster:
+KBHU D 0 A_JumpIfInventory("MP",15,"BlasterR")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+BlasterR:
+KBHU D 0 A_TakeInventory("MP",15)
+KBHU D 0 A_PlaySoundEx("Weapon/GravityHold","Weapon")
+KBHU D 2 A_GiveInventory("KBlaster_M1")
+KBHU D 5
+KBHU DCB 2
+goto Ready+2
+MatraMagic:
+KBHU D 0 A_JumpIfInventory("MP",10,"MatraMagicR")
+KBHU D 2
+KBHU DCB 2
+Goto NoAmmo
+MatraMagicR:
+KBHU D 0 A_TakeInventory("MP",10)
+KBHU D 0 A_PlaySoundEx("Weapon/GravityHold","Weapon")
+KBHU DDDDDDDD 0 A_GiveInventory("MatraMagic_M1")
+KBHU D 35
+KBHU DCB 2
+goto Ready+2
+LimitGlove:
+KBHU D 0 A_JumpIfInventory("MP",5,"LimitGloveR")
+KBHU D 0 
+Goto NoAmmo
+LimitGloveR:
+KBHU D 0 A_JumpIfHealthLower(25, "LimitGloveP")
+KBHU D 0 A_TakeInventory("MP",5)
+KBHU D 0 A_PlaySoundEx("misc/wilylightning","Weapon")
+KBHU D 0 A_SpawnItemEx ("LimitGlove",cos(-pitch)*56,0,32+(sin(-pitch)*48), momx, momy, 0,0,SXF_ABSOLUTEMOMENTUM,0)
+KBHU B 10
+KBHU A 2 
+goto Ready+2
+LimitGloveP:
+KBHU D 0 A_TakeInventory("MP",5)
+KBHU D 0 A_PlaySoundEx("misc/wilylightning","Weapon")
+KBHU D 0 A_SpawnItemEx ("LimitGlove2",cos(-pitch)*56,0,32+(sin(-pitch)*48), momx, momy, 0,0,SXF_ABSOLUTEMOMENTUM,0)
+KBHU B 10
+KBHU A 2
+goto Ready+2
+
+NoAmmo:
+KBHU A 1 //ACS_Execute(979,0)
+KBHU A 0 A_JumpIfInventory("IsBot", 1, "BotAmmo")
+KBHU A 0 A_JumpIfInventory("BMFlag", 1, 1)
+Goto Ready+2
+KBHU A 0
+Goto NoAmmo2
+NoAmmo2:
+KBHU A 1 
+KBHU A 1 A_Refire("NoAmmo2")
+Goto Ready+2
+BotAmmo:
+KBHU Z 0 SetPlayerProperty(0, 1, 4)
+KBHU Z 10 A_GiveInventory("MP", 50)
+KBHU Z 0 SetPlayerProperty(0, 0, 4)
+Goto Ready+2
+}
+}
+
+actor MP : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor CD : Inventory
+{
+inventory.amount 1
+inventory.maxamount 4
+}
+
+actor KWeaponGet : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor FIR1
+{
+Obituary "$OB_KORBYFIRE1"
+PROJECTILE
++MTHRUSPECIES
+-NOGRAVITY
++DONTBLAST
+damagetype "KFIR"
+Radius 16
+Height 16
+scale 2.5
+damage (1)
+speed 30
+States
+{
+Spawn:
+NAPA A 0
+NAPA A 0 ThrustThingZ(0, 30, 0, 1)
+KFIB ABAB 1
+Goto Spawn+2
+Death:
+NAPA A 0 A_SpawnItemEx("FIR1Flame", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+NAPA A 0 A_ChangeFlag(NOGRAVITY,1)
+stop
+}
+}
+
+actor FIR2 : FIR1
+{
+Obituary "$OB_KORBYFIRE2"
+Radius 24
+Height 24
+damage (1)
++CANBOUNCEWATER
++BOUNCEONACTORS
+bouncefactor 1.0
+wallbouncefactor 1.0
+bouncecount 6
+scale 2.5
+States
+{
+Spawn:
+NAPA A 0
+NAPA A 0 ThrustThingZ(0, 30, 0, 1)
+KFIB CDCDCDCD 1 A_SpawnItemEx("OilPitIgnite",0,0,8)
+NAPA A 0 A_SpawnItemEX("FIR2TRAIL",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+Goto Spawn+2
+Death:
+NAPA A 0 A_SpawnItemEx("FIR2Flame", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+NAPA A 0 A_ChangeFlag(NOGRAVITY,1)
+stop
+}
+}
+
+actor FIR3 : FIR2
+{
+Obituary "$OB_KORBYFIRE3"
+Radius 32
+Height 32
+Damage (1)
+bouncecount 10
+speed 20
+scale 2.5
+States
+{
+Spawn:
+NAPA A 0
+NAPA A 0 ThrustThingZ(0, 30, 0, 1)
+KFIB EFEFEF 1 A_SpawnItemEx("OilPitIgnite",0,0,8)
+NAPA A 0 A_SpawnItemEX("FIR3TRAIL",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+Goto Spawn+2
+Death:
+NAPA A 0 A_SpawnItemEx("FIR3Flame", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+NAPA A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
+NAPA A 0 A_ChangeFlag(NOGRAVITY,1)
+stop
+}
+}
+
+actor FIR2TRAIL : FIR2
+{
++NOGRAVITY
++THRUACTORS
+-HEXENBOUNCE
++MTHRUSPECIES
++CLIENTSIDEONLY
+PROJECTILE
+speed 0
+renderstyle add
+damage (0)
+States
+{
+Spawn:
+KFIB CD 1 A_FadeOut(0.05)
+loop
+Death:
+TNT1 A 0
+Stop
+}
+}
+
+actor FIR3TRAIL : FIR2TRAIL
+{
+States
+{
+Spawn:
+KFIB EF 1 A_FadeOut(0.05)
+loop
+Death:
+TNT1 A 0
+Stop
+}
+}
+
+actor FIR1_B : FIR1 {Translation  "186:186=74:74","229:229=196:196","176:176=205:205","210:210=205:205"}
+actor FIR1_R : FIR1 {Translation  "186:186=41:41","229:229=170:170","176:176=171:171","210:210=171:171"}
+actor FIR1_G : FIR1 {Translation  "186:186=128:128","229:229=138:138","176:176=104:104","210:210=104:104"}
+actor FIR1_Y : FIR1 {Translation  "186:186=232:232","229:229=214:214","176:176=229:229","210:210=229:229"}
+
+actor FIR1_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FIR1",0,0,0,0)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("FIR1_B",0,0,0,0)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("FIR1_R",0,0,0,0)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("FIR1_G",0,0,0,0)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("FIR1_Y",0,0,0,0)
+goto Done
+}
+}
+
+
+actor FIR2_B : FIR2 {Translation  "186:186=74:74","229:229=196:196","176:176=205:205","210:210=205:205"}
+actor FIR2_R : FIR2 {Translation  "186:186=41:41","229:229=170:170","176:176=171:171","210:210=171:171"}
+actor FIR2_G : FIR2 {Translation  "186:186=128:128","229:229=138:138","176:176=104:104","210:210=104:104"}
+actor FIR2_Y : FIR2 {Translation  "186:186=232:232","229:229=214:214","176:176=229:229","210:210=229:229"}
+
+actor FIR2_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FIR2",0,0,0,0)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("FIR2_B",0,0,0,0)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("FIR2_R",0,0,0,0)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("FIR2_G",0,0,0,0)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("FIR2_Y",0,0,0,0)
+goto Done
+}
+}
+
+actor FIR3_B : FIR3 {Translation  "186:186=199:199","229:229=205:205","176:176=74:74","210:210=205:205"}
+actor FIR3_R : FIR3 {Translation  "186:186=45:45","229:229=171:171","176:176=41:41","210:210=171:171"}
+actor FIR3_G : FIR3 {Translation  "186:186=131:131","229:229=104:104","176:176=128:128","210:210=104:104"}
+actor FIR3_Y : FIR3 {Translation  "186:186=223:223","229:229=229:229","176:176=232:232","210:210=229:229"}
+
+actor FIR3_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FIR3",0,0,0,0)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("FIR3_B",0,0,0,0)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("FIR3_R",0,0,0,0)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("FIR3_G",0,0,0,0)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("FIR3_Y",0,0,0,0)
+goto Done
+}
+}
+
+actor KorbyFlameFX
+{
+PROJECTILE
++THRUACTORS
++CLIENTSIDEONLY
+Radius 1
+Height 1
+Renderstyle "Add"
+Alpha 0.75
+Scale 2.5
+
+States
+{
+Spawn:
+KFIR LG 4 A_FadeOut(0.15)
+loop
+}
+}
+
+actor FIR1Flame 
+{
+Radius 1
+Height 1
+PROJECTILE
++THRUACTORS
++NOINTERACTION
+Renderstyle "Translucent"
+Speed 0
+Scale 3.5
+Alpha 0.75
+Damage (0)
+Obituary "$OB_KORBYFIRE1"
+States
+{
+Spawn:
+KFIR G 0
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 4, 4, 0, 20, 0, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 4, 4, 0, 20, 90, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 4, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 4, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
+KFIR GLG 4 A_Explode(5, 64, 0, 0, 64)
+KFIR L 1 A_FadeOut
+wait
+}
+}
+
+
+actor FIR2Flame : FIR1Flame
+{
+Obituary "$OB_KORBYFIRE2"
+States
+{
+Spawn:
+KFIR A 0
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 0, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 60, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 120, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 240, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 300, SXF_TRANSFERTRANSLATION)
+KFIR A 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
+KFIR ABCDE 4 A_Explode(6, 96, 0, 0, 96)
+KFIR F 1 A_FadeOut
+wait
+}
+}
+
+actor FIR3Flame : FIR1Flame
+{
+Obituary "$OB_KORBYFIRE3"
+States
+{
+Spawn:
+KFIR G 0
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 0, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 45, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 90, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 135, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 225, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 5, 0, 20, 315, SXF_TRANSFERTRANSLATION)
+KFIR G 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
+KFIR GHIJKL 4 A_Explode(10, 128, 0, 0, 128)
+KFIR L 1 A_FadeOut
+wait
+}
+}
+
+Actor Korby1Flame
+{
+PROJECTILE
++THRUACTORS
+BounceType "Hexen"
++USEBOUNCESTATE
+Radius 16
+Height 8
+Renderstyle "Translucent"
+Alpha 0.75
+Scale 2.5
+-NOGRAVITY
+Obituary "$OB_KORBYFIRE1"
+States
+{
+Spawn:
+KFIR L 0
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_ChangeFlag("THRUACTORS", FALSE)
+Spawn2: 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+loop
+Bounce.Ceiling:
+"----" A 0 
+Goto FadeDeath
+Bounce.Wall: 
+"----" A 0 A_ScaleVelocity(0.5)
+Goto Spawn2
+Bounce.Floor:
+"----" A 0 
+Goto Death
+FadeDeath:
+"----" A 1 A_FadeOut
+wait
+Death:
+NAPA E 0 A_SetTranslucent(1.0, 0)
+NAPA E 0 A_ChangeFlag("NOGRAVITY", TRUE)
+NAPA E 0 A_Stop
+NAPA E 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+NAPA E 0 A_Explode(15, 96, 0, 0, 96)
+NAPA EFGHIJKLMNOPQRS 2
+stop
+}
+}
+
+Actor Korby2Flame : Korby1Flame
+{
+Obituary "$OB_KORBYFIRE2"
+}
+
+actor Korby3Flame : Korby1Flame
+{
+Obituary "$OB_KORBYFIRE3"
+States
+{
+Spawn:
+KFIR L 0
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_ChangeFlag("THRUACTORS", FALSE)
+Spawn2: 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+loop
+Bounce.Ceiling:
+Bounce.Wall: 
+"----" A 0 A_ScaleVelocity(0.5)
+Goto Spawn2
+Bounce.Floor:
+"----" A 0 
+Goto Death
+}
+}

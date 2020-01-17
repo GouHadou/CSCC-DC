@@ -1,0 +1,489 @@
+actor ICE : FIR
+{
+Weapon.AmmoUse 8
+Weapon.SlotNumber 3
+Obituary "$OB_KORBYICE"
+Inventory.Pickupmessage "$PU_KORBYICE"
+States
+{
+Deselect:
+TNT1 A 0 A_TakeInventory("WeaponCharge",999)
+//TNT1 A 0 A_SelectWeapon("FIR")
+//TNT1 A 0 ACS_ExecuteAlways(CSACS_TAKEWEAPON, 0)
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+KBHF A 1 A_Raise
+Loop
+Fire:
+KBHI A 0 A_JumpIfNoAmmo("NoAmmo")
+KBHU EF 1
+goto Hold
+Hold:
+KBHI G 0 A_JumpIfNoAmmo("NoAmmo")
+KBHI G 0 A_JumpIfInventory("WeaponCharge",1,"Hold2")
+KBHI G 0 A_JumpIf(momx == 0 && momy == 0, "HoldD")
+KBHI F 2 A_GiveInventory("WeaponCharge",1)
+//KBHI G 0 ACS_ExecuteAlways(994,0)
+KBHI G 0 A_Refire
+Goto Fire1
+HoldD:
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 0 A_GiveInventory("WeaponCharge",2)
+//KBHI G 0 ACS_ExecuteAlways(994,0)
+KBHI G 0 A_Refire
+Goto Fire1
+Hold2:
+KBHI G 0 //A_StopSoundEx ("Weapon") 
+KBHI G 0 
+KBHI G 0 A_JumpIfInventory("WeaponCharge",10,"Hold3")
+KBHI G 0 A_JumpIf(momx == 0 && momy == 0, "Hold2D")
+KBHI FF 2
+KBHI F 0 A_GiveInventory("WeaponCharge",1)
+KBHI G 0 A_Refire
+Goto Fire1
+Hold2D:
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 0 A_GiveInventory("WeaponCharge",2)
+KBHI G 0 A_Refire
+Goto Fire1
+Hold3:
+KBHI G 0 //A_StopSoundEx ("Weapon") 
+KBHI G 0 
+KBHI G 0 A_JumpIfInventory("WeaponCharge",26,"BotCheck")
+KBHI G 0 A_JumpIf(momx == 0 && momy == 0, "Hold3D")
+KBHI FG 2
+KBHI F 0 A_GiveInventory("WeaponCharge",1)
+KBHI G 0 A_Refire
+Goto Fire2
+Hold3D:
+//KBHI FGFGFG 2
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI G 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI G 1 A_SpawnItemEX("ChargeEffectIce")
+KBHI F 0 A_GiveInventory("WeaponCharge",2)
+KBHI G 0 A_Refire
+Goto Fire2
+BotCheck:
+KBHF G 0 A_JumpIfInventory("IsBot", 1, "BotRelease")
+Goto Hold4
+BotRelease:
+KBHF G 0 A_Jump(32, "Fire3")
+Goto Hold4
+Hold4:
+KBHI F 0 A_StopSoundEx ("Weapon")
+KBHI GH 2
+KBHI J 0 
+KBHI G 0 A_Refire
+Goto Fire3
+Fire1:
+KBHF F 0 A_JumpIfNoAmmo("NoAmmo")
+KBHI F 0 A_TakeInventory("WeaponCharge",999)
+KBHI F 0 A_TakeInventory("MP",8)
+KBHI F 4 A_GiveInventory("ICE1_M1")
+KBHU F 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+KBHU FE 2
+KBHU A 4
+//KBHI A 0 A_GiveInventory("CD",1)
+goto Ready+2
+Fire2:
+KBHF F 0 A_JumpIfInventory("MP", 18, "Fire2R")
+goto Fire1
+Fire2R:
+KBHI F 0 A_TakeInventory("WeaponCharge",999)
+KBHI F 0 A_TakeInventory("MP",18)
+KBHI F 0 A_GiveInventory("ICE2_M1")
+KBHU D 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+KBHU FE 2
+//KBHI A 0 A_GiveInventory("CD",2)
+goto Ready+2
+Fire3:
+KBHF F 0 A_JumpIfInventory("MP", 40, "Fire3R")
+goto Fire2
+Fire3R:
+KBHI F 0 A_TakeInventory("WeaponCharge",999)
+KBHI F 0 A_TakeInventory("MP",40)
+KBHI F 0 A_GiveInventory("ICE3_M1")
+KBHU D 0 A_PlaySoundEx("weapon/mbuster","Weapon")
+KBHI F 8
+KBHU FE 4
+KBHI A 0 A_GiveInventory("CD",8)
+goto Ready+2
+}
+}
+
+actor ICE1
+{
+PROJECTILE
++RIPPER
++DONTBLAST
++DONTSPLASH
++HEXENBOUNCE
++CANBOUNCEWATER
++MTHRUSPECIES
+damagetype "KICE"
+RenderStyle "Translucent"
+Alpha 0.9
++FORCEXYBILLBOARD
+//bouncefactor 0.9
+//wallbouncefactor 0.9
+bouncecount 9999
+Radius 24
+Height 32
+scale 2.5
+damage (1)
+speed 40
+States
+{
+Spawn:
+KBLI B 10
+KBLI B 0 A_Stop
+KBLI B 3
+goto Death
+Death:
+MMFX B 0 A_SpawnItemEx("ICE1SPAWNER",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+//MMFX BCDE 2
+stop
+}
+}
+
+actor ICE2 : ICE1
+{
+States
+{
+Spawn:
+KBLI C 10
+KBLI C 0 A_Stop
+KBLI C 3
+goto Death
+Death:
+MMFX B 0 A_SpawnItemEx("ICE2SPAWNER",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+//MMFX BCDE 2
+stop
+}
+}
+
+actor ICE3 : ICE1
+{
+States
+{
+Spawn:
+KBLI D 10
+KBLI D 0 A_Stop
+KBLI D 3
+goto Death
+Death:
+MMFX B 0 A_SpawnItemEx("ICE3SPAWNER",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+//MMFX BCDE 2
+stop
+}
+}
+
+actor ICE1SPAWNER : ICE1
+{
+-BOUNCEONACTORS
+-DONTBLAST
++RIPPER
++THRUGHOST
+damage (1)
+obituary "$OB_KORBYICE"
+reactiontime 2
+States
+{
+Spawn:
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,30,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,60,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,90,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,120,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,150,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-30,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-60,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-90,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-120,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-150,SXF_TRANSFERTRANSLATION)
+KBLI B 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+KBLI B 12
+KBLI B 0 A_Countdown
+loop
+Death:
+MMFX BCDE 2
+stop
+}
+}
+
+actor ICE2SPAWNER : ICE1
+{
+-BOUNCEONACTORS
++RIPPER
++THRUGHOST
+-DONTBLAST
+damage (1)
+obituary "$OB_KORBYICE2"
+reactiontime 4
+States
+{
+Spawn:
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,30,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,60,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,90,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,120,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,150,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-30,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-60,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-90,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-120,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,-150,SXF_TRANSFERTRANSLATION)
+KBLI C 0 A_SpawnItemEx("ICE1FLAKE", 46,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+KBLI C 12
+KBLI C 0 A_Countdown
+loop
+Death:
+MMFX BCDE 2
+stop
+}
+}
+
+actor ICE3SPAWNER : ICE1
+{
+-BOUNCEONACTORS
++RIPPER
++THRUGHOST
+-DONTBLAST
+damage (1)
+obituary "$OB_KORBYICE3"
+reactiontime 6
+States
+{
+Spawn:
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_PlaySoundEx("weapon/freezecracker","Weapon")
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,30,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,60,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,90,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,120,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,150,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,-30,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,-60,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,-90,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,-120,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,-150,SXF_TRANSFERTRANSLATION)
+KBLI D 0 A_SpawnItemEx("ICE3FLAKE", 46,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+KBLI D 12
+KBLI D 0 A_Countdown
+loop
+Death:
+MMFX BCDE 2
+stop
+}
+}
+
+actor ICE1FLAKE
+{
+PROJECTILE
+-HEXENBOUNCE
+RenderStyle "Translucent"
+Alpha 0.9
+bouncecount 5
+damagetype "KICE"
+obituary "$OB_KORBYICE"
+radius 16
+height 16
+damage (6)
+speed 0
+scale 2.0
+States
+{
+Spawn:
+KBLI A 0 
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-36.0)
+KBLI A 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-36.0)
+KBLI A 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 2 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 2 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 2 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 3 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 4 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 5 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 6 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 7 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)/*
+KBLI A 9 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)/*
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 11 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI A 0 A_Setangle(angle-18.0)
+KBLI A 12 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)*/
+stop
+Death:
+KBLI A 0
+stop
+}
+}
+
+actor ICE3FLAKE
+{
+PROJECTILE
++HEXENBOUNCE
+-BOUNCEONACTORS
++MTHRUSPECIES
+RenderStyle "Translucent"
+Alpha 0.9
+bouncecount 5
+damagetype "KICE"
+obituary "$OB_KORBYICE3"
+radius 16
+speed 0
+height 16
+damage (8)
+scale 2.0
+States
+{
+Spawn:
+KBLI B 0 
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-36.0)
+KBLI B 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-36.0)
+KBLI B 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 1 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 2 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 2 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 2 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 3 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 4 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 5 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 6 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 7 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)/*
+KBLI B 9 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)/*
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 11 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+KBLI B 0 A_Setangle(angle-18.0)
+KBLI B 12 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)*/
+stop
+Death:
+KBLI B 0
+stop
+}
+}
+
+actor ICE1_B : ICE1 {Translation  "198:198=74:74","215:215=196:196","229:229=205:205","241:241=244:244"}
+actor ICE1_R : ICE1 {Translation  "198:198=41:41","215:215=170:170","229:229=171:171","241:241=191:191"}
+actor ICE1_G : ICE1 {Translation  "198:198=128:128","215:215=138:138","229:229=104:104","241:241=135:135"}
+actor ICE1_Y : ICE1 {Translation  "198:198=232:232","215:215=214:214","229:229=229:229","241:241=234:234"}
+
+actor ICE1_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("ICE1",0,0,0,0)
+goto Done
+//---
+FireB:
+TNT1 A 0 A_FireCustomMissile("ICE1_B",0,0,0,0)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("ICE1_R",0,0,0,0)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("ICE1_G",0,0,0,0)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("ICE1_Y",0,0,0,0)
+goto Done
+}
+}
+
+actor ICE2_B : ICE2 {Translation  "198:198=74:74","215:215=196:196","229:229=205:205","241:241=244:244"}
+actor ICE2_R : ICE2 {Translation  "198:198=41:41","215:215=170:170","229:229=171:171","241:241=191:191"}
+actor ICE2_G : ICE2 {Translation  "198:198=128:128","215:215=138:138","229:229=104:104","241:241=135:135"}
+actor ICE2_Y : ICE2 {Translation  "198:198=232:232","215:215=214:214","229:229=229:229","241:241=234:234"}
+
+actor ICE2_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("ICE2",0,0,0,0)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("ICE2_B",0,0,0,0)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("ICE2_R",0,0,0,0)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("ICE2_G",0,0,0,0)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("ICE2_Y",0,0,0,0)
+goto Done
+}
+}
+
+actor ICE3_B : ICE3 {Translation  "198:198=74:74","215:215=196:196","229:229=205:205","241:241=244:244"}
+actor ICE3_R : ICE3 {Translation  "198:198=41:41","215:215=170:170","229:229=171:171","241:241=191:191"}
+actor ICE3_G : ICE3 {Translation  "198:198=128:128","215:215=138:138","229:229=104:104","241:241=135:135"}
+actor ICE3_Y : ICE3 {Translation  "198:198=232:232","215:215=214:214","229:229=229:229","241:241=234:234"}
+
+actor ICE3_M1 : BasicTeamColorPickup
+{
+states
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("ICE3",0,0,0,0)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("ICE3_B",0,0,0,0)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("ICE3_R",0,0,0,0)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("ICE3_G",0,0,0,0)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("ICE3_Y",0,0,0,0)
+goto Done
+}
+}
