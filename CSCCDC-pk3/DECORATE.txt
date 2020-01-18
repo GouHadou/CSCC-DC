@@ -26,11 +26,13 @@
 //===|Coldfusion
 #include "actors/classes/coldfusion/cfclass.txt"
 #include "actors/classes/coldfusion/cfwep.txt"
-//#include "actors/classes/coldfusion/cfig.txt"
 
 //===|Korby
 #include "actors/classes/korby/KORBCLASS.txt"
-#include "actors/classes/korby/KORBWEP.txt"
+#include "actors/classes/korby/KORBFIR.txt"
+#include "actors/classes/korby/KORBLIT.txt"
+#include "actors/classes/korby/KORBICE.txt"
+#include "actors/classes/korby/KORBBLU.txt"
 
 //===|laggyblazko
 #include "actors/classes/laggyblazko/lgclass.txt"
@@ -57,7 +59,6 @@
 //===|Messatsu
 #include "actors/classes/messatsu/messclass.txt"
 #include "actors/classes/messatsu/messwep.txt"
-//#include "actors/classes/messatsu/messig.txt"
 
 //===|icespark
 #include "actors/classes/icespark/isclass.txt"
