@@ -18,7 +18,7 @@ InInventory SkullShieldCheck, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, ve
 InInventory SkullBarrierProtection, 1{DrawBar "BARFLS5", "NOBAR", SkullShieldCheck, vertical, 24, 8;}
 InInventory not NoArmorBar, 1
 	{
-	InInventory BasicArmor, 1{DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8;}
+	InInventory BasicArmor, 1{DrawBar "BARAMT31", "NOBAR", Armor, vertical, 24, 8; InInventory HealthNumberFlag, 1{DrawNumber 3, "CSCCAFONT", Untranslated, Armor, alignment(left), 31, 38;}}
 	}
 InInventory DocToadHealthBar, 1{DrawBar "BARHEADO", "NOBAR", Health, vertical, 24, 8;}
 InInventory GlassHealthBar, 1{DrawBar "BARHEALG", "NOBAR", Health, vertical, 24, 8;}
@@ -97,8 +97,7 @@ InInventory UpgradeTimer, 500{Drawbar"UKIFULL", "MODBARE", UpgradeTimer, vertica
 }
 
 //====|ColdFusion
-IsSelected FusionBombClassWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	DrawBar "BARSHLD", "NOBAR", Armor, vertical, 24, 8;}
+IsSelected FusionBombClassWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 
 //====|Corporal
 InInventory LaggyHUD //It will have more stuff later.
