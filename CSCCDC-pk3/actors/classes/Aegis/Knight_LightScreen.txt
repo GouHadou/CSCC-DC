@@ -224,22 +224,22 @@ BLTR C 0 A_Jumpifinventory("LightTeamFlag",1,"TeamBlueFire")
 BLTR C 0 A_Jumpifinventory("CossackTeamFlag",1,"TeamGreenFire")
 BLTR C 0 A_Jumpifinventory("KingTeamFlag",1,"TeamGoldFire")
 
-TNT1 A 0 A_FireCustomMissile("DeployShield",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("DeployShield",0,0,8,0,0,0)
 stop
 TeamRedFire:
-TNT1 A 0 A_FireCustomMissile("DeployShield_R",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("DeployShield_R",0,0,8,0,0,0)
 TNT1 A 0
 stop
 TeamBlueFire:
-TNT1 A 0 A_FireCustomMissile("DeployShield_B",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("DeployShield_B",0,0,8,0,0,0)
 TNT1 A 0
 stop
 TeamGreenFire:
-TNT1 A 0 A_FireCustomMissile("DeployShield_G",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("DeployShield_G",0,0,8,0,0,0)
 TNT1 A 0
 stop
 TeamGoldFire:
-TNT1 A 0 A_FireCustomMissile("DeployShield_O",0,1,8,0,0,0)
+TNT1 A 0 A_FireCustomMissile("DeployShield_O",0,0,8,0,0,0)
 TNT1 A 0
 stop
 }
