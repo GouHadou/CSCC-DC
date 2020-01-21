@@ -1,0 +1,84 @@
+actor AntistallObjectiveMarker : MapMarker
+{
++NOINTERACTION
++NOGRAVITY
++SYNCHRONIZED
+-SOLID
+States
+{
+Spawn:
+ATSL F 8
+TNT1 A 8
+loop
+}
+}
+
+actor AntistallRingMarker : MapMarker
+{
++NOINTERACTION
++NOGRAVITY
++SYNCHRONIZED
+-SOLID
+scale 0.7
+States
+{
+Spawn:
+ATSL G 18
+stop
+}
+}
+
+actor AntiStallObjective
+{
++DONTSPLASH
+-MOVEWITHSECTOR
+-WINDTHRUST
+scale 2.5
+radius 16
+height 32
+translation "192:192=87:87", "198:198=95:95"
+states
+{
+Spawn:
+ATSL BCD 5
+loop
+}
+}
+
+actor AntiStallRingSpawn
+{
++NOINTERACTION
++NOGRAVITY
++FORCEXYBILLBOARD
+-SOLID
+scale 2.5
+height 1
+radius 1
+var int user_angle;
+translation "192:192=87:87", "198:198=95:95"
+States
+{
+Spawn:
+TNT1 A 0
+SpawnLoop:
+TNT1 A 0 A_SpawnItemEx("AntistallRingMarker", CallAcs("CSACS_AntiStallRadiusReturn"), 0, 5, 0, 0, 0, user_angle, SXF_ABSOLUTEANGLE|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("AntistallRingParticle", CallAcs("CSACS_AntiStallRadiusReturn"), 0, -20, 0, 0, 5, user_angle, SXF_ABSOLUTEANGLE|SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SetUserVar("user_angle", user_angle + 12)
+TNT1 A 2 A_Jumpif(user_angle <= 360, "SpawnLoop")
+TNT1 A 15 A_SetUserVar("user_angle",0)
+Goto Spawn
+}
+}
+
+actor AntistallRingParticle : BasicClientside
+{
+scale 3.5
+States
+{
+Spawn:
+TNT1 A 0
+ATSL EEEEEEEEE 3
+ATSL EEEEEEEEE 3 A_Fadeout
+stop
+}
+}

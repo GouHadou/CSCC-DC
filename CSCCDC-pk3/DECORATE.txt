@@ -2,6 +2,7 @@
 #include "actors/CSCCConstants.txt"
 #include "actors/baseflags.txt"
 #include "actors/baseactors.txt"
+#include "actors/antistall.txt"
 
 #include "actors/inventory/CustomRecover.txt"
 #include "actors/inventory/CustomItem.txt"

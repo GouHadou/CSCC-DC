@@ -1,0 +1,198 @@
+//#library "ANTISTALL"
+//#include "zcommon.acs"
+
+bool countdown = true;
+
+#DEFINE ANTISTALLOBJECTIVETID 50
+#DEFINE ANTISTALLOBJECTIVERINGTID 51
+#DEFINE ANTISTALLOBJECTIVEMARKERTID 52
+
+bool GameWon = false;
+
+Script "CSACS_AntistallTimer" OPEN
+{
+Delay(10);
+
+if(ACS_ExecuteWithResult(975,0)!=2){terminate;}
+if(GetCvar("CSCC_Antistall_AntistallActive")==false){terminate;}
+
+int WinRequirement = GetCvar("CSCC_Antistall_CaptureTime")*35;
+int time;
+int timelimit = GetCvar("CSCC_Antistall_PreliminaryTimer")+GetCvar("CSCC_Antistall_SetupTimer");
+if(timelimit<0){timelimit = 0;}
+int timerequiredtics = (GetCvar("CSCC_Antistall_PreliminaryTimer")*35)-25;
+if(timerequiredtics<0){timerequiredtics = 0;}
+int timelimittics;
+int timeleftsecs;
+int timeleftmin;
+bool TimeLow = false;
+bool SpawnSet = false;
+int SpawnLocation;
+	
+while(Countdown)
+    {
+    if(GetGamemodeState()==1||GetGamemodeState()==0||GetGamemodeState()==3)
+        {
+        HudMessageBold(s:""; HUDMSG_PLAIN, 265, 0, 160.1, 30.1, 0, 0);
+        HudMessageBold(s:""; HUDMSG_PLAIN, 266, 0, 160.1, 30.1, 0, 0);
+        HudMessageBold(s:""; HUDMSG_PLAIN, 267, 0, 160.1, 30.1, 0, 0);
+        terminate;
+        }
+
+    while(SpawnSet == false)
+        {
+        SpawnLocation = random(2000,2032);
+        if(ThingCount(0,SpawnLocation)>0){SpawnSet = true;}
+        }
+
+    time = Timer()-10;
+    timelimittics = timelimit*35;
+    timeleftsecs = (timelimittics-time)/35;
+	timeleftmin = (timelimittics-time)/2100;
+	
+    if(timelimittics-time <= 35){Countdown = false;}
+	
+    if(Timer() >= timerequiredtics && TimeLow == false){AmbientSound("misc/kingalarm",127); SpawnSpotForced("AntiStallObjective",SpawnLocation,ANTISTALLOBJECTIVETID,0); SpawnSpotForced("AntistallObjectiveMarker",SpawnLocation,ANTISTALLOBJECTIVEMARKERTID,0);TimeLow = true;}
+	
+    SetFont("STCFN");
+    SetHudSize(320,240,0);
+	
+    if(Timer() >= timerequiredtics)
+        {
+	    HudMessageBold(i:timeleftmin, s:":", i:((timeleftsecs)%60)/10, i:(timeleftsecs)%10; HUDMSG_PLAIN, 266, CR_WHITE,160.4, 20.0, 0,0.1);
+	    HudMessageBold(s:"Locate the control point!"; HUDMSG_PLAIN, 267, CR_WHITE, 160.4, 10.0, 0,0.1);
+        }
+    Delay(1);
+    }
+
+ACS_ExecuteAlways(972,0,2,1); 
+ACS_NamedExecuteAlways("CSACS_AntistallObjCheck",0);
+ACS_NamedExecuteAlways("CSACS_AntistallObjHandleLMS",0,WinRequirement);
+SpawnSpotForced("AntiStallRingSpawn",SpawnLocation,ANTISTALLOBJECTIVERINGTID,0);
+HudMessageBold(s:"Capture the control point!"; HUDMSG_PLAIN, 267, CR_DARKGREY, 160.4, 10.0, 0,0.1);
+
+SetFont("PROGNN");
+HudMessageBold(s:"A"; HUDMSG_PLAIN, 266, 0, 160.1, 30.1, 0, 0);
+
+while(!GameWon)
+    {
+    if(GetGamemodeState()==1||GetGamemodeState()==0||GetGamemodeState()==3)
+        {
+        HudMessageBold(s:""; HUDMSG_PLAIN, 265, 0, 160.1, 30.1, 0, 0);
+        HudMessageBold(s:""; HUDMSG_PLAIN, 266, 0, 160.1, 30.1, 0, 0);
+        HudMessageBold(s:""; HUDMSG_PLAIN, 267, 0, 160.1, 30.1, 0, 0);
+        terminate;
+        }
+    SetFont(StrParam(s:"PROGX",i:GetAntistallSprite(WinRequirement)));
+    HudMessageBold(s:"A"; HUDMSG_PLAIN, 265, 0, 160.0, 30.0, 0, 0);
+    Delay(1);
+    }
+}
+
+function str GetAntistallSprite (int MaxWin)
+{
+int WinPercent;
+int CurrentWin;
+
+CurrentWin = GetCvar("CSCC_Antistall_Ignore_Progress_Player0");
+            
+    WinPercent = ((CurrentWin*80)/MaxWin);
+    
+    WinPercent = WinPercent / 8;
+
+    if(WinPercent != 0){WinPercent = WinPercent-1;}
+    if(WinPercent > 8){WinPercent = 8;}
+    if(WinPercent < 0){WinPercent = 0;}
+    return (WinPercent);
+    }
+
+script "CSACS_AntistallObjCheck" (void)
+{
+for(int i = 0; i < GetMaxPlayers(); i++)
+    { 
+	If(PlayerInGame(i) && CheckSight(1000+i,ANTISTALLOBJECTIVETID,0))
+		{
+		if(GetActorProperty(1000 + i, APROP_Health)>0 
+		&& CheckActorProperty(1000 + i, APROP_Invulnerable, 1) == false
+		&& CheckActorInventory(1000 + i, "InvisibleFlag") == false)
+			{
+			if(xyDistance(i + 1000, ANTISTALLOBJECTIVETID) < GetCvar("CSCC_AntiStall_Radius")
+			&& zDistance(ANTISTALLOBJECTIVETID, i+1000)>(-1*GetCvar("CSCC_Antistall_Height")))
+				{
+				switch(GetPlayerInfo(i, PLAYERINFO_TEAM))
+					{
+					Case 0: //Light
+					SetCvar("CSCC_AntiStall_Ignore_Light",1);
+					break;
+					Case 1: //Wily
+					SetCvar("CSCC_AntiStall_Ignore_Wily",1);
+					break;
+					Case 2: //Cossack
+					SetCvar("CSCC_AntiStall_Ignore_Cossack",1);
+					break;
+					Case 3: //King
+					SetCvar("CSCC_AntiStall_Ignore_King",1);
+					break;
+                    Case 4: //LMS
+					SetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Player",i:i),1);
+					break;
+					}
+				}
+			}
+		}
+	}
+Delay(5);
+SetCvar("CSCC_AntiStall_Ignore_Light",0);
+SetCvar("CSCC_AntiStall_Ignore_Wily",0);
+SetCvar("CSCC_AntiStall_Ignore_Cossack",0);
+SetCvar("CSCC_AntiStall_Ignore_King",0);
+for(int o = 0; o < GetMaxPlayers(); o++){SetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Player",i:o),0);}
+if(GameWon){terminate;}
+restart;
+}
+
+script "CSACS_AntistallObjHandleLMS" (int WinRequirement)
+{
+int Winner = 255;
+int WinnerSet = 255;
+int ContestCheck = 0;
+
+for(int i = 0; i < GetMaxPlayers(); i++)
+    {
+    if(GetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Player",i:i))==1)
+        {
+        Winner = i;
+        ContestCheck++;
+        }
+    }
+
+if(ContestCheck<2&&ContestCheck!=0){SetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Progress_Player",i:Winner),GetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Progress_Player",i:Winner))+1);}
+
+for(int o = 0; o < GetMaxPlayers(); o++)
+    {
+    if(GetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Progress_Player",i:o))>=WinRequirement){WinnerSet = o;}
+    }
+
+if(WinnerSet!=255)
+    {
+    GameWon = true;
+    for(int g = 0; g < GetMaxPlayers(); g++)
+	    {
+        SetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Progress_Player",i:g),0);
+        SetCvar(StrParam(s:"CSCC_AntiStall_Ignore_Player",i:g),0);
+        if(g!=WinnerSet){SetActorProperty(g+1000,APROP_Health,0);}
+        }
+    terminate;
+    }
+
+Winner = 0;
+WinnerSet = 0;
+ContestCheck = 0;
+Delay(1);
+restart;
+}
+
+script "CSACS_AntiStallRadiusReturn" (void)
+{
+SetResultValue(GetCvar("CSCC_AntiStall_Radius"));
+}
