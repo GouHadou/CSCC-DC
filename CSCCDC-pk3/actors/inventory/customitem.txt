@@ -50,7 +50,7 @@ AdaptorUpgrade_Spawn:
 WEA3 P 35
 Goto Spawn
 LaserBusterUpgrade_Spawn:
-WEA3 P 35
+WEA4 K 35
 Goto Spawn
 ArrowBusterUpgrade_Spawn:
 WEA4 L 35
