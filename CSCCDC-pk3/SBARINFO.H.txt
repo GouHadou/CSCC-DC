@@ -174,6 +174,9 @@ IsSelected MessatsuWep
 	DrawBar "MESSHCHG", "VNOBAR", MessatsuCharge, horizontal, 130, 184;
 	}
 	InInventory NOT MessParry, 1 {DrawImage "MESPARY", 130, 176; DrawImage "HORICON1", 130, 168;}
+	InInventory TemaReady, 1 {DrawImage "TEMAGOU", 122, 176; DrawImage "HORICON2", 122, 168;}
+	InInventory MisogiReady, 1 {DrawImage "MISOGI", 122, 176; DrawImage "HORICON2", 122, 168;}
+	InInventory RagingDemonReady, 1 {DrawImage "RDEMON", 122, 176; DrawImage "HORICON2", 122, 168;}
 	InInventory MessatsuAmmo, 56 {DrawImage "RDEMON", 116, 196, center;}
 	InInventory MessatsuAmmo, 36 {DrawImage "MISOGI", 98, 196, center;}
 	InInventory MessatsuAmmo, 18 {DrawImage "TEMAGOU", 80, 196, center;}

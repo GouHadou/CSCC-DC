@@ -343,15 +343,35 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsM
 		{
 		If(!CheckInventory("NoParry")){GiveInventory("MessParryFlag", 1);}
 		}
-	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP)==3)
-		{
-		GiveInventory("MessAirMod", 1);
-		}
 	Delay(1);
 	InputOldButtons = InputButtons;
 	}
-
 }
+
+Script "CSACS_MessSuperItems" (int Super)
+{
+Switch(Super)
+	{
+	Case 1:
+	TakeInventory("TemaReady", 1);
+	TakeInventory("MessatsuAmmo", 18);
+	TakeInventory("MessSuperFlag", 56);
+	break;
+
+	Case 2:
+	TakeInventory("MisogiReady", 1);
+	TakeInventory("MessatsuAmmo", 36);
+	TakeInventory("MessSuperFlag", 56);
+	break;
+
+	Case 3:
+	TakeInventory("RagingDemonReady", 1);
+	TakeInventory("MessatsuAmmo", 56);
+	TakeInventory("MessSuperFlag", 56);
+	break;
+	}
+}
+
 Script "CSACS_DemonFlipCheck" (void)
 {
 int InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);;

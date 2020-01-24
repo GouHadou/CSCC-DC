@@ -178,6 +178,9 @@ InInventory OverhealValue, 1 {DrawBar "MESSVOVR", "NOBAR", OverhealValue, vertic
 
 InInventory MessatsuCharge, 4{DrawBar "MESSVCHG", "NOBAR", MessatsuCharge, vertical, 24, 8;}
 InInventory NOT MessParry, 1 {DrawImage "MESPARY", 32, 56; DrawImage "VERICON1", 40, 56;}
+InInventory TemaReady, 1 {DrawImage "TEMAGOU", 32, 64; DrawImage "VERICON2", 40, 64;}
+InInventory MisogiReady, 1 {DrawImage "MISOGI", 32, 64; DrawImage "VERICON2", 40, 64;}
+InInventory RagingDemonReady, 1 {DrawImage "RDEMON", 32, 64; DrawImage "VERICON2", 40, 64;}
 InInventory MessatsuAmmo, 56{DrawImage "RDEMON", 16, 20, center;}
 InInventory MessatsuAmmo, 36{DrawImage "MISOGI", 16, 35, center;}
 InInventory MessatsuAmmo, 18{DrawImage "TEMAGOU", 16, 50, center;}

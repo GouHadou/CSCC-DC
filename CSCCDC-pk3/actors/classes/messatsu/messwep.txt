@@ -21,6 +21,7 @@ GHAD A 0 A_JumpIfInventory("RagingDemonFlag", 1, "RagingDemonReady")
 GHAD A 0 A_JumpIfInventory("TemaFlag", 1, "TemaReady")
 GHAD A 0 A_JumpIfInventory("MisogiFlag", 1, "MisogiReady")
 GHAD A 0 A_JumpIfInventory("MessParryFlag", 1, "ParryAttempt")
+GHAD A 0 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "SuperSelect")
 GHAD A 1 A_WeaponReady
 Goto Ready+1
 ParryAttempt:
@@ -120,11 +121,16 @@ TNT1 A 0 A_TakeInventory("MisogiFlag", 1)
 TNT1 A 0 A_SpawnItemEx("MessShadowWatcher", 1)
 TNT1 A 0 A_ClearRefire
 Goto Ready+1
+SuperSelect:
+GHAD A 0
+GHAD A 0 A_JumpIfInventory("RagingDemonReady", 1, "RagingDemon")
+GHAD A 0 A_JumpIfInventory("TemaReady", 1, "Tema")
+GHAD A 0 A_JumpIfInventory("MisogiReady", 1, "GroundSlam")
+GHAD AAA 1 
+Goto Ready+1
 Fire:
 GHAD D 0 
-GHAD D 0 A_JumpIfInventory("RagingDemonReady", 1, "RagingDemon")
-GHAD D 0 A_JumpIfInventory("TemaReady", 1, "Tema")
-GHAD D 0 A_JumpIfInventory("MisogiReady", 1, "GroundSlam")
+
 GHAD D 0 A_JumpIfInventory("MessatsuCharge", 1, "RealFire")
 GHAD A 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
 Goto RealFire
@@ -218,16 +224,16 @@ Goto ReleaseCharge
 AltFire:
 GHAD A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
 GSHR A 0 A_GiveInventory("MessatsuAmmo", 2)
-GSHR A 0 A_JumpIfInventory("MessAirMod", 1, "DemonFlip")
+GHAD A 0 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_JUMP), "DemonFlip")
 GSHR A 1 A_Jump(256, "Shoryu")
 Goto Shoryu
 Shoryu:
 GHAD A 0 A_PlaySoundEx("weapon/scorchwheel","Weapon")
+GSHR A 0 A_TakeInventory("MessatsuFlag", 999)
 GSHR A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
 GSHR A 3 A_SpawnItemEx("GouShoryu1", 32,8+Random(-8, 8),16, 0,0,0,0, SXF_ABSOLUTEMOMENTUM)
 GSHR B 3 A_SpawnItemEx("GouShoryu1", 48,8+Random(-8, 8),24, 0,0,0,0, SXF_ABSOLUTEMOMENTUM)
 GSHR C 0 A_SpawnItemEx("GouShoryu1", 48,8+Random(-8, 8),32, 0,0,0,0, SXF_ABSOLUTEMOMENTUM)
-//GSHR C 0 SetPlayerProperty(0,1,0)
 GSHR C 3 A_ScaleVelocity(0.50)
 GSHR C 0 A_SetArg(4, 15)
 GSHR C 0 A_ChangeVelocity(10, 0, 22, CVF_RELATIVE)
@@ -235,30 +241,26 @@ Goto AltHold
 AltHold:
 GSHR D 1 A_SpawnItemEx("GouShoryu2", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
 GSHR D 0 A_SetArg(4, Args[4] - 1)
-GSHR D 0 A_JumpIf(ceilingz - z < 64 || Args[4] <= 0, "ShoryuCeiling")
+GSHR D 0 A_JumpIf(ceilingz - z < 64 || Args[4] <= 0, "EndShoryu")
 GSHR D 0 A_JumpIf(momz <= 0, "EndShoryu")
-GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 10, "EndShoryu2")
+GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 1, "EndShoryu2")
 GSHR D 0 A_Refire
 Goto EndShoryu
-ShoryuCeiling:
+/*ShoryuCeiling:
 GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 2, "EndShoryu2")
-Goto EndShoryu
+Goto EndShoryu*/
 EndShoryu:
-GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 10, "EndShoryu2")
+GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 1, "EndShoryu2")
 GSHR D 0 A_ClearRefire
 GSHR D 1 A_ScaleVelocity(0.9)
 GSHR D 1 A_ScaleVelocity(0.75)
 GSHR D 1 A_ScaleVelocity(0.6)
 GSHR D 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
-GSHR C 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
-GSHR CC 1 //A_SetAngle(angle+30)
-GSHR B 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
-GSHR BB 1 //A_SetAngle(angle+30)
-GSHR A 0 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
-GSHR AA 1 //A_SetAngle(angle+30)
+GSHR C 2 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR B 2 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
+GSHR A 2 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
 InAir:
 GSHR A 0 ThrustThingZ(0, 7, 1, 1)
-//GSHR A 0 A_ChangeVelocity(momx, momy, -35, CVF_REPLACE|CVF_RELATIVE)
 GSHR A 0 A_GiveInventory("MessatsuFlag", 1)
 GSHR A 1 A_SpawnItemEx("GouShoryuFX", 48,8+Random(-8, 8),32, momx,momy,0,0, SXF_ABSOLUTEMOMENTUM)
 GSHR A 0 A_JumpIf(z-floorz<=56 && momz == 0, "Landing")
@@ -268,7 +270,6 @@ Landing:
 GHAD B 0 A_TakeInventory("MessShoryuFlag", 10)
 GHAD B 0 A_TakeInventory("MessatsuFlag", 999)
 GHAD B 6 A_ScaleVelocity(0.75)
-//GHAD BBBBBB 1 A_SetAngle(angle+30)
 GHAD B 0 SetPlayerProperty(0,0,1)
 Goto Ready+1
 EndShoryu2:
@@ -293,8 +294,8 @@ GHAD B 0 A_TakeInventory("MessShoryuFlag", 10)
 GHAD B 0 A_WeaponReady(WRF_NOFIRE| WRF_NOSWITCH)
 GHAD B 0 SetPlayerProperty(0,1,0)
 GHAD B 0 A_ScaleVelocity(0.5)
-GHAD K 0 A_SpawnItemEx("GouShoryuSlam", 32) 
-GHAD KLMN 1
+GHAD K 0 A_SpawnItemEx("GouShoryuSlam", 32, 8, 32) 
+GHAD KLMN 2
 GHAD B 0 SetPlayerProperty(0,0,0)
 TNT1 A 5 A_TakeInventory("MessatsuFlag", 999)
 GHAD NML 2
@@ -303,7 +304,16 @@ DemonFlip:
 GHAD O 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
 GHAD O 0 A_GiveInventory("MessatsuAmmo", 2)
 GHAD O 0 A_PlaySoundEx("weapon/tengudash", "Weapon")
-GHAD OOOOOOOO 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0 ,Random(0, -32), 0,0,0, Random(0, 360))
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 0)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 36)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 72)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 108)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 144)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 180)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 216)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 252)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 288)
+GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 324)
 GHAD O 0 A_TakeInventory("JumpCancler", 1)
 GHAD O 0 A_GiveInventory("DemonFlipActive", 1)
 GHAD O 0 ACS_NamedExecuteAlways("CSACS_DemonFlipCheck", 0)
@@ -343,7 +353,6 @@ GHAD O 0 A_ChangeVelocity(25, 0, 0, CVF_REPLACE|CVF_RELATIVE)
 GHAD PQR 1
 GozanLoop:
 GHAD R 0 SetPlayerProperty(0,1,0)
-//GHAD RRRRRRRR 1 A_SpawnItemEx("Gozan",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
 GHAD R 1 A_SpawnItemEx("Gozan",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
 GHAD R 0 A_ScaleVelocity(0.95)
 GHAD R 1 A_SpawnItemEx("Gozan",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
@@ -361,7 +370,7 @@ GHAD R 0 A_ScaleVelocity(0.95)
 GHAD R 1 A_SpawnItemEx("Gozan",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
 GHAD R 0 A_ScaleVelocity(0.95)
 GHAD R 1 A_SpawnItemEx("Gozan",32,0,24,Random(-3, 3),Random(-3, 3),0,0,SXF_NOCHECKPOSITION)
-GHAD R 2 A_ScaleVelocity(0.50)
+GHAD R 2 A_ScaleVelocity(0.65)
 GHAR R 0 SetPlayerProperty(0,0,0)
 Goto HyakkiGojinEnd
 HyakkiGojin:
@@ -384,9 +393,8 @@ GHAD RQPO 1
 Goto Ready+1
 
 Gosho:
-GHAD B 1 A_ChangeVelocity(momx*0.25, momy*0.25, momz*0.10, CVF_REPLACE)//A_ScaleVelocity(0.25)
-GHAD C 1
-GHAD C 0 A_PlaySoundEx("weapon/cfire","Weapon")
+GHAD B 1 A_ChangeVelocity(momx*0.5, momy*0.5, momz*0.25, CVF_REPLACE)//A_ScaleVelocity(0.25)
+GHAD C 1 A_PlaySoundEx("weapon/cfire","Weapon")
 GHAD D 5 A_SpawnItemEx("GoshoAttack", Cos(-pitch)*48, 12, 32+sin(-pitch)*48)
 Goto GoshoEnd
 GoshoEnd:
@@ -398,12 +406,7 @@ GoshoEnd2:
 GHAD A 1
 Goto Ready+1
 RagingDemon:
-GHAD A 0 A_TakeInventory("RagingDemonFlag", 1)
-GHAD A 0 A_TakeInventory("RagingDemonReady", 1)
-GHAD A 0 A_TakeInventory("MessatsuCharge", 35)
-GHAD A 0 A_TakeInventory("MessSuperFlag", 56)
-GHAD A 0 A_TakeInventory("MessatsuAmmo", 56)
-GHAD A 0 A_TakeInventory("MessatsuFlag", 999)
+GHAD A 0 ACS_NamedExecuteAlways("CSACS_MessSuperItems", 0, 3)
 GHAD A 0 A_PlaySoundEx("weapon/supermove","Auto")
 GHAD A 0 A_Stop
 GHAD A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
@@ -437,22 +440,18 @@ DemonWait:
 GHAD G 1
 GHAD G 0 A_JumpIfInventory("NoSGS", 1, "DemonWait")
 GHAD A 0 SetPlayerProperty(0,0,0)
-//GHAD G 0 A_SpawnItemEx("ReSolidifier")
 Goto Ready+1
 
 Tema:
-GHAD A 0 SetPlayerProperty(0,1,4)
+GHAD A 0 ACS_NamedExecuteAlways("CSACS_MessSuperItems", 0, 1)
 GHAD A 0 A_Stop
-GHAD A 0 A_TakeInventory("TemaReady", 1)
-GHAD A 0 A_TakeInventory("MessatsuAmmo", 18)
-GHAD A 0 A_TakeInventory("MessSuperFlag", 56)
 GHAD G 0 A_PlaySoundEx("weapon/supermove","Auto")
-//GHAD G 0 A_JumpIf(z-floorz==0,"Messatsu")
-GHAD G 0 A_GiveInventory("MessatsuFlag", 56)
 GHAD G 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
-GHAD G 0 A_JumpIfInventory("MessAirMod", 1, "Tema1")
+GHAD G 0 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_JUMP), "Tema1")
 Goto Messatsu
 Tema1:
+GHAD A 0 SetPlayerProperty(0,1,4)
+GHAD G 0 A_GiveInventory("MessatsuFlag", 56)
 GHAD H 0 A_ChangeVelocity(-Cos(pitch)*3, 0, sin(pitch)*2,CVF_RELATIVE)
 Tema2:
 GHAD H 0 A_PlaySoundEx("weapon/mbuster","Weapon")
@@ -470,15 +469,16 @@ GHAD H 1 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
 GHAD H 0 SetPlayerProperty(0,0,4)
 Goto Ready+1
 Messatsu:
-GHAD H 0 A_PlaySoundEx("weapon/cfire","Weapon")
-GHAD H 0 A_ChangeVelocity(-Cos(pitch)*4, 0, sin(pitch)*7,CVF_RELATIVE)
-GHAD H 0 A_FireCustomMissile("MessatsuGouHadou",0,0,0,0)
-GHAD H 0 A_FireCustomMissile("MessatsuGouHadou1",0,0,0,0)
-GHAD H 0 A_FireCustomMissile("MessatsuGouHadou2",0,0,0,0)
-GHAD H 0 A_FireCustomMissile("MessatsuGouHadou3",0,0,0,0)
-GHAD H 0 A_FireCustomMissile("MessatsuGouHadou4",0,0,0,0)
-GHAD H 0 A_FireCustomMissile("MessatsuGouHadou5",0,0,0,0)
-GHAD H 0 //A_Stop
+GHAD G 0 SetPlayerProperty(0,1,4)
+GHAD G 0 A_PlaySoundEx("weapon/cfire","Weapon")
+GHAD G 0 A_ChangeVelocity(-Cos(pitch)*4, 0, sin(pitch)*7,CVF_RELATIVE)
+GHAD G 0 A_FireCustomMissile("MessatsuGouHadou",0,0,0,0)
+GHAD G 0 A_FireCustomMissile("MessatsuGouHadou1",0,0,0,0)
+GHAD G 0 A_FireCustomMissile("MessatsuGouHadou2",0,0,0,0)
+GHAD G 0 A_FireCustomMissile("MessatsuGouHadou3",0,0,0,0)
+GHAD G 0 A_FireCustomMissile("MessatsuGouHadou4",0,0,0,0)
+GHAD G 0 A_FireCustomMissile("MessatsuGouHadou5",0,0,0,0)
+GHAD G 2
 GHAD HHHHH 2 A_SpawnItemEx("MessShadow", -8, 0, 0, -2, Random(-1, 1))
 GHAD H 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
 GHAD HHHHH 2 A_SpawnItemEx("MessShadow", -8, 0, 0, -2, Random(-1, 1))
@@ -486,9 +486,8 @@ GHAD A 0 SetPlayerProperty(0,0,4)
 Goto Ready+1
 
 GroundSlam:
+GHAD A 0 ACS_NamedExecuteAlways("CSACS_MessSuperItems", 0, 2)
 GroundAttack:
-GHAD A 0 A_TakeInventory("MessatsuAmmo", 36)
-TNT1 A 0 A_TakeInventory("MessSuperFlag", 56)
 GHAD A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)
 GHAD A 0 SetPlayerProperty(0,1,4)
 GHAD A 0 A_Stop
@@ -516,7 +515,6 @@ TNT1 A 4
 GHAD NML 4 
 GHAD N 0 SetPlayerProperty(0,0,4)
 GHAD A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
-GHAD A 0 A_TakeInventory("MisogiReady", 1)
 Goto Ready+1
 
 NoAmmo:
@@ -849,6 +847,7 @@ TNT1 A 0 A_GiveInventory("MessatsuFlag", 15)
 TNT1 A 0 A_JumpIfInTargetinventory("MessatsuFlag", 18, 2)
 TNT1 A 0 A_GiveToTarget("MessatsuFlag", 6)
 MDK:
+TNT1 A 0 A_PlaySoundEx("weapon/cfire","Weapon")
 TNT1 A 1 A_Explode(8,128,0,0,128)
 TNT1 AA 0 A_SpawnItemEx("ShunGokuSatsuFire",Random(-64, 64),Random(-64, 64),Random(0, 96),random(-5,5),random(-5,5),0,random(0,360))
 TNT1 A 0 A_TakeInventory("MessatsuFlag", 1)
@@ -973,7 +972,7 @@ TNT1 A 0 A_Warp(AAPTR_TARGET, 0, 0, 0, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITIO
 TNT1 A 0 Radius_Quake(1,15,0,64,0)
 TNT1 A 5 A_TransferPointer(AAPTR_TARGET, AAPTR_DEFAULT, AAPTR_TARGET, AAPTR_TARGET)
 TNT1 A 0 A_TakeInventory("NoSGS", 1, 0, AAPTR_TARGET)
-SGSD AAAAA 1 A_FadeIn(0.2)
+SGSD AAAA 1 A_FadeIn(0.23)
 SGSD A 100
 SGSD A 2 A_Fadeout(0.1)
 wait
@@ -1000,7 +999,7 @@ Spawn:
 TNT1 A 0
 Goto Super::Spawn+1
 SpawnLoop:
-TNT1 A 1 A_Explode(5,48,0, 0, 48)
+TNT1 A 1 A_Explode(10,48,0, 0, 48)
 GHFX ABC 1 
 Goto Death
 Death:
@@ -1359,6 +1358,37 @@ Goto Spawn
 
 
 
+actor ShoryuHit
+{
+Height 0
+Radius 0
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveToTarget("ShoryuHitPickup",1)
+stop
+}
+}
+
+actor ShoryuHitPickup : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_GiveToTarget("MessShoryuFlag",1)
+stop
+}
+}
 actor MessatsuHit
 {
 Height 0
@@ -1421,7 +1451,7 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
-TNT1 A 0 A_Explode(20, 128, 0, 0, 32)
+TNT1 A 0 A_Explode(20, 128, 0, 0, 128)
 TNT1 AAAAAAAAAA 0 A_SpawnItemEx("SlamFX", Random(-16, 16), Random(-16, 16), 0, Random(0, 15), 0,Random(0, 15), Random(0,359))
 TNT1 AAAAAAAAAA 0 A_SpawnItemEx("SlamFX", Random(-16, 16), Random(-16, 16), 0, Random(0, 15), 0,Random(0, 15), Random(0,359))
 stop
@@ -1549,7 +1579,7 @@ stop
 actor MessShoryuFlag : Inventory
 {
 inventory.amount 1
-inventory.maxamount 10
+inventory.maxamount 1
 }
 
 actor MessParry : Powerup
@@ -1559,7 +1589,7 @@ Powerup.duration 10
 
 actor NoParry : Powerup //Can't parry rippers after first hit
 {
-Powerup.duration 5
+Powerup.duration 4
 }
 
 actor ParryWatcher
@@ -1609,7 +1639,7 @@ stop
 actor ParryHUDColor : Powerup
 {
 Powerup.Color "FF FF FF", 0.2
-Powerup.Duration -10
+Powerup.Duration -30
 }
 
 actor ParryStrength : PowerDamage
@@ -1672,10 +1702,7 @@ Powerup.Duration 15
 
 Actor MessKick : MessPalm {}
 
-actor MessAirMod : Powerup
-{
-Powerup.Duration 2
-}
+
 
 Actor DemonFlipActive : Inventory
 {
