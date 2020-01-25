@@ -32,7 +32,7 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},//22
 
 {"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},//23
-{"HandCannon", "Gizmo (Hand Cannon)", "GizmoClassItems"},//24
+{"HandCannon", "Gizmo (Plasma Cannon)", "GizmoClassItems"},//24
 {"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},//25
 {"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},//26
 {"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},//27

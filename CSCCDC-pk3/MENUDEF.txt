@@ -492,7 +492,7 @@ OptionMenu "ClassInfo"
 	Submenu	    "Gizmo",		"GizmoInfo"
 	Submenu	    "Unix",		"UnixInfo"
 	Submenu	    "CutmanMike",		"CutmanMikeInfo"
-	Submenu	    "Ice/Sparky",		"IceSparkInfo"
+	Submenu	    "Ice & Sparky",		"IceSparkInfo"
 	Submenu	    "Ukiyama",		"UkiyamaInfo"
 	Submenu	    "Messatsu",		"MessatsuInfo"  
 	Submenu	    "ColdFusion",		"ColdFusionInfo"
@@ -564,7 +564,7 @@ OptionValue MegaCSCCWeps
 	12, "\cfComet - Korby\n\cjHold to guide a marker \nand release to call \ncomets upon it."
 	13, "\cfIdol Wave - VocalWoman\n\cjSpray a volley of \nmusic notes."
 	14, "\cfZen Sphere - Zen Trainer\n\cjLaunch a mysterious \norb that can latch \nonto foes when held."
-	15, "\cfHybrid Burst - Gee\n\cjCast a healing and \nharming spell in order, \nthe healing spell \nonly affects allies."
+	15, "\cfHybrid Burst - Gee\n\cjCast a healing and \nharming spell in order, \nthe healing spell \nonly affects allies. \nGrants vision of ally \nhealth."
 
 }
 
@@ -616,7 +616,6 @@ OptionMenu "UkiyamaInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$UKIYAMA_CH_ALTFIRE"
 	Option "$CSCC_CH_ITEMS", "Ukiyama_ClassHelp_Item", "UkiyamaItems"
 	StaticText ""
 	StaticText ""
@@ -669,14 +668,15 @@ OptionMenu "MessatsuInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	//StaticText "$MESSATSU_CH_ALTFIRE"
-	Option "$MESSATSU_CH_ALTFIRE", "Messatsu_ClassHelp_AltFire", "MessatsuAltFire"
+	Option "$CSCC_CH_ALTFIRES", "Messatsu_ClassHelp_AltFire", "MessatsuAltFire"
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText "$MESSATSU_CH_PARRY"
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -690,8 +690,7 @@ OptionMenu "MessatsuInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
-	StaticText ""
+	StaticText "$MESSATSU_CH_PASSIVE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -700,18 +699,18 @@ OptionMenu "MessatsuInfo"
 
 OptionValue "MessatsuAltFire"
 {
-	0, "\cfShoryuken\n\cjLeap into the air with a punch!\nHitting an opponent will slam \nthem to the ground."
-	1, "\cfDemon Flip (Hold Jump-No Input)\n\cjJump forward and land into a \nslide that pops opponent into \nthe air!"
-	2, "\cfDemon Flip (Hold Jump-MainFire)\n\cjPalm strike the opponent for \nheavy damage. Grounds airborne \nenemys. Launches grounded \nenemies."
-	3, "\cfDemon Flip (Hold Jump-AltFire)\n\cjDive kicks the opponent \nand pushes them away."
+	0, "\cfDefault\n\cjLeap into the air with \na punch! Hitting an \nopponent will slam them \nto the ground."
+	1, "\cfJumping -> No Input\n\cjJump forward and land \ninto a slide that pops \nopponent into the air."
+	2, "\cfJumping -> Mainfire\n\cjPalm strike the opponent \nfor heavy damage. Grounds \nairborne enemies. Launches \ngrounded enemies."
+	3, "\cfJumping -> Altfire\n\cjDive kicks the opponent \nand pushes them away."
 }
 
 OptionValue "MessatsuSupers"
 {
-	0, "\cfMessatsu Gouhadou (Level 1)\n\cjLarge fireball that causes \nsignificant damage"
-	1, "\cfTenma Gozanku (Hold Jump-Level1)\n\cjLaunch dozens of weaker \nfireballs at the opponent"
-	2, "\cfMisogi(Level 2)\n\cjSlams the ground to create \na shockwave that damages \nopponents."
-	3, "\cfShunGokuSatsu (Level 3)\n\cjLaunch forward at your \nopponent to grab them. \nInflicts massive damage!"
+	0, "\cfLevel 1\n\cjLarge fireball that causes \nsignificant damage"
+	1, "\cfJumping Level 1\n\cjLaunch dozens of weaker \nfireballs at the opponent"
+	2, "\cfLevel 2\n\cjSlams the ground to create \na shockwave that damages \nopponents."
+	3, "\cfLevel 3\n\cjLaunch forward at your \nopponent to grab them. \nInflicts massive damage!"
 }
 
 OptionMenu "BullGatorInfo"
@@ -833,12 +832,16 @@ OptionMenu "BadzInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
 	StaticText "$BADZ_CH_ALTFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$BADZ_CH_ITEM"
+	StaticText "$BADZ_CH_USER1"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$BADZ_CH_RELOAD"
+	StaticText ""
 	StaticText ""
 	StaticText ""
 }
@@ -1066,13 +1069,23 @@ OptionMenu "AegisInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$AEGIS_CH_ALTFIRE"
+	Option "$CSCC_CH_ALTFIRES", "Aegis_ClassHelp_Forms", "AegisAltfires"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$AEGIS_CH_USER1"
+	StaticText ""
+	Option "$CSCC_CH_USER1S", "Aegis_ClassHelp_Forms", "AegisUser1s"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_USER2S", "Aegis_ClassHelp_Forms", "AegisUser2s"
+	StaticText ""
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -1085,6 +1098,24 @@ OptionMenu "AegisInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+}
+
+OptionValue AegisAltfires
+{
+	0, "\cfShield On-Hand\n\cjHold up a wide shield \nwith finite health to \nblock hits, allies can \nshoot through it."
+	1, "\cfShield Deployed\n\cjNone."
+}
+
+OptionValue AegisUser1s
+{
+	0, "\cfShield On-Hand\n\cjUse shield health to \nlaunch a shockwave \nthat shoves opponents \nbackwards."
+	1, "\cfShield Deployed\n\cjNone."
+}
+
+OptionValue AegisUser2s
+{
+	0, "\cfShield On-Hand\n\cjToss out the shield and \nhave it become a \ndeployable bunker, \ncovering a larger area and \nsporting more health."
+	1, "\cfShield Deployed\n\cjRemotely recall the shield \nafter its cooldown."
 }
 
 OptionMenu "KorbyInfo"
@@ -1131,7 +1162,7 @@ OptionMenu "KorbyInfo"
 
 OptionValue KorbyMainFires
 {
-	0, "\cfFire\n\cjLob an exploding \nfireball, higher levels \nunleash larger fireballs \nthat bounce and drop \nexploding embers."
+	0, "\cfFire\n\cjLob an exploding \nfireball, higher levels \nunleash larger fireballs \nthat burst into more \nexploding embers."
 	1, "\cfLightning\n\cjLaunch a projectile \nthat calls lightning \nto strike at its location. \nHigher levels cover a \nlarger area."
 	2, "\cfIce\n\cjConjure a pillar of \nice that unleashes \nswirls of ice chunks. \nHigher levels increase \nthe size and quantity."
 }
@@ -1225,12 +1256,12 @@ OptionMenu "GizmoInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	Option "$GIZMO_CH_ITEMS", "Gizmo_ClassHelp_Items", "GizmoItems"
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_ITEMS", "Gizmo_ClassHelp_Items", "GizmoItems"
 	StaticText ""
 	StaticText ""
-	StaticText ""
+	StaticText "$GIZMO_CH_PASSIVE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -1240,11 +1271,11 @@ OptionMenu "GizmoInfo"
 OptionValue GizmoMainfires
 {
 	0, "\cfPlasma Cannon\n\cjBasic Plasma cannon, \ncharge shots to leave \nlingering explosions."
-	1, "\cfClaw Gloves\n\cjBasic melee weapon."
-	2, "\cfFire Cannon\n\cjLaunch a long reaching \nstream of fire."
+	1, "\cfClaw Gloves\n\cjBasic melee weapon, 3 \nconsecutive attacks \nperform a spin combo."
+	2, "\cfFlame Cannon\n\cjLaunch a long reaching \nstream of fire."
 	4, "\cfFrost Cannon\n\cjA close ranged, highly \nlethal spray of cold."
 	5, "\cfLightning Cannon\n\cjFire a burst of ripping \nelectrical projectiles."
-	6, "\cfWater Cannon\n\cjLaunch a jet stream of \nwater that repels foes."
+	6, "\cfHydro Cannon\n\cjLaunch a jet stream of \nwater that repels foes."
 	7, "\cfStone Cannon\n\cjFire High impact Arching \nProjectile stones that \nbreak into smaller rock \nprojectiles."
 	8, "\cfEternal Claws\n\cjImproved Claw Cloves with \ngreater reach and the \nability to scale walls."
 }
@@ -1252,7 +1283,8 @@ OptionValue GizmoMainfires
 OptionValue GizmoItems
 {
 	0, "\cfKitty Helper\n\cjSummon a Chao to help you \nin battle."
-	8, "\cfEternal Claws\n\cjUpgrades the Claw Gloves."
+	1, "\cfKitty Item\n\cjSummon a Chao to give \nyou items."
+	2, "\cfEternal Claws\n\cjUpgrades the Claw Gloves \ninto the Eternal Claws."
 }
 
 OptionMenu "UnixInfo"
@@ -1265,6 +1297,7 @@ OptionMenu "UnixInfo"
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
+	StaticText ""
 	Option "$CSCC_CH_MAINFIRES", "Unix_ClassHelp_Weapon", "UnixMainfires"
 	StaticText ""
 	StaticText ""
@@ -1274,10 +1307,14 @@ OptionMenu "UnixInfo"
 	StaticText ""	
 	StaticText ""
 	StaticText ""
+	StaticText ""
 	StaticText "$UNIX_CH_ALTFIRE"
 	StaticText ""
 	StaticText ""
+	StaticText ""
 	StaticText "$UNIX_CH_ITEM"
+	StaticText ""
+	StaticText ""
 	StaticText ""
 	StaticText "$UNIX_CH_PASSIVE"
 	StaticText ""
@@ -1297,24 +1334,25 @@ OptionMenu "IceSparkInfo"
 {
 	Title "$ICESPARKY_CH_TITLE"
 	StaticText ""
-	Option "____", "IceSparky_ClassHelp_Forms", "IceSparkNames"
+	Option "$ICESPARKY_CH_STATS", "IceSparky_ClassHelp_Forms", "IceSparkStats"
 	StaticText ""
-	Option "|", "IceSparky_ClassHelp_Forms", "IceSparkStats"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
-	StaticText "$CSCC_CH_MAINFIRES"
-	Option "|", "IceSparky_ClassHelp_Forms", "IceSparkMainfires"
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "IceSparky_ClassHelp_Forms", "IceSparkMainfires"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$CSCC_CH_ALTFIRES"
-	Option "|", "IceSparky_ClassHelp_Forms", "IceSparkAltfires"
+	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "IceSparky_ClassHelp_Forms", "IceSparkAltfires"
 	StaticText ""
 	StaticText ""	
+	StaticText ""
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText "$ICESPARKY_CH_ITEM"
@@ -1327,45 +1365,28 @@ OptionMenu "IceSparkInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "|", "ClassHelp_Blank", "Blank" //just so the cursor lands here
-
-}
-
-OptionValue IceSparkNames
-{
-	0, "\cfIce"
-	1, "\cfSparky"
-	2, "\cfIceSparky"
 }
 
 OptionValue IceSparkStats
 {
-	0, "\cfHealth : \cj75\n\n\cfSpeed : \cj80%\n\cfJump : \cj100%"
-	1, "\cfHealth : \cj150\n\n\cfSpeed : \cj120%\n\cfJump : \cj150%"
-	2, "\cfHealth : \cj150\n\n\cfSpeed : \cj120%\n\cfJump : \cj150%"
+	0, "\cfIce\n\cfHealth : \cj150\n\n\cfSpeed : \cj80%\n\cfJump : \cj100%"
+	1, "\cfSparky\n\cfHealth : \cj75\n\n\cfSpeed : \cj120%\n\cfJump : \cj150%"
+	2, "\cfIce & Sparky\n\cfHealth : \cj125\n\n\cfSpeed : \cj120%\n\cfJump : \cj150%"
 }
 
 OptionValue IceSparkMainfires
 {
-	0, "\cjToss a whirling blade of \nice"
-	1, "\cjLaunch fast moving \nelectrical projectiles"
-	2, "\cjLaunch an electrically \ncharged whirling blade \nof ice"
+	0, "\cfIce\n\cjToss a whirling blade \nof ice."
+	1, "\cfSparky\n\cjLaunch fast moving \nelectrical projectiles."
+	2, "\cfIce & Sparky\n\cjLaunch an electrically \ncharged whirling blade \nof ice."
 }
 
 OptionValue IceSparkAltfires
 {
-	0, "\cjScatter ice spikes all \nover the ground"
-	1, "\cjlaunch an electrical pulse \nthat creeps along the \nfloor, can scale up walls."
-	2, "\cjLaunch a massive energy \nwave that scatters ice \nspikes along it’s path."
+	0, "\cfIce\n\cjScatter ice spikes all \nover the ground."
+	1, "\cfSparky\n\cjLaunch an electrical \npulse that creeps along \nthe floor, scaling up \nwalls."
+	2, "\cfIce & Sparky\n\cjLaunch a massive energy \nwave that scatters ice \nspikes along it’s path."
 }
-
-OptionValue Blank
-{
-	0, ""
-	1, ""
-	2, ""
-}
-
 
 //-------------------------------------------------------------------------------------------
 //

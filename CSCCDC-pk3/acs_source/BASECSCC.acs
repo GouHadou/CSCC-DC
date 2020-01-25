@@ -9,8 +9,6 @@
 #include "UNIX.ACS"
 #include "COPYWEP.ACS"
 #include "ITEMGIVE.ACS"
-#include "ANTISTALL.ACS"
-
 
 Script "CSACS_TeamSpecies" ENTER 
 {
