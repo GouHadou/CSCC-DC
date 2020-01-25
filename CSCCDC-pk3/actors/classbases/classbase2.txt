@@ -176,6 +176,9 @@ goto Pain+1
 
 //PowerProtect Pain
 //Korby
+Pain.KICE3:
+"----" H 0 A_GiveInventory("KICE3Protect",1)
+Goto Pain+1
 Pain.ThousandNeedle:
 "----" H 0 A_GiveInventory("KNeedleProtect", 1)
 Goto Pain+1
@@ -188,7 +191,7 @@ Pain.LightningShot:
 Goto pain+1
 //Gizmo
 Pain.GizmoLightning:
-"----" H 0 A_GiveInventory("GizmoLightningProtect")
+"----" H 0 A_GiveInventory("GizmoLightningProtect",1)
 Goto Pain+1
 
 //Aegis

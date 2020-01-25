@@ -538,7 +538,7 @@ int StateSet = 0;
 int PlayerTID = consolePlayerNumber()+1000;
 if(ACS_NamedExecuteWithResult("CSACS_ItemSetCheck")==1){SetActorState(0,"DefaultSpawn"); StateSet=1;}
 if(CheckActorClass(PlayerTID,"MegamanC")||CheckActorClass(PlayerTID,"CopyRobot")){SetActorState(0,"DefaultSpawn"); StateSet=1;}//Energy balancer bonus
-if(CheckActorClass(PlayerTID,"KorbyClass")){SetActorState(0,"KorbySpawn"); StateSet=1;}
+if(CheckActorClass(PlayerTID,"KorbyClass")||CheckActorClass(PlayerTID,"FirMorph")||CheckActorClass(PlayerTID,"LitMorph")||CheckActorClass(PlayerTID,"IceMorph")){SetActorState(0,"KorbySpawn"); StateSet=1;}
 if(StateSet==0){SetActorState(0,"TranslucentSpawn");}
 }
 
