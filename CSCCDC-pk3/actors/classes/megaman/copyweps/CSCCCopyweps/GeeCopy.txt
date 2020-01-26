@@ -59,6 +59,7 @@ actor HybridBurstDamage : FastProjectile
 {
 PROJECTILE
 +HITTRACER
++THRUGHOST
 renderstyle none
 damagetype "GeeBurst"
 translation "195:195=243:243", "249:249=76:76", "199:199=70:70", "198:198=220:220", "192:192=229:229", "250:250=215:215"
@@ -122,6 +123,7 @@ actor HybridBurstHeal : FastProjectile
 {
 PROJECTILE
 +HITTRACER
++THRUGHOST
 renderstyle none
 translation "195:195=243:243", "249:249=76:76", "199:199=70:70", "198:198=220:220", "192:192=229:229", "250:250=215:215"
 Speed 80

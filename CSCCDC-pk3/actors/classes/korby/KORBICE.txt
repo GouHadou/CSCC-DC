@@ -2,6 +2,7 @@ actor ICE : FIR
 {
 Weapon.AmmoUse 8
 Weapon.SlotNumber 3
+tag "ICE"
 Obituary "$OB_KORBYICE"
 Inventory.Pickupmessage "$PU_KORBYICE"
 States

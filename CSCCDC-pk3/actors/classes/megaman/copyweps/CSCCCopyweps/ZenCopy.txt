@@ -117,7 +117,6 @@ inventory.maxamount 28
 
 actor ZenSphereBall : ZTPsychicBall
 {
-
 States
 {
 Spawn:

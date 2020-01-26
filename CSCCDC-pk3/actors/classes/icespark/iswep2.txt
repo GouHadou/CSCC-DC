@@ -143,14 +143,14 @@ SPHA A 0 A_JumpIfInventory("IceSparkyFusion", 1, "ShinIceSparky")
 SPHA A 0 A_Refire
 Goto Ready+2
 AltFire2:
-ISFS H 0 A_JumpIfInventory("IceClassAmmo",15,"1")
+ISFS H 0 A_JumpIfInventory("IceClassAmmo",20,"1")
 Goto NoAmmo
-ISFS H 0 A_JumpIfInventory("SparkyClassAmmo",15,"1")
+ISFS H 0 A_JumpIfInventory("SparkyClassAmmo",20,"1")
 Goto NoAmmo
 ISFS H 0 A_SpawnItemEx("IceShadow", 0, -8, 0, 0, 1)
 ISFS H 0 A_SpawnItemEx("SparkyShadow", 0, 8, 0, 0, -1)
-ISFS H 0 A_TakeInventory("SparkyClassAmmo",15)
-ISFS H 0 A_TakeInventory("IceClassAmmo",15)
+ISFS H 0 A_TakeInventory("SparkyClassAmmo",20)
+ISFS H 0 A_TakeInventory("IceClassAmmo",20)
 ISFS H 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
 ISFS H 0 A_FireCustomMissile("LightningIceWaveStart",0,0,8,0)
 ISFS J 3
@@ -188,7 +188,6 @@ actor LightningWaveStart : BasicProjectile
 Obituary "$OB_LIGHTNINGWAVEBOSS2"
 PROJECTILE
 -NOGRAVITY
-+PIERCEARMOR
 Damage (16)
 damagetype "LightningWave"
 Speed 1
@@ -214,7 +213,6 @@ actor LightningWaveTrail : BasicProjectile
 {
 PROJECTILE
 +DONTBLAST
-+PIERCEARMOR
 Obituary "$OB_LIGHTNINGWAVEBOSS2"
 Translation "192:192=228:228"
 +RIPPER
@@ -262,7 +260,6 @@ PROJECTILE
 +RIPPER
 +DONTBLAST
 +NOCLIP
-+PIERCEARMOR
 +DONTREFLECT
 bouncefactor 0.0
 maxstepheight 0
@@ -289,7 +286,6 @@ actor LightningShot : BasicFastProjectile
 Obituary "$OB_LIGHTNINGWAVEBOSS"
 PROJECTILE
 +RIPPER
-+PIERCEARMOR
 damagetype "LightningShot"
 Translation "192:192=228:228" 
 scale 2.5
@@ -397,7 +393,6 @@ stop
 
 actor LightningIceBit : IceBit
 {
-+PIERCEARMOR
 damagetype "IceShard"
 Translation "192:192=137:137"
 speed 5
@@ -419,7 +414,6 @@ stop
 
 actor LightningIceSpike : IceSpike
 {
-+PIERCEARMOR
 Obituary "$OB_LIGHTNINGICESPIKE"
 Translation "192:192=137:137", "198:198=95:95"
 Reactiontime 10
