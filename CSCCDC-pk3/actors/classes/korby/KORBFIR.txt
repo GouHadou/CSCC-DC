@@ -724,6 +724,7 @@ Height 8
 Renderstyle "Translucent"
 Alpha 0.75
 Scale 2.5
+reactiontime 350
 -NOGRAVITY
 Obituary "$OB_KORBYFIRE1"
 States
@@ -732,7 +733,7 @@ Spawn:
 KFIR L 0
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
@@ -740,17 +741,29 @@ KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLAT
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+"----" A 0 
 KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 "----" A 0 A_ChangeFlag("THRUACTORS", FALSE)
 Spawn2: 
+"----" A 0 
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR G 1 
+KFIR G 1 A_Countdown
+"----" A 0 
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+"----" A 0 
+KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+"----" A 0 A_Setangle(angle-5.0)
+"----" A 0 A_JumpIf(momz <=0, "Death")
+"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
+KFIR G 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
@@ -758,15 +771,7 @@ KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLAT
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR G 1 
-"----" A 0 A_Setangle(angle-5.0)
-"----" A 0 A_JumpIf(momz <=0, "Death")
-"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
-"----" A 0 A_Setangle(angle-5.0)
-"----" A 0 A_JumpIf(momz <=0, "Death")
-"----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
@@ -774,7 +779,7 @@ KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLAT
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_JumpIf(momz <=0, "Death")
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
@@ -811,6 +816,7 @@ Obituary "$OB_KORBYFIRE2"
 
 actor Korby3Flame : Korby1Flame
 {
+reactiontime 700
 Obituary "$OB_KORBYFIRE3"
 States
 {
@@ -818,13 +824,13 @@ Spawn:
 KFIR L 0
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
@@ -832,25 +838,25 @@ KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLAT
 Spawn2: 
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR G 1 
+KFIR G 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR G 1 
+KFIR G 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR G 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
-KFIR L 1 
+KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
