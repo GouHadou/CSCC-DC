@@ -1,6 +1,5 @@
 actor ClassBase2 : ClassBase1
 {
-+THRUSPECIES
 States
 {
 //A_Stop Hitstun Pain
