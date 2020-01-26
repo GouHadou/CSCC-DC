@@ -269,6 +269,7 @@ TAG_LIGHTSCREEN = "Light Screen";
 
 //CLASS HELP
 CSCC_TITLE = "\cvCSCC Options";
+CSCC_INFO_TITLE = "\cvCSCC Information";
 
 CSCC_CTRL_RELOAD = "\cvReload";
 CSCC_CTRL_USER1 = "\cvUser Key 1";

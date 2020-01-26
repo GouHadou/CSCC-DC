@@ -98,7 +98,7 @@ GiveActorInventory(ActivatorTID(), Item, Quantity);
 
 Script "CSCC_SpawnItem" (int ItemToSpawn)
 {
-int ItemTID = Random(800, 900);
+int ItemTID = Random(800, 899);
 If(ThingCount(0, ItemTID)>0){Delay(1);restart;}
 SpawnForced(item_pickups[ItemToSpawn][1], GetActorX(0), GetActorY(0), GetActorZ(0), ItemTID, GetActorAngle(0));
 If(CheckFlag(ItemTID, "SPECIAL") && ClassifyActor(ItemTID)==ACTOR_GENERIC)	

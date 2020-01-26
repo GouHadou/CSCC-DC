@@ -468,6 +468,7 @@ OptionMenu "CSCC"
 	StaticText "===============================================================",1
 	StaticText ""
 	Submenu "      Class Information",		"ClassInfo"
+	Submenu "      Mod Information",		"CSCCInformation"
 	StaticText ""
 	StaticText	"CSCC Controls", 1
 	StaticText ""
@@ -1390,6 +1391,58 @@ OptionValue IceSparkAltfires
 	0, "\cfIce\n\cjScatter ice spikes all \nover the ground."
 	1, "\cfSparky\n\cjLaunch an electrical \npulse that creeps along \nthe floor, scaling up \nwalls."
 	2, "\cfIce & Sparky\n\cjLaunch a massive energy \nwave that scatters ice \nspikes along it’s path."
+}
+
+//-------------------------------------------------------------------------------------------
+//
+// CSCC Information
+//
+//-------------------------------------------------------------------------------------------
+
+OptionMenu "CSCCInformation"
+{
+	Title "$CSCC_INFO_TITLE"
+	StaticText "===============================================================",1
+	StaticText ""
+	StaticText "Cutstuff Community Classes Director's",1
+	StaticText "Cut is a class mod focused around ",1
+	StaticText "rebooting the CSCC brand of mods with ",1
+	StaticText "a higher focus on polish and gameplay by",1
+	StaticText "designing around more modern ideals and",1
+	StaticText "references. Focus is put onto community",1
+	StaticText "feedback and development to create a mod",1
+	StaticText "that has value past novelty by being",1
+	StaticText "proactive in dealing with balance and",1
+	StaticText "design issues, while still respecting",1
+	StaticText "the wishes of creators and giving a",1
+	StaticText "healthy environment to work in. Classes",1
+	StaticText "are noted in the file's README file.",1
+	StaticText ""
+	StaticText "Contact ALL of the main developers listed",1
+	StaticText "regarding use and editing of assets that",1
+	StaticText "are found in this mod alongside the",1
+	StaticText "designers and code contributors listed to",1
+	StaticText "ensure that no parties are being infringed",1
+	StaticText "upon in usage and editing of assets and",1
+	StaticText "code. Failure to contact all parties listed",1
+	StaticText "denies permission to use or edit assets and",1
+	StaticText "code found in this mod.",1
+	StaticText ""
+	StaticText "The discord for this mod can be found at",1
+	StaticText "https://discord.gg/ekwyxb8 (All lowercase)",1
+	StaticText ""
+	StaticText "Main Developers",1
+	StaticText "------------------------------------",1
+	StaticText "Trillster (Trillster#2887 @ Discord)",1
+	StaticText "Messatsu (Messatsu#6998 @ Discord)",1
+	StaticText "Ehibika (Ehibika#3634 @ Discord)",1
+	StaticText "Zomo (Zomo#5491 @ Discord)",1
+	StaticText "Ice (Bubble Frog#1214 @ Discord)",1
+	StaticText ""
+	StaticText "More specific class credits are noted",1
+	StaticText "in the file's README file.",1
+	StaticText ""
+	StaticText "===============================================================",1
 }
 
 //-------------------------------------------------------------------------------------------

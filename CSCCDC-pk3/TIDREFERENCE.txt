@@ -1,0 +1,11 @@
+800 - 899 Item Pickups
+900 - 963 Ukiyama Vision
+999 Weapon Energy and Tanks
+1000 - 1063 Players
+1100 - 1163 Vanilla TargetAimPoint
+2700 - 2763 WireAdaptor
+3000 - 3063 PlayerRespawnPoint
+4000 - 4063 Eddie Weapon Spawner
+5000 - 5063 Light Screens
+10000 - 10063 Telefog
+ 
