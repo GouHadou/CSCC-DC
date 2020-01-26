@@ -197,8 +197,9 @@ Goto Pain+1
 
 //Aegis
 Pain.ShieldWave:
-"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,20)
-"----" H 0 ThrustThingZ(0,40,0,0)
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,60)
+"----" H 0 A_GiveInventory("ShieldWaveProtect")
+"----" H 0 ThrustThingZ(0,25,0,0)
 "----" H 0
 Goto Pain+3
 
