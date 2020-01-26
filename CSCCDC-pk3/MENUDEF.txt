@@ -1373,7 +1373,7 @@ OptionMenu "IceSparkInfo"
 
 OptionValue IceSparkStats
 {
-	0, "\cfIce\n\cfHealth : \cj135\n\n\cfSpeed : \cj80%\n\cfJump : \cj100%"
+	0, "\cfIce\n\cfHealth : \cj135\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%"
 	1, "\cfSparky\n\cfHealth : \cj65\n\n\cfSpeed : \cj110%\n\cfJump : \cj140%"
 	2, "\cfIce & Sparky\n\cfHealth : \cj135\n\n\cfSpeed : \cj110%\n\cfJump : \cj140%"
 }
