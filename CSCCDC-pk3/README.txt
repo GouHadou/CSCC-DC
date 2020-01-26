@@ -11,11 +11,13 @@
 Cutstuff Community Classes Director's Cut is a class mod focused around rebooting the CSCC brand of mods with a higher focus 
 on polish and gameplay by designing around more modern ideals and references. Focus is put onto community feedback and development 
 to create a mod that has value past novelty by being proactive in dealing with balance and design issues, while still respecting the 
-wishes of creators and giving a healthy environment to work in. Classes will be noted in here with their designer and code contributors.
+wishes of creators and giving a healthy environment to work in. Classes will be noted in here with their designer, code contributors,
+and asset contributors. Designers and code contributors listed double as asset contributors.
 
-Contact ALL of the main developers listed regarding use and editing of assets that are found in this mod alongside the designers and code 
-contributors listed to ensure that no parties are being infringed upon in usage and editing of assets and code. Failure to contact all
-parties listed denies permission to use or edit assets and code found in this mod.
+Contact ALL of the main developers listed regarding use and editing of assets that are found in this mod alongside the designers, code 
+contributors, and asset contributors listed to ensure that no parties are being infringed upon in usage and editing of assets and code. 
+Failure to contact ALL parties listed and get permission automatically denies permission to use or edit assets and code found in this mod
+as a whole.
 
 The discord for this mod can be found at https://discord.gg/ekwyxb8
 
@@ -64,6 +66,7 @@ ColdFusion
 Pistonman
 - Designer - Trillster
 -- Code Contributors - Trillster
+-- Asset Contributors - Pegg
 
 Aegis
 - Designer - Ehibika
@@ -100,8 +103,9 @@ ZenTrainer
 Gee
 - Designer - Trillster
 -- Code Contributors - Trillster, Ehibika
+-- Asset Contributors - Dimpsy, Pegg
 
-
+For any clarifications required regarding this readme, contact the main developers listed above.
 
 
 

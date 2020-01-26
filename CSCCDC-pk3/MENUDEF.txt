@@ -1416,17 +1416,20 @@ OptionMenu "CSCCInformation"
 	StaticText "design issues, while still respecting",1
 	StaticText "the wishes of creators and giving a",1
 	StaticText "healthy environment to work in. Classes",1
-	StaticText "are noted in the file's README file.",1
+	StaticText "are noted in the file's README file with",1
+	StaticText "greater detail.",1
 	StaticText ""
 	StaticText "Contact ALL of the main developers listed",1
 	StaticText "regarding use and editing of assets that",1
 	StaticText "are found in this mod alongside the",1
-	StaticText "designers and code contributors listed to",1
-	StaticText "ensure that no parties are being infringed",1
-	StaticText "upon in usage and editing of assets and",1
+	StaticText "designers, code contributors, and asset",1
+	StaticText "contributors listed to ensure that no",1
+	StaticText "parties are being infringed upon",1
+	StaticText "in usage and editing of assets and",1
 	StaticText "code. Failure to contact all parties listed",1
-	StaticText "denies permission to use or edit assets and",1
-	StaticText "code found in this mod.",1
+	StaticText "and get permission automatically denies",1
+	StaticText "permission to use or edit assets and code",1
+	StaticText "found in this mod as a whole.",1
 	StaticText ""
 	StaticText "The discord for this mod can be found at",1
 	StaticText "https://discord.gg/ekwyxb8 (All lowercase)",1
@@ -1441,6 +1444,9 @@ OptionMenu "CSCCInformation"
 	StaticText ""
 	StaticText "More specific class credits are noted",1
 	StaticText "in the file's README file.",1
+	StaticText ""
+	StaticText "For any clarifications required regarding this",1 
+	StaticText "info, contact the main developers listed above.",1 
 	StaticText ""
 	StaticText "===============================================================",1
 }
