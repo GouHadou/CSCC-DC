@@ -270,6 +270,7 @@ TAG_LIGHTSCREEN = "Light Screen";
 //CLASS HELP
 CSCC_TITLE = "\cvCSCC Options";
 CSCC_INFO_TITLE = "\cvCSCC Information";
+CSCC_SETTINGS_TITLE = "\cvCSCC Server Settings";
 
 CSCC_CTRL_RELOAD = "\cvReload";
 CSCC_CTRL_USER1 = "\cvUser Key 1";
@@ -404,3 +405,7 @@ ICESPARKY_CH_TITLE = "\cvICE AND SPARKY";
 ICESPARKY_CH_STATS = "\cvStats : ";
 ICESPARKY_CH_ITEM = "\cfItem : \cjWhen fusion meter is full, \nengage fusion.";
 ICESPARKY_CH_PASSIVE = "\cfPassive : \cjGains fusion meter upon \ntaking damage, successive kills \nincreases the rate at which meter \nis gained.";
+
+CHANGELOGS = "\cvCHOOSE YOUR VERSION";
+V1BCHANGELOG = "\cvV1B CHANGELOG";
+GENERAL_CH_TITLE = "\cvGENERAL";

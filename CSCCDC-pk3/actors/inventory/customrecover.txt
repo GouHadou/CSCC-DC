@@ -7,7 +7,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"HeldReady")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthSpawnCheck")==0,"HeldReady")
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthSet",0)
 HBAL AB 6
 loop
@@ -42,7 +42,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"HeldReady")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthSpawnCheck")==0,"HeldReady")
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthSet",0)
 HBAL CD 6
 loop
@@ -77,7 +77,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"HeldReady")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthSpawnCheck")==0,"HeldReady")
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthSet",0)
 HBAL EF 6
 loop

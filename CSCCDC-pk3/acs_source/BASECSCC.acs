@@ -63,6 +63,13 @@ switch(CheckType)
 SetResultValue(output);
 }
 
+script "CSACS_HealthSpawnCheck" (void)
+{
+int Result = 1;
+if(ACS_ExecuteWithResult(975,0)==2 && GetCvar("CSCC_HPinLMS")==false){Result = 0;}
+SetResultValue(Result);
+}
+
 Script "CSACS_HealthSet" (void) CLIENTSIDE
 {
 int StateSet = 0;

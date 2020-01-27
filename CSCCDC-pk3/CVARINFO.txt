@@ -1,3 +1,7 @@
+server noarchive bool CSCC_HPinLMS = false;
+
+user noarchive int CSCC_MenuDef_Changelog = 0;
+
 user noarchive int Megaman_ClassHelp_Weapons = 0;
 user noarchive int Ukiyama_ClassHelp_Item = 0;
 user noarchive int Ukiyama_ClassHelp_Mods = 0;
