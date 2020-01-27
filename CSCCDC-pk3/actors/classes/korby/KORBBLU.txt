@@ -430,7 +430,7 @@ PROJECTILE
 +MTHRUSPECIES
 +FORCEXYBILLBOARD
 +RIPPER
-Obituary "OB_KBLASTER"
+Obituary "$OB_KBLASTER"
 damagetype "KBlaster"
 Radius 16
 Height 16
