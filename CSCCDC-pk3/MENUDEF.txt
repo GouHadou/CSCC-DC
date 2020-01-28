@@ -555,7 +555,9 @@ OptionMenu "CSCCServerSettings"
 	Title "$CSCC_SETTINGS_TITLE"
 	StaticText "===============================================================",1
 	StaticText ""
-	Option "           HP in LMS modes",			"cscc_hpinlms", "YesNo"
+	StaticText "Mode-Specific Options",1
+	StaticText ""
+	Option "HP in LMS (CSCC_HPinLMS)",			"cscc_hpinlms", "YesNo"
 	StaticText ""
 	StaticText "===============================================================",1
 }
