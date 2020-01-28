@@ -172,3 +172,8 @@ TNT1 A 0 A_GiveInventory("MP", 100)
 stop
 }
 }
+
+actor KorbyTempInvuln: PowerInvulnerable
+{
+Powerup.duration 10
+}
