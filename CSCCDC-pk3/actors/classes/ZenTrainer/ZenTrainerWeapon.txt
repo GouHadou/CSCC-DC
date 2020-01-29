@@ -38,7 +38,7 @@ Loop
 Ready:
 TNT1 A 0 
 ZNTN A 1 ACS_ExecuteAlways(998,0,DYE_ZENTRAINER)
-ZNTN A 0 A_GunFlash("Flash")
+ZNTN A 0 //A_GunFlash("Flash")
 goto Ready2
 Ready2:
 ZNTN A 0 A_JumpIfInventory("ZenTrainerAmmo1",0,"Ready2X")
@@ -49,6 +49,7 @@ ZNTN A 2 A_WeaponReady
 ZNTN A 0 A_JumpIfInventory("ZenTrainerAmmo1",0,"Ready2X")
 goto Ready2
 
+/*
 Flash:
 TNT1 A 1
 TNT1 A 0 A_GiveInventory("ZenTrainerAmmo1",4)
@@ -103,6 +104,7 @@ stop
 NoFlash:
 TNT1 A 0
 stop
+*/
 
 Fire:
 ZNTN B 1 
@@ -159,7 +161,7 @@ goto Ready2
 
 AltFire:
 ZNTN E 0 A_JumpIfNoAmmo("NoAmmo")
-ZNTN E 0 A_GunFlash("AltFlash")
+ZNTN E 0 A_GiveInventory("AuraAmpFlag")//A_GunFlash("AltFlash")
 ZNTN EFGHIII 2
 ZNTN E 0 A_PlaySoundEx("weapon/thunderbolt","Weapon")
 ZNTN IHGFE 2
@@ -188,6 +190,9 @@ actor ZenAltFlashFlag : Once {}
 actor AuraFlag_heal : Once {}
 actor AuraFlag_power : Once {}
 actor AuraFlag_haste : Once {}
+
+actor AuraAmpFlag : Once {}
+
 
 actor AuraSwitchItem : CustomInventory
 {
@@ -228,6 +233,158 @@ fail
 }
 }
 
+
+actor AuraProcItem : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+states
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("AuraAmpFlag",1,"AmpedAura")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_heal",1,"HealAura")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"PowerAura")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_haste",1,"HasteAura")
+stop
+
+HealAura:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHeal,ZEN_ARANGE,1)
+stop
+PowerAura:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenPower,ZEN_ARANGE,1)
+stop
+HasteAura:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHaste,ZEN_ARANGE,1)
+stop
+
+    AmpedAura:
+    TNT1 A 0 A_JumpIfInventory("AuraFlag_heal",1,"HealAuraEX")
+    TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"PowerAuraEX")
+    TNT1 A 0 A_JumpIfInventory("AuraFlag_haste",1,"HasteAuraEX")
+    stop
+
+    HealAuraEX:
+    TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHealEX,ZEN_ARANGEX,1)
+    stop
+    PowerAuraEX:
+    TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenPowerEX,ZEN_ARANGEX,1)
+    stop
+    HasteAuraEX:
+    TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_ZenHasteEX,ZEN_ARANGEX,1)
+    stop
+
+nope:
+TNT1 A 0
+fail
+}
+}
+
+
+actor AuraProcFXItem : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+states
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("AuraFlag_heal",1,"HealAura")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"PowerAura")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_haste",1,"HasteAura")
+fail
+HealAura:
+TNT1 A 0 A_SpawnItemEx("ZNAura_Heal",ZEN_ARANGE,0,0,0,0,8,random(0,360),1)
+stop
+PowerAura:
+TNT1 A 0 A_SpawnItemEx("ZNAura_Attack",ZEN_ARANGE,0,0,0,0,8,random(0,360),1)
+stop
+HasteAura:
+TNT1 A 0 A_SpawnItemEx("ZNAura_Haste",ZEN_ARANGE,0,0,0,0,8,random(0,360),1)
+stop
+nope:
+TNT1 A 0
+fail
+}
+}
+
+actor AmpedAuraProcFXItem : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+states
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("AuraFlag_heal",1,"HealAura")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_power",1,"PowerAura")
+TNT1 A 0 A_JumpIfInventory("AuraFlag_haste",1,"HasteAura")
+stop
+HealAura:
+TNT1 A 0 A_SpawnItemEx("ZNAura_Heal",ZEN_ARANGEX,0,0,0,0,8,random(0,360),1)
+TNT1 AAA 0 A_SpawnItemEx("ZNAura_Heal",0,0,64,random(2,4),0,4,random(0,360),1)
+stop
+PowerAura:
+TNT1 A 0 A_SpawnItemEx("ZNAura_Attack",ZEN_ARANGEX,0,0,0,0,8,random(0,360),1)
+TNT1 AAA 0 A_SpawnItemEx("ZNAura_Attack",0,0,64,random(2,4),0,4,random(0,360),1)
+stop
+HasteAura:
+TNT1 A 0 A_SpawnItemEx("ZNAura_Haste",ZEN_ARANGEX,0,0,0,0,8,random(0,360),1)
+TNT1 AAA 0 A_SpawnItemEx("ZNAura_Haste",0,0,64,random(2,4),0,4,random(0,360),1)
+stop
+nope:
+TNT1 A 0
+stop
+}
+}
+
+
+
+actor ZenAuraHandler : BasicHelper 
+{
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 5
+TNT1 A 0 A_Jump(256,"Spawn.Basic")
+Goto Spawn.Basic
+
+Spawn.Basic:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"DeathTake")
+TNT1 A 0 A_CheckFlag("NOGRAVITY", "DeathTake", AAPTR_TARGET) //Die if they spectate
+TNT1 A 0 A_JumpIfInTargetInventory("AuraAmpFlag",1,"Spawn.Amped")
+TNT1 A 0 A_GiveToTarget("ZenTrainerAmmo1",4)
+TNT1 A 0 A_GiveToTarget("AuraProcItem")
+TNT1 AAAAA 2 A_GiveToTarget("AuraProcFXItem")
+TNT1 A 0 A_Jump(256,"Spawn.Basic")
+Goto Spawn.Basic
+
+
+Spawn.Amped:
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("ZenTrainerAmmo1",1)
+TNT1 A 0 A_GiveToTarget("AuraProcItem")
+TNT1 A 0 A_GiveToTarget("AmpedAuraProcFXItem")
+TNT1 A 2
+TNT1 A 0 A_JumpIfInTargetInventory("ZenTrainerAmmo1",1,"Spawn.Amped")
+TNT1 A 5
+TNT1 A 0 A_TakeFromTarget("AuraAmpFlag",99)
+TNT1 A 0 A_Jump(256,"Spawn.Basic")
+Goto Spawn.Basic
+
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
 
 actor ZTPsychicBall
 {
