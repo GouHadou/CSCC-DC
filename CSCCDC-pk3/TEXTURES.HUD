@@ -234,30 +234,37 @@ sprite "SHLDP0", 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "19
 sprite "SHLDQ0", 312, 108 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "198:198=194:194", "192:192=96:96"}}
 sprite "SHLDR0", 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "198:198=194:194", "192:192=96:96"}}
 
-
 //Light
-sprite "SHLBM0", 308, 204 {Offset -272, 46 Patch HSPRF0, 0, 0 {Translation "198:198=198:198", "192:192=192:192"}}
-sprite "SHLBN0", 308, 204 {Offset -202, 4 Patch HSPRG0, 0, 0 {Translation "198:198=198:198", "192:192=192:192"}}
-sprite "SHLBO0", 308, 204 {Offset -151, -36 Patch HSPRH0, 0, 0 {Translation "198:198=198:198", "192:192=192:192"}}
-sprite "SHLBP0", 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "198:198=198:198", "192:192=192:192"}}
-sprite "SHLBQ0", 312, 108 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "198:198=198:198", "192:192=192:192"}}
-sprite "SHLBR0", 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "198:198=198:198", "192:192=192:192"}}
+Sprite "SHLXD0", 120, 100{Offset -184, -94 Patch "SHLBD0", 0, 0{Translation "192:192=205:205", "198:198=74:74"}}
+Sprite "SHLXE0", 140, 116{Offset -184, -96 Patch "SHLBE0", 0, 0{Translation "192:192=205:205", "198:198=74:74"}}
+Sprite "SHLXF0", 144, 112{Offset -187, -102 Patch "SHLBF0", 0, 0{Translation "192:192=205:205", "198:198=74:74"}}
+Sprite "SHLXH0", 120, 100{Offset -184, -94 Patch "SHLBH0", 0, 0{Translation "192:192=205:205", "198:198=74:74"}}
+Sprite "SHLXJ0", 270, 150 {Offset 14, -44 Patch "SHLBJ0", 0, 0{Translation "192:192=205:205", "198:198=74:74"}}
+Sprite "SHLXK0", 340, 132{Offset 60, -48 Patch "SHLBK0", 0, 0{Translation "192:192=205:205", "198:198=74:74"}}
+Sprite "SHLXL0", 416, 100 {Offset 110, -88 Patch "SHLBL0", 0, -1 {Translation "192:192=205:205", "198:198=74:74"}}
+
+sprite "SHLXM0", 308, 204 {Offset -272, 46 Patch HSPRF0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+sprite "SHLXN0", 308, 204 {Offset -202, 4 Patch HSPRG0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+sprite "SHLXO0", 308, 204 {Offset -151, -36 Patch HSPRH0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+sprite "SHLXP0", 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+sprite "SHLXQ0", 312, 108 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
+sprite "SHLXR0", 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "192:192=205:205", "198:198=74:74"}}
 
 //wily
-Sprite "SHLRD0", 120, 100{Offset -184, -94 Patch "SHLBD0", 0, 0{Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-Sprite "SHLRE0", 140, 116{Offset -184, -96 Patch "SHLBE0", 0, 0{Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-Sprite "SHLRF0", 144, 112{Offset -187, -102 Patch "SHLBF0", 0, 0{Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-Sprite "SHLRH0", 120, 100{Offset -184, -94 Patch "SHLBH0", 0, 0{Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-Sprite "SHLRJ0", 270, 150 {Offset 14, -44 Patch "SHLBJ0", 0, 0{Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-Sprite "SHLRK0", 340, 132{Offset 60, -48 Patch "SHLBK0", 0, 0{Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-Sprite "SHLRL0", 416, 100 {Offset 110, -88 Patch "SHLBL0", 0, -1 {Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
+Sprite "SHLRD0", 120, 100{Offset -184, -94 Patch "SHLBD0", 0, 0{Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+Sprite "SHLRE0", 140, 116{Offset -184, -96 Patch "SHLBE0", 0, 0{Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+Sprite "SHLRF0", 144, 112{Offset -187, -102 Patch "SHLBF0", 0, 0{Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+Sprite "SHLRH0", 120, 100{Offset -184, -94 Patch "SHLBH0", 0, 0{Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+Sprite "SHLRJ0", 270, 150 {Offset 14, -44 Patch "SHLBJ0", 0, 0{Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+Sprite "SHLRK0", 340, 132{Offset 60, -48 Patch "SHLBK0", 0, 0{Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+Sprite "SHLRL0", 416, 100 {Offset 110, -88 Patch "SHLBL0", 0, -1 {Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
 
-sprite "SHLRM0", 308, 204 {Offset -272, 46 Patch HSPRF0, 0, 0 {Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-sprite "SHLRN0", 308, 204 {Offset -202, 4 Patch HSPRG0, 0, 0 {Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-sprite "SHLRO0", 308, 204 {Offset -151, -36 Patch HSPRH0, 0, 0 {Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-sprite "SHLRP0", 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-sprite "SHLRQ0", 312, 108 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
-sprite "SHLRR0", 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "192:192=54:54", "198:198=42:42", "196:196=170:170"}}
+sprite "SHLRM0", 308, 204 {Offset -272, 46 Patch HSPRF0, 0, 0 {Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+sprite "SHLRN0", 308, 204 {Offset -202, 4 Patch HSPRG0, 0, 0 {Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+sprite "SHLRO0", 308, 204 {Offset -151, -36 Patch HSPRH0, 0, 0 {Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+sprite "SHLRP0", 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+sprite "SHLRQ0", 312, 108 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
+sprite "SHLRR0", 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}}
 
 //Cossack
 Sprite "SHLGD0", 120, 100{Offset -184, -94 Patch "SHLBD0", 0, 0{Translation "192:192=104:104", "198:198=128:128"}}

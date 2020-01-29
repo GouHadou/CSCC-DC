@@ -559,7 +559,7 @@ States
 {
 Spawn:
 EBAL G 0
-EBAL G 0 A_JumpIf(ACS_ExecuteWithResult(975,0)==2,"NoSpawn")
+EBAL G 0 A_JumpIf(CallACS("CSACS_HealthSpawnCheck")==0,"NoSpawn")
 Goto "Super::Spawn+1"
 Pickup:
 "----" A 0 A_JumpIf(CallACS("CSCC_ItemCheck", MTANKITEM , 1), "Give")

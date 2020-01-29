@@ -7,8 +7,6 @@ player.sidemove 0.78, 0.78
 player.startitem "IceWep"
 player.startitem "SparkyWep"
 player.startitem "IceSparkyClassItems"
-damagefactor "Instagib", 5.0
-damagefactor "Dummy", 0.0
 States
 {
 Spawn:
@@ -100,14 +98,32 @@ Translation "198:198=95:95", "192:192=196:196"
 states
 {
 Spawn:
-WRPS A 0 
-WRPS A 7
-WRPS A 0 A_ChangeFlag("NOCLIP", 0)
-WRPS AA 1 A_CheckFloor("Death")
+TFOG A 0
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YSpawn")
+Goto TrueSpawn
+BSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto TrueSpawn
+RSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto TrueSpawn
+GSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto TrueSpawn
+YSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto TrueSpawn
+TrueSpawn:
+TFOG A 7
+TFOG A 0 A_ChangeFlag("NOCLIP", 0)
+TFOG AA 1 A_CheckFloor("Death")
 death:
-WRPS B 0 A_Stop
-WRPS B 2 A_PlaySoundEx("weapon/Blip","Weapon")
-WRPS C 2
+TFOG B 0 A_Stop
+TFOG B 2 A_PlaySoundEx("weapon/Blip","Weapon")
+TFOG C 2
 stop
 }
 }
@@ -124,14 +140,32 @@ Translation "198:198=95:95", "192:192=228:228"
 states
 {
 Spawn:
-WRPS A 0
-WRPS A 7
-WRPS A 0 A_Changeflag("NOCLIP", 0)
-WRPS AA 1 A_CheckFloor("Death")
-death:
-WRPS B 0 A_Stop
-WRPS B 2 A_PlaySoundEx("weapon/Blip","Body")
-WRPS C 2
+TFOG A 0
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YSpawn")
+Goto TrueSpawn
+BSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto TrueSpawn
+RSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto TrueSpawn
+GSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto TrueSpawn
+YSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto TrueSpawn
+TrueSpawn:
+TFOG A 7
+TFOG A 0 A_Changeflag("NOCLIP", 0)
+TFOG AA 1 A_CheckFloor("Death")
+Death:
+TFOG B 0 A_Stop
+TFOG B 2 A_PlaySoundEx("weapon/Blip","Body")
+TFOG C 2
 stop
 }
 }
@@ -142,11 +176,29 @@ actor IceLeave : IceTeleport
 states
 {
 Spawn:
-WRPS C 2 A_PlaySoundEx("weapon/Warp","Body")
-WRPS B 2
-WRPS A 0 A_ChangeVelocity(0, 0, 32, CVF_REPLACE)
-WRPS A 7
-WRPS A 0 
+TFOG A 0
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YSpawn")
+Goto TrueSpawn
+BSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto TrueSpawn
+RSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto TrueSpawn
+GSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto TrueSpawn
+YSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto TrueSpawn
+TrueSpawn:
+TFOG CB 2
+TFOG A 0 A_ChangeVelocity(0, 0, 32, CVF_REPLACE)
+TFOG A 7
+TFOG A 0 
 stop
 }
 }
@@ -157,11 +209,29 @@ actor SparkyLeave : SparkyTeleport
 states
 {
 Spawn:
-WRPS C 2 A_PlaySoundEx("weapon/Warp","Weapon")
-WRPS B 2
-WRPS A 0 A_ChangeVelocity(0, 0, 32, CVF_REPLACE)
-WRPS A 7
-WRPS A 0 
+TFOG A 0
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GSpawn")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YSpawn")
+Goto TrueSpawn
+BSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+Goto TrueSpawn
+RSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+Goto TrueSpawn
+GSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+Goto TrueSpawn
+YSpawn:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+Goto TrueSpawn
+TrueSpawn:
+TFOG CB 2
+TFOG A 0 A_ChangeVelocity(0, 0, 32, CVF_REPLACE)
+TFOG A 7
+TFOG A 0 
 stop
 }
 }

@@ -1,0 +1,69 @@
+//-------------------------------------------------------------------------------------------
+//
+// CSCC Changelogs
+//
+//-------------------------------------------------------------------------------------------
+
+OptionMenu "ChangelogSelect"
+{
+	Title "$CHANGELOGS"
+	StaticText "===============================================================",1
+	StaticText ""
+	Submenu	    "         	          Version 1b",		"v1bChangelog"
+	StaticText ""
+	StaticText"===============================================================",1
+
+	StaticText ""
+}
+
+OptionMenu "v1bChangelog"
+{
+	Title "$V1BCHANGELOG"
+	StaticText "===============================================================",1
+	StaticText ""
+	Option "$GENERAL_CH_TITLE", "CSCC_Menudef_Changelog", "v1bGeneral"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$MEGAMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v1bMegaman"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$UNIX_CH_TITLE", "CSCC_Menudef_Changelog", "v1bUnix"
+	StaticText ""
+	Option "$CORPORAL_CH_TITLE", "CSCC_Menudef_Changelog", "v1bCorporal"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$KORBY_CH_TITLE", "CSCC_Menudef_Changelog", "v1bKorby"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$ZENTRAINER_CH_TITLE", "CSCC_Menudef_Changelog", "v1bZenTrainer"
+	StaticText ""
+	StaticText ""
+	StaticText "===============================================================",1
+	StaticText ""
+}
+
+OptionValue v1bGeneral{0, "\cj-Changelog menu added \n-Server settings menu added\n-Svar for enabling HP in LMS \n--CSCC_HPinLMS \n---Defaults to off \n-Obituaries fixed"}
+OptionValue v1bMegaman{0, "\cj-Tank Cannon tweaked \n--Direct hit damage 20->15 \n--Explosion damage 35->40 \n--Full damage radius 96->32 \n---Matches Tank Operator \n-Comet altfire fixed\n-Zen Sphere requires line \nof sight now"}
+OptionValue v1bUnix{0, "\cj-Sustained invisibility fixed"}
+OptionValue v1bCorporal{0, "\cj-Knife damage 15->30 \n-Now picks up ammo on \nother weapons"}
+OptionValue v1bKorby{0, "\cj-1,000 Needles duration halved \n--Mana cost 25->35 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25"}
+OptionValue v1bZenTrainer{0, "\cj-Zen Sphere requires line \nof sight now"}

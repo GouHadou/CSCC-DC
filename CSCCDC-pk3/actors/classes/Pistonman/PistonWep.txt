@@ -4,7 +4,7 @@ weapon.ammotype "PistonTremorAmmo"
 Inventory.Pickupmessage "$PU_PISTONTREMORBOSS"
 tag "$TAG_PISTONTREMORBOSS"
 dropitem "PistonTremorWepCS"
-Obituary "OB_PISTONTREMORBOSS"
+Obituary "$OB_PISTONTREMORBOSS"
 States
 {
 Spawn:

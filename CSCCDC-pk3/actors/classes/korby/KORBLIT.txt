@@ -1,6 +1,7 @@
 actor LIT : FIR
 {
 Weapon.SlotNumber 2
+tag "LIGHTNING"
 Obituary "$OB_KORBYLIGHTNING"
 Inventory.Pickupmessage "$PU_KORBYLIGHTNING"
 States
@@ -122,7 +123,6 @@ actor LIT1T : BasicFastProjectile
 {
 Obituary "$OB_KORBYLIGHTNING1"
 damagetype "KLIGHT"
-+PIERCEARMOR
 -SOLID
 PROJECTILE
 -FORCEXYBILLBOARD
@@ -153,7 +153,6 @@ actor LIT2T : LIT1T
 {
 Obituary "$OB_KORBYLIGHTNING2"
 speed 90
-+PIERCEARMOR
 +MTHRUSPECIES
 States
 {
@@ -169,8 +168,7 @@ stop
 
 actor LIT3T : LIT1T
 {
-Obituary "$OB_KORBYLIGHTNING3."
-+PIERCEARMOR
+Obituary "$OB_KORBYLIGHTNING3"
 +MTHRUSPECIES
 speed 110
 States

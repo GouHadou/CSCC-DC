@@ -122,7 +122,7 @@ OB_KORBYICE2 = "%o WAS SLAIN BY %k's ICE2.";
 OB_KORBYICE3 = "%o WAS SLAIN BY %k's ICE3.";
 PU_KORBYICE = "ICE";
 
-OB_BADBREATH = "%o WAS SLAIN %k's BAD BREATH.";
+OB_BADBREATH = "%o WAS SLAIN BY %k's BAD BREATH.";
 OB_FLASH = "%o WAS HUMILIATED BY %k's FLASH.":
 OB_KFLAMETHROWER = "%o WAS SLAIN BY %k's FLAMETHROWER.";
 OB_SELFDESTRUCT = "%o WAS SLAIN BY %k's SELF-DESTRUCT.";
@@ -269,6 +269,8 @@ TAG_LIGHTSCREEN = "Light Screen";
 
 //CLASS HELP
 CSCC_TITLE = "\cvCSCC Options";
+CSCC_INFO_TITLE = "\cvCSCC Information";
+CSCC_SETTINGS_TITLE = "\cvCSCC Server Settings";
 
 CSCC_CTRL_RELOAD = "\cvReload";
 CSCC_CTRL_USER1 = "\cvUser Key 1";
@@ -308,14 +310,14 @@ UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based
 UKIYAMA_CH_ALTFIRE = "\cfAltfire : \cjUses the upgrade gauge to \ntoss out a turret that shoots a copy \nof your shot where you are aiming.";
 UKIYAMA_CH_MODS = "\cvMods : ";
 
-MESSATSU_CH_TITLE = "\cvMessatsu";
+MESSATSU_CH_TITLE = "\cvMESSATSU";
 MESSATSU_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj119%\n\cfJump : \cj130%";
 MESSATSU_CH_MAINFIRE = "\cfMainfire : \cjExpel fireballs from \nyour palm, can be charged.";
-MESSATSU_CH_PARRY = "\cvAbility 1 : \cfParry - \cjDeflect attacks and gain an \n stat boost for a limited time. Requires precise timing.";
-MESSATSU_CH_ALTFIRE = "\cfAltfires :";
-MESSATSU_CH_SUPER_I = "\cvItem: \cfSuper Moves - \cjUse item to select which super \nto use instead of next mainfire.";
-MESSATSU_CH_SUPER = "\cfSupers";
-
+MESSATSU_CH_USER1 = "\cfUser Key 1 : \cjDeflect attacks and gain \na stat boost for a limited time. \nRequires precise timing.";
+MESSATSU_CH_USER2 = "\cfUser Key 2 : \cjActivates currently \nselected super attack.";
+MESSATSU_CH_ITEM = "\cfItem : \cjUse item to select which \nsuper to queue for a period of time.";
+MESSATSU_CH_SUPERS = "\cvSupers : ";
+MESSATSU_CH_PASSIVE = "\cfPassive : \cjGain super gauge by being \nhit, attacking with foes nearby, or \ndealing damage.";
 
 GEE_CH_TITLE = "\cvGEE";
 GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj140%";
@@ -328,9 +330,10 @@ BG_CH_ITEM = "\cfItem : \cjScopes in and out.";
 
 BADZ_CH_TITLE = "\cvBADZ";
 BADZ_CH_STATS = "\cfHealth : \cj135\n\n\cfSpeed : \cj90%\n\cfJump : \cj100%";
-BADZ_CH_MAINFIRE = "\cfMainfire : \cjFires a buster shot. \nIf missiles are active, launches \nthem to fly in circles.";
+BADZ_CH_MAINFIRE = "\cfMainfire : \cjFires a slow moving, \nlarge buster shot.";
 BADZ_CH_ALTFIRE = "\cfAltfire : \cjDeploys up to five \nmissiles that circle the user.";
-BADZ_CH_ITEM = "\cfItem : \cjTeleports forward a short \ndistance.";
+BADZ_CH_RELOAD = "\cfReload : \cjIf missiles are active, \nlaunches them to fly in circles.";
+BADZ_CH_USER1 = "\cfUser Key 1 : \cjFlash steps forward a \nshort distance.";
 
 TANKOP_CH_TITLE = "\cvTANK OPERATOR";
 TANKOP_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
@@ -367,11 +370,11 @@ PISTONMAN_CH_ALTFIRE = "\cfAltfire : \cjLaunches the \nHeavier left piston, whic
 PISTONMAN_CH_PASSIVE = "\cfPassive: \cjStriking the \nwalls or ground you are on \ncan send you flying in the \nopposite direction.";
 
 AEGIS_CH_TITLE = "\cvAEGIS";
-AEGIS_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj60%\n\cfJump : \cj100%";
-AEGIS_CH_MAINFIRE = "\cfMainfire : \cjFire a Shotgun round, rate of fire \nincreases without the shield in hand.";
+AEGIS_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
+AEGIS_CH_MAINFIRE = "\cfMainfire : \cjFire a shotgun round, \nrate of fire increases with shield \ndeployed.";
 AEGIS_CH_ALTFIRE = "\cfAltfire : \cjIf at hand, hold up a wide shield with \nfinite health to block hits, allies can \nshoot through it.";
-AEGIS_CH_RELOAD = "\cfReload: \cjToss out the shield and have it \nbecome a deployable bunker, \ncovering a larger area and sporting \nslightly more health. Use again to \nremotely recall the shield (after \ncooldown)";
-AEGIS_CH_USER1 = "\cfUser1 : \cjuse shield Health to launch a \nshockwave from your on-hand shield \nto force opponents backwards.";
+AEGIS_CH_RELOAD = "\cfReload: \cjBegin loading one clip \nof your shotgun at a time \nat a steady rate.";
+AEGIS_CH_USER1 = "\cfUser Key 1 : \cjUse shield health to launch a \nshockwave from your on-hand shield \nto force opponents backwards.";
 
 KORBY_CH_TITLE = "\cvKORBY";
 KORBY_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
@@ -388,14 +391,21 @@ CORPORAL_CH_ALTFIRE = "\cfAltfire : \cjSlash with a combat Knife.";
 CORPORAL_CH_PASSIVE = "\cfPassive : \cjCan pick up weapons, but \nhas a timer for repeated pickups. \nCan collect ammo pickups.";
 
 GIZMO_CH_TITLE = "\cvGIZMO";
-GIZMO_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+GIZMO_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj130%";
+GIZMO_CH_PASSIVE = "\cfPassive : \cjConverts weapon and item \npickups into his own tools.";
+GIZMO_CH_ITEMS = "\cvConverted Items : ";
 
 UNIX_CH_TITLE = "\cvUNIX";
 UNIX_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
-UNIX_CH_ALTFIRE = "\cfAltfire : \cjEngage cloaking and turn \ninvisible.";
-UNIX_CH_ITEM = "\cfItem : \cjTrigger an AOE stun.";
-UNIX_CH_PASSIVE = "\cfPassive : \cjCan Pick up ammo to \nsustain Cloak.";
+UNIX_CH_ALTFIRE = "\cfAltfire : \cjEngage cloaking and turn \ninvisible. Does not clear disguise.";
+UNIX_CH_ITEM = "\cfItem : \cjTrigger a large area stun. \nDoes not clear disguise.";
+UNIX_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups.";
 
-ICESPARKY_CH_TITLE = "\cvICESPARKY";
-ICESPARKY_CH_ITEM = "\cfItem : \cjWhen Fusion meter is full, \nengage fusion.";
-ICESPARKY_CH_PASSIVE = "\cfPassive : \cjGains fusion meter upon \ntaking damage, \nsuccessive kills \nincreases the rate at \nwhich meter is gained.";
+ICESPARKY_CH_TITLE = "\cvICE AND SPARKY";
+ICESPARKY_CH_STATS = "\cvStats : ";
+ICESPARKY_CH_ITEM = "\cfItem : \cjWhen fusion meter is full, \nengage fusion.";
+ICESPARKY_CH_PASSIVE = "\cfPassive : \cjGains fusion meter upon \ntaking damage, successive kills \nincreases the rate at which meter \nis gained.";
+
+CHANGELOGS = "\cvCHOOSE YOUR VERSION";
+V1BCHANGELOG = "\cvV1B CHANGELOG";
+GENERAL_CH_TITLE = "\cvGENERAL";

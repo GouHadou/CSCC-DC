@@ -239,7 +239,7 @@ Goto Spawn2
 
 
 actor FakeLongBullet_BLUE : FakeLongBullet {translation "192:192=205:205", "198:198=74:74" , "196:196=196:196"}
-actor FakeLongBullet_RED : FakeLongBullet {translation "192:192=54:54", "198:198=42:42" , "196:196=170:170"}
+actor FakeLongBullet_RED : FakeLongBullet {translation "192:192=171:171", "198:198=41:41" , "196:196=170:170"}
 actor FakeLongBullet_GREEN : FakeLongBullet {translation "192:192=104:104", "198:198=128:128" , "196:196=138:138"}
 actor FakeLongBullet_GOLD : FakeLongBullet {translation "192:192=229:229", "198:198=232:232" , "196:196=214:214"}
 

@@ -9,8 +9,6 @@
 #include "UNIX.ACS"
 #include "COPYWEP.ACS"
 #include "ITEMGIVE.ACS"
-#include "ANTISTALL.ACS"
-
 
 Script "CSACS_TeamSpecies" ENTER 
 {
@@ -63,6 +61,13 @@ switch(CheckType)
 	}
 
 SetResultValue(output);
+}
+
+script "CSACS_HealthSpawnCheck" (void)
+{
+int Result = 1;
+if(ACS_ExecuteWithResult(975,0)==2 && GetCvar("CSCC_HPinLMS")==false){Result = 0;}
+SetResultValue(Result);
 }
 
 Script "CSACS_HealthSet" (void) CLIENTSIDE

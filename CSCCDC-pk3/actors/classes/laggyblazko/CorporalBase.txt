@@ -99,7 +99,7 @@ actor CorPKnifeHitbox : BasicFastProjectile
 {
 +MTHRUSPECIES
 damagetype "CorpKnife"
-Damage (15)
+Damage (30)
 Speed 80
 radius 8
 height 8

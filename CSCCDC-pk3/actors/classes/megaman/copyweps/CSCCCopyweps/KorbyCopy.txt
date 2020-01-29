@@ -28,7 +28,7 @@ COME Q 1 A_Raise
 Loop
 Fire:
 COME Q 0 A_JumpIfNoAmmo("NoAmmo")
-COME Q 0 A_TakeInventory("CometFlag3", 10)
+COME Q 0 A_TakeInventory("CometFlag3", 999)
 COME RS 4
 COME R 0 A_FireCustomMissile("CometCrosshair", 0, 1, 8)
 goto Hold
@@ -40,6 +40,16 @@ COME S 0 A_ReFire
 COME Q 0 A_GiveInventory("CometFlag",1)
 COME SRQ 4
 COME A 0 A_ClearRefire
+COME A 0 A_TakeInventory("CometFlag",999)
+Goto Ready+1
+Altfire:
+COME Q 0 A_JumpIfNoAmmo("NoAmmo")
+COME Q 0 A_TakeInventory("CometFlag3", 999)
+COME RS 4
+COME R 0 A_FireCustomMissile("CometCrosshair", 0, 1, 8)
+COME TU 4
+COME Q 0 A_GiveInventory("CometFlag",1)
+COME SRQ 4
 COME A 0 A_TakeInventory("CometFlag",999)
 Goto Ready+1
 BotCheck:

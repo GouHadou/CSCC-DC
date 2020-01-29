@@ -548,8 +548,8 @@ Switch(speed)
 	break;
 	
 	Case 1:
-	SetActorProperty(0,APROP_SPEED,1.6);
-	SetActorProperty(0,APROP_JUMPZ,15.0);
+	SetActorProperty(0,APROP_SPEED,1.45);
+	SetActorProperty(0,APROP_JUMPZ,14.0);
 	break;
 	}
 
