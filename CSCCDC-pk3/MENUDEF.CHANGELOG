@@ -42,6 +42,8 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	Option "$UNIX_CH_TITLE", "CSCC_Menudef_Changelog", "v1bUnix"
 	StaticText ""
+	Option "$MESSATSU_CH_TITLE", "CSCC_Menudef_Changelog", "v1bMessatsu"
+	StaticText ""
 	Option "$CORPORAL_CH_TITLE", "CSCC_Menudef_Changelog", "v1bCorporal"
 	StaticText ""
 	StaticText ""
@@ -54,7 +56,19 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	Option "$ZENTRAINER_CH_TITLE", "CSCC_Menudef_Changelog", "v1bZenTrainer"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText "===============================================================",1
@@ -64,6 +78,7 @@ OptionMenu "v1bChangelog"
 OptionValue v1bGeneral{0, "\cj-Changelog menu added \n-Server settings menu added\n-Svar for enabling HP in LMS \n--CSCC_HPinLMS \n---Defaults to off \n-Obituaries fixed"}
 OptionValue v1bMegaman{0, "\cj-Tank Cannon tweaked \n--Direct hit damage 20->15 \n--Explosion damage 35->40 \n--Full damage radius 96->32 \n---Matches Tank Operator \n-Comet altfire fixed\n-Zen Sphere requires line \nof sight now"}
 OptionValue v1bUnix{0, "\cj-Sustained invisibility fixed"}
+OptionValue v1bMessatsu{0, "\cj-Raging demon now goes \nthrough allies"}
 OptionValue v1bCorporal{0, "\cj-Knife damage 15->30 \n-Now picks up ammo on \nother weapons"}
-OptionValue v1bKorby{0, "\cj-1,000 Needles duration halved \n--Mana cost 25->35 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25"}
-OptionValue v1bZenTrainer{0, "\cj-Zen Sphere requires line \nof sight now"}
+OptionValue v1bKorby{0, "\cj-Health 100->85 \n-Blue magic now only \nstacks 5 hits \n-FIR3 impact damage 10-7 \n--Total damage 60->42 \n-1,000 Needles duration halved \n--Mana cost 25->35 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25"}
+OptionValue v1bZenTrainer{0, "\cj-Zen Sphere requires line \nof sight now \n-Can now altfire while using \nZen Sphere \n-Aura range 300->400 \n--Amped range 350->600 \n-Aura visuals tweaked"}

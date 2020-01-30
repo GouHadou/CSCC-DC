@@ -449,7 +449,7 @@ IsSelected WildCoilWepCS{Drawbar"BARAMM35", "BAREMPTY", Ammo1, vertical, 16, 8;
 IsSelected SlashClawWepCS{Drawbar"BARAMM36", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected NoiseCrushWepCS{Drawbar"BARAMM37", "BAREMPTY", Ammo1, vertical, 16, 8;	
 	InInventory WeaponCharge, 1{DrawBar "BARFLS10", "BAREMPTY", Ammo1, vertical, 16, 8;}}
-IsSelected ScorchWheelWep{Drawbar"BARAMM38", "BAREMPTY", Ammo1, vertical, 16, 8;
+IsSelected ScorchWheelWepCS{Drawbar"BARAMM38", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory WheelCount, 1{DrawBar"BARFLS1", "NOBAR", WheelCount, vertical, 16, 8;}}	
 
 //MM8

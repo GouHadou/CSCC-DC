@@ -8,7 +8,8 @@ player.startitem "ICE"
 player.startitem "KorbyClassItems"
 player.forwardmove 0.6, 0.6
 player.sidemove 0.58, 0.58
-Health 100
+Health 85
+Player.MaxHealth 85
 States
 {
 Spawn:

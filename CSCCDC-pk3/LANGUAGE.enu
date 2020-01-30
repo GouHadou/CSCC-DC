@@ -309,6 +309,7 @@ UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%"
 UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based on the mods acquired.";
 UKIYAMA_CH_ALTFIRE = "\cfAltfire : \cjUses the upgrade gauge to \ntoss out a turret that shoots a copy \nof your shot where you are aiming.";
 UKIYAMA_CH_MODS = "\cvMods : ";
+UKIYAMA_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups.";
 
 MESSATSU_CH_TITLE = "\cvMESSATSU";
 MESSATSU_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj119%\n\cfJump : \cj130%";
@@ -377,7 +378,7 @@ AEGIS_CH_RELOAD = "\cfReload: \cjBegin loading one clip \nof your shotgun at a t
 AEGIS_CH_USER1 = "\cfUser Key 1 : \cjUse shield health to launch a \nshockwave from your on-hand shield \nto force opponents backwards.";
 
 KORBY_CH_TITLE = "\cvKORBY";
-KORBY_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
+KORBY_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
 KORBY_CH_MAINFIRE = "\cfMainfire : \cjCast spells or hold to \ncharge up to 3 levels for more \npotent effects.";
 KORBY_CH_ALTFIRE = "\cfAltfire : \cjHold to absorb \ndamage and transmutate it \ninto a new spell, the amount \nof damage recieved determines \nwhat spell you get.";
 KORBY_CH_ITEM = "\cfItem : \cjPurge the current \nBlue Magic spell you \ncurrently have.";
@@ -407,5 +408,6 @@ ICESPARKY_CH_ITEM = "\cfItem : \cjWhen fusion meter is full, \nengage fusion.";
 ICESPARKY_CH_PASSIVE = "\cfPassive : \cjGains fusion meter upon \ntaking damage, successive kills \nincreases the rate at which meter \nis gained.";
 
 CHANGELOGS = "\cvCHOOSE YOUR VERSION";
+V1ACHANGELOG = "\cvV1A CHANGELOG";
 V1BCHANGELOG = "\cvV1B CHANGELOG";
 GENERAL_CH_TITLE = "\cvGENERAL";
