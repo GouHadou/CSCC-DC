@@ -496,6 +496,9 @@ OptionMenu "CSCCInformation"
 	Title "$CSCC_INFO_TITLE"
 	StaticText "===============================================================",1
 	StaticText ""
+	StaticText "The discord for this mod can be found at",1
+	StaticText "https://discord.gg/pxdsap6 (All lowercase)",1
+	StaticText ""
 	StaticText "Cutstuff Community Classes Director's",1
 	StaticText "Cut is a class mod focused around ",1
 	StaticText "rebooting the CSCC brand of mods with ",1
@@ -522,9 +525,6 @@ OptionMenu "CSCCInformation"
 	StaticText "and get permission automatically denies",1
 	StaticText "permission to use or edit assets and code",1
 	StaticText "found in this mod as a whole.",1
-	StaticText ""
-	StaticText "The discord for this mod can be found at",1
-	StaticText "https://discord.gg/pxdsap6 (All lowercase)",1
 	StaticText ""
 	StaticText "Main Developers",1
 	StaticText "------------------------------------",1

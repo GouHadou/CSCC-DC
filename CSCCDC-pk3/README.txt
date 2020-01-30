@@ -8,6 +8,8 @@
 
 ---------------------------
  
+The discord for this mod can be found at https://discord.gg/pxdsap6
+
 Cutstuff Community Classes Director's Cut is a class mod focused around rebooting the CSCC brand of mods with a higher focus 
 on polish and gameplay by designing around more modern ideals and references. Focus is put onto community feedback and development 
 to create a mod that has value past novelty by being proactive in dealing with balance and design issues, while still respecting the 
@@ -18,8 +20,6 @@ Contact ALL of the main developers listed regarding use and editing of assets th
 contributors, and asset contributors listed to ensure that no parties are being infringed upon in usage and editing of assets and code. 
 Failure to contact ALL parties listed and get permission automatically denies permission to use or edit assets and code found in this mod
 as a whole.
-
-The discord for this mod can be found at https://discord.gg/pxdsap6
 
 Main Developers
 ----------------

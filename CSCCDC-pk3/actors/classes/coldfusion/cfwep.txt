@@ -443,7 +443,7 @@ Height 48
 Renderstyle "Translucent"
 Alpha 0.75
 +DONTBLAST
-Damage (6)
+Damage (12)
 Damagetype "Afterburner"
 translation "198:198=41:41", "192:192=216:216"
 Obituary "$OB_FUSIONBREAK"
@@ -462,6 +462,12 @@ actor FusionBrakeB : FusionBrake {translation "198:198=74:74", "192:192=205:205"
 actor FusionBrakeR : FusionBrake {translation "198:198=41:41", "192:192=171:171"}
 actor FusionBrakeG : FusionBrake {translation "198:198=128:128", "192:192=104:104"}
 actor FusionBrakeY : FusionBrake {translation "198:198=232:232", "192:192=229:229"}
+
+actor AfterburnerProtect : PowerProtection
+{
+powerup.duration 10
+damagefactor "Afterburner", 0.0
+}
 
 actor CFDashFlag : Inventory
 {
