@@ -677,24 +677,40 @@ int BMHealth = 999;
 int CurrentHealth = BMHealth;
 int Diff= 0;
 int BMValue = 0;
+int Hits = 0;
+int i;
+bool GiveInvuln = TRUE;
+
 SetActorProperty(PlayerTID, APROP_Health, BMHealth);
 TakeActorInventory(PlayerTID, "KorbyHealthFlag", 999);
 While(CheckInventory("BMHoldFlag"))
 	{
+	i=0;
 	Diff = CurrentHealth - GetActorProperty(PlayerTID, APROP_Health);
+	
+	If(Hits >= 5){break;}
 	If(BMValue > 0 && Diff == 0){break;}
 	If(Diff > 0)
 		{
 		BMValue+=Diff;
+		Hits++;
+		SetActorProperty(PlayerTID, APROP_Health, BMHealth);
 		CurrentHealth = GetActorProperty(PlayerTID, APROP_Health);
-		If(BMValue > 100){break;} //Can't absorb pits or quickbeams.
-		Delay(5);
+		If(BMValue > 200){GiveInvuln=FALSE;break;} //Can't absorb pits or quickbeams.
+		If(BMValue > 100){break;} 
+		For(i = 0; i <5; i++)
+			{
+			Delay(1);
+			Diff = CurrentHealth - GetActorProperty(PlayerTID, APROP_Health);
+			If(Diff > 0){i=100;}
+			}
 		}
-	Delay(1);
+	If(i<10){Delay(1);}
 	}
 If(BMValue > 0)
 	{
 	//PrintBold(i:BMValue);
+	If(GiveInvuln == TRUE){GiveInventory("KorbyTempInvuln", 1);}
 	GiveActorInventory(PlayerTID, "BMFlag", 1);
 	If(BMValue >= 2 && BMValue < 10){GiveActorInventory(PlayerTID, "THOUF", 1);}
 	If(BMValue >= 10 && BMValue < 20){GiveActorInventory(PlayerTID, "AQUAF", 1);}
