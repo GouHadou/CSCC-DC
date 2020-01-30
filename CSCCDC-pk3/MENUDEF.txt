@@ -524,7 +524,7 @@ OptionMenu "CSCCInformation"
 	StaticText "found in this mod as a whole.",1
 	StaticText ""
 	StaticText "The discord for this mod can be found at",1
-	StaticText "https://discord.gg/ekwyxb8 (All lowercase)",1
+	StaticText "https://discord.gg/pxdsap6 (All lowercase)",1
 	StaticText ""
 	StaticText "Main Developers",1
 	StaticText "------------------------------------",1

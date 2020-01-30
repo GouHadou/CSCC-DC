@@ -19,7 +19,7 @@ contributors, and asset contributors listed to ensure that no parties are being 
 Failure to contact ALL parties listed and get permission automatically denies permission to use or edit assets and code found in this mod
 as a whole.
 
-The discord for this mod can be found at https://discord.gg/ekwyxb8
+The discord for this mod can be found at https://discord.gg/pxdsap6
 
 Main Developers
 ----------------

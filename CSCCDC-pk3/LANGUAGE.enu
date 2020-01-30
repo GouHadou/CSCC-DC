@@ -341,7 +341,7 @@ TANKOP_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
 TANKOP_CH_ITEM = "\cfItem : \cjActivates and deactivates \ntank formation.";
 
 VOCALWOMAN_CH_TITLE = "\cvVOCALWOMAN";
-VOCALWOMAN_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj81%\n\cfJump : \cj100%";
+VOCALWOMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj81%\n\cfJump : \cj100%";
 VOCALWOMAN_CH_MAINFIRE = "\cfMainfire : \cjUnleash a volley of \nmusic notes.";
 VOCALWOMAN_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
 

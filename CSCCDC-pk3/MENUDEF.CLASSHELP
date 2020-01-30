@@ -432,6 +432,7 @@ OptionMenu "VocalWomanInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
 	StaticText "$VOCALWOMAN_CH_PASSIVE"
 	StaticText ""
 }
@@ -439,7 +440,7 @@ OptionMenu "VocalWomanInfo"
 OptionValue VocalWomanAltfires
 {
 	0, "\cfOffense Song\n\cjLaunch a bouncing note \nthat remote detonates \nwhen altfire is used."
-	1, "\cfSupport Song\n\cjLaunch a slow moving note \nthat radiates a healing \naura around itself for \nyourself and allies."
+	1, "\cfSupport Song\n\cjLaunch a moving note \nthat radiates a healing \naura around itself for \nyourself and allies. \nCan apply overheal."
 }
 
 OptionMenu "ZenTrainerInfo"
@@ -604,13 +605,13 @@ OptionMenu "AegisInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_USER1S", "Aegis_ClassHelp_Forms", "AegisUser1s"
+	/*Option "$CSCC_CH_USER1S", "Aegis_ClassHelp_Forms", "AegisUser1s"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
+	StaticText ""*/
 	Option "$CSCC_CH_USER2S", "Aegis_ClassHelp_Forms", "AegisUser2s"
 	StaticText ""
 	StaticText ""
