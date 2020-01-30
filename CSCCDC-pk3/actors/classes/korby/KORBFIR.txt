@@ -711,7 +711,7 @@ KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 225, SXF_TRANSFERTRANS
 KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 5, 0, 20, 315, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
-KFIR GHIJKL 4 A_Explode(10, 128, 0, 0, 128)
+KFIR GHIJKL 4 A_Explode(7, 128, 0, 0, 128)
 KFIR L 1 A_FadeOut
 wait
 }

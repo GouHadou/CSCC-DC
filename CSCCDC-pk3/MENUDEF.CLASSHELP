@@ -152,6 +152,8 @@ OptionMenu "UkiyamaInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
 	StaticText "$UKIYAMA_CH_PASSIVE"
 }
 
