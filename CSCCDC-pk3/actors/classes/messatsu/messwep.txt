@@ -534,6 +534,9 @@ GHAD A 0 A_JumpIfInventory("MessatsuCharge",19,"Charge1")
 GHAD A 0 A_Jump(32, "BotAbility")
 GHAD A 0 A_JumpIfCloser(96, "AltFire")
 GHAD A 0 A_JumpIfCloser(384, "BotDemonFlip")
+GHAD A 0 A_JumpIfInventory("RagingDemonReady", 1, "RagingDemon")
+GHAD A 0 A_JumpIfInventory("TemaReady", 1, "Tema")
+GHAD A 0 A_JumpIfInventory("MisogiReady", 1, "GroundSlam")
 GHAD A 0 A_Jump(128, "BotHold")
 Goto RealFire
 BotHold:
@@ -541,7 +544,9 @@ GHAD A 0 A_GiveInventory("MessatsuCharge", 1)
 GHAD A 0 A_Refire
 Goto RealFire
 BotAbility:
-
+GHAD A 0 A_JumpIfInventory("RagingDemonReady", 1, "RagingDemon")
+GHAD A 0 A_JumpIfInventory("TemaReady", 1, "Tema")
+GHAD A 0 A_JumpIfInventory("MisogiReady", 1, "GroundSlam")
 GHAD A 0 A_JumpIfInventory("MessatsuAmmo", 56, "RagingDemonReady")
 GHAD A 0 A_JumpIfInventory("MessatsuAmmo", 36, "MisogiReady")
 GHAD A 0 A_JumpIfInventory("MessatsuAmmo", 18, "TemaReady")
@@ -815,7 +820,7 @@ actor NoSGS : Powerup
 powerup.duration 20
 }
 
-actor ShunGokuSatsu
+actor ShunGokuSatsu : BasicProjectile
 {
 Obituary "$OB_SHUNGOKUSATSU"
 PROJECTILE
@@ -829,6 +834,7 @@ Damage (10)
 radius 24
 height 16
 scale 2.5
+speed 0
 States
 {
 Spawn:
@@ -863,8 +869,10 @@ stop
 actor Gojin : Gouhadou
 {
 PROJECTILE
-+RIPPER
+//+RIPPER
 +DONTBLAST
++NOINTERACTION
++NOCLIP
 Damage (0)
 Obituary "$OB_GOJIN"
 scale 2.5
@@ -872,8 +880,8 @@ damagetype "Gojin"
 Translation "192:192=59:59", "198:198=61:61"
 Renderstyle "Add"
 Speed 0
-height 0
-radius 0
+height 1
+radius 1
 States
 {
 Spawn:
@@ -892,8 +900,10 @@ stop
 Actor Gozan : Gouhadou
 {
 PROJECTILE
-+RIPPER
+//+RIPPER
 +DONTBLAST
++NOINTERACTION
++NOCLIP
 Damage (0)
 Obituary "$OB_GOZAN"
 scale 2.5
@@ -901,8 +911,8 @@ damagetype "Gozan"
 Translation "192:192=59:59", "198:198=61:61"
 Renderstyle "Add"
 Speed 0
-height 0
-radius 0
+height 1
+radius 1
 States
 {
 Spawn:
@@ -1461,8 +1471,8 @@ stop
 Actor GoshoAttack : BasicProjectile
 {
 PROJECTILE
-+MTHRUSPECIES
-+THRUACTORS
++NOINTERACTION
++NOCLIP
 Translation "192:192=59:59", "198:198=61:61"
 Obituary "$OB_GOSHO"
 Damagetype "GoSho"
