@@ -344,7 +344,7 @@ IsSelected BurstBlade
 	InInventory LightScreenBossCooldownItem, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenBossCooldownItem, vertical, 8, 8;}
 	ininventory K_ShieldBreak, 1{Drawbar"BARAMM65", "BAREMPTY", ShieldEnergy, vertical, 8, 8;}
 	DrawImage "AEGRELD", 32, 48; DrawImage "VERICONR", 40, 48;
-	//InInventory not K_ShieldBreak, 1{InInventory not LightScreenActive, 1{InInventory not ShieldWaveCooldownItem, 1{DrawImage "AEGFIST", 32, 56; DrawImage "VERICON1", 40, 56;}}}
+	InInventory not K_ShieldBreak, 1{InInventory not LightScreenActive, 1{InInventory not ShieldWaveCooldownItem, 1{DrawImage "AEGFIST", 32, 56; DrawImage "VERICON1", 40, 56;}}}
 	InInventory not K_ShieldBreak, 1{InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 32, 64; DrawImage "VERICON2", 40, 64;}}
 	}
 

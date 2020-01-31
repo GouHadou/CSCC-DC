@@ -69,8 +69,6 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$AEGIS_CH_TITLE", "CSCC_Menudef_Changelog", "v1bAegis"
-	StaticText ""
 	Option "$CORPORAL_CH_TITLE", "CSCC_Menudef_Changelog", "v1bCorporal"
 	StaticText ""
 	StaticText ""
@@ -129,7 +127,6 @@ OptionMenu "v1bChangelog"
 OptionValue v1bGeneral{0, "\cj-Changelog menu added \n-Server settings menu added\n-Svar for enabling HP in LMS \n--CSCC_HPinLMS \n---Defaults to off \n-Svar for enabling pit protect \n--CSCC_PitProtection \n---Defaults to on \n-Obituaries fixed"}
 OptionValue v1bMegaman{0, "\cj-Tank Cannon tweaked \n--Direct hit damage 20->15 \n--Explosion damage 35->40 \n--Full damage radius 96->32 \n---Matches Tank Operator \n-Comet altfire fixed\n-Zen Sphere requires line \nof sight now"}
 OptionValue v1bUnix{0, "\cj-Sustained invisibility fixed"}
-OptionValue v1bAegis{0, "\cj-Shield wave removed"}
 OptionValue v1bMessatsu{0, "\cj-Raging demon now goes \nthrough allies"}
 OptionValue v1bColdFusion{0, "\cj-Powerprotect applied to \nAfterburner \n-Afterburner knockback \n9/12->35"}
 OptionValue v1bCorporal{0, "\cj-Knife damage 15->30 \n-Now picks up ammo on \nother weapons"}
