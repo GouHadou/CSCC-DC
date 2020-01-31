@@ -94,6 +94,8 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
 	Option "$VOCALWOMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v1bVocalWoman"
 	StaticText ""
 	StaticText ""
@@ -127,6 +129,6 @@ OptionValue v1bAegis{0, "\cj-Shield wave removed"}
 OptionValue v1bMessatsu{0, "\cj-Raging demon now goes \nthrough allies"}
 OptionValue v1bColdFusion{0, "\cj-Powerprotect applied to \nAfterburner \n-Afterburner knockback \n9/12->35"}
 OptionValue v1bCorporal{0, "\cj-Knife damage 15->30 \n-Now picks up ammo on \nother weapons"}
-OptionValue v1bKorby{0, "\cj-Blue magic now only \nstacks 5 hits \n-Level 1+2 spells have \n3 additional recoil tics \n-Level 1 Spells MP 5->8\n-FIR3 falling flames 15->5 \nif they hit a celiing \n-Blue Magic Learning \nnow costs MP\n-1,000 Needles duration halved \n--Mana cost 25->35 \n-Flash mana cost 7->15 \n-Blaster mana cost 15->20 \n-Matra magic mana cost 10->20 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25"}
+OptionValue v1bKorby{0, "\cj-Blue magic now only \nstacks 5 hits \n-Level 1&2 spell firing \ndelay 8->11 tics \n-Level 1 spells MP 5->8\n-FIR3 falling flames 15->5 \nif they hit a celiing \n-Holding blue magic \nnow costs MP\n-1,000 Needles duration \nhalved \n--Mana cost 25->35 \n-Flash mana cost 7->15 \n-Blaster mana cost 15->20 \n-Matra magic mana cost 10->20 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25"}
 OptionValue v1bVocalWoman{0, "\cj-Health 125->100 \n-Mainfire speed 45->25 \n-Note Bomb speed 50->40 \n-Note Song speed 10->25 \n--Lifetime 175->70 tics \n-Note Song heals for one \ninstance now \n--Ally heal 3->40 \n--Self heal 1->25 \n---Now applies overheal"}
 OptionValue v1bZenTrainer{0, "\cj-Zen Sphere requires line \nof sight now \n-Can now altfire while using \nZen Sphere \n-Aura range 300->400 \n--Amped range 350->600 \n-Aura visuals tweaked"}
