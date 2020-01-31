@@ -680,6 +680,7 @@ int BMValue = 0;
 int Hits = 0;
 int i;
 bool GiveInvuln = TRUE;
+bool TakeAmmo = TRUE;
 
 SetActorProperty(PlayerTID, APROP_Health, BMHealth);
 TakeActorInventory(PlayerTID, "KorbyHealthFlag", 999);
@@ -705,7 +706,12 @@ While(CheckInventory("BMHoldFlag"))
 			If(Diff > 0){i=100;}
 			}
 		}
-	If(i<10){Delay(1);}
+	If(i<10)
+		{
+		If(TakeAmmo == TRUE && BMValue == 0){TakeInventory("MP", 1);TakeAmmo=FALSE;}
+		Else{TakeAmmo = TRUE;}
+		Delay(1);
+		}
 	}
 If(BMValue > 0)
 	{

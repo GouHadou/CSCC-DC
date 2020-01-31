@@ -87,11 +87,11 @@ Goto Fire3
 Fire1:
 KBHF F 0 A_JumpIfNoAmmo("NoAmmo")
 KBHL F 0 A_TakeInventory("WeaponCharge",999)
-KBHL F 0 A_TakeInventory("MP",5)
+KBHL F 0 A_TakeInventory("MP",8)
 KBHU D 0 A_PlaySoundEx("misc/wilylightning","Weapon")
 KBHL F 4 A_GiveInventory("LIT1T_M1")
 KBHU FE 2
-//KBHL A 0 A_GiveInventory("CD",1)
+KBHL A 0 A_GiveInventory("CD",1)
 goto Ready+2
 Fire2:
 KBHF F 0 A_JumpIfInventory("MP", 15, "Fire2R")
@@ -102,7 +102,7 @@ KBHL F 0 A_TakeInventory("MP",15)
 KBHL F 0 A_GiveInventory("LIT2T_M1")
 KBHU D 0 A_PlaySoundEx("misc/wilylightning","Weapon")
 KBHU FE 2
-//KBHL A 0 A_GiveInventory("CD",2)
+KBHL A 0 A_GiveInventory("CD",1)
 goto Ready+2
 Fire3:
 KBHF F 0 A_JumpIfInventory("MP", 30, "Fire3R")

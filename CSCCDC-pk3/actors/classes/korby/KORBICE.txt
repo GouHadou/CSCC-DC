@@ -94,7 +94,7 @@ KBHI F 4 A_GiveInventory("ICE1_M1")
 KBHU F 0 A_PlaySoundEx("weapon/mbuster","Weapon")
 KBHU FE 2
 KBHU A 4
-//KBHI A 0 A_GiveInventory("CD",1)
+KBHI A 0 A_GiveInventory("CD",1)
 goto Ready+2
 Fire2:
 KBHF F 0 A_JumpIfInventory("MP", 18, "Fire2R")
@@ -105,7 +105,7 @@ KBHI F 0 A_TakeInventory("MP",18)
 KBHI F 0 A_GiveInventory("ICE2_M1")
 KBHU D 0 A_PlaySoundEx("weapon/mbuster","Weapon")
 KBHU FE 2
-//KBHI A 0 A_GiveInventory("CD",2)
+KBHI A 0 A_GiveInventory("CD",1)
 goto Ready+2
 Fire3:
 KBHF F 0 A_JumpIfInventory("MP", 40, "Fire3R")

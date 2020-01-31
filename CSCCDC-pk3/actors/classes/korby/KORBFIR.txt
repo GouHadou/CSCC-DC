@@ -1,6 +1,6 @@
 actor FIR : CSCCWepBase 
 {
-Weapon.AmmoUse 5
+Weapon.AmmoUse 8
 Weapon.AmmoGive 100
 Weapon.SlotNumber 1
 weapon.ammotype "MP"
@@ -157,11 +157,11 @@ Goto Fire3
 Fire1:
 KBHF F 0 A_JumpIfNoAmmo("NoAmmo")
 KBHF F 0 A_TakeInventory("WeaponCharge",999)
-KBHF F 0 A_TakeInventory("MP",5)
+KBHF F 0 A_TakeInventory("MP",8)
 KBHU D 0 A_PlaySoundEx("weapon/Firestorm","Weapon")
 KBHF F 4 A_GiveInventory("FIR1_M1")
 KBHU FE 2
-//KBHF A 0 A_GiveInventory("CD",1)
+KBHF A 0 A_GiveInventory("CD",1)
 goto Ready+2
 Fire2R:
 KBHF F 0 A_TakeInventory("WeaponCharge",999)
@@ -169,7 +169,7 @@ KBHF F 0 A_TakeInventory("MP",15)
 KBHU D 0 A_PlaySoundEx("weapon/Firestorm","Weapon")
 KBHF F 0 A_GiveInventory("FIR2_M1")
 KBHU FE 2
-//KBHF A 0 A_GiveInventory("CD",2)
+KBHF A 0 A_GiveInventory("CD",1)
 goto Ready+2
 Fire3R:
 KBHF F 0 A_TakeInventory("WeaponCharge",999)
@@ -201,16 +201,18 @@ KBHU D 0 A_JumpIfInventory("AQUAF", 1, "AquaBreath")
 KBHU D 0 A_JumpIfInventory("BLASF", 1, "Blaster")
 KBHU D 0 A_JumpIfInventory("MANTF", 1, "MatraMagic")
 AltFireH:
+KBHU D 0 A_JumpIfInventory("MP", 1, 1)
+Goto BMAbsorbEnd
 KBHU D 0 A_GiveInventory("BMHoldFlag", 1)
 KBHU D 0 A_TakeInventory("KorbyHealthFlag", 999)
 KBHU D 0 A_GiveInventory("KorbyHealthFlag", health)
 KBHU D 0 ACS_NamedExecuteAlways("KorbyBlueMagicAbsorb", 0)
 AltfireH2:
 KBHU D 0 A_JumpIfInventory("BMFlag", 1, "BMAcquired")
+KBHU D 0 A_JumpIfInventory("MP", 1, 1)
+Goto BMAbsorbEnd
 KBHU D 1 A_SpawnItemEx("KorbyBMFX", Cos(-pitch)*48, 12, 32+sin(-pitch)*48, Random(-1, 2), Random(-1, 1), Random(1,3))
 KBHU D 1 A_Refire("AltFireH2")
-//KBHU DCB 2
-//Goto Ready+2
 Goto BMAbsorbEnd
 BMAcquired:
 KBHU D 0 A_PlaySoundEX("weapon/timestopper","Weapon")
@@ -221,6 +223,9 @@ KBHU D 0 A_TakeInventory("BMHoldFlag", 1)
 KBHU CB 3
 KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
 KBHU B 0 A_JumpIfInventory("BMFlag", 1, "BMHolding")
+KBHU D 0 A_JumpIfInventory("MP", 1, 1)
+Goto BMHolding
+KBHU D 0
 Goto Ready+2
 BMHolding:
 KBHU B 1 A_WeaponReady(WRF_NOSECONDARY)
@@ -668,7 +673,7 @@ KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 4, 4, 0, 20, 90, SXF_TRANSFERTRANSL
 KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 4, 4, 0, 20, 180, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_SpawnItemEx("Korby1Flame", 32, 0, 4, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
-KFIR GLG 4 A_Explode(3, 64, 0, 0, 64)
+KFIR GLG 4 A_Explode(5, 64, 0, 0, 64)
 KFIR L 1 A_FadeOut
 wait
 }
@@ -689,7 +694,7 @@ KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 180, SXF_TRANSFERTRANS
 KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 240, SXF_TRANSFERTRANSLATION)
 KFIR A 0 A_SpawnItemEx("Korby2Flame", 32, 0, 4, 4, 0, 20, 300, SXF_TRANSFERTRANSLATION)
 KFIR A 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
-KFIR ABCDE 4 A_Explode(5, 96, 0, 0, 96)
+KFIR ABCDE 4 A_Explode(6, 96, 0, 0, 96)
 KFIR F 1 A_FadeOut
 wait
 }
@@ -711,7 +716,7 @@ KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 225, SXF_TRANSFERTRANS
 KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 4, 0, 20, 270, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_SpawnItemEx("Korby3Flame", 32, 0, 4, 5, 0, 20, 315, SXF_TRANSFERTRANSLATION)
 KFIR G 0 A_PlaySoundEx("weapon/atomicfire","Weapon")
-KFIR GHIJKL 4 A_Explode(5, 128, 0, 0, 128)
+KFIR GHIJKL 4 A_Explode(10, 128, 0, 0, 128)
 KFIR L 1 A_FadeOut
 wait
 }
@@ -826,6 +831,7 @@ States
 {
 Spawn:
 KFIR L 0
+"----" A 0 A_SetArg(0, 15)
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_Countdown
@@ -864,13 +870,23 @@ KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
-loop
+Goto Spawn+2
 Bounce.Ceiling:
+"----" A 0 A_SetArg(0, 5)
 Bounce.Wall: 
 "----" A 0 A_ScaleVelocity(0.5)
 Goto Spawn2
 Bounce.Floor:
 "----" A 0 
 Goto Death
+Death:
+NAPA E 0 A_SetTranslucent(1.0, 0)
+NAPA E 0 A_ChangeFlag("NOGRAVITY", TRUE)
+NAPA E 0 A_Stop
+NAPA E 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+NAPA E 0 A_Explode(Args[0], 96, 0, 0, 96)
+NAPA E 0 A_LogInt(Args[0])
+NAPA EFGHIJKLMNOPQRS 2
+stop
 }
 }
