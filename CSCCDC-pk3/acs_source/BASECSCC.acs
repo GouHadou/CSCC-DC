@@ -79,11 +79,17 @@ If(StateSet==0){SetActorState(0,"NormalSpawn");}
 
 //See WEPACS for CSACS_ItemSet [Trill]
 
-script "CSACS_HitKnockback" (int force)
+script "CSACS_HitKnockback" (int force, int disabled)
 {
+if(disabled == 0){GiveInventory("TempPitProtection",1);}
 int pusher = ACS_NamedExecuteWithResult("core_gettarget");
 int Vang = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActorY(pusher)) >> 8;
 ThrustThing(Vang, force, 1, 0);
+}
+
+script "CSACS_CheckPitProtect" (void)
+{
+SetResultValue(GetCvar("CSCC_PitProtection"));
 }
 
 script "CSACS_PitchGrab" (Void)

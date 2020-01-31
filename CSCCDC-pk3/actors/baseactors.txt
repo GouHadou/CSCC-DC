@@ -644,3 +644,52 @@ actor HexBitVisual
     stop
   }
 }
+
+//Pit Protection
+actor TempPitProtection : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("IsBot",1,"Nope")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_CheckPitProtect")==0,"Nope")
+TNT1 A 0 A_JumpIfInventory("TempPitProtectionPowerup",1,"Continue")
+TNT1 A 0 A_ChangeFlag("NOBLOCKMONST",0)
+TNT1 A 0 A_SpawnItemEx("TempPitProtectHelper")
+Continue:
+TNT1 A 0 A_GiveInventory("TempPitProtectionPowerup",1)
+stop
+Nope:
+TNT1 A 0
+stop
+}
+}
+
+actor TempPitProtectionPowerup : Powerup
+{
+Powerup.Duration 35
+}
+
+actor TempPitProtectHelper : BasicHelper
+{
+States
+{
+Spawn:
+TNT1 A 0
+SpawnLoop:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInTargetInventory("TempPitProtectionPowerup",1,"SpawnLoop")
+TNT1 A 0 A_GiveToTarget("TempPitProtectionEnder",1)
+stop
+}
+}
+
+actor TempPitProtectionEnder : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_ChangeFlag("NOBLOCKMONST",1)
+stop
+}
+}

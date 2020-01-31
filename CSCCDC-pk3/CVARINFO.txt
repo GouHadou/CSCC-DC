@@ -1,4 +1,5 @@
 server noarchive bool CSCC_HPinLMS = false;
+server noarchive bool CSCC_PitProtection = true;
 
 user noarchive int CSCC_MenuDef_Changelog = 0;
 

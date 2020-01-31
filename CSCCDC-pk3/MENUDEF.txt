@@ -559,6 +559,10 @@ OptionMenu "CSCCServerSettings"
 	StaticText ""
 	Option "HP in LMS (CSCC_HPinLMS)",			"cscc_hpinlms", "YesNo"
 	StaticText ""
+	StaticText "General Options",1
+	StaticText ""
+	Option "Pit Protection (CSCC_PitProtection)",			"cscc_pitprotection", "YesNo"
+	StaticText ""
 	StaticText "===============================================================",1
 }
 

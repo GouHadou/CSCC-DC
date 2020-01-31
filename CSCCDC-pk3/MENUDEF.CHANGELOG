@@ -43,6 +43,10 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	Option "$MEGAMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v1bMegaman"
 	StaticText ""
 	StaticText ""
@@ -122,7 +126,7 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 }
 
-OptionValue v1bGeneral{0, "\cj-Changelog menu added \n-Server settings menu added\n-Svar for enabling HP in LMS \n--CSCC_HPinLMS \n---Defaults to off \n-Obituaries fixed"}
+OptionValue v1bGeneral{0, "\cj-Changelog menu added \n-Server settings menu added\n-Svar for enabling HP in LMS \n--CSCC_HPinLMS \n---Defaults to off \n-Svar for enabling pit protect \n--CSCC_PitProtection \n---Defaults to on \n-Obituaries fixed"}
 OptionValue v1bMegaman{0, "\cj-Tank Cannon tweaked \n--Direct hit damage 20->15 \n--Explosion damage 35->40 \n--Full damage radius 96->32 \n---Matches Tank Operator \n-Comet altfire fixed\n-Zen Sphere requires line \nof sight now"}
 OptionValue v1bUnix{0, "\cj-Sustained invisibility fixed"}
 OptionValue v1bAegis{0, "\cj-Shield wave removed"}
