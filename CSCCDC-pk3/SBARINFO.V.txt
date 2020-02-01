@@ -62,7 +62,7 @@ IsSelected CopyWeapon{DrawBar "BESTBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected UnixKnife
 {
 DrawBar "BARAMM16", "BAREMPTY", Ammo2, vertical, 8, 8;
-DrawBar "BARAMM32", "BAREMPTY", Ammo1, vertical, 16, 8;
+DrawBar "BARAMM65", "BAREMPTY", Ammo1, vertical, 16, 8;
 InInventory UnixDisguiseFlag, 1{DrawImage "UNIXDIS", 267, 10;}	
 }
 IsSelected UnixBlade
