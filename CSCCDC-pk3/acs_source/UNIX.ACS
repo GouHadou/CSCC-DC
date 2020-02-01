@@ -108,7 +108,7 @@ Switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
 	default:
 		break;
 	}
-int CopyRobot = CheckInventory("CopyWeapon");
+int CopyRobot = CheckInventory("IsCopy");
 int disguise = FindDisguise();
 if(CopyRobot == 1){disguise = 1;}
 int color = FindColor(disguise);
@@ -121,12 +121,12 @@ if(CheckInventory("UnixKnife")&&!CheckInventory("UnixDisguiseFlag")) {
 	GiveInventory("NoTeamTranslation", 1);
 	
 	//PrintBold(i:color);
-	if(disguise == 1 && ACS_ExecuteWithResult(975, 1)!=1 && !CheckInventory("CopyWeapon")){ACS_NamedExecuteAlways("CSACS_COPYCOLORS",0,1);}
+	if(disguise == 1 && ACS_ExecuteWithResult(975, 1)!=1 && !CheckInventory("IsCopy")){ACS_NamedExecuteAlways("CSACS_COPYCOLORS",0,1);}
 	else{ACS_NamedExecuteAlways("CSACS_UnixColors",0,color);}//have to refer to a separate script in GLOBAL for PlayerTranslation
 	
 	str thePickup = DisguiseInfo[disguise][3];
 	
-	if(thePickup!="" && !CheckInventory("CopyWeapon")){GiveInventory(thePickup,1);}
+	if(thePickup!="" && !CheckInventory("IsCopy")){GiveInventory(thePickup,1);}
 	if(teamPickup!=""){GiveInventory(teamPickup,1);}
 	ACS_NamedExecuteAlways("SetUnixDisguiseC",0,disguise);
 }

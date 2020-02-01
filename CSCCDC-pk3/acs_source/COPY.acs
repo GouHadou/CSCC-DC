@@ -284,7 +284,7 @@ Script "CopyCubeWarper" (void) CLIENTSIDE
 	Delay(1);
 	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
 	while(GetActorProperty(Player, APROP_HEALTH)>0
-	&& CheckActorInventory(Player, "CopyWeapon")) {
+	&& CheckActorInventory(Player, "IsCopy")) {
 		SetActorProperty(0,APROP_Alpha,GetActorProperty(Player,APROP_Alpha));
 		Thing_SetTranslation(0,GetCvar(strParam(s:"SV_TRANSLATION",i:Player-1000)));
 		Delay(1);
