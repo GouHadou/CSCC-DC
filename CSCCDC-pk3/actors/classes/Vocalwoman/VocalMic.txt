@@ -188,7 +188,7 @@ translation "192:192=42:42", "198:198=46:46"
 damagetype "Music"
 Obituary "$OB_VocalMicBoss"
 Speed 45
-Damage (5 + CallACS("DamageRate",7,256,8))
+Damage (5 + CallACS("DamageRate",7,256,32))
 radius 8
 height 12
 scale 1.5
