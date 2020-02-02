@@ -201,7 +201,7 @@ KBHU D 0 A_JumpIfInventory("AQUAF", 1, "AquaBreath")
 KBHU D 0 A_JumpIfInventory("BLASF", 1, "Blaster")
 KBHU D 0 A_JumpIfInventory("MANTF", 1, "MatraMagic")
 AltFireH:
-KBHU D 0 A_JumpIfInventory("MP", 1, 1)
+KBHU D 1 A_JumpIfInventory("MP", 1, 1)
 Goto BMAbsorbEnd
 KBHU D 0 A_GiveInventory("BMHoldFlag", 1)
 KBHU D 0 A_TakeInventory("KorbyHealthFlag", 999)
