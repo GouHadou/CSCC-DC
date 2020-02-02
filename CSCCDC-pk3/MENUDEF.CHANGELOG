@@ -60,10 +60,21 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	Option "$UNIX_CH_TITLE", "CSCC_Menudef_Changelog", "v1bUnix"
 	StaticText ""
+	Option "$ICESPARKY_CH_TITLE", "CSCC_Menudef_Changelog", "v1bIceSparky"
+	StaticText ""
 	Option "$MESSATSU_CH_TITLE", "CSCC_Menudef_Changelog", "v1bMessatsu"
 	StaticText ""
 	StaticText ""
 	Option "$COLDFUSION_CH_TITLE", "CSCC_Menudef_Changelog", "v1bColdFusion"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$PISTONMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v1bPistonman"
+	StaticText ""
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -114,6 +125,8 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
 	Option "$ZENTRAINER_CH_TITLE", "CSCC_Menudef_Changelog", "v1bZenTrainer"
 	StaticText ""
 	StaticText ""
@@ -130,10 +143,12 @@ OptionMenu "v1bChangelog"
 OptionValue v1bGeneral{0, "\cj-Changelog menu added \n-Server settings menu added\n-Svar for enabling HP in LMS \n--CSCC_HPinLMS \n---Defaults to off \n-Svar for enabling pit protect \n--CSCC_PitProtection \n---Defaults to on \n-Obituaries fixed"}
 OptionValue v1bMegaman{0, "\cj-Tank Cannon tweaked \n--Direct hit damage 20->15 \n--Explosion damage 35->40 \n--Full damage radius 96->32 \n---Matches Tank Operator \n-Comet altfire fixed\n-Zen Sphere requires line \nof sight now"}
 OptionValue v1bUnix{0, "\cj-Sustained invisibility fixed"}
+OptionValue v1bIceSparky{0, "\cj-Ice Blade melee damage 10->25"}
 OptionValue v1bMessatsu{0, "\cj-Raging demon now goes \nthrough allies"}
-OptionValue v1bColdFusion{0, "\cj-Powerprotect applied to \nAfterburner \n-Afterburner knockback \n9/12->35"}
+OptionValue v1bColdFusion{0, "\cj-Mainfire total damage 25->35 \n-Powerprotect applied to \nAfterburner \n-Afterburner knockback \n9/12->40"}
+OptionValue v1bPistonMan{0, "\cj-Mainfire direct damage 15->12 \n--Explosion damage 7->10 \n--Full damage radius 0->32 \n-Altfire direct damage 20->17 \n--Explosion damage 13->16 \n--Full damage radius 0->32"}
 OptionValue v1bBullGator{0, "\cj-Sleep dart no longer \nmultiplies velocity."}
 OptionValue v1bCorporal{0, "\cj-Knife damage 15->30 \n-Now picks up ammo on \nother weapons"}
 OptionValue v1bKorby{0, "\cj-Blue magic now only \nstacks 5 hits \n-Level 1&2 spell firing \ndelay 8->11 tics \n-Level 1 spells MP 5->8\n-FIR3 falling flames 15->5 \nif they hit a celiing \n-Holding blue magic \nnow costs MP\n-1,000 Needles duration \nhalved \n--Mana cost 25->35 \n-Flash mana cost 7->15 \n-Blaster mana cost 15->20 \n-Matra magic mana cost 10->20 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25"}
-OptionValue v1bVocalWoman{0, "\cj-Health 125->100 \n-Mainfire speed 45->25 \n-Note Bomb speed 50->40 \n-Note Song speed 10->25 \n--Lifetime 175->70 tics \n-Note Song heals for one \ninstance now \n--Ally heal 3->40 \n--Self heal 1->25 \n---Now applies overheal"}
+OptionValue v1bVocalWoman{0, "\cj-Health 125->100 \nMainfire damage 10->12\n--Now has falloff damage \n-Note Bomb speed 50->40 \n-Note Song speed 10->25 \n--Lifetime 175->70 tics \n-Note Song heals for one \ninstance now \n--Ally heal 3->40 \n--Self heal 1->25 \n---Now applies overheal"}
 OptionValue v1bZenTrainer{0, "\cj-Zen Sphere requires line \nof sight now \n-Can now altfire while using \nZen Sphere \n-Aura range 300->400 \n--Amped range 350->600 \n-Aura visuals tweaked"}
