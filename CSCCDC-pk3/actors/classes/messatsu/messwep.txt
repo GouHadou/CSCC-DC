@@ -137,8 +137,7 @@ Goto RealFire
 RealFire:
 GHAD A 0 ACS_ExecuteAlways(991,0,DYE_MESSATSU)
 GHAD A 0 A_TakeInventory("MessatsuCharge",999)
-GHAD A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
-GHAD A 0 A_GiveInventory("MessatsuAmmo", 1)
+GHAD A 0 ACS_NamedExecuteAlways("CSACS_MessAmmoCheck", 0, 1, 896)
 GHAD A 0 A_PlaySoundEx("weapon/mbuster","Weapon")
 GHAD A 0 A_FireCustomMissile("Gouhadou",0,0,8,0)
 GHAD BC 1
@@ -167,8 +166,7 @@ GHAD A 0 A_TakeInventory("MessatsuCharge",35)
 GHAD A 0 A_GiveInventory("MessatsuFlag", 2)
 GHAD A 0 A_FireCustomMissile("Shakunetsu",0,0,8,0)
 GHAD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
-GHAD A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
-GHAD A 0 A_GiveInventory("MessatsuAmmo", 2)
+GHAD A 0 ACS_NamedExecuteAlways("CSACS_MessAmmoCheck", 0, 2, 896)
 GHAD BCD 1
 goto Cooldown
 CoolDown:
@@ -222,8 +220,7 @@ GHAD A 0 A_Refire
 Goto ReleaseCharge
 
 AltFire:
-GHAD A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
-GSHR A 0 A_GiveInventory("MessatsuAmmo", 2)
+GHAD A 0 ACS_NamedExecuteAlways("CSACS_MessAmmoCheck", 0, 2, 896)
 GHAD A 0 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_JUMP), "DemonFlip")
 GSHR A 1 A_Jump(256, "Shoryu")
 Goto Shoryu
@@ -301,8 +298,6 @@ TNT1 A 5 A_TakeInventory("MessatsuFlag", 999)
 GHAD NML 2
 Goto Ready+1
 DemonFlip:
-GHAD O 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", 896) == 0, 2)
-GHAD O 0 A_GiveInventory("MessatsuAmmo", 2)
 GHAD O 0 A_PlaySoundEx("weapon/tengudash", "Weapon")
 GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 0)
 GHAD O 0 A_SpawnItemEx("GouShoryuFX", Random(16, 32), 0, Random(0, -32), Random(1,5), 0, Random(-1,-5), 36)

@@ -297,8 +297,9 @@ TNT1 A 0 A_TakeFromTarget("NoteBombFlag",1)
 stop
 Death2:
 BOMB A 0 A_Stop
+BOMB A 0 A_SetScale(scalex*0.7, scaley*0.7)
 BOMB A 0 A_PlaySoundEx("weapon/hyperbomb", "Weapon")
-BOMB A 0 A_Explode(50, 180, 0)
+BOMB A 0 A_Explode(35, 96, 0, 0, 32)//A_Explode(50, 180, 0)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 }

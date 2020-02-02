@@ -419,6 +419,10 @@ Do
 	}
 While(CheckInventory("MessParry") || CheckInventory("ParryBlock"));
 }
+Script "CSACS_MessAmmoCheck" (int AmmoGive, int distance)
+{
+If(ACS_NamedExecuteWithResult("CSACS_MessEnemyProximity", distance)==TRUE){GiveInventory("MessatsuAmmo", AmmoGive);}
+}
 
 Script "CSACS_MessEnemyProximity" (int distance)
 {
@@ -680,7 +684,7 @@ int BMValue = 0;
 int Hits = 0;
 int i;
 bool GiveInvuln = TRUE;
-bool TakeAmmo = TRUE;
+int TakeAmmo = 3;
 
 SetActorProperty(PlayerTID, APROP_Health, BMHealth);
 TakeActorInventory(PlayerTID, "KorbyHealthFlag", 999);
@@ -708,8 +712,8 @@ While(CheckInventory("BMHoldFlag"))
 		}
 	If(i<10)
 		{
-		If(TakeAmmo == TRUE && BMValue == 0){TakeInventory("MP", 1);TakeAmmo=FALSE;}
-		Else{TakeAmmo = TRUE;}
+		If(TakeAmmo >= 3 && BMValue == 0){TakeInventory("MP", 1);TakeAmmo=0;}
+		Else{TakeAmmo++;}
 		Delay(1);
 		}
 	}

@@ -831,7 +831,6 @@ States
 {
 Spawn:
 KFIR L 0
-"----" A 0 A_SetArg(0, 15)
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_Countdown
@@ -870,9 +869,9 @@ KFIR L 1 A_Countdown
 "----" A 0 A_Setangle(angle-5.0)
 "----" A 0 A_ChangeVelocity(5,0,momz,CVF_RELATIVE|CVF_REPLACE)
 KFIR L 1 A_SpawnItemEx("KorbyFlameFX", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
-Goto Spawn+2
+loop
 Bounce.Ceiling:
-"----" A 0 A_SetArg(0, 5)
+"----" A 0 
 Bounce.Wall: 
 "----" A 0 A_ScaleVelocity(0.5)
 Goto Spawn2
@@ -884,8 +883,7 @@ NAPA E 0 A_SetTranslucent(1.0, 0)
 NAPA E 0 A_ChangeFlag("NOGRAVITY", TRUE)
 NAPA E 0 A_Stop
 NAPA E 0 A_PlaySoundEx("weapon/napalm", "Weapon")
-NAPA E 0 A_Explode(Args[0], 96, 0, 0, 96)
-NAPA E 0 A_LogInt(Args[0])
+NAPA E 0 A_Explode(15, 96, 0, 0, 64)
 NAPA EFGHIJKLMNOPQRS 2
 stop
 }
