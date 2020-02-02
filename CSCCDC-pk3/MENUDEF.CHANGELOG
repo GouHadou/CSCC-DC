@@ -127,6 +127,10 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	Option "$ZENTRAINER_CH_TITLE", "CSCC_Menudef_Changelog", "v1bZenTrainer"
 	StaticText ""
 	StaticText ""
@@ -150,5 +154,5 @@ OptionValue v1bPistonMan{0, "\cj-Mainfire direct damage 15->12 \n--Explosion dam
 OptionValue v1bBullGator{0, "\cj-Sleep dart no longer \nmultiplies velocity."}
 OptionValue v1bCorporal{0, "\cj-Knife damage 15->30 \n-Now picks up ammo on \nother weapons"}
 OptionValue v1bKorby{0, "\cj-Blue magic now only \nstacks 5 hits \n-Level 1&2 spell firing \ndelay 8->11 tics \n-Level 1 spells MP 5->8\n-FIR3 falling flames 15->5 \nif they hit a celiing \n-Holding blue magic \nnow costs MP\n-1,000 Needles duration \nhalved \n--Mana cost 25->35 \n-Flash mana cost 7->15 \n-Blaster mana cost 15->20 \n-Matra magic mana cost 10->20 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25"}
-OptionValue v1bVocalWoman{0, "\cj-Health 125->100 \nMainfire damage 10->12\n--Now has falloff damage \n-Note Bomb speed 50->40 \n-Note Song speed 10->25 \n--Lifetime 175->70 tics \n-Note Song heals for one \ninstance now \n--Ally heal 3->40 \n--Self heal 1->25 \n---Now applies overheal"}
+OptionValue v1bVocalWoman{0, "\cj-Health 125->100 \nMainfire damage 10->12\n--Now has falloff damage \n-Note Bomb speed 50->40 \n-Note Bomb damage 50->35 \n--Explosion size 180->96 \n---Full damage radius 0->32 \n-Note Song speed 10->25 \n--Lifetime 175->70 tics \n-Note Song heals for one \ninstance now \n--Ally heal 3->40 \n--Self heal 1->25 \n---Now applies overheal"}
 OptionValue v1bZenTrainer{0, "\cj-Zen Sphere requires line \nof sight now \n-Can now altfire while using \nZen Sphere \n-Aura range 300->400 \n--Amped range 350->600 \n-Aura visuals tweaked"}
