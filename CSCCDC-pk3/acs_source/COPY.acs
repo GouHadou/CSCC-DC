@@ -289,5 +289,6 @@ Script "CopyCubeWarper" (void) CLIENTSIDE
 		Thing_SetTranslation(0,GetCvar(strParam(s:"SV_TRANSLATION",i:Player-1000)));
 		Delay(1);
 	}
+	Delay(5);
 	Thing_Remove(0);
 }
