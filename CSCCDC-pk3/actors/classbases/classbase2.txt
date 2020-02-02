@@ -147,7 +147,7 @@ Goto Pain.FlashStopper
 //ColdFusion
 Pain.Afterburner:
 "----" H 0 A_GiveInventory("AfterburnerProtect")
-"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,35)
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,40)
 "----" H 0 ThrustThingZ(0,30,0,0)
 Goto pain+1
 //Pistonman
