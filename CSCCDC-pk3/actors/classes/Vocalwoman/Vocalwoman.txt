@@ -30,7 +30,6 @@ ClassDeath:
 VCWM H 0 SetPlayerProperty(0, 0, 4)
 VCWM H 0 A_NoBlocking
 VCWM H 0 A_Stop
-VCWM H 0 A_GiveInventory("ClassDeathPickup",1)
 VCWM HHHHH 0 A_SpawnItemEx("VWDeathNote",random(-50,50),random(-50,50),random(0,30),0,0,random(1,25),0,SXF_TRANSFERTRANSLATION)
 VCWM HHHHH 1 A_SpawnItemEx("VWDeathFX",0,0,0,0,0,10,0,SXF_TRANSFERTRANSLATION)
 VCWM HHHHH 0 A_SpawnItemEx("VWDeathNote",random(-50,50),random(-50,50),random(0,30),0,0,random(1,25),0,SXF_TRANSFERTRANSLATION)
