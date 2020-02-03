@@ -38,10 +38,9 @@ Spawn:
 WEAP X 1
 stop
 Ready:
-CPYB A 0 ACS_ExecuteAlways(998,0,401)
+CPYB A 1 ACS_ExecuteAlways(998,0,401)
 CPYB A 0 A_JumpIfInventory("ColorsOnce", 1, "Ready2")
 CPYB A 0 ACS_NamedExecuteAlways("CSACS_CopyColors", 0)
-CPYB A 0 A_SpawnItemEx("YokuPrismWatcher")
 CPYB A 0 A_GiveInventory("ColorsOnce", 1)
 Goto Ready2
 Ready2:
@@ -113,7 +112,7 @@ height 5
 +DONTREFLECT
 +THRUGHOST
 speed 80
-damagetype "Buster"
+damagetype "CopyShot"
 Obituary "$OB_COPYSHOT"
 damage (1)
 scale 2.5

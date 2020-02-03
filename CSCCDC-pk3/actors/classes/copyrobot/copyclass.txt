@@ -5,10 +5,10 @@ player.soundclass "BestClassEver"
 player.startitem "CopyWeapon"
 player.startitem "CopyRemover", 1
 player.startitem "CopyRobotClassItems", 1
+player.startitem "CopyRobotPrism", 1
 player.maxhealth 80
 health 80
-damagefactor "CopyMainShot", 10.0 //case of best fight ever to the death with no copy weps
-damagefactor "CopyAltShot", 10.0 
+damagefactor "CopyShot", 10.0 //case of best fight ever to the death with no copy weps
 States
 {
 Spawn:
@@ -65,6 +65,19 @@ TNT1 A 0 A_GiveInventory("CopyAmmo", 28)
 TNT1 A 0 A_GiveInventory("BusterAmmo", 3)
 TNT1 A 0 A_GiveInventory("IsCopy", 1)
 TNT1 A 0 A_GiveInventory("EnergyBalancerActive", 1)
+stop
+}
+}
+
+actor CopyRobotPrism : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("YokuPrismWatcher")
 stop
 }
 }
