@@ -456,11 +456,11 @@ scale 2.5
 States
 {
 Spawn:
-KBUS A 1
-KBUS A 34 A_Stop
+KBUS C 1
+KBUS C 34 A_Stop
 Goto Death
 Death:
-KBUS A 1 A_Fadeout
+KBUS C 1 A_Fadeout
 wait
 }
 }

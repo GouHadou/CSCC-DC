@@ -278,6 +278,7 @@ stop
 
 actor KittyClaws : BasicExplosion
 {
+translation "192:192=88:88", "198:198=95:95"
 PROJECTILE
 +DONTREFLECT
 Radius 3
@@ -291,8 +292,8 @@ speed 8
 States
 {
 Spawn:
-SCLA H 0 
-SCLA HIJKL 1 A_Explode(10,40,0)
+CCLA H 0 
+CCLA HIJKL 1 A_Explode(10,40,0)
 stop
 }
 }
