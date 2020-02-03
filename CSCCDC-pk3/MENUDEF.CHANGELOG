@@ -58,6 +58,8 @@ OptionMenu "v1bChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	Option "$COPY_CH_TITLE", "CSCC_Menudef_Changelog", "v1bCopyRobot"
+	StaticText ""
 	Option "$UNIX_CH_TITLE", "CSCC_Menudef_Changelog", "v1bUnix"
 	StaticText ""
 	Option "$ICESPARKY_CH_TITLE", "CSCC_Menudef_Changelog", "v1bIceSparky"
@@ -148,6 +150,7 @@ OptionMenu "v1bChangelog"
 
 OptionValue v1bGeneral{0, "\cj-Changelog menu added \n-Server settings menu added\n-Svar for enabling HP in LMS \n--CSCC_HPinLMS \n---Defaults to off \n-Svar for enabling pit protect \n--CSCC_PitProtection \n---Defaults to on \n-Obituaries fixed"}
 OptionValue v1bMegaman{0, "\cj-Tank Cannon tweaked \n--Direct hit damage 20->15 \n--Explosion damage 35->40 \n--Full damage radius 96->32 \n---Matches Tank Operator \n-Comet altfire fixed\n-Zen Sphere requires line \nof sight now"}
+OptionValue v1bCopyRobot{0, "\cj-Copy Cube no longer vanishes"}
 OptionValue v1bUnix{0, "\cj-Sustained invisibility fixed"}
 OptionValue v1bIceSparky{0, "\cj-Ice Blade melee damage 10->25"}
 OptionValue v1bMessatsu{0, "\cj-Raging demon now goes \nthrough allies"}
