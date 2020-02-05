@@ -170,6 +170,7 @@ OptionMenu "v1cChangelog"
 	StaticText ""
 	Option "$GENERAL_CH_TITLE", "CSCC_Menudef_Changelog", "v1cGeneral"
 	StaticText ""
+	StaticText ""
 	Option "$MEGAMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v1cMegaman"
 	StaticText ""
 	StaticText ""
@@ -212,7 +213,7 @@ OptionMenu "v1cChangelog"
 	StaticText ""
 }
 
-OptionValue v1cGeneral{0, "\cj-Overheal drain rate 17->23 tics"}
+OptionValue v1cGeneral{0, "\cj-Overheal drain rate 17->23 \ntics"}
 OptionValue v1cMegaman{0, "\cj-Zen Sphere line of sight \nis now more lenient \n-Zen Sphere damage rate \ndoubled \n--Damage 10->5 \n--Now applies minimal \nhitstun \n-Orbital Missile has power \nprotection now"}
 OptionValue v1cGizmo{0, "\cj-Hydro Cannon speed 100->60 \n--Hydro Cannon falloff \nincreased \n-Hydro Cannon now has a \nvertical speed cap \nKitty Helper AI adjusted to \nfix duration"}
 OptionValue v1cMessatsu{0, "\cj-Can no longer rapidly Demon \nFlip Kick"}
