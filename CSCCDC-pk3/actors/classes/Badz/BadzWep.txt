@@ -304,6 +304,7 @@ var int user_dist;
 +NOCLIP
 +RIPPER
 Damagetype "OrbitalMissile"
+Obituary "$OB_ORBITALMISSILE"
 +NOINTERACTION
 +DONTSPLASH
 +NOBLOCKMONST 

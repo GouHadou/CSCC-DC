@@ -629,6 +629,7 @@ actor BullSiphonPuff
 +NOGRAVITY
 +THRUGHOST
 +NOGRAVITY
+Obituary "$OB_SIPHONRIFLE"
 Translation"194:194=92:92", "192:192=85:85"
 Scale 2.5
 States
