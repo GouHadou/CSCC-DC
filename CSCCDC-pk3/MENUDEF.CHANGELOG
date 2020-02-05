@@ -9,9 +9,9 @@ OptionMenu "ChangelogSelect"
 	Title "$CHANGELOGS"
 	StaticText "===============================================================",1
 	StaticText ""
-	Submenu	    "         	          Version 1a",		"v1aChangelog"
-	Submenu	    "         	          Version 1b",		"v1bChangelog"
 	Submenu	    "         	          Version 1c",		"v1cChangelog"
+	Submenu	    "         	          Version 1b",		"v1bChangelog"
+	Submenu	    "         	          Version 1a",		"v1aChangelog"
 	StaticText ""
 	StaticText"===============================================================",1
 
