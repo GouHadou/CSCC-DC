@@ -244,8 +244,8 @@ KTTY A 1
 KTTY A 1
 KITY A 0 A_ChangeFlag("NOCLIP",0)
 KITY A 5
-KITY AAAABBBBAAAACCCCDDDD 1 A_Chase
 KITY A 0 A_CountDown
+KITY AAAABBBBAAAACCCCDDDD 1 A_Chase
 Goto See
 See:
 KITY AI 1 A_FaceTarget
@@ -253,19 +253,6 @@ KITY FG 0 A_Recoil(-7)
 KITY G 0 ThrustThingZ(0,20,0,0)
 KITY G 0 A_PlaySoundEx("kitty/attack","Kitty")
 KITY G 0 A_CustomMissile("KittyClaws",0,1,0,0)
-KITY AAAABBBBAAAACCCCDDDD 1 A_Chase
-KITY AI 1 A_FaceTarget
-KITY FG 0 A_Recoil(-7)
-KITY G 0 ThrustThingZ(0,20,0,0)
-KITY G 0 A_PlaySoundEx("kitty/attack","Kitty")
-KITY G 0 A_CustomMissile("KittyClaws",0,1,0,0)
-KITY AAAABBBBAAAACCCCDDDD 1 A_Chase
-KITY AI 1 A_FaceTarget
-KITY FG 0 A_Recoil(-7)
-KITY G 0 ThrustThingZ(0,20,0,0)
-KITY G 0 A_PlaySoundEx("kitty/attack","Kitty")
-KITY G 0 A_CustomMissile("KittyClaws",0,1,0,0)
-KITY AAAABBBBAAAACCCCDDDD 1 A_Chase
 KITY A 0 A_ClearTarget
 Goto Search+3
 Death:

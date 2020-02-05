@@ -21,7 +21,7 @@ Inventory.Amount 1
 Inventory.MaxAmount 2000
 }
 
-Actor OverhealDelay : powerup{inventory.amount 1 Powerup.duration 17}
+Actor OverhealDelay : powerup{inventory.amount 1 Powerup.duration 23}
 
 Actor OverHealWatcher 
 //Passes info for SBARINFO

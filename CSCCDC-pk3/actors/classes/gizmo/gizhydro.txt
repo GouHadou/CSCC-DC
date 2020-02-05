@@ -40,7 +40,8 @@ HCAN B 0 A_PlaySoundEx("weapon/rainflush","Weapon")
 HCAN B 0 A_TakeInventory("HydroCannonAmmo",1)
 HCAN KL 1 A_GiveInventory("HydroCannonShot_M1")
 HCAN L 0 A_JumpIf(momz > 5, 2)
-HCAN L 0 A_ChangeVelocity(-Cos(pitch)*2, 0, sin(pitch)*2,CVF_RELATIVE)
+HCAN L 0 A_ChangeVelocity(0, 0, sin(pitch)*2,CVF_RELATIVE)
+HCAN L 0 A_ChangeVelocity(-Cos(pitch)*2, 0, 0,CVF_RELATIVE)
 HCAN B 0 A_Refire
 Goto Ready2
 NoAmmo:
