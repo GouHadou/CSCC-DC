@@ -11,6 +11,7 @@ OptionMenu "ChangelogSelect"
 	StaticText ""
 	Submenu	    "         	          Version 1a",		"v1aChangelog"
 	Submenu	    "         	          Version 1b",		"v1bChangelog"
+	Submenu	    "         	          Version 1c",		"v1cChangelog"
 	StaticText ""
 	StaticText"===============================================================",1
 
@@ -161,3 +162,35 @@ OptionValue v1bCorporal{0, "\cj-Knife damage 15->30 \n-Now picks up ammo on \not
 OptionValue v1bKorby{0, "\cj-Blue magic now only \nstacks 5 hits \n-Level 1&2 spell firing \ndelay 8->11 tics \n-Level 1 spells MP 5->8\n-FIR3 ember full damage \nradius 96->64 \nif they hit a celiing \n-Holding blue magic \nnow costs MP\n-1,000 Needles duration \nhalved \n--Mana cost 25->35 \n-Flash mana cost 7->15 \n-Blaster mana cost 15->20 \n-Matra magic mana cost 10->20 \n-Lingering blind removed \nfrom Bad Breath \n--Mana cost 8->25 \n-Visuals updated"}
 OptionValue v1bVocalWoman{0, "\cj-Health 125->100 \n-Mainfire damage 10->12\n--Now has falloff damage \n-Note Bomb speed 50->40 \n-Note Bomb damage 50->35 \n--Explosion size 180->96 \n---Full damage radius 0->32 \n-Note Song speed 10->25 \n--Lifetime 175->70 tics \n-Note Song heals for one \ninstance now \n--Ally heal 3->40 \n--Self heal 1->25 \n---Now applies overheal"}
 OptionValue v1bZenTrainer{0, "\cj-Zen Sphere requires line \nof sight now \n-Can now altfire while using \nZen Sphere \n-Aura range 300->400 \n--Amped range 350->600 \n-Aura visuals tweaked"}
+
+OptionMenu "v1cChangelog"
+{
+	Title "$V1CCHANGELOG"
+	StaticText "===============================================================",1
+	StaticText ""
+	Option "$MEGAMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v1cMegaman"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$ZENTRAINER_CH_TITLE", "CSCC_Menudef_Changelog", "v1cZenTrainer"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "===============================================================",1
+	StaticText ""
+}
+
+OptionValue v1cMegaman{0, "\cj-Zen Sphere line of sight \nis now more lenient \n-Zen Sphere damage rate \ndoubled \n--Damage 10->5 \n--Now applies minimal \nhitstun"}
+OptionValue v1cZenTrainer{0, "\cj-Zen Sphere line of sight \nis now more lenient \n-Zen Sphere damage rate \ndoubled \n--Damage 10->5 \n--Now applies minimal \nhitstun"}
