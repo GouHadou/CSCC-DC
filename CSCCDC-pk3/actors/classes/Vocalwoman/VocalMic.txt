@@ -520,7 +520,7 @@ actor VocalHealFXR : VocalHealFX{translation "0:255=41:41"}
 actor VocalHealFXG : VocalHealFX{translation "0:255=128:128"}
 actor VocalHealFXY : VocalHealFX{translation "0:255=232:232"}
 
-actor VocalHealTimer : inventory {inventory.amount 1 inventory.maxamount 10}
+actor VocalHealTimer : Powerup {inventory.amount 1 powerup.duration -5}//inventory {inventory.amount 1 inventory.maxamount 10}
 Actor Vocalhealdelay : Powerup {inventory.amount 1 powerup.duration 3}
 
 Actor VocalhealBuffer : Powerup {inventory.amount 1 powerup.duration 17}
@@ -539,14 +539,14 @@ stop
 Pickup:
 TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=150,"Nope")
 
-TNT1 A 0 A_Jumpifinventory("VocalhealBuffer",1,2)
+TNT1 A 0 A_Jumpifinventory("VocalHealTimer",1,2)
 TNT1 A 0 A_SpawnItemEx("VocalHealWatcher")
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("VocalhealBuffer",5)
+TNT1 A 0 A_GiveInventory("VocalHealTimer",1)
 TNT1 A 0
 stop
 Nope:
-TNT1 A 0 A_TakeInventory("VocalHealTimer",99)
+TNT1 A 0 //A_TakeInventory("VocalHealTimer",99)
 TNT1 A 0
 stop
 }
@@ -559,14 +559,14 @@ States
 Pickup:
 TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=150,"Nope")
 
-TNT1 A 0 A_Jumpifinventory("VocalhealBuffer",1,2)
+TNT1 A 0 A_Jumpifinventory("VocalHealTimer",1,2)
 TNT1 A 0 A_SpawnItemEx("VocalHealWatcherSelf")
 TNT1 A 0
-TNT1 A 0 A_GiveInventory("VocalhealBuffer",5)
+TNT1 A 0 A_GiveInventory("VocalHealTimer",1)
 TNT1 A 0
 stop
 Nope:
-TNT1 A 0 A_TakeInventory("VocalHealTimer",99)
+TNT1 A 0 //A_TakeInventory("VocalHealTimer",99)
 TNT1 A 0
 stop
 }
@@ -584,7 +584,7 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_GiveToTarget("VocalHealItem",1)
-TNT1 A 3
+TNT1 A 17
 TNT1 A 0 A_JumpifinTargetInventory("VocalHealTimer",1,"spawn")
 stop
 Death:
@@ -600,7 +600,7 @@ States
 Spawn:
 TNT1 A 0
 TNT1 A 0 A_GiveToTarget("VocalHealItemSelf",1)
-TNT1 A 3
+TNT1 A 17
 TNT1 A 0 A_JumpifinTargetInventory("VocalHealTimer",1,"spawn")
 stop
 }
@@ -625,14 +625,14 @@ HealMe:
 TNT1 A 0 A_Jumpifinventory("Vocalhealdelay",1,"Nope")
 TNT1 A 0 A_Giveinventory("HealEffectSpawn2",1)
 TNT1 A 1 A_Giveinventory("Vocalhealdelay")
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,40,50)//HealThing(3)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,5,50)//HealThing(3)
 TNT1 A 0 A_PlaySoundEx("vocal/heal","Weapon")
-TNT1 A 0 A_TakeInventory("VocalHealTimer",1)
+TNT1 A 0 //A_TakeInventory("VocalHealTimer",1)
 TNT1 A 0
 stop
 
 Nope:
-TNT1 A 0 A_TakeInventory("VocalHealTimer",99)
+TNT1 A 0 //A_TakeInventory("VocalHealTimer",99)
 stop
 }
 }
@@ -650,9 +650,9 @@ HealMe:
 TNT1 A 0 A_Jumpifinventory("Vocalhealdelay",1,"Nope")
 TNT1 A 0 A_Giveinventory("HealEffectSpawn2",1)
 TNT1 A 1 A_Giveinventory("Vocalhealdelay")
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,25,50)//HealThing(1)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,3,50)//HealThing(1)
 TNT1 A 0 A_PlaySoundEx("vocal/heal","Weapon")
-TNT1 A 0 A_TakeInventory("VocalHealTimer",1)
+TNT1 A 0 //A_TakeInventory("VocalHealTimer",1)
 TNT1 A 0
 stop
 }
@@ -680,7 +680,7 @@ Actor HealEffectTimer : Powerup
 inventory.amount 1
 Inventory.MaxAmount 1
 
-Powerup.duration 7
+Powerup.duration 25
 }
 
 actor HealEffectSpawn : CustomInventory
