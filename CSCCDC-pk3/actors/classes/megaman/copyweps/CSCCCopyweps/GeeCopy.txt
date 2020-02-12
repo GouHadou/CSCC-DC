@@ -1,5 +1,6 @@
 const int GEECOPY_HEAL = 25;
-const int GEECOPY_DMG = 20;
+const int GEECOPY_DMG = 22;
+const int GEECOPY_RADIUS = 17;
 
 actor HybridBurstWep : BaseMM8BDMWep
 {
@@ -73,22 +74,22 @@ States
 {
 Spawn:
 TNT1 A 0
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,20,0,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-20,0,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX3",15,0,-GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX3",15,0,GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
 loop
 Crash:
 XDeath:
@@ -135,22 +136,22 @@ States
 {
 Spawn:
 TNT1 A 0
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,20,0,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,-20,0,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,-GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,-GEECOPY_RADIUS,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEECOPY_RADIUS,0.7*GEECOPY_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEECOPY_RADIUS,-0.7*GEECOPY_RADIUS,0,0,0,0,1)
 loop
 Crash:
 XDeath:

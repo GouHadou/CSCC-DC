@@ -1,5 +1,6 @@
 const int GEE_HEAL = 25;
-const int GEE_DMG = 20;
+const int GEE_DMG = 22;
+const int GEE_RADIUS = 17;
 
 actor GeeBurstBoss1 : CSCCWepBase
 {
@@ -329,22 +330,22 @@ States
 {
 Spawn:
 TNT1 A 0
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,20,0,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-20,0,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-GEE_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,GEE_RADIUS,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,GEE_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-GEE_RADIUS,0,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX3",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
 loop
 Crash:
 XDeath:
@@ -388,14 +389,14 @@ States
 {
 Spawn:
 TNT1 A 0
-BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,GEE_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX1",15,-GEE_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,-0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX2",15,0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
 loop
 Crash:
 XDeath:
@@ -429,24 +430,24 @@ States
 {
 Spawn:
 TNT1 A 0
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0,-20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.85*20,0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,-0.85*20,0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0,20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,-0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0.85*20,0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.85*20,0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0,20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-0.85*20,0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0,-20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,-0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,-0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,-0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX1",15,-0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeDamageFX2",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeDamageFX3",15,0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
 loop
 Crash:
 XDeath:
@@ -493,14 +494,14 @@ States
 {
 Spawn:
 TNT1 A 0
-BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,-20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,-0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,20,0,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*20,0.7*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*20,0.7*20,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,-GEE_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEE_RADIUS,-0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX1",15,GEE_RADIUS,0,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX2",15,-0.7*GEE_RADIUS,0.7*GEE_RADIUS,0,0,0,0,1)
 loop
 Crash:
 XDeath:
@@ -536,24 +537,24 @@ States
 {
 Spawn:
 TNT1 A 0
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0,-20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.85*20,0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,-0.85*20,0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0,20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,-0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0.85*20,0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.85*20,0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0,20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0.85*20,-0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-0.85*20,0.5*20,0,0,0,0,1)
-BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0,-20,0,0,0,0,1)
-BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0.85*20,0.5*20,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,-0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,-0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,0,GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,-0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0.85*GEE_RADIUS,-0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX1",15,-0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
+BUST A 0 A_SpawnItemEx("GeeHealthFX2",15,0,-GEE_RADIUS,0,0,0,0,1)
+BUST A 1 A_SpawnItemEx("GeeHealthFX3",15,0.85*GEE_RADIUS,0.5*GEE_RADIUS,0,0,0,0,1)
 loop
 Crash:
 XDeath:
