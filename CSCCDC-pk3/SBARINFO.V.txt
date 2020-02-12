@@ -260,6 +260,9 @@ IsSelected ZenTrainerWep{
 		InInventory AuraFlag_power, 1 {Drawbar"BZNTRA02","BAREMPTY",Ammo2,vertical,16,8;}
 		InInventory AuraFlag_haste, 1 {Drawbar"BZNTRA04","BAREMPTY",Ammo2,vertical,16,8;}
 	}else{ Drawbar"BARAMM65","BAREMPTY",Ammo2,vertical,16,8;}
+	InInventory ZenPowerFlag , 1 {DrawImage "ZTStrDB", 32, 56; DrawImage "VERICON1", 40, 56;}
+	InInventory ZenSpeedFlag , 1 {DrawImage "ZTSpdDB", 32, 56; DrawImage "VERICON1", 40, 56;}
+	InInventory ZenDefenseFlag , 1 {DrawImage "ZTDefDB", 32, 56; DrawImage "VERICON1", 40, 56;}
 	}
 
 //Gee
