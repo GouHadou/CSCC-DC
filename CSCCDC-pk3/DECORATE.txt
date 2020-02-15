@@ -99,5 +99,10 @@
 #include "actors/Classes/Aegis/Knight_LightScreen.txt"
 #include "actors/Classes/Aegis/LightScreenContent.txt"
 
+//===|Yang
+#include "actors/classes/Yang/Yang.txt"
+#include "actors/classes/Yang/EmberCelica.txt"
+
+
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

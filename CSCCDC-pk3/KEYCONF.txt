@@ -18,4 +18,4 @@ addplayerclass KorbyClass nomenu
 addplayerclass VocalWomanClass nomenu 
 addplayerclass ZenTrainerClass nomenu 
 addplayerclass GeeClass nomenu 
- 
+addplayerclass Yang nomenu

@@ -218,6 +218,12 @@ PU_BURSTBLADE = "Acquired the Burst Blade";
 
 OB_SHIELDWAVE = "%o was Smeared by %k's ShieldWave.";
 
+//===|Yang
+OB_EMBERCELICA = "%o was blown to pieces by %k's Ember Celica.";
+OB_EMBERCELICA2 = "%o was blown away by %k's Ember Celica.";
+OB_YANGKICK = "%o was KO'd %k's Roundhouse Kick.";
+TAG_EMBERCELICA= "Ember Celica";
+
 //COPYWEPS
 //RailBuster
 PU_RAILBUSTER = "Picked up a weird sniper rifle! jeez.";

@@ -23,3 +23,4 @@
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/CMMCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/GeeCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/AegisCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/YangCopy.txt"

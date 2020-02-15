@@ -450,3 +450,25 @@ graphic HELFCI, 30, 30
    YScale 2.0
    Patch HFCWA0, 0, 0
 }
+
+//Yang
+Graphic "YANGRLD", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "YNGRA0", 0, 0
+}
+
+Graphic "EMBCEL", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "EMCEX0", 0, 0
+}
+
+Graphic "YANGBLK", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "YNGBX0", 0, 0
+}
