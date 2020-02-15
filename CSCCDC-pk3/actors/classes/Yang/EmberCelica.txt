@@ -141,8 +141,7 @@ YNGF A 0 A_JumpIfNoAmmo("BotReloadCheck")
 YNGF A 0 A_Refire
 Goto Ready+1 
 UpperCut:
-YNGF B 1 A_ChangeVelocity(momx,momy, 12, CVF_REPLACE)
-YNGF B 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
+YNGF B 1 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF C 1 A_SpawnItemEx ("EmberCelicaUpper",32,16,8, momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
 YNGF D 1
 YNGU A 1 Offset(0, 80)
