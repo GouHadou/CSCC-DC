@@ -298,6 +298,20 @@ sprite "SHLOP0", 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "19
 sprite "SHLOQ0", 312, 108 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 sprite "SHLOR0", 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "192:192=229:229", "198:198=232:232"}}
 
+//Gravitron Hud Main
+sprite GRSPA0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}} 
+sprite GRSPB0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+sprite GRSPC0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+sprite GRSPD0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+
+//Gravutron Hud Alt
+sprite GRSPE0, 427, 40 {Offset 52, -145 Patch HSPRN0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}} 
+sprite GRSPF0, 427, 52 {Offset 53, -133 Patch HSPRO0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+sprite GRSPG0, 427, 104 {Offset 53, -81 Patch HSPRP0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+sprite GRSPH0, 427, 112 {Offset 53, -73 Patch HSPRQ0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+sprite GRSPI0, 427, 128 {Offset 53, -57 Patch HSPRR0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+
+
 //Megaman Copywep Huds
 
 //RailBuster
@@ -366,3 +380,9 @@ sprite LTSRG0, 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "198:
 Sprite "BUBAB0", 320, 200{Patch "BUSTB0", 184, 94{Translation "192:192=4:4", "198:198=195:195"}}
 Sprite "BUBAC0", 320, 200{Patch "BUSTC0", 184, 98{Translation "192:192=4:4", "198:198=195:195"}}
 Sprite "BUBAD0", 320, 200{Patch "BUSTD0", 188, 102{Translation "192:192=4:4", "198:198=195:195"}}
+
+//Deer Copy Wep Hud
+sprite CWALB0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}} //HudMain
+sprite CWALC0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}}
+sprite CWALD0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}}
+sprite CWALE0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}}

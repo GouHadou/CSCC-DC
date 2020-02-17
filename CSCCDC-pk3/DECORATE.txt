@@ -104,5 +104,15 @@
 #include "actors/classes/Knux/KnuxWep.txt"
 #include "actors/classes/Knux/KnuxCopy.txt"
 
+//===|Gravitron
+#include "actors/classes/Gravitron/GravityMansStageManClass.txt"
+#include "actors/classes/Gravitron/GravityMansStageManWep.txt"
+#include "actors/classes/Gravitron/GravitySphereWep.txt"
+
+//===|NaturesWonder
+#include "actors/classes/NaturesWonder/NaturesWonderClass.txt"
+#include "actors/classes/NaturesWonder/NaturesWonderWep.txt"
+#include "actors/classes/NaturesWonder/CrystalWallWep.txt"
+
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

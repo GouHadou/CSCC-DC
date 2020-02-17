@@ -28,6 +28,9 @@ OptionMenu "ClassInfo"
 	Submenu	    "VocalWoman", 		"VocalWomanInfo"
 	Submenu	    "Zen Trainer", 		"ZenTrainerInfo"
 	Submenu	    "Gee", 		"GeeInfo"
+	Submenu	    "Knux", 		"KnuxInfo"
+	Submenu	    "Gravitron", 		"GravitronInfo"
+	Submenu	    "Natures Wonder", 		"NaturesWonderInfo"
 	StaticText ""
 	StaticText"===============================================================",1
 
@@ -87,7 +90,8 @@ OptionValue MegaCSCCWeps
 	13, "\cfIdol Wave - VocalWoman\n\cjSpray a volley of \nmusic notes."
 	14, "\cfZen Sphere - Zen Trainer\n\cjLaunch a mysterious \norb that can latch \nonto foes when held."
 	15, "\cfHybrid Burst - Gee\n\cjCast a healing and \nharming spell in order, \nthe healing spell \nonly affects allies. \nGrants vision of ally \nhealth."
-
+	//BubbleArrow
+	//Crystal Wall
 }
 
 OptionMenu "CopyInfo"
@@ -916,3 +920,70 @@ OptionValue IceSparkAltfires
 	1, "\cfSparky\n\cjLaunch an electrical \npulse that creeps along \nthe floor, scaling up \nwalls."
 	2, "\cfIce & Sparky\n\cjLaunch a massive energy \nwave that scatters ice \nspikes along it’s path."
 }
+
+
+OptionMenu "GravitronInfo"
+{
+	Title "$GRAVITRON_CH_TITLE"
+	StaticText ""
+	StaticText "$GRAVITRON_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText "$GRAVITRON_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$GRAVITRON_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$GRAVITRON_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$GRAVITRON_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+}
+
+
+OptionMenu "NaturesWonderInfo"
+{
+	Title "$NATURESWONDER_CH_TITLE"
+	StaticText ""
+	StaticText "$NATURESWONDER_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$NATURESWONDER_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$NATURESWONDER_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$NATURESWONDER_CH_WALLINFO", "NATURESWONDER_ClassHelp_WallInfo", "NaturesWonderWallInfo"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue NaturesWonderWallInfo
+{
+	0, "\cfCrystal Wall\n\cj40 Health wall that \nblocks shots and cannot \nbe ripped through."
+	1, "\cfPrism Wall\n\cjA neigh invulnerable \nwall that cannot be \nripped through and \nreflects damage on \nbeing hit around itself."
+}
+

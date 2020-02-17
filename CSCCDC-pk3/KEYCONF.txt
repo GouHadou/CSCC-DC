@@ -6,6 +6,8 @@ addplayerclass UnixClass nomenu
 addplayerclass CutmanMikeClass nomenu
 addplayerclass IceSparkyClass nomenu 
 addplayerclass UkiyamaClass nomenu
+addplayerclass GravitronClass nomenu  
+addplayerclass NaturesWonderClass nomenu  
 addplayerclass MessatsuClass nomenu  
 addplayerclass ColdFusionClass nomenu
 addplayerclass PistonmanClass nomenu 

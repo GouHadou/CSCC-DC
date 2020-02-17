@@ -1050,3 +1050,11 @@ for(int i; i < 9; i++)
 	SetActorState (ObjTIDBase3, "Perish");
 	SetActorState (ObjTIDBase4, "Perish");
 }
+
+Script "CSCC_Prism" (void) // Lol Name Refrence 
+{
+int x = GetActorProperty(0,APROP_SpawnHealth); 
+int y = GetActorProperty (0, APROP_HEALTH);
+int TotalDamage = (x-y);
+SetResultValue(TotalDamage);
+}

@@ -347,6 +347,14 @@ DrawBar "VARAMMO1","VAREMPTY", Ammo1, horizontal, 58, 184;
 Drawbar "VARAMM24", "VAREMPTY", Ammo2, horizontal, 58,176; 
 }
 
+//====|Gravitron
+IsSelected GravSphereWep{Drawbar"VAREMPTY", "GRSPAMMV", Ammo1, horizontal,reverse, 58, 184;}// The Bar ya need
+
+//====|Natures Wonder
+IsSelected NatureStaffStraightWep{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected NatureStaffHorizontalWep{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected NatureStaffAllAroundWep{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected GouhadouWepCS{DrawBar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
@@ -368,6 +376,8 @@ IsSelected HybridBurstWepCS{Drawbar"GEEVMMO3", "VAREMPTY", Ammo1, horizontal, 58
 IsSelected LightScreenWepCS{Drawbar"VARAMMOS", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	InInventory LightScreenActive, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenHealth, vertical, 16, 8;}}	
 IsSelected BubbleArrowWepCS{DrawBar "VBUBABAR", "VAREMPTY", Ammo1, vertical, 58, 184;}
+IsSelected GravitySphereWepCS{Drawbar"GRSPAMMV", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected CrystalWallWepCS{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}

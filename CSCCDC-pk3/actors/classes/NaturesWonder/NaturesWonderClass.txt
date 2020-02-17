@@ -1,0 +1,68 @@
+actor NaturesWonderClass : CustomWepMan
+{
+player.displayname"Natures Wonder"
+player.soundclass "NaturesWonder"
+player.forwardmove 0.7, 0.7
+player.sidemove 0.65, 0.65
+player.startitem "NatureStaffStraightWep"
+player.startitem "NatureStaffHorizontalWep"
+player.startitem "NatureStaffAllAroundWep"
+player.startitem "NaturesWonderClassItems"
+player.maxhealth 75
+health 75
+States
+{
+Spawn:
+DERR A 0
+DERR B 1 
+DERR A 1 
+Goto Spawn+2
+See:
+DERR BCDE 5
+Goto Spawn+2
+Missile:
+DERR F 5 
+DERR G 4 
+goto Spawn+2
+}
+}
+
+actor NaturesWonderClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("NatureStaffAmmo",28)
+stop
+}
+}
+
+actor NatureStaffStraightWepMorph : NaturesWonderClass
+{
++NOSKIN
+player.morphweapon "NatureStaffStraightWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}
+
+actor NatureStaffHorizontalWepMorph : NatureStaffStraightWepMorph
+{
+player.morphweapon "NatureStaffHorizontalWep"
+}
+
+actor NatureStaffAllAroundWepMorph : NatureStaffStraightWepMorph
+{
+player.morphweapon "NatureStaffAllAroundWep"
+}
