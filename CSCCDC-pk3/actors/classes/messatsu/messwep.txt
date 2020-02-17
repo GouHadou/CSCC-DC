@@ -1514,12 +1514,13 @@ stop
 }
 }
 
-actor SlamFX : Gouhadou
+actor SlamFX : MessBaseProjectile
 {
 +THRUACTORS
 -NOGRAVITY
 Damage(0)
 Renderstyle "Add"
+Scale 4.0
 Translation "192:192=59:59", "198:198=61:61"
 States
 {
