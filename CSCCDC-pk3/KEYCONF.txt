@@ -15,6 +15,7 @@ AddPlayerClass BadzClass nomenu
 addplayerclass LaggyBlazkoClass nomenu
 AddPlayerClass BullGatorClass nomenu
 addplayerclass KorbyClass nomenu
+addplayerclass KnuxClass nomenu
 addplayerclass VocalWomanClass nomenu 
 addplayerclass ZenTrainerClass nomenu 
 addplayerclass GeeClass nomenu 

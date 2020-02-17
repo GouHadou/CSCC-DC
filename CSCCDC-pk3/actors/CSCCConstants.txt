@@ -19,6 +19,7 @@ const int DYE_GIZMO = 385;
 const Int DYE_BADZCOLOR = 280;
 const Int DYE_TANKOP = 30;
 const int DYE_BULLGATOR = 395;
+const int DYE_KNUX = 382;
 
 const int DYE_IDOLWAVE = 997;
 const int DYE_ZENSPHERE = 1100;

@@ -208,3 +208,7 @@ graphic BARAMMOS, 8, 56{patch BARENERG,0,0{Translation "198:198=194:194"," 192:1
 graphic VARAMMOS, 56, 8{patch BARAMMOS,0,0{rotate 90}}
 graphic BARAMM2S, 8, 56{patch BARENERG,0,0{Translation "198:198=96:96"," 192:192=4:4"}}
 graphic VARAMM2S, 56, 8{patch BARAMM2S,0,0{rotate 90}}
+
+//BubbleArrow
+texture BUBABAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=195:195"}}
+texture VBUBABAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=195:195"}}

@@ -99,5 +99,10 @@
 #include "actors/Classes/Aegis/Knight_LightScreen.txt"
 #include "actors/Classes/Aegis/LightScreenContent.txt"
 
+//===|Knux
+#include "actors/classes/Knux/KnuxClass.txt"
+#include "actors/classes/Knux/KnuxWep.txt"
+#include "actors/classes/Knux/KnuxCopy.txt"
+
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

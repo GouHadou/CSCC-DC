@@ -340,6 +340,13 @@ IsSelected BurstBlade
 	InInventory not K_ShieldBreak, 1{InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 122, 176; DrawImage "HORICON2", 122, 168;}}
 	}
 
+//====|Knux
+IsSelected BubbleArrowBoss
+{
+DrawBar "VARAMMO1","VAREMPTY", Ammo1, horizontal, 58, 184;
+Drawbar "VARAMM24", "VAREMPTY", Ammo2, horizontal, 58,176; 
+}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected GouhadouWepCS{DrawBar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
@@ -360,6 +367,7 @@ IsSelected HellFireCutterWepCS{Drawbar"VARAM101", "VAREMPTY", Ammo1, horizontal,
 IsSelected HybridBurstWepCS{Drawbar"GEEVMMO3", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected LightScreenWepCS{Drawbar"VARAMMOS", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	InInventory LightScreenActive, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenHealth, vertical, 16, 8;}}	
+IsSelected BubbleArrowWepCS{DrawBar "VBUBABAR", "VAREMPTY", Ammo1, vertical, 58, 184;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}

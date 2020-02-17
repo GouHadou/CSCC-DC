@@ -218,7 +218,19 @@ PU_BURSTBLADE = "Acquired the Burst Blade";
 
 OB_SHIELDWAVE = "%o was Smeared by %k's ShieldWave.";
 
-//COPYWEPS
+//===|Knux
+OB_BUBBLEARROW = "%o was sabotaged by %k's Bubble Arrow.";
+TAG_BUBBLEARROW = "BubbleArrow";
+PU_BUBBLEARROW = "Got a cleaning implement";
+
+
+OB_BUBBLEARROWCOPY = "%o was cleaned up by %k's Bubble Arrow.";
+PU_BUBBLEARROWCOPY = "Power up! Bubble Arrow!";
+
+OB_KNUXMINE = "%k's Mine Cleaned %0's Clock.";
+OB_BUBBLEBOUNCER = "%o was rejected by %p own attack!";
+
+//██████████████████████████████████████████Copyweps████████████████████████████████████████
 //RailBuster
 PU_RAILBUSTER = "Picked up a weird sniper rifle! jeez.";
 OB_RAILBUSTER = "%o was sniped by %k's sniper rifle.";
@@ -267,7 +279,7 @@ PU_LIGHTSCREEN = "Power Up! Light Screen!";
 OB_LIGHTSCREEN = "%o Couldn't get through %k's Light Screen";
 TAG_LIGHTSCREEN = "Light Screen";
 
-//CLASS HELP
+//██████████████████████████████████████████Class Help████████████████████████████████████████
 CSCC_TITLE = "\cvCSCC Options";
 CSCC_INFO_TITLE = "\cvCSCC Information";
 CSCC_SETTINGS_TITLE = "\cvCSCC Server Settings";

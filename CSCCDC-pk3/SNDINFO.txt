@@ -347,3 +347,24 @@ Kitty/Attack2	CHAJUMP3
 Kitty/Attack3	CHAJUMP4
 
 $random Kitty/Attack { Kitty/Attack1 Kitty/Attack2 Kitty/Attack3 Kitty/Attack4 }
+
+//Knux
+$playersound	knuxc	male	*death		MEGADEAT
+$playersound	knuxc	male	*xdeath		MEGADEAT
+$playersound	knuxc	male	*gibbed		MEGADEAT
+$playersound	knuxc	male	*pain100	MEGAPAIN
+$playersound	knuxc	male	*pain75		MEGAPAIN
+$playersound	knuxc	male	*pain50		MEGAPAIN
+$playersound	knuxc	male	*pain25		MEGAPAIN
+$playersound    knuxc	male	*grunt		dsnone //LAND
+$playersound	knuxc	male	*land		LAND
+$playersound	knuxc	male	*jump		dsnone
+$playersound	knuxc	male	*fist		dsnone
+$playersound	knuxc	male	*usefail	LAND
+
+$playersound	knuxc	male	*taunt	dsnone
+
+
+weapon/burstpop BUBLPOP
+weapon/BurstBubAppear BUBLPOOF
+weapon/BurstExplode WRAPEXPL $limit weapon/BurstExplode 0

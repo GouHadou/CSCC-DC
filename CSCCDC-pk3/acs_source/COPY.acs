@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 35
+#define MAX_MORPHS 36
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -46,6 +46,8 @@ str CopyMorphs[MAX_MORPHS][3] =
 
 {"OrbitalMissileBoss", "Badz", "BadzClassItems"},//34
 {"ClassicTankWeapon", "Tank Operator", "TankOperatorClassItems"},//35
+
+{"BubbleArrowBoss", "Knux", "KnuxClassItems"},//36
 };
 
 Script "GetPlayerWeapon" (int TargetTID)
