@@ -348,6 +348,92 @@ IsSelected BurstBlade
 	InInventory not K_ShieldBreak, 1{InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 32, 64; DrawImage "VERICON2", 40, 64;}}
 	}
 
+//====|Lego
+InInventory LegoHUD, 1
+{
+	//InInventory not NoHealthBar, 1{
+	DrawImage "LEHUDA",-18, 0;
+	DrawBar "LEHEALT", "LEHEMPT", Health, Horizontal, 124, 31;
+	DrawNumber 3, LEGOFONT, UNTRANSLATED, health, 142, 24;
+	{
+		DrawBar "LEHEALT", "LEHEMPT", OverHealValue, Horizontal, 124, 31;
+		DrawImage "LEOHEALT", 124,37;
+	}
+	DrawBar "LEVBAR", "LEVEMPT", LegoWeaponAmmo, vertical, 268, 76;
+	DrawNumber 2, LEGOFONT, UNTRANSLATED, LegoWeaponAmmo, 262, 145;
+	DrawBar "LEVBAR2", "LEVEMPT", LegoStickyAmmo, vertical, 47, 76;
+	DrawNumber 2, LEGOFONT, UNTRANSLATED, LegoStickyAmmo, 65, 145;
+	DrawSelectedInventory INDEXFONT ,152, 170, 25, 178, white; 
+    InInventory BeatCallCheck, 1
+	{
+	DrawImage "BEATB8B2", 298,16;
+	} 
+	InInventory BeatCounter, 5
+	{
+	DrawImage "BEATB8B2", 298,16;
+	}
+	InInventory BeatCounter, 1
+	{
+	DrawImage "BEATOUT",298,16;
+	}
+	
+	InInventory LegoLowHealth, 1
+	{DrawImage "LEHUDB",-18, 0;}
+	
+	InInventory LegoDamage, 1
+	{DrawImage "LEHUDC",-18, 0;}
+
+}
+
+//====|Abra
+IsSelected Psybeamwep
+	{
+	DrawBar "PSYBAR", "PSYBAR2", PsychicCharge, vertical, 3, 10;
+	DrawBar "TLEBAR", "TLEBAR2", TeleportTimer, vertical, 3, 42;
+	DrawBar "TLEBAR6", "TLEBAR5", DoubleTeam, vertical, 3, 74;
+	InInventory DoubleTeam, 1 {DrawBar "TLEBAR4", "TLEBAR3", TeleportTimer2, vertical, 3, 106;}
+	InInventory MegaRedFlag, 1 {Drawimage"DISABLE",3,42;Drawimage"DISABLE",3,74;}
+	InInventory MegaBlueFlag, 1 {Drawimage"DISABLE",3,42;Drawimage"DISABLE",3,74;}
+	InInventory MegaWhiteFlag, 1 {Drawimage"DISABLE",3,42;Drawimage"DISABLE",3,74;}
+	} 
+
+//====|HealMore
+InInventory HealmoreHUD, 1{
+	DrawImage "HHUDE",72,32,center;
+DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
+	//Team Stuff
+	InInventory LightTeamFlag, 1{
+		DrawImage "HHULI", 72,32,center;}
+	InInventory WilyTeamFlag, 1{
+		DrawImage "HHUWI", 72,32,center;}
+	InInventory CossackTeamFlag, 1{
+		DrawImage "HHUCO", 72,32,center;}
+	InInventory KingTeamFlag, 1{
+		DrawImage "HHUKI", 72,32,center;}
+
+	DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 63, 10;
+	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana,63, 29;
+	
+	DrawImage "WMAGI1", 92, 10; 
+	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 92, 10;} 
+	DrawImage "VERICON1", 102, 10;
+	
+	DrawImage "WMAGI2", 122, 10; 
+	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 122, 10;} 
+	DrawImage "VERICON2", 132, 10;
+	
+	DrawImage "WMAGI3", 92, 24; 
+	InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 92, 24;} 
+	DrawImage "VERICON1", 102, 24;
+	
+	DrawImage "WMAGI4", 122, 24;
+	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 122, 24;} 
+	DrawImage "VERICON2", 132, 24;
+	
+InInventory NOT "PearlStaffPageToggle" {DrawImage "WMAGPT", 76, 10;}
+InInventory "PearlStaffPageToggle" {DrawImage "WMAGPT", 76, 24;}
+}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;

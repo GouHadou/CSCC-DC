@@ -23,6 +23,11 @@ Player.MaxSkinSizeFactor 0, 0
 scale 2.5
 bloodtype "MegamanBlood"
 
+var int User_AbraTid;
+var int User_STargTID;
+var int User_angleDistRegister;
+var int User_STargRange;
+
 States
 {
 SuperSpawn:

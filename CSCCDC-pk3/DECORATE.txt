@@ -99,5 +99,24 @@
 #include "actors/Classes/Aegis/Knight_LightScreen.txt"
 #include "actors/Classes/Aegis/LightScreenContent.txt"
 
+//===|Lego
+#include "actors/classes/Lego/LegoClass.txt"
+#include "actors/classes/Lego/Legoweapons.txt"
+
+//===|Abra
+#include "actors/classes/Abra/Abra.txt"
+#include "actors/classes/Abra/Psybeam.txt"
+
+//===|Healmore
+#include "actors/classes/Healmore/Healmore.txt"
+#include "actors/classes/Healmore/PearlStaff.txt"
+#include "actors/classes/Healmore/Cure.txt"
+#include "actors/classes/Healmore/Curaga.txt"
+#include "actors/classes/Healmore/Medica.txt"
+#include "actors/classes/Healmore/Rasp.txt"
+#include "actors/classes/Healmore/Assize.txt"
+#include "actors/classes/Healmore/WhiteMagicFX.txt"
+
+
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

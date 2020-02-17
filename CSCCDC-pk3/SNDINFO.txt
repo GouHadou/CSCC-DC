@@ -347,3 +347,75 @@ Kitty/Attack2	CHAJUMP3
 Kitty/Attack3	CHAJUMP4
 
 $random Kitty/Attack { Kitty/Attack1 Kitty/Attack2 Kitty/Attack3 Kitty/Attack4 }
+
+//Lego
+$playersound	legosfx	male	*death		MEGADEAT
+$playersound	legosfx	male	*xdeath		MEGADEAT
+$playersound	legosfx	male	*gibbed		LEDIE
+$playersound	legosfx	male	*pain100	MEGAPAIN
+$playersound	legosfx	male	*pain75		MEGAPAIN
+$playersound	legosfx	male	*pain50		MEGAPAIN
+$playersound	legosfx	male	*pain25		MEGAPAIN
+$playersound	legosfx	male	*grunt		FATLAND
+$playersound	legosfx	male	*land		LELAND
+$playersound	legosfx	male	*fist		dsnone
+$playersound	legosfx	male	*usefail	LAND
+//$playersound	legosfx	male	*taunt		dsnone
+
+weapon/legomissileshot LEGOMS
+weapon/legomissileexplode LEGOME
+weapon/legobuttonpress LEBUTTON
+weapon/legobombexplode LEGOME
+
+//Abra
+$playersound	abra	male	*death		pokefaint
+$playersound	abra	male	*xdeath		pokefaint
+$playersound	abra	male	*gibbed		pokefaint
+$playersound	abra	male	*pain100	MEGAPAIN
+$playersound	abra	male	*pain75		MEGAPAIN
+$playersound	abra	male	*pain50		pokehit
+$playersound	abra	male	*pain25		pokehit
+$playersound	abra	male	*grunt		dsnone
+$playersound	abra	male	*land		LAND
+$playersound	abra	male	*jump		dsnone
+$playersound	abra	male	*fist		dsnone
+$playersound	abra	male	*usefail	pokebump
+$playersound	abra	male	*taunt		abratau
+
+weapon/abrateleport	abratel
+$volume weapon/abrateleport 0.4
+weapon/psychicshot	psyshot
+$volume weapon/psychicshot 0.4
+weapon/psybeam	psybeam
+$volume weapon/psybeam 0.4
+weapon/denied	Denied
+
+weapon/doublet	Doublet
+$volume weapon/doublet 0.4
+weapon/recover	Recover
+$volume weapon/recover 0.4
+
+
+//Healmore
+weapon/AssaultBuster ABSHOT3
+weapon/Trigger BLIZBELL
+weapon/BombAlarm Balarm
+
+Support/WhiteCast WMAG01
+Support/WhiteCast2 WMAG02
+Support/WhiteCast3 WMAG03
+Support/WhiteCast4 WMAG04
+
+Support/Heal1 Recov1 
+$volume Support/Heal1 0.5
+
+support/Negative NEGSTAT
+
+weapon/CrossBoltHit HITSOUND
+weapon/HardBuster3 HRDBST2
+weapon/HardBuster5 DAR3SHOT
+weapon/HardBuster6 DAR3SHO2
+
+weapon/OrbSpawn CRYSSHOT
+weapon/OrbBounce CRYSBIT
+weapon/AssizeHit FF6HIT

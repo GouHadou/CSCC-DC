@@ -18,4 +18,6 @@ addplayerclass KorbyClass nomenu
 addplayerclass VocalWomanClass nomenu 
 addplayerclass ZenTrainerClass nomenu 
 addplayerclass GeeClass nomenu 
- 
+addplayerclass HealmoreClass nomenu
+addplayerclass LegoClass nomenu
+addplayerclass AbraClass nomenu

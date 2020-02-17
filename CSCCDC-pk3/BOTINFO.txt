@@ -312,3 +312,55 @@
 	script = "humanbot"
 	chatfrequency = 50
 }
+
+{
+	name = "\ckLego"
+	accuracy = 5
+	intellect = 5
+	evade = 5
+	anticipation = 5
+	reactiontime = 5
+	perception = 5
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Lego"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 20
+ }
+
+{
+	name = "\ckAbra"
+	accuracy = 5
+	intellect = 5
+	evade = 5
+	anticipation = 5
+	reactiontime = 5
+	perception = 5
+	favoriteweapon = "PsybeamWep"
+	color = "00 00 00"
+	gender = "male"
+	class = "Abra"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTABRA"
+	chatfrequency = 20
+ }
+
+ {
+	name = "\ckHealmore"
+	accuracy = 5
+	intellect = 5
+	evade = 5
+	anticipation = 5
+	reactiontime = 5
+	perception = 5
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Healmore"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 20
+ }

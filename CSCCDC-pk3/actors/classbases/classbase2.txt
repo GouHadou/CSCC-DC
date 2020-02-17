@@ -211,6 +211,12 @@ Pain.CorpKnife:
 "----" H 0 A_GiveInventory("CorpKnifeProtect")
 Goto Pain+1
 
+Pain.Psybeam:
+"----" H 0 A_GiveInventory("PsybeamProtect", 1)
+Pain.PsychicShove:
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,20)
+goto Pain+1
+
 //Special Death
 //Unix
 Death.UnixBackstab:

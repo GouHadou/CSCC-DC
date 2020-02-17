@@ -1,0 +1,87 @@
+actor LegoClass : CustomWepMan
+{
+player.displayname "lego"
+player.soundclass "legosfx"
+player.damagescreencolor "red"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.75, 0.75
+player.startitem "LegoMissilesBoss"
+player.startitem "LegoStickiesBoss"
+Player.startitem "LegoWeaponAmmo", 10
+player.startitem "LegoStickyAmmo", 10
+player.startitem "NoHealthBar2"
+player.startitem "LegoHUD", 1
+mass 30
+States
+{
+Spawn:
+BAS3 A 0
+BAS3 B 1 
+BAS3 A 1 
+Goto Spawn+2
+See:
+BAS3 BCDE 5 //A_JumpIf(momz=!0, "Jump")//I want to put in jumping frames, but I lack said frame atm
+Goto Spawn
+Jumping:
+BAS3 J 1 A_JumpIf(momz==0, "Spawn")
+wait
+Missile:
+BAS3 F 5
+BAS3 G 4
+goto Spawn
+Pain:
+BAS3 H  0 //A_Stop
+BAS3 H  0 A_ClearTarget
+BAS3 H  0 A_Pain
+BAS3 H 0 A_GiveInventory("LegoDamage",1)
+BAS3 H  0// A_Jump(256, "PainFix")
+goto ClassPain
+}
+}
+
+actor LegoHUD : KorbyHud
+{
+}
+
+actor LegoLowHealth : LegoHUD
+{
+}
+
+actor LegoDamage : PowerUp
+{
+PowerUp.Duration 5
+}
+
+actor LegoSuperDamage : PowerSpeed
+{
+PowerUp.Duration 5
+Speed 1
+}
+
+actor LegoMorph : LegoClass
+{
++NOSKIN
+player.morphweapon "LegoMissilesBoss"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}
+
+actor LegoMorph2 : LegoClass
+{
++NOSKIN
+player.morphweapon "LegoStickiesBoss"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}

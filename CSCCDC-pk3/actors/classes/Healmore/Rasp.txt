@@ -1,0 +1,255 @@
+Actor Rasped : powerup
+{inventory.amount 1
+Powerup.duration 35
+}
+
+actor RaspShot : BasicFastProjectile
+{
+PROJECTILE
++HITTRACER
+MissileHeight 8
+Speed 45
+Damage (0)
+radius 10
+height 15
+ReactionTime 15
+DamageType "Rasp"
+Obituary "$OB_RASP"
+Args 10, 0
+scale 1.5
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_CountDown
+WPLS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+WPLS G 1
+Goto Spawn
+
+Crash:
+TNT1 A 1 
+TNT1 A 0 A_JumpIf(IsPointerEqual(AAPTR_TRACER,AAPTR_NULL) == False, "RaspCheck")
+Goto Death
+
+RaspCheck:
+TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+TNT1 A 0 A_ChangeFlag("NOINTERACTION",True)
+TNT1 A 0 A_ChangeFlag("NOCLIP",True)
+Goto Rasp
+
+Rasp:
+TNT1 A 0 A_GiveInventory("Rasped",1,AAPTR_TRACER)
+TNT1 AAA 0 A_SpawnItemEx("RaspParticleFX", 0, 0, 28, 256/45, 256/45, random2(256/45), random(0, 359),SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 AAAAA 1 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_JumpIfInventory("CutterFlag",999,"DeathAward",AAPTR_TRACER)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"DeathAward",AAPTR_TRACER)
+TNT1 A 0 A_SetArg(1,Args[1]+1)
+TNT1 A 0 A_JumpIf(Args[1] < 7, "Rasp")
+Goto RaspLoop_1
+
+
+RaspLoop_1:
+TNT1 A 0 A_JumpIfCloser(750,"RaspLoop_2")
+Goto Death
+
+RaspLoop_2:
+TNT1 A 0 A_JumpIfTargetInLOS("RaspLoop_3",360)
+Goto Death
+
+RaspLoop_3:
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 0 A_Explode(5,35,0,0,35)
+TNT1 A 0 A_SetArg(1,0)
+TNT1 A 0 A_SetArg(0,Args[0]-1)
+TNT1 A 0 A_GiveToTarget("WhiteMageMana",5)
+TNT1 A 0 A_JumpIf(Args[0] > 0, "Rasp")
+Goto Death
+
+DeathAward:
+TNT1 A 0 A_SetArg(0,Args[0]-1)
+TNT1 A 1 A_GiveToTarget("WhiteMageMana",5)
+TNT1 AAA 0 A_SpawnItemEx("RaspParticleFX", 0, 0, 28, 256/45, 256/45, random2(256/45), random(0, 359),SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_JumpIf(Args[0] > 0, "DeathAward")
+Death:
+TNT1 A 1 
+stop
+
+
+}
+}
+
+
+	actor RaspShot_BLUE : RaspShot
+	{
+	translation "250:250=196:196", "192:192=205:205", "198:198=74:74", "249:249=199:199", "195:195=244:244"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+
+	actor RaspShot_RED : RaspShot
+	{
+	translation "250:250=170:170", "192:192=171:171", "198:198=41:41", "249:249=45:45", "195:195=191:191"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+	
+	actor RaspShot_GREEN : RaspShot
+	{
+	translation "250:250=138:138", "192:192=104:104", "198:198=128:128", "249:249=131:131", "195:195=135:135"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+	
+	actor RaspShot_YELLOW : RaspShot
+	{
+	translation "250:250=214:214", "192:192=229:229", "198:198=232:232", "249:249=223:223", "195:195=234:234"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+	
+	
+actor RaspParticleFX 
+{
+PROJECTILE
++NOINTERACTION
++DONTBLAST
++CLIENTSIDEONLY
+Speed 0
+radius 5
+height 5
+scale 1.0
+//Renderstyle "add"
+Alpha 0.9
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 4
+WPLS GGGFED 2 A_ScaleVelocity(0.8)
+stop
+}
+}
+
+
+actor RaspParticleFX2 
+{
+PROJECTILE
++NOINTERACTION
++DONTBLAST
++CLIENTSIDEONLY
+Speed 0
+radius 5
+height 5
+scale 1.0
+//Renderstyle "add"
+Alpha 0.9
+States
+{
+Spawn:
+TNT1 A 0 
+WPLS GFED 2 A_ScaleVelocity(0.8)
+stop
+}
+}
+//[+]========================================================================[+]
+//------------------------------|Cooldown Actors|------------------------------
+//[+]========================================================================[+]
+actor RaspCooler : BasicHelper
+{
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("RaspCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("RaspCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor RaspCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("RaspCooldownItem",53)
+TNT1 A 0 A_Spawnitemex("RaspCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor RaspCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 53 //1.5 sec
+}
+
+//[+]========================================================================[+]
+//--------------------------------|Item Shooters|------------------------------
+//[+]========================================================================[+]
+
+actor RaspShotShooter : BasicTeamColorPickup
+{
+states
+{
+FireX:
+BUST B 1 A_FireCustomMissile("RaspShot",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot",0,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot",-12,0,4,8,0,0)
+goto Done
+//---
+FireB:
+BUST B 1 A_FireCustomMissile("RaspShot_BLUE",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_BLUE",0,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_BLUE",-12,0,4,8,0,0)
+goto Done
+FireR:
+BUST B 1 A_FireCustomMissile("RaspShot_RED",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_RED",0,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_RED",-12,0,4,8,0,0)
+goto Done
+FireG:
+BUST B 1 A_FireCustomMissile("RaspShot_GREEN",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_GREEN",0,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_GREEN",-12,0,4,8,0,0)
+goto Done
+FireY:
+BUST B 1 A_FireCustomMissile("RaspShot_YELLOW",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_YELLOW",0,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShot_YELLOW",-12,0,4,8,0,0)
+goto Done
+}
+}

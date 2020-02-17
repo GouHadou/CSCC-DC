@@ -218,6 +218,21 @@ PU_BURSTBLADE = "Acquired the Burst Blade";
 
 OB_SHIELDWAVE = "%o was Smeared by %k's ShieldWave.";
 
+//===|Abra
+OB_PSYSHOT = "%o was hit by %k's psychic blast!"
+OB_PSYBEAM = "%o was skewered by %k's psybeam!"
+OB_PSYSHOVE = "%o was blasted by %k's psybeam!"
+
+//===|HealMore
+OB_PEARLSTAFF = "%o was Blasted by %k's PearlStaff.";
+TAG_PEARLSTAFF = "PearlStaff";
+PU_PEARLSTAFF = "Hey! That's mine!  ~Healmore";
+
+OB_PEARLSTAFFDIA = "%o was Turned by %k's Dia Shot.";
+OB_PEARLSTAFFHOLY = "%o was Smote by %k's Holy Shot.";
+OB_RASP = "%o was Ground away by %k's Rasp.";
+OB_ASSIZE = "%o was Blocked by %k's Assize.";
+
 //COPYWEPS
 //RailBuster
 PU_RAILBUSTER = "Picked up a weird sniper rifle! jeez.";
@@ -319,6 +334,11 @@ MESSATSU_CH_USER2 = "\cfUser Key 2 : \cjActivates currently \nselected super att
 MESSATSU_CH_ITEM = "\cfItem : \cjUse item to select which \nsuper to queue for a period of time.";
 MESSATSU_CH_SUPERS = "\cvSupers : ";
 MESSATSU_CH_PASSIVE = "\cfPassive : \cjGain super gauge by being \nhit, attacking with foes nearby, or \ndealing damage.";
+
+ABRA_CH_TITLE = "\cvABRA";
+ABRA_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj120%\n\cfJump : \cj100%";
+ABRA_CH_MAINFIRE = "\cfMainfire : \cjFires off a psychic shot. \nCharge builds up when not attacking \nto release a shoving spread beam.";
+ABRA_CH_ALTFIRE = "\cfAltfire : \cjTeleports Foreward in the \ndirection aimed.";
 
 GEE_CH_TITLE = "\cvGEE";
 GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj140%";
