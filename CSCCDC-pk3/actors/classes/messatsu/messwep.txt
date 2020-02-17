@@ -1239,6 +1239,7 @@ Damage (20)
 damagetype "Misogi"
 Radius 16
 Height 16
+RenderStyle "add"
 States
 {
 Spawn:
@@ -1246,25 +1247,25 @@ TNT1 A 0
 Goto "Super::Spawn+1"
 SpawnLoop:
 DUOR T 1 
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 DUOR T 1 A_FadeOut(0.04)
-DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 12, 0, SXF_TRANSFERTRANSLATION)
+DUOR T 0 A_SpawnItemEx("MisogiWave", 0, 0, 0, 0, 0, 15, 0, SXF_TRANSFERTRANSLATION)
 Goto Death
 Death:
 DUOR T 1 A_FadeOut 
@@ -1291,6 +1292,7 @@ Spawn2:
 DUOR T 0 A_JumpIfCloser(64, "Death")
 DUOR T 1 A_FadeOut(0.03)
 DUOR T 0 ThrustThingZ(0, 12, 1, 1)
+DUOR T 0 A_CheckFloor("Death")
 loop
 Death:
 TNT1 A 0 
