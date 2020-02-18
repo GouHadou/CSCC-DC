@@ -28,10 +28,6 @@ Missile:
 HUNT F 5 
 HUNT G 4 
 goto Spawn
-Pain.CopyAlt:
-Pain.CopyMain:
-HUNT H 0 A_SpawnItemEx("KnuxCopyHitMain",1)
-goto pain+1
 }
 }
 
@@ -54,53 +50,6 @@ TNT1 A 0 A_SpawnItemEX("KnuxMineHelper")
 stop
 }
 }
-
-actor KnuxCopyPickupMain : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 A_GiveToTarget("KnuxMorphItem",1)
-stop
-}
-}
-
-actor KnuxCopyHitMain
-{
-Height 0
-Radius 0
-+NOINTERACTION
--SOLID
-+NOGRAVITY
-+MISSILE
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_GiveToTarget("KnuxCopyPickupMain",1)
-stop
-}
-}
-
-/*
-actor KnuxMorphItem : CustomInventory
-{
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 ACS_ExecuteAlways(CSACS_COPYMORPH, 0, 37)
-stop
-}
-}
-*/
 
 actor BubbleArrowBossMorph : KnuxClass
 {

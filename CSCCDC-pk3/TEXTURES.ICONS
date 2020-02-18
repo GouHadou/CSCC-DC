@@ -431,7 +431,9 @@ Graphic "BUBARROW", 30, 30
 {
 	XScale 2.000
 	YScale 2.000
-	Patch "BARWK0", 0, 0
+   Patch "BARWK0", 0, 0
+}
+
 //Healmore
 Graphic "WMAGI1", 16, 16
 {
@@ -569,7 +571,9 @@ Graphic "YANGBLK", 30, 30
 {
 	XScale 2.000
 	YScale 2.000
-	Patch "YNGBX0", 0, 0
+   Patch "YNGBX0", 0, 0
+}
+
 //Gravitron Icons
 graphic  GRAUPI, 30, 30 
 {
