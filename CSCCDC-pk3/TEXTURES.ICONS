@@ -371,6 +371,10 @@ graphic MUNOZ0, 30, 30
 // Zen Trainer
 graphic ClouIcon,30,30{XScale 2.0 YScale 2.0 Patch ZNITA0,0,0}
 
+graphic ZTStrDB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBA0,0,0}
+graphic ZTDefDB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBB0,0,0}
+graphic ZTSpdDB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBC0,0,0}
+
 //Gizmo
 Graphic "ETERNI", 30, 30{XScale 2.0 YScale 2.0 Patch "ETERN0", 0, 0}
 Graphic "PLASMI", 30, 30{XScale 2.0 YScale 2.0 Patch "PLSME0", 0, 0}
