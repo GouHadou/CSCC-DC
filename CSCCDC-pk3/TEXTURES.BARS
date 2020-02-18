@@ -208,3 +208,13 @@ graphic BARAMMOS, 8, 56{patch BARENERG,0,0{Translation "198:198=194:194"," 192:1
 graphic VARAMMOS, 56, 8{patch BARAMMOS,0,0{rotate 90}}
 graphic BARAMM2S, 8, 56{patch BARENERG,0,0{Translation "198:198=96:96"," 192:192=4:4"}}
 graphic VARAMM2S, 56, 8{patch BARAMM2S,0,0{rotate 90}}
+
+//Yang
+
+texture AURABAR, 8, 56{patch AURBAR, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
+texture AURABAR2, 56, 8{patch AURBAR2, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
+
+texture YANGBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
+texture YANGSEM, 8, 56{patch YANG1, 0, 0}
+texture YANGBARH, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
+texture YANGSEMH, 56, 8{patch YANG2, 0, 0}

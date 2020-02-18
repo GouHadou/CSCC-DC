@@ -351,6 +351,16 @@ IsSelected BurstBlade
 	InInventory not K_ShieldBreak, 1{InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 32, 64; DrawImage "VERICON2", 40, 64;}}
 	}
 
+//====|Yang
+IsSelected EmberCelica
+	{
+	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
+	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8;}
+	InInventory EmberCelicaAmmo, 2 {DrawImage "EMBCEL", 32, 56; DrawImage "VERICON1", 40, 56;}
+	DrawImage "YANGBLK", 32, 64; DrawImage "VERICON2", 40, 64;
+	}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
@@ -371,7 +381,11 @@ IsSelected HellFireCutterWepCS{Drawbar"BARAM101", "BAREMPTY", Ammo1, vertical, 1
 IsSelected HybridBurstWepCS{Drawbar"GEEAMMO3", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected LightScreenWepCS{Drawbar"BARAMMOS", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory LightScreenActive, 1	{DrawBar"BARFLS1", "NOBAR", LightScreenHealth, vertical, 16, 8;}}	
-
+IsSelected EmberCelicaWepCS
+	{
+	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
+	}
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SuperArmWepCS{Drawbar"BARAMMO2", "BAREMPTY", Ammo1, vertical, 16, 8;}

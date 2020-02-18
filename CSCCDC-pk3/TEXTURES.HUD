@@ -360,3 +360,8 @@ sprite LTSRD0, 308, 204 {Offset -151, -36 Patch HSPRH0, 0, 0 {Translation "198:1
 sprite LTSRE0, 308, 204 {Offset -126, -123 Patch HSPRI0, 0, 0 {Translation "198:198=194:194", "192:192=96:96"}}
 sprite LTSRF0, 308, 204 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "198:198=194:194", "192:192=96:96"}}
 sprite LTSRG0, 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "198:198=194:194", "192:192=96:96"}}
+
+//Ember Celica
+Sprite "EMCEA0", 320, 200 {Patch "BUSTB0", 184, 94{Translation "192:192=232:232", "198:198=228:228"}}
+Sprite "EMCEB0", 320, 200 {Patch "BUSTC0", 184, 98{Translation "192:192=232:232", "198:198=228:228"}}
+Sprite "EMCEC0", 320, 200 {Patch "BUSTD0", 188, 102{Translation "192:192=232:232", "198:198=228:228"}}

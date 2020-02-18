@@ -347,3 +347,18 @@ Kitty/Attack2	CHAJUMP3
 Kitty/Attack3	CHAJUMP4
 
 $random Kitty/Attack { Kitty/Attack1 Kitty/Attack2 Kitty/Attack3 Kitty/Attack4 }
+
+//Yang
+$playersound	Yang	female	*death		MEGADEAT
+$playersound	Yang	female	*xdeath		MEGADEAT
+$playersound	Yang	female	*gibbed		MEGADEAT
+$playersound	Yang	female	*pain100	MEGAPAIN
+$playersound	Yang	female	*pain75		MEGAPAIN
+$playersound	Yang	female	*pain50		MEGAPAIN
+$playersound	Yang	female	*pain25		MEGAPAIN
+$playersound	Yang	female	*grunt		LAND
+$playersound	Yang	female	*land		LAND
+$playersound	Yang	female	*fist		dsnone
+$playersound	Yang	female	*usefail	LAND
+
+weapon/EmberCelica EMBSHOT
