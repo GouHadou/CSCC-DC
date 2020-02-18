@@ -1,6 +1,6 @@
 #library "BASECSCC"
 #import "WEPACS.acs"
-
+ 
 #include "zcommon.acs"
 #include "8BDMLIB.ACS"
 #include "CSCCLIB.acs"
@@ -9,7 +9,7 @@
 #include "UNIX.ACS"
 #include "COPYWEP.ACS"
 #include "ITEMGIVE.ACS"
-
+ 
 Script "CSACS_TeamSpecies" ENTER 
 {
 int pln = PlayerNumber();

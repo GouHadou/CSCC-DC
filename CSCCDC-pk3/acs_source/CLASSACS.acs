@@ -1770,3 +1770,89 @@ function int GetTargetPitch (int tid1, int tid2)
 
     return -VectorAngle(xy, z);
 }
+
+str user_variables[3] =
+{
+"user_wepangle",
+"user_weppitch",
+"user_wepangle2",
+};
+
+script "GRAB_MEMANGLE" (int num, int Swap)
+{
+	Switch(Swap)
+	{
+		Case 1:
+		SetResultValue(GetUserVariable(0,user_variables[num])>>16);
+		break;
+		Default:
+		Case 0:
+		SetResultValue(GetUserVariable(0,user_variables[num]));
+		break;
+	}
+}
+
+Script "SHIFT_MEMANGLE" (int currentAngle, int inputAngle, int angleChangeLimit)
+{
+//print(i:inputAngle);
+
+int angleDif = inputAngle-currentAngle;
+//print(i:angleDif);
+
+int returnAngle;
+
+if (angleDif>180) {
+	if ((angleDif-360)<-angleChangeLimit) {
+		returnAngle = currentAngle-angleChangeLimit;
+		if (returnAngle<0) returnAngle+=360;
+    } else {
+		returnAngle = inputAngle;
+	}
+} else if (angleDif<-180) {
+	if ((angleDif+360)>angleChangeLimit) {
+		returnAngle = currentAngle+angleChangeLimit;
+		if (returnAngle>=360) returnAngle-=360;
+    } else {
+		returnAngle = inputAngle;
+	}
+} else if (angleDif<-angleChangeLimit) {
+	returnAngle = currentAngle-angleChangeLimit;
+	if (returnAngle<0) returnAngle+=360;
+} else if (angleDif>angleChangeLimit) {
+	returnAngle = currentAngle+angleChangeLimit;
+	if (returnAngle>=360) returnAngle-=360;
+} else {
+	returnAngle = inputAngle;
+}
+
+//print(i:currentAngle);
+
+setResultValue(returnAngle);
+}
+
+Script "CSCC_ScriptCharge" (int set)
+{
+/*
+General Purpose Script used to return a value from the inventory item "ScriptCharge"
+*/
+setResultValue(CheckInventory("ScriptCharge"));
+}
+
+Script "CSCC_ClassItemToggle" (int ToggleValue)
+{
+/*
+Script designed for all classes that aim to use an inventory to toggle between modes, 
+*/
+
+if (ToggleValue <= 0){TakeInventory("ClassToggleItem",999); Terminate;}
+
+if(CheckInventory("ClassToggleItem") != ToggleValue)
+	{
+		Until(CheckInventory("ClassToggleItem") == ToggleValue)
+		{
+		TakeInventory("ClassToggleItem",999);
+		GiveInventory("ClassToggleItem",ToggleValue);
+		}
+
+	}
+}

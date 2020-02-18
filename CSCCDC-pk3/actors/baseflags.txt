@@ -39,6 +39,18 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
+
+Actor ScriptCharge : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1000
+}
+
+Actor ClassToggleItem : Inventory
+{
+inventory.amount 1
+inventory.maxamount 100
+}
 //[+]========================================================================[+]
 //--------------------------------|Targeting Script|---------------------------
 //[+]========================================================================[+]
