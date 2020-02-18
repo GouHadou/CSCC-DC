@@ -218,6 +218,14 @@ PU_BURSTBLADE = "Acquired the Burst Blade";
 
 OB_SHIELDWAVE = "%o was Smeared by %k's ShieldWave.";
 
+//===|Lego
+OB_LEGOMISSILE = "%o was obliterated by %k's Missile Launcher.";
+PU_LEGOMISSILE = "Power Up! Sticky Bombs!";
+
+OB_LEGOMINE = "%o was surprised by %k's Sticky bombs.";
+
+OB_STICKYBOMB = "%o was blasted from afar by %k's Sticky bombs.";
+PU_STICKYBOMB = "Power up! Sticky Bombs!";
 //===|Abra
 OB_PSYSHOT = "%o was hit by %k's psychic blast!"
 OB_PSYBEAM = "%o was skewered by %k's psybeam!"
