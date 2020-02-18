@@ -1831,5 +1831,23 @@ Script "CSCC_ScriptCharge" (int set)
 General Purpose Script used to return a value from the inventory item "ScriptCharge"
 */
 setResultValue(CheckInventory("ScriptCharge"));
+}
 
+Script "CSCC_ClassItemToggle" (int ToggleValue)
+{
+/*
+Script designed for all classes that aim to use an inventory to toggle between modes, 
+*/
+
+if (ToggleValue <= 0){TakeInventory("ClassToggleItem",999); Terminate;}
+
+if(CheckInventory("ClassToggleItem") != ToggleValue)
+	{
+		Until(CheckInventory("ClassToggleItem") == ToggleValue)
+		{
+		TakeInventory("ClassToggleItem",999);
+		GiveInventory("ClassToggleItem",ToggleValue);
+		}
+
+	}
 }
