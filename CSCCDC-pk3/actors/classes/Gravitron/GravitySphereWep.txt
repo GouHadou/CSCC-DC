@@ -1,0 +1,73 @@
+actor GravitySphereWep : MegaBuster 
+{
+Weapon.AmmoGive 28 
+Weapon.AmmoUse 2
+Weapon.SlotNumber 1  
+Obituary "$OB_GRAVSPHERE" 
+Inventory.Pickupmessage "$PU_GRAVSPHERE"
+Tag "$TAG_GRAVSPHERE"
+weapon.ammotype "GravitySphereAmmo" 
+inventory.pickupsound "weapon/weaponup" 
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON 
++WEAPON.NOAUTOAIM
+inventory.icon "GRAVSPI" 
+Scale 2.0
+States
+{
+Spawn: 
+GRSP Q 1
+loop
+Ready:
+GRSP A 0 ACS_ExecuteAlways(998,0,653) 
+GRSP A 1 A_WeaponReady
+goto Ready+1
+Deselect: 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+GRSP A 1 A_Lower
+Loop
+Select: 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+GRSP A 1 A_Raise
+Loop
+Fire:
+GRSP A 0 A_JumpIfNoAmmo("NoAmmo")
+GRSP BC 1
+GRSP A 0 A_PlaySoundEx("misc/sharkspinner","Weapon")
+GRSP A 0 A_FireCustomMissile("GravSphere",0,1,8,0)
+GRSP D 4
+GRSP C 2
+GRSP B 2
+GRSP A 27
+goto Ready+1
+NoAmmo: 
+GRSP A 1 
+Goto Ready+1 
+}
+}
+
+actor GravitySphereAmmo : Ammo 
+{
+inventory.amount 1
+inventory.maxamount 28
+}
+
+
+actor GravitySphereWepCS : GravitySphereWep replaces GravitySphereWep
+{
+States
+{
+CSCC_DefaultSpawn:
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+goto Spawn+3
+CSCC_TranslucentSpawn:
+TNT1 A 0 A_SetTranslucent(0.5, 0)
+goto Spawn+3
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+GRSP Q 5
+goto Spawn+2
+}
+}

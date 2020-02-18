@@ -22,6 +22,7 @@ user noarchive int Gizmo_ClassHelp_items = 0;
 user noarchive int Unix_ClassHelp_Weapon = 0;
 user noarchive int IceSparky_ClassHelp_Forms = 0;
 user noarchive int Aegis_ClassHelp_Forms = 0;
+user noarchive int NaturesWonder_ClassHelp_WallInfo = 0;
 
 //Allows translation to be copied on the client's end
 server noarchive int SV_TRANSLATION0 = 0;

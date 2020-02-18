@@ -1149,4 +1149,87 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckWeapon("EmberCelica"
 		}
 	//printbold(s: "Health - ", i: CurrentHealth, s:" - Armor - ", i:CurrentAura);
 	}
+Script "OBJECTTALLY" (int BaseNum)
+{
+int MasterTID = ACS_ExecuteWithResult(257, 0);
+
+// objects work within the 3000's range, the playernumber being in the 100th place
+//Naturally this means a single player can only have up to 9 items
+if (BaseNum < 3000){BaseNum = 3000;}
+
+int ObjTIDBase = BaseNum + ((MasterTID-1000)*100);
+bool TIDset = false;
+int TIDCount;
+
+while(!TIDset)
+{
+if(ThingCount(T_NONE,ObjTIDBase+TIDCount))
+	{
+	//log(s:"Object with TID ",i:ObjTIDBase+TIDCount,s:" Already exists");
+	TIDCount++;
+	//continue;
+	}
+	Else
+	{
+	//log(s:"This object's TID is now ",i:ObjTIDBase+TIDCount,s:"!");
+	Thing_ChangeTID(0,ObjTIDBase+TIDCount);
+	//log(s:"This object's TID is now ",i:ActivatorTID(),s:"!");
+	TIDset = true;
+	}
+}
+
+for(int i; i < 9; i++)
+{
+SetUserVariable(ObjTIDBase+i,"User_Tally",GetUserVariable(ObjTIDBase+i,"User_Tally")+1);
+//log(s:"Object with TID ",i:ObjTIDBase+i,s:" Now has a tally of ",i:GetUserVariable(ObjTIDBase+i,"User_Tally"));
+}
+//--
+}
+
+Script "OBJECTDEATHTALLY" (VOID)
+{
+int MasterTID = ACS_ExecuteWithResult(257, 0);
+int ObjTIDBase = 3000 + ((MasterTID-1000)*100);
+
+// ment to be called when an object dies, this makes all objects drop their tally by 1. if their tally was above
+//the one that died. this is only for if the object was destroyed, not terminated due to being overtallied
+int ObjTID = ActivatorTID();
+int EmptyTally = GetUserVariable(ObjTID,"User_Tally");
+//log(s:"object ",i:ObjTID ,s:" was destroyed!");
+
+for(int i; i < 9; i++)
+{
+	if(GetUserVariable(ObjTIDBase+i,"User_Tally") > 1)
+	{
+	SetUserVariable(ObjTIDBase+i,"User_Tally",GetUserVariable(ObjTIDBase+i,"User_Tally")-1);
+	//log(s:"Object with TID ",i:ObjTIDBase+i,s:" Now has a new tally of ",i:GetUserVariable(ObjTIDBase+i,"User_Tally"));
+	}
+}
+
+}
+
+Script "DEPLPOYABLEDELETER" (int gone) DISCONNECT
+{
+//log(i:gone);
+int ObjTIDBase = 3000 + ((gone)*100);
+int ObjTIDBase2 = 4000 + ((gone)*100);
+int ObjTIDBase3 = 4000 + ((gone)+1000);
+int ObjTIDBase4 = 5000 + ((gone)+1000);
+for(int i; i < 9; i++)
+{
+	SetActorState (ObjTIDBase+i, "Perish");
+	SetActorState (ObjTIDBase2+i, "Perish");
+
+}
+
+	SetActorState (ObjTIDBase3, "Perish");
+	SetActorState (ObjTIDBase4, "Perish");
+}
+
+Script "CSCC_Prism" (void) // Lol Name Refrence 
+{
+int x = GetActorProperty(0,APROP_SpawnHealth); 
+int y = GetActorProperty (0, APROP_HEALTH);
+int TotalDamage = (x-y);
+SetResultValue(TotalDamage);
 }

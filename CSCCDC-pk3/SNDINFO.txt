@@ -362,3 +362,55 @@ $playersound	Yang	female	*fist		dsnone
 $playersound	Yang	female	*usefail	LAND
 
 weapon/EmberCelica EMBSHOT
+//Knux
+$playersound	knuxc	male	*death		MEGADEAT
+$playersound	knuxc	male	*xdeath		MEGADEAT
+$playersound	knuxc	male	*gibbed		MEGADEAT
+$playersound	knuxc	male	*pain100	MEGAPAIN
+$playersound	knuxc	male	*pain75		MEGAPAIN
+$playersound	knuxc	male	*pain50		MEGAPAIN
+$playersound	knuxc	male	*pain25		MEGAPAIN
+$playersound    knuxc	male	*grunt		dsnone //LAND
+$playersound	knuxc	male	*land		LAND
+$playersound	knuxc	male	*jump		dsnone
+$playersound	knuxc	male	*fist		dsnone
+$playersound	knuxc	male	*usefail	LAND
+
+$playersound	knuxc	male	*taunt	dsnone
+
+
+weapon/burstpop BUBLPOP
+weapon/BurstBubAppear BUBLPOOF
+weapon/BurstExplode WRAPEXPL $limit weapon/BurstExplode 0
+
+//Gravitron
+$playersound	GRAVSPHERE	male	*death		MEGADEAT
+$playersound	GRAVSPHERE	male	*xdeath		MEGADEAT
+$playersound	GRAVSPHERE	male	*gibbed		MEGADEAT
+$playersound	GRAVSPHERE	male	*pain100	MEGAPAIN
+$playersound	GRAVSPHERE	male	*pain75		MEGAPAIN
+$playersound	GRAVSPHERE	male	*pain50		MEGAPAIN
+$playersound	GRAVSPHERE	male	*pain25		MEGAPAIN
+$playersound    GRAVSPHERE	male	*grunt		LAND
+$playersound	GRAVSPHERE	male	*land		LAND
+$playersound	GRAVSPHERE	male	*fist		dsnone
+$playersound	GRAVSPHERE	male	*usefail	LAND
+$playersound	GRAVSPHERE	male	*taunt	    GRSPTAU
+
+
+//Deer
+$playersound	NaturesWonder	male	*death		MEGADEAT
+$playersound	NaturesWonder	male	*xdeath		MEGADEAT
+$playersound	NaturesWonder	male	*gibbed		MEGADEAT
+$playersound	NaturesWonder	male	*pain100	MEGAPAIN
+$playersound	NaturesWonder	male	*pain75		MEGAPAIN
+$playersound	NaturesWonder	male	*pain50		MEGAPAIN
+$playersound	NaturesWonder	male	*pain25		MEGAPAIN
+$playersound    NaturesWonder	male	*grunt		LAND
+$playersound	NaturesWonder	male	*land		LAND
+$playersound	NaturesWonder	male	*jump		dsnone
+$playersound	NaturesWonder	male	*fist		dsnone
+$playersound	NaturesWonder	male	*usefail	LAND
+$playersound	NaturesWonder	male	*taunt	    DEAR!
+
+weapon/CrystalBreak CrystBrk

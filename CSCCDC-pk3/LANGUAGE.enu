@@ -225,6 +225,38 @@ OB_YANGKICK = "%o was KO'd %k's Roundhouse Kick.";
 TAG_EMBERCELICA= "Ember Celica";
 
 //COPYWEPS
+//===|Knux
+OB_BUBBLEARROW = "%o was sabotaged by %k's Bubble Arrow.";
+TAG_BUBBLEARROW = "BubbleArrow";
+PU_BUBBLEARROW = "Got a cleaning implement";
+
+
+OB_BUBBLEARROWCOPY = "%o was cleaned up by %k's Bubble Arrow.";
+PU_BUBBLEARROWCOPY = "Power up! Bubble Arrow!";
+
+OB_KNUXMINE = "%k's Mine Cleaned %0's Clock.";
+OB_BUBBLEBOUNCER = "%o was rejected by %p own attack!";
+
+//===|Gravitron
+OB_GRAVSPHERE = "%o had %p gravity neutralized by %k's Gravity Sphere.";
+OB_GRAVSLAM = "%o got slammed and welcomed to the jam by %k's Gravity Slam.";
+
+PU_GRAVSPHERE = "Power up! Gravity Sphere!"; 
+
+TAG_GRAVSPHERE = "Gravity Sphere";
+
+//===|Natures Wonder
+OB_CRYSTALWALL = "%o walked into %k's Crystal Wall.";
+OB_CRYSTALSLAM = "%o was crushed by %k's Crystal Missile.";
+OB_PRISMWAVE = "%o reflected upon %p actions by %k's prisim reflection.";
+
+PU_NATURESTAFF = "You got a B-B-Bonus Staff!, You Got a B-B-Bonus Staff!"; //Probably not needed
+
+TAG_NATURESTAFFSTRAIGHT = "Nature Staff (Straight)";
+TAG_NATURESTAFFHORIZONTAL = "Nature Staff (Horizontal)";
+TAG_NATURESTAFFALLAROUND = "Nature Staff (All Around)";
+
+//██████████████████████████████████████████Copyweps████████████████████████████████████████
 //RailBuster
 PU_RAILBUSTER = "Picked up a weird sniper rifle! jeez.";
 OB_RAILBUSTER = "%o was sniped by %k's sniper rifle.";
@@ -273,7 +305,11 @@ PU_LIGHTSCREEN = "Power Up! Light Screen!";
 OB_LIGHTSCREEN = "%o Couldn't get through %k's Light Screen";
 TAG_LIGHTSCREEN = "Light Screen";
 
-//CLASS HELP
+//Crystal Wall
+PU_CRYSTAlWALL= "Power up! Crystal Wall!";
+TAG_CRYSTALWALL = "Crystal Wall";
+
+//██████████████████████████████████████████Class Help████████████████████████████████████████
 CSCC_TITLE = "\cvCSCC Options";
 CSCC_INFO_TITLE = "\cvCSCC Information";
 CSCC_SETTINGS_TITLE = "\cvCSCC Server Settings";
@@ -418,3 +454,16 @@ V1ACHANGELOG = "\cvV1A CHANGELOG";
 V1BCHANGELOG = "\cvV1B CHANGELOG";
 V1CCHANGELOG = "\cvV1C CHANGELOG";
 GENERAL_CH_TITLE = "\cvGENERAL";
+
+GRAVITRON_CH_TITLE = "\cvGRAVITRON";
+GRAVITRON_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+GRAVITRON_CH_MAINFIRE = "\cfMainfire : \cjLaunches a Gravity Sphere that \nbounces and has a small gravity field \naround it.";
+GRAVITRON_CH_ALTFIRE = "\cfAltfire : \cjCreates a Gravity Field that \nalters gravity inside the radius.";
+GRAVITRON_CH_ITEM = "\cfItem : \cjSwitches your Gravity Field's pull \nwithin its radius.";
+GRAVITRON_CH_PASSIVE = "\cfPassive: \cjFalling from or going upward at a certain speed \nwhen coliding with the ceiling or ground creates a \nexplosion around yourself.";
+
+NATURESWONDER_CH_TITLE = "\cvNATURES WONDER";
+NATURESWONDER_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj94%\n\cfJump : \cj100%";
+NATURESWONDER_CH_MAINFIRE = "\cfMainfire : \cjCreates a Crystal Wall that can block shots \nwith a formation based on weapon chosen";
+NATURESWONDER_CH_ALTFIRE = "\cfAltfire : \cjDrops a Prism Wall at a location that \nthat reflects damage dealt around itself.";
+NATURESWONDER_CH_WALLINFO = "\cvWall Info: ";

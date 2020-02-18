@@ -312,3 +312,54 @@
 	script = "humanbot"
 	chatfrequency = 50
 }
+
+{
+	name = "\cnKnux"
+	accuracy = 2
+	intellect = 2
+	evade = 4
+	anticipation = 4
+	reactiontime = 2
+	perception = 4
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Knux"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cnGravitron"
+	accuracy = 2
+	intellect = 2
+	evade = 4
+	anticipation = 4
+	reactiontime = 2
+	perception = 4
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Gravitron"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cnNatures Wonder"
+	accuracy = 2
+	intellect = 2
+	evade = 4
+	anticipation = 4
+	reactiontime = 2
+	perception = 4
+	favoriteweapon = "MegaBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "Natures Wonder"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}

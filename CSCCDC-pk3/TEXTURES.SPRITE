@@ -1,0 +1,99 @@
+Sprite "BARWP1", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWB1", 6, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWP5", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWB5", 6, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWP6P4", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWB6B4", 2, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWP7P3", 20, 19
+{
+	Offset 10, 9
+	Patch "BARWB7B3", 0, 6
+	Patch "BARWO0", 0, 1
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWP8P2", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWB8B2", 2, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWQ1", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWC1", 6, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWQ5", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWC5", 6, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWQ6Q4", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWC6C4", 2, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWQ7Q3", 20, 19
+{
+	Offset 10, 9
+	Patch "BARWC7C3", 0, 6
+	Patch "BARWO0", 0, 1
+	{
+		Rotate 90
+	}
+}
+
+Sprite "BARWQ8Q2", 18, 18
+{
+	Offset 9, 9
+	Patch "BARWC8C2", 2, 6
+	Patch "BARWN0", 0, 0
+	{
+		Rotate 90
+	}
+}

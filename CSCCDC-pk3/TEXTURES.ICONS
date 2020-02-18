@@ -418,6 +418,22 @@ graphic BADZMSL, 30, 30
    Patch ORBDY0, 0, 0
 }
 
+//Knux
+Graphic "KNUXICON", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BARWZ0", 0, 0
+	Patch "BARWJ0", 2, 3
+}
+
+Graphic "BUBARROW", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "BARWK0", 0, 0
+}
+
 //Megmman CopyWeps
 
 graphic PISTRE, 30, 30
@@ -475,4 +491,53 @@ Graphic "YANGBLK", 30, 30
 	XScale 2.000
 	YScale 2.000
 	Patch "YNGBX0", 0, 0
+//Gravitron Icons
+graphic  GRAUPI, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch GRSPJ0, 0, 0
+}
+
+graphic  GRADOWNI, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch GRSPK0, 0, 0
+}
+
+graphic GRAVSPI, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch GRSPQ0, 0, 0
+}
+
+//Deer Icons
+graphic Horiform, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRYIB0, 0, 0
+}
+
+graphic LineForm, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRYIC0, 0, 0
+}
+
+graphic AllForm, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CRYIA0, 0, 0
+}
+
+graphic CWALLI, 30, 30 
+{
+   XScale 2.0
+   YScale 2.0
+   Patch CWALA0, 0, 0
 }

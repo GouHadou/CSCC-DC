@@ -38,7 +38,7 @@ if(Check != 1 || DroppedStateRefresh==1)
     }
 }
 
-#DEFINE MAX_FAKEWEPS 104
+#DEFINE MAX_FAKEWEPS 107
 
 str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 //Actor, GizmoDisplay, GizmoWep, GizmoItem, CorpDisplay, CorpWep, CorpItem
@@ -178,6 +178,9 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"HybridBurstWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"LightScreenWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 {"EmberCelicaWepCS","CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"BubbleArrowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"CrystalWallWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
+{"GravitySphereWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
 
 };
 

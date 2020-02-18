@@ -352,6 +352,20 @@ IsSelected EmberCelica
 	InInventory EmberCelicaAmmo, 2{DrawImage "EMBCEL", 130, 176; DrawImage "HORICON1", 130, 168;}
 	DrawImage "YANGBLK", 122, 176; DrawImage "HORICON2", 122, 168;
 	}
+//====|Knux
+IsSelected BubbleArrowBoss
+{
+DrawBar "VARAMMO1","VAREMPTY", Ammo1, horizontal, 58, 184;
+Drawbar "VARAMM24", "VAREMPTY", Ammo2, horizontal, 58,176; 
+}
+
+//====|Gravitron
+IsSelected GravSphereWep{Drawbar"VAREMPTY", "GRSPAMMV", Ammo1, horizontal,reverse, 58, 184;}// The Bar ya need
+
+//====|Natures Wonder
+IsSelected NatureStaffStraightWep{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected NatureStaffHorizontalWep{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected NatureStaffAllAroundWep{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
@@ -378,6 +392,10 @@ IsSelected EmberCelicaWepCS
 	DrawBar "YANGBARH", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	DrawBar "YANGSEMH", "VNOBAR", YangSemblance, horizontal, 58, 184;
 	}
+IsSelected BubbleArrowWepCS{DrawBar "VBUBABAR", "VAREMPTY", Ammo1, vertical, 58, 184;}
+IsSelected GravitySphereWepCS{Drawbar"GRSPAMMV", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected CrystalWallWepCS{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected SuperArmWepCS{Drawbar"VARAMMO2", "VAREMPTY", Ammo1, horizontal, 58, 184;}

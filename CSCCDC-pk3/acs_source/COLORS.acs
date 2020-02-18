@@ -361,11 +361,16 @@
 #DEFINE BADZCOLOR 280
 #DEFINE GIZMO 385
 #DEFINE BULLGATOR 395
+#DEFINE KNUX 382
+#DEFINE Gravitron 653
+#DEFINE NaturesWonder 654
+
 
 #DEFINE ZENSPHERE 1100
 #DEFINE HELLFIRECUTTER 1101
 #DEFINE ORBITALMISSILE 1102
 #DEFINE HYBRIDBURST 1103
+#DEFINE CrystalWall 655
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
 
@@ -686,10 +691,15 @@ Script "core_translations" OPEN CLIENTSIDE
 	CreateTranslation (BADZCOLOR, 192:192=236:236, 198:198=3:3, 226:226=197:197, 43:43=198:198);
 	CreateTranslation (GIZMO, 192:192=241:241, 198:198=176:176);
 	CreateTranslation (BULLGATOR, 192:192=4:4, 198:198=110:110);
-
+	CreateTranslation (KNUX, 192:192=4:4, 198:198=195:195, 250:250=103:103);
+	CreateTranslation (Gravitron, 192:192=58:58, 198:198=249:249);
+	CreateTranslation (NaturesWonder, 192:192=165:165, 198:198=166:166);
+	
 	CreateTranslation (IDOLWAVE, 192:192=239:239, 198:198=44:44);
 	CreateTranslation (ZENSPHERE, 192:192=228:228, 198:198=229:229);
 	CreateTranslation (HELLFIRECUTTER, 192:192=43:43, 198:198=189:189);
 	CreateTranslation (ORBITALMISSILE, 192:192=204:204, 198:198=132:132);
 	CreateTranslation (HYBRIDBURST, 192:192=215:215, 198:198=243:243);
+	CreateTranslation (CrystalWall, 192:192=197:197, 198:198=198:198);
+
 }

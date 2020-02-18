@@ -1,0 +1,607 @@
+const int Item_LowGravity = 12;
+const int Item_HighGravity = 13;
+
+actor GravSphereWep : CSCCWepBase 
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 0 //bizzarely, this is what copyrobot needs for this class
+Weapon.SlotNumber 4
+Inventory.Pickupmessage "$PU_GRAVSPHERE"
+Obituary "$OB_GRAVSPHERE"
+Tag "$TAG_GRAVSPHERE"
+weapon.ammotype "GravSphereAmmo"
+inventory.icon "NULLICON"
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Ready:
+GRSP A 1 ACS_ExecuteAlways(998,0,653)
+GRSP A 0 A_GunFlash 
+Ready2:
+GRSP A 1 A_WeaponReady
+Goto Ready2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+GRSP A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+GRSP A 1 A_Raise
+Loop
+Fire:
+GRSP BC 1
+GRSP A 0 A_PlaySoundEx("misc/sharkspinner","Weapon")
+GRSP A 0 A_GiveInventory("GravSphereMainFire",1)
+GRSP D 4
+GRSP C 2
+GRSP B 2
+GRSP A 27 
+Goto Ready2
+Altfire:
+TNT1 A 0 A_JumpIfInventory("GravSphereAmmo",1,"NoAmmo")
+GRSP EFGH 2 
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"ArenaB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"ArenaR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"ArenaG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"ArenaY")
+GRSP I 2 A_FireCustomMissile("GravArena",0,0,11,-8)
+goto Ready2
+ArenaB:
+GRSP I 2 A_FireCustomMissile("GravArenaB",0,0,11,-8)
+goto Ready2
+ArenaR:
+GRSP I 2 A_FireCustomMissile("GravArenaR",0,0,11,-8)
+goto Ready2
+ArenaG:
+GRSP I 2 A_FireCustomMissile("GravArenaG",0,0,11,-8)
+goto Ready2
+ArenaY:
+GRSP I 2 A_FireCustomMissile("GravArenaY",0,0,11,-8)
+goto Ready2
+Flash:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,2)
+TNT1 A 0 A_JumpIf(velz >= 12|velz <= -15,"GravCrush") 
+TNT1 A 1
+goto Flash
+GravCrush:
+TNT1 A 1
+TNT1 A 0 A_JumpIf(z-ceilingz==0-56|z-floorz==0,"KABOOM")
+goto Flash
+KABOOM:
+NAPA A 0 A_PlaySoundEx("weapon/napalm", "Weapon")
+TNT1 A 0 A_SpawnItemEx("GravSlam",0,0,0)
+TNT1 A 0 Radius_Quake (3, 30, 0, 10,0)
+TNT1 A 1 A_ChangeVelocity(0,0,0,CVF_REPLACE)
+goto Flash
+NoAmmo:
+GRSP A 1 ACS_Execute(979,0)
+Goto Ready2
+}
+}
+
+actor GravSphereAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 240
++INVENTORY.IGNORESKILL
+}
+
+actor GravAdjust: Once
+{
+}
+
+actor GravCounter: OilSliderFlag
+{
+}
+
+actor GravBoost : Once
+{
+inventory.amount 1
+inventory.maxamount 5
+}
+
+actor GravChangerDown : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon "GRADOWNI"
+scale 2.0
++INVENTORY.UNDROPPABLE
++COUNTITEM
++INVBAR
+states
+{
+Use:
+TNT1 A 0 A_PlaySoundEx("misc/gravitydown","SoundSlot6")
+TNT1 A 0 A_GiveInventory("GravAdjust",1)
+TNT1 A 0 A_GiveInventory("GravChangerUp",1)
+TNT1 A 0 A_TakeInventory("GravChangerDown",1)
+fail
+}
+}
+
+actor GravChangerUp: GravChangerDown
+{
+inventory.icon "GRAUPI"
+states
+{
+Use:
+TNT1 A 0 A_PlaySoundEx("misc/gravityup","SoundSlot6")
+TNT1 A 0 A_TakeInventory("GravAdjust",1)
+TNT1 A 0 A_GiveInventory("GravChangerDown",1)
+TNT1 A 0 A_TakeInventory("GravChangerUp",1)
+fail
+}
+}
+
+actor GravSphere : BasicProjectile
+{
+Radius 5
+Height 5
+scale 2.5
+damage (25)
++HEXENBOUNCE
++DONTBLAST
+damagetype "GravSphere"
+Obituary "$OB_GRAVSPHERE"
+translation "192:192=58:58", "198:198=249:249", "193:193=4:4", "199:199=111:111", "200:200=4:4", "194:194=44:44"   
+speed 15
+States
+{
+Spawn:
+BLKH B 0 A_JumpIfInventory("GravCounter",18,"Death")
+BLKH B 0 A_GiveInventory("GravCounter",1)
+BLKH B 0 A_JumpIfInTargetInventory("GravAdjust",1,"Down")
+GRSP L 1 A_FadeOut(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle+15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_LowGravity,100,7)
+GRSP M 1 A_FadeIn(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle+15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_LowGravity,100,7)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,18,SXF_TRANSFERTRANSLATION)
+GRSP N 1 A_FadeOut(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle+15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_LowGravity,100,7)
+GRSP O 1 A_FadeIn(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle+15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_LowGravity,100,7)
+TNT1 A 0 A_JumpIf(Z-Floorz<=40,"GravDustUp")
+Goto Spawn
+Down:
+GRSP L 1 A_FadeOut(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle-15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_HighGravity,100,5)
+GRSP M 1 A_FadeIn(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle-15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_HighGravity,100,5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+GRSP N 1 A_FadeOut(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle-15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_HighGravity,100,5)
+GRSP O 1 A_FadeIn(.5)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravSphereParticle2",100,0,0,0,0,0,180,SXF_TRANSFERTRANSLATION)
+SCLA A 0 A_SetAngle(angle-15)
+SCLA A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_HighGravity,100,5)
+TNT1 A 0 A_JumpIf(Z-Floorz<=40,"GravDustDown")
+goto Spawn
+GravDustUp:
+TNT1 A 0 A_SpawnItemEx("GravDust",random(80,-80),random(80,-80),0,0,0,10,0,0)
+TNT1 A 0 A_SpawnItemEx("GravDust",random(80,-80),random(80,-80),0,0,0,10,0,0)
+goto Spawn
+GravDustDown:
+TNT1 A 0 A_SpawnItemEx("GravDust",random(80,-80),random(80,-80),100,0,0,-10,0,0)
+TNT1 A 0 A_SpawnItemEx("GravDust",random(80,-80),random(80,-80),100,0,0,-10,0,0)
+goto Spawn
+Death:
+TNT1 A 1
+stop
+}
+}
+
+actor GravSphereB : GravSphere {translation "192:192=205:205", "198:198=74:74", "193:193=4:4", "199:199=196:196", "200:200=4:4", "194:194=244:244"}
+actor GravSphereR : GravSphere {translation "192:192=171:171", "198:198=41:41", "193:193=4:4", "199:199=170:170", "200:200=4:4", "194:194=191:191"}
+actor GravSphereG : GravSphere {translation "192:192=104:104", "198:198=128:128", "193:193=4:4", "199:199=138:138", "200:200=4:4", "194:194=135:135"}
+actor GravSphereY : GravSphere {translation "192:192=229:229", "198:198=232:232", "193:193=4:4", "199:199=214:214", "200:200=4:4", "194:194=234:234"}
+
+actor GravSphereMainFire : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireY")
+TST1 A 0 A_FireCustomMissile("GravSphere",0,1,8,0)
+stop
+FireB:
+TST1 A 0 A_FireCustomMissile("GravSphereB",0,1,8,0)
+stop
+FireR:
+TST1 A 0 A_FireCustomMissile("GravSphereR",0,1,8,0)
+stop
+FireG:
+TST1 A 0 A_FireCustomMissile("GravSphereG",0,1,8,0)
+stop
+FireY:
+TST1 A 0 A_FireCustomMissile("GravSphereY",0,1,8,0)
+stop
+}
+}
+
+actor GravArena
+{
+PROJECTILE
+Radius 5
+Height 5
+scale 2.5
++NOINTERACTION
++DONTBLAST
++FloorHugger
+translation "193:193=4:4", "199:199=111:111", "200:200=4:4", "194:194=44:44"   
+speed 0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_PlaySoundEx("misc/darkthrow","SoundSlot5")
+TNT1 A 0 A_JumpIfInventory("Once",1,"OnceClear")
+TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("core_targetexists")==0,"ArenaRefund")
+TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"ArenaRefund")
+TNT1 A 0 A_JumpIfInTargetInventory("GravSphereAmmo",240,"ArenaRefund")
+TNT1 A 0 A_JumpIfInTargetInventory("GravAdjust",1,"Spawn2")
+TNT1 A 0 A_GiveToTarget("Once",1)
+TNT1 A 1 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_LowGravity,300,7)
+TNT1 A 0 A_SetAngle(angle+5)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,45,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,90,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,135,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,180,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,225,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,270,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle",300,0,0,0,0,30,315,SXF_TRANSFERTRANSLATION)
+goto GravDust
+GravDust:
+TNT1 A 0 A_SpawnItemEx("GravDust",random(280,-280),random(280,-280),0,0,0,30,0,0)
+TNT1 A 0 A_SpawnItemEx("GravDust",random(280,-280),random(280,-280),0,0,0,30,0,0)
+TNT1 A 0 A_SpawnItemEx("GravDust",random(280,-280),random(280,-280),0,0,0,30,0,0)
+TNT1 A 0 A_GiveToTarget("GravSphereAmmo",1)
+goto Spawn+2
+OnceClear:
+TNT1 A 0 A_TakeInventory("Once",1)
+goto Spawn
+Spawn2:
+TNT1 A 0 A_JumpIfInventory("Once",1,"Spawn2andaHalf")
+TNT1 A 0 A_GiveInventory("Once",1)
+TNT1 A 0 A_PlaySoundEx("misc/darkthrow","SoundSlot5")
+Spawn2andaHalf:
+TNT1 A 1 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_HighGravity,300,5)
+TNT1 A 0 A_SetAngle(angle-5)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,45,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,90,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,135,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,180,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,225,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,270,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravArenaParticle2",300,0,300,0,0,-30,315,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("GravDust",random(280,-280),random(280,-280),300,0,0,-30,0,0)
+TNT1 A 0 A_SpawnItemEx("GravDust",random(280,-280),random(280,-280),300,0,0,-30,0,0)
+TNT1 A 0 A_SpawnItemEx("GravDust",random(280,-280),random(280,-280),300,0,0,-30,0,0)
+TNT1 A 0 A_GiveToTarget("GravSphereAmmo",1)
+goto Spawn+3
+ArenaRefund:
+TNT1 A 0 A_TakeFromTarget("Once",1)
+Death:
+TNT1 A 0 A_JumpIfInTargetInventory("IsDead",1,"Death2")
+TNT1 A 0 A_JumpIfInTargetInventory("GravSphereAmmo",1,"Drain")
+goto Death2
+Drain: 
+TNT1 A 1 A_TakeFromTarget("GravSphereAmmo",2)
+goto Death
+Death2:
+TNT1 A 0
+stop
+}
+}
+
+actor GravArenaB : GravArena {translation "192:192=205:205", "198:198=74:74", "193:193=4:4", "199:199=196:196", "200:200=4:4", "194:194=244:244"}
+actor GravArenaR : GravArena {translation "192:192=171:171", "198:198=41:41", "193:193=4:4", "199:199=170:170", "200:200=4:4", "194:194=191:191"}
+actor GravArenaG : GravArena {translation "192:192=104:104", "198:198=128:128", "193:193=4:4", "199:199=138:138", "200:200=4:4", "194:194=135:135"}
+actor GravArenaY : GravArena {translation "192:192=229:229", "198:198=232:232", "193:193=4:4", "199:199=214:214", "200:200=4:4", "194:194=234:234"}
+
+Actor GravSlam
+{
+scale 2.5
+Radius 5
+Height 5
++NOGRAVITY
+damagetype "GravSlam"
+Obituary "$OB_GRAVSLAM"
+States
+{
+Spawn:
+TNT1 A 0
+Death:
+NAPA E 1 A_Explode(50,128,0,0,64)
+NAPA FGHIJKLMNOPQRS 1 
+stop
+}
+}
+
+actor GravEffect : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("GravArenaWatcher")
+TNT1 A 0 A_JumpIf(Z-FloorZ==0|velz<0,"lol")
+TNT1 A 0 A_JumpIfInventory("GravBoost",5,"nope")
+TNT1 A 0 A_ChangeVelocity(0,0,velz/9,CVF_RELATIVE)
+TNT1 A 0 A_GiveInventory("GravBoost",1)
+stop
+nope:
+TNT1 A 0 
+stop
+lol:
+TNT1 A 0 A_TakeInventory("GravBoost",5)
+stop
+}
+}
+
+actor GravEffect2 : GravEffect
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("GravArenaWatcher2")
+TNT1 A 0 A_ChangeVelocity(0,0,-1.0,CVF_RELATIVE)
+stop
+}
+}
+
+actor LowGravArena : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 1 ACS_ExecuteAlways(204,0,1)
+stop
+}
+}
+
+actor NormalGravArena : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 1 ACS_ExecuteAlways(204,0,0)
+stop
+}
+}
+
+actor GravArenaWatcher
+{
+Height 5
+Radius 5
++NOINTERACTION
+-SOLID
++NOGRAVITY
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_JumpIfInTargetInventory("IsUnderwater",1,"Derp")
+TNT1 A 0 A_GiveToTarget("LowGravArena",1)
+TNT1 A 2 A_GiveToTarget("GravFX", 1)
+TNT1 A 0 A_JumpIfInTargetInventory("IsUnderwater",1,"Derp")
+TNT1 A 0 A_GiveToTarget("NormalGravArena",1)
+TNT1 A 0
+stop
+Derp:
+TNT1 A 2 A_GiveToTarget("GravFX", 1)
+stop
+}
+}
+
+actor GravArenaWatcher2 : GravArenaWatcher
+{
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_JumpIfInTargetInventory("IsUnderwater",1,"Derp")
+TNT1 A 0 A_GiveToTarget("LowGravArena",1)
+TNT1 A 2 A_GiveToTarget("GravFX2", 1)
+TNT1 A 0 A_JumpIfInTargetInventory("IsUnderwater",1,"Derp")
+TNT1 A 0 A_GiveToTarget("NormalGravArena",1)
+TNT1 A 0
+stop
+Derp:
+TNT1 A 2 A_GiveToTarget("GravFX2", 1)
+stop
+}
+}
+
+actor GravFX : CustomInventory
+{
+translation "193:193=4:4", "199:199=111:111", "200:200=4:4", "194:194=44:44" 
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FXB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FXR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FXG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FXY")
+TNT1 A 0 A_SpawnItemEx("GravGFX", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXB:
+TNT1 A 0 A_SpawnItemEx("GravGFXB", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXR:
+TNT1 A 0 A_SpawnItemEx("GravGFXR", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXG:
+TNT1 A 0 A_SpawnItemEx("GravGFXG", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXY:
+TNT1 A 0 A_SpawnItemEx("GravGFXY", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop 
+}
+}
+
+actor GravFX2 : GravFX
+{
+translation "193:193=4:4", "199:199=111:111", "200:200=4:4", "194:194=44:44" 
+States
+{
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FXB")
+TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FXR")
+TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FXG")
+TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FXY")
+TNT1 A 0 A_SpawnItemEx("GravGFX2", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXB:
+TNT1 A 0 A_SpawnItemEx("GravGFX2B", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXR:
+TNT1 A 0 A_SpawnItemEx("GravGFX2R", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXG:
+TNT1 A 0 A_SpawnItemEx("GravGFX2G", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop
+FXY:
+TNT1 A 0 A_SpawnItemEx("GravGFX2Y", random(16, 48), 0, Random(16,48), 0, 0, 0, random(0, 359))
+stop 
+}
+}
+
+
+actor GravGFX : TimeSlowGFX
+{
+translation "193:193=58:58", "199:199=111:111"
+States
+{
+Spawn:
+GRSP SS 1
+GRSP SSSS 1 A_Fadeout(0.25)
+loop
+}
+}
+
+
+actor GravGFX2 : GravGFX
+{
+translation "200:200=58:58", "194:194=44:44"
+States
+{
+Spawn:
+GRSP RR 1
+GRSP RRRR 1 A_Fadeout(0.25)
+loop
+}
+}
+
+actor GravGFXB : GravGFX {translation "193:193=4:4", "199:199=196:196", "200:200=4:4", "194:194=244:244"}
+actor GravGFXR : GravGFX {translation "193:193=4:4", "199:199=170:170", "200:200=4:4", "194:194=191:191"}
+actor GravGFXG : GravGFX {translation "198:198=128:128", "193:193=4:4", "199:199=138:138", "200:200=4:4", "194:194=135:135"}
+actor GravGFXY : GravGFX {translation "198:198=232:232", "193:193=4:4", "199:199=214:214", "200:200=4:4", "194:194=234:234"}
+
+actor GravGFX2B : GravGFX2 {translation "193:193=4:4", "199:199=196:196", "200:200=4:4", "194:194=244:244"}
+actor GravGFX2R : GravGFX2 {translation "193:193=4:4", "199:199=170:170", "200:200=4:4", "194:194=191:191"}
+actor GravGFX2G : GravGFX2 {translation "193:193=4:4", "199:199=138:138", "200:200=4:4", "194:194=135:135"}
+actor GravGFX2Y : GravGFX2 {translation "193:193=4:4", "199:199=214:214", "200:200=4:4", "194:194=234:234"}
+
+actor GravArenaParticle 
+{
++CLIENTSIDEONLY
++NOINTERACTION
+-SOLID
++NOGRAVITY
+height 0
+radius 0
+Scale 7.0
+States
+{
+Spawn:
+GRSP SSSSSSSS 1
+GRSP SSSS 1 A_Fadeout(0.25)
+stop
+}
+}
+
+actor GravArenaParticle2 : GravArenaParticle
+{
+States
+{
+Spawn:
+TNT1 A 0
+GHOL Q 1 A_Fadeout(0.99)
+GRSP RRRR 1 A_FadeIn(0.25)
+GRSP RRRRRRRR 1 
+stop
+}
+}
+
+actor GravSphereParticle : GravArenaParticle
+{
+States
+{
+Spawn:
+GRSP SSSS 1 A_Fadeout(0.25)
+stop
+}
+}
+
+actor GravSphereParticle2 : GravArenaParticle
+{
+States
+{
+Spawn:
+TNT1 A 0
+GRSP RRRR 1 A_FadeOut(0.25) 
+stop
+}
+}
+
+actor GravDust : GravArenaParticle
+{
+translation "192:192=4:4"
+States
+{
+Spawn:
+TNT1 A 0 
+PIXL A 0 A_SetScale(random(1,2))
+PIXL A 1 A_ScaleVelocity(0.92)
+PIXL A 0 A_FadeOut(0.05)
+goto Spawn+2
+}
+}
+
+
+
