@@ -248,6 +248,21 @@ gender = male
 {
     name = "GravitronDisguise"
     sprite = GRAM
+    name = "LegoDisguise"
+    sprite = BAS3
+    class = Unix
+    dsnoway = LAND
+    dsoof = LAND
+    dspldeth = MEGADEAT
+    dspdiehi = MEGADEAT
+    dsplpain = MEGAPAIN
+    dstaunt = dsnone
+    gender = male
+
+}
+{
+    name = "AbraDisguise"
+    sprite = ABRA
     class = Unix
     dsnoway = LAND
     dsoof = LAND
@@ -261,6 +276,19 @@ gender = male
 {
     name = "NaturesWonderDisguise"
     sprite = DERR
+    class = Unix
+    dsnoway = LAND
+    dsoof = LAND
+    dspldeth = MEGADEAT
+    dspdiehi = MEGADEAT
+    dsplpain = MEGAPAIN
+    dstaunt = dsnone
+    gender = male
+}
+
+{
+    name = "HealmoreDisguise"
+    sprite = WMAG
     class = Unix
     dsnoway = LAND
     dsoof = LAND

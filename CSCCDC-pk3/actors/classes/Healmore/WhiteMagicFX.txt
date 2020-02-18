@@ -1,0 +1,434 @@
+
+
+Actor WhiteCasting : Powerup
+{inventory.amount 1
+Powerup.duration 17
+}
+
+actor WhiteCubeWarper : BasicNOTClientside
+{
++MISSILE
++NOTARGETSWITCH
+Scale 2.5
+Renderstyle "Translucent"
+Alpha 0.1
+var int user_XCor;
+var int user_YCor;
+var int user_ZCor;
+var int user_Rads;
+var int user_SMTH;
+var int user_SAdd;
+var int user_Timer;
+
+var int user_Frame;
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_SMTH",0)
+Goto SpawnC
+SpawnC:
+DUST C 0 A_SetUserVar("user_Frame",user_Frame+1)
+DUST C 0 A_JumpIf(user_Frame == 1 , "Spawn.Frame1")
+DUST C 0 A_JumpIf(user_Frame == 2 , "Spawn.Frame2")
+DUST C 0 A_JumpIf(user_Frame == 3 , "Spawn.Frame3")
+DUST C 0 A_JumpIf(user_Frame == 4 , "Spawn.Frame4")
+WCUB D 1 A_SetUserVar("user_Frame",0)
+Goto SpawnC
+
+Spawn.Frame1:
+WCUB A 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB A 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB A 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB A 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB A 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB A 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+Goto Spawn.AfterFrame
+
+Spawn.Frame2:
+WCUB B 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB B 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB B 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB B 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB B 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB B 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+Goto Spawn.AfterFrame
+
+Spawn.Frame3:
+WCUB C 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB C 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB C 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB C 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB C 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB C 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+Goto Spawn.AfterFrame
+
+Spawn.Frame4:
+WCUB D 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB D 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB D 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB D 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB D 0 A_SetUserVar("user_SMTH",360/72+user_SMTH)
+WCUB D 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor)
+WCUB D 0 A_SetUserVar("user_Frame",0)
+goto Spawn.AfterFrame
+
+Spawn.AfterFrame:
+WCUB D 0 A_JumpIfInTargetInventory("IsDead",1,"Terminate")
+WCUB D 0 A_JumpIfInTargetInventory("WhiteCasting",1,"Spawn.AfterFrame2")
+WCUB D 0 A_Fadeout(0.3)
+goto SpawnC
+Spawn.AfterFrame2:
+WCUB D 0 A_FadeTo(0.8,0.3)
+goto SpawnC
+
+Terminate:
+Expire:
+Death:
+TNT1 A 1 
+TNT1 A 0
+stop
+}
+}
+
+actor WhiteCubeWarper_1 : WhiteCubeWarper
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_SMTH",72)
+Goto SpawnC
+}
+}
+
+actor WhiteCubeWarper_2 : WhiteCubeWarper
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_SMTH",144)
+Goto SpawnC
+}
+}
+
+
+actor WhiteCubeWarper_3 : WhiteCubeWarper
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_SMTH",216)
+Goto SpawnC
+}
+}
+
+actor WhiteCubeWarper_4 : WhiteCubeWarper
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_SMTH",288)
+Goto SpawnC
+}
+}
+
+actor WhiteCubeSpawner : BasicHelper
+{
++MISSILE
+
+States
+{
+Spawn:
+TNT1 A 0
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_4",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+Stop
+}
+}
+
+	actor WhiteCubeSpawner_W : WhiteCubeSpawner
+	{translation "205:205=86:86", "74:74=95:95" , "196:196=82:82", "75:75=95:95", "244:244=3:3"}
+
+	actor WhiteCubeSpawner_B : WhiteCubeSpawner
+	{translation "205:205=205:205", "74:74=74:74" , "196:196=196:196", "75:75=75:75", "244:244=244:244"}
+
+	actor WhiteCubeSpawner_R : WhiteCubeSpawner
+	{translation "205:205=171:171", "74:74=41:41" , "196:196=170:170", "75:75=43:43", "244:244=191:191"}
+	
+	actor WhiteCubeSpawner_G : WhiteCubeSpawner
+	{translation "205:205=104:104", "74:74=128:128" , "196:196=138:138", "75:75=131:131", "244:244=135:135"}
+	
+	actor WhiteCubeSpawner_Y : WhiteCubeSpawner
+	{translation "205:205=229:229", "74:74=232:232" , "196:196=214:214", "75:75=223:223", "244:244=234:234"}
+
+
+actor WhiteCubeSpawn : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("WhiteCubeSpawner_W",0,0,8,0)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("WhiteCubeSpawner_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("WhiteCubeSpawner_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("WhiteCubeSpawner_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("WhiteCubeSpawner_Y",0,0,8,0)
+stop
+}
+}
+
+actor WhiteMagicCastFX : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0
+TNT1 A 0 A_JumpIfInventory("WhiteCasting",1,"Nope")
+//BLTR C 0 A_GiveInventory("WhiteCubeSpawn")
+
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+DSTS B 0 A_SpawnItemEx("WhiteCubeWarper_4",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+BLTR C 0 A_GiveInventory("WhiteCasting")
+stop
+Nope:
+TNT1 A 0
+BLTR C 0 A_GiveInventory("WhiteCasting")
+stop
+}
+}
+
+
+
+actor MegaWhiteCubeWarper : WhiteCubeWarper
+{
+Scale 4.5
+Args 80 , 64
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_XCor",Args[0])
+DUST C 0 A_SetUserVar("user_YCor",Args[0])
+DUST C 0 A_SetUserVar("user_SMTH",0)
+Goto SpawnC
+SpawnC:
+DUST C 0 A_SetUserVar("user_Frame",user_Frame+1)
+DUST C 0 A_SetUserVar("user_Timer",user_Timer+1)
+DUST C 0 A_JumpIf(user_Frame == 1 , "Spawn.Frame1")
+DUST C 0 A_JumpIf(user_Frame == 2 , "Spawn.Frame2")
+DUST C 0 A_JumpIf(user_Frame == 3 , "Spawn.Frame3")
+DUST C 0 A_JumpIf(user_Frame == 4 , "Spawn.Frame4")
+WCUB D 1 A_SetUserVar("user_Frame",0)
+Goto SpawnC
+
+Spawn.Frame1:
+WCUB A 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB A 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB A 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB A 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB A 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB A 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+Goto Spawn.AfterFrame
+
+Spawn.Frame2:
+WCUB B 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB B 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB B 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB B 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB B 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB B 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+Goto Spawn.AfterFrame
+
+Spawn.Frame3:
+WCUB C 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB C 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB C 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB C 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB C 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB C 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+Goto Spawn.AfterFrame
+
+Spawn.Frame4:
+WCUB D 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB D 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB D 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB D 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB D 0 A_SetUserVar("user_SMTH",360/Args[1]+user_SMTH)
+WCUB D 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_YCor*sin(user_SMTH),user_ZCor)
+WCUB D 0 A_SetUserVar("user_Frame",0)
+goto Spawn.AfterFrame
+
+Spawn.AfterFrame:
+WCUB D 0 A_JumpIfInTargetInventory("IsDead",1,"Terminate")
+WCUB D 0 A_Jumpif(user_Timer < 5,"Spawn.AfterFrame2")//A_JumpIfInTargetInventory("WhiteCasting",1,"Spawn.AfterFrame2")
+WCUB D 0 A_SetUserVar("user_XCor",user_XCor+15)
+WCUB D 0 A_SetUserVar("user_YCor",user_YCor+15)
+WCUB D 0 A_Jumpif(user_Timer > 9 && user_Timer < 18,"Spawn.AfterFrame3")
+WCUB D 0 A_Jumpif(user_Timer >= 18,"Terminate")
+goto SpawnC
+Spawn.AfterFrame2:
+WCUB D 0 A_FadeTo(0.8,0.3)
+goto SpawnC
+Spawn.AfterFrame3:
+WCUB D 0 A_Fadeout(0.3)
+goto SpawnC
+
+Terminate:
+Expire:
+Death:
+TNT1 A 1 
+TNT1 A 0
+stop
+}
+}
+
+actor MegaWhiteCubeWarper_1 : MegaWhiteCubeWarper
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_XCor",Args[0])
+DUST C 0 A_SetUserVar("user_YCor",Args[0])
+DUST C 0 A_SetUserVar("user_SMTH",120)
+Goto SpawnC
+}
+}
+
+actor MegaWhiteCubeWarper_2 : MegaWhiteCubeWarper_1
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_XCor",Args[0])
+DUST C 0 A_SetUserVar("user_YCor",Args[0])
+DUST C 0 A_SetUserVar("user_SMTH",240)
+Goto SpawnC
+}
+}
+
+actor MegaWhiteCubeWarper_3 : MegaWhiteCubeWarper_1
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_XCor",Args[0])
+DUST C 0 A_SetUserVar("user_YCor",Args[0])
+DUST C 0 A_SetUserVar("user_SMTH",360)
+Goto SpawnC
+}
+}
+
+actor MegaWhiteCubeSpawn : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("MegaWhiteCubeSpawner_W",0,0,8,0)
+stop
+FireB:
+TNT1 A 0 A_FireCustomMissile("MegaWhiteCubeSpawner_B",0,0,8,0)
+stop
+FireR:
+TNT1 A 0 A_FireCustomMissile("MegaWhiteCubeSpawner_R",0,0,8,0)
+stop
+FireG:
+TNT1 A 0 A_FireCustomMissile("MegaWhiteCubeSpawner_G",0,0,8,0)
+stop
+FireY:
+TNT1 A 0 A_FireCustomMissile("MegaWhiteCubeSpawner_Y",0,0,8,0)
+stop
+}
+}
+
+actor MegaWhiteCubeSpawner : BasicHelper
+{
++MISSILE
+
+States
+{
+Spawn:
+TNT1 A 0
+DSTS B 0 A_SpawnItemEx("MegaWhiteCubeWarper_1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+DSTS B 0 A_SpawnItemEx("MegaWhiteCubeWarper_2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+DSTS B 0 A_SpawnItemEx("MegaWhiteCubeWarper_3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_TRANSFERPOINTERS)
+Stop
+}
+}
+
+	actor MegaWhiteCubeSpawner_W : MegaWhiteCubeSpawner
+	{translation "205:205=86:86", "74:74=95:95" , "196:196=82:82", "75:75=95:95", "244:244=3:3"}
+
+	actor MegaWhiteCubeSpawner_B : MegaWhiteCubeSpawner
+	{translation "205:205=205:205", "74:74=74:74" , "196:196=196:196", "75:75=75:75", "244:244=244:244"}
+
+	actor MegaWhiteCubeSpawner_R : MegaWhiteCubeSpawner
+	{translation "205:205=171:171", "74:74=41:41" , "196:196=170:170", "75:75=43:43", "244:244=191:191"}
+	
+	actor MegaWhiteCubeSpawner_G : MegaWhiteCubeSpawner
+	{translation "205:205=104:104", "74:74=128:128" , "196:196=138:138", "75:75=131:131", "244:244=135:135"}
+	
+	actor MegaWhiteCubeSpawner_Y : MegaWhiteCubeSpawner
+	{translation "205:205=229:229", "74:74=232:232" , "196:196=214:214", "75:75=223:223", "244:244=234:234"}
+
+
+actor MEgaWhiteMagicCastFX : CustomInventory  //places a buster posie based on the team.
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+BLTR C 0
+TNT1 A 0 A_JumpIfInventory("WhiteCasting",1,"Nope")
+//BLTR C 0 A_GiveInventory("WhiteCubeSpawn")
+
+DSTS B 0 A_SpawnItemEx("MegaWhiteCubeWarper_1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+DSTS B 0 A_SpawnItemEx("MegaWhiteCubeWarper_2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+DSTS B 0 A_SpawnItemEx("MegaWhiteCubeWarper_3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+BLTR C 0 A_GiveInventory("WhiteCasting")
+stop
+Nope:
+TNT1 A 0
+BLTR C 0 A_GiveInventory("WhiteCasting")
+stop
+}
+}

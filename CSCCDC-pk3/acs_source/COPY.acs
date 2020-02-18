@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 40
+#define MAX_MORPHS 43
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -54,6 +54,9 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"NatureStaffStraightWep", "Deer Strait", "NaturesWonderClassItems"},//38
 {"NatureStaffHorizontalWep", "Deer Wall", "NaturesWonderClassItems"},//39
 {"NatureStaffAllAroundWep", "Deer Circle", "NaturesWonderClassItems"},//40
+{"LegoMissilesBoss", "Lego", "LegoClassItems"},//41
+{"Psybeamwep", "Abra", "AbraClassItems"},//42
+{"PearlStaff", "HealMore", "HealmoreClassItems"},//43
 
 };
 

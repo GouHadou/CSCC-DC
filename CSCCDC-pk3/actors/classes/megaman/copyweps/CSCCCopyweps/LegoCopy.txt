@@ -1,0 +1,111 @@
+actor StickyBombWep : BaseMM8BDMWep//Compatable DoomED number here
+{
+Weapon.AmmoUse 1
+Weapon.AmmoGive 15
+Weapon.SlotNumber 5
+Obituary "$$OB_STICKYBOMB"
+Inventory.Pickupmessage "$PU_STICKYBOMB"
+weapon.ammotype "StickyBombAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
+inventory.icon "SBLWI"
+Scale 2.0
+States
+{
+Spawn:
+SBLW I 1 
+loop
+Ready:
+SBLW A 0 ACS_ExecuteAlways(998,0,418)
+SBLW A 1 A_WeaponReady
+Goto Ready+1
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+SBLW A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+SBLW A 1 A_Raise
+Loop
+Fire:
+SBLW A 0 A_JumpIfNoAmmo("NoAmmo")
+SBLW A 0 //A_JumpIfInventory("StickyFlag",5,"NoAmmo")
+SBLW A 0 A_PlaySoundEx("weapon/pshot","Weapon")
+SBLW A 0 A_FireCustomMissile("StickyBomb",0,1,8,0)
+SBLW A 0 //A_GiveInventory("StickyFlag",1)
+SBLW BC 6
+SBLW A 13
+SBLW A 0 A_Refire
+Goto Ready+1
+NoAmmo:
+SBLW A 1 ACS_Execute(979,0)
+Goto Ready+1
+}
+}
+
+actor StickyBombAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+Inventory.amount 1
+Inventory.maxamount 15
+}
+
+actor StickyFlag : Inventory
+{
+Inventory.amount 1
+Inventory.maxamount 5
+}
+
+actor StickyBomb : LegoStickyBomb
+{
+States
+{
+Death:
+LSTB E 0 A_PlaySoundEx("weapon/crashland", "Weapon")
+LSTB E 0 A_SpawnItemEx("StickyMine")
+stop
+}
+}
+
+actor StickyMine : LegoStickyMine
+{
+-RIPPER
+reactiontime 30
+states
+{
+Spawn:
+LSTB A 0
+LMSB AAABBBCCCDDD 1 A_JumpIfInTargetInventory("IsDead",1,"FadeOut")
+LSTB A 0 A_CountDown
+loop
+Death:
+LSFX A 0 A_PlaySoundEx("weapon/legobombexplode","Weapon")
+LSFX A 0 A_Explode(40,125,0)
+LSFX DEFGHI 1
+stop
+Fadeout:
+LMSB E 20
+LMSB E 1 A_FadeOut
+Goto Fadeout+1
+}
+}
+
+
+actor StickyBombWepCS : StickyBombWep replaces StickyBombWep
+{
+States
+{
+CSCC_DefaultSpawn:
+TNT1 A 0 A_SetTranslucent(1.0, 0)
+goto Spawn+3
+CSCC_TranslucentSpawn:
+TNT1 A 0 A_SetTranslucent(0.5, 0)
+goto Spawn+3
+Spawn:
+TNT1 A 0
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_FakeWeaponPickup",0,0)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+SBLW I 5
+goto Spawn+2
+}
+}

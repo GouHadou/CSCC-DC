@@ -1,0 +1,318 @@
+Const int CuragaArea = 600;
+Const int Item_CuragaHeal = 15;
+
+Actor CuragaAOE : BasicHelper
+{
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+//TNT1 A 5 A_SpawnItemEX("CuragaAOEEffect",0,0,0,0,0,0,0,1)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_CuragaHeal,CuragaArea,1)
+TNT1 A 0 A_PlaySoundEx("Support/WhiteCast2","SoundSlot7")
+TNT1 A 17
+Stop
+}
+}
+
+
+Actor CuragaAOEEffect : BasicHelper
+{
++MISSILE
+Var int User_Rot;
+ReactionTime 30
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+Spawn2:
+TNT1 AA 0 A_SpawnItemEx("MedicaSparkleFX",CuragaArea,0,50+random(0,25),0,0,random(-4,-1),User_Rot+Random(-5,5),SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SetUserVar("User_Rot",User_Rot+12)
+TNT1 A 0 A_CountDown
+loop
+Death:
+TNT1 A 0
+stop
+
+}
+}
+
+
+Actor CuragaAOEIndicator : BasicClientSide
+{
+//+MISSILE
+Var int User_Rot;
+ReactionTime 30
+Args 30
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+Spawn2:
+TNT1 A 0 A_SpawnItemEx("MedicaIndicatorFX",CuragaArea,0,10,0,0,2,User_Rot,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("MedicaIndicatorFX2",CuragaArea,0,50,0,0,2,User_Rot,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("MedicaIndicatorFX",CuragaArea,0,90,0,0,2,User_Rot,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("MedicaIndicatorFX2",CuragaArea,0,130,0,0,2,User_Rot,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SpawnItemEx("MedicaIndicatorFX",CuragaArea,0,170,0,0,2,User_Rot,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 A 0 A_SetUserVar("User_Rot",User_Rot+12)
+TNT1 A 0 A_CountdownArg(0,"Death")
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor CuragaHealHandler : BasicHelper
+{
++MISSILE
++NOTARGETSWITCH
+Var int User_Rot;
+ReactionTime 5
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0  A_GiveToTarget("CuragaPreHealEffect")
+TNT1 A 23
+TNT1 A 0 A_GiveToTarget("CuragaHealEffect2")
+TNT1 AAAAAAAA 2  A_GiveToTarget("CuragaHealEffect")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,AAPTR_TARGET,100,50)
+TNT1 A 0 A_GiveToTarget("CuragaHealEffect3")
+TNT1 A 10
+stop
+Death:
+TNT1 A 5
+stop
+
+}
+}
+
+
+actor CuragaPreHealEffect : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("CuragaPreFX_A",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("CuragaPreFX_B",0,0,0,0,0,0,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_PlaySoundEx("Support/WhiteCast4","SoundSlot7")
+stop
+
+Nope:
+TNT1 A 0
+stop
+}
+}
+
+
+actor CuragaHealEffect : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 1 A_Giveinventory("CuragaSparkleFXSpawn")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=150,"Nope")
+TNT1 A 0
+stop
+
+Nope:
+TNT1 A 0
+stop
+}
+}
+
+
+actor CuragaHealEffect2 : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 0 A_PlaySoundEx("Support/WhiteCast2","SoundSlot7")
+TNT1 A 0
+stop
+
+Nope:
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaHealEffect3 : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 0 A_PlaySoundEx("Support/Heal1","SoundSlot8")
+TNT1 A 0
+stop
+
+Nope:
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaSparkleFXSpawn : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 AAA 0 A_SpawnItemEx("CureSparkleFX",60,0,random(25,80),0,0,0,random(0,360),SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaPreFX_A : BasicClientside
+{
++MISSILE
++NOTARGETSWITCH
+Scale 4.5
+var int user_XCor;
+var int user_YCor;
+var int user_ZCor;
+var int user_Rads;
+var int user_SMTH;
+var int user_SAdd;
+var int user_Timer;
+
+var int user_Frame;
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_XCor",125)
+DUST C 0 A_SetUserVar("user_ZCor",36)
+DUST C 0 A_SetUserVar("user_SAdd",25)
+DUST C 0 A_SetUserVar("user_SMTH",0)
+Goto Spawn2
+
+Spawn2:
+WMFX N 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_XCor*sin(user_SMTH),user_ZCor)
+WMFX N 0 A_SetUserVar("user_SMTH",360/user_SAdd+user_SMTH)
+WMFX N 0 A_SetUserVar("user_Timer",user_Timer+1)
+WMFX N 0 A_JumpIf(user_Timer > 17,"Spawn3")
+Loop
+
+Spawn3:
+WMFX O 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_XCor*sin(user_SMTH),user_ZCor)
+WMFX N 0 A_SetUserVar("user_SMTH",360/user_SAdd+user_SMTH)
+WMFX N 0 A_SetUserVar("user_Timer",user_Timer+1)
+WMFX N 0 A_JumpIf(user_Timer > 20,"Spawn4")
+Loop
+
+Spawn4:
+WMFX P 1 A_Warp(AAPTR_TARGET,user_XCor*cos(user_SMTH),user_XCor*sin(user_SMTH),user_ZCor)
+WMFX N 0 A_SetUserVar("user_SMTH",360/user_SAdd+user_SMTH)
+WMFX N 0 A_SetUserVar("user_Timer",user_Timer+1)
+WMFX N 0 A_JumpIf(user_Timer > 23,"Expire")
+Loop
+
+Terminate:
+Expire:
+Death:
+TNT1 A 1 
+TNT1 A 0
+stop
+
+}
+}
+
+actor CuragaPreFX_B : CuragaPreFX_A
+{
+States
+{
+Spawn:
+DUST C 0
+DUST C 0 A_SetUserVar("user_XCor",125)
+DUST C 0 A_SetUserVar("user_ZCor",36)
+DUST C 0 A_SetUserVar("user_SAdd",25)
+DUST C 0 A_SetUserVar("user_SMTH",180)
+Goto Spawn2
+}
+}
+//[+]========================================================================[+]
+//------------------------------|Cooldown Actors|------------------------------
+//[+]========================================================================[+]
+actor CuragaCooler : BasicHelper
+{
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("CuragaCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("CuragaCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("CuragaCooldownItem",175)
+TNT1 A 0 A_Spawnitemex("CuragaCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 175
+}

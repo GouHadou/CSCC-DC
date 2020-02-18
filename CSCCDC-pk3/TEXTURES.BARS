@@ -190,6 +190,97 @@ texture GRSPAMMV, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=58:58", "198:
 //Deer Bars
 texture CRYTBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}} 
 texture CRYTBAR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}} 
+//lego
+texture LEGOVAR1, 56, 8
+{
+patch LEGOBAR1, 0, 0 {rotate 90}
+}
+
+Texture "LEOHEALT", 5, 5
+{
+	Patch "LEHEALT", 0, 0
+}
+
+//Abra
+graphic  PSYBAR, 13, 13{XScale 0.7 YScale 0.7 Patch PSYBI0, 0, 0}
+graphic  PSYBAR2, 13, 13{XScale 0.7 YScale 0.7 Patch PSYBJ0, 0, 0}
+
+graphic  TLEBAR, 13, 13{XScale 0.7 YScale 0.7 Patch TLPTI0, 0, 0} //teleport bar
+graphic  TLEBAR2, 13, 13{XScale 0.7 YScale 0.7 Patch TLPTJ0, 0, 0} //Dark teleport bar
+
+graphic  TLEBAR3, 17, 13{XScale 0.7 YScale 0.7 Patch TLPTK0, 0, 0} //Dark Group teleport bar
+graphic  TLEBAR4, 17, 13{XScale 0.7 YScale 0.7 Patch TLPTL0, 0, 0} //Dark Group teleport bar
+graphic  TLEBAR5, 18, 13{XScale 0.7 YScale 0.7 Patch DBLTI0, 0, 0} //DoubleTeam
+graphic  TLEBAR6, 18, 13{XScale 0.7 YScale 0.7 Patch DBLTJ0, 0, 0}//Remove
+
+graphic  DISABLE, 13, 13{XScale 0.7 YScale 0.7 Patch DSBLI0, 0, 0} //Disabled
+
+
+//HealMore
+
+Texture "HHULI", 143, 58
+{
+	Patch "HHUDE", 0, 0
+	{
+		Translation "81:81=196:196", "154:154=74:74"
+	}
+}
+
+Texture "HHULI2", 143, 58
+{
+	Patch "HHUDE2", 0, 0
+	{
+		Translation "81:81=196:196", "154:154=74:74"
+	}
+}
+
+Texture "HHUWI", 143, 58
+{
+	Patch "HHUDE", 0, 0
+	{
+		Translation "81:81=170:170", "154:154=41:41"
+	}
+}
+
+Texture "HHUWI2", 143, 58
+{
+	Patch "HHUDE2", 0, 0
+	{
+		Translation "81:81=170:170", "154:154=41:41"
+	}
+}
+
+Texture "HHUCO", 143, 58
+{
+	Patch "HHUDE", 0, 0
+	{
+		Translation "81:81=138:138", "154:154=128:128"
+	}
+}
+
+Texture "HHUCO2", 143, 58
+{
+	Patch "HHUDE2", 0, 0
+	{
+		Translation "81:81=138:138", "154:154=128:128"
+	}
+}
+
+Texture "HHUKI", 143, 58
+{
+	Patch "HHUDE", 0, 0
+	{
+		Translation "81:81=214:214", "154:154=232:232"
+	}
+}
+
+Texture "HHUKI2", 143, 58
+{
+	Patch "HHUDE2", 0, 0
+	{
+		Translation "81:81=214:214", "154:154=232:232"
+	}
+}
 
 //Megaman Copyweps
 graphic BARAMMOT, 8, 56{patch BARENERG,0,0{Translation "192:192=87:87","198:198=95:95"}}

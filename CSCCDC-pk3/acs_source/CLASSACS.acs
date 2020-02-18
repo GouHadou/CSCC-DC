@@ -1232,4 +1232,533 @@ int x = GetActorProperty(0,APROP_SpawnHealth);
 int y = GetActorProperty (0, APROP_HEALTH);
 int TotalDamage = (x-y);
 SetResultValue(TotalDamage);
+
+script "PitchGrab" (Void)
+{
+int FiringPlayer= ACS_ExecuteWithResult(257, 0);
+int Output = 360 * (GetActorPitch(FiringPlayer));
+
+Setresultvalue(Output >> 16);
+
+//--
+}
+
+
+
+//MAX_TARGET_ANGLE (0.0 - 0.5) i think
+#DEFINE MAX_TARGET_ANGLE 0.005
+#DEFINE MAX_TARGET_ANGLE2 0.0005
+#DEFINE TEAM_NONE -1
+#DEFINE TEAM_COOP -2
+
+#DEFINE LOSAMMO_MAX 300
+
+//just using this until GetActorProperty(0,APROP_Height)/2 works
+#DEFINE PLAYER_CENTER 28.0
+
+int targetRegister; //replaced with User_STargTID
+int angleDistRegister; // replaced with User_angleDistRegister
+
+
+
+script "TracerTargeter" (int TargType, int TargRange) {
+	int ownerNumber = PlayerNumber();
+	int team;
+	int x;
+	int y;
+	int z;
+	int angle;
+	int pitch;
+	int i;
+	
+	str WepName = getweapon();
+	//log(s:WepName);
+	// each instance of this script is tied to a weapon, when you are off of it, it terminates
+	
+	//if(CheckInventory("TargScriptActive")){Terminate;}
+		//an instance of this script is already live for this person
+	
+	if (TargRange<=0){setuservariable(0,"User_STargRange",600); 
+					  adjustInventory("TargetingRangeFlag",getuservariable(0,"User_STargRange")+1);}
+	else{setuservariable(0,"User_STargRange",TargRange);
+		adjustInventory("TargetingRangeFlag",getuservariable(0,"User_STargRange")+1);}
+	
+	GiveInventory("TargActive",1);
+	
+	while(GetActorProperty(0,APROP_HEALTH) > 0 
+			&& Checkinventory("TargActive")
+			&& getWeapon() == WepName
+			) { 
+		team = getSelfTeam();
+		x = GetActorX(0);
+		y = GetActorY(0);
+		z = GetActorZ(0) + GetActorViewHeight(0);
+		angle = GetActorAngle(0);
+		pitch = pitchAdjust(GetActorPitch(0));
+		
+		//targetRegister = -1;
+		//angleDistRegister = MAX_TARGET_ANGLE;
+		if(!Checkinventory("TargHolder"))
+		{
+		
+		setuservariable(0,"User_STargTID",-1);
+		
+		if(Checkinventory("TargContractor"))
+		{setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE2);}
+		else
+		{setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE);}
+
+			if(team==TEAM_NONE) {
+				for(i=0;i<ownerNumber;i++) {
+					Targeter(x, y, z, angle, pitch, i);
+				}
+				for(i=ownerNumber+1;i<ServerMax;i++) {
+					Targeter(x, y, z, angle, pitch, i);
+				}
+			} else if(team!=TEAM_COOP) {
+				for(i=0;i<ownerNumber;i++) {
+					TargeterTeam(team, x, y, z, angle, pitch, i, TargType);
+				}
+				for(i=ownerNumber+1;i<ServerMax;i++) {
+					TargeterTeam(team, x, y, z, angle, pitch, i, TargType);
+				}
+			}
+		}
+		
+		if(xyzDistance(0,getuservariable(0,"User_STargTID")+1000) <= TargRange
+			&& !checkinventory("RespawnCamera"))
+		{
+		setpointer(AAPTR_TRACER,getuservariable(0,"User_STargTID")+1000);
+		}
+		else {setpointer(AAPTR_TRACER,0,AAPTR_NULL);}
+		adjustInventory("TargetingFlag",getuservariable(0,"User_STargTID")+1);
+		if (TargRange!=checkinventory("TargetingRangeFlag"))
+			{
+			setuservariable(0,"User_STargRange",TargRange);
+			adjustInventory("TargetingRangeFlag",getuservariable(0,"User_STargRange")+1);
+			}
+		//giveinventory("TargScriptActive");
+		delay(1);
+	}
+		//takeinventory("TargScriptActive",9)
+		setuservariable(0,"User_STargTID",-1);
+		setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE);
+		adjustInventory("TargetingFlag",0);
+		adjustInventory("TargetingRangeFlag",0);
+}
+
+function void TargeterTeam(int team, int x, int y, int z, int angle, int pitch, int i, int TargType) {
+	if(team != GetPlayerInfo(i, PLAYERINFO_TEAM) && TargType <= 0) 
+		{
+		Targeter(x, y, z, angle, pitch, i);
+		}
+		
+	else if(team == GetPlayerInfo(i, PLAYERINFO_TEAM) && TargType == 1) 
+		{
+		Targeter(x, y, z, angle, pitch, i);
+		}
+		
+	Else if(TargType >= 2) 
+		{
+		Targeter(x, y, z, angle, pitch, i);
+		}
+}
+
+function void Targeter(int x, int y, int z, int angle, int pitch, int i) {
+	int target = i+1000;
+	if(CheckActorInventory(target,"Discorded")==0
+		&& GetActorProperty(target,APROP_HEALTH)>0
+		&& CheckSight(0,target,CSF_NOFAKEFLOORS)) {
+		int xDist = GetActorX(target) - x;
+		int yDist = GetActorY(target) - y;
+		int angleDist = vectorangle(xDist,yDist);
+		int dist = fDistanceVal1(angleDist, xDist, yDist);
+		int zDist = GetActorZ(target) + PLAYER_CENTER - z;
+		int pitchDist = vectorangle(dist, zDist);
+		//dist = fDistanceVal2(pitchDist, dist, zDist);		
+		
+		angleDist = WrapAround(angleDist-angle);
+		pitchDist = WrapAround(pitchDist-pitch);
+		angleDist = fixedMul(angleDist,angleDist) + fixedMul(pitchDist,pitchDist);
+		//print(f:angleDist);
+		if(angleDist<getuservariable(0,"User_angleDistRegister")) {
+			//targetRegister = i;
+			//angleDistRegister = angleDist;
+			
+			setuservariable(0,"User_STargTID",i);
+			setuservariable(0,"User_angleDistRegister",angleDist);
+			
+			
+		}
+	}
+}
+
+function int fDistanceVal1(int ang, int x, int y)
+{
+	int len;
+	
+	if(((ang+0.125)%0.5) > 0.25) len = fixeddiv(y, sin(ang));
+	else len = fixeddiv(x, cos(ang));
+
+	//print(f:len);
+	return len;
+}
+
+function int fDistanceVal2(int ang, int len, int z)
+{
+	if(((ang+0.125)%0.5) > 0.25) len = fixeddiv(z, sin(ang));
+	else len = fixeddiv(len, cos(ang));
+
+	//print(f:len);
+	return len;
+}
+
+function int pitchAdjust(int i) {
+	if(i>0.0) return 1.0-i;
+	return -i;
+}
+
+function int WrapAround(int i)
+{
+	if(i<-0.5) return i+1.0;
+	if(i>0.5) return i-1.0;
+	return i;
+}
+
+
+function int getSelfTeam(void)
+{
+if (GetCVar("teamplay")==1||GetCVar("teamlms")==1||GetCVar("teampossession")==1
+||GetCVar("teamgame")==1){
+	Return PlayerTeam();
+} else if (GetCVar("cooperative")==1) {
+	Return TEAM_COOP;
+}
+Return TEAM_NONE;
+}
+
+function void adjustInventory(str item, int quantity) {
+	int diff = quantity-CheckInventory(item);
+	if(diff>0) {
+		giveInventory(item,diff);
+	} else if (diff<0) {
+		takeInventory(item,-diff);
+	}
+}
+
+function void adjustActorInventory(int actor, str item, int quantity) {
+	int diff = quantity-CheckActorInventory(actor,item);
+	if(diff>0) {
+		giveActorInventory(actor,item,diff);
+	} else if (diff<0) {
+		takeActorInventory(actor,item,-diff);
+	}
+}
+
+script 405 ENTER CLIENTSIDE {
+	int ownerNumber = PlayerNumber();
+	
+	if(ownerNumber==ConsolePlayerNumber()) {
+	
+		int xOffset = 10.0;
+		int yOffset = 380.0;
+		int t;
+		int T_Range;
+		int i;
+	
+		while(GetActorProperty(0,APROP_HEALTH) > 0) {
+			t =  checkInventory("TargetingFlag"); //getuservariable(0,"User_STargTID")+1;
+			T_Range = checkInventory("TargetingRangeFlag"); //getuservariable(ownerNumber+1000,"User_STargRange");
+			
+			if(t>0) {
+			if(checkinventory("TargHolder")) {
+				HudMessageOnActorZPlusAllign(1000-1+t, PLAYER_CENTER, 103, 0, 0, 0, 0, T_Range, "JUSTA0", "Target", 0, CR_UNTRANSLATED);
+				}
+				else
+				{
+				HudMessageOnActorZPlusAllign(1000-1+t, PLAYER_CENTER, 103, 0, 0, 0, 0, T_Range, "JUSTB0", "Target", 0, CR_UNTRANSLATED);
+				}
+			}
+			
+			//apparently these two for loops are done in a way that excludes the
+			//script activator. possibly for potential desynch maybe?
+			
+			for(i=0;i<ownerNumber;i++) {
+				if(CheckActorInventory(1000+i,"Discorded")) {
+					HudMessageOnActorZPlusAllign(1000+i, PLAYER_CENTER, 200+i, 0, 0, 0, -10, 9000, "JUSTA0", "Discord", 0, CR_UNTRANSLATED);
+				}
+			}
+			for(i=ownerNumber+1;i<ServerMax;i++) {
+				if(CheckActorInventory(1000+i,"Discorded")) {
+					HudMessageOnActorZPlusAllign(1000+i, PLAYER_CENTER, 200+i, 0, 0, 0, -10, 9000, "JUSTA0", "Discord", 0, CR_UNTRANSLATED);
+				}
+			}
+			
+			delay(1);
+		}
+	}
+}
+
+script 406 RESPAWN CLIENTSIDE {
+	ACS_ExecuteAlways(405,0);
+}
+
+script 409 ENTER { //So joining players see stuff right
+	for(int i=0;i<ServerMax;i++) {
+		Thing_ChangeTID(1000+i,1000+i);
+	}
+}
+//Pretty sure I don't need a respawn script to call this too.
+
+//HudMessageOnActor from ZDoom wiki
+function void HudMessageOnActorZPlusAllign(int tid, int ZPlus, int msgID, int hudX, int hudY, int xOffset, int yOffset, int range, str sprite, str text, int holdTime, str colour)
+{
+		
+	int dist, angle, vang, pitch, x, y;
+	
+	if (holdTime == 0) { holdTime = 0.1; }	
+	if (hudX == 0) { hudX = 640; }
+	if (hudY == 0) { hudY = 480; }
+	
+	if(sprite != -1)
+	{
+		
+		SetFont(sprite);
+		text = "A";
+		
+	}
+	
+	SetHudSize(hudX, hudY, 1);
+	x = GetActorX(tid) - GetActorX(0);
+	y = GetActorY(tid) - GetActorY(0);
+	
+	vang = VectorAngle(x,y);
+	angle = (vang - GetActorAngle(0) + 1.0) % 1.0;
+	
+	if(((vang+0.125)%0.5) > 0.25) dist = FixedDiv(y, sin(vang));
+	else dist = FixedDiv(x, cos(vang));
+	
+	if ((angle < 0.23 || angle > 0.85) && (dist >> 16) < range)
+	{
+		
+		if (GetActorPitch(0) >= -0.5 && GetActorPitch(0) <= 0.5)
+		{
+ 
+			pitch = VectorAngle(dist, GetActorZ(tid) + ZPlus - (GetActorZ(0) + GetActorViewHeight(0)));
+			pitch += FixedMul(GetActorPitch(0), 1.2) % 1.0;
+ 
+			if ((hudX/2) * sin(angle) != 0 && cos(angle) != 0 && (hudX/2) * sin(pitch) != 0 && cos(pitch) != 0)
+			{
+				
+				x = hudX/2 - ((hudX/2) * sin(angle) / cos(angle));
+				y = hudY/2 - ((HUDX/2) * sin(pitch) / cos(pitch));
+				
+				x+=xOffset;
+				y+=yOffset;
+				
+				HudMessage(s:text; HUDMSG_PLAIN, msgID, colour, (x << 16)+0.1, (y << 16)+0.1, holdTime);
+				
+			}
+			
+		}
+		
+	}
+	
+}
+
+
+
+script "CSACS_AbraGroupTeleport" (int Range)
+{
+if(ACS_ExecuteWithResult(975,1)==1)
+	{
+	for(int i = 0; i<GetMaxPlayers(); i++)
+		{
+		if(PlayerInGame(i) && GetActorProperty(0,APROP_Health)>0 && i!=ActivatorTID()-1000)
+			{
+			if(GetPlayerInfo(ActivatorTID()-1000, PLAYERINFO_TEAM)==GetPlayerInfo(i, PLAYERINFO_TEAM))
+				{
+				if(xyzDistance(ActivatorTID(),i+1000)<=Range && CheckSight(ActivatorTID(),i+1000,0))
+					{
+					Thing_Move(i+1000,ActivatorTID()+5000,1);
+					}
+				}
+			}
+		}
+	}
+Delay(1);
+Thing_Move(ActivatorTID(),ActivatorTID()+5000,1);
+}
+
+function void hudmessageonactor(int tid, int msgID, int hudX, int hudY, int xOffset, int yOffset, int range, str sprite, str text, int holdTime, str colour, int swap)
+{
+	int dist, angle, vang, pitch, x, y;
+
+	if (hudX == 0) { hudX = 640; }
+	if (hudY == 0) { hudY = 480; }
+
+	if(sprite != -1)
+	{
+		SetFont(sprite);
+		text = "A";
+		//offset = 0.1;
+	}
+
+	SetHudSize(hudX, hudY, 1);
+	x = GetActorX(tid) - GetActorX(0);
+	y = GetActorY(tid) - GetActorY(0);
+
+	vang = VectorAngle(x,y);
+	angle = (vang - GetActorAngle(0) + 1.0) % 1.0;
+
+	if(((vang+0.125)%0.5) > 0.25) dist = FixedDiv(y, sin(vang));
+	else dist = FixedDiv(x, cos(vang));
+
+	if ((angle < 0.2 || angle > 0.8) && (dist >> 16) < range)
+	{
+		if (GetActorPitch(0) >= -0.25 && GetActorPitch(0) <= 0.25)
+		{
+			pitch = VectorAngle(dist, GetActorZ(tid) - (GetActorZ(0) + 41.0));
+			pitch = (pitch + GetActorPitch(0) + 1.0) % 1.0;
+			if ((hudX/2) * sin(angle) != 0 && cos(angle) != 0 && (hudX/2) * sin(pitch) != 0 && cos(pitch) != 0) //    Fixes divide by zero
+			{
+				x = hudX/2 - ((hudX/2) * sin(angle) / cos(angle));
+				y = hudY/2 - ((HUDX/2) * sin(pitch) / cos(pitch));
+
+				x+=xOffset;
+				y+=yOffset;
+				if(swap){HudMessage(i:dist >> 16; HUDMSG_PLAIN, msgID, colour, (x << 16), (y << 16), holdTime);}
+				else{HudMessage(s:text; HUDMSG_PLAIN, msgID, colour, (x << 16), (y << 16), holdTime);}
+			}
+		}
+	}
+}
+
+
+script "CSCC_TEAMIDENT" (void)
+//Tiny script that returns team number, used for sticky bombs
+
+//Possibly redundant but could be handy ~Bika
+{
+If(PlayerTeam()==0){SetResultValue(1);}
+If(PlayerTeam()==1){SetResultValue(2);}
+If(PlayerTeam()==2){SetResultValue(3);}
+If(PlayerTeam()==3){SetResultValue(4);}
+}
+
+
+#DEFINE BASEBLASTMIN 120
+Script "BlastKnockback" (int BlastThrust, int ThrustForceH, int MaxRadius)
+{
+
+int userTID;
+int userTeam;
+Bool SelfThrustOnly = False;
+int ThrustForce = BlastThrust;
+	if(ThrustForce < 0) {SelfThrustOnly = true; ThrustForce = ThrustForce*-1;}
+int AdditiveForce;
+	if(MaxRadius < 0) {AdditiveForce = 1; MaxRadius = MaxRadius*-1;}
+
+	if(ActivatorTID() == 0)
+	{
+		userTID = ACS_ExecuteWithResult(257, 0);
+		userTeam = GetPlayerInfo(userTID - 1000, PLAYERINFO_TEAM);
+	}
+	else
+	{
+		userTID = ActivatorTID();
+	}
+	
+
+int ActX = GetActorX(0);
+int ActY = GetActorY(0);
+//int ActHeight = GetActorProperty(0,APROP_HEIGHT) >>16;
+int Dist;
+int distdiff;
+int ZThrust;
+int XYThrust;
+int targetTID;
+int PlayerX;
+int PlayerY;
+int pitch;
+
+int FinalForce;
+int FinalForceH;
+
+//int ThrustDrop = NoNeg( (Dist/10) - MaxRadius) << 16;
+//SetActivatorToTarget(0);
+
+For(int q = 0;q < ServerMax; q++)
+	{
+		targetTID = q+1000;
+		
+		if(!PlayerInGame(q))
+		{
+			continue;
+		}
+		
+		if( (userTID != targetTID) && (SelfThrustOnly == True)){continue;}
+		if(ACS_ExecuteWithResult(975, 1) == 1)
+		{
+			if(userTeam == GetPlayerInfo(q, PLAYERINFO_TEAM) && userTID != targetTID)
+			{
+				continue;
+			}
+		}
+		
+		//if()
+		
+		//log(s:"distance is ",i:xyzDistance(0, targetTID));
+		if(xyzDistance(0, targetTID) < MaxRadius && checksight(0,targetTID,0) == True
+		|| xyzDistance(0, targetTID) <20)
+		{
+		 Dist = xyzDistance(0,targetTID);
+	
+		 distdiff = NoNeg(Dist - MaxRadius);
+		 pitch = GetTargetPitch(targetTID,0);
+		 //VectorAngle(xyDistance(0, targetTID), GetActorZ(0) - GetActorZ(targetTID) >> 16);
+		 //log(s:"pitch relative to player ",i:q,s:" is ", f:pitch);
+		 //log(s:"Height is  ",i:ActHeight);
+		 if(xyzDistance(0, targetTID) > BASEBLASTMIN)
+		 {
+		 FinalForce = ceil(FixedMul(ThrustForce << 16, 1.0 - FixedDiv(Dist, MaxRadius)));
+		 FinalForceH = ceil(FixedMul(ThrustForceH << 16, 1.0 - FixedDiv(Dist, MaxRadius)));
+		 }
+		 Else
+		 {
+		 FinalForce = ThrustForce;
+		 FinalForceH = ThrustForceH;
+		 }
+		 ZThrust = (sin(pitch)*-FinalForce); //GetActorPitch(targetTID)
+		 XYThrust = (cos(pitch)*-FinalForceH);
+		 
+		 if (GetActorZ(targetTID) - GetActorFloorZ (targetTID) == 0){XYThrust = FixedMul(XYThrust,1.0);}
+		 //log(i:GetActorZ(targetTID) - GetActorFloorZ (targetTID));
+		 //log(s:"horizontal thrust is is  ",i:(FixedMul(XYThrust , 1.0 - fixedDiv(distdiff,100)))>> 16);
+		 PlayerX = GetActorX(targetTID);
+		 PlayerY = GetActorY(targetTID);
+		 
+		ThrustThing(VectorAngle(ActX - PlayerX,ActY - PlayerY)>>8,(FixedMul(XYThrust , 1.0 - fixedDiv(distdiff,100)))>> 16,1,targetTID);
+		thrustthingz(targetTID,(FixedMul(ZThrust , 1.0 - fixedDiv(distdiff,100)))>> 16,1,AdditiveForce);
+	}
+}
+
+}
+
+
+//returns the relative pitch of a thing with tid2, from a thing with tid1.
+function int GetTargetPitch (int tid1, int tid2)
+{
+    int x, y, z, xy, a;
+    x = GetActorX(tid2) - GetActorX(tid1);
+    y = GetActorY(tid2) - GetActorY(tid1);
+    z = GetActorZ(tid2) - GetActorZ(tid1);
+    a = VectorAngle(x, y);
+
+    if ((a + 0.125) % 0.5 > 0.25)
+        xy = FixedDiv(y, sin(a));
+    else
+        xy = FixedDiv(x, cos(a));
+
+    return -VectorAngle(xy, z);
 }
