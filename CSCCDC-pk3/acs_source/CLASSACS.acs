@@ -1131,7 +1131,7 @@ Delay(2);
 int PlayerTID = ActivatorTID();
 int CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
 int CurrentAura = CheckActorInventory(PlayerTID, "BasicArmor");
-
+int SemblanceGive;
 while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckWeapon("EmberCelica"))
 	{
 	While(CurrentHealth + CurrentAura <= GetActorProperty(PlayerTID, APROP_HEALTH) + CheckActorInventory(PlayerTID, "BasicArmor"))
@@ -1148,7 +1148,9 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckWeapon("EmberCelica"
 		}
 	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
 		{
-		GiveActorInventory(PlayerTID, "YangSemblance", ((CurrentAura - CheckActorInventory(PlayerTID, "BasicArmor")) + (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH)))/2);
+		SemblanceGive = ((CurrentAura - CheckActorInventory(PlayerTID, "BasicArmor")) + (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH)))/2;
+		If(CheckActorInventory(PlayerTID, "YangBlocking")){SemblanceGive = SemblanceGive*5;}
+		GiveActorInventory(PlayerTID, "YangSemblance", SemblanceGive);
 		CurrentAura = CheckActorInventory(PlayerTID, "BasicArmor");
 		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
 		}

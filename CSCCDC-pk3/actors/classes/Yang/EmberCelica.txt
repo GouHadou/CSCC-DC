@@ -44,7 +44,7 @@ YNGB A 0 A_ChangeFlag("DONTRIP", TRUE)
 YNGB ABC 2 A_ScaleVelocity(0.9)
 BlockCont:
 YNGB C 0 A_GiveInventory("YangBlocking", 1)
-YNGB C 1 A_ScaleVelocity(0.85)
+YNGB C 1 A_ChangeVelocity(momx*0.9, momy*0.9, momz, CVF_REPLACE)
 YNGB CC 1 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "BlockCont")
 YNGB C 0 A_TakeInventory("YangBlocking", 1)
 YNGB A 0 A_ChangeFlag("DONTRIP", FALSE)
@@ -268,7 +268,7 @@ TNT1 A 2 A_ChangeFlag("THRUACTORS", FALSE)
 YNGP AB 2 A_SpawnItemEx("YangFireSpawner")
 Goto RealSpawn+3
 Death:
-YNGP C 0 A_Explode(4+User_ShotPower, 64, 0, 0, 16)
+YNGP C 0 A_Explode(User_ShotPower+1, 64, 0, 0, 16)
 YNGP C 0 A_PlaySoundEx("weapon/crackerexplode", CHAN_BODY)
 YNGP C 0 A_SpawnItemEx("BoostExplosion")
 stop

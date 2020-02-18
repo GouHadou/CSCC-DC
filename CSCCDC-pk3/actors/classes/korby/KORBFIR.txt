@@ -722,6 +722,12 @@ wait
 }
 }
 
+actor KorbyFlameProtect : PowerProtection
+{
+DamageFactor "KFIRF", 0.0
+Powerup.duration 35
+}
+
 Actor Korby1Flame
 {
 PROJECTILE
@@ -731,6 +737,7 @@ BounceType "Hexen"
 Radius 16
 Height 8
 Renderstyle "Translucent"
+DamageType "KFIRF"
 Alpha 0.75
 Scale 2.5
 reactiontime 350
