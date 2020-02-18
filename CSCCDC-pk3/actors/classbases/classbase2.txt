@@ -71,8 +71,10 @@ Pain.Misogi:
 "----" H 0 ThrustThingZ(0,25,0,0)
 goto pain+1
 Pain.GouShoryuSpike:
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,27)
+"----" H 0 A_SpawnItemEx("MessatsuHit")
 Pain.MisogiImpact:
-"----" H 0 ThrustThingZ(0,35,1,0)
+"----" H 0 ThrustThingZ(0,40,1,0)
 goto pain+1
 Pain.Shakunetsu:
 "----" HH 0 A_SpawnItemEx("ScorchBit",0,0,0,random(-10,10),random(-10,10),random(10,15),random(0,360))
@@ -110,11 +112,9 @@ Pain.GouShoryuSlam:
 "----" H 0 A_ChangeVelocity(momx, momy, 15, CVF_REPLACE)
 Goto Pain+1
 Pain.GouShoryuPush:
-"----" H 0 A_ChangeVelocity(momx/2, momy/2, 22, CVF_REPLACE)
-"----" H 0 A_SpawnItemEx("ShoryuHit")//A_GiveInventory("MessShoryuFlag", 1, AAPTR_TARGET)
+"----" H 0 A_ChangeVelocity(momx/2, momy/2, 20, CVF_REPLACE)
+"----" H 0 A_SpawnItemEx("ShoryuHit")
 "----" HH 0 A_SpawnItemEx("GouShoryuFX",0,0,0,random(-5,7),random(-5,5),random(1,5),0)
-"----" H 0 A_SpawnItemEx("MessatsuHit")
-"----" H 0 A_GiveInventory("GouShoryuFullProtect", 1)
 Goto Pain+1
 Pain.GouShoryuStun:
 "----" H 0 A_Stop
