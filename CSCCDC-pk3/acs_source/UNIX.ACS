@@ -8,7 +8,7 @@ SetActivator(0,AAPTR_TRACER);
 SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 }
 
-#DEFINE MAX_DISGUISES 19
+#DEFINE MAX_DISGUISES 22
 
 //#DEFINE MEGACOL 0.0 //String arrays do not like 0.0...
 #DEFINE MEGACOL -1.0
@@ -31,6 +31,9 @@ SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 #DEFINE BADZCOL 280.0
 #DEFINE TANKCOL 30.0
 #DEFINE BULLCOL 395.0
+#DEFINE LEGOCOL 418.0
+#DEFINE ABRACOL 43.0
+#DEFINE HEALCOL 419.0
 
 str DisguiseInfo[MAX_DISGUISES][4] = {
 //Actor, Skin, Color, Special Disguise Pickup
@@ -53,6 +56,9 @@ str DisguiseInfo[MAX_DISGUISES][4] = {
 {"BadzClass", "BadzDisguise", BADZCOL, ""},
 {"BullGatorClass", "BullGatorDisguise", BULLCOL, ""},
 {"TankOperatorClass", "TankOppDisguise", TANKCOL, ""},
+{"LegoClass", "LegoDisguise", LEGOCOL, ""},
+{"AbraClass", "AbraDisguise", ABRACOL, ""},
+{"HealmoreClass", "HealMoreDisguise", HEALCOL, ""},
 
 };
 

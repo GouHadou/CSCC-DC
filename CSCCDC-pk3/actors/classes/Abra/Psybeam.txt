@@ -169,7 +169,7 @@ goto Ready+2
 NoAmmo:
 ABRH IJ 1
 ABRH J 0 A_TakeInventory("PsychicCharge",28)
-ABRH K 18 A_FireCustomMissile("PsychicShot",0,0,0,0)
+ABRH K 18 A_FireCustomMissile("AbraPsychicShot",0,0,0,0)
 ABRH J 2 
 goto Ready+2
 

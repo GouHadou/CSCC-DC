@@ -1,7 +1,7 @@
 Const int WhiteCubeZ = 25;
 
 
-actor PearlStaff_A : CSCCWepBase
+actor PearlStaff : CSCCWepBase
 {
 Weapon.AmmoUse 1
 Weapon.AmmoGive 100
@@ -21,7 +21,7 @@ Spawn:
 TNT1 A 1
 loop
 Ready:
-WMST F 0 ACS_ExecuteAlways(998,0,439)
+WMST F 0 ACS_ExecuteAlways(998,0,419)
 Ready2:
 WMST F 0 A_Jumpifinventory("TargActive",1,2)
 WMST F 0 ACS_NamedExecuteAlways("TracerTargeter",0,1,850)
@@ -117,12 +117,13 @@ AltHold.After2:
 Goto Ready2
 //[+]=========================|Abilities|=============================[+]
 Reload:
-"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",1,"Reload.Off")
-"####" B 1 A_GiveInventory("PearlStaffPageToggle")
+"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",2,"Reload.Off")
+"####" B 1 A_GiveInventory("PearlStaffPageToggle",2)
 "####" B 4 A_PlaySoundEx("weapon/rminestick","Weapon")
 Goto Reload.Hold
 	Reload.Off:
 	"####" B 1 A_TakeInventory("PearlStaffPageToggle",999)
+	"####" B 0 A_GiveInventory("PearlStaffPageToggle",1)
 	"####" B 4 A_PlaySoundEx("weapon/rminestick","Weapon")
 	Goto Reload.Hold
 	
@@ -132,7 +133,8 @@ WMST F 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_RELOAD) == True,"Reload.Hold")
 Goto Ready2
 
 User1:
-"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",1,"User1.Assize")
+"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",2,"User1.Assize")
+"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",1,"User1.Medica")
 "####" A 0 A_Jump(256,"User1.Medica")
 Goto User1.Medica
 
@@ -173,7 +175,8 @@ Goto Ready2
 
 
 User2:
-"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",1,"User1.Rasp")
+"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",2,"User1.Rasp")
+"####" A 0 A_Jumpifinventory("PearlStaffPageToggle",1,"User1.Curaga")
 "####" A 0 A_Jump(256,"User1.Curaga")
 Goto User1.Curaga
 
@@ -301,7 +304,7 @@ inventory.maxamount 45
 actor PearlStaffPageToggle : Inventory
 {
 inventory.amount 1
-inventory.maxamount 1
+inventory.maxamount 2
 }
 
 Actor DiaShotRecoveryTime : powerup
@@ -417,7 +420,7 @@ WPLS GHIJK 2 A_Stop
 stop
 Crash:
 XDeath:
-TNT1 A 1 A_Spawnitemex("BustergunPuff1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 1 A_Spawnitemex("DiaShotPuff",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 stop
 }
 }
@@ -533,6 +536,17 @@ stop
 //[+]========================================================================[+]
 //--------------------------------|Effect Actors|------------------------------
 //[+]========================================================================[+]
+actor DiaShotPuff : BasicClientside
+{
+scale 2
+States
+{
+Spawn:
+BIM1 AABCDEF 1
+stop
+}
+}
+
 actor DiaShotTrail 
 {
 PROJECTILE

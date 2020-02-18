@@ -5,7 +5,7 @@ player.soundclass "megaman"
 player.forwardmove 0.6, 0.6
 player.sidemove 0.58, 0.58
 player.jumpz 10 
-player.startitem "PearlStaff_A"
+player.startitem "PearlStaff"
 player.startitem "HealMoreClassItems"
 +NODAMAGETHRUST
 player.maxhealth 100
@@ -50,3 +50,17 @@ stop
 
 
 Actor HealmoreHUD : Once {}
+
+actor PearlStaffMorph : HealmoreClass
+{
++NOSKIN
+player.morphweapon "PearlStaff"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}

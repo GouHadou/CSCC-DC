@@ -347,7 +347,7 @@ InInventory LegoHUD, 1
 	DrawImage "LEHUDA",-18, 0;
 	DrawBar "LEHEALT", "LEHEMPT", Health, Horizontal, 124, 31;
 	DrawNumber 3, LEGOFONT, UNTRANSLATED, health, 142, 24;
-	InInventory OverHealValue 
+	InInventory OverHealValue, 1 
 		{
 			DrawBar "LEHEALT", "LEHEMPT", OverHealValue, Horizontal, 124, 31;
 			DrawImage "LEOHEALT", 124,37;
@@ -356,6 +356,9 @@ InInventory LegoHUD, 1
 	DrawNumber 2, LEGOFONT, UNTRANSLATED, LegoWeaponAmmo, 262, 145;
 	DrawBar "LEVBAR2", "LEVEMPT", LegoStickyAmmo, vertical, 47, 76;
 	DrawNumber 2, LEGOFONT, UNTRANSLATED, LegoStickyAmmo, 65, 145;
+	DrawImage "LEGICOA0", 74,155;
+	DrawImage "LEGICOA1", 230,155;
+
 	DrawSelectedInventory INDEXFONT ,152, 170, 25, 178, white; 
 	InInventory BeatCallCheck, 1
 	{
@@ -422,8 +425,9 @@ InInventory KingTeamFlag, 1{
 	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 210, 170;} 
 	DrawImage "VERICON2", 220, 170;
 	
-InInventory NOT "PearlStaffPageToggle" {DrawImage "WMAGPT", 164, 156;}
-InInventory "PearlStaffPageToggle" {DrawImage "WMAGPT", 164, 170;}
+InInventory NOT "PearlStaffPageToggle", 2 {DrawImage "WMAGPT", 164, 156;}
+InInventory "PearlStaffPageToggle", 2 {DrawImage "WMAGPT", 164, 170;}
+
 }
 
 //CSCC Copywep Bars

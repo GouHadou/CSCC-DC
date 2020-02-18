@@ -6,11 +6,7 @@ player.damagescreencolor "red"
 player.forwardmove 0.8, 0.8
 player.sidemove 0.75, 0.75
 player.startitem "LegoMissilesBoss"
-player.startitem "LegoStickiesBoss"
-Player.startitem "LegoWeaponAmmo", 10
-player.startitem "LegoStickyAmmo", 10
-player.startitem "NoHealthBar2"
-player.startitem "LegoHUD", 1
+Player.startitem "LegoClassItems"
 mass 30
 States
 {
@@ -58,7 +54,7 @@ PowerUp.Duration 5
 Speed 1
 }
 
-actor LegoMorph : LegoClass
+actor LegoMissilesBossMorph : LegoClass
 {
 +NOSKIN
 player.morphweapon "LegoMissilesBoss"
@@ -72,16 +68,22 @@ Goto "CustomWepMan::Pain+2"
 }
 }
 
-actor LegoMorph2 : LegoClass
+actor LegoClassItems : CustomInventory
 {
-+NOSKIN
-player.morphweapon "LegoStickiesBoss"
-player.soundclass "BestClassEver"
+inventory.amount 1
+inventory.maxamount 1
 States
 {
-Pain:
-YOKM H 0 A_ScaleVelocity(0.75)
-YOKM H 0 
-Goto "CustomWepMan::Pain+2"
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("AbnormalItemPosition",1)
+TNT1 A 0 A_GiveInventory("LegoHUD", 1)
+TNT1 A 0 A_GiveInventory("LegoWeaponAmmo", 5)
+TNT1 A 0 A_GiveInventory("LegoStickyAmmo", 10)
+TNT1 A 0 A_GiveInventory("NoHealthBar", 1)
+stop
 }
 }

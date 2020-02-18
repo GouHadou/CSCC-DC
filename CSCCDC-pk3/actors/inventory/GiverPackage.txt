@@ -12,8 +12,6 @@ Spawn:
 TNT1 A 0
 stop
 Pickup:
-TNT1 A 0 A_Jumpifinventory("PackageID",17,"Abra_Tid") 
-TNT1 A 0 A_Jumpifinventory("PackageID",16,"Abra_Teleport") 
 TNT1 A 0 A_Jumpifinventory("PackageID",15,"Curaga") 
 TNT1 A 0 A_Jumpifinventory("PackageID",14,"MedicaHeal") 
 
@@ -28,12 +26,6 @@ TNT1 A 1 A_Jumpifinventory("PackageID",2,"VocalHealSelf")
 TNT1 A 1 A_Jumpifinventory("PackageID",1,"VocalHeal")
 Goto Pickup.After
 //===============
-Abra_Tid:
-TNT1 A 0 A_Giveinventory("AbraTeleportNum",ACS_ExecuteWithResult(257, 0) )  //<--Boop
-Goto Pickup.After
-Abra_Teleport:
-TNT1 A 0 A_Giveinventory("AllyTeleport")  //<--Boop
-
 Curaga:
 TNT1 A 0 A_SpawnItemEX("CuragaHealHandler")
 Goto Pickup.After
