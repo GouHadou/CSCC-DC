@@ -460,8 +460,8 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 122, 24;} 
 	DrawImage "VERICON2", 132, 24;
 	
-InInventory NOT "PearlStaffPageToggle",2 {DrawImage "WMAGPT", 76, 10;}
-InInventory "PearlStaffPageToggle",2 {DrawImage "WMAGPT", 76, 24;}
+InInventory NOT "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 10;}
+InInventory "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 24;}
 }
 
 //CSCC Copywep Bars

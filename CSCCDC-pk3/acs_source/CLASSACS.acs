@@ -1765,3 +1765,24 @@ function int GetTargetPitch (int tid1, int tid2)
 
     return -VectorAngle(xy, z);
 }
+
+Script "CSCC_ClassItemToggle" (int ToggleValue)
+{
+/*
+Script designed for all classes that aim to use an inventory to toggle between modes, 
+*/
+
+if (ToggleValue <= 0){TakeInventory("ClassToggleItem",999); Terminate;}
+
+if(CheckInventory("ClassToggleItem") != ToggleValue)
+	{
+		Until(CheckInventory("ClassToggleItem") == ToggleValue)
+		{
+		TakeInventory("ClassToggleItem",999);
+		GiveInventory("ClassToggleItem",ToggleValue);
+		}
+
+	}
+
+
+}
