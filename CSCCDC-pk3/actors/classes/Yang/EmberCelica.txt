@@ -44,7 +44,7 @@ YNGB A 0 A_ChangeFlag("DONTRIP", TRUE)
 YNGB ABC 2 A_ScaleVelocity(0.9)
 BlockCont:
 YNGB C 0 A_GiveInventory("YangBlocking", 1)
-YNGB C 1 A_ScaleVelocity(0.75)
+YNGB C 1 A_ScaleVelocity(0.85)
 YNGB CC 1 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "BlockCont")
 YNGB C 0 A_TakeInventory("YangBlocking", 1)
 YNGB A 0 A_ChangeFlag("DONTRIP", FALSE)
@@ -53,7 +53,6 @@ Goto Ready+1
 Fire:
 YNGF A 0 A_TakeInventory("WeaponCharge", 35)
 YNGF A 0 A_JumpIfInventory("EmberCelicaDown", 1, "GroundAttackCheck")
-YNGF A 0 //A_JumpIfInventory("EmberCelicaUp", 1, "Uppercut")
 Goto FireLRCheck
 FireLRCheck:
 YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeft")
@@ -276,6 +275,12 @@ stop
 }
 }
 
+actor EmberCelicaProtect : PowerProtection
+{
+DamageFactor "EmberCelica", 0.0
+Powerup.Duration 5
+}
+
 actor EmberCelicaPunch 
 {
 PROJECTILE
@@ -355,7 +360,7 @@ TNT1 A 0
 Goto "Super::Spawn+1"
 RealSpawn:
 TNT1 A 0 
-TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 2))
+TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257)+5, 3))
 //TNT1 A 0 A_ChangeVelocity(1.25)
 TNT1 A 2 A_ChangeFlag("THRUACTORS", FALSE)
 YNGP F 1 
@@ -615,7 +620,7 @@ stop
 
 actor YangAura : BasicArmorBonus
 {
-Armor.Savepercent 90
+Armor.Savepercent 75
 Armor.SaveAmount 1
 //Armor.MaxFullAbsorb 5
 Armor.MaxSaveAmount 50
@@ -1001,6 +1006,6 @@ Powerup.Duration 50
 
 actor YangBlocking : PowerProtection
 {
-DamageFactor "Normal", 0.4
+DamageFactor "Normal", 0.3
 Powerup.Duration 5
 }
