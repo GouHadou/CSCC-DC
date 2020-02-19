@@ -16,13 +16,14 @@ Pain.TankClassic:
 Goto Pain
 
 //Minimal Hitstun Pain
-Pain.ZTPsychicBall:
+
 Pain.FusionBomb:
 Pain.TommyGun:
 "----" H 0 A_ScaleVelocity(0.9)
 Goto Pain+1
 
 //No Hitstun Pain
+Pain.ZTPsychicBall:
 Pain.GizmoClaws:
 Pain.HellfireCutter:
 Pain.UkiRevolver:
