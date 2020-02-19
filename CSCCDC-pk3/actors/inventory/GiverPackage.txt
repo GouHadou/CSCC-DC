@@ -45,6 +45,7 @@ Goto Pickup.After
 GravEffect2:
 TNT1 A 0 A_SpawnItemEx("GravArenaWatcher2")
 TNT1 A 0 A_ChangeVelocity(0,0,-1.0,CVF_RELATIVE)
+Goto Pickup.After
 Curaga:
 TNT1 A 0 A_SpawnItemEX("CuragaHealHandler")
 Goto Pickup.After
