@@ -89,3 +89,7 @@ server noarchive int SV_TRANSLATION60 = 0;
 server noarchive int SV_TRANSLATION61 = 0;
 server noarchive int SV_TRANSLATION62 = 0;
 server noarchive int SV_TRANSLATION63 = 0;
+
+
+
+user int CSCC_DamageDisplay = 1;

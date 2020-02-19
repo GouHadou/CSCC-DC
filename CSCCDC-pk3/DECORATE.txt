@@ -7,6 +7,7 @@
 #include "actors/inventory/CustomItem.txt"
 #include "actors/inventory/GiverPackage.txt"
 #include "actors/inventory/HealerUtilities.txt"
+#include "actors/inventory/DamageDisplay.txt"
 
 #include "actors/classes/Megaman/MegamanClass.txt"
 
