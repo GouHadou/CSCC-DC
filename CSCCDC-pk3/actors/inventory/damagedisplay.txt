@@ -1,3 +1,6 @@
+Actor DaDiBuffer : Inventory { inventory.amount 1 Inventory.MaxAmount 9999}
+
+
 actor DamageNumberBase
 {
 PROJECTILE

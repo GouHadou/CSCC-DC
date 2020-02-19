@@ -206,7 +206,8 @@ SetResultValue(HealthPercent);
 
 Script "CSACS_OverhealDrain" (Int Tick)
 {
-if(GetActorProperty(0,APROP_HEALTH) > Tick){SetActorProperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH)-Tick));}
+if(GetActorProperty(0,APROP_HEALTH) > Tick){SetActorProperty(0,APROP_HEALTH,(GetActorProperty(0,APROP_HEALTH)-Tick));
+	GiveInventory("DaDiBuffer",Tick);}
 }
 
 Script "CSACS_Basic(Over)Heal" (int Pointer, int HealAmount, int Overheal )
@@ -298,7 +299,8 @@ script "CSCC_DamageDisplay" ENTER
 						x = GetActorX(0) + random(-DDNUMDIST, DDNUMDIST);
 						y = GetActorY(0) + random(-DDNUMDIST, DDNUMDIST);
 						z = GetActorZ(0) + random(30.0, 64.0);
-						ColorVal = 404;
+						if(CheckInventory("OverHealValue")){ColorVal = 56;}
+						 Else{ColorVal = 404;}
 						SpawnForced("DNUM_POS",x,y,z,DDNUMTID+ColorVal,0);
 						Switch(Damagedigits)
 						{
@@ -324,7 +326,8 @@ script "CSCC_DamageDisplay" ENTER
 						x = GetActorX(0) + random(-DDNUMDIST, DDNUMDIST);
 						y = GetActorY(0) + random(-DDNUMDIST, DDNUMDIST);
 						z = GetActorZ(0) + random(30.0, 64.0);
-						 ColorVal = 25;
+						if(CheckInventory("OverHealValue")){ColorVal = 177;}
+						 Else{ColorVal = 25;}
 						SpawnForced("DNUM_Neg",x,y,z,DDNUMTID+ColorVal,0);
 						Switch(Damagedigits)
 						{
