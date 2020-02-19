@@ -470,6 +470,7 @@ OptionMenu "CSCC"
 	Submenu "      Class Information",		"ClassInfo"
 	Submenu "      Changelog",		"ChangelogSelect"
 	Submenu "      Server Settings",		"CSCCServerSettings"
+	Submenu "      User Settings",			"CSCCUserSettings"
 	Submenu "      Mod Information",		"CSCCInformation"
 	StaticText ""
 	StaticText	"CSCC Controls", 1
@@ -562,6 +563,22 @@ OptionMenu "CSCCServerSettings"
 	StaticText "General Options",1
 	StaticText ""
 	Option "Pit Protection (CSCC_PitProtection)",			"cscc_pitprotection", "YesNo"
+	StaticText ""
+	StaticText "===============================================================",1
+}
+
+//-------------------------------------------------------------------------------------------
+//
+// CSCC User Settings
+//
+//-------------------------------------------------------------------------------------------
+
+OptionMenu "CSCCUserSettings"
+{
+	Title "$CSCC_SETTINGS_TITLE"
+	StaticText "===============================================================",1
+	StaticText ""
+	Option "Show Damage Numbers (CSCC_DamageDisplay)",			"CSCC_DamageDisplay", "YesNo"
 	StaticText ""
 	StaticText "===============================================================",1
 }

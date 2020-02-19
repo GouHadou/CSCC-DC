@@ -30,6 +30,7 @@ var int User_STargRange;
 var int user_wepangle;
 var int user_weppitch;
 var int user_wepangle2;
+var int user_HitMemory;
 States
 {
 SuperSpawn:
