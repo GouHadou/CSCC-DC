@@ -23,6 +23,7 @@ Pain.TommyGun:
 Goto Pain+1
 
 //No Hitstun Pain
+Pain.EmberCelica:
 Pain.ZTPsychicBall:
 Pain.GizmoClaws:
 Pain.HellfireCutter:
