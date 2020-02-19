@@ -127,10 +127,11 @@ for(int i = 0; i < MAX_WEPCLASS; i++)
 	{
 	If(CheckActorInventory(PlrNum+1000, wep_check[i][0]))
 		{
-		UseSprite = i;
-		If(CheckActorInventory(PlrNum+1000, "MorphFlag")){UseSprite++;}
+		UseSprite = i;	
 		}
 	}
+	
+If(CheckActorInventory(PlrNum+1000, "MorphFlag") && UseSprite > 1){UseSprite++;}
 Return (UseSprite);
 }
 

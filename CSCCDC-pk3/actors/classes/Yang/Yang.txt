@@ -1,4 +1,4 @@
-actor Yang : CustomWepMan
+actor YangClass : CustomWepMan
 {
 player.displayname "Yang"
 player.soundclass "Yang"
@@ -38,7 +38,7 @@ goto SuperSpawn
 }
 
 
-actor EmberCelicaMorph : Yang
+actor EmberCelicaMorph : YangClass
 {
 +NOSKIN
 player.morphweapon "EmberCelica"

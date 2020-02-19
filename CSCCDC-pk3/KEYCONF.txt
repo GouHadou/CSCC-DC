@@ -19,7 +19,7 @@ addplayerclass KnuxClass nomenu
 addplayerclass VocalWomanClass nomenu 
 addplayerclass ZenTrainerClass nomenu 
 addplayerclass GeeClass nomenu 
-addplayerclass Yang nomenu
+addplayerclass YangClass nomenu
 addplayerclass GravitronClass nomenu  
 addplayerclass NaturesWonderClass nomenu  
 addplayerclass HealmoreClass nomenu
