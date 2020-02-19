@@ -335,7 +335,7 @@ TAG_CRYSTALWALL = "Crystal Wall";
 //██████████████████████████████████████████Class Help████████████████████████████████████████
 CSCC_TITLE = "\cvCSCC Options";
 CSCC_INFO_TITLE = "\cvCSCC Information";
-CSCC_SETTINGS_TITLE = "\cvCSCC Server Settings";
+CSCC_SETTINGS_TITLE = "\cvCSCC Settings";
 
 CSCC_CTRL_RELOAD = "\cvReload";
 CSCC_CTRL_USER1 = "\cvUser Key 1";
