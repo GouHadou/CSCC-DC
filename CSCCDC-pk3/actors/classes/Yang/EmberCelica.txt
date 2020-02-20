@@ -67,8 +67,8 @@ Goto FireRight
 FireRight:
 YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch",cos(-pitch)*32,8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
-YNGF A 0 A_JumpIfNoAmmo("RightFinish")
-YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,8,0)
+//YNGF A 0 A_JumpIfNoAmmo("RightFinish")
+//YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,8,0)
 Goto RightFinish
 FireRightCharge2a:
 YNGF EF 1
@@ -80,9 +80,9 @@ Goto FireRight2
 FireRight2:
 YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch2",cos(-pitch)*32,8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
-YNGF A 0 A_JumpIfNoAmmo("RightFinish")
-YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,8,0)
 YNGF EBC 1
+YNGF A 0 A_JumpIfNoAmmo(2)
+YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,8,0)
 YNGF DDDD 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 YNGF C 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 YNGF CB 5
@@ -97,8 +97,8 @@ Goto FireLeft
 FireLeft:
 YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch",cos(-pitch)*32,-8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
-YNGF A 0 A_JumpIfNoAmmo("LeftFinish")
-YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
+//YNGF A 0 A_JumpIfNoAmmo("LeftFinish")
+//YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
 Goto LeftFinish
 FireLeftCharge2a:
 YNGF BC 1
@@ -111,21 +111,25 @@ Goto FireLeft2
 FireLeft2:
 YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch2",cos(-pitch)*32,-8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
-YNGF A 0 A_JumpIfNoAmmo("LeftFinish")
-YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
 YNGF BEF 1
+YNGF A 0 A_JumpIfNoAmmo(2)
+YNGF A 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
 YNGF GGGG 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 YNGF G 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 YNGF FE 5
 Goto FireFinish
 
 RightFinish:
-YNGF BC 1
-YNGF DDDDC 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+YNGF BCD 1
+YNGF D 0 A_JumpIfNoAmmo(2)
+YNGF D 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,8,0)
+YNGF DDDC 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 Goto FireFinish
 LeftFinish:
-YNGF EF 1
-YNGF GGGGF 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
+YNGF EFG 1
+YNGF F 0 A_JumpIfNoAmmo(2)
+YNGF F 0 A_FireCustomMissile("EmberCelicaFirecracker", 0,1,-8,0)
+YNGF GGGF 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 Goto FireFinish
 FireFinish:
 YNGF A 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
@@ -166,7 +170,7 @@ ExplodeNow:
 TNT1 A 0 A_Stop
 TNT1 A 0 SetPlayerProperty(0, 1, 4)
 TNT1 A 0 A_SpawnItemEx("EmberCelicaGroundExplosion", 0, 0, 32)
-TNT1 A 25
+TNT1 A 18
 Goto ReloadFinish
 BotReloadCheck:
 YNGF A 0 A_JumpIfInventory("IsBot", 1, "Reloading")
@@ -275,12 +279,6 @@ stop
 }
 }
 
-actor EmberCelicaProtect : PowerProtection
-{
-DamageFactor "EmberCelica", 0.0
-Powerup.Duration 5
-}
-
 actor EmberCelicaPunch 
 {
 PROJECTILE
@@ -360,7 +358,7 @@ TNT1 A 0
 Goto "Super::Spawn+1"
 RealSpawn:
 TNT1 A 0 
-TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257)+5, 3))
+TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 3)+5)
 //TNT1 A 0 A_ChangeVelocity(1.25)
 TNT1 A 2 A_ChangeFlag("THRUACTORS", FALSE)
 YNGP F 1 
@@ -793,7 +791,8 @@ Alpha 0.3
 Radius 20
 Height 25
 scale 2.5
-damage (10 + Args[0])
+damage (Args[0])
+Args 10
 damagetype "YangKick"
 Obituary "$OB_YANGKICK"
 speed 0
@@ -822,7 +821,7 @@ Goto RealSpawn
 
 RealSpawn:
 YNGK D 0
-YNGK D 0 A_SetArg(0, ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 5))
+YNGK D 0 A_SetArg(0, Args[0] + ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 5))
 YNGK D 0 A_ChangeFlag("THRUACTORS", FALSE)
 YNGK DDEEFF 1 A_FadeIn(0.1)
 stop
@@ -997,7 +996,19 @@ wait
 }
 }
 
+actor YangDashCoolDown : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 20
+}
+
 actor IsYang : Once {}
+
+actor EmberCelicaProtect : PowerProtection
+{
+DamageFactor "EmberCelica", 0.2
+Powerup.duration 10
+}
 
 actor AuraWait : Powerup
 {

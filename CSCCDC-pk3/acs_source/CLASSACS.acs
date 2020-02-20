@@ -1000,7 +1000,6 @@ SetResultValue(ReturnValue);
 }
 
 
-#DEFINE DashWait 10
 #DEFINE DashForce 16
 
 script "YangBoost" (Void)
@@ -1009,11 +1008,14 @@ int InputButtons;
 int InputOldButtons; 
 Bool SpeedPressed = FALSE;
 int HasUsedMovement;
-int DashDelay = 0;
+int HDashForce;
 if(PlayerIsBot(PlayerNumber())){terminate;}
 
 while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYang"))
 	{
+	HDashForce = DashForce - CheckActorInventory(ActivatorTID(), "YangDashCoolDown") ;
+	If(HDashForce < 1){HDashForce = 1;}
+	
 	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
 	HasUsedMovement=0;
 	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
@@ -1021,81 +1023,78 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 		Delay(5);
 		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
 		}
-
+	
 	SpeedPressed = CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1;
 	
-	If(DashDelay == 0)
+	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD))
 		{
-		If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD))
+		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, HDashForce, 1, 0);
+		GiveInventory("EmberCelicaBoost", 1);
+		HasUsedMovement=1;
+		}
+	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK))
+		{
+		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -HDashForce, 1, 0);
+		GiveInventory("EmberCelicaBoost", 1);
+		HasUsedMovement=1;
+		}
+	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVELEFT))
+		{
+		ThrustThing((GetActorAngle(ActivatorTID())*255+64.0)>>16, HDashForce, 1, 0);
+		GiveInventory("EmberCelicaBoost", 1);
+		HasUsedMovement=1;
+		}
+	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVERIGHT))
+		{
+		ThrustThing((GetActorAngle(ActivatorTID())*255+192.0)>>16, HDashForce, 1, 0);
+		GiveInventory("EmberCelicaBoost", 1);
+		HasUsedMovement=1;
+		}
+	
+	//Jump Boost
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 1 || (HasUsedMovement == 1 && CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 3))
+		{
+		If((GetActorZ(0) - GetActorFloorZ(0)) >= 32.0)
 			{
-			ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, DashForce, 1, 0);
+			SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), GetActorProperty(0, APROP_JUMPZ), 0, 0);
+			TakeInventory("JumpCancler", 1);
 			GiveInventory("EmberCelicaBoost", 1);
 			HasUsedMovement=1;
-			}
-		If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK))
-			{
-			ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -DashForce, 1, 0);
-			GiveInventory("EmberCelicaBoost", 1);
-			HasUsedMovement=1;
-			}
-		If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVELEFT))
-			{
-			ThrustThing((GetActorAngle(ActivatorTID())*255+64.0)>>16, DashForce, 1, 0);
-			GiveInventory("EmberCelicaBoost", 1);
-			HasUsedMovement=1;
-			}
-		If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVERIGHT))
-			{
-			ThrustThing((GetActorAngle(ActivatorTID())*255+192.0)>>16, DashForce, 1, 0);
-			GiveInventory("EmberCelicaBoost", 1);
-			HasUsedMovement=1;
-			}
-		
-		//Jump Boost
-		If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 1 || (HasUsedMovement == 1 && CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 3))
-			{
-			If((GetActorZ(0) - GetActorFloorZ(0)) >= 32.0)
-				{
-				SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), GetActorProperty(0, APROP_JUMPZ), 0, 0);
-				TakeInventory("JumpCancler", 1);
-				GiveInventory("EmberCelicaBoost", 1);
-				HasUsedMovement=1;
-				}
-			}
-			
-		// Neutral movement
-		If(SpeedPressed && HasUsedMovement == 0)
-			{
-			If(GetActorVelZ(0) == 0)
-				{
-				SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), FixedMul(GetActorProperty(0, APROP_JUMPZ),1.5), 0, 0);
-				TakeInventory("JumpCancler", 1);
-				GiveInventory("EmberCelicaUp", 1);
-				HasUsedMovement=1;
-				}
-			Else
-				{
-				SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), -FixedMul(GetActorProperty(0, APROP_JUMPZ),1.25), 0, 0);
-				TakeInventory("JumpCancler", 1);
-				GiveInventory("EmberCelicaDown", 1);
-				HasUsedMovement=1;
-				}
 			}
 		}
-	If(DashDelay > 0){DashDelay--;}
+			
+	// Neutral movement
+	If(SpeedPressed && HasUsedMovement == 0)
+		{
+		If(GetActorVelZ(0) == 0)
+			{
+			SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), FixedMul(GetActorProperty(0, APROP_JUMPZ),1.5), 0, 0);
+			TakeInventory("JumpCancler", 1);
+			HasUsedMovement=1;
+			}
+		Else
+			{
+			SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), -FixedMul(GetActorProperty(0, APROP_JUMPZ),1.25), 0, 0);
+			TakeInventory("JumpCancler", 1);
+			GiveInventory("EmberCelicaDown", 1);
+			HasUsedMovement=1;
+			}
+		}
+	If(CheckActorInventory(ActivatorTID(), "YangDashCoolDown") > 0){TakeActorInventory(ActivatorTID(), "YangDashCoolDown", 1);}
 	If(HasUsedMovement==1)
 		{
 		GiveActorInventory(ActivatorTID(), "BoostExplodeItem", 1);
 		TakeActorInventory(ActivatorTID(), "EmberCelicaAmmo", 2);
-		DashDelay = DashWait;
+		GiveActorInventory(ActivatorTID(), "YangDashCoolDown", 15);
 		LimitSpeed(30);
 		}
-    delay(1);	
+	delay(1);	
 	InputOldButtons = InputButtons; // More reliable than INPUT_OLDBUTTONS ....Go figure.
 	}
 }
 
 
+/*
 Script "YangSpeedCheck" (void)
 {
 If(ActivatorTID() < 1000)
@@ -1107,7 +1106,7 @@ Else
 	SetResultValue(CurrentSpeedXYZ(ActivatorTID()));
 	}
 }
-
+*/
 Script "YangAura" (int mode)
 {
 If(ActivatorTID() < 1000)
@@ -1149,7 +1148,7 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckWeapon("EmberCelica"
 	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
 		{
 		SemblanceGive = ((CurrentAura - CheckActorInventory(PlayerTID, "BasicArmor")) + (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH)))/2;
-		If(CheckActorInventory(PlayerTID, "YangBlocking")){SemblanceGive = SemblanceGive*5;}
+		If(CheckActorInventory(PlayerTID, "YangBlocking")){SemblanceGive = SemblanceGive*4;}
 		GiveActorInventory(PlayerTID, "YangSemblance", SemblanceGive);
 		CurrentAura = CheckActorInventory(PlayerTID, "BasicArmor");
 		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);

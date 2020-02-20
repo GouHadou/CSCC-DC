@@ -356,6 +356,7 @@ IsSelected EmberCelica
 	{
 	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
+	DrawBar "YANGCDV", "NOBAR", YangDashCoolDown, vertical, 16, 8;
 	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8;}
 	InInventory EmberCelicaAmmo, 2 {DrawImage "EMBCEL", 32, 56; DrawImage "VERICON1", 40, 56;}
 	DrawImage "YANGBLK", 32, 64; DrawImage "VERICON2", 40, 64;
