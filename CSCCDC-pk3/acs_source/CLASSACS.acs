@@ -966,12 +966,7 @@ SetResultValue(checkactorinventory(FiringPlayer,"WepBloomItem"));
 Script "PlayerSpeciesSynch" (VOID)
 {
 int TargetTID = ACS_ExecuteWithResult(257,0);
-//int IsTeamGame = ACS_ExecuteWithResult(975, 1);
-
-	if(!IsTeamGame)
-	{
-		setactorproperty(0,APROP_SPECIES,Getactorproperty(TargetTID,APROP_SPECIES));
-	}
+SetActorProperty(0,APROP_SPECIES,GetActorProperty(TargetTID,APROP_SPECIES));
 }
 
 //=======|Yang
