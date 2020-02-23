@@ -4,8 +4,8 @@ Player.DamageScreenColor "Black"
 Player.DisplayName "TankOperator"
 player.forwardmove 0.78, 0.78
 player.sidemove 0.76, 0.76
-Health 200
-Player.MaxHealth 200
+Health 100
+Player.MaxHealth 100
 Player.StartItem "ClassicTankWeapon"
 Player.StartItem "TankOperatorClassItems"
 
@@ -45,9 +45,9 @@ stop
 Pickup:
 TNT1 A 0
 TNT1 A 0 A_GiveInventory("TankOpAmmo", 60)
-TNT1 A 0 A_GiveInventory("Tank_OnFootWeakness",1)
+//TNT1 A 0 A_GiveInventory("Tank_OnFootWeakness",1)
 TNT1 A 0 A_GiveInventory("BulkTankActivatorPickup")
-TNT1 A 0 A_GiveInventory("TankRepairAmmo", 350)
+TNT1 A 0 A_GiveInventory("TankRepairAmmo", 200)
 stop
 }
 }

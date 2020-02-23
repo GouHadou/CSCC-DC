@@ -216,6 +216,7 @@ vocal/heal ROLLHEA1
 
 //TankOpp
 weapon/HardBuster1 SKULSHOT
+Body/ArmorPain ROCKHURT
 
 //Gee
 $playersound	gee	male	*death		MEGADEAT
