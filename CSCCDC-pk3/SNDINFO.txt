@@ -485,3 +485,104 @@ weapon/HardBuster6 DAR3SHO2
 weapon/OrbSpawn CRYSSHOT
 weapon/OrbBounce CRYSBIT
 weapon/AssizeHit FF6HIT
+
+//Devion
+$playeralias	Devion	male	*death		devion/death
+$playeralias	Devion	male	*xdeath		devion/death
+$playeralias	Devion	male	*gibbed		OHKO
+$playeralias	Devion	male	*pain100	devion/hit
+$playeralias	Devion	male	*pain75		devion/hit
+$playeralias	Devion	male	*pain50		devion/hit
+$playeralias	Devion	male	*pain25		devion/hit
+$playersound	Devion	male	*grunt		dsnone
+$playersound	Devion	male	*land		DEVLAND
+$playersound	Devion	male	*jump		dsnone
+$playersound	Devion	male	*fist		dsnone
+$playersound	Devion	male	*usefail	dsnone
+$playeralias	Devion	male	*taunt		devion/taunt
+
+
+$random devion/hit { devion/hit1 devion/hit2 devion/hit3 devion/hit4 devion/hit5 devion/hit6 devion/hit7 devion/hit8 devion/hit9 }
+devion/hit1 DEVHIT1
+devion/hit2 DEVHIT2
+devion/hit3 DEVHIT3
+devion/hit4 DEVHIT4
+devion/hit5 DEVHIT5
+devion/hit6 DEVHIT6
+devion/hit7 DEVHIT7
+devion/hit8 DEVHIT8
+devion/hit9 DEVHIT9
+
+$random devion/death { devion/death1 devion/death2 devion/death3 }
+devion/death1 DEVDETH1
+devion/death2 DEVDETH2
+devion/death3 DEVDETH3
+
+$random devion/taunt { devion/taunt1 devion/taunt2 devion/taunt3 devion/taunt4 devion/taunt5 }
+devion/taunt1 DEVTNT1
+devion/taunt2 DEVTNT2
+devion/taunt3 DEVTNT3
+devion/taunt4 DEVTNT4
+devion/taunt5 DEVTNT5
+
+devion/punchreturn DEVRET
+devion/midpunch DEVMFIT
+devion/chargepunch DEVCHG
+devion/punch DEVPUN
+devion/explode DEVEXP
+devion/dash DEVDASH
+devion/dead DEVDEAD
+devion/shockwave DEVSHO
+devion/punchhit DEVPHIT
+devion/punch1 DEVPUN1
+devion/punch2 DEVPUN2
+devion/fistwarn DEVFIST
+devion/charge1 DEVCHG1
+devion/charge2 DEVCHG2
+devion/charge3 DEVCHG3
+devion/gigafist DEVGFIST
+devion/explosion DEVEXPL
+devion/block DEVBLO
+devion/kenshiro DEVFNOS
+already/dead DEVYAD
+devion/echarge DECHG
+devion/efcharge DEFCHG
+devion/teleport DTELEP
+devion/ultexplode DUTEXP
+devion/fever DFEVR
+devion/gigacharge DGICHG
+devion/gigacrush DGICRU
+
+sf2/dead SF2DIE
+sf3/super SF3SUP
+sf3/shit SF3HIT
+sf3/knockout SF3KO
+sf3/win SF3WIN
+ryu/shoryuken RYUSHO
+ryu/kek1 RYUTS1
+ryu/kek2 RYUTS2
+
+//RedMage
+$playersound	RMAGE	male	*death		MEGADEAT
+$playersound	RMAGE	male	*xdeath		MEGADEAT
+$playersound	RMAGE	male	*gibbed		OHKO
+$playersound	RMAGE	male	*pain100	MEGAPAIN
+$playersound	RMAGE	male	*pain75		MEGAPAIN
+$playersound	RMAGE	male	*pain50		MEGAPAIN
+$playersound	RMAGE	male	*pain25		MEGAPAIN
+$playersound	RMAGE	male	*grunt		dsnone
+$playersound	RMAGE	male	*land		LAND
+$playersound	RMAGE	male	*jump		dsnone
+$playersound	RMAGE	male	*fist		dsnone
+$playersound	RMAGE	male	*usefail	dsnone
+$playersound	RMAGE	male	*taunt		RMAGTAUT
+
+pickup/redmage REDMGET
+weapon/heattacklestart HEATACKL
+weapon/ff6holy HOLY
+RagingSage/Finish RGDEMON
+RagingSage/Active RGACTIVE
+RagingSage/Dash RGDASH
+RagingSage/Hit RGHIT
+
+Rin/Kouhadou KOHADO

@@ -465,6 +465,86 @@ InInventory NOT "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 10;}
 InInventory "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 24;}
 }
 
+//====|Devion
+InInventory IsDevion, 1
+{
+DrawBar "DEVHBAR", "DNOBAR1", Health, horizontal, 39, 17;
+
+DrawImage "DEVHUD", 8,4;
+DrawImage "DEVHUD1", 39,25;
+DrawImage "DEVHUD2", 39,35;
+
+Drawbar"DEVBAR1", "DNOBAR2", DevionFistAmmo, horizontal, 56,27;
+Drawbar"DEVBAR2", "DNOBAR2", DevionCharge, horizontal, 56,37;
+InInventory DevionCharge, 300 {DrawImage "DEVOK", 108,36;}
+InInventory DevionFever, 1 {Drawbar"DEVF1", "DEVF2", DevionFever, horizontal, 56,37;}
+
+DrawSelectedInventory INDEXFONT ,14, 38, 28, 39, white;
+}
+
+//====|Red Mage
+InInventory IsRedMage
+{
+DrawImage "RMU1A0", 8, 64;
+DrawImage "RMU2A0", 16, 64;
+DrawImage weaponicon, 32, 64;
+DrawSelectedInventory INDEXFONT ,24, 64, 30, 72, white;
+InInventory RMBuffBanT, 1{DrawImage "RBFFICN1", 54, 8;}
+InInventory RMBuffBanF, 1{DrawImage "RBFFICN2", 54, 24;}
+}
+
+IsSelected RedMageDiaraWep{Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageFiraWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageAeroraWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageBlizzaraWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageSlowWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageWateraWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageThundaraWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageBlinkWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+//IsSelected RedMageProtectWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected RedMageTemperWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+IsSelected RedMageFocusWep {Drawbar"MANABAR", "BAREMPTY", Ammo1, vertical, 32, 8;
+	InInventory MPBurstEnergy {DrawBar "BURSTBAR", "NOBAR", MPBurstEnergy, vertical, 32, 8;}
+Drawbar "RPWRBAR", "BAREMPTY", Ammo2, vertical, 16, 8;
+Drawbar "SFUSBAR1", "BAREMPTY", SpellFusionPower, vertical, 8, 8;}
+//Drawbar "SFUSBAR2", "NOBAR", SpellFusionPower, vertical, 8, 8;}
+
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected GouhadouWepCS{DrawBar "GHADBAR", "BAREMPTY", Ammo1, vertical, 16, 8;

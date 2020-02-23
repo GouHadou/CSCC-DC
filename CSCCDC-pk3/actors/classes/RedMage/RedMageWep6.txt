@@ -1,0 +1,304 @@
+actor RedMageWateraWep : RedMageDiaraWep
+{
+Tag "Watera"
+Weapon.SlotNumber 2
+Inventory.Pickupmessage "Spell learned: Watera!"
+inventory.icon "WTRAI0"
+States
+{
+SFCheck1:
+//RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak")
+RMHD A 0 A_JumpIfInventory("SpellFusionPower",300,"SFCheck")
+RMHD A 0 A_TakeInventory("User1_Trigger",99)
+goto Ready+11
+SFCheck:
+//RMHD A 0 A_TakeInventory("SpellFusionPower",350)
+RMHD A 0 A_JumpIfInventory("FiraSpellFlag",1,"SteamEruption")
+RMHD A 0 A_JumpIfInventory("ThundaraSpellFlag",1,"ThunderStorm")
+RMHD A 0 A_JumpIfInventory("TemperSpellFlag",1,"HydroBlade")
+RMHD A 0 A_JumpIfInventory("AeroraSpellFlag",1,"Whirlpool")
+RMHD A 0 A_JumpIfInventory("FocusSpellFlag",1,"Wateja")
+RMHD A 0 A_JumpIfInventory("SlowSpellFlag",1,"AqueousAbyss")
+RMHD A 0 A_JumpIfInventory("BlinkSpellFlag",1,"WaterClone")
+RMHD A 0 A_JumpIfInventory("BlizzaraSpellFlag",1,"SubzeroField")
+goto Ready+11
+ReshuffleCheck:
+RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+7
+ReshufflePlease:
+RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
+RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+12
+ThunderStorm:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD A 0 A_SpawnItemEx("ThunderStormSpellSpawnerFX",0,0,25)
+RMHD BC 2
+RMHD A 0 A_SpawnItemEx("ThunderStormSpellBoltSpawner",0,0,10)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+SteamEruption:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 ACS_NamedExecuteAlways("SteamEruptionScript",0)
+RMHD BC 2
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD D 0 A_TakeInventory("User1_Trigger",99)
+RMHD D 0 A_TakeInventory("RedMageMana",4)
+RMHD D 5 A_FireCustomMissile("SteamEruptionBlast",0,0,8,0)
+RMHD D 0 A_JumpIfInventory("RedMageMana",4,"SEContinue")
+goto SEStop
+SEContinue:
+goto SteamEruption+6
+SEStop:
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+RMHU A 15 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
+goto Ready+5
+HydroBlade:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD B 2 A_PlaySoundEX("weapon/timestopper","weapon")
+RMHD C 2
+RMHD D 0 A_TakeInventory("TemperEffect",99)
+RMHD D 0 A_TakeInventory("MagicBladeFusionPower",99)
+RMHD D 0 A_TakeInventory("FlameTongueFusionPower",99)
+RMHD D 0 A_TakeInventory("FalchionFusionPower",99)
+RMHD D 0 A_TakeInventory("IceBrandFusionPower",99)
+RMHD D 0 A_TakeInventory("TBladeFusionPower",99)
+RMHD D 20 A_GiveInventory("HydroBladeFusionPower",1)
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+Whirlpool:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD D 10
+goto WPWait
+WPWait:
+RMHD D 1
+RMHD D 0 A_JumpIf(z-floorz<=0,"WPBegin")
+goto WPWait
+WPBegin:
+RMHD D 0 A_Stop
+RMHD D 0 A_ScaleVelocity(0.0)
+RMHD D 0 ACS_NamedExecuteAlways("core_freezeplayer",0,0,1)
+RMHD D 0 A_ChangeFlag("REFLECTIVE",1)
+RMHD D 0 A_GiveInventory("WhirlpoolArmor",1)
+RMHD D 0 A_SpawnItemEx("WhirlpoolSpellFX",0,0,16)
+WhirlpoolLoop:
+RMHD D 0 A_TakeInventory("RedMageMana",2)
+RMHD D 0 A_SetAngle(angle-18.0)
+RMHD D 0 A_PlaySoundEx("weapon/superboost","Weapon")
+RMHD D 0 A_SpawnItemEx("WhirlpoolPuller",0,0,4)
+RMHD D 2 A_SpawnItemEx("WhirlpoolDamager",0,0,16)
+RMHD D 0 A_JumpIfInventory("RedMageMana",2,1)
+goto WhirlpoolEnd
+RMHD D 0 A_TakeInventory("RedMageMana",2)
+RMHD D 0 A_SetAngle(angle-18.0)
+RMHD D 2 A_SpawnItemEx("WhirlpoolDamager",0,0,16)
+RMHD D 0 A_JumpIfInventory("RedMageMana",2,"WhirlpoolLoop")
+goto WhirlpoolEnd
+WhirlpoolEnd:
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 ACS_NamedExecuteAlways("core_freezeplayer",0,0,0)
+RMHD A 0 A_ChangeFlag("REFLECTIVE",0)
+RMHD A 0 A_TakeInventory("BasicArmor",9999)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+Wateja:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("WatejaSpawner",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+AqueousAbyss:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_FireCustomMissile("AqueousAbyssShot",0,0,8,0)
+RMHD BC 2
+goto AALoop
+AALoop:
+RMHD D 0 A_JumpIfInventory("RollingCutterFlag",15,"AAStop")
+RMHD DDDDDDDDDDDD 1 A_JumpIfInventory("ExistCount",1,"AAStop")
+TNT1 A 0 A_GiveInventory("RedMageMana",1)
+TNT1 A 0 A_GiveInventory("RollingCutterFlag",1)
+loop
+AAStop:
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD C 0 A_TakeInventory("User1_Trigger",99)
+RMHD C 0 A_TakeInventory("RollingCutterFlag",999)
+RMHD CB 2
+goto Ready+4
+WaterClone:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD BC 2
+RMHD D 0 A_GiveInventory("WaterCloneBoost",1)
+RMHD D 25 A_FireCustomMissile("WaterCloneSpawner",0,0,8,0,0,0)
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+Goto Ready+5
+SubzeroField:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD A 0 A_GiveInventory("SubzeroFieldFlag",1)
+RMHD A 0 A_JumpIf(ACS_ExecuteWithResult(143,0)==0,"FieldBlue")
+RMHD A 0 A_JumpIf(ACS_ExecuteWithResult(143,0)==1,"FieldRed")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawner",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+FieldBlue:
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawnerB",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+FieldRed:
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawnerR",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+Altfire:
+RMHD A 0 A_JumpIfInventory("LastStandPower",1,"WateraFree")
+RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"WateraFree")
+RMHD A 0 A_JumpIfInventory("WaterCloneBoost",1,"WateraHalf")
+RMHD A 0 A_JumpIfInventory("RedMageMana",2,"WateraUse")
+Goto Ready+5
+WateraFree:
+goto WateraUse+1
+WateraUse:
+RMHD B 0 A_TakeInventory("RedMageMana",2)
+RMHD B 0 A_PlaySoundEX("weapon/waterballoon","Weapon")
+RMHD D 3 A_FireCustomMissile("WateraShot",0,0,8,0)
+RMHD B 0 A_PlaySoundEX("weapon/waterballoon","Weapon")
+RMHD D 3 A_FireCustomMissile("WateraShot",0,0,8,0)
+RMHD D 0 A_Refire
+goto Ready+5
+WateraHalf:
+RMHD B 0 A_TakeInventory("RedMageMana",1)
+RMHD B 0 A_PlaySoundEX("weapon/waterballoon","Weapon")
+RMHD D 3 A_FireCustomMissile("WateraShot",0,0,8,0)
+RMHD B 0 A_PlaySoundEX("weapon/waterballoon","Weapon")
+RMHD D 3 A_FireCustomMissile("WateraShot",0,0,8,0)
+RMHD D 0 A_Refire
+goto Ready+5
+}
+}
+
+actor WateraShot
+{
+PROJECTILE
++DONTSPLASH
++SKYEXPLODE
++FORCEXYBILLBOARD
+height 13
+radius 13
+damage(4)
+speed 45
+scale 2.5
+damagetype "Watera"
+Obituary "%o got lost in the torrent of %k's Water Magic."
+States
+{
+Spawn:
+TIDE A 0
+TIDE A 0 A_PlaySoundEx("weapon/waterwave","Voice")
+TIDE A 2 A_Weave(4,3,2.5,1.5)
+TIDE A 0 A_SpawnItemEx("WateraTrail1")
+TIDE B 2 A_Weave(4,3,2.5,1.5)
+TIDE A 0 A_SpawnItemEx("WateraTrail2")
+TIDE C 2 A_Weave(4,3,2.5,1.5)
+TIDE A 0 A_SpawnItemEx("WateraTrail3")
+TIDE D 2 A_Weave(4,3,2.5,1.5)
+TIDE A 0 A_SpawnItemEx("WateraTrail4")
+goto Spawn+1
+Death:
+TIDE ABCD 2 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor WateraTrail1
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Radius 1
+Height 1
+Speed 0
+Scale 2.0
+Renderstyle "Add"
+States
+{
+Spawn:
+TIDE A 0
+TIDE A 6
+goto Death
+Death:
+TIDE A 2 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor WateraTrail2 : WateraTrail1
+{
+States
+{
+Spawn:
+TIDE B 0
+TIDE B 6
+goto Death
+Death:
+TIDE B 2 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor WateraTrail3 : WateraTrail1
+{
+States
+{
+Spawn:
+TIDE C 0
+TIDE C 6
+goto Death
+Death:
+TIDE C 2 A_Fadeout(0.1)
+loop
+}
+}
+
+Actor WateraTrail4 : WateraTrail1
+{
+States
+{
+Spawn:
+TIDE D 0
+TIDE D 6
+goto Death
+Death:
+TIDE D 2 A_Fadeout(0.1)
+loop
+}
+}

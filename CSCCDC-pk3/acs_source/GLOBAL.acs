@@ -507,6 +507,19 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 					}
 				}
 			}
+		// Devion Doublejump
+			if(CheckInventory("IsDevion")==1) 
+			If (CheckInventory("JumpCancler")==0) {
+				If (CheckInventory("RushJetCounter")<1 && CheckInventory("NoDoubleJump")==0) {
+					{
+						GiveInventory("DevionDoubleJump",1);
+						While(GetActorZ(0)!=GetActorFloorZ(0)) {Delay(1);}
+						{
+							delay(1);
+						}
+					}
+				}
+			}
 		//End
 		Grounded = 0;
 		break;

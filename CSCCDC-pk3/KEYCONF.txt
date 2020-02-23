@@ -25,3 +25,5 @@ addplayerclass NaturesWonderClass nomenu
 addplayerclass HealmoreClass nomenu
 addplayerclass LegoClass nomenu
 addplayerclass AbraClass nomenu
+addplayerclass DevionClass nomenu
+addplayerclass RedMageClass nomenu

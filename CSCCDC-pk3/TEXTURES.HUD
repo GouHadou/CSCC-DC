@@ -311,6 +311,25 @@ sprite GRSPG0, 427, 104 {Offset 53, -81 Patch HSPRP0, 0, 0 {Translation "192:192
 sprite GRSPH0, 427, 112 {Offset 53, -73 Patch HSPRQ0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
 sprite GRSPI0, 427, 128 {Offset 53, -57 Patch HSPRR0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
 
+//Devion
+graphic DEVHUD, 157, 50{  XScale 1.5 YScale 1.5 Patch DEVHUD, 0, 0}
+graphic DEVHUD1, 105, 14{ XScale 1.5 YScale 1.5 Patch DEVHUD1, 0, 0}
+graphic DEVHUD2, 105, 18{ XScale 1.5 YScale 1.5 Patch DEVHUD2, 0, 0}
+graphic DEVOK, 20, 10{ XScale 1.5 YScale 1.5 Patch DEVOK, 0, 0}
+
+//Red Mage//
+sprite RMHDA0, 320, 200{XScale 1.0 YScale 1.0 Offset -202,-103 Patch HSPRA0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHUA0, 320, 200{XScale 1.0 YScale 1.0 Offset -202,-103 Patch HSPRA0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHDB0, 320, 200{XScale 1.0 YScale 1.0 Offset -210,-96 Patch HSPRB0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHDC0, 320, 200{XScale 1.0 YScale 1.0 Offset -190,-82 Patch HSPRC0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHDD0, 320, 200{XScale 1.0 YScale 1.0 Offset -177,-50 Patch HSPRD0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMSWA0, 320, 200{XScale 1.0 YScale 1.0 Offset 30,-85 Patch NSWDA0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWB0, 320, 200{XScale 1.0 YScale 1.0 Offset 30,-50 Patch NSWDB0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWC0, 320, 200{XScale 1.0 YScale 1.0 Offset 0,-30 Patch NSWDC0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWD0, 320, 200{XScale 1.0 YScale 1.0 Offset -50,-15 Patch NSWDD0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWE0, 320, 200{XScale 1.0 YScale 1.0 Offset -100,-10 Patch NSWDE0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWF0, 320, 200{XScale 1.0 YScale 1.0 Offset -150,-5 Patch NSWDF0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+
 
 //Megaman Copywep Huds
 

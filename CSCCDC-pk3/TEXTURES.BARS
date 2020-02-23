@@ -282,6 +282,64 @@ Texture "HHUKI2", 143, 58
 	}
 }
 
+//Devion
+graphic DEVHBAR, 101, 8{XScale 1.5 YScale 1.5 Patch DEVHBAR, 0, 0}
+graphic DEVBAR1, 75, 8{XScale 1.5 YScale 1.5 Patch DEVBAR1, 0, 0}
+graphic DEVBAR2, 75, 8{XScale 1.5 YScale 1.5 Patch DEVBAR2, 0, 0}
+
+graphic DNOBAR1, 102, 8{XScale 1.5 YScale 1.5 patch TNT1A0, 0, 0}
+graphic DNOBAR2, 75, 8{XScale 1.5 YScale 1.5 patch TNT1A0, 0, 0}
+
+graphic DEVF1, 75, 8{XScale 1.5 YScale 1.5 patch DEVF1, 0, 0}
+graphic DEVF2, 75, 8{XScale 1.5 YScale 1.5 patch DEVF2, 0, 0}
+
+//Red Mage SF Bar
+texture MANABAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=198:198", "198:198=194:194"}}
+texture MANAVAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=198:198", "198:198=194:194"}}
+
+texture RPWRBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+texture RPWRVAR, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+
+texture RMAGBAR1, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=219:219", "198:198=180:180"}}
+texture RMAGBAR2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=200:200", "198:198=205:205"}}
+texture RMAGBAR3, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=160:160", "198:198=218:218"}}
+texture RMAGBAR4, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=207:207", "198:198=194:194"}}
+texture RMAGBAR5, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=239:239", "198:198=251:251"}}
+texture RMAGBAR6, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=168:168", "198:198=215:215"}}
+texture RMAGBAR7, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=83:83", "198:198=95:95"}}
+texture RMAGBAR8, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=128:128", "198:198=134:134"}}
+
+texture RMAGVAR1, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=219:219", "198:198=180:180"}}
+texture RMAGVAR2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=200:200", "198:198=205:205"}}
+texture RMAGVAR3, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=160:160", "198:198=218:218"}}
+texture RMAGVAR4, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=207:207", "198:198=194:194"}}
+texture RMAGVAR5, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=239:239", "198:198=251:251"}}
+texture RMAGVAR6, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=168:168", "198:198=215:215"}}
+texture RMAGVAR7, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=83:83", "198:198=95:95"}}
+texture RMAGVAR8, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=128:128", "198:198=134:134"}}
+
+//Red Mage Bar Anim Stuff
+texture SFBAR_A, 8, 56{patch B_BLACK1, 0, 0 {Translation "192:192=220:220", "198:198=178:178"}}
+texture SFVAR_A, 56, 8{patch SFBAR_A, 0, 0 {rotate 90}}
+texture SFBAR_B, 8, 56{patch B_BLACK2, 0, 0 {Translation "192:192=201:201", "198:198=204:204"}}
+texture SFVAR_B, 56, 8{patch SFBAR_B, 0, 0 {rotate 90}}
+texture SFBAR_C, 8, 56{patch B_BLACK3, 0, 0 {Translation "192:192=161:161", "198:198=229:229"}}
+texture SFVAR_C, 56, 8{patch SFBAR_C, 0, 0 {rotate 90}}
+texture SFBAR_D, 8, 56{patch B_BLACK4, 0, 0 {Translation "192:192=207:207", "198:198=199:199"}}
+texture SFVAR_D, 56, 8{patch SFBAR_D, 0, 0 {rotate 90}}
+texture SFBAR_E, 8, 56{patch B_BLACK1, 0, 0 {Translation "192:192=239:239", "198:198=253:253"}}
+texture SFVAR_E, 56, 8{patch SFBAR_E, 0, 0 {rotate 90}}
+texture SFBAR_F, 8, 56{patch B_BLACK2, 0, 0 {Translation "192:192=168:168", "198:198=214:214"}}
+texture SFVAR_F, 56, 8{patch SFBAR_F, 0, 0 {rotate 90}}
+texture SFBAR_G, 8, 56{patch B_BLACK3, 0, 0 {Translation "192:192=83:83", "198:198=93:93"}}
+texture SFVAR_G, 56, 8{patch SFBAR_G, 0, 0 {rotate 90}}
+texture SFBAR_H, 8, 56{patch B_BLACK4, 0, 0 {Translation "192:192=129:129", "198:198=133:133"}}
+texture SFVAR_H, 56, 8{patch SFBAR_H, 0, 0 {rotate 90}}
+graphic SFUSBAR1,8,56{patch TNT1A0,0,0}
+graphic SFUSVAR1,56,8{patch TNT1A0,0,0}
+graphic SFUSBAR2,8,56{patch TNT1A0,0,0}
+graphic SFUSVAR2,56,8{patch TNT1A0,0,0}
+
 //Megaman Copyweps
 graphic BARAMMOT, 8, 56{patch BARENERG,0,0{Translation "192:192=87:87","198:198=95:95"}}
 graphic VARAMMOT, 56, 8{patch BARAMMOT,0,0{rotate 90}}
