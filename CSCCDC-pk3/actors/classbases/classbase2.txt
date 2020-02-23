@@ -372,6 +372,14 @@ Pain.SlowSpell2:
 GoTo pain+1
 //End of Zomo painstates
 
+//Jax
+Pain.JaxHold:
+"----" A 0 A_GiveInventory("JaxHeldStart",1)
+goto Pain
+Death.JaxHold:
+"----" A 0 
+goto Death.GravityHold
+
 
 //Special Death
 //Unix

@@ -537,6 +537,18 @@ Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
 Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
 //Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
 
+//====|Daveris
+IsSelected DaverisClassWep
+	{
+	DrawImage "DAVRELD", 138, 176; DrawImage "HORICONR", 138, 168;
+	InInventory DavSJ, 1{Drawbar "EXOFBAR", "EXOBBAR", DavSJ, vertical, 151, 112;}
+	Drawbar "VARAMMO3", "VAREMPTY", Ammo1, horizontal, 58,184;
+	DrawBar "VARAMM15", "VAREMPTY", FlurryAmmo , horizontal, 58, 176;
+	}	
+
+//====|Jax
+	WeaponAmmo JaxPsychoAmmo{Drawbar"VARAMM18", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	InInventory JaxHoldCharge, 1	{DrawBar"VARFLS1", "VNOBAR", JaxHoldCharge, horizontal, 58, 184;}}
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected GouhadouWepCS{DrawBar "VGHADBAR", "VAREMPTY", Ammo1, horizontal, 58, 184;

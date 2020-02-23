@@ -279,6 +279,21 @@ TAG_NATURESTAFFSTRAIGHT = "Nature Staff (Straight)";
 TAG_NATURESTAFFHORIZONTAL = "Nature Staff (Horizontal)";
 TAG_NATURESTAFFALLAROUND = "Nature Staff (All Around)";
 
+//===|Jax
+OB_JAXPSYCHO = "%o was no use against %k's Psychokinesis.";
+OB_JAXMINE = "%o was blown apart by %k's Psychominesis.";
+OB_JAXCONDUIT = "%o was another victim of %k's Psychonduit.";
+
+TAG_JAXPSYCHO1 = "Jax Psycho Lift";
+TAG_JAXPSYCHO2 = "Jax Psycho";
+
+//===|Daveris
+OB_FMORTAR = "%o was iced over by %k's frozen mortar";
+OB_FLURRY = "%o was caught up in %k's flurry";
+OB_DAVCRASH = "%o was raked by %k's talons";
+OB_DAVICE = "%o stood too close to %k";
+
+TAG_MORTAR = "Frozen Mortar";
 //██████████████████████████████████████████Copyweps████████████████████████████████████████
 //RailBuster
 PU_RAILBUSTER = "Picked up a weird sniper rifle! jeez.";

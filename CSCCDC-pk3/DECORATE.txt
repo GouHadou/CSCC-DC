@@ -155,5 +155,14 @@
 #include "actors/classes/RedMage/SpellFusion.txt"
 #include "actors/classes/RedMage/MysteryTomes.txt"
 
+//===|Jax
+#include "actors/classes/Jax/JaxClass.txt"
+#include "actors/classes/Jax/JaxWeapon.txt"
+
+//===|Daveris
+#include "actors/Classes/daveris/daverisClass.txt"
+#include "actors/Classes/daveris/daverisWep.txt"
+
+
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

@@ -11,9 +11,8 @@ Player.ViewHeight 60
 Player.AttackZOffset 22
 
 player.startitem "DaverisClassWep"
-player.startitem "PulseAmmo", 56
-player.startitem "FlurryAmmo", 56
-player.startitem "DavHoverItem", 1
+player.startitem "DaverisClassItems"
+
 
 player.maxhealth 100
 health 100
@@ -40,3 +39,35 @@ goto Spawn
 }
 }
 
+actor DaverisClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("PulseAmmo", 56)
+TNT1 A 0 A_GiveInventory("FlurryAmmo", 56)
+TNT1 A 0 A_GiveInventory("DavHoverItem", 1)
+stop
+}
+}
+
+
+actor DaverisClassWepMorph : DaverisClass
+{
++NOSKIN
+player.morphweapon "DaverisClassWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}

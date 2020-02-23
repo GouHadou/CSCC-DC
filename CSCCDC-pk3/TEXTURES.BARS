@@ -340,6 +340,21 @@ graphic SFUSVAR1,56,8{patch TNT1A0,0,0}
 graphic SFUSBAR2,8,56{patch TNT1A0,0,0}
 graphic SFUSVAR2,56,8{patch TNT1A0,0,0}
 
+//Daveris
+graphic  SUPERJ0, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BLUHN0, 0, 0
+}
+
+graphic DAVRELD, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch BLUHD0, 0, 0
+}
+
 //Megaman Copyweps
 graphic BARAMMOT, 8, 56{patch BARENERG,0,0{Translation "192:192=87:87","198:198=95:95"}}
 graphic VARAMMOT, 56, 8{patch BARAMMOT,0,0{rotate 90}}

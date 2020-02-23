@@ -27,3 +27,5 @@ addplayerclass LegoClass nomenu
 addplayerclass AbraClass nomenu
 addplayerclass DevionClass nomenu
 addplayerclass RedMageClass nomenu
+addplayerclass JaxClass nomenu 
+addplayerclass DaverisClass nomenu 

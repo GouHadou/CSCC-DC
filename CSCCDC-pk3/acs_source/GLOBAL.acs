@@ -520,6 +520,16 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 					}
 				}
 			}
+		//Daveris Super Jump
+			if(CheckWeapon("DaverisClassWep")==1)
+			{
+			if(CheckInventory("DavSJ")>=8)
+				{
+				//GiveInventory("SuperJumping", 1);
+				ThrustThingZ(0, 1.75*CheckInventory("DavSJ") >> 16, 0, 1); //modular jumping
+				TakeInventory("DavSJ", 99);
+				}
+			}
 		//End
 		Grounded = 0;
 		break;

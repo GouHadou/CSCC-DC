@@ -586,3 +586,40 @@ RagingSage/Dash RGDASH
 RagingSage/Hit RGHIT
 
 Rin/Kouhadou KOHADO
+
+//Daveris 
+$playersound	davesfx	male	*death		MEGADEAT
+$playersound	davesfx	male	*xdeath		MEGADEAT
+$playersound	davesfx	male	*gibbed		MEGADEAT
+$playersound	davesfx	male	*pain100	MEGAPAIN
+$playersound	davesfx	male	*pain75		MEGAPAIN
+$playersound	davesfx	male	*pain50		MEGAPAIN
+$playersound	davesfx	male	*pain25		MEGAPAIN
+$playersound	davesfx	male	*grunt		LAND
+$playersound	davesfx	male	*land		LAND
+$playersound	davesfx	male	*fist		dsnone
+$playersound	davesfx	male	*usefail	LAND
+$playersound	davesfx	male	*taunt		DAVETAUN
+
+weapon/icebreath	ICEBREAT
+weapon/fmortarshot		CANON
+weapon/fmortarbreak		ICEWSTA
+weapon/ifreeze			ICESHOTC	
+weapon/ibreak			ICEWBRAK
+weapon/ifly				SHDEDIVE
+weapon/crashland		NAPALMB
+item/wingfly			habataki
+
+//Jax
+$playersound	jaxclass	male	*death		MEGADEAT
+$playersound	jaxclass	male	*xdeath		MEGADEAT
+$playersound	jaxclass	male	*gibbed		MEGADEAT
+$playersound	jaxclass	male	*pain100	MEGAPAIN
+$playersound	jaxclass	male	*pain75		MEGAPAIN
+$playersound	jaxclass	male	*pain50		MEGAPAIN
+$playersound	jaxclass	male	*pain25		MEGAPAIN
+$playersound	jaxclass	male	*grunt		LAND
+$playersound	jaxclass	male	*land		LAND
+$playersound	jaxclass	male	*fist		dsnone
+$playersound	jaxclass	male	*usefail	LAND
+$playersound	jaxclass	male	*taunt		JAXTAU

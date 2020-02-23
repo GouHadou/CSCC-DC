@@ -1,0 +1,34 @@
+[IntroStrings]
+"Dread it. Run from it. Destiny arrives all the same. And now, it's here. Or should I say, I am."
+
+[FragStrings]
+"Muda da!"
+"Look at you. Why are you even here? You're like Play-doh."
+"Repeat this after me, I'll never take on a god again!"
+"Anyone who opposes me will be destroyed!"
+"Get lose, you can't compare with my powers!"
+"I shall unify the world! Bow down to me!"
+
+[KilledStrings]
+"Nani?!"
+"Bitch!"
+"Are you ready for round two?!"
+
+[RareRoamingStrings]
+"Yeah, this is big brain time."
+"/me checks his back for Messatsu."
+
+[RoamingStrings]
+"Oh? You're approaching me?"
+"I want to dominate. Nothing more, nothing less."
+"I cannot be contained."
+"It's not often I handle things directly..."
+"$player_random_notself... among your allies, you are the weakest!"
+"You won't forgive me? Like I give a damn! Shut up and die already!"
+
+[WinStrings]
+"This is a victory for evil!"
+"This is the beginning of the reign of evil!"
+
+[LoseStrings]
+"This is impossible! I am the almighty Jax! I am Jax!"

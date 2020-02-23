@@ -330,6 +330,29 @@ sprite RMSWD0, 320, 200{XScale 1.0 YScale 1.0 Offset -50,-15 Patch NSWDD0, 0, 0 
 sprite RMSWE0, 320, 200{XScale 1.0 YScale 1.0 Offset -100,-10 Patch NSWDE0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
 sprite RMSWF0, 320, 200{XScale 1.0 YScale 1.0 Offset -150,-5 Patch NSWDF0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
 
+//Jax
+sprite JAX7A0, 148, 80 {Offset 30, -103 Patch HSPRE0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+
+Sprite JAX7B0, 156, 148 {Offset 35, -84 patch LIBOC0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+Sprite JAX7C0, 156, 148 {Offset 51, -54 patch LIBOD0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+Sprite JAX7D0, 80, 200 {Offset 103, -13 patch LIBOE0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+Sprite JAX7E0, 80, 200 {Offset 130, 0 patch LIBOF0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+
+sprite JAX7F0, 308, 204 {Offset 260, 46 Patch HSPRF0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7G0, 308, 204 {Offset 190, 4 Patch HSPRG0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7H0, 308, 204 {Offset 139, -36 Patch HSPRH0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7I0, 308, 204 {Offset 114, -123 Patch HSPRI0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7J0, 308, 204 {Offset 93, -147 Patch HSPRJ0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7K0, 308, 204 {Offset 5, -175 Patch HSPRK0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+
+sprite JAX7L0, 148, 80 {Offset 30, -135 Patch HSPRM0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7M0, 148, 80 {Offset 30, -119 Patch HSPRL0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+
+sprite JAX8A0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
+
+sprite JAX8B0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX8C0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX8D0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
 
 //Megaman Copywep Huds
 
