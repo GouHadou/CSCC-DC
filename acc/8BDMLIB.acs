@@ -199,6 +199,15 @@ function int abs (int x)
     return x;
 }
 
+// Returns the closest integer, rounded up
+function int ceil_cscc(int fixedIn)
+{
+	if(fixedIn % 65536 != 0)
+	{
+		return (fixedIn >> 16) + 1;
+	}
+	return fixedIn >> 16;
+}
 function int max(int x, int y)
 {
 	if(x > y)
