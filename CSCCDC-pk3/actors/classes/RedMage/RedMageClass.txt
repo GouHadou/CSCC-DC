@@ -167,6 +167,9 @@ actor RedMageFocusWepMorph : RedMageDiaraWepMorph {player.morphweapon "RedMageFo
 Actor IsRedMage : Inventory{inventory.amount 1 inventory.maxamount 1}
 Actor SpellFusionActive : Once{}
 
+Actor ExistCount : Inventory {Inventory.MaxAmount 999}
+Actor ExistCount2 : ExistCount {}
+
 Actor RMImageA
 {
 +CLIENTSIDEONLY

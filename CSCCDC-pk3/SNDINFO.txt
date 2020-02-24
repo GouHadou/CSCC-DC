@@ -587,6 +587,18 @@ RagingSage/Dash RGDASH
 RagingSage/Hit RGHIT
 
 Rin/Kouhadou KOHADO
+weapon/ncrush3 NCRUSH3
+weapon/ncrushfinal NCRUSH4
+
+dialga/roaroftime TIMEROAR
+dialga/cry DLGATNT
+palkia/cry PALKTNT
+weapon/BNBubbleBurst BNBUBBL2
+nuclear/start NUCSTAT
+nuclear/boom NUCBOOM
+weapon/BNSwordSwing BNSWORD
+weapon/BNLSwordSwing BNSWORD2
+tails/bombexpl TABEXPL
 
 //Daveris 
 $playersound	davesfx	male	*death		MEGADEAT
