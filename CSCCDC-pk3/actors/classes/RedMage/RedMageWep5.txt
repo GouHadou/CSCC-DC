@@ -1,7 +1,7 @@
 actor RedMageSlowWep : RedMageDiaraWep
 {
 Tag "Slow"
-Weapon.SlotNumber 3
+Weapon.SlotNumber 5
 Inventory.Pickupmessage "Spell learned: Slow!"
 inventory.icon "SLWRI0"
 States
@@ -9,8 +9,7 @@ States
 SFCheck1:
 //RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak")
 RMHD A 0 A_JumpIfInventory("SpellFusionPower",300,"SFCheck")
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
-goto Ready+11
+goto Ready2
 SFCheck:
 //RMHD A 0 A_TakeInventory("SpellFusionPower",350)
 RMHD A 0 A_JumpIfInventory("ThundaraSpellFlag",1,"PlasmaTrap")
@@ -22,16 +21,14 @@ RMHD A 0 A_JumpIfInventory("WateraSpellFlag",1,"AqueousAbyss")
 RMHD A 0 A_JumpIfInventory("AeroraSpellFlag",1,"SmokeTendrils")
 RMHD A 0 A_JumpIfInventory("TemperSpellFlag",1,"TemporalBlade")
 RMHD A 0 A_JumpIfInventory("FocusSpellFlag",1,"DistortionParadox")
-goto Ready+11
+goto Ready2
 ReshuffleCheck:
 RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+7
+goto Ready2
 ReshufflePlease:
 RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
 RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+12
+goto Ready2
 PlasmaTrap:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -40,9 +37,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("PlasmaTrapSpawner",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 MagmaBall:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -52,9 +49,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("MagmaBall",-15,0,-50,10)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 TemporalShift:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -70,7 +67,7 @@ RMHD D 0 A_GiveInventory("ExitUnitAuto",1)
 RMHD D 25 A_TakeInventory("RedMageMana",64)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 3
-goto Ready+5
+goto Ready2
 SturdyGlacier:
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
 RMHD A 0 SetPlayerProperty(0,1,0)
@@ -95,7 +92,7 @@ RMKK A 4 A_SpawnItemEx("GlacierKickFX",18,0,48)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMKK C 0 ACS_NamedExecuteAlways("core_freezeplayer",0,0,0)
 RMKK BC 2
-goto Ready+5
+goto Ready2
 AqueousAbyss:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -110,15 +107,15 @@ TNT1 A 0 A_GiveInventory("RollingCutterFlag",1)
 loop
 AAStop:
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD C 0 A_TakeInventory("User1_Trigger",99)
+RMHD C 0 
 RMHD C 0 A_TakeInventory("RollingCutterFlag",999)
 RMHD CB 2
-goto Ready+4
+goto Ready2
 SmokeTendrils:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD BC 2
 RMHD D 0 A_TakeInventory("SpellFusionPower",300)
-RMHD D 0 A_TakeInventory("User1_Trigger",99)
+RMHD D 0 
 RMHD D 0 A_PlaySoundEx("weapon/superboost","Weapon")
 RMHD D 0 A_TakeInventory("RedMageMana",4)
 RMHD D 8 A_SpawnItemEx("SmokeTendril",4,0,28,random(10,30),random(-7,7),random(-5,15))
@@ -130,14 +127,14 @@ STStop:
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 2
 RMHU A 15 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 TemporalBlade:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
 RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
 RMHD BC 2
 RMHD D 0 A_FireCustomMissile("TemporalField",0,0,8,0)
-RMHD D 0 A_TakeInventory("User1_Trigger",99)
+RMHD D 0 
 RMHD D 0 SetPlayerProperty(0,1,0)
 RMHD D 0 A_SetGravity(0.0)
 RMHD D 10 A_ChangeFlag("THRUACTORS",1)
@@ -163,7 +160,7 @@ RMSW F 0 SetPlayerProperty(0,0,0)
 RMSW F 0 A_TakeInventory("TemporalBladeFlag",999)
 RMSW F 10 A_TakeInventory("ExistCount",999)
 TNT1 A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 TBLoopStopUW:
 RMSW F 0 A_SetGravity(0.2)
 RMSW F 0 A_ChangeFlag("THRUACTORS",0)
@@ -171,7 +168,7 @@ RMSW F 0 SetPlayerProperty(0,0,0)
 RMSW F 0 A_TakeInventory("TemporalBladeFlag",999)
 RMSW F 10 A_TakeInventory("ExistCount",999)
 TNT1 A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 DistortionParadox:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -181,14 +178,14 @@ RMHD A 0 A_SpawnItemEx("DistortionParadoxPortal",24,0,56,0,0,0,0,SXF_NOCHECKPOSI
 RMHD A 0 A_SpawnItemEx("DistortionParadoxTimer",24,0,132,0,0,0,0,SXF_NOCHECKPOSITION)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Altfire:
-RMHD A 0 A_JumpIfInventory("LastStandPower",1,"SlowFree")
+RMHD A 0 //A_JumpIfInventory("LastStandPower",1,"SlowFree")
 RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"SlowFree")
 RMHD A 0 A_JumpIfInventory("RedMageMana",24,"SlowUse")
-Goto Ready+5
+Goto Ready2
 SlowFree:
 goto SlowUse+1
 SlowUse:
@@ -198,7 +195,7 @@ RMHD B 0 A_PlaySoundEX("weapon/mbuster","Weapon")
 RMHD D 15 A_FireCustomMissile("SlowShot",0,0,8,0)
 RMHD CB 2
 RMHD A 0 A_Refire
-goto Ready+5
+goto Ready2
 }
 }
 

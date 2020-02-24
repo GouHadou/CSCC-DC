@@ -316,7 +316,7 @@ stop
 //[+]========================================================================[+]
 //--------------------------------|Ammo & inventory|---------------------------
 //[+]========================================================================[+]
-actor HiPEReloadTimer_A : powerup {inventory.amount 1 inventory.maxamount 1 Powerup.duration 8}
+actor BurstBladeReloadTimer_A : powerup {inventory.amount 1 inventory.maxamount 1 Powerup.duration 8}
 actor BurstBladeReloadTimer_B : powerup {inventory.amount 1 inventory.maxamount 1 Powerup.duration 19}
 
 actor BurstBladeClip : Ammo

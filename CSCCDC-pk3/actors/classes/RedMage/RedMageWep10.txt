@@ -1,7 +1,7 @@
 actor RedMageFocusWep : RedMageDiaraWep
 {
 Tag "Focus"
-Weapon.SlotNumber 3
+Weapon.SlotNumber 10
 Inventory.Pickupmessage "Spell learned: Focus!"
 inventory.icon "FCUSI0"
 States
@@ -9,8 +9,7 @@ States
 SFCheck1:
 //RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak")
 RMHD A 0 A_JumpIfInventory("SpellFusionPower",300,"SFCheck")
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
-goto Ready+11
+goto Ready2
 SFCheck:
 //RMHD A 0 A_TakeInventory("SpellFusionPower",350)
 RMHD A 0 A_JumpIfInventory("ThundaraSpellFlag",1,"Thundaja")
@@ -21,16 +20,16 @@ RMHD A 0 A_JumpIfInventory("WateraSpellFlag",1,"Wateja")
 RMHD A 0 A_JumpIfInventory("FiraSpellFlag",1,"Firaja")
 RMHD A 0 A_JumpIfInventory("BlinkSpellFlag",1,"RagingSageStart")
 RMHD A 0 A_JumpIfInventory("SlowSpellFlag",1,"DistortionParadox")
-goto Ready+11
+goto Ready2
 ReshuffleCheck:
 RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+7
+
+goto Ready2
 ReshufflePlease:
 RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
 RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+12
+
+goto Ready2
 Thundaja:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -39,9 +38,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("ThundajaShot",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Aeroja:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -50,9 +49,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("AerojaShot",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Blizzaja:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -61,9 +60,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("BlizzajaShot",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Wateja:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -72,9 +71,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("WatejaSpawner",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 MagicBlade:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -87,7 +86,7 @@ RMHD D 0 A_TakeInventory("FalchionFusionPower",99)
 RMHD D 20 A_GiveInventory("MagicBladeFusionPower",1)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Firaja:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -96,9 +95,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("FirajaShot",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 RagingSageStart:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -164,11 +163,11 @@ RMKK B 0 A_ChangeFlag("NOBLOCKMONST",1)
 RMKK B 0 A_JumpIfInventory("IsUnderWater",1,"RSEndNormalUW")
 RMKK B 5 A_SetGravity(0.8)
 RMKK C 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 RSEndNormalUW:
 RMKK B 5 A_SetGravity(0.2)
 RMKK C 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 RagingSage:
 RMHD A 0 A_GiveInventory("RagingSageArmor",1)
 RMHD A 0 A_Stop
@@ -185,11 +184,11 @@ RMHD A 0 A_TakeInventory("RSStartFlag",99)
 RMHD A 0 A_JumpIfInventory("IsUnderWater",1,"RSFinishedUW")
 RMHD A 0 A_SetGravity(0.8)
 RMHU A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 RSFinishedUW:
 RMHD A 0 A_SetGravity(0.2)
 RMHU A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 DistortionParadox:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -199,15 +198,15 @@ RMHD A 0 A_SpawnItemEx("DistortionParadoxTimer",24,0,132,0,0,0,0,SXF_NOCHECKPOSI
 RMHD BC 2
 RMHD D 35
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Altfire:
 RMHD A 0 A_JumpIfInventory("RMBuffBanF",1,"NoAmmo")
-RMHD A 0 A_JumpIfInventory("LastStandPower",1,"FocusFree")
+RMHD A 0 //A_JumpIfInventory("LastStandPower",1,"FocusFree")
 RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"FocusFree")
 RMHD A 0 A_JumpIfInventory("RedMageMana",32,"FocusUse")
-Goto Ready+5
+Goto Ready2
 FocusFree:
 goto FocusUse+1
 FocusUse:
@@ -217,7 +216,7 @@ RMHD B 0 A_PlaySoundEX("weapon/timestopper","weapon")
 RMHD D 15 A_GiveInventory("FocusEffect",1)
 RMHD D 0 A_GiveInventory("RMBuffBanF",1)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 }
 }
 
