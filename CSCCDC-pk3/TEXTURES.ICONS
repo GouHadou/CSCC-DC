@@ -753,3 +753,36 @@ Sprite RMU1A0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU1A0, 0, 0}
 Sprite RMU2A0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU2A0, 0, 0}
 Sprite RMU1B0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU1B0, 0, 0}
 Sprite RMU2B0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU2B0, 0, 0}
+//Lord Damager
+Graphic "LOSICA0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LOSICC0", 0, 0
+}
+
+Graphic "LWEPB0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LWEPB0", 0, 0
+}
+Graphic "STPUNCH", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDSPI0", 0, 0
+}
+Graphic "LDRMI0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDRMI0", 0, 0
+}
+
+Graphic "LDRELOAD", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDR1A0", 0, 0
+}

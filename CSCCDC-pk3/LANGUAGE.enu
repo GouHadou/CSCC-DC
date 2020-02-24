@@ -294,6 +294,24 @@ OB_DAVCRASH = "%o was raked by %k's talons";
 OB_DAVICE = "%o stood too close to %k";
 
 TAG_MORTAR = "Frozen Mortar";
+
+//===|LordDamager
+OB_LASERCANNON = "\ct%k left a darkened hole in %o's heart.";
+PU_LASERCANNON = "Power up! Dark Laser Cannon!";
+TAG_LASERCANNON = "Dark Laser";
+
+OB_MISSILEPUNCH = "%o was destroyed by %k's \chPower Missiles\c-.";
+PU_MISSILEPUNCH = "Power up! Missile Punch!";
+TAG_MISSILEPUNCH = "Missile Punch";
+
+OB_MISSILEPUNCH2 = "%o was crushed by %k's \chMissile Punch\c-.";
+OB_LDRAM = "%o was knocked down by %k's \chRam\c-.";
+
+OB_SMOGCANNON = "%o was choked by %k's \ctSmog Cannon\c-.";
+PU_SMOGCANNON = "Power up! Smog Cannon!";
+TAG_SMOGCANNON = "Smog Cannon";
+
+
 //██████████████████████████████████████████Copyweps████████████████████████████████████████
 //RailBuster
 PU_RAILBUSTER = "Picked up a weird sniper rifle! jeez.";
@@ -346,6 +364,11 @@ TAG_LIGHTSCREEN = "Light Screen";
 //Crystal Wall
 PU_CRYSTAlWALL= "Power up! Crystal Wall!";
 TAG_CRYSTALWALL = "Crystal Wall";
+
+//Steel Punch
+PU_STEELPUNCH = "Power Up! Steel Punch!";
+OB_STEELPUNCH = "%o was crushed by %k's Steel Punch.";
+TAG_STEELPUNCH = "Steel Punch";
 
 //██████████████████████████████████████████Class Help████████████████████████████████████████
 CSCC_TITLE = "\cvCSCC Options";
@@ -510,3 +533,8 @@ NATURESWONDER_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj94%\n\cfJump : \cj1
 NATURESWONDER_CH_MAINFIRE = "\cfMainfire : \cjCreates a Crystal Wall that can block shots \nwith a formation based on weapon chosen";
 NATURESWONDER_CH_ALTFIRE = "\cfAltfire : \cjDrops a Prism Wall at a location that \nthat reflects damage dealt around itself.";
 NATURESWONDER_CH_WALLINFO = "\cvWall Info: ";
+
+LORDDAMAGER_CH_TITLE = "\cvLORDDAMAGER";
+LORDDAMAGER_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
+LORDDAMAGER_CH_ALTFIRE = "\cfAltfire : \cjPunch any fool \nthat dared to come within \nrange of your fists.";
+LORDDAMAGER_CH_ITEM = "\cfItem : \cjInitiate a ramming attack.";

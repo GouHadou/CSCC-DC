@@ -29,3 +29,4 @@ addplayerclass DevionClass nomenu
 addplayerclass RedMageClass nomenu
 addplayerclass JaxClass nomenu 
 addplayerclass DaverisClass nomenu 
+addplayerclass LordDamagerClass nomenu 

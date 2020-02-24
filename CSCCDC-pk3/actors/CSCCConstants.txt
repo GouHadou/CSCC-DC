@@ -24,6 +24,7 @@ const int DYE_KNUX = 382;
 const int DYE_DEVION = 8200;
 const int DYE_REDMAGE = 751;
 const int DYE_JAX = 977;
+const int DYE_LORDDAMAGERCOL = 438;
 
 const int DYE_IDOLWAVE = 997;
 const int DYE_ZENSPHERE = 1100;
