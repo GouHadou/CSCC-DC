@@ -188,7 +188,7 @@ TNT1 A 0 A_GiveInventory("BulkTankActivatorPickup",1,AAPTR_TARGET)
 TNT1 A 0 A_GiveInventory("TanktivatorCooldown",1,AAPTR_TARGET)
 TNT1 A 0 A_GiveInventory("DeactivateTank",1,AAPTR_TARGET)
 TNT1 A 0 A_TakeFromTarget("TankRepairAmmo",10000)
-TNT1 A 0 A_GiveInventory("Tank_OnFootWeakness",1,AAPTR_TARGET)
+//TNT1 A 0 A_GiveInventory("Tank_OnFootWeakness",1,AAPTR_TARGET)
 TNT1 A 0 A_TakeFromTarget("Tank_NotOnFoot",1)
 TNT1 A 0 A_TakeFromTarget("BulkTankDeActivatorPickup",1)
 TNT1 A 1

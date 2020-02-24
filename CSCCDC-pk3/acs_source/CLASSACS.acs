@@ -670,6 +670,49 @@ script "CSACS_Tank_Speedster" (int tid, int tspeed)
 	}
 }
 
+Script "CSACS_Tank_ArmorConvert" (int Version)
+{
+int PlayerResource = checkInventory("TankRepairAmmo");
+int TankArmor = checkInventory("BasicArmor");
+int output;
+Switch(Version)
+	{
+	Case 0:
+	output = ValueMap(PlayerResource,350,1,100,1);
+	//log(i:output);
+	GiveInventory("TankyArmor",output);
+	TakeInventory("TankRepairAmmo",PlayerResource);
+	Break;
+	Case 1:
+	output = ValueMap(TankArmor,100,1,350,1);
+	GiveInventory("TankRepairAmmo",output);
+	TakeInventory("BasicArmor",TankArmor);
+	Break;
+	}
+
+}
+
+Script "CSACS_ArmorHitSensor" (Void)
+{
+int PlayerArmor = checkInventory("BasicArmor");
+int PlayerArmorNow;
+GiveInventory("ArmorHitSensorFlag",1);
+Delay(3);
+
+while(checkInventory("ArmorHitSensorFlag"))
+	{
+		PlayerArmorNow = checkInventory("BasicArmor");
+		if(PlayerArmorNow <= 0){TakeInventory("ArmorHitSensorFlag",99);}
+		if(PlayerArmor != PlayerArmorNow)
+		{
+			GiveInventory("ArmorHitSound",1);
+			PlayerArmor = PlayerArmorNow;
+		}
+	Delay(1);
+	}
+
+}
+
 //Korby
 Script "KorbyBlueMagicAbsorb" (void)
 {
@@ -923,7 +966,7 @@ if(on_self > 0){TargetTID = ActivatorTID();}
 	Else{TargetTID = ACS_ExecuteWithResult(257,0);}
 
 	TargShieldEnergy = CheckActorInventory(TargetTID,"ShieldEnergy");
-	HealthReturn = ValueMap(TargShieldEnergy,350,1,500,1);
+	HealthReturn = ValueMap(TargShieldEnergy,150,1,250,1);
 	//log(i:TargShieldEnergy,s:" to ",i:HealthReturn); 
 SetResultValue(HealthReturn);
 }
@@ -941,7 +984,7 @@ TakeActorInventory(TargetTID,"LightScreenHealth",9999);
 TakeActorInventory(TargetTID,"ShieldEnergy",999);
 if (ScreenHealth > 0)
 	{
-		ShieldReturn = ValueMap(ScreenHealth,500,1,350,1);
+		ShieldReturn = ValueMap(ScreenHealth,250,1,150,1);
 		GiveActorInventory(TargetTID,"ShieldEnergy",ShieldReturn);
 	}
 	Else{GiveActorInventory(TargetTID,"K_ShieldBreak",1);}
