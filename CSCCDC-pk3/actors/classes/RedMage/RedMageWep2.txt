@@ -227,32 +227,33 @@ States
 {
 Spawn:
 TNT1 A 0
+TNT1 A 0 A_GiveInventory("ProjectileCode",1)
 HBEM ABC 1
 Spawn2:
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,0,0)
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,5,0)
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,10,0)
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,15,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,20,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,15,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,10,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,5,0)
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,0,0)
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,-5,0)
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,-10,0)
-HBEM D 1 A_SpawnItemEx("FiraShotFX",0,-15,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-20,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-15,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-10,0)
-HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-5,0)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,0,0,0,0,0,0,1)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,5,0,0,0,0,0,1)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,10,0,0,0,0,0,1)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,15,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,20,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,15,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,10,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,5,0,0,0,0,0,1)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,0,0,0,0,0,0,1)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,-5,0,0,0,0,0,1)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,-10,0,0,0,0,0,1)
+HBEM D 1 A_SpawnItemEx("FiraShotFX",0,-15,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-20,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-15,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-10,0,0,0,0,0,1)
+HBEM E 1 A_SpawnItemEx("FiraShotFX",0,-5,0,0,0,0,0,1)
 loop
 Death:
 TNT1 A 0 A_Stop
 TNT1 A 0 A_PlaySoundEx("weapon/hyperbomb","Voice")
 TNT1 A 0 A_Explode(15,175,0)
 TNT1 A 0 A_SpawnItemEx("OilPitIgnite",0,0,8)
-TNT1 AAA 0 A_SpawnItemEx("FiraSnake",0,0,5,random(-15,15),random(-15,15),random(5,15),random(0,359),32)
-TNT1 AAAA 5 A_SpawnItemEx("FiraExplosion",random(-175,175),random(-175,175),random(-25,100))
+TNT1 AAA 0 A_SpawnItemEx("FiraSnake",0,0,5,random(-15,15),random(-15,15),random(5,15),random(0,359),1) //32
+TNT1 AAAA 5 A_SpawnItemEx("FiraExplosion",random(-175,175),random(-175,175),random(-25,100),0,0,0,0,1)
 stop
 Crash:
 TNT1 A 0 A_PlaySoundEx("weapon/hyperbomb","Voice")
@@ -301,7 +302,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_SpawnItemEx("FiraSnakeFX",0,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("FiraSnakeFX",0,0,0,0,0,0,0,1)
 WABU C 1 A_CountDown
 loop
 }
@@ -331,7 +332,7 @@ Actor FiraShotFX
 +CLIENTSIDEONLY
 -SOLID
 +NOINTERACTION
-Translation "208:209=176:176", "210:215=221:221"
+//Translation "208:209=176:176", "210:215=221:221"
 Renderstyle "Add"
 Radius 4
 Height 4
@@ -390,7 +391,7 @@ Spawn:
 TNT1 A 0
 TNT1 A 0 A_Explode(3,35,0,0,35)
 TNT1 A 0 A_PlaySoundEx("weapon/atomicfire","Soundslot7")
-TNT1 AAAAAAAAAA 0 A_SpawnItemEx("FireSwordFX",random(-18,18),random(-18,18),random(-18,18),0,0,random(1,10))
+TNT1 AAAAAAAAAA 0 A_SpawnItemEx("FireSwordFX",random(-18,18),random(-18,18),random(-18,18),0,0,random(1,10),0,1)
 TNT1 A 1
 stop
 }
