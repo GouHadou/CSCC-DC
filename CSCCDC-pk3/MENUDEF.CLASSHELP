@@ -34,6 +34,7 @@ OptionMenu "ClassInfo"
 	Submenu	    "Gravitron", 		"GravitronInfo"
 	Submenu	    "Natures Wonder", 		"NaturesWonderInfo"
 	Submenu	    "Healmore",		"HealmoreInfo" 
+	Submenu	    "LordDamager",		"LordDamagerInfo" 
 	StaticText ""
 	StaticText"===============================================================",1
 
@@ -93,6 +94,7 @@ OptionValue MegaCSCCWeps
 	13, "\cfIdol Wave - VocalWoman\n\cjSpray a volley of \nmusic notes."
 	14, "\cfZen Sphere - Zen Trainer\n\cjLaunch a mysterious \norb that can latch \nonto foes when held."
 	15, "\cfHybrid Burst - Gee\n\cjCast a healing and \nharming spell in order, \nthe healing spell \nonly affects allies. \nGrants vision of ally \nhealth."
+	16, "\cfSteelPunch - LordDamager\n\cjSlug an opponent with fists of \nsteel."
 	//BubbleArrow
 	//Crystal Wall
 }
@@ -1021,3 +1023,52 @@ OptionValue NaturesWonderWallInfo
 	1, "\cfPrism Wall\n\cjA neigh invulnerable \nwall that cannot be \nripped through and \nreflects damage on \nbeing hit around itself."
 }
 
+OptionMenu "LordDamagerInfo"
+{
+	Title "$LORDDAMAGER_CH_TITLE"
+	StaticText ""
+	StaticText "$LORDDAMAGER_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "LD_ClassHelp_Weapon", "LordDamagerMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$LORDDAMAGER_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_RELOADS", "LD_ClassHelp_Weapon", "LordDamagerReloads"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$LORDDAMAGER_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue LordDamagerMainfires
+{
+	0, "\cfMissile Punch\n\cjFires potent missiles with a \nreservoir of 5 shots before \nneeding to reload."
+	1, "\cfDark Laser\n\cjUnleash a long reaching \nlaser after a brief warmup. \nAmmo restores passively."
+}
+
+OptionValue LordDamagerReloads
+{
+	0, "\cfMissile Punch\n\cjInitiates the reload \nsequence early."
+	1, "\cfDark Laser\n\cjNone."
+}

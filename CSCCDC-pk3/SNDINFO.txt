@@ -216,6 +216,7 @@ vocal/heal ROLLHEA1
 
 //TankOpp
 weapon/HardBuster1 SKULSHOT
+Body/ArmorPain ROCKHURT
 
 //Gee
 $playersound	gee	male	*death		MEGADEAT
@@ -485,3 +486,184 @@ weapon/HardBuster6 DAR3SHO2
 weapon/OrbSpawn CRYSSHOT
 weapon/OrbBounce CRYSBIT
 weapon/AssizeHit FF6HIT
+
+//Devion
+$playeralias	Devion	male	*death		devion/death
+$playeralias	Devion	male	*xdeath		devion/death
+$playeralias	Devion	male	*gibbed		OHKO
+$playeralias	Devion	male	*pain100	devion/hit
+$playeralias	Devion	male	*pain75		devion/hit
+$playeralias	Devion	male	*pain50		devion/hit
+$playeralias	Devion	male	*pain25		devion/hit
+$playersound	Devion	male	*grunt		dsnone
+$playersound	Devion	male	*land		DEVLAND
+$playersound	Devion	male	*jump		dsnone
+$playersound	Devion	male	*fist		dsnone
+$playersound	Devion	male	*usefail	dsnone
+$playeralias	Devion	male	*taunt		devion/taunt
+
+
+$random devion/hit { devion/hit1 devion/hit2 devion/hit3 devion/hit4 devion/hit5 devion/hit6 devion/hit7 devion/hit8 devion/hit9 }
+devion/hit1 DEVHIT1
+devion/hit2 DEVHIT2
+devion/hit3 DEVHIT3
+devion/hit4 DEVHIT4
+devion/hit5 DEVHIT5
+devion/hit6 DEVHIT6
+devion/hit7 DEVHIT7
+devion/hit8 DEVHIT8
+devion/hit9 DEVHIT9
+
+$random devion/death { devion/death1 devion/death2 devion/death3 }
+devion/death1 DEVDETH1
+devion/death2 DEVDETH2
+devion/death3 DEVDETH3
+
+$random devion/taunt { devion/taunt1 devion/taunt2 devion/taunt3 devion/taunt4 devion/taunt5 }
+devion/taunt1 DEVTNT1
+devion/taunt2 DEVTNT2
+devion/taunt3 DEVTNT3
+devion/taunt4 DEVTNT4
+devion/taunt5 DEVTNT5
+
+devion/punchreturn DEVRET
+devion/midpunch DEVMFIT
+devion/chargepunch DEVCHG
+devion/punch DEVPUN
+devion/explode DEVEXP
+devion/dash DEVDASH
+devion/dead DEVDEAD
+devion/shockwave DEVSHO
+devion/punchhit DEVPHIT
+devion/punch1 DEVPUN1
+devion/punch2 DEVPUN2
+devion/fistwarn DEVFIST
+devion/charge1 DEVCHG1
+devion/charge2 DEVCHG2
+devion/charge3 DEVCHG3
+devion/gigafist DEVGFIST
+devion/explosion DEVEXPL
+devion/block DEVBLO
+devion/kenshiro DEVFNOS
+already/dead DEVYAD
+devion/echarge DECHG
+devion/efcharge DEFCHG
+devion/teleport DTELEP
+devion/ultexplode DUTEXP
+devion/fever DFEVR
+devion/gigacharge DGICHG
+devion/gigacrush DGICRU
+
+sf2/dead SF2DIE
+sf3/super SF3SUP
+sf3/shit SF3HIT
+sf3/knockout SF3KO
+sf3/win SF3WIN
+ryu/shoryuken RYUSHO
+ryu/kek1 RYUTS1
+ryu/kek2 RYUTS2
+
+//RedMage
+$playersound	RMAGE	male	*death		MEGADEAT
+$playersound	RMAGE	male	*xdeath		MEGADEAT
+$playersound	RMAGE	male	*gibbed		OHKO
+$playersound	RMAGE	male	*pain100	MEGAPAIN
+$playersound	RMAGE	male	*pain75		MEGAPAIN
+$playersound	RMAGE	male	*pain50		MEGAPAIN
+$playersound	RMAGE	male	*pain25		MEGAPAIN
+$playersound	RMAGE	male	*grunt		dsnone
+$playersound	RMAGE	male	*land		LAND
+$playersound	RMAGE	male	*jump		dsnone
+$playersound	RMAGE	male	*fist		dsnone
+$playersound	RMAGE	male	*usefail	dsnone
+$playersound	RMAGE	male	*taunt		RMAGTAUT
+
+pickup/redmage REDMGET
+weapon/heattacklestart HEATACKL
+weapon/ff6holy HOLY
+RagingSage/Finish RGDEMON
+RagingSage/Active RGACTIVE
+RagingSage/Dash RGDASH
+RagingSage/Hit RGHIT
+
+Rin/Kouhadou KOHADO
+weapon/ncrush3 NCRUSH3
+weapon/ncrushfinal NCRUSH4
+
+dialga/roaroftime TIMEROAR
+dialga/cry DLGATNT
+palkia/cry PALKTNT
+weapon/BNBubbleBurst BNBUBBL2
+nuclear/start NUCSTAT
+nuclear/boom NUCBOOM
+weapon/BNSwordSwing BNSWORD
+weapon/BNLSwordSwing BNSWORD2
+tails/bombexpl TABEXPL
+
+//Daveris 
+$playersound	davesfx	male	*death		MEGADEAT
+$playersound	davesfx	male	*xdeath		MEGADEAT
+$playersound	davesfx	male	*gibbed		MEGADEAT
+$playersound	davesfx	male	*pain100	MEGAPAIN
+$playersound	davesfx	male	*pain75		MEGAPAIN
+$playersound	davesfx	male	*pain50		MEGAPAIN
+$playersound	davesfx	male	*pain25		MEGAPAIN
+$playersound	davesfx	male	*grunt		LAND
+$playersound	davesfx	male	*land		LAND
+$playersound	davesfx	male	*fist		dsnone
+$playersound	davesfx	male	*usefail	LAND
+$playersound	davesfx	male	*taunt		DAVETAUN
+
+weapon/icebreath	ICEBREAT
+weapon/fmortarshot		CANON
+weapon/fmortarbreak		ICEWSTA
+weapon/ifreeze			ICESHOTC	
+weapon/ibreak			ICEWBRAK
+weapon/ifly				SHDEDIVE
+weapon/crashland		NAPALMB
+item/wingfly			habataki
+
+//Jax
+$playersound	jaxclass	male	*death		MEGADEAT
+$playersound	jaxclass	male	*xdeath		MEGADEAT
+$playersound	jaxclass	male	*gibbed		MEGADEAT
+$playersound	jaxclass	male	*pain100	MEGAPAIN
+$playersound	jaxclass	male	*pain75		MEGAPAIN
+$playersound	jaxclass	male	*pain50		MEGAPAIN
+$playersound	jaxclass	male	*pain25		MEGAPAIN
+$playersound	jaxclass	male	*grunt		LAND
+$playersound	jaxclass	male	*land		LAND
+$playersound	jaxclass	male	*fist		dsnone
+$playersound	jaxclass	male	*usefail	LAND
+$playersound	jaxclass	male	*taunt		JAXTAU
+
+//LordDamager
+$playeralias	lorddc	male	*death		lordd/death1
+$playeralias	lorddc	male	*xdeath		lordd/death1
+$playeralias	lorddc	male	*gibbed		lordd/death1
+$playersound	lorddc	male	*pain100	MEGAPAIN
+$playersound	lorddc	male	*pain75		MEGAPAIN
+$playersound	lorddc	male	*pain50		MEGAPAIN
+$playersound	lorddc	male	*pain25		MEGAPAIN
+$playersound	lorddc	male	*grunt		YDSTOMP
+$playersound	lorddc	male	*land		YDSTOMP
+$playersound	lorddc	male	*jump		dsnone
+$playersound	lorddc	male	*fist		dsnone
+$playersound	lorddc	male	*usefail	dsnone
+$playeralias	lorddc	male	*taunt		LordD/Taunt
+
+lordd/death1 LDDED1
+lordd/death2 LDDED2
+$random LordD/Death { LordD/Death1 LordD/Death2 }
+
+LordD/Stun LDSTN1
+
+LordD/Taunt1 LDTAU1
+LordD/Taunt2 LDTAU2
+LordD/Taunt3 LDTAU3
+LordD/Taunt4 LDTAU4
+LordD/Taunt5 LDTAU5
+LordD/Taunt6 LDTAU6
+LordD/Taunt7 LDTAU7
+LordD/Taunt8 LDTAU8
+$random LordD/Taunt {LordD/Taunt1 LordD/Taunt2 LordD/Taunt3 LordD/Taunt4 LordD/Taunt5 LordD/Taunt6 LordD/Taunt7 LordD/Taunt8}

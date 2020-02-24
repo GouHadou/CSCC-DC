@@ -1,0 +1,974 @@
+actor RedMageDiaraWep : CSCCWepBase
+{
+Tag "Diara"
+Weapon.AmmoUse 0
+Weapon.AmmoGive 0
+Weapon.SlotNumber 1
+Obituary "%o was outsmarted by %k's Red Magic arts."
+Inventory.Pickupmessage "Spell learned: Diara!"
+weapon.ammotype "RedMageMana"
+weapon.ammotype2 "RedMagePower"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
+inventory.icon "DIARI0"
+Scale 2.0
+States
+{
+Spawn:
+WEA4 F 1
+loop
+Ready:
+RMHD A 1 A_JumpIfInventory("StarActive",1,1)
+RMHD A 0 ACS_ExecuteAlways(991,0,DYE_REDMAGE)
+RMHD A 0 A_TakeInventory("IsDead",999)
+RMHD A 1 A_GunFlash
+RMHD A 0 A_TakeInventory("ExistCount",999)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 A_TakeInventory("User2_Trigger",999)
+RMHU AAA 1 A_WeaponReady
+RMHD A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"SFCheck1")
+RMHD A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User2) == True,"ReshuffleCheck")
+RMHD A 0 A_GiveInventory("RedMageMana",2)
+Goto Ready+7
+SFCheck1:
+//RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak")
+RMHD A 0 A_TakeInventory("User1_Trigger",99)
+goto Ready+11
+ReshuffleCheck:
+RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+7
+ReshufflePlease:
+RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
+RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+12
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+RMHD A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+RMHD A 1 A_Raise
+Loop
+Flash:
+TNT1 A 3
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"FSFlash")
+TNT1 A 0 A_JumpIfInventory("PowerQuickSpell",1,"QuickFlash")
+TNT1 A 0 A_GiveInventory("RedMagePower",30) // 3
+TNT1 A 0 A_GiveInventory("SpellFusionPower",3)
+loop
+QuickFlash:
+TNT1 A 3
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"QuickFSFlash")
+TNT1 A 0 A_GiveInventory("RedMagePower",40) //4
+TNT1 A 0 A_GiveInventory("SpellFusionPower",4)
+TNT1 A 0 A_SpawnItemEx("SlowEffect",random(-24,24),random(-24,24),random(-24,24),random(-5,5),random(-5,5),random(-5,5),0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_JumpIfInventory("PowerQuickSpell",1,"QuickFlash")
+goto Flash
+FSFlash:
+TNT1 A 0 A_JumpIfInventory("PowerQuickSpell",1,"QuickFlash")
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageA",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageB",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageA",-16,0,0)
+TNT1 A 0 A_GiveInventory("RedMagePower",3)
+TNT1 A 0 A_GiveInventory("SpellFusionPower",2)
+TNT1 A 0 A_JumpIfInventory("PowerQuickSpell",1,"QuickFlash")
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageB",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageA",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageB",-16,0,0)
+TNT1 A 0 A_GiveInventory("RedMagePower",3)
+TNT1 A 0 A_GiveInventory("SpellFusionPower",2)
+TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"FSFlash")
+goto Flash
+QuickFSFlash:
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageA",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageB",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageA",-16,0,0)
+TNT1 A 0 A_GiveInventory("RedMagePower",4)
+TNT1 A 0 A_GiveInventory("SpellFusionPower",4)
+TNT1 A 0 A_SpawnItemEx("SlowEffect",random(-24,24),random(-24,24),random(-24,24),random(-5,5),random(-5,5),random(-5,5),0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageB",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageA",-16,0,0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
+TNT1 A 1 A_SpawnItemEx("RMImageB",-16,0,0)
+TNT1 A 0 A_GiveInventory("RedMagePower",4)
+TNT1 A 0 A_GiveInventory("SpellFusionPower",4)
+TNT1 A 0 A_SpawnItemEx("SlowEffect",random(-24,24),random(-24,24),random(-24,24),random(-5,5),random(-5,5),random(-5,5),0,SXF_NOCHECKPOSITION)
+TNT1 A 0 A_JumpIfInventory("PowerQuickSpell",1,"QuickFSFlash")
+goto Flash
+FlashStop:
+TNT1 A 1
+stop
+Fire:
+RMSW A 0 A_JumpIfInventory("IceCloakActive",1,"Decloak")
+RMSW A 0 A_JumpIfInventory("FissionWaveFlag",1,"FissionStop")
+RMSW A 0 A_JumpIfInventory("SmashFlag",1,"MPBurst")
+RMSW A 0 A_JumpIfInventory("MagicBladeFusionPower",1,"MagicBladeAttack")
+RMSW A 0 A_JumpIfInventory("FlameTongueFusionPower",1,"FlameTongueAttack")
+RMSW A 0 A_JumpIfInventory("HydroBladeFusionPower",1,"HydroBladeAttack")
+RMSW A 0 A_JumpIfInventory("FalchionFusionPower",1,"FalchionAttack")
+RMSW A 0 A_JumpIfInventory("IceBrandFusionPower",1,"IceBrandAttack")
+RMSW A 0 A_JumpIfInventory("TBladeFusionPower",1,"TBladeAttack")
+RMSW A 0 A_JumpIfInventory("TemperEffect",1,"Fire2")
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+RMSW A 0 A_FireCustomMissile("SwordSlash",0,0,8,0) 
+RMSW ABCD 2
+RMSW EF 1 
+TNT1 A 6
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+Fire2:
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+RMSW A 0 A_FireCustomMissile("SwordSlash2",0,0,8,0) 
+RMSW ABC 2
+RMSW DEF 1 
+TNT1 A 4
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+FlameTongueAttack:
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("weapon/flamesword","Weapon")
+RMSW A 0 A_FireCustomMissile("FlameTongueSlash",0,0,8,0)
+RMSW A 0 A_FireCustomMissile("FlameTongueShot",15,0,-12,0) 
+RMSW A 0 A_FireCustomMissile("FlameTongueShot",0,0,0,0) 
+RMSW A 0 A_FireCustomMissile("FlameTongueShot",-15,0,12,0)
+RMSW ABC 2
+RMSW DEF 1
+TNT1 A 4
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+HydroBladeAttack:
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("misc/waterslide","Weapon")
+RMSW A 0 A_FireCustomMissile("HydroBladeSlash",0,0,8,0)
+RMSW AA 0 A_FireCustomMissile("HydroBladeShot",random(-25,25),0,8,0,0,random(-5,5)) 
+RMSW ABC 2
+RMSW DEF 1
+TNT1 A 5
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+MagicBladeAttack:
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+RMSW A 0 A_FireCustomMissile("MagicBladeAttack",0,0,8,0)
+RMSW ABC 2
+RMSW DEF 1
+TNT1 A 5
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+FalchionAttack:
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("weapon/superboost","Weapon")
+RMSW A 0 A_FireCustomMissile("FalchionSlash",0,0,8,0)
+RMSW A 0 A_FireCustomMissile("FalchionShot",0,0,8,0) 
+RMSW ABC 2
+RMSW DEF 1
+TNT1 A 10
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+IceBrandAttack:
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+RMSW A 0 A_FireCustomMissile("IceBrandSlash",0,0,8,0)
+RMSW A 0 A_FireCustomMissile("IceBrandShot",0,0,8,0)
+RMSW ABC 2
+RMSW DEF 1
+TNT1 A 10
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+TBladeAttack:
+RMSW A 0 A_GiveInventory("RMSwordFlag",1)
+RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
+RMSW A 0 A_FireCustomMissile("TBladeSlash",0,0,8,0)
+RMSW A 0 A_FireCustomMissile("TBladeShot",0,0,8,0)
+RMSW ABC 2
+RMSW DEF 1
+TNT1 A 8
+RMSW A 0 A_TakeInventory("RMSwordFlag",1)
+RMSW A 0 A_Refire
+goto Ready+5
+FissionStop:
+RMHD D 0 A_TakeInventory("User1_Trigger",999)
+RMHD D 0 A_TakeInventory("FissionWaveFlag",99)
+RMHD CB 2
+goto Ready+5
+IceCloakLoop:
+RMHD A 0 A_TakeInventory("User1_Trigger",99) //Trying to prevent premature ending due to holding the button for too long
+RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
+RMHU A 1 A_WeaponReady(WRF_NOSWITCH)
+RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
+RMHU A 1 A_WeaponReady(WRF_NOSWITCH)
+RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
+RMHU A 1 A_WeaponReady(WRF_NOSWITCH)
+RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
+RMHU A 1 A_WeaponReady(WRF_NOSWITCH)
+RMHD A 0 A_JumpIfInventory("User1_Trigger",1,"Decloak")
+RMHD A 0 A_JumpIf(ACS_ExecuteWithResult(975,1)==1,4)
+//RMHU A 0 A_SpawnItemEx("IceCloakFX",random(-24,24),random(-24,24),random(0,44),momx,momy,momz,0,0,0)
+RMHD A 1 A_TakeInventory("RedMageMana",1)
+RMHD A 0 A_JumpIfInventory("RedMageMana",1,"IceCloakLoopState")
+goto Decloak
+RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
+RMHD A 1 A_TakeInventory("RedMageMana",1)
+RMHD A 0 A_JumpIfInventory("RedMageMana",1,"IceCloakLoopState")
+goto Decloak
+IceCloakLoopState:
+goto IceCloakLoop+1
+Decloak:
+RMHD A 0 A_TakeInventory("IceCloakActive",99)
+RMHD A 0 A_GiveInventory("IceCloakFlag",1)
+RMHD A 0 A_PlaySoundEx("glace/shield","Weapon")
+RMHD A 0 A_ChangeFlag("CANTSEEK",0)
+RMHD A 0 A_ChangeFlag("THRUACTORS",1)
+RMHD A 0 SetPlayerProperty(0,1,4)
+RMHD A 0 A_Stop
+RMHD A 0 A_ScaleVelocity(0.0)
+RMKK C 1 A_SetTranslucent(0.2) RMKK C 1 A_SetTranslucent(0.4) RMKK B 1 A_SetTranslucent(0.6)
+RMKK B 1 A_SetTranslucent(0.8) RMKK B 1 A_SetTranslucent(1.0)
+RMHD A 0 A_PlaySoundEx("weapon/tengudash","Voice")
+RMKK A 0 A_ChangeVelocity(95,0,0,CVF_RELATIVE|CVF_REPLACE)
+RMKK AAAAAAAAAA 2 A_FireCustomMissile("IceCloakKick",0,0,8,0)
+RMKK AAAAA 1 A_FireCustomMissile("IceCloakKick",0,0,8,0)
+RMHD A 0 A_ChangeFlag("THRUACTORS",0)
+RMHD A 0 SetPlayerProperty(0,0,4)
+RMHD A 0 A_TakeInventory("IceCloakFlag",99)
+RMKK BC 2
+RMHU A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
+goto Ready+4
+Altfire:
+RMHD A 0 A_JumpIfInventory("LastStandPower",1,"DiaFree")
+RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"DiaFree")
+RMHD A 0 A_JumpIfInventory("RedMageMana",2,"DiaUse")
+Goto Ready+5
+DiaFree:
+goto DiaUse+1
+DiaUse:
+RMHD B 0 A_TakeInventory("RedMageMana",2)
+RMHD BC 2
+RMHD D 0 A_Jump(64,"FastBlasting")
+RMHD D 0 A_PlaySoundEX("weapon/mirrordeflect2","Weapon")
+RMHD D 10 A_FireCustomMissile("DiaraShot",0,0,8,0)
+RMHU A 0 A_Refire
+RMHD CB 2
+goto Ready+5
+FastBlasting:
+RMHD C 2
+RMHD D 0 A_PlaySoundEX("weapon/mirrordeflect2","Weapon")
+RMHD D 2 A_FireCustomMissile("DiaraShot",0,0,8,0)
+RMHD D 0 A_PlaySoundEX("weapon/mirrordeflect2", "Weapon")
+RMHD D 2 A_FireCustomMissile("DiaraShot",random(-7,7),0,8,0)
+RMHD D 0 A_PlaySoundEX("weapon/mirrordeflect2", "Weapon")
+RMHD D 2 A_FireCustomMissile("DiaraShot",random(-7,7),0,8,0)
+RMHU A 0 A_Refire
+RMHD CB 2
+goto Ready+5
+MPBurst:
+TNT1 A 0 A_TakeInventory("SmashFlag",999)
+RMHU A 0 SetPlayerProperty(0,2,5)
+RMHD BC 3
+RMHU A 0 A_PlaySoundEx("RagingSage/Active","Weapon")
+RMHD D 35
+RMHD D 0 A_GiveInventory("MPBurstEnergy",525)
+RMHD D 0 A_GiveInventory("MPBurstBoost",1)
+RMHD D 0 A_SpawnItemEx("MPBurstWatcher",0,0,28)
+RMHD CB 3
+RMHU A 0 SetPlayerProperty(0,0,5)
+goto Ready+5
+NoAmmo:
+RMHD A 1 ACS_Execute(979,0)
+Goto Ready+5
+}
+}
+
+Actor MPBurstEnergy : Inventory{inventory.amount 1 inventory.maxamount 525 +INVENTORY.IGNORESKILL}
+Actor MPBurstBoost : PowerDamage{DamageFactor "Normal", 1.3 powerup.duration 0x7FFFFFFF}
+Actor SmashFlag2 : Inventory{inventory.amount 1 inventory.maxamount 1}
+Actor RedMageMana : Ammo{Inventory.MaxAmount 64 +INVENTORY.IGNORESKILL}
+Actor RedMagePower : Ammo{Inventory.amount 1 Inventory.maxamount 200 +INVENTORY.IGNORESKILL}
+Actor SpellFusionPower : Ammo{Inventory.amount 1 Inventory.maxamount 300 +INVENTORY.IGNORESKILL}
+
+Actor MPBurstWatcher
+{
++NOINTERACTION
++NOCLIP
+-SOLID
++MISSILE
+radius 1
+height 1
++NOGRAVITY
++DONTBLAST
+Scale 1.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_TakeFromTarget("MPBurstEnergy",1)
+TNT1 A 0 A_JumpIfInTargetInventory("MPBurstEnergy",1,"Spawn")
+goto Death
+Death:
+TNT1 A 0 A_TakeFromTarget("MPBurstBoost",1)
+TNT1 A 1
+stop
+}
+}
+
+Actor SwordSlash : SlashClaw
+{
+Speed 18
+Translation "210:210=203:203", "105:105=204:204", "211:215=205:205"
+Obituary "%k diced up %o real good for tonight's salad."
+States
+{
+Spawn:
+SCLA H 0
+SCLA HIJ 2 A_Explode(6,100,0)
+SCLA KL 1 A_Explode(6,100,0)
+Stop
+}
+}
+
+Actor SwordSlash2 : SlashClaw
+{
+Speed 20
+Translation "208:209=176:176", "210:210=184:184", "105:105=178:178", "168:168=176:176", "211:215=180:180"
+Obituary "%k held %o up with their Tempered Sword."
+States
+{
+Spawn:
+SCLA H 0
+SCLA HIJK 2 A_Explode(8,105,0)
+SCLA L 0 A_SetTranslucent(0.7)
+SCLA L 1 A_Explode(5,105,0)
+SCLA L 0 A_SetTranslucent(0.4)
+SCLA L 1 A_Explode(5,105,0)
+Stop
+}
+}
+
+Actor DiaraShot : MegaShot
+{
+-DONTBLAST
+Speed 40
+Radius 12
+Height 12
+Damage(9)
+RenderStyle Add
+DamageType "Diara"
+Obituary "%o was smited by %k's Diara."
+Translation "199:199=167:167", "198:198=166:166", "197:197=165:165", "196:196=164:164", "80:80=163:163", "4:4=162:162", "208:208=164:164", "168:168=164:164"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("ProjectileCode",1)
+Spawn2:
+TNT1 A 0
+DIRA A 1 
+GoTo Spawn2+1
+Death:
+MMFX BCDE 1
+Stop
+}
+}
+
+Actor RMSwordFlag : Inventory {Inventory.MaxAmount 1}
+
+actor FlareSpawner
+{
+PROJECTILE
++DONTBLAST
++THRUGHOST
++DONTREFLECT
++DONTSPLASH
+Damagetype "Flare"
+Obituary "%o was burnt out by %k's Flare Magic."
+Renderstyle "Add"
+Speed 45
+Damage(65)
+radius 16
+height 16
+scale 4.0
+Reactiontime 10
+States
+{
+Spawn:
+TNT1 A 0
+FIRE ABC 1 A_SpawnItemEx("FlareEffect",-12,random(-8,8),random(-8,8),random(-10,10),random(-10,10),random(-10,10))
+FIRE A 0 A_ScaleVelocity(1.2)
+TNT1 A 0 A_Countdown
+goto Spawn+1
+Death:
+TNT1 A 0 A_SpawnItemEx("FlareSpawner2")
+TNT1 A 1 A_SpawnItemEx("FlareExplosionFX",0,0,3)
+stop
+}
+}
+
+Actor FlareSpawner2
+{
+PROJECTILE
++DONTBLAST
++THRUGHOST
++RIPPER
++DONTSPLASH
+Damagetype "Flare"
+var int user_flaredamage;
+var int user_flaresize;
+Obituary "%o was nuked by %k's Flare Magic."
+Damage(0)
+Speed 0
+Scale 3.0
+Radius 4
+Height 4
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AAA 1 A_SpawnItemEx("FlareFX",random(-250,250),random(-250,250),random(10,25),0,0,random(15,50))
+TNT1 A 2 A_SpawnItemEx("FlareFX",random(-250,250),random(-250,250),random(10,25),0,0,random(15,50))
+TNT1 A 0 A_SetUserVar("user_flaredamage",75)
+TNT1 A 0 A_SetUserVar("user_flaresize",100)
+Spawn2:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",10,"Spawn3")
+TNT1 A 0 Radius_Quake(2,15,0,50,0)
+TNT1 A 0 A_Explode(user_flaredamage,user_flaresize,0)
+TNT1 A 0 A_SetUserVar("user_flaredamage",user_flaredamage+5) //Flare damage was untouched
+TNT1 A 0 A_SetUserVar("user_flaresize",user_flaredamage+5) //Just keep an eye out ~Bika
+TNT1 AAA 1 A_SpawnItemEx("FlareFX",random(-250,250),random(-250,250),random(10,25),0,0,random(15,50))
+TNT1 A 2 A_SpawnItemEx("FlareFX",random(-250,250),random(-250,250),random(10,25),0,0,random(15,50))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+loop
+Spawn3:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",20,"Spawn4")
+TNT1 A 0 Radius_Quake(4,15,0,75,0)
+TNT1 A 0 A_Explode(user_flaredamage,user_flaresize,0)
+TNT1 A 0 A_SetUserVar("user_flaredamage",user_flaredamage+10)
+TNT1 A 0 A_SetUserVar("user_flaresize",user_flaredamage+10)
+TNT1 AAA 1 A_SpawnItemEx("FlareFX",random(-400,400),random(-400,400),random(10,25),0,0,random(15,50))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+loop
+Spawn4:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",50,"Death")
+TNT1 A 0 Radius_Quake(6,15,0,100,0)
+TNT1 A 0 A_Explode(user_flaredamage,user_flaresize,0)
+TNT1 A 0 A_SetUserVar("user_flaredamage",user_flaredamage+15)
+TNT1 A 0 A_SetUserVar("user_flaresize",user_flaredamage+15)
+TNT1 AA 0 A_SpawnItemEx("FlareExplosion",random(-1150,1150),random(-1150,1150),random(25,100))
+TNT1 AAA 0 A_SpawnItemEx("FlareFX",random(-600,600),random(-600,600),random(10,25),0,0,random(15,50))
+TNT1 A 1 A_SpawnItemEx("FlareFX",random(-600,600),random(-600,600),random(10,25),0,0,random(15,50))
+TNT1 AAA 0 A_SpawnItemEx("FlareFX",random(-600,600),random(-600,600),random(10,25),0,0,random(15,50))
+TNT1 A 1 A_SpawnItemEx("FlareFX",random(-600,600),random(-600,600),random(10,25),0,0,random(15,50))
+TNT1 AAA 0 A_SpawnItemEx("FlareFX",random(-600,600),random(-600,600),random(10,25),0,0,random(15,50))
+TNT1 A 1 A_SpawnItemEx("FlareFX",random(-600,600),random(-600,600),random(10,25),0,0,random(15,50))
+TNT1 A 0 A_GiveInventory("CutterFlag",1)
+loop
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor FlareEffect : LightningStartFX1
+{
++CLIENTSIDEONLY
+States
+{
+Spawn:
+TNT1 A 0
+WABU ABCD 2 A_Fadeout(0.2)
+Wait
+}
+}
+
+Actor FlareFX : FlareEffect
+{
+States
+{
+Spawn:
+FSWD D 0
+FSWD D 0 A_PlaySoundEx("weapon/flamesword","Voice")
+FSWD DEF 2 A_Fadeout(0.1)
+goto Spawn+2
+}
+}
+
+Actor FlareExplosion : BasicExplosion//TestExplosion
+{
++THRUGHOST
++DONTREFLECT
+Obituary "%o experienced the extreme nuking energy of %k's Flare Magic."
+Translation "208:213=176:176", "214:215=220:220", "168:168=176:176", "4:4=220:220"
+Damage(0)
+Scale 3.0
+States
+{
+Spawn:
+ASEX A 0
+ASEX A 0 A_PlaySoundEx("misc/mm3explosion","Weapon")
+ASEX A 0 A_Explode(10,250,0,0,65)
+ASEX ABCDEF 2
+stop
+}
+}
+
+Actor FlareExplosionFX
+{
+PROJECTILE
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
++DONTSPLASH
+Renderstyle "Add"
+Translation "208:215=227:227", "4:4=227:227"
+var int user_flarefxsize;
+Damage(0)
+Radius 2
+Height 2
+Scale 1.0
+States
+{
+Spawn:
+TNT1 A 0
+ASEX A 1 A_SetScale(1.25) ASEX A 1 A_SetScale(1.5) ASEX A 1 A_SetScale(1.75) ASEX A 1 A_SetScale(2.0)
+ASEX A 1 A_SetScale(2.25) ASEX A 1 A_SetScale(2.5) ASEX A 1 A_SetScale(2.75) ASEX A 1 A_SetScale(3.0)
+ASEX A 1 A_SetScale(3.25) ASEX A 1 A_SetScale(3.5) ASEX A 1 A_SetScale(3.75) ASEX A 1 A_SetScale(4.0)
+ASEX A 1 A_SetScale(4.25) ASEX A 1 A_SetScale(4.5) ASEX A 1 A_SetScale(4.75) ASEX A 1 A_SetScale(5.0)
+ASEX A 1 A_SetScale(5.25) ASEX A 1 A_SetScale(5.5) ASEX A 1 A_SetScale(5.75) ASEX A 1 A_SetScale(6.0)
+ASEX A 1 A_SetScale(6.25) ASEX A 1 A_SetScale(6.5) ASEX A 1 A_SetScale(6.75) ASEX A 1 A_SetScale(7.0)
+ASEX A 1 A_SetScale(7.25) ASEX A 1 A_SetScale(7.5) ASEX A 1 A_SetScale(7.75) ASEX A 1 A_SetScale(8.0)
+ASEX A 1 A_SetScale(8.25) ASEX A 1 A_SetScale(8.5) ASEX A 1 A_SetScale(8.75) ASEX A 1 A_SetScale(9.0)
+ASEX A 1 A_SetScale(9.25) ASEX A 1 A_SetScale(9.5) ASEX A 1 A_SetScale(9.75) ASEX A 1 A_SetScale(10.0)
+ASEX A 1 A_SetScale(10.25) ASEX A 1 A_SetScale(10.5) ASEX A 1 A_SetScale(10.75) ASEX A 1 A_SetScale(11.0)
+ASEX A 1 A_SetScale(11.25) ASEX A 1 A_SetScale(11.5) ASEX A 1 A_SetScale(11.75) ASEX A 1 A_SetScale(12.0)
+ASEX A 1 A_SetScale(12.25) ASEX A 1 A_SetScale(12.5) ASEX A 1 A_SetScale(12.75) ASEX A 1 A_SetScale(13.0)
+ASEX A 1 A_SetScale(13.25) ASEX A 1 A_SetScale(13.5) ASEX A 1 A_SetScale(13.75) ASEX A 1 A_SetScale(14.0)
+ASEX A 1 A_SetScale(14.25) ASEX A 1 A_SetScale(14.5) ASEX A 1 A_SetScale(14.75) ASEX A 1 A_SetScale(15.0)
+ASEX A 1 A_SetScale(15.25) ASEX A 1 A_SetScale(15.5) ASEX A 1 A_SetScale(15.75) ASEX A 1 A_SetScale(16.0)
+ASEX A 1 A_SetScale(16.25) ASEX A 1 A_SetScale(16.5) ASEX A 1 A_SetScale(16.75) ASEX A 1 A_SetScale(17.0)
+ASEX A 1 A_SetScale(17.25) ASEX A 1 A_SetScale(17.5) ASEX A 1 A_SetScale(17.75) ASEX A 1 A_SetScale(18.0)
+ASEX A 1 A_SetScale(18.25) ASEX A 1 A_SetScale(18.5) ASEX A 1 A_SetScale(18.75) ASEX A 1 A_SetScale(19.0)
+ASEX A 1 A_SetScale(19.25) ASEX A 1 A_SetScale(19.5) ASEX A 1 A_SetScale(19.75) ASEX A 1 A_SetScale(20.0)
+ASEX A 1 A_SetScale(20.25) ASEX A 1 A_SetScale(20.5) ASEX A 1 A_SetScale(20.75) ASEX A 1 A_SetScale(21.0)
+ASEX A 1 A_SetScale(21.25) ASEX A 1 A_SetScale(21.5) ASEX A 1 A_SetScale(21.75) ASEX A 1 A_SetScale(22.0)
+ASEX A 1 A_SetScale(22.25) ASEX A 1 A_SetScale(22.5) ASEX A 1 A_SetScale(22.75) ASEX A 1 A_SetScale(23.0)
+ASEX A 1 A_SetScale(23.25) ASEX A 1 A_SetScale(23.5) ASEX A 1 A_SetScale(23.75) ASEX A 1 A_SetScale(24.0)
+ASEX A 1 A_SetScale(24.25) ASEX A 1 A_SetScale(24.5) ASEX A 1 A_SetScale(24.75) ASEX A 1 A_SetScale(25.0)
+ASEX A 1 A_SetScale(25.25) ASEX A 1 A_SetScale(25.5) ASEX A 1 A_SetScale(25.75) ASEX A 1 A_SetScale(26.0)
+ASEX A 1 A_SetScale(26.25) ASEX A 1 A_SetScale(26.5) ASEX A 1 A_SetScale(26.75) ASEX A 1 A_SetScale(27.0)
+ASEX A 1 A_SetScale(27.25) ASEX A 1 A_SetScale(27.5) ASEX A 1 A_SetScale(27.75) ASEX A 1 A_SetScale(28.0)
+ASEX A 1 A_SetScale(28.25) ASEX A 1 A_SetScale(28.5) ASEX A 1 A_SetScale(28.75) ASEX A 1 A_SetScale(29.0)
+ASEX A 1 A_SetScale(29.25) ASEX A 1 A_SetScale(29.5) ASEX A 1 A_SetScale(29.75) ASEX A 1 A_SetScale(30.0)
+ASEX A 1 A_SetScale(30.25) ASEX A 1 A_SetScale(30.5) ASEX A 1 A_SetScale(30.75) ASEX A 1 A_SetScale(31.0)
+ASEX A 1 A_SetScale(31.25) ASEX A 1 A_SetScale(31.5) ASEX A 1 A_SetScale(31.75) ASEX A 1 A_SetScale(32.0)
+ASEX A 1 A_SetScale(32.25) ASEX A 1 A_SetScale(32.5) ASEX A 1 A_SetScale(32.75) ASEX A 1 A_SetScale(33.0)
+ASEX A 1 A_SetScale(33.25) ASEX A 1 A_SetScale(33.5) ASEX A 1 A_SetScale(33.75) ASEX A 1 A_SetScale(34.0)
+ASEX A 1 A_SetScale(34.25) ASEX A 1 A_SetScale(34.5) ASEX A 1 A_SetScale(34.75) ASEX A 1 A_SetScale(35.0)
+ASEX A 1 A_SetScale(35.25) ASEX A 1 A_SetScale(35.5) ASEX A 1 A_SetScale(35.75) ASEX A 1 A_SetScale(36.0)
+ASEX A 1 A_SetScale(36.25) ASEX A 1 A_SetScale(36.5) ASEX A 1 A_SetScale(36.75) ASEX A 1 A_SetScale(37.0)
+ASEX A 1 A_SetScale(37.25) ASEX A 1 A_SetScale(37.5) ASEX A 1 A_SetScale(37.75) ASEX A 1 A_SetScale(38.0)
+ASEX A 1 A_SetScale(38.25) ASEX A 1 A_SetScale(38.5) ASEX A 1 A_SetScale(38.75) ASEX A 1 A_SetScale(39.0)
+ASEX A 1 A_SetScale(39.25) ASEX A 1 A_SetScale(39.5) ASEX A 1 A_SetScale(39.75) ASEX A 1 A_SetScale(40.0)
+ASEX A 1 A_SetScale(40.25) ASEX A 1 A_SetScale(40.5) ASEX A 1 A_SetScale(40.75) ASEX A 1 A_SetScale(41.0)
+ASEX A 1 A_SetScale(41.25) ASEX A 1 A_SetScale(41.5) ASEX A 1 A_SetScale(41.75) ASEX A 1 A_SetScale(42.0)
+ASEX A 1 A_SetScale(42.25) ASEX A 1 A_SetScale(42.5) ASEX A 1 A_SetScale(42.75) ASEX A 1 A_SetScale(43.0)
+ASEX A 1 A_SetScale(43.25) ASEX A 1 A_SetScale(43.5) ASEX A 1 A_SetScale(43.75) ASEX A 1 A_SetScale(44.0)
+ASEX A 1 A_SetScale(44.25) ASEX A 1 A_SetScale(44.5) ASEX A 1 A_SetScale(44.75) ASEX A 1 A_SetScale(45.0)
+Death:
+ASEX A 3 A_Fadeout(0.13)
+loop
+}
+}
+
+Actor HolySpawnerPinpoint : FastProjectile //I am NOT babying people who fire this at the sky; your own fault if you do it.
+{
+PROJECTILE
++DONTBLAST
++RIPPER
++THRUGHOST
++DONTREFLECT
+Renderstyle "Add"
+Translation "93:93=80:80", "229:229=92:92"
+Speed 350
+Radius 8
+Height 8
+Damage(0)
+Scale 2.5
+States
+{
+Spawn:
+TNT1 A 2
+loop
+Death:
+TNT1 A 0 A_Stop
+LBFX KL 4
+LBFX M 2
+TNT1 A 0 A_SpawnItemEx("HolySpawner",0,0,550,0,0,-10,0,SXF_NOCHECKPOSITION)
+TNT1 A 1 A_SpawnItemEx("HolySoundFX",0,0,8,0,0,0,0,SXF_NOCHECKPOSITION) //I opted to stick the sound source here so it doesn't cut off on ground impact
+stop
+}
+}
+
+Actor HolySpawner
+{
+PROJECTILE
++DONTBLAST
++THRUGHOST
++DONTREFLECT
++RIPPER
++NOINTERACTION
++PIERCEARMOR
++FORCEXYBILLBOARD
+Translation "209:248=90:90"
+Renderstyle "Add"
+Damagetype "Holy"
+Obituary "%o found themselves clean as a Pearl after being cleansed by %k's Holy Magic."
+Radius 24
+Height 24
+Scale 2.5
+Speed 0
+Reactiontime 100
+Damage(10) //If you're somehow in the way of this attack, you deserve to be demolished by it
+//Still going to tone it down just to be safe ~Bika 
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_ChangeVelocity(0,0,momz,CVF_RELATIVE|CVF_REPLACE)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA U 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(ceilingz-z>24,"Spawn2")
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA U 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(ceilingz-z>24,"Spawn2")
+GAMA U 0 A_JumpIf(momz==0,"Death")
+GAMA U 0 A_CountDown
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA V 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(ceilingz-z>24,"Spawn2")
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA V 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(ceilingz-z>24,"Spawn2")
+GAMA U 0 A_JumpIf(momz==0,"Death")
+GAMA U 0 A_CountDown
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA W 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(ceilingz-z>24,"Spawn2")
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA W 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(ceilingz-z>24,"Spawn2")
+GAMA U 0 A_JumpIf(momz==0,"Death")
+GAMA U 0 A_CountDown
+Goto Spawn+2
+Spawn2:
+ASTR B 0 A_ChangeFlag("NOINTERACTION",0)
+TNT1 A 0 A_ScaleVelocity(1.2)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA U 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA U 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA V 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA V 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA W 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(momz==0,"Death")
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,270)
+TNT1 A 0 A_SpawnItemEx("HolyOrb1",60,0,0,0,0,0,315)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",0,0,50,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",45,0,-30,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyOrb2",-30,-30,-30,0,0,0,0)
+GAMA W 1 A_SpawnItemEx("HolyOrb2",-30,30,-30,0,0,0,0)
+GAMA U 0 A_SetAngle(angle+10.0)
+GAMA U 0 A_JumpIf(momz==0,"Death")
+GAMA U 0 A_CountDown 
+Goto Spawn2+1
+Death:
+TNT1 A 0 A_Stop
+TNT1 A 0 A_Explode(90,800,0,0,200)
+TNT1 A 0 A_SpawnItemEx("HolyPillarSpawner",0,0,-4)
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 3 A_SpawnItemEx("HolyExplosion",random(-950,950),random(-950,950),random(25,125))
+stop
+}
+}
+
+actor HolyOrb1
+{
+PROJECTILE
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
++DONTSPLASH
++FORCEXYBILLBOARD
+Translation "214:215=208:208"
+Renderstyle "Translucent"
+Alpha 0.8
+Height 3
+Radius 3
+scale 1.5
+Speed 0
+States
+{
+Spawn:
+MMFX D 0
+MMFX D 1 bright
+stop
+}
+}
+
+actor HolyOrb2 : HolyOrb1
+{
+States
+{
+Spawn:
+MMFX D 0
+MMFX D 1 bright A_Fadeout(0.1)
+loop
+}
+}
+
+Actor HolySoundFX
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
+Radius 2
+Height 2
+Speed 0
+Damage(0)
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_PlaySound("weapon/ff6holy",0,1.0,0,ATTN_NONE)
+stop
+}
+}
+
+Actor HolyPillarSpawner
+{
+PROJECTILE
++DONTBLAST
++THRUGHOST
++NOINTERACTION
+Radius 4
+Height 4
+Reactiontime 45
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,45)
+TNT1 A 0 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,90)
+TNT1 A 0 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,135)
+TNT1 A 0 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,180)
+TNT1 A 0 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,225)
+TNT1 A 0 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,270)
+TNT1 A 1 A_SpawnItemEx("HolyPillar",200,0,-4,0,0,0,315)
+TNT1 A 0 A_SetAngle(angle+5.0)
+TNT1 A 0 A_Countdown
+goto Spawn+1
+Death:
+TNT1 A 0
+stop
+}
+}
+
+Actor HolyPillar
+{
++CLIENTSIDEONLY
+-SOLID
++NOINTERACTION
++FORCEYBILLBOARD
++DONTSPLASH
+Radius 4
+Height 4
+Scale 4.0
+Renderstyle "Add"
+Translation "192:207=80:95"
+States
+{
+Spawn:
+TNT1 A 0
+RKHA E 1 bright
+stop
+}
+}
+
+Actor HolyExplosion : BasicExplosion//TestExplosion
+{
++THRUGHOST
++PIERCEARMOR
+Obituary "%o was cleaned of all evil by %k's Holy Magic."
+Renderstyle "Add"
+Translation "208:213=168:168", "214:215=90:90", "4:4=168:168"
+Damage(0)
+Scale 3.0
+States
+{
+Spawn:
+ASEX A 0
+ASEX A 0 A_PlaySoundEx("misc/mm3explosion","Weapon")
+ASEX A 0 A_Explode(13,200,0,0,50)
+ASEX ABCDEF 2
+stop
+}
+}

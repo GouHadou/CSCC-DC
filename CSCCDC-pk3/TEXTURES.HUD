@@ -311,6 +311,48 @@ sprite GRSPG0, 427, 104 {Offset 53, -81 Patch HSPRP0, 0, 0 {Translation "192:192
 sprite GRSPH0, 427, 112 {Offset 53, -73 Patch HSPRQ0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
 sprite GRSPI0, 427, 128 {Offset 53, -57 Patch HSPRR0, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
 
+//Devion
+graphic DEVHUD, 157, 50{  XScale 1.5 YScale 1.5 Patch DEVHUD, 0, 0}
+graphic DEVHUD1, 105, 14{ XScale 1.5 YScale 1.5 Patch DEVHUD1, 0, 0}
+graphic DEVHUD2, 105, 18{ XScale 1.5 YScale 1.5 Patch DEVHUD2, 0, 0}
+graphic DEVOK, 20, 10{ XScale 1.5 YScale 1.5 Patch DEVOK, 0, 0}
+
+//Red Mage//
+sprite RMHDA0, 320, 200{XScale 1.0 YScale 1.0 Offset -202,-103 Patch HSPRA0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHUA0, 320, 200{XScale 1.0 YScale 1.0 Offset -202,-103 Patch HSPRA0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHDB0, 320, 200{XScale 1.0 YScale 1.0 Offset -210,-96 Patch HSPRB0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHDC0, 320, 200{XScale 1.0 YScale 1.0 Offset -190,-82 Patch HSPRC0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMHDD0, 320, 200{XScale 1.0 YScale 1.0 Offset -177,-50 Patch HSPRD0, 0, 0 {Translation "192:192=182:181", "198:198=186:184"}}
+sprite RMSWA0, 320, 200{XScale 1.0 YScale 1.0 Offset 30,-85 Patch NSWDA0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWB0, 320, 200{XScale 1.0 YScale 1.0 Offset 30,-50 Patch NSWDB0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWC0, 320, 200{XScale 1.0 YScale 1.0 Offset 0,-30 Patch NSWDC0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWD0, 320, 200{XScale 1.0 YScale 1.0 Offset -50,-15 Patch NSWDD0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWE0, 320, 200{XScale 1.0 YScale 1.0 Offset -100,-10 Patch NSWDE0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+sprite RMSWF0, 320, 200{XScale 1.0 YScale 1.0 Offset -150,-5 Patch NSWDF0, 0, 0 {Translation "192:192=181:181", "198:198=184:184"}}
+
+//Jax
+sprite JAX7A0, 148, 80 {Offset 30, -103 Patch HSPRE0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+
+Sprite JAX7B0, 156, 148 {Offset 35, -84 patch LIBOC0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+Sprite JAX7C0, 156, 148 {Offset 51, -54 patch LIBOD0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+Sprite JAX7D0, 80, 200 {Offset 103, -13 patch LIBOE0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+Sprite JAX7E0, 80, 200 {Offset 130, 0 patch LIBOF0, 0, 0 {FlipX Translation "93:93=239:239", "229:229=4:4"}}
+
+sprite JAX7F0, 308, 204 {Offset 260, 46 Patch HSPRF0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7G0, 308, 204 {Offset 190, 4 Patch HSPRG0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7H0, 308, 204 {Offset 139, -36 Patch HSPRH0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7I0, 308, 204 {Offset 114, -123 Patch HSPRI0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7J0, 308, 204 {Offset 93, -147 Patch HSPRJ0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7K0, 308, 204 {Offset 5, -175 Patch HSPRK0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+
+sprite JAX7L0, 148, 80 {Offset 30, -135 Patch HSPRM0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX7M0, 148, 80 {Offset 30, -119 Patch HSPRL0, 0, 0 {FlipX Translation "192:192=239:239", "198:198=4:4"}}
+
+sprite JAX8A0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
+
+sprite JAX8B0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX8C0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
+sprite JAX8D0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:192=239:239", "198:198=4:4"}}
 
 //Megaman Copywep Huds
 
@@ -390,3 +432,8 @@ sprite CWALB0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:1
 sprite CWALC0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}}
 sprite CWALD0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}}
 sprite CWALE0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}}
+
+//Steel Punch
+sprite STPHA0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
+sprite STPHB0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
+sprite STPHC0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}

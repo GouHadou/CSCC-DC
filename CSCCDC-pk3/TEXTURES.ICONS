@@ -624,3 +624,165 @@ graphic CWALLI, 30, 30
    YScale 2.0
    Patch CWALA0, 0, 0
 }
+
+//Red Mage Wep Icons
+Graphic DIARI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch DIARI0, 0, 0
+}
+
+Graphic FIRAI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch FIRAI0, 0, 0
+}
+
+Graphic BLZAI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BLZAI0, 0, 0
+}
+
+Graphic WTRAI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch WTRAI0, 0, 0
+}
+
+Graphic THNRI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch THNRI0, 0, 0
+}
+
+Graphic AEROI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch AEROI0, 0, 0
+}
+
+Graphic SLWRI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch SLWRI0, 0, 0
+}
+
+Graphic BLNKI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch BLNKI0, 0, 0
+}
+
+Graphic TMPRI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch TMPRI0, 0, 0
+}
+
+Graphic FCUSI0, 32, 32
+{
+ XScale 2.0
+ YScale 2.0
+ Patch FCUSI0, 0, 0
+}
+
+Graphic RBFFICN1, 32, 32
+{
+ XScale 1.25
+ YScale 1.25
+ Patch TMPRI0, 0, 0
+}
+
+Graphic RBFFICN2, 32, 32
+{
+ XScale 1.25
+ YScale 1.25
+ Patch FCUSI0, 0, 0
+}
+
+//Red Mage Spell Fusions
+Graphic FUSICN1, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN1, 0, 0}
+Graphic FUSICN2, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN2, 0, 0}
+Graphic FUSICN3, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN3, 0, 0}
+Graphic FUSICN4, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN4, 0, 0}
+Graphic FUSICN5, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN5, 0, 0}
+Graphic FUSICN6, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN6, 0, 0}
+Graphic FUSICN7, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN7, 0, 0}
+Graphic FUSICN8, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN8, 0, 0}
+Graphic FUSICN9, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN9, 0, 0}
+Graphic FUSICN10, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN10, 0, 0}
+Graphic FUSICN11, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN11, 0, 0}
+Graphic FUSICN12, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN12, 0, 0}
+Graphic FUSICN13, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN13, 0, 0}
+Graphic FUSICN14, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN14, 0, 0}
+Graphic FUSICN15, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN15, 0, 0}
+Graphic FUSICN16, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN16, 0, 0}
+Graphic FUSICN17, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN17, 0, 0}
+Graphic FUSICN18, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN18, 0, 0}
+Graphic FUSICN19, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN19, 0, 0}
+Graphic FUSICN20, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN20, 0, 0}
+Graphic FUSICN21, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN21, 0, 0}
+Graphic FUSICN22, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN22, 0, 0}
+Graphic FUSICN23, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN23, 0, 0}
+Graphic FUSICN24, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN24, 0, 0}
+Graphic FUSICN25, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN25, 0, 0}
+Graphic FUSICN26, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN26, 0, 0}
+Graphic FUSICN27, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN27, 0, 0}
+Graphic FUSICN28, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN28, 0, 0}
+Graphic FUSICN29, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN29, 0, 0}
+Graphic FUSICN30, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN30, 0, 0}
+Graphic FUSICN31, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN31, 0, 0}
+Graphic FUSICN32, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN32, 0, 0}
+Graphic FUSICN33, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN33, 0, 0}
+Graphic FUSICN34, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN34, 0, 0}
+Graphic FUSICN35, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN35, 0, 0}
+Graphic FUSICN36, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN36, 0, 0}
+Graphic FUSICN37, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN37, 0, 0}
+Graphic FUSICN38, 144, 32{XScale 1.0 YScale 1.0 Patch FUSICN38, 0, 0}
+Sprite RMU1A0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU1A0, 0, 0}
+Sprite RMU2A0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU2A0, 0, 0}
+Sprite RMU1B0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU1B0, 0, 0}
+Sprite RMU2B0, 30, 48{XScale 2.0 YScale 2.0 Patch RMU2B0, 0, 0}
+//Lord Damager
+Graphic "LOSICA0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LOSICC0", 0, 0
+}
+
+Graphic "LWEPB0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LWEPB0", 0, 0
+}
+Graphic "STPUNCH", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDSPI0", 0, 0
+}
+Graphic "LDRMI0", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDRMI0", 0, 0
+}
+
+Graphic "LDRELOAD", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "LDR1A0", 0, 0
+}

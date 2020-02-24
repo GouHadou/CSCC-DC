@@ -355,6 +355,7 @@ OptionMenu "OptionsMenu"
 	
 	StaticText	"MM8BDM Options", 1
 	StaticText " "
+	Option "Projectile Team Colors",		"mm8bdm_projteamcolor", "OnOff"
 	Option "Display Health Number",			"mm8bdm_healthnumber", "OnOff"
 	Option "Display Ammo Number",			"mm8bdm_ammonumber", "OnOff"
 	Option "Pickup Weapon Colors",			"mm8bdm_noenergycolors", "OffOn"

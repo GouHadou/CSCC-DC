@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 44
+#define MAX_MORPHS 60
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -59,6 +59,26 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"PearlStaff", "HealMore", "HealmoreClassItems"},//43
 {"EmberCelica", "Yang", "YangClassItems"},//44
 
+{"DevionPowers", "Devion", "DevionClassItems"},//45
+
+{"RedMageDiaraWep", "RedMage", "RedMageClassItems"},//46
+{"RedMageFiraWep", "RedMage", "RedMageClassItems"},//47
+{"RedMageAeroraWep", "RedMage", "RedMageClassItems"},//48
+{"RedMageBlizzaraWep", "RedMage", "RedMageClassItems"},//49
+{"RedMageSlowWep", "RedMage", "RedMageClassItems"},//50
+{"RedMageWateraWep", "RedMage", "RedMageClassItems"},//51
+{"RedMageThundaraWep", "RedMage", "RedMageClassItems"},//52
+{"RedMageBlinkWep", "RedMage", "RedMageClassItems"},//53
+{"RedMageTemperWep", "RedMage", "RedMageClassItems"},//54
+{"RedMageFocusWep", "RedMage", "RedMageClassItems"},//55
+
+{"DaverisClassWep", "Daveris", "DaverisClassItems"},//56
+
+{"JaxPsycho1", "JaxOf7", "JaxClassItems"},//57
+{"JaxPsycho2", "JaxOf7", "JaxClassItems"},//58
+
+{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//45
+{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//46
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

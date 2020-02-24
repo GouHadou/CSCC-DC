@@ -1,0 +1,760 @@
+actor DaverisClassWep : CSCCWepBase
+{
+Weapon.AmmoUse 0
+Weapon.AmmoGive 28
+Weapon.SlotNumber 5
+tag "$TAG_MORTAR" 
+weapon.ammotype "PulseAmmo"
+Obituary "$OB_FMORTAR"
+Inventory.Pickupmessage "Power Up! Freeze Cracker!"
+DropItem "FreezeCrackerWep" //frozen mortar copywep when
+States
+{
+Ready:
+BLUH A 1 ACS_ExecuteAlways(998,0,0)
+BLUH A 0 A_GunFlash
+BLUH A 0 A_JumpIfInventory("DavHoverFlag", 1, "Ready2")
+BLUH A 1 A_WeaponReady(WRF_NOSWITCH)
+BLUH A 0 A_GiveInventory("PulseAmmo", 3)
+Goto Ready+2
+Ready2:
+BLUH A 0 A_JumpIf(z-floorz < 15, "RidFlagReady")
+BLUH A 1 A_WeaponReady(WRF_NOSWITCH)
+BLUH A 0 A_GiveInventory("PulseAmmo", 3)
+GoTo Ready+2
+RidFlagReady:
+BLUH C 0 A_SetGravity(0.7)
+BLUH A 0 A_TakeInventory("DavHoverFlag", 1)
+GoTo Ready+2
+Deselect:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+BLUH A 1 A_Raise
+Loop
+Fire:
+BLUH C 0 A_JumpIfInventory("FrozenFlag", 1, "FreezeFire")
+BLUH C 1 A_JumpIfInventory("PulseAmmo", 56, "Charged") 
+BLUH C 0 A_GiveInventory("DaverisMainFire", 1)
+goto EndAnim
+Charged:
+BLUH C 0 A_GiveInventory("DaverisMainFireFast", 1)
+EndAnim:
+BLUH C 0 A_PlaySoundEx("weapon/fmortarshot","Weapon")
+BLUH C 0 A_TakeInventory("PulseAmmo", 56)
+BLUH C 2
+BLUH JK 5
+BLUH C 0 A_ReFire
+GoTo Ready+2
+Altfire:
+BLUH A 0 A_JumpIfInventory("FrozenFlag", 1, "FreezeFire")
+BLUH A 1 A_JumpIfInventory("FlurryAmmo",36,"Freeze")
+BLUH A 0 A_GiveInventory("PulseAmmo", 3)
+Goto Ready+2
+Freeze:
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",0)
+BLUH C 0 A_GiveInventory("PowerBlue", 1)
+BLUH C 0 A_GiveInventory("FrozenFlag", 1)
+BLUH C 0 A_PlaySoundEx("weapon/ifreeze","Weapon")
+BLUH C 0 ACS_NamedExecuteAlways("CSACS_DavColorChange",0)
+BLUH C 0 A_TakeInventory("FlurryAmmo",36)
+BLUH C 0 A_JumpIf(z-floorz > 75, "IceCrash")
+BLUH C 0 SetPlayerProperty(0,1,0)
+BLUH M 5
+BLUH L 25 A_WeaponReady
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
+BLUH C 0 SetPlayerProperty(0,0,0)
+BLUH C 0 ACS_ExecuteAlways(991,0,0)
+BLUH C 0 A_TakeInventory("PowerBlue", 1)
+BLUH C 0 A_TakeInventory("FrozenFlag", 1)
+Goto Ready+2
+FreezeFire:
+BLUH C 0 A_GiveInventory("FreezeStuff", 1) //desync killer
+BLUH C 10
+GoTo Ready+2
+IceCrash:
+BLUH A 0 A_Recoil(-7)
+BLUH A 0 ThrustThingZ(0,7,1,1)
+BLUH A 0 A_SpawnItemEx("DiveDamagerZ",40,0,-16,momx*1.05,momy*1.05,momz-1,0,8,0) //it death rips even at 1 dmg..?
+BLUH A 1 A_JumpIf(z-floorz == 0, "DiveDone")
+BLUH A 0 ThrustThingZ(0,7,1,1)
+BLUH A 0 A_Recoil(-7)
+BLUH A 1 A_JumpIf(z-floorz == 0, "DiveDone")
+goto IceCrash
+DiveDone:
+BLUH C 0 A_PlaySoundEx("weapon/crashland","Weapon")
+BLUH C 0 A_Stop
+BLUH C 0 A_ChangeFlag("SHOOTABLE",1)
+BLUH C 0 A_SetGravity(0.7)
+BLUH C 0 ACS_ExecuteAlways(991,0,0)
+BLUH C 0 A_SpawnItemEx("IceExplodeLand")
+BLUH C 0 A_TakeInventory("PowerBlue", 1)
+BLUH C 0 A_TakeInventory("FrozenFlag", 1)
+BLUH C 0 A_TakeInventory("DavHoverFlag", 1)
+BLUH C 0 A_GiveInventory("DaverisSmokeSpawner",1)
+BLUH C 0 A_GiveInventory("DaverisShockwave",1)
+BLUH C 5  
+GoTo Ready+2
+NoAmmo:
+BLUH A 1
+Goto Ready+2
+Flash:
+TNT1 AAA 1 A_JumpIf(CallACS("CSACS_ButtonCheck",BT_RELOAD)==1,"FlashRLoop")
+TNT1 A 0 A_JumpIfInventory("FrozenFlag",1,2)
+TNT1 A 0 A_GiveInventory("FlurryAmmo",1)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"StopFlash")
+loop
+StartFlash:
+TNT1 A 0 A_TakeInventory("DavSJ",999)
+FlashRLoop:
+TNT1 A 1 A_JumpIf(z-floorz < 15, 1)
+goto EndFlash
+TNT1 A 0 A_GiveInventory("DavSJ", 1)
+TNT1 A 1 A_JumpIf(CallACS("CSACS_ButtonCheck",BT_RELOAD)==0,"EndFlash")
+goto FlashRLoop
+EndFlash:
+TNT1 A 0 A_TakeInventory("DavSJ",999)
+goto Flash
+StopFlash:
+TNT1 A 0
+stop
+}
+}
+
+actor PowerBlue : PowerSpeed
+{
+Powerup.Duration -60
+Powerup.Color 51 255 255
+}
+
+actor DavSJ : inventory
+{
+inventory.amount 1 
+inventory.maxamount 32
+}
+
+actor DiveDamagerZ : BasicExplosion
+{
+-RIPPER
+Obituary "$OB_CRASH"
+Damagetype "IcePulse"
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Explode(3, 64, 0, 0, 64)
+stop
+}
+}
+
+//prevents desync..? thanks Binary
+actor FreezeStuff : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 ACS_ExecuteAlways(991,0,0)
+TNT1 A 0 A_TakeInventory("FrozenFlag", 1)
+TNT1 A 0 A_PlaySoundEx("weapon/ibreak","Weapon")
+TNT1 A 0 A_GiveInventory("BreakTheIce")
+TNT1 A 0 A_SpawnItemEx("IceExplode")
+TNT1 AAAAAAAAAAAA 0 A_GiveInventory("DaverisAltFlurry", 1) 
+TNT1 A 0 A_ChangeFlag("SHOOTABLE",1)
+TNT1 A 0 SetPlayerProperty(0,0,0)
+TNT1 A 0 A_TakeInventory("PowerBlue", 1)
+TNT1 A 0 A_TakeInventory("PulseAmmo", 28)
+stop
+}
+}
+
+
+actor DiveSmoke
+{
+//+NOINTERACTION
++MISSILE
++NOBLOCKMAP
++NOGRAVITY
++NOEXPLODEFLOOR
++DONTBLAST
+renderstyle translucent
+alpha 0.9
+height 10
+Scale 3.0
+radius 10
+states
+{
+Spawn:
+BLUH H 6 
+Fading:
+BLUH I 4 A_FadeOut(0.2)
+GoTo Fading
+}
+}
+
+actor DiveSmokeB : DiveSmoke {translation "195:195=74:74", "204:204 = 205:205"}
+actor DiveSmokeR : DiveSmoke {translation "195:195=41:41", "204:204 = 171:171"}
+actor DiveSmokeG : DiveSmoke {translation "195:195=128:128", "204:204 = 104:104"}
+actor DiveSmokeY : DiveSmoke {translation "195:195=232:232", "204:204 = 229:229"}
+
+actor IceExplode : BasicExplosion
+{
+Damage 0 
+Radius 1 
+Height 1
+Damagetype "IcePulse"
+Obituary "$OB_DAVICE"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Explode(20,160,0)
+stop
+}
+}
+
+actor IceExplodeLand : BasicExplosion
+{
+Damage 0 
+Radius 1 
+Height 1
+Damagetype "IcePulse"
+Obituary "$OB_DAVICE"
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Explode(10,160,0,0,80)
+stop
+}
+}
+
+//thank u mess
+actor DiveShocker
+{
+PROJECTILE
+Scale 2.0
+//Translation "192:192=43:43"
++NOEXPLODEFLOOR
++RIPPER
++STEPMISSILE
+MaxStepHeight 48
+Speed 25
+Damage (2) 
+damagetype "IcePulse"
+Obituary "$OB_DAVCRASH"
+Radius 32
+Height 32
+States
+{
+Spawn:
+DUOR T 1 A_FadeOut(0.04)
+Loop
+Death:
+DUOR T 1 A_FadeOut 
+wait
+}
+}
+
+actor DiveShockerB : DiveShocker {translation "192:204=205:205", "69:69=205:205"}
+actor DiveShockerR : DiveShocker {translation "192:204=171:171", "69:69=171:171"}
+actor DiveShockerG : DiveShocker {translation "192:203=104:104", "69:69=104:104"}
+actor DiveShockerY : DiveShocker {translation "192:203=229:229", "69:69=229:229"}
+
+
+actor FrozenMortar : BasicProjectile
+{
+PROJECTILE
+-NOGRAVITY
+Obituary "$OB_FMORTAR"
+Speed 50
+damagetype "IcePulse"
+Gravity 0.5
+Damage (5)
+Radius 16
+Height 16
+scale 2
+States
+{
+Spawn:
+FCRA DEDE 3 A_SpawnItemEx("Trailzz",RANDOM(-35,35), RANDOM(-35,35), RANDOM(-2,2),0,0,-1)
+loop
+Death:
+TNT1 A 0 A_PlaySoundEx("weapon/fmortarbreak","Weapon")
+TNT1 A 0 A_Explode(13, 35, 0, 0, 20) 
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,0, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,120, SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,240, SXF_TRANSFERTRANSLATION)  
+TNT1 AAAAAAAA 1 A_SpawnItemEx("Cloud",RANDOM(-1,1), RANDOM(-1,1),0,RANDOM(-1,1), RANDOM(-1,1), 1)
+stop
+}
+}
+
+actor FrozenMortarB : FrozenMortar {translation "203:204=205:205", "69:69=205:205"}
+actor FrozenMortarR : FrozenMortar {translation "203:204=171:171", "69:69=171:171"}
+actor FrozenMortarG : FrozenMortar {translation "203:203=104:104", "69:69=104:104"}
+actor FrozenMortarY : FrozenMortar {translation "203:203=229:229", "69:69=229:229"}
+
+actor FrozenMortarFast : FrozenMortar
+{
+Speed 80
+Radius 20
+Height 20
+scale 2.5
+States
+{
+Spawn:
+FCRA DEDE 3 A_SpawnItemEx("Trailzz",RANDOM(-50,50), RANDOM(-50,50), RANDOM(-2,2),0,0,-1)
+loop
+Death:
+TNT1 A 0 A_PlaySoundEx("weapon/fmortarbreak","Weapon")
+TNT1 A 0 A_Explode(17, 50, 0, 0, 25) 
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,0, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,72, SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,144, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,216, SXF_TRANSFERTRANSLATION) 
+TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,288, SXF_TRANSFERTRANSLATION)    
+TNT1 AAAAAAAAAA 1 A_SpawnItemEx("Cloud",RANDOM(-12,12), RANDOM(-12,12),0,RANDOM(-1,1), RANDOM(-1,1), 1)
+stop
+}
+}
+
+actor FrozenMortarFastB : FrozenMortarFast {translation "203:210=205:205", "69:69=205:205"}
+actor FrozenMortarFastR : FrozenMortarFast {translation "203:210=171:171", "69:69=171:171"}
+actor FrozenMortarFastG : FrozenMortarFast {translation "203:210=104:104", "69:69=104:104"}
+actor FrozenMortarFastY : FrozenMortarFast {translation "203:210=229:229", "69:69=229:229"}
+
+actor BoomBits : BasicProjectile
+{
+PROJECTILE
+-NOGRAVITY
+scale 1.0
+radius 2 
+Obituary "$OB_FMORTAR"
+height 2
+Damage 0
+States
+{
+Spawn:
+ICEC C 2
+loop
+Death:
+TNT1 A 0 
+stop
+}
+}
+
+actor Trailzz
+{
+PROJECTILE
++NOINTERACTION
+scale 1.5
+Radius 0 
+Height 0 
+Damage 0
+States
+{
+Spawn:
+FCRA JK 8
+stop
+}
+}
+
+actor Cloud
+{
++NOINTERACTION
+scale 2.5
+Renderstyle Translucent
+Alpha 1.0
+States
+{
+Spawn:
+FCRA A 3 A_FadeOut(0.1)
+loop
+}
+}
+
+actor Flurry : BasicProjectile
+{
+PROJECTILE
+scale 0.75
+Obituary "$OB_FLURRY"
+Speed 22
+damagetype "FrozenMortar"
+Radius 6
+Height 6
+Damage (3)
+RenderStyle Translucent 
+Alpha 1.0
+States
+{
+Spawn:
+ICEC A 4 
+ICEC B 4 //A_FadeOut(0.25)
+ICEC C 4 //A_FadeOut(0.25)
+ICEC D 4 //A_FadeOut(0.25)
+stop
+}
+}
+
+actor FlurryB : Flurry {translation "69:69=205:205"}
+actor FlurryR : Flurry {translation "69:69=171:171"}
+actor FlurryG : Flurry {translation "69:69=104:104"}
+actor FlurryY : Flurry {translation "69:69=229:229"}
+
+actor ShortFlurry : Flurry
+{
+States
+{
+Spawn:
+ICEC ABCD 2
+stop
+}
+}
+
+actor ShortFlurryB : ShortFlurry {translation "69:69=205:205"}
+actor ShortFlurryR : ShortFlurry{translation "69:69=171:171"}
+actor ShortFlurryG : ShortFlurry {translation "69:69=104:104"}
+actor ShortFlurryY : ShortFlurry {translation "69:69=229:229"}
+
+actor DavHoverItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+inventory.icon SUPERJ0
+scale 2.0
++INVBAR
+States
+{
+Use:
+TNT1 A 0 A_JumpIf(z-floorz < 15, "nope") 
+TNT1 A 0 A_PlaySoundEx("item/wingfly","Weapon")
+TNT1 A 0 A_ChangeVelocity(velx,vely,0,CVF_REPLACE)
+TNT1 A 7 A_SetGravity(0.005) 
+TNT1 A 0 A_JumpIfInventory("DavHoverFlag", 1, "Off")
+TNT1 A 0 A_GiveInventory("DavHoverFlag", 1)
+fail
+Off:
+TNT1 A 0 A_PlaySoundEx("item/wingfly","Weapon")
+TNT1 A 0 A_SetGravity(0.7)
+TNT1 A 0 A_TakeInventory("DavHoverFlag", 1)
+fail
+nope:
+TNT1 A 0 
+fail
+}
+}
+
+actor DaverisMainFire : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FrozenMortar", 0, 1, 0, 2)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarB", 0, 1, 0, 2)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarR", 0, 1, 0, 2)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarG", 0, 1, 0, 2)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarY", 0, 1, 0, 2)
+goto Done
+}
+}
+
+actor DaverisMainFireFast : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarFast", 0, 1, 0, 2)
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarFastB", 0, 1, 0, 2)
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarFastR", 0, 1, 0, 2)
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarFastG", 0, 1, 0, 2)
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("FrozenMortarFastY", 0, 1, 0, 2)
+goto Done
+}
+}
+
+actor DaverisAltFlurry : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_FireCustomMissile("Flurry", RANDOM(-5, 5), 0, 0, 0, 0, RANDOM(-5, 5))
+goto Done
+FireB:
+TNT1 A 0 A_FireCustomMissile("FlurryB", RANDOM(-5, 5), 0, 0, 0, 0, RANDOM(-5, 5))
+goto Done
+FireR:
+TNT1 A 0 A_FireCustomMissile("FlurryR", RANDOM(-5, 5), 0, 0, 0, 0, RANDOM(-5, 5))
+goto Done
+FireG:
+TNT1 A 0 A_FireCustomMissile("FlurryG", RANDOM(-5, 5), 0, 0, 0, 0, RANDOM(-5, 5))
+goto Done
+FireY:
+TNT1 A 0 A_FireCustomMissile("FlurryY", RANDOM(-5, 5), 0, 0, 0, 0, RANDOM(-5, 5))
+goto Done
+}
+}
+
+actor DaverisSmokeSpawner : BasicTeamColorPickup
+{
+States
+{
+FireX:
+BLUH A 0 A_SpawnItemEx("DiveSmoke", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 0)
+BLUH A 0 A_SpawnItemEx("DiveSmoke", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 72)
+BLUH A 0 A_SpawnItemEx("DiveSmoke", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 144)
+BLUH A 0 A_SpawnItemEx("DiveSmoke", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 216)
+BLUH A 0 A_SpawnItemEx("DiveSmoke", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 288)
+goto Done
+FireB:
+BLUH A 0 A_SpawnItemEx("DiveSmokeB", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 0)
+BLUH A 0 A_SpawnItemEx("DiveSmokeB", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 72)
+BLUH A 0 A_SpawnItemEx("DiveSmokeB", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 144)
+BLUH A 0 A_SpawnItemEx("DiveSmokeB", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 216)
+BLUH A 0 A_SpawnItemEx("DiveSmokeB", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 288)
+goto Done
+FireR:
+BLUH A 0 A_SpawnItemEx("DiveSmokeR", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 0)
+BLUH A 0 A_SpawnItemEx("DiveSmokeR", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 72)
+BLUH A 0 A_SpawnItemEx("DiveSmokeR", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 144)
+BLUH A 0 A_SpawnItemEx("DiveSmokeR", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 216)
+BLUH A 0 A_SpawnItemEx("DiveSmokeR", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 288)
+goto Done
+FireG:
+BLUH A 0 A_SpawnItemEx("DiveSmokeG", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 0)
+BLUH A 0 A_SpawnItemEx("DiveSmokeG", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 72)
+BLUH A 0 A_SpawnItemEx("DiveSmokeG", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 144)
+BLUH A 0 A_SpawnItemEx("DiveSmokeG", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 216)
+BLUH A 0 A_SpawnItemEx("DiveSmokeG", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 288)
+goto Done
+FireY:
+BLUH A 0 A_SpawnItemEx("DiveSmokeY", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 0)
+BLUH A 0 A_SpawnItemEx("DiveSmokeY", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 72)
+BLUH A 0 A_SpawnItemEx("DiveSmokeY", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 144)
+BLUH A 0 A_SpawnItemEx("DiveSmokeY", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 216)
+BLUH A 0 A_SpawnItemEx("DiveSmokeY", RANDOM(-5, 5), RANDOM(-5, 5), 5, 2, 2,2, 288)
+goto Done
+}
+}
+
+actor DaverisShockwave : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,0)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,30) 
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,60)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,90)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,120)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,150) 
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,180)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,210)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,240)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,270)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,300)
+TNT1 A 0 A_SpawnItemEx("DiveShocker", 8, 0,0,25,0,0,330) 
+goto Done
+FireB:
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,0)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,30) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,60)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,90)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,120)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,150) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,180)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,210)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,240)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,270)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,300)
+TNT1 A 0 A_SpawnItemEx("DiveShockerB", 8, 0,0,25,0,0,330) 
+goto Done
+FireR:
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,0)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,30) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,60)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,90)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,120)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,150) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,180)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,210)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,240)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,270)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,300)
+TNT1 A 0 A_SpawnItemEx("DiveShockerR", 8, 0,0,25,0,0,330) 
+goto Done
+FireG:
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,0)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,30) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,60)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,90)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,120)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,150) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,180)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,210)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,240)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,270)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,300)
+TNT1 A 0 A_SpawnItemEx("DiveShockerG", 8, 0,0,25,0,0,330) 
+goto Done
+FireY:
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,0)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,30) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,60)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,90)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,120)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,150) 
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,180)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,210)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,240)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,270)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,300)
+TNT1 A 0 A_SpawnItemEx("DiveShockerY", 8, 0,0,25,0,0,330) 
+goto Done
+}
+}
+
+actor BreakTheIce : BasicTeamColorPickup
+{
+States
+{
+FireX:
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,30)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,60)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,90)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,150)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,180)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,210)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,240)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,270)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,300)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,30,15,0,0,330)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,65,0,0,15,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,45,15,0,6,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,45,15,0,6,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurry", 0,0,45,15,0,6,240)
+GoTo Done
+FireB:
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,30)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,60)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,90)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,150)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,180)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,210)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,240)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,270)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,300)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,30,15,0,0,330)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,65,0,0,15,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,45,15,0,6,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,45,15,0,6,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryB", 0,0,45,15,0,6,240)
+GoTo Done
+FireR:
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,30)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,60)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,90)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,150)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,180)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,210)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,240)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,270)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,300)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,30,15,0,0,330)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,65,0,0,15,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,45,15,0,6,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,45,15,0,6,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryR", 0,0,45,15,0,6,240)
+GoTo Done
+FireG:
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,30)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,60)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,90)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,150)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,180)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,210)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,240)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,270)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,300)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,30,15,0,0,330)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,65,0,0,15,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,45,15,0,6,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,45,15,0,6,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryG", 0,0,45,15,0,6,240)
+GoTo Done
+FireY:
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,30)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,60)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,90)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,150)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,180)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,210)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,240)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryy", 0,0,30,15,0,0,270)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,300)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,30,15,0,0,330)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,65,0,0,15,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,45,15,0,6,0)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,45,15,0,6,120)
+TNT1 A 0 A_SpawnItemEx("ShortFlurryY", 0,0,45,15,0,6,240)
+GoTo Done
+stop
+}
+}
+
+
+actor DavHoverFlag : inventory
+{
+inventory.amount 0 
+inventory.maxamount 1
+}
+
+actor FrozenFlag : inventory
+{
+inventory.amount 0 
+inventory.maxamount 1
+}
+
+actor PulseAmmo : Ammo 
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 56
+}
+
+actor FlurryAmmo : Ammo 
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 36
+}
+
+
+

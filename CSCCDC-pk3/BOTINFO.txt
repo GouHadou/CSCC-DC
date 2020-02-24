@@ -433,3 +433,93 @@
 	script = "humanbot"
 	chatfrequency = 50
 }
+
+{
+	name = "\ckDevion"
+	accuracy = 3
+	intellect = 5
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 3
+	favoriteweapon = "DevionPowers"
+	color = "00 00 00"
+	gender = "Male"
+	skin = "Base"
+	class = "Devion"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\ckRedMage"
+	accuracy = 3
+	intellect = 5
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 3
+	favoriteweapon = "RedMageDiaraWep"
+	color = "00 00 00"
+	gender = "Female"
+	skin = "Base"
+	class = "Red Mage"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\cdJaxOf7"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "CentaurFlashWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "JaxOf7"
+	revealed = true
+	script = "humanbot"
+	chatlump = "botchats/BOTJAX.txt"
+	chatfrequency = 50
+}
+
+{
+	name = "\ckDaveris"
+	accuracy = 3
+	intellect = 5
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 3
+	favoriteweapon = "DaverisClassWep"
+	color = "00 00 00"
+	gender = "male"
+	skin = "Base"
+	class = "Daveris"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
+
+{
+	name = "\chLordDamager"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "LordDamager"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}

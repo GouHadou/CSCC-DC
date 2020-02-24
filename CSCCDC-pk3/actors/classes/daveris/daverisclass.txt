@@ -1,0 +1,73 @@
+actor DaverisClass : CustomWepMan
+{
+player.displayname "Daveris"
+player.soundclass "davesfx"
+
+player.forwardmove 0.7, 0.7
+player.sidemove 0.68, 0.68
+player.jumpz 16
+
+Player.ViewHeight 60
+Player.AttackZOffset 22
+
+player.startitem "DaverisClassWep"
+player.startitem "DaverisClassItems"
+
+
+player.maxhealth 100
+health 100
+
+States
+{
+Spawn:
+BLUG B 0
+BLUG B 1 
+BLUG A 1 
+Goto Spawn+2
+See: 
+BLUG BCDC 5 
+Goto Spawn
+Missile:
+BLUH F 0 A_JumpIf(z-floorz > 5, "AirFire")
+BLUG F 5 
+BLUG F 4 
+goto Spawn
+AirFire:
+BLUG I 5
+BLUG I 4
+goto Spawn
+}
+}
+
+actor DaverisClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("PulseAmmo", 56)
+TNT1 A 0 A_GiveInventory("FlurryAmmo", 56)
+TNT1 A 0 A_GiveInventory("DavHoverItem", 1)
+stop
+}
+}
+
+
+actor DaverisClassWepMorph : DaverisClass
+{
++NOSKIN
+player.morphweapon "DaverisClassWep"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}

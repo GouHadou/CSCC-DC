@@ -136,6 +136,38 @@
 #include "actors/classes/Healmore/Assize.txt"
 #include "actors/classes/Healmore/WhiteMagicFX.txt"
 
+//===|Devion
+#include "actors/classes/Devion/DevionClass.txt"
+#include "actors/classes/Devion/DevionPowers.txt"
+
+//===|Red Mage
+#include "actors/classes/RedMage/RedMageClass.txt"
+#include "actors/classes/RedMage/RedMageWep1.txt"
+#include "actors/classes/RedMage/RedMageWep2.txt"
+#include "actors/classes/RedMage/RedMageWep3.txt"
+#include "actors/classes/RedMage/RedMageWep4.txt"
+#include "actors/classes/RedMage/RedMageWep5.txt"
+#include "actors/classes/RedMage/RedMageWep6.txt"
+#include "actors/classes/RedMage/RedMageWep7.txt"
+#include "actors/classes/RedMage/RedMageWep8.txt"
+#include "actors/classes/RedMage/RedMageWep9.txt"
+#include "actors/classes/RedMage/RedMageWep10.txt"
+#include "actors/classes/RedMage/SpellFusion.txt"
+#include "actors/classes/RedMage/MysteryTomes.txt"
+
+//===|Jax
+#include "actors/classes/Jax/JaxClass.txt"
+#include "actors/classes/Jax/JaxWeapon.txt"
+
+//===|Daveris
+#include "actors/Classes/daveris/daverisClass.txt"
+#include "actors/Classes/daveris/daverisWep.txt"
+
+//==|LordDamager
+#include "actors/classes/LordDamager/LordDamager.txt"
+#include "actors/classes/LordDamager/MissilePunch.txt"
+#include "actors/classes/LordDamager/LaserCannon.txt"
+#include "actors/classes/LordDamager/SmogCannon.txt" //inactive
 
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

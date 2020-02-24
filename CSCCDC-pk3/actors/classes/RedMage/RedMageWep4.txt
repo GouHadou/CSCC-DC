@@ -1,0 +1,294 @@
+actor RedMageBlizzaraWep : RedMageDiaraWep
+{
+Tag "Blizzara"
+Weapon.SlotNumber 2
+Inventory.Pickupmessage "Spell learned: Blizzara!"
+inventory.icon "BLZAI0"
+States
+{
+SFCheck1:
+RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak") //you can decloak early if you see a person near your statue to catch them. Either way, you will get an ice kick too.
+RMHD A 0 A_JumpIfInventory("SpellFusionPower",300,"SFCheck")
+RMHD A 0 A_TakeInventory("User1_Trigger",99)
+goto Ready+11
+SFCheck:
+//RMHD A 0 A_TakeInventory("SpellFusionPower",350)
+RMHD A 0 A_JumpIfInventory("ThundaraSpellFlag",1,"FlashFreeze")
+RMHD A 0 A_JumpIfInventory("FocusSpellFlag",1,"Blizzaja")
+RMHD A 0 A_JumpIfInventory("FiraSpellFlag",1,"ElementalBlaster")
+RMHD A 0 A_JumpIfInventory("TemperSpellFlag",1,"Icebrand")
+RMHD A 0 A_JumpIfInventory("SlowSpellFlag",1,"SturdyGlacier")
+RMHD A 0 A_JumpIfInventory("AeroraSpellFlag",1,"SnowStorm")
+RMHD A 0 A_JumpIfInventory("BlinkSpellFlag",1,"IceCloakBegin")
+RMHD A 0 A_JumpIfInventory("WateraSpellFlag",1,"SubzeroField")
+goto Ready+11
+ReshuffleCheck:
+RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+7
+ReshufflePlease:
+RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
+RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
+RMHD A 0 A_TakeInventory("User2_Trigger",99)
+goto Ready+12
+FlashFreeze:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("FlashFreezeShot",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+Blizzaja:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/icewavespawn","Weapon")
+RMHD A 0 A_FireCustomMissile("BlizzajaShot",0,0,8,0)
+RMHD BC 2
+RMHD D 35
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+ElementalBlaster:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("Rin/kouhadou","Weapon")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("ElementalBlasterShot",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD CB 2
+goto Ready+5
+IceBrand:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD B 2 A_PlaySoundEX("weapon/timestopper","weapon")
+RMHD C 2
+RMHD D 0 A_TakeInventory("TemperEffect",99)
+RMHD D 0 A_TakeInventory("FlameTongueFusionPower",99)
+RMHD D 0 A_TakeInventory("MagicBladeFusionPower",99)
+RMHD D 0 A_TakeInventory("HydroBladeFusionPower",99)
+RMHD D 0 A_TakeInventory("FalchionFusionPower",99)
+RMHD D 0 A_TakeInventory("TBladeFusionPower",99)
+RMHD D 20 A_GiveInventory("IceBrandFusionPower",1)
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+SturdyGlacier:
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 SetPlayerProperty(0,1,0)
+AirCheck:
+RMHD A 0 A_JumpIfInventory("KnightFlag",105,"GlacierAttack")
+RMHD A 1 A_JumpIf(z-floorz==0,"GlacierAttack")
+RMHD A 0 A_GiveInventory("KnightFlag",1)
+loop
+GlacierAttack:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 SetPlayerProperty(0,0,0)
+RMHD A 0 ACS_NamedExecuteAlways("core_freezeplayer",0,0,1)
+RMHD A 0 A_Stop
+RMHD A 0 A_ScaleVelocity(0.0)
+RMHD A 0 A_TakeInventory("KnightFlag",999)
+RMHD BC 2
+RMKK A 0 Radius_Quake(1,15,0,25,0)
+RMHD D 6 A_SpawnItemEx("SturdyGlacier",18,0,36,6,0,-sin(pitch)*15,0)
+RMHD CB 2
+RMKK CB 2
+RMKK A 4 A_SpawnItemEx("GlacierKickFX",18,0,48)
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMKK C 0 ACS_NamedExecuteAlways("core_freezeplayer",0,0,0)
+RMKK BC 2
+goto Ready+5
+SnowStorm:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD BC 2
+SnowStormLoop:
+RMHD A 0 A_JumpIfInventory("KnightFlag",15,"SnowStop")
+RMHD A 0 A_PlaySoundEx("weapon/BNTornado","Weapon")
+RMHD DDD 2 A_SpawnItemEx("SnowStormSpawner",0,0,28,0,0,0,0,SXF_TRANSFERPITCH)
+RMHD D 0 A_GiveInventory("KnightFlag",1)
+loop
+SnowStop:
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD C 2 A_TakeInventory("User1_Trigger",99)
+RMHD B 2 A_TakeInventory("KnightFlag",999)
+goto Ready+5
+IceCloakBegin:
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_TakeInventory("User1_Trigger",99)
+RMHD A 0 A_PlaySoundEx("weapon/invisible","Weapon")
+RMHU A 1 A_SetTranslucent(0.8) RMHU A 1 A_SetTranslucent(0.6) RMHU A 1 A_SetTranslucent(0.4)
+RMHU A 1 A_SetTranslucent(0.2) RMHU A 1 A_SetTranslucent(0.0)
+RMHD A 0 A_ChangeFlag("CANTSEEK",1)
+RMHD A 0 A_JumpIf(ACS_ExecuteWithResult(975,1)==1,4)
+RMHD A 0 A_SpawnItemEx("IceCloakBody",32,0,4)
+RMHD A 0 A_SpawnItemEx("IceCloakBodyFX",32,0,28)
+RMHD A 15 A_GiveInventory("IceCloakActive")
+goto IceCloakLoop
+RMHD A 0 A_SpawnItemEx("IceCloakBody",32,0,4)
+RMHD A 0 A_SpawnItemEx("IceCloakBodyFX",32,0,28,0,0,0,0,SXF_TRANSFERTRANSLATION)
+RMHD A 15 A_GiveInventory("IceCloakActive")
+goto IceCloakLoop
+SubzeroField:
+RMHD A 0 A_GiveInventory("SpellFusionActive",1)
+RMHD A 0 A_TakeInventory("SpellFusionPower",300)
+RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
+RMHD A 0 A_GiveInventory("SubzeroFieldFlag",1)
+RMHD A 0 A_JumpIf(CallACS("CBMTeamColor",0)==0,"FieldBlue")
+RMHD A 0 A_JumpIf(CallACS("CBMTeamColor",0)==1,"FieldRed")
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawner",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+FieldBlue:
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawnerB",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+FieldRed:
+RMHD BC 2
+RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawnerR",0,0,8,0)
+RMHD D 25
+RMHD A 0 A_TakeInventory("SpellFusionActive",1)
+RMHD CB 2
+goto Ready+5
+Altfire:
+RMHD A 0 A_JumpIfInventory("IceCloakActive",1,"Decloak")
+RMHD A 0 A_JumpIfInventory("LastStandPower",1,"BlizzaraFree")
+RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"BlizzaraFree")
+RMHD A 0 A_JumpIfInventory("RedMageMana",16,"BlizzaraUse")
+Goto Ready+5
+BlizzaraFree:
+goto BlizzaraUse+1
+BlizzaraUse:
+RMHD B 0 A_TakeInventory("RedMageMana",16)
+RMHD B 0 A_PlaySoundEX("weapon/iceslasher", "Weapon")
+RMHD BC 2
+RMHD D 20 A_FireCustomMissile("BlizzaraShot",0,0,8,0)
+RMHD CB 2
+goto Ready+5
+}
+}
+
+actor BlizzaraShot
+{
+PROJECTILE
++DONTBLAST
++NOTARGETSWITCH
+Radius 13
+Height 13
+scale 4.5
+Renderstyle "Translucent"
+Alpha 0.8
+Damage(30)
+Damagetype "Blizzara"
+Obituary "%o collapsed from the icy power of %k's Blizzara."
+speed 40
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("ProjectileCode",1)
+Spawn2:
+TNT1 A 0
+FCRA AAABBB 1 A_SpawnItemEx("BlizzaraTrail",0,0,0,0,0,0,0,1)
+goto Spawn2+1
+Crash:
+XDeath:
+Death:
+TNT1 A 0 A_PlaySoundEx("misc/mm3explosion","Voice")
+TNT1 A 0 A_Explode(18,200,0)
+TNT1 A 3 A_SpawnItemEx("BlizzaraSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 3 A_SpawnItemEx("BlizzaraSpawner",0,0,36,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 3 A_SpawnItemEx("BlizzaraSpawner",0,0,72,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+Actor BlizzaraSpawner
+{
+PROJECTILE
++RIPPER
++DONTBLAST
+Damage(0)
+Height 4
+Radius 4
+scale 2.0
+Speed 0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,30,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,60,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,90,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,120,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,150,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,180,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,210,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,240,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,270,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,300,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+TNT1 A 1 A_SpawnItemEx("BlizzaraFlake",0,0,0,0,0,0,330,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+Actor BlizzaraFlake
+{
+PROJECTILE
++DONTBLAST
+Renderstyle "Add"
+Damagetype "Blizarra"
+Obituary "%o went numb and collapsed from the coldness of %k's Blizzara spell."
+Damage(3)
+Height 10
+Radius 10
+Reactiontime 15
+scale 1.5
+States
+{
+Spawn:
+ICEP B 0
+ICEP B 0 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+ICEP B 0 A_SpawnItemEx("FreezeCrackerFX",0,0,0,0,0,0,0,1)
+ICEP B 2 A_SetAngle(angle+18.0)
+ICEP C 0 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+ICEP C 0 A_SpawnItemEx("FreezeCrackerFX",0,0,0,0,0,0,0,1)
+ICEP C 2 A_SetAngle(angle+18.0)
+ICEP D 0 A_ChangeVelocity(30,0,0,CVF_RELATIVE|CVF_REPLACE)
+ICEP D 0 A_SpawnItemEx("FreezeCrackerFX",0,0,0,0,0,0,0,1)
+ICEP D 2 A_SetAngle(angle+18.0)
+MMFX D 0 A_Countdown
+goto Spawn+1
+}
+}
+
+actor BlizzaraTrail
+{
+scale 4.5
+-SOLID
++NOINTERACTION
++CLIENTSIDEONLY
+height 1
+radius 1
+Scale 3.0
+States
+{
+Spawn:
+TNT1 A 0
+FCRA BD 2 A_Fadeout(0.1)
+loop
+}
+}

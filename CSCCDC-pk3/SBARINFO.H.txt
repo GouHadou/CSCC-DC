@@ -218,8 +218,8 @@ IsSelected ClassicTankWeapon {
 	DrawBar"VARAMM23","VAREMPTY",Ammo1,horizontal,58,184;
 	DrawBar"VARAMM48","VAREMPTY",TankRepairAmmo,horizontal,58, 176;
 	InInventory not Tank_NotOnFoot, 1{DrawImage "TNKRLOAD", 138, 176; DrawImage "HORICONR", 138, 168;}
-	InInventory Tank_NotOnFoot, 1{DrawBar"TANK_VAR","VNOBAR",health,horizontal,130,184;}
-	InInventory TankRepairAmmo, 350{DrawBar"VARFLS1","VNOBAR",TankRepairAmmo,horizontal,58,176;}
+	InInventory Tank_NotOnFoot, 1{DrawBar"TANK_VAR","VAREMPTY",Armor,horizontal,130,184;}
+	InInventory TankRepairAmmo, 250{DrawBar"VARFLS1","VNOBAR",TankRepairAmmo,horizontal,58,176;}
 	}
 
 //====|Vocalwoman
@@ -339,8 +339,8 @@ IsSelected BurstBlade
 	InInventory LightScreenBossCooldownItem, 1	{DrawBar"VARFLS1", "VNOBAR", LightScreenBossCooldownItem, horizontal, 58, 176;}
 	ininventory K_ShieldBreak, 1{Drawbar"VARAMM65", "VAREMPTY", ShieldEnergy, horizontal, 58, 176;}
 	DrawImage "AEGRELD", 138, 176; DrawImage "HORICONR", 138, 168;
-	InInventory not K_ShieldBreak, 1{InInventory not LightScreenActive, 1{InInventory not ShieldWaveCooldownItem, 1{DrawImage "AEGFIST", 130, 176; DrawImage "HORICON1", 130, 168;}}}
-	InInventory not K_ShieldBreak, 1{InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 122, 176; DrawImage "HORICON2", 122, 168;}}
+	//InInventory not K_ShieldBreak, 1{InInventory not LightScreenActive, 1{InInventory not ShieldWaveCooldownItem, 1{DrawImage "AEGFIST", 130, 176; DrawImage "HORICON1", 130, 168;}}}
+	InInventory not K_ShieldBreak, 1{InInventory not LightScreenBossCooldownItem, 1{DrawImage "LTSCI", 130, 176; DrawImage "HORICON1", 130, 168;}}
 	}
 
 //====|Yang
@@ -454,8 +454,117 @@ InInventory KingTeamFlag, 1{
 	
 InInventory NOT "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 156;}
 InInventory "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 170;}
-
 }
+
+//====|Devion
+InInventory IsDevion, 1
+{
+DrawBar "DEVHBAR", "DNOBAR1", Health, horizontal, 39, 17;
+
+DrawImage "DEVHUD", 8,4;
+DrawImage "DEVHUD1", 39,25;
+DrawImage "DEVHUD2", 39,35;
+
+Drawbar"DEVBAR1", "DNOBAR2", DevionFistAmmo, horizontal, 56,27;
+Drawbar"DEVBAR2", "DNOBAR2", DevionCharge, horizontal, 56,37;
+InInventory DevionCharge, 300 {DrawImage "DEVOK", 108,36;}
+InInventory DevionFever, 1 {Drawbar"DEVF1", "DEVF2", DevionFever, horizontal, 56,37;}
+
+DrawSelectedInventory INDEXFONT ,14, 38, 28, 39, white;
+}
+
+//====|Red Mage
+InInventory IsRedMage
+{
+DrawImage "RMU1B0", 46, 192;
+DrawImage "RMU2B0", 46, 176;
+DrawSelectedInventory INDEXFONT ,122, 184, 120, 185, white;
+DrawImage weaponicon, 50, 184;
+InInventory RMBuffBanT, 1{DrawImage "RBFFICN1", 188, 182;}
+InInventory RMBuffBanF, 1{DrawImage "RBFFICN2", 204, 182;}
+}
+
+IsSelected RedMageDiaraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageFiraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageAeroraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageBlizzaraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageSlowWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageWateraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageThundaraWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageBlinkWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+//IsSelected RedMageProtectWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;}
+IsSelected RedMageTemperWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+IsSelected RedMageFocusWep {DrawBar "MANAVAR", "VAREMPTY", Ammo1, horizontal,58,184;
+	InInventory MPBurstEnergy, 1{DrawBar "BURSTVAR", "VNOBAR", MPBurstEnergy, horizontal, 58, 184;}
+Drawbar "RPWRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+Drawbar "SFUSVAR1", "VAREMPTY", SpellFusionPower, horizontal, 58, 192;}
+//Drawbar "SFUSVAR2", "VNOBAR", SpellFusionPower, horizontal, 58, 192;}
+
+//====|Daveris
+IsSelected DaverisClassWep
+	{
+	DrawImage "DAVRELD", 138, 176; DrawImage "HORICONR", 138, 168;
+	InInventory DavSJ, 1{Drawbar "EXOFBAR", "EXOBBAR", DavSJ, vertical, 151, 112;}
+	Drawbar "VARAMMO3", "VAREMPTY", Ammo1, horizontal, 58,184;
+	DrawBar "VARAMM15", "VAREMPTY", FlurryAmmo , horizontal, 58, 176;
+	}	
+
+//====|Jax
+	WeaponAmmo JaxPsychoAmmo{Drawbar"VARAMM18", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	InInventory JaxHoldCharge, 1	{DrawBar"VARFLS1", "VNOBAR", JaxHoldCharge, horizontal, 58, 184;}}
+
+//====|LordDamager
+IsSelected MissilePunchWep
+	{
+	Drawbar"LDMVAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
+	DrawImage "LDRELOAD", 138, 176; DrawImage "HORICONR", 138, 168;
+	InInventory LDRamEnergy, 1{Drawbar"LDRVAR", "VAREMPTY", LDRamEnergy, horizontal, 58, 176;}
+	InInventory LDRamEnergy, 26{Drawbar"LDVAR", "VNOBAR", LDRamEnergy, horizontal, 58, 176;}
+	}
+
+IsSelected LaserCannonWep
+	{
+	Drawbar"VARAMM51", "BAREMPTY", Ammo1, horizontal, 58, 184;
+	InInventory LDRamEnergy, 1{Drawbar"LDRVAR", "VAREMPTY", LDRamEnergy, horizontal, 58, 176;}
+	InInventory LDRamEnergy, 26{Drawbar"LDVAR", "VNOBAR", LDRamEnergy, horizontal, 58, 176;}
+	}
+
 
 //CSCC Copywep Bars
 IsSelected MeteorWepCS{Drawbar"METEBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
@@ -485,6 +594,7 @@ IsSelected EmberCelicaWepCS
 IsSelected BubbleArrowWepCS{DrawBar "VBUBABAR", "VAREMPTY", Ammo1, vertical, 58, 184;}
 IsSelected GravitySphereWepCS{Drawbar"GRSPAMMV", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 IsSelected CrystalWallWepCS{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
+IsSelected SteelPunchWepCS{Drawbar"LDRMAR", "VAREMPTY", Ammo1, horizontal, 58, 184;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"VARAMMO1", "VAREMPTY", Ammo1, horizontal, 58, 184;}

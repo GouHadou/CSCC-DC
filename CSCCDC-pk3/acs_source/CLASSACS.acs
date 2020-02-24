@@ -670,6 +670,49 @@ script "CSACS_Tank_Speedster" (int tid, int tspeed)
 	}
 }
 
+Script "CSACS_Tank_ArmorConvert" (int Version)
+{
+int PlayerResource = checkInventory("TankRepairAmmo");
+int TankArmor = checkInventory("BasicArmor");
+int output;
+Switch(Version)
+	{
+	Case 0:
+	output = ValueMap(PlayerResource,350,1,100,1);
+	//log(i:output);
+	GiveInventory("TankyArmor",output);
+	TakeInventory("TankRepairAmmo",PlayerResource);
+	Break;
+	Case 1:
+	output = ValueMap(TankArmor,100,1,350,1);
+	GiveInventory("TankRepairAmmo",output);
+	TakeInventory("BasicArmor",TankArmor);
+	Break;
+	}
+
+}
+
+Script "CSACS_ArmorHitSensor" (Void)
+{
+int PlayerArmor = checkInventory("BasicArmor");
+int PlayerArmorNow;
+GiveInventory("ArmorHitSensorFlag",1);
+Delay(3);
+
+while(checkInventory("ArmorHitSensorFlag"))
+	{
+		PlayerArmorNow = checkInventory("BasicArmor");
+		if(PlayerArmorNow <= 0){TakeInventory("ArmorHitSensorFlag",99);}
+		if(PlayerArmor != PlayerArmorNow)
+		{
+			GiveInventory("ArmorHitSound",1);
+			PlayerArmor = PlayerArmorNow;
+		}
+	Delay(1);
+	}
+
+}
+
 //Korby
 Script "KorbyBlueMagicAbsorb" (void)
 {
@@ -923,7 +966,7 @@ if(on_self > 0){TargetTID = ActivatorTID();}
 	Else{TargetTID = ACS_ExecuteWithResult(257,0);}
 
 	TargShieldEnergy = CheckActorInventory(TargetTID,"ShieldEnergy");
-	HealthReturn = ValueMap(TargShieldEnergy,350,1,500,1);
+	HealthReturn = ValueMap(TargShieldEnergy,150,1,250,1);
 	//log(i:TargShieldEnergy,s:" to ",i:HealthReturn); 
 SetResultValue(HealthReturn);
 }
@@ -941,7 +984,7 @@ TakeActorInventory(TargetTID,"LightScreenHealth",9999);
 TakeActorInventory(TargetTID,"ShieldEnergy",999);
 if (ScreenHealth > 0)
 	{
-		ShieldReturn = ValueMap(ScreenHealth,500,1,350,1);
+		ShieldReturn = ValueMap(ScreenHealth,250,1,150,1);
 		GiveActorInventory(TargetTID,"ShieldEnergy",ShieldReturn);
 	}
 	Else{GiveActorInventory(TargetTID,"K_ShieldBreak",1);}
@@ -1851,4 +1894,308 @@ if(CheckInventory("ClassToggleItem") != ToggleValue)
 		}
 
 	}
+}
+
+
+script "MCSpeedSetScript" (int speed)
+{
+	switch (speed) {
+	//Devion Glide
+		case 1:
+		  SetActorProperty(0,APROP_SPEED,1.25);
+		  break;
+		case 0:
+		  SetActorProperty(0,APROP_SPEED,1.0);
+		  break;
+		default:
+		  SetActorProperty(0,APROP_SPEED,1.0);
+		  break;
+	}
+}
+
+#DEFINE SPELLNUM 10
+
+str RmSpellsList[spellnum]={
+	"Diara",
+	"Fira",
+	"Aerora",
+	"Blizzara",
+	"Slow",
+	"Watera",
+	"Thundara",
+	"Blink",
+	"Temper",
+	"Focus"
+	};
+	
+	str RMSpellMem[4];
+	//This array here will keep track of the last 4 spells gained, thus when a new one
+	//is given, it checks to see if it is listed on here first before handing the spell
+	
+	function void AppendSpell (str spellname)
+	// this function adds the new spell to the list and pushes the other entries down
+	{
+	 RMSpellMem[3] =  RMSpellMem[2];
+	 RMSpellMem[2] =  RMSpellMem[1];
+	 RMSpellMem[1] =  RMSpellMem[0];
+	 RMSpellMem[0] = spellname;
+	}
+	
+	function int spellchecker (str spellname)
+	{
+	int matchCount;
+	//this checks for any matches of a spell in question within the spellmemory, if we
+	//have a match or more, then this spell cannot be given.
+		for(int i=0; i<4; i++)
+		{if(RMSpellMem[i] == spellname){++matchCount;}} 
+		return matchCount;
+	}
+
+script "RedMageSpellHandler" (void)
+{
+int spellcount;
+//first, we will start by taking out all existing spells except Diara, since 
+//Diara is in element 0, a for loop that starts at 1 will do the trick
+	for(int i=1; i<spellnum; i++) 
+	{
+	Takeinventory(StrParam(s:"RedMage",s:RmSpellsList[i],s:"Wep"),99);
+	Takeinventory(StrParam(s:RmSpellsList[i],s:"SpellFlag"),99);
+	}
+	
+//now time to give some spells, 
+	until(spellcount >= 2)
+	{
+	//untill we have given two spells, keep looping. so here we will pick a random number and check for any matches in
+	//spellmemory, if we do have a match then we just loop again. if we don't, we will give that spell and then increment
+	// the spellcount variable. when it reaches 2, the loop stops.
+	int randspell = random(1,spellnum - 1);
+	int spellmatch = spellchecker(RmSpellsList[randspell]);
+		if(spellmatch == 0)
+		{
+		giveinventory(StrParam(s:"RedMage",s:RmSpellsList[randspell],s:"Wep"),1);
+		giveinventory(StrParam(s:RmSpellsList[randspell],s:"SpellFlag"),1);
+		AppendSpell(RmSpellsList[randspell]);
+		spellcount = ++spellcount;
+		
+		}
+	}
+}
+
+script "CBMTeamColor" (int ID, int Swap) //CBM's team color script, 1-4 used in respective order of teams. Refer to Red Mage's Subzero Field/Ice Cloak for examples.
+{
+if(Swap==1){
+	if(ClassifyActor(ID) & ACTOR_PLAYER){
+		if(GetCVar("teamlms")==1||GetCVar("ctf")==1||GetCVar("teamplay")==1||GetCVar("oneflagctf")==1||GetCVar("teampossession")==1||GetCVar("teamgame")==1 ){
+			SetResultValue(GetPlayerInfo(ID-1000,PLAYERINFO_TEAM));
+			terminate;
+		}
+	}
+SetResultValue(-1); //TEAM_NONE is the equivalent, which is the fallback when there is no team.
+}
+
+
+if(!(ClassifyActor(ActivatorTID()) & ACTOR_PLAYER)) {
+SetActivatorToTarget(0);
+}
+if(ClassifyActor(ActivatorTID()) & ACTOR_PLAYER) {
+if(GetCVar("teamlms")==1||GetCVar("ctf")==1||GetCVar("teamplay")==1||GetCVar("oneflagctf")==1||GetCVar("teampossession")==1||GetCVar("teamgame")==1 ){SetResultValue(PlayerTeam());terminate;}
+}
+SetResultValue(-1);
+}
+
+Script "FusionPrintScript" (void)
+{
+while(CheckInventory("IsDead")==0)
+	{
+	if(PlayerInGame(PlayerNumber()) && CheckInventory("IsRedMage"))
+		{
+		if(CheckInventory("FiraSpellFlag") && CheckInventory("ThundaraSpellFlag")){
+			SetFont("FUSICN27");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FiraSpellFlag") && CheckInventory("WateraSpellFlag")){
+			SetFont("FUSICN23");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FiraSpellFlag") && CheckInventory("BlinkSpellFlag")){
+			SetFont("FUSICN21");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FiraSpellFlag") && CheckInventory("TemperSpellFlag")){
+			SetFont("FUSICN5");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("AeroraSpellFlag") && CheckInventory("ThundaraSpellFlag")){
+			SetFont("FUSICN2");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("AeroraSpellFlag") && CheckInventory("FocusSpellFlag")){
+			SetFont("FUSICN22");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("BlizzaraSpellFlag") && CheckInventory("ThundaraSpellFlag")){
+			SetFont("FUSICN15");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("BlizzaraSpellFlag") && CheckInventory("FocusSpellFlag")){
+			SetFont("FUSICN25");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("SlowSpellFlag") && CheckInventory("ThundaraSpellFlag")){
+			SetFont("FUSICN4");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("SlowSpellFlag") && CheckInventory("FocusSpellFlag")){
+			SetFont("FUSICN37");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("WateraSpellFlag") && CheckInventory("ThundaraSpellFlag")){
+			SetFont("FUSICN14");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("WateraSpellFlag") && CheckInventory("TemperSpellFlag")){
+			SetFont("FUSICN6");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("ThundaraSpellFlag") && CheckInventory("FocusSpellFlag")){
+			SetFont("FUSICN33");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("BlinkSpellFlag") && CheckInventory("TemperSpellFlag")){
+			SetFont("FUSICN18");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("TemperSpellFlag") && CheckInventory("FocusSpellFlag")){
+			SetFont("FUSICN9");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("AeroraSpellFlag") && CheckInventory("BlinkSpellFlag")){
+			SetFont("FUSICN28");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("ThundaraSpellFlag") && CheckInventory("BlinkSpellFlag")){
+			SetFont("FUSICN29");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FiraSpellFlag") && CheckInventory("SlowSpellFlag")){
+			SetFont("FUSICN11");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FiraSpellFlag") && CheckInventory("AeroraSpellFlag")){
+			SetFont("FUSICN16");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FiraSpellFlag") && CheckInventory("BlizzaraSpellFlag")){
+			SetFont("FUSICN32");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("AeroraSpellFlag") && CheckInventory("TemperSpellFlag")){
+			SetFont("FUSICN8");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("AeroraSpellFlag") && CheckInventory("WateraSpellFlag")){
+			SetFont("FUSICN3");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FocusSpellFlag") && CheckInventory("WateraSpellFlag")){
+			SetFont("FUSICN17");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("FocusSpellFlag") && CheckInventory("FiraSpellFlag")){
+			SetFont("FUSICN12");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("BlizzaraSpellFlag") && CheckInventory("TemperSpellFlag")){
+			SetFont("FUSICN10");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("ThundaraSpellFlag") && CheckInventory("TemperSpellFlag")){
+			SetFont("FUSICN7");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("SlowSpellFlag") && CheckInventory("BlinkSpellFlag")){
+			SetFont("FUSICN34");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("SlowSpellFlag") && CheckInventory("BlizzaraSpellFlag")){
+			SetFont("FUSICN20");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("SlowSpellFlag") && CheckInventory("WateraSpellFlag")){
+			SetFont("FUSICN19");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("AeroraSpellFlag") && CheckInventory("BlizzaraSpellFlag")){
+			SetFont("FUSICN26");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("WateraSpellFlag") && CheckInventory("BlinkSpellFlag")){
+			SetFont("FUSICN30");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("BlinkSpellFlag") && CheckInventory("FocusSpellFlag")){
+			SetFont("FUSICN1");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("BlinkSpellFlag") && CheckInventory("BlizzaraSpellFlag")){
+			SetFont("FUSICN31");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("BlizzaraSpellFlag") && CheckInventory("WateraSpellFlag")){
+			SetFont("FUSICN24");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("AeroraSpellFlag") && CheckInventory("SlowSpellFlag")){
+			SetFont("FUSICN35");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);}
+		else if(CheckInventory("SlowSpellFlag") && CheckInventory("TemperSpellFlag")){
+			SetFont("FUSICN36");
+			HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);
+			}
+	else{
+		SetFont("FUSICN38"); //If you ever see this in-game without any indication of new fusions tell Zomo immediately.
+		HudMessage(s:"A"; HUDMSG_FADEOUT, 75, CR_BLACK,0.02, 0.45, 0.75,0.5);
+		}
+	Delay(7);
+	restart;}
+	}
+}
+
+
+//734
+Script "SubZeroFieldHandler" (VOID)
+{
+int SZField = 0;
+	If(xyzDistance(0,125) > 400) // && FiringPlayer!=Target_TID
+		{
+		SZField = 1;
+		}
+	SetResultValue(SZField);
+}
+
+//735
+Script "RedMageSprintHandler" (Int WhichCase, Int SprintTID, Int RenderTID) //Simple TID assignment for Lightning Sprint and Space Render
+{
+Switch(WhichCase)
+	{
+	Case 0: //Lightning Sprint
+		{
+		SetActivatorToTarget(0);
+		Int LSprintTID = (SprintTID + 2000);
+		//Print(d:LSprintTID);
+		SetResultValue(LSprintTID);
+		}
+	Case 1: //Space Render
+		{
+		SetActivatorToTarget(0);
+		Int SRenderTID = (RenderTID + 2000);
+		//Print(d:SpaceRenderTID);
+		SetResultValue(SRenderTID);
+		}
+	}
+}
+
+script "CSACS_DavColorChange" (void)
+{
+CreateTranslation (3191, 192:192=196:196, 198:198=205:205);
+CreateTranslation (3192, 192:192=170:170, 198:198=171:171);
+CreateTranslation (3193, 192:192=138:138, 198:198=104:104);
+CreateTranslation (3194, 192:192=214:214, 198:198=229:229);
+/*
+if(CheckInventory("WilyTeamFlag")){
+	print(s:"You're on the wily team!");
+	Thing_SetTranslation(0, 3192);
+}else if(CheckInventory("KingTeamFlag")){
+	Thing_SetTranslation(0, 3193);
+}else if(CheckInventory("CossackTeamFlag")){
+	Thing_SetTranslation(0, 3194);
+}else{
+	Thing_SetTranslation(0, 3191);
+*/	
+	
+	Switch(PlayerTeam())
+			{
+			Case 0:
+				Thing_SetTranslation(0, 3191);
+				break;
+			Case 1:
+				Thing_SetTranslation(0, 3192);
+				break;
+			Case 2:
+				Thing_SetTranslation(0, 3194);
+				break;
+			Case 3:
+				Thing_SetTranslation(0, 3193);
+				break;
+			default:
+				Thing_SetTranslation(0, 3191);
+				break;
+				
+			}
 }

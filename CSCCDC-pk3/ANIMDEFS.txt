@@ -49,3 +49,26 @@ pic ModBar3 tics 3
 pic ModBar2 tics 3
 pic ModBar tics 10
     
+//Red Mage
+
+texture SFUSBAR1
+allowdecals
+pic RMAGBAR1 tics 5
+pic RMAGBAR2 tics 5
+pic RMAGBAR3 tics 5
+pic RMAGBAR4 tics 5
+pic RMAGBAR5 tics 5
+pic RMAGBAR6 tics 5
+pic RMAGBAR7 tics 5
+pic RMAGBAR8 tics 5
+
+texture SFUSVAR1
+allowdecals
+pic RMAGVAR1 tics 5
+pic RMAGVAR2 tics 5
+pic RMAGVAR3 tics 5
+pic RMAGVAR4 tics 5
+pic RMAGVAR5 tics 5
+pic RMAGVAR6 tics 5
+pic RMAGVAR7 tics 5
+pic RMAGVAR8 tics 5
