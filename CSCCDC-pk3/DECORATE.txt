@@ -136,6 +136,11 @@
 #include "actors/classes/Healmore/Assize.txt"
 #include "actors/classes/Healmore/WhiteMagicFX.txt"
 
+//==|LordDamager
+#include "actors/classes/LordDamager/LordDamager.txt"
+#include "actors/classes/LordDamager/MissilePunch.txt"
+#include "actors/classes/LordDamager/LaserCannon.txt"
+#include "actors/classes/LordDamager/SmogCannon.txt" //inactive
 
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

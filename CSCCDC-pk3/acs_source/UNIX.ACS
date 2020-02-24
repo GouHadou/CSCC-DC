@@ -38,6 +38,7 @@ SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 #DEFINE ABRACOL 43.0
 #DEFINE HEALCOL 419.0
 #DEFINE YANGCOL 390.0
+#DEFINE LDCOL 438.0
 
 str DisguiseInfo[MAX_DISGUISES][4] = {
 //Actor, Skin, Color, Special Disguise Pickup
@@ -67,6 +68,7 @@ str DisguiseInfo[MAX_DISGUISES][4] = {
 {"AbraClass", "AbraDisguise", ABRACOL, ""},
 {"HealmoreClass", "HealMoreDisguise", HEALCOL, ""},
 {"YangClass", "YangDisguise", HEALCOL, ""},
+{"LordDamagerClass", "LDDisguise", LDCOL, ""},
 
 };
 

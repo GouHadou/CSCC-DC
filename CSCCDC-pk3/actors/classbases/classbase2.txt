@@ -52,6 +52,10 @@ Pain.FragGrenade:
 Pain.GrenadeFragment:
 Pain.GrandDad:
 Pain.NadeSpam:
+Pain.PMissile:
+Pain.DamagerFist:
+Pain.LDRam:
+Pain.SmogThrower:
 Pain.Comet:
 Pain.Meteor:
 Pain.Music:
@@ -241,6 +245,11 @@ Pain.Psybeam:
 Pain.PsychicShove:
 "----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,20)
 goto Pain+1
+
+//Lord Damager
+Pain.DarkLaser:
+"----" H 0 //A_GiveInventory("DarkLaserProtect")
+Goto Pain+1
 
 //Special Death
 //Unix

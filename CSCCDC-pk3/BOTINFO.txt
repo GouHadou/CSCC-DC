@@ -433,3 +433,20 @@
 	script = "humanbot"
 	chatfrequency = 50
 }
+
+{
+	name = "\chLordDamager"
+	accuracy = 3
+	intellect = 3
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ProtoBuster"
+	color = "00 00 00"
+	gender = "male"
+	class = "LordDamager"
+	revealed = true
+	script = "humanbot"
+	chatfrequency = 50
+}
