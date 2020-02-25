@@ -496,11 +496,11 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 				}
 			}
 		//ColdFusion
-				if(CheckWeapon("FusionBombClassWep")==1 || CheckInventory("ColdCopyAlt")==1 )
+			if(CheckWeapon("FusionBombClassWep")==1)
 			{
 			if(CheckInventory("JumpCancler")==0)
 				{
-				if (CheckInventory("BoostFlag")==1 && CheckInventory("RushJetCounter")<1 && CheckInventory("FusionClassAmmo")>= 5)
+				if (CheckInventory("BoostFlag")==1 && CheckInventory("RushJetCounter")<1 && CheckInventory("FusionClassAmmo")>= 1)
 					{
 					TakeInventory("BoostFlag", 1);
 					GiveInventory("CFBoosting",1);
@@ -544,7 +544,7 @@ while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0)
 			}
 		break;
 		Case 3:
-		if((CheckWeapon("FusionBombClassWep")==1 || CheckInventory ("ColdCopyAlt")==1) && CheckInventory("HoverFlag")==1 && CheckInventory("RushJetCounter")<1 && CheckInventory("FusionClassAmmo")>= 1)
+		if(CheckWeapon("FusionBombClassWep")==1 && CheckInventory("HoverFlag")==1 && CheckInventory("RushJetCounter")<1 && CheckInventory("FusionClassAmmo")>= 1)
 			{
 			GiveInventory("CFSputtering",1);
 			TakeInventory("BoostFlag", 1);
