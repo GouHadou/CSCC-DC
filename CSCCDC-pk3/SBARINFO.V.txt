@@ -461,7 +461,7 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	
 	DrawImage "WMAGI4", 119, 10;
 	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 119, 10;} 
-	DrawImage "VERICON3", 129, 10;
+	DrawImage "VERICONR", 129, 10;
 	DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 119, 22;
 
 //InInventory NOT "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 10;}
@@ -560,7 +560,7 @@ IsSelected DaverisClassWep
 //====|Jax
 WeaponAmmo JaxPsychoAmmo{Drawbar"BARAMM18", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory JaxHoldCharge, 1	{DrawBar"BARFLS1", "NOBAR", JaxHoldCharge, vertical, 16, 8;}}
-	
+
 //====|LordDamager
 IsSelected MissilePunchWep
 	{

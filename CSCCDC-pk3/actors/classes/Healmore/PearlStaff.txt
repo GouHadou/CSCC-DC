@@ -29,7 +29,6 @@ WMST F 0
 WMST F 1 A_WeaponReady(WRF_ALLOWRELOAD)
 WMST F 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"User1")
 WMST F 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User2) == True,"User2")
-WMST F 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User3) == True,"User3")
 WMST F 0 //A_GiveInventory("PearlStaffCharge",1)
 goto Ready2
 loop
@@ -203,9 +202,8 @@ WMST B 0 A_GiveInventory("CuragaCooldown")
 Goto Ready2
 
 Reload:
-User3:
 "####" B 0
-User3.Rasp:
+Reload.Rasp:
 	"####" B 0 A_Jumpifinventory("WhiteMageMana",10,2)
 	Goto NoAmmo2
 	"####" BB 0 A_Jumpifinventory("RaspCooldownItem",10,"NoAmmo2")
