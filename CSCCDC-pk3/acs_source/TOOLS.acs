@@ -123,7 +123,7 @@ script 247 (int maxforce, int maxRange, int noFalloff)
 		{	
 			userCount++;
 			distance = xyzDistance(0,targetTID);
-			finalforce = ceil(FixedMul(maxforce << 16, 1.0 - FixedDiv(distance, maxRange)));
+			finalforce = ceil_cscc(FixedMul(maxforce << 16, 1.0 - FixedDiv(distance, maxRange)));
 			if(finalforce > maxforce || noFalloff > 0 )
 			{
 				finalforce = maxforce;
