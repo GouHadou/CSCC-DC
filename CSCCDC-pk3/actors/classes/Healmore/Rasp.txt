@@ -22,8 +22,8 @@ States
 Spawn:
 TNT1 A 0 
 TNT1 A 0 A_CountDown
-WPLS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
-WPLS G 1
+WPRS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+WPRS G 1
 Goto Spawn
 
 Crash:
@@ -145,7 +145,7 @@ States
 Spawn:
 TNT1 A 0 
 TNT1 A 4
-WPLS GGGFED 2 A_ScaleVelocity(0.8)
+WPRS GGGFED 2 A_ScaleVelocity(0.8)
 stop
 }
 }
@@ -167,7 +167,7 @@ States
 {
 Spawn:
 TNT1 A 0 
-WPLS GFED 2 A_ScaleVelocity(0.8)
+WPRS GFED 2 A_ScaleVelocity(0.8)
 stop
 }
 }
