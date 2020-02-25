@@ -94,4 +94,4 @@ server noarchive int SV_TRANSLATION63 = 0;
 
 user int CSCC_DamageDisplay = 1;
 server bool mm8bdm_sv_projteamcolor = true; // Disable projectile team colors for all players.
-user bool mm8bdm_projteamcolor = true; // Disable projectile team colors locally. 
+user bool cscc_projteamcolor = true; // Disable projectile team colors locally. 

@@ -5,13 +5,13 @@
 
 function bool ProjTeamColorCvar(void)
 {
-	//return (getCvar("mm8bdm_projteamcolor")>0);
+	//return (getCvar("cscc_projteamcolor")>0);
 	return (ProjTeamColorCvarServer()&&ProjTeamColorCvarClient());
 }
 
 function bool ProjTeamColorCvarClient(void)
 {
-	return (getUserCvar(ConsolePlayerNumber(),"mm8bdm_projteamcolor")>0);
+	return (getUserCvar(ConsolePlayerNumber(),"cscc_projteamcolor")>0);
 }
 
 function bool ProjTeamColorCvarServer(void)

@@ -355,7 +355,6 @@ OptionMenu "OptionsMenu"
 	
 	StaticText	"MM8BDM Options", 1
 	StaticText " "
-	Option "Projectile Team Colors",		"mm8bdm_projteamcolor", "OnOff"
 	Option "Display Health Number",			"mm8bdm_healthnumber", "OnOff"
 	Option "Display Ammo Number",			"mm8bdm_ammonumber", "OnOff"
 	Option "Pickup Weapon Colors",			"mm8bdm_noenergycolors", "OffOn"
@@ -558,15 +557,16 @@ OptionMenu "CSCCSettings"
 	StaticText ""
 	StaticText "User Options",1
 	StaticText ""
-	Option "Damage Numbers (CSCC_DamageDisplay)",			"CSCC_DamageDisplay", "YesNo"
+	Option "Proj. Team Colors (CSCC_ProjTeamColor)",		"cscc_projteamcolor", "OnOff"
+	Option "Damage Numbers (CSCC_DamageDisplay)",			"CSCC_DamageDisplay", "OnOff"
 	StaticText ""
 	StaticText "Mode-Specific Options",1
 	StaticText ""
-	Option "HP in LMS (CSCC_HPinLMS)",			"cscc_hpinlms", "YesNo"
+	Option "HP in LMS (CSCC_HPinLMS)",			"cscc_hpinlms", "OnOff"
 	StaticText ""
 	StaticText "General Options",1
 	StaticText ""
-	Option "Pit Protection (CSCC_PitProtection)",			"cscc_pitprotection", "YesNo"
+	Option "Pit Protection (CSCC_PitProtection)",			"cscc_pitprotection", "OnOff"
 	StaticText ""
 	StaticText "===============================================================",1
 }
