@@ -1,6 +1,9 @@
 Const int CuragaArea = 600;
 Const int Item_CuragaHeal = 15;
 
+Actor CuragaBlock : powerup {inventory.amount 1 Powerup.duration 105}
+
+
 Actor CuragaAOE : BasicHelper
 {
 +MISSILE
@@ -80,7 +83,7 @@ TNT1 A 0  A_GiveToTarget("CuragaPreHealEffect")
 TNT1 A 23
 TNT1 A 0 A_GiveToTarget("CuragaHealEffect2")
 TNT1 AAAAAAAA 2  A_GiveToTarget("CuragaHealEffect")
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,AAPTR_TARGET,100,50)
+TNT1 A 0 A_GiveToTarget("CuragaHeal")
 TNT1 A 0 A_GiveToTarget("CuragaHealEffect3")
 TNT1 A 10
 stop
@@ -91,6 +94,44 @@ stop
 }
 }
 
+actor CuragaHeal : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 1 A_Giveinventory("CureSparkleFXSpawn")
+TNT1 A 0 A_JumpIfInventory("CuragaBlock",1,"HealMeLess")
+TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent",0)>=150,"Nope")
+LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_ActorClassifier",0,2) == TRUE, "HealMe")
+
+
+HealMe:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,100,50)
+TNT1 A 1 A_Giveinventory("CuragaBlock")
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 0 A_PlaySoundEx("Support/Heal1","SoundSlot7")
+TNT1 A 0
+stop
+
+HealMeLess:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,10,0)
+TNT1 A 1 A_Giveinventory("CuragaBlock")
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 0 A_PlaySoundEx("Support/Heal1","SoundSlot7")
+TNT1 A 0
+stop
+
+Nope:
+TNT1 A 0
+stop
+}
+}
 
 actor CuragaPreHealEffect : CustomInventory
 {

@@ -445,24 +445,27 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 63, 10;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana,63, 29;
 	
-	DrawImage "WMAGI1", 92, 10; 
-	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 92, 10;} 
-	DrawImage "VERICON1", 102, 10;
+	DrawImage "WMAGI1", 77, 10; 
+	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 77, 10;} 
+	DrawImage "VERICON1", 87, 10;
+	DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 77, 22;
 	
-	DrawImage "WMAGI2", 122, 10; 
-	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 122, 10;} 
-	DrawImage "VERICON2", 132, 10;
+	DrawImage "WMAGI2", 99, 10; 
+	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 99, 10;} 
+	DrawImage "VERICON2", 109, 10;
+	DrawNumber 3, "CSCCAFONT", Untranslated, 40, alignment(left), 99, 22;
+
+	//DrawImage "WMAGI3", 92, 24; 
+	//InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 92, 24;} 
+	//DrawImage "VERICON1", 102, 24;
 	
-	DrawImage "WMAGI3", 92, 24; 
-	InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 92, 24;} 
-	DrawImage "VERICON1", 102, 24;
-	
-	DrawImage "WMAGI4", 122, 24;
-	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 122, 24;} 
-	DrawImage "VERICON2", 132, 24;
-	
-InInventory NOT "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 10;}
-InInventory "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 24;}
+	DrawImage "WMAGI4", 119, 10;
+	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 119, 10;} 
+	DrawImage "VERICON3", 129, 10;
+	DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 119, 22;
+
+//InInventory NOT "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 10;}
+//InInventory "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 24;}
 }
 
 //====|Devion
