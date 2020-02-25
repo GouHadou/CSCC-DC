@@ -84,7 +84,7 @@ BLUH A 0 A_Recoil(-7)
 BLUH A 1 A_JumpIf(z-floorz == 0, "DiveDone")
 goto IceCrash
 DiveDone:
-BLUH C 0 A_PlaySoundEx("weapon/crashland","Weapon")
+BLUH C 0 A_PlaySoundEx("weapon/Devcrashland	 ","Weapon")
 BLUH C 0 A_Stop
 BLUH C 0 A_ChangeFlag("SHOOTABLE",1)
 BLUH C 0 A_SetGravity(0.7)

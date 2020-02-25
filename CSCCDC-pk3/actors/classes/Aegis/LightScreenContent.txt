@@ -2,7 +2,7 @@
 //--------------------------------|Ammo & inventory|---------------------------
 //[+]========================================================================[+]
 
-actor LightScreenHealth : inventory {inventory.amount 1 inventory.maxamount 500}
+actor LightScreenHealth : inventory {inventory.amount 1 inventory.maxamount 250}
 actor LightScreenActive : inventory {inventory.amount 1 inventory.maxamount 1}
 actor LightScreenKiller : powerup {inventory.amount 1 inventory.maxamount 1 Powerup.duration 5}
 
