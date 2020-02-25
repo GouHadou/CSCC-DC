@@ -623,6 +623,8 @@ weapon/ibreak			ICEWBRAK
 weapon/ifly				SHDEDIVE
 weapon/Devcrashland		NAPALMB
 item/wingfly			habataki
+weapon/crashland		NAPALMB
+
 
 //Jax
 $playersound	jaxclass	male	*death		MEGADEAT
