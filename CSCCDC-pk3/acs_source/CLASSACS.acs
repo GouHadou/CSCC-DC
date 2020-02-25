@@ -2188,10 +2188,10 @@ if(CheckInventory("WilyTeamFlag")){
 				Thing_SetTranslation(0, 3192);
 				break;
 			Case 2:
-				Thing_SetTranslation(0, 3194);
+				Thing_SetTranslation(0, 3193);
 				break;
 			Case 3:
-				Thing_SetTranslation(0, 3193);
+				Thing_SetTranslation(0, 3194);
 				break;
 			default:
 				Thing_SetTranslation(0, 3191);
