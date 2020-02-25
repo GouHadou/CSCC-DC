@@ -20,10 +20,15 @@ scale 1.5
 States
 {
 Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("ProjectileCode",1)
+TNT1 A 0 A_Jump(256,"Spawn2")
+Goto Spawn2
+Spawn2:
 TNT1 A 0 
 TNT1 A 0 A_CountDown
-WPRS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
 WPRS G 1
+WPRS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
 Goto Spawn
 
 Crash:
@@ -73,8 +78,6 @@ TNT1 A 0 A_JumpIf(Args[0] > 0, "DeathAward")
 Death:
 TNT1 A 1 
 stop
-
-
 }
 }
 
@@ -128,6 +131,71 @@ stop
 	}
 	
 	
+
+	actor RaspShotFlank : RaspShot
+	{
+	+SEEKERMISSILE
+	+SCREENSEEKER
+	States
+	{
+	Spawn2:
+	TNT1 A 0 
+	TNT1 A 0 A_CountDown
+	WPRS G 1 A_SeekerMissile(10,20,SMF_LOOK|SMF_PRECISE,256,6)
+	WPRS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+	Goto Spawn2
+	}
+	}
+
+	actor RaspShotFlank_BLUE : RaspShotFlank
+	{
+	translation "250:250=196:196", "192:192=205:205", "198:198=74:74", "249:249=199:199", "195:195=244:244"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+
+	actor RaspShotFlank_RED : RaspShotFlank
+	{
+	translation "250:250=170:170", "192:192=171:171", "198:198=41:41", "249:249=45:45", "195:195=191:191"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+	
+	actor RaspShotFlank_GREEN : RaspShotFlank
+	{
+	translation "250:250=138:138", "192:192=104:104", "198:198=128:128", "249:249=131:131", "195:195=135:135"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+	
+	actor RaspShotFlank_YELLOW : RaspShotFlank
+	{
+	translation "250:250=214:214", "192:192=229:229", "198:198=232:232", "249:249=223:223", "195:195=234:234"
+	States
+	{
+	RaspCheck:
+	TNT1 A 0 A_JumpIfInventory("Rasped",1,"Death",AAPTR_TRACER)
+	TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"Death",AAPTR_TRACER)
+	Goto Rasp
+	}
+	}
+
+
 actor RaspParticleFX 
 {
 PROJECTILE
@@ -226,30 +294,30 @@ actor RaspShotShooter : BasicTeamColorPickup
 states
 {
 FireX:
-BUST B 1 A_FireCustomMissile("RaspShot",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank",12,0,4,8,0,0)
 BUST B 1 A_FireCustomMissile("RaspShot",0,0,4,8,0,0)
-BUST B 1 A_FireCustomMissile("RaspShot",-12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank",-12,0,4,8,0,0)
 goto Done
 //---
 FireB:
-BUST B 1 A_FireCustomMissile("RaspShot_BLUE",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_BLUE",12,0,4,8,0,0)
 BUST B 1 A_FireCustomMissile("RaspShot_BLUE",0,0,4,8,0,0)
-BUST B 1 A_FireCustomMissile("RaspShot_BLUE",-12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_BLUE",-12,0,4,8,0,0)
 goto Done
 FireR:
-BUST B 1 A_FireCustomMissile("RaspShot_RED",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_RED",12,0,4,8,0,0)
 BUST B 1 A_FireCustomMissile("RaspShot_RED",0,0,4,8,0,0)
-BUST B 1 A_FireCustomMissile("RaspShot_RED",-12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_RED",-12,0,4,8,0,0)
 goto Done
 FireG:
-BUST B 1 A_FireCustomMissile("RaspShot_GREEN",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_GREEN",12,0,4,8,0,0)
 BUST B 1 A_FireCustomMissile("RaspShot_GREEN",0,0,4,8,0,0)
-BUST B 1 A_FireCustomMissile("RaspShot_GREEN",-12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_GREEN",-12,0,4,8,0,0)
 goto Done
 FireY:
-BUST B 1 A_FireCustomMissile("RaspShot_YELLOW",12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_YELLOW",12,0,4,8,0,0)
 BUST B 1 A_FireCustomMissile("RaspShot_YELLOW",0,0,4,8,0,0)
-BUST B 1 A_FireCustomMissile("RaspShot_YELLOW",-12,0,4,8,0,0)
+BUST B 1 A_FireCustomMissile("RaspShotFlank_YELLOW",-12,0,4,8,0,0)
 goto Done
 }
 }

@@ -471,7 +471,7 @@ weapon/BombAlarm Balarm
 Support/WhiteCast WMCS01
 Support/WhiteCast2 WMCS02
 Support/WhiteCast3 WMCS03
-Support/WhiteCast4 WMCS04
+Support/WhiteCast4 WHCS04
 
 Support/Heal1 Recov1 
 $volume Support/Heal1 0.5

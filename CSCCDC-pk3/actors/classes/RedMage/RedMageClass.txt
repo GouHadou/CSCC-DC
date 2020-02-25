@@ -1,13 +1,13 @@
 actor RedMageClass : CustomWepMan
 {
-Health 75
-Player.MaxHealth 75
+Health 100
+Player.MaxHealth 100
 player.displayname "Red Mage" 
 player.soundclass "RMAGE" 
 player.damagescreencolor "red" 
-player.forwardmove 0.65, 0.65
-player.sidemove 0.6, 0.6
-player.jumpz 11
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+player.jumpz 10
 //player.startitem "RedMageDiaraWep"
 player.startitem "RedMageClassItems"
 player.startitem "RedMageFusionReader"

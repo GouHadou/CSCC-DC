@@ -436,24 +436,27 @@ InInventory KingTeamFlag, 1{
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana, 151, 175;
 	
 	
-	DrawImage "WMAGI1", 180, 156; 
-	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 180, 156;} 
-	DrawImage "VERICON1", 190, 156;
+	DrawImage "WMAGI1", 165, 156; 
+	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 165, 156;} 
+	DrawImage "VERICON1", 175, 156;
+	DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 165, 168;
+
+	DrawImage "WMAGI2", 187, 156; 
+	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 187, 156;} 
+	DrawImage "VERICON2", 197, 156;
+	DrawNumber 3, "CSCCAFONT", Untranslated, 40, alignment(left), 187, 168;
+
+	//DrawImage "WMAGI3", 180, 170; 
+	//InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 180, 170;} 
+	//DrawImage "VERICON1", 190, 170;
 	
-	DrawImage "WMAGI2", 210, 156; 
-	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 210, 156;} 
-	DrawImage "VERICON2", 220, 156;
-	
-	DrawImage "WMAGI3", 180, 170; 
-	InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 180, 170;} 
-	DrawImage "VERICON1", 190, 170;
-	
-	DrawImage "WMAGI4", 210, 170; 
-	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 210, 170;} 
-	DrawImage "VERICON2", 220, 170;
-	
-InInventory NOT "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 156;}
-InInventory "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 170;}
+	DrawImage "WMAGI4", 207, 156; 
+	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 207, 156;} 
+	DrawImage "VERICON3", 217, 156;
+	DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 207, 168;
+
+//InInventory NOT "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 156;}
+//InInventory "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 170;}
 }
 
 //====|Devion
