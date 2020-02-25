@@ -1,7 +1,7 @@
 actor RedMageBlizzaraWep : RedMageDiaraWep
 {
 Tag "Blizzara"
-Weapon.SlotNumber 2
+Weapon.SlotNumber 4
 Inventory.Pickupmessage "Spell learned: Blizzara!"
 inventory.icon "BLZAI0"
 States
@@ -9,8 +9,7 @@ States
 SFCheck1:
 RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak") //you can decloak early if you see a person near your statue to catch them. Either way, you will get an ice kick too.
 RMHD A 0 A_JumpIfInventory("SpellFusionPower",300,"SFCheck")
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
-goto Ready+11
+goto Ready2
 SFCheck:
 //RMHD A 0 A_TakeInventory("SpellFusionPower",350)
 RMHD A 0 A_JumpIfInventory("ThundaraSpellFlag",1,"FlashFreeze")
@@ -21,16 +20,14 @@ RMHD A 0 A_JumpIfInventory("SlowSpellFlag",1,"SturdyGlacier")
 RMHD A 0 A_JumpIfInventory("AeroraSpellFlag",1,"SnowStorm")
 RMHD A 0 A_JumpIfInventory("BlinkSpellFlag",1,"IceCloakBegin")
 RMHD A 0 A_JumpIfInventory("WateraSpellFlag",1,"SubzeroField")
-goto Ready+11
+goto Ready2
 ReshuffleCheck:
 RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+7
+goto Ready2
 ReshufflePlease:
 RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
 RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+12
+goto Ready2
 FlashFreeze:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -39,9 +36,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("FlashFreezeShot",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Blizzaja:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -50,9 +47,9 @@ RMHD A 0 A_FireCustomMissile("BlizzajaShot",0,0,8,0)
 RMHD BC 2
 RMHD D 35
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 ElementalBlaster:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -61,9 +58,9 @@ RMHD BC 2
 RMHD A 0 A_FireCustomMissile("ElementalBlasterShot",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
+RMHD A 0 
 RMHD CB 2
-goto Ready+5
+goto Ready2
 IceBrand:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -78,7 +75,7 @@ RMHD D 0 A_TakeInventory("TBladeFusionPower",99)
 RMHD D 20 A_GiveInventory("IceBrandFusionPower",1)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 SturdyGlacier:
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
 RMHD A 0 SetPlayerProperty(0,1,0)
@@ -103,7 +100,7 @@ RMKK A 4 A_SpawnItemEx("GlacierKickFX",18,0,48)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMKK C 0 ACS_NamedExecuteAlways("core_freezeplayer",0,0,0)
 RMKK BC 2
-goto Ready+5
+goto Ready2
 SnowStorm:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -116,12 +113,11 @@ RMHD D 0 A_GiveInventory("KnightFlag",1)
 loop
 SnowStop:
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD C 2 A_TakeInventory("User1_Trigger",99)
+RMHD C 2 
 RMHD B 2 A_TakeInventory("KnightFlag",999)
-goto Ready+5
+goto Ready2
 IceCloakBegin:
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
 RMHD A 0 A_PlaySoundEx("weapon/invisible","Weapon")
 RMHU A 1 A_SetTranslucent(0.8) RMHU A 1 A_SetTranslucent(0.6) RMHU A 1 A_SetTranslucent(0.4)
 RMHU A 1 A_SetTranslucent(0.2) RMHU A 1 A_SetTranslucent(0.0)
@@ -147,27 +143,27 @@ RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawner",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 FieldBlue:
 RMHD BC 2
 RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawnerB",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 FieldRed:
 RMHD BC 2
 RMHD A 0 A_FireCustomMissile("SubzeroFieldSpawnerR",0,0,8,0)
 RMHD D 25
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 Altfire:
 RMHD A 0 A_JumpIfInventory("IceCloakActive",1,"Decloak")
-RMHD A 0 A_JumpIfInventory("LastStandPower",1,"BlizzaraFree")
+RMHD A 0 //A_JumpIfInventory("LastStandPower",1,"BlizzaraFree")
 RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"BlizzaraFree")
 RMHD A 0 A_JumpIfInventory("RedMageMana",16,"BlizzaraUse")
-Goto Ready+5
+Goto Ready2
 BlizzaraFree:
 goto BlizzaraUse+1
 BlizzaraUse:
@@ -176,7 +172,7 @@ RMHD B 0 A_PlaySoundEX("weapon/iceslasher", "Weapon")
 RMHD BC 2
 RMHD D 20 A_FireCustomMissile("BlizzaraShot",0,0,8,0)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 }
 }
 

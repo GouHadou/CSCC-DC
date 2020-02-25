@@ -23,26 +23,24 @@ RMHD A 0 ACS_ExecuteAlways(991,0,DYE_REDMAGE)
 RMHD A 0 A_TakeInventory("IsDead",999)
 RMHD A 1 A_GunFlash
 RMHD A 0 A_TakeInventory("ExistCount",999)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
-RMHD A 0 A_TakeInventory("User2_Trigger",999)
+Ready2:
 RMHU AAA 1 A_WeaponReady
 RMHD A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"SFCheck1")
 RMHD A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User2) == True,"ReshuffleCheck")
 RMHD A 0 A_GiveInventory("RedMageMana",2)
-Goto Ready+7
+Goto Ready2
 SFCheck1:
 //RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak")
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
-goto Ready+11
+goto Ready2
 ReshuffleCheck:
 RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+7
+
+goto Ready2
 ReshufflePlease:
 RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
 RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+12
+
+goto Ready2
 Deselect:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 RMHD A 1 A_Lower
@@ -54,16 +52,16 @@ Loop
 Flash:
 TNT1 A 3
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
-TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"FSFlash")
+TNT1 A 0 //A_JumpIfInventory("SmashFlag",1,"FSFlash")
 TNT1 A 0 A_JumpIfInventory("PowerQuickSpell",1,"QuickFlash")
-TNT1 A 0 A_GiveInventory("RedMagePower",30) // 3
+TNT1 A 0 A_GiveInventory("RedMagePower",3) 
 TNT1 A 0 A_GiveInventory("SpellFusionPower",3)
 loop
 QuickFlash:
 TNT1 A 3
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
-TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"QuickFSFlash")
-TNT1 A 0 A_GiveInventory("RedMagePower",40) //4
+TNT1 A 0 //A_JumpIfInventory("SmashFlag",1,"QuickFSFlash")
+TNT1 A 0 A_GiveInventory("RedMagePower",4) 
 TNT1 A 0 A_GiveInventory("SpellFusionPower",4)
 TNT1 A 0 A_SpawnItemEx("SlowEffect",random(-24,24),random(-24,24),random(-24,24),random(-5,5),random(-5,5),random(-5,5),0,SXF_NOCHECKPOSITION)
 TNT1 A 0 A_JumpIfInventory("PowerQuickSpell",1,"QuickFlash")
@@ -87,7 +85,7 @@ TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
 TNT1 A 1 A_SpawnItemEx("RMImageB",-16,0,0)
 TNT1 A 0 A_GiveInventory("RedMagePower",3)
 TNT1 A 0 A_GiveInventory("SpellFusionPower",2)
-TNT1 A 0 A_JumpIfInventory("SmashFlag",1,"FSFlash")
+TNT1 A 0 //A_JumpIfInventory("SmashFlag",1,"FSFlash")
 goto Flash
 QuickFSFlash:
 TNT1 A 0 A_JumpIfInventory("IsDead",1,"FlashStop")
@@ -116,7 +114,7 @@ stop
 Fire:
 RMSW A 0 A_JumpIfInventory("IceCloakActive",1,"Decloak")
 RMSW A 0 A_JumpIfInventory("FissionWaveFlag",1,"FissionStop")
-RMSW A 0 A_JumpIfInventory("SmashFlag",1,"MPBurst")
+RMSW A 0 //A_JumpIfInventory("SmashFlag",1,"MPBurst")
 RMSW A 0 A_JumpIfInventory("MagicBladeFusionPower",1,"MagicBladeAttack")
 RMSW A 0 A_JumpIfInventory("FlameTongueFusionPower",1,"FlameTongueAttack")
 RMSW A 0 A_JumpIfInventory("HydroBladeFusionPower",1,"HydroBladeAttack")
@@ -132,7 +130,7 @@ RMSW EF 1
 TNT1 A 6
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 Fire2:
 RMSW A 0 A_GiveInventory("RMSwordFlag",1)
 RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
@@ -142,7 +140,7 @@ RMSW DEF 1
 TNT1 A 4
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 FlameTongueAttack:
 RMSW A 0 A_GiveInventory("RMSwordFlag",1)
 RMSW A 0 A_PlaySoundEx("weapon/flamesword","Weapon")
@@ -155,7 +153,7 @@ RMSW DEF 1
 TNT1 A 4
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 HydroBladeAttack:
 RMSW A 0 A_GiveInventory("RMSwordFlag",1)
 RMSW A 0 A_PlaySoundEx("misc/waterslide","Weapon")
@@ -166,7 +164,7 @@ RMSW DEF 1
 TNT1 A 5
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 MagicBladeAttack:
 RMSW A 0 A_GiveInventory("RMSwordFlag",1)
 RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
@@ -176,7 +174,7 @@ RMSW DEF 1
 TNT1 A 5
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 FalchionAttack:
 RMSW A 0 A_GiveInventory("RMSwordFlag",1)
 RMSW A 0 A_PlaySoundEx("weapon/superboost","Weapon")
@@ -187,7 +185,7 @@ RMSW DEF 1
 TNT1 A 10
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 IceBrandAttack:
 RMSW A 0 A_GiveInventory("RMSwordFlag",1)
 RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
@@ -198,7 +196,7 @@ RMSW DEF 1
 TNT1 A 10
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 TBladeAttack:
 RMSW A 0 A_GiveInventory("RMSwordFlag",1)
 RMSW A 0 A_PlaySoundEx("weapon/slashclaw","Weapon")
@@ -209,14 +207,14 @@ RMSW DEF 1
 TNT1 A 8
 RMSW A 0 A_TakeInventory("RMSwordFlag",1)
 RMSW A 0 A_Refire
-goto Ready+5
+goto Ready2
 FissionStop:
-RMHD D 0 A_TakeInventory("User1_Trigger",999)
+RMHD D 0 
 RMHD D 0 A_TakeInventory("FissionWaveFlag",99)
 RMHD CB 2
-goto Ready+5
+goto Ready2
 IceCloakLoop:
-RMHD A 0 A_TakeInventory("User1_Trigger",99) //Trying to prevent premature ending due to holding the button for too long
+RMHD A 0  //Trying to prevent premature ending due to holding the button for too long
 RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
 RMHU A 1 A_WeaponReady(WRF_NOSWITCH)
 RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
@@ -225,7 +223,7 @@ RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
 RMHU A 1 A_WeaponReady(WRF_NOSWITCH)
 RMHU A 0 A_SpawnItemEx("IceCloakVisualSpawner",0,0,0,momx,momy,momz,0,9,0)
 RMHU A 1 A_WeaponReady(WRF_NOSWITCH)
-RMHD A 0 A_JumpIfInventory("User1_Trigger",1,"Decloak")
+RMHD A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"Decloak")//A_JumpIfInventory("User1_Trigger",1,"Decloak")
 RMHD A 0 A_JumpIf(ACS_ExecuteWithResult(975,1)==1,4)
 //RMHU A 0 A_SpawnItemEx("IceCloakFX",random(-24,24),random(-24,24),random(0,44),momx,momy,momz,0,0,0)
 RMHD A 1 A_TakeInventory("RedMageMana",1)
@@ -257,12 +255,12 @@ RMHD A 0 SetPlayerProperty(0,0,4)
 RMHD A 0 A_TakeInventory("IceCloakFlag",99)
 RMKK BC 2
 RMHU A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+4
+goto Ready2
 Altfire:
-RMHD A 0 A_JumpIfInventory("LastStandPower",1,"DiaFree")
+RMHD A 0 //A_JumpIfInventory("LastStandPower",1,"DiaFree")
 RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"DiaFree")
 RMHD A 0 A_JumpIfInventory("RedMageMana",2,"DiaUse")
-Goto Ready+5
+Goto Ready2
 DiaFree:
 goto DiaUse+1
 DiaUse:
@@ -273,7 +271,7 @@ RMHD D 0 A_PlaySoundEX("weapon/mirrordeflect2","Weapon")
 RMHD D 10 A_FireCustomMissile("DiaraShot",0,0,8,0)
 RMHU A 0 A_Refire
 RMHD CB 2
-goto Ready+5
+goto Ready2
 FastBlasting:
 RMHD C 2
 RMHD D 0 A_PlaySoundEX("weapon/mirrordeflect2","Weapon")
@@ -284,9 +282,9 @@ RMHD D 0 A_PlaySoundEX("weapon/mirrordeflect2", "Weapon")
 RMHD D 2 A_FireCustomMissile("DiaraShot",random(-7,7),0,8,0)
 RMHU A 0 A_Refire
 RMHD CB 2
-goto Ready+5
+goto Ready2
 MPBurst:
-TNT1 A 0 A_TakeInventory("SmashFlag",999)
+TNT1 A 0 //A_TakeInventory("SmashFlag",999)
 RMHU A 0 SetPlayerProperty(0,2,5)
 RMHD BC 3
 RMHU A 0 A_PlaySoundEx("RagingSage/Active","Weapon")
@@ -296,10 +294,10 @@ RMHD D 0 A_GiveInventory("MPBurstBoost",1)
 RMHD D 0 A_SpawnItemEx("MPBurstWatcher",0,0,28)
 RMHD CB 3
 RMHU A 0 SetPlayerProperty(0,0,5)
-goto Ready+5
+goto Ready2
 NoAmmo:
 RMHD A 1 ACS_Execute(979,0)
-Goto Ready+5
+Goto Ready2
 }
 }
 

@@ -1,7 +1,7 @@
 actor RedMageBlinkWep : RedMageDiaraWep
 {
 Tag "Blink"
-Weapon.SlotNumber 3
+Weapon.SlotNumber 8
 Inventory.Pickupmessage "Spell learned: Blink!"
 inventory.icon "BLNKI0"
 States
@@ -9,8 +9,7 @@ States
 SFCheck1:
 //RMHD A 0 A_JumpIfInventory("IceCloakFlag",1,"Decloak")
 RMHD A 0 A_JumpIfInventory("SpellFusionPower",300,"SFCheck")
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
-goto Ready+11
+goto Ready2
 SFCheck:
 //RMHD A 0 A_TakeInventory("SpellFusionPower",350)
 RMHD A 0 A_JumpIfInventory("TemperSpellFlag",1,"Zantetsuken")
@@ -21,16 +20,16 @@ RMHD A 0 A_JumpIfInventory("SlowSpellFlag",1,"TemporalShift")
 RMHD A 0 A_JumpIfInventory("WateraSpellFlag",1,"WaterClone")
 RMHD A 0 A_JumpIfInventory("FocusSpellFlag",1,"RagingSageStart")
 RMHD A 0 A_JumpIfInventory("BlizzaraSpellFlag",1,"IceCloakBegin")
-goto Ready+11
+goto Ready2
 ReshuffleCheck:
 RMHD A 0 A_JumpIfInventory("RedMagePower",200,"ReshufflePlease")
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+7
+
+goto Ready2
 ReshufflePlease:
 RMHD A 0 A_PlaySoundEx("TM_System_Adventure/warnplayers","SoundSlot5")
 RMHD A 0 A_GiveInventory("RedMageSpellShop",1)
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+12
+
+goto Ready2
 HeatDash:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -71,12 +70,11 @@ RMHD B 1 A_SetTranslucent(0.8)
 RMHD B 1 A_SetTranslucent(1.0)
 RMHD D 0 A_SpawnItemEx("HeatDashExplode2",0,0,28)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
+
 RMHD A 0 A_ChangeFlag("THRUACTORS",0)
 RMHD A 0 A_ChangeFlag("SOLID",1)
 RMHD A 10 A_ChangeFlag("NOBLOCKMONST",1)
-goto Ready+5
+goto Ready2
 Zantetsuken:
 RMHD A 0 A_GiveInventory("TemporalBladeFlag",1)
 RMSW A 0 A_TakeInventory("SpellFusionPower",300)
@@ -101,7 +99,7 @@ RMHD A 0 A_ChangeFlag("THRUACTORS",0)
 RMHD A 0 A_ChangeFlag("SOLID",1)
 RMSW A 0 A_ChangeFlag("NOBLOCKMONST",1)
 RMHD AAAAAAAA 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 AirSpin:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -128,12 +126,12 @@ RMHD A 0 A_JumpIfInventory("IsUnderWater",1,"AirSpinEndUW")
 RMHD A 0 A_SetGravity(0.8)
 RMHD A 0 A_ChangeFlag("THRUACTORS",0)
 RMHD AAAAAAAA 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 AirSpinEndUW:
 RMHD A 0 A_SetGravity(0.2)
 RMHD A 0 A_ChangeFlag("THRUACTORS",0)
 RMHD AAAAAAAA 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 LightningSprint:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_PlaySoundEx("weapon/pharaoh2","Weapon")
@@ -142,9 +140,8 @@ RMHD BC 2
 RMHD DDDDDDDDDDDDDDDDDDDD 1 A_JumpIfInventory("LSFlag",1,"TeleSuccess") //Ammo will only be taken away upon successful movement.
 RMHD CB 2
 RMHD A 0 A_TakeInventory("SpellFusionActive",99)
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
-RMHD A 0 A_TakeInventory("User2_Trigger",99)
-goto Ready+5
+
+goto Ready2
 TeleSuccess:
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
 RMHD A 0 A_TakeInventory("RedMageMana",64)
@@ -161,9 +158,8 @@ RMHD D 0 A_ChangeFlag("NOBLOCKMONST",1)
 RMHD CB 2
 RMHU AAAAAAAAAA 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
-RMHD A 0 A_TakeInventory("User1_Trigger",999)
-RMHD A 5 A_TakeInventory("User2_Trigger",999)
-goto Ready+5
+RMHD A 5 
+goto Ready2
 TemporalShift:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -179,7 +175,7 @@ RMHD D 0 A_GiveInventory("ExitUnitAuto",1)
 RMHD D 35 A_TakeInventory("RedMageMana",64)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 3
-goto Ready+5
+goto Ready2
 WaterClone:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -188,7 +184,7 @@ RMHD D 0 A_GiveInventory("WaterCloneBoost",1)
 RMHD D 25 A_FireCustomMissile("WaterCloneSpawner",0,0,8,0,0,0)
 RMHD A 0 A_TakeInventory("SpellFusionActive",1)
 RMHD CB 3
-Goto Ready+5
+Goto Ready2
 RagingSageStart:
 RMHD A 0 A_GiveInventory("SpellFusionActive",1)
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
@@ -254,11 +250,11 @@ RMKK B 0 A_ChangeFlag("NOBLOCKMONST",1)
 RMKK B 0 A_JumpIfInventory("IsUnderWater",1,"RSEndNormalUW")
 RMKK B 5 A_SetGravity(0.8)
 RMKK C 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 RSEndNormalUW:
 RMKK B 5 A_SetGravity(0.2)
 RMKK C 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 RagingSage:
 RMHD A 0 A_GiveInventory("RagingSageArmor",1)
 RMHD A 0 A_Stop
@@ -275,14 +271,13 @@ RMHD A 0 A_TakeInventory("RSStartFlag",99)
 RMHD A 0 A_JumpIfInventory("IsUnderWater",1,"RSFinishedUW")
 RMHD A 0 A_SetGravity(0.8)
 RMHU A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 RSFinishedUW:
 RMHD A 0 A_SetGravity(0.2)
 RMHU A 10 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 IceCloakBegin:
 RMHD A 0 A_TakeInventory("SpellFusionPower",300)
-RMHD A 0 A_TakeInventory("User1_Trigger",99)
 RMHD A 0 A_PlaySoundEx("weapon/invisible","Weapon")
 RMHU A 1 A_SetTranslucent(0.8) RMHU A 1 A_SetTranslucent(0.6) RMHU A 1 A_SetTranslucent(0.4)
 RMHU A 1 A_SetTranslucent(0.2) RMHU A 1 A_SetTranslucent(0.0)
@@ -299,10 +294,10 @@ goto IceCloakLoop
 Altfire:
 RMHD A 0 A_JumpIfInventory("IceCloakActive",1,"Decloak")
 RMHD A 0 A_JumpIfInventory("BlinkCooldown",1,"NoAmmo")
-RMHD A 0 A_JumpIfInventory("LastStandPower",1,"BlinkFree")
+RMHD A 0 //A_JumpIfInventory("LastStandPower",1,"BlinkFree")
 RMHD A 0 A_JumpIfInventory("MPBurstEnergy",1,"BlinkFree") //Still need to lose the cooldown before being able to dash again
 RMHD A 0 A_JumpIfInventory("RedMageMana",32,"BlinkUse")
-Goto Ready+5
+Goto Ready2
 BlinkFree:
 goto BlinkUse+1
 BlinkUse:
@@ -325,7 +320,7 @@ RMHD A 0 A_ChangeFlag("THRUACTORS",0)
 RMHD A 0 A_ChangeFlag("SOLID",1)
 RMHD A 0 A_Refire
 RMHD AAAAA 1 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-goto Ready+5
+goto Ready2
 }
 }
 
