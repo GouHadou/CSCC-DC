@@ -621,7 +621,7 @@ weapon/fmortarbreak		ICEWSTA
 weapon/ifreeze			ICESHOTC	
 weapon/ibreak			ICEWBRAK
 weapon/ifly				SHDEDIVE
-weapon/Devcrashland		NAPALMB
+weapon/devcrashland		NAPALMB
 item/wingfly			habataki
 weapon/crashland		NAPALMB
 

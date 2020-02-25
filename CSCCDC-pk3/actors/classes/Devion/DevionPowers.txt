@@ -238,7 +238,7 @@ DEVH A 1 Offset(0,70)
 DEVH A 1 Offset(0,58)
 DEVH A 1 Offset(0,46)
 DEVH A 1 Offset(0,32)
-DEVH A 0 A_PlaySoundEx("weapon/Devcrashland	 ","Weapon")
+DEVH A 0 A_PlaySoundEx("weapon/devcrashland","Weapon")
 Goto Ready+2
 
 UB2: //Aura Charge

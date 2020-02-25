@@ -84,7 +84,7 @@ BLUH A 0 A_Recoil(-7)
 BLUH A 1 A_JumpIf(z-floorz == 0, "DiveDone")
 goto IceCrash
 DiveDone:
-BLUH C 0 A_PlaySoundEx("weapon/Devcrashland	 ","Weapon")
+BLUH C 0 A_PlaySoundEx("weapon/napalm","Weapon")
 BLUH C 0 A_Stop
 BLUH C 0 A_ChangeFlag("SHOOTABLE",1)
 BLUH C 0 A_SetGravity(0.7)
@@ -280,7 +280,7 @@ FCRA DEDE 3 A_SpawnItemEx("Trailzz",RANDOM(-35,35), RANDOM(-35,35), RANDOM(-2,2)
 loop
 Death:
 TNT1 A 0 A_PlaySoundEx("weapon/fmortarbreak","Weapon")
-TNT1 A 0 A_Explode(13, 35, 0, 0, 20) 
+TNT1 A 0 A_Explode(6, 35, 0, 0, 20) 
 TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,0, SXF_TRANSFERTRANSLATION)
 TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,120, SXF_TRANSFERTRANSLATION) 
 TNT1 A 0 A_SpawnItemEx("BoomBits", 0,0,0,2,0,10,240, SXF_TRANSFERTRANSLATION)  
