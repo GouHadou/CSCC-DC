@@ -409,14 +409,14 @@ TNT1 A 0 A_SpawnItemEx("DiaShotTrail",cos(pitch)*-(45+args[0]),0,(sin(pitch)*(45
 TNT1 A 0 A_SpawnItemEx("DiaShotTrail",cos(pitch)*-(55+args[0]),0,(sin(pitch)*(55+args[0])),velx,Vely,Velz,0,SXF_TRANSFERPITCH|SXF_TRANSFERSCALE|SXF_ABSOLUTEVELOCITY|SXF_TRANSFERTRANSLATION)
 Spawn3:
 TNT1 A 0 A_CountDown
-WPLS C 1 
-WPLS C 0 A_Jumpif(reactiontime <= 13, "Spawn2")
+WPRS C 1 
+WPRS C 0 A_Jumpif(reactiontime <= 13, "Spawn2")
 TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
 Goto Spawn2
 Death:
-WPLS G 0 A_Jumpif(reactiontime <= 0, 2)
-WPLS G 0 A_PlaySoundEx("weapon/solarshoot","Weapon")
-WPLS GHIJK 2 A_Stop
+WPRS G 0 A_Jumpif(reactiontime <= 0, 2)
+WPRS G 0 A_PlaySoundEx("weapon/solarshoot","Weapon")
+WPRS GHIJK 2 A_Stop
 stop
 Crash:
 XDeath:
@@ -458,8 +458,8 @@ TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
 TNT1 A 1 
 Goto Spawn2
 Spawn2:
-WPLS C 1 A_CountDown
-WPLS C 0 A_Jumpif(reactiontime <= 13, 2)
+WPRS C 1 A_CountDown
+WPRS C 0 A_Jumpif(reactiontime <= 13, 2)
 TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
 TNT1 A 0
 TNT1 A 0 A_SpawnItemEx("HolyChargeShotTrail",args[1],20,(sin(pitch)*args[2])+args[0]+0,velx/2,Vely/2,Velz/2,0,SXF_ABSOLUTEVELOCITY|SXF_TRANSFERTRANSLATION)
@@ -467,8 +467,8 @@ TNT1 A 0 A_SpawnItemEx("HolyChargeShotTrail",args[1],0,(sin(pitch)*args[2])+args
 TNT1 A 0 A_SpawnItemEx("HolyChargeShotTrail",args[1],-20,(sin(pitch)*args[2])+args[0]+0,velx/2,Vely/2,Velz/2,0,SXF_ABSOLUTEVELOCITY|SXF_TRANSFERTRANSLATION)
 TNT1 A 0 A_SpawnItemEx("HolyChargeShotTrail",args[1],0,(sin(pitch)*args[2])+args[0]-20,velx/2,Vely/2,Velz/2,0,SXF_ABSOLUTEVELOCITY|SXF_TRANSFERTRANSLATION)
 
-WPLS C 1 A_CountDown
-WPLS C 0 A_Jumpif(reactiontime <= 13, 2)
+WPRS C 1 A_CountDown
+WPRS C 0 A_Jumpif(reactiontime <= 13, 2)
 TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
 TNT1 A 0
 TNT1 A 0 A_SpawnItemEx("HolyChargeShotTrail",args[1],0.7*20,(sin(pitch)*args[2])+args[0]+0.7*20,velx/2,Vely/2,Velz/2,0,SXF_ABSOLUTEVELOCITY|SXF_TRANSFERTRANSLATION)
@@ -563,8 +563,8 @@ States
 {
 Spawn:
 TNT1 A 0 
-WPLS C 1
-WPLS C 1 A_Fadeout
+WPRS C 1
+WPRS C 1 A_Fadeout
 stop
 }
 }
@@ -586,7 +586,7 @@ States
 {
 Spawn:
 TNT1 A 0 
-WPLS GFED 2
+WPRS GFED 2
 stop
 }
 }
@@ -608,7 +608,7 @@ Scale 2.5
 states
 {
 Spawn:
-WPLS GHIK 2 
+WPRS GHIK 2 
 stop
 }
 }
