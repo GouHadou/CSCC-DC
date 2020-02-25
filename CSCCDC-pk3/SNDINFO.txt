@@ -447,9 +447,9 @@ $playersound	abra	male	*land		LAND
 $playersound	abra	male	*jump		dsnone
 $playersound	abra	male	*fist		dsnone
 $playersound	abra	male	*usefail	pokebump
-$playersound	abra	male	*taunt		abratau
+$playersound	abra	male	*taunt		tauabra
 
-weapon/abrateleport	abratel
+weapon/abrateleport	telabra
 $volume weapon/abrateleport 0.4
 weapon/psychicshot	psyshot
 $volume weapon/psychicshot 0.4
@@ -468,10 +468,10 @@ weapon/AssaultBuster ABSHOT3
 weapon/Trigger BLIZBELL
 weapon/BombAlarm Balarm
 
-Support/WhiteCast WMAG01
-Support/WhiteCast2 WMAG02
-Support/WhiteCast3 WMAG03
-Support/WhiteCast4 WMAG04
+Support/WhiteCast WMCS01
+Support/WhiteCast2 WMCS02
+Support/WhiteCast3 WMCS03
+Support/WhiteCast4 WMCS04
 
 Support/Heal1 Recov1 
 $volume Support/Heal1 0.5
@@ -480,8 +480,8 @@ support/Negative NEGSTAT
 
 weapon/CrossBoltHit HITSOUND
 weapon/HardBuster3 HRDBST2
-weapon/HardBuster5 DAR3SHOT
-weapon/HardBuster6 DAR3SHO2
+weapon/HardBuster5 3DARSHOT
+weapon/HardBuster6 3DARSHO2
 
 weapon/OrbSpawn CRYSSHOT
 weapon/OrbBounce CRYSBIT
