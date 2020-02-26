@@ -1,5 +1,8 @@
 server noarchive bool CSCC_HPinLMS = false;
 server noarchive bool CSCC_PitProtection = true;
+server noarchive bool cscc_sv_projteamcolor = true; // Disable projectile team colors for all players.
+user bool CSCC_DamageDisplay = true;
+user bool cscc_projteamcolor = true; // Disable projectile team colors locally. 
 
 user noarchive int CSCC_MenuDef_Changelog = 0;
 
@@ -89,9 +92,3 @@ server noarchive int SV_TRANSLATION60 = 0;
 server noarchive int SV_TRANSLATION61 = 0;
 server noarchive int SV_TRANSLATION62 = 0;
 server noarchive int SV_TRANSLATION63 = 0;
-
-
-
-user int CSCC_DamageDisplay = 1;
-server bool mm8bdm_sv_projteamcolor = true; // Disable projectile team colors for all players.
-user bool cscc_projteamcolor = true; // Disable projectile team colors locally. 

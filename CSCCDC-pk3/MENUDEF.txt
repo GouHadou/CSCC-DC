@@ -566,6 +566,7 @@ OptionMenu "CSCCSettings"
 	StaticText ""
 	StaticText "General Options",1
 	StaticText ""
+	Option "Server Proj. Team Colors (CSCC_SV_ProjTeamColor)",		"cscc_projteamcolor", "OnOff"
 	Option "Pit Protection (CSCC_PitProtection)",			"cscc_pitprotection", "OnOff"
 	StaticText ""
 	StaticText "===============================================================",1

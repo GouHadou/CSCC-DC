@@ -353,11 +353,11 @@ script "CSCC_DamageDisplay" ENTER
 script "CSACS_DDTEXTCOL" (void) CLIENTSIDE
 {
 	int CPLN = consoleplayernumber();
-	int ShowDamage = GetUserCVar(CPLN,"CSCC_DamageDisplay");
+	bool ShowDamage = GetUserCVar(CPLN,"CSCC_DamageDisplay");
 	//log(i:ShowDamage);
 	//CSCC_DamageDisplay
 	
-	if(ShowDamage >= 1)
+	if(ShowDamage)
 		{
 		Thing_SetTranslation(0, ActivatorTID()-DDNUMTID);
 		SetActorProperty(0,APROP_ALPHA,0.8);

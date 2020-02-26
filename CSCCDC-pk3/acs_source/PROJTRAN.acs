@@ -16,7 +16,7 @@ function bool ProjTeamColorCvarClient(void)
 
 function bool ProjTeamColorCvarServer(void)
 {
-	return (getCvar("mm8bdm_sv_projteamcolor")>0);
+	return (getCvar("cscc_sv_projteamcolor")>0);
 }
 
 script "Set_Projectile_Translation" (int i) CLIENTSIDE
