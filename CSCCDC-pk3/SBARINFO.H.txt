@@ -29,6 +29,7 @@ InInventory PowerNerf{DrawImage "UKIHM0", 260,16,center;}
 
 
 //IfCVarInt mm8bdm_healthnumber, 1
+PlayerClass Megaman{//doesn't look right on most classes
 InInventory AmmoNumberFlag, 1
 {
 	WeaponAmmo not BusterAmmo
@@ -36,7 +37,7 @@ InInventory AmmoNumberFlag, 1
 		//DrawNumber 5,CMBHPFONT,Untranslated,Health,/*interpolate(10),*/alignment(left),150,177;
 		DrawNumber 3, "8BDMAFONT", Untranslated, Ammo1, alignment(left), 80, 177;
 	}
-}
+}}
 
 //IfCVarInt mm8bdm_healthnumber, 1
 InInventory HealthNumberFlag, 1
@@ -348,9 +349,9 @@ IsSelected EmberCelica
 	{
 	DrawBar "YANGBARH", "VAREMPTY", Ammo1, horizontal, 58, 184;
 	DrawBar "YANGSEMH", "VNOBAR", YangSemblance, horizontal, 58, 184;
-	DrawBar "YANGCDH", "NOBAR", YangDashCoolDown, horizontal, 58, 184;
-	InInventory BasicArmor, 1{DrawBar "AURABAR2", "VNOBAR", Armor, horizontal, 130, 184;}
-	InInventory EmberCelicaAmmo, 2{DrawImage "EMBCEL", 130, 176; DrawImage "HORICON1", 130, 168;}
+	DrawBar "YANGCDH", "VNOBAR", YangDashCoolDown, horizontal, 58, 184;
+	InInventory BasicArmor, 1{DrawBar "AURABAR2", "VNOBAR", Armor, horizontal, 130, 184; InInventory HealthNumberFlag, 1{DrawNumber 3, "CSCCAFONT", Untranslated, Armor, alignment(left), 152, 170;}}
+	InInventory EmberCelicaAmmo, 2{DrawImage "EMBCEL", 130, 176; DrawImage "HORICON1", 130, 168; }
 	DrawImage "YANGBLK", 122, 176; DrawImage "HORICON2", 122, 168;
 	}
 //====|Knux
@@ -361,7 +362,12 @@ Drawbar "VARAMM24", "VAREMPTY", Ammo2, horizontal, 58,176;
 }
 
 //====|Gravitron
-IsSelected GravSphereWep{Drawbar"VAREMPTY", "GRSPAMMV", Ammo1, horizontal,reverse, 58, 184;}// The Bar ya need
+IsSelected GravSphereWep
+{
+InInventory GravAdjust, 1{Drawbar"VAREMPTY", "GRSPAMV2", Ammo1, horizontal,reverse, 58, 184;}
+else{Drawbar"VAREMPTY", "GRSPAMV1", Ammo1, horizontal,reverse, 58, 184;}
+Drawbar"GRSPAMMV", "VAREMPTY", GravitronVelocity, horizontal, 58, 176;
+}
 
 //====|Natures Wonder
 IsSelected NatureStaffStraightWep{Drawbar"CRYTBAR2", "VAREMPTY", Ammo1, horizontal, 58, 184;}
@@ -435,16 +441,17 @@ InInventory KingTeamFlag, 1{
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 151, 156;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana, 151, 175;
 	
-	
 	DrawImage "WMAGI1", 165, 156; 
 	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 165, 156;} 
 	DrawImage "VERICON1", 175, 156;
-	DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 165, 168;
+	InInventory WhiteMageMana, 15{DrawNumber 3, "8BDMAFONT", Untranslated, 15, alignment(left), 165, 168;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 165, 168;}
 
 	DrawImage "WMAGI2", 187, 156; 
 	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 187, 156;} 
 	DrawImage "VERICON2", 197, 156;
-	DrawNumber 3, "CSCCAFONT", Untranslated, 40, alignment(left), 187, 168;
+	InInventory WhiteMageMana, 40{DrawNumber 3, "8BDMAFONT", Untranslated, 40, alignment(left), 187, 168;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 40, alignment(left), 187, 168;}
 
 	//DrawImage "WMAGI3", 180, 170; 
 	//InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 180, 170;} 
@@ -453,7 +460,8 @@ InInventory KingTeamFlag, 1{
 	DrawImage "WMAGI4", 207, 156; 
 	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 207, 156;} 
 	DrawImage "VERICON3", 217, 156;
-	DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 207, 168;
+	InInventory WhiteMageMana, 10{DrawNumber 3, "8BDMAFONT", Untranslated, 10, alignment(left), 207, 168;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 207, 168;}
 
 //InInventory NOT "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 156;}
 //InInventory "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 170;}

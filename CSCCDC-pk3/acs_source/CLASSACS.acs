@@ -2199,3 +2199,10 @@ if(CheckInventory("WilyTeamFlag")){
 				
 			}
 }
+
+script "CSACS_GravItem" (void)
+{
+int GravVel = GetActorVelZ(0) >> 16;
+if(GravVel <= 0){GravVel *= -1;}
+SetInventory("GravitronVelocity",GravVel);
+}
