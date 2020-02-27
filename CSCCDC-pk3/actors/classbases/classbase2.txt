@@ -256,8 +256,13 @@ Pain.DShock2:
 GoTo Pain+1
 Pain.OraOra:
 "----" H 0 A_GiveInventory("OraOraProtect",1)
-"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,5)
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,2)
 GoTo Pain+1
+Pain.Dshock:
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,15)
+Pain.Dshock2:
+"----" H 0 A_GiveInventory("JusticeShockwaveProtect",1)
+GoTo Pain
 //End of Devion painstates
 
 //Zomo painstates (why)

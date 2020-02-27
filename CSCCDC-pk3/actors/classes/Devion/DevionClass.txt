@@ -5,8 +5,8 @@ Player.MaxHealth 125
 Player.DisplayName "Devion"
 Player.SoundClass "Devion"
 Player.JumpZ 12
-player.forwardmove 0.8, 0.8
-player.sidemove 0.75, 0.75
+player.forwardmove 0.7, 0.7
+player.sidemove 0.66, 0.66
 Player.StartItem "DevionPowers"
 Player.StartItem "DevionClassItems"
 States

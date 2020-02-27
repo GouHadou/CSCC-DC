@@ -16,7 +16,7 @@ DEVH A 1 ACS_ExecuteAlways(998,0,DYE_DEVION)
 DEVH A 1 A_GunFlash
 DEVH A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"UB1")
 DEVH A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User2) == True,"UB2")
-DEVH A 1 A_WeaponReady
+DEVH A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 Goto Ready+2
 Deselect:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
@@ -76,8 +76,8 @@ DEVH C 0 A_Stop
 DEVH C 0 A_GiveInventory("DevionDashAnim",1)
 DEVH C 0 A_PlaySoundEX("weapon/superboost","Weapon")
 DEVH C 0 SetPlayerProperty(0,1,0)
-DEVH C 0 A_Recoil(-50)
-DEVH C 0 ThrustThingZ(0,25,0,0)
+DEVH C 0 A_Recoil(-25) //
+DEVH C 0 ThrustThingZ(0,35,0,0) //25
 DEVH CCCCC 1 A_SpawnItemEx("DevionDashFX",-8,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 DEVH C 0 SetPlayerProperty(0,0,0)
 DEVH C 0 A_TakeInventory("DevionDashAnim",1)
@@ -140,7 +140,7 @@ TNT1 A 0 A_TakeInventory("DevionChargeAnim",1)
 TNT1 A 0 A_TakeInventory("DevionDashAnim",1)
 TNT1 A 0 A_GiveInventory("DShockwaveAnim",1)
 TNT1 A 0 SetPlayerProperty(0,1,0)
-TNT1 A 1 ThrustThingZ(0,-50,0,0)
+TNT1 A 1 ThrustThingZ(0,-50,0,0) 
 TNT1 A 0 A_ChangeVelocity(25,0,momz,CVF_RELATIVE|CVF_REPLACE)
 TNT1 A 0 A_SpawnItemEx("DevionShockwaveTrail",-5,0,20)
 TNT1 A 0 A_SpawnItemEX("DevionBounceCheck",0,0,0,momx,momy,momz,0,SXF_ABSOLUTEMOMENTUM)
@@ -219,6 +219,7 @@ UB1End:
 DEVH IJKLMNOPQRS 1
 DEVH A 0 A_Refire
 Goto Ready+2
+Reload:
 UB1Reload:
 DEVH A 1 Offset(0,32)
 DEVH A 1 Offset(0,46)
@@ -230,7 +231,7 @@ DEVH A 1 Offset(0,82)
 DEVH A 0 A_PlaySoundEx("weapon/rminestick","Weapon")
 DEVH A 0 A_Giveinventory("DevionFistAmmo",1)
 DEVH A 0 A_Jumpifinventory("DevionFistAmmo",5,"UB1ReloadLoopEnd")
-DEVH A 5 Offset(0,82)
+DEVH A 12 Offset(0,82)
 loop
 UB1ReloadLoopEnd:
 DEVH A 1 Offset(0,82)
@@ -465,6 +466,13 @@ PowerUp.Duration 3
 DamageFactor "OraOra", 0
 }
 
+actor JusticeShockwaveProtect : PowerProtection
+{
+powerup.duration 85
+damagefactor "DShock", 0.5
+damagefactor "DShock2", 0.3
+}
+
 //Double Jump
 actor DevionDJumpFX : HardKnuckleFX
 {
@@ -648,7 +656,7 @@ Spawn:
 TNT1 A 0
 TNT1 A 0 A_SpawnItemEx("DevionShockwaveFX")
 TNT1 A 0 A_SpawnItemEx("DevionShockwaveCircleFX")
-TNT1 A 0 A_Explode(30,220,0,0,110)
+TNT1 A 0 A_Explode(25,220,0,0,110)
 Stop
 }
 }
@@ -838,10 +846,11 @@ HARD A 3 A_SpawnItemEx("FistRevolverFX",0,1,1,-5,0,0,0)
 HARD A 0 A_ChangeFlag("NOGRAVITY",0)
 loop
 Death:
-TNT1 A 0 A_JumpIfCloser(180, "Rocketed")
+TNT1 A 0 //A_JumpIfCloser(180, "Rocketed")
 TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
-TNT1 A 0 A_Explode(23, 135, 0,0,96)
+TNT1 A 0 A_Explode(15, 135, 0,0,96)  //23
+TNT1 A 0 A_Spawnitemex("FistRevolverRocketJump",0,0,-10)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 Rocketed:
@@ -872,12 +881,13 @@ actor FistRevolver3 : FistRevolver2
 States
 {
 Death:
-TNT1 A 0 A_JumpIfCloser(180, "Rocketed")
+TNT1 A 0 //A_JumpIfCloser(180, "Rocketed")
 TNT1 AAAAAA 0 A_SpawnItemEx("DevionRock1",0,0,random(4,12),random(-25,25),random(-25,25),random(5,25))
 TNT1 AAAAAA 0 A_SpawnItemEx("DevionRock2",0,0,random(4,12),random(-25,25),random(-25,25),random(5,25))
 TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
 TNT1 A 0 A_Explode(23, 135, 0,0,96)
+TNT1 A 0 A_Spawnitemex("FistRevolverRocketJump",0,0,-10)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 }
@@ -906,6 +916,21 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0 A_ChangeVelocity(-Cos(pitch)*30+velx, 0, sin(pitch)*30,CVF_RELATIVE|CVF_REPLACE)
+stop
+}
+}
+
+actor FistRevolverRocketJump : BasicExplosion //
+{
++NOINTERACTION
++NOCLIP
+States
+{
+Spawn:
+MINB A 0 
+NAPC D 0 //A_Explode(35, 350, 1,0,36)
+MINB A 0 ACS_NamedExecuteAlways("BlastKnockBack",0,-90,50,200) //Negative value on 1st arg means only the owner is effected
+TNT1 AA 1 
 stop
 }
 }
