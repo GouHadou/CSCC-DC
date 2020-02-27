@@ -1061,38 +1061,40 @@ if(PlayerIsBot(PlayerNumber())){terminate;}
 
 while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYang"))
 	{
+	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
+		{
+		Delay(5);
+		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
+		If(CheckActorInventory(ActivatorTID(), "YangDashCoolDown") > 0){TakeActorInventory(ActivatorTID(), "YangDashCoolDown", 1);}
+		}
+		
 	HDashForce = DashForce - CheckActorInventory(ActivatorTID(), "YangDashCoolDown") ;
 	If(HDashForce < 1){HDashForce = 1;}
 	
 	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
 	HasUsedMovement=0;
-	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
-		{
-		Delay(5);
-		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
-		}
-	
+
 	SpeedPressed = CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1;
 	
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD))
+	If(SpeedPressed && (InputButtons & BT_FORWARD))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=1;
 		}
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK))
+	If(SpeedPressed && (InputButtons & BT_BACK))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=1;
 		}
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVELEFT))
+	If(SpeedPressed && (InputButtons & BT_MOVELEFT))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255+64.0)>>16, HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=1;
 		}
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVERIGHT))
+	If(SpeedPressed && (InputButtons & BT_MOVERIGHT))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255+192.0)>>16, HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
