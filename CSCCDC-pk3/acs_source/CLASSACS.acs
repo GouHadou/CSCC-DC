@@ -1014,6 +1014,15 @@ SetActorProperty(0,APROP_SPECIES,GetActorProperty(TargetTID,APROP_SPECIES));
 
 //=======|Yang
 
+Script "YangKnockback" (void)
+{
+int KnockBack = CheckInventory("YangKnockBackFlag");
+TakeInventory("YangKnockBackFlag", 999);
+If(KnockBack < 10){KnockBack = 10;}
+If(KnockBack > 50){KnockBack = 50;}
+ACS_NamedExecuteAlways("CSACS_HitKnockback",0,KnockBack);
+}
+
 Script "YangPower" (int PlayerTID, int Divisor)
 {
 int ReturnValue = 10;
@@ -1039,6 +1048,7 @@ SetResultValue(ReturnValue);
 
 
 #DEFINE DashForce 16
+#DEFINE DashCoolDown 20
 
 script "YangBoost" (Void)
 {
@@ -1123,7 +1133,7 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 		{
 		GiveActorInventory(ActivatorTID(), "BoostExplodeItem", 1);
 		TakeActorInventory(ActivatorTID(), "EmberCelicaAmmo", 2);
-		GiveActorInventory(ActivatorTID(), "YangDashCoolDown", 15);
+		GiveActorInventory(ActivatorTID(), "YangDashCoolDown", DashCoolDown);
 		LimitSpeed(30);
 		}
 	delay(1);	
