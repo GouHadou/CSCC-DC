@@ -111,6 +111,7 @@ TNT1 A 0 A_TakeInventory("DavSJ",999)
 FlashRLoop:
 TNT1 A 1 A_GiveInventory("DavSJ", 1)
 TNT1 A 1 A_JumpIf(CallACS("CSACS_ButtonCheck",BT_RELOAD)==1 && z-floorz < 15,"FlashRLoop")
+TNT1 A 1
 goto EndFlash
 EndFlash:
 TNT1 A 0 A_TakeInventory("DavSJ",999)

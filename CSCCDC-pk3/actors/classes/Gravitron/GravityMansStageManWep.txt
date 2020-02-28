@@ -10,7 +10,6 @@ Inventory.Pickupmessage "$PU_GRAVSPHERE"
 Obituary "$OB_GRAVSPHERE"
 Tag "$TAG_GRAVSPHERE"
 weapon.ammotype "GravSphereAmmo"
-inventory.icon "NULLICON"
 States
 {
 Spawn:
@@ -370,37 +369,6 @@ TNT1 A 0
 Death:
 NAPA E 1 A_Explode(50,128,0,0,64)
 NAPA FGHIJKLMNOPQRS 1 
-stop
-}
-}
-
-actor GravEffect : CustomInventory
-{
-States
-{
-Pickup:
-TNT1 A 0 A_SpawnItemEx("GravArenaWatcher")
-TNT1 A 0 A_JumpIf(Z-FloorZ==0|velz<0,"lol")
-TNT1 A 0 A_JumpIfInventory("GravBoost",5,"nope")
-TNT1 A 0 A_ChangeVelocity(0,0,velz/9,CVF_RELATIVE)
-TNT1 A 0 A_GiveInventory("GravBoost",1)
-stop
-nope:
-TNT1 A 0 
-stop
-lol:
-TNT1 A 0 A_TakeInventory("GravBoost",5)
-stop
-}
-}
-
-actor GravEffect2 : GravEffect
-{
-States
-{
-Pickup:
-TNT1 A 0 A_SpawnItemEx("GravArenaWatcher2")
-TNT1 A 0 A_ChangeVelocity(0,0,-1.0,CVF_RELATIVE)
 stop
 }
 }

@@ -225,6 +225,11 @@ for(int g=1;g<=HealAmount;g++)
     }
 }
 
+Script "CSACS_SetPointer" (int pointer, int TID)
+{
+SetPointer(pointer,TID);
+}
+
 /*
 //Turns Jumping On or Off
 script "CSCC_JumpToggle" (Int Toggle)
