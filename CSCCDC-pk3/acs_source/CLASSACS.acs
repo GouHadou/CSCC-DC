@@ -1413,11 +1413,6 @@ Script "ReturnCureTargeter" (int PlayerTID)
 SetResultValue(CheckActorInventory(PlayerTID, "CureTargeter"));
 }
 
-Script "SetTracer" (int PlayerTID)
-{
-SetPointer(AAPTR_TRACER, PlayerTID);
-}
-
 function void TargeterTeam(int team, int x, int y, int z, int angle, int pitch, int i, int TargType) {
 	if(team != GetPlayerInfo(i, PLAYERINFO_TEAM) && TargType <= 0) 
 		{

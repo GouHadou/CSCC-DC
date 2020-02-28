@@ -76,7 +76,7 @@ TNT1 A 0 A_RearrangePointers(AAPTR_DEFAULT, AAPTR_TARGET, AAPTR_DEFAULT) //make 
 TNT1 A 0 //A_TransferPointer(AAPTR_MASTER,AAPTR_DEFAULT,AAPTR_TRACER,AAPTR_TRACER) //Set the Bullet's tracer to the Shooter's, if they have one.
 TNT1 A 0 A_SetUserVar("user_TracerTarget", ACS_NamedExecuteWithResult("ReturnCureTargeter", ACS_ExecuteWithResult(257, 0))) //A_SetArg(0, ACS_NamedExecuteWithResult("ReturnCureTargeter", ACS_ExecuteWithResult(257, 0)))
 TNT1 A 0 A_JumpIf(user_TracerTarget == 0, "Death")
-TNT1 A 1 ACS_NamedExecuteAlways("SetTracer", 0, user_TracerTarget)
+TNT1 A 1 ACS_NamedExecuteAlways("CSACS_SetPointer", 0, AAPTR_TRACER, user_TracerTarget)
 TNT1 AA 1 A_JumpifTracercloser(630,"Targetspotted") //immediately got a tracer, let's aim for them!
 
 TNT1 A 0 A_JumpifinTargetInventory("BeamFXBuffer",1,3)
