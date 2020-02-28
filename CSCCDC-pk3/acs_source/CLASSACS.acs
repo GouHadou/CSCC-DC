@@ -1372,12 +1372,14 @@ script "TracerTargeter" (int TargType, int TargRange) {
 			}
 		}
 		
-		if(xyzDistance(0,getuservariable(0,"User_STargTID")+1000) <= TargRange
-			&& !checkinventory("RespawnCamera"))
-		{
-		setpointer(AAPTR_TRACER,getuservariable(0,"User_STargTID")+1000);
-		}
-		else {setpointer(AAPTR_TRACER,0,AAPTR_NULL);}
+		if(xyzDistance(0,getuservariable(0,"User_STargTID")+1000) <= TargRange)
+			{
+			SetInventory("CureTargeter", getuservariable(0,"User_STargTID")+1000);
+			}
+		else 
+			{
+			If(CheckInventory("CureTargeter")){TakeInventory("CureTargeter", CheckInventory("CureTargeter"));}
+			}
 		adjustInventory("TargetingFlag",getuservariable(0,"User_STargTID")+1);
 		if (TargRange!=checkinventory("TargetingRangeFlag"))
 			{
@@ -1392,6 +1394,16 @@ script "TracerTargeter" (int TargType, int TargRange) {
 		setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE);
 		adjustInventory("TargetingFlag",0);
 		adjustInventory("TargetingRangeFlag",0);
+}
+ 
+Script "ReturnCureTargeter" (int PlayerTID)
+{
+SetResultValue(CheckActorInventory(PlayerTID, "CureTargeter"));
+}
+
+Script "SetTracer" (int PlayerTID)
+{
+SetPointer(AAPTR_TRACER, PlayerTID);
 }
 
 function void TargeterTeam(int team, int x, int y, int z, int angle, int pitch, int i, int TargType) {
