@@ -574,8 +574,8 @@ WeaponAmmo JaxPsychoAmmo{Drawbar"BARAMM18", "BAREMPTY", Ammo1, vertical, 16, 8;
 IsSelected MissilePunchWep
 	{
 	Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
-	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
+	InInventory LDRamEnergy, 28{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
+	else{Drawbar"BARAMM65", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
 	DrawImage "LDRELOAD", 32, 48;
 	DrawImage "VERICONR", 40, 48;
 	}
@@ -583,8 +583,8 @@ IsSelected MissilePunchWep
 IsSelected LaserCannonWep
 	{
 	Drawbar"BARAMM51", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
-	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
+	InInventory LDRamEnergy, 28{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
+	else{Drawbar"BARAMM65", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
 	}
 
 
