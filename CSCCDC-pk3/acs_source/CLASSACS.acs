@@ -529,6 +529,11 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && (CheckInventory("IceWep")
 			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
 			}
 		}
+	If((CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH) == 1) && (GetActorProperty(PlayerTID, APROP_HEALTH) > GetActorProperty(PlayerTID, APROP_SpawnHealth)))
+		{
+		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+		continue;
+		}
 	FusionStock = CheckInventory("FusionStock");
 	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
 		{
