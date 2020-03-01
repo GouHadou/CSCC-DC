@@ -275,6 +275,7 @@ InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo
 else{Drawbar "BARAMM65", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
 DrawImage "GEEGRPH1", 6, 65;
 DrawNumber 2, "GEEFONT1", Untranslated, Ammo1, alignment(center), 26, 73;
+InInventory GeeRegen, 105{DrawBar "GEEAMMO4", "BAREMPTY", Health, vertical, 24, 8;}
 }
 IsSelected GeeBurstBoss2
 {
@@ -292,6 +293,7 @@ else{Drawbar "BARAMM65", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
 }
 DrawImage "GEEGRPH2", 6, 65;
 DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 26, 73;
+InInventory GeeRegen, 105{DrawBar "GEEAMMO4", "BAREMPTY", Health, vertical, 24, 8;}
 }
 
 //====|PistonMan

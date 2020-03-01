@@ -557,19 +557,28 @@ OptionMenu "CSCCSettings"
 	StaticText ""
 	StaticText "User Options",1
 	StaticText ""
-	Option "Proj. Team Colors (CSCC_ProjTeamColor)",		"cscc_projteamcolor", "OnOff"
-	Option "Damage Numbers (CSCC_DamageDisplay)",			"CSCC_DamageDisplay", "OnOff"
+	Option "CSCC_CV_ProjTeamColor",		"CSCC_CV_ProjTeamColor", "OnOff"
+	Option "CSCC_CV_DamageDisplay",			"CSCC_CV_DamageDisplay", "OnOff"
 	StaticText ""
 	StaticText "Mode-Specific Options",1
 	StaticText ""
-	Option "HP in LMS (CSCC_HPinLMS)",			"cscc_hpinlms", "OnOff"
+	Option "CSCC_SV_HPinLMS",			"CSCC_SV_HPinLMS", "OnOff"
 	StaticText ""
 	StaticText "General Options",1
 	StaticText ""
-	Option "Server Proj. Team Colors (CSCC_SV_ProjTeamColor)",		"cscc_projteamcolor", "OnOff"
-	Option "Pit Protection (CSCC_PitProtection)",			"cscc_pitprotection", "OnOff"
+	Option "CSCC_SV_ProjTeamColor",		"CSCC_SV_ProjTeamColor", "OnOff"
+	Option "CSCC_SV_PitProtection",			"CSCC_SV_PitProtection", "OnOff"
+	Option "CSCC_SV_HPPickupStyle",		"CSCC_SV_HPPickupStyle", "HPPickupOptions"
 	StaticText ""
 	StaticText "===============================================================",1
+}
+
+OptionValue HPPickupOptions
+{
+	0, "Flat Healing"
+	1, ">100 Percentaged"
+	2, "<100 Percentaged"
+	3, "Percentage Healing"
 }
 
 //-------------------------------------------------------------------------------------------

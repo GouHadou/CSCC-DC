@@ -20,7 +20,7 @@ goto Spawn+3
 Pickup:
 TNT1 A 0 A_JumpIfInventory("CannotUseHealing",1,"No")
 TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent")>=100,"No")
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,15)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthPickup",0,15)
 TNT1 A 0 A_PlaySound("item/energyup")
 stop
 No:
@@ -55,7 +55,7 @@ goto Spawn+3
 Pickup:
 TNT1 A 0 A_JumpIfInventory("CannotUseHealing",1,"No")
 TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent")>=100,"No")
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,40)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthPickup",0,40)
 TNT1 A 0 A_PlaySound("item/energyup/large")
 stop
 No:
@@ -90,7 +90,7 @@ goto Spawn+3
 Pickup:
 TNT1 A 0 A_JumpIfInventory("CannotUseHealing",1,"No")
 TNT1 A 0 A_JumpIf(CallACS("CSACS_HealthPercent")>=100,"No")
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,100)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_HealthPickup",0,100)
 TNT1 A 0 A_PlaySound("item/energyup/large")
 stop
 No:

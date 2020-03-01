@@ -184,6 +184,12 @@ inventory.amount 1
 inventory.maxamount 10
 }
 
+actor GeeRegen : Inventory
+{
+inventory.amount 1
+inventory.maxamount 105
+}
+
 actor GeeAmmoGiver : CustomInventory
 {
 States

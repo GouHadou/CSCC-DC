@@ -2225,3 +2225,29 @@ int GravVel = GetActorVelZ(0) >> 16;
 if(GravVel <= 0){GravVel *= -1;}
 SetInventory("GravitronVelocity",GravVel);
 }
+
+Script "CSACS_GeeHealth" (int StarterDelay, int Rate)
+{   
+int HP;
+while(GetActorProperty(0,APROP_Health)>0 && PlayerInGame(PlayerNumber()) && (CheckInventory("GeeBurstBoss1")||CheckInventory("GeeBurstBoss2")))
+	{
+	while(GetActorProperty(0,APROP_Health)<GetActorProperty(0,APROP_SpawnHealth))
+		{
+		if(CheckInventory("GeeRegen")>=StarterDelay)
+			{
+			ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,1);
+			HP = GetActorProperty(0,APROP_Health);
+			Delay(Rate);
+			}
+		else
+			{
+			GiveInventory("GeeRegen",1); 
+			Delay(1);
+			}
+		if(HP>GetActorProperty(0,APROP_Health)){TakeInventory("GeeRegen",999);}
+		HP = GetActorProperty(0,APROP_Health);
+		}
+	TakeInventory("GeeRegen",999);
+	Delay(1);
+	}
+}
