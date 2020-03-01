@@ -292,7 +292,7 @@ scale 2.5
 Speed 80
 Radius 15
 Height 16
-Damage (15)
+Damage (18)
 States
 {
 Spawn:
@@ -375,7 +375,7 @@ loop
 actor LightningIceWaveTrail : LightningWaveTrail
 {
 Obituary "$OB_LIGHTNINGICEWAVEBOSS"
-Translation "192:192=137:137"
+Translation "192:192=137:137", "198:198=95:95"
 damagetype "LightningWave"
 States
 {
@@ -394,7 +394,7 @@ stop
 actor LightningIceBit : IceBit
 {
 damagetype "IceShard"
-Translation "192:192=137:137"
+Translation "192:192=137:137", "198:198=95:95"
 speed 5
 Obituary "$OB_LIGHTNINGICEBIT"
 states
