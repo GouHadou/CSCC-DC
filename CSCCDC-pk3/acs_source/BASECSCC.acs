@@ -215,6 +215,7 @@ Script "CSACS_HealthPickup" (int Amount)
 {
 int PickupStyle = GetCvar("CSCC_SV_HPPickupStyle");
 int MaxHealth = GetActorProperty(0,APROP_SPAWNHEALTH);
+if(CheckInventory("IsSnatcher")){Amount = Amount/2;}
 switch(PickupStyle)
 	{
 	Case 1:
