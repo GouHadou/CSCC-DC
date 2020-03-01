@@ -164,7 +164,7 @@ PROJECTILE
 Radius 15
 Height 8
 scale 2.5
-damage (20)
+damage (25)
 damagetype "IceBlade"
 Obituary "$OB_ICEBLADEBOSS"
 speed 40
@@ -222,7 +222,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 A_Explode(10, 48, 0, 0, 32)
+TNT1 A 1 A_Explode(15, 48, 0, 0, 40)
 Goto Death
 Death:
 TNT1 A 0
@@ -232,7 +232,7 @@ stop
 actor IceMeleeProtect : PowerProtection
 {
 Powerup.Duration 10
-damagefactor "IceMelee", 0.5
+damagefactor "IceMelee", 0.2
 }
 
 actor LightningIceBlade : IceBlade
@@ -491,9 +491,15 @@ actor LightningIceStartFX3 : IceBladeFX
 Translation "192:192=137:137"
 }
 
-actor IceSparkyFusion : PowerUp
+/*actor IceSparkyFusion : PowerUp
 {
-Powerup.Duration -30
+Powerup.Duration -15
+}
+*/
+actor IceSparkyFusion : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
 }
 
 
@@ -513,6 +519,7 @@ TNT1 A 1
 stop
 Use:
 TNT1 A 0 A_GiveInventory("IceSparkyFusion", 1)
+TNT1 A 0 ACS_NamedExecuteAlways("IceSparkyTimer", 0)
 TNT1 A 0 ACS_ExecuteAlways(976,0)
 stop
 }
