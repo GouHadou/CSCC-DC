@@ -302,7 +302,7 @@ damagetype "KICE"
 obituary "$OB_KORBYICE"
 radius 16
 height 16
-damage (6)
+damage (9)
 speed 0
 scale 2.0
 States
@@ -357,7 +357,7 @@ PROJECTILE
 RenderStyle "Translucent"
 Alpha 0.9
 bouncecount 5
-damagetype "KICE3"
+damagetype "KICE"
 obituary "$OB_KORBYICE3"
 radius 16
 speed 0
@@ -407,10 +407,10 @@ stop
 }
 }
 
-actor KICE3Protect : PowerProtection
+actor KICEProtect : PowerProtection
 {
 Powerup.Duration 10
-damagefactor "KICE3", 0.33
+damagefactor "KICE", 0.33
 }
 
 actor ICE1_B : ICE1 {Translation  "198:198=74:74","215:215=196:196","229:229=205:205","241:241=244:244"}
