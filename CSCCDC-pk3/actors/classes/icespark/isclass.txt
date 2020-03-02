@@ -270,6 +270,11 @@ Inventory.Amount 1
 Inventory.MaxAmount 4
 }
 
+actor FusionTimer : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 525
+}
 
 actor IsSparky : Once {}
 actor IsIce : Once {}

@@ -503,7 +503,7 @@ actor FusionBrakeY : FusionBrake {translation "198:198=232:232", "192:192=229:22
 
 actor AfterburnerProtect : PowerProtection
 {
-powerup.duration 10
+powerup.duration 18
 damagefactor "Afterburner", 0.0
 }
 

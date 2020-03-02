@@ -255,7 +255,9 @@ Height 32
 Radius 32
 reactiontime 1
 
-+DOOMBOUNCE
++BOUNCEONWALLS
++BOUNCEONFLOORS
++BOUNCEAUTOOFF
 +CANBOUNCEWATER
 WALLBOUNCEFACTOR 1.0
 BOUNCEFACTOR 1.0
@@ -269,8 +271,9 @@ Health 500
 +NOTARGETSWITCH
 PainChance 256
 
++GHOST
 +THRUSPECIES
-Species "PsychoMine"
++MTHRUSPECIES
 
 //+NORADIUSDMG
 DamageFactor "JaxHold", 0.0
@@ -282,14 +285,15 @@ DamageFactor "PsychoConduit", 0.0
 States
 {
 Spawn:
-//TBOL N 0
 WCPJ M 0
 WCPJ M 0 A_GiveInventory("ProjectileCode",1)
+WCPJ M 0 ACS_NamedExecuteAlways("PlayerSpeciesSynch",0)
 Spawn2:
 //TBOL NNMM 1 A_GiveInventory("PsychoMineFunc")
 WCPJ MMNNOONN 1 A_GiveInventory("PsychoMineFunc")
 loop
 Pain:
+WCPJ M 0 A_GiveInventory("ProjectileDCode",1)
 TBOL N 0 A_PlaySound("item/protoreflect")
 goto Spawn2
 }

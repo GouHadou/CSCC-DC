@@ -184,6 +184,12 @@ inventory.amount 1
 inventory.maxamount 10
 }
 
+actor GeeRegen : Inventory
+{
+inventory.amount 1
+inventory.maxamount 105
+}
+
 actor GeeAmmoGiver : CustomInventory
 {
 States
@@ -385,6 +391,7 @@ actor GeeBurstY : GeeBurst {translation "195:195=234:234", "249:249=223:223", "1
 
 actor GeeBurstDamage : GeeBurst
 {
++MTHRUSPECIES
 States
 {
 Spawn:
@@ -426,6 +433,7 @@ actor GeeBurstDamageY : GeeBurstDamage {translation "195:195=234:234", "249:249=
 
 actor GeeBurstDamage2 : GeeBurst
 {
++MTHRUSPECIES
 States
 {
 Spawn:

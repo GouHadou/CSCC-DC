@@ -199,7 +199,6 @@ Death.IceSpike:
 Death.IceBall:
 Death.IceShard:
 Death.GizmoIce:
-Death.KICE3:
 Death.KICE:
 LGY2 H 0 A_GiveInventory("MFWFrozen",1)
 LGY4 P 60 A_PlaySoundEx("Laggy/Ice1","Body")

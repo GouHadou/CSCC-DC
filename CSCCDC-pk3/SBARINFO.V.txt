@@ -28,6 +28,7 @@ InInventory PowerNerf{DrawImage "UKIHM0", 260,16,center;}
 
 //IfCVarInt mm8bdm_ammonumber, 1
 //ha ha ha end me
+PlayerClass Megaman{//doesn't look right on most classes
 InInventory AmmoNumberFlag, 1
 {
 	WeaponAmmo not BusterAmmo
@@ -35,7 +36,7 @@ InInventory AmmoNumberFlag, 1
 		//DrawNumber 5,CMBHPFONT,Untranslated,Health,/*interpolate(10),*/alignment(left),31,30;
 		DrawNumber 3, "8BDMAFONT", Untranslated, Ammo1, alignment(right), 15, 31;
 	}
-}
+}}
 
 //IfCVarInt mm8bdm_healthnumber, 1
 //dont worry jax I'm in pain too
@@ -191,7 +192,8 @@ IsSelected IceWep
 {
 DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 DrawBar "SPARKBAR", "BAREMPTY", SparkyClassAmmo, vertical, 8, 8;
-DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;
+InInventory FusionMeter, 1{DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;}
+InInventory FusionTimer, 1{DrawBar "FUSSI", "NOBAR", FusionTimer, vertical, 24, 8;}
 InInventory FusionStock, 1
 	{
 	InInventory NOT IceSparkyCombine || IceSparkyFusion
@@ -205,7 +207,8 @@ IsSelected SparkyWep
 {
 DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 DrawBar "ICEBAR", "BAREMPTY", IceClassAmmo, vertical, 8, 8;
-DrawBar "FUSIS", "NOBAR", FusionMeter, vertical, 24, 8;
+InInventory FusionMeter, 1{DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;}
+InInventory FusionTimer, 1{DrawBar "FUSSI", "NOBAR", FusionTimer, vertical, 24, 8;}
 InInventory FusionStock, 1
 	{
 	InInventory NOT IceSparkyCombine || IceSparkyFusion
@@ -274,6 +277,7 @@ InInventory GeeDamagingAmmo, 132{Drawbar "GEEAMMO2", "BAREMPTY", GeeDamagingAmmo
 else{Drawbar "BARAMM65", "BAREMPTY", GeeDamagingAmmo, vertical, 8, 8;}
 DrawImage "GEEGRPH1", 6, 65;
 DrawNumber 2, "GEEFONT1", Untranslated, Ammo1, alignment(center), 26, 73;
+InInventory GeeRegen, 105{DrawBar "GEEAMMO4", "BAREMPTY", Health, vertical, 24, 8;}
 }
 IsSelected GeeBurstBoss2
 {
@@ -291,6 +295,7 @@ else{Drawbar "BARAMM65", "BAREMPTY", GeeDamagingAmmo, vertical, 16, 8;}
 }
 DrawImage "GEEGRPH2", 6, 65;
 DrawNumber 2, "GEEFONT2", Untranslated, Ammo1, alignment(center), 26, 73;
+InInventory GeeRegen, 105{DrawBar "GEEAMMO4", "BAREMPTY", Health, vertical, 24, 8;}
 }
 
 //====|PistonMan
@@ -357,7 +362,7 @@ IsSelected EmberCelica
 	DrawBar "YANGBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "YANGSEM", "NOBAR", YangSemblance, vertical, 16, 8;
 	DrawBar "YANGCDV", "NOBAR", YangDashCoolDown, vertical, 16, 8;
-	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8;}
+	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8; InInventory HealthNumberFlag, 1{DrawNumber 3, "CSCCAFONT", Untranslated, Armor, alignment(left), 31, 38;}}
 	InInventory EmberCelicaAmmo, 2 {DrawImage "EMBCEL", 32, 56; DrawImage "VERICON1", 40, 56;}
 	DrawImage "YANGBLK", 32, 64; DrawImage "VERICON2", 40, 64;
 	}
@@ -369,7 +374,12 @@ Drawbar "BARAMM24", "BAREMPTY", Ammo2, vertical, 8, 8;
 }
 
 //====|Gravitron
-IsSelected GravSphereWep{Drawbar"BAREMPTY", "GRSPAMMH", Ammo1, vertical,reverse, 16, 8;} 
+IsSelected GravSphereWep
+{
+InInventory GravAdjust, 1{Drawbar"BAREMPTY", "GRSPAMH2", Ammo1, vertical, reverse, 16, 8;}
+else{Drawbar"BAREMPTY", "GRSPAMH1", Ammo1, vertical, reverse, 16, 8;}
+Drawbar"GRSPAMMH", "BAREMPTY", GravitronVelocity, vertical, 8, 8;
+} 
 
 //====|Natures Wonder
 IsSelected NatureStaffStraightWep{DrawBar "CRYTBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
@@ -445,24 +455,30 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 63, 10;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana,63, 29;
 	
-	DrawImage "WMAGI1", 92, 10; 
-	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 92, 10;} 
-	DrawImage "VERICON1", 102, 10;
+	DrawImage "WMAGI1", 77, 10; 
+	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 77, 10;} 
+	DrawImage "VERICON1", 87, 10;
+	inInventory WhiteMageMana, 15{DrawNumber 3, "8BDMAFONT", Untranslated, 15, alignment(left), 77, 22;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 77, 22;}
 	
-	DrawImage "WMAGI2", 122, 10; 
-	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 122, 10;} 
-	DrawImage "VERICON2", 132, 10;
+	DrawImage "WMAGI2", 99, 10; 
+	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 99, 10;} 
+	DrawImage "VERICON2", 109, 10;
+	inInventory WhiteMageMana, 40{DrawNumber 3, "8BDMAFONT", Untranslated, 40, alignment(left), 99, 22;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 40, alignment(left), 99, 22;}
+
+	//DrawImage "WMAGI3", 92, 24; 
+	//InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 92, 24;} 
+	//DrawImage "VERICON1", 102, 24;
 	
-	DrawImage "WMAGI3", 92, 24; 
-	InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 92, 24;} 
-	DrawImage "VERICON1", 102, 24;
-	
-	DrawImage "WMAGI4", 122, 24;
-	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 122, 24;} 
-	DrawImage "VERICON2", 132, 24;
-	
-InInventory NOT "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 10;}
-InInventory "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 24;}
+	DrawImage "WMAGI4", 119, 10;
+	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 119, 10;} 
+	DrawImage "VERICONR", 129, 10;
+	inInventory WhiteMageMana, 10{DrawNumber 3, "8BDMAFONT", Untranslated, 10, alignment(left), 119, 22;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 119, 22;}
+
+//InInventory NOT "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 10;}
+//InInventory "ClassToggleItem",2 {DrawImage "WMAGPT", 76, 24;}
 }
 
 //====|Devion
@@ -557,13 +573,13 @@ IsSelected DaverisClassWep
 //====|Jax
 WeaponAmmo JaxPsychoAmmo{Drawbar"BARAMM18", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory JaxHoldCharge, 1	{DrawBar"BARFLS1", "NOBAR", JaxHoldCharge, vertical, 16, 8;}}
-	
+
 //====|LordDamager
 IsSelected MissilePunchWep
 	{
 	Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
-	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
+	InInventory LDRamEnergy, 28{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
+	else{Drawbar"BARAMM65", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
 	DrawImage "LDRELOAD", 32, 48;
 	DrawImage "VERICONR", 40, 48;
 	}
@@ -571,8 +587,8 @@ IsSelected MissilePunchWep
 IsSelected LaserCannonWep
 	{
 	Drawbar"BARAMM51", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory LDRamEnergy, 1{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
-	InInventory LDRamEnergy, 26{Drawbar"LDBAR", "NOBAR", LDRamEnergy, vertical, 8, 8;}
+	InInventory LDRamEnergy, 28{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
+	else{Drawbar"BARAMM65", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
 	}
 
 

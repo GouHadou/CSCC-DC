@@ -108,6 +108,8 @@ texture GEEAMMO1, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=229:229", "19
 texture GEEVMMO1, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=229:229", "198:198=220:220"}}
 texture GEEAMMO2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=76:76", "198:198=243:243"}}
 texture GEEVMMO2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=76:76", "198:198=243:243"}}
+texture GEEAMMO4, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=70:70"}}
+texture GEEVMMO4, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=70:70"}}
 
 //PistonMan
 texture PISTNVAR, 56, 8{patch PISTNBAR, 0, 0 {rotate 90}}
@@ -186,6 +188,10 @@ Texture "STNEBAR2", 56, 8{Patch "STNEBAR1", 0, 0{Rotate 90}}
 //Gravitron Bars
 texture GRSPAMMH, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}} 
 texture GRSPAMMV, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=58:58", "198:198=249:249"}}
+texture GRSPAMH1, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=111:111"}} 
+texture GRSPAMV1, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=111:111"}}
+texture GRSPAMH2, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=4:4", "198:198=44:44"}} 
+texture GRSPAMV2, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=4:4", "198:198=44:44"}}
 
 //Deer Bars
 texture CRYTBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=197:197", "198:198=198:198"}} 
@@ -360,9 +366,6 @@ graphic LDMBAR,8,56{patch BARENERG,0,0{Translation "192:192=194:194","198:198=24
 graphic LDMVAR,56,8{patch LDMBAR,0,0{rotate 90}}
 graphic LDRBAR,8,56{patch BARENERG,0,0{Translation "192:192=42:42","198:198=47:47"}}
 graphic LDRVAR,56,8{patch LDRBAR,0,0{rotate 90}}
-
-texture LDBAR,8,56{patch TNT1A0,0,0}
-texture LDVAR,56,8{patch TNT1A0,0,0}
 
 //Megaman Copyweps
 graphic BARAMMOT, 8, 56{patch BARENERG,0,0{Translation "192:192=87:87","198:198=95:95"}}

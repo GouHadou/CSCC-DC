@@ -529,6 +529,11 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && (CheckInventory("IceWep")
 			CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
 			}
 		}
+	If((CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH) == 1) && (GetActorProperty(PlayerTID, APROP_HEALTH) > GetActorProperty(PlayerTID, APROP_SpawnHealth)))
+		{
+		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
+		continue;
+		}
 	FusionStock = CheckInventory("FusionStock");
 	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
 		{
@@ -539,6 +544,21 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && (CheckInventory("IceWep")
 		CurrentHealth = GetActorProperty(PlayerTID, APROP_HEALTH);
 		}
 	}
+}
+
+#DEFINE FUSIONTIMER 15*35
+Script "IceSparkyTimer" (void)
+{
+int TimerRemaining = FUSIONTIMER;
+While(GetActorProperty(0, APROP_HEALTH) > 0 && TimerRemaining > 0 && GetGamemodeState() == 2)
+	{
+	SetInventory("FusionTimer",TimerRemaining);
+	TimerRemaining--;
+	Delay(1);
+	}
+TakeInventory("IceSparkyFusion", 1);
+SetInventory("FusionTimer",0);
+SetInventory("FusionStock", 1);
 }
 
 script "CSACS_IceSparkSwap" (int speed)
@@ -1014,6 +1034,15 @@ SetActorProperty(0,APROP_SPECIES,GetActorProperty(TargetTID,APROP_SPECIES));
 
 //=======|Yang
 
+Script "YangKnockback" (void)
+{
+int KnockBack = CheckInventory("YangKnockBackFlag");
+TakeInventory("YangKnockBackFlag", 999);
+If(KnockBack < 10){KnockBack = 10;}
+If(KnockBack > 50){KnockBack = 50;}
+ACS_NamedExecuteAlways("CSACS_HitKnockback",0,KnockBack);
+}
+
 Script "YangPower" (int PlayerTID, int Divisor)
 {
 int ReturnValue = 10;
@@ -1039,6 +1068,7 @@ SetResultValue(ReturnValue);
 
 
 #DEFINE DashForce 16
+#DEFINE DashCoolDown 20
 
 script "YangBoost" (Void)
 {
@@ -1051,38 +1081,40 @@ if(PlayerIsBot(PlayerNumber())){terminate;}
 
 while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYang"))
 	{
+	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
+		{
+		Delay(5);
+		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
+		If(CheckActorInventory(ActivatorTID(), "YangDashCoolDown") > 0){TakeActorInventory(ActivatorTID(), "YangDashCoolDown", 1);}
+		}
+		
 	HDashForce = DashForce - CheckActorInventory(ActivatorTID(), "YangDashCoolDown") ;
 	If(HDashForce < 1){HDashForce = 1;}
 	
 	InputButtons = GetPlayerInput(-1, INPUT_BUTTONS);
 	HasUsedMovement=0;
-	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
-		{
-		Delay(5);
-		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
-		}
-	
+
 	SpeedPressed = CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1;
 	
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD))
+	If(SpeedPressed && (InputButtons & BT_FORWARD))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=1;
 		}
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK))
+	If(SpeedPressed && (InputButtons & BT_BACK))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=1;
 		}
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVELEFT))
+	If(SpeedPressed && (InputButtons & BT_MOVELEFT))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255+64.0)>>16, HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=1;
 		}
-	If(SpeedPressed && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVERIGHT))
+	If(SpeedPressed && (InputButtons & BT_MOVERIGHT))
 		{
 		ThrustThing((GetActorAngle(ActivatorTID())*255+192.0)>>16, HDashForce, 1, 0);
 		GiveInventory("EmberCelicaBoost", 1);
@@ -1123,7 +1155,7 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 		{
 		GiveActorInventory(ActivatorTID(), "BoostExplodeItem", 1);
 		TakeActorInventory(ActivatorTID(), "EmberCelicaAmmo", 2);
-		GiveActorInventory(ActivatorTID(), "YangDashCoolDown", 15);
+		GiveActorInventory(ActivatorTID(), "YangDashCoolDown", DashCoolDown);
 		LimitSpeed(30);
 		}
 	delay(1);	
@@ -1372,12 +1404,14 @@ script "TracerTargeter" (int TargType, int TargRange) {
 			}
 		}
 		
-		if(xyzDistance(0,getuservariable(0,"User_STargTID")+1000) <= TargRange
-			&& !checkinventory("RespawnCamera"))
-		{
-		setpointer(AAPTR_TRACER,getuservariable(0,"User_STargTID")+1000);
-		}
-		else {setpointer(AAPTR_TRACER,0,AAPTR_NULL);}
+		if(xyzDistance(0,getuservariable(0,"User_STargTID")+1000) <= TargRange)
+			{
+			SetInventory("CureTargeter", getuservariable(0,"User_STargTID")+1000);
+			}
+		else 
+			{
+			If(CheckInventory("CureTargeter")){TakeInventory("CureTargeter", CheckInventory("CureTargeter"));}
+			}
 		adjustInventory("TargetingFlag",getuservariable(0,"User_STargTID")+1);
 		if (TargRange!=checkinventory("TargetingRangeFlag"))
 			{
@@ -1392,6 +1426,11 @@ script "TracerTargeter" (int TargType, int TargRange) {
 		setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE);
 		adjustInventory("TargetingFlag",0);
 		adjustInventory("TargetingRangeFlag",0);
+}
+ 
+Script "ReturnCureTargeter" (int PlayerTID)
+{
+SetResultValue(CheckActorInventory(PlayerTID, "CureTargeter"));
 }
 
 function void TargeterTeam(int team, int x, int y, int z, int angle, int pitch, int i, int TargType) {
@@ -2198,4 +2237,37 @@ if(CheckInventory("WilyTeamFlag")){
 				break;
 				
 			}
+}
+
+script "CSACS_GravItem" (void)
+{
+int GravVel = GetActorVelZ(0) >> 16;
+if(GravVel <= 0){GravVel *= -1;}
+SetInventory("GravitronVelocity",GravVel);
+}
+
+Script "CSACS_GeeHealth" (int StarterDelay, int Rate)
+{   
+int HP;
+while(GetActorProperty(0,APROP_Health)>0 && PlayerInGame(PlayerNumber()) && (CheckInventory("GeeBurstBoss1")||CheckInventory("GeeBurstBoss2")))
+	{
+	while(GetActorProperty(0,APROP_Health)<GetActorProperty(0,APROP_SpawnHealth))
+		{
+		if(CheckInventory("GeeRegen")>=StarterDelay)
+			{
+			ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,1);
+			HP = GetActorProperty(0,APROP_Health);
+			Delay(Rate);
+			}
+		else
+			{
+			GiveInventory("GeeRegen",1); 
+			Delay(1);
+			}
+		if(HP>GetActorProperty(0,APROP_Health)){TakeInventory("GeeRegen",999);}
+		HP = GetActorProperty(0,APROP_Health);
+		}
+	TakeInventory("GeeRegen",999);
+	Delay(1);
+	}
 }

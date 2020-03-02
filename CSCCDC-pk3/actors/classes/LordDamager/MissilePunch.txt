@@ -40,7 +40,7 @@ MSPN A 0 A_TakeInventory("LDRamEarlyEnd",1)
 MSPN A 0 A_JumpIfNoAmmo("NoAmmo") 
 MSPN A 0 A_PlaySoundEx("weapon/MagnetMissile","Weapon")
 MSPN DE 3 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-MSPN A 0 A_GiveInventory("PowerMissileColors")
+TNT1 A 0 A_FireCustomMissile("PowerMissile",0,1,-8,0)
 MSPN EAAAAAAAAA 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
 MSPN A 0 A_Refire
 Goto Ready2
@@ -51,9 +51,11 @@ MSPN A 0 A_TakeInventory("LDRamEarlyEnd",1)
 MSPN A 2
 MSPN A 0 A_PlaySoundEx("Weapon/napalm","Weapon")
 MSPN A 0 A_FireCustomMissile("MissilePunch",0,0,-2,-8)
-MSPN A 0 A_GiveInventory("MissilePunchFXColors")
+TNT1 A 0 A_FireCustomMissile("MissilePunchFX",0,0,-2,-8)
+TNT1 A 0 A_FireCustomMissile("MissilePunchFX2",0,0,-2,-8)
 MSPN BCCCCCBAAAAA 2 A_WeaponReady(WRF_NOSWITCH|WRF_NOPRIMARY|WRF_NOSECONDARY)
-Goto Ready2
+MSPN A 1 A_Jump(256,"Ready2")
+wait
 
 Reload:
 MSPN B 0 A_JumpIfInventory("MissilePunchAmmo",0,"ReadyWait")
@@ -86,7 +88,7 @@ MSPN A 0 A_JumpIfInventory("LDRamEarlyEnd",1,"BounceOff")
 MSPN C 1 A_WeaponReady(WRF_NOSWITCH)
 MSPN A 0 A_Recoil(-3)
 MSPN A 0 A_FireCustomMissile("LDRamChecker",0,0,0,0)
-MSPN A 0 A_GiveInventory("LDRamAttackColors")
+MSPN A 0 A_FireCustomMissile("LDRamAttack",0,0,0,0)
 MSPN A 0 A_GiveInventory("RamAmmoBuffer")
 MSPN A 0 A_PlaySoundEx("misc/gutsgboost","Voice")
 MSPN A 0 A_TakeInventory("LDRamEnergy",1)
@@ -102,7 +104,8 @@ RamEnd:
 MSPN A 0 SetPlayerProperty(0,0,0)
 MSPN A 0 A_TakeInventory("LDRamEarlyEnd",1)
 MSPN AAAAAAAAAAAAAAAAA 1 A_WeaponReady(WRF_NOSWITCH)
-goto Ready+1
+MSPN A 1 A_Jump(256,"Ready2")
+wait
 
 NoAmmo:
 MSPN A 1
@@ -142,36 +145,12 @@ inventory.maxamount 56
 Actor RamAmmoBuffer : Powerup {inventory.amount 1 inventory.maxamount 1 powerup.duration 20}
 Actor BeamAmmoBuffer : Powerup {inventory.amount 1 inventory.maxamount 1 powerup.duration 8}
 
-//Mainfire
-actor PowerMissileColors : LDColorBase
-{
-States
-{
-Default:
-TNT1 A 0 A_FireCustomMissile("PowerMissile",0,1,-8,0)
-stop
-LightFire:
-TNT1 A 0 A_FireCustomMissile("PowerMissileB",0,1,-8,0)
-stop
-WilyFire:
-TNT1 A 0 A_FireCustomMissile("PowerMissileR",0,1,-8,0)
-stop
-CossackFire:
-TNT1 A 0 A_FireCustomMissile("PowerMissileG",0,1,-8,0)
-stop
-KingFire:
-TNT1 A 0 A_FireCustomMissile("PowerMissileY",0,1,-8,0)
-stop
-}
-}
-
 actor PowerMissile : BasicFastProjectile
 {
 Obituary "$OB_MISSILEPUNCH"
 PROJECTILE
 +SKYEXPLODE
 +DONTBLAST
-//+MTHRUSPECIES
 +BLOODSPLATTER
 Radius 8
 Height 8
@@ -183,91 +162,18 @@ States
 {
 Spawn:
 TNT1 A 0
+TNT1 A 0 A_GiveInventory("ProjectileCode")
+SpawnLoop:
 LOMS AB 2 A_PlaySoundEx("weapon/superboost","Weapon")
 loop
 Death:
-MMFX B 0 A_SpawnItemEx("PMissileExplosion")
-MMFX B 1
-stop
-}
-}
-
-actor PowerMissileB : PowerMissile
-{
-translation "80:95=205:205", "236:246=74:74"
-States
-{
-Death:
-MMFX B 1 A_SpawnItemEx("PMissileExplosionB")
-stop
-}
-}
-
-actor PowerMissileR : PowerMissile
-{
-translation "80:95=171:171", "236:246=41:41"
-States
-{
-Death:
-MMFX B 1 A_SpawnItemEx("PMissileExplosionR")
-stop
-}
-}
-
-actor PowerMissileG : PowerMissile
-{
-translation "80:95=104:104", "236:246=128:128"
-States
-{
-Death:
-MMFX B 1 A_SpawnItemEx("PMissileExplosionG")
-stop
-}
-}
-
-actor PowerMissileY : PowerMissile
-{
-translation "80:95=229:229", "236:246=232:232"
-States
-{
-Death:
-MMFX B 1 A_SpawnItemEx("PMissileExplosionY")
-stop
-}
-}
-
-
-
-actor PMissileExplosion 
-{
-Obituary "$OB_MISSILEPUNCH"
-PROJECTILE
-+NOINTERACTION
-+NOCLIP
-+DONTBLAST
-+FORCEXYBILLBOARD
-+BLOODSPLATTER
-//+MTHRUSPECIES
-damagetype "PMissile"
-Speed 0
-radius 8
-height 8
-scale 2.5
-States
-{
-Spawn:
-TNT1 A 0
+TNT1 A 0 A_SetScale(2.5)
 TNT1 A 0 A_PlaySoundEx("weapon/hyperbomb", "Weapon")
 TNT1 A 0 A_Explode(10,160,0,0,80)
 BOMB BDFHJLNOQ 1
 stop
 }
 }
-
-actor PMissileExplosionB : PMissileExplosion{translation "4:208=205:205", "209:212=74:74"}
-actor PMissileExplosionR : PMissileExplosion{translation "4:208=171:171", "209:212=41:41"}
-actor PMissileExplosionG : PMissileExplosion{translation "4:208=104:104", "209:212=128:128"}
-actor PMissileExplosionY : PMissileExplosion{translation "4:208=229:229", "209:212=232:232"}
 
 //Altfire
 actor MissilePunch : BasicProjectile
@@ -292,34 +198,6 @@ stop
 }
 }
 
-actor MissilePunchFXColors : LDColorBase
-{
-States
-{
-Default:
-TNT1 A 0 A_FireCustomMissile("MissilePunchFX",0,0,-2,-8)
-TNT1 A 0 A_FireCustomMissile("MissilePunchFX2",0,0,-2,-8)
-stop
-LightFire:
-TNT1 A 0 A_FireCustomMissile("MissilePunchFXB",0,0,-2,-8)
-TNT1 A 0 A_FireCustomMissile("MissilePunchFX2B",0,0,-2,-8)
-stop
-WilyFire:
-TNT1 A 0 A_FireCustomMissile("MissilePunchFXR",0,0,-2,-8)
-TNT1 A 0 A_FireCustomMissile("MissilePunchFX2R",0,0,-2,-8)
-stop
-CossackFire:
-TNT1 A 0 A_FireCustomMissile("MissilePunchFXG",0,0,-2,-8)
-TNT1 A 0 A_FireCustomMissile("MissilePunchFX2G",0,0,-2,-8)
-stop
-KingFire:
-TNT1 A 0 A_FireCustomMissile("MissilePunchFXY",0,0,-2,-8)
-TNT1 A 0 A_FireCustomMissile("MissilePunchFX2Y",0,0,-2,-8)
-stop
-}
-}
-
-
 actor MissilePunchFX 
 {
 translation "192:192=194:194","198:198=241:241"
@@ -339,18 +217,13 @@ states
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1 
+TNT1 A 1 A_GiveInventory("ProjectileCode",1)
 TNT1 A 0 A_Stop
 GIGF CD 1 
 GIGF CDCDC 1 A_FadeOut(0.25)
 stop
 }
 }
-
-actor MissilePunchFXB : MissilePunchFX{translation "192:192=205:205", "198:198=74:74", "193:195=74:74"}
-actor MissilePunchFXR : MissilePunchFX{translation "192:192=171:171", "198:198=41:41", "193:195=41:41"}
-actor MissilePunchFXG : MissilePunchFX{translation "192:192=104:104", "198:198=128:128", "193:195=128:128"}
-actor MissilePunchFXY : MissilePunchFX{translation "192:192=229:229", "198:198=232:232", "193:195=232:232"}
 
 actor MissilePunchFX2 : MissilePunchFX
 {
@@ -360,7 +233,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1
+TNT1 A 1 A_GiveInventory("ProjectileCode",1)
 GIGF D 0 A_Stop
 
 BEWA B 1 A_Fadeout
@@ -384,11 +257,6 @@ stop
 }
 }
 
-actor MissilePunchFX2B : MissilePunchFX2{translation "192:192=205:205", "198:198=74:74", "193:195=74:74"}
-actor MissilePunchFX2R : MissilePunchFX2{translation "192:192=171:171", "198:198=41:41", "193:195=41:41"}
-actor MissilePunchFX2G : MissilePunchFX2{translation "192:192=104:104", "198:198=128:128", "193:195=128:128"}
-actor MissilePunchFX2Y : MissilePunchFX2{translation "192:192=229:229", "198:198=232:232", "193:195=232:232"}
-
 //Item
 actor LDRamActivator : CustomInventory
 {
@@ -404,7 +272,7 @@ Spawn:
 TNT1 A 0
 loop
 Use:
-TNT1 A 0 A_JumpIfInventory("LDRamEnergy",26,"StartRamming")
+TNT1 A 0 A_JumpIfInventory("LDRamEnergy",28,"StartRamming")
 TNT1 A 0 A_PlaySoundEx("weapon/noammo","SoundSlot6")
 fail
 StartRamming:
@@ -415,28 +283,6 @@ fail
 
 Actor LDRamming : Inventory{}
 Actor LDRamEarlyEnd : Inventory{}
-
-actor LDRamAttackColors : LDColorBase
-{
-States
-{
-Default:
-TNT1 A 0 A_FireCustomMissile("LDRamAttack",0,0,0,0)
-stop
-LightFire:
-TNT1 A 0 A_FireCustomMissile("LDRamAttackB",0,0,0,0)
-stop
-WilyFire:
-TNT1 A 0 A_FireCustomMissile("LDRamAttackR",0,0,0,0)
-stop
-CossackFire:
-TNT1 A 0 A_FireCustomMissile("LDRamAttackG",0,0,0,0)
-stop
-KingFire:
-TNT1 A 0 A_FireCustomMissile("LDRamAttackY",0,0,0,0)
-stop
-}
-}
 
 actor LDRamAttack
 {
@@ -454,18 +300,14 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 1
+TNT1 A 1 A_GiveInventory("ProjectileCode",1)
 Death:
+TNT1 A 0 A_GiveInventory("ProjectileDCode",1)
 TNT1 A 0 A_Stop
 CKIC DEF 1 A_Explode(2, 50, 0)
 stop
 }
 }
-
-actor LDRamAttackB : LDRamAttack{translation "4:4=205:205", "225:225=74:74"}
-actor LDRamAttackR : LDRamAttack{translation "4:4=171:171", "225:225=41:41"}
-actor LDRamAttackG : LDRamAttack{translation "4:4=104:104", "225:225=128:128"}
-actor LDRamAttackY : LDRamAttack{translation "4:4=229:229", "225:225=232:232"}
 
 actor LDRamChecker
 {

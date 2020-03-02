@@ -471,7 +471,7 @@ weapon/BombAlarm Balarm
 Support/WhiteCast WMCS01
 Support/WhiteCast2 WMCS02
 Support/WhiteCast3 WMCS03
-Support/WhiteCast4 WMCS04
+Support/WhiteCast4 WHCS04
 
 Support/Heal1 Recov1 
 $volume Support/Heal1 0.5
@@ -621,8 +621,10 @@ weapon/fmortarbreak		ICEWSTA
 weapon/ifreeze			ICESHOTC	
 weapon/ibreak			ICEWBRAK
 weapon/ifly				SHDEDIVE
-weapon/Devcrashland		NAPALMB
+weapon/devcrashland		NAPALMB
 item/wingfly			habataki
+weapon/crashland		NAPALMB
+
 
 //Jax
 $playersound	jaxclass	male	*death		MEGADEAT
