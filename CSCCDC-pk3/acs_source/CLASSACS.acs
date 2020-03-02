@@ -546,32 +546,18 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && (CheckInventory("IceWep")
 	}
 }
 
-#Define FusionTimer 15
+#DEFINE FUSIONTIMER 15*35
 Script "IceSparkyTimer" (void)
 {
-int TimerRemaining = FusionTimer;
-While(GetActorProperty(0, APROP_HEALTH) > 0 && TimerRemaining > 0)
+int TimerRemaining = FUSIONTIMER;
+While(GetActorProperty(0, APROP_HEALTH) > 0 && TimerRemaining > 0 && GetGamemodeState() == 2)
 	{
-	If(GetGamemodeState() == 3)
-		{
-		Delay(35);
-		TimerRemaining = 0;
-		}
-	SetHudSize(320,190,0);
-	SetFont("ICSPFUS");
-	HudMessage(s:"A";HUDMSG_FADEOUT,2,CR_WHITE,200.4,10.0,2.0,0.5);
-	SetFont("SMALLFONT");
-	
-	HudMessage(i:TimerRemaining;HUDMSG_FADEOUT,3,CR_WHITE,210.4,10.0,2.0,0.5);
-	Delay(35);
+	SetInventory("FusionTimer",TimerRemaining);
 	TimerRemaining--;
+	Delay(1);
 	}
-SetHudSize(320,190,0);
-SetFont("ICSPFUS");
-HudMessage(s:"A";HUDMSG_FADEOUT,2,CR_WHITE,200.4,10.0,2.0,0.5);
-SetFont("SMALLFONT");
-HudMessage(i:0;HUDMSG_FADEOUT,3,CR_WHITE,210.4,10.0,2.0,0.5);
 TakeInventory("IceSparkyFusion", 1);
+SetInventory("FusionTimer",0);
 SetInventory("FusionStock", 1);
 }
 

@@ -192,7 +192,8 @@ IsSelected IceWep
 {
 DrawBar "ICEBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 DrawBar "SPARKBAR", "BAREMPTY", SparkyClassAmmo, vertical, 8, 8;
-DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;
+InInventory FusionMeter, 1{DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;}
+InInventory FusionTimer, 1{DrawBar "FUSSI", "NOBAR", FusionTimer, vertical, 24, 8;}
 InInventory FusionStock, 1
 	{
 	InInventory NOT IceSparkyCombine || IceSparkyFusion
@@ -206,7 +207,8 @@ IsSelected SparkyWep
 {
 DrawBar "SPARKBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
 DrawBar "ICEBAR", "BAREMPTY", IceClassAmmo, vertical, 8, 8;
-DrawBar "FUSIS", "NOBAR", FusionMeter, vertical, 24, 8;
+InInventory FusionMeter, 1{DrawBar "FUSSI", "NOBAR", FusionMeter, vertical, 24, 8;}
+InInventory FusionTimer, 1{DrawBar "FUSSI", "NOBAR", FusionTimer, vertical, 24, 8;}
 InInventory FusionStock, 1
 	{
 	InInventory NOT IceSparkyCombine || IceSparkyFusion
