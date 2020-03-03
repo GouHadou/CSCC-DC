@@ -759,6 +759,7 @@ TNT1 A 0 A_PlaySoundEx("devion/explode","Weapon")
 TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
 TNT1 A 0 A_Explode(15, 135, 0,0,96)  //23
 TNT1 A 0 A_Spawnitemex("FistRevolverRocketJump",0,0,-10)
+TNT1 A 0 A_SetScale(2.5)
 BOMB BCDEFGHIJKLMNOPQR 1
 stop
 Rocketed:
