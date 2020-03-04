@@ -2253,6 +2253,7 @@ while(GetActorProperty(0,APROP_Health)>0 && PlayerInGame(PlayerNumber()) && (Che
 	{
 	while(GetActorProperty(0,APROP_Health)<GetActorProperty(0,APROP_SpawnHealth))
 		{
+		if(GetActorProperty(0,APROP_Health)<=0 || !PlayerInGame(PlayerNumber()) || !(CheckInventory("GeeBurstBoss1")||CheckInventory("GeeBurstBoss2"))){terminate;}
 		if(CheckInventory("GeeRegen")>=StarterDelay)
 			{
 			ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,1);
