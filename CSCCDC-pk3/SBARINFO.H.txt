@@ -446,8 +446,8 @@ InInventory KingTeamFlag, 1{
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 151, 156;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana, 151, 175;
 	
-	DrawImage "WMAGI1", 165, 156; 
-	InInventory MedicaCooldownItem, 1 {DrawBar "WMAGI1C", "WMAGI1", MedicaCooldownItem, vertical, 165, 156;} 
+	DrawImage "WMAGI5", 165, 156; 
+	InInventory AeroCooldownItem, 1 {DrawBar "WMAGI5C", "WMAGI5", AeroCooldownItem, vertical, 165, 156;} 
 	DrawImage "VERICON1", 175, 156;
 	InInventory WhiteMageMana, 15{DrawNumber 3, "8BDMAFONT", Untranslated, 15, alignment(left), 165, 168;}
 	else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 165, 168;}
@@ -455,8 +455,8 @@ InInventory KingTeamFlag, 1{
 	DrawImage "WMAGI2", 187, 156; 
 	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 187, 156;} 
 	DrawImage "VERICON2", 197, 156;
-	InInventory WhiteMageMana, 40{DrawNumber 3, "8BDMAFONT", Untranslated, 40, alignment(left), 187, 168;}
-	else{DrawNumber 3, "CSCCAFONT", Untranslated, 40, alignment(left), 187, 168;}
+	InInventory WhiteMageMana, 20{DrawNumber 3, "8BDMAFONT", Untranslated, 20, alignment(left), 187, 168;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 20, alignment(left), 187, 168;}
 
 	//DrawImage "WMAGI3", 180, 170; 
 	//InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 180, 170;} 
@@ -468,8 +468,17 @@ InInventory KingTeamFlag, 1{
 	InInventory WhiteMageMana, 10{DrawNumber 3, "8BDMAFONT", Untranslated, 10, alignment(left), 207, 168;}
 	else{DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 207, 168;}
 
-//InInventory NOT "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 156;}
-//InInventory "ClassToggleItem", 2 {DrawImage "WMAGPT", 164, 170;}
+	//Cure Meter
+	DrawImage "CURBHUD", 150, 136;
+	InInventory LightTeamFlag, 1{DrawImage "CURBHLI", 150, 136;}
+	InInventory WilyTeamFlag, 1{DrawImage "CURBHWI", 150, 136;}
+	InInventory CossackTeamFlag, 1{DrawImage "CURBHCO", 150, 136;}
+	InInventory KingTeamFlag, 1{DrawImage "CURBHKI", 150, 136;}
+
+	DrawBar "CURBAR","CURBEMP",CureMeter,Horizontal,153,139;
+	InInventory CureLevel, 1 {DrawImage "CURBLK", 193, 139;}
+	InInventory CureLevel, 2 {DrawImage "CURBLK", 200, 139;}
+	InInventory CureLevel, 3 {DrawImage "CURBLK", 207, 139; DrawImage "CURBAR", 153, 139;}
 }
 
 //====|Devion

@@ -503,6 +503,23 @@ Graphic "WMAGI4C", 16, 16
 	}
 }
 
+Graphic "WMAGI5", 16, 16
+{
+	XScale 1.500
+	YScale 1.500
+	Patch "TBLOA0", 0, 0
+}
+
+Graphic "WMAGI5C", 16, 16
+{
+	XScale 1.500
+	YScale 1.500
+	Patch "TBLOA0", 0, 0
+	{
+		Translation "4:4=3:3", "109:109=95:95"
+	}
+}
+
 Graphic "WMAGPT", 20, 16
 {
 	XScale 1.500
