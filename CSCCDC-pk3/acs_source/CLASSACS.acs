@@ -1068,7 +1068,7 @@ SetResultValue(ReturnValue);
 
 
 #DEFINE DashForce 16
-#DEFINE DashCoolDown 20
+#DEFINE DashCoolDown 25
 
 script "YangBoost" (Void)
 {
@@ -1077,6 +1077,8 @@ int InputOldButtons;
 Bool SpeedPressed = FALSE;
 int HasUsedMovement;
 int HDashForce;
+int ThrustDir;
+int AngleCount;
 if(PlayerIsBot(PlayerNumber())){terminate;}
 
 while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYang"))
@@ -1087,7 +1089,8 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
 		If(CheckActorInventory(ActivatorTID(), "YangDashCoolDown") > 0){TakeActorInventory(ActivatorTID(), "YangDashCoolDown", 1);}
 		}
-		
+	ThrustDir = 0;
+	AngleCount = 0;
 	HDashForce = DashForce - CheckActorInventory(ActivatorTID(), "YangDashCoolDown") ;
 	If(HDashForce < 1){HDashForce = 1;}
 	
@@ -1096,40 +1099,52 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 
 	SpeedPressed = CSCCButtonCheck(InputButtons, InputOldButtons, BT_SPEED|BT_USER1) == 1;
 	
-	If(SpeedPressed && (InputButtons & BT_FORWARD))
-		{
-		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, HDashForce, 1, 0);
-		GiveInventory("EmberCelicaBoost", 1);
-		HasUsedMovement=1;
-		}
 	If(SpeedPressed && (InputButtons & BT_BACK))
 		{
-		ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -HDashForce, 1, 0);
+		//ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -HDashForce, 1, 0);
+		ThrustDir+=0.5;
+		AngleCount++;
 		GiveInventory("EmberCelicaBoost", 1);
-		HasUsedMovement=1;
+		HasUsedMovement=2;
 		}
 	If(SpeedPressed && (InputButtons & BT_MOVELEFT))
 		{
-		ThrustThing((GetActorAngle(ActivatorTID())*255+64.0)>>16, HDashForce, 1, 0);
+		//ThrustThing((GetActorAngle(ActivatorTID())*255+64.0)>>16, HDashForce, 1, 0);
+		AngleCount++;
+		ThrustDir+=0.25;
 		GiveInventory("EmberCelicaBoost", 1);
-		HasUsedMovement=1;
+		HasUsedMovement=2;
 		}
 	If(SpeedPressed && (InputButtons & BT_MOVERIGHT))
 		{
-		ThrustThing((GetActorAngle(ActivatorTID())*255+192.0)>>16, HDashForce, 1, 0);
+		//ThrustThing((GetActorAngle(ActivatorTID())*255+192.0)>>16, HDashForce, 1, 0);
+		ThrustDir+=0.75;
+		AngleCount++;
 		GiveInventory("EmberCelicaBoost", 1);
-		HasUsedMovement=1;
+		HasUsedMovement=2;
 		}
-	
+	If(SpeedPressed && (InputButtons & BT_FORWARD))
+		{
+		//ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, HDashForce, 1, 0);
+		If(ThrustDir > 0.5){ThrustDir+=1.0;}
+		AngleCount++;
+		GiveInventory("EmberCelicaBoost", 1);
+		HasUsedMovement=2;
+		}
+	If(AngleCount>0)
+	{
+	ThrustDir=(GetActorAngle(ActivatorTID())+(ThrustDir/AngleCount))<<8;
+	ThrustThing((ThrustDir)>>16, HDashForce, 1, 0);
+	}
 	//Jump Boost
-	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 1 || (HasUsedMovement == 1 && CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 3))
+	If(CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 1 || (HasUsedMovement > 0 && CSCCButtonCheck(InputButtons, InputOldButtons, BT_JUMP) == 3))
 		{
 		If((GetActorZ(0) - GetActorFloorZ(0)) >= 32.0)
 			{
 			SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), GetActorProperty(0, APROP_JUMPZ), 0, 0);
 			TakeInventory("JumpCancler", 1);
 			GiveInventory("EmberCelicaBoost", 1);
-			HasUsedMovement=1;
+			If(HasUsedMovement == 0){HasUsedMovement=1;}
 			}
 		}
 			
@@ -1140,22 +1155,22 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 			{
 			SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), FixedMul(GetActorProperty(0, APROP_JUMPZ),1.5), 0, 0);
 			TakeInventory("JumpCancler", 1);
-			HasUsedMovement=1;
+			If(HasUsedMovement == 0){HasUsedMovement=1;}
 			}
 		Else
 			{
 			SetActorVelocity(0, GetActorVelX(0), GetActorVelY(0), -FixedMul(GetActorProperty(0, APROP_JUMPZ),1.25), 0, 0);
 			TakeInventory("JumpCancler", 1);
 			GiveInventory("EmberCelicaDown", 1);
-			HasUsedMovement=1;
+			If(HasUsedMovement == 0){HasUsedMovement=1;}
 			}
 		}
 	If(CheckActorInventory(ActivatorTID(), "YangDashCoolDown") > 0){TakeActorInventory(ActivatorTID(), "YangDashCoolDown", 1);}
-	If(HasUsedMovement==1)
+	If(HasUsedMovement>0)
 		{
 		GiveActorInventory(ActivatorTID(), "BoostExplodeItem", 1);
 		TakeActorInventory(ActivatorTID(), "EmberCelicaAmmo", 2);
-		GiveActorInventory(ActivatorTID(), "YangDashCoolDown", DashCoolDown);
+		If(HasUsedMovement > 1){GiveActorInventory(ActivatorTID(), "YangDashCoolDown", DashCoolDown);}
 		LimitSpeed(30);
 		}
 	delay(1);	
