@@ -1,5 +1,8 @@
 Const int CuragaArea = 600;
-Const int Item_CuragaHeal = 15;
+Const int Item_Cure1Heal = 15;
+Const int Item_Cure2Heal = 18;
+Const int Item_Cure3Heal = 19;
+Const int Item_Cure4Heal = 20;
 
 Actor CuragaBlock : powerup {inventory.amount 1 Powerup.duration 105}
 
@@ -11,9 +14,35 @@ States
 {
 Spawn:
 TNT1 A 0
+TNT1 A 2
 //TNT1 A 5 A_SpawnItemEX("CuragaAOEEffect",0,0,0,0,0,0,0,1)
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_CuragaHeal,CuragaArea,1)
-TNT1 A 0 A_PlaySoundEx("Support/WhiteCast2","SoundSlot7")
+TNT1 A 0 A_JumpIfInTargetInventory("CureLevel",3,"Spawn.Cure4")
+TNT1 A 0 A_JumpIfInTargetInventory("CureLevel",2,"Spawn.Cure3")
+TNT1 A 0 A_JumpIfInTargetInventory("CureLevel",1,"Spawn.Cure2")
+Goto Spawn.Cure1
+
+Spawn.Cure1:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_Cure1Heal,CuragaArea,1)
+Goto Spawn.Finish
+
+Spawn.Cure2:
+//TNT1 A 0 A_Log("Cure2")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_Cure2Heal,CuragaArea,1)
+Goto Spawn.Finish
+
+Spawn.Cure3:
+//TNT1 A 0 A_Log("Cure3")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_Cure3Heal,CuragaArea,1)
+Goto Spawn.Finish
+
+Spawn.Cure4:
+//TNT1 A 0 A_Log("Cure4")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_RadiusGive",0,Item_Cure4Heal,CuragaArea,1)
+Goto Spawn.Finish
+
+Spawn.Finish:
+TNT1 A 0 //A_PlaySoundEx("Support/WhiteCast2","SoundSlot7")
+TNT1 A 0 A_TakefromTarget("CureLevel",1)
 TNT1 A 17
 Stop
 }
@@ -83,14 +112,54 @@ TNT1 A 0  A_GiveToTarget("CuragaPreHealEffect")
 TNT1 A 23
 TNT1 A 0 A_GiveToTarget("CuragaHealEffect2")
 TNT1 AAAAAAAA 2  A_GiveToTarget("CuragaHealEffect")
+TNT1 A 0 A_Jump(256,"Spawn.Heal")
+Goto Spawn.Heal
+
+Spawn.Heal:
 TNT1 A 0 A_GiveToTarget("CuragaHeal")
 TNT1 A 0 A_GiveToTarget("CuragaHealEffect3")
 TNT1 A 10
 stop
+
 Death:
 TNT1 A 5
 stop
+}
+}
 
+Actor Curaga1_HealHandler : CuragaHealHandler
+{
+States
+{
+Spawn.Heal:
+TNT1 A 0 A_GiveToTarget("CuragaHeal1")
+TNT1 A 0 A_GiveToTarget("CuragaHealEffect3")
+TNT1 A 10
+stop
+}
+}
+
+Actor Curaga2_HealHandler : CuragaHealHandler
+{
+States
+{
+Spawn.Heal:
+TNT1 A 0 A_GiveToTarget("CuragaHeal2")
+TNT1 A 0 A_GiveToTarget("CuragaHealEffect3")
+TNT1 A 10
+stop
+}
+}
+
+Actor Curaga3_HealHandler : CuragaHealHandler
+{
+States
+{
+Spawn.Heal:
+TNT1 A 0 A_GiveToTarget("CuragaHeal3")
+TNT1 A 0 A_GiveToTarget("CuragaHealEffect3")
+TNT1 A 10
+stop
 }
 }
 
@@ -112,7 +181,7 @@ LASH A 0 A_JumpIf(ACS_NamedExecuteWithResult("CSACS_ActorClassifier",0,2) == TRU
 
 
 HealMe:
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,100,50)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,20,50)
 TNT1 A 1 A_Giveinventory("CuragaBlock")
 TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
 TNT1 A 0 A_PlaySoundEx("Support/Heal1","SoundSlot7")
@@ -128,6 +197,48 @@ TNT1 A 0
 stop
 
 Nope:
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaHeal1 : CuragaHeal
+{
+States
+{
+HealMe:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,40,50)
+TNT1 A 1 A_Giveinventory("CuragaBlock")
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 0 A_PlaySoundEx("Support/Heal1","SoundSlot7")
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaHeal2 : CuragaHeal
+{
+States
+{
+HealMe:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,60,50)
+TNT1 A 1 A_Giveinventory("CuragaBlock")
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 0 A_PlaySoundEx("Support/Heal1","SoundSlot7")
+TNT1 A 0
+stop
+}
+}
+
+actor CuragaHeal3 : CuragaHeal
+{
+States
+{
+HealMe:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Basic(Over)Heal",0,0,80,50)
+TNT1 A 1 A_Giveinventory("CuragaBlock")
+TNT1 A 0 A_Giveinventory("HealEffectSpawn",1)
+TNT1 A 0 A_PlaySoundEx("Support/Heal1","SoundSlot7")
 TNT1 A 0
 stop
 }

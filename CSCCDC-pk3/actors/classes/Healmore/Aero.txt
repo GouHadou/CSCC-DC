@@ -1,0 +1,202 @@
+actor AeroShot : BasicFastProjectile
+{
+PROJECTILE
+-MTHRUSPECIES
+MissileHeight 8
+Speed 75
+Damage (0)
+radius 10
+height 15
+ReactionTime 6
+DamageType "Aero"
+Obituary "$OB_AERO"
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 0 A_GiveInventory("ProjectileCode",1)
+AERO ABCDAB 1 //A_SpawnItemEx("MedicaSparkleFX", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,1) 
+Goto Death
+
+Death:
+TNT1 A 0 A_Spawnitemex("AeroTunnel",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 5 A_Stop
+stop
+}
+}
+
+actor AeroTunnel
+{
+PROJECTILE
++NOINTERACTION
++FORCEXYBILLBOARD
++RIPPER
+damage (0)
+Obituary "$OB_AERO"
+Height 1
+Radius 1
+damagetype "Aero"
+reactiontime 12
+Args 25
+Scale 3.7
+States
+{
+Spawn:
+AERO E 0
+AERO E 0 A_GiveInventory("ProjectileCode",1)
+AERO E 0 //A_SpawnItemEx("BlackHoleBombFXSpawner", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+AERO E 0 A_PlaySoundEx("weapon/blackholebombdetonate", "body", 1)
+Spawn2:
+AERO E 0 ACS_ExecuteAlways(247, 0, args[0], 256)
+AERO E 0 //A_Explode(2,128,0)
+AERO EE 1
+AERO G 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
+AERO G 0 A_Countdownarg(0)
+AERO F 0 ACS_ExecuteAlways(247, 0, args[0], 256)
+AERO F 0 A_Explode(2,128,0,0,128)
+AERO FF 1
+AERO G 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
+AERO G 0 A_Countdownarg(0)
+AERO G 0 ACS_ExecuteAlways(247, 0, args[0], 256)
+AERO G 0 //A_Explode(2,128,0)
+AERO GG 1
+AERO G 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
+AERO G 0 A_Countdownarg(0)
+goto Spawn+3
+Death:
+TNT1 A 3//Finish the sound effect before stopping
+TNT1 A 0 A_StopSound
+stop
+}
+}
+
+actor AeroPrefireFX : BasicClientside
+{
++MISSILE
++NOTARGETSWITCH
+Scale 2.5
+Renderstyle "Translucent"
+Alpha 0.1
+var int user_XCor;
+var int user_YCor;
+var int user_ZCor;
+var int user_Rads;
+var int user_SMTH;
+var int user_SAdd;
+var int user_Timer;
+
+var int user_Frame;
+States
+{
+Spawn:
+DUST C 0
+TNT1 A 0 A_GiveInventory("ProjectileCode",1)
+DUST C 0 A_SetUserVar("user_ZCor",WhiteCubeZ)
+DUST C 0 A_SetUserVar("user_SMTH",0)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+
+AERO A 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO A 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+AERO A 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO A 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+AERO B 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO B 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+AERO B 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO B 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+
+AERO C 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO C 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+AERO C 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO C 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+
+AERO D 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO D 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+AERO D 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+AERO D 0 A_FadeTo(0.8,0.3)
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+AERO D 0 A_SetTranslucent(1.0,0)
+
+AERO A 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+AERO A 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 A 0 A_SetPitch(CallACS("PitchGrab"))
+
+AERO B 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 B 0 A_SetPitch(CallACS("PitchGrab"))
+AERO B 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 B 0 A_SetPitch(CallACS("PitchGrab"))
+
+AERO C 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 C 0 A_SetPitch(CallACS("PitchGrab"))
+AERO C 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 C 0 A_SetPitch(CallACS("PitchGrab"))
+
+AERO D 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 D 0 A_SetPitch(CallACS("PitchGrab"))
+AERO D 1 A_Warp(AAPTR_TARGET,70*cos(user_SMTH),70*sin(user_SMTH),user_ZCor+(sin(Pitch)*-85))
+TNT1 D 0 A_SetPitch(CallACS("PitchGrab"))
+stop
+
+Terminate:
+Expire:
+Death:
+TNT1 A 1 
+TNT1 A 0
+stop
+
+}
+}
+
+//[+]========================================================================[+]
+//------------------------------|Cooldown Actors|------------------------------
+//[+]========================================================================[+]
+actor AeroCooler : BasicHelper
+{
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("AeroCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("AeroCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor AeroCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("AeroCooldownItem",122)
+TNT1 A 0 A_Spawnitemex("AeroCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor AeroCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 122 //3.5 sec
+}
