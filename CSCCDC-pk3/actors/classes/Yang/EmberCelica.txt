@@ -419,34 +419,11 @@ loop
 actor EmberCelicaUpper : EmberCelicaPunch
 {
 damagetype "EmberCelicaUpper"
-var int User_ShotPower;
-Translation "192:192=216:216", "198:198=227:227"
 States
 {
-Spawn:
-TNT1 A 0
-Goto "Super::Spawn+1"
-RealSpawn:
-TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 5))
-TNT1 A 2 A_ChangeFlag("THRUACTORS", FALSE)
-YNGP F 1 
-YNGP FF 1 A_JumpIfCloser(32, "Death")
+XDeath:
+YNGP F 0
 Goto Death
-Death:
-YNGP F 0 A_ChangeFlag("NOINTERACTION", 1)
-YNGP F 0 A_Explode(User_ShotPower, 48, 0, 0, 32)
-YNGP F 0 A_Stop
-YNGP F 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
-YNGP F 0 A_FadeOut(0.15)
-YNGP F 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
-YNGP F 0 A_FadeOut(0.15)
-YNGP F 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
-YNGP F 0 A_FadeOut(0.15)
-YNGP F 0 A_ScaleVelocity(0.5)
-DeathLoop:
-YNGP G 1 A_SetScale(scaleX + 0.25, scaleY + 0.25) 
-YNGP G 0 A_FadeOut(0.15)
-loop
 }
 }
 
@@ -1037,6 +1014,7 @@ actor EmberCelicaProtect : PowerProtection
 DamageFactor "EmberCelica", 0.2
 DamageFactor "EmberCelicaPunch", 0.7
 DamageFactor "EmberCelicaPunchX", 0.7
+DamageFactor "EmberCelicaUpper", 0.7
 Powerup.duration 15
 }
 
