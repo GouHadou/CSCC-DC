@@ -34,26 +34,34 @@ TNT1 A 0 A_ZoomFactor(2.0,ZOOM_INSTANT)
 goto Flash
 
 Ready:
-B1GA A 1
-B1GA A 0 ACS_ExecuteAlways(998,0,DYE_BULLGATOR)
+B1GA A 1 ACS_ExecuteAlways(998,0,DYE_BULLGATOR)
 B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
 B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
 Ready1:
 B1GA A 0 A_GunFlash
 goto Ready2
 Ready2:
-B1GA A 0 A_WeaponReady(WRF_NOSECONDARY)
-B1GA A 1
 B1GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+B1GA A 0 A_JumpIfInventory("BullRifleAmmo1",60,"Ready2Y")
+B1GA A 1 A_WeaponReady(WRF_NOSECONDARY|WRF_NOPRIMARY)
+B1GA A 0 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 Ready2X:
-B1GA A 0 A_WeaponReady
-B1GA A 1
-B1GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+B1GA A 0 A_JumpIfInventory("BullRifleAmmo1",60,"Ready2XY")
+B1GA A 1 A_WeaponReady(WRF_NOPRIMARY)
+B1GA A 0 A_GiveInventory("BullRifleAmmo1",1)
+goto Ready2
+Ready2Y:
+B1GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2XY")
+B1GA A 1 A_WeaponReady(WRF_NOSECONDARY)
+B1GA A 0 A_GiveInventory("BullRifleAmmo1",1)
+goto Ready2
+Ready2XY:
+B1GA A 1 A_WeaponReady
+B1GA A 0 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 
 Fire:
-B1GA A 0 A_JumpIfInventory("BullAmmoFlag",1,"NoAmmo")
 B1GA A 0 A_JumpIfNoAmmo("NoAmmo")
 B1GA A 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
 B1GA A 0 A_GiveInventory("PiercingSleep_M1")
@@ -65,8 +73,8 @@ AltFire:
 B1GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
 B1GA A 0 A_GiveInventory("PiercingSleep_M2")
 B1GA A 0 A_TakeInventory("BullRifleAmmo2",175)
-B1GA B 1
-B1GA BCCCCCCCCBBBA 3
+B1GA B 1 A_GiveInventory("BullRifleAmmo1",1)
+B1GA BBBCCCCCCCCCCCCCCCCCCCCCCCCBBBBBBBBBAAA 1 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 
 NoAmmo:
@@ -94,7 +102,6 @@ inventory.amount 1
 
 actor FovFlag : Inventory {inventory.maxamount 1}
 actor AmmoManagementWatcherFlag : FovFlag {}
-actor BullAmmoFlag : FovFlag {}
 actor Bull_AmmoManagerWatcher 
 {
 +MISSILE
@@ -105,21 +112,9 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_TakeFromTarget("BullAmmoFlag",99)
 TNT1 A 1 A_GiveToTarget("AmmoManagementWatcherFlag")
 TNT1 A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
-TNT1 A 0 A_JumpIfInTargetInventory("BullRifleAmmo1",1,"DontGive")
-goto GiveAmmo
-DontGive:
 TNT1 A 0 A_GiveToTarget("BullRifleAmmo2",1)
-goto Spawn
-
-GiveAmmo:
-TNT1 A 1 A_GiveToTarget("BullAmmoFlag",1)
-TNT1 A 0 A_GiveToTarget("BullRifleAmmo1",1)
-TNT1 A 0 A_GiveToTarget("BullRifleAmmo2",1)
-TNT1 A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
-TNT1 A 0 A_JumpIfInTargetInventory("BullRifleAmmo1",0,"Spawn")
 loop
 Death:
 TNT1 A 0
@@ -275,7 +270,7 @@ TNT1 A 0
 TNT1 A 0 A_JumpIf(Mass == 1,"B")
 TNT1 A 0 A_JumpIf(Mass == 2,"R")
 TNT1 A 0 A_JumpIf(Mass == 3,"O")
-TNT1 A 0 A_JumpIf(Mass == 4,"P")
+TNT1 A 1 A_JumpIf(Mass == 4,"P")
 TNT1 A 0 A_SpawnItemEx("PiercingRailGoFX",0,0,0)
 SpawnWait:
 NEDC A 2 A_Fadeout(0.05)
@@ -423,18 +418,27 @@ Ready1:
 B2GA A 0 A_GunFlash
 goto Ready2
 Ready2:
-B2GA A 0 A_WeaponReady(WRF_NOSECONDARY)
-B2GA A 1
 B2GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+B2GA A 0 A_JumpIfInventory("BullRifleAmmo1",120,"Ready2Y")
+B2GA A 1 A_WeaponReady(WRF_NOSECONDARY|WRF_NOPRIMARY)
+B2GA A 0 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 Ready2X:
-B2GA A 0 A_WeaponReady
-B2GA A 1
-B2GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+B2GA A 0 A_JumpIfInventory("BullRifleAmmo1",120,"Ready2XY")
+B2GA A 1 A_WeaponReady(WRF_NOPRIMARY)
+B2GA A 0 A_GiveInventory("BullRifleAmmo1",1)
+goto Ready2
+Ready2Y:
+B2GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2XY")
+B2GA A 1 A_WeaponReady(WRF_NOSECONDARY)
+B2GA A 0 A_GiveInventory("BullRifleAmmo1",1)
+goto Ready2
+Ready2XY:
+B2GA A 1 A_WeaponReady
+B2GA A 0 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 
 Fire:
-B2GA A 0 A_JumpIfInventory("BullAmmoFlag",1,"NoAmmo")
 B2GA A 0 A_JumpIfNoAmmo("NoAmmo")
 B2GA A 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
 B2GA A 0 A_SpawnItemEx("BullSplitterBullet",cos(pitch)*8,0,32,cos(pitch)*600,0,sin(-pitch)*600,0,1)
@@ -446,8 +450,8 @@ AltFire:
 B2GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
 B2GA A 0 A_TakeInventory("BullRifleAmmo2",175)
 B2GA A 0 A_GiveInventory("SplitterSiphon_M2")//A_FireCustomMissile("BullSiphonBullet",0,0,8)
-B2GA B 1
-B2GA BCCCCCCCCBBBA 3
+B2GA B 1 A_GiveInventory("BullRifleAmmo1",1)
+B2GA BBBCCCCCCCCCCCCCCCCCCCCCCCCBBBBBBBBBAAA 1 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 
 NoAmmo:
@@ -675,40 +679,48 @@ Tag "$TAG_CONFUSIONRIFLE"
 States
 {
 Ready:
-B3GA A 1
-B1GA A 0 ACS_ExecuteAlways(998,0,DYE_BULLGATOR)
+B1GA A 1 ACS_ExecuteAlways(998,0,DYE_BULLGATOR)
 B1GA A 0 A_JumpIfInventory("AmmoManagementWatcherFlag",1,"Ready1")
 B1GA A 0 A_SpawnItemEx("Bull_AmmoManagerWatcher")
 Ready1:
 B3GA A 0 A_GunFlash
 goto Ready2
 Ready2:
-B3GA A 0 A_WeaponReady(WRF_NOSECONDARY)
-B3GA A 1
 B3GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+B3GA A 0 A_JumpIfInventory("BullRifleAmmo1",20,"Ready2Y")
+B3GA A 1 A_WeaponReady(WRF_NOSECONDARY|WRF_NOPRIMARY)
+B3GA A 0 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 Ready2X:
-B3GA A 0 A_WeaponReady
-B3GA A 1
-B3GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2X")
+B3GA A 0 A_JumpIfInventory("BullRifleAmmo1",20,"Ready2XY")
+B3GA A 1 A_WeaponReady(WRF_NOPRIMARY)
+B3GA A 0 A_GiveInventory("BullRifleAmmo1",1)
+goto Ready2
+Ready2Y:
+B3GA A 0 A_JumpIfInventory("BullRifleAmmo2",0,"Ready2XY")
+B3GA A 1 A_WeaponReady(WRF_NOSECONDARY)
+B3GA A 0 A_GiveInventory("BullRifleAmmo1",1)
+goto Ready2
+Ready2XY:
+B3GA A 1 A_WeaponReady
+B3GA A 0 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 
 Fire:
-B3GA A 0 A_JumpIfInventory("BullAmmoFlag",1,"NoAmmo")
-B3GA A 0 A_JumpIfNoAmmo("NoAmmo")
+B3GA A 0 A_JumpIfNoAmmo("FireEnd")
 B3GA A 0 A_PlaySoundEx("weapon/magnetmissile","Weapon")
 B3GA A 1 A_GiveInventory("BurstConfusion_M1")
 B3GA BC 2
 B3GA A 0 A_Refire
+FireEnd:
 B3GA CBA 2
 goto Ready2
 AltFire:
 B3GA A 0 A_PlaySoundEx("weapon/pshot","Weapon")
 B3GA A 0 A_TakeInventory("BullRifleAmmo2",175)
 B3GA A 0 A_GiveInventory("BurstConfusion_M2")
-B3GA A 0
-B3GA B 1
-B3GA BCCCCCCCCBBBA 3
+B3GA B 1 A_GiveInventory("BullRifleAmmo1",1)
+B3GA BBBCCCCCCCCCCCCCCCCCCCCCCCCBBBBBBBBBAAA 1 A_GiveInventory("BullRifleAmmo1",1)
 goto Ready2
 
 NoAmmo:
@@ -925,19 +937,19 @@ inventory.maxamount 1
 States
 {
 FireX:
-TNT1 A 0 A_FireCustomMissile("BullConfussionBullet",0,1,8)
+TNT1 A 0 A_FireCustomMissile("BullConfussionBullet",0,0,8)
 stop
 FireB:
-TNT1 A 0 A_FireCustomMissile("BullConfussionBulletB",0,1,8)
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletB",0,0,8)
 stop
 FireR:
-TNT1 A 0 A_FireCustomMissile("BullConfussionBulletR",0,1,8)
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletR",0,0,8)
 stop
 FireG:
-TNT1 A 0 A_FireCustomMissile("BullConfussionBulletO",0,1,8)
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletO",0,0,8)
 stop
 FireY:
-TNT1 A 0 A_FireCustomMissile("BullConfussionBulletP",0,1,8)
+TNT1 A 0 A_FireCustomMissile("BullConfussionBulletP",0,0,8)
 stop
 }
 }
