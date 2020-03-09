@@ -204,28 +204,29 @@ Else {ThePlayer = ACS_NamedExecuteWithResult("core_gettarget");}
 If(ThePlayer < 1000){SetResultValue(10);terminate;}
 int TotalDamage = 15;
 
-If(IsExplosion == 0 && Info == 0)
-	{
-	If(Info!=1){If(CheckActorInventory(ThePlayer, "ExplodingFlag") && !CheckActorInventory(ThePlayer, "VelocityFlag")){SetResultValue(0);terminate;}}
-	}
-//int TotalDamage = UkiDamageValue(ThePlayer, IsExplosion);
-
 If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage += 20;}
 If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
 If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 6;}
 
-If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = CSACS_round(TotalDamage*0.75);}
 If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
-If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = (TotalDamage * 0.7) >> 16;}
+If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = CSACS_round(TotalDamage*0.7);}
 
-If(IsExplosion == 0 && Info == 0)
+If(Info==0 && CheckActorInventory(ThePlayer, "ExplodingFlag"))
 	{
-	If(CheckActorInventory(ThePlayer, "ExplodingFlag")){TotalDamage = (TotalDamage * 0.75) >> 16;}
+	Switch(IsExplosion)
+		{
+		Case 0:
+		If(!CheckActorInventory(ThePlayer, "VelocityFlag")){TotalDamage = CSACS_round(TotalDamage*0.1);}
+		break;
+		
+		Case 1:
+		TotalDamage = CSACS_round(TotalDamage*0.9);
+		break;
+		}
 	}
-//printbold(i:TotalDamage);
 
 If(CheckActorInventory(ThePlayer, "NerfFlag")){TotalDamage += 3;}
-
 SetResultValue(TotalDamage);
 }
 

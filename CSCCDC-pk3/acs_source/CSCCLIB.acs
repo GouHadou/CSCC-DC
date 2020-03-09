@@ -67,3 +67,10 @@ FinalOut = ABC + OutputLow;
 
 return FinalOut;
 }
+
+
+// Returns integer value - Because Zandronum's rounding is stupid
+function int CSACS_round(int fixedNumber)
+{
+	return (fixedNumber + 0.5) >> 16;
+}
