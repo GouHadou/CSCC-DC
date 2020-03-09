@@ -371,6 +371,7 @@ actor DevionPunch //: BasicProjectile
     +MISSILE
     +NOGRAVITY
     +MTHRUSPECIES
+    +NOTARGETSWITCH
 translation "192:192=206:206", "194:198=207:207", "0:0=207:207"
 +SKYEXPLODE
 +DONTSPLASH
