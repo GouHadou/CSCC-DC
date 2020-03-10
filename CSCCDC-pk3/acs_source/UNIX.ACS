@@ -248,3 +248,81 @@ while(true) {
 	delay(1);
 }
 }
+
+//Jax ACS
+
+#DEFINE MAX_PLAYERS 64
+//#DEFINE TEAM_NONE -1
+//#DEFINE TEAM_COOP -2
+/*
+function int GetSelfTeam(void)
+{
+if (GetCVar("teamplay")==1||GetCVar("teamlms")==1||GetCVar("teampossession")==1
+||GetCVar("teamgame")==1){
+	Return PlayerTeam();
+} else if (GetCVar("cooperative")==1) {
+	Return TEAM_COOP;
+}
+Return TEAM_NONE;
+}
+*/
+Script "EnemyInProximity" (int distance)
+{
+SetResultValue(EnemyInProximityFunc(distance<<16));
+}
+
+function bool EnemyInProximityFunc (int dist)
+{
+int team = GetSelfTeam();
+if(team==TEAM_NONE) return EnemyInProximityFFA(dist);
+else if(team!=TEAM_COOP) return EnemyInProximityTeam(dist,team);
+return false;
+}
+
+function bool EnemyInProximityFFA (int dist)
+{
+int self = PlayerNumber();
+int x = GetActorX(0);
+int y = GetActorY(0);
+int z = GetActorCenterZ(0);
+int i;
+for(i=0;i<self;i++) if(CheckProximityToPlayer(x,y,z,i,dist)) return true;
+for(i=self+1;i<MAX_PLAYERS;i++) if(CheckProximityToPlayer(x,y,z,i,dist)) return true;
+return false;
+}
+
+function bool EnemyInProximityTeam (int dist, int team)
+{
+int self = PlayerNumber();
+int x = GetActorX(0);
+int y = GetActorY(0);
+int z = GetActorCenterZ(0);
+int i;
+for(i=0;i<self;i++) if(EnemyTeamCheck(team,i)&&CheckProximityToPlayer(x,y,z,i,dist)) return true;
+for(i=self+1;i<MAX_PLAYERS;i++) if(EnemyTeamCheck(team,i)&&CheckProximityToPlayer(x,y,z,i,dist)) return true;
+return false;
+}
+
+function bool EnemyTeamCheck(int team, int i) {
+	return(team != GetPlayerInfo(i, PLAYERINFO_TEAM));
+}
+
+function int GetActorCenterZ(int tid)  {
+	return(GetActorZ(tid) + GetActorProperty(tid,APROP_Height)/2);
+}
+
+function bool CheckProximityToPlayer(int x, int y, int z, int i, int dist)  {
+	int target = 1000+i;
+	return(GetActorProperty(target,APROP_HEALTH)>0
+	  && CheckSight(0,target,CSF_NOFAKEFLOORS)
+	  && GetDistanceValsToTID(x,y,z,target)<dist);
+}
+
+function int GetDistanceValsToTID(int x, int y, int z, int tid)  {
+	return(GetDistanceValsToVals(x,y,z,GetActorX(tid),GetActorY(tid),GetActorCenterZ(tid)));
+}
+
+function int GetDistanceValsToVals(int x1, int y1, int z1, int x2, int y2, int z2)  {
+	return(VectorLength(VectorLength(x2-x1,y2-y1),z2-z1));
+}
+

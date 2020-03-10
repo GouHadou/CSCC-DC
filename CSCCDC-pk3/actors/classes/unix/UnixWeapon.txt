@@ -159,6 +159,8 @@ Goto ReadyNoAmmo
 }
 }
 
+const int SAPPERCOST = 667;
+
 actor UnixSapper : CustomInventory
 {
 inventory.amount 1
@@ -174,12 +176,12 @@ loop
 Use:
 SCLA A 0 A_JumpIfInventory("UnixCloakFlag",1,"No")
 SCLA A 0 A_JumpIfInventory("UnixNoAttack",1,"No")
-TNT1 A 0 A_JumpIfInventory("UnixCloakAmmo",750,"Success")
+TNT1 A 0 A_JumpIfInventory("UnixCloakAmmo",SAPPERCOST,"Success")
 No:
 TNT1 A 0
 fail
 Success:
-TNT1 A 0 A_TakeInventory("UnixCloakAmmo",750)
+TNT1 A 0 A_TakeInventory("UnixCloakAmmo",SAPPERCOST)
 TNT1 A 0 A_PlaySoundEx("weapon/sparkshock","Auto")
 BUSH A 0 A_FireCustomMissile("SapperRadius",0,0,8,0)
 TNT1 A 0 ACS_ExecuteAlways(976,0)
