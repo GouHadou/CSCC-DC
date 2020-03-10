@@ -404,7 +404,7 @@ Pain.Holy:
 Pain.Assize:
 Pain.Rasp:
 Pain.Aero:
-"----" H 0 A_GiveToTarget("CureMeter",user_HitMemory)
+"----" H 0 A_GiveToTarget("CureMeter",user_HitMemory*1.5)
 "----" H 0 A_GiveToTarget("CureLevelGainCheck",1)
 Goto Pain+1
 

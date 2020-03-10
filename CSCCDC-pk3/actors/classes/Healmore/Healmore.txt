@@ -2,8 +2,8 @@ actor HealmoreClass : CustomWepMan
 {
 player.displayname "HealMore"
 player.soundclass "megaman" 
-player.forwardmove 0.6, 0.6
-player.sidemove 0.58, 0.58
+player.forwardmove 0.7, 0.7
+player.sidemove 0.66, 0.66
 player.jumpz 10 
 player.startitem "PearlStaff"
 player.startitem "HealMoreClassItems"
