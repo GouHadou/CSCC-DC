@@ -237,16 +237,6 @@ OB_PSYSHOT = "%o was hit by %k's psychic blast!"
 OB_PSYBEAM = "%o was skewered by %k's psybeam!"
 OB_PSYSHOVE = "%o was blasted by %k's psybeam!"
 
-//===|HealMore
-OB_PEARLSTAFF = "%o was Blasted by %k's PearlStaff.";
-TAG_PEARLSTAFF = "PearlStaff";
-PU_PEARLSTAFF = "Hey! That's mine!  ~Healmore";
-
-OB_PEARLSTAFFDIA = "%o was Turned by %k's Dia Shot.";
-OB_PEARLSTAFFHOLY = "%o was Smote by %k's Holy Shot.";
-OB_RASP = "%o was Ground away by %k's Rasp.";
-OB_ASSIZE = "%o was Blocked by %k's Assize.";
-
 //COPYWEPS
 //===|Knux
 OB_BUBBLEARROW = "%o was sabotaged by %k's Bubble Arrow.";

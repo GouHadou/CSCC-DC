@@ -8,7 +8,7 @@ SetActivator(0,AAPTR_TRACER);
 SetResultValue(GetActorProperty(0,APROP_Height)>>16);
 }
 
-#DEFINE MAX_DISGUISES 35
+#DEFINE MAX_DISGUISES 34
 
 //#DEFINE MEGACOL 0.0 //String arrays do not like 0.0...
 #DEFINE MEGACOL -1.0
@@ -69,7 +69,6 @@ str DisguiseInfo[MAX_DISGUISES][4] = {
 {"NaturesWonderClass", "NaturesWonderDisguise", DEERCOL, ""},
 {"LegoClass", "LegoDisguise", LEGOCOL, ""},
 {"AbraClass", "AbraDisguise", ABRACOL, ""},
-{"HealmoreClass", "HealMoreDisguise", HEALCOL, ""},
 {"YangClass", "YangDisguise", HEALCOL, ""},
 {"DevionClass", "DevionDisguise", DEVICOL, ""},
 {"RedMageClass", "RedMageDisguise", REDMCOL, ""},

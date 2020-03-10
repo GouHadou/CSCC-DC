@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 60
+#define MAX_MORPHS 59
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -56,29 +56,28 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"NatureStaffAllAroundWep", "Deer Circle", "NaturesWonderClassItems"},//40
 {"LegoMissilesBoss", "Lego", "LegoClassItems"},//41
 {"Psybeamwep", "Abra", "AbraClassItems"},//42
-{"PearlStaff", "HealMore", "HealmoreClassItems"},//43
-{"EmberCelica", "Yang", "YangClassItems"},//44
+{"EmberCelica", "Yang", "YangClassItems"},//43
 
-{"DevionPowers", "Devion", "DevionClassItems"},//45
+{"DevionPowers", "Devion", "DevionClassItems"},//44
 
-{"RedMageDiaraWep", "RedMage", "RedMageClassItems"},//46
-{"RedMageFiraWep", "RedMage", "RedMageClassItems"},//47
-{"RedMageAeroraWep", "RedMage", "RedMageClassItems"},//48
-{"RedMageBlizzaraWep", "RedMage", "RedMageClassItems"},//49
-{"RedMageSlowWep", "RedMage", "RedMageClassItems"},//50
-{"RedMageWateraWep", "RedMage", "RedMageClassItems"},//51
-{"RedMageThundaraWep", "RedMage", "RedMageClassItems"},//52
-{"RedMageBlinkWep", "RedMage", "RedMageClassItems"},//53
-{"RedMageTemperWep", "RedMage", "RedMageClassItems"},//54
-{"RedMageFocusWep", "RedMage", "RedMageClassItems"},//55
+{"RedMageDiaraWep", "RedMage", "RedMageClassItems"},//45
+{"RedMageFiraWep", "RedMage", "RedMageClassItems"},//46
+{"RedMageAeroraWep", "RedMage", "RedMageClassItems"},//47
+{"RedMageBlizzaraWep", "RedMage", "RedMageClassItems"},//48
+{"RedMageSlowWep", "RedMage", "RedMageClassItems"},//49
+{"RedMageWateraWep", "RedMage", "RedMageClassItems"},//50
+{"RedMageThundaraWep", "RedMage", "RedMageClassItems"},//51
+{"RedMageBlinkWep", "RedMage", "RedMageClassItems"},//52
+{"RedMageTemperWep", "RedMage", "RedMageClassItems"},//53
+{"RedMageFocusWep", "RedMage", "RedMageClassItems"},//54
 
-{"DaverisClassWep", "Daveris", "DaverisClassItems"},//56
+{"DaverisClassWep", "Daveris", "DaverisClassItems"},//55
 
-{"JaxPsycho1", "JaxOf7", "JaxClassItems"},//57
-{"JaxPsycho2", "JaxOf7", "JaxClassItems"},//58
+{"JaxPsycho1", "JaxOf7", "JaxClassItems"},//56
+{"JaxPsycho2", "JaxOf7", "JaxClassItems"},//57
 
-{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//45
-{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//46
+{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//58
+{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//59
 };
 
 Script "GetPlayerWeapon" (int TargetTID)

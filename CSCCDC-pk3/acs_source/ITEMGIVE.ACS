@@ -3,7 +3,7 @@
 //#include "zcommon.acs"
 //#include "8BDMLIB.ACS"
 
-#DEFINE MAX_WEPCLASS 20
+#DEFINE MAX_WEPCLASS 18
 #DEFINE CLASSLIST 16
 #DEFINE MAX_ITEMS 24
 
@@ -23,38 +23,36 @@ str wep_check[CLASSLIST][2]=
 {"NONE", "CSCC_KorbyMorph"},//12
 {"IsUnix", "CSCC_Unix"},//13
 {"NONE", "CSCC_UnixMorph"},//14
-{"IsHealmore", "CSCC_Healmore"},//15
-{"NONE", "CSCC_HealmoreMorph"},//16
 };
 
 
 
 str item_pickups[MAX_ITEMS][MAX_WEPCLASS]= 
-{//Default, MegaMan (Required), Copy, Gizmo, Gizmo Morph, Cold Fusion, CF Morph, Ukiyama, Uki Morph, Corporal, Corporal Morph, Korby, Korby Morph,Unix,Unix Morph,Healmore,HealmoreMorph,
-{"NONE", "ProtoUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//0
-{"NONE", "ArrowBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//1
-{"NONE", "LaserBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//2
-{"NONE", "BassUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//3
-{"NONE", "DuoFistUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//4
-{"NONE", "AdaptorUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//5
-{"NONE", "TrebleBoostUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
-{"Item1", "Item1", "Item1", "ItemG", "ItemG", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1"},//7
-{"NONE", "TangoSummon", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//8
-{"NONE", "EddieSummon", "EddieSummon", "KittyItem", "KittyItem", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//9
-{"NONE", "EddieBomber", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//10
-{"NONE", "ReggaeCall", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//11
-{"NONE", "Wtank", "WTank", "NONE", "NONE", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank"},//12
-{"NONE", "TrebleSentry", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//13
-{"NONE", "BeatSupport", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//14
-{"Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2"},//15
-{"ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit"},//16
-{"RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil"},//17
-{"RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet"},//18
-{"RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine"},//19
-{"WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor"},//20
-{"ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS"},//21
-{"MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank"},//22
-{"BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck"},//23
+{//Default, MegaMan (Required), Copy, Gizmo, Gizmo Morph, Cold Fusion, CF Morph, Ukiyama, Uki Morph, Corporal, Corporal Morph, Korby, Korby Morph,Unix,Unix Morph
+{"NONE", "ProtoUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//0
+{"NONE", "ArrowBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//1
+{"NONE", "LaserBusterUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE" },//2
+{"NONE", "BassUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//3
+{"NONE", "DuoFistUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE" },//4
+{"NONE", "AdaptorUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE" },//5
+{"NONE", "TrebleBoostUpgrade", "NONE", "EternalClawsUpgrade", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//6
+{"Item1", "Item1", "Item1", "ItemG", "ItemG", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1", "Item1"},//7
+{"NONE", "TangoSummon", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", },//8
+{"NONE", "EddieSummon", "EddieSummon", "KittyItem", "KittyItem", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", },//9
+{"NONE", "EddieBomber", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", },//10
+{"NONE", "ReggaeCall", "NONE", "KittyHelper", "KittyHelper", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", },//11
+{"NONE", "Wtank", "WTank", "NONE", "NONE", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank", "WTank"},//12
+{"NONE", "TrebleSentry", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//13
+{"NONE", "BeatSupport", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE"},//14
+{"Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2", "Item2"},//15
+{"ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit", "ExitUnit"},//16
+{"RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil", "RushCoil"},//17
+{"RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet", "RushJet"},//18
+{"RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine", "RushMarine"},//19
+{"WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor", "WireAdaptor"},//20
+{"ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS", "ETankCS"},//21
+{"MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank", "MTank"},//22
+{"BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck", "BeatCallCheck"},//23
 };
 
 

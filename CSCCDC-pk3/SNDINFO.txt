@@ -463,30 +463,6 @@ weapon/recover	Recover
 $volume weapon/recover 0.4
 
 
-//Healmore
-weapon/AssaultBuster ABSHOT3
-weapon/Trigger BLIZBELL
-weapon/BombAlarm Balarm
-
-Support/WhiteCast WMCS01
-Support/WhiteCast2 WMCS02
-Support/WhiteCast3 WMCS03
-Support/WhiteCast4 WHCS04
-
-Support/Heal1 Recov1 
-$volume Support/Heal1 0.5
-
-support/Negative NEGSTAT
-
-weapon/CrossBoltHit HITSOUND
-weapon/HardBuster3 HRDBST2
-weapon/HardBuster5 3DARSHOT
-weapon/HardBuster6 3DARSHO2
-
-weapon/OrbSpawn CRYSSHOT
-weapon/OrbBounce CRYSBIT
-weapon/AssizeHit FF6HIT
-
 //Devion
 $playeralias	Devion	male	*death		devion/death
 $playeralias	Devion	male	*xdeath		devion/death

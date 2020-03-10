@@ -22,7 +22,6 @@ addplayerclass KnuxClass nomenu
 addplayerclass YangClass nomenu
 addplayerclass GravitronClass nomenu  
 addplayerclass NaturesWonderClass nomenu  
-addplayerclass HealmoreClass nomenu
 addplayerclass LegoClass nomenu
 addplayerclass AbraClass nomenu
 addplayerclass DevionClass nomenu

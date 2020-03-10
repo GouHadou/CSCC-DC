@@ -33,7 +33,6 @@ OptionMenu "ClassInfo"
 	Submenu	    "Knux", 		"KnuxInfo"
 	Submenu	    "Gravitron", 		"GravitronInfo"
 	Submenu	    "Natures Wonder", 		"NaturesWonderInfo"
-	Submenu	    "Healmore",		"HealmoreInfo" 
 	Submenu	    "LordDamager",		"LordDamagerInfo" 
 	StaticText ""
 	StaticText"===============================================================",1

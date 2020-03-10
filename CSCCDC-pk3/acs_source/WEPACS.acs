@@ -177,7 +177,6 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"FIR", "MP", "Korby Fire", 1.0, "NO", "NO", "SLOT_NONE"},
 {"ICE", "MP", "Korby Ice", 1.0, "NO", "NO", "SLOT_NONE"},
 {"LIT", "MP", "Korby Lightning", 1.0, "NO", "NO", "SLOT_NONE"},
-{"Pearlstaff", "WhiteMageMana", "PearlStaff", 0.2, "NO", "NO", "SLOT_NONE"},
 
 {"ClassicTankWeapon", "TankRepairAmmo", "Classic Tank Weapon", 0.3, "NO", "NO", "SLOT_NONE"},
 };
@@ -552,8 +551,6 @@ if(CheckActorClass(PlayerTID,"KorbyClass")
 	||CheckActorClass(PlayerTID,"FirMorph")
 	||CheckActorClass(PlayerTID,"LitMorph")
 	||CheckActorClass(PlayerTID,"IceMorph")
-	||CheckActorClass(PlayerTID,"HealMoreClass")
-	||CheckActorClass(PlayerTID,"PearlStaffMorph")
 	){SetActorState(0,"KorbySpawn"); StateSet=1;}
 if(StateSet==0){SetActorState(0,"TranslucentSpawn");}
 }
