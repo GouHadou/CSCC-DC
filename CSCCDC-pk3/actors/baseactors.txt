@@ -693,3 +693,33 @@ TNT1 A 0 A_ChangeFlag("NOBLOCKMONST",1)
 stop
 }
 }
+
+actor TeamTranslationItem : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
+TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
+TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
+TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
+stop
+BFire:
+TNT1 A 0 Thing_SetTranslation(0, 230)
+stop
+RFire:
+TNT1 A 0 Thing_SetTranslation(0, 231)
+stop
+GFire:
+TNT1 A 0 Thing_SetTranslation(0, 232)
+stop
+YFire:
+TNT1 A 0 Thing_SetTranslation(0, 233)
+stop
+}
+}
