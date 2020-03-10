@@ -453,7 +453,7 @@ Spawn:
 TNT1 A 0
 stop
 Pickup:
-TNT1 A 0 A_Giveinventory("CuragaCooldownItem",175)
+TNT1 A 0 A_Giveinventory("CuragaCooldownItem",105)
 TNT1 A 0 A_Spawnitemex("CuragaCooler")
 stop
 Nope:
@@ -466,5 +466,5 @@ stop
 actor CuragaCooldownItem : inventory
 {
 inventory.amount 1
-inventory.maxamount 175
+inventory.maxamount 105
 }

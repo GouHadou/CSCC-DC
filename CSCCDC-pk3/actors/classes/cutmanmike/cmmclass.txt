@@ -4,8 +4,8 @@ player.displayname "cutmanmike"
 player.jumpz 12
 player.startitem "HellfireCutterBoss"
 player.startitem "CutmanMikeClassItems", 1
-player.maxhealth 75
-health 75
+player.maxhealth 100
+health 100
 States
 {
 Spawn:

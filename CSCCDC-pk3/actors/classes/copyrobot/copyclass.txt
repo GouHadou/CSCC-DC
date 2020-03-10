@@ -6,8 +6,8 @@ player.startitem "CopyWeapon"
 player.startitem "CopyRemover", 1
 player.startitem "CopyRobotClassItems", 1
 player.startitem "CopyRobotPrism", 1
-player.maxhealth 80
-health 80
+player.maxhealth 85
+health 85
 damagefactor "CopyShot", 10.0 //case of best fight ever to the death with no copy weps
 States
 {

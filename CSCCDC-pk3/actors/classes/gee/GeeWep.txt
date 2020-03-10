@@ -1,5 +1,5 @@
 const int GEE_HEAL = 25;
-const int GEE_DMG = 22;
+const int GEE_DMG = 20;
 const int GEE_RADIUS = 17;
 
 actor GeeBurstBoss1 : CSCCWepBase

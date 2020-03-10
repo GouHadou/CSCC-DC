@@ -8,8 +8,8 @@ player.startitem "NatureStaffStraightWep"
 player.startitem "NatureStaffHorizontalWep"
 player.startitem "NatureStaffAllAroundWep"
 player.startitem "NaturesWonderClassItems"
-player.maxhealth 75
-health 75
+player.maxhealth 125
+health 125
 States
 {
 Spawn:

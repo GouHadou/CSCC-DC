@@ -14,8 +14,8 @@ player.startitem "DaverisClassWep"
 player.startitem "DaverisClassItems"
 
 
-player.maxhealth 100
-health 100
+player.maxhealth 125
+health 125
 
 States
 {

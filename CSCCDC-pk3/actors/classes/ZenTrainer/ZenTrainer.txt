@@ -6,8 +6,8 @@ player.sidemove 0.74, 0.74
 player.jumpz 10
 player.startitem "ZenTrainerWep"
 player.startitem "ZenTrainerClassItems"
-player.maxhealth 65
-health 65
+player.maxhealth 75
+health 75
 states
 {
 Spawn:
