@@ -23,6 +23,7 @@ SHAM G 4
 goto Spawn
 
 ClassPain:
+"----" A 0 A_GiveInventory("UnixPainFunc",1)
 "----" A 0 A_JumpIfInventory("UnixDisguiseFlag",1,"Spawn")
 goto "Super::ClassPain"
 }
@@ -37,12 +38,10 @@ TNT1 A 0 A_GiveInventory("UnixDisguiserStart",1)
 TNT1 A 0 A_GiveInventory("UnixCloakAmmo", 1000)
 TNT1 A 0 A_GiveInventory("UnixRevolverAmmo", 6)
 TNT1 A 0 A_GiveInventory("UnixSapper",1)
-TNT1 A 0 A_GiveInventory("IsUnix",1)
 stop
 }
 }
 
-actor IsUnix : Once {}
 //Disguise
 
 actor UnixDisguiserStart : CustomInventory
@@ -120,6 +119,68 @@ inventory.amount 1
 inventory.maxamount 1000
 }
 
+actor UnixUndetectFunc1 : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIf(alpha>0.83,"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_SetTranslucent(0.83)
+stop
+}
+}
+
+actor UnixUndetectFunc2 : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIf(alpha<0.17,"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_SetTranslucent(0.0)
+stop
+}
+}
+
+actor UnixDetectFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIf(alpha<0.67,"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_SetTranslucent(0.67)
+stop
+}
+}
+
+actor UnixPainFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("UnixDetectFunc",1)
+stop
+}
+}
+
+actor UnixBumpFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIf(CallACS("EnemyInProximity",128),"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_GiveInventory("UnixDetectFunc",1)
+stop
+}
+}
+
 actor UnixCloakFunc : CustomInventory
 {
 states
@@ -128,11 +189,7 @@ Pickup:
 TNT1 A 0 A_JumpIfInventory("UnixCloakFlag",1,"Pickup2")
 PickupB:
 TNT1 A 0 A_GiveInventory("UnixCloakAmmo",1)
-TNT1 A 0 A_JumpIf(alpha<0.5,"PickupMin")
-goto PickupB2
-PickupMin:
-TNT1 A 0 A_SetTranslucent(0.5)
-PickupB2:
+TNT1 A 0 A_GiveInventory("UnixDetectFunc",1)
 TNT1 A 0 A_FadeTo(1.0,0.01,false)
 //TNT1 A 0 A_FadeIn(0.01,FTF_CLAMP)
 stop
@@ -142,8 +199,11 @@ TNT1 A 0 A_GiveInventory("UnixCloakOffFunc",1)
 goto PickupB
 Pickup3:
 TNT1 A 0 A_TakeInventory("UnixCloakAmmo",3)
-//TNT1 A 0 A_FadeOut(0.04,FTF_CLAMP)
-TNT1 A 0 A_FadeTo(0.0,0.04,false)
+TNT1 A 0 A_GiveInventory("UnixUndetectFunc1",1)
+TNT1 A 0 A_GiveInventory("UnixUndetectFunc2",1)
+TNT1 A 0 A_GiveInventory("UnixBumpFunc",1)
+//TNT1 A 0 A_FadeOut(0.012,FTF_CLAMP)
+TNT1 A 0 A_FadeTo(0.0,0.012,false)
 stop
 }
 }
@@ -195,7 +255,7 @@ stop
 
 actor UnixNoAttack : Powerup
 {
-Powerup.Duration 70
+Powerup.Duration 50
 }
 
 //Team Visual
