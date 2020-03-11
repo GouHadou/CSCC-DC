@@ -226,25 +226,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
-TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
-TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
-TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
-Goto LoopJump
-BFire:
-TNT1 A 0 Thing_SetTranslation(0, 230)
-Goto LoopJump
-RFire:
-TNT1 A 0 Thing_SetTranslation(0, 231)
-Goto LoopJump
-GFire:
-TNT1 A 0 Thing_SetTranslation(0, 232)
-Goto LoopJump
-YFire:
-TNT1 A 0 Thing_SetTranslation(0, 233)
-Goto LoopJump
-LoopJump:
-TNT1 A 0 A_Jump(256, "Spawn2")
+TNT1 A 0 A_GiveInventory("TeamTranslationItem", 1)
 Goto Spawn2
 Spawn2:
 LIWA B 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
@@ -297,25 +279,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
-TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
-TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
-TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
-Goto LoopJump
-BFire:
-TNT1 A 0 Thing_SetTranslation(0, 230)
-Goto LoopJump
-RFire:
-TNT1 A 0 Thing_SetTranslation(0, 231)
-Goto LoopJump
-GFire:
-TNT1 A 0 Thing_SetTranslation(0, 232)
-Goto LoopJump
-YFire:
-TNT1 A 0 Thing_SetTranslation(0, 233)
-Goto LoopJump
-LoopJump:
-TNT1 A 0 A_Jump(256, "Spawn2")
+TNT1 A 0 A_GiveInventory("TeamTranslationItem", 1)
 Goto Spawn2
 Spawn2:
 ZABO AB 1 A_SpawnItemEx("LightningFX", -8, Random(-16, 16), random(0, -8), 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
@@ -381,7 +345,8 @@ States
 {
 Spawn:
 TNT1 A 0
-Goto "Super::Spawn"
+TNT1 A 0 A_GiveInventory("TeamTranslationItem", 1)
+Goto Spawn2
 Spawn2:
 LIWA B 0 A_PlaySoundEx("weapon/thunderbolt","weapon")
 LIWA BBB 0 A_SpawnItemEx("LightningIceBit",5,0,0,7,0,10,Random(0, 180), SXF_TRANSFERTRANSLATION)
