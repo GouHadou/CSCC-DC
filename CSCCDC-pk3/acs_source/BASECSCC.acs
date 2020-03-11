@@ -446,3 +446,36 @@ function int logN (int x, int base)
     }
     return ((integer << 16) + decimal);
 }
+
+Script "CSACS_BlindFade" (int Power, int Dur, int Toggle) CLIENTSIDE
+{
+	int RC;
+	int BC;
+	int GC;
+	Switch(Toggle)
+	{
+		Case 3:
+			RC = 116;
+			BC = 52;
+			GC = 235;
+			break;
+		Case 2:
+			RC = 45;
+			BC = 45;
+			GC = 45;
+			break;
+		Case 1:
+			RC = 150;
+			BC = 150;
+			GC = 150;
+			break;
+		Case 0:
+			RC = random(0,255);
+			BC = random(0,255);
+			GC = random(0,255);
+			break;
+	}
+
+	CancelFade();
+	FadeRange(RC,BC,GC,((1.0)*Power)/100,RC,BC,GC,0.0,((1.0)*Dur)/100);
+}

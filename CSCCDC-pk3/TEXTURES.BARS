@@ -373,6 +373,9 @@ graphic LDMVAR,56,8{patch LDMBAR,0,0{rotate 90}}
 graphic LDRBAR,8,56{patch BARENERG,0,0{Translation "192:192=42:42","198:198=47:47"}}
 graphic LDRVAR,56,8{patch LDRBAR,0,0{rotate 90}}
 
+texture LDBAR,8,56{patch TNT1A0,0,0}
+texture LDVAR,56,8{patch TNT1A0,0,0}
+
 //Megaman Copyweps
 graphic BARAMMOT, 8, 56{patch BARENERG,0,0{Translation "192:192=87:87","198:198=95:95"}}
 graphic VARAMMOT, 56, 8{patch BARAMMOT,0,0{rotate 90}}

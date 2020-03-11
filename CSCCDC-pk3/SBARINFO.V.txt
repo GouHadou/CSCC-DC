@@ -585,20 +585,20 @@ WeaponAmmo JaxPsychoAmmo{Drawbar"BARAMM18", "BAREMPTY", Ammo1, vertical, 16, 8;
 	InInventory JaxHoldCharge, 1	{DrawBar"BARFLS1", "NOBAR", JaxHoldCharge, vertical, 16, 8;}}
 
 //====|LordDamager
-IsSelected MissilePunchWep
+IsSelected LordDamagerBoss
 	{
 	Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory LDRamEnergy, 28{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
-	else{Drawbar"BARAMM65", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
-	DrawImage "LDRELOAD", 32, 48;
-	DrawImage "VERICONR", 40, 48;
-	}
-
-IsSelected LaserCannonWep
-	{
-	Drawbar"BARAMM51", "BAREMPTY", Ammo1, vertical, 16, 8;
-	InInventory LDRamEnergy, 28{Drawbar"LDRBAR", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
-	else{Drawbar"BARAMM65", "BAREMPTY", LDRamEnergy, vertical, 8, 8;}
+	Drawbar"LDRBAR", "BAREMPTY", Ammo2, vertical, 8, 8;
+	DrawImage "LDRELOAD", 32, 56;
+	DrawImage "VERICONR", 40, 56;
+	DrawImage "LDUSER1", 32, 48;
+	DrawImage "VERICON1", 40, 48;
+	DrawImage "LDUSER2", 32, 40;
+	DrawImage "VERICON2", 40, 40;
+	DrawImage "LDUSER3", 32, 32;
+	DrawImage "VERICON3", 40, 32;
+	DrawImage "LDUSER4", 32, 24;
+	DrawImage "VERICON4", 40, 24;
 	}
 
 

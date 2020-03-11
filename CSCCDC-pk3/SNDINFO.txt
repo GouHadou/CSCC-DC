@@ -670,3 +670,6 @@ LordD/Taunt6 LDTAU6
 LordD/Taunt7 LDTAU7
 LordD/Taunt8 LDTAU8
 $random LordD/Taunt {LordD/Taunt1 LordD/Taunt2 LordD/Taunt3 LordD/Taunt4 LordD/Taunt5 LordD/Taunt6 LordD/Taunt7 LordD/Taunt8}
+
+weapon/LDRocketFire   LDROCKET
+weapon/LDDMPBoom LDDMP

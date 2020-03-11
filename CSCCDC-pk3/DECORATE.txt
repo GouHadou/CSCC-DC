@@ -166,9 +166,7 @@
 
 //==|LordDamager
 #include "actors/classes/LordDamager/LordDamager.txt"
-#include "actors/classes/LordDamager/MissilePunch.txt"
-#include "actors/classes/LordDamager/LaserCannon.txt"
-#include "actors/classes/LordDamager/SmogCannon.txt" //inactive
+#include "actors/classes/LordDamager/LordDamagerWep.txt"
 
 //Copy Weps
 #include "actors/classes/Megaman/Copyweps/Copyweps.txt"

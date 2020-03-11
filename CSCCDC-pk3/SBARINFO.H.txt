@@ -575,19 +575,15 @@ IsSelected DaverisClassWep
 	InInventory JaxHoldCharge, 1	{DrawBar"VARFLS1", "VNOBAR", JaxHoldCharge, horizontal, 58, 184;}}
 
 //====|LordDamager
-IsSelected MissilePunchWep
+IsSelected LordDamagerBoss
 	{
 	Drawbar"LDMVAR", "VAREMPTY", Ammo1, horizontal, 58, 184;
-	DrawImage "LDRELOAD", 138, 176; DrawImage "HORICONR", 138, 168;
-	InInventory LDRamEnergy, 28{Drawbar"LDRVAR", "VAREMPTY", LDRamEnergy, horizontal, 58, 176;}
-	else{Drawbar"VARAMM65", "VAREMPTY", LDRamEnergy, horizontal, 58, 176;}
-	}
-
-IsSelected LaserCannonWep
-	{
-	Drawbar"VARAMM51", "BAREMPTY", Ammo1, horizontal, 58, 184;
-	InInventory LDRamEnergy, 28{Drawbar"LDRVAR", "VAREMPTY", LDRamEnergy, horizontal, 58, 176;}
-	else{Drawbar"VARAMM65", "VAREMPTY", LDRamEnergy, horizontal, 58, 176;}
+	Drawbar"LDRVAR", "VAREMPTY", Ammo2, horizontal, 58, 176;
+	DrawImage "LDRELOAD", 130, 176; DrawImage "HORICONR", 130, 168;
+	DrawImage "LDUSER1", 138, 176; DrawImage "HORICON1", 138, 168;
+	DrawImage "LDUSER2", 146, 176; DrawImage "HORICON2", 146, 168;
+	DrawImage "LDUSER3", 154, 176; DrawImage "HORICON3", 154, 168;
+	DrawImage "LDUSER4", 162, 176; DrawImage "HORICON4", 162, 168;
 	}
 
 
