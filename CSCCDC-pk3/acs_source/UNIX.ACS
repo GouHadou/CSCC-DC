@@ -252,20 +252,31 @@ while(true) {
 //Jax ACS
 
 #DEFINE MAX_PLAYERS 64
-//#DEFINE TEAM_NONE -1
-//#DEFINE TEAM_COOP -2
-/*
-function int GetSelfTeam(void)
+
+Script "BackstabObit" DEATH
 {
-if (GetCVar("teamplay")==1||GetCVar("teamlms")==1||GetCVar("teampossession")==1
-||GetCVar("teamgame")==1){
-	Return PlayerTeam();
-} else if (GetCVar("cooperative")==1) {
-	Return TEAM_COOP;
+if(CheckInventory("BackstabObitFlag")>0) {
+	int victimP = PlayerNumber();
+	SetActivatorToTarget(0);
+	ACS_NamedExecuteAlways("BackstabObit_C",0,victimP);
 }
-Return TEAM_NONE;
 }
-*/
+
+Script "BackstabObit_C" (int victimP) CLIENTSIDE
+{
+int conP = ConsolePlayerNumber();
+if(!PlayerInGame(conP)||victimP==conP||PlayerNumber()==conP||IsAlly(conP)) Log(s:"(Was backstabbed by ",n:0,s:")");
+}
+
+function bool IsAlly(int conP) {
+	int team = GetSelfTeam();
+	return(team!=TEAM_NONE&&SameTeamCheck(team,conp));
+}
+
+function bool SameTeamCheck(int team, int i) {
+	return(team == GetPlayerInfo(i, PLAYERINFO_TEAM));
+}
+
 Script "EnemyInProximity" (int distance)
 {
 SetResultValue(EnemyInProximityFunc(distance<<16));

@@ -4,6 +4,8 @@ player.displayname "Unix"
 player.soundclass "UnixClass"
 Health 75
 Player.Maxhealth 75
+player.forwardmove 0.83, 0.83
+player.sidemove 0.81, 0.81
 player.startitem "UnixKnife"
 player.startitem "UnixBlade"
 player.startitem "UnixClassItems"
@@ -87,8 +89,15 @@ states
 {
 Pickup:
 TNT1 A 0 ACS_NamedExecuteAlways("UnixBackstabDeathScript",0)
+TNT1 A 0 A_GiveInventory("BackstabObitFlag",1)
 stop
 }
+}
+
+actor BackstabObitFlag : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
 }
 
 actor UnixClearDisguise : CustomInventory
@@ -119,27 +128,29 @@ inventory.amount 1
 inventory.maxamount 1000
 }
 
-actor UnixUndetectFunc1 : CustomInventory
+actor UnixUndetectFunc : CustomInventory
 {
 states
 {
 Pickup:
 TNT1 A 0 A_JumpIf(alpha>0.83,"Pickup2")
+TNT1 A 0 A_JumpIf(alpha<0.17,"Pickup3")
 stop
 Pickup2:
 TNT1 A 0 A_SetTranslucent(0.83)
 stop
+Pickup3:
+TNT1 A 0 A_GiveInventory("Unix0Alpha",1)
+//TNT1 A 0 A_SetTranslucent(0.0)
+stop
 }
 }
 
-actor UnixUndetectFunc2 : CustomInventory
+actor Unix0Alpha : CustomInventory
 {
 states
 {
 Pickup:
-TNT1 A 0 A_JumpIf(alpha<0.17,"Pickup2")
-stop
-Pickup2:
 TNT1 A 0 A_SetTranslucent(0.0)
 stop
 }
@@ -199,11 +210,10 @@ TNT1 A 0 A_GiveInventory("UnixCloakOffFunc",1)
 goto PickupB
 Pickup3:
 TNT1 A 0 A_TakeInventory("UnixCloakAmmo",3)
-TNT1 A 0 A_GiveInventory("UnixUndetectFunc1",1)
-TNT1 A 0 A_GiveInventory("UnixUndetectFunc2",1)
+TNT1 A 0 A_GiveInventory("UnixUndetectFunc",1)
 TNT1 A 0 A_GiveInventory("UnixBumpFunc",1)
-//TNT1 A 0 A_FadeOut(0.012,FTF_CLAMP)
-TNT1 A 0 A_FadeTo(0.0,0.012,false)
+//TNT1 A 0 A_FadeOut(0.014,FTF_CLAMP)
+TNT1 A 0 A_FadeTo(0.0,0.014,false)
 stop
 }
 }
@@ -328,6 +338,23 @@ actor UnixVisualKing : UnixVisualBase
 {
 Translation "192:192=229:229", "198:198=232:232"
 VisibleToTeam 3
+}
+
+actor UnixTeamVisualGiver
+{
+Height 0
+Radius 0
++NOINTERACTION
++NOCLIP
+PROJECTILE
++CLIENTSIDEONLY
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_GiveToTarget("UnixTeamVisual",1)
+stop
+}
 }
 
 //Copy
