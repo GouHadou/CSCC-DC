@@ -3,8 +3,8 @@ actor GravitronClass : CustomWepMan //GravityMansStageMan
 player.displayname "Gravitron" //"GravityMansStageMan"
 player.soundclass "GRAVSPHERE"
 player.damagescreencolor "yellow"
-player.forwardmove 0.8, 0.8
-player.sidemove 0.78, 0.78
+player.forwardmove 0.84, 0.84
+player.sidemove 0.82, 0.82
 player.jumpz 10
 player.colorrange 0 0
 player.startitem "GravSphereWep"

@@ -59,6 +59,7 @@ TNT1 A 0 A_TakeInventory("GravBoost",5)
 Goto Pickup.After
 GravEffect2:
 TNT1 A 0 A_SpawnItemEx("GravArenaWatcher2")
+TNT1 A 0 A_JumpIf(velz == 0, "Pickup.After")
 TNT1 A 0 A_ChangeVelocity(0,0,-1.5,CVF_RELATIVE)
 Goto Pickup.After
 
