@@ -158,7 +158,7 @@ HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 900.1, 5<<16);
 If(CheckActorInventory(ThePlayer, "SnipeFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Shot Size -Fire Rate"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 215.1, 5<<16);;}
 If(CheckActorInventory(ThePlayer, "RapidFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Fire Rate -Spread"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.1, 215.1, 5<<16);;}
 If(CheckActorInventory(ThePlayer, "ShotgunFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Projectiles Fired -Spread -Fire Rate"; HUDMSG_FADEOUT, 2, CR_GOLD, 60.5, 215.5, 5<<16);;}
-If(CheckActorInventory(ThePlayer, "HomingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Homing"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.1, 5<<16);;}
+If(CheckActorInventory(ThePlayer, "GuidedFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Guided"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.1, 5<<16);;}
 If(CheckActorInventory(ThePlayer, "ArcingFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Arc"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.5, 5<<16);;}
 If(CheckActorInventory(ThePlayer, "VelocityFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Speed +Ripper"; HUDMSG_FADEOUT, 3, CR_GOLD, 60.1, 225.1, 5<<16);;}
 If(CheckActorInventory(ThePlayer, "NerfFlag")){SetFont("SMALLFONT"); HudMessage(s:"+Damage Debuff"; HUDMSG_FADEOUT, 4, CR_GOLD, 60.1, 235.1, 5<<16);;}
@@ -208,7 +208,7 @@ If(CheckActorInventory(ThePlayer, "SnipeFlag")){TotalDamage += 20;}
 If(CheckActorInventory(ThePlayer, "RapidFlag")){TotalDamage -= 5;}
 If(CheckActorInventory(ThePlayer, "ShotgunFlag")){TotalDamage -= 6;}
 
-If(CheckActorInventory(ThePlayer, "HomingFlag")){TotalDamage = CSACS_round(TotalDamage*0.75);}
+If(CheckActorInventory(ThePlayer, "GuidedFlag")){TotalDamage+=1;}
 If(CheckActorInventory(ThePlayer, "ArcingFlag")){TotalDamage += 7;}
 If(CheckActorInventory(ThePlayer, "VelocityFlag") && IsExplosion == 0){TotalDamage = CSACS_round(TotalDamage*0.7);}
 

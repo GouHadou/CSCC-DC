@@ -81,7 +81,7 @@ DrawSwitchableImage SnipeFlag, "TNT1A0", "SNIMOD", 29, 36;
 DrawSwitchableImage RapidFlag, "TNT1A0", "RAPMOD", 29, 36;
 DrawSwitchableImage ShotgunFlag, "TNT1A0", "SHTMOD", 29, 36;
 DrawSwitchableImage ArcingFlag, "TNT1A0", "ARCMOD", 44, 36;
-DrawSwitchableImage HomingFlag, "TNT1A0", "SLIMOD", 44, 36;
+DrawSwitchableImage GuidedFlag, "TNT1A0", "SLIMOD", 44, 36;
 DrawSwitchableImage VelocityFlag, "TNT1A0", "VELMOD", 44, 36;
 DrawSwitchableImage NerfFlag, "TNT1A0", "NERMOD", 59, 36;
 DrawSwitchableImage ExplodingFlag, "TNT1A0", "EXPMOD", 59, 36;
