@@ -802,6 +802,7 @@ Radius 12
 Height 12 
 scale 3
 speed 64
+Gravity 1.5
 }
 
 actor UkiRapidShot : UkiShot
