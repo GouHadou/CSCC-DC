@@ -901,7 +901,7 @@ Spawn2:
 GHFX DEFG 2
 GHFX D 0 A_Stop
 GHFX DEFG 2
-loop
+stop
 Death:
 TNT1 A 0
 stop
