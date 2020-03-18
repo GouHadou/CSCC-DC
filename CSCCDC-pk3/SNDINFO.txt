@@ -617,6 +617,7 @@ $playersound	davesfx	male	*taunt		DAVETAUN
 
 weapon/icebreath	ICEBREAT
 weapon/fmortarshot		CANON
+weapon/fmortarshot2		CANON2
 weapon/fmortarbreak		ICEWSTA
 weapon/ifreeze			ICESHOTC	
 weapon/ibreak			ICEWBRAK
