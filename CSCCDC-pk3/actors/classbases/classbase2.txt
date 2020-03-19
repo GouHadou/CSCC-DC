@@ -1,5 +1,6 @@
 actor ClassBase2 : ClassBase1
 {
+Player.DamageScreenColor purple, 0.8, "LDSmog"
 States
 {
 //A_Stop Hitstun Pain
