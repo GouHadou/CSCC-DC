@@ -223,9 +223,16 @@ InInventory FusionStock, 1
 IsSelected ClassicTankWeapon {
 	DrawBar"BARAMM23","BAREMPTY",Ammo1,vertical,16,8;
 	DrawBar"BARAMM48","BAREMPTY",TankRepairAmmo,vertical,8,8;
-	InInventory not Tank_NotOnFoot, 1{DrawImage "TNKRLOAD", 32, 48; DrawImage "VERICONR", 40, 48;}
-	InInventory Tank_NotOnFoot, 1{DrawBar"TANK_BAR","BAREMPTY",Armor,vertical,24,8;}
-	InInventory TankRepairAmmo, 250{DrawBar"BARFLS1","NOBAR",TankRepairAmmo,vertical,8,8;}
+	InInventory not Tank_NotOnFoot, 1
+		{
+		DrawImage "TNKRLOAD", 32, 48; DrawImage "VERICONR", 40, 48;
+		InInventory TankRepairAmmo, 150{DrawBar"BARFLS1","NOBAR",TankRepairAmmo,vertical,8,8;}
+		}
+	InInventory Tank_NotOnFoot, 1
+		{
+		DrawBar"BARHEALT","BAREMPTY",TankHPAmmo,vertical,8,8;
+		DrawBar"BARAMM48","BAREMPTY",Health,vertical,24,8;
+		}
 	}
 	
 //====|Vocalwoman

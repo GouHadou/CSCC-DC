@@ -693,21 +693,23 @@ script "CSACS_Tank_Speedster" (int tid, int tspeed)
 
 Script "CSACS_Tank_ArmorConvert" (int Version)
 {
-int PlayerResource = checkInventory("TankRepairAmmo");
-int TankArmor = checkInventory("BasicArmor");
-int output;
+int PlayerResource = CheckInventory("TankRepairAmmo");
+int PlayerHPResource = CheckInventory("TankHPAmmo");
+int PlayerHP = GetActorProperty(0,APROP_HEALTH);
+int Output;
 Switch(Version)
 	{
 	Case 0:
-	output = ValueMap(PlayerResource,350,1,100,1);
-	//log(i:output);
-	GiveInventory("TankyArmor",output);
-	TakeInventory("TankRepairAmmo",PlayerResource);
+	SetPlayerProperty(0, 1, PROP_BUDDHA);
+	SetInventory("TankHPAmmo",PlayerHP);
+	SetActorProperty(0,APROP_SPAWNHEALTH,200);
+	SetActorProperty(0,APROP_HEALTH,PlayerResource);
 	Break;
 	Case 1:
-	output = ValueMap(TankArmor,100,1,350,1);
-	GiveInventory("TankRepairAmmo",output);
-	TakeInventory("BasicArmor",TankArmor);
+	SetInventory("TankRepairAmmo",PlayerHP);
+	SetActorProperty(0,APROP_SPAWNHEALTH,100);
+	SetActorProperty(0,APROP_HEALTH,PlayerHPResource);
+	SetPlayerProperty(0, 0, PROP_BUDDHA);
 	Break;
 	}
 

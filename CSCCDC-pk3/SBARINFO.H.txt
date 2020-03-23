@@ -221,9 +221,16 @@ IsSelected SparkyWep
 IsSelected ClassicTankWeapon {
 	DrawBar"VARAMM23","VAREMPTY",Ammo1,horizontal,58,184;
 	DrawBar"VARAMM48","VAREMPTY",TankRepairAmmo,horizontal,58, 176;
-	InInventory not Tank_NotOnFoot, 1{DrawImage "TNKRLOAD", 138, 176; DrawImage "HORICONR", 138, 168;}
-	InInventory Tank_NotOnFoot, 1{DrawBar"TANK_VAR","VAREMPTY",Armor,horizontal,130,184;}
-	InInventory TankRepairAmmo, 250{DrawBar"VARFLS1","VNOBAR",TankRepairAmmo,horizontal,58,176;}
+	InInventory not Tank_NotOnFoot, 1
+		{
+		DrawImage "TNKRLOAD", 138, 176; DrawImage "HORICONR", 138, 168;
+		InInventory TankRepairAmmo, 150{DrawBar"VARFLS1","VNOBAR",TankRepairAmmo,horizontal,58,176;}
+		}
+	InInventory Tank_NotOnFoot, 1
+		{
+		DrawBar"VARAMM48","VAREMPTY",Health,horizontal,130,184;
+		DrawBar"VARHEALT","VAREMPTY",TankHPAmmo,horizontal,58, 176;
+		}
 	}
 
 //====|Vocalwoman

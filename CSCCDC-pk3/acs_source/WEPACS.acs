@@ -179,7 +179,7 @@ str weapons_ammo[MAX_WEAPONS_GLOBAL][7] =
 {"LIT", "MP", "Korby Lightning", 1.0, "NO", "NO", "SLOT_NONE"},
 {"Pearlstaff", "WhiteMageMana", "PearlStaff", 0.2, "NO", "NO", "SLOT_NONE"},
 
-{"ClassicTankWeapon", "TankRepairAmmo", "Classic Tank Weapon", 0.3, "NO", "NO", "SLOT_NONE"},
+{"ClassicTankWeapon", "TankRepairAmmo", "Classic Tank Weapon", 0.25, "NO", "NO", "SLOT_NONE"},
 };
 
 str BusterUpgrades[MAX_BUSTERS] =
