@@ -2288,3 +2288,15 @@ while(GetActorProperty(0,APROP_Health)>0 && PlayerInGame(PlayerNumber()) && (Che
 	Delay(1);
 	}
 }
+
+script "CSACS_PistonStaleWatcher" (int PistonTimer)
+{
+int Counter = 0;
+while(Counter<PistonTimer)
+	{
+	Delay(1);
+	Counter++;
+	if(CheckInventory("PistonStaleReset")){Counter = 0;}
+	}
+TakeInventory("PistonStale",999);
+}
