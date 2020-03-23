@@ -2,6 +2,19 @@ const int GEE_HEAL = 25;
 const int GEE_DMG = 20;
 const int GEE_RADIUS = 17;
 
+//controls cooldown on altfires
+//note : update sbar and class item if you change
+actor GeeHealingAmmo : Inventory
+{
+inventory.amount 1
+inventory.maxamount 175 //5 secs
+}
+actor GeeDamagingAmmo : Inventory
+{
+inventory.amount 1
+inventory.maxamount 175 //5 secs
+}
+
 actor GeeBurstBoss1 : CSCCWepBase
 {
 Weapon.AmmoUse 1
@@ -166,28 +179,10 @@ inventory.amount 1
 inventory.maxamount 10
 }
 
-actor GeeHealingAmmo : Inventory
-{
-inventory.amount 1
-inventory.maxamount 132
-}
-
-actor GeeDamagingAmmo : Inventory
-{
-inventory.amount 1
-inventory.maxamount 132
-}
-
 actor GeeReloadCounter : Inventory
 {
 inventory.amount 1
 inventory.maxamount 10
-}
-
-actor GeeRegen : Inventory
-{
-inventory.amount 1
-inventory.maxamount 105
 }
 
 actor GeeAmmoGiver : CustomInventory
