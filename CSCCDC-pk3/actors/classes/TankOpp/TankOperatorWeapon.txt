@@ -2,7 +2,7 @@ actor BulkTankActivatorPickup : TankActivatorPickup
 {
 States{Use:
 TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("TankRepairAmmo",250,"Check2")
+TNT1 A 0 A_JumpIfInventory("TankRepairAmmo",150,"Check2")
 fail
 Check2:
 TNT1 A 0 A_CheckFloor("Yes")
@@ -14,8 +14,6 @@ TNT1 A 0 A_SpawnItemEx("TankyTank_Body_Bulk",0,0,0,0,0,0,0,1,0,tid+3000)
 TNT1 A 0 A_GiveInventory("BulkTankDeActivatorPickup")
 TNT1 A 0 A_GiveInventory("TanktivatorCooldown")
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Tank_ArmorConvert",0,0)
-TNT1 A 0 ACS_NamedExecuteAlways("CSACS_ArmorHitSensor",0,0)
-TNT1 A 0 A_GiveInventory("TankDefense",1)
 //TNT1 A 0 A_TakeInventory("Tank_OnFootWeakness")
 TNT1 A 0 A_GiveInventory("Tank_NotOnFoot",1)
 TNT1 A 0 A_GunFlash
@@ -35,11 +33,7 @@ TNT1 A 0 A_GiveInventory("BulkTankActivatorPickup")
 TNT1 A 0 A_GiveInventory("TanktivatorCooldown")
 TNT1 A 0 A_GiveInventory("DeactivateTank",1)
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Tank_ArmorConvert",0,1)
-//TNT1 A 0 A_TakeInventory("TankRepairAmmo",10000)
-//TNT1 A 0 A_GiveInventory("Tank_OnFootWeakness")
 TNT1 A 0 A_TakeInventory("Tank_NotOnFoot",1)
-TNT1 A 0 A_TakeInventory("TankDefense",99)
-TNT1 A 0 A_TakeInventory("ArmorHitSensorFlag",99)
 stop
 UseX:
 //TNT1 A 0 A_PlaySoundEx("misc/gravitydown","SoundSlot5")
@@ -48,11 +42,8 @@ TNT1 A 0 A_GiveInventory("TankyTankPickupEnd")
 TNT1 A 0 A_GiveInventory("BulkTankActivatorPickup")
 TNT1 A 0 A_GiveInventory("TanktivatorCooldown")
 TNT1 A 0 A_GiveInventory("DeactivateTank",1)
-//TNT1 A 0 A_TakeInventory("TankRepairAmmo",10000)
-//TNT1 A 0 A_GiveInventory("Tank_OnFootWeakness")
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_Tank_ArmorConvert",0,1)
 TNT1 A 0 A_TakeInventory("Tank_NotOnFoot",1)
-TNT1 A 0 A_TakeInventory("TankDefense",99)
-TNT1 A 0 A_TakeInventory("ArmorHitSensorFlag",99)
 stop
 No:
 TNT1 A 0 
@@ -154,8 +145,10 @@ TNT1 A 0 A_GiveInventory("BulkTankDeActivatorPickupAuto",1)
 stop
 Flash.next:
 TNT1 A 3
-TNT1 A 0 A_JumpIfInventory("BasicArmor",1,"Flash")
+TNT1 A 0 A_JumpIfHealthLower(2,"Flash.Stop")
 TNT1 A 0 A_JumpIfInventory("DeactivateTank",1,"Flash.End")
+loop
+Flash.Stop:
 TNT1 A 0 A_GiveInventory("BulkTankDeActivatorPickupAuto",1)
 stop
 Flash.End:
@@ -223,9 +216,14 @@ goto Ready2
 }
 
 actor TankRepairAmmo : Ammo {
-inventory.maxamount 350
+inventory.maxamount 200
 inventory.amount 1
 +INVENTORY.IGNORESKILL}
+
+actor TankHPAmmo : Ammo {
+  inventory.maxamount 100
+  inventory.amount 1
+  +INVENTORY.IGNORESKILL}  
 
 actor TankOpAmmo : Ammo
 {
