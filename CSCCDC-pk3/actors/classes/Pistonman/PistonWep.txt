@@ -1,3 +1,5 @@
+const int PISTON_TIMER = 50;
+
 actor PistonTremorBoss : CSCCWepBase
 {
 weapon.ammotype "PistonTremorAmmo"
@@ -718,4 +720,102 @@ actor PistonTremorAmmo : Ammo
 inventory.amount 1
 inventory.maxamount 500
 +INVENTORY.IGNORESKILL
+}
+
+actor PistonStale : Inventory
+{
+inventory.amount 1
+inventory.maxamount 4
+}
+actor PistonStaleReset : Powerup
+{
+Powerup.Duration 5
+}
+
+actor PistonStunItem1 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("PistonStaleReset",1)
+TNT1 A 0 A_JumpIfInventory("PistonStale",4,"Nope")
+TNT1 A 0 A_JumpIfInventory("PistonStale",3,"Least")
+TNT1 A 0 A_JumpIfInventory("PistonStale",2,"Middle")
+TNT1 A 0 A_JumpIfInventory("PistonStale",1,"Most")
+goto Start
+Start:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_PistonStaleWatcher",0,PISTON_TIMER)
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+goto Most+2
+Most:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+TNT1 A 0 A_GiveInventory("PistonStaleReset")
+TNT1 A 0 A_JumpIf(velz>8,"No")
+TNT1 A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,6,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_ChangeVelocity(momx, momy, 8,CVF_REPLACE)
+stop
+Middle:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+TNT1 A 0 A_GiveInventory("PistonStaleReset")
+TNT1 A 0 A_JumpIf(velz>5,"No")
+TNT1 A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,6,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_ChangeVelocity(momx, momy, 5,CVF_REPLACE)
+stop
+Least:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+TNT1 A 0 A_GiveInventory("PistonStaleReset")
+TNT1 A 0 A_JumpIf(velz>2,"No")
+TNT1 A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,6,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_ChangeVelocity(momx, momy, 2,CVF_REPLACE)
+stop
+Nope:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+No:
+TNT1 A 0
+stop
+}
+}
+
+actor PistonStunItem2 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_GiveInventory("PistonStaleReset",1)
+TNT1 A 0 A_JumpIfInventory("PistonStale",4,"Nope")
+TNT1 A 0 A_JumpIfInventory("PistonStale",3,"Least")
+TNT1 A 0 A_JumpIfInventory("PistonStale",2,"Middle")
+TNT1 A 0 A_JumpIfInventory("PistonStale",1,"Most")
+goto Start
+Start:
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_PistonStaleWatcher",0,PISTON_TIMER)
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+goto Most+2
+Most:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+TNT1 A 0 A_GiveInventory("PistonStaleReset")
+TNT1 A 0 A_JumpIf(velz>12,"No")
+TNT1 A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,6,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_ChangeVelocity(momx, momy, 12,CVF_REPLACE)
+stop
+Middle:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+TNT1 A 0 A_GiveInventory("PistonStaleReset")
+TNT1 A 0 A_JumpIf(velz>8,"No")
+TNT1 A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,6,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_ChangeVelocity(momx, momy, 8,CVF_REPLACE)
+stop
+Least:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+TNT1 A 0 A_GiveInventory("PistonStaleReset")
+TNT1 A 0 A_JumpIf(velz>4,"No")
+TNT1 A 0 A_SpawnItemEX("PistonStunFX2",4,0,40,0,0,6,0,SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_ChangeVelocity(momx, momy, 4,CVF_REPLACE)
+stop
+Nope:
+TNT1 A 0 A_GiveInventory("PistonStale",1)
+No:
+TNT1 A 0
+stop
+}
 }
