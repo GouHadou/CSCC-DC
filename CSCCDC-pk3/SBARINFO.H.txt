@@ -268,9 +268,9 @@ IsSelected ZenTrainerWep{
 
 IsSelected GeeBurstBoss1
 {
-InInventory GeeHealingAmmo, 132{Drawbar "GEEVMMO1", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
+InInventory GeeHealingAmmo, 175{Drawbar "GEEVMMO1", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
 else{Drawbar "VARAMM65", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
-InInventory GeeDamagingAmmo, 132{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
+InInventory GeeDamagingAmmo, 175{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
 else{Drawbar "VARAMM65", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
 DrawImage "GEEGRPH1", 29, 176;
 DrawNumber 2, "GEEFONT1", Untranslated, Ammo1, alignment(center), 49, 184;
@@ -280,14 +280,14 @@ IsSelected GeeBurstBoss2
 {
 InInventory not GeeDMPackage, 1
 {
-InInventory GeeHealingAmmo, 132{Drawbar "GEEVMMO1", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
+InInventory GeeHealingAmmo, 175{Drawbar "GEEVMMO1", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
 else{Drawbar "VARAMM65", "VAREMPTY", GeeHealingAmmo, horizontal, 58, 184;}
-InInventory GeeDamagingAmmo, 132{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
+InInventory GeeDamagingAmmo, 175{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
 else{Drawbar "VARAMM65", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 176;}
 }
 else
 {
-InInventory GeeDamagingAmmo, 132{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 184;}
+InInventory GeeDamagingAmmo, 175{Drawbar "GEEVMMO2", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 184;}
 else{Drawbar "VARAMM65", "VAREMPTY", GeeDamagingAmmo, horizontal, 58, 184;}
 }
 DrawImage "GEEGRPH2", 29, 176;
