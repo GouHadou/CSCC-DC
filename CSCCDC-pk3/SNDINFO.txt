@@ -477,6 +477,7 @@ Support/Heal1 Recov1
 $volume Support/Heal1 0.5
 
 support/Negative NEGSTAT
+support/Vanish VANISH
 
 weapon/CrossBoltHit HITSOUND
 weapon/HardBuster3 HRDBST2

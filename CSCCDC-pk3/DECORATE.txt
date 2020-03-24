@@ -136,6 +136,7 @@
 #include "actors/classes/Healmore/Assize.txt"
 #include "actors/classes/Healmore/WhiteMagicFX.txt"
 #include "actors/classes/Healmore/Aero.txt"
+#include "actors/classes/Healmore/Vanish.txt"
 
 //===|Devion
 #include "actors/classes/Devion/DevionClass.txt"

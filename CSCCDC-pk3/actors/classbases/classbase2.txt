@@ -399,9 +399,11 @@ Pain.DarkLaser:
 Goto Pain+1
 
 //Healmore
+Pain.Assize:
+"----" H 0 ACS_NamedExecuteAlways("CSACS_HitKnockback",0,15)
+"----" H 0 A_GiveToTarget("WhiteMageMana",10)
 Pain.Dia:
 Pain.Holy:
-Pain.Assize:
 Pain.Rasp:
 Pain.Aero:
 "----" H 0 A_GiveToTarget("CureMeter",user_HitMemory*1.5)

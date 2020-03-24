@@ -1,0 +1,176 @@
+actor VanishInitiator : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_JumpIfInventory("VanishTimerItem",1,"Pickup.refresh")
+TNT1 A 0 A_Giveinventory("VanishTimerItem",350)
+TNT1 A 0 A_Spawnitemex("VanishHandler")
+stop
+
+Pickup.refresh:
+TNT1 A 0 A_Giveinventory("VanishTimerItem",350)
+stop
+
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+
+actor VanishState_On : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_ChangeFlag("INVISIBLE",True)
+TNT1 A 0 A_ChangeFlag("NOTARGET",True)
+TNT1 A 0 A_ChangeFlag("CANTSEEK",True)
+TNT1 A 0 A_SetTranslucent(0.0,0)
+stop
+}
+}
+
+actor VanishState_Off : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_ChangeFlag("INVISIBLE",False)
+TNT1 A 0 A_ChangeFlag("NOTARGET",False)
+TNT1 A 0 A_ChangeFlag("CANTSEEK",False)
+TNT1 A 0 A_SetTranslucent(1.0,0)
+stop
+}
+}
+
+actor VanishState_SoundCue : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_PlaySoundEx("Support/Vanish","soundslot9")
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("VanishCloudFX", 0, 0, 28, 256/45, 256/45, random2(256/45), random(0, 359),SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("MedicaSparkleFX", 0, 0, 28, 256/45, 256/45, random2(256/45), random(0, 359),SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+stop
+}
+}
+
+actor VanishTimerItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 350 //10 sec
+}
+
+actor VanishHandler : BasicHelper
+{
+States
+{
+Spawn:
+TNT1 A 0 
+TNT1 A 4 A_GiveToTarget("VanishState_SoundCue")
+TNT1 A 0 A_GiveToTarget("VanishState_On")
+goto Spawn.timer
+Spawn.timer:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("VanishTimerItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("VanishTimerItem",1,"Spawn.timer")
+Goto Death
+
+Death:
+DeathTake:
+TNT1 A 4 A_GiveToTarget("VanishState_SoundCue")
+TNT1 A 0 A_GiveToTarget("VanishState_Off")
+TNT1 A 2
+stop
+}
+}
+
+
+Actor VanishCloudFX : BasicClientside
+{
+Renderstyle "Translucent"
+Alpha 0.6
+Reactiontime 15
+Scale 1.75
+States
+{
+Spawn:
+TNT1 A 0
+ICMS ABCCDDDEF 2 A_ScaleVelocity(0.7)
+stop
+}
+}
+
+//[+]========================================================================[+]
+//------------------------------|Cooldown Actors|------------------------------
+//[+]========================================================================[+]
+actor VanishCooler : BasicHelper
+{
+States
+{
+Spawn:
+TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
+TNT1 A 1
+TNT1 A 0 A_TakeFromTarget("VanishCooldownItem",1)
+TNT1 A 0 A_JumpIfInTargetInventory("VanishCooldownItem",1,"Spawn")
+Death:
+DeathTake:
+TNT1 A 0
+stop
+}
+}
+
+actor VanishCooldown : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_Giveinventory("VanishCooldownItem",245)
+TNT1 A 0 A_Spawnitemex("VanishCooler")
+stop
+Nope:
+//BUST B 0 A_PlaySoundEx("weapon/heat3","Item")
+TNT1 A 0
+stop
+}
+}
+
+actor VanishCooldownItem : inventory
+{
+inventory.amount 1
+inventory.maxamount 245 //7 sec
+}

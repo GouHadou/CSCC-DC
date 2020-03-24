@@ -48,19 +48,16 @@ AERO E 0 A_GiveInventory("ProjectileCode",1)
 AERO E 0 //A_SpawnItemEx("BlackHoleBombFXSpawner", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
 AERO E 0 A_PlaySoundEx("weapon/blackholebombdetonate", "body", 1)
 Spawn2:
-AERO E 0 ACS_ExecuteAlways(247, 0, args[0], 256)
-AERO E 0 //A_Explode(2,128,0)
-AERO EE 1
-AERO G 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
-AERO G 0 A_Countdownarg(0)
-AERO F 0 ACS_ExecuteAlways(247, 0, args[0], 256)
-AERO F 0 A_Explode(2,128,0,0,128)
-AERO FF 1
-AERO G 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
-AERO G 0 A_Countdownarg(0)
-AERO G 0 ACS_ExecuteAlways(247, 0, args[0], 256)
-AERO G 0 //A_Explode(2,128,0)
-AERO GG 1
+AERO E 0 A_Explode(2,128,0,0,128)
+AERO EE 1 ACS_ExecuteAlways(247, 0, args[0], 256)
+AERO E 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
+AERO E 0 A_Countdownarg(0)
+
+AERO FF 1 ACS_ExecuteAlways(247, 0, args[0], 256)
+AERO F 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
+AERO F 0 A_Countdownarg(0)
+
+AERO GG 1 ACS_ExecuteAlways(247, 0, args[0], 256)
 AERO G 0 A_SetScale(ScaleX-0.15,ScaleY-0.15)
 AERO G 0 A_Countdownarg(0)
 goto Spawn+3
@@ -185,7 +182,7 @@ Spawn:
 TNT1 A 0
 stop
 Pickup:
-TNT1 A 0 A_Giveinventory("AeroCooldownItem",122)
+TNT1 A 0 A_Giveinventory("AeroCooldownItem",350)
 TNT1 A 0 A_Spawnitemex("AeroCooler")
 stop
 Nope:
@@ -198,5 +195,5 @@ stop
 actor AeroCooldownItem : inventory
 {
 inventory.amount 1
-inventory.maxamount 122 //3.5 sec
+inventory.maxamount 350 //10.0 sec
 }

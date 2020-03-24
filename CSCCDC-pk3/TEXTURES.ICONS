@@ -6,6 +6,21 @@ graphic M_DOOM, 1000, 1000
     Patch CSCCLOGO, 0, 0
 }
 
+//Mouse icons
+Graphic "MOICONR", 11, 17 
+{
+	XScale 1.000
+	YScale 1.000
+	Patch "TNT1A0", 0, 0
+}
+
+Graphic "MOICONL", 11, 17 
+{
+	XScale 1.000
+	YScale 1.000
+	Patch "TNT1A0", 0, 0
+}
+
 //Hud indicators
 Graphic "VERICONR", 30, 30 
 {
@@ -517,6 +532,23 @@ Graphic "WMAGI5C", 16, 16
 	Patch "TBLOA0", 0, 0
 	{
 		Translation "4:4=3:3", "109:109=95:95"
+	}
+}
+
+Graphic "WMAGI6", 16, 16
+{
+	XScale 1.500
+	YScale 1.500
+	Patch "WMICE0", 0, 0
+}
+
+Graphic "WMAGI6C", 16, 16
+{
+	XScale 1.500
+	YScale 1.500
+	Patch "WMICE0", 0, 0
+	{
+		Translation "4:4=3:3", "63:63=156:156", "64:138=93:93"
 	}
 }
 
