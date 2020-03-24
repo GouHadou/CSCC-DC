@@ -1077,7 +1077,9 @@ script "YangBoost" (Void)
 {
 int InputButtons; 
 int InputOldButtons; 
+int InputOldBoost;
 Bool SpeedPressed = FALSE;
+Bool SameMovement = FALSE;
 int HasUsedMovement;
 int HDashForce;
 int ThrustDir;
@@ -1104,35 +1106,35 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 	
 	If(SpeedPressed && (InputButtons & BT_BACK))
 		{
-		//ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, -HDashForce, 1, 0);
 		ThrustDir+=0.5;
 		AngleCount++;
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=2;
+		If(InputOldBoost & BT_BACK){SameMovement = TRUE;}
 		}
 	If(SpeedPressed && (InputButtons & BT_MOVELEFT))
 		{
-		//ThrustThing((GetActorAngle(ActivatorTID())*255+64.0)>>16, HDashForce, 1, 0);
 		AngleCount++;
 		ThrustDir+=0.25;
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=2;
+		If(InputOldBoost & BT_MOVELEFT){SameMovement = TRUE;}
 		}
 	If(SpeedPressed && (InputButtons & BT_MOVERIGHT))
 		{
-		//ThrustThing((GetActorAngle(ActivatorTID())*255+192.0)>>16, HDashForce, 1, 0);
 		ThrustDir+=0.75;
 		AngleCount++;
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=2;
+		If(InputOldBoost & BT_MOVERIGHT){SameMovement = TRUE;}
 		}
 	If(SpeedPressed && (InputButtons & BT_FORWARD))
 		{
-		//ThrustThing((GetActorAngle(ActivatorTID())*255)>>16, HDashForce, 1, 0);
 		If(ThrustDir > 0.5){ThrustDir+=1.0;}
 		AngleCount++;
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=2;
+		If(InputOldBoost & BT_FORWARD){SameMovement = TRUE;}
 		}
 	If(AngleCount>0)
 	{
@@ -1173,9 +1175,22 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 		{
 		GiveActorInventory(ActivatorTID(), "BoostExplodeItem", 1);
 		TakeActorInventory(ActivatorTID(), "EmberCelicaAmmo", 2);
-		If(HasUsedMovement > 1){GiveActorInventory(ActivatorTID(), "YangDashCoolDown", DashCoolDown);}
+		If(HasUsedMovement > 1)
+			{
+			Switch(SameMovement)
+				{
+				Case TRUE:
+				GiveActorInventory(ActivatorTID(), "YangDashCoolDown", DashCoolDown/2);
+				break;
+				Case FALSE:
+				GiveActorInventory(ActivatorTID(), "YangDashCoolDown", DashCoolDown);
+				break;
+				}
+			InputOldBoost = InputButtons;
+			}
 		LimitSpeed(30);
 		}
+	SameMovement = FALSE;
 	delay(1);	
 	InputOldButtons = InputButtons; // More reliable than INPUT_OLDBUTTONS ....Go figure.
 	}

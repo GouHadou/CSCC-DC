@@ -3,8 +3,8 @@ actor YangClass : CustomWepMan
 player.displayname "Yang"
 player.soundclass "Yang"
 player.damagescreencolor "orange"
-player.forwardmove 0.6, 0.6
-player.sidemove 0.6, 0.6
+player.forwardmove 0.65, 0.65
+player.sidemove 0.63, 0.63
 player.jumpz 12
 Health 75
 Player.MaxHealth 75
