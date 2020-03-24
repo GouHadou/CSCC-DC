@@ -462,11 +462,11 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 63, 10;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana,63, 29;
 	
-	DrawImage "WMAGI5", 77, 10; 
-	InInventory AeroCooldownItem, 1 {DrawBar "WMAGI5C", "WMAGI5", AeroCooldownItem, vertical, 77, 10;} 
+	DrawImage "WMAGI6", 77, 10; 
+	InInventory VanishCooldownItem, 1 {DrawBar "WMAGI6C", "WMAGI6", VanishCooldownItem, vertical, 77, 10;} 
 	DrawImage "VERICON1", 87, 10;
-	inInventory WhiteMageMana, 15{DrawNumber 3, "8BDMAFONT", Untranslated, 15, alignment(left), 77, 22;}
-	else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 77, 22;}
+	inInventory WhiteMageMana, 25{DrawNumber 3, "8BDMAFONT", Untranslated, 25, alignment(left), 77, 22;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 25, alignment(left), 77, 22;}
 	
 	DrawImage "WMAGI2", 99, 10; 
 	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 99, 10;} 
@@ -495,6 +495,9 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	InInventory CureLevel, 1 {DrawImage "CURBLK", 103, 48;}
 	InInventory CureLevel, 2 {DrawImage "CURBLK", 110, 48;}
 	InInventory CureLevel, 3 {DrawImage "CURBLK", 117, 48; DrawImage "CURBAR", 63, 48;}
+
+	inInventory IsCureing, 1 {inInventory CureLevel, 1 {DrawImage "MOICONL", 130, 41;}}
+
 
 }
 

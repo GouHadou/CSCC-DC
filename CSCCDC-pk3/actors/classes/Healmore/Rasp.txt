@@ -26,7 +26,7 @@ TNT1 A 0 A_Jump(256,"Spawn2")
 Goto Spawn2
 Spawn2:
 TNT1 A 0 
-TNT1 A 0 A_CountDown
+TNT1 A 0 //A_CountDown
 WPRS G 1
 WPRS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
 Goto Spawn
@@ -55,15 +55,20 @@ Goto RaspLoop_1
 
 RaspLoop_1:
 TNT1 A 0 A_JumpIfCloser(750,"RaspLoop_2")
-Goto Death
+Goto Rasploop_4
 
 RaspLoop_2:
 TNT1 A 0 A_JumpIfTargetInLOS("RaspLoop_3",360)
-Goto Death
+Goto Rasploop_4
 
 RaspLoop_3:
+TNT1 A 0 A_JumpIfInventory("CutterFlag",999,"Death",AAPTR_TARGET)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"Death",AAPTR_TARGET)
+
 TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
 TNT1 A 0 A_Explode(5,35,0,0,35)
+Goto Rasploop_4
+Rasploop_4: //No Damage if out of view
 TNT1 A 0 A_SetArg(1,0)
 TNT1 A 0 A_SetArg(0,Args[0]-1)
 TNT1 A 0 A_GiveToTarget("WhiteMageMana",5)
@@ -140,7 +145,7 @@ stop
 	{
 	Spawn2:
 	TNT1 A 0 
-	TNT1 A 0 A_CountDown
+	TNT1 A 0 //A_CountDown
 	WPRS G 1 A_SeekerMissile(10,20,SMF_LOOK|SMF_PRECISE,256,6)
 	WPRS GGG 0 A_SpawnItemEx("RaspParticleFX2", random(-8,8), random(-8,8), random(-8,8), 0, 0, 0, 0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
 	Goto Spawn2

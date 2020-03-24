@@ -453,11 +453,11 @@ InInventory KingTeamFlag, 1{
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, Health, 151, 156;
 	DrawNumber 3, KORBYFONT, UNTRANSLATED, WhiteMageMana, 151, 175;
 	
-	DrawImage "WMAGI5", 165, 156; 
-	InInventory AeroCooldownItem, 1 {DrawBar "WMAGI5C", "WMAGI5", AeroCooldownItem, vertical, 165, 156;} 
+	DrawImage "WMAGI6", 165, 156; 
+	InInventory VanishCooldownItem, 1 {DrawBar "WMAGI6C", "WMAGI6", VanishCooldownItem, vertical, 165, 156;} 
 	DrawImage "VERICON1", 175, 156;
-	InInventory WhiteMageMana, 15{DrawNumber 3, "8BDMAFONT", Untranslated, 15, alignment(left), 165, 168;}
-	else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 165, 168;}
+	InInventory WhiteMageMana, 25{DrawNumber 3, "8BDMAFONT", Untranslated, 25, alignment(left), 165, 168;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 25, alignment(left), 165, 168;}
 
 	DrawImage "WMAGI2", 187, 156; 
 	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 187, 156;} 
@@ -486,6 +486,10 @@ InInventory KingTeamFlag, 1{
 	InInventory CureLevel, 1 {DrawImage "CURBLK", 193, 139;}
 	InInventory CureLevel, 2 {DrawImage "CURBLK", 200, 139;}
 	InInventory CureLevel, 3 {DrawImage "CURBLK", 207, 139; DrawImage "CURBAR", 153, 139;}
+
+	inInventory IsCureing, 1 {inInventory CureLevel, 1 {DrawImage "MOICONL", 220, 132;}}
+	//DrawImage "MOICON", 200, 136;
+	  
 }
 
 //====|Devion

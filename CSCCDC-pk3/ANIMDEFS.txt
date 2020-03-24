@@ -72,3 +72,12 @@ pic RMAGVAR5 tics 5
 pic RMAGVAR6 tics 5
 pic RMAGVAR7 tics 5
 pic RMAGVAR8 tics 5
+
+//MouseClick
+texture MOICONR
+pic MOUSE tics 8
+pic RCLICK tics 8
+
+texture MOICONL
+pic MOUSE tics 8
+pic LCLICK tics 8
