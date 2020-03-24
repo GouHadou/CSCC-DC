@@ -465,14 +465,19 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	DrawImage "WMAGI6", 77, 10; 
 	InInventory VanishCooldownItem, 1 {DrawBar "WMAGI6C", "WMAGI6", VanishCooldownItem, vertical, 77, 10;} 
 	DrawImage "VERICON1", 87, 10;
-	inInventory WhiteMageMana, 25{DrawNumber 3, "8BDMAFONT", Untranslated, 25, alignment(left), 77, 22;}
-	else{DrawNumber 3, "CSCCAFONT", Untranslated, 25, alignment(left), 77, 22;}
-	
+	inInventory WhiteMageMana, 30{DrawNumber 3, "8BDMAFONT", Untranslated, 30, alignment(left), 77, 22;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 30, alignment(left), 77, 22;}
+		inInventory VanishDiscountTime, 1
+			{
+			inInventory WhiteMageMana, 15{DrawNumber 3, "8BDMAFONT", Untranslated, 15, alignment(left), 77, 22;}
+			else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 77, 22;}
+			}
+
 	DrawImage "WMAGI2", 99, 10; 
 	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 99, 10;} 
 	DrawImage "VERICON2", 109, 10;
-	inInventory WhiteMageMana, 20{DrawNumber 3, "8BDMAFONT", Untranslated, 20, alignment(left), 99, 22;}
-	else{DrawNumber 3, "CSCCAFONT", Untranslated, 20, alignment(left), 99, 22;}
+	inInventory WhiteMageMana, 35{DrawNumber 3, "8BDMAFONT", Untranslated, 35, alignment(left), 99, 22;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 35, alignment(left), 99, 22;}
 
 	//DrawImage "WMAGI3", 92, 24; 
 	//InInventory AssizeCooldownItem, 1 {DrawBar "WMAGI3C", "WMAGI3", AssizeCooldownItem, vertical, 92, 24;} 
@@ -481,8 +486,8 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 	DrawImage "WMAGI4", 119, 10;
 	InInventory RaspCooldownItem, 1 {DrawBar "WMAGI4C", "WMAGI4", RaspCooldownItem, vertical, 119, 10;} 
 	DrawImage "VERICONR", 129, 10;
-	inInventory WhiteMageMana, 10{DrawNumber 3, "8BDMAFONT", Untranslated, 10, alignment(left), 119, 22;}
-	else{DrawNumber 3, "CSCCAFONT", Untranslated, 10, alignment(left), 119, 22;}
+	inInventory WhiteMageMana, 15{DrawNumber 3, "8BDMAFONT", Untranslated, 15, alignment(left), 119, 22;}
+	else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 119, 22;}
 
 	//Cure Meter
 	DrawImage "CURBHUD", 60, 45;

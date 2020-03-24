@@ -1,3 +1,10 @@
+Const Int VPRad = 80; //Vanish particle radius
+
+Actor VanishDiscountTime : powerup
+{inventory.amount 1
+Powerup.duration 17
+}
+
 actor VanishInitiator : CustomInventory
 {
 inventory.amount 1
@@ -10,12 +17,12 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0 A_JumpIfInventory("VanishTimerItem",1,"Pickup.refresh")
-TNT1 A 0 A_Giveinventory("VanishTimerItem",350)
+TNT1 A 0 A_Giveinventory("VanishTimerItem",175)
 TNT1 A 0 A_Spawnitemex("VanishHandler")
 stop
 
 Pickup.refresh:
-TNT1 A 0 A_Giveinventory("VanishTimerItem",350)
+TNT1 A 0 A_Giveinventory("VanishTimerItem",175)
 stop
 
 Nope:
@@ -82,10 +89,26 @@ stop
 }
 }
 
+actor VanishParticles : CustomInventory
+{
+inventory.amount 1
+Inventory.MaxAmount 100
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_SpawnItemEx("MedicaSparkleFX",VPRad,0,random(-VPRad,VPRad),0,0,0,random(0,360),SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
 actor VanishTimerItem : inventory
 {
 inventory.amount 1
-inventory.maxamount 350 //10 sec
+inventory.maxamount 175 //5 sec
 }
 
 actor VanishHandler : BasicHelper
@@ -101,6 +124,14 @@ Spawn.timer:
 TNT1 A 0 A_JumpIfInTargetInventory("CutterFlag",999,"DeathTake")
 TNT1 A 1
 TNT1 A 0 A_TakeFromTarget("VanishTimerItem",1)
+TNT1 A 0 A_GiveToTarget("PearlStaffManaBuffer")
+TNT1 A 0 A_GiveToTarget("VanishDiscountTime")
+TNT1 A 0 A_JumpIfInTargetInventory("VanishTimerItem",155,"Spawn.Particle")
+TNT1 A 0 A_JumpIfInTargetInventory("VanishTimerItem",1,"Spawn.timer")
+Goto Death
+
+Spawn.Particle:
+TNT1 A 0 A_GiveToTarget("VanishParticles")
 TNT1 A 0 A_JumpIfInTargetInventory("VanishTimerItem",1,"Spawn.timer")
 Goto Death
 
@@ -159,7 +190,7 @@ Spawn:
 TNT1 A 0
 stop
 Pickup:
-TNT1 A 0 A_Giveinventory("VanishCooldownItem",245)
+TNT1 A 0 A_Giveinventory("VanishCooldownItem",105)
 TNT1 A 0 A_Spawnitemex("VanishCooler")
 stop
 Nope:
@@ -172,5 +203,5 @@ stop
 actor VanishCooldownItem : inventory
 {
 inventory.amount 1
-inventory.maxamount 245 //7 sec
+inventory.maxamount 105 //3 sec
 }
