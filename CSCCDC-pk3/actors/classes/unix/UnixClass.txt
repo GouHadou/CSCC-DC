@@ -4,8 +4,8 @@ player.displayname "Unix"
 player.soundclass "UnixClass"
 Health 75
 Player.Maxhealth 75
-player.forwardmove 0.83, 0.83
-player.sidemove 0.81, 0.81
+player.forwardmove 0.85, 0.85
+player.sidemove 0.83, 0.83
 player.startitem "UnixKnife"
 player.startitem "UnixBlade"
 player.startitem "UnixClassItems"
@@ -156,15 +156,28 @@ stop
 }
 }
 
-actor UnixDetectFunc : CustomInventory
+actor UnixMinorDetectFunc : CustomInventory
 {
 states
 {
 Pickup:
-TNT1 A 0 A_JumpIf(alpha<0.67,"Pickup2")
+TNT1 A 0 A_JumpIf(alpha<0.39,"Pickup2")
 stop
 Pickup2:
-TNT1 A 0 A_SetTranslucent(0.67)
+TNT1 A 0 A_SetTranslucent(0.39)
+stop
+}
+}
+
+actor UnixMajorDetectFunc : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIf(alpha<0.61,"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_SetTranslucent(0.61)
 stop
 }
 }
@@ -174,7 +187,7 @@ actor UnixPainFunc : CustomInventory
 states
 {
 Pickup:
-TNT1 A 0 A_GiveInventory("UnixDetectFunc",1)
+TNT1 A 0 A_GiveInventory("UnixMajorDetectFunc",1)
 stop
 }
 }
@@ -187,7 +200,7 @@ Pickup:
 TNT1 A 0 A_JumpIf(CallACS("EnemyInProximity",128),"Pickup2")
 stop
 Pickup2:
-TNT1 A 0 A_GiveInventory("UnixDetectFunc",1)
+TNT1 A 0 A_GiveInventory("UnixMinorDetectFunc",1)
 stop
 }
 }
@@ -197,11 +210,12 @@ actor UnixCloakFunc : CustomInventory
 states
 {
 Pickup:
+TNT1 A 0 A_LogInt(1000*alpha)
 TNT1 A 0 A_JumpIfInventory("UnixCloakFlag",1,"Pickup2")
 PickupB:
 TNT1 A 0 A_GiveInventory("UnixCloakAmmo",1)
-TNT1 A 0 A_GiveInventory("UnixDetectFunc",1)
-TNT1 A 0 A_FadeTo(1.0,0.01,false)
+TNT1 A 0 A_GiveInventory("UnixMinorDetectFunc",1)
+TNT1 A 0 A_FadeTo(1.0,0.015,false)
 //TNT1 A 0 A_FadeIn(0.01,FTF_CLAMP)
 stop
 Pickup2:
@@ -212,8 +226,8 @@ Pickup3:
 TNT1 A 0 A_TakeInventory("UnixCloakAmmo",3)
 TNT1 A 0 A_GiveInventory("UnixUndetectFunc",1)
 TNT1 A 0 A_GiveInventory("UnixBumpFunc",1)
-//TNT1 A 0 A_FadeOut(0.014,FTF_CLAMP)
-TNT1 A 0 A_FadeTo(0.0,0.014,false)
+//TNT1 A 0 A_FadeOut(0.015,FTF_CLAMP)
+TNT1 A 0 A_FadeTo(0.0,0.015,false)
 stop
 }
 }
