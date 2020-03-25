@@ -67,7 +67,7 @@ Height 5
 scale 0.7
 damagetype "GizmoIce"
 damage (1)
-speed 22
+speed 27
 States
 {
 Spawn:
@@ -102,17 +102,8 @@ goto Done
 }
 }
 
-actor FrostCannon2 : BasicProjectile
+actor FrostCannon2 : FrostCannon
 {
-Obituary "$OB_FROSTCANNON"
-PROJECTILE
-+RIPPER
-Radius 7
-Height 5
-scale 0.7
-damagetype "GizmoIce"
-damage (1)
-speed 22
 States
 {
 Spawn:

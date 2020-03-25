@@ -66,7 +66,7 @@ Radius 10
 Height 5
 scale 1.5
 damagetype "GizmoLightning"
-damage (10)
+damage (18)
 speed 70
 States
 {
@@ -86,7 +86,7 @@ actor LightningCannonShot_Y : LightningCannonShot {Translation  "229:229=229:229
 actor GizmoLightningProtect : PowerProtection
 {
 Powerup.Duration 3
-damagefactor "GizmoLightning", 0.20
+damagefactor "GizmoLightning", 0.2
 }
 
 actor LightningCannonShot_M1_Ammo : BasicTeamColorPickup

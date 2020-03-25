@@ -62,8 +62,8 @@ PROJECTILE
 Radius 30
 Height 30
 scale 3.5
-damage (33)
-speed 35
+damage (34)
+speed 45
 -NOGRAVITY
 damagetype "GizmoStone"
 States
