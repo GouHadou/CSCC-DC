@@ -261,6 +261,9 @@ InInventory Zen_Power150, 1 {Drawimage"ZENBF00",290,30;}
 InInventory Zen_Power200, 1 {Drawimage"ZENBF01",290,30;}
 InInventory Zen_Haste110, 1 {Drawimage"ZENBF06",290,52;}
 InInventory Zen_Haste125, 1 {Drawimage"ZENBF07",290,52;}
+InInventory Zen_DefenseDebuff, 1 {Drawimage"ZENBF08",265,8;}
+InInventory Zen_PowerDebuff, 1 {Drawimage"ZENBF09",265,30;}
+InInventory Zen_SlowDebuff, 1 {Drawimage"ZENBF10",265,52;}
 
 IsSelected ZenTrainerWep{
 	InInventory ZenTrainerAmmo1, 140 {
@@ -268,9 +271,14 @@ IsSelected ZenTrainerWep{
 		InInventory AuraFlag_power, 1 {Drawbar"VZNTRA02","VAREMPTY",Ammo2,horizontal, 58, 184;}
 		InInventory AuraFlag_haste, 1 {Drawbar"VZNTRA04","VAREMPTY",Ammo2,horizontal, 58, 184;}
 	}else{ Drawbar"VARAMM65","VAREMPTY",Ammo2,horizontal, 58, 184;}
-	InInventory ZenPowerFlag , 1 {DrawImage "ZTStrDB", 130, 176; DrawImage "HORICON1", 130, 168;}
-	InInventory ZenSpeedFlag , 1 {DrawImage "ZTSpdDB", 130, 176; DrawImage "HORICON1", 130, 168;}
-	InInventory ZenDefenseFlag , 1 {DrawImage "ZTDefDB", 130, 176; DrawImage "HORICON1", 130, 168;}
+	InInventory ZenPowerFlag , 1 {DrawImage "ZTStrDB", 138, 176;}
+	InInventory ZenSpeedFlag , 1 {DrawImage "ZTSpdDB", 138, 176;}
+	InInventory ZenDefenseFlag , 1 {DrawImage "ZTDefDB", 138, 176;}
+	DrawImage "HORICONR", 138, 168;
+	InInventory AuraFlag_heal, 1 {DrawImage "ZTHPB", 130, 176;}
+	InInventory AuraFlag_power, 1 {DrawImage "ZTStrB", 130, 176;}
+	InInventory AuraFlag_haste, 1 {DrawImage "ZTSpdB", 130, 176;}
+	DrawImage "HORICON1", 130, 168;
 	}
 
 IsSelected GeeBurstBoss1

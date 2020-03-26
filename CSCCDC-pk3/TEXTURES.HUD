@@ -168,6 +168,9 @@ Graphic "ZENBF04",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF04",0,0}
 Graphic "ZENBF05",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF05",0,0}
 Graphic "ZENBF06",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF06",0,0}
 Graphic "ZENBF07",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF07",0,0}
+Graphic "ZENBF08",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF08",0,0}
+Graphic "ZENBF09",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF09",0,0}
+Graphic "ZENBF10",32,32 {XScale 1.5 YScale 1.5 Patch "ZTBF10",0,0}
 
 
 //Pistonman

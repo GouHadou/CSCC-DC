@@ -389,6 +389,9 @@ graphic ClouIcon,30,30{XScale 2.0 YScale 2.0 Patch ZNITA0,0,0}
 graphic ZTStrDB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBA0,0,0}
 graphic ZTDefDB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBB0,0,0}
 graphic ZTSpdDB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBC0,0,0}
+graphic ZTHPB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBD0,0,0}
+graphic ZTStrB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBE0,0,0}
+graphic ZTSpdB,30,30{XScale 2.0 YScale 2.0 Patch ZTDBF0,0,0}
 
 //Gizmo
 Graphic "ETERNI", 30, 30{XScale 2.0 YScale 2.0 Patch "ETERN0", 0, 0}

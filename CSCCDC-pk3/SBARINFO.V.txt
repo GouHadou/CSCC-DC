@@ -263,6 +263,9 @@ InInventory Zen_Power150, 1 {Drawimage"ZENBF00",290,30;}
 InInventory Zen_Power200, 1 {Drawimage"ZENBF01",290,30;}
 InInventory Zen_Haste110, 1 {Drawimage"ZENBF06",290,52;}
 InInventory Zen_Haste125, 1 {Drawimage"ZENBF07",290,52;}
+InInventory Zen_DefenseDebuff, 1 {Drawimage"ZENBF08",265,8;}
+InInventory Zen_PowerDebuff, 1 {Drawimage"ZENBF09",265,30;}
+InInventory Zen_SlowDebuff, 1 {Drawimage"ZENBF10",265,52;}
 
 IsSelected ZenTrainerWep{
 	InInventory ZenTrainerAmmo1, 140 {
@@ -270,9 +273,14 @@ IsSelected ZenTrainerWep{
 		InInventory AuraFlag_power, 1 {Drawbar"BZNTRA02","BAREMPTY",Ammo2,vertical,16,8;}
 		InInventory AuraFlag_haste, 1 {Drawbar"BZNTRA04","BAREMPTY",Ammo2,vertical,16,8;}
 	}else{ Drawbar"BARAMM65","BAREMPTY",Ammo2,vertical,16,8;}
-	InInventory ZenPowerFlag , 1 {DrawImage "ZTStrDB", 32, 56; DrawImage "VERICON1", 40, 56;}
-	InInventory ZenSpeedFlag , 1 {DrawImage "ZTSpdDB", 32, 56; DrawImage "VERICON1", 40, 56;}
-	InInventory ZenDefenseFlag , 1 {DrawImage "ZTDefDB", 32, 56; DrawImage "VERICON1", 40, 56;}
+	InInventory ZenPowerFlag , 1 {DrawImage "ZTStrDB", 32, 48;}
+	InInventory ZenSpeedFlag , 1 {DrawImage "ZTSpdDB", 32, 48;}
+	InInventory ZenDefenseFlag , 1 {DrawImage "ZTDefDB", 32, 48;}
+	DrawImage "VERICONR", 40, 48;
+	InInventory AuraFlag_heal, 1 {DrawImage "ZTHPB", 32, 56;}
+	InInventory AuraFlag_power, 1 {DrawImage "ZTStrB", 32, 56;}
+	InInventory AuraFlag_haste, 1 {DrawImage "ZTSpdB", 32, 56;}
+	DrawImage "VERICON1", 40, 56;
 	}
 
 //Gee
