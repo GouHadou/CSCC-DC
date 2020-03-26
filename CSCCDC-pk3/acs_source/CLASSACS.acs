@@ -702,7 +702,7 @@ Switch(Version)
 	Case 0:
 	SetPlayerProperty(0, 1, PROP_BUDDHA);
 	SetInventory("TankHPAmmo",PlayerHP);
-	SetActorProperty(0,APROP_SPAWNHEALTH,200);
+	SetActorProperty(0,APROP_SPAWNHEALTH,GetAmmoCapacity("TankRepairAmmo"));
 	SetActorProperty(0,APROP_HEALTH,PlayerResource);
 	Break;
 	Case 1:

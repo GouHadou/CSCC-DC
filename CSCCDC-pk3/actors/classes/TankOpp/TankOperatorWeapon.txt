@@ -2,7 +2,7 @@ actor BulkTankActivatorPickup : TankActivatorPickup
 {
 States{Use:
 TNT1 A 0
-TNT1 A 0 A_JumpIfInventory("TankRepairAmmo",150,"Check2")
+TNT1 A 0 A_JumpIfInventory("TankRepairAmmo",75,"Check2")
 fail
 Check2:
 TNT1 A 0 A_CheckFloor("Yes")
@@ -216,7 +216,7 @@ goto Ready2
 }
 
 actor TankRepairAmmo : Ammo {
-inventory.maxamount 200
+inventory.maxamount 150
 inventory.amount 1
 +INVENTORY.IGNORESKILL}
 

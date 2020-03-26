@@ -224,7 +224,7 @@ IsSelected ClassicTankWeapon {
 	InInventory not Tank_NotOnFoot, 1
 		{
 		DrawImage "TNKRLOAD", 138, 176; DrawImage "HORICONR", 138, 168;
-		InInventory TankRepairAmmo, 150{DrawBar"VARFLS1","VNOBAR",TankRepairAmmo,horizontal,58,176;}
+		InInventory TankRepairAmmo, 75{DrawBar"VARFLS1","VNOBAR",TankRepairAmmo,horizontal,58,176;}
 		}
 	InInventory Tank_NotOnFoot, 1
 		{
