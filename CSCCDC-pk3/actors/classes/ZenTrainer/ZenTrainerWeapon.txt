@@ -372,7 +372,7 @@ Radius 12
 Height 12
 scale 2.5
 speed 55
-Damage (10)
+Damage (0)
 +HITTRACER
 +BOUNCEONWALLS
 +BOUNCEONFLOORS
@@ -420,17 +420,19 @@ FlagCheck:
 TNT1 A 0 A_JumpIfInTargetInventory("ZenPowerFlag", 1, "ApplyWeak")
 TNT1 A 0 A_JumpIfInTargetInventory("ZenSpeedFlag", 1, "ApplySlow")
 TNT1 A 0 A_JumpIfInTargetInventory("ZenDefenseFlag", 1, "ApplyArmorBreak")
-stop
+Goto ApplyDamage
 ApplyWeak:
 TNT1 A 0 A_GiveInventory("ZenGiveWeak", 1, AAPTR_TRACER)
-stop
+Goto ApplyDamage
 ApplySlow:
 TNT1 A 0 A_GiveInventory("ZenGiveSlow", 1, AAPTR_TRACER)
-stop
+Goto ApplyDamage
 ApplyArmorBreak:
 TNT1 A 0 A_GiveInventory("ZenGiveArmorBreak", 1, AAPTR_TRACER)
+Goto ApplyDamage
+ApplyDamage:
+TNT1 A 0 A_Explode(10,64,0,0,42)
 stop
-
 StopNow:
 BLKH BCDEBCDEBCDEBCDE 1 A_Stop
 StopLoop:
