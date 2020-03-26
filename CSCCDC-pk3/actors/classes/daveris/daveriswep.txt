@@ -23,7 +23,7 @@ BLUH A 1 A_WeaponReady(WRF_NOSWITCH)
 BLUH A 0 A_GiveInventory("PulseAmmo", 3)
 GoTo Ready+2
 RidFlagReady:
-BLUH C 0 A_SetGravity(0.7)
+BLUH C 0 A_GiveInventory("DaverisNormalGravity", 1)//A_SetGravity(0.7)
 BLUH A 0 A_TakeInventory("DavHoverFlag", 1)
 GoTo Ready+2
 Deselect:
@@ -52,7 +52,7 @@ BLUH C 0 A_ReFire
 GoTo Ready+2
 Altfire:
 BLUH A 0 A_JumpIfInventory("FrozenFlag", 1, "FreezeFire")
-BLUH A 1 A_JumpIfInventory("FlurryAmmo",36,"Freeze")
+BLUH A 1 A_JumpIfInventory("FlurryAmmo",42,"Freeze")
 BLUH A 0 A_GiveInventory("PulseAmmo", 3)
 Goto Ready+2
 Freeze:
@@ -61,7 +61,7 @@ BLUH C 0 A_GiveInventory("PowerBlue", 1)
 BLUH C 0 A_GiveInventory("FrozenFlag", 1)
 BLUH C 0 A_PlaySoundEx("weapon/ifreeze","Weapon")
 BLUH C 0 ACS_NamedExecuteAlways("CSACS_DavColorChange",0)
-BLUH C 0 A_TakeInventory("FlurryAmmo",36)
+BLUH C 0 A_TakeInventory("FlurryAmmo",42)
 BLUH C 0 A_JumpIf(z-floorz > 75, "IceCrash")
 BLUH C 0 SetPlayerProperty(0,1,0)
 BLUH M 5
@@ -91,7 +91,7 @@ DiveDone:
 BLUH C 0 A_PlaySoundEx("weapon/napalm","Weapon")
 BLUH C 0 A_Stop
 BLUH C 0 A_ChangeFlag("SHOOTABLE",1)
-BLUH C 0 A_SetGravity(0.7)
+BLUH C 0 A_GiveInventory("DaverisNormalGravity", 1) //A_SetGravity(0.7)
 BLUH C 0 ACS_ExecuteAlways(991,0,0)
 BLUH C 0 A_SpawnItemEx("IceExplodeLand")
 BLUH C 0 A_TakeInventory("PowerBlue", 1)
@@ -384,7 +384,7 @@ actor Flurry : BasicProjectile
 PROJECTILE
 scale 0.75
 Obituary "$OB_FLURRY"
-Speed 22
+Speed 44
 damagetype "FrozenMortar"
 Radius 6
 Height 6
@@ -394,10 +394,7 @@ Alpha 1.0
 States
 {
 Spawn:
-ICEC A 4 
-ICEC B 4 //A_FadeOut(0.25)
-ICEC C 4 //A_FadeOut(0.25)
-ICEC D 4 //A_FadeOut(0.25)
+ICEC ABCD 2
 stop
 }
 }
@@ -410,6 +407,7 @@ actor FlurryY : Flurry {translation "69:69=229:229"}
 actor ShortFlurry : Flurry
 {
 damage (3)
+Speed 22
 States
 {
 Spawn:
@@ -443,9 +441,10 @@ TNT1 A 0 A_GiveInventory("DavHoverFlag", 1)
 fail
 Off:
 TNT1 A 0 A_PlaySoundEx("item/wingfly","Weapon")
-TNT1 A 0 A_SetGravity(0.7)
+TNT1 A 0 A_GiveInventory("DaverisNormalGravity", 1) //A_SetGravity(0.7)
 TNT1 A 0 A_TakeInventory("DavHoverFlag", 1)
 fail
+
 Nope:
 TNT1 A 0 
 fail
@@ -759,8 +758,21 @@ actor FlurryAmmo : Ammo
 {
 +INVENTORY.IGNORESKILL
 inventory.amount 1
-inventory.maxamount 36
+inventory.maxamount 42
 }
 
 
-
+actor DaverisNormalGravity : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("IsUnderWater", 1, "OffUnderWater")
+TNT1 A 0 A_SetGravity(0.7)
+fail
+OffUnderWater:
+TNT1 A 0 A_TakeInventory("IsUnderWater", 1)
+TNT1 A 0 A_GiveInventory("LowGravity", 1)
+fail
+}
+}
