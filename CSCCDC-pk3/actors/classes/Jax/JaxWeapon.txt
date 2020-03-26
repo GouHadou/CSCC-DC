@@ -263,11 +263,11 @@ WALLBOUNCEFACTOR 1.0
 BOUNCEFACTOR 1.0
 
 mass 9999
-+SHOOTABLE
+//+SHOOTABLE
 -NOBLOCKMAP
 +NOBLOOD
 //Health 1000
-Health 500
+Health 400
 +NOTARGETSWITCH
 PainChance 256
 
@@ -286,14 +286,16 @@ States
 {
 Spawn:
 WCPJ M 0
+Spawn1:
 WCPJ M 0 A_GiveInventory("ProjectileCode",1)
-WCPJ M 0 ACS_NamedExecuteAlways("PlayerSpeciesSynch",0)
+//WCPJ M 0 ACS_NamedExecuteAlways("PlayerSpeciesSynch",0)
+WCPJ M 0 ACS_NamedExecuteWithResult("PlayerSpeciesSynch")
+WCPJ M 0 A_ChangeFlag("SHOOTABLE",1)
 Spawn2:
 //TBOL NNMM 1 A_GiveInventory("PsychoMineFunc")
 WCPJ MMNNOONN 1 A_GiveInventory("PsychoMineFunc")
 loop
 Pain:
-WCPJ M 0 A_GiveInventory("ProjectileDCode",1)
 TBOL N 0 A_PlaySound("item/protoreflect")
 goto Spawn2
 }
@@ -306,8 +308,10 @@ states
 Pickup:
 TNT1 A 0 A_GiveInventory("CutterFlag",1)
 TNT1 A 0 A_JumpIfInventory("CutterFlag",210,"TimeOut")
-TNT1 A 0 A_JumpIfInventory("MineFlung",1,"Pickup3")
-TNT1 A 0 A_JumpIfInTargetInventory("JaxFlinging",1,"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("PsychoMineLaunch", AAPTR_DEFAULT, true),"PickupNo")
+TNT1 A 0 A_JumpIfInventory("MineFlung",1,"PickupNo")
+TNT1 A 0 A_GiveInventory("PsychoMineFlingCheck",1)
+//TNT1 A 0 A_JumpIfInTargetInventory("JaxFlinging",1,"Pickup2")
 TNT1 A 0 A_ScaleVelocity(0.75)
 //TNT1 A 0 A_CountDown
 stop
@@ -317,13 +321,40 @@ TNT1 A 0 ACS_ExecuteWithResult(259,1)
 REMI B 0 A_ChangeVelocity(cos(pitch)*30, 0, -sin(pitch)*30,CVF_RELATIVE)
 TNT1 A 0 A_GiveInventory("MineFlung",1)
 stop
-Pickup3:
+PickupNo:
 TNT1 A 0
 stop
 TimeOut:
 TNT1 A 0 A_CountDown
 stop
 }
+}
+
+actor PsychoMineFlingCheck : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIfInventory("JaxFlinging",1,"PickupNo")
+TNT1 A 0 A_JumpIfInTargetInventory("JaxFlinging",1,"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 ACS_ExecuteWithResult(259,1)
+TNT1 A 0 A_GiveInventory("CutterFlag",70)
+TNT1 A 0 A_CustomMissile("PsychoMineLaunch",0,0,0,CMF_AIMDIRECTION,-pitch)
+TNT1 A 0 A_GiveInventory("JaxFlinging",1)
+stop
+PickupNo:
+TNT1 A 0
+stop
+}
+}
+
+actor PsychoMineLaunch : PsychoMine
+{
+Health 200
+-DOOMBOUNCE
+Speed 30
 }
 
 actor MineFlung : Inventory
