@@ -1,0 +1,57 @@
+#library "VIS"
+#include "zcommon.acs"
+
+#DEFINE MAX_PLAYERS 64
+#DEFINE TEAM_NONE -1
+#DEFINE TEAM_COOP -2
+
+Script "Invisuals" OPEN CLIENTSIDE
+{
+int conP = ConsolePlayerNumber();
+while(true) {
+	InvisualsFunc(conP);
+	delay(1);
+}
+}
+
+function void InvisualsFunc(int conP) {
+	int team;
+	int camera = CheckPlayerCamera(conP);
+	if(camera>=1000&&camera<(1000+MAX_PLAYERS)) team = getPlayerTeam(camera-1000);
+	else team = getPlayerTeam(conP);
+	if(team==TEAM_COOP) GiveAllPlayers("VisualFunc",1);
+	else if(team!=TEAM_NONE) GiveAllyPlayers(team,"VisualFunc",1);
+}
+
+function int getPlayerTeam(int p)
+{
+if (GetCVar("teamplay")==1||GetCVar("teamlms")==1||GetCVar("teampossession")==1
+||GetCVar("teamgame")==1){
+	Return GetPlayerInfo(p,PLAYERINFO_TEAM);
+} else if (GetCVar("cooperative")==1) {
+	Return TEAM_COOP;
+}
+Return TEAM_NONE;
+}
+
+function void GiveAllPlayers(str item, int amount)
+{
+for(int i=0;i<MAX_PLAYERS;i++) GiveActorInventory(1000+i,item,amount);
+}
+
+function void GiveAllyPlayers(int team, str item, int amount)
+{
+for(int i=0;i<MAX_PLAYERS;i++) if(team==GetPlayerInfo(i, PLAYERINFO_TEAM)) GiveActorInventory(1000+i,item,amount);
+}
+
+Script "GetTargetAlphaPercent" (void) CLIENTSIDE
+{
+SetActivatorToTarget(0);
+SetResultValue((100*GetActorProperty(0,APROP_Alpha))>>16);
+}
+
+Script "GetTargetHealth" (void) CLIENTSIDE
+{
+SetActivatorToTarget(0);
+SetResultValue(GetActorProperty(0,APROP_Health));
+}

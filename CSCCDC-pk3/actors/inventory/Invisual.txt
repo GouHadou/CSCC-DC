@@ -1,0 +1,173 @@
+actor VisualFunc : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("VisualFunc2")
+stop
+}
+}
+
+actor VisualFunc2
+{
+Height 0
+Radius 0
++NOINTERACTION
++NOCLIP
+PROJECTILE
++CLIENTSIDEONLY
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealth")>0,"Spawn2")
+TNT1 A 1
+stop
+Spawn2:
+TNT1 A 0 A_JumpIfInTargetInventory("UnixDisguiseFlag",1,"SpawnUnixDisguise")
+TNT1 A 0 A_JumpIfInTargetInventory("UnixCloakFlag",1,"SpawnUnix")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetAlphaPercent")<10,"SpawnGeneric")
+TNT1 A 1
+stop
+// Unix
+SpawnUnix:
+TNT1 A 1 A_GiveToTarget("SpawnUnixVisual",1)
+stop
+SpawnUnixDisguise:
+LEHU D 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"UnixLight")
+LEHU D 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"UnixWily")
+LEHU D 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"UnixCossack")
+LEHU D 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"UnixKing")
+goto SpawnUnix
+UnixLight:
+TNT1 A 1 A_GiveToTarget("SpawnUnixVisualLight",1)
+stop
+UnixWily:
+TNT1 A 1 A_GiveToTarget("SpawnUnixVisualWily",1)
+stop
+UnixCossack:
+TNT1 A 1 A_GiveToTarget("SpawnUnixVisualCossack",1)
+stop
+UnixKing:
+TNT1 A 1 A_GiveToTarget("SpawnUnixVisualKing",1)
+stop
+SpawnGeneric:
+TNT1 A 1 A_GiveToTarget("SpawnGenericVisual", 1)
+stop
+//Generic
+}
+}
+
+
+actor SpawnUnixVisual : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("UnixVisual", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION/*|SXF_CLIENTSIDE*/, 0)
+stop
+}
+}
+
+actor BaseVisual 
+{
+scale 2.5
+-SOLID
++NOGRAVITY
++NOINTERACTION
+RenderStyle "Translucent"
+Alpha 0.6
++CLIENTSIDEONLY
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+}
+}
+
+//Unix
+actor UnixVisual : BaseVisual
+{
+states
+{
+Spawn:
+BIKD N 0
+BIKD N 1
+stop
+}
+}
+
+
+actor SpawnUnixVisualLight : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("UnixVisualLight", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_CLIENTSIDE*/, 0)
+stop
+}
+}
+
+actor SpawnUnixVisualWily : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("UnixVisualWily", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_CLIENTSIDE*/, 0)
+stop
+}
+}
+
+actor SpawnUnixVisualCossack : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("UnixVisualCossack", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_CLIENTSIDE*/, 0)
+stop
+}
+}
+
+actor SpawnUnixVisualKing : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("UnixVisualKing", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM/*|SXF_CLIENTSIDE*/, 0)
+stop
+}
+}
+
+actor UnixVisualLight : UnixVisual { Translation "192:192=205:205", "198:198=74:74" }
+
+actor UnixVisualWily : UnixVisual { Translation "192:192=171:171", "198:198=41:41" }
+
+actor UnixVisualCossack : UnixVisual { Translation "192:192=104:104", "98:198=128:128" }
+
+actor UnixVisualKing : UnixVisual { Translation "192:192=229:229", "198:198=232:232" }
+
+
+//Generic
+
+actor SpawnGenericVisual : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("GenericVisual", 0, 0, 60, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION/*|SXF_CLIENTSIDE*/, 0)
+stop
+}
+}
+
+actor GenericVisual : BaseVisual
+{
+states
+{
+Spawn:
+GVIS A 0
+GVIS A 1
+stop
+}
+}

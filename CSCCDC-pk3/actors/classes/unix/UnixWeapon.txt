@@ -60,8 +60,6 @@ Goto Ready2
 Flash:
 TNT1 A 1
 TNT1 A 0 A_GiveInventory("UnixCloakFunc",1)
-//TNT1 A 0 A_SpawnItemEX("UnixTeamVisualGiver")
-TNT1 A 0 A_GiveInventory("UnixTeamVisual",1)
 loop
 NoFlash:
 TNT1 A 0
