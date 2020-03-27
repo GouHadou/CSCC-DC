@@ -2317,3 +2317,12 @@ while(Counter<PistonTimer)
 	}
 TakeInventory("PistonStale",999);
 }
+
+script "CSACS_CFlashCheck" (void)
+{
+int Result = 0;
+SetActivatorToTarget(0);
+if(CheckActorClass(0,"MegamanC")&&CheckWeapon("CentaurFlashWepCS")&&GetActorProperty(0,APROP_Alpha)<1.0){Result = 1;}
+if(CheckActorClass(0,"CopyRobot")&&CheckWeapon("CentaurFlashWepCS")&&GetActorProperty(0,APROP_Alpha)<1.0){Result = 2;}
+SetResultValue(Result);
+}
