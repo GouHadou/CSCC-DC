@@ -479,3 +479,70 @@ Script "CSACS_BlindFade" (int Power, int Dur, int Toggle) CLIENTSIDE
 	CancelFade();
 	FadeRange(RC,BC,GC,((1.0)*Power)/100,RC,BC,GC,0.0,((1.0)*Dur)/100);
 }
+
+int JumpAng;
+int TotalAngles;
+
+Script "CSCACS_WallJumpEnter" ENTER
+{
+int Buttons;
+int OlDButtons;
+While(GetActorProperty(0,APROP_Health) > 0)
+	{
+	Buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+	if(CheckInventory("CanWallJump")) 
+		{
+		if(CheckInventory("JumpCancler")==0 && CSCCButtonCheck(Buttons, OldButtons, BT_JUMP)==1) 
+			{
+			GiveInventory("WallJumping",1);
+			Delay(10);
+			}
+		}
+	OldButtons=Buttons;
+	delay(1);
+	}
+}
+
+Script "CSCACS_WallJumpRespawn" RESPAWN
+{
+ACS_NamedExecuteAlways("CSCACS_WallJumpEnter", 0);
+}
+
+script "CSACS_WallJump" (int Force, int BonusJump)
+{
+	int Thrust = CheckInventory("WallJumpThrust");
+	If(Thrust != 0){Force = Thrust;}
+	JumpAng= 0;
+	TotalAngles = 0;
+	if (CheckInventory("WallN") && !CheckInventory("WallS"))
+		{
+		JumpAng+=0.5;
+		TotalAngles++;
+		}
+	if (CheckInventory("WallE") && !CheckInventory("WallW")) 
+		{
+		TotalAngles++;
+		JumpAng+=0.25;
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng-=0.125;}
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng+=0.125;}
+		}
+	if (CheckInventory("WallW") && !CheckInventory("WallE")) 
+		{
+		JumpAng+=0.75;
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng+=0.125;}
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng-=0.125;}
+		TotalAngles++;
+		}
+	if (CheckInventory("WallS") && !CheckInventory("WallN"))
+		{
+		If(JumpAng > 0.5){JumpAng+=1.0;}
+		TotalAngles++;
+		}
+	If(TotalAngles>0)
+	{
+	JumpAng=(GetActorAngle(ActivatorTID())+(JumpAng/TotalAngles))<<8;
+	//printbold(f:jumpang);
+	ThrustThing((JumpAng)>>16, Force, 1);
+	ThrustThingZ(0,(GetActorProperty(0,APROP_JumpZ) >> 16) * 4 + BonusJump,0,0);
+	}
+}
