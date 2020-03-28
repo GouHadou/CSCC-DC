@@ -483,29 +483,36 @@ Script "CSACS_BlindFade" (int Power, int Dur, int Toggle) CLIENTSIDE
 int JumpAng;
 int TotalAngles;
 
-Script "CSCACS_WallJumpEnter" ENTER
+Script "CSCACS_WallJump" (void)
 {
+Delay(2);
 int Buttons;
 int OlDButtons;
-While(GetActorProperty(0,APROP_Health) > 0)
+int WallJumpLimit = CheckInventory("WallJumpLimit");
+If(WallJumpLimit == 0){SetInventory("WallJumpLimit", 10); WallJumpLimit = 10;}
+While(GetActorProperty(0,APROP_Health) > 0 && CheckInventory("CanWallJumpFlag"))
 	{
 	Buttons = GetPlayerInput(-1, INPUT_BUTTONS);
-	if(CheckInventory("CanWallJump")) 
+	if(CheckInventory("JumpCancler")==0 && CSCCButtonCheck(Buttons, OldButtons, BT_JUMP)==1) 
 		{
-		if(CheckInventory("JumpCancler")==0 && CSCCButtonCheck(Buttons, OldButtons, BT_JUMP)==1) 
+		If(WallJumpLimit > 0)
 			{
 			GiveInventory("WallJumping",1);
-			Delay(10);
+			Delay(1);
+			If(CheckInventory("WallJumped"))
+				{
+				WallJumpLimit--;
+				TakeInventory("WallJumped", 1);
+				}
+			print(i:WallJumpLimit);
 			}
+		Delay(10);
 		}
+
+	If(CheckInventory("JumpCancler") && GetActorVelZ(0) == 0.0){WallJumpLimit = CheckInventory("WallJumpLimit");}
 	OldButtons=Buttons;
 	delay(1);
 	}
-}
-
-Script "CSCACS_WallJumpRespawn" RESPAWN
-{
-ACS_NamedExecuteAlways("CSCACS_WallJumpEnter", 0);
 }
 
 script "CSACS_WallJump" (int Force, int BonusJump)
