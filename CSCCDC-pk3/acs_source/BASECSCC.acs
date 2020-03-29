@@ -504,7 +504,6 @@ While(GetActorProperty(0,APROP_Health) > 0 && CheckInventory("CanWallJumpFlag"))
 				WallJumpLimit--;
 				TakeInventory("WallJumped", 1);
 				}
-			print(i:WallJumpLimit);
 			}
 		Delay(10);
 		}
