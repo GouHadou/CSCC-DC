@@ -14,11 +14,11 @@ Ready:
 CMMW A 0 ACS_ExecuteAlways(998,0,DYE_CUTMANMIKE)
 Ready2:
 CMMW A 0 A_JumpIfNoAmmo("Ready2NoAmmo")
-CMMW A 6 A_WeaponReady
+CMMW A 2 A_WeaponReady
 CMMW A 0 A_GiveInventory("HellfireAmmo",1)
 Goto Ready2
 Ready2NoAmmo:
-CMMW A 6 A_WeaponReady(WRF_NOSECONDARY)
+CMMW A 5 A_WeaponReady(WRF_NOSECONDARY)
 CMMW A 0 A_GiveInventory("HellfireAmmo",1)
 CMMW A 0 A_JumpIfInventory("HellfireAmmo",28,"Ready2")
 Goto Ready2NoAmmo
@@ -31,12 +31,12 @@ TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
 CMMW A 1 A_Raise
 Loop
 Fire:
-CMMW JIKLM 2
+CMMW LM 2
 CMMW M 0 A_PlaySoundEx("weapon/firestorm","weapon")
 CMMW M 0 A_GiveInventory("CMMMainfire",1)
 CMMW LM 2
 CMMW A 0 A_GiveInventory("HellfireAmmo",1)
-CMMW LKIJ 2
+CMMW LKIJ 3
 Goto Ready2
 Altfire:
 CMMW A 0 A_JumpIfNoAmmo("NoAmmo")
@@ -45,7 +45,7 @@ CMMW BCDEFG 2
 Goto Check
 Check:
 TNT1 A 1 A_GiveInventory("CutterFlag",1)
-TNT1 A 0 A_JumpIfInventory("CutterFlag",300,"Return")
+TNT1 A 0 A_JumpIfInventory("CutterFlag",27,"Return") //can fire after a delay, or on return
 TNT1 A 0 A_JumpIfInventory("HellfireCutterFlag",1,"Return")
 Goto Check
 Return:
@@ -78,7 +78,7 @@ inventory.maxamount 28
 
 actor HellfireCutter : BasicProjectile
 {
-Translation "208:224=179:179"
+Translation "208:224=179:179", "202:202=210:210", "199:199=42:42", "192:192=220:220", "198:198=46:46"
 Obituary "$OB_MIKECUTTER"
 Radius 8
 Height 8
@@ -101,16 +101,37 @@ Spawn:
 RCUT A 0
 RCUT A 0 A_PlaySound("weapon/rollingcutter")
 RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",300,"Death")
-RCUT AAAA 1 A_SpawnItemEx("HellfireDamager1",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT AA 1 A_SpawnItemEx("HellfireDamager1",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT AA 1 A_SpawnItemEx("HellfireDamager1",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT BBBB 1 A_SpawnItemEx("HellfireDamager2",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
-RCUT CCCC 1 A_SpawnItemEx("HellfireDamager3",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
-RCUT DDDD 1 A_SpawnItemEx("HellfireDamager4",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT BB 1 A_SpawnItemEx("HellfireDamager2",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT CC 1 A_SpawnItemEx("HellfireDamager3",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT CC 1 A_SpawnItemEx("HellfireDamager3",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT DD 1 A_SpawnItemEx("HellfireDamager4",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT DD 1 A_SpawnItemEx("HellfireDamager4",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
 RCUT A 0 A_PlaySound("weapon/rollingcutter")
 RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",300,"Death")
-RCUT AAAA 1 A_SpawnItemEx("HellfireDamager1",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT AA 1 A_SpawnItemEx("HellfireDamager1",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT AA 1 A_SpawnItemEx("HellfireDamager1",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT BBBB 1 A_SpawnItemEx("HellfireDamager2",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
-RCUT CCCC 1 A_SpawnItemEx("HellfireDamager3",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
-RCUT DDDD 1 A_SpawnItemEx("HellfireDamager4",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT BB 1 A_SpawnItemEx("HellfireDamager2",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT CC 1 A_SpawnItemEx("HellfireDamager3",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT CC 1 A_SpawnItemEx("HellfireDamager3",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT DD 1 A_SpawnItemEx("HellfireDamager4",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT DD 1 A_SpawnItemEx("HellfireDamager4",0,0,5,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
+RCUT A 1 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
 RCUT A 0 A_PlaySound("weapon/rollingcutter")
 RCUT A 0 A_JumpIfInTargetInventory("CutterFlag",300,"Death")
 RCUT A 0 A_JumpIf(CallACS("core_targetexists")==0,"Death")
@@ -126,10 +147,10 @@ RCUT A 0
 stop
 }
 }
-actor HellfireCutterB : HellfireCutter {translation "208:224=74:74"}
-actor HellfireCutterR : HellfireCutter {translation "208:224=41:41"}
-actor HellfireCutterG : HellfireCutter {translation "208:224=128:128"}
-actor HellfireCutterY : HellfireCutter {translation "208:224=232:232"}
+actor HellfireCutterB : HellfireCutter {translation "208:224=74:74", "198:198=74:74", "192:192=205:205", "227:227=244:244", "178:178=75:75"}
+actor HellfireCutterR : HellfireCutter {translation "208:224=41:41", "198:198=41:41", "192:192=171:171", "227:227=191:191", "178:178=43:43"}
+actor HellfireCutterG : HellfireCutter {translation "208:224=128:128", "198:198=128:128", "192:192=104:104", "227:227=135:135", "178:178=131:131"}
+actor HellfireCutterY : HellfireCutter {translation "208:224=232:232", "198:198=232:232", "192:192=229:229", "227:227=234:234", "178:178=223:223"}
 
 actor ReturningHFCutter : HellfireCutter
 {
@@ -147,6 +168,7 @@ RCUT A 0 A_JumpIfCloser(60,"Return")
 RCUT A 0 A_PlaySound("weapon/rollingcutter")
 RCTC AA 0 A_SeekerMissile(90,90,SMF_PRECISE)
 RCUT A 1 A_SpawnItemEx("HellfireDamager1",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT A 0 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
 RCUT A 0 A_JumpIfCloser(60,"Return")
 RCUT A 1 A_SpawnItemEx("HellfireDamager1",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT A 0 A_JumpIfCloser(60,"Return")
@@ -155,6 +177,7 @@ RCUT A 0 A_JumpIfCloser(60,"Return")
 RCUT A 1 A_SpawnItemEx("HellfireDamager1",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCTC BB 0 A_SeekerMissile(90,90,SMF_PRECISE)
 RCUT B 1 A_SpawnItemEx("HellfireDamager2",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT B 0 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
 RCUT B 0 A_JumpIfCloser(60,"Return")
 RCUT B 1 A_SpawnItemEx("HellfireDamager2",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT B 0 A_JumpIfCloser(60,"Return")
@@ -163,12 +186,14 @@ RCUT B 0 A_JumpIfCloser(60,"Return")
 RCUT B 1 A_SpawnItemEx("HellfireDamager2",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCTC CC 0 A_SeekerMissile(90,90,SMF_PRECISE)
 RCUT C 1 A_SpawnItemEx("HellfireDamager3",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT C 0 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
 RCUT C 0 A_JumpIfCloser(60,"Return")
 RCUT C 1 A_SpawnItemEx("HellfireDamager3",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT C 0 A_JumpIfCloser(60,"Return")
 RCUT C 1 A_SpawnItemEx("HellfireDamager3",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT C 0 A_JumpIfCloser(60,"Return")
 RCUT C 1 A_SpawnItemEx("HellfireDamager3",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT C 0 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
 RCTC DD 0 A_SeekerMissile(90,90,SMF_PRECISE)
 RCUT D 1 A_SpawnItemEx("HellfireDamager4",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT D 0 A_JumpIfCloser(60,"Return")
@@ -177,17 +202,21 @@ RCUT D 0 A_JumpIfCloser(60,"Return")
 RCUT D 1 A_SpawnItemEx("HellfireDamager4",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
 RCUT D 0 A_JumpIfCloser(60,"Return")
 RCUT D 1 A_SpawnItemEx("HellfireDamager4",0,0,0,2,0,0,0,SXF_TRANSFERTRANSLATION)
+RCUT D 0 A_SpawnItemEx("FlameDropper", 0,0,0,0,RANDOM(-5, 5), RANDOM(-1, 0),0,SXF_TRANSFERTRANSLATION)
 RCUT D 0 A_JumpIf(CallACS("core_targetexists")==0,"SuperDeath")
 RCUT D 0 A_JumpIfInTargetInventory("CutterFlag",300,"SuperDeath")
 loop
 }
 }
 
+//12 extra damage over 1 second
 actor HellfireDamager1 : BasicProjectile
 {
 Obituary "$OB_MIKECUTTER"
 damagetype "HellfireCutterBurn"
-damage (12)//2
+Translation "192:192=220:220", "198:198=46:46", "192:192=220:220", "198:198=46:46"
++HITTRACER
+damage (6)//2
 radius 20
 height 20
 speed 0
@@ -197,7 +226,32 @@ States
 Spawn:
 RCUT AAAA 1 A_Fadeout(0.05)
 loop
+XDeath:
+RCUT AAAAA 1 A_SpawnItemEx("ProtoFlameDropper", 0,0,0,RANDOM(-15,15),RANDOM(-15, 15), RANDOM(-3, 15),0, SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_JumpIfInventory("OnFireFlag",1,"DoNothing",AAPTR_TRACER)
+DeathExplode:
+TNT1 A 0 A_GiveInventory("OnFireFlag", 1)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"DoNothing")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 14 
+TNT1 AAA 0 A_SpawnItemEx("MagmamanBitFX2",random(4,18),0,random(16,40),frandom(1,4),0,frandom(0,2),random(0,359), SXF_TRANSFERTRANSLATION)
+TNT1 A 0 A_JumpIf(CallACS("core_targetexists",1)==0,"DoNothing")
+TNT1 A 0 A_Warp(AAPTR_TRACER,0,0,28,0,WARPF_COPYINTERPOLATION)
+TNT1 A 14 
+TNT1 AAA 0 A_SpawnItemEx("MagmamanBitFX2",random(4,18),0,random(16,40),frandom(1,4),0,frandom(0,2),random(0,359), SXF_TRANSFERTRANSLATION)
+Death:
+TNT1 A 0 
+stop
+DoNothing:
+TNT1 A 0 
+stop
 }
+}
+
+actor OnFireFlag : Inventory
+{
+inventory.amount 0 
+inventory.maxamount 1
 }
 
 actor HellfireDamager2 : HellfireDamager1
@@ -230,6 +284,128 @@ loop
 }
 }
 
+
+//spawns ground fires under cutter
+actor FlameDropper : BasicProjectile
+{
+damagetype "MikesGroundFire"
+Obituary "$OB_MIKESGROUNDFIRE"
+-NOGRAVITY
+Speed 0
+Radius 2
+height 2
+Damage (3)
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 10
+stop
+Death:
+TNT1 A 0 A_SpawnItemEx("MikesGroundFire",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+XDeath:
+TNT1 A 0 
+stop
+}
+}
+
+//no damage version for cutter hits
+actor ProtoFlameDropper : FlameDropper
+{
++RIPPER
+Damage 0
+States
+{
+Spawn:
+CMMF ABAB 3
+CMMF A 0 A_SpawnItemEx("FlameDropper2", 0,0,0,RANDOM(-15,15),RANDOM(-15, 15), RANDOM(-3, 15),0,SXF_TRANSFERTRANSLATION)
+stop
+Death:
+TNT1 A 0 
+stop
+}
+}
+
+//used for cutter hit
+actor FlameDropper2 : FlameDropper
+{
+States
+{
+Spawn:
+CMMF ABABABABABABABABABAB 2
+stop
+Death:
+TNT1 A 0 A_SpawnItemEx("MikesGroundFire2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+stop
+XDeath:
+TNT1 A 0 
+stop
+}
+}
+
+
+actor MikesGroundFire : BasicProjectile
+{
+Translation "202:202=210:210","199:199=42:42"
+damagetype "MikesGroundFire"
+Obituary "$OB_MIKESGROUNDFIRE"
++FLOORHUGGER
+Speed 0
+Radius 3
+height 6
+Damage (10)
+scale 1.7
+ReactionTime 6
+States
+{
+Spawn:
+CMMF CDEF 2
+CMMF F 0 A_CountDown
+loop
+Death:
+TNT1 A 0 
+stop
+}
+}
+
+actor MikesGroundFire2 : MikesGroundFire
+{
+Radius 4
+height 8
+scale 2.5
+ReactionTime 12
+}
+
+//used for fire dot 
+actor MagmamanBitFX : BasicClientSide
+{
+Translation "192:192=220:220", "198:198=46:46"
+alpha 0.75
+scale 0.5
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Jump(256,1,3,5,7)
+MAGX R 1 ThrustThingZ(0,random(1,3),0,1)
+MAGX R 1 A_FadeOut(0.05)
+MAGX S 1 ThrustThingZ(0,random(1,3),0,1)
+MAGX S 1 A_FadeOut(0.05)
+MAGX T 1 ThrustThingZ(0,random(1,3),0,1)
+MAGX T 1 A_FadeOut(0.05)
+MAGX U 1 ThrustThingZ(0,random(1,3),0,1)
+MAGX U 1 A_FadeOut(0.05)
+goto Spawn+2
+}
+}
+
+actor MagmamanBitFX2 : MagmamanBitFX
+{
+Translation "192:192=220:220", "198:198=46:46"
+alpha 0.875
+Scale 1.0
+}
 
 actor 8BHexenFireStorm : BasicFastProjectile
 {

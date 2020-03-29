@@ -23,8 +23,9 @@ TAG_UNIXKNIFE = "Eternal Torment";
 TAG_UNIXSAPPER = "Sapper";
 
 //===|CutmanMike
-OB_MIKECUTTER = "%o had %p soul sliced by %k's Hellfire Cutter.";
+OB_MIKECUTTER = "%o's soul was torched by %k's hellfire cutter";
 OB_MIKEFLAME = "%o was brutally roasted by %k's Firestorm.";
+OB_MIKESGROUNDFIRE = "%o's flesh was consumed by %k's hellfire";
 
 TAG_MIKECUTTER = "Hellfire Cutter";
 
