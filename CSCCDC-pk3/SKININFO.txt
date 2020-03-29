@@ -301,7 +301,7 @@ gender = male
 
 {
 name = "YangDisguise"
-sprite = NIRO
+sprite = YNGS
 class = Unix
 dsnoway = LAND
 dsoof = LAND
