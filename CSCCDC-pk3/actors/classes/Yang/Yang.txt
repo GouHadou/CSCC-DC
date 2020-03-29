@@ -13,26 +13,26 @@ player.startitem "YangClassItems"
 States
 {
 Spawn:
-NIRO A 0
-NIRO BA 1
+YNGS A 0
+YNGS BA 1
 Goto Spawn+2
 See:
-NIRO BCDE 5 
+YNGS BCDE 5 
 Goto Spawn
 Missile:
-NIRO F 5 
-NIRO G 4
+YNGS F 5 
+YNGS G 4
 goto Spawn
 ClassPain:
-NIRO H 0
-NIRO H 0 A_GiveInventory("AuraWait", 1)
-NIRO H 0 A_JumpIfInventory("GravityHoldPainPower",1,"GravityHoldWait")
-NIRO H 0 A_JumpIfInventory("WilyIcePainPower",1,"WilyIceWait")
-NIRO H 0 A_Pain
-NIRO H 1 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
-NIRO H 1 A_Recoil(1)
-NIRO HHHHHHHHH 2 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
-NIRO H 1
+YNGS H 0
+YNGS H 0 A_GiveInventory("AuraWait", 1)
+YNGS H 0 A_JumpIfInventory("GravityHoldPainPower",1,"GravityHoldWait")
+YNGS H 0 A_JumpIfInventory("WilyIcePainPower",1,"WilyIceWait")
+YNGS H 0 A_Pain
+YNGS H 1 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+YNGS H 1 A_Recoil(1)
+YNGS HHHHHHHHH 2 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+YNGS H 1
 goto SuperSpawn
 }
 }
