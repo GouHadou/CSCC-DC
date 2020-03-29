@@ -479,3 +479,76 @@ Script "CSACS_BlindFade" (int Power, int Dur, int Toggle) CLIENTSIDE
 	CancelFade();
 	FadeRange(RC,BC,GC,((1.0)*Power)/100,RC,BC,GC,0.0,((1.0)*Dur)/100);
 }
+
+int JumpAng;
+int TotalAngles;
+
+Script "CSCACS_WallJump" (void)
+{
+Delay(2);
+int Buttons;
+int OlDButtons;
+int WallJumpLimit = CheckInventory("WallJumpLimit");
+If(WallJumpLimit == 0){SetInventory("WallJumpLimit", 10); WallJumpLimit = 10;}
+While(GetActorProperty(0,APROP_Health) > 0 && CheckInventory("CanWallJumpFlag"))
+	{
+	Buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+	if(CheckInventory("JumpCancler")==0 && CSCCButtonCheck(Buttons, OldButtons, BT_JUMP)==1) 
+		{
+		If(WallJumpLimit > 0)
+			{
+			GiveInventory("WallJumping",1);
+			Delay(1);
+			If(CheckInventory("WallJumped"))
+				{
+				WallJumpLimit--;
+				TakeInventory("WallJumped", 1);
+				}
+			}
+		Delay(10);
+		}
+
+	If(CheckInventory("JumpCancler") && GetActorVelZ(0) == 0.0){WallJumpLimit = CheckInventory("WallJumpLimit");}
+	OldButtons=Buttons;
+	delay(1);
+	}
+}
+
+script "CSACS_WallJump" (int Force, int BonusJump)
+{
+	int Thrust = CheckInventory("WallJumpThrust");
+	If(Thrust != 0){Force = Thrust;}
+	JumpAng= 0;
+	TotalAngles = 0;
+	if (CheckInventory("WallN") && !CheckInventory("WallS"))
+		{
+		JumpAng+=0.5;
+		TotalAngles++;
+		}
+	if (CheckInventory("WallE") && !CheckInventory("WallW")) 
+		{
+		TotalAngles++;
+		JumpAng+=0.25;
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng-=0.125;}
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng+=0.125;}
+		}
+	if (CheckInventory("WallW") && !CheckInventory("WallE")) 
+		{
+		JumpAng+=0.75;
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng+=0.125;}
+		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng-=0.125;}
+		TotalAngles++;
+		}
+	if (CheckInventory("WallS") && !CheckInventory("WallN"))
+		{
+		If(JumpAng > 0.5){JumpAng+=1.0;}
+		TotalAngles++;
+		}
+	If(TotalAngles>0)
+	{
+	JumpAng=(GetActorAngle(ActivatorTID())+(JumpAng/TotalAngles))<<8;
+	//printbold(f:jumpang);
+	ThrustThing((JumpAng)>>16, Force, 1);
+	ThrustThingZ(0,(GetActorProperty(0,APROP_JumpZ) >> 16) * 4 + BonusJump,0,0);
+	}
+}
