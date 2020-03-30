@@ -535,9 +535,9 @@ script "CSACS_WallJump" (int Force, int BonusJump)
 	if (CheckInventory("WallW") && !CheckInventory("WallE")) 
 		{
 		JumpAng+=0.75;
+		TotalAngles++;
 		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng+=0.125;}
 		If(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK && !CheckInventory("WallN") && !CheckInventory("WallS")){JumpAng-=0.125;}
-		TotalAngles++;
 		}
 	if (CheckInventory("WallS") && !CheckInventory("WallN"))
 		{
@@ -547,7 +547,6 @@ script "CSACS_WallJump" (int Force, int BonusJump)
 	If(TotalAngles>0)
 	{
 	JumpAng=(GetActorAngle(ActivatorTID())+(JumpAng/TotalAngles))<<8;
-	//printbold(f:jumpang);
 	ThrustThing((JumpAng)>>16, Force, 1);
 	ThrustThingZ(0,(GetActorProperty(0,APROP_JumpZ) >> 16) * 4 + BonusJump,0,0);
 	}
