@@ -184,7 +184,9 @@ Pickup:
 TNT1 A 0 A_GiveInventory("AbnormalItemPosition", 1)
 TNT1 A 0 A_GiveInventory("DevionFistAmmo", 5)
 TNT1 A 0 A_GiveInventory("NoHealthBar", 1)
+TNT1 A 0 A_GiveInventory("DevionAmmo", 100)
 TNT1 A 0 A_GiveInventory("IsDevion", 1)
+TNT1 A 0 A_SpawnItemEx("DevionOraOraWatcher", 0, 0, 32)
 stop
 }
 }
