@@ -421,9 +421,9 @@ sprite LTSRF0, 308, 204 {Offset -105, -147 Patch HSPRJ0, 0, 0 {Translation "198:
 sprite LTSRG0, 312, 108 {Offset -193, -175 Patch HSPRK0, 0, 0 {Translation "198:198=194:194", "192:192=96:96"}}
 
 //Ember Celica
-Sprite "EMCEA0", 320, 200 {Patch "BUSTB0", 184, 94{Translation "192:192=232:232", "198:198=228:228"}}
-Sprite "EMCEB0", 320, 200 {Patch "BUSTC0", 184, 98{Translation "192:192=232:232", "198:198=228:228"}}
-Sprite "EMCEC0", 320, 200 {Patch "BUSTD0", 188, 102{Translation "192:192=232:232", "198:198=228:228"}}
+Sprite "EMCEA0", 320, 200 {Patch "BUSTB0", 184, 94{Translation "192:192=228:228", "198:198=232:232"}}
+Sprite "EMCEB0", 320, 200 {Patch "BUSTC0", 184, 98{Translation "192:192=228:228", "198:198=232:232"}}
+Sprite "EMCEC0", 320, 200 {Patch "BUSTD0", 188, 102{Translation "192:192=228:228", "198:198=232:232"}}
 
 //BubbleArrow
 Sprite "BUBAB0", 320, 200{Patch "BUSTB0", 184, 94{Translation "192:192=4:4", "198:198=195:195"}}

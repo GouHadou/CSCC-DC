@@ -408,10 +408,10 @@ graphic VARAMM2S, 56, 8{patch BARAMM2S,0,0{rotate 90}}
 texture AURABAR, 8, 56{patch AURBAR, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
 texture AURABAR2, 56, 8{patch AURABAR, 0, 0 {rotate 90}}
 texture YANGCDV, 8, 56{patch MIDBAR, 0, 0 {Translation "192:192=42:42"}}
-texture YANGBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
+texture YANGBAR, 8, 56{patch BARENERG, 0, 0 {Translation "192:192=228:228", "198:198=232:232"}}
 texture YANGSEM, 8, 56{patch YANG1, 0, 0}
 texture YANGCDH, 56, 8{patch YANGCDV, 0, 0{rotate 90}}
-texture YANGBARH, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=232:232", "198:198=228:228"}}
+texture YANGBARH, 56, 8{patch VARENERG, 0, 0 {Translation "192:192=228:228", "198:198=232:232"}}
 texture YANGSEMH, 56, 8{patch YANG1, 0, 0{rotate 90}}
 
 //BubbleArrow

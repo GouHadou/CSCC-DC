@@ -258,7 +258,7 @@ PU_BUBBLEARROW = "Got a cleaning implement";
 OB_BUBBLEARROWCOPY = "%o was cleaned up by %k's Bubble Arrow.";
 PU_BUBBLEARROWCOPY = "Power up! Bubble Arrow!";
 
-OB_KNUXMINE = "%k's Mine Cleaned %0's Clock.";
+OB_KNUXMINE = "%k's Mine Cleaned %o's Clock.";
 OB_BUBBLEBOUNCER = "%o was rejected by %p own attack!";
 
 //===|Gravitron

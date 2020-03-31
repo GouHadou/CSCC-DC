@@ -1052,13 +1052,14 @@ int ReturnValue = 10;
 int YangSpeed = CurrentSpeedXYZ(PlayerTID);
 If(YangSpeed > 20){YangSpeed = 20;}
 int YangMultiplier = FixedDiv(YangSpeed, 10);
+int Semblance = CheckActorInventory(PlayerTID, "YangSemblance");
 If(Divisor <=0)
 	{
-	ReturnValue = ReturnValue + CheckActorInventory(PlayerTID, "YangSemblance");
+	ReturnValue += Semblance;
 	}
 Else
 	{
-	ReturnValue = ReturnValue + CheckActorInventory(PlayerTID, "YangSemblance")/Divisor;
+	ReturnValue += (Semblance/Divisor);
 	}
 
 if(YangMultiplier > 1.0)
@@ -1090,7 +1091,7 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 	{
 	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
 		{
-		Delay(5);
+		Delay(1);
 		If(GetActorProperty(ActivatorTID(), APROP_HEALTH) <= 0 || !CheckInventory("IsYang")){terminate;}
 		If(CheckActorInventory(ActivatorTID(), "YangDashCoolDown") > 0){TakeActorInventory(ActivatorTID(), "YangDashCoolDown", 1);}
 		}
