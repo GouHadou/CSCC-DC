@@ -24,7 +24,9 @@ Ready:
 YNGF A 0 ACS_ExecuteAlways(998,0,DYE_YANG)
 YNGF A 1 A_WeaponReady
 YNGF A 0 A_JumpIfInventory("YangReloadFlag", 1, "Reloading")
+YNGF A 0 A_JumpIfInventory("YangNoBlock", 1, 2)
 YNGF A 0 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "Block")
+YNGF A 0
 Goto Ready+1
 Deselect:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
@@ -42,14 +44,25 @@ Block:
 YNGB A 0 A_GiveInventory("YangBlocking", 1)
 YNGB A 0 A_ChangeFlag("DONTRIP", TRUE)
 YNGB ABC 2 A_ScaleVelocity(0.9)
+YNGB C 0 A_SetArg(4, health)
 BlockCont:
 YNGB C 0 A_GiveInventory("YangBlocking", 1)
 YNGB C 1 A_ChangeVelocity(momx*0.9, momy*0.9, momz, CVF_REPLACE)
-YNGB CC 1 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "BlockCont")
+YNGB CC 1 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "BlockCheck")
+Goto BlockEnd
+BlockEnd:
 YNGB C 0 A_TakeInventory("YangBlocking", 1)
 YNGB A 0 A_ChangeFlag("DONTRIP", FALSE)
 YNGB CBA 1
+YNGB A 0 A_GiveInventory("YangNoBlock", 1)
 Goto Ready+1
+BlockCheck:
+YNGB C 1 A_JumpIf(Args[4] > health, "BlockCont")
+YNGB C 0 A_SetArg(4, health)
+YNGB C 1 A_JumpIfInventory("YangBlocking", 1, 1)
+Goto BlockEnd
+YNGB C 0
+Goto BlockCont+1
 Fire:
 YNGF A 0 A_TakeInventory("WeaponCharge", 35)
 YNGF A 0 A_JumpIfInventory("EmberCelicaDown", 1, "GroundAttackCheck")
@@ -204,13 +217,13 @@ YNGF IJA 1
 YNGF A 0 A_WeaponReady
 Goto Ready+1
 AltFire:
-YNGF A 0 A_CheckFloor(2)
-YNGF A 0 A_ChangeVelocity(Cos(pitch)*10, 0, -sin(pitch)*10,CVF_RELATIVE)
+YNGF A 0 A_ChangeVelocity(Cos(pitch)*13, 0, -sin(pitch)*13,CVF_RELATIVE)
 YNGF A 1 Offset(0, 40)
 YNGF A 1 Offset(0, 56)
 YNGK A 1 Offset(0, 32)
 YNGK B 0 A_PlaySoundEx("weapon/chargekick", CHAN_WEAPON)
 YNGK B 3 A_SpawnItemEx ("YangKick",cos(-pitch)*32,0,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION,0) 
+YNGK B 0 A_ChangeVelocity(0.8*momx, 0.8*momy, momz, CVF_REPLACE)
 YNGK B 0 A_JumpIf(z-floorz > 40, 2)
 YNGK B 0 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_JUMP), "UpperCut")
 YNGF B 1 
@@ -373,8 +386,15 @@ loop
 actor EmberCelicaUpper : EmberCelicaPunch
 {
 damagetype "EmberCelicaUpper"
++NOCLIP
 States
 {
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("TeamTranslationItem", 1)
+TNT1 A 0 A_SetUserVar("User_ShotPower", ACS_NamedExecuteWithResult("YangPower", ACS_ExecuteWithResult(257), 5))
+TNT1 AF 1 
+Goto Death
 XDeath:
 YNGP F 0
 Goto Death
@@ -903,11 +923,45 @@ Powerup.Duration 50
 actor YangBlocking : PowerProtection
 {
 DamageFactor "Normal", 0.3
-Powerup.Duration 5
+Powerup.Duration 105
 }
 
+actor YangNoBlock : Powerup { Powerup.Duration 175 }
 actor YangKnockBackFlag : Inventory
 {
 Inventory.Amount 1
 Inventory.MaxAmount 30
+}
+
+actor YangBlockFX
+{
+scale 1.0
++NOINTERACTION
++CLIENTSIDEONLY
+alpha 0.8
+renderstyle add
+states
+{
+Spawn:
+YGFX A 0 A_SetScale(scalex+0.1, scaley+0.1)
+YGFX A 1 A_FadeOut(0.05)
+loop
+}
+}
+
+actor YangAuraFX
+{
+scale 2.5
++NOINTERACTION
++CLIENTSIDEONLY
+alpha 0.9
+renderstyle add
+states
+{
+Spawn:
+YNGS Z 0 A_Warp(AAPTR_TARGET, 0, 0, 0, 0, WARPF_NOCHECKPOSITION|WARPF_COPYINTERPOLATION)
+YNGS Z 1 A_FadeOut(0.05)
+YNGS Z 0 A_SetScale(scalex+0.1, scaley+0.1)
+loop
+}
 }
