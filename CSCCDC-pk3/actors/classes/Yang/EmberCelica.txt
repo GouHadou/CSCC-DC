@@ -42,7 +42,7 @@ YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeftCharge")
 Goto FireRightCharge
 Block:
 YNGB A 0 A_GiveInventory("YangBlocking", 1)
-YNGB A 0 A_ChangeFlag("DONTRIP", TRUE)
+YNGB A 0 //A_ChangeFlag("DONTRIP", TRUE)
 YNGB ABC 2 A_ScaleVelocity(0.9)
 YNGB C 0 A_SetArg(4, health)
 BlockCont:
@@ -52,7 +52,7 @@ YNGB CC 1 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "BlockCheck")
 Goto BlockEnd
 BlockEnd:
 YNGB C 0 A_TakeInventory("YangBlocking", 1)
-YNGB A 0 A_ChangeFlag("DONTRIP", FALSE)
+YNGB A 0 //A_ChangeFlag("DONTRIP", FALSE)
 YNGB CBA 1
 YNGB A 0 A_GiveInventory("YangNoBlock", 1)
 Goto Ready+1
