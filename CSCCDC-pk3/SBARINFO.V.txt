@@ -379,7 +379,7 @@ IsSelected EmberCelica
 	DrawBar "YANGCDV", "NOBAR", YangDashCoolDown, vertical, 16, 8;
 	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8; InInventory HealthNumberFlag, 1{DrawNumber 3, "CSCCAFONT", Untranslated, Armor, alignment(left), 31, 38;}}
 	InInventory EmberCelicaAmmo, 2 {DrawImage "EMBCEL", 32, 56; DrawImage "VERICON1", 40, 56;}
-	DrawImage "YANGBLK", 32, 64; DrawImage "VERICON2", 40, 64;
+	InInventory NOT YangNoBlock, 1{DrawImage "YANGBLK", 32, 64; DrawImage "VERICON2", 40, 64;}
 	}
 //====|Knux
 IsSelected BubbleArrowBoss
