@@ -478,6 +478,8 @@ $volume Support/Heal1 0.5
 
 support/Negative NEGSTAT
 support/Vanish VANISH
+support/Barrier1 BARRUP1
+support/Barrier2 BARRUP2
 
 weapon/CrossBoltHit HITSOUND
 weapon/HardBuster3 HRDBST2

@@ -482,7 +482,7 @@ DrawSelectedInventory INDEXFONT,127, 11, 138, 11, white;
 			}
 
 	DrawImage "WMAGI2", 99, 10; 
-	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 99, 10;} 
+	InInventory ProtectS_CooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", ProtectS_CooldownItem, vertical, 99, 10;} 
 	DrawImage "VERICON2", 109, 10;
 	inInventory WhiteMageMana, 35{DrawNumber 3, "8BDMAFONT", Untranslated, 35, alignment(left), 99, 22;}
 	else{DrawNumber 3, "CSCCAFONT", Untranslated, 35, alignment(left), 99, 22;}

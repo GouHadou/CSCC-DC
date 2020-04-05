@@ -2327,3 +2327,20 @@ if(CheckActorClass(0,"MegamanC")&&CheckWeapon("CentaurFlashWepCS")&&GetActorProp
 if(CheckActorClass(0,"CopyRobot")&&CheckWeapon("CentaurFlashWepCS")&&GetActorProperty(0,APROP_Alpha)<1.0){Result = 2;}
 SetResultValue(Result);
 }
+
+// Script called by Healmore's protect 
+Script "ProtectS_Warper" (void) CLIENTSIDE
+{
+	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+	
+	// Loop if shield is active
+	while(GetActorProperty(Player, APROP_HEALTH)>0
+	&& CheckActorInventory(Player, "ProtectS_Power") > 0
+	){
+		Delay(1);
+	}
+	
+	// Remove
+	Thing_Remove(0);
+	GiveActorInventory(Player, "ProtectS_ShedEffect",1);
+}

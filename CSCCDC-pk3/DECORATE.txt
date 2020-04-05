@@ -138,6 +138,7 @@
 #include "actors/classes/Healmore/WhiteMagicFX.txt"
 #include "actors/classes/Healmore/Aero.txt"
 #include "actors/classes/Healmore/Vanish.txt"
+#include "actors/classes/Healmore/ProtectSpell.txt"
 
 //===|Devion
 #include "actors/classes/Devion/DevionClass.txt"
