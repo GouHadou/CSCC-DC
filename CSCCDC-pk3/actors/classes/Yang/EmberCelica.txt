@@ -39,6 +39,7 @@ Loop
 Hold:
 YNGF A 0 A_TakeInventory("WeaponCharge", 35)
 YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeftCharge")
+YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
 Goto FireRightCharge
 Block:
 YNGB A 0 A_GiveInventory("YangBlocking", 1)
@@ -69,6 +70,7 @@ YNGF A 0 A_JumpIfInventory("EmberCelicaDown", 1, "GroundAttackCheck")
 Goto FireLRCheck
 FireLRCheck:
 YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeft")
+YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
 Goto FireRight
 
 FireRightCharge:
@@ -108,6 +110,7 @@ YNGF A 0 A_JumpIfInventory("Isbot", 1, "FireLeft")
 YNGF A 0 A_Refire("FireLeftCharge")
 Goto FireLeft
 FireLeft:
+YNGF A 0 A_TakeInventory("LeftRightFlag", 1)
 YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch",cos(-pitch)*32,-8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
 //YNGF A 0 A_JumpIfNoAmmo("LeftFinish")
@@ -115,13 +118,13 @@ YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch",cos(-pitch)*32,-8,32+(sin(-pitch)*48)
 Goto LeftFinish
 FireLeftCharge2a:
 YNGF BC 1
-
 Goto FireLeftCharge2b
 FireLeftCharge2b:
 YNGF C 1
 YNGF C 0 A_Refire("FireLeftCharge2b")
 Goto FireLeft2
 FireLeft2:
+YNGF A 0 A_TakeInventory("LeftRightFlag", 1)
 YNGF A 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
 YNGF A 0 A_SpawnItemEx ("EmberCelicaPunch2",cos(-pitch)*32,-8,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM,0) 
 YNGF BEF 1
@@ -146,16 +149,16 @@ YNGF GGGF 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
 Goto FireFinish
 FireFinish:
 YNGF A 1 A_WeaponReady(WRF_NOPRIMARY|WRF_NOSWITCH)
-YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireFinish2")
-YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
+//YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireFinish2")
+//YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
 YNGF A 0 A_JumpIfNoAmmo("BotReloadCheck")
 YNGF A 0 A_Refire
 Goto Ready+1 
-FireFinish2:
+/*FireFinish2:
 YNGF A 0 A_TakeInventory("LeftRightFlag", 1)
 YNGF A 0 A_JumpIfNoAmmo("BotReloadCheck")
 YNGF A 0 A_Refire
-Goto Ready+1 
+Goto Ready+1 */
 UpperCut:
 YNGF B 1 
 YNGF B 0 A_PlaySoundEx("weapon/EmberCelica","Weapon")
