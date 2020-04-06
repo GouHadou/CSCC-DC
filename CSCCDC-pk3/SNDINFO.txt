@@ -675,3 +675,31 @@ $random LordD/Taunt {LordD/Taunt1 LordD/Taunt2 LordD/Taunt3 LordD/Taunt4 LordD/T
 
 weapon/LDRocketFire   LDROCKET
 weapon/LDDMPBoom LDDMP
+
+
+//Rozark
+$playersound	RozarkClass	male	*death		ROZDEATH
+$playersound	RozarkClass	male	*xdeath		ROZPIT
+$playersound	RozarkClass	male	*gibbed		ROZPIT
+$playersound	RozarkClass	male	*pain100	ROZPAIN
+$playersound	RozarkClass	male	*pain75		ROZPAIN
+$playersound	RozarkClass	male	*pain50		ROZPAIN
+$playersound	RozarkClass	male	*pain25		ROZPAIN
+$playersound	RozarkClass	male	*grunt		ROZLAND
+$playersound	RozarkClass	male	*land		ROZLAND
+$playersound	RozarkClass	male	*jump		ROZJUMP
+$playersound	RozarkClass	male	*fist		dsnone
+$playersound	RozarkClass	male	*usefail	ROZLAND
+$playersound	RozarkClass	male	*taunt		ROZTAUNT
+
+
+weapon/DWThrow		DWTHROW
+weapon/DWCatch		DWCATCH
+weapon/InsanityOff	INSANOFF
+weapon/InsanityOn	INSANON
+weapon/Marked	MARKED
+Rozark/Sock1 AIRSMACO
+Rozark/Sock2 AIRSMACT
+$random Rozark/Sock { Rozark/Sock1 Rozark/Sock2 }
+Pain/Sock SOCKHIT
+effect/SockB DRIP

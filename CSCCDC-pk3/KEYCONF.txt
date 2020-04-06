@@ -27,6 +27,8 @@ addplayerclass LegoClass nomenu
 addplayerclass AbraClass nomenu
 addplayerclass DevionClass nomenu
 //addplayerclass RedMageClass nomenu [no balance zone]
+addplayerclass RozarkClass nomenu 
 addplayerclass JaxClass nomenu 
 addplayerclass DaverisClass nomenu 
 addplayerclass LordDamagerClass nomenu 
+

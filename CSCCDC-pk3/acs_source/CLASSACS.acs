@@ -2327,3 +2327,30 @@ if(CheckActorClass(0,"MegamanC")&&CheckWeapon("CentaurFlashWepCS")&&GetActorProp
 if(CheckActorClass(0,"CopyRobot")&&CheckWeapon("CentaurFlashWepCS")&&GetActorProperty(0,APROP_Alpha)<1.0){Result = 2;}
 SetResultValue(Result);
 }
+
+//----|Rozark
+Script "RozarkHomingCheck" (void)
+{
+int MaxPlayers = GetMaxPlayers(); //MarkOfTheRabbit
+int ShooterPLN = ACS_ExecuteWithResult(257, 1);
+int KnockBack = CheckInventory("YangKnockBackFlag");
+int MaxDistance = 9000;
+int Dist;
+int Marked = -1;
+For(int i = 0; i < MaxPlayers; i++)
+	{
+	If(PlayerInGame(i))
+		{
+		If(CheckActorInventory(i+1000, "MarkOfTheRabbit") && !CSACS_SameTeamCheck(ShooterPLN, i))
+			{
+			dist = XYZDistance(ShooterPLN+1000, i+1000);
+			If(dist < MaxDistance)
+				{
+				MaxDistance = dist;
+				Marked = i+1000;
+				}
+			}
+		}
+	}
+If(Marked > 0){SetPointer(AAPTR_TRACER, Marked);}
+}

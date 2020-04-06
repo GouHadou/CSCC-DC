@@ -1,7 +1,7 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 60
+#define MAX_MORPHS 61
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
@@ -77,8 +77,9 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"JaxPsycho1", "JaxOf7", "JaxClassItems"},//57
 {"JaxPsycho2", "JaxOf7", "JaxClassItems"},//58
 
-{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//45
-{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//46
+{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//59
+{"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//60
+{"OblivionWingsClass", "Rozark", "RozarkClassItems"}, //61
 };
 
 Script "GetPlayerWeapon" (int TargetTID)
