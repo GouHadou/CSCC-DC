@@ -379,7 +379,7 @@ IsSelected EmberCelica
 	DrawBar "YANGCDV", "NOBAR", YangDashCoolDown, vertical, 16, 8;
 	InInventory BasicArmor, 1{DrawBar "AURABAR", "NOBAR", Armor, vertical, 24, 8; InInventory HealthNumberFlag, 1{DrawNumber 3, "CSCCAFONT", Untranslated, Armor, alignment(left), 31, 38;}}
 	InInventory EmberCelicaAmmo, 2 {DrawImage "EMBCEL", 32, 56; DrawImage "VERICON1", 40, 56;}
-	DrawImage "YANGBLK", 32, 64; DrawImage "VERICON2", 40, 64;
+	InInventory NOT YangNoBlock, 1{DrawImage "YANGBLK", 32, 64; DrawImage "VERICON2", 40, 64;}
 	}
 //====|Knux
 IsSelected BubbleArrowBoss
@@ -387,6 +387,20 @@ IsSelected BubbleArrowBoss
 DrawBar "BARAMMO1","BAREMPTY", Ammo1, vertical, 16, 8;
 Drawbar "BARAMM24", "BAREMPTY", Ammo2, vertical, 8, 8;
 }
+
+//====|Rozark
+InInventory RozarkHealthBar, 1{
+	InInventory HealthNumberFlag, 1{DrawNumber 3, "8BDMAFONT", Untranslated, Health, alignment(left), 39, 31;}
+	InInventory Not InsanityMode, 1{DrawBar "RHEALTHF", "RHEALTHE", Health, vertical, 28, 8;}
+	InInventory InsanityMode, 1{DrawBar "RHEALTHI", "RHEALTHE", Health, vertical, 28, 8;}
+	DrawSelectedInventory INDEXFONT ,24, 64, 37, 64, white;
+	DrawImage "RZBAT", 34, 56; DrawImage "VERICON1", 42, 56;
+	}
+IsSelected OblivionWingsClass{
+	InInventory Not InsanityMode, 1{DrawBar "ROZFULL", "ROZEMPT", Ammo1, Vertical, 24, 8;}
+	InInventory InsanityMode, 1{DrawBar "ROZFULLI", "ROZEMPT", Ammo1, Vertical, 24, 8;}}
+
+InInventory MarkOfTheRabbit{DrawImage "MOTRA0", 270,16,center;}
 
 //====|Gravitron
 IsSelected GravSphereWep
@@ -654,6 +668,7 @@ IsSelected BubbleArrowWepCS{DrawBar "BUBABAR", "BAREMPTY", Ammo1, vertical, 16, 
 IsSelected GravitySphereWepCS{Drawbar"GRSPAMMH", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected CrystalWallWepCS{DrawBar "CRYTBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SteelPunchWepCS{Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected BloodyBatWepCS{Drawbar"BLBATBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}
