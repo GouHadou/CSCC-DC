@@ -74,3 +74,14 @@ function int CSACS_round(int fixedNumber)
 {
 	return (fixedNumber + 0.5) >> 16;
 }
+
+function int CSACS_SameTeamCheck (int Player, int Target)
+{
+int PlayersTeam = GetPlayerInfo(Player, PLAYERINFO_TEAM);
+int TargetsTeam = GetPlayerInfo(Target, PLAYERINFO_TEAM);
+If(ACS_ExecuteWithResult(975, 1))
+	{
+	If(PlayersTeam == TargetsTeam){Return TRUE;}
+	}
+Return FALSE;
+}

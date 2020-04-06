@@ -33,7 +33,7 @@ states
 {
 Spawn:
 WEAP X 1
-loop
+stop
 Altfire:
 "----" A 0 A_JumpIfInventory("NotBusterAmmo", 1, "Fire")
 goto "Super::AltFire"

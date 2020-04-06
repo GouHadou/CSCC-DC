@@ -143,6 +143,12 @@
 #include "actors/classes/Devion/DevionClass.txt"
 #include "actors/classes/Devion/DevionPowers.txt"
 
+
+//===|Rozark
+#include "actors/classes/Rozark/rozarkclass.txt"
+#include "actors/classes/Rozark/rozarkwep.txt"
+
+
 //===|Red Mage
 #include "actors/classes/RedMage/RedMageClass.txt"
 #include "actors/classes/RedMage/RedMageWep1.txt"
