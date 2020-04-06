@@ -61,6 +61,7 @@ TNT1 A 0 A_Refire
 Goto FireR
 
 BotAlt:
+ROZA A 0 A_JumpIfCloser(128, "User1")
 ROZA A 0 A_Jump(240, 1)
 Goto Fire+2
 ROZA A 0 A_Jump(8, "BotUsagi")
@@ -650,55 +651,19 @@ DamageFactor "Usagi", 0.0
 }
 
 
-actor RabbitMarking
-{
-Height 0
-Radius 0
-+NOINTERACTION
--SOLID
-+NOGRAVITY
-+MISSILE
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_GiveToTarget("MarkOfTheRabbit",1)
-Spawn2:
-TNT1 A 1 A_GiveToTarget("RabbitMarkingIcon",1)
-TNT1 A 0 A_JumpIfInTargetInventory("MarkOfTheRabbit", 1, "Spawn2")
-Goto Death
-Death:
-TNT1 A 0
-stop
-}
-}
-
-actor RabbitMarkingIcon : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-+AUTOACTIVATE
-States
-{
-Spawn:
-TNT1 A 1
-loop
-Use:
-TNT1 A 0 A_SpawnItemEx("MOTR",0,0,96)
-stop
-}
-}
-
 actor MOTR
 {
 Height 0
 Radius 0
++MISSILE
 +NOINTERACTION
++CLIENTSIDEONLY
 Scale 2.5
 States
 {
 Spawn:
-MOTR A 2
+MOTR AA 1 A_Warp(AAPTR_TARGET, 0, 0, 96, 0, WARPF_NOCHECKPOSITION|WARPF_COPYINTERPOLATION)
+MOTR A 1 A_JumpIfInventory("MarkOfTheRabbit", 1, "Spawn", AAPTR_TARGET)
 stop
 }
 }
@@ -802,7 +767,8 @@ Spawn:
 TNT1 A 2
 Goto Death
 XDeath:
-TNT1 A 0 A_ChangeFlag("THRUACTORS", TRUE)
+TNT1 A 0 A_ChangeFlag("NOINTERACTION", TRUE)
+TNT1 A 0 A_ChangeFlag("NOCLIP", TRUE)
 TNT1 AA 1 A_Warp(AAPTR_TRACER, 0, 0, 0, 0, 0, "DoT")
 Goto Death
 DoT:
@@ -845,15 +811,10 @@ stop
 }
 }
 
-actor BleedingFlag : BrightBlind
-{
-}
-
 actor BloodDrop
 {
 +MISSILE
 -NOGRAVITY
-+CLIENTSIDEONLY
 Scale 2.5
 States
 {
