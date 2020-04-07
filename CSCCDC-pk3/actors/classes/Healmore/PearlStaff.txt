@@ -414,6 +414,11 @@ Actor PSRB : powerup //PearlStaffRegenBuffer
 Powerup.duration 5
 }
 
+Actor PSRB2 : powerup //PearlStaffRegenBuffer2
+{inventory.amount 1
+Powerup.duration 3
+}
+
 actor PearlStaffManaRegen : CustomInventory
 {
 inventory.amount 1
@@ -428,16 +433,17 @@ Pickup:
 TNT1 A 0 A_Jumpifinventory("WhiteMageMana",100,"Nope")
 TNT1 A 0 A_Jumpifinventory("WhiteCasting",1,"Nope")
 TNT1 A 0 A_Jumpifinventory("PearlStaffManaBuffer",1,"Nope")
-KBHU A 0 A_JumpIf(momx <= 0.5 && momy <= 0.5, "Pickup2")
+KBHU A 0 A_JumpIf(momx ==0 && momy == 0, "Pickup2")
 TNT1 A 0 A_Jumpifinventory("PSRB",1,"Nope")
-
 TNT1 A 0 A_GiveInventory("WhiteMageMana",1)
 TNT1 A 0 A_GiveInventory("PSRB",1)
 stop
 
 Pickup2:
+TNT1 A 0 A_Jumpifinventory("PSRB2",1,"Nope")
 TNT1 A 0 A_GiveInventory("WhiteMageMana",1)
 TNT1 A 0 A_SpawnItemEX("KManaBubbles",random(32,-32),random(32,-32),random(8,16),0,0,3,0)
+TNT1 A 0 A_GiveInventory("PSRB2",1)
 stop
 
 

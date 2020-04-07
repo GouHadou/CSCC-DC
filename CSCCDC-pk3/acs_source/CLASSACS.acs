@@ -2355,8 +2355,7 @@ int Dist;
 int Marked = -1;
 For(int i = 0; i < MaxPlayers; i++)
 	{
-	If(i==ShooterPLN){continue;}
-	If(PlayerInGame(i))
+	If(PlayerInGame(i) && i!=ShooterPLN)
 		{
 		If(CheckActorInventory(i+1000, "MarkOfTheRabbit") && !CSACS_SameTeamCheck(ShooterPLN, i))
 			{
