@@ -1,0 +1,27 @@
+[IntroStrings]
+"Abra..."
+"*A wild abra appeared!*"
+
+[FragStrings]
+"Abra!"
+
+[KilledStrings]
+"Abra..."
+
+[RareRoamingStrings]
+"Well... being a pokemon sure is interesting... Uh I mean... Abra!"
+
+[RoamingStrings]
+"zzz..."
+"Abra...."
+"Abra Ab!"
+
+[EnragedStrings]
+"Abraaaa!!!"
+
+[WinStrings]
+"/me has fallen asleep"
+"Abra! ...Zzz...."
+
+[LoseStrings]
+"Aabraa....."

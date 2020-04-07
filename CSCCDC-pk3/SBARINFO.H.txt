@@ -449,16 +449,15 @@ InInventory LegoHUD, 1
 }
 
 //====|Abra
-IsSelected Psybeamwep
+
+IsSelected AbraPsychic
 	{
-	DrawBar "TLEBAR", "TLEBAR2", TeleportTimer, vertical, 100, 176;
-	DrawBar "PSYBAR", "PSYBAR2", PsychicCharge, vertical, 72, 176;//32 offset try 28
-	DrawBar "TLEBAR6", "TLEBAR5", DoubleTeam, vertical, 44, 176;
-	InInventory DoubleTeam, 1 {DrawBar "TLEBAR4", "TLEBAR3", TeleportTimer2, vertical, 16, 176;}
-	InInventory MegaRedFlag, 1 {Drawimage"DISABLE",100, 176;Drawimage"DISABLE",44, 176;}
-	InInventory MegaBlueFlag, 1 {Drawimage"DISABLE",100, 176;Drawimage"DISABLE",44, 176;}
-	InInventory MegaWhiteFlag, 1 {Drawimage"DISABLE",100, 176;Drawimage"DISABLE",44, 176;}
-	} 
+	DrawBar "VTLEBAR", "VAREMPTY", TeleportAmmo, horizontal, 58, 184;
+	}
+IsSelected AbraFists
+{
+	DrawBar "VTLEBAR", "VAREMPTY", TeleportAmmo, horizontal, 58, 184;
+	}
 
 //====|Healmore
 InInventory HealmoreHUD, 1{

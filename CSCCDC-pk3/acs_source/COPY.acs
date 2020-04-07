@@ -55,29 +55,29 @@ str CopyMorphs[MAX_MORPHS][3] =
 {"NatureStaffHorizontalWep", "Deer Wall", "NaturesWonderClassItems"},//39
 {"NatureStaffAllAroundWep", "Deer Circle", "NaturesWonderClassItems"},//40
 {"LegoMissilesBoss", "Lego", "LegoClassItems"},//41
-{"Psybeamwep", "Abra", "AbraClassItems"},//42
-{"PearlStaff", "HealMore", "HealmoreClassItems"},//43
-{"EmberCelica", "Yang", "YangClassItems"},//44
+{"AbraFists", "Abra (Fists)", "AbraClassItems"},//42
+{"AbraPsychic", "Abra (Psychic)", "AbraClassItems"},//43
+{"PearlStaff", "HealMore", "HealmoreClassItems"},//44
+{"EmberCelica", "Yang", "YangClassItems"},//45
 
-{"DevionPowers", "Devion", "DevionClassItems"},//45
+{"DevionPowers", "Devion", "DevionClassItems"},//46
 
-{"RedMageDiaraWep", "RedMage", "RedMageClassItems"},//46
-{"RedMageFiraWep", "RedMage", "RedMageClassItems"},//47
-{"RedMageAeroraWep", "RedMage", "RedMageClassItems"},//48
-{"RedMageBlizzaraWep", "RedMage", "RedMageClassItems"},//49
-{"RedMageSlowWep", "RedMage", "RedMageClassItems"},//50
-{"RedMageWateraWep", "RedMage", "RedMageClassItems"},//51
-{"RedMageThundaraWep", "RedMage", "RedMageClassItems"},//52
-{"RedMageBlinkWep", "RedMage", "RedMageClassItems"},//53
-{"RedMageTemperWep", "RedMage", "RedMageClassItems"},//54
-{"RedMageFocusWep", "RedMage", "RedMageClassItems"},//55
+{"RedMageDiaraWep", "RedMage", "RedMageClassItems"},//47
+{"RedMageFiraWep", "RedMage", "RedMageClassItems"},//48
+{"RedMageAeroraWep", "RedMage", "RedMageClassItems"},//49
+{"RedMageBlizzaraWep", "RedMage", "RedMageClassItems"},//50
+{"RedMageSlowWep", "RedMage", "RedMageClassItems"},//51
+{"RedMageWateraWep", "RedMage", "RedMageClassItems"},//52
+{"RedMageThundaraWep", "RedMage", "RedMageClassItems"},//53
+{"RedMageBlinkWep", "RedMage", "RedMageClassItems"},//54
+{"RedMageTemperWep", "RedMage", "RedMageClassItems"},//55
+{"RedMageFocusWep", "RedMage", "RedMageClassItems"},//56
 
-{"DaverisClassWep", "Daveris", "DaverisClassItems"},//56
+{"DaverisClassWep", "Daveris", "DaverisClassItems"},//57
 
-{"JaxPsycho1", "JaxOf7", "JaxClassItems"},//57
-{"JaxPsycho2", "JaxOf7", "JaxClassItems"},//58
+{"JaxPsycho1", "JaxOf7", "JaxClassItems"},//58
+{"JaxPsycho2", "JaxOf7", "JaxClassItems"},//59
 
-{"LaserCannonWep", "Lord Damager (Dark Laser)", "LordDamagerClassItems"},//59
 {"MissilePunchWep", "Lord Damager (Missile Punch)", "LordDamagerClassItems"},//60
 {"OblivionWingsClass", "Rozark", "RozarkClassItems"}, //61
 };
