@@ -4,7 +4,7 @@ Const Int RaspMPGain = 2; //every 17 frames
 
 Actor Rasped : powerup
 {inventory.amount 1
-Powerup.duration 35
+Powerup.duration 525
 Powerup.Color "E74FC3", 0.5
 }
 
@@ -106,6 +106,7 @@ TNT1 A 1 A_GiveToTarget("WhiteMageMana",5)
 TNT1 AAA 0 A_SpawnItemEx("RaspParticleFX", 0, 0, 28, 256/45, 256/45, random2(256/45), random(0, 359),SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
 TNT1 A 0 A_JumpIf(Args[0] > 0, "DeathAward")
 Death:
+TNT1 A 0 A_GiveInventory("TakeRasped",1,AAPTR_TRACER)
 TNT1 A 17 
 stop
 }
@@ -287,6 +288,20 @@ inventory.amount 1
 inventory.maxamount 53 //1.5 sec
 }
 
+actor TakeRasped : CustomInventory
+{
+Inventory.amount 1
+Inventory.MaxAmount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0 A_TakeInventory("Rasped", 1)
+stop
+}
+}
 //[+]========================================================================[+]
 //--------------------------------|Item Shooters|------------------------------
 //[+]========================================================================[+]

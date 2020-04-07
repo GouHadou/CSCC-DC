@@ -25,6 +25,10 @@ const int DYE_DEVION = 8200;
 const int DYE_REDMAGE = 751;
 const int DYE_JAX = 977;
 const int DYE_LORDDAMAGERCOL = 438;
+const int DYE_ROZARK = 371;
+const int DYE_DWINGSCHARGE1 = 372;
+const int DYE_DWINGSCHARGE2 = 373;
+const int DYE_DWINGSCHARGE3 = 374;
 
 const int DYE_IDOLWAVE = 997;
 const int DYE_ZENSPHERE = 1100;

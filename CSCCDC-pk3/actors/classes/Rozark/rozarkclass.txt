@@ -1,0 +1,76 @@
+actor RozarkClass : CustomWepMan
+{
+player.displayname "Rozark"
+player.soundclass "RozarkClass"
+player.damagescreencolor "red"
+player.forwardmove 0.9, 0.9
+player.sidemove 0.88, 0.88
+player.jumpz 10
+player.startitem "OblivionWingsClass"
+player.startitem "RozarkClassItems"
+player.maxhealth 105
+health 105
+States
+{
+Spawn:
+RESN A 0
+RESN B 1 
+RESN A 1 
+Goto Spawn+2
+See:
+RESN BCDE 5 
+Goto Spawn
+Missile:
+RESN F 5 
+RESN G 4 
+goto Spawn
+ClassDeath:
+TNT1 A 1 A_SpawnItemEx("Confetti",random(-16, 16),random(-16, 16),Random(18, 36),random(-3,3), random(-3,3), random(10,5),0)
+TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("Confetti",random(-16, 16),random(-16, 16),Random(18, 36),random(-3,3), random(-3,3), random(10,5),0)
+TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("Confetti",random(-16, 16),random(-16, 16),Random(9, 18),random(-3,3), random(-3,3), random(10,5),0)
+PLAY Z 0 A_Stop
+PLAY Z 0 A_PlayerScream 
+PLAY Z 0
+PLAY Z 1 A_CheckPlayerDone
+wait
+
+}
+}
+
+actor RozarkHealthBar : Once
+{
+}
+
+actor OblivionWingsClassMorph : RozarkClass
+{
++NOSKIN
+player.morphweapon "OblivionWingsClass"
+player.soundclass "BestClassEver"
+States
+{
+Pain:
+YOKM H 0 A_ScaleVelocity(0.75)
+YOKM H 0 
+Goto "CustomWepMan::Pain+2"
+}
+}
+
+actor RozarkClassItems : CustomInventory
+{
+inventory.amount 1
+inventory.maxamount 1
+States
+{
+Spawn:
+TNT1 A 0
+stop
+Pickup:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("OblivionWingsAmmo", 30)
+TNT1 A 0 A_GiveInventory("RozarkHealthBar", 1)
+TNT1 A 0 A_GiveInventory("NoHealthBar", 1)
+TNT1 A 0 A_GiveInventory("RozarkAmmoRegen", 1)
+TNT1 A 0 A_GiveInventory("IsRozark", 1)
+stop
+}
+}
