@@ -74,3 +74,9 @@ actor HeavyHealthBar : GlassHealthBar //.55 - .6 most useful bar ever >_>
 actor HardHealthBar : GlassHealthBar //.5 nuff said
 {
 }
+
+//[+]========================================================================[+]
+//----------------------|Healing Related Actors|--------------------------------
+//[+]========================================================================[+]
+actor HealStall_A : powerup {Inventory.amount 1 powerup.duration -10}
+actor HealStall_B : powerup {Inventory.amount 1 powerup.duration -5}

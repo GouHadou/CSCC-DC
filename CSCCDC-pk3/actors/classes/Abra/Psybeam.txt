@@ -1,6 +1,338 @@
-const int DOUBLE_CLONE_ID = 5000;  //TIDs for the clone stuff
+actor AbraFists : CSCCWepBase
+{
+Weapon.AmmoUse 25
+Weapon.AmmoGive 0
+Weapon.SlotNumber 1
+Obituary "%o's brain melted."
+Inventory.Pickupmessage "Power up! Thunder Bolt!"
+weapon.ammotype "PsychicAmmo"
+inventory.pickupsound "weapon/weaponup"
++WEAPON.AMMO_OPTIONAL
++WEAPON.CHEATNOTWEAPON
++INVENTORY.UNDROPPABLE
+inventory.icon "MPUNICON"
+Scale 2.0
+States
+{
+Spawn:
+WEA2 X 1
+loop
+Deselect:
+TNT1 A 0
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+TNT1 A 1 A_Lower
+Loop
+Select:
+TNT1 A 0 
+TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+ABRH A 1 A_Raise
+Loop
+Ready:
+ABRH A 1 ACS_ExecuteAlways(998,0,43)
+ABRH A 0 A_GunFlash
+ABRH A 0 A_ClearRefire
+ABRH A 1 A_WeaponReady
+ABRH A 1 A_WeaponReady
+Goto Ready+3
 
-actor Psybeamwep : CSCCWepBase
+Fire:
+ABRH A 0 A_JumpIf(z-floorz<=64, "Hold")
+TNT1 A 4
+ABRH A 0 A_TakeInventory("PunchCombo",2)
+ABK1 A 2
+ABP1 C 0 A_PlaySoundEx("weapon/psychicshot","weapon")
+ABK1 B 8 A_FireCustomMissile("AbraMegaKick",0,0,8,0) 
+ABK1 A 4
+ABRH A 10
+ABRH A 2 A_WeaponReady
+goto Ready+2
+Hold:
+ABP1 D 0
+ABP1 D 0 A_JumpIfInventory("PunchCombo",1,"PsychicCombo")
+ABP1 D 0 A_JumpIfInventory("AbraPunchCharge",28,"Hold3")
+ABP1 D 0 A_JumpIfInventory("AbraPunchCharge",27,"Hold2")
+ABP1 D 0 A_JumpIfInventory("AbraPunchCharge",2,"StartCharge")
+ABP1 D 1 A_GiveInventory("AbraPunchCharge",1)
+ABP1 D 1 //A_PlaySoundEx("weapon/recover","weapon")
+ABP1 D 0 A_refire
+goto Punch1
+
+StartCharge:
+ABP1 D 0 A_JumpIfInventory("AbraPunchCharge",3,"ContCharge")
+ABP1 D 1 A_GiveInventory("AbraPunchCharge",1)
+ABP1 D 1 A_PlaySoundEx("weapon/recover","weapon")
+ABP1 D 0 A_refire
+goto Punch1
+ContCharge:
+ABP1 D 1 A_GiveInventory("AbraPunchCharge",1)
+ABRH I 1 
+ABP1 D 0 A_refire
+Punch1:
+ABRH A 0 
+ABRH A 0 A_GiveInventory("PunchCombo",1)
+ABP1 EF 2
+ABP1 F 0 A_PlaySoundEx("weapon/psychicshot","weapon")
+ABP1 F 0 A_TakeInventory("AbraPunchCharge",999)
+ABP1 F 3 A_FireCustomMissile("AbraPunch",0,0,8,0) 
+ABP1 E 2 A_WeaponReady
+//ABP1 B 0 A_Refire
+ABP1 E 10 A_WeaponReady
+ABRH A 0 A_TakeInventory("PunchCombo",2)
+goto Ready+2
+BotCheck:
+ABRH J 0 A_Jump(32, "MegaPunch")
+Goto Hold
+Hold2:
+ABP1 D 0
+ABP1 D 0 A_PlaySoundEx("misc/gammadeath1","weapon")
+ABRH I 1 A_GiveInventory("AbraPunchCharge",1)
+Hold3:
+ABP1 D 0
+ABRH I 1
+ABRH J 1 
+ABRH J 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
+ABP1 D 0 A_refire
+MegaPunch:
+ABRH A 0 
+ABRH A 0 A_GiveInventory("MPunching",1)
+ABP1 B 2
+ABP1 C 2 A_ChangeVelocity(-Cos(pitch)*-30, 0, sin(pitch)*-10,CVF_RELATIVE)
+ABP1 C 0 A_PlaySoundEx("weapon/psychicshot","weapon")
+ABRH A 0 A_TakeInventory("PunchCombo",2)
+ABP1 C 15 A_FireCustomMissile("MegaPunch",0,0,8,0) 
+ABP1 C 0 A_TakeInventory("AbraPunchCharge",999)
+ABP1 B 3 
+ABRH A 0 A_TakeInventory("MPunching",1)
+goto Ready+2
+
+PsychicCombo:
+ABRH C 3 A_FireCustomMissile("AbraPsychicPulseFake",random(-10,10),0,8,0,0,random(-10,10))
+ABRH C 3 A_FireCustomMissile("AbraPsychicPulse",random(-10,10),0,8,0,0,random(-10,10)) 
+
+ABRH B 0 A_refire
+ABRH A 0 A_TakeInventory("PunchCombo",2)
+goto Ready+2
+
+AltFire:
+ABRH A 1 A_JumpIfInventory("TeleportAmmo",28,"Telego")
+Goto NoTele
+Telego:
+ABRH A 0 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
+ABRH A 1 A_SetTranslucent(0.9,0)
+ABRH A 1 A_SetTranslucent(0.8,0)
+ABRH A 1 A_SetTranslucent(0.7,0)
+ABRH A 1 A_SetTranslucent(0.6,0)
+ABRH A 1 A_SetTranslucent(0.5,0)
+ABRH A 1 A_SetTranslucent(0.4,0)
+ABRH A 1 A_SetTranslucent(0.3,0)
+ABRH A 1 A_SetTranslucent(0.2,0)
+ABRH A 1 A_SetTranslucent(0.1,0)
+//ABRH A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+ABRH A 0
+ABRH A 0 A_ChangeFlag("SOLID",0)
+//ABRH A 0 A_ChangeFlag("THRUSPECIES",1)
+ABRH A 0 A_ChangeFlag("NOGRAVITY",1)
+ABRH A 1 A_SetTranslucent(0.0,0)
+ABRH A 0 A_Stop
+ABRH A 1 A_ChangeVelocity(cos(pitch)*400,0,-sin(pitch)*400,3)//The new Binford Teleport with MORE POWER! *grunt grunt grunt*
+ABRH A 1 A_Stop
+ABRH A 0 A_TakeInventory("TeleportAmmo",28)
+ABRH A 0 A_ChangeFlag("NOGRAVITY",0)
+ABRH A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+//ABRH A 0 A_ChangeFlag("THRUSPECIES",0)
+//ABRH A 0 A_ChangeFlag("SOLID",1)
+ABRH A 0 A_SpawnItemEx("Resolidifier")
+ABRH A 0
+ABRH A 0 
+ABRH A 1 A_SetTranslucent(0.1,0)
+//ABRH A 0 A_TakeInventory("WarpGo",1)
+ABRH A 1 A_SetTranslucent(0.2,0)
+ABRH A 1 A_SetTranslucent(0.3,0)
+ABRH A 1 A_SetTranslucent(0.4,0)
+ABRH A 1 A_SetTranslucent(0.5,0)
+ABRH A 1 A_SetTranslucent(0.6,0)
+ABRH A 1 A_SetTranslucent(0.7,0)
+ABRH A 1 A_SetTranslucent(0.8,0)
+ABRH A 1 A_SetTranslucent(0.9,0)
+ABRH A 1 A_SetTranslucent(1.0,0)
+//ABRH A 1 A_TakeInventory("WarpGo",1)
+AirStall:
+ABRH A 2 A_JumpIf(momz >= 0, 1)
+loop
+ABRH A 1
+goto Ready+2
+NoTele:
+"----" A 1
+goto Ready+2
+
+Flash:
+TNT1 A 2 A_GiveInventory("TeleportAmmo",1)
+Loop
+}}
+
+actor MPunching : Once{}
+
+actor AbraPunchCharge : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor TeleportAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor PsychicAmmo : Ammo
+{
++INVENTORY.IGNORESKILL
+inventory.amount 1
+inventory.maxamount 28
+}
+
+actor PunchCombo : inventory
+{
+inventory.amount 1
+inventory.maxamount 2
+}
+
+actor AbraPunch
+{
+Obituary "%o was punched out by %k!"
+PROJECTILE
+-ALLOWBOUNCEONACTORS
++CANBOUNCEWATER
+WALLBOUNCEFACTOR 0.91
+BOUNCEFACTOR 0.91
+speed 10
+Radius 15
+Height 15
+damagetype "Psychic"
+scale 4.0
+damage (0)
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+TNT1 A 3
+Death:
+TNT1 A 1 A_Explode(20,64,0,0,64)
+Stop
+}
+}
+
+actor AbraPsychicPulse //: BasicProjectile
+{
+Translation "192:192=250:250","198:198=238:238","249:249=254:254"
+Obituary "%o was hit by %k's psychic pulse!"
+PROJECTILE
+Radius 5
+Height 5
+damage (0)
+damagetype "Psychic"
+speed 30
+scale 3.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("TeamTranslationItem")
+TNT1 A 3 
+Death:
+ABPU A 1 A_Stop
+ABPU A 3 A_Explode(10,30,0,0,30)
+ABPU BC 3
+Stop
+}
+}
+
+
+actor AbraPsychicPulseFake //: BasicProjectile
+{
+Translation "192:192=250:250","198:198=238:238","249:249=254:254"
+PROJECTILE
+Radius 5
+Height 5
+damage (0)
+damagetype "Psychic"
+speed 30
+scale 3.0
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("TeamTranslationItem")
+TNT1 A 3 
+Death:
+ABPU A 1 A_Stop
+ABPU ABC 3
+Stop
+}
+}
+
+actor MegaPunch
+{
+Obituary "%o was slugged by %k's mega punch!"
+PROJECTILE
+-ALLOWBOUNCEONACTORS
++CANBOUNCEWATER
+WALLBOUNCEFACTOR 0.91
+BOUNCEFACTOR 0.91
+speed 40
+Radius 15
+Height 15
+damagetype "PsychicShove"
+scale 4.0
+damage (0)
+Translation "192:192=196:196","198:198=197:197"
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("TeamTranslationItem")
+Spawn2:
+MEPU A 6
+MEPU A 0 A_Stop
+MEPU A 1 A_Explode(40,32,0,0)
+Stop
+Death:
+MEPU A 1 A_Explode(40,64,0,0,64)
+Stop
+}
+}
+
+actor AbraMegaKick
+{
+Obituary "%o was kicked by %k!"
+PROJECTILE
+-ALLOWBOUNCEONACTORS
++CANBOUNCEWATER
+WALLBOUNCEFACTOR 0.91
+BOUNCEFACTOR 0.91
+speed 10
+Radius 15
+Height 15
+damagetype "Psychic"
+scale 4.0
+damage (0)
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+TNT1 A 3
+Death:
+TNT1 A 1 A_Explode(20,64,0,0,64)
+Stop
+}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+actor AbraPsychic : AbraFists
 {
 Weapon.AmmoUse 25
 Weapon.AmmoGive 0
@@ -12,236 +344,85 @@ inventory.pickupsound "weapon/weaponup"
 +WEAPON.AMMO_OPTIONAL
 +WEAPON.CHEATNOTWEAPON
 +INVENTORY.UNDROPPABLE
-dropitem "FusionBombWepCS" //Placeholder for now till I make a copy wep
+inventory.icon "PSYCICON"
 Scale 2.0
 States
 {
-Ready:
-ABRH A 0 ACS_ExecuteAlways(998,0,43)
-ABRH A 0 A_GunFlash
-ABRH A 0 A_ClearRefire
-ABRH A 2 A_GiveInventory("PsychicCharge",1)
-ABRH A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-ABRH A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"User1")
-//ABRH A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User2) == True,"User2")
-Goto Ready+3
+Spawn:
+WEA2 X 1
+loop
 Deselect:
 TNT1 A 0
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 TNT1 A 1 A_Lower
 Loop
 Select:
-TNT1 A 0 A_Jump(2,"LowerTheChancesEvenMore")
 TNT1 A 0 
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
 ABRH A 1 A_Raise
-Goto Select+1
-
-LowerTheChancesEvenMore:
-TNT1 A 0 A_Jump(2,"Shiny")
-Goto Ready
-Shiny:
-ABRH A 0 ACS_ExecuteAlways(998,0,198)
+Loop
+Ready:
+ABRH A 0 ACS_ExecuteAlways(998,0,43)
 ABRH A 0 A_GunFlash
-ABRH A 1 A_SpawnItemEx("WeavileShinyEffect")
-ABRH A 2 A_WeaponReady(WRF_ALLOWRELOAD)
-ABRH A 10
-ABRH A 0 A_PlaySoundEx("weavile/shinyeffect","Weapon")
-Goto Ready+3 
-//Psychic Shots
+ABRH A 0 A_ClearRefire
+ABRH A 2 //A_GiveInventory("PsychicCharge",1)
+ABRH A 1 A_WeaponReady
+Goto Ready+3
+
+
 Fire:
-ABRH A 0 A_JumpIfInventory("PsychicCharge",28,"Fire2")
+Hold:
+ABRH B 0
+ABRH B 0 A_JumpIfInventory("PsychicCharge",28,"Hold3")
+ABRH B 0 A_JumpIfInventory("PsychicCharge",27,"Hold2")
+ABRH B 0 A_JumpIfInventory("PsychicCharge",1,"StartCharge")
+ABRH B 1 A_GiveInventory("PsychicCharge",1)
+ABRH B 1 //A_PlaySoundEx("weapon/recover","weapon")
+ABRC A 0 A_refire
+goto SmallPsychic
+StartCharge:
+ABRH B 0 A_JumpIfInventory("PsychicCharge",2,"ContCharge")
+ABRH B 1 A_GiveInventory("PsychicCharge",1)
+ABRC A 1 A_PlaySoundEx("weapon/recover","weapon")
+ABRC A 0 A_refire
+goto SmallPsychic
+ContCharge:
+ABRH B 1 A_GiveInventory("PsychicCharge",1)
+ABRC A 1 
+ABRC A 0 A_refire
+SmallPsychic:
+ABRH A 0 A_JumpIfInventory("PsychicCharge",28,"FullPsychic")
 ABRH A 0 A_TakeInventory("PsychicCharge",28)
-ABRH BC 1
+ABRH A 0 //A_Stop
+ABRH C 1
 ABRH A 0 A_PlaySoundEx("weapon/psychicshot","weapon")
-ABRH C 20 A_FireCustomMissile("AbraPsychicShot",0,0,8,0) 
+ABRH C 20 A_FireCustomMissile("AbraPsychicShot",0,0,-8,0) 
 ABRH B 2 A_refire
 goto Ready+2
-Hold:
+BotCheck:
+ABRH J 0 A_Jump(32, "FullPsychic")
+Goto Hold
+Hold2:
+ABRC B 0
+ABRC B 0 A_PlaySoundEx("misc/gammadeath1","weapon")
+ABRC B 1 A_GiveInventory("PsychicCharge",1)
+Hold3:
+ABRC B 0
+ABRC A 1
+ABRC B 1
+ABRC B 0 A_JumpIfInventory("IsBot", 1, "BotCheck")
+ABRC B 0 A_refire
+FullPsychic:
 ABRH A 0 A_TakeInventory("PsychicCharge",28)
-ABRH C 2
+ABRH A 0 A_Stop
+ABRH C 1
 ABRH A 0 A_PlaySoundEx("weapon/psychicshot","weapon")
-ABRH C 20 A_FireCustomMissile("AbraPsychicShot",0,0,8,0) 
-ABRH C 0 A_refire
-ABRH B 2
+//ABRH B 0 A_Recoil(30)
+ABRH B 0 A_ChangeVelocity(-Cos(pitch)*30, 0, sin(pitch)*12,CVF_RELATIVE)
+ABRH C 20 A_FireCustomMissile("AbraPsychicShot2",0,0,-8,0) 
+ABRH B 2 A_refire
 goto Ready+2
-
-//Psybeam
-Fire2:
-ABRH DEF 1 A_TakeInventory("PsychicCharge",28)
-TNT1 A 5
-ABRH E 1
-ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,0,0,0)
-ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,15,0,0)
-ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,-15,0,0)
-ABRH G 5 A_FireCustomMissile("PsybeamShove",0,0,0,0)
-ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,0,0,0)
-ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,15,0,0)
-ABRH G 5 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,-15,0,0)
-ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,0,0,0)
-ABRH G 0 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,15,0,0)
-ABRH G 5 A_SpawnItemEx("PsybeamFX",23,0,32,momx,momy,momz,-15,0,0)
-ABRH G 0 A_FireCustomMissile("Psybeam",15,0,0,0)
-ABRH G 0 A_FireCustomMissile("Psybeam",-15,0,0,0)
-ABRH H 3 A_FireCustomMissile("Psybeam",0,0,0,0)
-ABRH A 2
-goto Ready+2
-
-//Self Teleport
-AltFire:
-ABRH A 1 A_JumpIfInventory("MegaRedFlag",1,"Teleblock")
-ABRH A 0 A_JumpIfInventory("MegaBlueFlag",1,"Teleblock")
-ABRH A 0 A_JumpIfInventory("MegaWhiteFlag",1,"Teleblock")
-ABRH A 0 A_JumpIfInventory("TeleportTimer",60,"Teleporting")
-goto Ready+2
-Teleporting:
-ABRH A 22 A_GiveInventory("WarpGo",1)
-Airwait:
-ABRH A 1 A_JumpIf(z-floorz<=0, "Land") //If you teleported upwards, you cant teleport again till grounded
-loop
-Land:
-ABRH A 0
-goto Ready+2
-Teleblock:
-ABRH A 5 A_PlaySoundEx("weapon/denied","SoundSlot6")
-goto Ready+2
-
-//Spawn Remove clone
-Reload:
-ABRH A 1
-ABRH A 0 A_JumpIf(z-floorz<=0, 1) //Can only be used on the floor
-Goto Ready+2
-DoubleTeam:
-ABRH A 1 A_JumpIfInventory("MegaRedFlag",1,"Teleblock")
-ABRH A 0 A_JumpIfInventory("MegaBlueFlag",1,"Teleblock")
-ABRH A 0 A_JumpIfInventory("MegaWhiteFlag",1,"Teleblock")
-ABRH A 0 A_JumpIfInventory("DoubleTeam",1,"ClearClone")
-ABRH A 0 A_GiveInventory("DoubleTeam",1) //Need to make an icon to show your clone still exists
-ABRH A 0 A_PlaySoundEx("weapon/doublet","SoundSlot6")
-//ABRH A 0 A_PlaySoundEx("weapon/recover","SoundSlot6")
-ABRH A 0 Thing_Remove(tid+DOUBLE_CLONE_ID)
-ABRH A 1 A_SpawnItemEx("DoubleClone", 0, 0, -(z-floorz), 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
-ABRH A 10
-goto Ready+2
-ClearClone:
-ABRH A 2 A_GiveInventory("ClearClones",1)
-ABRH A 0 A_TakeInventory("ClearClones",1)
-goto Ready+2
-////////////////////////////////////////////////////////////////////////////////
-User1:
-ABRH A 1
-ABRH A 0 A_JumpIf(z-floorz<=0, 1) //Can only be used on the floor
-Goto Ready+2
-DoubleTeam:
-ABRH A 1 A_JumpIfInventory("DoubleTeam",1,"TargetTeleportCharge")
-goto Ready+2
-TargetTeleportCharge:
-ABRH A 0 SetPlayerProperty(0,1,4) //Freezes you in place as you chage the radius teleport
-TargetTeleportCharge2:
-ABRH A 2 A_GiveInventory("TeleportTimer2",2)
-ABRH A 0 A_PlaySoundEx("weapon/recover","SoundSlot6")
-ABRH A 0 A_JumpIfInventory("TeleportTimer2",60,"FullCharge")
-ABRH A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"TargetTeleportCharge2")
-FullCharge:
-ABRH A 5
-TNT1 A 0 A_SpawnItemEx("AbraTeleportFX")
-ABRH A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"FullCharge")
-ABRH A 0 A_JumpIfInventory("TeleportTimer2",60,"TargetTeleport")
-ABRH A 1 A_TakeInventory("TeleportTimer2",60)
-ABRH A 0 SetPlayerProperty(0,0,4)
-goto Ready+2
-
-TargetTeleport:
-ABRH A 1 ACS_NamedExecuteAlways("CSACS_AbraGroupTeleport",0,200)
-ABRH A 0 A_ChangeFlag(FLOORHUGGER, 1)
-ABRH A 0 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
-ABRH A 0 A_ChangeFlag(FLOORHUGGER, 0)
-ABRH A 0 ThrustThingZ(0, 5, 0, 0)
-ABRH A 0 A_ScaleVelocity(0)
-ABRH A 0 SetPlayerProperty(0,0,4)
-ABRH A 1 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
-ABRH A 10 A_TakeInventory("TeleportTimer2",60)
-goto Ready+2
-
-
-
-
-NoAmmo:
-ABRH IJ 1
-ABRH J 0 A_TakeInventory("PsychicCharge",28)
-ABRH K 18 A_FireCustomMissile("AbraPsychicShot",0,0,0,0)
-ABRH J 2 
-goto Ready+2
-
-Flash:
-TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
-TNT1 A 0 A_JumpIfInventory("WarpGo",1,"Flash.CentWarp")
-TNT1 A 0 A_GiveInventory("TeleportTimer",1)
-TNT1 A 1
-loop
-Flash.CentWarp:
-TNT1 A 0 A_TakeInventory("TeleportTimer",60)
-TNT1 A 0
-TNT1 A 0 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
-TNT1 A 1 A_SetTranslucent(0.9,0)
-TNT1 A 1 A_SetTranslucent(0.8,0)
-TNT1 A 1 A_SetTranslucent(0.7,0)
-TNT1 A 1 A_SetTranslucent(0.6,0)
-TNT1 A 1 A_SetTranslucent(0.5,0)
-TNT1 A 1 A_SetTranslucent(0.4,0)
-TNT1 A 1 A_SetTranslucent(0.3,0)
-TNT1 A 1 A_SetTranslucent(0.2,0)
-TNT1 A 1 A_SetTranslucent(0.1,0)
-TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
-TNT1 A 0
-TNT1 A 0 A_ChangeFlag("SOLID",0)
-TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
-TNT1 A 1 A_SetTranslucent(0.0,0)
-TNT1 A 0 A_Stop
-TNT1 A 1 A_ChangeVelocity(cos(pitch)*800,0,-sin(pitch)*800,3)//The new Binford Teleport with MORE POWER! *grunt grunt grunt*
-TNT1 A 1 A_Stop
-TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
-TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
-TNT1 A 0 A_ChangeFlag("THRUSPECIES",0)
-TNT1 A 0 A_SpawnItemEx("ReSolidifier", 0, 0, 8)
-TNT1 A 0 
-TNT1 A 1 A_SetTranslucent(0.1,0)
-TNT1 A 0 A_TakeInventory("WarpGo",1)
-TNT1 A 1 A_SetTranslucent(0.2,0)
-TNT1 A 1 A_SetTranslucent(0.3,0)
-TNT1 A 1 A_SetTranslucent(0.4,0)
-TNT1 A 1 A_SetTranslucent(0.5,0)
-TNT1 A 1 A_SetTranslucent(0.6,0)
-TNT1 A 1 A_SetTranslucent(0.7,0)
-TNT1 A 1 A_SetTranslucent(0.8,0)
-TNT1 A 1 A_SetTranslucent(0.9,0)
-TNT1 A 1 A_SetTranslucent(1.0,0)
-TNT1 A 1 A_TakeInventory("WarpGo",1)
-Goto Flash
-NoFlash:
-TNT1 A 0
-stop
 }
-}
-
-actor TeleportTimer : inventory
-{
-inventory.amount 1
-inventory.maxamount 60
-}
-
-actor TeleportTimer2 : inventory
-{
-inventory.amount 1
-inventory.maxamount 60
-}
-
-actor PsychicAmmo : Ammo
-{
-+INVENTORY.IGNORESKILL
-inventory.amount 1
-inventory.maxamount 28
 }
 
 actor PsychicCharge : Ammo
@@ -251,380 +432,42 @@ inventory.amount 1
 inventory.maxamount 28
 }
 
-actor WarpGo : Once{}
-actor DoubleTeam : Once{}
-actor ClearClones : Once{}
-actor Broadcast : Once{}
-
 actor AbraPsychicShot : BasicProjectile
 {
 Translation "192:192=250:250","198:198=238:238","249:249=254:254"
 Obituary "%o was hit by %k's psychic blast!"
 PROJECTILE
-Radius 10
-Height 10
+Radius 5
+Height 5
 damage (20)
 damagetype "Psychic"
 speed 30
-scale 2.5
+scale 1.5
 States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
-TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
-TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
-TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
-Goto LoopJump
-BFire:
-TNT1 A 0 Thing_SetTranslation(0, 230)
-Goto LoopJump
-RFire:
-TNT1 A 0 Thing_SetTranslation(0, 231)
-Goto LoopJump
-GFire:
-TNT1 A 0 Thing_SetTranslation(0, 232)
-Goto LoopJump
-YFire:
-TNT1 A 0 Thing_SetTranslation(0, 233)
-Goto LoopJump
-LoopJump:
-CMN1 ABC 3 
-loop
-}
-}
-
-actor PsybeamShove : BasicProjectile
-{
-Translation "55:55=247:247","4:4=247:247","168:168=247:247","208:208=247:247", "197:197=251:251"
-PROJECTILE
--ALLOWBOUNCEONACTORS
-+CANBOUNCEWATER
-WALLBOUNCEFACTOR 0.91
-BOUNCEFACTOR 0.91
-Obituary "%o was skewered by %k's psybeam!"
-speed 5
-Radius 15
-Height 15
-damagetype "PsychicShove"
-scale 4.0
-damage (1)
-+FORCEXYBILLBOARD
-States
-{
-Spawn:
-TNT1 A 3
-Death:
-TNT1 A 1 A_Explode(20,128,0,0,128)
+TNT1 A 0 A_GiveInventory("TeamTranslationItem")
+Spawn2:
+CMN1 ABCABC 3 
 Stop
 }
 }
 
-actor Psybeam2 : BasicProjectile
+actor AbraPsychicShot2 : AbraPsychicShot//: BasicProjectile
 {
-Translation "87:87=0:0", "42:42=251:251"
-PROJECTILE
-+RIPPER
-Obituary "%o was blasted by %k's psybeam!"
-speed 22
-Radius 15
-Height 15
-damagetype "Psybeam"
-scale 4.0
-damage (30)
-+FORCEXYBILLBOARD
-States
-{
-
-
-
-
-Spawn:
-PROC B 0
-PROC B 0 A_PlaySoundEx("weapon/Psybeam","weapon",1)
-PROC BBBBBBBBBBBBBBB 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
-PROC BBBBBBBBBBBBBBB 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
-PROC BBBBBBBBBBBBBBB 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
-stop
-}
-}
-
-actor Psybeam : BasicProjectile
-{
-Translation "198:198=251:251"
-PROJECTILE
-+RIPPER
-Obituary "%o was blasted by %k's psybeam!"
-speed 22
-Radius 15
-Height 15
-damagetype "Psybeam"
-scale 6.0
-damage (30)
-+FORCEXYBILLBOARD
-States
-{
-Spawn:
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
-TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
-TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
-TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
-Goto LoopJump
-BFire:
-TNT1 A 0 Thing_SetTranslation(0, 230)
-Goto LoopJump
-RFire:
-TNT1 A 0 Thing_SetTranslation(0, 231)
-Goto LoopJump
-GFire:
-TNT1 A 0 Thing_SetTranslation(0, 232)
-Goto LoopJump
-YFire:
-TNT1 A 0 Thing_SetTranslation(0, 233)
-Goto LoopJump
-LoopJump:
-PSY2 A 0
-PSY2 A 0 A_PlaySoundEx("weapon/Psybeam","weapon",1)
-PSY2 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
-PSY2 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
-PSY2 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("PsybeamFX2",0,random(-30,30),random(-30,30),0,0,0,0)
-stop
-}
-}
-
-actor PsybeamTrail
-{
-Translation "198:198=251:251"
-+NOINTERACTION
-+NOGRAVITY
-+CLIENTSIDEONLY
-+FORCEXYBILLBOARD
--SOLID
-scale 5.0
-height 0
-radius 0
-States
-{
-Spawn:
-PSYB A 5
-stop
-}
-}
-
-actor PsybeamTrail2 : PsybeamTrail
-{
-scale 4.0
-}
-
-actor PsybeamTrail3 : PsybeamTrail
-{
-scale 2.0
-}
-
-actor PsybeamFX
-{
-Translation "198:198=251:251"
--SOLID
-+NOGRAVITY
-+NOBLOCKMAP
-+FIXMAPTHINGPOS
-+NOTIMEFREEZE
-Height 0
-Radius 0
-scale 5.0
-+CLIENTSIDEONLY
-+NOINTERACTION
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
-TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
-TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
-TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
-Goto LoopJump
-BFire:
-TNT1 A 0 Thing_SetTranslation(0, 230)
-Goto LoopJump
-RFire:
-TNT1 A 0 Thing_SetTranslation(0, 231)
-Goto LoopJump
-GFire:
-TNT1 A 0 Thing_SetTranslation(0, 232)
-Goto LoopJump
-YFire:
-TNT1 A 0 Thing_SetTranslation(0, 233)
-Goto LoopJump
-LoopJump:
-TNT1 A 0
-PSYB A 5
-stop
-}
-}
-
-actor PsybeamFX2
-{
-Translation "198:198=251:251"
--SOLID
-+NOGRAVITY
-+NOBLOCKMAP
-+FIXMAPTHINGPOS
-+NOTIMEFREEZE
-Height 0
-Radius 0
+Radius 10
+Height 10
+damage (35)
+damagetype "Psychic"
 scale 2.5
-+CLIENTSIDEONLY
-+NOINTERACTION
 States
 {
 Spawn:
 TNT1 A 0
-TNT1 A 0 A_JumpIfInTargetInventory("LightTeamFlag",1,"BFire")
-TNT1 A 0 A_JumpIfInTargetInventory("WilyTeamFlag",1,"RFire")
-TNT1 A 0 A_JumpIfInTargetInventory("CossackTeamFlag",1,"GFire")
-TNT1 A 0 A_JumpIfInTargetInventory("KingTeamFlag",1,"YFire")
-Goto LoopJump
-BFire:
-TNT1 A 0 Thing_SetTranslation(0, 230)
-Goto LoopJump
-RFire:
-TNT1 A 0 Thing_SetTranslation(0, 231)
-Goto LoopJump
-GFire:
-TNT1 A 0 Thing_SetTranslation(0, 232)
-Goto LoopJump
-YFire:
-TNT1 A 0 Thing_SetTranslation(0, 233)
-Goto LoopJump
-LoopJump:
-TNT1 A 0
-PSYB A 3
-stop
-}
-}
-
-actor PsybeamProtect : PowerProtection
-{
-Powerup.Duration 15
-damagefactor "Psybeam", 0.0
-}
-/////////////////////////////////////////Clone stuff////////////////////////
-
-
-
-
-actor DoubleClone
-{
-+FLOORHUGGER
-+RIPPER
-+NOTARGETSWITCH
-+MISSILE
--SOLID
-+THRUSPECIES
-+DONTBLAST
-+SHOOTABLE
-+DONTRIP
-+GHOST
-painchance 256
-+noblood
-+noblooddecals
-damage (0)
-Scale 2.5
-health 50
-Radius 15
-Height 64
-States
-{
-Spawn:
-ABRA A 0
-TNT1 A 0 ACS_NamedExecuteAlways("PlayerSpeciesSynch",0)
-ABRA A 0 Thing_ChangeTID(0, DOUBLE_CLONE_ID+ACS_ExecuteWithResult(257, 0))
-ABRA AAA 2
+TNT1 A 0 A_GiveInventory("TeamTranslationItem")
 Spawn2:
-ABRA A 2
-ABRA A 0 A_JumpIfInTargetInventory("IsDead",1,"Death")
-ABRA A 0 A_JumpIfInTargetInventory("MegaRedFlag",1,"Death")
-ABRA A 0 A_JumpIfInTargetInventory("MegaBlueFlag",1,"Death")
-ABRA A 0 A_JumpIfInTargetInventory("MegaWhiteFlag",1,"Death")
-ABRA A 0 A_JumpIfInTargetInventory("ClearClones", 1, "Death")
-//ABRH A 0 A_JumpIfInTargetInventory("TeleportTimer2",60,"Broadcast")
-//ABRH A 0 A_TakeInventory("Broadcast",1)
+CMN1 ABC 3 
 loop
-Broadcast:
-ABRH A 0 A_GiveInventory("Broadcast",1)
-//ABRH A 0 ACS_NamedExecuteAlways("CSACS_CLONEDISPLAY",0)
-Goto Spawn2
-Pain:
-ABRA HHHHHHHHH 2 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
-Goto Spawn2
-Death:
-BUBB A 0 A_ChangeFlag("SHOOTABLE", 0)
-ABRA H 0 A_TakeFromTarget("DoubleTeam", 1)
-ABRA H 3
-TNT1 A 3
-ABRA H 3
-TNT1 A 3
-ABRA H 3
-stop
-}
-}
-
-
-
-
-actor AbraTeleportFX : GravityHoldFX
-{
-	reactiontime 40
-	States
-	{
-		Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SetUserVar("user_angle", random(0, 9))
-		SpawnLoop:
-		TNT1 A 0 A_SpawnItemEx("AbraParticle", 200, 0, 0, 0, 0, 60, user_angle, SXF_ABSOLUTEANGLE|SXF_NOCHECKPOSITION)
-		TNT1 A 0 A_SetUserVar("user_angle", user_angle + 9)
-		TNT1 A 0 A_Countdown
-		loop
-		Death:
-		TNT1 A 0
-		stop
-	}
-}
-
-actor AbraParticle
-{
-	+CLIENTSIDEONLY
-	+NOINTERACTION
-	-SOLID
-	+NOGRAVITY
-	height 0
-	radius 0
-	Scale 7.0
-	States
-	{
-		Spawn:
-		GHOL A 5
-		stop
-	}
-}
-
-actor WeavileShinyEffect
-{
-//+NOINTERACTION
-+RIPPER
-Radius 1
-Height 1
-scale 2.5 
-damage (0)
-speed 0
-+DOOMBOUNCE
-States
-{
-Spawn:
-TNT1 A 1 A_PlaySoundEx("Weavile/shinyeffect","Weapon")
-SHIN ABCD 5 
-stop
 }
 }

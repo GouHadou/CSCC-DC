@@ -251,6 +251,26 @@ Script "CSACS_SetPointer" (int pointer, int TID)
 SetPointer(pointer,TID);
 }
 
+Script "CSACS_HealRamp" (Int HealMin, Int HealMax, int RampRate)
+{
+int timeMax = 175;
+int rampPerc;
+Switch (RampRate)
+	{
+	Default: rampPerc = (GetActorPowerupTics(0,"HealStall_A")*100)/timeMax; break;
+	Case 1: rampPerc = (GetActorPowerupTics(0,"HealStall_B")*100)/timeMax; break;
+	}
+
+//log(i:GetActorPowerupTics(0,"HealStall_A"));
+//log(i:rampPerc);
+int output = (HealMax*(100 - rampPerc))/100;
+//log(i:output);
+
+if (output < HealMin){output = HealMin;}
+if (output > HealMax){output = HealMax;}
+SetResultValue(output);
+}
+
 /*
 //Turns Jumping On or Off
 script "CSCC_JumpToggle" (Int Toggle)

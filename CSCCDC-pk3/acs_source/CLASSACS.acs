@@ -2328,6 +2328,22 @@ if(CheckActorClass(0,"CopyRobot")&&CheckWeapon("CentaurFlashWepCS")&&GetActorPro
 SetResultValue(Result);
 }
 
+// Script called by Healmore's protect 
+Script "ProtectS_Warper" (void) CLIENTSIDE
+{
+	int Player = ACS_NamedExecuteWithResult("core_gettarget",0);
+	
+	// Loop if shield is active
+	while(GetActorProperty(Player, APROP_HEALTH)>0
+	&& CheckActorInventory(Player, "ProtectS_Power") > 0
+	){
+		Delay(1);
+	}
+	
+	// Remove
+	Thing_Remove(0);
+	GiveActorInventory(Player, "ProtectS_ShedEffect",1);
+}
 //----|Rozark
 Script "RozarkHomingCheck" (void)
 {
@@ -2339,7 +2355,7 @@ int Dist;
 int Marked = -1;
 For(int i = 0; i < MaxPlayers; i++)
 	{
-	If(PlayerInGame(i))
+	If(PlayerInGame(i) && i!=ShooterPLN)
 		{
 		If(CheckActorInventory(i+1000, "MarkOfTheRabbit") && !CSACS_SameTeamCheck(ShooterPLN, i))
 			{
