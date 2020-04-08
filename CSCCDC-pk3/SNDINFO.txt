@@ -361,6 +361,7 @@ $playersound	Yang	female	*grunt		LAND
 $playersound	Yang	female	*land		LAND
 $playersound	Yang	female	*fist		dsnone
 $playersound	Yang	female	*usefail	LAND
+$playersound	Yang	female	*taunt	NLDIT
 
 weapon/EmberCelica EMBSHOT
 //Knux
