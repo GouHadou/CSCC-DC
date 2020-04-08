@@ -151,6 +151,11 @@ DEVH A 0 A_Refire("DashHalt")
 Goto Ready2
 
 Shockwave: //Justice Shockwave
+DEVH A 1 A_JumpIfInventory("DevionAmmo", 25, "Shockwave2")
+Goto AltAir2
+Shockwave2:
+TNT1 A 0 A_TakeInventory("DevionAmmo", 25)
+TNT1 A 0 A_GiveInventory("DevionNoRegen", 1)
 TNT1 A 0 A_TakeInventory("DevionShock",1)
 TNT1 A 0 A_TakeInventory("DevionChargeAnim",1)
 TNT1 A 0 A_TakeInventory("DevionDashAnim",1)
