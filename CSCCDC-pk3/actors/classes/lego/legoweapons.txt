@@ -87,17 +87,21 @@ Goto Ready2
 Reload:
 NoAmmo:
 LEHU D 1 //ACS_Execute(979,0)
-LEHU D 3 offset(30,30)
+/*LEHU D 3 offset(30,30)
 LEHU D 3 offset(72,72)
 LEHU D 3 offset(95,95)
-LEHU D 8 A_PlaySoundEx("weapon/wrapfire","Weapon")
-LEHU D 0 A_GiveInventory("LegoWeaponAmmo",1)
-LEHU D 0 A_JumpIfInventory("LegoWeaponAmmo",5,"ReloadEnd")
+*/
+LEHR ABC 3
+LEHR C 8 A_PlaySoundEx("weapon/wrapfire","Weapon")
+LEHR C 0 A_GiveInventory("LegoWeaponAmmo",1)
+LEHR C 0 A_JumpIfInventory("LegoWeaponAmmo",5,"ReloadEnd")
 goto NoAmmo+4
 ReloadEnd:
-LEHU D 3 offset(0,95)
+/*LEHU D 3 offset(0,95)
 LEHU B 3 offset(0,72)
 LEHU C 3 offset(0,30)
+*/
+LEHR CBA 3
 LEHU A 0 A_PlaySoundEx("weapon/adapterreturn", "Weapon")
 Goto Ready2
 Flash:
