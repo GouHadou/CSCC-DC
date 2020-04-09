@@ -23,9 +23,6 @@ inventory.icon "NULLICON"
 dropitem ""
 States
 {
-Spawn:
-TNT1 A 1
-loop
 Ready:
 WMST F 0 ACS_ExecuteAlways(998,0,419)
 Ready2:

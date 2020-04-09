@@ -1197,7 +1197,6 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 	}
 }
 
-
 /*
 Script "YangSpeedCheck" (void)
 {
@@ -1420,22 +1419,27 @@ script "TracerTargeter" (int TargType, int TargRange) {
 		{setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE2);}
 		else
 		{setuservariable(0,"User_angleDistRegister",MAX_TARGET_ANGLE);}
-
-			if(team==TEAM_NONE) {
-				for(i=0;i<ownerNumber;i++) {
-					Targeter(x, y, z, angle, pitch, i);
+			
+			switch(TargType)
+				{
+				Case 0:
+				Case 1:
+				if(team!=TEAM_COOP && team != TEAM_NONE) // Can't use Targ Type 0 or 1 in team games
+					{
+					for(i=0;i<ServerMax;i++)
+						{
+						if(i!=ownerNumber){TargeterTeam(team, x, y, z, angle, pitch, i, TargType);}
+						}
+					}
+				break;
+				default:
+				for(i=0;i<ServerMax;i++)
+					{
+					if(i!=ownerNumber){Targeter(x, y, z, angle, pitch, i);}
+					}
+				break;
+				
 				}
-				for(i=ownerNumber+1;i<ServerMax;i++) {
-					Targeter(x, y, z, angle, pitch, i);
-				}
-			} else if(team!=TEAM_COOP) {
-				for(i=0;i<ownerNumber;i++) {
-					TargeterTeam(team, x, y, z, angle, pitch, i, TargType);
-				}
-				for(i=ownerNumber+1;i<ServerMax;i++) {
-					TargeterTeam(team, x, y, z, angle, pitch, i, TargType);
-				}
-			}
 		}
 		
 		if(xyzDistance(0,getuservariable(0,"User_STargTID")+1000) <= TargRange)
