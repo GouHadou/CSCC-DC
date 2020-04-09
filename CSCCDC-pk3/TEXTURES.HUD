@@ -318,6 +318,7 @@ sprite GRSPI0, 427, 128 {Offset 53, -57 Patch HSPRR0, 0, 0 {Translation "192:192
 graphic DEVHUD, 157, 50{  XScale 1.5 YScale 1.5 Patch DEVHUD, 0, 0}
 graphic DEVHUD1, 105, 14{ XScale 1.5 YScale 1.5 Patch DEVHUD1, 0, 0}
 graphic DEVHUD2, 105, 18{ XScale 1.5 YScale 1.5 Patch DEVHUD2, 0, 0}
+graphic DEVHUD3, 105, 18{ XScale 1.5 YScale 1.5 Patch DEVHUD3, 0, 0}
 graphic DEVOK, 20, 10{ XScale 1.5 YScale 1.5 Patch DEVOK, 0, 0}
 
 //Red Mage//

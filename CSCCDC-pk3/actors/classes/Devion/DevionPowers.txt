@@ -2,6 +2,8 @@ const int DV_JUSTRADIUS = 128;
 const int DV_JUSTFULLRADIUS = 80;
 actor DevionPowers : CSCCWepBase
 {
+weapon.ammotype "DevionAmmo"
+Weapon.AmmoUse 1
 Weapon.SlotNumber 1
 scale 2.0
 Obituary "%k already declared %o dead."
@@ -31,25 +33,33 @@ DEVH A 1 A_Raise
 Loop
 
 Fire: //Oraoraora
+DEVH A 0 A_JumpIfNoAmmo("NoAmmo")
 DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
 DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
 DEVH A 0 SetPlayerProperty(0,0,0)
 DEVH A 0 A_JumpIfInventory("DevionShock",1,"Shockwave")
 //DEVH C 0 A_JumpIfInventory("DevionFever",1,"FireHold1B")
 FireHold1:
+DEVH A 0 A_GiveInventory("DevionNoRegen", 1)
+DEVH A 0 A_JumpIfNoAmmo("NoAmmo")
 DEVH A 0 A_PlaySoundEx("devion/punch1","Weapon")
 DEVH TUV 1 A_GiveInventory("DevionM1")
+DEVH A 0 A_TakeInventory("DevionAmmo", 1)
 DEVH A 0 A_Refire("FireHold2")
 Goto FireEnd
 FireHold2:
+DEVH A 0 A_GiveInventory("DevionNoRegen", 1)
 DEVH A 0 A_PlaySoundEx("devion/punch2","Weapon")
 DEVH WXY 1 A_GiveInventory("DevionM1")
+DEVH A 0 A_TakeInventory("DevionAmmo", 1)
 DEVH A 0 A_Refire("FireHold1")
 Goto FireEnd
 FireEnd:
 DEVH NOPQRS 1
 Goto Ready2
-
+NoAmmo:
+DEVH A 1
+Goto Ready2
 /*
 FireHold1B:
 DEVH A 0 A_PlaySoundEx("devion/punch1","Weapon")
@@ -141,6 +151,11 @@ DEVH A 0 A_Refire("DashHalt")
 Goto Ready2
 
 Shockwave: //Justice Shockwave
+DEVH A 1 A_JumpIfInventory("DevionAmmo", 25, "Shockwave2")
+Goto AltAir2
+Shockwave2:
+TNT1 A 0 A_TakeInventory("DevionAmmo", 25)
+TNT1 A 0 A_GiveInventory("DevionNoRegen", 1)
 TNT1 A 0 A_TakeInventory("DevionShock",1)
 TNT1 A 0 A_TakeInventory("DevionChargeAnim",1)
 TNT1 A 0 A_TakeInventory("DevionDashAnim",1)
@@ -315,6 +330,44 @@ inventory.amount 1
 inventory.maxamount 100
 }
 
+actor DevionAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor DevionNoRegen : Powerup
+{
+Powerup.Duration 20
+}
+
+actor DevionOraOraWatcher
+{
+PROJECTILE
++NOINTERACTION
+renderstyle none
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 AA 1 A_JumpIfInTargetInventory("IsDead", 1, "No")
+TNT1 A 0 A_JumpIfInTargetInventory("DevionNoRegen", 1, "NotYet")
+TNT1 A 0 A_JumpIfInTargetInventory("DevionAmmo", 100, "NotYet")
+TNT1 A 1 A_JumpIfInTargetInventory("IsDevion", 1, "Give")
+Goto No
+Give:
+TNT1 A 0 A_GiveInventory("DevionAmmo", 1, AAPTR_TARGET)
+Goto Spawn
+NotYet:
+TNT1 A 1
+Goto Spawn
+No:
+TNT1 A 0
+stop
+}
+}
+
+
 Actor OraOraProtect : PowerProtection
 {
 PowerUp.Duration 3
@@ -384,7 +437,7 @@ Damage (3)
 Speed 60
 Radius 16
 Height 10
-
+Damagefactor "Normal", 0.5
 health 9999
 PainChance 256
 States
@@ -411,6 +464,7 @@ Pain:
 TNT1 A 0 A_Stop
 TNT1 A 0 A_GiveToTarget("OraOraBlockStagger")
 TNT1 A 0 A_SpawnItemEx("DevionBlockFX")
+TNT1 A 0 A_TakeFromTarget("DevionAmmo", 9999-health)
 TNT1 A 1 A_PlaySound("devion/block")
 stop
 }

@@ -525,10 +525,10 @@ DrawBar "DEVHBAR", "DNOBAR1", Health, horizontal, 39, 17;
 
 DrawImage "DEVHUD", 8,4;
 DrawImage "DEVHUD1", 39,25;
-//DrawImage "DEVHUD2", 39,35;
+DrawImage "DEVHUD3", 39,35;
 
 Drawbar"DEVBAR1", "DNOBAR2", DevionFistAmmo, horizontal, 56,27;
-//Drawbar"DEVBAR2", "DNOBAR2", DevionCharge, horizontal, 56,37;
+Drawbar"DEVBAR2", "DNOBAR2", Ammo1, horizontal, 56,37;
 //InInventory DevionCharge, 300 {DrawImage "DEVOK", 108,36;}
 //InInventory DevionFever, 1 {Drawbar"DEVF1", "DEVF2", DevionFever, horizontal, 56,37;}
 
