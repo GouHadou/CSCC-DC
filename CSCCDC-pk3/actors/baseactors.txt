@@ -752,3 +752,26 @@ TNT1 A 0 Thing_SetTranslation(0, 233)
 stop
 }
 }
+
+actor BasicPassActor : BasicHelper
+{
+/*
+This is means for giving invetories on painstates, the actor grabs the target of the spawner
+player, and hands over the item to the target after a 1 frame delay. this is to try and
+see if this makes things more consistent by ensuring that the item is given after
+QUICKTORETALIATE takes effect
+*/
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+TNT1 A 0 A_TransferPointer(AAPTR_TARGET,AAPTR_DEFAULT,AAPTR_TARGET,AAPTR_TRACER)
+LASH A 0 A_Jump(256,"GiveItem")
+goto GiveItem
+
+GiveItem:
+TNT1 A 0 A_GiveInventory("TempPitProtectionEnder",1,AAPTR_TARGET)
+stop
+}
+}

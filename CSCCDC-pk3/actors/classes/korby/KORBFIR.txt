@@ -10,9 +10,6 @@ Inventory.Pickupmessage "$PU_KORBYFIRE"
 DropItem "CometWepCS"
 States
 {
-Spawn:
-TNT1 A 0
-stop
 Ready:
 KBHU A 0 ACS_ExecuteAlways(998,0,DYE_KORBY) 
 KBHU A 0 

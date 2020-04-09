@@ -474,16 +474,16 @@ Graphic "WMAGI2", 16, 16
 {
 	XScale 1.500
 	YScale 1.500
-	Patch "WMICA0", 0, 0
+	Patch "WMICF0", 0, 0
 }
 
 Graphic "WMAGI2C", 16, 16
 {
 	XScale 1.500
 	YScale 1.500
-	Patch "WMICA0", 0, 0
+	Patch "WMICF0", 0, 0
 	{
-		Translation "136:136=80:80", "104:104=91:91", "4:4=3:3"
+		Translation "192:192=95:95", "198:198=159:159", "4:4=3:3"
 	}
 }
 
@@ -850,4 +850,18 @@ Graphic "RZBAT", 30, 30
 	XScale 2.000
 	YScale 2.000
 	Patch "RZBTX0", 0, 0
+}
+
+//Abra
+graphic MPUNICON, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch MGAPIO, 0, 0
+}
+graphic PSYCICON, 30, 30
+{
+   XScale 2.0
+   YScale 2.0
+   Patch PSCHIO, 0, 0
 }

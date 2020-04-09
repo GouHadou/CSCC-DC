@@ -10,9 +10,7 @@ inventory.icon "UNXICON"
 DropItem "ShadowBladeWep"
 States
 {
-Spawn:
-WEA3 Q 1
-loop
+
 Ready:
 BIKD J 1 ACS_ExecuteAlways(998,0,DYE_UNIX)
 BIKD J 0 A_GunFlash
@@ -77,7 +75,7 @@ States
 {
 Spawn:
 WEAP A 1
-loop
+stop
 Ready:
 BIKD A 0 A_JumpIfNoAmmo("Ready1NoAmmo")
 BIKD A 1 ACS_ExecuteAlways(998,0,DYE_UNIX)

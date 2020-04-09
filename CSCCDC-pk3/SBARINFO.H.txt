@@ -449,16 +449,15 @@ InInventory LegoHUD, 1
 }
 
 //====|Abra
-IsSelected Psybeamwep
+
+IsSelected AbraPsychic
 	{
-	DrawBar "TLEBAR", "TLEBAR2", TeleportTimer, vertical, 100, 176;
-	DrawBar "PSYBAR", "PSYBAR2", PsychicCharge, vertical, 72, 176;//32 offset try 28
-	DrawBar "TLEBAR6", "TLEBAR5", DoubleTeam, vertical, 44, 176;
-	InInventory DoubleTeam, 1 {DrawBar "TLEBAR4", "TLEBAR3", TeleportTimer2, vertical, 16, 176;}
-	InInventory MegaRedFlag, 1 {Drawimage"DISABLE",100, 176;Drawimage"DISABLE",44, 176;}
-	InInventory MegaBlueFlag, 1 {Drawimage"DISABLE",100, 176;Drawimage"DISABLE",44, 176;}
-	InInventory MegaWhiteFlag, 1 {Drawimage"DISABLE",100, 176;Drawimage"DISABLE",44, 176;}
-	} 
+	DrawBar "VTLEBAR", "VAREMPTY", TeleportAmmo, horizontal, 58, 184;
+	}
+IsSelected AbraFists
+{
+	DrawBar "VTLEBAR", "VAREMPTY", TeleportAmmo, horizontal, 58, 184;
+	}
 
 //====|Healmore
 InInventory HealmoreHUD, 1{
@@ -487,7 +486,7 @@ InInventory KingTeamFlag, 1{
 			else{DrawNumber 3, "CSCCAFONT", Untranslated, 15, alignment(left), 165, 168;}
 			}
 	DrawImage "WMAGI2", 187, 156; 
-	InInventory CuragaCooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", CuragaCooldownItem, vertical, 187, 156;} 
+	InInventory ProtectS_CooldownItem, 1 {DrawBar "WMAGI2C", "WMAGI2", ProtectS_CooldownItem, vertical, 187, 156;} 
 	DrawImage "VERICON2", 197, 156;
 	InInventory WhiteMageMana, 35{DrawNumber 3, "8BDMAFONT", Untranslated, 35, alignment(left), 187, 168;}
 	else{DrawNumber 3, "CSCCAFONT", Untranslated, 35, alignment(left), 187, 168;}
