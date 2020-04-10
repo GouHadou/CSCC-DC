@@ -237,7 +237,7 @@ Goto Ready2
 
 ShockwaveCancel:
 DEVH A 0 ThrustThingZ(0,40,0,0)
-NoAmmo:
+//NoAmmo:
 DEVH A 0 A_TakeInventory("DevionDashAnim",1)
 DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
 DEVH A 0 A_TakeInventory("DevionChargeAnim",1)

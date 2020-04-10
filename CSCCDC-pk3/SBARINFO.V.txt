@@ -540,7 +540,7 @@ Drawbar"DEVBAR2", "DNOBAR2", Ammo1, horizontal, 56,37;
 
 //InInventory DevionCharge, 300 {DrawImage "DEVOK", 108,36;}
 //InInventory DevionFever, 1 {Drawbar"DEVF1", "DEVF2", DevionFever, horizontal, 56,37;}
-
+InInventory HealthNumberFlag, 1{DrawNumber 3, "8BDMAFONT", Untranslated, Health, alignment(left), 40, 9;}
 DrawSelectedInventory INDEXFONT ,14, 38, 28, 39, white;
 }
 
