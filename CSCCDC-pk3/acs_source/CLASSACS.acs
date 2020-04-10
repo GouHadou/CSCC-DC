@@ -1250,7 +1250,7 @@ while(GetActorProperty(PlayerTID, APROP_HEALTH) > 0 && CheckWeapon("EmberCelica"
 		}
 	If(GetActorProperty(PlayerTID, APROP_HEALTH) > 0)
 		{
-		SemblanceGive = ((CurrentAura - CheckActorInventory(PlayerTID, "BasicArmor")) + (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH)))/2;
+		SemblanceGive = ((CurrentAura - CheckActorInventory(PlayerTID, "BasicArmor")) + (CurrentHealth - GetActorProperty(PlayerTID, APROP_HEALTH)));
 		If(CheckActorInventory(PlayerTID, "YangBlocking")){SemblanceGive = SemblanceGive*4;}
 		GiveActorInventory(PlayerTID, "YangSemblance", SemblanceGive);
 		CurrentAura = CheckActorInventory(PlayerTID, "BasicArmor");

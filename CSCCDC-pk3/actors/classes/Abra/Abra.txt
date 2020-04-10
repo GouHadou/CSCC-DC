@@ -41,7 +41,7 @@ TNT1 A 3
 ABRA H 3
 TNT1 A 3
 ABRA H 3
-TNT1 A -1
+TNT1 A 1 A_CheckPlayerDone
 wait
 }
 }

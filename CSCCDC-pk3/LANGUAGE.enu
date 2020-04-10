@@ -7,11 +7,6 @@ OB_COPYSHOT = "%o\c- was killed by %k's\c- Copy Bullet. Seriously? What's wrong 
 TAG_COPYBUSTER = "Copy Buster";
 TAG_COPYITEM = "Copy Banish";
 
-OB_COPYCLOSE = "%k won by defeating %o!";
-OB_COPYSHOT = "%o\c- was killed by %k's\c- Copy Bullet. Seriously? What's wrong with you %o\c-?";
-
-TAG_COPYBUSTER = "Copy Buster";
-
 //===|Unix
 OB_UNIXFACESTAB = "%o was facestabbed by %k's Eternal Torment.";
 OB_UNIXBACKSTAB = "%o died.";
@@ -199,7 +194,7 @@ PU_PIERCERIFLE = "Wait, how did you get this????";
 TAG_PIERCERIFLE = "Piercing / Sleep";
 
 OB_BULLWEAKBULLET = "%o was shot down by one of %k's weaker bullets.";
-OB_BULLSLEEPBULLET = "%o was put to sleep by %k's \ctsleeping bullet\c-."
+OB_BULLSLEEPBULLET = "%o was put to sleep by %k's \ctsleeping bullet\c-.";
 
 OB_SIPHONRIFLE = "%o's life was drained completely by %k's \cgSiphon bolt\c-.";
 TAG_SIPHONRIFLE = "Splitter / Siphon";
@@ -233,10 +228,14 @@ OB_LEGOMINE = "%o was surprised by %k's Sticky bombs.";
 
 OB_STICKYBOMB = "%o was blasted from afar by %k's Sticky bombs.";
 PU_STICKYBOMB = "Power up! Sticky Bombs!";
+
 //===|Abra
-OB_PSYSHOT = "%o was hit by %k's psychic blast!"
-OB_PSYBEAM = "%o was skewered by %k's psybeam!"
-OB_PSYSHOVE = "%o was blasted by %k's psybeam!"
+OB_PSYBLAST = "%o was hit by %k's psychic blast!";
+OB_PSYCHIC = "%o's brain melted.";
+OB_PSYPULSE = "%o was hit by %k's psychic pulse!";
+OB_ABPUNCH = "%o was punched out by %k!" ;
+OB_MEGAPUNCH = "%o was slugged by %k's mega punch!";
+OB_MEGAKICK = "%o was kicked by %k!";
 
 //===|HealMore
 OB_PEARLSTAFF = "%o was Blasted by %k's PearlStaff.";

@@ -580,17 +580,10 @@ stop
 
 actor YangAura : BasicArmorBonus
 {
-Armor.Savepercent 50
+Armor.Savepercent 60
 Armor.SaveAmount 1
 Armor.MaxSaveAmount 50
 -Inventory.AlwaysPickup
-Scale 2.0
-States
-{
-Spawn:
-TNT1 A 1
-loop
-}
 }
 
 actor YangAuraStart : YangAura
