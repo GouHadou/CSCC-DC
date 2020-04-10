@@ -50,7 +50,7 @@ stop
 }
 }
 
-actor MissilePunchWepMorph : LordDamagerClass
+actor LordDamagerBossMorph : LordDamagerClass
 {
 +NOSKIN
 player.morphweapon "LordDamagerBoss"
