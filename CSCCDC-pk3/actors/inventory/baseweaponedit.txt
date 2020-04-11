@@ -63,6 +63,19 @@ CSCC_CorpFragGrenade:
 COG1 A 5 A_SetTranslucent(1.0, 0)
 COG1 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
 wait
+CSCC_CorpInfraRifleTranslucent:
+COW2 A 5 A_SetTranslucent(0.5, 0)
+COW2 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_CorpInfraRifle:
+COW2 A 5 A_SetTranslucent(1.0, 0)
+COW2 A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+wait
+CSCC_CorpAmmoBackpack:
+NADE A 5 A_SetTranslucent(1.0, 0)
+NADE A 1 ACS_NamedExecuteAlways("CSACS_WeaponDisplay",0,0)
+//Proper backpack sprite coming someday
+wait
 }
 }
 
@@ -90,6 +103,11 @@ Powerup.Duration -60
 }
 
 actor CorpFragGrenadeDelayPickup : Powerup
+{
+Powerup.Duration -60
+}
+
+actor CorpInfraRifleDelayPickup : Powerup
 {
 Powerup.Duration -60
 }

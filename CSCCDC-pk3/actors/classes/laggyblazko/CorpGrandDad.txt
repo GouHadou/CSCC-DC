@@ -1,10 +1,11 @@
 actor CorpGrandDad : CorporalWeaponBase
 {
+//"Slow reload" disabled for now.
 const int grandRecoil = 65536*3/360;
 Tag "$TAG_GRANDDAD"
 Weapon.AmmoUse1 1
 Weapon.AmmoGive1 8
-Weapon.AmmoUse2 1
+Weapon.AmmoUse2 0
 Weapon.AmmoGive2 24
 Weapon.SlotNumber 2
 weapon.ammotype1 "GrandAmmo"
@@ -18,20 +19,50 @@ COW1 B 0 ACS_ExecuteAlways(998,0,413)
 TNT1 A 0 A_TakeInventory("ReloadGrand")
 COW1 B 0 A_JumpIfNoAmmo("UnloadEnd") 
 COW1 B 0 A_JumpIfInventory("GrandUnloaded",1,"UnloadEnd")
-TNT1 A 4 A_WeaponReady(WRF_NOPRIMARY)
-COW1 B 2 Offset(-128,160) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 B 2 Offset(-96,128) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 B 3 Offset(-64,96) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 B 3 Offset(-32,64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
+COW1 B 1 Offset(-128,160) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-112,144) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-96,128) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-80,112) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-64,96) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-48,80) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-32,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-32,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-16,48) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-16,48) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
+
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
 Ready2Wait:
 COW1 B 1 A_WeaponReady
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
 goto Ready2
 Ready2: 
 COW1 B 1 A_WeaponReady(WRF_ALLOWRELOAD)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
 loop
 Fire: 
 COWB B 0 A_TakeInventory("GrandAutofire",6)
+Altfire:
 COW1 B 0 A_JumpIfInventory("ReloadGrand",1,"SlowEnd")
 COW1 B 0 A_AlertMonsters
 COW1 B 0 A_PlaySoundEx("Corp/GrandFire","Weapon")
@@ -49,7 +80,10 @@ COW1 B 0 A_JumpIfInventory("GrandAutofire",6,"fire")
 COW1 B 1 A_GiveInventory("GrandAutofire",1)
 COW1 B 0 A_Refire
 Goto Ready2
-AltFire:
+AltHold:
+COW1 B 1
+Goto Altfire
+User1:
 TNT1 A 0 A_JumpIfInventory("CorpKnifeCooldown",1,"Ready2Wait")
 COW1 B 0 A_JumpIfInventory("UnloadGrand",1,"Knife")//Skip animation
 COW1 B 1 Offset(-64,64)
@@ -57,28 +91,99 @@ COW1 B 1 Offset(-128,128)
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
 goto Knife
 KnifeEnd:
-TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
 Goto Ready+1
+
+
 
 //Manual reload
 Reload:
 COW1 B 0 A_JumpIfInventory ("GrandAmmo",8,"Ready2Wait")
 COW1 B 0 A_JumpIfInventory ("ShelbyvilleRound",1,"Unload")
-Goto Hold
+Goto Ready2Wait
 Unload:
-COW1 B 3 Offset(-64,64)A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+COW1 B 3 Offset(-64,64)A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
 TNT1 A 0 A_GiveInventory("UnloadGrand")
-COW1 B 3 Offset(-128,128)A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+COW1 B 3 Offset(-128,128)A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
 TNT1 A 0 A_PlaySound("Corp/GrandChamber","Weapon")
-TNT1 A 20 A_WeaponReady(WRF_NOPRIMARY)
+
+//20
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
+
 TNT1 A 5 A_PlaySound("Corp/GrandUnload","Weapon")
 TNT1 A 0 A_TakeInventory("UnloadGrand")
 TNT1 A 0 A_GiveInventory("GrandUnloaded")
 UnloadEnd: //From knife/switch if it's out of ammo or was unloaded
-COW1 D 0 A_JumpIfInventory("ShelbyvilleRound",8,"PreQuick")
+//COW1 D 0 A_JumpIfInventory("ShelbyvilleRound",8,"PreQuick")
+goto preQuick //Slow reload disabled for now. Code remains just in case.
+
+
 //Slow reload: If no 8 round clip is ready
-TNT1 A 10 A_WeaponReady(WRF_NOPRIMARY)
+
+//10
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
+
 TNT1 A 0 A_GiveInventory("ReloadGrand")
 TNT1 A 0 A_TakeInventory("GrandUnloaded")
 SlowReload:
@@ -93,28 +198,89 @@ COW1 D 0 A_JumpIfInventory("ShelbyvilleRound",1,"SlowReload")
 SlowEnd:
 COW1 D 0 A_TakeInventory("ReloadGrand")
 COW1 D 0 A_PlaySound("Corp/GrandChamber","Weapon")
-COW1 B 2 Offset(-128,160) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 B 2 Offset(-96,128) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 B 3 Offset(-64,96) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 B 3 Offset(-32,64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+
+COW1 B 1 Offset(-128,160) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-112,144) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-96,128) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-80,112) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-64,96) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-48,80) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-32,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-32,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-16,48) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-16,48) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
 Goto Ready2
 PreSlow: //From Running out of ammo and not having 8 rounds.
-COW1 B 3 Offset(-64,64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 B 3 Offset(-128,128) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+
+
+COW1 B 1 Offset(-64,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-64,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-64,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-128,128) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-128,128) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 B 1 Offset(-128,128) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 B 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
+
+
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
 TNT1 A 5 A_GiveInventory("ReloadGrand")
 goto SlowReload
 
 //Quick Reload: If a full clip is ready
 PreQuick: //From manual unload, knife use or weapon switch
-COW1 D 2 Offset(-128,160) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 D 2 Offset(-96,128) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 D 3 Offset(-64,96) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COW1 D 3 Offset(-32,64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+
+COW1 D 1 Offset(-128,160) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-112,144) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-96,128) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-80,112) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-64,96) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-48,80) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-32,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-32,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-16,48) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 Offset(-16,48) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
 QuickReload:
-COW1 D 4 A_WeaponReady(WRF_NOPRIMARY)
+
+//4
+COW1 D 1 A_WeaponReady(WRF_NOFIRE)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 A_WeaponReady(WRF_NOFIRE)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 A_WeaponReady(WRF_NOFIRE)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COW1 D 1 A_WeaponReady(WRF_NOFIRE)
+COW1 D 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
 //Too late to switch/knife now
 COW1 EF 3 
 TNT1 A 0 A_TakeInventory("GrandUnloaded")
@@ -125,8 +291,9 @@ Goto Hold
 NoAmmo:
 COW1 D 0 A_FireCustomMissile("GrandClip",-30,0,2,4,0,0)
 COW1 D 4 A_light0
-COW1 B 0 A_JumpIfInventory ("ShelbyvilleRound",8,"QuickReload")
-COW1 B 0 A_JumpIfInventory ("ShelbyvilleRound",1,"PreSlow")
+//COW1 B 0 A_JumpIfInventory ("ShelbyvilleRound",8,"QuickReload")
+//COW1 B 0 A_JumpIfInventory ("ShelbyvilleRound",1,"PreSlow")
+COW1 B 0 A_JumpIfInventory ("ShelbyvilleRound",1,"QuickReload")
 TNT1 A 1 A_TakeInventory("CorpGrandDad",1)
 stop
 }

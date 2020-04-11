@@ -865,3 +865,18 @@ graphic PSYCICON, 30, 30
    YScale 2.0
    Patch PSCHIO, 0, 0
 }
+
+//Corporal
+Graphic "COW2I", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "COW2A0", 0, 0
+}
+
+Graphic "CORKNIFE", 30, 30
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "NADER0", 0, 0
+}

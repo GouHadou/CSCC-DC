@@ -5,6 +5,8 @@ server noarchive bool CSCC_SV_ProJTeamColor = true;
 user bool CSCC_CV_DamageDisplay = true;
 user bool CSCC_CV_ProjTeamColor = true;
 
+user noarchive bool CSCC_CL_RecoilReset = true;
+user noarchive bool CSCC_CL_ToggleZoom = false;
 user noarchive int CSCC_MenuDef_Changelog = 0;
 
 user noarchive int Megaman_ClassHelp_Weapons = 0;

@@ -332,6 +332,51 @@ for (i = 1; i <= duration; i++)
 }
 }
 
+//Knife check
+
+Script "CSACS_CorpCheckKnife" (int allowAlt)
+{
+	int returnValue = false;
+	if (!CheckInventory("CorpKnifeCooldown"))
+	{
+		if (PressingButton(BT_USER1) || (PressingButton(BT_ALTATTACK) && allowAlt))
+		{
+			returnValue = true;
+		}
+	}
+	SetResultValue(returnValue);
+}
+//Infrarifle charge script
+Script "CSACS_CorpInfraCharge" (void)
+{
+
+	int infraRifleCharge = CheckInventory("InfraRifleCharge"); //Gained per shot
+	int infraRifleCD = CheckInventory("InfraRifleChargeDisplay"); //Depends on player zoom
+	if (infraRifleCharge * 10 > infraRifleCD )
+	{
+		GiveInventory("InfraRifleChargeDisplay",(infraRifleCharge * 10) - infraRifleCD);
+		//print(s:"checkin ", d:CheckInventory("InfraRifleCharge"), d: CheckInventory("InfraRifleChargeDisplay"));
+	}
+	else if (CheckInventory("InfraRifleInfraRed"))
+	{
+		if ((infraRifleCharge + 2) * 10 > infraRifleCD)
+		{
+			GiveInventory("InfraRifleChargeDisplay",1);
+			//print(s:"givin ",d:CheckInventory("InfraRifleCharge"), d: CheckInventory("InfraRifleChargeDisplay"));
+		}
+	}
+	else
+	{
+		if (infraRifleCharge * 10 < infraRifleCD)
+		{
+			TakeInventory("InfraRifleChargeDisplay",1);
+			//print(s:"takin ",d:CheckInventory("InfraRifleCharge"), d: CheckInventory("InfraRifleChargeDisplay"));
+		}
+	}
+	
+}
+
+
 //Messatsu
 Script "CSACS_MessAbilityCheck" (void)
 {

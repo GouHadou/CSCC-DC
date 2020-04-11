@@ -43,6 +43,7 @@
 #include "actors/classes/laggyblazko/Tommygun.txt"
 #include "actors/classes/laggyblazko/CorpFragGrenade.txt"
 #include "actors/classes/laggyblazko/CorpGrandDad.txt"
+#include "actors/classes/laggyblazko/CorpInfraRifle.txt"
 
 //===|VocalWoman
 #include "actors/Classes/VocalWoman/VocalWoman.txt"

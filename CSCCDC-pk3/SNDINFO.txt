@@ -136,6 +136,14 @@ Corp/Casing7 CASING07
 $random Corp/CasingEnd1 {Corp/Casing1 Corp/Casing2 Corp/Casing3}
 $random Corp/CasingEnd2 {Corp/Casing5 Corp/Casing6 Corp/Casing7}
 
+Corp/InfraFire CORW2FIR
+Corp/InfraExp CORW2EXP
+Corp/InfraBolt1 CORW2BT1
+Corp/InfraBolt2 CORW2BT2
+Corp/InfraEject CORW2EJT
+Corp/InfraLoad CORW2LOA
+$attenuation Corp/InfraExp 0.125
+
 //Korby
 $playersound	korby	male	*death		MEGADEAT
 $playersound	korby	male	*xdeath		MEGADEAT

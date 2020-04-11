@@ -45,7 +45,7 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"SuperArmWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"HyperBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"IceSlasherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
-{"ThunderBeamWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"ThunderBeamWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"FireStormWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
 {"RollingCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"TimeSlowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
@@ -60,59 +60,59 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"CrashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"TimeStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL 
 
-{"MagnetMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"MagnetMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"TopSpinWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"NeedleCannonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
 {"ShadowBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"GeminiLaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
-{"SearchSnakeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"GeminiLaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
+{"SearchSnakeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"HardKnuckleWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
-{"SparkShockWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"SparkShockWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 
 {"DrillBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"RingBoomerangWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"DustCrusherWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"DustCrusherWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"PharaohShotWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"SkullBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
-{"DiveMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"DiveMissileWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"RainFlushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
 {"FlashStopperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
 
 {"NapalmBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"ChargeKickWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"GyroAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED       
+{"GyroAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED       
 {"PowerStoneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"WaterWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
 {"CrystalEyeWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"StarCrashWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 {"GravityHoldWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
 
-{"BlizzardAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"BlizzardAttackWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"FlameBlastWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"YamatoSpearWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
 {"PlantBarrierWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
-{"SilverTomahawkWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"SilverTomahawkWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"WindStormWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"KnightCrushWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"CentaurFlashWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
 
-{"FreezeCrackerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
-{"NoiseCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"FreezeCrackerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
+{"NoiseCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"WildCoilWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"DangerWrapWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"ScorchWheelWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 {"JunkShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 {"SlashClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"ThunderBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"ThunderBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 
 {"AstroCrushWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
 {"FlameSwordWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"ThunderClawWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"HomingSniperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"HomingSniperWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"WaterBalloonWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
-{"MegaBallWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"MegaBallWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"FlashBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
-{"IceWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"IceWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"TornadoHoldWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 
 {"TenguBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
@@ -120,12 +120,12 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"SpreadDrillWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"MagicCardWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"RemoteMineWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
-{"CopyVisionWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"CopyVisionWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"IceWallWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 {"LightningBoltWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
 
 {"PlugBallWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
-{"LaserTridentWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"LaserTridentWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"BlackHoleBombWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
 {"JewelSatelliteWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 {"ConcreteShotWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
@@ -137,22 +137,22 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 
 /*
 {"WheelCutterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"ReboundStrikerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"ReboundStrikerWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"ThunderWoolWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"CommandoBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"ChillSpikeWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"WaterShieldWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 {"TripleBladeWepCS", "CSCC_GizmoFrost", "FrostCannonWep",, "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 
-{"GrabBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"GrabBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"BubbleBombWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"PhotonMissileWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"SaltWaterWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"ElectricShockWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"BlackHoleWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"BlackHoleWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"DeepDiggerWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"BreakDashWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"SparkChaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"SparkChaserWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 */
 
 {"SakugarneWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
@@ -160,14 +160,14 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"ScrewCrusherWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
 {"MirrorBusterWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
 
-{"IceBladeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
-{"LightningWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
-{"GouhadouWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"IceBladeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
+{"LightningWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
+{"GouhadouWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"NadeSpamWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
-{"CometWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"CometWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"FusionBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"MeteorWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
-{"RailBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"RailBusterWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"PistonTremorWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 {"IdolWaveWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
 {"SteelPunchWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
@@ -177,10 +177,10 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"TankCannonWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"HybridBurstWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"LightScreenWepCS", "CSCC_GizmoHydro", "HydroCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SHIELD
-{"EmberCelicaWepCS","CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
-{"BubbleArrowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"EmberCelicaWepCS","CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
+{"BubbleArrowWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"CrystalWallWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
-{"GravitySphereWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RANGED
+{"GravitySphereWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"BloodyBatWepCS", "CSCC_GizmoFrost", "FrostCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //CLOSE
 
 };

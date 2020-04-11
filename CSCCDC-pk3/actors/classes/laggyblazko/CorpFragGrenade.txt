@@ -12,18 +12,44 @@ States
 Ready:
 NADE B 0 ACS_ExecuteAlways(998,0,413)
 NADE B 0 A_JumpIfNoAmmo("NoAmmo") 
-TNT1 A 4 A_WeaponReady(WRF_NOPRIMARY)
-COG1 F 2 Offset(0,160) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COG1 F 2 Offset(0,128) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COG1 F 2 Offset(0,96) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
-COG1 F 2 Offset(0,64) A_WeaponReady(WRF_NOPRIMARY|WRF_NOBOB)
+
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
+
+COG1 F 1 Offset(24,160) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COG1 F 1 Offset(16,128) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COG1 F 1 Offset(8,96) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COG1 F 1 Offset(4,64) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COG1 F 1 Offset(0,40) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COG1 F 1 Offset(-4,20) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COG1 F 1 Offset(-4,24) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+COG1 F 1 Offset(0,28) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
+
+
 TNT1 A 0 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH) //OffsetReset
 Ready2:
 TNT1 A 0 A_JumpIfNoAmmo("NoAmmo") 
 COG1 F 1 A_WeaponReady
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",0) == True,"User1")
 //NADE B 1 A_GiveInventory("NadeAmmoClass",1)
 loop
 Fire: 
+Altfire:
 COG1 F 2 Offset(8,64)
 COG1 F 2 Offset(16,96)
 COG1 F 2 Offset(24,128)
@@ -36,7 +62,9 @@ TNT1 A 4 A_PlaySoundEx("Corp/FragPin","Weapon")
 NADE B 0 A_AlertMonsters//The pin alerts them as well =P
 Hold:
 TNT1 A 1 A_GiveInventory("GrenadeForce",1)
+COG1 F 0  A_Jumpif(CallACS("CSACS_CorpCheckKnife",1) == True,"NoHold")
 TNT1 A 0 A_Refire
+noHold:
 NADE B 0 A_AlertMonsters
 NADE B 0 A_PlaySoundEx("weapon/crackerthrow","Weapon")
 NADE B 0 A_JumpIfInventory("GrenadeForce",15,"ThrowFast")
@@ -52,7 +80,7 @@ NADE C 0 A_Refire("Throw")
 COG1 F 2 Offset(0,128)
 COG1 F 2 Offset(0,64)
 Goto Ready2+1
-AltFire:
+User1:
 TNT1 A 0 A_JumpIfInventory("CorpKnifeCooldown",1,"Ready2")
 COG1 F 1 Offset(0,64)
 COG1 F 1 Offset(0,128)

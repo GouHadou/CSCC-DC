@@ -35,7 +35,9 @@ OB_CORPKNIFE = "%o was shut up by %k.";
 OB_NADESPAM = "%o was blasted by %k's Nadespam.";
 OB_FRAGGRENADE = "%o was fragmented by %k's fragmentation grenade.";
 OB_GRANDDAD = "%o met %k's Grand Dad.";
+OB_INFRARIFLE = "%o was silenced by %k's Infrarifle.";
 
+TAG_INFRARIFLE = "Infrarifle";
 TAG_NADESPAM = "Nade Spam";
 TAG_TOMMYGUN = "Tommy Gun";
 TAG_FRAGGRENADE = "Fragmentation Grenade";

@@ -6,17 +6,18 @@ Inventory.Pickupmessage "Power Up! Nade Spam!"
 +NOALERT //Using the knife should not alert monsters.
 States
 {
-Spawn:
-TNT1 A 0
-stop
 Select:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 TNT1 A 1 A_Lower
 Loop
 Deselect:
+TNT1 A 0 A_TakeInventory("CorpZoomFlag",1)
+TNT1 A 0 A_TakeInventory("InfraRifleInfraRed",1) 
+TNT1 A 0 A_ZoomFactor(1.0, ZOOM_INSTANT)
+DeselectReal:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 TNT1 A 1 A_Lower
-Loop
+loop
 Ready:
 TNT1 A 1
 goto Ready
@@ -53,6 +54,7 @@ DamageFactor "CorpKnife", 0.0
 
 actor CorpKnifePuffShot1 : BasicTeamColorPickup
 {
+Obituary "$OB_CORPKNIFE"
 states
 {
 FireX:
@@ -102,6 +104,7 @@ actor CorPKnifeHitbox : BasicFastProjectile
 {
 +MTHRUSPECIES
 damagetype "CorpKnife"
+Obituary "$OB_CORPKNIFE"
 Damage (30)
 Speed 80
 radius 8
@@ -117,3 +120,6 @@ stop
 }
 }
 
+actor CorpZoomFlag : Once //For Zooming
+{
+}

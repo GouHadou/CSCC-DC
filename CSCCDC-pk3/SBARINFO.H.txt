@@ -116,6 +116,9 @@ IsSelected FusionBombClassWep{DrawBar "VCFWPBAR", "VAREMPTY", Ammo1, horizontal,
 		InInventory GrenadeForce, 1{DrawBar "LGYMAGBR", "", GrenadeForce, horizontal, 240, 168;}}
 	IsSelected CorpGrandDad{DrawBar "LGYTOMBR", "", Ammo1, horizontal, 272, 184;
 		DrawBar "LGYMAGBR", "", Ammo2, horizontal, 240, 168;}
+	IsSelected CorpInfraRifle{DrawBar "LGYTOMBR", "", Ammo1, horizontal, 272, 184;
+		DrawBar "LGYMAGBR", "", Ammo2, horizontal, 240, 168;
+		InInventory InfraRifleChargeDisplay, 1{DrawBar "LGYMAGBR", "", InfraRifleChargeDisplay, horizontal, 240, 168;}}
 	
 	
 	//Useless armor

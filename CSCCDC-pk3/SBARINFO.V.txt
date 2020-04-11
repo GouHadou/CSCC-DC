@@ -103,6 +103,8 @@ IsSelected FusionBombClassWep{DrawBar "CFWPBAR", "BAREMPTY", Ammo1, vertical, 16
 //====|Corporal
 InInventory LaggyHUD //It will have more stuff later.
 {
+	DrawImage "CORKNIFE", 32, 56;
+	DrawImage "VERICON1", 40, 56;
 	IsSelected TommyGun
 	{
 	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
@@ -125,6 +127,14 @@ InInventory LaggyHUD //It will have more stuff later.
 	{
 	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
 	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 8, 8;
+	DrawImage "MAGAICON", 32, 48;
+	DrawImage "VERICONR", 40, 48;
+	}
+	IsSelected CorpInfraRifle
+	{
+	DrawBar "BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;
+	DrawBar "BARAMM28", "BAREMPTY", Ammo2, vertical, 8, 8;
+	InInventory InfraRifleChargeDisplay, 1{DrawBar "BARFLS1", "NOBAR", InfraRifleChargeDisplay, vertical, 16, 8;}
 	DrawImage "MAGAICON", 32, 48;
 	DrawImage "VERICONR", 40, 48;
 	}
