@@ -163,7 +163,7 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 {"IceBladeWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"LightningWaveWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"GouhadouWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
-{"NadeSpamWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpGrandDad", "CorpGrandDad"}, //RAPID
+{"NadeSpamWepCS", "CSCC_GizmoFlame", "FlameCannonWep", "CSCC_CorpAmmoBackPack", "CorpAmmoBackPack"}, //RAPID
 {"CometWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpInfraRifle", "CorpInfraRifle"}, //RANGED
 {"FusionBombWepCS", "CSCC_GizmoStone", "StoneCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //POWER
 {"MeteorWepCS", "CSCC_GizmoLightning", "LightningCannonWep", "CSCC_CorpFragGrenade", "CorpFragGrenade"}, //SPECIAL
@@ -185,7 +185,7 @@ str FakeWeaponInfo[MAX_FAKEWEPS][7] = {
 
 };
 
-#DEFINE MAX_FAKEMESSAGES 7
+#DEFINE MAX_FAKEMESSAGES 9
 
 str FakeWeaponMessage[MAX_FAKEMESSAGES][2] = {
 {"FlameCannonWep", "\cgPower Up! Flame Cannon!"},
@@ -195,6 +195,8 @@ str FakeWeaponMessage[MAX_FAKEMESSAGES][2] = {
 {"HydroCannonWep", "\cgPower Up! Hydro Cannon!"},
 {"CorpFragGrenade", "\cgYou got the Fragmentation Grenade!"},
 {"CorpGrandDad", "\cgYou got the Grand Dad!"},
+{"CorpInfraRifle", "\cgYou got the InfraRifle!"},
+{"CorpAmmoBackpack", "\cgPicked up an ammo pack."},
 };
 
 script "CSACS_WeaponDisplay" (void) CLIENTSIDE

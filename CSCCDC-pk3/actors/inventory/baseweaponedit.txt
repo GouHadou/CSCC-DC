@@ -112,6 +112,11 @@ actor CorpInfraRifleDelayPickup : Powerup
 Powerup.Duration -60
 }
 
+actor CorpAmmoBackpackDelayPickup : Powerup
+{
+Powerup.Duration -30
+}
+
 actor CSCC_ChangeFlagDropped1 : CustomInventory
 {
 states
