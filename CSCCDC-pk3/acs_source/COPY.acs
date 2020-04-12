@@ -1,85 +1,86 @@
 //#library "COPY"
 //#import "wepacs.acs"
 
-#define MAX_MORPHS 61
+#define MAX_MORPHS 62
 
 str CopyMorphs[MAX_MORPHS][3] = 
 {
-{"UnixKnife", "Unix (Eternal Torment)", "UnixClassItems"},//1
-{"UnixBlade", "Unix (Revolver Blade)", "UnixClassItems"},//2
-{"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},//3
-{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},//4
-{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},//5
-{"IceWep", "Ice", "IceSparkyClassItems1"},//6
-{"SparkyWep", "Sparky", "IceSparkyClassItems2"},//7
-{"FIR", "Korby (Fire)", "KorbyClassItems"},//8
-{"LIT", "Korby (Lightning)", "KorbyClassItems"},//9
-{"ICE", "Korby (Ice)", "KorbyClassItems"},//10
-{"CorpGrandDad", "Corporal (Grand Dad)", "LaggyClassItems"},//11
-{"CorpFragGrenade", "Corporal (Frag Grenade)", "LaggyClassItems"},//12
-{"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},//13
-{"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},//14
-{"MessatsuWep", "Messatsu", "MessatsuClassItems"},//15
-{"BurstBlade", "Aegis", "AegisClassItems"},//16
-{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},//17
+{"UnixKnife", "Unix (Eternal Torment)", "UnixClassItems"},
+{"UnixBlade", "Unix (Revolver Blade)", "UnixClassItems"},
+{"HellfireCutterBoss", "CutmanMike", "CutmanMikeClassItems"},
+{"UkiyamaClassWep", "Ukiyama", "UkiyamaClassItems"},
+{"FusionBombClassWep", "Cold Fusion", "ColdFusionClassItems"},
+{"IceWep", "Ice", "IceSparkyClassItems1"},
+{"SparkyWep", "Sparky", "IceSparkyClassItems2"},
+{"FIR", "Korby (Fire)", "KorbyClassItems"},
+{"LIT", "Korby (Lightning)", "KorbyClassItems"},
+{"ICE", "Korby (Ice)", "KorbyClassItems"},
+{"CorpGrandDad", "Corporal (Grand Dad)", "LaggyClassItems"},
+{"CorpFragGrenade", "Corporal (Frag Grenade)", "LaggyClassItems"},
+{"TommyGun", "Corporal (Tommy Gun)", "LaggyClassItems"},
+{"NadeSpam", "Corporal (Nade Spam)", "LaggyClassItems"},
+{"CorpInfraRifle", "CorpInfraRifle", "LaggyClassItems"},
+{"MessatsuWep", "Messatsu", "MessatsuClassItems"},
+{"BurstBlade", "Aegis", "AegisClassItems"},
+{"PistonTremorBoss", "Piston Man", "PistonmanClassItems"},
 
-{"VocalMicBoss1", "Vocal Woman (Offense Mic)", "VocalWomanClassItems"},//18
-{"VocalMicBoss2", "Vocal Woman (Support Mic)", "VocalWomanClassItems"},//19
+{"VocalMicBoss1", "Vocal Woman (Offense Mic)", "VocalWomanClassItems"},
+{"VocalMicBoss2", "Vocal Woman (Support Mic)", "VocalWomanClassItems"},
 
-{"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},//20
+{"ZenTrainerWep", "Zen Trainer", "ZenTrainerClassItems"},
 
-{"GeeBurstBoss1", "Gee (Healing Burst)", "GeeClassItems"},//21
-{"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},//22
+{"GeeBurstBoss1", "Gee (Healing Burst)", "GeeClassItems"},
+{"GeeBurstBoss2", "Gee (Damaging Burst)", "GeeClassItems"},
 
-{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},//23
-{"HandCannon", "Gizmo (Plasma Cannon)", "GizmoClassItems"},//24
-{"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},//25
-{"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},//26
-{"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},//27
-{"EternalClawsWep", "Gizmo (Eternal Claws)", "GizmoClassItems"},//28
-{"StoneCannonWep", "Gizmo (Stone Cannon)", "GizmoClassItems"},//29
-{"HydroCannonWep", "Gizmo (Hydro Cannon)", "GizmoClassItems"},//30
+{"ClawGlovesWep", "Gizmo (Claw Gloves)", "GizmoClassItems"},
+{"HandCannon", "Gizmo (Plasma Cannon)", "GizmoClassItems"},
+{"FrostCannonWep", "Gizmo (Frost Cannon)", "GizmoClassItems"},
+{"LightningCannonWep", "Gizmo (Lightning Cannon)", "GizmoClassItems"},
+{"FlameCannonWep", "Gizmo (Flame Cannon)", "GizmoClassItems"},
+{"EternalClawsWep", "Gizmo (Eternal Claws)", "GizmoClassItems"},
+{"StoneCannonWep", "Gizmo (Stone Cannon)", "GizmoClassItems"},
+{"HydroCannonWep", "Gizmo (Hydro Cannon)", "GizmoClassItems"},
 
-{"BullGatorSleepPierce", "BullGator (Sleep / Pierce)", "BullGatorClassItems"},//31
-{"BullGatorSiphonSplitter", "BullGator (Siphon / Splitter)", "BullGatorClassItems"},//32
-{"BullGatorConfusionBurst", "BullGator (Confusion / Burst)", "BullGatorClassItems"},//33
+{"BullGatorSleepPierce", "BullGator (Sleep / Pierce)", "BullGatorClassItems"},
+{"BullGatorSiphonSplitter", "BullGator (Siphon / Splitter)", "BullGatorClassItems"},
+{"BullGatorConfusionBurst", "BullGator (Confusion / Burst)", "BullGatorClassItems"},
 
-{"OrbitalMissileBoss", "Badz", "BadzClassItems"},//34
-{"ClassicTankWeapon", "Tank Operator", "TankOperatorClassItems"},//35
+{"OrbitalMissileBoss", "Badz", "BadzClassItems"},
+{"ClassicTankWeapon", "Tank Operator", "TankOperatorClassItems"},
 
-{"BubbleArrowBoss", "Knux", "KnuxClassItems"},//36
+{"BubbleArrowBoss", "Knux", "KnuxClassItems"},
 
-{"GravSphereWep", "Gravitron", "GravitronClassItems"},//37
+{"GravSphereWep", "Gravitron", "GravitronClassItems"},
 
-{"NatureStaffStraightWep", "Deer Strait", "NaturesWonderClassItems"},//38
-{"NatureStaffHorizontalWep", "Deer Wall", "NaturesWonderClassItems"},//39
-{"NatureStaffAllAroundWep", "Deer Circle", "NaturesWonderClassItems"},//40
-{"LegoMissilesBoss", "Lego", "LegoClassItems"},//41
-{"AbraFists", "Abra (Fists)", "AbraClassItems"},//42
-{"AbraPsychic", "Abra (Psychic)", "AbraClassItems"},//43
-{"PearlStaff", "HealMore", "HealmoreClassItems"},//44
-{"EmberCelica", "Yang", "YangClassItems"},//45
+{"NatureStaffStraightWep", "Deer Strait", "NaturesWonderClassItems"},
+{"NatureStaffHorizontalWep", "Deer Wall", "NaturesWonderClassItems"},
+{"NatureStaffAllAroundWep", "Deer Circle", "NaturesWonderClassItems"},
+{"LegoMissilesBoss", "Lego", "LegoClassItems"},
+{"AbraFists", "Abra (Fists)", "AbraClassItems"},
+{"AbraPsychic", "Abra (Psychic)", "AbraClassItems"},
+{"PearlStaff", "HealMore", "HealmoreClassItems"},
+{"EmberCelica", "Yang", "YangClassItems"},
 
-{"DevionPowers", "Devion", "DevionClassItems"},//46
+{"DevionPowers", "Devion", "DevionClassItems"},
 
-{"RedMageDiaraWep", "RedMage", "RedMageClassItems"},//47
-{"RedMageFiraWep", "RedMage", "RedMageClassItems"},//48
-{"RedMageAeroraWep", "RedMage", "RedMageClassItems"},//49
-{"RedMageBlizzaraWep", "RedMage", "RedMageClassItems"},//50
-{"RedMageSlowWep", "RedMage", "RedMageClassItems"},//51
-{"RedMageWateraWep", "RedMage", "RedMageClassItems"},//52
-{"RedMageThundaraWep", "RedMage", "RedMageClassItems"},//53
-{"RedMageBlinkWep", "RedMage", "RedMageClassItems"},//54
-{"RedMageTemperWep", "RedMage", "RedMageClassItems"},//55
-{"RedMageFocusWep", "RedMage", "RedMageClassItems"},//56
+{"RedMageDiaraWep", "RedMage", "RedMageClassItems"},
+{"RedMageFiraWep", "RedMage", "RedMageClassItems"},
+{"RedMageAeroraWep", "RedMage", "RedMageClassItems"},
+{"RedMageBlizzaraWep", "RedMage", "RedMageClassItems"},
+{"RedMageSlowWep", "RedMage", "RedMageClassItems"},
+{"RedMageWateraWep", "RedMage", "RedMageClassItems"},
+{"RedMageThundaraWep", "RedMage", "RedMageClassItems"},
+{"RedMageBlinkWep", "RedMage", "RedMageClassItems"},
+{"RedMageTemperWep", "RedMage", "RedMageClassItems"},
+{"RedMageFocusWep", "RedMage", "RedMageClassItems"},
 
-{"DaverisClassWep", "Daveris", "DaverisClassItems"},//57
+{"DaverisClassWep", "Daveris", "DaverisClassItems"},
 
-{"JaxPsycho1", "JaxOf7", "JaxClassItems"},//58
-{"JaxPsycho2", "JaxOf7", "JaxClassItems"},//59
+{"JaxPsycho1", "JaxOf7", "JaxClassItems"},
+{"JaxPsycho2", "JaxOf7", "JaxClassItems"},
 
-{"LordDamagerBoss", "Lord Damager", "LordDamagerClassItems"},//60
-{"OblivionWingsClass", "Rozark", "RozarkClassItems"}, //61
+{"LordDamagerBoss", "Lord Damager", "LordDamagerClassItems"},
+{"OblivionWingsClass", "Rozark", "RozarkClassItems"}, //62
 };
 
 Script "GetPlayerWeapon" (int TargetTID)
@@ -118,6 +119,10 @@ Switch(MorphMode)
 	if(CopyPlayer == 0 || CopyTarget == 0){terminate;}
 	SetActivator(CopyTarget);
 	CopyWeapon = GetWeapon();
+	
+	If(StrIcmp("Morph", StrRight(CopyWeapon, 5))==0)
+		{CopyWeapon = StrLeft(CopyWeapon, StrLen(CopyWeapon)-5);}
+	
 	FinalMorph = StrParam(s:CopyWeapon, s:"Morph"); 
 	SetActivator(CopyPlayer);
 	for(int i = 0; i < MAX_MORPHS; i++) 
@@ -232,6 +237,7 @@ If(TotalHealthAfter > 0){SetActorProperty(0, APROP_HEALTH, TotalHealthAfter);}
 TakeInventory("NoColorFlag", 1);
 //--==Class Specific gives==--
 GiveInventory("KilledMeStock", KilledMeStockNum);
+GiveInventory("FusionStock", FusionStockNum);
 //--==End Gives==--
 GiveInventory("CopyRemover", 1);
 ACS_NamedExecuteAlways("HUD_NUMBER_VAR_CHECK_RESPAWN",0);

@@ -408,6 +408,11 @@ actor CorpFragGrenadeMorph : NadeSpamMorph
 player.morphweapon "CorpFragGrenade"
 }
 
+actor CorpInfraRifleMorph : NadeSpamMorph
+{
+player.morphweapon "CorpInfraRifle"
+}
+
 actor LaggyClassItems : CustomInventory
 {
 inventory.amount 1
