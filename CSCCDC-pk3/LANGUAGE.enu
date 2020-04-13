@@ -521,6 +521,7 @@ CHANGELOGS = "\cvCHOOSE YOUR VERSION";
 V1ACHANGELOG = "\cvV1A CHANGELOG";
 V1BCHANGELOG = "\cvV1B CHANGELOG";
 V1CCHANGELOG = "\cvV1C CHANGELOG";
+V2ACHANGELOG = "\cvV2A CHANGELOG";
 GENERAL_CH_TITLE = "\cvGENERAL";
 
 GRAVITRON_CH_TITLE = "\cvGRAVITRON";
@@ -540,3 +541,27 @@ LORDDAMAGER_CH_TITLE = "\cvLORDDAMAGER";
 LORDDAMAGER_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
 LORDDAMAGER_CH_ALTFIRE = "\cfAltfire : \cjPunch any fool \nthat dared to come within \nrange of your fists.";
 LORDDAMAGER_CH_ITEM = "\cfItem : \cjInitiate a ramming attack.";
+
+ABRA_CH_TITLE = "\cvABRA";
+ABRA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+
+DAVERIS_CH_TITLE = "\cvDAVERIS";
+DAVERIS_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj87%\n\cfJump : \cj160%";
+
+DEVION_CH_TITLE = "\cvDEVION";
+DEVION_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj87%\n\cfJump : \cj120%";
+
+HEALMORE_CH_TITLE = "\cvHEALMORE";
+HEALMORE_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj87%\n\cfJump : \cj100%";
+
+JAX_CH_TITLE = "\cvJAX";
+JAX_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
+
+KNUX_CH_TITLE = "\cvKNUX";
+KNUX_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj87%\n\cfJump : \cj180%";
+
+ROZARK_CH_TITLE = "\cvROZARK";
+ROZARK_CH_STATS = "\cfHealth : \cj105\n\n\cfSpeed : \cj112%\n\cfJump : \cj100%";
+
+YANG_CH_TITLE = "\cvYANG";
+YANG_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj81%\n\cfJump : \cj120%";

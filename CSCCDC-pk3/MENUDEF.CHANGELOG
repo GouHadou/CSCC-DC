@@ -9,6 +9,7 @@ OptionMenu "ChangelogSelect"
 	Title "$CHANGELOGS"
 	StaticText "===============================================================",1
 	StaticText ""
+	Submenu	    "         	          Version 2a",		"v2aChangelog"
 	Submenu	    "         	          Version 1c",		"v1cChangelog"
 	Submenu	    "         	          Version 1b",		"v1bChangelog"
 	Submenu	    "         	          Version 1a",		"v1aChangelog"
@@ -220,3 +221,19 @@ OptionValue v1cGizmo{0, "\cj-Hydro Cannon speed 100->60 \n--Hydro Cannon falloff
 OptionValue v1cMessatsu{0, "\cj-Can no longer rapidly Demon \nFlip Kick"}
 OptionValue v1cBadz{0, "\cj-Mainfire speed 30->40 \n-Orbital Missile has power \nprotection now"}
 OptionValue v1cZenTrainer{0, "\cj-Zen Sphere line of sight \nis now more lenient \n-Zen Sphere damage rate \ndoubled \n--Damage 10->5 \n--Now applies minimal \nhitstun"}
+
+
+OptionMenu "v2AChangelog"
+{
+	Title "$V2ACHANGELOG"
+	StaticText "===============================================================",1
+	StaticText ""
+	Option "$GENERAL_CH_TITLE", "CSCC_Menudef_Changelog", "v2aGeneral"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "===============================================================",1
+	StaticText ""
+}
+
+OptionValue v2aGeneral{0, "\cjAdded: Abra, Daveris, Devion, \nGravitron, Healmore, Jax, Knux, \nNature's Wonder, Rozark, Yang"}
