@@ -441,3 +441,10 @@ sprite CWALE0, 128, 128 {Offset -177, -50 Patch HSPRD0, 0, 0 {Translation "192:1
 sprite STPHA0, 148, 80 {Offset -202, -103 Patch HSPRE0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
 sprite STPHB0, 115, 96 {Offset -210, -96 Patch HSPRB0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
 sprite STPHC0, 115, 96 {Offset -190, -82 Patch HSPRC0, 0, 0 {Translation "192:192=194:194","198:198=241:241"}}
+
+//Abra - Psychic Shot
+sprite PSYSA0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=229:229", "198:198=220:220"}}
+sprite PSYSB0, 124, 96 {Offset -184, -98  Patch BUSTC0, 0, 0 {Translation "192:192=229:229", "198:198=220:220"}}
+sprite PSYSC0, 128, 92 {Offset -188, -102 Patch BUSTD0, 0, 0 {Translation "192:192=229:229", "198:198=220:220"}}
+sprite PSYSD0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=229:229", "198:198=220:220", "0:0=254:254"}}
+sprite PSYSE0, 116, 96 {Offset -184, -94  Patch BUSTB0, 0, 0 {Translation "192:192=229:229", "198:198=220:220", "0:0=251:251"}}

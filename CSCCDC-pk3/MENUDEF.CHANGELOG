@@ -232,8 +232,19 @@ OptionMenu "v2AChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	Option "$MEGAMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v2aMegaman"
+	StaticText ""
+	StaticText ""
+	Option "$GIZMO_CH_TITLE", "CSCC_Menudef_Changelog", "v2aGizmo"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	StaticText "===============================================================",1
 	StaticText ""
 }
 
 OptionValue v2aGeneral{0, "\cjAdded: Abra, Daveris, Devion, \nGravitron, Healmore, Jax, Knux, \nNature's Wonder, Rozark, Yang"}
+OptionValue v2aMegaman{0, "\cjCopy Weapons updated\nto match classes"}
+OptionValue v2aGizmo{0, "\cj-Plasma Dmg Reduced\n-Lightning dmg increased\n-Stone spd increased\n-Flame Dmg increased\n-Frost spd increased."}

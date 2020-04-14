@@ -26,3 +26,4 @@
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/YangCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/LDCopy.txt"
 #include "actors/classes/Megaman/copyweps/CSCCCopyweps/RozarkCopy.txt"
+#include "actors/classes/Megaman/copyweps/CSCCCopyweps/AbraCopy.txt"

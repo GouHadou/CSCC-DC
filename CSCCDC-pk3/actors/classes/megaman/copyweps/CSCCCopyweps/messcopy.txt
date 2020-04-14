@@ -113,8 +113,8 @@ Actor GouhadouM : Gouhadou
 States
 {
 Spawn:
-TNT1 A 0
-Goto SpawnLoop
+TNT1 A 2
+Goto Spawn2
 }
 }
 
@@ -124,8 +124,8 @@ Actor ShakunetsuM : Shakunetsu
 States
 {
 Spawn:
-TNT1 A 0
-Goto SpawnLoop
+TNT1 A 2
+Goto Spawn2
 }
 }
 
@@ -134,8 +134,8 @@ Actor Shakunetsu2M : Shakunetsu2
 States
 {
 Spawn:
-TNT1 A 0
-Goto SpawnLoop
+TNT1 A 2
+Goto Spawn2
 }
 }
 
@@ -144,8 +144,8 @@ Actor Shakunetsu3M : Shakunetsu3
 States
 {
 Spawn:
-TNT1 A 0
-Goto SpawnLoop
+TNT1 A 2
+Goto Spawn2
 }
 }
 actor GouhadouAmmo : Ammo

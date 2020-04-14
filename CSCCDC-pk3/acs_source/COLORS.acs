@@ -381,6 +381,9 @@
 #DEFINE ORBITALMISSILE 1102
 #DEFINE HYBRIDBURST 1103
 #DEFINE CrystalWall 655
+
+#DEFINE ABRACHARGE1 396
+#DEFINE ABRACHARGE2 397
 // Note: Going above 999 is going to screw up translations used for boss battles (police/doc robots/gamma etc)
 
 
@@ -722,5 +725,6 @@ Script "core_translations" OPEN CLIENTSIDE
 	CreateTranslation (ORBITALMISSILE, 192:192=204:204, 198:198=132:132);
 	CreateTranslation (HYBRIDBURST, 192:192=215:215, 198:198=243:243);
 	CreateTranslation (CrystalWall, 192:192=197:197, 198:198=198:198);
-
+	CreateTranslation (ABRACHARGE1, 192:192=229:229, 198:198=220:220, 244:247=254:254);
+	CreateTranslation (ABRACHARGE2, 192:192=229:229, 198:198=220:220, 244:247=251:251);
 }

@@ -678,6 +678,7 @@ IsSelected GravitySphereWepCS{Drawbar"GRSPAMMH", "BAREMPTY", Ammo1, vertical, 16
 IsSelected CrystalWallWepCS{DrawBar "CRYTBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected SteelPunchWepCS{Drawbar"LDMBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
 IsSelected BloodyBatWepCS{Drawbar"BLBATBAR", "BAREMPTY", Ammo1, vertical, 16, 8;}
+IsSelected PsychicBlastWepCS{Drawbar"BARAMM23", "BAREMPTY", Ammo1, vertical, 16, 8;}
 
 //MM1 Bars
 IsSelected RollingCutterWepCS{Drawbar"BARAMMO1", "BAREMPTY", Ammo1, vertical, 16, 8;}

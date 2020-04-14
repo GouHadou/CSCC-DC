@@ -238,6 +238,9 @@ OB_PSYPULSE = "%o was hit by %k's psychic pulse!";
 OB_ABPUNCH = "%o was punched out by %k!" ;
 OB_MEGAPUNCH = "%o was slugged by %k's mega punch!";
 OB_MEGAKICK = "%o was kicked by %k!";
+TAG_PSYBLAST = "PsychicBlast";
+PU_PSYBLASTCOPY = "Power up! Psychic Blast!";
+
 
 //===|HealMore
 OB_PEARLSTAFF = "%o was Blasted by %k's PearlStaff.";

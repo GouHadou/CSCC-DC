@@ -857,13 +857,13 @@ graphic MPUNICON, 30, 30
 {
    XScale 2.0
    YScale 2.0
-   Patch MGAPIO, 0, 0
+   Patch MGAPI0, 0, 0
 }
 graphic PSYCICON, 30, 30
 {
    XScale 2.0
    YScale 2.0
-   Patch PSCHIO, 0, 0
+   Patch PSCHI0, 0, 0
 }
 
 //Corporal
