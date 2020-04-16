@@ -1,5 +1,6 @@
 //Copy Robot
 misc/CopyPain MEGAPAIN
+CopyRobot/Taunt	BCETAUNT
 
 $playersound	BestClassEver	male	*death		MEGADEAT
 $playersound	BestClassEver	male	*xdeath		MEGADEAT
@@ -372,6 +373,7 @@ $playersound	Yang	female	*usefail	LAND
 $playersound	Yang	female	*taunt	NLDIT
 
 weapon/EmberCelica EMBSHOT
+yang/taunt	NLDIT
 //Knux
 $playersound	knuxc	male	*death		MEGADEAT
 $playersound	knuxc	male	*xdeath		MEGADEAT
@@ -424,6 +426,7 @@ $playersound	NaturesWonder	male	*usefail	LAND
 $playersound	NaturesWonder	male	*taunt	    DEAR!
 
 weapon/CrystalBreak CrystBrk
+natureswonder/taunt DEAR!
 //Lego
 $playersound	legosfx	male	*death		MEGADEAT
 $playersound	legosfx	male	*xdeath		MEGADEAT

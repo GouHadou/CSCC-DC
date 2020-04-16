@@ -13,10 +13,40 @@ TNT1 A 0 A_Stop
 TNT1 A 0 A_GiveToTarget("KilledMeStock",1)
 TNT1 A 0 A_GiveToTarget("KilledMe",1)
 TNT1 A 0 A_GiveToTarget("FusionStock",1)
+TNT1 A 0 A_JumpIfInTargetInventory("IsBot", 1, "GiveBotTaunt")
+stop
+GiveBotTaunt:
+TNT1 A 0 A_GiveToTarget("BotTauntItem", 1)
 stop
 }
 }
 
+actor BotTauntItem : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0
+//TNT1 A 0 A_JumpIfInventory("MorphFlag", 1, "CopyTaunt") //Copy is Special.  Taunt IS LONG
+//TNT1 A 0 A_JumpIfInventory("IsCopy", 1, "CopyTaunt") 
+TNT1 A 0 A_JumpIfInventory("IsYang", 1, "YangTaunt")
+TNT1 A 0 A_JumpIfInventory("IsDevion", 1, "DevionTaunt")
+TNT1 A 0 A_JumpIfInventory("IsNaturesWonder", 1, "NaturesWonderTaunt")
+stop
+CopyTaunt:
+TNT1 A 0 A_PlaySoundEx("CopyRobot/taunt", "Taunt")
+stop
+YangTaunt:
+TNT1 A 0 A_PlaySoundEx("yang/taunt", "Taunt")
+stop
+DevionTaunt:
+TNT1 A 0 A_PlaySoundEx("devion/taunt", "Taunt")
+stop
+NaturesWonderTaunt:
+TNT1 A 0 A_PlaySoundEx("natureswonder/taunt", "Taunt")
+stop
+}
+}
 actor PainPower : Powerup
 {
 powerup.duration 3

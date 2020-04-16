@@ -29,6 +29,7 @@ Dropitem ""
 Inventory.ForbiddenTo ""
 +INVENTORY.UNDROPPABLE
 +WEAPON.NOAUTOAIM
++WEAPON.CHEATNOTWEAPON
 states
 {
 Spawn:
