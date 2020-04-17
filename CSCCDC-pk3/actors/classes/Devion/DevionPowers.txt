@@ -23,6 +23,7 @@ DEVH A 0 A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User1) == True,"UB1")
 DEVH A 0 //A_Jumpif(CallACS("CSACS_ButtonCheck",BT_User2) == True,"UB2")
 DEVH A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 Goto Ready2
+
 Deselect:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 DEVH A 1 A_Lower
@@ -33,6 +34,7 @@ DEVH A 1 A_Raise
 Loop
 
 Fire: //Oraoraora
+DEVH A 0 A_JumpIfInventory("IsBot",1,"BotFire")
 DEVH A 0 A_JumpIfNoAmmo("NoAmmo")
 DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
 DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
@@ -58,6 +60,7 @@ FireEnd:
 DEVH NOPQRS 1
 Goto Ready2
 NoAmmo:
+DEVH A 0 A_JumpIfInventory("IsBot",1,"UB1")
 DEVH A 1
 Goto Ready2
 /*
@@ -309,6 +312,42 @@ goto Flash
 FeverFlash:
 TNT1 A 0 A_SpawnItemEx("TerraAfterimage",-50,0,15,0,0,0,0,SXF_ABSOLUTEMOMENTUM)
 goto Flash+7
+
+BotFire:
+DEVH A 1 A_JumpIfCloser(412, "Ora")
+DEVH A 0 A_Jump(48, "BotAltfire")
+Goto UB1
+
+BotAltfire:
+DEVH C 6 A_GiveInventory("BotJump",1)
+Goto Altfire
+
+Ora:
+DEVH A 0 A_JumpIfNoAmmo("NoAmmo")
+DEVH A 0 A_TakeInventory("DShockwaveAnim",1)
+DEVH A 0 A_TakeInventory("DevionChargeAnim",1)
+DEVH A 0 SetPlayerProperty(0,0,0)
+DEVH A 0 A_JumpIfInventory("DevionShock",1,"Shockwave")
+//DEVH C 0 A_JumpIfInventory("DevionFever",1,"FireHold1B")
+BotFireHold1:
+DEVH A 0 A_GiveInventory("DevionNoRegen", 1)
+DEVH A 0 A_JumpIfNoAmmo("NoAmmo")
+DEVH A 0 A_Recoil(-2)
+DEVH A 0 A_PlaySoundEx("devion/punch1","Weapon")
+DEVH TUV 1 A_GiveInventory("DevionM1")
+DEVH A 0 A_TakeInventory("DevionAmmo", 1)
+DEVH A 0 A_JumpIfCloser(412, "BotFireHold2")
+//DEVH A 0 A_Refire("FireHold2")
+Goto FireEnd
+BotFireHold2:
+DEVH A 0 A_GiveInventory("DevionNoRegen", 1)
+DEVH A 0 A_Recoil(-1)
+DEVH A 0 A_PlaySoundEx("devion/punch2","Weapon")
+DEVH WXY 1 A_GiveInventory("DevionM1")
+DEVH A 0 A_TakeInventory("DevionAmmo", 1)
+DEVH A 0 A_JumpIfCloser(512, "BotFireHold1")
+//DEVH A 0 A_Refire("FireHold1")
+Goto FireEnd
 }
 }
 

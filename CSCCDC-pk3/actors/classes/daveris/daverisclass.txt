@@ -43,6 +43,7 @@ goto Spawn
 }
 }
 
+actor IsDaveris : Once {}
 actor DaverisClassItems : CustomInventory
 {
 inventory.amount 1
@@ -57,6 +58,7 @@ TNT1 A 0
 TNT1 A 0 A_GiveInventory("PulseAmmo", 56)
 TNT1 A 0 A_GiveInventory("FlurryAmmo", 56)
 TNT1 A 0 A_GiveInventory("DavHoverItem", 1)
+TNT1 A 0 A_GiveInventory("IsDaveris", 1)
 stop
 }
 }

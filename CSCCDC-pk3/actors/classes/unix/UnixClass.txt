@@ -40,9 +40,12 @@ TNT1 A 0 A_GiveInventory("UnixDisguiserStart",1)
 TNT1 A 0 A_GiveInventory("UnixCloakAmmo", 1000)
 TNT1 A 0 A_GiveInventory("UnixRevolverAmmo", 6)
 TNT1 A 0 A_GiveInventory("UnixSapper",1)
+TNT1 A 0 A_GiveInventory("IsUnix", 1)
 stop
 }
 }
+
+actor IsUnix : Once {}
 
 //Disguise
 

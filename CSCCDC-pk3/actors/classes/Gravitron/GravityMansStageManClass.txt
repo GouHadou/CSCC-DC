@@ -50,10 +50,13 @@ TNT1 A 0
 stop
 Pickup:
 TNT1 A 0
+TNT1 A 0 A_GiveInventory("IsGravitron", 1)
 TNT1 A 0 A_GiveInventory("GravChangerDown")
 stop
 }
 }
+
+actor IsGravitron : Once {}
 
 actor GravSphereWepMorph : GravitronClass
 {

@@ -12,7 +12,7 @@
 	class = "CopyRobot"
 	revealed = true
 	script = "humanbot"
-	chatlump = "botchats/COPYBOT"
+	chatlump = "botchats/COPYBOT.txt"
 	chatfrequency = 50
 }
 
@@ -31,7 +31,7 @@
 	class = "Gizmo"
 	revealed = true
 	script = "humanbot"
-	chatlump = "botchats/BOTHGIZ"
+	chatlump = "botchats/BOTHGIZ.txt"
 	chatfrequency = 50
 }
 
@@ -84,7 +84,7 @@
 	class = "Ice/Sparky"
 	revealed = true
 	script = "humanbot"
-	chatlump = "botchats/BOTICSP"
+	chatlump = "botchats/BOTICSP.txt"
 	chatfrequency = 50
 }
 
@@ -102,7 +102,7 @@
 	class = "Ukiyama"
 	revealed = true
 	script = "humanbot"
-	chatlump = "botchats/BOTUKIY"
+	chatlump = "botchats/BOTUKIY.txt"
 	chatfrequency = 50
 }
 
@@ -120,7 +120,7 @@
 	class = "Messatsu"
 	revealed = true
 	script = "humanbot"
-	chatlump = "botchats/BOTMESS"
+	chatlump = "botchats/BOTMESS.txt"
 	chatfrequency = 50
 }
 
@@ -138,7 +138,7 @@
 	class = "ColdFusion"
 	revealed = true
 	script = "humanbot"
-	chatlump = "botchats/BOTXCFX"
+	chatlump = "botchats/BOTXCFX.txt"
 	chatfrequency = 50
 }
 
@@ -241,7 +241,7 @@
     class = "Korby"
     revealed = true
     script = "humanbot"
-    chatlump = "botchats/KORBOT"
+    chatlump = "botchats/KORBOT.txt"
 	chatfrequency = 50
 }
 

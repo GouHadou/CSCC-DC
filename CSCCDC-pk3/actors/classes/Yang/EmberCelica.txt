@@ -28,6 +28,37 @@ YNGF A 0 A_JumpIfInventory("YangNoBlock", 1, 2)
 YNGF A 0 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_USER2), "Block")
 YNGF A 0
 Goto Ready+1
+
+
+BotFire:
+ABRH A 0 A_JumpIfCloser(200, "BotAltFire")
+YNGF A 0 A_TakeInventory("WeaponCharge", 35)
+YNGF A 0 A_JumpIfInventory("EmberCelicaDown", 1, "GroundAttackCheck")
+Goto FireLRCheck
+
+BotHold:
+YNGF A 0 A_JumpIfCloser(200, "BotAltFire")
+YNGF A 0 A_JumpIfCloser(320, 2)
+YNGF A 0 A_GiveInventory("YangBotDash", 1)
+YNGF A 0 A_TakeInventory("WeaponCharge", 35)
+YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeftCharge")
+YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
+Goto FireRightCharge
+BotAltFire:
+YNGF A 0 A_ChangeVelocity(Cos(pitch)*13, 0, -sin(pitch)*13,CVF_RELATIVE)
+YNGF A 1 Offset(0, 40)
+YNGF A 1 Offset(0, 56)
+YNGK A 1 Offset(0, 32)
+YNGK B 0 A_PlaySoundEx("weapon/chargekick", CHAN_WEAPON)
+YNGK B 3 A_SpawnItemEx ("YangKick",cos(-pitch)*32,0,32+(sin(-pitch)*48), momx, momy, momz,0,SXF_ABSOLUTEMOMENTUM|SXF_NOCHECKPOSITION,0) 
+YNGK B 0 A_ChangeVelocity(0.8*momx, 0.8*momy, momz, CVF_REPLACE)
+YNGF BBB 1 A_Recoil(-2)
+YNGK B 0 A_JumpIf(z-floorz > 40, "BotFire")
+YNGF B 1 A_GiveInventory("BotJump",1)
+Goto UpperCut
+
+
+
 Deselect:
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 YNGF A 1 A_Lower
@@ -37,6 +68,7 @@ TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
 YNGF A 1 A_Raise
 Loop
 Hold:
+YNGF A 0 A_JumpIfInventory("IsBot",1,"BotHold")
 YNGF A 0 A_TakeInventory("WeaponCharge", 35)
 YNGF A 0 A_JumpIfInventory("LeftRightFlag", 1, "FireLeftCharge")
 YNGF A 0 A_GiveInventory("LeftRightFlag", 1)
@@ -67,6 +99,7 @@ Goto BlockEnd
 YNGB C 0
 Goto BlockCont+1
 Fire:
+YNGF A 0 A_JumpIfInventory("IsBot",1,"BotFire")
 YNGF A 0 A_TakeInventory("WeaponCharge", 35)
 YNGF A 0 A_JumpIfInventory("EmberCelicaDown", 1, "GroundAttackCheck")
 Goto FireLRCheck
@@ -413,6 +446,11 @@ actor EmberCelicaBoost : PowerSpeed
 {
 PowerUp.Duration 15
 Speed 2.0
+}
+
+actor YangBotDash : Powerup
+{
+PowerUp.Duration 5
 }
 
 actor EmberCelicaDown : Powerup

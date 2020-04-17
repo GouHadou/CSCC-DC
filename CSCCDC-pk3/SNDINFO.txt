@@ -17,6 +17,7 @@ $playersound	BestClassEver	male	*taunt		BCETAUNT
 
 //Unix
 weapon/unixcloak teleout2 $volume weapon/unixcloak 0.90
+Unix/Taunt	UNIXTAU
 
 $playersound	unixclass	male	*death		MEGADEAT
 $playersound	unixclass	male	*xdeath		MEGADEAT
@@ -52,6 +53,7 @@ weapon/UkiRevolverShot   UKIYSHOT
 weapon/UkiRevolverReload UKIRELOAD
 
 weapon/MeteorLand smash
+Ukiyama/Taunt	UKIYTAUN
 
 //Cold Fusion
 $playersound	coldfus	male	*death		MEGADEAT
@@ -84,6 +86,7 @@ $playersound 	"Laggy"	    male	*gibbed		DSLGYGIB
 $playersound	"Laggy" 	male	*grunt		DSLGYOOF
 $playersound	"Laggy"		male	*fist		dsnone
 
+Corporal/Taunt	STATIK
 $random Laggy/Pain {Laggy/Pain1 Laggy/Pain2 Laggy/Pain2 Laggy/Pain2 Laggy/Pain2}
 Blazko/Burn2 DSLGYDIH
 Laggy/Pain1 DSLGYPAI
@@ -162,6 +165,7 @@ $playersound	korby	male	*taunt		KORTAUNT
 Weapon/BadBreath	BADBRTH
 Weapon/CometFall	COMET
 Weapon/WaterDrop	WATRDROP
+Korby/Taunt	KORTAUNT
 
 //--In Gizmo's sound folder--
 Korby/Needle1      ATTACK11
@@ -242,6 +246,7 @@ $playersound	gee	male	*fist		dsnone
 $playersound	gee	male	*usefail	LAND
 $playersound	gee	male	*taunt		GEETAUNT
 
+gee/taunt	GEETAUNT
 weapon/geefire1 GEEFIRE1
 weapon/geefire2 GEEFIRE2
 weapon/geeheal1 GEEHEAL1
@@ -409,6 +414,7 @@ $playersound	GRAVSPHERE	male	*fist		dsnone
 $playersound	GRAVSPHERE	male	*usefail	LAND
 $playersound	GRAVSPHERE	male	*taunt	    GRSPTAU
 
+Gravitron/Taunt	GRSPTAU
 
 //Deer
 $playersound	NaturesWonder	male	*death		MEGADEAT
@@ -473,6 +479,7 @@ weapon/doublet	Doublet
 $volume weapon/doublet 0.4
 weapon/recover	Recover
 $volume weapon/recover 0.4
+abra/taunt tauabra
 
 
 //Healmore
@@ -630,6 +637,7 @@ $playersound	davesfx	male	*fist		dsnone
 $playersound	davesfx	male	*usefail	LAND
 $playersound	davesfx	male	*taunt		DAVETAUN
 
+daveris/taunt	DAVETAUN
 weapon/icebreath	ICEBREAT
 weapon/fmortarshot		CANON
 weapon/fmortarshot2		CANON2
@@ -656,6 +664,7 @@ $playersound	jaxclass	male	*fist		dsnone
 $playersound	jaxclass	male	*usefail	LAND
 $playersound	jaxclass	male	*taunt		JAXTAU
 
+Jax/Taunt	JAXTAU
 //LordDamager
 $playeralias	lorddc	male	*death		lordd/death1
 $playeralias	lorddc	male	*xdeath		lordd/death1
@@ -706,7 +715,7 @@ $playersound	RozarkClass	male	*fist		dsnone
 $playersound	RozarkClass	male	*usefail	ROZLAND
 $playersound	RozarkClass	male	*taunt		ROZTAUNT
 
-
+Rozark/Taunt	ROZTAUNT
 weapon/DWThrow		DWTHROW
 weapon/DWCatch		DWCATCH
 weapon/InsanityOff	INSANOFF

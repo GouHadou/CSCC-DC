@@ -12,20 +12,6 @@ player.startitem "JaxClassItems", 1
 player.startitem "mm8bdmplayer", 1
 states
 {
-/*
-Spawn:
-CENT A 0
-CENT B 1
-CENT A 1
-Goto Spawn+2
-See:
-CENT BCDE 5
-Goto Spawn
-Missile:
-CENT F 5
-CENT G 4
-goto Spawn
-*/
 Spawn:
 EROB A 0
 EROB B 1
@@ -46,10 +32,13 @@ actor JaxClassItems : CustomInventory
 States
 {
 Pickup:
+TNT1 A 0 A_GiveInventory("IsJax", 1)
 TNT1 A 0 A_GiveInventory("JaxPsychoAmmo", 6)
 stop
 }
 }
+
+actor IsJax : Once {}
 
 actor JaxPsycho1Morph : JaxClass
 {

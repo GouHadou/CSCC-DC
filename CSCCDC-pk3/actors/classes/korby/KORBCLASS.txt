@@ -59,10 +59,6 @@ actor FLAMF : BLASF
 {
 }
 
-/*actor DOOMF : BLASF
-{
-}*/
-
 actor TIMEF : BLASF
 {
 }
@@ -70,10 +66,6 @@ actor TIMEF : BLASF
 actor SELFF : BLASF
 {
 }
-
-/*actor FROGF : BLASF
-{
-}*/
 
 actor FLASF : BLASF
 {
@@ -90,41 +82,6 @@ actor LIMIF : BLASF
 actor TMFLAG : BLASF
 {
 }
-
-/*
-actor KorbyCopyPickupMain : CustomInventory
-{
-inventory.amount 1
-inventory.maxamount 1
-States
-{
-Spawn:
-TNT1 A 0
-stop
-Pickup:
-TNT1 A 0 A_GiveToTarget("KorbyMorphItem",1)
-stop
-}
-}
-
-actor KorbyCopyHitMain
-{
-Height 0
-Radius 0
-+NOINTERACTION
--SOLID
-+NOGRAVITY
-+MISSILE
-States
-{
-Spawn:
-TNT1 A 0
-TNT1 A 0 A_GiveToTarget("KorbyCopyPickupMain",1)
-stop
-}
-}
-*/
-
 
 actor FirMorph : KorbyClass
 {

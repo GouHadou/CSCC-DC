@@ -32,6 +32,19 @@ TNT1 A 0
 TNT1 A 0 A_JumpIfInventory("IsYang", 1, "YangTaunt")
 TNT1 A 0 A_JumpIfInventory("IsDevion", 1, "DevionTaunt")
 TNT1 A 0 A_JumpIfInventory("IsNaturesWonder", 1, "NaturesWonderTaunt")
+TNT1 A 0 A_JumpIfInventory("IsAbra", 1, "AbraTaunt")
+
+TNT1 A 0 A_JumpIfInventory("IsUnix", 1, "UnixTaunt")
+TNT1 A 0 A_JumpIfInventory("IsUki", 1, "UkiyamaTaunt")
+TNT1 A 0 A_JumpIfInventory("IsCorporal", 1, "CorporalTaunt")
+TNT1 A 0 A_JumpIfInventory("IsKorby", 1, "KorbyTaunt")
+TNT1 A 0 A_JumpIfInventory("IsGee", 1, "GeeTaunt")
+TNT1 A 0 A_JumpIfInventory("IsGizmo", 1, "GizmoTaunt")
+TNT1 A 0 A_JumpIfInventory("IsGravitron", 1, "GravitronTaunt")
+TNT1 A 0 A_JumpIfInventory("IsDaveris", 1, "DaverisTaunt")
+TNT1 A 0 A_JumpIfInventory("IsJax", 1, "JaxTaunt")
+TNT1 A 0 A_JumpIfInventory("IsLordDamager", 1, "LordDamagerTaunt")
+TNT1 A 0 A_JumpIfInventory("IsRozark", 1, "RozarkTaunt")
 stop
 CopyTaunt:
 TNT1 A 0 A_PlaySoundEx("CopyRobot/taunt", "Taunt")
@@ -45,8 +58,45 @@ stop
 NaturesWonderTaunt:
 TNT1 A 0 A_PlaySoundEx("natureswonder/taunt", "Taunt")
 stop
+AbraTaunt:
+TNT1 A 0 A_PlaySoundEx("Abra/taunt", "Taunt")
+stop
+UnixTaunt:
+TNT1 A 0 A_PlaySoundEx("Unix/taunt", "Taunt")
+stop
+UkiyamaTaunt:
+TNT1 A 0 A_PlaySoundEx("Ukiyama/taunt", "Taunt")
+stop
+CorporalTaunt:
+TNT1 A 0 A_PlaySoundEx("Corporal/taunt", "Taunt")
+stop
+KorbyTaunt:
+TNT1 A 0 A_PlaySoundEx("Korby/taunt", "Taunt")
+stop
+GeeTaunt:
+TNT1 A 0 A_PlaySoundEx("Gee/taunt", "Taunt")
+stop
+GizmoTaunt:
+TNT1 A 0 A_PlaySoundEx("Gizmo/taunt", "Taunt")
+stop
+GravitronTaunt:
+TNT1 A 0 A_PlaySoundEx("Gravitron/taunt", "Taunt")
+stop
+DaverisTaunt:
+TNT1 A 0 A_PlaySoundEx("Daveris/taunt", "Taunt")
+stop
+JaxTaunt:
+TNT1 A 0 A_PlaySoundEx("Jax/taunt", "Taunt")
+stop
+LordDamagerTaunt:
+TNT1 A 0 A_PlaySoundEx("LordD/taunt", "Taunt")
+stop
+RozarkTaunt:
+TNT1 A 0 A_PlaySoundEx("Rozark/taunt", "Taunt")
+stop
 }
 }
+
 actor PainPower : Powerup
 {
 powerup.duration 3

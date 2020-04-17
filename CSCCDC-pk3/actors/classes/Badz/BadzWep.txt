@@ -31,6 +31,7 @@ MCAR H 1 A_Raise
 Loop
 
 Fire:
+MCAR H 0 A_JumpIfInventory("IsBot",1,"BotCheck")
 MCAR H 0 A_PlaySoundEx("weapon/napalm","Weapon")
 MCAR H 0 A_GiveInventory("BadzMainTeamcolor")
 MCAR IIIIJJJJHHHHHHHHHHHHHHHHHHHH 1 A_GiveInventory("BadzAmmoCheck",1)
@@ -107,6 +108,26 @@ stop
 NoAmmo:
 MCAR H 1 
 Goto Ready+2
+
+BotCheck:
+MCAR H 0 A_JumpIfCloser(1412, "Orbital")
+BotFire:
+MCAR H 0 A_PlaySoundEx("weapon/napalm","Weapon")
+MCAR H 0 A_GiveInventory("BadzMainTeamcolor")
+MCAR IIIIJJJJHHHHHHHHHHHHHHHHHHHH 1 A_GiveInventory("BadzAmmoCheck",1)
+goto Ready+2
+Orbital:
+MCAR H 0 A_ChangeVelocity(-Cos(pitch)*-5, 0, 0,CVF_RELATIVE)
+MCAR H 0 A_JumpIfInventory("BadzStackCount",5,"BotFire2")
+MCAR H 0 A_JumpIfInventory("BadzStackCount",1,"SummonMissile")
+MCAR H 0 A_JumpIfInventory("BadzStuffAmmo",140,"InitiateMissile")
+//goto Ready+2
+BotFire2:
+MCAR H 0 A_JumpIfCloser(300, "BotFire")
+MCAR H 0 A_PlaySoundEx("weapon/napalm","Weapon")
+MCAR H 0 A_GiveInventory("BadzMainTeamcolor")
+MCAR IIIIJJJJHHHHHHHHHHHHHHHHHHHH 1 A_GiveInventory("BadzAmmoCheck",1)
+Goto User1
 }
 }
 

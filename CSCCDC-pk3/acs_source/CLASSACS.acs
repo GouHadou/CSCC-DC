@@ -1130,10 +1130,12 @@ int HasUsedMovement;
 int HDashForce;
 int ThrustDir;
 int AngleCount;
-if(PlayerIsBot(PlayerNumber())){terminate;}
+int BotDash;
+//if(PlayerIsBot(PlayerNumber())){terminate;}
 
 while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYang"))
 	{
+	If(CheckInventory("YangBotDash") && BotDash <= 0){BotDash = 20;}
 	While(CheckActorInventory(ActivatorTID(), "EmberCelicaAmmo") < 2)
 		{
 		Delay(1);
@@ -1174,14 +1176,16 @@ while(GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsYa
 		HasUsedMovement=2;
 		If(InputOldBoost & BT_MOVERIGHT){SameMovement = TRUE;}
 		}
-	If(SpeedPressed && (InputButtons & BT_FORWARD))
+	If(SpeedPressed && (InputButtons & BT_FORWARD) || BotDash == 15)
 		{
 		If(ThrustDir > 0.5){ThrustDir+=1.0;}
 		AngleCount++;
 		GiveInventory("EmberCelicaBoost", 1);
 		HasUsedMovement=2;
 		If(InputOldBoost & BT_FORWARD){SameMovement = TRUE;}
+		If(BotDash){TakeInventory("YangBotDash", 1);}
 		}
+	If(BotDash > 0){BotDash--;}
 	If(AngleCount>0)
 	{
 	ThrustDir=(GetActorAngle(ActivatorTID())+(ThrustDir/AngleCount))<<8;

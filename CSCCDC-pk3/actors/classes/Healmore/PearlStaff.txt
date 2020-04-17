@@ -26,6 +26,7 @@ States
 Ready:
 WMST F 0 ACS_ExecuteAlways(998,0,419)
 Ready2:
+WMST F 0 A_JumpIfInventory("IsBot",1,"BotReady")
 WMST F 0 A_Jumpifinventory("TargActive",1,2)
 WMST F 0 ACS_NamedExecuteAlways("TracerTargeter",0,1,850)
 WMST F 0
@@ -48,6 +49,7 @@ MSNH A 1 A_Raise
 Loop
 
 Fire:
+WMST D 0 A_JumpIfInventory("IsBot",1,"BotFire")
 WMST D 0 A_GiveInventory("PearlStaffManaBuffer")
 WMST D 0 A_JumpIfNoAmmo("NoAmmo")
 "####" B 0 A_Jumpifinventory("WhiteMageMana",1,1) //dia takes 2, but needs 1 at least
@@ -353,6 +355,7 @@ Stop
 
 NoAmmo:
 WMST D 1
+WMST D 0 A_JumpIfInventory("IsBot",1,"Ready2")
 WMST D 0 A_Refire
 goto Ready2
 
@@ -360,6 +363,92 @@ NoAmmo2:
 WMST F 5
 WMST F 0 
 goto Ready2
+
+
+BotReady:
+WMST F 0 A_Jumpifinventory("TargActive",1,2)
+WMST F 0 ACS_NamedExecuteAlways("TracerTargeter",0,1,850)
+WMST F 0
+WMST F 1 A_WeaponReady(WRF_ALLOWRELOAD)
+WMST F 0 //A_GiveInventory("PearlStaffCharge",1)
+WMST F 0 A_JumpIfHealthLower(100,"BotAltFire")
+goto Ready2
+
+BotRecharge:
+WMST F 60
+WMST D 0 A_Jumpifinventory("WhiteMageMana",15,"Reload.Rasp")
+goto Ready2
+
+BotFire:
+WMST D 0 A_GiveInventory("PearlStaffManaBuffer")
+WMST D 0 A_JumpIfNoAmmo("NoAmmo")
+"####" B 0 A_Jumpifinventory("WhiteMageMana",1,1) //dia takes 2, but needs 1 at least
+Goto BotRecharge
+WMST D 0
+WMST D 0 A_TakeInventory("VanishTimerItem",999)
+WMST D 0 A_JumpIfCloser(812, "Fire.BotBullet")
+WMST D 0 A_Jumpifinventory("PearlStaffCharge",35,"Fire.BotMaxBullet")
+Goto BotRecharge
+
+Fire.BotBullet:
+WMST D 0 A_PlaySoundEx("weapon/AssaultBuster","Weapon")
+WMST D 0 A_GiveInventory("DiaShotShooter")
+WMST D 0 A_GiveInventory("DiaShotRecoveryTime")
+WMST D 0 A_TakeInventory("WhiteMageMana",Dia_Cost)
+WMST D 0 A_TakeInventory("PearlStaffCharge",999)
+WMST D 0 A_TakeInventory("PearlStaffChargeCue",999)
+WMST D 4 
+WMST D 0 A_Jumpifinventory("WhiteMageMana",15,"Reload.Rasp")
+WMST D 0 A_Refire
+WMST D 12
+goto Ready2
+
+Fire.BotMaxBullet:
+"####" B 0 A_Jumpifinventory("WhiteMageMana",Holy_Cost,1)
+Goto BotRecharge
+WMST D 0
+WMST D 0 A_PlaySoundEx("weapon/cfire","Weapon")
+WMST D 0 A_GiveInventory("HolyShotShooter")
+WMST D 0 A_TakeInventory("WhiteMageMana",Holy_Cost)
+WMST D 0 A_TakeInventory("PearlStaffChargeCue",999)
+WMST D 0 A_TakeInventory("PearlStaffCharge",999)
+WMST D 17 
+WMST D 0 A_Jumpifinventory("WhiteMageMana",15,"Reload.Rasp")
+WMST D 0 A_Refire
+goto Ready2
+
+BotAltFire:
+WMST C 0 A_PlaySoundEx("Support/WhiteCast3","SoundSlot7")
+WMST C 5 A_GiveInventory("WhiteMagicCastFX")
+WMST C 5 A_GiveInventory("WhiteMagicCastFX")
+WMST C 5 A_GiveInventory("WhiteMagicCastFX")
+WMST C 5 A_GiveInventory("WhiteMagicCastFX")
+WMST F 0 A_JumpIfHealthLower(100,"BotAltHold")
+Goto BotAltHold.After
+BotAltHold:
+WMST B 0 //A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
+WMST B 0 A_GiveInventory("WhiteMagicCastFX",1)
+WMST B 0 A_GiveInventory("IsCureing",1)
+WMST B 0
+"####" B 0 A_JumpIfNoAmmo("BotAltHold.After")
+"####" B 0 A_GiveInventory("HealBeamShooter")//A_FireCustomMissile("HealBeam",0,0,8,0)
+"####" B 0 A_GiveInventory("CureMPDrain")
+"####" C 0 A_GiveInventory("HealBeamSelfHeal")
+"####" C 2
+WMST B 0 A_WeaponReady(WRF_ALLOWRELOAD)
+"####" B 0 A_JumpIfHealthLower(100,"BotAltHold")
+Goto BotAltHold.After
+
+BotAltHold.After:
+WMST C 1 //A_RearrangePointers(AAPTR_DEFAULT, AAPTR_NULL, AAPTR_NULL)
+WMST B 0 A_GiveInventory("BeamDisconnect")
+//"####" B 0 A_Refire("AltHold.After2")
+"####" B 0 A_TakeInventory("TargHolder",999)
+"####" B 0 A_TakeInventory("WhiteCasting",999)
+"####" B 0 A_GiveInventory("PearlStaffManaBuffer")
+"####" C 17 
+Goto Ready2
+
 }
 }
 

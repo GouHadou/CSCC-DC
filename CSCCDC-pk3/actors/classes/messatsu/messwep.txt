@@ -317,7 +317,8 @@ GHAD O 0 A_JumpIf(momz == 0, "GoshoCheck")
 GHAD O 0 A_JumpIfInventory("IsBot", 1, "DemonFlipOpt")
 loop
 DemonFlipOpt:
-GHAD O 0 A_Jump(32, "Gosho", "HyakkiGojin")
+GHAD O 0 A_JumpIfCloser(80, "GoSho")
+GHAD O 0 A_Jump(32, "HyakkiGojin")
 Goto DemonFlipLoop2
 GoshoCheck:
 GHAD R 0 A_JumpIf(z-floorz==56, "Gosho")
@@ -517,12 +518,13 @@ GSHR A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)
 GHAD A 0 A_JumpIfInventory("MessatsuCharge",35,"Fire4")
 GHAD A 0 A_JumpIfInventory("MessatsuCharge",19,"Charge1")
 GHAD A 0 A_Jump(32, "BotAbility")
-GHAD A 0 A_JumpIfCloser(96, "AltFire")
+GHAD A 0 A_JumpIfCloser(128, "AltFire")
 GHAD A 0 A_JumpIfCloser(384, "BotDemonFlip")
 GHAD A 0 A_JumpIfInventory("RagingDemonReady", 1, "RagingDemon")
 GHAD A 0 A_JumpIfInventory("TemaReady", 1, "Tema")
 GHAD A 0 A_JumpIfInventory("MisogiReady", 1, "GroundSlam")
 GHAD A 0 A_Jump(128, "BotHold")
+GHAD A 0 A_Jump(192, "ParryAttempt")
 Goto RealFire
 BotHold:
 GHAD A 0 A_GiveInventory("MessatsuCharge", 1)
@@ -542,7 +544,7 @@ GHAD A 2 ThrustThingZ(0,30,0,0)
 GHAD A 0 A_Jump(64, "RealFire") 
 GHAD A 0 A_FaceTarget
 //GHAD A 1 ThrustThingZ(0,30,0,0)
-GHAD A 6 A_Recoil(-10)
+GHAD A 6 A_Recoil(-4)
 GHAD A 0 A_ChangeVelocity(momx, momy, momz/4, CVF_REPLACE)
 Goto DemonFlip//Tatsumaki
 

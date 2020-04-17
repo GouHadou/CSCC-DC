@@ -7,6 +7,7 @@ player.sidemove 0.88, 0.88
 player.jumpz 10 
 player.startitem "AbraFists"
 player.startitem "AbraPsychic"
+player.startitem "AbraClassItems"
 +NODAMAGETHRUST
 //player.maxhealth 50
 //health 50
@@ -35,7 +36,6 @@ goto Spawn
 
 ClassDeath:
 ABRA H 10
-ABRA H 0 A_GiveInventory("ClassDeathPickup",1)
 ABRA H 3 A_PlayerScream
 TNT1 A 3
 ABRA H 3
@@ -52,14 +52,13 @@ inventory.amount 1
 inventory.maxamount 1
 States
 {
-Spawn:
-TNT1 A 0
-stop
 Pickup:
-TNT1 A 0
+TNT1 A 0 A_GiveInventory("IsAbra", 1)
 stop
 }
 }
+
+actor IsAbra : Once {}
 
 actor AbraFistsMorph : AbraClass
 {

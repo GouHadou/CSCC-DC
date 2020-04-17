@@ -65,6 +65,7 @@ TNT1 A 0
 TNT1 A 0 ACS_NamedExecuteAlways("CSACS_GeeHealth",0,GEE_HEALDELAY,GEE_HEALRATE)
 TNT1 A 0 A_SpawnItemEX("GeeAmmoWatcher",0,0,20)
 TNT1 A 0 A_GiveInventory("GeeAmmo",10)
+TNT1 A 0 A_GiveInventory("IsGee", 1)
 TNT1 A 0 A_GiveInventory("GeeDamagingAmmo",175)
 TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(975,1)==1,"TeamGame")
 TNT1 A 0 A_GiveInventory("GeeDMPackage",1)
@@ -75,6 +76,8 @@ TNT1 A 0 A_GiveInventory("GeeHealingAmmo",175)
 stop
 }
 }
+
+actor IsGee : Once {}
 actor GeeDMPackage : Once {}
 
 actor GeeBurstBoss1Morph : GeeClass
