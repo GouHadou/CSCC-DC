@@ -1,6 +1,6 @@
 //Copy Robot
 misc/CopyPain MEGAPAIN
-CopyRobot/Taunt	BCETAUNT
+CopyRobot/Taunt	BCETAUN2
 
 $playersound	BestClassEver	male	*death		MEGADEAT
 $playersound	BestClassEver	male	*xdeath		MEGADEAT
@@ -303,12 +303,12 @@ $playeralias	"Gizmo" 	male	*taunt		Gizmo/taunt
 
 $random Gizmo/taunt { Gizmo/taunt1 Gizmo/taunt2 Gizmo/taunt3 Gizmo/taunt4 Gizmo/taunt6 }
 
-Gizmo/taunt1      GIZMOLGO
-Gizmo/taunt2      GIZMOHAH
-Gizmo/taunt3      GIZMOSEE
-Gizmo/taunt4      GIZMOLGO
-Gizmo/taunt5      GIZMOFIR
-Gizmo/taunt6      GIZMOCOM
+Gizmo/taunt1      GZMOLGO
+Gizmo/taunt2      GZMOHAH
+Gizmo/taunt3      GZMOSEE
+Gizmo/taunt4      GZMOLGO
+Gizmo/taunt5      GZMOFIR
+Gizmo/taunt6      GZMOCOM
 
 weapon/gizchrg	GIZCHARG
 weapon/gizchrgloop	GIZLOOP

@@ -523,8 +523,8 @@ GHAD A 0 A_JumpIfCloser(384, "BotDemonFlip")
 GHAD A 0 A_JumpIfInventory("RagingDemonReady", 1, "RagingDemon")
 GHAD A 0 A_JumpIfInventory("TemaReady", 1, "Tema")
 GHAD A 0 A_JumpIfInventory("MisogiReady", 1, "GroundSlam")
-GHAD A 0 A_Jump(128, "BotHold")
-GHAD A 0 A_Jump(192, "ParryAttempt")
+GHAD A 0 A_Jump(80, "BotHold")
+GHAD A 0 A_Jump(112, "ParryAttempt")
 Goto RealFire
 BotHold:
 GHAD A 0 A_GiveInventory("MessatsuCharge", 1)

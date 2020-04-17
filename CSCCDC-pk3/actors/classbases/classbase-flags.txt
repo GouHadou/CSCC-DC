@@ -27,8 +27,8 @@ States
 {
 Pickup:
 TNT1 A 0
-//TNT1 A 0 A_JumpIfInventory("MorphFlag", 1, "CopyTaunt") //Copy is Special.  Taunt IS LONG
-//TNT1 A 0 A_JumpIfInventory("IsCopy", 1, "CopyTaunt") 
+TNT1 A 0 A_JumpIfInventory("MorphFlag", 1, "CopyTaunt") //Copy is Special.  
+TNT1 A 0 A_JumpIfInventory("IsCopy", 1, "CopyTaunt") 
 TNT1 A 0 A_JumpIfInventory("IsYang", 1, "YangTaunt")
 TNT1 A 0 A_JumpIfInventory("IsDevion", 1, "DevionTaunt")
 TNT1 A 0 A_JumpIfInventory("IsNaturesWonder", 1, "NaturesWonderTaunt")
