@@ -332,6 +332,51 @@ for (i = 1; i <= duration; i++)
 }
 }
 
+//Zoom control
+script "CSACS_CorpZoom" (void)
+{
+bool ZoomToggle = 0;
+while (GetActorProperty(ActivatorTID(), APROP_HEALTH) > 0 && CheckInventory("IsCorporal"))
+	{
+	Switch(getCVAR("CSCC_CL_ToggleZoom"))
+		{
+		Case FALSE:
+		if (PressingButton(BT_ALTATTACK))
+			{
+			GiveInventory("CorpZoomFlag",1);
+			delay(1);
+			While(PressingButton(BT_ALTATTACK) && CheckInventory("CorpZoomFlag"))
+				{
+				delay(1);
+				}
+			TakeInventory("CorpZoomFlag",1);
+			}
+		break;
+		Case TRUE:
+		if (PressingButton(BT_ALTATTACK) || (ZoomToggle && !CheckInventory("CorpZoomFlag")))
+			{
+			if (!CheckInventory("CorpZoomFlag"))
+				{
+				GiveInventory("CorpZoomFlag",1);
+				ZoomToggle = TRUE;
+				}
+			else
+				{
+				TakeInventory("CorpZoomFlag",1);
+				ZoomToggle = FALSE;
+				}
+			delay(1);
+			While(PressingButton(BT_ALTATTACK))
+				{
+				delay(1);
+				}
+			}
+		break;
+		}
+	delay(1);
+	}
+}
+
 //Knife check
 
 Script "CSACS_CorpCheckKnife" (int allowAlt)
@@ -349,31 +394,37 @@ Script "CSACS_CorpCheckKnife" (int allowAlt)
 //Infrarifle charge script
 Script "CSACS_CorpInfraCharge" (void)
 {
-
-	int infraRifleCharge = CheckInventory("InfraRifleCharge"); //Gained per shot
-	int infraRifleCD = CheckInventory("InfraRifleChargeDisplay"); //Depends on player zoom
-	if (infraRifleCharge * 10 > infraRifleCD )
+int infraRifleCharge = CheckInventory("InfraRifleCharge"); //Gained per shot
+int infraRifleCD = CheckInventory("InfraRifleChargeDisplay"); //Depends on player zoom
+int Zoom = CheckInventory("InfraRifleInfraRed");
+int MaxCharge = 40;
+Switch(Zoom)
 	{
+	Case 0:
+	if (infraRifleCharge * 10 > infraRifleCD)
+		{
 		GiveInventory("InfraRifleChargeDisplay",(infraRifleCharge * 10) - infraRifleCD);
 		//print(s:"checkin ", d:CheckInventory("InfraRifleCharge"), d: CheckInventory("InfraRifleChargeDisplay"));
-	}
-	else if (CheckInventory("InfraRifleInfraRed"))
-	{
-		if ((infraRifleCharge + 2) * 10 > infraRifleCD)
-		{
-			GiveInventory("InfraRifleChargeDisplay",1);
-			//print(s:"givin ",d:CheckInventory("InfraRifleCharge"), d: CheckInventory("InfraRifleChargeDisplay"));
 		}
-	}
 	else
-	{
-		if (infraRifleCharge * 10 < infraRifleCD)
 		{
+		if (infraRifleCharge * 10 < infraRifleCD)
+			{
 			TakeInventory("InfraRifleChargeDisplay",1);
 			//print(s:"takin ",d:CheckInventory("InfraRifleCharge"), d: CheckInventory("InfraRifleChargeDisplay"));
+			}
 		}
-	}
+	break;
 	
+	Case 1:
+	//if ((infraRifleCharge + 2) * 10 > infraRifleCD)
+	If(CheckInventory("InfraRifleChargeDisplay") < MaxCharge)
+		{
+		GiveInventory("InfraRifleChargeDisplay",1);
+		//print(s:"givin ",d:CheckInventory("InfraRifleCharge"), d: CheckInventory("InfraRifleChargeDisplay"));
+		}
+	break;
+	}
 }
 
 

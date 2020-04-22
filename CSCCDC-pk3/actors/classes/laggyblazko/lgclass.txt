@@ -432,6 +432,7 @@ TNT1 A 0 A_GiveInventory("FatBullets", 90)
 TNT1 A 0 A_GiveInventory("TommyAmmo", 30)
 TNT1 A 0 A_GiveInventory("CorpArsenal", 1)
 TNT1 A 0 A_GiveInventory("IsCorporal", 1)
+TNT1 A 0 ACS_NamedExecuteAlways("CSACS_CorpZoom", 0)
 stop
 }
 }
