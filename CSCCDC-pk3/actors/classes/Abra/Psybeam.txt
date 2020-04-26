@@ -71,15 +71,15 @@ ABP1 D 1 A_GiveInventory("AbraPunchCharge",1)
 ABRH I 1 
 ABP1 D 0 A_refire
 Punch1:
-ABRA A 0
-ABRA A 0 A_GiveInventory("PunchCombo",1)
+ABRH A 0 
+ABRH A 0 A_GiveInventory("PunchCombo",1)
 ABP1 EF 2
-ABP1 F 0 A_PlaySound("weapon/psychicshot","weapon")
+ABP1 F 0 A_PlaySoundEx("weapon/psychicshot","weapon")
 ABP1 F 0 A_TakeInventory("AbraPunchCharge",999)
-ABP1 F 3 A_FireCustomMissile("AbraPunch",0,0,8,0)
+ABP1 F 3 A_FireCustomMissile("AbraPunch",0,0,8,0) 
 ABP1 E 6 A_WeaponReady
-ABP1 E 6
-ABRA A 0 A_TakeInventory("PunchCombo",2)
+ABP1 E 6 
+ABRH A 0 A_TakeInventory("PunchCombo",2)
 goto Ready+2
 BotCheck:
 ABRH J 0 A_Jump(32, "MegaPunch")
@@ -115,55 +115,76 @@ ABRH B 0 A_refire
 ABRH A 0 A_TakeInventory("PunchCombo",2)
 goto Ready+2
 
-AltFire:
-ABRH A 1 A_JumpIfInventory("TeleportAmmo",28,"Telego")
-Goto NoTele
-Telego:
-ABRH A 0 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
-ABRH A 1 A_SetTranslucent(0.9,0)
-ABRH A 1 A_SetTranslucent(0.8,0)
-ABRH A 1 A_SetTranslucent(0.7,0)
-ABRH A 1 A_SetTranslucent(0.6,0)
-ABRH A 1 A_SetTranslucent(0.5,0)
-ABRH A 1 A_SetTranslucent(0.4,0)
-ABRH A 1 A_SetTranslucent(0.3,0)
-ABRH A 1 A_SetTranslucent(0.2,0)
-ABRH A 1 A_SetTranslucent(0.1,0)
-ABRH A 0
-ABRH A 0 A_ChangeFlag("SOLID",0)
-ABRH A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)//A_ChangeFlag("NOGRAVITY",1)
-ABRH A 1 A_SetTranslucent(0.0,0)
-ABRH A 0 A_Stop
-ABRH A 1 A_ChangeVelocity(cos(pitch)*400,0,-sin(pitch)*400,3)//The new Binford Teleport with MORE POWER! *grunt grunt grunt*
-ABRH A 1 A_Stop
-ABRH A 0 A_TakeInventory("TeleportAmmo",28)
-ABRH A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)//A_ChangeFlag("NOGRAVITY",0)
-ABRH A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
-ABRH A 0 A_SpawnItemEx("Resolidifier")
-ABRH A 0
-ABRH A 0 
-ABRH A 1 A_SetTranslucent(0.1,0)
-ABRH A 1 A_SetTranslucent(0.2,0)
-ABRH A 1 A_SetTranslucent(0.3,0)
-ABRH A 1 A_SetTranslucent(0.4,0)
-ABRH A 1 A_SetTranslucent(0.5,0)
-ABRH A 1 A_SetTranslucent(0.6,0)
-ABRH A 1 A_SetTranslucent(0.7,0)
-ABRH A 1 A_SetTranslucent(0.8,0)
-ABRH A 1 A_SetTranslucent(0.9,0)
-ABRH A 1 A_SetTranslucent(1.0,0)
-AirStall:
-ABRH A 2 //A_JumpIf(momz >= 0, 1)
-//loop
-ABRH A 1
-goto Ready+2
-NoTele:
-"----" A 1
-goto Ready+2
 
 Flash:
-TNT1 A 2 A_GiveInventory("TeleportAmmo",1)
+TNT1 A 0 A_JumpIfInventory("IsBot", 1, "BotFlash")
+TNT1 A 0 A_GiveInventory("TeleportAmmo",1)
+TNT1 AA 1 A_JumpIf(CallACS("CSACS_ButtonCheck", BT_ALTATTACK), "FlashFire")
+TNT1 A 0 A_JumpIfInventory("IsDead", 1, "NoFlash")
 Loop
+
+BotFlash:
+TNT1 A 2 A_GiveInventory("TeleportAmmo",1)
+TNT1 A 0 A_JumpIfInventory("IsDead", 1, "NoFlash")
+TNT1 A 0 A_JumpIfInventory("TeleportAmmo",28,"BotTeleGo")
+TNT1 A 0 A_JumpIfInventory("IsBot", 1, "BotFlash")
+Goto Flash
+
+BotTeleGo:
+TNT1 AA 1 A_JumpIfCloser(256, "TeleGo")
+TNT1 A 0 A_JumpIfInventory("IsBot", 1, "BotFlash")
+Goto Flash
+
+FlashFire:
+TNT1 A 1 A_JumpIfInventory("TeleportAmmo",28,"Telego")
+Goto NoTele
+
+AltFire:
+ABRH A 1 //A_JumpIfInventory("TeleportAmmo",28,"Telego")
+goto Ready+2
+Telego:
+TNT1 A 0 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
+TNT1 A 1 A_SetTranslucent(0.9,0)
+TNT1 A 1 A_SetTranslucent(0.8,0)
+TNT1 A 1 A_SetTranslucent(0.7,0)
+TNT1 A 1 A_SetTranslucent(0.6,0)
+TNT1 A 1 A_SetTranslucent(0.5,0)
+TNT1 A 1 A_SetTranslucent(0.4,0)
+TNT1 A 1 A_SetTranslucent(0.3,0)
+TNT1 A 1 A_SetTranslucent(0.2,0)
+TNT1 A 1 A_SetTranslucent(0.1,0)
+//ABRH A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+TNT1 A 0
+TNT1 A 0 A_ChangeFlag("SOLID",0)
+//ABRH A 0 A_ChangeFlag("THRUSPECIES",1)
+TNT1 A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,2)//A_ChangeFlag("NOGRAVITY",1)
+TNT1 A 1 A_SetTranslucent(0.0,0)
+TNT1 A 0 A_Stop
+TNT1 A 1 A_ChangeVelocity(cos(pitch)*400,0,-sin(pitch)*400,3)//The new Binford Teleport with MORE POWER! *grunt grunt grunt*
+TNT1 A 1 A_Stop
+TNT1 A 0 A_TakeInventory("TeleportAmmo",28)
+TNT1 A 0 ACS_NamedExecuteAlways("core_flyplayer",0,0,0)//A_ChangeFlag("NOGRAVITY",0)
+TNT1 A 0 A_JumpIfInventory("IsDead",1,"NoFlash")
+//ABRH A 0 A_ChangeFlag("THRUSPECIES",0)
+//ABRH A 0 A_ChangeFlag("SOLID",1)
+TNT1 A 0 A_SpawnItemEx("Resolidifier")
+TNT1 A 0
+TNT1 A 0 
+TNT1 A 1 A_SetTranslucent(0.1,0)
+//ABRH A 0 A_TakeInventory("WarpGo",1)
+TNT1 A 1 A_SetTranslucent(0.2,0)
+TNT1 A 1 A_SetTranslucent(0.3,0)
+TNT1 A 1 A_SetTranslucent(0.4,0)
+TNT1 A 1 A_SetTranslucent(0.5,0)
+TNT1 A 1 A_SetTranslucent(0.6,0)
+TNT1 A 1 A_SetTranslucent(0.7,0)
+TNT1 A 1 A_SetTranslucent(0.8,0)
+TNT1 A 1 A_SetTranslucent(0.9,0)
+TNT1 A 1 A_SetTranslucent(1.0,0)
+goto Flash
+NoTele:
+"----" A 1
+goto Flash
 
 BotReady:
 ABRH A 1 A_WeaponReady
