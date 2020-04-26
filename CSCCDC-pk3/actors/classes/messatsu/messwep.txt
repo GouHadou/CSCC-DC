@@ -242,7 +242,8 @@ GSHR D 0 A_SetArg(4, Args[4] - 1)
 GSHR D 0 A_JumpIf(ceilingz - z < 64 || Args[4] <= 0, "EndShoryu")
 GSHR D 0 A_JumpIf(momz <= 0, "EndShoryu")
 GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 4, "EndShoryu2")
-GSHR D 0 A_Refire
+GSHR D 0 A_JumpIfInventory("IsBot", 1, "AltHold")
+GSHR D 0 A_Refire("AltHold")
 Goto EndShoryu+1
 /*ShoryuCeiling:
 GSHR D 0 A_JumpIfInventory("MessShoryuFlag", 2, "EndShoryu2")
@@ -519,6 +520,7 @@ GHAD A 0 A_JumpIfInventory("MessatsuCharge",35,"Fire4")
 GHAD A 0 A_JumpIfInventory("MessatsuCharge",19,"Charge1")
 GHAD A 0 A_Jump(32, "BotAbility")
 GHAD A 0 A_JumpIfCloser(128, "AltFire")
+GHAD A 0 A_Jump(128, 2)
 GHAD A 0 A_JumpIfCloser(384, "BotDemonFlip")
 GHAD A 0 A_JumpIfInventory("RagingDemonReady", 1, "RagingDemon")
 GHAD A 0 A_JumpIfInventory("TemaReady", 1, "Tema")
