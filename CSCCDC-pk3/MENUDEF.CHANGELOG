@@ -232,6 +232,8 @@ OptionMenu "v2AChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
 	Option "$MEGAMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v2aMegaman"
 	StaticText ""
 	StaticText ""
@@ -245,11 +247,24 @@ OptionMenu "v2AChangelog"
 	Option "$MESSATSU_CH_TITLE", "CSCC_Menudef_Changelog", "v2aMessatsu"
 	StaticText ""
 	StaticText ""
+	Option "$AEGIS_CH_TITLE", "CSCC_Menudef_Changelog", "v2aAegis"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$PISTONMAN_CH_TITLE", "CSCC_Menudef_Changelog", "v2aPistonMan"
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	StaticText "===============================================================",1
 	StaticText ""
 }
 
-OptionValue v2aGeneral{0, "\cj-Added: Abra, Daveris, Devion, \nGravitron, Healmore, Jax, Knux, \nNature's Wonder, Rozark, Yang"}
+OptionValue v2aGeneral{0, "\cj-Added: Abra, Daveris, Devion, \nGravitron, Healmore, Jax, Knux, \nNature's Wonder, Rozark, Yang,\nLego"}
 OptionValue v2aMegaman{0, "\cj-Copy Weapons updated\nto match classes"}
 OptionValue v2aGizmo{0, "\cj-Plasma Dmg Reduced\n-Lightning dmg increased\n-Stone spd increased\n-Flame Dmg increased\n-Frost spd increased."}
 OptionValue v2aMessatsu{0, "\cj-Shoryuken Damage reduced\nNow kicks opponent away at apex."}
+OptionValue v2aAegis{0, "\cj-Health Reduced 200->125\n-Speed Increased\n-RoF Increased\n-Shield Health Reduced\n-Removed Shield Wave"}
+OptionValue v2aPistonMan{0, "\cj-Hits now have reduced\nstun when used repeatedly."}
