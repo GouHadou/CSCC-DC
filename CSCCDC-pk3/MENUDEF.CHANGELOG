@@ -258,6 +258,16 @@ OptionMenu "v2AChangelog"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	Option "$COPY_CH_TITLE", "CSCC_Menudef_Changelog", "v2aCopyRobot"
+	StaticText ""
+	Option "$CUTMANMIKE_CH_TITLE", "CSCC_Menudef_Changelog", "v2aCutManMike"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	StaticText "===============================================================",1
 	StaticText ""
 }
@@ -267,4 +277,6 @@ OptionValue v2aMegaman{0, "\cj-Copy Weapons updated\nto match classes"}
 OptionValue v2aGizmo{0, "\cj-Plasma Dmg Reduced\n-Lightning dmg increased\n-Stone spd increased\n-Flame Dmg increased\n-Frost spd increased."}
 OptionValue v2aMessatsu{0, "\cj-Shoryuken Damage reduced\nNow kicks opponent away at apex."}
 OptionValue v2aAegis{0, "\cj-Health Reduced 200->125\n-Speed Increased\n-RoF Increased\n-Shield Health Reduced\n-Removed Shield Wave"}
-OptionValue v2aPistonMan{0, "\cj-Hits now have reduced\nstun when used repeatedly."}
+OptionValue v2aPistonMan{0, "\cj-Hits now have reduced\nz-thrust when used repeatedly."}
+OptionValue v2aCopyRobot{0, "\cj-Health Increased 80->85"}
+OptionValue v2aCutManMike{0, "\cj-Health Increased 75->100\n-Hellfire Cutter dmg reduced\n--Drops flames\n-Firestorm damage increased\n--Can now use while cutter is out. "}
