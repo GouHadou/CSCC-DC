@@ -19,7 +19,7 @@ Spawn:
 WEA2 X 1
 loop
 Deselect:
-TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("AbraTeleportFlag", 1, "AbraIsAsleep")
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 TNT1 A 1 A_Lower
 Loop
@@ -35,6 +35,10 @@ ABRH A 0 A_ClearRefire
 ABRH A 1 A_WeaponReady
 ABRH A 1 A_WeaponReady
 Goto Ready+3
+AbraIsAsleep:
+ABRH A 1
+ABRH A 1 A_JumpIfInventory("AbraTeleportFlag", 1, "AbraIsAsleep")
+Goto Deselect+1
 
 Fire:
 ABRH A 0 A_JumpIfInventory("IsBot",1,"BotCheck2")
@@ -143,6 +147,7 @@ AltFire:
 ABRH A 1 //A_JumpIfInventory("TeleportAmmo",28,"Telego")
 goto Ready+2
 Telego:
+TNT1 A 0 A_GiveInventory("AbraTeleportFlag", 1)
 TNT1 A 0 A_PlaySoundEx("weapon/AbraTeleport","SoundSlot6")
 TNT1 A 1 A_SetTranslucent(0.9,0)
 TNT1 A 1 A_SetTranslucent(0.8,0)
@@ -181,6 +186,7 @@ TNT1 A 1 A_SetTranslucent(0.7,0)
 TNT1 A 1 A_SetTranslucent(0.8,0)
 TNT1 A 1 A_SetTranslucent(0.9,0)
 TNT1 A 1 A_SetTranslucent(1.0,0)
+TNT1 A 0 A_TakeInventory("AbraTeleportFlag", 1)
 goto Flash
 NoTele:
 "----" A 1
@@ -234,7 +240,7 @@ ABP1 D 0 A_refire
 goto Punch1
 }}
 
-actor MPunching : Once{}
+actor MPunching : Powerup{powerup.duration 15}
 
 actor AbraPunchCharge : Ammo
 {
@@ -416,7 +422,7 @@ Spawn:
 WEA2 X 1
 loop
 Deselect:
-TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("AbraTeleportFlag", 1, "AbraIsAsleep")
 TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
 TNT1 A 1 A_Lower
 Loop
@@ -432,7 +438,10 @@ ABRH A 0 A_ClearRefire
 ABRH A 2 //A_GiveInventory("PsychicCharge",1)
 ABRH A 1 A_WeaponReady
 Goto Ready+3
-
+AbraIsAsleep:
+ABRH A 1
+ABRH A 1 A_JumpIfInventory("AbraTeleportFlag", 1, "AbraIsAsleep")
+Goto Deselect+1
 
 Fire:
 Hold:
@@ -499,6 +508,8 @@ ABRH A 0 A_SelectWeapon("AbraFists")
 goto Ready+2
 }
 }
+
+actor AbraTeleportFlag : Once {}
 
 actor PsychicCharge : Ammo
 {
