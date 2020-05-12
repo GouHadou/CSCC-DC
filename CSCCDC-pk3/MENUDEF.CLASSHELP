@@ -17,8 +17,6 @@ OptionMenu "ClassInfo"
 	Submenu	    "Ice & Sparky",		"IceSparkInfo"
 	Submenu	    "Ukiyama",		"UkiyamaInfo"
 	Submenu	    "Messatsu",		"MessatsuInfo"  
-	Submenu	    "Abra",		"AbraInfo" 
-	Submenu	    "Lego",		"LegoInfo" 
 	Submenu	    "ColdFusion",		"ColdFusionInfo"
 	Submenu	    "Pistonman", 		"PistonmanInfo"
 	Submenu	    "Aegis",		"AegisInfo" 
@@ -28,12 +26,19 @@ OptionMenu "ClassInfo"
 	Submenu	    "Bull Gator",		"BullGatorInfo"
 	Submenu	    "Korby",		"KorbyInfo"
 	Submenu	    "VocalWoman", 		"VocalWomanInfo"
-	Submenu	    "Zen Trainer", 		"ZenTrainerInfo"
+	Submenu	    "Zen Trainer", 		"ZenTrainerInfo" //X
 	Submenu	    "Gee", 		"GeeInfo"
 	Submenu	    "Knux", 		"KnuxInfo"
+	Submenu	    "Yang",		"YangInfo" //X
 	Submenu	    "Gravitron", 		"GravitronInfo"
 	Submenu	    "Natures Wonder", 		"NaturesWonderInfo"
-	Submenu	    "Healmore",		"HealmoreInfo" 
+	Submenu	    "Healmore",		"HealmoreInfo" //X
+	Submenu	    "Lego",		"LegoInfo" 
+	Submenu	    "Abra",		"AbraInfo" //X
+	Submenu	    "Devion",		"DevionInfo" //X
+	Submenu	    "Rozark",		"RozarkInfo" //X
+	Submenu	    "Jaxof",		"JaxInfo" //X
+	Submenu	    "Daveris",		"DaverisInfo"
 	Submenu	    "LordDamager",		"LordDamagerInfo" 
 	StaticText ""
 	StaticText"===============================================================",1
@@ -94,9 +99,18 @@ OptionValue MegaCSCCWeps
 	13, "\cfIdol Wave - VocalWoman\n\cjSpray a volley of \nmusic notes."
 	14, "\cfZen Sphere - Zen Trainer\n\cjLaunch a mysterious \norb that can latch \nonto foes when held."
 	15, "\cfHybrid Burst - Gee\n\cjCast a healing and \nharming spell in order, \nthe healing spell \nonly affects allies. \nGrants vision of ally \nhealth."
-	16, "\cfSteelPunch - LordDamager\n\cjSlug an opponent with fists of \nsteel."
-	//BubbleArrow
-	//Crystal Wall
+	//Knux BubbleArrow
+	16, "\cfEmberCecelia - Yang\n\cjFire off firecracker\nblasts that's damage\ndepends on charge."
+	//Gravitron
+	//DEER Crystal Wall
+	//Healmore
+	//Lego
+	17, "\cfPsychicBlast - Abra\n\cjFire off a blast of\npsychic energy that\nlaunches you backward."
+	//Devion
+	18, "\cfBloodyBat - Rozark\n\cjSwing a sock filled\nwith rocks that causes\ntargets to bleed."
+	//Jax
+	//Daveris
+	19, "\cfSteelPunch - LordDamager\n\cjSlug an opponent with\nfists of steel."
 }
 
 OptionMenu "CopyInfo"
@@ -125,6 +139,186 @@ OptionMenu "CopyInfo"
 	StaticText "$COPY_CH_PASSIVE"
 	StaticText ""
 	StaticText ""
+}
+
+OptionMenu "GizmoInfo"
+{
+	Title "$GIZMO_CH_TITLE"
+	StaticText ""
+	StaticText "$GIZMO_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "Gizmo_ClassHelp_Weapon", "GizmoMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$GIZMO_CH_ITEMS", "Gizmo_ClassHelp_Items", "GizmoItems"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$GIZMO_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue GizmoMainfires
+{
+	0, "\cfPlasma Cannon\n\cjBasic Plasma cannon, \ncharge shots to leave \nlingering explosions."
+	1, "\cfClaw Gloves\n\cjBasic melee weapon, 3 \nconsecutive attacks \nperform a spin combo."
+	2, "\cfFlame Cannon\n\cjLaunch a long reaching \nstream of fire."
+	4, "\cfFrost Cannon\n\cjA close ranged, highly \nlethal spray of cold."
+	5, "\cfLightning Cannon\n\cjFire a burst of ripping \nelectrical projectiles."
+	6, "\cfHydro Cannon\n\cjLaunch a jet stream of \nwater that repels foes."
+	7, "\cfStone Cannon\n\cjFire High impact Arching \nProjectile stones that \nbreak into smaller rock \nprojectiles."
+	8, "\cfEternal Claws\n\cjImproved Claw Cloves with \ngreater reach and the \nability to scale walls."
+}
+
+OptionValue GizmoItems
+{
+	0, "\cfKitty Helper\n\cjSummon a Chao to help you \nin battle."
+	1, "\cfKitty Item\n\cjSummon a Chao to give \nyou items."
+	2, "\cfEternal Claws\n\cjUpgrades the Claw Gloves \ninto the Eternal Claws."
+}
+
+OptionMenu "UnixInfo"
+{
+	Title "$UNIX_CH_TITLE"
+	StaticText ""
+	StaticText "$UNIX_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "Unix_ClassHelp_Weapon", "UnixMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""	
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$UNIX_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$UNIX_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$UNIX_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue UnixMainfires
+{
+	0, "\cfEternal Torment\n\cjMelee that can backstab, \nKilling the foe \ninstantly and assuming \ntheir appearance, \ndisguise is shed upon \nattacking."
+	1, "\cfRevolver Blades\n\cjThrow up to six on hand \nshurikens that rip \nthrough opponents, \nreloads passively."
+}
+
+OptionMenu "CutmanMikeInfo"
+{
+	Title "$CUTMANMIKE_CH_TITLE"
+	StaticText ""
+	StaticText "$CUTMANMIKE_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$CUTMANMIKE_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$CUTMANMIKE_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionMenu "IceSparkInfo"
+{
+	Title "$ICESPARKY_CH_TITLE"
+	StaticText ""
+	Option "$ICESPARKY_CH_STATS", "IceSparky_ClassHelp_Forms", "IceSparkStats"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_MAINFIRES", "IceSparky_ClassHelp_Forms", "IceSparkMainfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "IceSparky_ClassHelp_Forms", "IceSparkAltfires"
+	StaticText ""
+	StaticText ""	
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ICESPARKY_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ICESPARKY_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue IceSparkStats
+{
+	0, "\cfIce\n\cfHealth : \cj135\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%"
+	1, "\cfSparky\n\cfHealth : \cj65\n\n\cfSpeed : \cj110%\n\cfJump : \cj140%"
+	2, "\cfIce & Sparky\n\cfHealth : \cj135\n\n\cfSpeed : \cj110%\n\cfJump : \cj140%"
+}
+
+OptionValue IceSparkMainfires
+{
+	0, "\cfIce\n\cjToss a whirling blade \nof ice."
+	1, "\cfSparky\n\cjLaunch fast moving \nelectrical projectiles."
+	2, "\cfIce & Sparky\n\cjLaunch an electrically \ncharged whirling blade \nof ice."
+}
+
+OptionValue IceSparkAltfires
+{
+	0, "\cfIce\n\cjScatter ice spikes all \nover the ground."
+	1, "\cfSparky\n\cjLaunch an electrical \npulse that creeps along \nthe floor, scaling up \nwalls."
+	2, "\cfIce & Sparky\n\cjLaunch a massive energy \nwave that scatters ice \nspikes along it’s path."
 }
 
 OptionMenu "UkiyamaInfo"
@@ -232,6 +426,10 @@ OptionMenu "MessatsuInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 }
 
 OptionValue "MessatsuAltFire"
@@ -250,74 +448,129 @@ OptionValue "MessatsuSupers"
 	3, "\cfLevel 3\n\cjLaunch forward at your \nopponent to grab them. \nInflicts massive damage!"
 }
 
-
-OptionMenu "AbraInfo"
+OptionMenu "ColdFusionInfo"
 {
-	Title "$ABRA_CH_TITLE"
+	Title "$COLDFUSION_CH_TITLE"
 	StaticText ""
-	StaticText "$ABRA_CH_STATS"
+	StaticText "$COLDFUSION_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	StaticText "$ABRA_CH_MAINFIRE"
+	StaticText "$COLDFUSION_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$COLDFUSION_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$COLDFUSION_CH_PASSIVE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$ABRA_CH_ALTFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
+
 }
 
-OptionMenu "BullGatorInfo"
+OptionMenu "PistonmanInfo"
 {
-	Title "$BG_CH_TITLE"
+	Title "$PISTONMAN_CH_TITLE"
 	StaticText ""
-	StaticText "$BG_CH_STATS"
+	StaticText "$PISTONMAN_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_MAINFIRES", "BG_ClassHelp_Weapon", "BGMainfires"
+	StaticText "$PISTONMAN_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$PISTONMAN_CH_ALTFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_ALTFIRES", "BG_ClassHelp_Weapon", "BGAltfires"
+	StaticText "$PISTONMAN_CH_PASSIVE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$BG_CH_ITEM"
+	StaticText ""
+	StaticText ""
 }
 
-OptionValue BGMainfires
+
+OptionMenu "AegisInfo"
 {
-	0, "\cfPiercing\n\cjFires a piercing \nrailgun. Fires basic \nshots without ammo."
-	1, "\cfSplitter\n\cjShoots a bullet that \nsplits. Fires basic \nshots without ammo."
-	2, "\cfBurst\n\cjStarts a volley of 4 \nbullets. Fires basic \nshots without ammo."
+	Title "$AEGIS_CH_TITLE"
+	StaticText ""
+	StaticText "$AEGIS_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$AEGIS_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "Aegis_ClassHelp_Forms", "AegisAltfires"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_USER2S", "Aegis_ClassHelp_Forms", "AegisUser2s"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$AEGIS_CH_RELOAD"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
 }
 
-OptionValue BGAltfires
+OptionValue AegisAltfires
 {
-	0, "\cfSleep\n\cjForces the enemy to \nfall asleep."
-	1, "\cfSiphon\n\cjCan restore HP if the \nrailgun hits."
-	2, "\cfConfusion\n\cjInflicts confusion \nonto the enemy."
+	0, "\cfShield On-Hand\n\cjHold up a wide shield \nwith finite health to \nblock hits, allies can \nshoot through it."
+	1, "\cfShield Deployed\n\cjNone."
+}
+
+OptionValue AegisUser1s
+{
+	0, "\cfShield On-Hand\n\cjUse shield health to \nlaunch a shockwave \nthat shoves opponents \nbackwards."
+	1, "\cfShield Deployed\n\cjNone."
+}
+
+OptionValue AegisUser2s
+{
+	0, "\cfShield On-Hand\n\cjToss out the shield and \nhave it become a \ndeployable bunker, \ncovering a larger area and \nsporting more health."
+	1, "\cfShield Deployed\n\cjRemotely recall the shield \nafter its cooldown."
 }
 
 OptionMenu "TankOpInfo"
@@ -381,8 +634,8 @@ OptionValue TankOpReloads
 
 OptionValue TankOpPassives
 {
-	0, "\cfFoot Form\n\cjYou take 80% increased \ndamage while on foot!"
-	1, "\cfTank Mode\n\cjYou're immune to hitstuns\nand crowd controls!"
+	0, "\cfFoot Form\n\cjYou can collect health\nand energy while on foot!"
+	1, "\cfTank Mode\n\cjYou're immune to hitstuns\nand crowd controls, using\nenergy instead of health!"
 }
 
 OptionMenu "BadzInfo"
@@ -414,24 +667,18 @@ OptionMenu "BadzInfo"
 	StaticText ""
 }
 
-OptionMenu "GeeInfo"
+OptionMenu "CorporalInfo"
 {
-	Title "$GEE_CH_TITLE"
+	Title "$CORPORAL_CH_TITLE"
 	StaticText ""
-	StaticText "$GEE_CH_STATS"
+	StaticText "$CORPORAL_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	StaticText "$GEE_CH_MAINFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	Option "$CSCC_CH_ALTFIRES", "Gee_ClassHelp_Weapon", "GeeAltfires"
+	Option "$CSCC_CH_MAINFIRES", "Corporal_ClassHelp_Weapon", "CorporalMainfires"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -439,252 +686,79 @@ OptionMenu "GeeInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$GEE_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$CORPORAL_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_RELOADS", "Corporal_ClassHelp_Weapon", "CorporalReloads"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$CORPORAL_CH_PASSIVE"
+	StaticText ""
 	StaticText ""
 }
 
-OptionValue GeeAltfires
+OptionValue CorporalMainfires
 {
-	0, "\cfDamaging Burst\n\cjShoots an overcharged \ndamage burst, but \ntemporarily removes \nyour damage attribute."
-	1, "\cfHealing Burst\n\cjShoots an overcharged \nhealing burst that \napplies overheal, but \ntemporarily removes \nyour healing attribute."
+	0, "\cfTommy Gun\n\cjRapid fire assault \nweapon that deals low \nhitscan damage."
+	1, "\cfNade Spam\n\cjChuck a seemingly \nendless supply of \nbouncing nades that \nexplode."
+	2, "\cfGrand Dad\n\cjA highly accurate semi \nautomatic rifle that \ndeals hitscan damage \nas fast as you can \npull the trigger. \nAccuracy suffers when \nfired rapidly."
+	3, "\cfFrag Grenade \n\cjToss a grenade that \nexplodes in a mess of \nbouncing shrapnel. \nHold to cook it and \nincrease the distance \nthrown."
+	4, "\cfInfrarifle \n\cjA highly accurate\nsniper rifle that\ngains charge with \nevery shot.\nOn a full gauge\nit fires an explosive.\nshot."
 }
 
-
-OptionMenu "VocalWomanInfo"
+OptionValue CorporalReloads
 {
-	Title "$VOCALWOMAN_CH_TITLE"
+	0, "\cfTommy Gun\n\cjUses map ammo to reload \nits clip."
+	1, "\cfNade Spam\n\cjStarts recovering \ngrenades one by one."
+	2, "\cfGrand Dad\n\cjUses non replenishing \nammo to reload its \nclip. Less efficient \nreloading manually."
+	3, "\cfFrag Grenade \n\cjNone."
+	4, "\cfInfrarifle\n\cjUses non replenishing \nammo to reload its \nclip. Less efficient \nreloading manually."
+}
+
+OptionMenu "BullGatorInfo"
+{
+	Title "$BG_CH_TITLE"
 	StaticText ""
-	StaticText "$VOCALWOMAN_CH_STATS"
+	StaticText "$BG_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	StaticText "$VOCALWOMAN_CH_MAINFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	Option "$CSCC_CH_ALTFIRES", "VocalWoman_ClassHelp_Weapon", "VocalWomanAltfires"
+	Option "$CSCC_CH_MAINFIRES", "BG_ClassHelp_Weapon", "BGMainfires"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "BG_ClassHelp_Weapon", "BGAltfires"
 	StaticText ""
 	StaticText ""
-	StaticText "$VOCALWOMAN_CH_PASSIVE"
 	StaticText ""
+	StaticText ""
+	StaticText "$BG_CH_ITEM"
 }
 
-OptionValue VocalWomanAltfires
+OptionValue BGMainfires
 {
-	0, "\cfOffense Song\n\cjLaunch a bouncing note \nthat remote detonates \nwhen altfire is used."
-	1, "\cfSupport Song\n\cjLaunch a moving note \nthat radiates a healing \naura around itself for \nyourself and allies. \nCan apply overheal."
+	0, "\cfPiercing\n\cjFires a piercing \nrailgun. Fires basic \nshots without ammo."
+	1, "\cfSplitter\n\cjShoots a bullet that \nsplits. Fires basic \nshots without ammo."
+	2, "\cfBurst\n\cjStarts a volley of 4 \nbullets. Fires basic \nshots without ammo."
 }
 
-OptionMenu "ZenTrainerInfo"
+OptionValue BGAltfires
 {
-	Title "$ZENTRAINER_CH_TITLE"
-	StaticText ""
-	StaticText "$ZENTRAINER_CH_STATS"
-	StaticText ""
-	StaticText ""
-	StaticText ""//forward speed
-	StaticText ""//jump height
-	StaticText ""
-	StaticText ""
-	StaticText "$ZENTRAINER_CH_MAINFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$ZENTRAINER_CH_ALTFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$ZENTRAINER_CH_ITEM"
-	StaticText ""
-	StaticText ""
-	Option "$ZENTRAINER_CH_AURAS", "ZenTrainer_ClassHelp_auras", "ZenTrainerAuras"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$ZENTRAINER_CH_PASSIVE"
-	StaticText ""
-}
-
-OptionValue ZenTrainerAuras
-{
-	0, "\cfRecovery\n\cjGradually restore \nhealth for self and \nallies overtime."
-	1, "\cfPower\n\cjIncreases weapon \ndamage for self and \nallies."
-	2, "\cfSpeed\n\cjIncreases movement \nspeed for self and \nallies."
-}
-
-OptionMenu "ColdFusionInfo"
-{
-	Title "$COLDFUSION_CH_TITLE"
-	StaticText ""
-	StaticText "$COLDFUSION_CH_STATS"
-	StaticText ""
-	StaticText ""
-	StaticText ""//forward speed
-	StaticText ""//jump height
-	StaticText ""
-	StaticText ""
-	StaticText "$COLDFUSION_CH_MAINFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$COLDFUSION_CH_ALTFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$COLDFUSION_CH_PASSIVE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-
-}
-
-OptionMenu "CutmanMikeInfo"
-{
-	Title "$CUTMANMIKE_CH_TITLE"
-	StaticText ""
-	StaticText "$CUTMANMIKE_CH_STATS"
-	StaticText ""
-	StaticText ""
-	StaticText ""//forward speed
-	StaticText ""//jump height
-	StaticText ""
-	StaticText ""
-	StaticText "$CUTMANMIKE_CH_MAINFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$CUTMANMIKE_CH_ALTFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-}
-
-OptionMenu "PistonmanInfo"
-{
-	Title "$PISTONMAN_CH_TITLE"
-	StaticText ""
-	StaticText "$PISTONMAN_CH_STATS"
-	StaticText ""
-	StaticText ""
-	StaticText ""//forward speed
-	StaticText ""//jump height
-	StaticText ""
-	StaticText ""
-	StaticText "$PISTONMAN_CH_MAINFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$PISTONMAN_CH_ALTFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$PISTONMAN_CH_PASSIVE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-}
-
-
-OptionMenu "AegisInfo"
-{
-	Title "$AEGIS_CH_TITLE"
-	StaticText ""
-	StaticText "$AEGIS_CH_STATS"
-	StaticText ""
-	StaticText ""
-	StaticText ""//forward speed
-	StaticText ""//jump height
-	StaticText ""
-	StaticText ""
-	StaticText "$AEGIS_CH_MAINFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	Option "$CSCC_CH_ALTFIRES", "Aegis_ClassHelp_Forms", "AegisAltfires"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	/*Option "$CSCC_CH_USER1S", "Aegis_ClassHelp_Forms", "AegisUser1s"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""*/
-	Option "$CSCC_CH_USER2S", "Aegis_ClassHelp_Forms", "AegisUser2s"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$AEGIS_CH_RELOAD"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-}
-
-OptionValue AegisAltfires
-{
-	0, "\cfShield On-Hand\n\cjHold up a wide shield \nwith finite health to \nblock hits, allies can \nshoot through it."
-	1, "\cfShield Deployed\n\cjNone."
-}
-
-OptionValue AegisUser1s
-{
-	0, "\cfShield On-Hand\n\cjUse shield health to \nlaunch a shockwave \nthat shoves opponents \nbackwards."
-	1, "\cfShield Deployed\n\cjNone."
-}
-
-OptionValue AegisUser2s
-{
-	0, "\cfShield On-Hand\n\cjToss out the shield and \nhave it become a \ndeployable bunker, \ncovering a larger area and \nsporting more health."
-	1, "\cfShield Deployed\n\cjRemotely recall the shield \nafter its cooldown."
+	0, "\cfSleep\n\cjForces the enemy to \nfall asleep."
+	1, "\cfSiphon\n\cjCan restore HP if the \nrailgun hits."
+	2, "\cfConfusion\n\cjInflicts confusion \nonto the enemy."
 }
 
 OptionMenu "KorbyInfo"
@@ -753,18 +827,22 @@ OptionValue KorbyBlueMagic
 }
 
 
-OptionMenu "CorporalInfo"
+OptionMenu "VocalWomanInfo"
 {
-	Title "$CORPORAL_CH_TITLE"
+	Title "$VOCALWOMAN_CH_TITLE"
 	StaticText ""
-	StaticText "$CORPORAL_CH_STATS"
+	StaticText "$VOCALWOMAN_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_MAINFIRES", "Corporal_ClassHelp_Weapon", "CorporalMainfires"
+	StaticText "$VOCALWOMAN_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	Option "$CSCC_CH_ALTFIRES", "VocalWoman_ClassHelp_Weapon", "VocalWomanAltfires"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -772,189 +850,195 @@ OptionMenu "CorporalInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$CORPORAL_CH_ALTFIRE"
-	StaticText ""
-	StaticText ""
-	Option "$CSCC_CH_RELOADS", "Corporal_ClassHelp_Weapon", "CorporalReloads"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$CORPORAL_CH_PASSIVE"
-	StaticText ""
+	StaticText "$VOCALWOMAN_CH_PASSIVE"
 	StaticText ""
 }
 
-OptionValue CorporalMainfires
+OptionValue VocalWomanAltfires
 {
-	0, "\cfTommy Gun\n\cjRapid fire assault \nweapon that deals low \nhitscan damage."
-	1, "\cfNade Spam\n\cjChuck a seemingly \nendless supply of \nbouncing nades that \nexplode."
-	2, "\cfGrand Dad\n\cjA highly accurate semi \nautomatic rifle that \ndeals hitscan damage \nas fast as you can \npull the trigger. \nAccuracy suffers when \nfired rapidly."
-	3, "\cfFrag Grenade \n\cjToss a grenade that \nexplodes in a mess of \nbouncing shrapnel. \nHold to cook it and \nincrease the distance \nthrown."
+	0, "\cfOffense Song\n\cjLaunch a bouncing note \nthat remote detonates \nwhen altfire is used."
+	1, "\cfSupport Song\n\cjLaunch a moving note \nthat radiates a healing \naura around itself for \nyourself and allies. \nCan apply overheal."
 }
 
-OptionValue CorporalReloads
+OptionMenu "ZenTrainerInfo"
 {
-	0, "\cfTommy Gun\n\cjUses map ammo to reload \nits clip."
-	1, "\cfNade Spam\n\cjStarts recovering \ngrenades one by one."
-	2, "\cfGrand Dad\n\cjUses non replenishing \nammo to reload its \nclip. Less efficient \nreloading manually."
-	3, "\cfFrag Grenade \n\cjNone."
-}
-
-
-OptionMenu "GizmoInfo"
-{
-	Title "$GIZMO_CH_TITLE"
+	Title "$ZENTRAINER_CH_TITLE"
 	StaticText ""
-	StaticText "$GIZMO_CH_STATS"
+	StaticText "$ZENTRAINER_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_MAINFIRES", "Gizmo_ClassHelp_Weapon", "GizmoMainfires"
+	StaticText "$ZENTRAINER_CH_MAINFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$GIZMO_CH_ITEMS", "Gizmo_ClassHelp_Items", "GizmoItems"
+	StaticText "$ZENTRAINER_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ZENTRAINER_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	Option "$ZENTRAINER_CH_AURAS", "ZenTrainer_ClassHelp_auras", "ZenTrainerAuras"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$GIZMO_CH_PASSIVE"
+	StaticText ""
+	StaticText "$ZENTRAINER_CH_USER1"
+	StaticText ""
+	StaticText ""
+	Option "$ZENTRAINER_CH_DEBUFFS", "ZenTrainer_ClassHelp_debuffs", "ZenTrainerDebuffs"
+	//Option "$ZENTRAINER_CH_DEBUFFS", "ZenTrainer_ClassHelp_auras", "ZenTrainerDebuffs"
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ZENTRAINER_CH_PASSIVE"
 	StaticText ""
 }
 
-OptionValue GizmoMainfires
+OptionValue ZenTrainerAuras
 {
-	0, "\cfPlasma Cannon\n\cjBasic Plasma cannon, \ncharge shots to leave \nlingering explosions."
-	1, "\cfClaw Gloves\n\cjBasic melee weapon, 3 \nconsecutive attacks \nperform a spin combo."
-	2, "\cfFlame Cannon\n\cjLaunch a long reaching \nstream of fire."
-	4, "\cfFrost Cannon\n\cjA close ranged, highly \nlethal spray of cold."
-	5, "\cfLightning Cannon\n\cjFire a burst of ripping \nelectrical projectiles."
-	6, "\cfHydro Cannon\n\cjLaunch a jet stream of \nwater that repels foes."
-	7, "\cfStone Cannon\n\cjFire High impact Arching \nProjectile stones that \nbreak into smaller rock \nprojectiles."
-	8, "\cfEternal Claws\n\cjImproved Claw Cloves with \ngreater reach and the \nability to scale walls."
+	0, "\cfRecovery\n\cjGradually restore \nhealth for self and \nallies overtime."
+	1, "\cfPower\n\cjIncreases weapon \ndamage for self and \nallies."
+	2, "\cfSpeed\n\cjIncreases movement \nspeed for self and \nallies."
 }
 
-OptionValue GizmoItems
+OptionValue ZenTrainerDebuffs
 {
-	0, "\cfKitty Helper\n\cjSummon a Chao to help you \nin battle."
-	1, "\cfKitty Item\n\cjSummon a Chao to give \nyou items."
-	2, "\cfEternal Claws\n\cjUpgrades the Claw Gloves \ninto the Eternal Claws."
+	0, "\cfDefense\n\cjReduces enemy defense."
+	1, "\cfPower\n\cjReduces enemy attack."
+	2, "\cfSpeed\n\cjReduces enemy speed."
 }
 
-OptionMenu "UnixInfo"
+OptionMenu "GeeInfo"
 {
-	Title "$UNIX_CH_TITLE"
+	Title "$GEE_CH_TITLE"
 	StaticText ""
-	StaticText "$UNIX_CH_STATS"
+	StaticText "$GEE_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_MAINFIRES", "Unix_ClassHelp_Weapon", "UnixMainfires"
+	StaticText "$GEE_CH_MAINFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""	
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$UNIX_CH_ALTFIRE"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$UNIX_CH_ITEM"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$UNIX_CH_PASSIVE"
+	Option "$CSCC_CH_ALTFIRES", "Gee_ClassHelp_Weapon", "GeeAltfires"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$GEE_CH_PASSIVE"
 	StaticText ""
 }
 
-OptionValue UnixMainfires
+OptionValue GeeAltfires
 {
-	0, "\cfEternal Torment\n\cjMelee that can backstab, \nKilling the foe \ninstantly and assuming \ntheir appearance, \ndisguise is shed upon \nattacking."
-	1, "\cfRevolver Blades\n\cjThrow up to six on hand \nshurikens that rip \nthrough opponents, \nreloads passively."
+	0, "\cfDamaging Burst\n\cjShoots an overcharged \ndamage burst, but \ntemporarily removes \nyour damage attribute."
+	1, "\cfHealing Burst\n\cjShoots an overcharged \nhealing burst that \napplies overheal, but \ntemporarily removes \nyour healing attribute."
 }
 
-OptionMenu "IceSparkInfo"
+
+OptionMenu "KnuxInfo"
 {
-	Title "$ICESPARKY_CH_TITLE"
+	Title "$KNUX_CH_TITLE"
 	StaticText ""
-	Option "$ICESPARKY_CH_STATS", "IceSparky_ClassHelp_Forms", "IceSparkStats"
-	StaticText ""
+	StaticText "$KNUX_CH_STATS"
 	StaticText ""
 	StaticText ""
 	StaticText ""//forward speed
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_MAINFIRES", "IceSparky_ClassHelp_Forms", "IceSparkMainfires"
+	Option "$KNUX_CH_MAINFIRE", "Knux_ClassHelp_Weapon", "KnuxArrowChargeInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_ALTFIRES", "IceSparky_ClassHelp_Forms", "IceSparkAltfires"
-	StaticText ""
-	StaticText ""	
+	Option "$KNUX_CH_MAINFIRE2", "Knux_ClassHelp_Weapon", "KnuxBubbleChargeInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$ICESPARKY_CH_ITEM"
-	StaticText ""
-	StaticText ""
-	StaticText ""
-	StaticText "$ICESPARKY_CH_PASSIVE"
+	StaticText "$KNUX_CH_ALTFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$KNUX_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$KNUX_CH_PASSIVE"
 	StaticText ""
 }
 
-OptionValue IceSparkStats
+OptionValue KnuxArrowChargeInfo
 {
-	0, "\cfIce\n\cfHealth : \cj135\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%"
-	1, "\cfSparky\n\cfHealth : \cj65\n\n\cfSpeed : \cj110%\n\cfJump : \cj140%"
-	2, "\cfIce & Sparky\n\cfHealth : \cj135\n\n\cfSpeed : \cj110%\n\cfJump : \cj140%"
+	0, "\cfLvl 1\n\cjArrow explodes on \nimpact."
+	1, "\cfLvl 2\n\cjArrow bounces once\nbefore exploding on \nimpact."
+	2, "\cfLvl 3\n\cjArrow sticks to\nwhatever surface it\nhits before exploding."
 }
 
-OptionValue IceSparkMainfires
+OptionValue KnuxBubbleChargeInfo
 {
-	0, "\cfIce\n\cjToss a whirling blade \nof ice."
-	1, "\cfSparky\n\cjLaunch fast moving \nelectrical projectiles."
-	2, "\cfIce & Sparky\n\cjLaunch an electrically \ncharged whirling blade \nof ice."
+	0, "\cfLvl 1\n\cjArrow leaves behind\na trail of bubbles."
+	1, "\cfLvl 2\n\cjArrow bounces up to\n3 times before  \nexploding on impact."
+	2, "\cfLvl 3\n\cjBursts bubble, releasing\ndamaging foam clouds."
 }
 
-OptionValue IceSparkAltfires
+OptionMenu "YangInfo"
 {
-	0, "\cfIce\n\cjScatter ice spikes all \nover the ground."
-	1, "\cfSparky\n\cjLaunch an electrical \npulse that creeps along \nthe floor, scaling up \nwalls."
-	2, "\cfIce & Sparky\n\cjLaunch a massive energy \nwave that scatters ice \nspikes along it’s path."
+	Title "$YANG_CH_TITLE"
+	StaticText ""
+	StaticText "$YANG_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText "$YANG_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$YANG_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$YANG_CH_ITEM"
+	StaticText ""
+	StaticText ""
+	StaticText "$YANG_CH_USER1"
+	StaticText ""
+	StaticText ""
+	StaticText "$YANG_CH_USER2"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$YANG_CH_PASSIVE"
 }
 
 
@@ -1002,11 +1086,7 @@ OptionMenu "NaturesWonderInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText ""
-	StaticText ""
 	StaticText "$NATURESWONDER_CH_ALTFIRE"
-	StaticText ""
-	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -1023,6 +1103,237 @@ OptionValue NaturesWonderWallInfo
 	1, "\cfPrism Wall\n\cjA neigh invulnerable \nwall that cannot be \nripped through and \nreflects damage on \nbeing hit around itself."
 }
 
+OptionMenu "HealmoreInfo"
+{
+	Title "$HEALMORE_CH_TITLE"
+	StaticText ""
+	StaticText "$HEALMORE_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$HEALMORE_CH_MAINFIRE"//mainfire
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$HEALMORE_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$HEALMORE_CH_RELOAD"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$HEALMORE_CH_USER1"
+	StaticText ""
+	StaticText ""
+	StaticText "$HEALMORE_CH_USER2"
+}
+
+OptionMenu "LegoInfo"
+{
+	Title "$LEGO_CH_TITLE"
+	StaticText ""
+	StaticText "$LEGO_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$LEGO_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$LEGO_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""//altfire
+	StaticText ""
+	StaticText ""
+	StaticText "$LEGO_CH_USER1"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionMenu "AbraInfo"
+{
+	Title "$ABRA_CH_TITLE"
+	StaticText ""
+	StaticText "$ABRA_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	Option "$ABRA_CH_MAINFIRE", "Abra_ClassHelp_Weapon", "AbraMainfireInfo"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ABRA_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionValue AbraMainfireInfo
+{
+	0, "\cfFists\n\cjWhile grounded, punches \nopponents. Can be charged \ninto a Mega punch.\nDouble tapping releases a \nflurry of psychic pulses.\nWhile airbone, does a kick."//5
+	1, "\cfPsychic Energy\n\cjFire off a short ranged\npsychic blast. Can be \ncharged for more range with\na strong recoil."
+}
+
+
+OptionMenu "DevionInfo"
+{
+	Title "$DEVION_CH_TITLE"
+	StaticText ""
+	StaticText "$DEVION_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$DEVION_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$DEVION_CH_ALTFIRE"//altfire
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$DEVION_CH_USER1"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$DEVION_CH_PASSIVE"
+	StaticText ""
+	StaticText ""
+}
+
+//RozarkInfo//////////////////////////////////////////
+OptionMenu "RozarkInfo"
+{
+	Title "$ROZARK_CH_TITLE"
+	StaticText ""
+	StaticText "$ROZARK_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$ROZARK_CH_MAINFIRE"//mainfire
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""//altfire
+	StaticText "$ROZARK_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ROZARK_CH_USER1"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$ROZARK_CH_PASSIVE"
+}
+
+//JaxInfo//////////////////////////////////////////
+OptionMenu "JaxInfo"
+{
+	Title "$JAX_CH_TITLE"
+	StaticText ""
+	StaticText "$JAX_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$JAX_CH_MAINFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$JAX_CH_ALTFIRE"
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+}
+
+OptionMenu "DaverisInfo"
+{
+	Title "$DAVERIS_CH_TITLE"
+	StaticText ""
+	StaticText "$DAVERIS_CH_STATS"
+	StaticText ""
+	StaticText ""
+	StaticText ""//forward speed
+	StaticText ""//jump height
+	StaticText ""
+	StaticText ""
+	StaticText "$DAVERIS_CH_MAINFIRE"//mainfire
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$DAVERIS_CH_ALTFIRE"//altfire
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText ""
+	StaticText "$DAVERIS_CH_RELOAD"//Reload
+	StaticText ""
+	StaticText ""
+	StaticText "$DAVERIS_CH_ITEM"
+}
+
 OptionMenu "LordDamagerInfo"
 {
 	Title "$LORDDAMAGER_CH_TITLE"
@@ -1034,8 +1345,7 @@ OptionMenu "LordDamagerInfo"
 	StaticText ""//jump height
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_MAINFIRES", "LD_ClassHelp_Weapon", "LordDamagerMainfires"
-	StaticText ""
+	StaticText "$LORDDAMAGER_CH_MAINFIRE"
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -1047,12 +1357,13 @@ OptionMenu "LordDamagerInfo"
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	Option "$CSCC_CH_RELOADS", "LD_ClassHelp_Weapon", "LordDamagerReloads"
+	Option "$LORDDAMAGER_CH_USER", "LD_ClassHelp_Weapon", "LordDamagerUserkeys"
 	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
-	StaticText "$LORDDAMAGER_CH_ITEM"
+	//StaticText "$LORDDAMAGER_CH_ITEM"
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText ""
@@ -1061,14 +1372,21 @@ OptionMenu "LordDamagerInfo"
 	StaticText ""
 }
 
-OptionValue LordDamagerMainfires
+OptionValue LordDamagerUserkeys
 {
-	0, "\cfMissile Punch\n\cjFires potent missiles with a \nreservoir of 5 shots before \nneeding to reload."
-	1, "\cfDark Laser\n\cjUnleash a long reaching \nlaser after a brief warmup. \nAmmo restores passively."
+	0, "\cfUser1 :\n\cjInitiate a ramming attack."
+	1, "\cfUser2 :\n\cjRelease an EMP mine, \nstunning those hit."
+	2, "\cfUser3 :\n\cjBlows a cloud of smog\nobscuring the vision of \nthose hit"
+	3, "\cfUser4 :\n\cjFires a pinpoint reticule\ndropping a mortar shell\nat the targeted area"
 }
 
-OptionValue LordDamagerReloads
-{
-	0, "\cfMissile Punch\n\cjInitiates the reload \nsequence early."
-	1, "\cfDark Laser\n\cjNone."
-}
+/*                         ████████████████████████████████████████████████████████████████████
+  ████         ████      ██                                                                    ██
+  ██//█████████//██      ██ Going to need a way to proporly scroll down. Sadly this is out of  ██
+  ██  /////////  ██      ██ my area of experties... Currently Yang and Messatsu need it.                                           ██
+██//████/////████//██    ██                                                                    ██
+██//////██//██/////██  ██    ██████████████████████████████████████████████████████████████████
+████/////  //////████  ██  ██
+    ████     ████        ██
+        █████
+*/

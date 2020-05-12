@@ -642,7 +642,7 @@ States
 Spawn:
 TNT1 A 0 A_TakeFromTarget("YangSemblance", 1)
 TNT1 A 0 A_SetUserVar("User_LastSemblance", ACS_NamedExecuteWithResult("YangAura", 1))
-TNT1 A 0 A_SetUserVar("User_Counter", 20)
+TNT1 A 0 A_SetUserVar("User_Counter", 15)
 Goto Waiting
 Waiting: 
 TNT1 AAAAA 1 A_JumpIfInTargetInventory("IsDead", 1, "Death")

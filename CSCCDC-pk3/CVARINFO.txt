@@ -17,6 +17,7 @@ user noarchive int Messatsu_ClassHelp_Supers = 0;
 user noarchive int Gee_ClassHelp_Weapon = 0;
 user noarchive int Vocalwoman_ClassHelp_Weapon = 0;
 user noarchive int ZenTrainer_ClassHelp_auras = 0;
+user noarchive int ZenTrainer_ClassHelp_debuffs = 0;
 user noarchive int TankOp_ClassHelp_Weapon = 0;
 user noarchive int BG_ClassHelp_Weapon = 0;
 user noarchive int LD_ClassHelp_Weapon = 0;
@@ -29,6 +30,8 @@ user noarchive int Unix_ClassHelp_Weapon = 0;
 user noarchive int IceSparky_ClassHelp_Forms = 0;
 user noarchive int Aegis_ClassHelp_Forms = 0;
 user noarchive int NaturesWonder_ClassHelp_WallInfo = 0;
+user noarchive int Knux_ClassHelp_Weapon = 0;
+user noarchive int Abra_ClassHelp_Weapon = 0;
 
 //Allows translation to be copied on the client's end
 server noarchive int SV_TRANSLATION0 = 0;

@@ -412,6 +412,27 @@ COPY_CH_ALTFIRE = "\cfAltfire : \cjFires a slower, but \nhoming, basic projectil
 COPY_CH_ITEM = "\cfItem : \cjReverts you back to your \nbase kit.";
 COPY_CH_PASSIVE = "\cfPassive : \cjCopies the class of \nwhatever class you hit, including \nallies. Can pick up all weapons and \ncollect ammo pickups.";
 
+GIZMO_CH_TITLE = "\cvGIZMO";
+GIZMO_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj130%";
+GIZMO_CH_PASSIVE = "\cfPassive : \cjConverts weapon and item \npickups into his own tools.";
+GIZMO_CH_ITEMS = "\cvConverted Items : ";
+
+UNIX_CH_TITLE = "\cvUNIX";
+UNIX_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+UNIX_CH_ALTFIRE = "\cfAltfire : \cjEngage cloaking and turn \ninvisible. Does not clear disguise.";
+UNIX_CH_ITEM = "\cfItem : \cjTrigger a large area stun. \nDoes not clear disguise.";
+UNIX_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups.";
+
+CUTMANMIKE_CH_TITLE = "\cvCUTMANMIKE";
+CUTMANMIKE_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj120%";
+CUTMANMIKE_CH_MAINFIRE = "\cfMainfire : \cjCast a Hexen \nstyle Fire spell that travels \nquickly and deals damage in a \nsmall area.";
+CUTMANMIKE_CH_ALTFIRE = "\cfAltfire : \cjToss a \nHellFire Cutter, a slower but \nespecially deadlier rolling \ncutter.";
+
+ICESPARKY_CH_TITLE = "\cvICE AND SPARKY";
+ICESPARKY_CH_STATS = "\cvStats : ";
+ICESPARKY_CH_ITEM = "\cfItem : \cjWhen fusion meter is full, \nengage fusion.";
+ICESPARKY_CH_PASSIVE = "\cfPassive : \cjGains fusion meter upon \ntaking damage, successive kills \nincreases the rate at which meter \nis gained.";
+
 UKIYAMA_CH_TITLE = "\cvUKIYAMA";
 UKIYAMA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
 UKIYAMA_CH_MAINFIRE = "\cfMainfire : \cjShoots a projectile that \nchanges based on the mods acquired.";
@@ -428,54 +449,11 @@ MESSATSU_CH_ITEM = "\cfItem : \cjUse item to select which \nsuper to queue for a
 MESSATSU_CH_SUPERS = "\cvSupers : ";
 MESSATSU_CH_PASSIVE = "\cfPassive : \cjGain super gauge by being \nhit, attacking with foes nearby, or \ndealing damage.";
 
-ABRA_CH_TITLE = "\cvABRA";
-ABRA_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj120%\n\cfJump : \cj100%";
-ABRA_CH_MAINFIRE = "\cfMainfire : \cjFires off a psychic shot. \nCharge builds up when not attacking \nto release a shoving spread beam.";
-ABRA_CH_ALTFIRE = "\cfAltfire : \cjTeleports Foreward in the \ndirection aimed.";
-
-GEE_CH_TITLE = "\cvGEE";
-GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj140%";
-GEE_CH_MAINFIRE = "\cfMainfire : \cjShoots a magic burst \ncomposed of the attributes he has \navailable, healing if it hits an ally \nand damaging if it hits a foe.";
-GEE_CH_PASSIVE = "\cfPassive : \cjRegenerates health when \nnot under fire. Can see the health \nof allies.";
-
-BG_CH_TITLE = "\cvBULL GATOR";
-BG_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
-BG_CH_ITEM = "\cfItem : \cjScopes in and out.";
-
-BADZ_CH_TITLE = "\cvBADZ";
-BADZ_CH_STATS = "\cfHealth : \cj135\n\n\cfSpeed : \cj90%\n\cfJump : \cj100%";
-BADZ_CH_MAINFIRE = "\cfMainfire : \cjFires a slow moving, \nlarge buster shot.";
-BADZ_CH_ALTFIRE = "\cfAltfire : \cjDeploys up to five \nmissiles that circle the user.";
-BADZ_CH_RELOAD = "\cfReload : \cjIf missiles are active, \nlaunches them to fly in circles.";
-BADZ_CH_USER1 = "\cfUser Key 1 : \cjFlash steps forward a \nshort distance.";
-
-TANKOP_CH_TITLE = "\cvTANK OPERATOR";
-TANKOP_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
-TANKOP_CH_ITEM = "\cfItem : \cjActivates and deactivates \ntank formation.";
-
-VOCALWOMAN_CH_TITLE = "\cvVOCALWOMAN";
-VOCALWOMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj81%\n\cfJump : \cj100%";
-VOCALWOMAN_CH_MAINFIRE = "\cfMainfire : \cjUnleash a volley of \nmusic notes.";
-VOCALWOMAN_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
-
-ZENTRAINER_CH_TITLE = "\cvZEN TRAINER";
-ZENTRAINER_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj95%\n\cfJump : \cj100%";
-ZENTRAINER_CH_MAINFIRE = "\cfMainfire : \cjChannel a mysterious \npsychic orb that remains as long as \nmainfire is held, can latch onto \nenemies and deal constant damage.";
-ZENTRAINER_CH_ALTFIRE = "\cfAltfire : \cjAmplify the current aura, \nincreasing its range and potency.";
-ZENTRAINER_CH_ITEM = "\cfItem : \cjSwaps between various auras.";
-ZENTRAINER_CH_AURAS = "\cvAuras : ";
-ZENTRAINER_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
-
 COLDFUSION_CH_TITLE = "\cvCOLDFUSION";
 COLDFUSION_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
 COLDFUSION_CH_MAINFIRE = "\cfMainfire : \cjToss a Cluster bomb that \ndetonates and scatters smaller \nexplosives around it's landing point.";
 COLDFUSION_CH_ALTFIRE = "\cfAltfire : \cjRapidly propel yourself \nforward and downwards, dealing damage \nand knocking away anything in your way.";
 COLDFUSION_CH_PASSIVE = "\cfPassive : \cjDouble jump to engage \nyour thrusters, hold jump to slow \nyour descent. Regenerates armor when \nnot firing. Can collect ammo pickups.";
-
-CUTMANMIKE_CH_TITLE = "\cvCUTMANMIKE";
-CUTMANMIKE_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj120%";
-CUTMANMIKE_CH_MAINFIRE = "\cfMainfire : \cjCast a Hexen \nstyle Fire spell that travels \nquickly and deals damage in a \nsmall area.";
-CUTMANMIKE_CH_ALTFIRE = "\cfAltfire : \cjToss a \nHellFire Cutter, a slower but \nespecially deadlier rolling \ncutter.";
 
 PISTONMAN_CH_TITLE = "\cvPISTONMAN";
 PISTONMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj90%\n\cfJump : \cj140%";
@@ -490,6 +468,26 @@ AEGIS_CH_ALTFIRE = "\cfAltfire : \cjIf at hand, hold up a wide shield with \nfin
 AEGIS_CH_RELOAD = "\cfReload: \cjBegin loading one clip \nof your shotgun at a time \nat a steady rate.";
 AEGIS_CH_USER1 = "\cfUser Key 1 : \cjUse shield health to launch a \nshockwave from your on-hand shield \nto force opponents backwards.";
 
+TANKOP_CH_TITLE = "\cvTANK OPERATOR";
+TANKOP_CH_STATS = "\cfHealth : \cj200\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
+TANKOP_CH_ITEM = "\cfItem : \cjActivates and deactivates \ntank formation.";
+
+BADZ_CH_TITLE = "\cvBADZ";
+BADZ_CH_STATS = "\cfHealth : \cj135\n\n\cfSpeed : \cj90%\n\cfJump : \cj100%";
+BADZ_CH_MAINFIRE = "\cfMainfire : \cjFires a slow moving, \nlarge buster shot.";
+BADZ_CH_ALTFIRE = "\cfAltfire : \cjDeploys up to five \nmissiles that circle the user.";
+BADZ_CH_RELOAD = "\cfReload : \cjIf missiles are active, \nlaunches them to fly in circles.";
+BADZ_CH_USER1 = "\cfUser Key 1 : \cjFlash steps forward a \nshort distance.";
+
+CORPORAL_CH_TITLE = "\cvCORPORAL";
+CORPORAL_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
+CORPORAL_CH_ALTFIRE = "\cfAltfire : \cjSlash with a combat Knife.";
+CORPORAL_CH_PASSIVE = "\cfPassive : \cjCan pick up weapons, but \nhas a timer for repeated pickups. \nCan collect ammo pickups.";
+
+BG_CH_TITLE = "\cvBULL GATOR";
+BG_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj98%\n\cfJump : \cj100%";
+BG_CH_ITEM = "\cfItem : \cjScopes in and out.";
+
 KORBY_CH_TITLE = "\cvKORBY";
 KORBY_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
 KORBY_CH_MAINFIRE = "\cfMainfire : \cjCast spells or hold to \ncharge up to 3 levels for more \npotent effects.";
@@ -499,33 +497,43 @@ KORBY_CH_BLUEMAGIC = "\cvBlue Magic : ";
 KORBY_CH_SPELLS = "\cvSpells : ";
 KORBY_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups. \nRegenerates ammo quicker and charges \nfaster if standing still.";
 
-CORPORAL_CH_TITLE = "\cvCORPORAL";
-CORPORAL_CH_STATS = "\cfHealth : \cj80\n\n\cfSpeed : \cj75%\n\cfJump : \cj100%";
-CORPORAL_CH_ALTFIRE = "\cfAltfire : \cjSlash with a combat Knife.";
-CORPORAL_CH_PASSIVE = "\cfPassive : \cjCan pick up weapons, but \nhas a timer for repeated pickups. \nCan collect ammo pickups.";
+VOCALWOMAN_CH_TITLE = "\cvVOCALWOMAN";
+VOCALWOMAN_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj81%\n\cfJump : \cj100%";
+VOCALWOMAN_CH_MAINFIRE = "\cfMainfire : \cjUnleash a volley of \nmusic notes.";
+VOCALWOMAN_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
 
-GIZMO_CH_TITLE = "\cvGIZMO";
-GIZMO_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj130%";
-GIZMO_CH_PASSIVE = "\cfPassive : \cjConverts weapon and item \npickups into his own tools.";
-GIZMO_CH_ITEMS = "\cvConverted Items : ";
+ZENTRAINER_CH_TITLE = "\cvZEN TRAINER";
+ZENTRAINER_CH_STATS = "\cfHealth : \cj65\n\n\cfSpeed : \cj95%\n\cfJump : \cj100%";
+ZENTRAINER_CH_MAINFIRE = "\cfMainfire : \cjChannel a mysterious \npsychic orb that bounces and persists\nas long as mainfire is held, can be\nempowered to apply debuffs to opponents.";
+ZENTRAINER_CH_ALTFIRE = "\cfAltfire : \cjFires bouncing short\nranged orbs that can be empowered.";
+ZENTRAINER_CH_ITEM = "\cfItem : \cjSwaps between various auras.";
+ZENTRAINER_CH_AURAS = "\cvAuras";
+ZENTRAINER_CH_USER1 = "\cfUser Key 1 : \cjSwaps between various debuffs.";
+ZENTRAINER_CH_DEBUFFS = "\cvDebuffs";
+ZENTRAINER_CH_PASSIVE = "\cfPassive : \cjCan see the health of allies.";
 
-UNIX_CH_TITLE = "\cvUNIX";
-UNIX_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
-UNIX_CH_ALTFIRE = "\cfAltfire : \cjEngage cloaking and turn \ninvisible. Does not clear disguise.";
-UNIX_CH_ITEM = "\cfItem : \cjTrigger a large area stun. \nDoes not clear disguise.";
-UNIX_CH_PASSIVE = "\cfPassive : \cjCan collect ammo pickups.";
+GEE_CH_TITLE = "\cvGEE";
+GEE_CH_STATS = "\cfHealth : \cj85\n\n\cfSpeed : \cj75%\n\cfJump : \cj140%";
+GEE_CH_MAINFIRE = "\cfMainfire : \cjShoots a magic burst \ncomposed of the attributes he has \navailable, healing if it hits an ally \nand damaging if it hits a foe.";
+GEE_CH_PASSIVE = "\cfPassive : \cjRegenerates health when \nnot under fire. Can see the health \nof allies.";
 
-ICESPARKY_CH_TITLE = "\cvICE AND SPARKY";
-ICESPARKY_CH_STATS = "\cvStats : ";
-ICESPARKY_CH_ITEM = "\cfItem : \cjWhen fusion meter is full, \nengage fusion.";
-ICESPARKY_CH_PASSIVE = "\cfPassive : \cjGains fusion meter upon \ntaking damage, successive kills \nincreases the rate at which meter \nis gained.";
+KNUX_CH_TITLE = "\cvKNUX";
+KNUX_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj87%\n\cfJump : \cj180%";
+//KNUX_CH_MAINFIRE = "\cfMainfire : \cjFires an arrow that's\neffect depends on charge level.";
+KNUX_CH_MAINFIRE = "\cvMainfire";
+KNUX_CH_MAINFIRE2 = "\cvBubbled";
+KNUX_CH_ALTFIRE= "\cfAltfire : \cjReleases a bubble that\nbounces back anything that touches it,\nplayers and projectiles alike.\nFiring arrows at it changes the effect\nof the arrow.";
+KNUX_CH_ITEM = "\cfitem : \cjDrops a mine that launches\nthose hit into the air and releases\nfoam clouds.";
+KNUX_CH_PASSIVE = "\cfPassive : \cjSlowly generates mines\nover time.";
 
-CHANGELOGS = "\cvCHOOSE YOUR VERSION";
-V1ACHANGELOG = "\cvV1A CHANGELOG";
-V1BCHANGELOG = "\cvV1B CHANGELOG";
-V1CCHANGELOG = "\cvV1C CHANGELOG";
-V2ACHANGELOG = "\cvV2A CHANGELOG";
-GENERAL_CH_TITLE = "\cvGENERAL";
+YANG_CH_TITLE = "\cvYANG";
+YANG_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj81%\n\cfJump : \cj120%";
+YANG_CH_MAINFIRE = "\cfMainfire : \cjPunches and fires off firecracker shots. \nPunches get stronger with the more semblance \nyou have built up.  Holding will result in a \nstronger punch at melee range that shoves.";//5
+YANG_CH_ALTFIRE = "\cfAltfire : \cjDoes a kick that has upwards\nknockback. Jumping in the middle of a\nkick will result in following up with\nan uppercut.";//4
+YANG_CH_ITEM = "\cfItem : \cjStops you in place to reload\nammunition.";//2
+YANG_CH_USER1 = "\cfUser 1 : \cjDashes in the direction held\nat the cost of ammo.";//2
+YANG_CH_USER2 = "\cfUser 2 : \n\cjDoes a quick guard, reducing \noncoming damage.";//2
+YANG_CH_PASSIVE = "\cfPassive: \cjAs you take damage, you build \nsemblance, which increases damage\dealt.\nOver time, you also regenerate armor.\nCan also double jump at the cost\nof ammo.";//6
 
 GRAVITRON_CH_TITLE = "\cvGRAVITRON";
 GRAVITRON_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
@@ -535,36 +543,80 @@ GRAVITRON_CH_ITEM = "\cfItem : \cjSwitches your Gravity Field's pull \nwithin it
 GRAVITRON_CH_PASSIVE = "\cfPassive: \cjFalling from or going upward at a certain speed \nwhen coliding with the ceiling or ground creates a \nexplosion around yourself.";
 
 NATURESWONDER_CH_TITLE = "\cvNATURES WONDER";
-NATURESWONDER_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj94%\n\cfJump : \cj100%";
+NATURESWONDER_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj94%\n\cfJump : \cj100%";
 NATURESWONDER_CH_MAINFIRE = "\cfMainfire : \cjCreates a Crystal Wall that can block shots \nwith a formation based on weapon chosen";
 NATURESWONDER_CH_ALTFIRE = "\cfAltfire : \cjDrops a Prism Wall at a location that \nthat reflects damage dealt around itself.";
 NATURESWONDER_CH_WALLINFO = "\cvWall Info: ";
 
-LORDDAMAGER_CH_TITLE = "\cvLORDDAMAGER";
-LORDDAMAGER_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
-LORDDAMAGER_CH_ALTFIRE = "\cfAltfire : \cjPunch any fool \nthat dared to come within \nrange of your fists.";
-LORDDAMAGER_CH_ITEM = "\cfItem : \cjInitiate a ramming attack.";
+HEALMORE_CH_TITLE = "\cvHEALMORE";
+HEALMORE_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj87%\n\cfJump : \cj100%";
+HEALMORE_CH_MAINFIRE = "\cfMainfire : \cjWhen primed, fires off\na focused blast of magic. \nWhen unprimed, fires off a burst\nof small rapidfire shots.";//4
+HEALMORE_CH_ALTFIRE = "\cfAltfire : \cjHeals the user as well \nas single team members targeted.\nIs capible of overhealing.";//2
+HEALMORE_CH_RELOAD = "\cfReload : \cjFire off 3 homing blasts\nof magic that steals MP from targets hit\nand inflicts a minor poison effect.";//3
+HEALMORE_CH_USER1 = "\cfUser 1 : \cjVanish from sight for a\nfew seconds.";//2
+HEALMORE_CH_USER2 = "\cfUser 2 : \cjGrants a shield to the\nuser as well as all team members in \nrange.";//3
+
+//Lego
+LEGO_CH_TITLE = "\cvLEGO";
+LEGO_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
+LEGO_CH_MAINFIRE = "\cfMainfire : \cjFire a missile that can be used to \nrocket jump."; //2
+LEGO_CH_ALTFIRE = "\cfAltfire : \cjFire mines that cling to surfaces.\nDetonating them can be used to Rocket\nJump.";//3
+LEGO_CH_USER1 = "\cfUser Key 1 : \cjDetonates mines."; //1
 
 ABRA_CH_TITLE = "\cvABRA";
 ABRA_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj100%\n\cfJump : \cj100%";
-
-DAVERIS_CH_TITLE = "\cvDAVERIS";
-DAVERIS_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj87%\n\cfJump : \cj160%";
+ABRA_CH_MAINFIRE = "\cvMainfire";
+ABRA_CH_ALTFIRE = "\cfAltfire : \cjMid ranged teleport that can be used\neven while charging!";//2
 
 DEVION_CH_TITLE = "\cvDEVION";
 DEVION_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj87%\n\cfJump : \cj120%";
-
-HEALMORE_CH_TITLE = "\cvHEALMORE";
-HEALMORE_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj87%\n\cfJump : \cj100%";
-
-JAX_CH_TITLE = "\cvJAX";
-JAX_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
-
-KNUX_CH_TITLE = "\cvKNUX";
-KNUX_CH_STATS = "\cfHealth : \cj100\n\n\cfSpeed : \cj87%\n\cfJump : \cj180%";
+DEVION_CH_MAINFIRE = "\cfMainfire : \cjUnleash a flurry of punches that can\nblock projectiles and shove back opponents.\nUser will drop down and releas a shockwave\nif used mid dash."; //4
+DEVION_CH_ALTFIRE = "\cfAltfire : \cjDash foreward a short distance\nCan be used in the air.";//2
+DEVION_CH_USER1 = "\cfUser Key 1 : \cjFire an explosive fist that can be \nused to rocket jump."; //2
+DEVION_CH_PASSIVE = "\cfPassive : \cjDouble jump.";//1
 
 ROZARK_CH_TITLE = "\cvROZARK";
 ROZARK_CH_STATS = "\cfHealth : \cj105\n\n\cfSpeed : \cj112%\n\cfJump : \cj100%";
+ROZARK_CH_MAINFIRE = "\cfMainfire : \cjToss up to 3 boomerangs depending on\ncharge level. Boomerangs will home in\non opponents tagged with the mark of\nthe rabbit."; //4
+ROZARK_CH_ALTFIRE = "\cfAltfire : \cjDash foreward a short distance, \nphasing through opponents. \nLeaves the mark of the rabbit on those \nhit.";//4
+ROZARK_CH_USER1 = "\cfUser Key 1 : \cjSwing a sock filled with rocks at\nopponents, causing bleeding damage when\nhit."; //3
+ROZARK_CH_PASSIVE = "\cfPassive : \cjTriggers Insanity mode when health \nfalls to 25 or below, doubling the amount \nof boomerangs thrown.";//3
 
-YANG_CH_TITLE = "\cvYANG";
-YANG_CH_STATS = "\cfHealth : \cj75\n\n\cfSpeed : \cj81%\n\cfJump : \cj120%";
+JAX_CH_TITLE = "\cvJAX";
+JAX_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
+JAX_CH_MAINFIRE = "\cfMainfire : \cjGrabs opponents within \nrange, holding them in the air. Using\nagain unleashes a burst of energy that \nsends held opponents and psycho mines\nflyng in the direction used,attatching \nan exploding mine to tossed opponents, \nthat will explode shortly after.\n\n\cfWeapon 2 \cjis the same, minus the grab."; //10
+JAX_CH_ALTFIRE = "\cfAltfire : \cjPlaces a psycho mine\nthat can be used to block projectiles. \nWill launch a mine in the direction \nmainfire is used up to 2 times.";//4
+
+DAVERIS_CH_TITLE = "\cvDAVERIS";
+DAVERIS_CH_STATS = "\cfHealth : \cj125\n\n\cfSpeed : \cj87%\n\cfJump : \cj160%";
+DAVERIS_CH_MAINFIRE = "\cfMainfire : \cjFires a chunk of ice \nthat deals more damage and flies \nfurther when primed. Unprimed shots\ndeal less damage and falls after a \nshort distance.";//5
+DAVERIS_CH_ALTFIRE = "\cfAltfire : \cjEncases user in ice,\nmaking them invulnerable, releasing a\npowerful blast when mainfire is used.\nWhen used in the air, user will dive\ndown, releasing a shockwave.";//5
+DAVERIS_CH_RELOAD = "\cfReload : \cjHold to charge up a high\njump.";//2
+DAVERIS_CH_ITEM = "\cfItem : \cjAllows the user to hover.";//1
+
+LORDDAMAGER_CH_TITLE = "\cvLORDDAMAGER";
+LORDDAMAGER_CH_STATS = "\cfHealth : \cj150\n\n\cfSpeed : \cj68%\n\cfJump : \cj100%";
+LORDDAMAGER_CH_MAINFIRE = "\cfMainfire : \cjFires potent missiles \nwith a reservoir of 4 shots before \nneeding to reload.";//3
+LORDDAMAGER_CH_ALTFIRE = "\cfAltfire : \cjPunch any fool that \ndared to come within range of your \nfists.";//3
+LORDDAMAGER_CH_ITEM = "\cfItem : \cjInitiate a ramming attack.";
+LORDDAMAGER_CH_USER = "\cvUserkeys :";
+
+
+
+/*                         ████████████████████████████████████████████████████████████████████
+  ████         ████      ██                                                                    ██
+  ██//█████████//██      ██Had to organize this so it wasnt such a nightmare to look for stuff ██
+  ██  /////////  ██      ██                                                                    ██
+██//████/////████//██  ██    ██████████████████████████████████████████████████████████████████
+██//////██//██/////██  ██  ██
+████/////  //////████    ██
+    ████     ████
+        █████
+*/
+
+CHANGELOGS = "\cvCHOOSE YOUR VERSION";
+V1ACHANGELOG = "\cvV1A CHANGELOG";
+V1BCHANGELOG = "\cvV1B CHANGELOG";
+V1CCHANGELOG = "\cvV1C CHANGELOG";
+V2ACHANGELOG = "\cvV2A CHANGELOG";
+GENERAL_CH_TITLE = "\cvGENERAL";
