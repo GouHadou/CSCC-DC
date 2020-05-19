@@ -800,6 +800,7 @@ Switch(Version)
 	SetInventory("TankHPAmmo",PlayerHP);
 	SetActorProperty(0,APROP_SPAWNHEALTH,GetAmmoCapacity("TankRepairAmmo"));
 	SetActorProperty(0,APROP_HEALTH,PlayerResource);
+	SetInventory("TankRepairAmmo",GetAmmoCapacity("TankRepairAmmo"));
 	Break;
 	Case 1:
 	SetInventory("TankRepairAmmo",PlayerHP);
