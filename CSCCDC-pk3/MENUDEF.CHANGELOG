@@ -223,151 +223,161 @@ OptionValue v1cBadz{0, "\cj-Mainfire speed 30->40 \n-Orbital Missile has power \
 OptionValue v1cZenTrainer{0, "\cj-Zen Sphere line of sight \nis now more lenient \n-Zen Sphere damage rate \ndoubled \n--Damage 10->5 \n--Now applies minimal \nhitstun"}
 
 
-OptionMenu "v2aChangelog"
+OptionMenu "V2AChangelog"
 {
-	Title "v2a Changelog"
+	Title "V2A Changelog"
 	StaticText "===============================================================",1
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aGeneral_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aGeneral_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGeneral_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGeneral_1"
 	StaticText ""
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aMegaman_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aMegaman_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AMegaman_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AMegaman_1"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aGizmo_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aGizmo_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aGizmo_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aGizmo_3"
-	Option "", "CSCC_Menudef_Changelog", "v2aGizmo_4"
-	Option "", "CSCC_Menudef_Changelog", "v2aGizmo_5"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGizmo_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGizmo_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGizmo_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGizmo_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGizmo_4"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGizmo_5"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aMessatsu_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aMessatsu_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aMessatsu_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AMessatsu_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AMessatsu_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AMessatsu_2"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aAegis_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aAegis_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aAegis_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aAegis_3"
-	Option "", "CSCC_Menudef_Changelog", "v2aAegis_4"
-	Option "", "CSCC_Menudef_Changelog", "v2aAegis_5"
+	Option "", "CSCC_MenuDef_Changelog", "V2AAegis_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AAegis_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AAegis_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AAegis_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2AAegis_4"
+	Option "", "CSCC_MenuDef_Changelog", "V2AAegis_5"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aPistonMan_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aPistonMan_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACorporal_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACorporal_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACorporal_2"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aCopyRobot_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aCopyRobot_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2APistonMan_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2APistonMan_1"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aCutManMike_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aCutManMike_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aCutManMike_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aCutManMike_3"
-	Option "", "CSCC_Menudef_Changelog", "v2aCutManMike_4"
-	Option "", "CSCC_Menudef_Changelog", "v2aCutManMike_5"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACopyRobot_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACopyRobot_1"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aGee_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aGee_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aGee_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACutManMike_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACutManMike_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACutManMike_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACutManMike_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACutManMike_4"
+	Option "", "CSCC_MenuDef_Changelog", "V2ACutManMike_5"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aIceSparky_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aIceSparky_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aIceSparky_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aIceSparky_3"
-	Option "", "CSCC_Menudef_Changelog", "v2aIceSparky_4"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGee_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGee_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AGee_2"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aKorby_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aKorby_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aKorby_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AIceSparky_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AIceSparky_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AIceSparky_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AIceSparky_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2AIceSparky_4"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aTankOperator_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aTankOperator_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aTankOperator_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aTankOperator_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2AKorby_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AKorby_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AKorby_2"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aUkiyama_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aUkiyama_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aUkiyama_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aUkiyama_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2ATankOperator_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2ATankOperator_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2ATankOperator_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2ATankOperator_3"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aUnix_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aUnix_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aUnix_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aUnix_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2AUkiyama_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AUkiyama_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AUkiyama_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AUkiyama_3"
+	StaticText ""
+	Option "", "CSCC_MenuDef_Changelog", "V2AUnix_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AUnix_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AUnix_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AUnix_3"
 	StaticText ""
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aVocalWoman_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aVocalWoman_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aVocalWoman_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AVocalWoman_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AVocalWoman_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AVocalWoman_2"
 	StaticText ""
-	Option "", "CSCC_Menudef_Changelog", "v2aZenTrainer_0"
-	Option "", "CSCC_Menudef_Changelog", "v2aZenTrainer_1"
-	Option "", "CSCC_Menudef_Changelog", "v2aZenTrainer_2"
-	Option "", "CSCC_Menudef_Changelog", "v2aZenTrainer_3"
-	Option "", "CSCC_Menudef_Changelog", "v2aZenTrainer_4"
+	Option "", "CSCC_MenuDef_Changelog", "V2AZenTrainer_0"
+	Option "", "CSCC_MenuDef_Changelog", "V2AZenTrainer_1"
+	Option "", "CSCC_MenuDef_Changelog", "V2AZenTrainer_2"
+	Option "", "CSCC_MenuDef_Changelog", "V2AZenTrainer_3"
+	Option "", "CSCC_MenuDef_Changelog", "V2AZenTrainer_4"
+	StaticText ""
+	StaticText ""
+	StaticText ""
 	StaticText ""
 	StaticText ""
 	StaticText "===============================================================",1
 }
 
-OptionValue v2aGeneral_0{0, "\cg==General"}
-OptionValue v2aGeneral_1{0, "\cj-Added: Abra, Daveris, Devion, Gravitron, Healmore, \nJax, Knux, Nature's Wonder, Rozark, Yang,Lego"}
-OptionValue v2aMegaman_0{0, "\cg==Megaman"}
-OptionValue v2aMegaman_1{0, "\cj-Copy Weapons updated to match classes"}
-OptionValue v2aGizmo_0{0, "\cg==Gizmo"}
-OptionValue v2aGizmo_1{0, "\cj-Plasma Dmg Reduced"}
-OptionValue v2aGizmo_2{0, "\cj-Lightning dmg increased"}
-OptionValue v2aGizmo_3{0, "\cj-Stone spd increased"}
-OptionValue v2aGizmo_4{0, "\cj-Flame Dmg increased"}
-OptionValue v2aGizmo_5{0, "\cj-Frost spd increased."}
-OptionValue v2aMessatsu_0{0, "\cg==Messatsu"}
-OptionValue v2aMessatsu_1{0, "\cj-Shoryuken Damage reduced"}
-OptionValue v2aMessatsu_2{0, "\cj--Now kicks opponent away at apex."}
-OptionValue v2aAegis_0{0, "\cg==Aegis"}
-OptionValue v2aAegis_1{0, "\cj-Health Reduced 200->125"}
-OptionValue v2aAegis_2{0, "\cj-Speed Increased"}
-OptionValue v2aAegis_3{0, "\cj-RoF Increased"}
-OptionValue v2aAegis_4{0, "\cj-Shield Health Reduced"}
-OptionValue v2aAegis_5{0, "\cj-Removed Shield Wave"}
-OptionValue v2aPistonMan_0{0, "\cg==PistonMan"}
-OptionValue v2aPistonMan_1{0, "\cj-Hits now have reduced z-thrust when used repeatedly."}
-OptionValue v2aCopyRobot_0{0, "\cg==CopyRobot"}
-OptionValue v2aCopyRobot_1{0, "\cj-Health Increased 80->85"}
-OptionValue v2aCutManMike_0{0, "\cg==CutManMike"}
-OptionValue v2aCutManMike_1{0, "\cj-Health Increased 75->100"}
-OptionValue v2aCutManMike_2{0, "\cj-Hellfire Cutter dmg reduced"}
-OptionValue v2aCutManMike_3{0, "\cj--Drops flames"}
-OptionValue v2aCutManMike_4{0, "\cj-Firestorm damage increased"}
-OptionValue v2aCutManMike_5{0, "\cj--Can now use while cutter is out. "}
-OptionValue v2aGee_0{0, "\cg==Gee"}
-OptionValue v2aGee_1{0, "\cj-Health Reduced 85->75"}
-OptionValue v2aGee_2{0, "\cj-Health Regens when not in combat"}
-OptionValue v2aIceSparky_0{0, "\cg==IceSparky"}
-OptionValue v2aIceSparky_1{0, "\cj-Ice Blade Damage increased 20->25"}
-OptionValue v2aIceSparky_2{0, "\cj--Melee damage reduced"}
-OptionValue v2aIceSparky_3{0, "\cj-Fusion Duration reduced 30->15"}
-OptionValue v2aIceSparky_4{0, "\cj--Now had HUD indicator"}
-OptionValue v2aKorby_0{0, "\cg==Korby"}
-OptionValue v2aKorby_1{0, "\cj-Fire3 reduced damage in low ceiling areas"}
-OptionValue v2aKorby_2{0, "\cj-Ice1 now has power protection"}
-OptionValue v2aTankOperator_0{0, "\cg==TankOperator"}
-OptionValue v2aTankOperator_1{0, "\cj-Health Reduced 200->100"}
-OptionValue v2aTankOperator_2{0, "\cj-On Foot weakness removed"}
-OptionValue v2aTankOperator_3{0, "\cj-Weapon ammo restores tank armor"}
-OptionValue v2aUkiyama_0{0, "\cg==Ukiyama"}
-OptionValue v2aUkiyama_1{0, "\cj-Homing replaced with Guided"}
-OptionValue v2aUkiyama_2{0, "\cj--Guided aims where your cursor is pointed"}
-OptionValue v2aUkiyama_3{0, "\cj-Explosion damage full radius reduced"}
-OptionValue v2aUnix_0{0, "\cg==Unix"}
-OptionValue v2aUnix_1{0, "\cj-Speed Increased 100%->106%"}
-OptionValue v2aUnix_2{0, "\cj-Cloak/Decloak faster"}
-OptionValue v2aUnix_3{0, "\cj--Can now be seen when hit or when too close \nto an opponent"}
-OptionValue v2aVocalWoman_0{0, "\cg==VocalWoman"}
-OptionValue v2aVocalWoman_1{0, "\cj-Healing Voice now heals much slower"}
-OptionValue v2aVocalWoman_2{0, "\cj--Can overheal"}
-OptionValue v2aZenTrainer_0{0, "\cg==ZenTrainer"}
-OptionValue v2aZenTrainer_1{0, "\cj-Health Increased 65->75"}
-OptionValue v2aZenTrainer_2{0, "\cj-Orb now causes debuffs on hit"}
-OptionValue v2aZenTrainer_3{0, "\cj--Armor Break, Slow, Weakness"}
-OptionValue v2aZenTrainer_4{0, "\cj-Orb bounces off walls when held"}
+OptionValue V2AGeneral_0{0, "\cg==General"}
+OptionValue V2AGeneral_1{0, "\cj-Added: Abra, Daveris, Devion, Gravitron, Healmore, \nJax, Knux, Nature's Wonder, Rozark, Yang, Lego"}
+OptionValue V2AMegaman_0{0, "\cg==Megaman"}
+OptionValue V2AMegaman_1{0, "\cj-Copy Weapons updated to match classes"}
+OptionValue V2AGizmo_0{0, "\cg==Gizmo"}
+OptionValue V2AGizmo_1{0, "\cj-Plasma Dmg Reduced"}
+OptionValue V2AGizmo_2{0, "\cj-Lightning dmg increased"}
+OptionValue V2AGizmo_3{0, "\cj-Stone spd increased"}
+OptionValue V2AGizmo_4{0, "\cj-Flame Dmg increased"}
+OptionValue V2AGizmo_5{0, "\cj-Frost spd increased."}
+OptionValue V2AMessatsu_0{0, "\cg==Messatsu"}
+OptionValue V2AMessatsu_1{0, "\cj-Shoryuken Damage reduced"}
+OptionValue V2AMessatsu_2{0, "\cj--Now kicks opponent away at apex."}
+OptionValue V2AAegis_0{0, "\cg==Aegis"}
+OptionValue V2AAegis_1{0, "\cj-Health Reduced 200->125"}
+OptionValue V2AAegis_2{0, "\cj-Speed Increased"}
+OptionValue V2AAegis_3{0, "\cj-RoF Increased"}
+OptionValue V2AAegis_4{0, "\cj-Shield Health Reduced"}
+OptionValue V2AAegis_5{0, "\cj-Removed Shield Wave"}
+OptionValue V2ACorporal_0{0, "\cg==Corporal"}
+OptionValue V2ACorporal_1{0, "\cj-Health Increased 80->100"}
+OptionValue V2ACorporal_2{0, "\cj-Added Infra Rifle weapon"}
+OptionValue V2APistonMan_0{0, "\cg==PistonMan"}
+OptionValue V2APistonMan_1{0, "\cj-Hits now have reduced z-thrust when used repeatedly."}
+OptionValue V2ACopyRobot_0{0, "\cg==CopyRobot"}
+OptionValue V2ACopyRobot_1{0, "\cj-Health Increased 80->85"}
+OptionValue V2ACutManMike_0{0, "\cg==CutManMike"}
+OptionValue V2ACutManMike_1{0, "\cj-Health Increased 75->100"}
+OptionValue V2ACutManMike_2{0, "\cj-Hellfire Cutter dmg reduced"}
+OptionValue V2ACutManMike_3{0, "\cj--Drops flames"}
+OptionValue V2ACutManMike_4{0, "\cj-Firestorm damage increased"}
+OptionValue V2ACutManMike_5{0, "\cj--Can now use while cutter is out. "}
+OptionValue V2AGee_0{0, "\cg==Gee"}
+OptionValue V2AGee_1{0, "\cj-Health Reduced 85->75"}
+OptionValue V2AGee_2{0, "\cj-Health Regens when not in combat"}
+OptionValue V2AIceSparky_0{0, "\cg==IceSparky"}
+OptionValue V2AIceSparky_1{0, "\cj-Ice Blade Damage increased 20->25"}
+OptionValue V2AIceSparky_2{0, "\cj--Melee damage reduced"}
+OptionValue V2AIceSparky_3{0, "\cj-Fusion Duration reduced 30->15"}
+OptionValue V2AIceSparky_4{0, "\cj--Now had HUD indicator"}
+OptionValue V2AKorby_0{0, "\cg==Korby"}
+OptionValue V2AKorby_1{0, "\cj-Fire3 reduced damage in low ceiling areas"}
+OptionValue V2AKorby_2{0, "\cj-Ice1 now has power protection"}
+OptionValue V2ATankOperator_0{0, "\cg==TankOperator"}
+OptionValue V2ATankOperator_1{0, "\cj-Health Reduced 200->100"}
+OptionValue V2ATankOperator_2{0, "\cj-On Foot weakness removed"}
+OptionValue V2ATankOperator_3{0, "\cj-Weapon ammo restores tank armor"}
+OptionValue V2AUkiyama_0{0, "\cg==Ukiyama"}
+OptionValue V2AUkiyama_1{0, "\cj-Homing replaced with Guided"}
+OptionValue V2AUkiyama_2{0, "\cj--Guided aims where your cursor is pointed"}
+OptionValue V2AUkiyama_3{0, "\cj-Explosion damage full radius reduced"}
+OptionValue V2AUnix_0{0, "\cg==Unix"}
+OptionValue V2AUnix_1{0, "\cj-Speed Increased 100%->106%"}
+OptionValue V2AUnix_2{0, "\cj-Cloak/Decloak faster"}
+OptionValue V2AUnix_3{0, "\cj--Can now be seen when hit or when too close \nto an opponent"}
+OptionValue V2AVocalWoman_0{0, "\cg==VocalWoman"}
+OptionValue V2AVocalWoman_1{0, "\cj-Healing Voice now heals much slower"}
+OptionValue V2AVocalWoman_2{0, "\cj--Can overheal"}
+OptionValue V2AZenTrainer_0{0, "\cg==ZenTrainer"}
+OptionValue V2AZenTrainer_1{0, "\cj-Health Increased 65->75"}
+OptionValue V2AZenTrainer_2{0, "\cj-Orb now causes debuffs on hit"}
+OptionValue V2AZenTrainer_3{0, "\cj--Armor Break, Slow, Weakness"}
+OptionValue V2AZenTrainer_4{0, "\cj-Orb bounces off walls when held"}
 
