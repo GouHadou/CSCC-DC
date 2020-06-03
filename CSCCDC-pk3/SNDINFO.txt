@@ -392,9 +392,9 @@ $playersound	knuxc	male	*land		LAND
 $playersound	knuxc	male	*jump		dsnone
 $playersound	knuxc	male	*fist		dsnone
 $playersound	knuxc	male	*usefail	LAND
+$playersound	knuxc	male	*taunt		KNUXTAUN
 
-$playersound	knuxc	male	*taunt	dsnone
-
+Knux/taunt	KNUXTAUN
 
 weapon/burstpop BUBLPOP
 weapon/BurstBubAppear BUBLPOOF

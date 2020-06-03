@@ -221,7 +221,7 @@ TNT1 A 0 A_TakeInventory("GravChangerUp",1)
 fail
 }
 }
-actor GravSpamProtect : Powerup {Powerup.duration 10}
+actor GravSpamProtect : Powerup {Powerup.duration 15}
 
 actor GravSphere : BasicProjectile
 {

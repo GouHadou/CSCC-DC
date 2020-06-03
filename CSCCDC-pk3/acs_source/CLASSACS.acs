@@ -303,16 +303,17 @@ moveGen = 0;
 for (i = 1; i <= duration; i++)
 {
 	oldMove = moveGen;
-	theHecc = sin(((i*0.5)/duration) - 0.25);
-	moveGen = ((theHecc) + 1.0)/2;
+	moveGen = sin((i*0.25)/duration);
+	//moveGen = ((theHecc)* + 1.0)/2;
 	moveAngle = fixedmul(horiz, moveGen - oldMove);
 	movePitch = fixedmul(vert, moveGen - oldMove);
 	
 	setActorAngle(0, getActorAngle(0) + moveAngle);
-	setActorPitch(0, getActorPitch(0) + moveAngle);
+	setActorPitch(0, getActorPitch(0) + movePitch);
 	delay(1);
+	//print(f: moveGen);
 }
-if (getCVAR("CSCCB_CL_RecoilReset") == false) terminate;
+if (getCVAR("CSCC_CL_RecoilReset") == false) terminate;
 delay(1);
 moveGen = 0;
 horiz = horiz*(-1);
@@ -327,8 +328,9 @@ for (i = 1; i <= duration; i++)
 	movePitch = fixedmul(vert, moveGen - oldMove);
 	
 	setActorAngle(0, getActorAngle(0) + moveAngle);
-	setActorPitch(0, getActorPitch(0) + moveAngle);
+	setActorPitch(0, getActorPitch(0) + movePitch);
 	delay(1);
+	//print(f: moveGen);
 }
 }
 

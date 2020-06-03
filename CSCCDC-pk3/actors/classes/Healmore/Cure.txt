@@ -2,7 +2,7 @@
 
 Actor BeamFXBuffer : Powerup{inventory.amount 1 powerup.duration 7}
 
-Const Int CureHealMin = 5;
+Const Int CureHealMin = 1;
 Const Int CureHealMax = 10;
 
 Const Int CureMPCost = 2; //every 17 frames

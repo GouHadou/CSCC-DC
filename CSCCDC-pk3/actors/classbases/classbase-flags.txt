@@ -45,6 +45,7 @@ TNT1 A 0 A_JumpIfInventory("IsDaveris", 1, "DaverisTaunt")
 TNT1 A 0 A_JumpIfInventory("IsJax", 1, "JaxTaunt")
 TNT1 A 0 A_JumpIfInventory("IsLordDamager", 1, "LordDamagerTaunt")
 TNT1 A 0 A_JumpIfInventory("IsRozark", 1, "RozarkTaunt")
+TNT1 A 0 A_JumpIfInventory("IsKnux", 1, "KnuxTaunt")
 stop
 CopyTaunt:
 TNT1 A 0 A_PlaySoundEx("CopyRobot/taunt", "Taunt")
@@ -94,6 +95,9 @@ stop
 RozarkTaunt:
 TNT1 A 0 A_PlaySoundEx("Rozark/taunt", "Taunt")
 stop
+KnuxTaunt:
+TNT1 A 0 A_PlaySoundEx("Knux/taunt", "Taunt")
+stop 
 }
 }
 
