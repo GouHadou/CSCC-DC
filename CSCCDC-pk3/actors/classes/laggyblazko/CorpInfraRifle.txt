@@ -4,7 +4,7 @@ actor CorpInfraRifle : CorporalWeaponBase
 {
 const int infraRecoil = -65536*15/360;
 Tag "$TAG_INFRARIFLE"
-Attacksound "Corp/InfraFire" //Railgun sound?
+//Attacksound "Corp/InfraFire" //Railgun sound?
 Weapon.AmmoUse1 1
 Weapon.AmmoGive1 5
 Weapon.AmmoUse2 1
