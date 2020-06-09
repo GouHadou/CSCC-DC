@@ -9,6 +9,7 @@ OptionMenu "ChangelogSelect"
 	Title "$CHANGELOGS"
 	StaticText "===============================================================",1
 	StaticText ""
+	Submenu	    "         	          Version 2b",		"v2bChangelog"
 	Submenu	    "         	          Version 2a",		"v2aChangelog"
 	Submenu	    "         	          Version 1c",		"v1cChangelog"
 	Submenu	    "         	          Version 1b",		"v1bChangelog"
@@ -380,4 +381,32 @@ OptionValue V2AZenTrainer_1{0, "\cj-Health Increased 65->75"}
 OptionValue V2AZenTrainer_2{0, "\cj-Orb now causes debuffs on hit"}
 OptionValue V2AZenTrainer_3{0, "\cj--Armor Break, Slow, Weakness"}
 OptionValue V2AZenTrainer_4{0, "\cj-Orb bounces off walls when held"}
+
+OptionMenu "v2bChangelog"
+{
+	Title "v2b Changelog"
+	StaticText "===============================================================",1
+	StaticText ""
+	Option "", "CSCC_menudef_changelog", "v2bCorporal_0"
+	Option "", "CSCC_menudef_changelog", "v2bCorporal_1"
+	Option "", "CSCC_menudef_changelog", "v2bCorporal_2"
+	Option "", "CSCC_menudef_changelog", "v2bCorporal_3"
+	StaticText ""
+	Option "", "CSCC_menudef_changelog", "v2bHealmore_0"
+	Option "", "CSCC_menudef_changelog", "v2bHealmore_1"
+	StaticText ""
+	Option "", "CSCC_menudef_changelog", "v2bKnux_0"
+	Option "", "CSCC_menudef_changelog", "v2bKnux_1"
+	StaticText ""
+	StaticText "===============================================================",1
+}
+
+OptionValue v2bCorporal_0{0, "\cg==Corporal"}
+OptionValue v2bCorporal_1{0, "\cj-Updated Recoil script"}
+OptionValue v2bCorporal_2{0, "\cj-Updated HUD sprites"}
+OptionValue v2bCorporal_3{0, "\cj-Fixed sound on Infra Rifle"}
+OptionValue v2bHealmore_0{0, "\cg==Healmore"}
+OptionValue v2bHealmore_1{0, "\cj-Fixed Cure Beam heal rate (30HP/s -> 5HP/s)"}
+OptionValue v2bKnux_0{0, "\cg==Knux"}
+OptionValue v2bKnux_1{0, "\cj-Added Taunt"}
 
